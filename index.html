@@ -121,14 +121,38 @@
 
   const selectedBook = bibleBooks.find(item => item.name === book);
 
-  if (selectedBook) {
-    message.textContent =
-      book + " contains " + selectedBook.chapters +
-      " chapters. Chapter reading is our next step.";
-  } else {
+  if (!selectedBook) {
     message.textContent = "Bible book not found.";
+    return;
   }
-    }
+
+  let chapters = "";
+
+  for (let i = 1; i <= selectedBook.chapters; i++) {
+    chapters += `
+      <button onclick="openChapter('${book}', ${i})">
+        Chapter ${i}
+      </button>
+    `;
+  }
+
+  message.innerHTML = `
+    <h2>${book}</h2>
+    <p>Select a chapter to begin reading.</p>
+    <div>${chapters}</div>
+  `;
+}
+
+function openChapter(book, chapter) {
+  const message = document.getElementById("message");
+
+  message.innerHTML = `
+    <h2>${book} ${chapter}</h2>
+    <p>Scripture text will appear here when the Bible translation is connected.</p>
+    <button onclick="readBible()">Back to Chapters</button>
+  `;
+}
+    
     <script src="bible-data.js"></script>
   </script>
 </body>
