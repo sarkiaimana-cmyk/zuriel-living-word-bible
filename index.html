@@ -109,12 +109,27 @@
   </footer>
 
   <script>
+    
     function readBible() {
-      const book = document.getElementById("book").value;
-      document.getElementById("message").textContent =
-        book ? book + " selected. Scripture library coming soon." :
-        "Please select a Bible book.";
+  const book = document.getElementById("book").value;
+  const message = document.getElementById("message");
+
+  if (!book) {
+    message.textContent = "Please select a Bible book.";
+    return;
+  }
+
+  const selectedBook = bibleBooks.find(item => item.name === book);
+
+  if (selectedBook) {
+    message.textContent =
+      book + " contains " + selectedBook.chapters +
+      " chapters. Chapter reading is our next step.";
+  } else {
+    message.textContent = "Bible book not found.";
+  }
     }
+    <script src="bible-data.js"></script>
   </script>
 </body>
 </html>
