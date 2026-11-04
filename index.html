@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#102b24">
+  <meta name="description" content="Zuriel Living Word Bible - His Words, My Life, My Victory.">
+  <title>Zuriel Living Word Bible</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Georgia, serif;
+      background: #f6f3e9;
+      color: #18352b;
+    }
+    header {
+      background: linear-gradient(135deg, #102b24, #24634a);
+      color: white;
+      text-align: center;
+      padding: 38px 18px;
+    }
+    header h1 { font-size: 27px; margin: 0 0 12px; }
+    header p { color: #f3d98b; font-size: 16px; }
+    main { max-width: 650px; margin: auto; padding: 20px; }
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 14px;
+      margin-bottom: 17px;
+      box-shadow: 0 3px 12px #00000012;
+    }
+    h2 { color: #24634a; font-size: 20px; }
+    button {
+      background: #24634a;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    select {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #102b24;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Zuriel Living Word Bible</h1>
+    <p>His Words.. My Life.. My Victory</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>📖 Welcome to the Living Word</h2>
+      <p>Discover God's Word, grow in understanding, and live a victorious life in Christ.</p>
+    </section>
+
+    <section class="card">
+      <h2>📚 Bible Reading</h2>
+      <p>Your journey through all 66 books of the Bible begins here.</p>
+      <select id="book">
+        <option value="">Choose a Bible book</option>
+        <option>Genesis</option>
+        <option>Exodus</option>
+        <option>Psalms</option>
+        <option>Proverbs</option>
+        <option>Matthew</option>
+        <option>John</option>
+        <option>Romans</option>
+        <option>Revelation</option>
+      </select>
+      <button onclick="readBible()">Open Scripture</button>
+      <p id="message"></p>
+    </section>
+
+    <section class="card">
+      <h2>🙏 Prayer</h2>
+      <p>Dear Father, thank You for the light of Your Word. May Your truth guide my heart and direct my steps today. Amen.</p>
+    </section>
+
+    <section class="card">
+      <h2>✨ Glory Verse Affirmation</h2>
+      <p>I am born of God. His Word lives in me, His wisdom guides me, and His grace empowers me to live victoriously.</p>
+    </section>
+
+    <section class="card">
+      <h2>🕯️ Light</h2>
+      <p>Your Word is a lamp unto my feet, and a light unto my path. — Psalm 119:105</p>
+    </section>
+  </main>
+
+  <footer>
+    Zuriel Living Word Bible
+    <p>His Words.. My Life.. My Victory</p>
+  </footer>
+
+  <script>
+    function readBible() {
+      const book = document.getElementById("book").value;
+      document.getElementById("message").textContent =
+        book ? book + " selected. Scripture library coming soon." :
+        "Please select a Bible book.";
+    }
+  </script>
+</body>
+</html>
