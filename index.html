@@ -1,29 +1,49 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#102b24">
-  <meta name="description" content="Zuriel Living Word Bible - His Words, My Life, My Victory.">
+  <meta name="description" content="Zuriel Living Word Bible">
   <title>Zuriel Living Word Bible</title>
+
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Georgia, serif;
       background: #f6f3e9;
       color: #18352b;
     }
+
     header {
       background: linear-gradient(135deg, #102b24, #24634a);
       color: white;
       text-align: center;
       padding: 38px 18px;
     }
-    header h1 { font-size: 27px; margin: 0 0 12px; }
-    header p { color: #f3d98b; font-size: 16px; }
-    main { max-width: 650px; margin: auto; padding: 20px; }
+
+    header h1 {
+      font-size: 27px;
+      margin: 0 0 12px;
+    }
+
+    header p {
+      color: #f3d98b;
+      font-size: 16px;
+    }
+
+    main {
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+    }
+
     .card {
       background: white;
       padding: 22px;
@@ -31,7 +51,12 @@
       margin-bottom: 17px;
       box-shadow: 0 3px 12px #00000012;
     }
-    h2 { color: #24634a; font-size: 20px; }
+
+    h2 {
+      color: #24634a;
+      font-size: 20px;
+    }
+
     button {
       background: #24634a;
       color: white;
@@ -40,7 +65,13 @@
       border-radius: 8px;
       font-size: 15px;
       cursor: pointer;
+      margin: 5px;
     }
+
+    button:active {
+      background: #102b24;
+    }
+
     select {
       width: 100%;
       padding: 12px;
@@ -49,6 +80,24 @@
       border-radius: 8px;
       font-size: 16px;
     }
+
+    #message {
+      margin-top: 20px;
+      line-height: 1.7;
+    }
+
+    #chapterButtons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .verse {
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      line-height: 1.8;
+    }
+
     footer {
       text-align: center;
       padding: 25px;
@@ -57,50 +106,65 @@
     }
   </style>
 </head>
+
 <body>
+
   <header>
     <h1>Zuriel Living Word Bible</h1>
     <p>His Words.. My Life.. My Victory</p>
   </header>
 
   <main>
+
     <section class="card">
       <h2>📖 Welcome to the Living Word</h2>
-      <p>Discover God's Word, grow in understanding, and live a victorious life in Christ.</p>
+      <p>
+        Discover God's Word, grow in understanding,
+        and live a victorious life in Christ.
+      </p>
     </section>
 
     <section class="card">
       <h2>📚 Bible Reading</h2>
       <p>Your journey through all 66 books of the Bible begins here.</p>
+
       <select id="book">
         <option value="">Choose a Bible book</option>
-        <option>Genesis</option>
-        <option>Exodus</option>
-        <option>Psalms</option>
-        <option>Proverbs</option>
-        <option>Matthew</option>
-        <option>John</option>
-        <option>Romans</option>
-        <option>Revelation</option>
       </select>
+
       <button onclick="readBible()">Open Scripture</button>
-      <p id="message"></p>
+
+      <div id="message">
+        Select a Bible book to begin.
+      </div>
     </section>
 
     <section class="card">
       <h2>🙏 Prayer</h2>
-      <p>Dear Father, thank You for the light of Your Word. May Your truth guide my heart and direct my steps today. Amen.</p>
+      <p>
+        Dear Father, thank You for the light of Your Word.
+        May Your truth guide my heart and direct my steps today.
+        Amen.
+      </p>
     </section>
 
     <section class="card">
       <h2>✨ Glory Verse Affirmation</h2>
-      <p>I am born of God. His Word lives in me, His wisdom guides me, and His grace empowers me to live victoriously.</p>
+      <p>
+        I am born of God. His Word lives in me,
+        His wisdom guides me, and His grace empowers
+        me to live victoriously.
+      </p>
     </section>
 
     <section class="card">
       <h2>🕯️ Light</h2>
-      <p>Your Word is a lamp unto my feet, and a light unto my path. — Psalm 119:105</p>
+      <p>
+        Your Word is a lamp unto my feet,
+        and a light unto my path. — Psalm 119:105
+      </p>
     </section>
+
   </main>
 
   <footer>
@@ -108,52 +172,87 @@
     <p>His Words.. My Life.. My Victory</p>
   </footer>
 
+  <!-- Load Bible book information first -->
+  <script src="bible-data.js"></script>
+
   <script>
-    
+
+    // Load all available Bible books
+    function loadBibleBooks() {
+      const selector = document.getElementById("book");
+
+      if (typeof bibleBooks === "undefined") {
+        document.getElementById("message").textContent =
+          "Bible library could not be loaded. Please check bible-data.js.";
+        return;
+      }
+
+      bibleBooks.forEach(function(item) {
+        const option = document.createElement("option");
+        option.value = item.name;
+        option.textContent = item.name;
+        selector.appendChild(option);
+      });
+    }
+
+    // Open selected Bible book
     function readBible() {
-  const book = document.getElementById("book").value;
-  const message = document.getElementById("message");
+      const book = document.getElementById("book").value;
+      const message = document.getElementById("message");
 
-  if (!book) {
-    message.textContent = "Please select a Bible book.";
-    return;
-  }
+      if (!book) {
+        message.textContent = "Please select a Bible book.";
+        return;
+      }
 
-  const selectedBook = bibleBooks.find(item => item.name === book);
+      const selectedBook = bibleBooks.find(
+        item => item.name === book
+      );
 
-  if (!selectedBook) {
-    message.textContent = "Bible book not found.";
-    return;
-  }
+      if (!selectedBook) {
+        message.textContent = "Bible book not found.";
+        return;
+      }
 
-  let chapters = "";
+      let chapters = "";
 
-  for (let i = 1; i <= selectedBook.chapters; i++) {
-    chapters += `
-      <button onclick="openChapter('${book}', ${i})">
-        Chapter ${i}
-      </button>
-    `;
-  }
+      for (let i = 1; i <= selectedBook.chapters; i++) {
+        chapters += `
+          <button onclick="openChapter('${book}', ${i})">
+            ${i}
+          </button>
+        `;
+      }
 
-  message.innerHTML = `
-    <h2>${book}</h2>
-    <p>Select a chapter to begin reading.</p>
-    <div>${chapters}</div>
-  `;
-}
+      message.innerHTML = `
+        <h2>${book}</h2>
+        <p>Select a chapter to begin reading.</p>
+        <div id="chapterButtons">
+          ${chapters}
+        </div>
+      `;
+    }
 
-function openChapter(book, chapter) {
-  const message = document.getElementById("message");
+    // Open selected chapter
+    function openChapter(book, chapter) {
+      const message = document.getElementById("message");
 
-  message.innerHTML = `
-    <h2>${book} ${chapter}</h2>
-    <p>Scripture text will appear here when the Bible translation is connected.</p>
-    <button onclick="readBible()">Back to Chapters</button>
-  `;
-}
-    
-    <script src="bible-data.js"></script>
+      message.innerHTML = `
+        <h2>${book} ${chapter}</h2>
+        <p>
+          The KJV Scripture text will appear here
+          when the Bible translation is connected.
+        </p>
+        <button onclick="readBible()">
+          Back to Chapters
+        </button>
+      `;
+    }
+
+    // Start the Bible library
+    loadBibleBooks();
+
   </script>
+
 </body>
 </html>
