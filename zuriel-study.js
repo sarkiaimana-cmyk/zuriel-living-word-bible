@@ -1,123 +1,111 @@
 
-
 /* =====================================================
    ZURIEL LIVING WORD BIBLE
-   EXPANDED SCRIPTURE STUDY CENTRE
+   GENESIS 1:1 — EXPANDED STUDY
    ===================================================== */
 
 (function () {
   "use strict";
 
-  function createZurielStudy() {
+  const references = [
+    ["Genesis", 1, 2, "Creation account"],
+    ["Psalm", 33, 6, "Creation through God's Word"],
+    ["Psalm", 90, 2, "God before creation"],
+    ["Isaiah", 45, 18, "God the Creator"],
+    ["John", 1, 1, "The Word in the beginning"],
+    ["Acts", 17, 24, "God made the world"],
+    ["Colossians", 1, 16, "All things created through Christ"],
+    ["Hebrews", 11, 3, "Creation by God's Word"],
+    ["Revelation", 4, 11, "The Creator is worthy"]
+  ];
+
+  function createStudy() {
     if (document.getElementById("zurielStudyPanel")) return;
 
     const style = document.createElement("style");
-
     style.textContent = `
       #zurielStudyPanel {
-        background: #10213d;
-        color: #f8f4e9;
-        border: 1px solid #b99b58;
-        border-radius: 18px;
-        padding: 18px;
-        margin: 22px 0;
-        font-family: inherit;
+        background:#10213d;
+        color:#f8f4e9;
+        border:1px solid #b99b58;
+        border-radius:18px;
+        padding:18px;
+        margin:22px 0;
+        line-height:1.75;
       }
-
-      #zurielStudyPanel h2 {
-        color: #e8cf91;
-        margin-top: 0;
-        font-size: 23px;
-      }
-
+      #zurielStudyPanel h2,
       #zurielStudyPanel h3 {
-        color: #e8cf91;
+        color:#e8cf91;
       }
-
-      #zurielStudyPanel .study-subtitle {
-        color: #d9e3ef;
-        line-height: 1.7;
-      }
-
-      #zurielStudyPanel .study-current {
-        background: #1c3657;
-        border: 1px solid #b99b58;
-        padding: 14px;
-        border-radius: 12px;
-        margin: 16px 0;
-      }
-
-      #zurielStudyPanel .study-reference {
-        color: #e8cf91;
-        font-weight: bold;
-      }
-
       #zurielStudyPanel details {
-        background: #fff;
-        color: #18304d;
-        border-radius: 12px;
-        margin: 12px 0;
-        overflow: hidden;
+        background:#fff;
+        color:#18304d;
+        border-radius:12px;
+        margin:12px 0;
+        overflow:hidden;
       }
-
       #zurielStudyPanel summary {
-        cursor: pointer;
-        font-weight: bold;
-        font-size: 16px;
-        padding: 17px 14px;
-        line-height: 1.5;
+        padding:16px;
+        cursor:pointer;
+        font-weight:bold;
       }
-
-      #zurielStudyPanel details .study-content {
-        padding: 0 15px 16px;
-        line-height: 1.7;
+      #zurielStudyPanel .study-body {
+        padding:0 16px 17px;
       }
-
-      #zurielStudyPanel .study-label {
-        display: block;
-        font-weight: bold;
-        margin: 12px 0 6px;
+      #zurielStudyPanel .study-verse {
+        background:#1c3657;
+        border:1px solid #b99b58;
+        border-radius:12px;
+        padding:16px;
       }
-
-      #zurielStudyPanel textarea,
-      #zurielStudyPanel input {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 12px;
-        border: 1px solid #b99b58;
-        border-radius: 9px;
-        font: inherit;
-        background: #fff;
-        color: #18304d;
+      #zurielStudyPanel .study-word {
+        background:#f2eee4;
+        border-left:4px solid #b99b58;
+        color:#18304d;
+        padding:12px;
+        margin:10px 0;
+        border-radius:7px;
       }
-
+      #zurielStudyPanel .study-link {
+        display:block;
+        width:100%;
+        text-align:left;
+        background:#fff;
+        color:#18304d;
+        border:1px solid #d6c79e;
+        border-radius:9px;
+        padding:12px;
+        margin:8px 0;
+        min-height:46px;
+        font-weight:bold;
+      }
       #zurielStudyPanel textarea {
-        min-height: 105px;
-        resize: vertical;
+        width:100%;
+        box-sizing:border-box;
+        min-height:120px;
+        padding:12px;
+        border-radius:9px;
+        font:inherit;
       }
-
-      #zurielStudyPanel button {
-        min-height: 46px;
-        padding: 11px 16px;
-        border-radius: 9px;
-        border: 1px solid #b99b58;
-        background: #e8cf91;
-        color: #10213d;
-        font-weight: bold;
-        font-size: 15px;
-        cursor: pointer;
+      #zurielStudyPanel input {
+        width:100%;
+        box-sizing:border-box;
+        padding:12px;
+        border-radius:9px;
+        font:inherit;
       }
-
-      #zurielStudyPanel .study-muted {
-        color: #52647a;
-        font-size: 14px;
+      #zurielStudyPanel .study-action {
+        background:#e8cf91;
+        color:#10213d;
+        border:1px solid #b99b58;
+        padding:12px 16px;
+        min-height:46px;
+        border-radius:9px;
+        font-weight:bold;
       }
-
-      #zurielStudyPanel .study-footer {
-        color: #d9e3ef;
-        font-size: 13px;
-        line-height: 1.6;
-        margin-top: 18px;
+      #zurielStudyPanel .study-small {
+        color:#d9e3ef;
+        font-size:13px;
       }
     `;
 
@@ -128,279 +116,370 @@
 
     panel.innerHTML = `
       <h2>📖 Zuriel Scripture Study Centre</h2>
+      <p>Explore God's Word deeply, carefully and prayerfully.</p>
 
-      <p class="study-subtitle">
-        Go deeper into God's Word. Explore the Scripture,
-        understand its context, discover its connections
-        and record your personal reflections.
-      </p>
-
-      <div class="study-current">
-        <div class="study-reference" id="zurielStudyReference">
-          No verse selected yet
-        </div>
-        <p id="zurielStudyVerseText">
-          Open a Bible passage and select a verse when
-          verse selection is connected.
+      <div class="study-verse">
+        <h3>Genesis 1:1 — KJV</h3>
+        <p>
+          In the beginning God created the heaven
+          and the earth.
+        </p>
+        <p class="study-small">
+          Demonstration study passage. Scripture text is
+          separated from explanations and personal reflections.
         </p>
       </div>
 
       <details open>
-        <summary>📜 1. Scripture and Context</summary>
-        <div class="study-content">
-          <p><strong>Passage overview</strong></p>
-          <p id="zurielStudyOverview">
-            Verified passage background will appear here.
+        <summary>📜 1. Scripture and Historical Context</summary>
+        <div class="study-body">
+          <h3>Book introduction</h3>
+          <p>
+            Genesis is the opening book of the Bible and the
+            first book of the Pentateuch. Its name means
+            beginning or origin. It introduces creation,
+            humanity, sin, God's promises and the beginnings
+            of the people of Israel.
           </p>
 
-          <p><strong>Historical and cultural setting</strong></p>
-          <p id="zurielStudyHistory">
-            Historical information will be added from
-            reliable Bible reference sources.
+          <h3>Authorship and composition</h3>
+          <p>
+            Jewish and Christian tradition associates Genesis
+            with Moses. The book belongs to the Pentateuch.
+            Its composition and literary history have also
+            been examined by modern biblical scholarship.
           </p>
 
-          <p><strong>Surrounding passage</strong></p>
-          <p id="zurielStudySurroundings">
-            The verses before and after the selected
-            passage will be presented here.
+          <h3>Historical setting</h3>
+          <p>
+            Genesis 1 presents God as the Creator of everything.
+            It begins before the history of Israel and establishes
+            the biblical foundation for understanding the world
+            as God's creation.
+          </p>
+
+          <h3>Literary structure</h3>
+          <p>
+            Genesis 1:1 introduces the whole creation account.
+            Genesis 1:2 describes the earth's initial condition.
+            The following verses describe God's creative commands
+            and the ordering of creation.
+          </p>
+
+          <h3>Why this verse matters</h3>
+          <p>
+            Before the Bible introduces humanity, nations,
+            covenants or kingdoms, it introduces God.
+            Creation begins with Him.
           </p>
         </div>
       </details>
 
       <details>
         <summary>💡 2. Meaning and Exposition</summary>
-        <div class="study-content">
-          <p><strong>What does the passage say?</strong></p>
-          <p id="zurielStudyObservation">
-            Scripture observations will appear here.
-          </p>
-
-          <p><strong>What does it mean?</strong></p>
-          <p id="zurielStudyInterpretation">
-            A carefully sourced explanation will appear here.
-          </p>
-
-          <p><strong>Practical application</strong></p>
-          <p id="zurielStudyApplication">
-            Biblical lessons and practical applications
-            will be presented here.
-          </p>
-        </div>
-      </details>
-
-      <details>
-        <summary>🔤 3. Hebrew and Greek Word Study</summary>
-        <div class="study-content">
+        <div class="study-body">
+          <h3>In the beginning</h3>
           <p>
-            Explore the original biblical languages
-            with verified lexical information.
+            The opening words establish the beginning of
+            creation. They direct attention to the origin
+            of the created order rather than presenting
+            God as part of that order.
           </p>
 
-          <p><strong>Hebrew — Old Testament</strong></p>
-          <p id="zurielHebrewWords">
-            Hebrew words, transliteration, pronunciation,
-            morphology and definitions will appear here
-            when verified data is available.
+          <h3>God</h3>
+          <p>
+            God is the central subject of the sentence.
+            The verse begins with His action, not human
+            achievement or natural power.
           </p>
 
-          <p><strong>Greek — New Testament</strong></p>
-          <p id="zurielGreekWords">
-            Greek words, transliteration, pronunciation,
-            morphology and definitions will appear here
-            when verified data is available.
-          </p>
-        </div>
-      </details>
-
-      <details>
-        <summary>🔗 4. Connected Scriptures and Cross-References</summary>
-        <div class="study-content">
-          <p id="zurielStudyCrossReferences">
-            Verified related passages will appear here,
-            with their Bible references and Scripture text.
-          </p>
-        </div>
-      </details>
-
-      <details>
-        <summary>📚 5. Commentary and Deeper Study</summary>
-        <div class="study-content">
-          <p><strong>Study commentary</strong></p>
-          <p id="zurielStudyCommentary">
-            Commentary from approved and properly attributed
-            sources will appear here when available.
+          <h3>Created</h3>
+          <p>
+            The Hebrew verb describes God's creative action.
+            The verse presents creation as dependent on
+            God's initiative and authority.
           </p>
 
-          <p><strong>Important themes</strong></p>
-          <p id="zurielStudyThemes">
-            Biblical themes connected to the passage
-            will appear here.
+          <h3>The heaven and the earth</h3>
+          <p>
+            This expression presents the totality of the
+            created realm: the heavens and the earth.
           </p>
 
-          <p><strong>Questions for reflection</strong></p>
-          <p id="zurielStudyQuestions">
-            Reflection questions will help readers
-            examine the passage more deeply.
+          <h3>Main biblical teaching</h3>
+          <ul>
+            <li>God is the Creator.</li>
+            <li>The universe is not presented as self-created.</li>
+            <li>Creation belongs to God.</li>
+            <li>Human life has its origin within God's creation.</li>
+          </ul>
+
+          <h3>Practical application</h3>
+          <p>
+            Recognise God as the source of life. Approach
+            creation with humility, gratitude, responsibility
+            and worship.
           </p>
         </div>
       </details>
 
       <details>
-        <summary>📝 6. My Personal Study Notes</summary>
-        <div class="study-content">
-          <label class="study-label" for="zurielStudyNoteTitle">
-            Note title
-          </label>
+        <summary>🔤 3. Hebrew Word Study</summary>
+        <div class="study-body">
+          <p>
+            Genesis 1:1 was written in Hebrew. These are
+            important words from its original text.
+          </p>
 
-          <input
-            id="zurielStudyNoteTitle"
-            type="text"
-            placeholder="Give your study note a title"
-          >
+          <div class="study-word">
+            <h3>בְּרֵאשִׁית — Bereshit</h3>
+            <p><b>Meaning:</b> In the beginning.</p>
+            <p><b>Function:</b> Opening expression of the verse.</p>
+          </div>
 
-          <label class="study-label" for="zurielPersonalStudyNote">
-            Your personal reflection
-          </label>
+          <div class="study-word">
+            <h3>בָּרָא — Bara</h3>
+            <p><b>Meaning:</b> Created.</p>
+            <p><b>Function:</b> Verb describing the creative action.</p>
+          </div>
 
-          <textarea
-            id="zurielPersonalStudyNote"
-            placeholder="Write what you have learned, questions, discoveries and personal reflections..."
-          ></textarea>
+          <div class="study-word">
+            <h3>אֱלֹהִים — Elohim</h3>
+            <p><b>Meaning:</b> God.</p>
+            <p><b>Function:</b> Subject of the sentence. It takes
+            a singular verb in this verse.</p>
+          </div>
 
-          <button id="zurielSaveStudyNote">
-            Save My Study Note
+          <div class="study-word">
+            <h3>הַשָּׁמַיִם — Hashamayim</h3>
+            <p><b>Meaning:</b> The heavens.</p>
+            <p><b>Function:</b> Part of the expression describing
+            the created realm.</p>
+          </div>
+
+          <div class="study-word">
+            <h3>הָאָרֶץ — Ha'aretz</h3>
+            <p><b>Meaning:</b> The earth or land.</p>
+            <p><b>Function:</b> Completes the expression
+            "the heavens and the earth."</p>
+          </div>
+
+          <p>
+            Further study can include Strong's numbers,
+            grammatical parsing, pronunciation and lexical
+            definitions from verified Hebrew resources.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>🔗 4. Connected Scriptures</summary>
+        <div class="study-body">
+          <p>
+            Select a reference to open its Bible chapter.
+            The exact verse can then be selected in the reader.
+          </p>
+          <div id="zurielCrossReferenceList"></div>
+        </div>
+      </details>
+
+      <details>
+        <summary>📚 5. Theology and Deeper Study</summary>
+        <div class="study-body">
+          <h3>God as Creator</h3>
+          <p>
+            The verse establishes God's relationship to
+            everything that exists. Creation is dependent
+            upon Him.
+          </p>
+
+          <h3>Creation and Christ</h3>
+          <p>
+            John 1:1–3 and Colossians 1:16–17 connect the
+            biblical teaching about creation with the Word
+            and the person of Jesus Christ.
+          </p>
+
+          <h3>Creation and faith</h3>
+          <p>
+            Hebrews 11:3 connects creation with faith and
+            the understanding that the visible world did
+            not originate from visible things.
+          </p>
+
+          <h3>Questions for deeper reflection</h3>
+          <ol>
+            <li>What does this verse reveal about God's identity?</li>
+            <li>What does creation reveal about God's authority?</li>
+            <li>How should belief in God as Creator shape our lives?</li>
+            <li>How do John 1:1–3 and Genesis 1:1 connect?</li>
+          </ol>
+
+          <p>
+            Different Christian traditions discuss the
+            chronology and interpretation of creation
+            passages. Those interpretations should be
+            examined fairly and in their biblical context.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>📝 6. Personal Study Journal</summary>
+        <div class="study-body">
+          <label for="zurielStudyTitle">Study title</label>
+          <input id="zurielStudyTitle"
+            placeholder="My Genesis 1:1 discovery">
+
+          <p><b>What have I learned?</b></p>
+          <textarea id="zurielStudyNote"
+            placeholder="Write your observations and discoveries..."></textarea>
+
+          <p><b>How will I apply this Word?</b></p>
+          <textarea id="zurielStudyApplication"
+            placeholder="Write your personal application..."></textarea>
+
+          <button class="study-action" id="zurielSaveGenesisNote">
+            Save My Study
           </button>
-
-          <p id="zurielStudySaveMessage"></p>
+          <p id="zurielGenesisSaveMessage"></p>
         </div>
       </details>
 
       <details>
         <summary>🙏 7. Prayer and Declaration</summary>
-        <div class="study-content">
-          <p><strong>Prayer from the passage</strong></p>
-          <p id="zurielStudyPrayer">
-            A Scripture-based prayer will be provided
-            when verified passage content is available.
+        <div class="study-body">
+          <h3>Prayer</h3>
+          <p>
+            Heavenly Father, thank You for being the Creator
+            of heaven and earth. Help me to recognise Your
+            greatness, honour Your wisdom and live with
+            gratitude for the life You have given me.
+            In Jesus' name, Amen.
           </p>
 
-          <p><strong>Faith declaration</strong></p>
-          <p id="zurielStudyDeclaration">
-            A declaration grounded in the selected
-            Scripture will appear here.
+          <h3>Declaration</h3>
+          <p>
+            God is my Creator. My life belongs to Him.
+            I honour His wisdom, trust His Word and
+            acknowledge His authority over all creation.
+          </p>
+
+          <h3>Reflection</h3>
+          <p>
+            How can I honour God as Creator in my choices,
+            relationships and daily responsibilities?
           </p>
         </div>
       </details>
 
-      <p class="study-footer">
+      <p class="study-small">
         Zuriel Living Word Bible — His Words... My Life...
-        My Victory. Scripture remains distinct from study
-        explanations and personal reflections.
+        My Victory.
       </p>
     `;
 
     const main = document.querySelector("main");
+    if (main) main.appendChild(panel);
+    else document.body.appendChild(panel);
 
-    if (main) {
-      main.appendChild(panel);
-    } else {
-      document.body.appendChild(panel);
-    }
-
-    let currentReference = "general";
-
-    const reference = document.getElementById(
-      "zurielStudyReference"
+    const list = document.getElementById(
+      "zurielCrossReferenceList"
     );
 
-    const verseText = document.getElementById(
-      "zurielStudyVerseText"
-    );
+    references.forEach(function (item) {
+      const button = document.createElement("button");
+      button.className = "study-link";
+      button.textContent =
+        item[0] + " " + item[1] + ":" + item[2] +
+        " — " + item[3];
 
-    const noteTitle = document.getElementById(
-      "zurielStudyNoteTitle"
-    );
+      button.addEventListener("click", function () {
+        const bookSelect = document.getElementById("book");
 
-    const note = document.getElementById(
-      "zurielPersonalStudyNote"
-    );
+        if (typeof window.openChapter === "function") {
+          window.openChapter(item[0], item[1]);
+          return;
+        }
 
-    const message = document.getElementById(
-      "zurielStudySaveMessage"
-    );
+        if (bookSelect) {
+          const option = Array.from(bookSelect.options).find(
+            function (entry) {
+              return entry.text.trim().toLowerCase() ===
+                item[0].toLowerCase();
+            }
+          );
 
-    function getStorageKey() {
-      return "zuriel-study-note-" + currentReference;
-    }
+          if (option) {
+            bookSelect.value = option.value;
+            bookSelect.dispatchEvent(
+              new Event("change", { bubbles: true })
+            );
 
-    function open(referenceText, selectedVerse) {
-      currentReference = referenceText || "general";
+            alert(
+              "The book has been selected. Please choose chapter " +
+              item[1] + " and verse " + item[2] +
+              " in the Bible reader."
+            );
+            return;
+          }
+        }
 
-      reference.textContent = currentReference;
-      verseText.textContent = selectedVerse ||
-        "No verse text supplied.";
-
-      try {
-        const saved = JSON.parse(
-          localStorage.getItem(getStorageKey()) || "{}"
+        alert(
+          "Please open " + item[0] + " chapter " +
+          item[1] + ", verse " + item[2] +
+          " using the Bible reader."
         );
-
-        noteTitle.value = saved.title || "";
-        note.value = saved.note || "";
-      } catch (error) {
-        noteTitle.value = "";
-        note.value = "";
-      }
-
-      message.textContent = "";
-
-      panel.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
       });
-    }
 
-    document
-      .getElementById("zurielSaveStudyNote")
+      list.appendChild(button);
+    });
+
+    document.getElementById("zurielSaveGenesisNote")
       .addEventListener("click", function () {
         try {
-          const savedNote = {
-            title: noteTitle.value,
-            note: note.value,
-            reference: currentReference,
-            updatedAt: new Date().toISOString()
+          const record = {
+            title: document.getElementById("zurielStudyTitle").value,
+            note: document.getElementById("zurielStudyNote").value,
+            application: document.getElementById(
+              "zurielStudyApplication"
+            ).value,
+            reference: "Genesis 1:1",
+            savedAt: new Date().toISOString()
           };
 
           localStorage.setItem(
-            getStorageKey(),
-            JSON.stringify(savedNote)
+            "zuriel-genesis-1-1-study",
+            JSON.stringify(record)
           );
 
-          message.textContent =
-            "Your study note has been saved on this device.";
+          document.getElementById(
+            "zurielGenesisSaveMessage"
+          ).textContent = "Your Genesis 1:1 study has been saved.";
         } catch (error) {
-          message.textContent =
-            "The note could not be saved in this browser.";
+          document.getElementById(
+            "zurielGenesisSaveMessage"
+          ).textContent = "Unable to save in this browser.";
         }
       });
 
     window.ZurielStudy = {
-      open: open,
+      open: function () {
+        panel.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      },
       close: function () {
         panel.style.display = "none";
-      },
-      show: function () {
-        panel.style.display = "block";
       }
     };
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener(
-      "DOMContentLoaded",
-      createZurielStudy
-    );
+    document.addEventListener("DOMContentLoaded", createStudy);
   } else {
-    createZurielStudy();
+    createStudy();
   }
 })();
+
