@@ -3,256 +3,398 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#102b24">
-  <meta name="description" content="Zuriel Living Word Bible">
-  <title>Zuriel Living Word Bible</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#102b24">
+<meta name="description" content="Zuriel Living Word Bible">
+<title>Zuriel Living Word Bible</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+* { box-sizing: border-box; }
 
-    body {
-      margin: 0;
-      font-family: Georgia, serif;
-      background: #f6f3e9;
-      color: #18352b;
-    }
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: #f6f3e9;
+  color: #18352b;
+}
 
-    header {
-      background: linear-gradient(135deg, #102b24, #24634a);
-      color: white;
-      text-align: center;
-      padding: 38px 18px;
-    }
+header {
+  background: linear-gradient(135deg,#102b24,#24634a);
+  color: white;
+  text-align: center;
+  padding: 35px 18px;
+}
 
-    header h1 {
-      font-size: 27px;
-      margin: 0 0 12px;
-    }
+header h1 { font-size: 26px; }
 
-    header p {
-      color: #f3d98b;
-      font-size: 16px;
-    }
+header p { color: #f3d98b; }
 
-    main {
-      max-width: 700px;
-      margin: auto;
-      padding: 20px;
-    }
+main {
+  max-width: 700px;
+  margin: auto;
+  padding: 18px;
+}
 
-    .card {
-      background: white;
-      padding: 22px;
-      border-radius: 14px;
-      margin-bottom: 17px;
-      box-shadow: 0 3px 12px #00000012;
-    }
+.card {
+  background: white;
+  padding: 21px;
+  border-radius: 14px;
+  margin-bottom: 17px;
+  box-shadow: 0 3px 12px #00000012;
+}
 
-    h2 {
-      color: #24634a;
-      font-size: 20px;
-    }
+h2 { color: #24634a; }
 
-    button {
-      background: #24634a;
-      color: white;
-      border: none;
-      padding: 12px 18px;
-      border-radius: 8px;
-      font-size: 15px;
-      cursor: pointer;
-      margin: 5px;
-    }
+button {
+  background: #24634a;
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin: 5px 3px;
+  font-size: 15px;
+}
 
-    button:active {
-      background: #102b24;
-    }
+select {
+  width: 100%;
+  padding: 13px;
+  margin: 12px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
 
-    select {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 16px;
-    }
+#message {
+  margin-top: 20px;
+  line-height: 1.7;
+}
 
-    #message {
-      margin-top: 20px;
-      line-height: 1.7;
-    }
+#chapterButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
 
-    #chapterButtons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-    }
+.verse {
+  padding: 12px 5px;
+  border-bottom: 1px solid #e8e5dc;
+  line-height: 1.9;
+  font-size: 17px;
+}
 
-    .verse {
-      padding: 10px 0;
-      border-bottom: 1px solid #eee;
-      line-height: 1.8;
-    }
+.verse strong {
+  color: #24634a;
+  margin-right: 5px;
+}
 
-    footer {
-      text-align: center;
-      padding: 25px;
-      background: #102b24;
-      color: white;
-    }
-  </style>
+.status {
+  color: #24634a;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  background: #102b24;
+  color: white;
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1>Zuriel Living Word Bible</h1>
-    <p>His Words.. My Life.. My Victory</p>
-  </header>
+<header>
+  <h1>Zuriel Living Word Bible</h1>
+  <p>His Words.. My Life.. My Victory</p>
+</header>
 
-  <main>
+<main>
 
-    <section class="card">
-      <h2>📖 Welcome to the Living Word</h2>
-      <p>
-        Discover God's Word, grow in understanding,
-        and live a victorious life in Christ.
-      </p>
-    </section>
+<section class="card">
+  <h2>📖 Welcome to the Living Word</h2>
+  <p>
+    Discover God's Word, grow in understanding,
+    and live a victorious life in Christ.
+  </p>
+</section>
 
-    <section class="card">
-      <h2>📚 Bible Reading</h2>
-      <p>Your journey through all 66 books of the Bible begins here.</p>
+<section class="card">
+  <h2>📚 Bible Reading</h2>
+  <p>Explore all 66 books of the Bible.</p>
 
-      <select id="book">
-        <option value="">Choose a Bible book</option>
-      </select>
+  <select id="book">
+    <option value="">Choose a Bible book</option>
+  </select>
 
-      <button onclick="readBible()">Open Scripture</button>
+  <button id="openBible">Open Scripture</button>
 
-      <div id="message">
-        Select a Bible book to begin.
-      </div>
-    </section>
+  <div id="message">
+    Select a Bible book to begin reading.
+  </div>
+</section>
 
-    <section class="card">
-      <h2>🙏 Prayer</h2>
-      <p>
-        Dear Father, thank You for the light of Your Word.
-        May Your truth guide my heart and direct my steps today.
-        Amen.
-      </p>
-    </section>
+<section class="card">
+  <h2>🙏 Prayer</h2>
+  <p>
+    Dear Father, thank You for the light of Your Word.
+    May Your truth guide my heart and direct my steps today.
+    Amen.
+  </p>
+</section>
 
-    <section class="card">
-      <h2>✨ Glory Verse Affirmation</h2>
-      <p>
-        I am born of God. His Word lives in me,
-        His wisdom guides me, and His grace empowers
-        me to live victoriously.
-      </p>
-    </section>
+<section class="card">
+  <h2>✨ Glory Verse Affirmation</h2>
+  <p>
+    I am born of God. His Word lives in me,
+    His wisdom guides me, and His grace empowers
+    me to live victoriously.
+  </p>
+</section>
 
-    <section class="card">
-      <h2>🕯️ Light</h2>
-      <p>
-        Your Word is a lamp unto my feet,
-        and a light unto my path. — Psalm 119:105
-      </p>
-    </section>
+<section class="card">
+  <h2>🕯️ Light</h2>
+  <p>
+    Your Word is a lamp unto my feet,
+    and a light unto my path. — Psalm 119:105
+  </p>
+</section>
 
-  </main>
+</main>
 
-  <footer>
-    Zuriel Living Word Bible
-    <p>His Words.. My Life.. My Victory</p>
-  </footer>
+<footer>
+  Zuriel Living Word Bible
+  <p>His Words.. My Life.. My Victory</p>
+</footer>
 
-  <!-- Load Bible book information first -->
-  <script src="bible-data.js"></script>
+<!-- Load the Bible book list -->
+<script src="bible-data.js"></script>
 
-  <script>
+<script>
 
-    // Load all available Bible books
-    function loadBibleBooks() {
-      const selector = document.getElementById("book");
+const bookCodes = {
+  "Genesis":"GEN", "Exodus":"EXO",
+  "Leviticus":"LEV", "Numbers":"NUM",
+  "Deuteronomy":"DEU", "Joshua":"JOS",
+  "Judges":"JDG", "Ruth":"RUT",
+  "1 Samuel":"1SA", "2 Samuel":"2SA",
+  "1 Kings":"1KI", "2 Kings":"2KI",
+  "1 Chronicles":"1CH", "2 Chronicles":"2CH",
+  "Ezra":"EZR", "Nehemiah":"NEH",
+  "Esther":"EST", "Job":"JOB",
+  "Psalms":"PSA", "Proverbs":"PRO",
+  "Ecclesiastes":"ECC", "Song of Solomon":"SNG",
+  "Isaiah":"ISA", "Jeremiah":"JER",
+  "Lamentations":"LAM", "Ezekiel":"EZK",
+  "Daniel":"DAN", "Hosea":"HOS",
+  "Joel":"JOL", "Amos":"AMO",
+  "Obadiah":"OBA", "Jonah":"JON",
+  "Micah":"MIC", "Nahum":"NAM",
+  "Habakkuk":"HAB", "Zephaniah":"ZEP",
+  "Haggai":"HAG", "Zechariah":"ZEC",
+  "Malachi":"MAL", "Matthew":"MAT",
+  "Mark":"MRK", "Luke":"LUK",
+  "John":"JHN", "Acts":"ACT",
+  "Romans":"ROM", "1 Corinthians":"1CO",
+  "2 Corinthians":"2CO", "Galatians":"GAL",
+  "Ephesians":"EPH", "Philippians":"PHP",
+  "Colossians":"COL", "1 Thessalonians":"1TH",
+  "2 Thessalonians":"2TH", "1 Timothy":"1TI",
+  "2 Timothy":"2TI", "Titus":"TIT",
+  "Philemon":"PHM", "Hebrews":"HEB",
+  "James":"JAS", "1 Peter":"1PE",
+  "2 Peter":"2PE", "1 John":"1JN",
+  "2 John":"2JN", "3 John":"3JN",
+  "Jude":"JUD", "Revelation":"REV"
+};
 
-      if (typeof bibleBooks === "undefined") {
-        document.getElementById("message").textContent =
-          "Bible library could not be loaded. Please check bible-data.js.";
-        return;
-      }
+let bibleText = null;
+let currentBook = "";
+let currentChapter = 1;
 
-      bibleBooks.forEach(function(item) {
-        const option = document.createElement("option");
-        option.value = item.name;
-        option.textContent = item.name;
-        selector.appendChild(option);
-      });
-    }
+const selector = document.getElementById("book");
+const message = document.getElementById("message");
 
-    // Open selected Bible book
-    function readBible() {
-      const book = document.getElementById("book").value;
-      const message = document.getElementById("message");
+// Load all 66 books into the selection box
+function loadBibleBooks() {
 
-      if (!book) {
-        message.textContent = "Please select a Bible book.";
-        return;
-      }
+  if (typeof bibleBooks === "undefined") {
+    message.textContent =
+      "Bible book list could not load. Check bible-data.js.";
+    return;
+  }
 
-      const selectedBook = bibleBooks.find(
-        item => item.name === book
-      );
+  bibleBooks.forEach(function(item) {
+    const option = document.createElement("option");
+    option.value = item.name;
+    option.textContent = item.name;
+    selector.appendChild(option);
+  });
+}
 
-      if (!selectedBook) {
-        message.textContent = "Bible book not found.";
-        return;
-      }
+// Load the complete KJV file when needed
+async function loadKJV() {
 
-      let chapters = "";
+  if (bibleText !== null) return;
 
-      for (let i = 1; i <= selectedBook.chapters; i++) {
-        chapters += `
-          <button onclick="openChapter('${book}', ${i})">
-            ${i}
-          </button>
-        `;
-      }
+  message.textContent = "Loading the KJV Bible. Please wait...";
 
-      message.innerHTML = `
-        <h2>${book}</h2>
-        <p>Select a chapter to begin reading.</p>
-        <div id="chapterButtons">
-          ${chapters}
-        </div>
-      `;
-    }
+  const response = await fetch(
+    "./kjv.72bec70fcd.json"
+  );
 
-    // Open selected chapter
-    function openChapter(book, chapter) {
-      const message = document.getElementById("message");
+  if (!response.ok) {
+    throw new Error("KJV file could not be found.");
+  }
 
-      message.innerHTML = `
-        <h2>${book} ${chapter}</h2>
-        <p>
-          The KJV Scripture text will appear here
-          when the Bible translation is connected.
-        </p>
-        <button onclick="readBible()">
-          Back to Chapters
-        </button>
-      `;
-    }
+  const data = await response.json();
 
-    // Start the Bible library
-    loadBibleBooks();
+  if (!Array.isArray(data.GEN)) {
+    throw new Error("The KJV file has an unexpected format.");
+  }
 
-  </script>
+  bibleText = data;
+}
+
+// Display the selected book's chapters
+function showChapters(book) {
+
+  const selectedBook = bibleBooks.find(
+    item => item.name === book
+  );
+
+  if (!selectedBook) {
+    message.textContent = "Bible book not found.";
+    return;
+  }
+
+  message.replaceChildren();
+
+  const heading = document.createElement("h2");
+  heading.textContent = book;
+  message.appendChild(heading);
+
+  const instruction = document.createElement("p");
+  instruction.textContent = "Select a chapter to read.";
+  message.appendChild(instruction);
+
+  const chapterBox = document.createElement("div");
+  chapterBox.id = "chapterButtons";
+
+  for (let i = 1; i <= selectedBook.chapters; i++) {
+
+    const button = document.createElement("button");
+    button.textContent = "Chapter " + i;
+
+    button.addEventListener("click", function() {
+      openChapter(book, i);
+    });
+
+    chapterBox.appendChild(button);
+  }
+
+  message.appendChild(chapterBox);
+}
+
+// Open selected Bible book
+async function readBible() {
+
+  const book = selector.value;
+
+  if (!book) {
+    message.textContent = "Please select a Bible book.";
+    return;
+  }
+
+  try {
+    await loadKJV();
+    showChapters(book);
+  } catch (error) {
+    message.textContent =
+      "Unable to load the KJV Bible: " + error.message;
+  }
+}
+
+// Display actual Scripture verses
+function openChapter(book, chapter) {
+
+  const code = bookCodes[book];
+
+  if (!code || !bibleText || !bibleText[code]) {
+    message.textContent =
+      "Scripture for this book could not be found.";
+    return;
+  }
+
+  const verses = bibleText[code][chapter - 1];
+
+  if (!Array.isArray(verses) || verses.length === 0) {
+    message.textContent =
+      "This chapter could not be loaded.";
+    return;
+  }
+
+  currentBook = book;
+  currentChapter = chapter;
+
+  message.replaceChildren();
+
+  const heading = document.createElement("h2");
+  heading.textContent = book + " " + chapter + " (KJV)";
+  message.appendChild(heading);
+
+  const backButton = document.createElement("button");
+  backButton.textContent = "← All Chapters";
+  backButton.addEventListener("click", function() {
+    showChapters(book);
+  });
+  message.appendChild(backButton);
+
+  const previousButton = document.createElement("button");
+  previousButton.textContent = "← Previous";
+  previousButton.disabled = chapter <= 1;
+  previousButton.addEventListener("click", function() {
+    openChapter(book, chapter - 1);
+  });
+  message.appendChild(previousButton);
+
+  const selectedBook = bibleBooks.find(
+    item => item.name === book
+  );
+
+  const nextButton = document.createElement("button");
+  nextButton.textContent = "Next →";
+  nextButton.disabled = chapter >= selectedBook.chapters;
+  nextButton.addEventListener("click", function() {
+    openChapter(book, chapter + 1);
+  });
+  message.appendChild(nextButton);
+
+  verses.forEach(function(verse, index) {
+
+    const paragraph = document.createElement("p");
+    paragraph.className = "verse";
+
+    const number = document.createElement("strong");
+    number.textContent = (index + 1) + ".";
+
+    paragraph.appendChild(number);
+    paragraph.appendChild(
+      document.createTextNode(" " + verse)
+    );
+
+    message.appendChild(paragraph);
+  });
+
+  window.scrollTo(0, message.offsetTop + 100);
+}
+
+document.getElementById("openBible")
+  .addEventListener("click", readBible);
+
+loadBibleBooks();
+
+</script>
 
 </body>
 </html>
