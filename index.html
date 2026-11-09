@@ -27,7 +27,6 @@ header {
 }
 
 header h1 { font-size: 26px; }
-
 header p { color: #f3d98b; }
 
 main {
@@ -54,6 +53,12 @@ button {
   border-radius: 8px;
   margin: 5px 3px;
   font-size: 15px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 select {
@@ -93,6 +98,10 @@ select {
   font-weight: bold;
 }
 
+.continue-card {
+  border-left: 5px solid #24634a;
+}
+
 footer {
   text-align: center;
   padding: 25px;
@@ -117,6 +126,16 @@ footer {
     Discover God's Word, grow in understanding,
     and live a victorious life in Christ.
   </p>
+</section>
+
+<section class="card continue-card">
+  <h2>📖 Continue Reading</h2>
+  <p id="lastReadingStatus">
+    Your reading position will appear here.
+  </p>
+  <button id="continueReading" disabled>
+    Continue Reading
+  </button>
 </section>
 
 <section class="card">
@@ -167,7 +186,6 @@ footer {
   <p>His Words.. My Life.. My Victory</p>
 </footer>
 
-<!-- Load the Bible book list -->
 <script src="bible-data.js"></script>
 
 <script>
@@ -208,14 +226,94 @@ const bookCodes = {
   "Jude":"JUD", "Revelation":"REV"
 };
 
+const STORAGE_KEY = "zurielLastReadingPosition";
+
 let bibleText = null;
 let currentBook = "";
 let currentChapter = 1;
 
 const selector = document.getElementById("book");
 const message = document.getElementById("message");
+const continueButton =
+  document.getElementById("continueReading");
+const lastReadingStatus =
+  document.getElementById("lastReadingStatus");
 
-// Load all 66 books into the selection box
+// Load saved reading position
+function getSavedPosition() {
+  try {
+    const saved = JSON.parse(
+      localStorage.getItem(STORAGE_KEY)
+    );
+
+    if (!saved || !Array.isArray(bibleBooks)) {
+      return null;
+    }
+
+    const book = bibleBooks.find(
+      item => item.name === saved.book
+    );
+
+    if (
+      !book ||
+      !Number.isInteger(saved.chapter) ||
+      saved.chapter < 1 ||
+      saved.chapter > book.chapters
+    ) {
+      return null;
+    }
+
+    return saved;
+
+  } catch (error) {
+    return null;
+  }
+}
+
+// Update Continue Reading card
+function updateContinueReadingCard() {
+
+  const saved = getSavedPosition();
+
+  if (!saved) {
+    lastReadingStatus.textContent =
+      "Start reading Scripture to save your last position.";
+
+    continueButton.textContent = "Continue Reading";
+    continueButton.disabled = true;
+    return;
+  }
+
+  lastReadingStatus.textContent =
+    "Your last reading position: " +
+    saved.book + " Chapter " + saved.chapter;
+
+  continueButton.textContent =
+    "Continue Reading — " +
+    saved.book + " " + saved.chapter;
+
+  continueButton.disabled = false;
+}
+
+// Save reading position offline
+function saveReadingPosition(book, chapter) {
+
+  try {
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({
+        book: book,
+        chapter: chapter
+      })
+    );
+  } catch (error) {
+    console.warn("Reading position could not be saved.");
+  }
+
+  updateContinueReadingCard();
+}
+
+// Load all 66 Bible books
 function loadBibleBooks() {
 
   if (typeof bibleBooks === "undefined") {
@@ -230,14 +328,17 @@ function loadBibleBooks() {
     option.textContent = item.name;
     selector.appendChild(option);
   });
+
+  updateContinueReadingCard();
 }
 
-// Load the complete KJV file when needed
+// Load complete KJV Bible
 async function loadKJV() {
 
   if (bibleText !== null) return;
 
-  message.textContent = "Loading the KJV Bible. Please wait...";
+  message.textContent =
+    "Loading the KJV Bible. Please wait...";
 
   const response = await fetch(
     "./kjv.72bec70fcd.json"
@@ -256,7 +357,7 @@ async function loadKJV() {
   bibleText = data;
 }
 
-// Display the selected book's chapters
+// Display Bible chapters
 function showChapters(book) {
 
   const selectedBook = bibleBooks.find(
@@ -268,6 +369,7 @@ function showChapters(book) {
     return;
   }
 
+  selector.value = book;
   message.replaceChildren();
 
   const heading = document.createElement("h2");
@@ -315,6 +417,48 @@ async function readBible() {
   }
 }
 
+// Move to previous or next book
+function moveChapter(direction) {
+
+  const bookIndex = bibleBooks.findIndex(
+    item => item.name === currentBook
+  );
+
+  if (bookIndex === -1) return;
+
+  const selectedBook = bibleBooks[bookIndex];
+
+  if (direction === "previous") {
+
+    if (currentChapter > 1) {
+      openChapter(currentBook, currentChapter - 1);
+      return;
+    }
+
+    if (bookIndex > 0) {
+      const previousBook = bibleBooks[bookIndex - 1];
+
+      openChapter(
+        previousBook.name,
+        previousBook.chapters
+      );
+    }
+
+  } else {
+
+    if (currentChapter < selectedBook.chapters) {
+      openChapter(currentBook, currentChapter + 1);
+      return;
+    }
+
+    if (bookIndex < bibleBooks.length - 1) {
+      const nextBook = bibleBooks[bookIndex + 1];
+
+      openChapter(nextBook.name, 1);
+    }
+  }
+}
+
 // Display actual Scripture verses
 function openChapter(book, chapter) {
 
@@ -337,6 +481,11 @@ function openChapter(book, chapter) {
   currentBook = book;
   currentChapter = chapter;
 
+  selector.value = book;
+
+  // Automatically save every opened chapter
+  saveReadingPosition(book, chapter);
+
   message.replaceChildren();
 
   const heading = document.createElement("h2");
@@ -345,29 +494,42 @@ function openChapter(book, chapter) {
 
   const backButton = document.createElement("button");
   backButton.textContent = "← All Chapters";
+
   backButton.addEventListener("click", function() {
     showChapters(book);
   });
+
   message.appendChild(backButton);
 
   const previousButton = document.createElement("button");
   previousButton.textContent = "← Previous";
-  previousButton.disabled = chapter <= 1;
-  previousButton.addEventListener("click", function() {
-    openChapter(book, chapter - 1);
-  });
-  message.appendChild(previousButton);
 
-  const selectedBook = bibleBooks.find(
+  const bookIndex = bibleBooks.findIndex(
     item => item.name === book
   );
 
+  previousButton.disabled =
+    bookIndex === 0 && chapter === 1;
+
+  previousButton.addEventListener("click", function() {
+    moveChapter("previous");
+  });
+
+  message.appendChild(previousButton);
+
   const nextButton = document.createElement("button");
   nextButton.textContent = "Next →";
-  nextButton.disabled = chapter >= selectedBook.chapters;
+
+  const selectedBook = bibleBooks[bookIndex];
+
+  nextButton.disabled =
+    bookIndex === bibleBooks.length - 1 &&
+    chapter === selectedBook.chapters;
+
   nextButton.addEventListener("click", function() {
-    openChapter(book, chapter + 1);
+    moveChapter("next");
   });
+
   message.appendChild(nextButton);
 
   verses.forEach(function(verse, index) {
@@ -379,6 +541,7 @@ function openChapter(book, chapter) {
     number.textContent = (index + 1) + ".";
 
     paragraph.appendChild(number);
+
     paragraph.appendChild(
       document.createTextNode(" " + verse)
     );
@@ -389,8 +552,34 @@ function openChapter(book, chapter) {
   window.scrollTo(0, message.offsetTop + 100);
 }
 
+// Continue from last saved position
+async function continueReading() {
+
+  const saved = getSavedPosition();
+
+  if (!saved) return;
+
+  try {
+    await loadKJV();
+
+    openChapter(
+      saved.book,
+      saved.chapter
+    );
+
+  } catch (error) {
+    message.textContent =
+      "Unable to continue reading: " + error.message;
+  }
+}
+
 document.getElementById("openBible")
   .addEventListener("click", readBible);
+
+continueButton.addEventListener(
+  "click",
+  continueReading
+);
 
 loadBibleBooks();
 
