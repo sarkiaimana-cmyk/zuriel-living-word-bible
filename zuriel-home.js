@@ -226,7 +226,16 @@
 
     document
       .getElementById("zurielHomePersonal")
-      .addEventListener("click", openLibrary);
+      .addEventListener("click", function () {
+        if (
+          window.ZurielLibrary &&
+          typeof window.ZurielLibrary.openPersonal === "function"
+        ) {
+          window.ZurielLibrary.openPersonal();
+        } else {
+          openLibrary();
+        }
+      });
   }
 
   if (document.readyState === "loading") {
