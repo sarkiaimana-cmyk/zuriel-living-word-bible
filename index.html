@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,6 +85,11 @@ select {
   border-bottom: 1px solid #e8e5dc;
   line-height: 1.9;
   font-size: 17px;
+  cursor: pointer;
+}
+
+.verse:active {
+  background: #edf3ed;
 }
 
 .verse strong {
@@ -100,6 +104,11 @@ select {
 
 .continue-card {
   border-left: 5px solid #24634a;
+}
+
+.study-hint {
+  color: #52705f;
+  font-size: 14px;
 }
 
 footer {
@@ -147,6 +156,10 @@ footer {
   </select>
 
   <button id="openBible">Open Scripture</button>
+
+  <p class="study-hint">
+    Tap any verse to open its Scripture Study panel.
+  </p>
 
   <div id="message">
     Select a Bible book to begin reading.
@@ -239,7 +252,6 @@ const continueButton =
 const lastReadingStatus =
   document.getElementById("lastReadingStatus");
 
-// Load saved reading position
 function getSavedPosition() {
   try {
     const saved = JSON.parse(
@@ -270,9 +282,7 @@ function getSavedPosition() {
   }
 }
 
-// Update Continue Reading card
 function updateContinueReadingCard() {
-
   const saved = getSavedPosition();
 
   if (!saved) {
@@ -295,9 +305,7 @@ function updateContinueReadingCard() {
   continueButton.disabled = false;
 }
 
-// Save reading position offline
 function saveReadingPosition(book, chapter) {
-
   try {
     localStorage.setItem(
       STORAGE_KEY,
@@ -313,9 +321,7 @@ function saveReadingPosition(book, chapter) {
   updateContinueReadingCard();
 }
 
-// Load all 66 Bible books
 function loadBibleBooks() {
-
   if (typeof bibleBooks === "undefined") {
     message.textContent =
       "Bible book list could not load. Check bible-data.js.";
@@ -332,9 +338,7 @@ function loadBibleBooks() {
   updateContinueReadingCard();
 }
 
-// Load complete KJV Bible
 async function loadKJV() {
-
   if (bibleText !== null) return;
 
   message.textContent =
@@ -357,9 +361,7 @@ async function loadKJV() {
   bibleText = data;
 }
 
-// Display Bible chapters
 function showChapters(book) {
-
   const selectedBook = bibleBooks.find(
     item => item.name === book
   );
@@ -384,7 +386,6 @@ function showChapters(book) {
   chapterBox.id = "chapterButtons";
 
   for (let i = 1; i <= selectedBook.chapters; i++) {
-
     const button = document.createElement("button");
     button.textContent = "Chapter " + i;
 
@@ -398,9 +399,7 @@ function showChapters(book) {
   message.appendChild(chapterBox);
 }
 
-// Open selected Bible book
 async function readBible() {
-
   const book = selector.value;
 
   if (!book) {
@@ -417,9 +416,7 @@ async function readBible() {
   }
 }
 
-// Move to previous or next book
 function moveChapter(direction) {
-
   const bookIndex = bibleBooks.findIndex(
     item => item.name === currentBook
   );
@@ -429,7 +426,6 @@ function moveChapter(direction) {
   const selectedBook = bibleBooks[bookIndex];
 
   if (direction === "previous") {
-
     if (currentChapter > 1) {
       openChapter(currentBook, currentChapter - 1);
       return;
@@ -437,7 +433,6 @@ function moveChapter(direction) {
 
     if (bookIndex > 0) {
       const previousBook = bibleBooks[bookIndex - 1];
-
       openChapter(
         previousBook.name,
         previousBook.chapters
@@ -445,7 +440,6 @@ function moveChapter(direction) {
     }
 
   } else {
-
     if (currentChapter < selectedBook.chapters) {
       openChapter(currentBook, currentChapter + 1);
       return;
@@ -453,15 +447,12 @@ function moveChapter(direction) {
 
     if (bookIndex < bibleBooks.length - 1) {
       const nextBook = bibleBooks[bookIndex + 1];
-
       openChapter(nextBook.name, 1);
     }
   }
 }
 
-// Display actual Scripture verses
 function openChapter(book, chapter) {
-
   const code = bookCodes[book];
 
   if (!code || !bibleText || !bibleText[code]) {
@@ -480,12 +471,9 @@ function openChapter(book, chapter) {
 
   currentBook = book;
   currentChapter = chapter;
-
   selector.value = book;
 
-  // Automatically save every opened chapter
   saveReadingPosition(book, chapter);
-
   message.replaceChildren();
 
   const heading = document.createElement("h2");
@@ -532,18 +520,15 @@ function openChapter(book, chapter) {
 
   message.appendChild(nextButton);
 
-  
   verses.forEach(function(verse, index) {
     const paragraph = document.createElement("p");
     paragraph.className = "verse";
-    paragraph.style.cursor = "pointer";
     paragraph.title = "Tap to open Scripture Study";
 
     const number = document.createElement("strong");
     number.textContent = (index + 1) + ".";
 
     paragraph.appendChild(number);
-
     paragraph.appendChild(
       document.createTextNode(" " + verse)
     );
@@ -565,58 +550,32 @@ function openChapter(book, chapter) {
     message.appendChild(paragraph);
   });
 
-
-    const paragraph = document.createElement("p");
-    paragraph.className = "verse";
-
-    const number = document.createElement("strong");
-    number.textContent = (index + 1) + ".";
-
-    paragraph.appendChild(number);
-    
-    paragraph.style.cursor = "pointer";
-    paragraph.title = "Tap to open Scripture Study";
-
-    paragraph.addEventListener("click", function () {
-      if (
-        window.ZurielStudy &&
-        typeof window.ZurielStudy.openForReference === "function"
-      ) {
-        window.ZurielStudy.openForReference(
-          book,
-          chapter,
-          index + 1,
-          verse
-        );
-      }
-    });
-
-
-    paragraph.appendChild(
-      document.createTextNode(" " + verse)
-    );
-
-    message.appendChild(paragraph);
-  });
-
   window.scrollTo(0, message.offsetTop + 100);
 }
 
-// Continue from last saved position
-async function continueReading() {
+// Make chapter navigation available to study references.
+window.openChapter = function(book, chapter) {
+  if (!bibleText) {
+    loadKJV().then(function() {
+      openChapter(book, chapter);
+    }).catch(function(error) {
+      message.textContent =
+        "Unable to open this reference: " + error.message;
+    });
+    return;
+  }
 
+  openChapter(book, chapter);
+};
+
+async function continueReading() {
   const saved = getSavedPosition();
 
   if (!saved) return;
 
   try {
     await loadKJV();
-
-    openChapter(
-      saved.book,
-      saved.chapter
-    );
-
+    openChapter(saved.book, saved.chapter);
   } catch (error) {
     message.textContent =
       "Unable to continue reading: " + error.message;
@@ -634,8 +593,11 @@ continueButton.addEventListener(
 loadBibleBooks();
 
 </script>
+
 <script src="zuriel-library.js"></script>
-  <script src="zuriel-home.js"></script>
-  <script src="zuriel-study.js"></script>
+<script src="zuriel-home.js"></script>
+<script src="zuriel-study.js"></script>
+
 </body>
 </html>
+
