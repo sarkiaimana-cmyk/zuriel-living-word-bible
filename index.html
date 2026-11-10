@@ -532,7 +532,39 @@ function openChapter(book, chapter) {
 
   message.appendChild(nextButton);
 
+  
   verses.forEach(function(verse, index) {
+    const paragraph = document.createElement("p");
+    paragraph.className = "verse";
+    paragraph.style.cursor = "pointer";
+    paragraph.title = "Tap to open Scripture Study";
+
+    const number = document.createElement("strong");
+    number.textContent = (index + 1) + ".";
+
+    paragraph.appendChild(number);
+
+    paragraph.appendChild(
+      document.createTextNode(" " + verse)
+    );
+
+    paragraph.addEventListener("click", function() {
+      if (
+        window.ZurielStudy &&
+        typeof window.ZurielStudy.openForReference === "function"
+      ) {
+        window.ZurielStudy.openForReference(
+          book,
+          chapter,
+          index + 1,
+          verse
+        );
+      }
+    });
+
+    message.appendChild(paragraph);
+  });
+
 
     const paragraph = document.createElement("p");
     paragraph.className = "verse";
@@ -541,6 +573,24 @@ function openChapter(book, chapter) {
     number.textContent = (index + 1) + ".";
 
     paragraph.appendChild(number);
+    
+    paragraph.style.cursor = "pointer";
+    paragraph.title = "Tap to open Scripture Study";
+
+    paragraph.addEventListener("click", function () {
+      if (
+        window.ZurielStudy &&
+        typeof window.ZurielStudy.openForReference === "function"
+      ) {
+        window.ZurielStudy.openForReference(
+          book,
+          chapter,
+          index + 1,
+          verse
+        );
+      }
+    });
+
 
     paragraph.appendChild(
       document.createTextNode(" " + verse)
