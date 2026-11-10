@@ -105,9 +105,15 @@
 
   function loadSaved() {
     try {
-      return JSON.parse(
+      const data = JSON.parse(
         localStorage.getItem(STORAGE_KEY)
-      ) || { prayers: [], notes: [], bookmarks: [] };
+      );
+
+      return {
+        prayers: Array.isArray(data?.prayers) ? data.prayers : [],
+        notes: Array.isArray(data?.notes) ? data.notes : [],
+        bookmarks: Array.isArray(data?.bookmarks) ? data.bookmarks : []
+      };
     } catch (error) {
       return { prayers: [], notes: [], bookmarks: [] };
     }
@@ -145,9 +151,11 @@
   function card(title, description) {
     const box = element("section", undefined, "card");
     box.appendChild(element("h3", title));
+
     if (description) {
       box.appendChild(element("p", description));
     }
+
     return box;
   }
 
@@ -162,21 +170,25 @@
     root.id = "zurielLibrary";
 
     const style = element("style");
+
     style.textContent = `
       #zurielLibrary {
         margin-top: 25px;
         color: #18352b;
       }
+
       #zurielLibrary .library-nav {
         display: grid;
         grid-template-columns: repeat(2, minmax(0,1fr));
         gap: 8px;
         margin: 15px 0;
       }
+
       #zurielLibrary button {
         cursor: pointer;
         min-height: 44px;
       }
+
       #zurielLibrary textarea {
         width: 100%;
         min-height: 120px;
@@ -185,20 +197,24 @@
         border-radius: 9px;
         font: inherit;
       }
+
       #zurielLibrary .library-entry {
         padding: 13px;
         margin: 10px 0;
         border-bottom: 1px solid #e8e5dc;
         line-height: 1.7;
       }
+
       #zurielLibrary .library-entry h4 {
         margin-bottom: 5px;
         color: #24634a;
       }
+
       #zurielLibrary .library-status {
         font-weight: bold;
         color: #24634a;
       }
+
       #zurielLibrary input {
         width: 100%;
         padding: 12px;
@@ -274,17 +290,20 @@
           "Speak God's Word and strengthen your faith."
         ));
 
-        originalLibrary.affirmations.forEach((item, index) => {
+        originalLibrary.affirmations.forEach(item => {
           const box = element("div", undefined, "library-entry");
           box.appendChild(element("p", item));
+
           box.appendChild(button("Save declaration", function () {
             saved.bookmarks.push({
               title: "Glory Verse Affirmation",
               text: item
             });
+
             persist();
             alert("Saved to your personal library.");
           }));
+
           content.appendChild(box);
         });
       }
@@ -314,15 +333,18 @@
         area.placeholder = "Write your prayer here...";
 
         content.appendChild(area);
+
         content.appendChild(button("Save Prayer", function () {
           if (!area.value.trim()) return;
+
           saved.prayers.push({
             text: area.value.trim(),
             date: new Date().toLocaleDateString()
           });
+
           if (persist()) {
             area.value = "";
-            alert("Your prayer has been saved.");
+            openPage("prayer");
           }
         }));
 
@@ -353,15 +375,15 @@
 
         content.appendChild(button("Save Study Note", function () {
           if (!area.value.trim()) return;
+
           saved.notes.push({
             title: title.value.trim() || "Bible Study Note",
             text: area.value.trim(),
             date: new Date().toLocaleDateString()
           });
+
           if (persist()) {
-            title.value = "";
-            area.value = "";
-            alert("Study note saved.");
+            openPage("notes");
           }
         }));
 
@@ -420,6 +442,13 @@
           "Your saved declarations and personal discoveries."
         ));
 
+        if (saved.bookmarks.length === 0) {
+          content.appendChild(element(
+            "p",
+            "Your saved discoveries will appear here."
+          ));
+        }
+
         saved.bookmarks.forEach(item => {
           const box = element("div", undefined, "library-entry");
           box.appendChild(element("h4", item.title));
@@ -443,6 +472,27 @@
     root.appendChild(content);
 
     main.appendChild(root);
+
+    // Make library sections accessible to the Home dashboard.
+    window.ZurielLibrary = {
+      open: function (page) {
+        const validPage = pages.some(item => item[0] === page);
+        openPage(validPage ? page : "study");
+      },
+
+      openPersonal: function () {
+        openPage("notes");
+      },
+
+      openPrayer: function () {
+        openPage("prayer");
+      },
+
+      openSaved: function () {
+        openPage("saved");
+      }
+    };
+
     openPage("study");
   }
 
@@ -453,4 +503,4 @@
   }
 
 })();
-      
+
