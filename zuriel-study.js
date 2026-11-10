@@ -463,13 +463,60 @@
         }
       });
 
+    
     window.ZurielStudy = {
       open: function () {
+        panel.style.display = "";
         panel.scrollIntoView({
           behavior: "smooth",
           block: "start"
         });
       },
+
+      close: function () {
+        panel.style.display = "none";
+      },
+
+      openForReference: function (book, chapter, verse, verseText) {
+        const referenceBox = panel.querySelector(".study-verse");
+
+        if (!referenceBox) return;
+
+        referenceBox.innerHTML = "";
+
+        const heading = document.createElement("h3");
+        heading.textContent =
+          book + " " + chapter + ":" + verse + " — KJV";
+
+        const passage = document.createElement("p");
+        passage.textContent = verseText ||
+          "Scripture text is not available.";
+
+        const notice = document.createElement("p");
+        notice.className = "study-small";
+        notice.textContent =
+          "Selected Scripture. Detailed historical context, " +
+          "meaning and original-language study for this passage " +
+          "will be developed separately.";
+
+        referenceBox.appendChild(heading);
+        referenceBox.appendChild(passage);
+        referenceBox.appendChild(notice);
+
+        panel.querySelectorAll("details").forEach(function (section) {
+          section.style.display = "none";
+        });
+
+        panel.style.display = "";
+
+        panel.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+    };
+
+     
       close: function () {
         panel.style.display = "none";
       }
@@ -482,4 +529,5 @@
     createStudy();
   }
 })();
+
 
