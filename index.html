@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#102b24">
-<meta name="description" content="Zuriel Living Word Bible">
+<meta name="description" content="Zuriel Living Word Bible — offline-first Bible reading and study.">
 <title>Zuriel Living Word Bible</title>
 
 <style>
@@ -56,9 +56,7 @@ button {
   min-height: 44px;
 }
 
-button:disabled {
-  opacity: .45;
-}
+button:disabled { opacity: .45; }
 
 select {
   width: 100%;
@@ -81,9 +79,7 @@ select {
   gap: 5px;
 }
 
-#chapterButtons button {
-  min-width: 76px;
-}
+#chapterButtons button { min-width: 76px; }
 
 .verse {
   padding: 13px 8px;
@@ -93,9 +89,7 @@ select {
   cursor: pointer;
 }
 
-.verse:active {
-  background: #edf3ed;
-}
+.verse:active { background: #edf3ed; }
 
 .verse strong {
   color: #24634a;
@@ -107,13 +101,12 @@ select {
   font-size: 14px;
 }
 
-.continue-card {
-  border-left: 5px solid #24634a;
-}
+.continue-card { border-left: 5px solid #24634a; }
 
 #readerStatus {
   color: #24634a;
   font-weight: bold;
+  line-height: 1.6;
 }
 
 footer {
@@ -165,10 +158,10 @@ footer {
   </button>
 
   <p class="study-hint">
-    Select a chapter to read. Tap any verse to open its study panel.
+    Choose a book, select a chapter, then tap any verse to study it.
   </p>
 
-  <p id="readerStatus"></p>
+  <p id="readerStatus">Preparing Bible reader...</p>
 
   <div id="message">
     Select a Bible book to begin reading.
@@ -214,96 +207,44 @@ footer {
 (function () {
 "use strict";
 
-/* =========================================
-   ZURIEL BIBLE READER
-   ========================================= */
-
 const bookCodes = {
-  "Genesis":"GEN",
-  "Exodus":"EXO",
-  "Leviticus":"LEV",
-  "Numbers":"NUM",
-  "Deuteronomy":"DEU",
-  "Joshua":"JOS",
-  "Judges":"JDG",
-  "Ruth":"RUT",
-  "1 Samuel":"1SA",
-  "2 Samuel":"2SA",
-  "1 Kings":"1KI",
-  "2 Kings":"2KI",
-  "1 Chronicles":"1CH",
-  "2 Chronicles":"2CH",
-  "Ezra":"EZR",
-  "Nehemiah":"NEH",
-  "Esther":"EST",
-  "Job":"JOB",
-  "Psalms":"PSA",
-  "Proverbs":"PRO",
-  "Ecclesiastes":"ECC",
-  "Song of Solomon":"SNG",
-  "Isaiah":"ISA",
-  "Jeremiah":"JER",
-  "Lamentations":"LAM",
-  "Ezekiel":"EZK",
-  "Daniel":"DAN",
-  "Hosea":"HOS",
-  "Joel":"JOL",
-  "Amos":"AMO",
-  "Obadiah":"OBA",
-  "Jonah":"JON",
-  "Micah":"MIC",
-  "Nahum":"NAM",
-  "Habakkuk":"HAB",
-  "Zephaniah":"ZEP",
-  "Haggai":"HAG",
-  "Zechariah":"ZEC",
-  "Malachi":"MAL",
-  "Matthew":"MAT",
-  "Mark":"MRK",
-  "Luke":"LUK",
-  "John":"JHN",
-  "Acts":"ACT",
-  "Romans":"ROM",
-  "1 Corinthians":"1CO",
-  "2 Corinthians":"2CO",
-  "Galatians":"GAL",
-  "Ephesians":"EPH",
-  "Philippians":"PHP",
-  "Colossians":"COL",
-  "1 Thessalonians":"1TH",
-  "2 Thessalonians":"2TH",
-  "1 Timothy":"1TI",
-  "2 Timothy":"2TI",
-  "Titus":"TIT",
-  "Philemon":"PHM",
-  "Hebrews":"HEB",
-  "James":"JAS",
-  "1 Peter":"1PE",
-  "2 Peter":"2PE",
-  "1 John":"1JN",
-  "2 John":"2JN",
-  "3 John":"3JN",
-  "Jude":"JUD",
-  "Revelation":"REV"
+  "Genesis":"GEN","Exodus":"EXO","Leviticus":"LEV",
+  "Numbers":"NUM","Deuteronomy":"DEU","Joshua":"JOS",
+  "Judges":"JDG","Ruth":"RUT","1 Samuel":"1SA",
+  "2 Samuel":"2SA","1 Kings":"1KI","2 Kings":"2KI",
+  "1 Chronicles":"1CH","2 Chronicles":"2CH","Ezra":"EZR",
+  "Nehemiah":"NEH","Esther":"EST","Job":"JOB",
+  "Psalms":"PSA","Proverbs":"PRO","Ecclesiastes":"ECC",
+  "Song of Solomon":"SNG","Isaiah":"ISA","Jeremiah":"JER",
+  "Lamentations":"LAM","Ezekiel":"EZK","Daniel":"DAN",
+  "Hosea":"HOS","Joel":"JOL","Amos":"AMO","Obadiah":"OBA",
+  "Jonah":"JON","Micah":"MIC","Nahum":"NAM",
+  "Habakkuk":"HAB","Zephaniah":"ZEP","Haggai":"HAG",
+  "Zechariah":"ZEC","Malachi":"MAL","Matthew":"MAT",
+  "Mark":"MRK","Luke":"LUK","John":"JHN","Acts":"ACT",
+  "Romans":"ROM","1 Corinthians":"1CO","2 Corinthians":"2CO",
+  "Galatians":"GAL","Ephesians":"EPH","Philippians":"PHP",
+  "Colossians":"COL","1 Thessalonians":"1TH",
+  "2 Thessalonians":"2TH","1 Timothy":"1TI",
+  "2 Timothy":"2TI","Titus":"TIT","Philemon":"PHM",
+  "Hebrews":"HEB","James":"JAS","1 Peter":"1PE",
+  "2 Peter":"2PE","1 John":"1JN","2 John":"2JN",
+  "3 John":"3JN","Jude":"JUD","Revelation":"REV"
 };
 
 const STORAGE_KEY = "zurielLastReadingPosition";
-
 const selector = document.getElementById("book");
 const message = document.getElementById("message");
 const status = document.getElementById("readerStatus");
 const continueButton = document.getElementById("continueReading");
-const lastReadingStatus =
-  document.getElementById("lastReadingStatus");
+const lastReadingStatus = document.getElementById("lastReadingStatus");
 
 let bibleText = null;
 let bibleLoading = null;
 let currentBook = "";
 let currentChapter = 1;
 
-/* =========================================
-   LOAD AND CHECK THE KJV DATABASE
-   ========================================= */
+/* LOAD THE KJV DATABASE */
 
 async function loadKJV() {
   if (bibleText) return bibleText;
@@ -315,25 +256,16 @@ async function loadKJV() {
     const response = await fetch("./kjv.72bec70fcd.json");
 
     if (!response.ok) {
-      throw new Error(
-        "The KJV Bible file could not be reached. Please check the file name."
-      );
+      throw new Error("The KJV Bible file could not be loaded.");
     }
 
     const data = await response.json();
 
-    if (
-      !data ||
-      typeof data !== "object" ||
-      !Array.isArray(data.GEN)
-    ) {
-      throw new Error(
-        "The KJV database format is not recognised."
-      );
+    if (!data || !Array.isArray(data.GEN)) {
+      throw new Error("The KJV Bible data format is not recognised.");
     }
 
     bibleText = data;
-    status.textContent = "KJV Bible loaded successfully.";
     return bibleText;
   })();
 
@@ -341,37 +273,26 @@ async function loadKJV() {
     return await bibleLoading;
   } catch (error) {
     bibleLoading = null;
-    status.textContent = "Bible loading failed.";
     throw error;
   }
 }
 
-/* =========================================
-   SAVED READING POSITION
-   ========================================= */
+/* SAVED READING POSITION */
 
 function getSavedPosition() {
   try {
-    const saved = JSON.parse(
-      localStorage.getItem(STORAGE_KEY)
-    );
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
 
-    if (!saved || !Array.isArray(bibleBooks)) {
-      return null;
-    }
+    if (!saved || !Array.isArray(bibleBooks)) return null;
 
-    const book = bibleBooks.find(
-      item => item.name === saved.book
-    );
+    const book = bibleBooks.find(item => item.name === saved.book);
 
     if (
       !book ||
       !Number.isInteger(saved.chapter) ||
       saved.chapter < 1 ||
       saved.chapter > book.chapters
-    ) {
-      return null;
-    }
+    ) return null;
 
     return saved;
   } catch (error) {
@@ -385,7 +306,6 @@ function updateContinueReadingCard() {
   if (!saved) {
     lastReadingStatus.textContent =
       "Start reading Scripture to save your last position.";
-
     continueButton.disabled = true;
     continueButton.textContent = "Continue Reading";
     return;
@@ -396,8 +316,7 @@ function updateContinueReadingCard() {
     saved.book + " Chapter " + saved.chapter;
 
   continueButton.textContent =
-    "Continue Reading — " +
-    saved.book + " " + saved.chapter;
+    "Continue Reading — " + saved.book + " " + saved.chapter;
 
   continueButton.disabled = false;
 }
@@ -406,10 +325,7 @@ function saveReadingPosition(book, chapter) {
   try {
     localStorage.setItem(
       STORAGE_KEY,
-      JSON.stringify({
-        book: book,
-        chapter: chapter
-      })
+      JSON.stringify({ book: book, chapter: chapter })
     );
   } catch (error) {
     status.textContent =
@@ -419,17 +335,11 @@ function saveReadingPosition(book, chapter) {
   updateContinueReadingCard();
 }
 
-/* =========================================
-   LOAD THE 66 BIBLE BOOKS
-   ========================================= */
+/* LOAD ALL 66 BOOKS */
 
 function loadBibleBooks() {
-  if (
-    typeof bibleBooks === "undefined" ||
-    !Array.isArray(bibleBooks)
-  ) {
-    status.textContent =
-      "The Bible book list could not load. Check bible-data.js.";
+  if (typeof bibleBooks === "undefined" || !Array.isArray(bibleBooks)) {
+    status.textContent = "The Bible book list could not load.";
     return;
   }
 
@@ -450,14 +360,10 @@ function loadBibleBooks() {
   updateContinueReadingCard();
 }
 
-/* =========================================
-   DISPLAY CHAPTER BUTTONS
-   ========================================= */
+/* CHAPTER SELECTION */
 
 function showChapters(book) {
-  const selectedBook = bibleBooks.find(
-    item => item.name === book
-  );
+  const selectedBook = bibleBooks.find(item => item.name === book);
 
   if (!selectedBook) {
     message.textContent = "Bible book not found.";
@@ -472,32 +378,24 @@ function showChapters(book) {
   message.appendChild(heading);
 
   const instruction = document.createElement("p");
-  instruction.textContent =
-    "Choose a chapter of " + book + ".";
+  instruction.textContent = "Choose a chapter of " + book + ".";
   message.appendChild(instruction);
 
   const chapterBox = document.createElement("div");
   chapterBox.id = "chapterButtons";
 
-  for (
-    let chapterNumber = 1;
-    chapterNumber <= selectedBook.chapters;
-    chapterNumber++
-  ) {
+  for (let number = 1; number <= selectedBook.chapters; number++) {
     const chapterButton = document.createElement("button");
-
     chapterButton.type = "button";
-    chapterButton.textContent =
-      "Chapter " + chapterNumber;
+    chapterButton.textContent = "Chapter " + number;
 
     chapterButton.addEventListener("click", async function () {
       chapterButton.disabled = true;
 
       try {
-        await openChapter(book, chapterNumber);
+        await openChapter(book, number);
       } catch (error) {
-        status.textContent =
-          "Unable to open chapter: " + error.message;
+        status.textContent = "Unable to open chapter: " + error.message;
       } finally {
         chapterButton.disabled = false;
       }
@@ -509,31 +407,26 @@ function showChapters(book) {
   message.appendChild(chapterBox);
 }
 
-/* =========================================
-   OPEN THE SELECTED BIBLE BOOK
-   ========================================= */
+/* OPEN SELECTED BOOK */
 
 async function readBible() {
   const book = selector.value;
 
   if (!book) {
-    message.textContent =
-      "Please select a Bible book first.";
+    message.textContent = "Please select a Bible book first.";
     return;
   }
 
   try {
     await loadKJV();
     showChapters(book);
+    status.textContent = "Choose a chapter to begin reading.";
   } catch (error) {
-    message.textContent =
-      "Unable to load Scripture: " + error.message;
+    message.textContent = "Unable to load Scripture: " + error.message;
   }
 }
 
-/* =========================================
-   OPEN AND DISPLAY A CHAPTER
-   ========================================= */
+/* OPEN AND DISPLAY VERSES */
 
 async function openChapter(book, chapter) {
   await loadKJV();
@@ -541,110 +434,82 @@ async function openChapter(book, chapter) {
   const code = bookCodes[book];
 
   if (!code) {
-    throw new Error(
-      "The book code for " + book + " is not available."
-    );
+    throw new Error("Book code not found for " + book + ".");
   }
 
   const bookData = bibleText[code];
 
   if (!Array.isArray(bookData)) {
-    throw new Error(
-      "Scripture data for " + book + " could not be found."
-    );
+    throw new Error("Scripture data for " + book + " is missing.");
   }
 
-  if (
-    !Number.isInteger(chapter) ||
-    chapter < 1 ||
-    chapter > bookData.length
-  ) {
-    throw new Error("The requested chapter number is invalid.");
+  if (!Number.isInteger(chapter) || chapter < 1 || chapter > bookData.length) {
+    throw new Error("Invalid chapter number.");
   }
 
   const verses = bookData[chapter - 1];
 
   if (!Array.isArray(verses) || verses.length === 0) {
-    throw new Error(
-      book + " chapter " + chapter +
-      " does not contain readable verses."
-    );
+    throw new Error("This chapter has no readable verses.");
   }
 
   currentBook = book;
   currentChapter = chapter;
-
   selector.value = book;
   saveReadingPosition(book, chapter);
 
   message.replaceChildren();
 
   const heading = document.createElement("h2");
-  heading.textContent =
-    book + " " + chapter + " — King James Version";
+  heading.textContent = book + " " + chapter + " — King James Version";
   message.appendChild(heading);
 
   const backButton = document.createElement("button");
   backButton.type = "button";
   backButton.textContent = "← All Chapters";
-
   backButton.addEventListener("click", function () {
     showChapters(book);
   });
-
   message.appendChild(backButton);
+
+  const bookIndex = bibleBooks.findIndex(item => item.name === book);
+  const selectedBook = bibleBooks[bookIndex];
 
   const previousButton = document.createElement("button");
   previousButton.type = "button";
   previousButton.textContent = "← Previous";
-
-  const bookIndex = bibleBooks.findIndex(
-    item => item.name === book
-  );
-
-  previousButton.disabled =
-    bookIndex === 0 && chapter === 1;
-
+  previousButton.disabled = bookIndex === 0 && chapter === 1;
   previousButton.addEventListener("click", function () {
     moveChapter("previous");
   });
-
   message.appendChild(previousButton);
 
   const nextButton = document.createElement("button");
   nextButton.type = "button";
   nextButton.textContent = "Next →";
-
-  const selectedBook = bibleBooks[bookIndex];
-
   nextButton.disabled =
     bookIndex === bibleBooks.length - 1 &&
     chapter === selectedBook.chapters;
-
   nextButton.addEventListener("click", function () {
     moveChapter("next");
   });
-
   message.appendChild(nextButton);
 
-  const verseCount = document.createElement("p");
-  verseCount.className = "study-hint";
-  verseCount.textContent =
-    verses.length + " verses in this chapter. Tap a verse to study it.";
-  message.appendChild(verseCount);
+  const count = document.createElement("p");
+  count.className = "study-hint";
+  count.textContent =
+    verses.length + " verses. Tap a verse to open its study panel.";
+  message.appendChild(count);
 
   verses.forEach(function (verse, index) {
     const paragraph = document.createElement("p");
     paragraph.className = "verse";
-    paragraph.title = "Tap to open Scripture Study";
 
     const number = document.createElement("strong");
     number.textContent = (index + 1) + ".";
 
     paragraph.appendChild(number);
-    paragraph.appendChild(
-      document.createTextNode(" " + verse)
-    );
+    paragraph.appendChild(document.createTextNode(" " + verse));
 
     paragraph.addEventListener("click", function () {
       if (
@@ -652,38 +517,25 @@ async function openChapter(book, chapter) {
         typeof window.ZurielStudy.openForReference === "function"
       ) {
         window.ZurielStudy.openForReference(
-          book,
-          chapter,
-          index + 1,
-          verse
+          book, chapter, index + 1, verse
         );
       } else {
-        status.textContent =
-          "The Scripture Study panel is not available yet.";
+        status.textContent = "The Scripture Study panel is not available.";
       }
     });
 
     message.appendChild(paragraph);
   });
 
-  status.textContent =
-    "Now reading " + book + " chapter " + chapter + ".";
+  status.textContent = "Now reading " + book + " chapter " + chapter + ".";
 
-  message.scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
+  message.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-/* =========================================
-   PREVIOUS AND NEXT CHAPTERS
-   ========================================= */
+/* PREVIOUS AND NEXT CHAPTERS */
 
 async function moveChapter(direction) {
-  const bookIndex = bibleBooks.findIndex(
-    item => item.name === currentBook
-  );
-
+  const bookIndex = bibleBooks.findIndex(item => item.name === currentBook);
   if (bookIndex < 0) return;
 
   const selectedBook = bibleBooks[bookIndex];
@@ -696,11 +548,7 @@ async function moveChapter(direction) {
 
     if (bookIndex > 0) {
       const previousBook = bibleBooks[bookIndex - 1];
-
-      await openChapter(
-        previousBook.name,
-        previousBook.chapters
-      );
+      await openChapter(previousBook.name, previousBook.chapters);
     }
 
     return;
@@ -712,50 +560,37 @@ async function moveChapter(direction) {
   }
 
   if (bookIndex < bibleBooks.length - 1) {
-    const nextBook = bibleBooks[bookIndex + 1];
-    await openChapter(nextBook.name, 1);
+    await openChapter(bibleBooks[bookIndex + 1].name, 1);
   }
 }
 
-/* =========================================
-   CONNECTION FOR STUDY CROSS-REFERENCES
-   ========================================= */
+/* CONNECTION FOR STUDY CROSS-REFERENCES */
 
 window.openChapter = function (book, chapter) {
   return openChapter(book, chapter).catch(function (error) {
-    status.textContent =
-      "Unable to open this reference: " + error.message;
+    status.textContent = "Unable to open reference: " + error.message;
   });
 };
 
-/* =========================================
-   CONTINUE READING
-   ========================================= */
+/* CONTINUE READING */
 
 async function continueReading() {
   const saved = getSavedPosition();
-
   if (!saved) return;
 
   try {
     await openChapter(saved.book, saved.chapter);
   } catch (error) {
-    message.textContent =
-      "Unable to continue reading: " + error.message;
+    message.textContent = "Unable to continue reading: " + error.message;
   }
 }
 
-/* =========================================
-   START THE READER
-   ========================================= */
+/* START READER */
 
 document.getElementById("openBible")
   .addEventListener("click", readBible);
 
-continueButton.addEventListener(
-  "click",
-  continueReading
-);
+continueButton.addEventListener("click", continueReading);
 
 loadBibleBooks();
 
@@ -765,6 +600,28 @@ loadBibleBooks();
 <script src="zuriel-library.js"></script>
 <script src="zuriel-home.js"></script>
 <script src="zuriel-study.js"></script>
+
+<!-- REGISTER THE OFFLINE ENGINE -->
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("./sw.js")
+      .then(function () {
+        return navigator.serviceWorker.ready;
+      })
+      .then(function () {
+        document.getElementById("readerStatus").textContent =
+          "Offline support is ready. Your Bible files have been saved for offline use.";
+      })
+      .catch(function (error) {
+        document.getElementById("readerStatus").textContent =
+          "Offline setup needs attention. Please connect to the internet and reload.";
+        console.error("Zuriel offline setup:", error);
+      });
+  });
+}
+</script>
 
 </body>
 </html>
