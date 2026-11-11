@@ -1,7 +1,7 @@
 
 "use strict";
 
-const CACHE_NAME = "zuriel-bible-offline-v2";
+const CACHE_NAME = "zuriel-bible-offline-v3";
 
 const CORE_FILES = [
   "./",
@@ -10,6 +10,7 @@ const CORE_FILES = [
   "./zuriel-library.js",
   "./zuriel-home.js",
   "./zuriel-study.js",
+  "./zuriel-navigation.js",
   "./kjv.72bec70fcd.json"
 ];
 
@@ -61,16 +62,19 @@ self.addEventListener("fetch", function (event) {
         .then(function (response) {
           if (response && response.ok) {
             const copy = response.clone();
+
             caches.open(CACHE_NAME).then(function (cache) {
               cache.put("./index.html", copy);
             });
           }
+
           return response;
         })
         .catch(function () {
           return caches.match("./index.html");
         })
     );
+
     return;
   }
 
@@ -81,10 +85,12 @@ self.addEventListener("fetch", function (event) {
       return fetch(request).then(function (response) {
         if (response && response.ok) {
           const copy = response.clone();
+
           caches.open(CACHE_NAME).then(function (cache) {
             cache.put(request, copy);
           });
         }
+
         return response;
       });
     })
