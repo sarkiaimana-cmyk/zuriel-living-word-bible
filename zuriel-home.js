@@ -1,7 +1,7 @@
 
 /* =========================================================
    ZURIEL LIVING WORD BIBLE
-   COMPLETE COMPACT HOME DASHBOARD
+   COMPACT HOME DASHBOARD + TOP RETURN NAVIGATION
    ========================================================= */
 
 (function () {
@@ -12,51 +12,77 @@
     const reader = document.getElementById("bibleReader");
 
     if (!main || !reader ||
-        document.getElementById("zurielHomeDashboard")) {
-      return;
-    }
+        document.getElementById("zurielHomeDashboard")) return;
 
     const verses = [
-      {
-        reference: "Psalm 119:105",
-        text: "Thy word is a lamp unto my feet, and a light unto my path."
-      },
-      {
-        reference: "Proverbs 3:5",
-        text: "Trust in the LORD with all thine heart; and lean not unto thine own understanding."
-      },
-      {
-        reference: "Isaiah 40:31",
-        text: "But they that wait upon the LORD shall renew their strength; they shall mount up with wings as eagles."
-      },
-      {
-        reference: "Romans 8:28",
-        text: "And we know that all things work together for good to them that love God, to them who are the called according to his purpose."
-      },
-      {
-        reference: "Philippians 4:13",
-        text: "I can do all things through Christ which strengtheneth me."
-      },
-      {
-        reference: "John 15:5",
-        text: "I am the vine, ye are the branches: He that abideth in me, and I in him, the same bringeth forth much fruit."
-      },
-      {
-        reference: "2 Corinthians 5:17",
-        text: "Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new."
-      }
+      { reference: "Psalm 119:105", text: "Thy word is a lamp unto my feet, and a light unto my path." },
+      { reference: "Proverbs 3:5", text: "Trust in the LORD with all thine heart; and lean not unto thine own understanding." },
+      { reference: "Isaiah 40:31", text: "But they that wait upon the LORD shall renew their strength; they shall mount up with wings as eagles." },
+      { reference: "Romans 8:28", text: "And we know that all things work together for good to them that love God, to them who are the called according to his purpose." },
+      { reference: "Philippians 4:13", text: "I can do all things through Christ which strengtheneth me." },
+      { reference: "John 15:5", text: "I am the vine, ye are the branches: He that abideth in me, and I in him, the same bringeth forth much fruit." },
+      { reference: "2 Corinthians 5:17", text: "Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new." }
     ];
 
     let verseIndex = 0;
-    let rotationTimer = null;
+    let currentSection = "home";
+    const sectionHistory = [];
 
-    /* DASHBOARD STYLING */
+    const sectionNames = {
+      home: "Home",
+      read: "Read Scripture",
+      study: "Study Centre",
+      declare: "Declarations",
+      me: "My Personal Space",
+      library: "Study Library"
+    };
+
+    /* STYLING */
 
     const style = document.createElement("style");
 
     style.textContent = `
       body {
         padding-bottom: 90px;
+      }
+
+      #zurielTopReturnBar {
+        position: sticky;
+        top: 0;
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        padding: 10px 12px;
+        margin: 0 0 14px;
+        background: #10213d;
+        color: #fff;
+        border-bottom: 2px solid #b99b58;
+        box-shadow: 0 3px 12px #00000020;
+      }
+
+      #zurielTopBack {
+        flex: 0 0 auto;
+        min-height: 43px;
+        padding: 9px 14px;
+        margin: 0;
+        border: 1px solid #d8bd7c;
+        border-radius: 9px;
+        background: #e8cf91;
+        color: #10213d;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      #zurielTopSection {
+        min-width: 0;
+        overflow: hidden;
+        color: #f0d99f;
+        font-weight: bold;
+        font-size: 15px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       #zurielHomeDashboard {
@@ -75,7 +101,6 @@
       #zurielHomeDashboard .home-brand {
         color: #e8cf91;
         font-size: 23px;
-        font-weight: bold;
         line-height: 1.3;
         margin: 5px 0 9px;
       }
@@ -220,7 +245,7 @@
       #bibleReader,
       #zurielLibrary,
       #zurielStudyPanel {
-        scroll-margin-top: 12px;
+        scroll-margin-top: 70px;
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -236,7 +261,19 @@
 
     document.head.appendChild(style);
 
-    /* HOME DASHBOARD CONTENT */
+    /* TOP RETURN BAR */
+
+    const topBar = document.createElement("div");
+    topBar.id = "zurielTopReturnBar";
+
+    topBar.innerHTML = `
+      <button type="button" id="zurielTopBack">
+        ← Back
+      </button>
+      <div id="zurielTopSection">Home</div>
+    `;
+
+    /* HOME DASHBOARD */
 
     const dashboard = document.createElement("section");
     dashboard.id = "zurielHomeDashboard";
@@ -262,7 +299,6 @@
 
       <section class="home-card">
         <h2>🌿 Scripture for Today</h2>
-
         <p class="home-verse" id="zurielHomeVerse"></p>
         <p class="home-reference" id="zurielHomeReference"></p>
 
@@ -341,11 +377,13 @@
     `;
 
     main.prepend(dashboard);
+    main.prepend(topBar);
 
     /* HIDE OLD DUPLICATE HOME CONTENT */
 
     Array.from(main.children).forEach(function (section) {
       if (
+        section !== topBar &&
         section !== dashboard &&
         section !== reader &&
         section.id !== "zurielLibrary" &&
@@ -360,8 +398,12 @@
 
     function showSections(names) {
       Array.from(main.children).forEach(function (section) {
-        const show = names.includes(section.id);
-        section.hidden = !show;
+        if (section === topBar) {
+          section.hidden = false;
+          return;
+        }
+
+        section.hidden = !names.includes(section.id);
       });
 
       const footer = document.querySelector("footer");
@@ -371,7 +413,7 @@
       }
     }
 
-    /* FIXED BOTTOM NAVIGATION */
+    /* BOTTOM NAVIGATION */
 
     const nav = document.createElement("nav");
     nav.id = "zurielBottomNavigation";
@@ -388,11 +430,9 @@
 
     navItems.forEach(function (item) {
       const button = document.createElement("button");
-
       button.type = "button";
       button.dataset.section = item[0];
-      button.innerHTML =
-        "<span>" + item[1] + "</span>" + item[2];
+      button.innerHTML = "<span>" + item[1] + "</span>" + item[2];
 
       button.addEventListener("click", function () {
         navigate(item[0]);
@@ -412,24 +452,27 @@
       });
     }
 
-    /* MAIN NAVIGATION */
+    function updateTopBar(section) {
+      const label = document.getElementById("zurielTopSection");
 
-    function navigate(section) {
+      if (label) {
+        label.textContent = sectionNames[section] || "Zuriel Bible";
+      }
+    }
+
+    /* DISPLAY A SECTION */
+
+    function displaySection(section) {
       if (section === "home") {
         showSections(["zurielHomeDashboard"]);
         setActiveNavigation("home");
         window.scrollTo({ top: 0, behavior: "smooth" });
-        return;
       }
 
       if (section === "read") {
         showSections(["bibleReader"]);
         setActiveNavigation("read");
-        reader.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-        return;
+        reader.scrollIntoView({ behavior: "smooth", block: "start" });
       }
 
       if (section === "study") {
@@ -440,18 +483,10 @@
 
         if (panel) {
           panel.style.display = "block";
-          panel.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
+          panel.scrollIntoView({ behavior: "smooth", block: "start" });
         } else {
-          reader.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
+          reader.scrollIntoView({ behavior: "smooth", block: "start" });
         }
-
-        return;
       }
 
       if (section === "declare") {
@@ -463,15 +498,9 @@
         }
 
         const library = document.getElementById("zurielLibrary");
-
         if (library) {
-          library.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
+          library.scrollIntoView({ behavior: "smooth", block: "start" });
         }
-
-        return;
       }
 
       if (section === "me") {
@@ -483,15 +512,9 @@
         }
 
         const library = document.getElementById("zurielLibrary");
-
         if (library) {
-          library.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
+          library.scrollIntoView({ behavior: "smooth", block: "start" });
         }
-
-        return;
       }
 
       if (section === "library") {
@@ -503,15 +526,34 @@
         }
 
         const library = document.getElementById("zurielLibrary");
-
         if (library) {
-          library.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
+          library.scrollIntoView({ behavior: "smooth", block: "start" });
         }
       }
+
+      currentSection = section;
+      updateTopBar(section);
     }
+
+    /* NAVIGATION WITH HISTORY */
+
+    function navigate(section) {
+      if (!sectionNames[section]) return;
+
+      if (section !== currentSection) {
+        sectionHistory.push(currentSection);
+      }
+
+      displaySection(section);
+    }
+
+    /* TOP BACK BUTTON */
+
+    document.getElementById("zurielTopBack")
+      .addEventListener("click", function () {
+        const previous = sectionHistory.pop() || "home";
+        displaySection(previous);
+      });
 
     /* HOME BUTTON CONNECTIONS */
 
@@ -535,21 +577,15 @@
     /* CHANGING HOME SCRIPTURE */
 
     const verseText = document.getElementById("zurielHomeVerse");
-    const verseReference =
-      document.getElementById("zurielHomeReference");
+    const verseReference = document.getElementById("zurielHomeReference");
 
     function displayVerse(index) {
       verseIndex = (index + verses.length) % verses.length;
-
       verseText.style.opacity = "0";
 
       window.setTimeout(function () {
-        verseText.textContent =
-          "“" + verses[verseIndex].text + "”";
-
-        verseReference.textContent =
-          verses[verseIndex].reference;
-
+        verseText.textContent = "“" + verses[verseIndex].text + "”";
+        verseReference.textContent = verses[verseIndex].reference;
         verseText.style.opacity = "1";
       }, 180);
     }
@@ -559,19 +595,14 @@
         displayVerse(verseIndex + 1);
       });
 
-    /* OPEN THE VERSE IN THE BIBLE READER */
+    /* OPEN HOME VERSE IN THE READER */
 
     document.getElementById("zurielSaveVerse")
       .addEventListener("click", function () {
         const reference = verses[verseIndex].reference;
         const match = reference.match(/^(.+)\s+(\d+):(\d+)$/);
 
-        if (
-          !match ||
-          typeof window.openChapter !== "function"
-        ) {
-          return;
-        }
+        if (!match || typeof window.openChapter !== "function") return;
 
         navigate("read");
 
@@ -581,37 +612,33 @@
           bookSelector.value = match[1];
         }
 
-        window.openChapter(
-          match[1],
-          Number(match[2])
-        ).then(function () {
-          const verseElements =
-            document.querySelectorAll("#message .verse");
+        window.openChapter(match[1], Number(match[2]))
+          .then(function () {
+            const verseElements =
+              document.querySelectorAll("#message .verse");
 
-          const target = verseElements[Number(match[3]) - 1];
+            const target = verseElements[Number(match[3]) - 1];
 
-          if (target) {
-            target.scrollIntoView({
-              behavior: "smooth",
-              block: "center"
-            });
+            if (target) {
+              target.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+              });
 
-            target.click();
-          }
-        });
+              target.click();
+            }
+          });
       });
 
-    /* FIRST SCRIPTURE */
+    /* INITIAL SCRIPTURE */
 
     displayVerse(0);
 
     /* AUTOMATIC SCRIPTURE ROTATION */
 
-    if (!window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches) {
-      rotationTimer = window.setInterval(function () {
-        if (!document.hidden) {
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      window.setInterval(function () {
+        if (!document.hidden && currentSection === "home") {
           displayVerse(verseIndex + 1);
         }
       }, 45000);
@@ -619,17 +646,13 @@
 
     /* START ON HOME */
 
-    showSections(["zurielHomeDashboard"]);
-    setActiveNavigation("home");
+    displaySection("home");
 
-    console.log("Zuriel Home Dashboard loaded.");
+    console.log("Zuriel Home Dashboard and top navigation loaded.");
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener(
-      "DOMContentLoaded",
-      buildZurielHome
-    );
+    document.addEventListener("DOMContentLoaded", buildZurielHome);
   } else {
     buildZurielHome();
   }
