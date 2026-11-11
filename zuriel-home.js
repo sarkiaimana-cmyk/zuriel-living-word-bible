@@ -352,9 +352,8 @@
     function showSections(names) {
       Array.from(main.children).forEach(function (section) {
         const show =
-          names.includes(section.id) ||
-          section.id === "zurielHomeDashboard";
-
+          
+const show = names.includes(section.id);
         section.hidden = !show;
       });
 
