@@ -1,7 +1,8 @@
 
+
 "use strict";
 
-const CACHE_NAME = "zuriel-bible-offline-v6";
+const CACHE_NAME = "zuriel-bible-offline-v7";
 
 const CORE_FILES = [
   "./",
@@ -97,4 +98,3 @@ self.addEventListener("fetch", function (event) {
     })
   );
 });
-
