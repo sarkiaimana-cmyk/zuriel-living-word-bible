@@ -350,8 +350,14 @@
     /* SHOW ONLY THE REQUIRED APP SECTIONS */
 
     function showSections(names) {
-      Array.from(main.children).forEach(function (section) {
-        const show =
+  Array.from(main.children).forEach(function (section) {
+    const show = names.includes(section.id);
+    section.hidden = !show;
+  });
+
+  const footer = document.querySelector("footer");
+  if (footer) footer.hidden = !names.includes("zurielHomeDashboard");
+}
           
 const show = names.includes(section.id);
         section.hidden = !show;
