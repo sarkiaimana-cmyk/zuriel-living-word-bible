@@ -1,8 +1,7 @@
 
 /* =========================================================
    ZURIEL LIVING WORD BIBLE
-   COMPACT PREMIUM HOME DASHBOARD
-   FIXED NAVIGATION • CHANGING SCRIPTURE • SMOOTH EXPERIENCE
+   COMPLETE COMPACT HOME DASHBOARD
    ========================================================= */
 
 (function () {
@@ -12,7 +11,8 @@
     const main = document.querySelector("main");
     const reader = document.getElementById("bibleReader");
 
-    if (!main || !reader || document.getElementById("zurielHomeDashboard")) {
+    if (!main || !reader ||
+        document.getElementById("zurielHomeDashboard")) {
       return;
     }
 
@@ -50,11 +50,13 @@
     let verseIndex = 0;
     let rotationTimer = null;
 
+    /* DASHBOARD STYLING */
+
     const style = document.createElement("style");
 
     style.textContent = `
       body {
-        padding-bottom: 88px;
+        padding-bottom: 90px;
       }
 
       #zurielHomeDashboard {
@@ -68,7 +70,6 @@
         border-radius: 20px;
         padding: 23px 17px;
         text-align: center;
-        box-shadow: 0 6px 20px #10213d20;
       }
 
       #zurielHomeDashboard .home-brand {
@@ -97,7 +98,6 @@
         border-radius: 17px;
         padding: 17px;
         margin-top: 14px;
-        box-shadow: 0 4px 14px #10213d15;
       }
 
       #zurielHomeDashboard h2 {
@@ -139,9 +139,8 @@
       }
 
       #zurielHomeDashboard .home-secondary {
-        background: #ffffff;
+        background: #fff;
         color: #18304d;
-        border-color: #d8bd7c;
       }
 
       #zurielHomeDashboard .home-grid {
@@ -176,10 +175,6 @@
         font-weight: bold;
         cursor: pointer;
         padding: 4px 0;
-      }
-
-      #zurielHomeDashboard details p {
-        margin-bottom: 3px;
       }
 
       #zurielBottomNavigation {
@@ -241,18 +236,25 @@
 
     document.head.appendChild(style);
 
-    /* HOME DASHBOARD */
+    /* HOME DASHBOARD CONTENT */
 
     const dashboard = document.createElement("section");
     dashboard.id = "zurielHomeDashboard";
 
     dashboard.innerHTML = `
       <section class="home-hero">
-        <p class="home-tagline">His Words.. My Life.. My Victory.</p>
-        <h1 class="home-brand">Zuriel Living Word Bible</h1>
+        <p class="home-tagline">
+          His Words.. My Life.. My Victory.
+        </p>
+
+        <h1 class="home-brand">
+          Zuriel Living Word Bible
+        </h1>
+
         <p class="home-subtitle">
           Read God's Word. Discover its meaning. Live in its truth.
         </p>
+
         <button class="home-button" id="zurielHomeOpenBible">
           📖 Open the Bible
         </button>
@@ -260,14 +262,18 @@
 
       <section class="home-card">
         <h2>🌿 Scripture for Today</h2>
+
         <p class="home-verse" id="zurielHomeVerse"></p>
         <p class="home-reference" id="zurielHomeReference"></p>
+
         <button class="home-button" id="zurielNextVerse">
           ✨ Show Another Scripture
         </button>
+
         <button class="home-button home-secondary" id="zurielSaveVerse">
           📖 Read This Scripture
         </button>
+
         <p class="home-subtitle">
           Scripture quotations are from the King James Version.
         </p>
@@ -275,6 +281,7 @@
 
       <section class="home-card">
         <h2>⚡ Quick Access</h2>
+
         <div class="home-grid">
           <button data-section="read">📖 Read Bible</button>
           <button data-section="study">🔍 Study Centre</button>
@@ -321,10 +328,12 @@
 
       <section class="home-card">
         <h2>🌟 Grow Deeper in the Word</h2>
+
         <p>
           Explore original-language word studies, Bible introductions,
           cross-references, commentaries, prayer and personal notes.
         </p>
+
         <button class="home-button" id="zurielHomeOpenStudy">
           Explore Study Library
         </button>
@@ -333,7 +342,7 @@
 
     main.prepend(dashboard);
 
-    /* HIDE THE OLD DUPLICATE HOME SECTIONS */
+    /* HIDE OLD DUPLICATE HOME CONTENT */
 
     Array.from(main.children).forEach(function (section) {
       if (
@@ -347,27 +356,22 @@
       }
     });
 
-    /* SHOW ONLY THE REQUIRED APP SECTIONS */
+    /* SECTION VISIBILITY */
 
     function showSections(names) {
-  Array.from(main.children).forEach(function (section) {
-    const show = names.includes(section.id);
-    section.hidden = !show;
-  });
-
-  const footer = document.querySelector("footer");
-  if (footer) footer.hidden = !names.includes("zurielHomeDashboard");
-}
-          
-const show = names.includes(section.id);
+      Array.from(main.children).forEach(function (section) {
+        const show = names.includes(section.id);
         section.hidden = !show;
       });
 
       const footer = document.querySelector("footer");
-      if (footer) footer.hidden = !names.includes("zurielHomeDashboard");
+
+      if (footer) {
+        footer.hidden = !names.includes("zurielHomeDashboard");
+      }
     }
 
-    /* BOTTOM NAVIGATION */
+    /* FIXED BOTTOM NAVIGATION */
 
     const nav = document.createElement("nav");
     nav.id = "zurielBottomNavigation";
@@ -384,6 +388,7 @@ const show = names.includes(section.id);
 
     navItems.forEach(function (item) {
       const button = document.createElement("button");
+
       button.type = "button";
       button.dataset.section = item[0];
       button.innerHTML =
@@ -407,6 +412,8 @@ const show = names.includes(section.id);
       });
     }
 
+    /* MAIN NAVIGATION */
+
     function navigate(section) {
       if (section === "home") {
         showSections(["zurielHomeDashboard"]);
@@ -418,7 +425,10 @@ const show = names.includes(section.id);
       if (section === "read") {
         showSections(["bibleReader"]);
         setActiveNavigation("read");
-        reader.scrollIntoView({ behavior: "smooth", block: "start" });
+        reader.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
         return;
       }
 
@@ -427,12 +437,20 @@ const show = names.includes(section.id);
         setActiveNavigation("study");
 
         const panel = document.getElementById("zurielStudyPanel");
+
         if (panel) {
           panel.style.display = "block";
-          panel.scrollIntoView({ behavior: "smooth", block: "start" });
+          panel.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
         } else {
-          reader.scrollIntoView({ behavior: "smooth", block: "start" });
+          reader.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
         }
+
         return;
       }
 
@@ -445,9 +463,14 @@ const show = names.includes(section.id);
         }
 
         const library = document.getElementById("zurielLibrary");
+
         if (library) {
-          library.scrollIntoView({ behavior: "smooth", block: "start" });
+          library.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
         }
+
         return;
       }
 
@@ -460,9 +483,14 @@ const show = names.includes(section.id);
         }
 
         const library = document.getElementById("zurielLibrary");
+
         if (library) {
-          library.scrollIntoView({ behavior: "smooth", block: "start" });
+          library.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
         }
+
         return;
       }
 
@@ -475,13 +503,17 @@ const show = names.includes(section.id);
         }
 
         const library = document.getElementById("zurielLibrary");
+
         if (library) {
-          library.scrollIntoView({ behavior: "smooth", block: "start" });
+          library.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
         }
       }
     }
 
-    /* HOME BUTTONS */
+    /* HOME BUTTON CONNECTIONS */
 
     document.getElementById("zurielHomeOpenBible")
       .addEventListener("click", function () {
@@ -493,16 +525,18 @@ const show = names.includes(section.id);
         navigate("library");
       });
 
-    dashboard.querySelectorAll("[data-section]").forEach(function (button) {
-      button.addEventListener("click", function () {
-        navigate(button.dataset.section);
+    dashboard.querySelectorAll("[data-section]")
+      .forEach(function (button) {
+        button.addEventListener("click", function () {
+          navigate(button.dataset.section);
+        });
       });
-    });
 
-    /* CHANGING SCRIPTURE */
+    /* CHANGING HOME SCRIPTURE */
 
     const verseText = document.getElementById("zurielHomeVerse");
-    const verseReference = document.getElementById("zurielHomeReference");
+    const verseReference =
+      document.getElementById("zurielHomeReference");
 
     function displayVerse(index) {
       verseIndex = (index + verses.length) % verses.length;
@@ -510,8 +544,12 @@ const show = names.includes(section.id);
       verseText.style.opacity = "0";
 
       window.setTimeout(function () {
-        verseText.textContent = "“" + verses[verseIndex].text + "”";
-        verseReference.textContent = verses[verseIndex].reference;
+        verseText.textContent =
+          "“" + verses[verseIndex].text + "”";
+
+        verseReference.textContent =
+          verses[verseIndex].reference;
+
         verseText.style.opacity = "1";
       }, 180);
     }
@@ -521,37 +559,57 @@ const show = names.includes(section.id);
         displayVerse(verseIndex + 1);
       });
 
+    /* OPEN THE VERSE IN THE BIBLE READER */
+
     document.getElementById("zurielSaveVerse")
       .addEventListener("click", function () {
         const reference = verses[verseIndex].reference;
         const match = reference.match(/^(.+)\s+(\d+):(\d+)$/);
 
-        if (match && typeof window.openChapter === "function") {
-          navigate("read");
-
-          const bookSelector = document.getElementById("book");
-          if (bookSelector) bookSelector.value = match[1];
-
-          window.openChapter(match[1], Number(match[2])).then(function () {
-            const verseElements = document.querySelectorAll("#message .verse");
-            const target = verseElements[Number(match[3]) - 1];
-
-            if (target) {
-              target.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-              });
-              target.click();
-            }
-          });
+        if (
+          !match ||
+          typeof window.openChapter !== "function"
+        ) {
+          return;
         }
+
+        navigate("read");
+
+        const bookSelector = document.getElementById("book");
+
+        if (bookSelector) {
+          bookSelector.value = match[1];
+        }
+
+        window.openChapter(
+          match[1],
+          Number(match[2])
+        ).then(function () {
+          const verseElements =
+            document.querySelectorAll("#message .verse");
+
+          const target = verseElements[Number(match[3]) - 1];
+
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+
+            target.click();
+          }
+        });
       });
+
+    /* FIRST SCRIPTURE */
 
     displayVerse(0);
 
-    /* AUTOMATIC ROTATION — LIGHTWEIGHT */
+    /* AUTOMATIC SCRIPTURE ROTATION */
 
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (!window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches) {
       rotationTimer = window.setInterval(function () {
         if (!document.hidden) {
           displayVerse(verseIndex + 1);
@@ -564,11 +622,14 @@ const show = names.includes(section.id);
     showSections(["zurielHomeDashboard"]);
     setActiveNavigation("home");
 
-    console.log("Zuriel compact Home Dashboard loaded.");
+    console.log("Zuriel Home Dashboard loaded.");
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", buildZurielHome);
+    document.addEventListener(
+      "DOMContentLoaded",
+      buildZurielHome
+    );
   } else {
     buildZurielHome();
   }
