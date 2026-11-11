@@ -1,100 +1,205 @@
 
+
 /* =========================================================
    ZURIEL LIVING WORD BIBLE
    BOOK INTRODUCTION CENTRE
-   First complete introduction: GENESIS
+   GENESIS + EXODUS
    ========================================================= */
 
 (function () {
   "use strict";
 
-  const introduction = {
-    book: "Genesis",
-    testament: "Old Testament",
-    chapters: 50,
-    author: {
-      traditional: "Moses is traditionally recognised as the author of Genesis and the first five books of the Bible.",
-      study: "Genesis does not name its human author. Its composition and sources are discussed by biblical scholars. The traditional Mosaic attribution and modern scholarly explanations should be studied fairly."
+  const introductions = {
+    Genesis: {
+      testament: "Old Testament",
+      chapters: 50,
+      subtitle: "The Book of Beginnings",
+
+      author:
+        "Moses is traditionally recognised as the author of Genesis and the first five books of the Bible.",
+
+      authorStudy:
+        "Genesis does not name its human author. Its composition and sources are discussed by biblical scholars. The traditional Mosaic attribution and modern scholarly explanations should be studied fairly.",
+
+      date:
+        "A traditional conservative chronology places Moses' life in the second millennium BC. Proposed dates for the writing of Genesis vary.",
+
+      dateStudy:
+        "There is no universally agreed date for the final composition of Genesis. Its traditions, literary formation and final form are subjects of scholarly discussion.",
+
+      place:
+        "The traditional setting connects Moses with Israel's wilderness journey.",
+
+      placeStudy:
+        "The precise place where Genesis reached its final written form is not known.",
+
+      audience:
+        "The people of Israel, especially those seeking to understand their origins, identity, covenant relationship with God and place among the nations.",
+
+      purpose:
+        "To present the beginnings of creation, humanity, sin, nations and God's covenant dealings with the patriarchs, establishing the foundations of the biblical story.",
+
+      background:
+        "Genesis belongs to the ancient Near Eastern world. Its opening chapters address creation, humanity, the fall, judgement and the nations. Later chapters follow Abraham, Isaac, Jacob and Joseph, ending with Israel's family in Egypt.",
+
+      themes: [
+        "God as Creator and sovereign Lord",
+        "Humanity made in God's image",
+        "Sin, judgement, mercy and restoration",
+        "Promise, covenant and faith",
+        "God's calling and blessing of Abraham's family",
+        "Providence, forgiveness and preservation",
+        "God's purpose extending to the nations"
+      ],
+
+      keyVerses: [
+        ["Genesis 1:1", "God is revealed as the Creator of heaven and earth."],
+        ["Genesis 1:27", "Humanity is created in the image of God."],
+        ["Genesis 12:2–3", "God promises to bless Abraham and extend blessing to the nations."],
+        ["Genesis 15:6", "Abraham believes God, and his faith is counted as righteousness."],
+        ["Genesis 50:20", "God's providence is seen even through human wrongdoing."]
+      ],
+
+      outline: [
+        "God creates the heavens and the earth.",
+        "The garden of Eden, humanity and marriage.",
+        "The serpent, human disobedience and the fall.",
+        "Cain, Abel and the spread of human violence.",
+        "The genealogy from Adam to Noah.",
+        "Human wickedness and God's instruction to Noah.",
+        "The flood begins and the earth is covered.",
+        "The waters recede and Noah leaves the ark.",
+        "God's covenant with Noah and the sign of the rainbow.",
+        "The families and nations descended from Noah.",
+        "The tower of Babel and the genealogy to Abram.",
+        "God calls Abram and promises blessing.",
+        "Abram and Lot separate; God confirms the land promise.",
+        "Abram rescues Lot and meets Melchizedek.",
+        "God establishes His covenant promise with Abram.",
+        "Hagar and the birth promise concerning Ishmael.",
+        "The covenant sign of circumcision and the promise of Isaac.",
+        "The visitors announce Isaac's birth; Abraham intercedes.",
+        "Sodom and Gomorrah are judged; Lot is rescued.",
+        "Abraham and Sarah in the land of Abimelech.",
+        "Isaac is born; Hagar and Ishmael depart.",
+        "Abraham's faith is tested concerning Isaac.",
+        "Sarah dies and Abraham secures a burial place.",
+        "A wife is found for Isaac; Rebekah comes to him.",
+        "Abraham's death, Esau and Jacob's birth, and the birthright.",
+        "Isaac in Gerar and the renewal of God's promise.",
+        "Jacob receives Isaac's blessing.",
+        "Jacob's dream at Bethel and God's promise.",
+        "Jacob meets Rachel and marries Leah and Rachel.",
+        "Jacob's family grows and his flocks increase.",
+        "Jacob leaves Laban and returns toward Canaan.",
+        "Jacob prepares to meet Esau and wrestles at Peniel.",
+        "Jacob and Esau are reconciled.",
+        "Dinah, Shechem and the actions of Simeon and Levi.",
+        "Jacob returns to Bethel; Rachel and Isaac die.",
+        "The descendants and chiefs of Esau.",
+        "Joseph's dreams, his brothers' jealousy and his sale.",
+        "Judah and Tamar.",
+        "Joseph serves in Egypt and is imprisoned.",
+        "Joseph interprets the dreams of Pharaoh's servants.",
+        "Joseph interprets Pharaoh's dreams and rises to authority.",
+        "Joseph's brothers come to Egypt for grain.",
+        "Benjamin travels to Egypt with his brothers.",
+        "Joseph tests his brothers; Judah pleads for Benjamin.",
+        "Joseph reveals his identity and forgives his brothers.",
+        "Jacob and his family travel to Egypt.",
+        "Israel settles in Goshen; Joseph administers during famine.",
+        "Jacob blesses Joseph's sons, Ephraim and Manasseh.",
+        "Jacob blesses his sons and speaks concerning their future.",
+        "Jacob is buried; Joseph reassures his brothers and dies."
+      ]
     },
-    date: {
-      traditional: "A traditional conservative chronology places Moses' life in the second millennium BC. Proposed dates for the writing of Genesis vary.",
-      study: "There is no universally agreed date for the final composition of Genesis. Its traditions, literary formation and final form are subjects of scholarly discussion."
-    },
-    place: {
-      traditional: "The traditional setting connects Moses with Israel's wilderness journey.",
-      study: "The precise place where Genesis reached its final written form is not known."
-    },
-    audience: "The people of Israel, especially those seeking to understand their origins, identity, covenant relationship with God and place among the nations.",
-    purpose: "To present the beginnings of creation, humanity, sin, nations and God's covenant dealings with the patriarchs; and to establish the foundations of the biblical story.",
-    background: "Genesis belongs to the ancient Near Eastern world. Its opening chapters address creation, humanity, the fall, judgement and the nations. The later chapters follow the family histories of Abraham, Isaac, Jacob and Joseph, ending with Israel's family in Egypt.",
-    themes: [
-      "God as Creator and sovereign Lord",
-      "Humanity made in God's image",
-      "Sin, judgement, mercy and restoration",
-      "Promise, covenant and faith",
-      "God's calling and blessing of Abraham's family",
-      "Providence, forgiveness and preservation",
-      "God's purpose extending to the nations"
-    ],
-    keyVerses: [
-      ["Genesis 1:1", "God is revealed as the Creator of heaven and earth."],
-      ["Genesis 1:27", "Humanity is created in the image of God."],
-      ["Genesis 12:2–3", "God promises to bless Abraham and extend blessing to the nations."],
-      ["Genesis 15:6", "Abraham believes God, and his faith is counted as righteousness."],
-      ["Genesis 50:20", "God's providence is seen even through human wrongdoing."]
-    ],
-    outline: [
-      [1, "God creates the heavens and the earth."],
-      [2, "The garden of Eden, humanity and marriage."],
-      [3, "The serpent, human disobedience and the fall."],
-      [4, "Cain, Abel and the spread of human violence."],
-      [5, "The genealogy from Adam to Noah."],
-      [6, "Human wickedness and God's instruction to Noah."],
-      [7, "The flood begins and the earth is covered."],
-      [8, "The waters recede and Noah leaves the ark."],
-      [9, "God's covenant with Noah and the sign of the rainbow."],
-      [10, "The families and nations descended from Noah."],
-      [11, "The tower of Babel and the genealogy to Abram."],
-      [12, "God calls Abram and promises blessing."],
-      [13, "Abram and Lot separate; God confirms the land promise."],
-      [14, "Abram rescues Lot and meets Melchizedek."],
-      [15, "God establishes His covenant promise with Abram."],
-      [16, "Hagar and the birth promise concerning Ishmael."],
-      [17, "The covenant sign of circumcision and the promise of Isaac."],
-      [18, "The visitors announce Isaac's birth; Abraham intercedes."],
-      [19, "Sodom and Gomorrah are judged; Lot is rescued."],
-      [20, "Abraham and Sarah in the land of Abimelech."],
-      [21, "Isaac is born; Hagar and Ishmael depart."],
-      [22, "Abraham's faith is tested concerning Isaac."],
-      [23, "Sarah dies and Abraham secures a burial place."],
-      [24, "A wife is found for Isaac; Rebekah comes to him."],
-      [25, "Abraham's death, Esau and Jacob's birth, and the birthright."],
-      [26, "Isaac in Gerar and the renewal of God's promise."],
-      [27, "Jacob receives Isaac's blessing."],
-      [28, "Jacob's dream at Bethel and God's promise."],
-      [29, "Jacob meets Rachel and marries Leah and Rachel."],
-      [30, "Jacob's family grows and his flocks increase."],
-      [31, "Jacob leaves Laban and returns toward Canaan."],
-      [32, "Jacob prepares to meet Esau and wrestles at Peniel."],
-      [33, "Jacob and Esau are reconciled."],
-      [34, "Dinah, Shechem and the actions of Simeon and Levi."],
-      [35, "Jacob returns to Bethel; Rachel and Isaac die."],
-      [36, "The descendants and chiefs of Esau."],
-      [37, "Joseph's dreams, his brothers' jealousy and his sale."],
-      [38, "Judah and Tamar."],
-      [39, "Joseph serves in Egypt and is imprisoned."],
-      [40, "Joseph interprets the dreams of Pharaoh's servants."],
-      [41, "Joseph interprets Pharaoh's dreams and rises to authority."],
-      [42, "Joseph's brothers come to Egypt for grain."],
-      [43, "Benjamin travels to Egypt with his brothers."],
-      [44, "Joseph tests his brothers; Judah pleads for Benjamin."],
-      [45, "Joseph reveals his identity and forgives his brothers."],
-      [46, "Jacob and his family travel to Egypt."],
-      [47, "Israel settles in Goshen; Joseph administers during famine."],
-      [48, "Jacob blesses Joseph's sons, Ephraim and Manasseh."],
-      [49, "Jacob blesses his sons and speaks concerning their future."],
-      [50, "Jacob is buried; Joseph reassures his brothers and dies."]
-    ]
+
+    Exodus: {
+      testament: "Old Testament",
+      chapters: 40,
+      subtitle: "Deliverance, Covenant and God's Presence",
+
+      author:
+        "Moses is traditionally recognised as the author of Exodus and the other books of the Torah.",
+
+      authorStudy:
+        "Exodus presents Moses as a central leader, witness and mediator of God's covenant. The book does not provide a modern author biography. Scholars discuss its composition and transmission, while Jewish and Christian traditions preserve the Mosaic attribution.",
+
+      date:
+        "A traditional view places the events of the Exodus in the second millennium BC. Some chronologies propose an earlier date and others a later date.",
+
+      dateStudy:
+        "The date of the Exodus and the final composition of the book remain debated. The biblical text should be read carefully alongside historical and archaeological discussions without presenting disputed dates as settled facts.",
+
+      place:
+        "The story begins in Egypt, moves through the wilderness and reaches Mount Sinai.",
+
+      placeStudy:
+        "The exact location of some wilderness stations and the precise identification of Mount Sinai remain debated. The biblical narrative identifies the mountain as the place where Israel receives God's covenant instructions.",
+
+      audience:
+        "Israel, God's covenant people, who needed to understand their deliverance from slavery, their identity as God's people and their calling to live in covenant with Him.",
+
+      purpose:
+        "To record God's deliverance of Israel from Egypt, the establishment of His covenant with the nation, the giving of the Law and the construction of the tabernacle as the place of His dwelling among His people.",
+
+      background:
+        "Exodus continues the family story at the end of Genesis. Israel's descendants have multiplied in Egypt, but a new Pharaoh enslaves them. God calls Moses, confronts Pharaoh through signs and plagues, delivers Israel through the sea and leads the people to Sinai. There He gives covenant instructions and establishes worship around the tabernacle.",
+
+      themes: [
+        "God hears the cry of the oppressed",
+        "God's power over Pharaoh and the gods of Egypt",
+        "Deliverance, redemption and freedom",
+        "The Passover and the meaning of sacrifice",
+        "God's covenant and the giving of His Law",
+        "God's holiness and the call to obedience",
+        "Worship, intercession and forgiveness",
+        "God's presence dwelling among His people"
+      ],
+
+      keyVerses: [
+        ["Exodus 3:7–8", "God sees the suffering of His people and declares His intention to deliver them."],
+        ["Exodus 3:14", "God reveals Himself to Moses with the declaration, I AM THAT I AM."],
+        ["Exodus 12:13", "The Passover blood is given as a sign of protection."],
+        ["Exodus 14:13–14", "Moses calls Israel to stand firm and witness God's deliverance."],
+        ["Exodus 20:1–3", "God begins the covenant commandments by identifying Himself as Israel's deliverer."],
+        ["Exodus 33:14", "God promises Moses that His presence will go with him."],
+        ["Exodus 34:6–7", "God reveals His character as merciful, gracious and just."]
+      ],
+
+      outline: [
+        "Israel multiplies in Egypt and a new Pharaoh oppresses them.",
+        "Moses is born, rescued and raised in Pharaoh's household.",
+        "Moses flees Egypt; God appears to him at the burning bush.",
+        "God commissions Moses and gives him signs for Israel.",
+        "Moses and Aaron confront Pharaoh; the oppression increases.",
+        "God renews His promises and identifies Himself as the LORD.",
+        "Moses and Aaron continue their appeal before Pharaoh.",
+        "The plagues of locusts and darkness confront Egypt.",
+        "The final plague is announced; Israel receives Passover instructions.",
+        "The firstborn of Egypt die; Israel is released from slavery.",
+        "Israel begins its journey; God leads by cloud and fire.",
+        "Israel crosses the sea; Pharaoh's army is defeated.",
+        "Israel sings of God's deliverance and receives provision in the wilderness.",
+        "God provides water and victory over Amalek.",
+        "Jethro advises Moses to appoint capable leaders.",
+        "Israel arrives at Sinai and receives God's covenant invitation.",
+        "God speaks the Ten Commandments.",
+        "Further covenant laws concerning worship and community life.",
+        "Instructions concerning justice, worship and the covenant feast.",
+        "The covenant is confirmed; Moses goes up the mountain.",
+        "Israel makes the golden calf while Moses is on the mountain.",
+        "Moses intercedes and calls for a response to Israel's sin.",
+        "Moses pleads for God's presence and guidance.",
+        "God renews the covenant and reveals His character to Moses.",
+        "The people are instructed to bring offerings for the tabernacle.",
+        "Skilled workers begin making the tabernacle and its furnishings.",
+        "The ark, table, lampstand and other furnishings are made.",
+        "The altar, courtyard and priestly garments are prepared.",
+        "The work of the tabernacle is completed and presented to Moses.",
+        "The tabernacle is erected, and God's glory fills it."
+      ]
+    }
   };
 
   const reader = document.getElementById("bibleReader");
@@ -107,7 +212,8 @@
     return;
   }
 
-  if (document.getElementById("zurielIntroduction")) return;
+  const oldPanel = document.getElementById("zurielIntroduction");
+  if (oldPanel) oldPanel.remove();
 
   const style = document.createElement("style");
 
@@ -148,12 +254,24 @@
       font-size:13px;
     }
 
+    #zurielIntroduction select {
+      width:100%;
+      min-height:45px;
+      padding:10px;
+      border-radius:9px;
+      margin:8px 0;
+      background:#f8f4e9;
+      color:#10213d;
+      font-size:15px;
+    }
+
     #zurielIntroduction .intro-button {
       width:100%;
       min-height:46px;
       background:#e8cf91;
       color:#10213d;
       font-weight:bold;
+      border:0;
       border-radius:9px;
       margin:12px 0 3px;
     }
@@ -201,149 +319,186 @@
   const panel = document.createElement("section");
   panel.id = "zurielIntroduction";
 
-  const title = document.createElement("h3");
-  title.textContent = "📜 Book Introduction — Genesis";
-  panel.appendChild(title);
+  const heading = document.createElement("h3");
+  heading.textContent = "📜 Bible Book Introduction";
+  panel.appendChild(heading);
 
   const subtitle = document.createElement("p");
   subtitle.className = "intro-subtitle";
   subtitle.textContent =
-    "Old Testament • 50 Chapters • The Book of Beginnings";
+    "Explore the author, background, message and chapter outline of each book.";
   panel.appendChild(subtitle);
 
-  const description = document.createElement("p");
-  description.textContent =
-    "Discover the background, message, historical setting and structure of Genesis before beginning your reading.";
-  panel.appendChild(description);
+  const selectorLabel = document.createElement("label");
+  selectorLabel.textContent = "Choose a Bible book";
+  selectorLabel.style.fontWeight = "bold";
+  panel.appendChild(selectorLabel);
+
+  const selector = document.createElement("select");
+  selector.setAttribute("aria-label", "Choose a Bible book");
+
+  Object.keys(introductions).forEach(function (book) {
+    const option = document.createElement("option");
+    option.value = book;
+    option.textContent = book;
+    selector.appendChild(option);
+  });
+
+  panel.appendChild(selector);
+
+  const bookInfo = document.createElement("p");
+  panel.appendChild(bookInfo);
 
   const toggle = document.createElement("button");
   toggle.type = "button";
   toggle.className = "intro-button";
-  toggle.textContent = "Explore Genesis Introduction";
   panel.appendChild(toggle);
 
   const content = document.createElement("div");
   content.hidden = true;
   panel.appendChild(content);
 
-  function addSection(heading, body) {
+  function addSection(titleText, bodyText) {
     const section = document.createElement("section");
+
     const title = document.createElement("h4");
-    title.textContent = heading;
+    title.textContent = titleText;
 
     const paragraph = document.createElement("p");
-    paragraph.textContent = body;
+    paragraph.textContent = bodyText;
 
     section.appendChild(title);
     section.appendChild(paragraph);
     content.appendChild(section);
   }
 
-  function addDetails(titleText, descriptionText) {
+  function addDetails(titleText, bodyText) {
     const details = document.createElement("details");
+
     const summary = document.createElement("summary");
     summary.textContent = titleText;
 
     const paragraph = document.createElement("p");
-    paragraph.textContent = descriptionText;
+    paragraph.textContent = bodyText;
 
     details.appendChild(summary);
     details.appendChild(paragraph);
     content.appendChild(details);
   }
 
-  addDetails("Who wrote Genesis?", introduction.author.traditional);
-  addDetails("Authorship — further study", introduction.author.study);
+  function renderBook(bookName) {
+    const book = introductions[bookName];
+    if (!book) return;
 
-  addDetails("When was Genesis written?", introduction.date.traditional);
-  addDetails("Date — further study", introduction.date.study);
+    content.replaceChildren();
+    content.hidden = true;
 
-  addDetails("Where was Genesis written?", introduction.place.traditional);
-  addDetails("Place — further study", introduction.place.study);
+    bookInfo.textContent =
+      book.testament + " • " +
+      book.chapters + " Chapters • " +
+      book.subtitle;
 
-  addSection("Original audience", introduction.audience);
-  addSection("Purpose of the book", introduction.purpose);
-  addSection("Historical and cultural background", introduction.background);
+    toggle.textContent = "Explore " + bookName + " Introduction";
 
-  const themes = document.createElement("section");
-  const themesTitle = document.createElement("h4");
-  themesTitle.textContent = "Major themes";
-  themes.appendChild(themesTitle);
+    addDetails("Traditional authorship", book.author);
+    addDetails("Authorship — further study", book.authorStudy);
 
-  const themeList = document.createElement("ul");
-  themeList.className = "intro-list";
+    addDetails("Traditional date", book.date);
+    addDetails("Date — further study", book.dateStudy);
 
-  introduction.themes.forEach(function (theme) {
-    const item = document.createElement("li");
-    item.textContent = theme;
-    themeList.appendChild(item);
+    addDetails("Traditional setting", book.place);
+    addDetails("Place — further study", book.placeStudy);
+
+    addSection("Original audience", book.audience);
+    addSection("Purpose of the book", book.purpose);
+    addSection("Historical and cultural background", book.background);
+
+    const themes = document.createElement("section");
+    const themesTitle = document.createElement("h4");
+    themesTitle.textContent = "Major themes";
+    themes.appendChild(themesTitle);
+
+    const themeList = document.createElement("ul");
+    themeList.className = "intro-list";
+
+    book.themes.forEach(function (theme) {
+      const item = document.createElement("li");
+      item.textContent = theme;
+      themeList.appendChild(item);
+    });
+
+    themes.appendChild(themeList);
+    content.appendChild(themes);
+
+    const verses = document.createElement("section");
+    const versesTitle = document.createElement("h4");
+    versesTitle.textContent = "Key verses";
+    verses.appendChild(versesTitle);
+
+    book.keyVerses.forEach(function (entry) {
+      const note = document.createElement("div");
+      note.className = "intro-note";
+
+      const reference = document.createElement("strong");
+      reference.textContent = entry[0];
+
+      const meaning = document.createElement("p");
+      meaning.textContent = entry[1];
+
+      note.appendChild(reference);
+      note.appendChild(meaning);
+      verses.appendChild(note);
+    });
+
+    content.appendChild(verses);
+
+    const outline = document.createElement("section");
+    const outlineTitle = document.createElement("h4");
+    outlineTitle.textContent =
+      "Complete " + book.chapters + "-chapter outline";
+    outline.appendChild(outlineTitle);
+
+    book.outline.forEach(function (description, index) {
+      const line = document.createElement("div");
+      line.className = "intro-outline";
+
+      const number = document.createElement("span");
+      number.className = "intro-number";
+      number.textContent = (index + 1) + ".";
+
+      const text = document.createElement("span");
+      text.textContent = description;
+
+      line.appendChild(number);
+      line.appendChild(text);
+      outline.appendChild(line);
+    });
+
+    content.appendChild(outline);
+
+    const closing = document.createElement("p");
+    closing.className = "intro-note";
+    closing.textContent =
+      "Study reminder: Read each chapter in context. Compare related Scriptures and distinguish the biblical text from historical interpretations and scholarly proposals.";
+
+    content.appendChild(closing);
+  }
+
+  selector.addEventListener("change", function () {
+    renderBook(selector.value);
   });
-
-  themes.appendChild(themeList);
-  content.appendChild(themes);
-
-  const verses = document.createElement("section");
-  const versesTitle = document.createElement("h4");
-  versesTitle.textContent = "Key verses";
-  verses.appendChild(versesTitle);
-
-  introduction.keyVerses.forEach(function (entry) {
-    const note = document.createElement("div");
-    note.className = "intro-note";
-
-    const reference = document.createElement("strong");
-    reference.textContent = entry[0];
-
-    const meaning = document.createElement("p");
-    meaning.textContent = entry[1];
-
-    note.appendChild(reference);
-    note.appendChild(meaning);
-    verses.appendChild(note);
-  });
-
-  content.appendChild(verses);
-
-  const outline = document.createElement("section");
-  const outlineTitle = document.createElement("h4");
-  outlineTitle.textContent = "Complete 50-chapter outline";
-  outline.appendChild(outlineTitle);
-
-  introduction.outline.forEach(function (entry) {
-    const line = document.createElement("div");
-    line.className = "intro-outline";
-
-    const number = document.createElement("span");
-    number.className = "intro-number";
-    number.textContent = entry[0] + ".";
-
-    const description = document.createElement("span");
-    description.textContent = entry[1];
-
-    line.appendChild(number);
-    line.appendChild(description);
-    outline.appendChild(line);
-  });
-
-  content.appendChild(outline);
-
-  const closing = document.createElement("p");
-  closing.className = "intro-note";
-  closing.textContent =
-    "Study reminder: Genesis lays the foundation for understanding creation, humanity, sin, covenant, promise and God's unfolding purpose.";
-  content.appendChild(closing);
 
   toggle.addEventListener("click", function () {
     content.hidden = !content.hidden;
 
     toggle.textContent = content.hidden
-      ? "Explore Genesis Introduction"
-      : "Close Genesis Introduction";
+      ? "Explore " + selector.value + " Introduction"
+      : "Close " + selector.value + " Introduction";
   });
 
+  renderBook("Genesis");
   reader.insertBefore(panel, anchor);
 
-  console.log("Zuriel Genesis Introduction loaded successfully.");
+  console.log("Zuriel Book Introduction Centre loaded: Genesis and Exodus.");
 
 })();
-    
