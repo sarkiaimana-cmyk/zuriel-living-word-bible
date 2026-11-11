@@ -1,10 +1,9 @@
 
-
-/* =========================================================
+/* =====================================================
    ZURIEL LIVING WORD BIBLE
    BOOK INTRODUCTION CENTRE
-   GENESIS + EXODUS
-   ========================================================= */
+   GENESIS • EXODUS • LEVITICUS
+   ===================================================== */
 
 (function () {
   "use strict";
@@ -15,32 +14,15 @@
       chapters: 50,
       subtitle: "The Book of Beginnings",
 
-      author:
-        "Moses is traditionally recognised as the author of Genesis and the first five books of the Bible.",
-
-      authorStudy:
-        "Genesis does not name its human author. Its composition and sources are discussed by biblical scholars. The traditional Mosaic attribution and modern scholarly explanations should be studied fairly.",
-
-      date:
-        "A traditional conservative chronology places Moses' life in the second millennium BC. Proposed dates for the writing of Genesis vary.",
-
-      dateStudy:
-        "There is no universally agreed date for the final composition of Genesis. Its traditions, literary formation and final form are subjects of scholarly discussion.",
-
-      place:
-        "The traditional setting connects Moses with Israel's wilderness journey.",
-
-      placeStudy:
-        "The precise place where Genesis reached its final written form is not known.",
-
-      audience:
-        "The people of Israel, especially those seeking to understand their origins, identity, covenant relationship with God and place among the nations.",
-
-      purpose:
-        "To present the beginnings of creation, humanity, sin, nations and God's covenant dealings with the patriarchs, establishing the foundations of the biblical story.",
-
-      background:
-        "Genesis belongs to the ancient Near Eastern world. Its opening chapters address creation, humanity, the fall, judgement and the nations. Later chapters follow Abraham, Isaac, Jacob and Joseph, ending with Israel's family in Egypt.",
+      author: "Moses is traditionally recognised as the author of Genesis and the first five books of the Bible.",
+      authorStudy: "Genesis does not name its human author. Its composition and sources are discussed by biblical scholars. Traditional Mosaic attribution and modern scholarly explanations should both be studied fairly.",
+      date: "A traditional conservative chronology places Moses' life in the second millennium BC. Proposed dates for the writing of Genesis vary.",
+      dateStudy: "There is no universally agreed date for the final composition of Genesis. Its traditions, literary formation and final form are subjects of scholarly discussion.",
+      place: "The traditional setting connects Moses with Israel's wilderness journey.",
+      placeStudy: "The precise place where Genesis reached its final written form is not known.",
+      audience: "The people of Israel, especially those seeking to understand their origins, identity, covenant relationship with God and place among the nations.",
+      purpose: "To present the beginnings of creation, humanity, sin, nations and God's covenant dealings with the patriarchs, establishing the foundations of the biblical story.",
+      background: "Genesis belongs to the ancient Near Eastern world. Its opening chapters address creation, humanity, the fall, judgement and the nations. Later chapters follow Abraham, Isaac, Jacob and Joseph, ending with Israel's family in Egypt.",
 
       themes: [
         "God as Creator and sovereign Lord",
@@ -119,32 +101,15 @@
       chapters: 40,
       subtitle: "Deliverance, Covenant and God's Presence",
 
-      author:
-        "Moses is traditionally recognised as the author of Exodus and the other books of the Torah.",
-
-      authorStudy:
-        "Exodus presents Moses as a central leader, witness and mediator of God's covenant. The book does not provide a modern author biography. Scholars discuss its composition and transmission, while Jewish and Christian traditions preserve the Mosaic attribution.",
-
-      date:
-        "A traditional view places the events of the Exodus in the second millennium BC. Some chronologies propose an earlier date and others a later date.",
-
-      dateStudy:
-        "The date of the Exodus and the final composition of the book remain debated. The biblical text should be read carefully alongside historical and archaeological discussions without presenting disputed dates as settled facts.",
-
-      place:
-        "The story begins in Egypt, moves through the wilderness and reaches Mount Sinai.",
-
-      placeStudy:
-        "The exact location of some wilderness stations and the precise identification of Mount Sinai remain debated. The biblical narrative identifies the mountain as the place where Israel receives God's covenant instructions.",
-
-      audience:
-        "Israel, God's covenant people, who needed to understand their deliverance from slavery, their identity as God's people and their calling to live in covenant with Him.",
-
-      purpose:
-        "To record God's deliverance of Israel from Egypt, the establishment of His covenant with the nation, the giving of the Law and the construction of the tabernacle as the place of His dwelling among His people.",
-
-      background:
-        "Exodus continues the family story at the end of Genesis. Israel's descendants have multiplied in Egypt, but a new Pharaoh enslaves them. God calls Moses, confronts Pharaoh through signs and plagues, delivers Israel through the sea and leads the people to Sinai. There He gives covenant instructions and establishes worship around the tabernacle.",
+      author: "Moses is traditionally recognised as the author of Exodus and the other books of the Torah.",
+      authorStudy: "Exodus presents Moses as a central leader, witness and mediator of God's covenant. The book does not provide a modern author biography. Scholars discuss its composition and transmission, while Jewish and Christian traditions preserve the Mosaic attribution.",
+      date: "A traditional view places the events of the Exodus in the second millennium BC. Some chronologies propose an earlier date and others a later date.",
+      dateStudy: "The date of the Exodus and the final composition of the book remain debated. The biblical text should be read carefully alongside historical and archaeological discussions without presenting disputed dates as settled facts.",
+      place: "The story begins in Egypt, moves through the wilderness and reaches Mount Sinai.",
+      placeStudy: "The exact location of some wilderness stations and the precise identification of Mount Sinai remain debated. The biblical narrative identifies the mountain as the place where Israel receives God's covenant instructions.",
+      audience: "Israel, God's covenant people, who needed to understand their deliverance from slavery, their identity as God's people and their calling to live in covenant with Him.",
+      purpose: "To record God's deliverance of Israel from Egypt, the establishment of His covenant with the nation, the giving of the Law and the construction of the tabernacle as the place of His dwelling among His people.",
+      background: "Exodus continues the family story at the end of Genesis. Israel's descendants have multiplied in Egypt, but a new Pharaoh enslaves them. God calls Moses, confronts Pharaoh through signs and plagues, delivers Israel through the sea and leads the people to Sinai. There He gives covenant instructions and establishes worship around the tabernacle.",
 
       themes: [
         "God hears the cry of the oppressed",
@@ -199,6 +164,78 @@
         "The work of the tabernacle is completed and presented to Moses.",
         "The tabernacle is erected, and God's glory fills it."
       ]
+    },
+
+    Leviticus: {
+      testament: "Old Testament",
+      chapters: 27,
+      subtitle: "Holiness, Worship and Life with God",
+
+      author: "Moses is traditionally recognised as the author of Leviticus, which forms part of the Torah.",
+      authorStudy: "Leviticus repeatedly presents its laws and instructions as words communicated by the LORD to Moses. The book's literary formation and transmission are discussed by scholars, while the traditional Jewish and Christian understanding attributes it to Moses.",
+
+      date: "The traditional setting places these instructions during Israel's wilderness period, following the construction of the tabernacle described at the end of Exodus.",
+      dateStudy: "The date of the final written form is debated. The narrative setting and the history of the book's composition should be distinguished when studying its origins.",
+
+      place: "The instructions are presented in the setting of the tabernacle in the wilderness, particularly at Mount Sinai.",
+      placeStudy: "Leviticus 1:1 describes the LORD speaking to Moses from the tent of meeting. The book's precise historical setting and the later development of Israel's worship are subjects of study.",
+
+      audience: "The people of Israel, including priests and worshippers, who needed to understand sacrifice, purity, worship, justice and their calling to holiness.",
+
+      purpose: "To teach Israel how to worship the holy God, how priests should serve, how sacrifices and purification were to be handled, and how the whole community should live in holiness, justice and covenant faithfulness.",
+
+      background: "Leviticus follows the completion of the tabernacle in Exodus. God's presence dwells among Israel, and the people need instruction about approaching Him. The book explains offerings, priestly service, purity, atonement, holy living, sacred times, care for neighbours and covenant responsibilities. Its central concern is that Israel belongs to a holy God.",
+
+      themes: [
+        "The holiness and presence of God",
+        "Sacrifice, atonement and forgiveness",
+        "Priestly ministry and responsible worship",
+        "Purity and the distinction between clean and unclean",
+        "Holiness in everyday life",
+        "Love of neighbour and justice",
+        "The Sabbath, festivals and sacred seasons",
+        "The Day of Atonement",
+        "Covenant faithfulness, blessing and accountability"
+      ],
+
+      keyVerses: [
+        ["Leviticus 11:44–45", "God calls His people to be holy because He is holy."],
+        ["Leviticus 16:30", "The Day of Atonement provides cleansing from sin before the LORD."],
+        ["Leviticus 17:11", "The life of the flesh is in the blood, given for atonement upon the altar."],
+        ["Leviticus 19:2", "Israel is called to holiness because the LORD their God is holy."],
+        ["Leviticus 19:18", "God commands His people to love their neighbour as themselves."],
+        ["Leviticus 19:34", "The stranger is to be loved as oneself."],
+        ["Leviticus 20:26", "God sets Israel apart to belong to Him."]
+      ],
+
+      outline: [
+        "Instructions for burnt offerings.",
+        "Instructions for grain offerings.",
+        "Instructions for peace offerings.",
+        "Instructions for sin offerings for different people and situations.",
+        "Further instructions concerning guilt offerings and restitution.",
+        "Priestly responsibilities in handling the offerings.",
+        "Regulations for the priests and the beginning of their ministry.",
+        "Aaron and his sons begin their priestly service; God's glory appears.",
+        "The judgement of Nadab and Abihu for offering unauthorised fire.",
+        "Clean and unclean animals and dietary distinctions.",
+        "Purification after childbirth.",
+        "Regulations concerning skin conditions and inspection.",
+        "Further regulations concerning skin conditions and contaminated garments.",
+        "Purification procedures for people healed of skin conditions.",
+        "Regulations concerning bodily discharges and ritual cleanliness.",
+        "The Day of Atonement and the cleansing of the sanctuary and people.",
+        "The proper place and manner for sacrifices and the seriousness of blood.",
+        "Prohibitions concerning forbidden sexual relationships.",
+        "Holiness in worship, family life, justice and love of neighbour.",
+        "Penalties for serious violations and the call to covenant holiness.",
+        "Requirements for priestly holiness and acceptable offerings.",
+        "Acceptable offerings and the sacred festivals of the LORD.",
+        "The lampstand, the bread of the Presence and a case of blasphemy.",
+        "The Sabbath year, Jubilee and care for the poor.",
+        "Blessings for obedience and warnings concerning disobedience.",
+        "Vows, dedicated persons, animals and property, and the tithe."
+      ]
     }
   };
 
@@ -215,7 +252,11 @@
   const oldPanel = document.getElementById("zurielIntroduction");
   if (oldPanel) oldPanel.remove();
 
+  const oldStyle = document.getElementById("zurielIntroductionStyle");
+  if (oldStyle) oldStyle.remove();
+
   const style = document.createElement("style");
+  style.id = "zurielIntroductionStyle";
 
   style.textContent = `
     #zurielIntroduction {
@@ -326,7 +367,7 @@
   const subtitle = document.createElement("p");
   subtitle.className = "intro-subtitle";
   subtitle.textContent =
-    "Explore the author, background, message and chapter outline of each book.";
+    "Explore authorship, background, message, key verses and chapter outlines.";
   panel.appendChild(subtitle);
 
   const selectorLabel = document.createElement("label");
@@ -360,7 +401,6 @@
 
   function addSection(titleText, bodyText) {
     const section = document.createElement("section");
-
     const title = document.createElement("h4");
     title.textContent = titleText;
 
@@ -374,7 +414,6 @@
 
   function addDetails(titleText, bodyText) {
     const details = document.createElement("details");
-
     const summary = document.createElement("summary");
     summary.textContent = titleText;
 
@@ -402,11 +441,9 @@
 
     addDetails("Traditional authorship", book.author);
     addDetails("Authorship — further study", book.authorStudy);
-
-    addDetails("Traditional date", book.date);
+    addDetails("Traditional date and setting", book.date);
     addDetails("Date — further study", book.dateStudy);
-
-    addDetails("Traditional setting", book.place);
+    addDetails("Traditional place", book.place);
     addDetails("Place — further study", book.placeStudy);
 
     addSection("Original audience", book.audience);
@@ -499,6 +536,8 @@
   renderBook("Genesis");
   reader.insertBefore(panel, anchor);
 
-  console.log("Zuriel Book Introduction Centre loaded: Genesis and Exodus.");
-
+  console.log(
+    "Zuriel Book Introduction Centre loaded: Genesis, Exodus and Leviticus."
+  );
 })();
+
