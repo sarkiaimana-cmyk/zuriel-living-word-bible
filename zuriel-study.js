@@ -121,6 +121,7 @@
         button.appendChild(original);
 
         const gloss = document.createElement("span");
+        gloss.className = "original-gloss";
         gloss.textContent = word.gloss || "No English gloss supplied";
         button.appendChild(gloss);
 
@@ -382,10 +383,21 @@
       }
       #zurielStudyPanel .original-script {
         display:block;
-        font-size:23px;
-        font-weight:bold;
-        color:#10213d;
-        margin-bottom:4px;
+        font-family:"Noto Sans Hebrew","Noto Sans Greek","Arial Unicode MS",serif;
+        font-size:28px;
+        font-weight:800;
+        line-height:1.8;
+        letter-spacing:0.02em;
+        color:#111827;
+        text-rendering:optimizeLegibility;
+        margin-bottom:7px;
+      }
+      #zurielStudyPanel .original-gloss {
+        display:block;
+        color:#18304d;
+        font-size:15px;
+        font-weight:700;
+        line-height:1.5;
       }
       #zurielStudyPanel .word-meta {
         display:block;
