@@ -2,7 +2,7 @@
 
 "use strict";
 
-const CACHE_NAME = "zuriel-bible-offline-v13";
+const CACHE_NAME = "zuriel-bible-offline-v14";
 
 const CORE_FILES = [
   "./",
@@ -13,7 +13,11 @@ const CORE_FILES = [
   "./zuriel-study.js",
   "./zuriel-navigation.js",
   "./zuriel-introductions.js",
-  "./kjv.72bec70fcd.json"
+  "./kjv.72bec70fcd.json",
+  "./images/books/0fc10dde-c515-45e8-916b-5a27f61b0841.jpg",
+  "./images/books/738dfb2c-b2e8-49d6-bc1c-d6766be38adf.jpg",
+  "./images/books/d14a5cec-132e-4432-9604-9cb82cd8cf71.jpg",
+  "./images/books/d9f06adf-07c3-45b7-bb53-385c15032679.jpg"
 ];
 
 self.addEventListener("install", function (event) {
