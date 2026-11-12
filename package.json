@@ -2,7 +2,7 @@
   "name": "zuriel-living-word-bible",
   "version": "1.0.0",
   "private": true,
-  "description": "Zuriel Living Word Bible — His Words.. My Life.. My Victory",
+  "description": "Standalone Android app and offline-first Bible reader.",
   "scripts": {
     "build:web": "node scripts/prepare-web.mjs",
     "android:sync": "npm run build:web && cap sync android",
