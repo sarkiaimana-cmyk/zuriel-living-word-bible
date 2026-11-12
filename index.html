@@ -91,6 +91,17 @@ select {
 
 .verse:active { background: #edf3ed; }
 
+.verse-word {
+  display:inline;
+  border-radius:3px;
+  cursor:pointer;
+  -webkit-box-decoration-break:clone;
+  box-decoration-break:clone;
+}
+.verse-word:focus-visible {
+  outline:2px solid #24634a;
+  outline-offset:2px;
+}
 .verse strong {
   color: #24634a;
   margin-right: 5px;
@@ -593,7 +604,40 @@ async function openChapter(book, chapter) {
     number.textContent = (index + 1) + ".";
 
     paragraph.appendChild(number);
-    paragraph.appendChild(document.createTextNode(" " + verse));
+
+    const wordParts = String(verse).match(/\\S+|\\s+/g) || [];
+    let wordIndex = 0;
+    wordParts.forEach(function (part) {
+      if (/^\\s+$/.test(part)) {
+        paragraph.appendChild(document.createTextNode(part));
+        return;
+      }
+
+      const word = document.createElement("span");
+      word.className = "verse-word";
+      word.dataset.wordIndex = String(wordIndex);
+      word.textContent = part;
+      word.setAttribute("role", "button");
+      word.setAttribute("tabindex", "0");
+      word.setAttribute("aria-label", "Study or highlight the word " + part);
+      word.addEventListener("click", function (event) {
+        event.stopPropagation();
+        if (window.ZurielStudy &&
+            typeof window.ZurielStudy.openForReference === "function") {
+          window.ZurielStudy.openForReference(
+            book, chapter, index + 1, verse, part, wordIndex
+          );
+        }
+      });
+      word.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          word.click();
+        }
+      });
+      paragraph.appendChild(word);
+      wordIndex++;
+    });
 
     paragraph.addEventListener("click", function () {
       if (
@@ -601,7 +645,7 @@ async function openChapter(book, chapter) {
         typeof window.ZurielStudy.openForReference === "function"
       ) {
         window.ZurielStudy.openForReference(
-          book, chapter, index + 1, verse
+          book, chapter, index + 1, verse, "", -1
         );
       } else {
         status.textContent = "The Scripture Study panel is not available.";
