@@ -8,7 +8,12 @@
   "use strict";
 
   const NOTES_KEY = "zuriel-verse-study-notes-v1";
+  const HIGHLIGHTS_KEY = "zuriel-word-highlights-v1";
   let selectedReference = null;
+  let selectedEnglishWord = "";
+  let selectedEnglishWordIndex = -1;
+  let activeHighlightColor = "#f5d76e";
+  let highlightModeArmed = false;
 
   const crossReferences = [
     ["Genesis", 1, 2, "The creation account"],
@@ -299,6 +304,15 @@
     const style = document.createElement("style");
     style.textContent = `
       #zurielStudyPanel {
+        position:fixed;
+        z-index:10000;
+        right:18px;
+        top:86px;
+        width:min(430px,calc(100vw - 36px));
+        max-height:calc(100vh - 110px);
+        overflow-y:auto;
+        overscroll-behavior:contain;
+        box-shadow:0 12px 40px #0005;
         background:#10213d;
         color:#f8f4e9;
         border:1px solid #b99b58;
@@ -448,6 +462,50 @@
         color:#e8cf91;
         font-weight:bold;
       }
+      #zurielStudyPanel .highlight-tools {
+        background:#1c3657;
+        border:1px solid #b99b58;
+        border-radius:12px;
+        padding:12px;
+        margin:12px 0;
+      }
+      #zurielStudyPanel .highlight-palette {
+        display:flex;
+        flex-wrap:wrap;
+        gap:8px;
+        margin:9px 0;
+      }
+      #zurielStudyPanel .highlight-color {
+        width:38px;
+        height:38px;
+        min-height:38px;
+        padding:0;
+        border:2px solid #fff;
+        border-radius:50%;
+        margin:0;
+      }
+      #zurielStudyPanel .highlight-color[aria-pressed="true"] {
+        outline:3px solid #e8cf91;
+        outline-offset:2px;
+      }
+      #zurielStudyPanel .highlight-tools .study-small { margin-bottom:5px; }
+      #zurielStudyPanel .word-selection-label {
+        color:#f1d99e;
+        font-weight:bold;
+        overflow-wrap:anywhere;
+      }
+      @media(max-width:600px) {
+        #zurielStudyPanel {
+          top:auto;
+          right:0;
+          bottom:0;
+          width:100%;
+          max-height:72vh;
+          border-radius:18px 18px 0 0;
+          padding:14px;
+          padding-bottom:calc(14px + env(safe-area-inset-bottom));
+        }
+      }
     `;
     document.head.appendChild(style);
 
@@ -476,6 +534,23 @@
       <button class="study-secondary" id="zurielCloseStudy">
         Close Study Panel
       </button>
+
+      <div class="highlight-tools">
+        <h3>🎨 Scripture Highlights</h3>
+        <p class="study-small">Choose a colour, then tap a word in the verse. You can also colour the whole verse.</p>
+        <div class="highlight-palette" role="group" aria-label="Highlight colours">
+          <button type="button" class="highlight-color" data-highlight="#f5d76e" style="background:#f5d76e" aria-label="Yellow highlight" aria-pressed="true"></button>
+          <button type="button" class="highlight-color" data-highlight="#a8ddb5" style="background:#a8ddb5" aria-label="Green highlight" aria-pressed="false"></button>
+          <button type="button" class="highlight-color" data-highlight="#a9d6f5" style="background:#a9d6f5" aria-label="Blue highlight" aria-pressed="false"></button>
+          <button type="button" class="highlight-color" data-highlight="#e7b5e8" style="background:#e7b5e8" aria-label="Purple highlight" aria-pressed="false"></button>
+          <button type="button" class="highlight-color" data-highlight="#f4b6a6" style="background:#f4b6a6" aria-label="Pink highlight" aria-pressed="false"></button>
+          <button type="button" class="highlight-color" data-highlight="#f2c58d" style="background:#f2c58d" aria-label="Orange highlight" aria-pressed="false"></button>
+        </div>
+        <button type="button" class="study-action" id="zurielHighlightWholeVerse">Highlight Whole Verse</button>
+        <button type="button" class="study-secondary" id="zurielClearVerseHighlights">Clear This Verse</button>
+        <p class="study-small" id="zurielHighlightStatus" aria-live="polite">Yellow selected. Tap a word to highlight it.</p>
+        <p class="word-selection-label" id="zurielSelectedEnglishWord">Selected English word: none</p>
+      </div>
 
       <div id="zurielStudySections">
 
@@ -666,6 +741,73 @@
     const main = document.querySelector("main");
     (main || document.body).appendChild(panel);
 
+    function readHighlights() {
+      try {
+        return JSON.parse(localStorage.getItem(HIGHLIGHTS_KEY)) || {};
+      } catch (error) {
+        return {};
+      }
+    }
+
+    function highlightKey(ref) {
+      return ref.book + "|" + ref.chapter + "|" + ref.verse;
+    }
+
+    function paintSavedHighlights(ref) {
+      const record = readHighlights()[highlightKey(ref)] || {};
+      const verseElement = findVerseElement(ref.verse);
+      if (!verseElement) return;
+
+      verseElement.style.backgroundColor = record.verseColor || "";
+      verseElement.querySelectorAll(".verse-word").forEach(function (word) {
+        const index = word.dataset.wordIndex;
+        word.style.backgroundColor =
+          record.words && record.words[index] ? record.words[index] : "";
+      });
+    }
+
+    function saveHighlightRecord(ref, record) {
+      const all = readHighlights();
+      const key = highlightKey(ref);
+      if (record && (record.verseColor || Object.keys(record.words || {}).length)) {
+        all[key] = record;
+      } else {
+        delete all[key];
+      }
+      localStorage.setItem(HIGHLIGHTS_KEY, JSON.stringify(all));
+      paintSavedHighlights(ref);
+    }
+
+    function getCurrentHighlightRecord() {
+      return readHighlights()[highlightKey(selectedReference)] || { words: {} };
+    }
+
+    function applyWordHighlight() {
+      if (!selectedReference || selectedEnglishWordIndex < 0) return;
+      const record = getCurrentHighlightRecord();
+      record.words = record.words || {};
+      record.words[String(selectedEnglishWordIndex)] = activeHighlightColor;
+      saveHighlightRecord(selectedReference, record);
+      document.getElementById("zurielHighlightStatus").textContent =
+        "Word highlighted. Your choice is saved on this device.";
+    }
+
+    function applyVerseHighlight() {
+      if (!selectedReference) return;
+      const record = getCurrentHighlightRecord();
+      record.verseColor = activeHighlightColor;
+      saveHighlightRecord(selectedReference, record);
+      document.getElementById("zurielHighlightStatus").textContent =
+        "The whole verse is highlighted and saved on this device.";
+    }
+
+    function clearVerseHighlights() {
+      if (!selectedReference) return;
+      saveHighlightRecord(selectedReference, { words: {} });
+      document.getElementById("zurielHighlightStatus").textContent =
+        "Highlights cleared for this verse.";
+    }
+
     function findVerseElement(number) {
       const verses = document.querySelectorAll("#message .verse");
       for (const item of verses) {
@@ -717,6 +859,24 @@
         }
       });
     }
+
+    document.querySelectorAll("#zurielStudyPanel .highlight-color")
+      .forEach(function (button) {
+        button.addEventListener("click", function () {
+          activeHighlightColor = button.dataset.highlight;
+          highlightModeArmed = true;
+          document.querySelectorAll("#zurielStudyPanel .highlight-color")
+            .forEach(item => item.setAttribute("aria-pressed", String(item === button)));
+          document.getElementById("zurielHighlightStatus").textContent =
+            "Colour selected. Tap a word in the verse or highlight the whole verse.";
+        });
+      });
+
+    document.getElementById("zurielHighlightWholeVerse")
+      .addEventListener("click", applyVerseHighlight);
+
+    document.getElementById("zurielClearVerseHighlights")
+      .addEventListener("click", clearVerseHighlights);
 
     document.getElementById("zurielSaveStudyNote")
       .addEventListener("click", function () {
@@ -776,13 +936,15 @@
       });
 
     window.ZurielStudy = {
-      openForReference: function (book, chapter, verse, verseText) {
+      openForReference: function (book, chapter, verse, verseText, englishWord, wordIndex) {
         selectedReference = {
           book: book,
           chapter: chapter,
           verse: verse,
           text: verseText
         };
+        selectedEnglishWord = englishWord || "";
+        selectedEnglishWordIndex = Number.isInteger(wordIndex) ? wordIndex : -1;
 
         document.getElementById("zurielSelectedReference").textContent =
           book + " " + chapter + ":" + verse + " — KJV";
@@ -792,6 +954,12 @@
 
         document.getElementById("zurielSelectionNotice").textContent =
           "Selected verse. Study the passage in its biblical context.";
+        document.getElementById("zurielSelectedEnglishWord").textContent =
+          "Selected English word: " + (selectedEnglishWord || "whole verse");
+        if (selectedEnglishWord && highlightModeArmed) {
+          applyWordHighlight();
+          highlightModeArmed = false;
+        }
 
         document.getElementById("zurielGenesisStudy").style.display =
           book === "Genesis" && chapter === 1 && verse === 1
@@ -799,6 +967,7 @@
 
         panel.style.display = "block";
         highlightVerse(verse);
+        paintSavedHighlights(selectedReference);
         loadSavedNote();
         loadOriginalWords(selectedReference);
         loadRelatedScriptures(selectedReference);
