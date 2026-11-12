@@ -34,6 +34,257 @@
     return ref.book + "|" + ref.chapter + "|" + ref.verse;
   }
 
+  const INTERLINEAR_API = "https://bible.helloao.org/api/d/bsb-interlinear/";
+  const LEXICON_API = "https://bible.helloao.org/api/d/stepbible-lexicon/lexicon/";
+  const CROSS_REFERENCE_API = "https://bible.helloao.org/api/d/open-cross-ref/";
+  const API_BOOK_CODES = [
+    "GEN","EXO","LEV","NUM","DEU","JOS","JDG","RUT","1SA","2SA",
+    "1KI","2KI","1CH","2CH","EZR","NEH","EST","JOB","PSA","PRO",
+    "ECC","SNG","ISA","JER","LAM","EZK","DAN","HOS","JOL","AMO",
+    "OBA","JON","MIC","NAM","HAB","ZEP","HAG","ZEC","MAL","MAT",
+    "MRK","LUK","JHN","ACT","ROM","1CO","2CO","GAL","EPH","PHP",
+    "COL","1TH","2TH","1TI","2TI","TIT","PHM","HEB","JAS","1PE",
+    "2PE","1JN","2JN","3JN","JUD","REV"
+  ];
+
+  function apiBookCode(bookName) {
+    const bookIndex = bibleBooks.findIndex(item => item.name === bookName);
+    return bookIndex >= 0 ? API_BOOK_CODES[bookIndex] : null;
+  }
+
+  function englishBookName(apiCode) {
+    const bookIndex = API_BOOK_CODES.indexOf(apiCode);
+    return bookIndex >= 0 && bibleBooks[bookIndex]
+      ? bibleBooks[bookIndex].name
+      : null;
+  }
+
+  async function fetchStudyJson(url) {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error("Study resource is temporarily unavailable.");
+    return response.json();
+  }
+
+  async function loadOriginalWords(ref) {
+    const target = document.getElementById("zurielOriginalWordResults");
+    const lexiconBox = document.getElementById("zurielLexiconDetails");
+    if (!target || !ref) return;
+
+    target.textContent = "Loading Hebrew or Greek words...";
+    lexiconBox.replaceChildren();
+
+    try {
+      const code = apiBookCode(ref.book);
+      if (!code) throw new Error("This Bible book is not mapped for original-language study.");
+
+      const data = await fetchStudyJson(
+        INTERLINEAR_API + code + "/" + ref.chapter + ".json"
+      );
+
+      const verses = data.chapter && Array.isArray(data.chapter.content)
+        ? data.chapter.content : [];
+      const verseData = verses.find(item => Number(item.verse) === Number(ref.verse));
+
+      if (!verseData || !Array.isArray(verseData.words) || !verseData.words.length) {
+        target.textContent = "No original-language word records were supplied for this verse.";
+        return;
+      }
+
+      target.replaceChildren();
+
+      const language = verseData.words.some(word => word.language === "aramaic")
+        ? "Aramaic"
+        : verseData.words.some(word => word.language === "greek")
+          ? "Greek" : "Hebrew";
+
+      const intro = document.createElement("p");
+      intro.className = "study-small";
+      intro.textContent = language + " original-language words, in source-text order. Tap a word for its lexicon.";
+      target.appendChild(intro);
+
+      verseData.words.forEach(function (word) {
+        const card = document.createElement("div");
+        card.className = "original-word-card";
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "original-word-button";
+
+        const original = document.createElement("span");
+        original.className = "original-script";
+        original.dir = word.language === "hebrew" || word.language === "aramaic" ? "rtl" : "ltr";
+        original.textContent = word.text || "Original word unavailable";
+        button.appendChild(original);
+
+        const gloss = document.createElement("span");
+        gloss.textContent = word.gloss || "No English gloss supplied";
+        button.appendChild(gloss);
+
+        const meta = document.createElement("span");
+        meta.className = "word-meta";
+        meta.textContent = [
+          word.transliteration || "",
+          word.strongs ? "Strong's " + word.strongs : "No Strong's number",
+          word.parsingFull || word.parsing || ""
+        ].filter(Boolean).join(" • ");
+        button.appendChild(meta);
+
+        button.addEventListener("click", function () {
+          if (word.strongs) {
+            loadLexiconEntry(word.strongs, card, data, ref);
+          } else {
+            lexiconBox.textContent = "This original-language item has no Strong's number in the source data.";
+          }
+        });
+
+        card.appendChild(button);
+        target.appendChild(card);
+      });
+    } catch (error) {
+      target.textContent = error.message + " Connect to the internet once to save this study for offline use.";
+    }
+  }
+
+  function normalizeStrongs(value) {
+    const match = String(value || "").match(/[HG]\\d{1,5}/i);
+    if (!match) return null;
+    const prefix = match[0].charAt(0).toUpperCase();
+    const number = match[0].slice(1);
+    return prefix + number.padStart(4, "0");
+  }
+
+  async function loadLexiconEntry(strongs, card, chapterData, ref) {
+    const box = document.getElementById("zurielLexiconDetails");
+    const id = normalizeStrongs(strongs);
+    if (!id) {
+      box.textContent = "This Strong's reference could not be read.";
+      return;
+    }
+
+    box.textContent = "Loading " + id + " lexicon...";
+    try {
+      const data = await fetchStudyJson(LEXICON_API + id + ".json");
+      const entry = data.entry;
+      if (!entry || !Array.isArray(entry.senses)) {
+        throw new Error("No lexicon definition was returned for " + id + ".");
+      }
+
+      box.replaceChildren();
+      const heading = document.createElement("h3");
+      heading.textContent = "Strong's " + id + " — " +
+        (entry.language === "greek" ? "Greek" : entry.language === "aramaic" ? "Aramaic" : "Hebrew");
+      box.appendChild(heading);
+
+      entry.senses.forEach(function (sense) {
+        const item = document.createElement("div");
+        item.className = "lexicon-entry";
+
+        const lemma = document.createElement("h4");
+        lemma.textContent = sense.lemma || "Original-language lemma";
+        item.appendChild(lemma);
+
+        const transliteration = document.createElement("p");
+        transliteration.textContent = "Transliteration: " + (sense.transliteration || "Not supplied");
+        item.appendChild(transliteration);
+
+        const gloss = document.createElement("p");
+        gloss.textContent = "Meaning: " + (sense.gloss || "Not supplied");
+        item.appendChild(gloss);
+
+        const grammar = document.createElement("p");
+        grammar.textContent = "Part of speech: " + (sense.partOfSpeech || "Not supplied");
+        item.appendChild(grammar);
+
+        const definition = document.createElement("p");
+        definition.textContent = sense.definition || "No extended definition supplied.";
+        item.appendChild(definition);
+
+        box.appendChild(item);
+      });
+
+      const related = document.createElement("div");
+      related.className = "lexicon-entry";
+      const relatedHeading = document.createElement("h4");
+      relatedHeading.textContent = "Other occurrences in this chapter";
+      related.appendChild(relatedHeading);
+
+      const matches = [];
+      const verses = chapterData.chapter && Array.isArray(chapterData.chapter.content)
+        ? chapterData.chapter.content : [];
+      verses.forEach(function (verse) {
+        (verse.words || []).forEach(function (word) {
+          if (normalizeStrongs(word.strongs) === id) {
+            matches.push({ verse: verse.verse, gloss: word.gloss || "" });
+          }
+        });
+      });
+
+      const uniqueVerses = [...new Map(matches.map(item => [item.verse, item])).values()];
+      if (uniqueVerses.length) {
+        uniqueVerses.forEach(function (item) {
+          const line = document.createElement("p");
+          line.textContent = ref.book + " " + ref.chapter + ":" + item.verse +
+            (item.gloss ? " — " + item.gloss : "");
+          related.appendChild(line);
+        });
+      } else {
+        const line = document.createElement("p");
+        line.textContent = "No other occurrence of this Strong's number was found in this chapter.";
+        related.appendChild(line);
+      }
+      box.appendChild(related);
+    } catch (error) {
+      box.textContent = error.message || "The lexicon entry could not be loaded.";
+    }
+  }
+
+  async function loadRelatedScriptures(ref) {
+    const list = document.getElementById("zurielCrossReferenceList");
+    if (!list || !ref) return;
+
+    list.textContent = "Finding related Scriptures...";
+    try {
+      const code = apiBookCode(ref.book);
+      if (!code) throw new Error("This Bible book is not mapped for cross-references.");
+
+      const data = await fetchStudyJson(
+        CROSS_REFERENCE_API + code + "/" + ref.chapter + ".json"
+      );
+      const verses = data.chapter && Array.isArray(data.chapter.content)
+        ? data.chapter.content : [];
+      const selected = verses.find(item => Number(item.verse) === Number(ref.verse));
+      const references = selected && Array.isArray(selected.references)
+        ? selected.references.slice(0, 12) : [];
+
+      list.replaceChildren();
+      if (!references.length) {
+        list.textContent = "No connected Scripture references are listed for this verse.";
+        return;
+      }
+
+      references.forEach(function (item) {
+        const name = englishBookName(item.book);
+        if (!name) return;
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "study-link";
+        button.textContent = name + " " + item.chapter + ":" + item.verse +
+          (item.endVerse ? "–" + item.endVerse : "");
+        button.addEventListener("click", function () {
+          openCrossReference([name, item.chapter, item.verse, "Related Scripture"]);
+        });
+        list.appendChild(button);
+      });
+
+      if (!list.children.length) {
+        list.textContent = "Related references were returned, but their book labels could not be matched.";
+      }
+    } catch (error) {
+      list.textContent = error.message + " Connect to the internet once to save related references for offline use.";
+    }
+  }
+
   function createStudyPanel() {
     if (document.getElementById("zurielStudyPanel")) return;
 
@@ -85,6 +336,56 @@
         padding:12px;
         margin:10px 0;
         border-radius:7px;
+      }
+
+      #zurielStudyPanel .original-word-card {
+        background:#fff;
+        color:#18304d;
+        border:1px solid #d8cdaF;
+        border-radius:11px;
+        padding:12px;
+        margin:10px 0;
+      }
+      #zurielStudyPanel .original-word-button {
+        display:block;
+        width:100%;
+        text-align:left;
+        color:#18304d;
+        background:#f7f4eb;
+        border:1px solid #d6c79e;
+        border-radius:9px;
+        padding:12px;
+        margin:5px 0;
+        min-height:48px;
+        font:inherit;
+      }
+      #zurielStudyPanel .original-script {
+        display:block;
+        font-size:23px;
+        font-weight:bold;
+        color:#10213d;
+        margin-bottom:4px;
+      }
+      #zurielStudyPanel .word-meta {
+        display:block;
+        color:#536477;
+        font-size:12px;
+        margin-top:4px;
+      }
+      #zurielStudyPanel .lexicon-entry {
+        background:#f2eee4;
+        color:#18304d;
+        border-left:4px solid #b99b58;
+        border-radius:8px;
+        padding:12px;
+        margin:10px 0;
+        overflow-wrap:anywhere;
+      }
+      #zurielStudyPanel .study-source {
+        color:#d9e3ef;
+        font-size:12px;
+        line-height:1.5;
+        margin-top:12px;
       }
       #zurielStudyPanel button.study-link {
         display:block;
@@ -192,17 +493,22 @@
         <details>
           <summary>🔤 3. Hebrew and Greek Word Study</summary>
           <div class="study-body" id="zurielOriginalWords">
-            <p>Old Testament word studies use Hebrew; New Testament
-            word studies use Greek. Verified entries will include meanings,
-            pronunciation and grammatical information.</p>
+            <p>Original-language words for your selected verse. Tap any word to open its Strong's lexicon entry.</p>
+            <div id="zurielOriginalWordResults" aria-live="polite">
+              <p>Select a verse to load its Hebrew or Greek word study.</p>
+            </div>
+            <div id="zurielLexiconDetails" aria-live="polite"></div>
+            <p class="study-source">Interlinear word data: Berean interlinear tables. Lexicon: STEPBible / Tyndale House, Cambridge (CC BY 4.0).</p>
           </div>
         </details>
 
         <details>
           <summary>🔗 4. Connected Scriptures</summary>
           <div class="study-body">
-            <p>Explore related passages. Tap a reference to open its chapter.</p>
-            <div id="zurielCrossReferenceList"></div>
+            <p>Related Scriptures for the selected verse. Tap a reference to open it.</p>
+            <div id="zurielCrossReferenceList" aria-live="polite">
+              <p>Select a verse to find connected Scriptures.</p>
+            </div>
           </div>
         </details>
 
@@ -404,18 +710,6 @@
       });
     }
 
-    crossReferences.forEach(function (item) {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "study-link";
-      button.textContent = item[0] + " " + item[1] + ":" +
-        item[2] + " — " + item[3];
-      button.addEventListener("click", function () {
-        openCrossReference(item);
-      });
-      document.getElementById("zurielCrossReferenceList").appendChild(button);
-    });
-
     document.getElementById("zurielSaveStudyNote")
       .addEventListener("click", function () {
         if (!selectedReference) {
@@ -498,6 +792,8 @@
         panel.style.display = "block";
         highlightVerse(verse);
         loadSavedNote();
+        loadOriginalWords(selectedReference);
+        loadRelatedScriptures(selectedReference);
 
         panel.scrollIntoView({
           behavior: "smooth",
