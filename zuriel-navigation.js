@@ -67,6 +67,26 @@
       outline-offset:2px;
     }
     #zurielNavigation input { margin-bottom:8px; }
+    #zurielNavigation .nav-artwork {
+      display:none;
+      overflow:hidden;
+      border:1px solid #c7b477;
+      border-radius:12px;
+      margin:10px 0 5px;
+      background:#0b1930;
+    }
+    #zurielNavigation .nav-artwork img {
+      display:block;
+      width:100%;
+      aspect-ratio:16 / 9;
+      object-fit:cover;
+    }
+    #zurielNavigation .nav-artwork-caption {
+      padding:8px 10px;
+      color:#f1d99e;
+      font-size:12px;
+      font-weight:700;
+    }
     #zurielNavigation .nav-two {
       display:grid;
       grid-template-columns:repeat(2,minmax(0,1fr));
@@ -138,6 +158,10 @@
     <select id="zurielNavBook">
       <option value="">Choose a Bible book</option>
     </select>
+    <div class="nav-artwork" id="zurielNavArtwork" aria-live="polite">
+      <img id="zurielNavArtworkImage" alt="Illustration for the selected Bible book">
+      <div class="nav-artwork-caption" id="zurielNavArtworkCaption"></div>
+    </div>
 
     <div class="nav-two">
       <div>
@@ -162,6 +186,9 @@
 
   const search = navigation.querySelector("#zurielNavSearch");
   const bookSelect = navigation.querySelector("#zurielNavBook");
+  const artwork = navigation.querySelector("#zurielNavArtwork");
+  const artworkImage = navigation.querySelector("#zurielNavArtworkImage");
+  const artworkCaption = navigation.querySelector("#zurielNavArtworkCaption");
   const chapterSelect = navigation.querySelector("#zurielNavChapter");
   const verseSelect = navigation.querySelector("#zurielNavVerse");
   const openButton = navigation.querySelector("#zurielNavOpen");
@@ -171,6 +198,27 @@
   let selectedBook = "";
   let selectedChapter = 0;
   let observerTimer = null;
+
+  const bookArtwork = {
+    "Judges": { image: "./images/books/0fc10dde-c515-45e8-916b-5a27f61b0841.jpg", caption: "Judges — God's deliverance, faith and grace" },
+    "Joshua": { image: "./images/books/738dfb2c-b2e8-49d6-bc1c-d6766be38adf.jpg", caption: "Joshua — God's promise and the crossing into the land" },
+    "Deuteronomy": { image: "./images/books/d14a5cec-132e-4432-9604-9cb82cd8cf71.jpg", caption: "Deuteronomy — Moses' final instructions" },
+    "Numbers": { image: "./images/books/d9f06adf-07c3-45b7-bb53-385c15032679.jpg", caption: "Numbers — Israel's wilderness journey" }
+  };
+
+  function updateBookArtwork(bookName) {
+    const art = bookArtwork[bookName];
+    if (!art) {
+      artwork.style.display = "none";
+      artworkImage.removeAttribute("src");
+      artworkCaption.textContent = "";
+      return;
+    }
+    artworkImage.src = art.image;
+    artworkImage.alt = bookName + " Bible book illustration";
+    artworkCaption.textContent = art.caption;
+    artwork.style.display = "block";
+  }
 
   function addOption(select, value, label) {
     const option = document.createElement("option");
@@ -304,6 +352,7 @@
     const chapter = Number(match[2]);
     selectedBook = book;
     selectedChapter = chapter;
+    updateBookArtwork(book);
 
     if (bookSelect.value !== book) {
       search.value = "";
@@ -329,6 +378,7 @@
   bookSelect.addEventListener("change", function () {
     selectedBook = bookSelect.value;
     selectedChapter = 0;
+    updateBookArtwork(selectedBook);
     populateChapters(selectedBook);
     currentLabel.textContent = selectedBook
       ? selectedBook + " — choose a chapter"
