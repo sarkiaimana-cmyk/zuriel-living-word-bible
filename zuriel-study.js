@@ -146,7 +146,7 @@
   }
 
   function normalizeStrongs(value) {
-    const match = String(value || "").match(/[HG]\\d{1,5}/i);
+    const match = String(value || "").match(/[HG]\d{1,5}/i);
     if (!match) return null;
     const prefix = match[0].charAt(0).toUpperCase();
     const number = match[0].slice(1);
@@ -272,7 +272,15 @@
         button.textContent = name + " " + item.chapter + ":" + item.verse +
           (item.endVerse ? "–" + item.endVerse : "");
         button.addEventListener("click", function () {
-          openCrossReference([name, item.chapter, item.verse, "Related Scripture"]);
+          if (typeof window.openChapter !== "function") return;
+          window.openChapter(name, item.chapter).then(function () {
+            const verseElements = document.querySelectorAll("#message .verse");
+            const target = verseElements[Number(item.verse) - 1];
+            if (target) {
+              target.scrollIntoView({ behavior: "smooth", block: "center" });
+              target.classList.add("zuriel-selected-verse");
+            }
+          });
         });
         list.appendChild(button);
       });
