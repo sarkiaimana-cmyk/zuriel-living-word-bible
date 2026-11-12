@@ -613,9 +613,10 @@ async function openChapter(book, chapter) {
         return;
       }
 
+      const thisWordIndex = wordIndex;
       const word = document.createElement("span");
       word.className = "verse-word";
-      word.dataset.wordIndex = String(wordIndex);
+      word.dataset.wordIndex = String(thisWordIndex);
       word.textContent = part;
       word.setAttribute("role", "button");
       word.setAttribute("tabindex", "0");
@@ -625,7 +626,7 @@ async function openChapter(book, chapter) {
         if (window.ZurielStudy &&
             typeof window.ZurielStudy.openForReference === "function") {
           window.ZurielStudy.openForReference(
-            book, chapter, index + 1, verse, part, wordIndex
+            book, chapter, index + 1, verse, part, thisWordIndex
           );
         }
       });
