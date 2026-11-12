@@ -13,7 +13,6 @@
   let selectedEnglishWord = "";
   let selectedEnglishWordIndex = -1;
   let activeHighlightColor = "#f5d76e";
-  let highlightModeArmed = false;
 
   const crossReferences = [
     ["Genesis", 1, 2, "The creation account"],
@@ -864,11 +863,16 @@
       .forEach(function (button) {
         button.addEventListener("click", function () {
           activeHighlightColor = button.dataset.highlight;
-          highlightModeArmed = true;
           document.querySelectorAll("#zurielStudyPanel .highlight-color")
             .forEach(item => item.setAttribute("aria-pressed", String(item === button)));
-          document.getElementById("zurielHighlightStatus").textContent =
-            "Colour selected. Tap a word in the verse or highlight the whole verse.";
+          if (selectedReference && selectedEnglishWordIndex >= 0) {
+            applyWordHighlight();
+            document.getElementById("zurielHighlightStatus").textContent =
+              "Selected word highlighted and saved. Choose another word to study it.";
+          } else {
+            document.getElementById("zurielHighlightStatus").textContent =
+              "Colour selected. Tap a word in the verse or highlight the whole verse.";
+          }
         });
       });
 
@@ -956,10 +960,6 @@
           "Selected verse. Study the passage in its biblical context.";
         document.getElementById("zurielSelectedEnglishWord").textContent =
           "Selected English word: " + (selectedEnglishWord || "whole verse");
-        if (selectedEnglishWord && highlightModeArmed) {
-          applyWordHighlight();
-          highlightModeArmed = false;
-        }
 
         document.getElementById("zurielGenesisStudy").style.display =
           book === "Genesis" && chapter === 1 && verse === 1
