@@ -1,516 +1,361 @@
-
 /* =========================================================
    ZURIEL LIVING WORD BIBLE
-   PREMIUM BIBLE NAVIGATION SYSTEM
-   Books • Chapters • Verses • Visible Scripture
+   SMART BOOK • CHAPTER • VERSE NAVIGATOR
+   Fast native selectors, searchable books, direct verse jump
    ========================================================= */
-
 (function () {
   "use strict";
 
-  const START_BOOK_COUNT = 39;
   const root = document.getElementById("bibleReader");
   const message = document.getElementById("message");
+  const books = typeof bibleBooks !== "undefined" ? bibleBooks : window.bibleBooks;
 
-  if (!root || !message) {
-    console.error("Zuriel Navigation: Bible reader elements not found.");
+  if (!root || !message || !Array.isArray(books)) {
+    console.error("Zuriel Navigator: reader or Bible book list unavailable.");
     return;
   }
-
-  if (!Array.isArray(window.bibleBooks) && typeof bibleBooks === "undefined") {
-    console.error("Zuriel Navigation: Bible book list is unavailable.");
-    return;
-  }
-
-  const books = typeof bibleBooks !== "undefined"
-    ? bibleBooks
-    : window.bibleBooks;
-
-  let selectedBook = "";
-  let selectedChapter = 0;
-  let observer = null;
-
-  /* ---------------------------------------------------------
-     DESIGN
-  --------------------------------------------------------- */
+  if (document.getElementById("zurielNavigation")) return;
 
   const style = document.createElement("style");
-
   style.textContent = `
+    /* Use one clear navigation system; the legacy controls remain available to scripts. */
+    #bibleReader > #book,
+    #bibleReader > #openBible,
+    #bibleReader > .study-hint { display:none !important; }
+
     #zurielNavigation {
       background:linear-gradient(145deg,#10213d,#203e68);
       color:#f8f4e9;
       border:1px solid #b99b58;
       border-radius:18px;
-      padding:15px;
-      margin:18px 0;
-      box-shadow:0 5px 18px #10213d22;
+      padding:16px;
+      margin:15px 0 18px;
+      box-shadow:0 6px 20px #10213d20;
     }
-
     #zurielNavigation h3 {
       color:#f1d99e;
-      margin:5px 0 12px;
       font-size:19px;
+      margin:0 0 5px;
     }
-
     #zurielNavigation .nav-description {
       color:#dce5f1;
       font-size:13px;
-      line-height:1.6;
+      line-height:1.5;
+      margin:0 0 13px;
     }
-
     #zurielNavigation label {
       display:block;
       color:#f1d99e;
-      font-weight:bold;
-      margin:14px 0 6px;
+      font-weight:700;
+      font-size:13px;
+      margin:12px 0 6px;
     }
-
+    #zurielNavigation input,
     #zurielNavigation select {
+      display:block;
       width:100%;
+      min-width:0;
       min-height:48px;
-      padding:11px;
-      border-radius:9px;
-      border:1px solid #b99b58;
+      box-sizing:border-box;
+      border:1px solid #c7b477;
+      border-radius:10px;
       background:#fff;
       color:#18304d;
-      font-size:16px;
+      padding:11px 12px;
       margin:0;
+      font:600 15px Arial,sans-serif;
+      outline-offset:2px;
     }
-
-    #zurielNavigation .nav-scroll {
-      display:flex;
-      flex-wrap:wrap;
-      gap:7px;
-      max-height:180px;
-      overflow-y:auto;
-      padding:5px 2px 9px;
-      -webkit-overflow-scrolling:touch;
+    #zurielNavigation input { margin-bottom:8px; }
+    #zurielNavigation .nav-two {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px;
     }
-
-    #zurielNavigation .nav-number {
-      min-width:43px;
-      min-height:43px;
-      padding:8px;
-      margin:0;
-      border-radius:9px;
-      background:#f8f4e9;
-      color:#18304d;
-      border:1px solid #c8b77e;
-      font-size:15px;
-      font-weight:bold;
-    }
-
-    #zurielNavigation .nav-number.active {
-      background:#e8cf91;
-      color:#10213d;
-      border:2px solid #fff0bd;
-    }
-
-    #zurielNavigation .nav-number:disabled {
-      opacity:.4;
-    }
-
-    #zurielNavigation .nav-section {
-      border-top:1px solid #ffffff35;
-      margin-top:12px;
-      padding-top:9px;
-    }
-
-    #zurielNavigation .nav-status {
-      color:#f1d99e;
-      font-size:13px;
-      line-height:1.6;
-      margin:10px 0 2px;
-    }
-
     #zurielNavigation .nav-current {
       background:#ffffff12;
+      border:1px solid #ffffff2b;
       border-left:4px solid #e8cf91;
-      padding:10px;
-      border-radius:7px;
-      margin-top:12px;
-      font-weight:bold;
-      line-height:1.6;
+      border-radius:10px;
+      padding:11px 12px;
+      margin-top:13px;
+      color:#fff8e7;
+      font-weight:700;
+      line-height:1.5;
+      overflow-wrap:anywhere;
     }
-
+    #zurielNavigation .nav-status {
+      color:#e4eaf3;
+      font-size:12px;
+      line-height:1.5;
+      margin:8px 1px 0;
+      min-height:18px;
+    }
     #zurielNavigation .nav-help {
       color:#dce5f1;
       font-size:12px;
-      margin:7px 0;
+      line-height:1.5;
+      margin:6px 0 0;
     }
-
+    #zurielNavigation .nav-jump {
+      display:block;
+      width:100%;
+      min-height:45px;
+      margin:10px 0 0;
+      border:1px solid #e8cf91;
+      border-radius:10px;
+      background:#e8cf91;
+      color:#10213d;
+      font-weight:800;
+      font-size:14px;
+    }
+    #zurielNavigation .nav-jump:disabled { opacity:.5; }
     #message .verse.zuriel-nav-highlight {
       background:#fff0c9 !important;
       border-left:5px solid #b99b58;
       border-radius:8px;
       padding-left:12px;
-      scroll-margin-top:15px;
+      scroll-margin-top:18px;
     }
-
-    @media (max-width:480px) {
-      #zurielNavigation {
-        padding:12px;
-        border-radius:14px;
-      }
-
-      #zurielNavigation .nav-scroll {
-        max-height:145px;
-      }
-
-      #zurielNavigation .nav-number {
-        min-width:40px;
-        min-height:42px;
-      }
+    @media(max-width:390px) {
+      #zurielNavigation { padding:13px; }
+      #zurielNavigation .nav-two { grid-template-columns:1fr; gap:0; }
     }
   `;
-
   document.head.appendChild(style);
-
-  /* ---------------------------------------------------------
-     NAVIGATION INTERFACE
-  --------------------------------------------------------- */
 
   const navigation = document.createElement("section");
   navigation.id = "zurielNavigation";
-
   navigation.innerHTML = `
     <h3>📖 Zuriel Bible Navigator</h3>
+    <p class="nav-description">Find any book, chapter or verse quickly. Your Scripture opens below.</p>
 
-    <p class="nav-description">
-      Select a Bible book, chapter and verse.
-      Your Scripture remains visible below.
-    </p>
+    <label for="zurielNavSearch">Find a Bible book</label>
+    <input id="zurielNavSearch" type="search" autocomplete="off"
+      placeholder="Type a book name — e.g. John, Psalms..." aria-label="Search Bible books">
 
-    <label for="zurielNavBook">1. Choose a Bible Book</label>
+    <label for="zurielNavBook">1. Bible Book</label>
     <select id="zurielNavBook">
-      <option value="">Select a book</option>
+      <option value="">Choose a Bible book</option>
     </select>
 
-    <div class="nav-section">
-      <label>2. Choose a Chapter</label>
-      <div id="zurielNavChapters" class="nav-scroll">
-        <p class="nav-help">Choose a book first.</p>
+    <div class="nav-two">
+      <div>
+        <label for="zurielNavChapter">2. Chapter</label>
+        <select id="zurielNavChapter" disabled>
+          <option value="">Choose chapter</option>
+        </select>
+      </div>
+      <div>
+        <label for="zurielNavVerse">3. Verse</label>
+        <select id="zurielNavVerse" disabled>
+          <option value="">Choose verse</option>
+        </select>
       </div>
     </div>
 
-    <div class="nav-section">
-      <label>3. Choose a Verse</label>
-      <div id="zurielNavVerses" class="nav-scroll">
-        <p class="nav-help">Choose a chapter first.</p>
-      </div>
-      <p class="nav-help">
-        Selecting a verse takes you to its position in the visible Scripture.
-        Tap the Scripture text itself to open its study.
-      </p>
-    </div>
-
-    <div class="nav-current" id="zurielNavCurrent">
-      Ready to explore God's Word.
-    </div>
-
-    <p class="nav-status" id="zurielNavStatus">
-      All 66 Bible books are available.
-    </p>
+    <button type="button" class="nav-jump" id="zurielNavOpen" disabled>Open Selected Chapter</button>
+    <div class="nav-current" id="zurielNavCurrent" aria-live="polite">Ready to explore God's Word.</div>
+    <p class="nav-status" id="zurielNavStatus">All 66 Bible books are ready.</p>
   `;
-
   root.insertBefore(navigation, message);
 
-  const bookSelect = document.getElementById("zurielNavBook");
-  const chapterBox = document.getElementById("zurielNavChapters");
-  const verseBox = document.getElementById("zurielNavVerses");
-  const currentLabel = document.getElementById("zurielNavCurrent");
-  const navStatus = document.getElementById("zurielNavStatus");
+  const search = navigation.querySelector("#zurielNavSearch");
+  const bookSelect = navigation.querySelector("#zurielNavBook");
+  const chapterSelect = navigation.querySelector("#zurielNavChapter");
+  const verseSelect = navigation.querySelector("#zurielNavVerse");
+  const openButton = navigation.querySelector("#zurielNavOpen");
+  const currentLabel = navigation.querySelector("#zurielNavCurrent");
+  const navStatus = navigation.querySelector("#zurielNavStatus");
 
-  /* ---------------------------------------------------------
-     BOOK LIST — OLD AND NEW TESTAMENT
-  --------------------------------------------------------- */
+  let selectedBook = "";
+  let selectedChapter = 0;
+  let observerTimer = null;
 
-  function fillBookList() {
+  function addOption(select, value, label) {
+    const option = document.createElement("option");
+    option.value = value;
+    option.textContent = label;
+    select.appendChild(option);
+  }
+
+  function fillBooks(filter) {
+    const query = String(filter || "").trim().toLowerCase();
+    const previous = bookSelect.value;
     bookSelect.replaceChildren();
+    addOption(bookSelect, "", "Choose a Bible book");
 
-    const placeholder = document.createElement("option");
-    placeholder.value = "";
-    placeholder.textContent = "Choose a Bible book";
-    bookSelect.appendChild(placeholder);
-
-    const oldTestament = document.createElement("optgroup");
-    oldTestament.label = "OLD TESTAMENT — 39 BOOKS";
-
-    const newTestament = document.createElement("optgroup");
-    newTestament.label = "NEW TESTAMENT — 27 BOOKS";
+    const oldGroup = document.createElement("optgroup");
+    oldGroup.label = "OLD TESTAMENT — 39 BOOKS";
+    const newGroup = document.createElement("optgroup");
+    newGroup.label = "NEW TESTAMENT — 27 BOOKS";
 
     books.forEach(function (book, index) {
+      if (query && !book.name.toLowerCase().includes(query)) return;
       const option = document.createElement("option");
       option.value = book.name;
       option.textContent = book.name;
-
-      if (index < START_BOOK_COUNT) {
-        oldTestament.appendChild(option);
-      } else {
-        newTestament.appendChild(option);
-      }
+      (index < 39 ? oldGroup : newGroup).appendChild(option);
     });
 
-    bookSelect.appendChild(oldTestament);
-    bookSelect.appendChild(newTestament);
-  }
-
-  /* ---------------------------------------------------------
-     RESET CHAPTER AND VERSE SELECTORS
-  --------------------------------------------------------- */
-
-  function resetVerses() {
-    verseBox.replaceChildren();
-
-    const hint = document.createElement("p");
-    hint.className = "nav-help";
-    hint.textContent = "Choose a chapter first.";
-    verseBox.appendChild(hint);
-  }
-
-  function showChapters(bookName) {
-    const book = books.find(function (item) {
-      return item.name === bookName;
-    });
-
-    chapterBox.replaceChildren();
-    resetVerses();
-
-    if (!book) return;
-
-    selectedBook = bookName;
-    selectedChapter = 0;
-
-    for (let number = 1; number <= book.chapters; number++) {
-      const button = document.createElement("button");
-
-      button.type = "button";
-      button.className = "nav-number";
-      button.textContent = number;
-
-      button.addEventListener("click", function () {
-        openSelectedChapter(bookName, number);
-      });
-
-      chapterBox.appendChild(button);
+    if (oldGroup.children.length) bookSelect.appendChild(oldGroup);
+    if (newGroup.children.length) bookSelect.appendChild(newGroup);
+    if (previous && Array.from(bookSelect.options).some(o => o.value === previous)) {
+      bookSelect.value = previous;
     }
-
-    currentLabel.textContent =
-      bookName + " — " + book.chapters + " chapters";
-
-    navStatus.textContent =
-      "Choose any chapter of " + bookName + ".";
+    if (query && !oldGroup.children.length && !newGroup.children.length) {
+      navStatus.textContent = "No Bible book matches “" + filter + "”.";
+    } else if (query) {
+      navStatus.textContent = "Matching books shown. Select one to continue.";
+    }
   }
 
-  /* ---------------------------------------------------------
-     OPEN CHAPTER USING EXISTING BIBLE READER
-  --------------------------------------------------------- */
+  function resetSelect(select, placeholder) {
+    select.replaceChildren();
+    addOption(select, "", placeholder);
+  }
 
-  async function openSelectedChapter(bookName, chapterNumber) {
-    if (typeof window.openChapter !== "function") {
-      navStatus.textContent =
-        "Bible reader is not ready. Please reload the page.";
+  function resetChapterAndVerse() {
+    resetSelect(chapterSelect, "Choose chapter");
+    resetSelect(verseSelect, "Choose verse");
+    chapterSelect.disabled = true;
+    verseSelect.disabled = true;
+    openButton.disabled = true;
+  }
+
+  function populateChapters(bookName, keepChapter) {
+    const book = books.find(item => item.name === bookName);
+    resetSelect(chapterSelect, "Choose chapter");
+    resetSelect(verseSelect, "Choose verse");
+    verseSelect.disabled = true;
+    if (!book) {
+      chapterSelect.disabled = true;
+      openButton.disabled = true;
       return;
     }
+    for (let n = 1; n <= book.chapters; n++) addOption(chapterSelect, String(n), "Chapter " + n);
+    chapterSelect.disabled = false;
+    if (keepChapter && keepChapter <= book.chapters) chapterSelect.value = String(keepChapter);
+    openButton.disabled = !chapterSelect.value;
+  }
 
-    selectedBook = bookName;
-    selectedChapter = chapterNumber;
+  function populateVerses() {
+    resetSelect(verseSelect, "Choose verse");
+    const verses = message.querySelectorAll(".verse");
+    if (!verses.length) {
+      verseSelect.disabled = true;
+      return;
+    }
+    verses.forEach(function (_, index) {
+      addOption(verseSelect, String(index + 1), "Verse " + (index + 1));
+    });
+    verseSelect.disabled = false;
+  }
 
+  async function openSelectedChapter() {
+    const book = bookSelect.value;
+    const chapter = Number(chapterSelect.value);
+    if (!book || !chapter || typeof window.openChapter !== "function") return;
+
+    selectedBook = book;
+    selectedChapter = chapter;
+    openButton.disabled = true;
+    openButton.textContent = "Opening Scripture…";
+    navStatus.textContent = "Opening " + book + " " + chapter + "…";
     try {
-      navStatus.textContent =
-        "Opening " + bookName + " chapter " + chapterNumber + "...";
-
-      await window.openChapter(bookName, chapterNumber);
-
-      bookSelect.value = bookName;
-
-      updateChapterHighlight();
-      updateVerseSelector();
-
-      currentLabel.textContent =
-        bookName + " " + chapterNumber;
-
-      navStatus.textContent =
-        "Chapter opened. Choose a verse or read the passage below.";
-
+      await window.openChapter(book, chapter);
+      currentLabel.textContent = book + " " + chapter;
+      navStatus.textContent = "Chapter ready. Choose a verse to jump directly to it.";
+      populateVerses();
+      verseSelect.value = "";
     } catch (error) {
-      navStatus.textContent =
-        "Unable to open chapter. Please try again.";
-      console.error("Zuriel navigation:", error);
+      navStatus.textContent = "Unable to open this chapter. Please try again.";
+      console.error("Zuriel Navigator:", error);
+    } finally {
+      openButton.disabled = !chapterSelect.value;
+      openButton.textContent = "Open Selected Chapter";
     }
   }
 
-  /* ---------------------------------------------------------
-     HIGHLIGHT SELECTED CHAPTER
-  --------------------------------------------------------- */
-
-  function updateChapterHighlight() {
-    const buttons = chapterBox.querySelectorAll("button");
-
-    buttons.forEach(function (button) {
-      const number = Number(button.textContent);
-
-      button.classList.toggle(
-        "active",
-        number === selectedChapter
-      );
-    });
-  }
-
-  /* ---------------------------------------------------------
-     BUILD VERSE SELECTOR FROM THE OPEN CHAPTER
-  --------------------------------------------------------- */
-
-  function updateVerseSelector() {
+  function jumpToVerse() {
+    const number = Number(verseSelect.value);
+    if (!number) return;
     const verses = message.querySelectorAll(".verse");
+    const target = verses[number - 1];
+    if (!target) return;
 
-    verseBox.replaceChildren();
-
-    if (!verses.length) {
-      const hint = document.createElement("p");
-      hint.className = "nav-help";
-      hint.textContent = "Open a chapter to see its verses.";
-      verseBox.appendChild(hint);
-      return;
-    }
-
-    verses.forEach(function (verseElement, index) {
-      const button = document.createElement("button");
-
-      button.type = "button";
-      button.className = "nav-number";
-      button.textContent = index + 1;
-      button.setAttribute("aria-label", "Go to verse " + (index + 1));
-
-      button.addEventListener("click", function () {
-        selectVerse(index + 1, verseElement);
-      });
-
-      verseBox.appendChild(button);
+    message.querySelectorAll(".verse.zuriel-nav-highlight").forEach(function (item) {
+      item.classList.remove("zuriel-nav-highlight");
     });
+    target.classList.add("zuriel-nav-highlight");
+    currentLabel.textContent = selectedBook + " " + selectedChapter + ":" + number;
+    target.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
-  /* ---------------------------------------------------------
-     SELECT AND DISPLAY VERSE
-  --------------------------------------------------------- */
-
-  function selectVerse(number, element) {
-    message.querySelectorAll(".verse.zuriel-nav-highlight")
-      .forEach(function (item) {
-        item.classList.remove("zuriel-nav-highlight");
-      });
-
-    verseBox.querySelectorAll("button").forEach(function (button) {
-      button.classList.toggle(
-        "active",
-        Number(button.textContent) === number
-      );
-    });
-
-    element.classList.add("zuriel-nav-highlight");
-
-    currentLabel.textContent =
-      selectedBook + " " + selectedChapter + ":" + number;
-
-    element.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    });
-  }
-
-  /* ---------------------------------------------------------
-     WATCH THE EXISTING READER
-     This keeps verse navigation synchronised when chapters
-     are opened through the reader or cross-references.
-  --------------------------------------------------------- */
-
-  function detectOpenedChapter() {
+  function syncFromReader() {
     const verses = message.querySelectorAll(".verse");
-
-    if (!verses.length) {
-      updateVerseSelector();
-      return;
-    }
-
+    if (!verses.length) return;
     const heading = message.querySelector("h2");
+    if (!heading) return;
+    const match = heading.textContent.match(/^(.+?)\s+(\d+)\s+—/);
+    if (!match) return;
 
-    if (heading) {
-      const title = heading.textContent;
-      const match = title.match(/^(.+?)\s+(\d+)\s+—/);
+    const book = match[1].trim();
+    const chapter = Number(match[2]);
+    selectedBook = book;
+    selectedChapter = chapter;
 
-      if (match) {
-        selectedBook = match[1].trim();
-        selectedChapter = Number(match[2]);
-        bookSelect.value = selectedBook;
-
-        const book = books.find(function (item) {
-          return item.name === selectedBook;
-        });
-
-        if (book && chapterBox.children.length !== book.chapters) {
-          showChapters(selectedBook);
-          selectedChapter = Number(match[2]);
-        }
-
-        updateChapterHighlight();
-
-        currentLabel.textContent =
-          selectedBook + " " + selectedChapter;
-      }
+    if (bookSelect.value !== book) {
+      search.value = "";
+      fillBooks("");
+      bookSelect.value = book;
     }
-
-    updateVerseSelector();
-
-    navStatus.textContent =
-      verses.length + " verses ready for navigation.";
+    if (chapterSelect.options.length !== (books.find(b => b.name === book)?.chapters || 0) + 1) {
+      populateChapters(book, chapter);
+    } else {
+      chapterSelect.value = String(chapter);
+    }
+    populateVerses();
+    currentLabel.textContent = book + " " + chapter;
+    navStatus.textContent = verses.length + " verses ready. Choose a verse to jump to it.";
+    openButton.disabled = !chapterSelect.value;
   }
 
-  observer = new MutationObserver(function () {
-    detectOpenedChapter();
+  search.addEventListener("input", function () {
+    fillBooks(search.value);
+    if (!bookSelect.value) resetChapterAndVerse();
   });
-
-  observer.observe(message, {
-    childList: true,
-    subtree: true
-  });
-
-  /* ---------------------------------------------------------
-     BOOK SELECTION
-  --------------------------------------------------------- */
 
   bookSelect.addEventListener("change", function () {
-    const bookName = bookSelect.value;
-
-    if (!bookName) {
-      chapterBox.replaceChildren();
-      resetVerses();
-
-      currentLabel.textContent =
-        "Ready to explore God's Word.";
-
-      navStatus.textContent =
-        "Choose a Bible book to begin.";
-
-      return;
-    }
-
-    showChapters(bookName);
-
-    navStatus.textContent =
-      "Now choose a chapter of " + bookName + ".";
+    selectedBook = bookSelect.value;
+    selectedChapter = 0;
+    populateChapters(selectedBook);
+    currentLabel.textContent = selectedBook
+      ? selectedBook + " — choose a chapter"
+      : "Ready to explore God's Word.";
+    navStatus.textContent = selectedBook
+      ? "Choose a chapter, then open it."
+      : "Choose a Bible book to begin.";
   });
 
-  /* ---------------------------------------------------------
-     INITIALISE
-  --------------------------------------------------------- */
+  chapterSelect.addEventListener("change", function () {
+    openButton.disabled = !chapterSelect.value;
+    resetSelect(verseSelect, "Choose verse");
+    verseSelect.disabled = true;
+    if (chapterSelect.value) openSelectedChapter();
+  });
 
-  fillBookList();
+  openButton.addEventListener("click", openSelectedChapter);
+  verseSelect.addEventListener("change", jumpToVerse);
 
-  navStatus.textContent =
-    "39 Old Testament books and 27 New Testament books ready.";
+  const observer = new MutationObserver(function () {
+    if (observerTimer) window.clearTimeout(observerTimer);
+    observerTimer = window.setTimeout(syncFromReader, 60);
+  });
+  observer.observe(message, { childList: true, subtree: true });
 
-  console.log("Zuriel Bible Navigation loaded successfully.");
-
+  fillBooks("");
+  resetChapterAndVerse();
+  navStatus.textContent = "39 Old Testament books and 27 New Testament books ready.";
+  console.log("Zuriel Smart Bible Navigator loaded.");
 })();
- 
