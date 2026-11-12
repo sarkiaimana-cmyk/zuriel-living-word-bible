@@ -101,6 +101,79 @@ select {
   font-size: 14px;
 }
 
+#bibleSearch {
+  margin:16px 0;
+  padding:14px;
+  border:1px solid #d7d1bf;
+  border-radius:13px;
+  background:#fbfaf5;
+}
+
+#bibleSearch label {
+  display:block;
+  margin-bottom:8px;
+  color:#18352b;
+  font-weight:bold;
+}
+
+#bibleSearch .search-row {
+  display:flex;
+  gap:8px;
+}
+
+#bibleSearch input {
+  flex:1;
+  min-width:0;
+  min-height:46px;
+  padding:10px;
+  border:1px solid #a9b8aa;
+  border-radius:8px;
+  font-size:16px;
+}
+
+#bibleSearch button {
+  min-height:46px;
+  margin:0;
+  white-space:nowrap;
+}
+
+#bibleSearchResults {
+  display:grid;
+  gap:8px;
+  margin-top:10px;
+}
+
+#bibleSearchResults .search-result {
+  display:block;
+  width:100%;
+  margin:0;
+  padding:11px;
+  text-align:left;
+  background:#fff;
+  color:#18352b;
+  border:1px solid #d7d1bf;
+  border-radius:9px;
+  line-height:1.55;
+}
+
+#bibleSearchResults .search-result strong {
+  display:block;
+  color:#24634a;
+  margin-bottom:3px;
+}
+
+.verse.zuriel-search-highlight {
+  background:#fff0c9 !important;
+  border-left:5px solid #b99b58;
+  border-radius:8px;
+  padding-left:12px;
+}
+
+@media(max-width:420px) {
+  #bibleSearch .search-row { flex-direction:column; }
+  #bibleSearch button { width:100%; }
+}
+
 .continue-card { border-left: 5px solid #24634a; }
 
 #readerStatus {
@@ -160,6 +233,17 @@ footer {
   <p class="study-hint">
     Choose a book, select a chapter, then tap any verse to study it.
   </p>
+
+  <div id="bibleSearch">
+    <label for="bibleSearchInput">🔎 Search Scripture</label>
+    <div class="search-row">
+      <input id="bibleSearchInput" type="search" maxlength="80"
+        placeholder="Search a word or phrase..." autocomplete="off">
+      <button type="button" id="bibleSearchButton">Search Bible</button>
+    </div>
+    <p class="study-hint">Search the complete KJV Bible, even when offline. Enter at least 3 characters.</p>
+    <div id="bibleSearchResults" aria-live="polite"></div>
+  </div>
 
   <p id="readerStatus">Preparing Bible reader...</p>
 
@@ -571,6 +655,137 @@ window.openChapter = function (book, chapter) {
     status.textContent = "Unable to open reference: " + error.message;
   });
 };
+
+/* OFFLINE FULL-BIBLE SEARCH */
+
+window.ZurielBibleSearch = {
+  search: async function (query, limit) {
+    const term = String(query || "").trim().toLowerCase();
+
+    if (term.length < 3) {
+      throw new Error("Please enter at least 3 characters.");
+    }
+
+    const data = await loadKJV();
+    const maximum = Number.isInteger(limit) && limit > 0
+      ? Math.min(limit, 50)
+      : 30;
+    const matches = [];
+
+    for (const book of bibleBooks) {
+      const code = bookCodes[book.name];
+      const chapters = data[code];
+
+      if (!Array.isArray(chapters)) continue;
+
+      for (let chapterIndex = 0; chapterIndex < chapters.length; chapterIndex++) {
+        const verses = chapters[chapterIndex];
+        if (!Array.isArray(verses)) continue;
+
+        for (let verseIndex = 0; verseIndex < verses.length; verseIndex++) {
+          const verseText = verses[verseIndex];
+
+          if (
+            typeof verseText === "string" &&
+            verseText.toLowerCase().includes(term)
+          ) {
+            matches.push({
+              book: book.name,
+              chapter: chapterIndex + 1,
+              verse: verseIndex + 1,
+              text: verseText
+            });
+
+            if (matches.length >= maximum) return matches;
+          }
+        }
+      }
+    }
+
+    return matches;
+  }
+};
+
+async function runZurielBibleSearch() {
+  const input = document.getElementById("bibleSearchInput");
+  const button = document.getElementById("bibleSearchButton");
+  const resultsBox = document.getElementById("bibleSearchResults");
+  const query = input.value.trim();
+
+  resultsBox.replaceChildren();
+
+  if (query.length < 3) {
+    resultsBox.textContent = "Please enter at least 3 characters.";
+    return;
+  }
+
+  button.disabled = true;
+  resultsBox.textContent = "Searching all 66 books...";
+
+  try {
+    const results = await window.ZurielBibleSearch.search(query, 30);
+    resultsBox.replaceChildren();
+
+    if (!results.length) {
+      resultsBox.textContent = "No matching verses found. Try another word or phrase.";
+      return;
+    }
+
+    const summary = document.createElement("p");
+    summary.className = "study-hint";
+    summary.textContent = "Showing up to 30 matching verses. Select a result to open it.";
+    resultsBox.appendChild(summary);
+
+    results.forEach(function (item) {
+      const resultButton = document.createElement("button");
+      resultButton.type = "button";
+      resultButton.className = "search-result";
+
+      const reference = document.createElement("strong");
+      reference.textContent = item.book + " " + item.chapter + ":" + item.verse;
+
+      const verseText = document.createElement("span");
+      verseText.textContent = item.text;
+
+      resultButton.appendChild(reference);
+      resultButton.appendChild(verseText);
+
+      resultButton.addEventListener("click", async function () {
+        try {
+          await window.openChapter(item.book, item.chapter);
+          const verseElement = message.querySelectorAll(".verse")[item.verse - 1];
+
+          if (verseElement) {
+            message.querySelectorAll(".verse.zuriel-search-highlight")
+              .forEach(function (element) {
+                element.classList.remove("zuriel-search-highlight");
+              });
+
+            verseElement.classList.add("zuriel-search-highlight");
+            verseElement.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+        } catch (error) {
+          status.textContent = "Unable to open search result: " + error.message;
+        }
+      });
+
+      resultsBox.appendChild(resultButton);
+    });
+  } catch (error) {
+    resultsBox.textContent = error.message || "Scripture search could not be completed.";
+  } finally {
+    button.disabled = false;
+  }
+}
+
+document.getElementById("bibleSearchButton")
+  .addEventListener("click", runZurielBibleSearch);
+
+document.getElementById("bibleSearchInput")
+  .addEventListener("keydown", function (event) {
+    if (event.key === "Enter") runZurielBibleSearch();
+  });
+
 
 /* CONTINUE READING */
 
