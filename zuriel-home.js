@@ -353,7 +353,7 @@
           </div>
           <div>
             <label for="zurielHomeVerse">Verse (optional)</label>
-            <select id="zurielHomeVerse" disabled><option value="">Choose verse</option></select>
+            <select id="zurielHomeVerseSelect" disabled><option value="">Choose verse</option></select>
           </div>
         </div>
         <button type="button" class="home-button" id="zurielHomeOpenPassage" disabled>Open Selected Chapter</button>
@@ -679,7 +679,7 @@
     (function setupHomePassageSelector() {
       const bookSelect = document.getElementById("zurielHomeBook");
       const chapterSelect = document.getElementById("zurielHomeChapter");
-      const verseSelect = document.getElementById("zurielHomeVerse");
+      const verseSelect = document.getElementById("zurielHomeVerseSelect");
       const openButton = document.getElementById("zurielHomeOpenPassage");
       const passageStatus = document.getElementById("zurielHomePassageStatus");
       const books = typeof bibleBooks !== "undefined" ? bibleBooks : window.bibleBooks;
