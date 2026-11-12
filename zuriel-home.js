@@ -472,6 +472,9 @@
 
     function displaySection(section) {
       if (section === "home") {
+        if (typeof updateHomeReadingPosition === "function") {
+          updateHomeReadingPosition();
+        }
         showSections(["zurielHomeDashboard"]);
         setActiveNavigation("home");
         window.scrollTo({ top: 0, behavior: "smooth" });
