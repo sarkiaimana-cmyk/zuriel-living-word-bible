@@ -297,6 +297,14 @@
         </button>
       </section>
 
+      <section class="home-card home-continue-card">
+        <h2>↩️ Continue Reading</h2>
+        <p id="zurielHomeReadingPosition">Your last Scripture will appear here.</p>
+        <button class="home-button" id="zurielHomeContinueReading">
+          Continue from Your Last Chapter
+        </button>
+      </section>
+
       <section class="home-card">
         <h2>🌿 Scripture for Today</h2>
         <p class="home-verse" id="zurielHomeVerse"></p>
@@ -561,6 +569,41 @@
       .addEventListener("click", function () {
         navigate("read");
       });
+
+    function getHomeReadingPosition() {
+      try {
+        const saved = JSON.parse(localStorage.getItem("zurielLastReadingPosition"));
+        if (!saved || typeof saved.book !== "string" ||
+            !Number.isInteger(saved.chapter) || saved.chapter < 1) return null;
+        return saved;
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function updateHomeReadingPosition() {
+      const saved = getHomeReadingPosition();
+      const label = document.getElementById("zurielHomeReadingPosition");
+      const button = document.getElementById("zurielHomeContinueReading");
+      if (saved) {
+        label.textContent = "Last opened: " + saved.book + " " + saved.chapter + ".";
+        button.textContent = "Continue — " + saved.book + " " + saved.chapter;
+      } else {
+        label.textContent = "Your reading journey starts here. Choose any book and chapter.";
+        button.textContent = "Choose a Bible Book";
+      }
+    }
+
+    document.getElementById("zurielHomeContinueReading")
+      .addEventListener("click", function () {
+        const saved = getHomeReadingPosition();
+        navigate("read");
+        if (saved && typeof window.openChapter === "function") {
+          window.openChapter(saved.book, saved.chapter);
+        }
+      });
+
+    updateHomeReadingPosition();
 
     document.getElementById("zurielHomeOpenStudy")
       .addEventListener("click", function () {
