@@ -1400,8 +1400,13 @@ const topics=[
 ];
 function normalize(value){return String(value||"").toLowerCase().replace(/\s+/g," ").trim();}
 function findForReference(reference){
- const key=normalize(reference);
- return topics.filter(topic=>topic.references.some(item=>normalize(item.label)===key));
+ const match=String(reference||"").match(/^(.+?)\\s+(\\d+):(\\d+)$/);
+ if(!match)return [];
+ const book=normalize(match[1]), chapter=Number(match[2]), verse=Number(match[3]);
+ return topics.filter(topic=>topic.references.some(item=>
+  normalize(item.book)===book && item.chapter===chapter &&
+  verse>=item.verse && verse<=(item.endVerse||item.verse)
+ ));
 }
 window.ZurielTopicalIndex={
  list:function(){return topics.slice();},
