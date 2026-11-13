@@ -684,8 +684,9 @@
       const passageStatus = document.getElementById("zurielHomePassageStatus");
       const books = typeof bibleBooks !== "undefined" ? bibleBooks : window.bibleBooks;
 
-      if (!bookSelect || !Array.isArray(books)) {
-        passageStatus.textContent = "Bible book list is loading. Please try again shortly.";
+      if (!bookSelect || !chapterSelect || !verseSelect || !openButton ||
+          !passageStatus || !Array.isArray(books)) {
+        if (passageStatus) passageStatus.textContent = "The Scripture selector is preparing. Please refresh shortly.";
         return;
       }
 
@@ -704,26 +705,39 @@
         select.appendChild(option);
       }
 
-      function fillVerses() {
-        resetSelect(verseSelect, "Choose verse");
-        const verses = reader.querySelectorAll("#message .verse");
-        verses.forEach(function (_, index) {
-          const option = document.createElement("option");
-          option.value = String(index + 1);
-          option.textContent = "Verse " + (index + 1);
-          verseSelect.appendChild(option);
-        });
-        verseSelect.disabled = verses.length === 0;
+      async function fillVerses(book, chapter) {
+        resetSelect(verseSelect, "Entire chapter");
+        verseSelect.disabled = true;
+        passageStatus.textContent = "Loading verse choices for " + book + " " + chapter + "…";
+        try {
+          if (typeof window.getChapterVerseCount !== "function") {
+            throw new Error("Verse count service is not ready.");
+          }
+          const count = await window.getChapterVerseCount(book, chapter);
+          if (!count) throw new Error("No verses were found for this chapter.");
+          for (let n = 1; n <= count; n++) {
+            const option = document.createElement("option");
+            option.value = String(n);
+            option.textContent = "Verse " + n;
+            verseSelect.appendChild(option);
+          }
+          verseSelect.disabled = false;
+          passageStatus.textContent = book + " " + chapter + " is ready. You can choose a verse or open the whole chapter.";
+        } catch (error) {
+          passageStatus.textContent = "Verse choices could not load. You can still open the chapter.";
+          console.error("Zuriel Home verse choices:", error);
+        }
       }
 
       bookSelect.addEventListener("change", function () {
         resetSelect(chapterSelect, "Choose chapter");
-        resetSelect(verseSelect, "Choose verse");
+        resetSelect(verseSelect, "Entire chapter");
         verseSelect.disabled = true;
         const book = books.find(function (item) { return item.name === bookSelect.value; });
         if (!book) {
           chapterSelect.disabled = true;
           openButton.disabled = true;
+          passageStatus.textContent = "Choose a Bible book to begin.";
           return;
         }
         for (let n = 1; n <= book.chapters; n++) {
@@ -737,48 +751,52 @@
         passageStatus.textContent = book.name + " selected. Now choose a chapter.";
       });
 
-      chapterSelect.addEventListener("change", function () {
-        openButton.disabled = !chapterSelect.value;
-        resetSelect(verseSelect, "Choose verse");
+      chapterSelect.addEventListener("change", async function () {
+        const book = bookSelect.value;
+        const chapter = Number(chapterSelect.value);
+        resetSelect(verseSelect, "Entire chapter");
         verseSelect.disabled = true;
-        if (chapterSelect.value) {
-          passageStatus.textContent = "Ready to open " + bookSelect.value + " " + chapterSelect.value + ".";
+        openButton.disabled = !book || !chapter;
+        if (!book || !chapter) {
+          passageStatus.textContent = "Choose a chapter to see its verses.";
+          return;
         }
+        await fillVerses(book, chapter);
       });
 
       openButton.addEventListener("click", async function () {
         const book = bookSelect.value;
         const chapter = Number(chapterSelect.value);
+        const verseNumber = Number(verseSelect.value) || 0;
         if (!book || !chapter || typeof window.openChapter !== "function") {
           passageStatus.textContent = "Please choose a Bible book and chapter.";
           return;
         }
         openButton.disabled = true;
         openButton.textContent = "Opening Scripture…";
-        passageStatus.textContent = "Opening " + book + " " + chapter + "…";
+        passageStatus.textContent = "Opening " + book + " " + chapter + (verseNumber ? ":" + verseNumber : "") + "…";
         navigate("read");
         try {
           await window.openChapter(book, chapter);
-          fillVerses();
-          passageStatus.textContent = book + " " + chapter + " is open. Choose a verse if you wish.";
+          if (verseNumber) {
+            const target = reader.querySelectorAll("#message .verse")[verseNumber - 1];
+            if (target) {
+              target.scrollIntoView({ behavior: "smooth", block: "center" });
+              target.classList.add("zuriel-nav-highlight");
+              passageStatus.textContent = "Opened " + book + " " + chapter + ":" + verseNumber + ".";
+            } else {
+              passageStatus.textContent = "Chapter opened, but the selected verse was not found.";
+            }
+          } else {
+            passageStatus.textContent = "Opened " + book + " " + chapter + ".";
+          }
           if (typeof updateHomeReadingPosition === "function") updateHomeReadingPosition();
         } catch (error) {
-          passageStatus.textContent = "Could not open this chapter. Please try again.";
+          passageStatus.textContent = "Could not open this passage. Please try again.";
           console.error("Zuriel Home passage selector:", error);
         } finally {
-          openButton.disabled = !chapterSelect.value;
-          openButton.textContent = "Open Selected Chapter";
-        }
-      });
-
-      verseSelect.addEventListener("change", function () {
-        const number = Number(verseSelect.value);
-        if (!number) return;
-        navigate("read");
-        const target = reader.querySelectorAll("#message .verse")[number - 1];
-        if (target) {
-          target.scrollIntoView({ behavior:"smooth", block:"center" });
-          target.classList.add("zuriel-nav-highlight");
+          openButton.disabled = false;
+          openButton.textContent = "Open Selected Passage";
         }
       });
     })();
