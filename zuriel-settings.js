@@ -82,6 +82,15 @@
         --zuriel-highlight: #f2c14e;
         --zuriel-highlight-ink: #332400;
       }
+      html[data-zuriel-theme="forest"] #zurielTopReturnBar,
+      html[data-zuriel-theme="forest"] #zurielBottomNavigation { background:#123c32; }
+      html[data-zuriel-theme="warm"] #zurielTopReturnBar,
+      html[data-zuriel-theme="warm"] #zurielBottomNavigation { background:#6d5634; }
+      html[data-zuriel-theme="night"] #zurielTopReturnBar,
+      html[data-zuriel-theme="night"] #zurielBottomNavigation { background:#080f1b; }
+      html[data-zuriel-theme="forest"] #zurielSettingsPanel { background:linear-gradient(155deg,#16483b,#0d2c27); }
+      html[data-zuriel-theme="warm"] #zurielSettingsPanel { background:linear-gradient(155deg,#6d5634,#3e3325); }
+      html[data-zuriel-theme="night"] #zurielSettingsPanel { background:linear-gradient(155deg,#111d31,#080f1b); }
       #message[data-zuriel-paper="ivory"] {
         background: #fbf8ef;
         color: #24334a;
