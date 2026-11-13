@@ -257,6 +257,50 @@
         box.appendChild(item);
       });
 
+      const topicalIndex = window.ZurielTopicalIndex;
+      if (topicalIndex && typeof topicalIndex.findByKeyword === "function") {
+        const glossWords = entry.senses
+          .map(sense => String(sense.gloss || "").toLowerCase())
+          .join(" ").match(/[a-z]{4,}/g) || [];
+        const topicalMatches = [];
+        glossWords.forEach(function (word) {
+          topicalIndex.findByKeyword(word).forEach(function (topic) {
+            if (!topicalMatches.some(item => item.title === topic.title)) topicalMatches.push(topic);
+          });
+        });
+        if (topicalMatches.length) {
+          const topicalBox = document.createElement("div");
+          topicalBox.className = "lexicon-entry";
+          const topicalHeading = document.createElement("h4");
+          topicalHeading.textContent = "Possible topical connections from this word's gloss";
+          topicalBox.appendChild(topicalHeading);
+          const note = document.createElement("p");
+          note.textContent = "These pathways are suggested by the English gloss. Check each passage in its own context; they are not definitions of the original word.";
+          topicalBox.appendChild(note);
+          topicalMatches.slice(0, 5).forEach(function (topic) {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "study-link";
+            button.textContent = topic.title + " • " + topic.references[0].label;
+            button.addEventListener("click", function () {
+              const item = topic.references[0];
+              if (typeof window.openChapter !== "function") return;
+              window.openChapter(item.book, item.chapter).then(function () {
+                const verseElements = document.querySelectorAll("#message .verse");
+                const selectedVerse = verseElements[item.verse - 1];
+                if (!selectedVerse) return;
+                const text = selectedVerse.textContent.replace(/^\s*\d+\.?\s*/, "").trim();
+                if (window.ZurielStudy && typeof window.ZurielStudy.openForReference === "function") {
+                  window.ZurielStudy.openForReference(item.book, item.chapter, item.verse, text, "", -1);
+                }
+              });
+            });
+            topicalBox.appendChild(button);
+          });
+          box.appendChild(topicalBox);
+        }
+      }
+
       const related = document.createElement("div");
       related.className = "lexicon-entry";
       const relatedHeading = document.createElement("h4");
