@@ -457,6 +457,7 @@
         const verseNotes = readLocalRecords("zuriel-verse-study-notes-v1");
         const verseHighlights = readLocalRecords("zuriel-word-highlights-v1");
         const bookmarkCount = saved.bookmarks.length;
+        const prayerCount = saved.prayers.length;
         const noteEntries = Object.entries(verseNotes).filter(function (entry) {
           const value = entry[1] || {};
           return value.title || value.note || value.application;
@@ -468,7 +469,8 @@
 
         const summary = element("p",
           bookmarkCount + " saved items • " + noteEntries.length +
-          " verse studies • " + highlightEntries.length + " highlighted verses",
+          " verse studies • " + highlightEntries.length + " highlighted verses • " +
+          prayerCount + " prayer records",
           "library-status");
         content.appendChild(summary);
 
@@ -527,6 +529,16 @@
           box.appendChild(button("Read Highlighted Verse", () => openReference(reference)));
           content.appendChild(box);
         });
+        content.appendChild(element("h3", "🙏 My Prayer Journal Records"));
+        if (!saved.prayers.length) {
+          content.appendChild(element("p", "Your saved prayers and testimonies will appear here."));
+        }
+        saved.prayers.slice().reverse().forEach(function (item) {
+          const box = element("div", undefined, "library-entry");
+          box.appendChild(element("small", item.date || "Saved prayer"));
+          box.appendChild(element("p", item.text || ""));
+          content.appendChild(box);
+        });
       }
 
       content.scrollIntoView({
@@ -553,7 +565,7 @@
       },
 
       openPersonal: function () {
-        openPage("notes");
+        openPage("saved");
       },
 
       openPrayer: function () {
