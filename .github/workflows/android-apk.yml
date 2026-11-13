@@ -54,14 +54,69 @@ jobs:
       - name: Sync Android project
         run: npx cap sync android
 
+      - name: Check whether release signing is configured
+        id: signing_check
+        env:
+          ZURIEL_KEYSTORE_BASE64: ${{ secrets.ZURIEL_KEYSTORE_BASE64 }}
+          ZURIEL_KEYSTORE_PASSWORD: ${{ secrets.ZURIEL_KEYSTORE_PASSWORD }}
+          ZURIEL_KEY_ALIAS: ${{ secrets.ZURIEL_KEY_ALIAS }}
+          ZURIEL_KEY_PASSWORD: ${{ secrets.ZURIEL_KEY_PASSWORD }}
+        shell: bash
+        run: |
+          if [[ -n "$ZURIEL_KEYSTORE_BASE64" && -n "$ZURIEL_KEYSTORE_PASSWORD" && -n "$ZURIEL_KEY_ALIAS" && -n "$ZURIEL_KEY_PASSWORD" ]]; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+            echo "Stable release signing secrets are configured."
+          else
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "Stable signing is not configured yet; building the existing debug APK only."
+          fi
+
       - name: Build standalone debug APK
         working-directory: android
         run: ./gradlew assembleDebug
 
-      - name: Upload Zuriel APK
+      - name: Prepare signed release APK
+        if: steps.signing_check.outputs.available == 'true'
+        working-directory: android
+        env:
+          ZURIEL_KEYSTORE_BASE64: ${{ secrets.ZURIEL_KEYSTORE_BASE64 }}
+          ZURIEL_KEYSTORE_PASSWORD: ${{ secrets.ZURIEL_KEYSTORE_PASSWORD }}
+          ZURIEL_KEY_ALIAS: ${{ secrets.ZURIEL_KEY_ALIAS }}
+          ZURIEL_KEY_PASSWORD: ${{ secrets.ZURIEL_KEY_PASSWORD }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          KEYSTORE="$RUNNER_TEMP/zuriel-release.jks"
+          printf '%s' "$ZURIEL_KEYSTORE_BASE64" | base64 --decode > "$KEYSTORE"
+          test -s "$KEYSTORE"
+          ./gradlew assembleRelease
+          BUILD_TOOLS="$ANDROID_HOME/build-tools/36.0.0"
+          UNSIGNED="app/build/outputs/apk/release/app-release-unsigned.apk"
+          ALIGNED="$RUNNER_TEMP/zuriel-release-aligned.apk"
+          OUTPUT="app/build/outputs/apk/release/Zuriel-Living-Word-Bible-release.apk"
+          "$BUILD_TOOLS/zipalign" -v -p 4 "$UNSIGNED" "$ALIGNED"
+          "$BUILD_TOOLS/apksigner" sign \
+            --ks "$KEYSTORE" \
+            --ks-key-alias "$ZURIEL_KEY_ALIAS" \
+            --ks-pass env:ZURIEL_KEYSTORE_PASSWORD \
+            --key-pass env:ZURIEL_KEY_PASSWORD \
+            --out "$OUTPUT" "$ALIGNED"
+          "$BUILD_TOOLS/apksigner" verify --verbose --print-certs "$OUTPUT"
+          rm -f "$KEYSTORE" "$ALIGNED"
+
+      - name: Upload Zuriel debug APK
         uses: actions/upload-artifact@v4
         with:
           name: Zuriel-Living-Word-Bible-APK
           path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload signed Zuriel release APK
+        if: steps.signing_check.outputs.available == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: Zuriel-Living-Word-Bible-Signed-APK
+          path: android/app/build/outputs/apk/release/Zuriel-Living-Word-Bible-release.apk
           if-no-files-found: error
           retention-days: 30
