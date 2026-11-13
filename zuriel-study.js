@@ -69,10 +69,45 @@
   let crossReferencesRequest = 0;
   let lexiconRequest = 0;
 
+  // Keep successfully downloaded interlinear, lexicon and cross-reference
+  // records in Cache Storage so a verse studied once can be revisited offline.
+  // Cache-first is appropriate here because these reference datasets are
+  // versioned/static resources; a failed cache operation never blocks study.
   async function fetchStudyJson(url) {
+    const cacheName = "zuriel-study-resources-v1";
+    let studyCache = null;
+
+    if ("caches" in window) {
+      try {
+        studyCache = await caches.open(cacheName);
+        const cachedResponse = await studyCache.match(url);
+        if (cachedResponse) {
+          try {
+            return await cachedResponse.clone().json();
+          } catch (cacheError) {
+            await studyCache.delete(url);
+          }
+        }
+      } catch (cacheError) {
+        studyCache = null;
+      }
+    }
+
     const response = await fetch(url);
-    if (!response.ok) throw new Error("Study resource is temporarily unavailable.");
-    return response.json();
+    if (!response.ok) {
+      throw new Error("Study resource is temporarily unavailable.");
+    }
+
+    const data = await response.json();
+    if (studyCache) {
+      try {
+        await studyCache.put(url, response.clone());
+      } catch (cacheError) {
+        // Some browsers restrict cross-origin cache writes; online study
+        // remains available and the app continues without persistent cache.
+      }
+    }
+    return data;
   }
 
   async function loadOriginalWords(ref) {
