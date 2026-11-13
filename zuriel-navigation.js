@@ -312,6 +312,8 @@
   }
 
   async function populateVersesForSelection(book, chapter, preferredVerse) {
+    selectedBook = book;
+    selectedChapter = chapter;
     const token = ++verseRequestToken;
     resetSelect(verseSelect, "Loading verses…");
     verseSelect.disabled = true;
