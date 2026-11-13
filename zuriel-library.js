@@ -473,7 +473,7 @@
         content.appendChild(summary);
 
         function openReference(reference) {
-          const match = String(reference || "").match(/^(.+?)\\s+(\\d+):(\\d+)$/);
+          const match = String(reference || "").match(/^(.+?)\s+(\d+):(\d+)$/);
           if (!match || typeof window.openChapter !== "function") return;
           window.openChapter(match[1], Number(match[2])).then(function () {
             const verse = document.querySelectorAll("#message .verse")[Number(match[3]) - 1];
