@@ -672,7 +672,14 @@
         </details>
 
         <details>
-          <summary>📝 6. My Personal Study Journal</summary>
+          <summary>🧭 6. Topical Scripture Connections</summary>
+          <div class="study-body" id="zurielTopicalConnections" aria-live="polite">
+            <p>Select a verse to discover its mapped biblical themes and related passages.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>📝 7. My Personal Study Journal</summary>
           <div class="study-body">
             <p>Your notes are saved separately for each verse on this device.</p>
 
@@ -895,6 +902,82 @@
       if (target) target.classList.add("zuriel-selected-verse");
     }
 
+    function renderTopicalConnections(ref) {
+      const target = document.getElementById("zurielTopicalConnections");
+      if (!target) return;
+      target.replaceChildren();
+      const index = window.ZurielTopicalIndex;
+      if (!index || typeof index.findForReference !== "function") {
+        target.textContent = "The topical index is not available yet. Reload after the study resources update.";
+        return;
+      }
+      const reference = ref.book + " " + ref.chapter + ":" + ref.verse;
+      const matches = index.findForReference(reference);
+      const intro = document.createElement("p");
+      intro.textContent = matches.length
+        ? "Themes mapped to " + reference + ". Open any passage below to continue studying its connection."
+        : "No curated topic is mapped directly to " + reference + " yet. Browse the topic directory below to explore related biblical themes.";
+      target.appendChild(intro);
+
+      function openReference(item) {
+        if (typeof window.openChapter !== "function") return;
+        window.openChapter(item.book, item.chapter).then(function () {
+          const verseElements = document.querySelectorAll("#message .verse");
+          const selected = verseElements[item.verse - 1];
+          if (!selected) return;
+          const verseText = selected.textContent.replace(/^\s*\d+\.?\s*/, "").trim();
+          selected.scrollIntoView({ behavior: "smooth", block: "center" });
+          selected.classList.add("zuriel-selected-verse");
+          if (window.ZurielStudy && typeof window.ZurielStudy.openForReference === "function") {
+            window.ZurielStudy.openForReference(item.book, item.chapter, item.verse, verseText, "", -1);
+          }
+        });
+      }
+
+      function topicCard(topic) {
+        const card = document.createElement("div");
+        card.className = "study-word";
+        const heading = document.createElement("h3");
+        heading.textContent = topic.title;
+        card.appendChild(heading);
+        const summary = document.createElement("p");
+        summary.textContent = topic.summary;
+        card.appendChild(summary);
+        const links = document.createElement("div");
+        links.className = "study-topic-links";
+        topic.references.forEach(function (item) {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "study-link";
+          button.textContent = item.label;
+          button.addEventListener("click", function () { openReference(item); });
+          links.appendChild(button);
+        });
+        card.appendChild(links);
+        return card;
+      }
+
+      if (matches.length) {
+        matches.forEach(function (topic) { target.appendChild(topicCard(topic)); });
+      } else {
+        const directory = document.createElement("div");
+        directory.className = "study-topic-links";
+        index.list().forEach(function (topic) {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "study-link";
+          button.textContent = topic.title;
+          button.addEventListener("click", function () {
+            const old = target.querySelector(".study-word");
+            if (old) old.remove();
+            target.appendChild(topicCard(topic));
+          });
+          directory.appendChild(button);
+        });
+        target.appendChild(directory);
+      }
+    }
+
     // Build an offline study framework from the actual KJV chapter currently
     // on screen. It gives the reader immediate literary context without
     // pretending that automated prompts are a scholarly commentary.
@@ -963,6 +1046,8 @@
         "Keep the exact Bible wording separate from your explanation. Where Christians understand a passage differently, note the alternatives fairly rather than presenting one inference as a direct quotation.");
       addLine(meaning, "4. Apply it faithfully",
         "Ask what the passage reveals about God, what response it calls for, and how that response fits the whole teaching of Scripture.");
+
+      renderTopicalConnections(ref);
 
       deeper.replaceChildren();
       addLine(deeper, "Whole-Bible study",
