@@ -80,11 +80,11 @@ const topics=[
       }
     ],
     "relatedExplanations": [
-      "Exodus 34:6-7 — Read this passage in its immediate setting to see its contribution to the theme.",
-      "Psalm 103:8-14 — Notice how this passage develops or illustrates the biblical theme.",
-      "Psalm 145:8-9 — Compare this passage with the others to see the theme across Scripture.",
-      "John 4:24 — Observe what this passage reveals about God's action and human response.",
-      "1 John 4:8 — Consider how this passage completes or deepens the study."
+      "Exodus 34:6–7 — God Himself declares His name and describes His mercy, patience, faithfulness and justice.",
+      "Psalm 103:8–14 — David praises God's compassion and remembers human frailty.",
+      "Psalm 145:8–9 — God's goodness and compassion extend over all His works.",
+      "John 4:24 — Jesus teaches that God's nature shapes the way He is to be worshipped.",
+      "1 John 4:8 — John's argument about love begins with God's own nature and action."
     ]
   },
   {
@@ -157,11 +157,11 @@ const topics=[
       }
     ],
     "relatedExplanations": [
-      "Genesis 1:1 — Read this passage in its immediate setting to see its contribution to the theme.",
-      "Genesis 1:26-27 — Notice how this passage develops or illustrates the biblical theme.",
-      "Psalm 19:1 — Compare this passage with the others to see the theme across Scripture.",
-      "John 1:3 — Observe what this passage reveals about God's action and human response.",
-      "Colossians 1:16-17 — Consider how this passage completes or deepens the study."
+      "Genesis 1:1 — the opening claim identifies God as the source of all that exists.",
+      "Genesis 1:26–27 — humanity's dignity and vocation are grounded in God's image.",
+      "Psalm 19:1 — the heavens are portrayed as declaring their Maker's glory.",
+      "John 1:3 — the prologue places all created things in relation to the eternal Word.",
+      "Colossians 1:16–17 — creation is through Christ, for Christ and held together in Him."
     ]
   },
   {
@@ -235,11 +235,11 @@ const topics=[
       }
     ],
     "relatedExplanations": [
-      "Psalm 119:105 — Read this passage in its immediate setting to see its contribution to the theme.",
-      "Psalm 119:11 — Notice how this passage develops or illustrates the biblical theme.",
-      "2 Timothy 3:16-17 — Compare this passage with the others to see the theme across Scripture.",
-      "Hebrews 4:12 — Observe what this passage reveals about God's action and human response.",
-      "John 17:17 — Consider how this passage completes or deepens the study."
+      "Psalm 119:105 — God's instruction gives light for the path ahead.",
+      "Psalm 119:11 — storing God's word in the heart shapes resistance to sin.",
+      "2 Timothy 3:16–17 — Paul describes Scripture's source and its equipping work.",
+      "Hebrews 4:12 — God's word exposes and discerns the inner person.",
+      "John 17:17 — Jesus asks the Father to sanctify His people in truth."
     ]
   },
   {
@@ -312,11 +312,11 @@ const topics=[
       }
     ],
     "relatedExplanations": [
-      "Proverbs 3:5-6 — Read this passage in its immediate setting to see its contribution to the theme.",
-      "Hebrews 11:1 — Notice how this passage develops or illustrates the biblical theme.",
-      "Hebrews 11:6 — Compare this passage with the others to see the theme across Scripture.",
-      "Romans 10:17 — Observe what this passage reveals about God's action and human response.",
-      "Mark 9:24 — Consider how this passage completes or deepens the study."
+      "Proverbs 3:5–6 — trust means leaning on the LORD rather than one's own limited understanding.",
+      "Hebrews 11:1 — faith concerns confidence in God's promised reality, even when unseen.",
+      "Hebrews 11:6 — drawing near to God requires trust in His existence and goodness.",
+      "Romans 10:17 — faith is connected to hearing the message about Christ.",
+      "Mark 9:24 — a father brings both belief and weakness honestly to Jesus."
     ]
   },
   {
@@ -389,11 +389,11 @@ const topics=[
       }
     ],
     "relatedExplanations": [
-      "John 3:16 — Read this passage in its immediate setting to see its contribution to the theme.",
-      "Ephesians 2:8-10 — Notice how this passage develops or illustrates the biblical theme.",
-      "Romans 5:1-2 — Compare this passage with the others to see the theme across Scripture.",
-      "Titus 3:4-7 — Observe what this passage reveals about God's action and human response.",
-      "Romans 10:9-10 — Consider how this passage completes or deepens the study."
+      "John 3:16 — God's love is shown in the giving of His Son so believers may have life.",
+      "Ephesians 2:8–10 — salvation is God's gift, and the new life it creates is directed toward good works.",
+      "Romans 5:1–2 — faith brings justification, peace with God and access into grace.",
+      "Titus 3:4–7 — salvation flows from God's mercy and renewing work, not human achievement.",
+      "Romans 10:9–10 — Paul describes the believing and confessing response to the gospel."
     ]
   },
   {
@@ -467,11 +467,11 @@ const topics=[
       }
     ],
     "relatedExplanations": [
-      "2 Corinthians 5:17 — Read this passage in its immediate setting to see its contribution to the theme.",
-      "Galatians 2:20 — Notice how this passage develops or illustrates the biblical theme.",
-      "Romans 6:4 — Compare this passage with the others to see the theme across Scripture.",
-      "Colossians 3:1-4 — Observe what this passage reveals about God's action and human response.",
-      "John 15:4-5 — Consider how this passage completes or deepens the study."
+      "2 Corinthians 5:17 — union with Christ means new creation, not merely self-improvement.",
+      "Galatians 2:20 — Paul describes a life now shaped by Christ's self-giving love and presence.",
+      "Romans 6:4 — baptism imagery connects union with Christ's death to a new manner of life.",
+      "Colossians 3:1–4 — the believer's raised life with Christ reshapes priorities and hope.",
+      "John 15:4–5 — Jesus teaches that lasting fruit depends on remaining in Him."
     ]
   },
   {
@@ -544,11 +544,11 @@ const topics=[
       }
     ],
     "relatedExplanations": [
-      "John 14:16-17 — Read this passage in its immediate setting to see its contribution to the theme.",
-      "John 16:13 — Notice how this passage develops or illustrates the biblical theme.",
-      "Acts 1:8 — Compare this passage with the others to see the theme across Scripture.",
-      "Romans 8:14-16 — Observe what this passage reveals about God's action and human response.",
-      "Galatians 5:22-23 — Consider how this passage completes or deepens the study."
+      "John 14:16–17 — Jesus promises the Spirit's abiding presence with His disciples.",
+      "John 16:13 — the Spirit guides Jesus' followers into truth and glorifies Christ.",
+      "Acts 1:8 — the Spirit empowers the church for witness, not self-display.",
+      "Romans 8:14–16 — the Spirit leads God's children and bears witness to their adoption.",
+      "Galatians 5:22–23 — the Spirit's fruit describes the character He cultivates."
     ]
   },
   {
@@ -621,11 +621,11 @@ const topics=[
       }
     ],
     "relatedExplanations": [
-      "Matthew 6:9-13 — Read this passage in its immediate setting to see its contribution to the theme.",
-      "Philippians 4:6-7 — Notice how this passage develops or illustrates the biblical theme.",
-      "1 Thessalonians 5:17-18 — Compare this passage with the others to see the theme across Scripture.",
-      "Hebrews 4:16 — Observe what this passage reveals about God's action and human response.",
-      "1 John 5:14 — Consider how this passage completes or deepens the study."
+      "Matthew 6:9–13 — Jesus' model prayer orders requests around God's name, kingdom and daily dependence.",
+      "Philippians 4:6–7 — prayer and thanksgiving bring anxious concerns before God.",
+      "1 Thessalonians 5:17–18 — continual prayer belongs with a thankful life in every circumstance.",
+      "Hebrews 4:16 — access to God is grounded in Jesus' priestly ministry and mercy.",
+      "1 John 5:14 — confidence in asking is shaped by seeking God's will."
     ]
   },
   {
@@ -698,11 +698,11 @@ const topics=[
       }
     ],
     "relatedExplanations": [
-      "James 1:5 — Read this passage in its immediate setting to see its contribution to the theme.",
-      "Proverbs 3:5-6 — Notice how this passage develops or illustrates the biblical theme.",
-      "Psalm 32:8 — Compare this passage with the others to see the theme across Scripture.",
-      "Psalm 119:105 — Observe what this passage reveals about God's action and human response.",
-      "Colossians 1:9-10 — Consider how this passage completes or deepens the study."
+      "James 1:5 — believers facing trials are invited to ask God for wisdom generously.",
+      "Proverbs 3:5–6 — guidance is linked to trust and submission to the LORD.",
+      "Psalm 32:8 — God promises instruction and counsel to His people.",
+      "Psalm 119:105 — Scripture gives light for the next step, not necessarily the whole map.",
+      "Colossians 1:9–10 — spiritual wisdom aims at a life that pleases God and bears fruit."
     ]
   },
   {
@@ -776,11 +776,11 @@ const topics=[
       }
     ],
     "relatedExplanations": [
-      "Isaiah 26:3 — Read this passage in its immediate setting to see its contribution to the theme.",
-      "John 14:27 — Notice how this passage develops or illustrates the biblical theme.",
-      "Philippians 4:6-7 — Compare this passage with the others to see the theme across Scripture.",
-      "1 Peter 5:7 — Observe what this passage reveals about God's action and human response.",
-      "Psalm 46:1-2 — Consider how this passage completes or deepens the study."
+      "Isaiah 26:3 — steadfast trust is connected with the peace God gives.",
+      "John 14:27 — Jesus offers peace grounded in His presence, distinct from fragile worldly security.",
+      "Philippians 4:6–7 — Paul directs anxious concerns into prayer, petition and thanksgiving.",
+      "1 Peter 5:7 — believers can cast anxieties on God because He cares for them.",
+      "Psalm 46:1–2 — God's refuge remains reliable even when creation and society seem shaken."
     ]
   },
   {
@@ -853,11 +853,11 @@ const topics=[
       }
     ],
     "relatedExplanations": [
-      "Joshua 1:9 — Read this passage in its immediate setting to see its contribution to the theme.",
-      "Isaiah 41:10 — Notice how this passage develops or illustrates the biblical theme.",
-      "Psalm 27:1 — Compare this passage with the others to see the theme across Scripture.",
-      "Ephesians 6:10 — Observe what this passage reveals about God's action and human response.",
-      "2 Timothy 1:7 — Consider how this passage completes or deepens the study."
+      "Joshua 1:9 — courage is grounded in God's presence as Joshua obeys his calling.",
+      "Isaiah 41:10 — God promises sustaining help to His fearful servant.",
+      "Psalm 27:1 — David confesses the LORD as light and stronghold amid threat.",
+      "Ephesians 6:10–11 — strength is found in the Lord and expressed through spiritual readiness.",
+      "2 Corinthians 12:9–10 — Christ's power is displayed through human weakness."
     ]
   },
   {
@@ -937,11 +937,11 @@ const topics=[
       }
     ],
     "relatedExplanations": [
-      "1 Corinthians 13:4-7 — Read this passage in its immediate setting to see its contribution to the theme.",
-      "John 13:34-35 — Notice how this passage develops or illustrates the biblical theme.",
-      "Colossians 3:12-14 — Compare this passage with the others to see the theme across Scripture.",
-      "1 John 4:7-12 — Observe what this passage reveals about God's action and human response.",
-      "Romans 12:9-10 — Consider how this passage completes or deepens the study."
+      "Leviticus 19:18 — love of neighbour is embedded in Israel's covenant life and ethical duties.",
+      "Hosea 6:6 — God values steadfast love and true knowledge of Him over empty ritual.",
+      "Matthew 9:36 — Jesus' compassion moves Him to care for people who are distressed and scattered.",
+      "Luke 10:25–37 — the Good Samaritan makes neighbour-love practical across social boundaries.",
+      "1 John 3:16–18 — Christ's self-giving love becomes the pattern for practical care."
     ]
   },
   {
