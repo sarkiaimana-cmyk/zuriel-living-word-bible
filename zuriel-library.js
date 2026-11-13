@@ -53,31 +53,21 @@
     ],
 
     namesOfGod: [
-      {
-        name: "Jehovah Jireh",
-        meaning: "The Lord will provide.",
-        reference: "Genesis 22:14"
-      },
-      {
-        name: "Jehovah Rapha",
-        meaning: "The Lord who heals.",
-        reference: "Exodus 15:26"
-      },
-      {
-        name: "Jehovah Shalom",
-        meaning: "The Lord is peace.",
-        reference: "Judges 6:24"
-      },
-      {
-        name: "El Shaddai",
-        meaning: "God Almighty.",
-        reference: "Genesis 17:1"
-      },
-      {
-        name: "Jehovah Nissi",
-        meaning: "The Lord is my banner.",
-        reference: "Exodus 17:15"
-      }
+      { name: "YHWH — The LORD", meaning: "God's covenant name, commonly represented as LORD in many English Bible translations.", reference: "Exodus 3:15" },
+      { name: "I AM WHO I AM", meaning: "God reveals Himself as the self-existent One who sends Moses.", reference: "Exodus 3:14" },
+      { name: "El Shaddai", meaning: "God Almighty; the title is used when God confirms His covenant promise to Abram.", reference: "Genesis 17:1" },
+      { name: "El Elyon", meaning: "God Most High; the title declares God's supreme authority.", reference: "Genesis 14:18–20" },
+      { name: "El Roi", meaning: "The God who sees me; Hagar uses this title after God meets her in the wilderness.", reference: "Genesis 16:13" },
+      { name: "Jehovah Jireh", meaning: "The LORD will provide; the name is connected with God's provision on the mountain.", reference: "Genesis 22:14" },
+      { name: "Jehovah Rapha", meaning: "The LORD who heals; revealed in the covenant setting at Marah.", reference: "Exodus 15:26" },
+      { name: "Jehovah Nissi", meaning: "The LORD is my banner; Moses names the altar after God's help in battle.", reference: "Exodus 17:15" },
+      { name: "Jehovah Shalom", meaning: "The LORD is peace; Gideon builds an altar with this name after receiving God's reassurance.", reference: "Judges 6:24" },
+      { name: "The LORD Our Righteousness", meaning: "A prophetic title pointing to the righteous King God promises to raise up.", reference: "Jeremiah 23:6" },
+      { name: "The LORD Is There", meaning: "The closing name in Ezekiel's vision of the restored city.", reference: "Ezekiel 48:35" },
+      { name: "The LORD My Shepherd", meaning: "David describes the LORD's care, guidance and protection through the picture of a shepherd.", reference: "Psalm 23:1" },
+      { name: "Abba, Father", meaning: "A relational title used in the New Testament to express the believer's adopted relationship with God.", reference: "Romans 8:15" },
+      { name: "Ancient of Days", meaning: "Daniel's vision uses this title to portray God's eternal rule and righteous judgement.", reference: "Daniel 7:9–10" },
+      { name: "King of Kings and Lord of Lords", meaning: "A royal title declaring the supreme authority of Christ.", reference: "Revelation 19:16" }
     ],
 
     studyTopics: [
@@ -332,7 +322,7 @@
       if (page === "names") {
         content.appendChild(card(
           "Names and Titles of God",
-          "Discover the meaning and biblical references of God's names."
+          "Explore biblical names and titles in their original passages. Translated forms and titles are explained in context."
         ));
 
         originalLibrary.namesOfGod.forEach(item => {
