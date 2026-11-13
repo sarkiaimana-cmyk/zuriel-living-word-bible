@@ -860,6 +860,84 @@
       if (target) target.classList.add("zuriel-selected-verse");
     }
 
+    // Build an offline study framework from the actual KJV chapter currently
+    // on screen. It gives the reader immediate literary context without
+    // pretending that automated prompts are a scholarly commentary.
+    function renderStudyFramework(ref) {
+      const verses = Array.from(document.querySelectorAll("#message .verse"));
+      const selected = findVerseElement(ref.verse);
+      const context = document.getElementById("zurielContext");
+      const meaning = document.getElementById("zurielMeaning");
+      const deeper = document.getElementById("zurielDeeperStudy");
+      if (!context || !meaning || !deeper) return;
+
+      function verseRecord(element) {
+        if (!element) return null;
+        const label = element.querySelector("strong");
+        const number = label
+          ? label.textContent.trim().replace(/\.$/, "")
+          : "";
+        const text = element.textContent.replace(/^\s*\d+\.?\s*/, "").trim();
+        return { number: number, text: text };
+      }
+
+      function addLine(parent, headingText, bodyText) {
+        const heading = document.createElement("h3");
+        heading.textContent = headingText;
+        parent.appendChild(heading);
+        const paragraph = document.createElement("p");
+        paragraph.textContent = bodyText;
+        parent.appendChild(paragraph);
+      }
+
+      context.replaceChildren();
+      const index = verses.indexOf(selected);
+      const previous = index > 0 ? verseRecord(verses[index - 1]) : null;
+      const current = verseRecord(selected);
+      const next = index >= 0 && index < verses.length - 1
+        ? verseRecord(verses[index + 1]) : null;
+
+      addLine(context, "Read the passage in context",
+        "Begin with " + ref.book + " chapter " + ref.chapter +
+        ". Read the whole chapter before drawing a conclusion from one verse.");
+      if (previous) {
+        addLine(context, "Immediately before — verse " + previous.number,
+          previous.text);
+      } else {
+        addLine(context, "Chapter opening",
+          "This is the first displayed verse of the chapter. Read the chapter heading and opening paragraph in your wider Bible study.");
+      }
+      addLine(context, "Selected verse — " + ref.verse,
+        current ? current.text : (ref.text || "Selected verse text is not currently visible."));
+      if (next) {
+        addLine(context, "Immediately after — verse " + next.number,
+          next.text);
+      } else {
+        addLine(context, "Chapter ending",
+          "This is the last displayed verse of the chapter. Continue into the next chapter to follow the argument or narrative.");
+      }
+      addLine(context, "Context questions",
+        "Who is speaking? To whom? What is happening? What comes before and after? What kind of writing is this — narrative, poetry, prophecy, teaching or a letter?");
+      
+      meaning.replaceChildren();
+      addLine(meaning, "1. Observe what the verse says",
+        "List the people, actions, repeated words, commands, promises, reasons and contrasts that are actually present in the text.");
+      addLine(meaning, "2. Understand what it meant",
+        "Compare the verse with its immediate context, the purpose of the book and other clear Scriptures. Do not build a teaching on an isolated phrase.");
+      addLine(meaning, "3. Distinguish text from interpretation",
+        "Keep the exact Bible wording separate from your explanation. Where Christians understand a passage differently, note the alternatives fairly rather than presenting one inference as a direct quotation.");
+      addLine(meaning, "4. Apply it faithfully",
+        "Ask what the passage reveals about God, what response it calls for, and how that response fits the whole teaching of Scripture.");
+
+      deeper.replaceChildren();
+      addLine(deeper, "Whole-Bible study",
+        "Read connected passages in their own context. A cross-reference can illuminate a theme, but it does not automatically mean both passages make exactly the same point.");
+      addLine(deeper, "Careful interpretation",
+        "Notice the original audience, historical setting, literary form and the paragraph's main idea. Separate what the passage states from what you conclude from it.");
+      addLine(deeper, "Personal reflection",
+        "What truth should shape your thinking? Is there an instruction to obey, a promise to trust, an example to follow or a warning to heed? Record the reason from the text.");
+    }
+
     function loadSavedNote() {
       if (!selectedReference) return;
       const record = readNotes()[noteKey(selectedReference)];
@@ -1036,6 +1114,7 @@
 
         panel.style.display = "block";
         highlightVerse(verse);
+        renderStudyFramework(selectedReference);
         paintSavedHighlights(selectedReference);
         loadSavedNote();
 
