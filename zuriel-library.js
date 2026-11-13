@@ -44,6 +44,35 @@
       { title: "More Like Christ", verse: "2 Peter 1:5–8", message: "Faith grows into visible character through diligence, self-control, perseverance and love.", prayer: "Holy Spirit, form Christlike character in me and help me grow in grace." }
     ],
 
+    worshipSongs: [
+      { title: "Amazing Grace", collection: "Traditional Hymn", theme: "Grace, redemption and the transforming mercy of God", reference: "Ephesians 2:8–9", note: "A classic hymn reflecting on salvation as God's gracious gift." },
+      { title: "Holy, Holy, Holy", collection: "Traditional Hymn", theme: "The holiness and majesty of the Triune God", reference: "Isaiah 6:3; Revelation 4:8", note: "A reverent hymn of adoration centred on God's holiness." },
+      { title: "It Is Well with My Soul", collection: "Traditional Hymn", theme: "Peace and trust in Christ through every trial", reference: "Philippians 4:7", note: "A testimony of faith and peace in the midst of hardship." },
+      { title: "Blessed Assurance", collection: "Traditional Hymn", theme: "Confidence in belonging to Jesus", reference: "1 John 5:11–13", note: "A joyful declaration of assurance and hope in Christ." },
+      { title: "What a Friend We Have in Jesus", collection: "Traditional Hymn", theme: "Prayer, friendship with Christ and casting cares on God", reference: "1 Peter 5:7", note: "An invitation to bring every burden to the Lord in prayer." },
+      { title: "Great Is Thy Faithfulness", collection: "Traditional Hymn", theme: "God's steadfast mercy and faithfulness", reference: "Lamentations 3:22–23", note: "A hymn of gratitude for God's unfailing compassion." },
+      { title: "To God Be the Glory", collection: "Traditional Hymn", theme: "Praise for God's saving work", reference: "Psalm 115:1", note: "A celebration that gives honour to God for His mighty works." },
+      { title: "Rock of Ages", collection: "Traditional Hymn", theme: "Christ as refuge and the sufficiency of His grace", reference: "1 Corinthians 10:4", note: "A prayerful confession of dependence on the Lord." },
+      { title: "Be Thou My Vision", collection: "Traditional Hymn", theme: "Wholehearted devotion and God's guidance", reference: "Colossians 3:1–2", note: "A prayer for God to shape our vision, desires and daily life." },
+      { title: "Guide Me, O Thou Great Jehovah", collection: "Traditional Hymn", theme: "God's guidance and sustaining provision", reference: "Exodus 13:21–22", note: "A pilgrimage hymn about trusting God through the wilderness." },
+      { title: "All Hail the Power of Jesus' Name", collection: "Traditional Hymn", theme: "The lordship and honour of Jesus", reference: "Philippians 2:9–11", note: "A triumphant call to honour the name of Jesus." },
+      { title: "How Great Thou Art", collection: "Traditional Hymn", theme: "Wonder at God's creation and redemption", reference: "Psalm 8:1–4", note: "A song of awe at the greatness of God." },
+      { title: "Because He Lives", collection: "Gospel Hymn", theme: "Resurrection hope and courage for tomorrow", reference: "1 Corinthians 15:20–22", note: "A declaration of hope grounded in the resurrection of Jesus." },
+      { title: "Trust and Obey", collection: "Gospel Hymn", theme: "Faith expressed through obedience", reference: "John 14:23", note: "A reminder that trusting Christ shapes the way we live." },
+      { title: "There Is Power in the Blood", collection: "Gospel Hymn", theme: "Redemption through the blood of Jesus", reference: "Ephesians 1:7", note: "A joyful celebration of the redemption found in Christ." },
+      { title: "Victory in Jesus", collection: "Gospel Hymn", theme: "The victory and salvation Christ gives", reference: "1 Corinthians 15:57", note: "A testimony of the victory believers receive through Jesus." },
+      { title: "I Know Whom I Have Believed", collection: "Gospel Hymn", theme: "Confidence in Christ and His keeping power", reference: "2 Timothy 1:12", note: "A confession of trust in the One who is faithful." },
+      { title: "When We All Get to Heaven", collection: "Gospel Hymn", theme: "The hope of Christ's coming and eternal joy", reference: "1 Thessalonians 4:16–18", note: "A song that looks toward the promised gathering with the Lord." },
+      { title: "10,000 Reasons (Bless the Lord)", collection: "Contemporary Worship", theme: "Thanksgiving and wholehearted praise", reference: "Psalm 103:1–5", note: "A modern worship song inspired by the call to bless the Lord." },
+      { title: "What a Beautiful Name", collection: "Contemporary Worship", theme: "The name, victory and supremacy of Jesus", reference: "Philippians 2:9–11", note: "A Christ-centred song celebrating the name above every name." },
+      { title: "Way Maker", collection: "Contemporary Worship", theme: "God's faithfulness, presence and power", reference: "Isaiah 43:19", note: "A declaration of trust in God's ability to lead and act." },
+      { title: "Goodness of God", collection: "Contemporary Worship", theme: "Remembering God's goodness and faithfulness", reference: "Psalm 23:6", note: "A personal response of gratitude for God's enduring goodness." },
+      { title: "Great Are You Lord", collection: "Contemporary Worship", theme: "Worship, breath and the glory of God", reference: "Psalm 150:6", note: "A call for all creation to praise the Lord." },
+      { title: "How Great Is Our God", collection: "Contemporary Worship", theme: "The greatness and splendour of God", reference: "Psalm 145:3", note: "A simple, congregational celebration of God's greatness." },
+      { title: "Build My Life", collection: "Contemporary Worship", theme: "Christ the firm foundation and a life of devotion", reference: "Matthew 7:24–25", note: "A prayer to build life on the trustworthy words of Jesus." },
+      { title: "In Christ Alone", collection: "Modern Hymn", theme: "The person, cross and resurrection of Jesus", reference: "Colossians 1:15–20", note: "A doctrinally rich modern hymn tracing the hope believers have in Christ." }
+    ],
+
     affirmations: [
       "I am born of God. His Word lives in me.",
       "I am strengthened with might through the Spirit of God.",
@@ -249,6 +278,7 @@
     const pages = [
       ["study", "📖 Deep Bible Study"],
       ["devotional", "🕊️ Devotionals"],
+      ["worship", "🎶 SS&S • Hymns & Worship"],
       ["affirmation", "✨ Glory Verse Affirmation"],
       ["names", "👑 Names of God"],
       ["prayer", "🙏 Prayer Journal"],
@@ -332,6 +362,49 @@
           box.appendChild(element("strong", item.reference));
           content.appendChild(box);
         });
+      }
+
+      if (page === "worship") {
+        content.appendChild(card(
+          "🎶 SS&S — Songs, Hymns & Worship",
+          "A growing worship library for hymns, gospel songs, praise and contemporary worship. Each entry includes a Scripture connection and a short reflection. Song lyrics are shown only when they are public domain or properly licensed."
+        ));
+
+        const collections = ["All Songs", "Traditional Hymn", "Gospel Hymn", "Modern Hymn", "Contemporary Worship"];
+        const filterRow = element("div", undefined, "library-nav");
+        const list = element("div");
+        function renderSongs(collection) {
+          list.replaceChildren();
+          const items = originalLibrary.worshipSongs.filter(function (song) {
+            return collection === "All Songs" || song.collection === collection;
+          });
+          items.forEach(function (song) {
+            const box = element("div", undefined, "library-entry");
+            box.appendChild(element("small", song.collection));
+            box.appendChild(element("h4", song.title));
+            box.appendChild(element("p", song.theme));
+            box.appendChild(element("strong", "Scripture: " + song.reference));
+            box.appendChild(element("p", song.note));
+            box.appendChild(button("Save to My Library", function () {
+              saved.bookmarks.push({
+                title: "Worship Song — " + song.title,
+                text: song.theme + " | " + song.note,
+                reference: song.reference
+              });
+              if (persist()) alert("Saved to your personal library.");
+            }));
+            list.appendChild(box);
+          });
+          if (!items.length) list.appendChild(element("p", "No songs in this collection yet."));
+        }
+        collections.forEach(function (collection) {
+          filterRow.appendChild(button(collection, function () {
+            renderSongs(collection);
+          }));
+        });
+        content.appendChild(filterRow);
+        content.appendChild(list);
+        renderSongs("All Songs");
       }
 
       if (page === "prayer") {
