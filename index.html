@@ -71,6 +71,79 @@ select {
 #message {
   margin-top: 18px;
   line-height: 1.7;
+  --zuriel-reading-font-size: 18px;
+}
+#message .verse {
+  font-size: var(--zuriel-reading-font-size, 18px);
+  line-height: 1.9;
+  padding: 15px 11px;
+  border-radius: 10px;
+  scroll-margin-top: 18px;
+  transition: background .18s ease, border-color .18s ease;
+}
+#message .verse.zuriel-nav-highlight,
+#message .verse.zuriel-selected-verse {
+  background: #fff0c9 !important;
+  border-left: 5px solid #b99b58;
+  padding-left: 13px;
+}
+#zurielReadingTools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 13px 0;
+  padding: 11px;
+  border: 1px solid #d7c79c;
+  border-radius: 13px;
+  background: linear-gradient(135deg,#f8f5ed,#eee8d8);
+}
+#zurielReadingTools .reading-tools-label {
+  flex: 1 1 100%;
+  margin: 0;
+  color: #19324f;
+  font: 700 12px/1.4 Arial,sans-serif;
+}
+#zurielReadingTools button {
+  min-width: 46px;
+  min-height: 42px;
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid #c9b77e;
+  border-radius: 9px;
+  background: #fff;
+  color: #19324f;
+  font: 700 14px Arial,sans-serif;
+}
+#zurielReadingTools #zurielFontSizeValue {
+  min-width: 52px;
+  color: #34465a;
+  font: 700 12px Arial,sans-serif;
+  text-align: center;
+}
+#zurielReadingProgress {
+  margin: 12px 0 17px;
+  padding: 10px 12px;
+  border-radius: 11px;
+  background: #f1eee5;
+}
+#zurielReadingProgress p {
+  margin: 0 0 7px;
+  color: #43536a;
+  font: 600 12px Arial,sans-serif;
+}
+#zurielReadingProgress .progress-track {
+  overflow: hidden;
+  height: 7px;
+  border-radius: 20px;
+  background: #d9d4c7;
+}
+#zurielReadingProgress .progress-fill {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg,#24634a,#b99b58);
+  transition: width .2s ease;
 }
 
 #chapterButtons {
@@ -338,6 +411,17 @@ let bibleText = null;
 let bibleLoading = null;
 let currentBook = "";
 let currentChapter = 1;
+let readerFontSize = 18;
+let verseProgressObserver = null;
+
+try {
+  const savedFontSize = Number(localStorage.getItem("zurielReaderFontSize"));
+  if (Number.isFinite(savedFontSize) && savedFontSize >= 16 && savedFontSize <= 24) {
+    readerFontSize = savedFontSize;
+  }
+} catch (error) {
+  // Keep the default reading size when device storage is unavailable.
+}
 
 /* LOAD THE KJV DATABASE */
 
@@ -590,12 +674,91 @@ async function openChapter(book, chapter) {
   });
   message.appendChild(nextButton);
 
+  if (verseProgressObserver) {
+    verseProgressObserver.disconnect();
+    verseProgressObserver = null;
+  }
+
+  const readingTools = document.createElement("div");
+  readingTools.id = "zurielReadingTools";
+  readingTools.setAttribute("aria-label", "Reading display settings");
+
+  const toolsLabel = document.createElement("p");
+  toolsLabel.className = "reading-tools-label";
+  toolsLabel.textContent = "Reading comfort";
+  readingTools.appendChild(toolsLabel);
+
+  const smallerText = document.createElement("button");
+  smallerText.type = "button";
+  smallerText.textContent = "A−";
+  smallerText.setAttribute("aria-label", "Decrease Scripture text size");
+
+  const fontSizeValue = document.createElement("span");
+  fontSizeValue.id = "zurielFontSizeValue";
+  fontSizeValue.textContent = readerFontSize + " px";
+
+  const largerText = document.createElement("button");
+  largerText.type = "button";
+  largerText.textContent = "A+";
+  largerText.setAttribute("aria-label", "Increase Scripture text size");
+
+  const resetText = document.createElement("button");
+  resetText.type = "button";
+  resetText.textContent = "Reset";
+  resetText.setAttribute("aria-label", "Reset Scripture text size");
+
+  function applyReaderFontSize() {
+    message.style.setProperty("--zuriel-reading-font-size", readerFontSize + "px");
+    fontSizeValue.textContent = readerFontSize + " px";
+    try {
+      localStorage.setItem("zurielReaderFontSize", String(readerFontSize));
+    } catch (error) {
+      // The current session still keeps the selected size.
+    }
+  }
+
+  smallerText.addEventListener("click", function () {
+    readerFontSize = Math.max(16, readerFontSize - 1);
+    applyReaderFontSize();
+  });
+  largerText.addEventListener("click", function () {
+    readerFontSize = Math.min(24, readerFontSize + 1);
+    applyReaderFontSize();
+  });
+  resetText.addEventListener("click", function () {
+    readerFontSize = 18;
+    applyReaderFontSize();
+  });
+
+  readingTools.appendChild(smallerText);
+  readingTools.appendChild(fontSizeValue);
+  readingTools.appendChild(largerText);
+  readingTools.appendChild(resetText);
+  message.appendChild(readingTools);
+  applyReaderFontSize();
+
   const count = document.createElement("p");
   count.className = "study-hint";
   count.textContent =
     verses.length + " verses. Tap a verse to open its study panel.";
   message.appendChild(count);
 
+  const progressBox = document.createElement("div");
+  progressBox.id = "zurielReadingProgress";
+  progressBox.setAttribute("aria-live", "polite");
+  const progressLabel = document.createElement("p");
+  progressLabel.id = "zurielReadingProgressLabel";
+  progressLabel.textContent = "Chapter reading • " + verses.length + " verses";
+  const progressTrack = document.createElement("div");
+  progressTrack.className = "progress-track";
+  const progressFill = document.createElement("div");
+  progressFill.className = "progress-fill";
+  progressTrack.appendChild(progressFill);
+  progressBox.appendChild(progressLabel);
+  progressBox.appendChild(progressTrack);
+  message.appendChild(progressBox);
+
+  const verseElements = [];
   verses.forEach(function (verse, index) {
     const paragraph = document.createElement("p");
     paragraph.className = "verse";
@@ -608,7 +771,7 @@ async function openChapter(book, chapter) {
     const wordParts = String(verse).match(/\S+|\s+/g) || [];
     let wordIndex = 0;
     wordParts.forEach(function (part) {
-      if (/^\\s+$/.test(part)) {
+      if (/^\s+$/.test(part)) {
         paragraph.appendChild(document.createTextNode(part));
         return;
       }
@@ -656,7 +819,31 @@ async function openChapter(book, chapter) {
     });
 
     message.appendChild(paragraph);
+    verseElements.push(paragraph);
   });
+
+  if ("IntersectionObserver" in window) {
+    verseProgressObserver = new IntersectionObserver(function (entries) {
+      let visible = null;
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting &&
+            (!visible || entry.intersectionRatio > visible.intersectionRatio)) {
+          visible = entry;
+        }
+      });
+      if (visible) {
+        const verseNumber = verseElements.indexOf(visible.target) + 1;
+        if (verseNumber > 0) {
+          progressFill.style.width = (verseNumber / verses.length * 100) + "%";
+          progressLabel.textContent =
+            "Reading verse " + verseNumber + " of " + verses.length;
+        }
+      }
+    }, { threshold: [0.15, 0.4, 0.7] });
+    verseElements.forEach(function (item) {
+      verseProgressObserver.observe(item);
+    });
+  }
 
   status.textContent = "Now reading " + book + " chapter " + chapter + ".";
 
