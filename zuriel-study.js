@@ -991,14 +991,80 @@
         const summary = document.createElement("p");
         summary.textContent = topic.summary;
         card.appendChild(summary);
+        function addSection(title, body) {
+          if (!body) return;
+          const section = document.createElement("section");
+          section.className = "zuriel-topic-study-section";
+          const h = document.createElement("h4");
+          h.textContent = title;
+          const p = document.createElement("p");
+          p.textContent = body;
+          section.append(h, p);
+          card.appendChild(section);
+        }
+        addSection("Biblical definition and explanation", topic.definition);
+        addSection("Old Testament foundations", topic.oldTestament);
+        addSection("New Testament fulfilment and development", topic.newTestament);
+        if (Array.isArray(topic.languageWords) && topic.languageWords.length) {
+          const section = document.createElement("section");
+          section.className = "zuriel-topic-study-section";
+          const h = document.createElement("h4");
+          h.textContent = "Important Hebrew and Greek words";
+          section.appendChild(h);
+          topic.languageWords.forEach(function(word) {
+            const entry = document.createElement("div");
+            entry.className = "zuriel-topic-language";
+            const p = document.createElement("p");
+            p.textContent = word.language + " • " + word.script + " • " + word.term;
+            const meaning = document.createElement("p");
+            meaning.textContent = "Meaning: " + word.meaning;
+            const note = document.createElement("p");
+            note.textContent = word.note;
+            entry.append(p, meaning, note);
+            section.appendChild(entry);
+          });
+          card.appendChild(section);
+        }
+        if (Array.isArray(topic.relatedExplanations) && topic.relatedExplanations.length) {
+          const section = document.createElement("section");
+          section.className = "zuriel-topic-study-section";
+          const h = document.createElement("h4");
+          h.textContent = "Related passages and their connections";
+          section.appendChild(h);
+          topic.relatedExplanations.forEach(function(text) {
+            const p = document.createElement("p");
+            p.textContent = text;
+            section.appendChild(p);
+          });
+          card.appendChild(section);
+        }
+        addSection("Practical application", topic.application);
+        if (Array.isArray(topic.questions) && topic.questions.length) {
+          const section = document.createElement("section");
+          section.className = "zuriel-topic-study-section";
+          const h = document.createElement("h4");
+          h.textContent = "Questions for personal study";
+          section.appendChild(h);
+          const list = document.createElement("ol");
+          topic.questions.forEach(function(question) {
+            const li = document.createElement("li");
+            li.textContent = question;
+            list.appendChild(li);
+          });
+          section.appendChild(list);
+          card.appendChild(section);
+        }
+        const linksHeading = document.createElement("h4");
+        linksHeading.textContent = "Open the Scripture passages";
+        card.appendChild(linksHeading);
         const links = document.createElement("div");
         links.className = "study-topic-links";
-        topic.references.forEach(function (item) {
+        topic.references.forEach(function(item) {
           const button = document.createElement("button");
           button.type = "button";
           button.className = "study-link";
           button.textContent = item.label;
-          button.addEventListener("click", function () { openReference(item); });
+          button.addEventListener("click", function() { openReference(item); });
           links.appendChild(button);
         });
         card.appendChild(links);
