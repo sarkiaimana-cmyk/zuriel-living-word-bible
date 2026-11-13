@@ -421,13 +421,20 @@
             #zurielGloryStudio[data-finish="navy"] #zurielGloryPreview {--zgs-paper:#172b49;--zgs-ink:#f6f0df;--zgs-accent:#e7c77d;background:linear-gradient(90deg,#0c1a30,#1b3151 48%,#0d1d35 50%,#1b3151);}
             #zurielGloryStudio[data-finish="forest"] #zurielGloryPreview {--zgs-paper:#e9f0e5;--zgs-ink:#183a30;--zgs-accent:#39765b;background:linear-gradient(90deg,#d4e1d5,#f2f6ec 48%,#d7e3d8 50%,#f2f6ec);}
             #zurielGloryStudio[data-finish="parchment"] #zurielGloryPreview {--zgs-paper:#f0dfbd;--zgs-ink:#4a3520;--zgs-accent:#9a682b;background:repeating-linear-gradient(0deg,#f2e5ca,#f2e5ca 3px,#eddfc2 4px);}
-            #zurielGloryPreview:after {content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:#9a835333;box-shadow:0 0 15px #5b472333;}
-            #zurielGloryPreview .zgs-brand {font-size:15px;letter-spacing:1px;text-align:center;color:var(--zgs-accent);font-weight:800;font-family:Georgia,serif;}
-            #zurielGloryPreview h3 {text-align:center;color:var(--zgs-ink);font-family:Georgia,serif;font-size:22px;margin:13px 0;}
-            #zurielGloryPreview .zgs-ref {text-align:center;font-weight:800;color:var(--zgs-accent);}
-            #zurielGloryPreview .zgs-copy {position:relative;z-index:1;white-space:pre-wrap;line-height:1.45;margin:9px 0;font-family:Georgia,serif;}
-            #zurielGloryPreview .zgs-footer {text-align:center;font-size:10px;letter-spacing:1px;margin-top:17px;color:var(--zgs-accent);font-weight:800;}
-            @media(max-width:380px){#zurielGloryPreview{padding:17px 13px}#zurielGloryPreview h3{font-size:19px}}
+            #zurielGloryPreview:after {content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:#9a835333;box-shadow:0 0 15px #5b472333;pointer-events:none;}
+            #zurielGloryPreview .zgs-brand {font-size:15px;letter-spacing:1px;text-align:center;color:var(--zgs-accent);font-weight:800;font-family:Georgia,serif;position:relative;z-index:1;}
+            #zurielGloryPreview h3 {text-align:center;color:var(--zgs-ink);font-family:Georgia,serif;font-size:20px;margin:9px 0 15px;position:relative;z-index:1;}
+            #zurielGloryPreview .zgs-book-spread {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;position:relative;z-index:1;}
+            #zurielGloryPreview .zgs-page {min-width:0;padding:8px 5px;}
+            #zurielGloryPreview .zgs-page-title {font:700 10px/1.4 Arial,sans-serif;letter-spacing:1px;text-align:center;color:var(--zgs-accent);margin:3px 0 12px;}
+            #zurielGloryPreview .zgs-ref {text-align:center;font-weight:800;color:var(--zgs-accent);font-size:13px;}
+            #zurielGloryPreview .zgs-copy {white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.48;margin:9px 0;font-family:Georgia,serif;font-size:14px;}
+            #zurielGloryPreview .zgs-active-copy {min-height:105px;}
+            #zurielGloryPreview .zgs-footer {text-align:center;font-size:10px;letter-spacing:1px;margin-top:17px;color:var(--zgs-accent);font-weight:800;position:relative;z-index:1;}
+            #zurielGloryStudio .zgs-tabs {display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;}
+            #zurielGloryStudio .zgs-tabs button {font-size:11px;line-height:1.25;padding:7px 3px;background:#19324f;color:#fff;}
+            #zurielGloryStudio .zgs-tabs button[aria-pressed="true"] {background:#b28b45;color:#172b49;outline:2px solid #e5d2a6;}
+            @media(max-width:420px){#zurielGloryPreview{padding:16px 10px}#zurielGloryPreview h3{font-size:16px}#zurielGloryPreview .zgs-book-spread{gap:12px}#zurielGloryPreview .zgs-page{padding:6px 2px}#zurielGloryPreview .zgs-copy{font-size:12px}#zurielGloryPreview .zgs-page-title{font-size:9px}#zurielGloryStudio .zgs-tabs button{font-size:10px;min-height:42px}}
           `;
           root.appendChild(studioStyle);
         }
@@ -446,15 +453,29 @@
           <div class="zgs-field"><label>OPEN-BOOK FINISH</label><div class="zgs-actions" id="zgsFinishes">
             <button type="button" data-finish="ivory">Warm ivory</button><button type="button" data-finish="navy">Kingdom navy</button><button type="button" data-finish="forest">Living forest</button><button type="button" data-finish="parchment">Parchment</button>
           </div></div>
-          <article id="zurielGloryPreview" aria-label="Live open-book card preview">
+          <div class="zgs-tabs" id="zgsContentTabs" role="group" aria-label="Choose the left-page faith content">
+            <button type="button" data-zgs-view="Prayer" aria-pressed="true">Prayer</button>
+            <button type="button" data-zgs-view="Declaration" aria-pressed="false">Declaration</button>
+            <button type="button" data-zgs-view="Affirmation" aria-pressed="false">Affirmation</button>
+            <button type="button" data-zgs-view="Confession" aria-pressed="false">Faith</button>
+            <button type="button" data-zgs-view="Inspiration" aria-pressed="false">Inspiration</button>
+          </div>
+          <article id="zurielGloryPreview" aria-label="Live open-book Glory Verse Affirmation preview">
             <div class="zgs-brand">The Light 🕯️</div>
             <h3 id="zgsPreviewTitle">His Word.. My Life.. My Victory.</h3>
-            <div class="zgs-ref" id="zgsPreviewRef">Your Scripture reference</div>
-            <p class="zgs-copy" id="zgsPreviewScripture">Your Scripture will appear here.</p>
-            <p class="zgs-copy" id="zgsPreviewPrayer"></p><p class="zgs-copy" id="zgsPreviewDeclaration"></p>
-            <p class="zgs-copy" id="zgsPreviewAffirmation"></p><p class="zgs-copy" id="zgsPreviewConfession"></p>
-            <p class="zgs-copy" id="zgsPreviewInspiration"></p>
-            <div class="zgs-footer">ZURIEL LIVING WORD BIBLE</div>
+            <div class="zgs-book-spread">
+              <section class="zgs-page zgs-left-page">
+                <div class="zgs-page-title">GLORY VERSE AFFIRMATION</div>
+                <div class="zgs-page-title" id="zgsPreviewActiveTitle">PRAYER</div>
+                <p class="zgs-copy zgs-active-copy" id="zgsPreviewActiveContent">Your Scripture-led prayer will appear here.</p>
+              </section>
+              <section class="zgs-page zgs-right-page">
+                <div class="zgs-page-title">THE WORD</div>
+                <div class="zgs-ref" id="zgsPreviewRef">Your Scripture reference</div>
+                <p class="zgs-copy" id="zgsPreviewScripture">Your Scripture will appear here.</p>
+              </section>
+            </div>
+            <div class="zgs-footer">Zuriel Living Word</div>
           </article>
           <div class="zgs-actions">
             <button type="button" id="zgsSave">Save to My Library</button>
@@ -468,14 +489,23 @@
         const ids = ["zgsReference","zgsScripture","zgsPrayer","zgsDeclaration","zgsAffirmation","zgsConfession","zgsInspiration"];
         const labels = ["SCRIPTURE","PRAYER","DECLARATION","AFFIRMATION","FAITH CONFESSION","INSPIRATION"];
         const previewIds = ["zgsPreviewScripture","zgsPreviewPrayer","zgsPreviewDeclaration","zgsPreviewAffirmation","zgsPreviewConfession","zgsPreviewInspiration"];
+        let activeFaithView = "Prayer";
         function updatePreview() {
           studio.querySelector("#zgsPreviewRef").textContent = studio.querySelector("#zgsReference").value.trim() || "Your Scripture reference";
           studio.querySelector("#zgsPreviewScripture").textContent = studio.querySelector("#zgsScripture").value.trim() || "Your Scripture will appear here.";
-          ["Prayer","Declaration","Affirmation","Confession","Inspiration"].forEach((name,i) => {
-            const value = studio.querySelector("#zgs"+name).value.trim();
-            studio.querySelector("#zgsPreview"+name).textContent = value ? labels[i+1] + ": " + value : "";
-          });
+          const activeText = studio.querySelector("#zgs"+activeFaithView).value.trim();
+          studio.querySelector("#zgsPreviewActiveTitle").textContent = activeFaithView === "Confession" ? "FAITH CONFESSION" : activeFaithView.toUpperCase();
+          studio.querySelector("#zgsPreviewActiveContent").textContent = activeText || "Add a Scripture-specific "+activeFaithView.toLowerCase()+" on the left page.";
         }
+        studio.querySelectorAll("[data-zgs-view]").forEach(function(tab){
+          tab.addEventListener("click",function(){
+            activeFaithView = this.dataset.zgsView;
+            studio.querySelectorAll("[data-zgs-view]").forEach(function(item){
+              item.setAttribute("aria-pressed",String(item===tab));
+            });
+            updatePreview();
+          });
+        });
         ids.forEach(id => studio.querySelector("#"+id).addEventListener("input",updatePreview));
         const curatedButton = button("Load verse-specific study example", function(){
           const reference=studio.querySelector("#zgsReference").value.trim();
