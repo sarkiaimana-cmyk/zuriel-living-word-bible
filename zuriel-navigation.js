@@ -87,6 +87,8 @@
       font-size:12px;
       font-weight:700;
     }
+    #zurielNavigation .nav-reference-row { display:grid; grid-template-columns:minmax(0,1fr) 72px; gap:8px; }
+    #zurielNavigation #zurielNavReferenceGo { min-height:48px; border:1px solid #e8cf91; border-radius:10px; background:#e8cf91; color:#10213d; font-weight:800; }
     #zurielNavigation .nav-two {
       display:grid;
       grid-template-columns:repeat(2,minmax(0,1fr));
@@ -148,7 +150,13 @@
   navigation.id = "zurielNavigation";
   navigation.innerHTML = `
     <h3>📖 Zuriel Bible Navigator</h3>
-    <p class="nav-description">Find any book, chapter or verse quickly. Your Scripture opens below.</p>
+    <p class="nav-description">Choose a book, chapter and verse — or enter a Scripture reference directly.</p>
+
+    <label for="zurielNavReference">Go directly to a reference</label>
+    <div class="nav-reference-row">
+      <input id="zurielNavReference" type="text" autocomplete="off" placeholder="e.g. John 3:16 or Psalm 23" aria-label="Enter a Bible reference">
+      <button type="button" id="zurielNavReferenceGo">GO</button>
+    </div>
 
     <label for="zurielNavSearch">Find a Bible book</label>
     <input id="zurielNavSearch" type="search" autocomplete="off"
@@ -184,6 +192,8 @@
   `;
   root.insertBefore(navigation, message);
 
+  const referenceInput = navigation.querySelector("#zurielNavReference");
+  const referenceGo = navigation.querySelector("#zurielNavReferenceGo");
   const search = navigation.querySelector("#zurielNavSearch");
   const bookSelect = navigation.querySelector("#zurielNavBook");
   const artwork = navigation.querySelector("#zurielNavArtwork");
@@ -198,6 +208,7 @@
   let selectedBook = "";
   let selectedChapter = 0;
   let observerTimer = null;
+  let verseRequestToken = 0;
 
   const bookArtwork = {
     "Judges": { image: "./images/books/0fc10dde-c515-45e8-916b-5a27f61b0841.jpg", caption: "Judges — God's deliverance, faith and grace" },
@@ -300,6 +311,48 @@
     verseSelect.disabled = false;
   }
 
+  async function populateVersesForSelection(book, chapter, preferredVerse) {
+    const token = ++verseRequestToken;
+    resetSelect(verseSelect, "Loading verses…");
+    verseSelect.disabled = true;
+    navStatus.textContent = "Loading verse numbers for " + book + " " + chapter + "…";
+    try {
+      if (typeof window.getChapterVerseCount !== "function") throw new Error("Verse count service unavailable");
+      const count = await window.getChapterVerseCount(book, chapter);
+      if (token !== verseRequestToken || bookSelect.value !== book || chapterSelect.value !== String(chapter)) return;
+      resetSelect(verseSelect, "Choose verse (optional)");
+      for (let n = 1; n <= count; n++) addOption(verseSelect, String(n), "Verse " + n);
+      verseSelect.disabled = false;
+      if (preferredVerse && preferredVerse <= count) verseSelect.value = String(preferredVerse);
+      navStatus.textContent = count + " verses ready in " + book + " " + chapter + ". Select a verse or open the chapter.";
+      currentLabel.textContent = book + " " + chapter + (verseSelect.value ? ":" + verseSelect.value : "");
+      openButton.disabled = false;
+    } catch (error) {
+      if (token !== verseRequestToken) return;
+      resetSelect(verseSelect, "Verse list unavailable");
+      verseSelect.disabled = true;
+      navStatus.textContent = "Could not load verse numbers. You can still open the chapter.";
+      openButton.disabled = false;
+    }
+  }
+
+  function selectVerseInReader(number) {
+    const target = message.querySelectorAll(".verse")[number - 1];
+    if (!target) {
+      navStatus.textContent = "The chapter is open, but verse " + number + " was not found in the displayed passage.";
+      return false;
+    }
+    message.querySelectorAll(".verse.zuriel-nav-highlight").forEach(function (item) { item.classList.remove("zuriel-nav-highlight"); });
+    target.classList.add("zuriel-nav-highlight");
+    target.scrollIntoView({ behavior: "smooth", block: "center" });
+    const verseText = target.textContent.replace(/^\\s*\\d+\\.?\\s*/, "").trim();
+    currentLabel.textContent = selectedBook + " " + selectedChapter + ":" + number;
+    if (window.ZurielStudy && typeof window.ZurielStudy.openForReference === "function") {
+      window.ZurielStudy.openForReference(selectedBook, selectedChapter, number, verseText, "", -1);
+    }
+    return true;
+  }
+
   async function openSelectedChapter() {
     const book = bookSelect.value;
     const chapter = Number(chapterSelect.value);
@@ -312,10 +365,11 @@
     navStatus.textContent = "Opening " + book + " " + chapter + "…";
     try {
       await window.openChapter(book, chapter);
+      if (!message.querySelectorAll(".verse").length) throw new Error("The selected chapter did not render.");
       currentLabel.textContent = book + " " + chapter;
       navStatus.textContent = "Chapter ready. Choose a verse to jump directly to it.";
-      populateVerses();
-      verseSelect.value = "";
+      if (verseSelect.value) selectVerseInReader(Number(verseSelect.value));
+      else populateVerses();
     } catch (error) {
       navStatus.textContent = "Unable to open this chapter. Please try again.";
       console.error("Zuriel Navigator:", error);
@@ -327,17 +381,14 @@
 
   function jumpToVerse() {
     const number = Number(verseSelect.value);
-    if (!number) return;
-    const verses = message.querySelectorAll(".verse");
-    const target = verses[number - 1];
-    if (!target) return;
-
-    message.querySelectorAll(".verse.zuriel-nav-highlight").forEach(function (item) {
-      item.classList.remove("zuriel-nav-highlight");
-    });
-    target.classList.add("zuriel-nav-highlight");
+    if (!number) {
+      currentLabel.textContent = selectedBook + " " + selectedChapter;
+      return;
+    }
     currentLabel.textContent = selectedBook + " " + selectedChapter + ":" + number;
-    target.scrollIntoView({ behavior: "smooth", block: "center" });
+    navStatus.textContent = "Verse " + number + " selected. Tap Open Selected Passage to read it.";
+    const heading = message.querySelector("h2");
+    if (heading && heading.textContent.indexOf(selectedBook + " " + selectedChapter + " —") === 0) selectVerseInReader(number);
   }
 
   function syncFromReader() {
@@ -392,11 +443,46 @@
     openButton.disabled = !chapterSelect.value;
     resetSelect(verseSelect, "Choose verse");
     verseSelect.disabled = true;
-    if (chapterSelect.value) openSelectedChapter();
+    if (chapterSelect.value) populateVersesForSelection(bookSelect.value, Number(chapterSelect.value));
   });
 
   openButton.addEventListener("click", openSelectedChapter);
   verseSelect.addEventListener("change", jumpToVerse);
+
+  async function openDirectReference() {
+    const raw = referenceInput.value.trim();
+    const lower = raw.toLowerCase();
+    const candidates = books.slice().sort(function(a, b) { return b.name.length - a.name.length; });
+    for (const book of candidates) {
+      const prefix = book.name.toLowerCase() + " ";
+      if (!lower.startsWith(prefix)) continue;
+      const parts = raw.slice(book.name.length).trim().match(/^(\\d+)(?::(\\d+))?$/);
+      if (!parts) continue;
+      const chapter = Number(parts[1]);
+      const verse = Number(parts[2] || 0);
+      if (chapter < 1 || chapter > book.chapters || (parts[2] && verse < 1)) break;
+      search.value = "";
+      fillBooks("");
+      bookSelect.value = book.name;
+      selectedBook = book.name;
+      selectedChapter = chapter;
+      updateBookArtwork(book.name);
+      populateChapters(book.name, chapter);
+      chapterSelect.value = String(chapter);
+      await populateVersesForSelection(book.name, chapter, verse);
+      if (verse && verseSelect.value !== String(verse)) {
+        navStatus.textContent = "Verse " + verse + " is not available in " + book.name + " " + chapter + ".";
+        return;
+      }
+      currentLabel.textContent = book.name + " " + chapter + (verse ? ":" + verse : "");
+      await openSelectedChapter();
+      return;
+    }
+    navStatus.textContent = "Enter a reference such as John 3:16, Psalm 23 or 1 Corinthians 13:4.";
+  }
+
+  referenceGo.addEventListener("click", openDirectReference);
+  referenceInput.addEventListener("keydown", function(event) { if (event.key === "Enter") openDirectReference(); });
 
   const observer = new MutationObserver(function () {
     if (observerTimer) window.clearTimeout(observerTimer);
