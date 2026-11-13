@@ -393,24 +393,124 @@
 
       if (page === "affirmation") {
         content.appendChild(card(
-          "Glory Verse Affirmation",
-          "Speak God's Word and strengthen your faith."
+          "Glory Verse Affirmation Studio",
+          "Create a Scripture-centred open-book card. Add the exact passage and write each faith response in its own voice."
         ));
+
+        if (!document.getElementById("zurielGloryStudioStyles")) {
+          const studioStyle = element("style");
+          studioStyle.id = "zurielGloryStudioStyles";
+          studioStyle.textContent = `
+            #zurielGloryStudio { display:grid;gap:12px;margin:14px 0; }
+            #zurielGloryStudio .zgs-field { display:grid;gap:5px; }
+            #zurielGloryStudio label { font-size:13px;font-weight:700;color:#c9b47d; }
+            #zurielGloryStudio input,#zurielGloryStudio textarea {
+              width:100%;box-sizing:border-box;padding:11px;border:1px solid #c8b98e;
+              border-radius:9px;background:#fffdf7;color:#203047;font:inherit;
+            }
+            #zurielGloryStudio textarea { min-height:65px;resize:vertical; }
+            #zurielGloryStudio .zgs-actions { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px; }
+            #zurielGloryStudio button { min-height:43px;border-radius:9px;padding:9px;font-weight:700; }
+            #zurielGloryPreview {
+              --zgs-paper:#f8f0dc;--zgs-ink:#28354a;--zgs-accent:#b68a38;
+              position:relative;overflow:hidden;padding:23px 19px;margin:8px 0;
+              border-radius:15px;color:var(--zgs-ink);
+              background:linear-gradient(90deg,#e8dcc2 0%,var(--zgs-paper) 8%,#fffaf0 48%,#e8dcc2 50%,#fffaf0 54%,var(--zgs-paper) 92%,#e8dcc2 100%);
+              border:1px solid #c5b48d;box-shadow:0 8px 22px #101d3025;
+            }
+            #zurielGloryStudio[data-finish="navy"] #zurielGloryPreview {--zgs-paper:#172b49;--zgs-ink:#f6f0df;--zgs-accent:#e7c77d;background:linear-gradient(90deg,#0c1a30,#1b3151 48%,#0d1d35 50%,#1b3151);}
+            #zurielGloryStudio[data-finish="forest"] #zurielGloryPreview {--zgs-paper:#e9f0e5;--zgs-ink:#183a30;--zgs-accent:#39765b;background:linear-gradient(90deg,#d4e1d5,#f2f6ec 48%,#d7e3d8 50%,#f2f6ec);}
+            #zurielGloryStudio[data-finish="parchment"] #zurielGloryPreview {--zgs-paper:#f0dfbd;--zgs-ink:#4a3520;--zgs-accent:#9a682b;background:repeating-linear-gradient(0deg,#f2e5ca,#f2e5ca 3px,#eddfc2 4px);}
+            #zurielGloryPreview:after {content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:#9a835333;box-shadow:0 0 15px #5b472333;}
+            #zurielGloryPreview .zgs-brand {font-size:10px;letter-spacing:1.5px;text-align:center;color:var(--zgs-accent);font-weight:800;}
+            #zurielGloryPreview h3 {text-align:center;color:var(--zgs-ink);font-family:Georgia,serif;font-size:22px;margin:13px 0;}
+            #zurielGloryPreview .zgs-ref {text-align:center;font-weight:800;color:var(--zgs-accent);}
+            #zurielGloryPreview .zgs-copy {position:relative;z-index:1;white-space:pre-wrap;line-height:1.45;margin:9px 0;font-family:Georgia,serif;}
+            #zurielGloryPreview .zgs-footer {text-align:center;font-size:10px;letter-spacing:1px;margin-top:17px;color:var(--zgs-accent);font-weight:800;}
+            @media(max-width:380px){#zurielGloryPreview{padding:17px 13px}#zurielGloryPreview h3{font-size:19px}}
+          `;
+          root.appendChild(studioStyle);
+        }
+
+        const studio = element("section", undefined, "card");
+        studio.id = "zurielGloryStudio";
+        studio.dataset.finish = "ivory";
+        studio.innerHTML = `
+          <div class="zgs-field"><label for="zgsReference">SCRIPTURE REFERENCE</label><input id="zgsReference" placeholder="e.g. Romans 8:1"></div>
+          <div class="zgs-field"><label for="zgsScripture">SCRIPTURE TEXT (paste from your Bible translation)</label><textarea id="zgsScripture" placeholder="Enter the exact verse text here"></textarea></div>
+          <div class="zgs-field"><label for="zgsPrayer">PRAYER</label><textarea id="zgsPrayer" placeholder="Write a prayer shaped by this Scripture"></textarea></div>
+          <div class="zgs-field"><label for="zgsDeclaration">DECLARATION</label><textarea id="zgsDeclaration" placeholder="Declare what this Scripture reveals"></textarea></div>
+          <div class="zgs-field"><label for="zgsAffirmation">AFFIRMATION</label><textarea id="zgsAffirmation" placeholder="A personal response grounded in the verse"></textarea></div>
+          <div class="zgs-field"><label for="zgsConfession">FAITH CONFESSION</label><textarea id="zgsConfession" placeholder="A first-person confession consistent with Scripture"></textarea></div>
+          <div class="zgs-field"><label for="zgsInspiration">INSPIRATION / FAITH WORD</label><textarea id="zgsInspiration" placeholder="A short encouragement drawn from this passage"></textarea></div>
+          <div class="zgs-field"><label>OPEN-BOOK FINISH</label><div class="zgs-actions" id="zgsFinishes">
+            <button type="button" data-finish="ivory">Warm ivory</button><button type="button" data-finish="navy">Kingdom navy</button><button type="button" data-finish="forest">Living forest</button><button type="button" data-finish="parchment">Parchment</button>
+          </div></div>
+          <article id="zurielGloryPreview" aria-label="Live open-book card preview">
+            <div class="zgs-brand">GLORY VERSE AFFIRMATION</div>
+            <h3 id="zgsPreviewTitle">His Words.. My Life.. My Victory</h3>
+            <div class="zgs-ref" id="zgsPreviewRef">Your Scripture reference</div>
+            <p class="zgs-copy" id="zgsPreviewScripture">Your Scripture will appear here.</p>
+            <p class="zgs-copy" id="zgsPreviewPrayer"></p><p class="zgs-copy" id="zgsPreviewDeclaration"></p>
+            <p class="zgs-copy" id="zgsPreviewAffirmation"></p><p class="zgs-copy" id="zgsPreviewConfession"></p>
+            <p class="zgs-copy" id="zgsPreviewInspiration"></p>
+            <div class="zgs-footer">ZURIEL LIVING WORD BIBLE</div>
+          </article>
+          <div class="zgs-actions">
+            <button type="button" id="zgsSave">Save to My Library</button>
+            <button type="button" id="zgsShare">Share card text</button>
+          </div>
+          <p id="zgsStatus" class="library-status" aria-live="polite">Your draft stays on this device until you save it.</p>
+        `;
+
+        content.appendChild(studio);
+        const fields = ["Reference","Scripture","Prayer","Declaration","Affirmation","Confession","Inspiration"];
+        const ids = ["zgsReference","zgsScripture","zgsPrayer","zgsDeclaration","zgsAffirmation","zgsConfession","zgsInspiration"];
+        const labels = ["SCRIPTURE","PRAYER","DECLARATION","AFFIRMATION","FAITH CONFESSION","INSPIRATION"];
+        const previewIds = ["zgsPreviewScripture","zgsPreviewPrayer","zgsPreviewDeclaration","zgsPreviewAffirmation","zgsPreviewConfession","zgsPreviewInspiration"];
+        function updatePreview() {
+          studio.querySelector("#zgsPreviewRef").textContent = studio.querySelector("#zgsReference").value.trim() || "Your Scripture reference";
+          studio.querySelector("#zgsPreviewScripture").textContent = studio.querySelector("#zgsScripture").value.trim() || "Your Scripture will appear here.";
+          ["Prayer","Declaration","Affirmation","Confession","Inspiration"].forEach((name,i) => {
+            const value = studio.querySelector("#zgs"+name).value.trim();
+            studio.querySelector("#zgsPreview"+name).textContent = value ? labels[i+1] + ": " + value : "";
+          });
+        }
+        ids.forEach(id => studio.querySelector("#"+id).addEventListener("input",updatePreview));
+        studio.querySelectorAll("[data-finish]").forEach(choice => choice.addEventListener("click",function(){
+          studio.dataset.finish=this.dataset.finish;
+          studio.querySelectorAll("[data-finish]").forEach(item=>item.setAttribute("aria-pressed",String(item===this)));
+        }));
+        studio.querySelector("#zgsSave").addEventListener("click",function(){
+          const record={title:"Glory Verse Affirmation — "+(studio.querySelector("#zgsReference").value.trim()||"Personal Scripture card"),reference:studio.querySelector("#zgsReference").value.trim(),scripture:studio.querySelector("#zgsScripture").value.trim(),prayer:studio.querySelector("#zgsPrayer").value.trim(),declaration:studio.querySelector("#zgsDeclaration").value.trim(),affirmation:studio.querySelector("#zgsAffirmation").value.trim(),confession:studio.querySelector("#zgsConfession").value.trim(),inspiration:studio.querySelector("#zgsInspiration").value.trim(),finish:studio.dataset.finish,date:new Date().toISOString()};
+          if(!record.reference||!record.scripture){studio.querySelector("#zgsStatus").textContent="Please enter the Scripture reference and exact verse text before saving.";return;}
+          try{
+            const key="zuriel_glory_verse_cards_v1";
+            const records=JSON.parse(localStorage.getItem(key)||"[]");
+            records.push(record);
+            localStorage.setItem(key,JSON.stringify(records));
+            studio.querySelector("#zgsStatus").textContent="Saved successfully to this device's Glory Verse cards.";
+          }catch(error){studio.querySelector("#zgsStatus").textContent="Unable to save. Please check available device storage.";}
+        });
+        studio.querySelector("#zgsShare").addEventListener("click",async function(){
+          const textValue=["GLORY VERSE AFFIRMATION",studio.querySelector("#zgsReference").value,studio.querySelector("#zgsScripture").value,...["Prayer","Declaration","Affirmation","Confession","Inspiration"].map(name=>name.toUpperCase()+": "+studio.querySelector("#zgs"+name).value),"ZURIEL LIVING WORD BIBLE"].filter(Boolean).join("\n\n");
+          if(!studio.querySelector("#zgsReference").value.trim()||!studio.querySelector("#zgsScripture").value.trim()){studio.querySelector("#zgsStatus").textContent="Add the Scripture reference and text before sharing.";return;}
+          try{
+            if(navigator.share) await navigator.share({title:"Glory Verse Affirmation",text:textValue});
+            else if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(textValue);studio.querySelector("#zgsStatus").textContent="Card text copied. You can paste it into your sharing app.";}
+            else {studio.querySelector("#zgsStatus").textContent="Sharing is not available in this browser. You can select and copy the preview text.";}
+          }catch(error){if(error.name!=="AbortError")studio.querySelector("#zgsStatus").textContent="Sharing could not be completed on this device.";}
+        });
+        updatePreview();
 
         originalLibrary.affirmations.forEach(item => {
           const box = element("div", undefined, "library-entry");
           box.appendChild(element("p", item));
-
           box.appendChild(button("Save declaration", function () {
-            saved.bookmarks.push({
-              title: "Glory Verse Affirmation",
-              text: item
-            });
-
+            saved.bookmarks.push({title:"Glory Verse Affirmation",text:item});
             persist();
             alert("Saved to your personal library.");
           }));
-
           content.appendChild(box);
         });
       }
