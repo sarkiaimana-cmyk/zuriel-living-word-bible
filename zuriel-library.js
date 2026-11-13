@@ -78,7 +78,14 @@
       "I am strengthened with might through the Spirit of God.",
       "I walk in the wisdom, love and victory of Christ.",
       "God's grace is sufficient for me.",
-      "I am a new creation in Christ Jesus."
+      "I am a new creation in Christ Jesus.",
+      "I am accepted in Christ and strengthened by His grace.",
+      "The Holy Spirit teaches me and helps me walk in truth.",
+      "I have the mind of Christ and choose what honours Him.",
+      "The Lord is my refuge; I will not be ruled by fear.",
+      "I grow in love, patience, wisdom and spiritual maturity.",
+      "I can approach God's throne of grace with confidence.",
+      "My life will bear fruit as I remain in Christ."
     ],
 
     namesOfGod: [
@@ -119,7 +126,55 @@
       "The believer's authority in Christ",
       "The whole armour of God",
       "Prayer and intercession",
-      "Standing firm in faith"
+      "Standing firm in faith",
+      "Recognising temptation and choosing the way of escape",
+      "Resisting accusation through the truth of Scripture",
+      "Forgiveness, reconciliation and freedom from bitterness",
+      "Persevering in prayer with humility and discernment",
+      "The victory of Christ and the believer's hope"
+    ],
+
+    declarationGuides: [
+      { category: "Protection", items: [
+        { text: "The Lord is my refuge and strength, my present help in trouble.", reference: "Psalm 46:1" },
+        { text: "God guards my going out and my coming in.", reference: "Psalm 121:7–8" }
+      ]},
+      { category: "Family and Children", items: [
+        { text: "As for my household, we will serve the Lord.", reference: "Joshua 24:15" },
+        { text: "I will teach God's words diligently and lead by faithful example.", reference: "Deuteronomy 6:6–7" }
+      ]},
+      { category: "Marriage", items: [
+        { text: "I choose patience, kindness and love that does not seek its own way.", reference: "1 Corinthians 13:4–5" },
+        { text: "May our home be marked by forgiveness, peace and mutual honour.", reference: "Ephesians 4:32; Romans 12:10" }
+      ]},
+      { category: "Blessing and Provision", items: [
+        { text: "My Father knows what I need, and I seek His kingdom first.", reference: "Matthew 6:31–33" },
+        { text: "I will work honestly and trust God to provide what is good.", reference: "Philippians 4:19" }
+      ]},
+      { category: "Work and Purpose", items: [
+        { text: "I will work wholeheartedly, as serving the Lord.", reference: "Colossians 3:23" },
+        { text: "God guides me to walk in the good works He has prepared.", reference: "Ephesians 2:10" }
+      ]},
+      { category: "Healing and Strength", items: [
+        { text: "The Lord renews my strength as I wait upon Him.", reference: "Isaiah 40:31" },
+        { text: "God's grace is sufficient, and His strength is made perfect in weakness.", reference: "2 Corinthians 12:9" }
+      ]},
+      { category: "Faith and Victory", items: [
+        { text: "I fix my eyes on Jesus and run with endurance.", reference: "Hebrews 12:1–2" },
+        { text: "Thanks be to God, who gives us victory through Jesus Christ.", reference: "1 Corinthians 15:57" }
+      ]},
+      { category: "Wisdom and Guidance", items: [
+        { text: "I ask God for wisdom and trust Him to guide my steps.", reference: "James 1:5; Proverbs 3:5–6" },
+        { text: "God's Word is a lamp to my feet and a light to my path.", reference: "Psalm 119:105" }
+      ]},
+      { category: "Peace and Hope", items: [
+        { text: "I bring my concerns to God in prayer, and His peace guards my heart.", reference: "Philippians 4:6–7" },
+        { text: "The God of hope fills me with joy and peace as I trust in Him.", reference: "Romans 15:13" }
+      ]},
+      { category: "Spiritual Growth", items: [
+        { text: "I continue to grow in the grace and knowledge of Jesus Christ.", reference: "2 Peter 3:18" },
+        { text: "I abide in Christ, and my life bears fruit that honours God.", reference: "John 15:5, 8" }
+      ]}
     ],
 
     declarations: [
@@ -486,13 +541,23 @@
           "Choose a subject for focused declarations and prayer."
         ));
 
-        originalLibrary.declarations.forEach(item => {
+        originalLibrary.declarationGuides.forEach(item => {
           const box = element("div", undefined, "library-entry");
-          box.appendChild(element("h4", item));
-          box.appendChild(element(
-            "p",
-            "Your declaration collection for this category will be developed with verified Scripture references."
-          ));
+          box.appendChild(element("h4", item.category));
+          item.items.forEach(function (declaration) {
+            const entry = element("div");
+            entry.appendChild(element("p", declaration.text));
+            entry.appendChild(element("strong", declaration.reference));
+            entry.appendChild(button("Save declaration", function () {
+              saved.bookmarks.push({
+                title: item.category + " Declaration",
+                text: declaration.text,
+                reference: declaration.reference
+              });
+              if (persist()) alert("Saved to your personal library.");
+            }));
+            box.appendChild(entry);
+          });
           content.appendChild(box);
         });
       }
