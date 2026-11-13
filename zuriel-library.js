@@ -121,6 +121,15 @@
 
   let saved = loadSaved();
 
+  function readLocalRecords(key) {
+    try {
+      const value = JSON.parse(localStorage.getItem(key));
+      return value && typeof value === "object" ? value : {};
+    } catch (error) {
+      return {};
+    }
+  }
+
   function persist() {
     try {
       localStorage.setItem(
@@ -437,22 +446,85 @@
       }
 
       if (page === "saved") {
+        // Refresh shared records whenever this page opens so verse-study
+        // notes and bookmarks saved by the Study Centre appear immediately.
+        saved = loadSaved();
         content.appendChild(card(
           "My Saved Library",
-          "Your saved declarations and personal discoveries."
+          "Your bookmarked Scriptures, verse notes, highlights and saved declarations."
         ));
 
-        if (saved.bookmarks.length === 0) {
-          content.appendChild(element(
-            "p",
-            "Your saved discoveries will appear here."
-          ));
+        const verseNotes = readLocalRecords("zuriel-verse-study-notes-v1");
+        const verseHighlights = readLocalRecords("zuriel-word-highlights-v1");
+        const bookmarkCount = saved.bookmarks.length;
+        const noteEntries = Object.entries(verseNotes).filter(function (entry) {
+          const value = entry[1] || {};
+          return value.title || value.note || value.application;
+        });
+        const highlightEntries = Object.entries(verseHighlights).filter(function (entry) {
+          const value = entry[1] || {};
+          return value.verseColor || Object.keys(value.words || {}).length;
+        });
+
+        const summary = element("p",
+          bookmarkCount + " saved items • " + noteEntries.length +
+          " verse studies • " + highlightEntries.length + " highlighted verses",
+          "library-status");
+        content.appendChild(summary);
+
+        function openReference(reference) {
+          const match = String(reference || "").match(/^(.+?)\\s+(\\d+):(\\d+)$/);
+          if (!match || typeof window.openChapter !== "function") return;
+          window.openChapter(match[1], Number(match[2])).then(function () {
+            const verse = document.querySelectorAll("#message .verse")[Number(match[3]) - 1];
+            if (verse) {
+              verse.classList.add("zuriel-selected-verse");
+              verse.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+          });
         }
 
-        saved.bookmarks.forEach(item => {
+        content.appendChild(element("h3", "🔖 Bookmarked Scriptures and Declarations"));
+        if (!saved.bookmarks.length) {
+          content.appendChild(element("p", "No bookmarks yet. Save a verse or declaration to keep it here."));
+        }
+        saved.bookmarks.slice().reverse().forEach(function (item) {
           const box = element("div", undefined, "library-entry");
-          box.appendChild(element("h4", item.title));
-          box.appendChild(element("p", item.text));
+          box.appendChild(element("h4", item.title || "Saved item"));
+          if (item.reference) {
+            box.appendChild(element("strong", item.reference));
+            box.appendChild(button("Open Scripture", () => openReference(item.reference)));
+          }
+          box.appendChild(element("p", item.text || ""));
+          content.appendChild(box);
+        });
+
+        content.appendChild(element("h3", "📝 Verse Study Notes"));
+        if (!noteEntries.length) content.appendChild(element("p", "Your verse-specific study notes will appear here after you save them in the Study Centre."));
+        noteEntries.slice().reverse().forEach(function (entry) {
+          const box = element("div", undefined, "library-entry");
+          const parts = entry[0].split("|");
+          const reference = parts[0] + " " + parts[1] + ":" + parts[2];
+          const record = entry[1] || {};
+          box.appendChild(element("h4", record.title || reference));
+          box.appendChild(element("strong", reference));
+          if (record.note) box.appendChild(element("p", record.note));
+          if (record.application) box.appendChild(element("p", "Application: " + record.application));
+          box.appendChild(button("Open This Verse", () => openReference(reference)));
+          content.appendChild(box);
+        });
+
+        content.appendChild(element("h3", "🎨 Highlighted Scriptures"));
+        if (!highlightEntries.length) content.appendChild(element("p", "Your highlighted verses will appear here."));
+        highlightEntries.slice().reverse().forEach(function (entry) {
+          const box = element("div", undefined, "library-entry");
+          const parts = entry[0].split("|");
+          const reference = parts[0] + " " + parts[1] + ":" + parts[2];
+          const record = entry[1] || {};
+          const wordCount = Object.keys(record.words || {}).length;
+          box.appendChild(element("h4", reference));
+          box.appendChild(element("p", record.verseColor ? "Whole verse highlighted" : wordCount + " word(s) highlighted"));
+          box.appendChild(button("Read Highlighted Verse", () => openReference(reference)));
           content.appendChild(box);
         });
       }
