@@ -422,7 +422,7 @@
             #zurielGloryStudio[data-finish="forest"] #zurielGloryPreview {--zgs-paper:#e9f0e5;--zgs-ink:#183a30;--zgs-accent:#39765b;background:linear-gradient(90deg,#d4e1d5,#f2f6ec 48%,#d7e3d8 50%,#f2f6ec);}
             #zurielGloryStudio[data-finish="parchment"] #zurielGloryPreview {--zgs-paper:#f0dfbd;--zgs-ink:#4a3520;--zgs-accent:#9a682b;background:repeating-linear-gradient(0deg,#f2e5ca,#f2e5ca 3px,#eddfc2 4px);}
             #zurielGloryPreview:after {content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:#9a835333;box-shadow:0 0 15px #5b472333;}
-            #zurielGloryPreview .zgs-brand {font-size:10px;letter-spacing:1.5px;text-align:center;color:var(--zgs-accent);font-weight:800;}
+            #zurielGloryPreview .zgs-brand {font-size:15px;letter-spacing:1px;text-align:center;color:var(--zgs-accent);font-weight:800;font-family:Georgia,serif;}
             #zurielGloryPreview h3 {text-align:center;color:var(--zgs-ink);font-family:Georgia,serif;font-size:22px;margin:13px 0;}
             #zurielGloryPreview .zgs-ref {text-align:center;font-weight:800;color:var(--zgs-accent);}
             #zurielGloryPreview .zgs-copy {position:relative;z-index:1;white-space:pre-wrap;line-height:1.45;margin:9px 0;font-family:Georgia,serif;}
@@ -447,8 +447,8 @@
             <button type="button" data-finish="ivory">Warm ivory</button><button type="button" data-finish="navy">Kingdom navy</button><button type="button" data-finish="forest">Living forest</button><button type="button" data-finish="parchment">Parchment</button>
           </div></div>
           <article id="zurielGloryPreview" aria-label="Live open-book card preview">
-            <div class="zgs-brand">GLORY VERSE AFFIRMATION</div>
-            <h3 id="zgsPreviewTitle">His Words.. My Life.. My Victory</h3>
+            <div class="zgs-brand">The Light 🕯️</div>
+            <h3 id="zgsPreviewTitle">His Word.. My Life.. My Victory.</h3>
             <div class="zgs-ref" id="zgsPreviewRef">Your Scripture reference</div>
             <p class="zgs-copy" id="zgsPreviewScripture">Your Scripture will appear here.</p>
             <p class="zgs-copy" id="zgsPreviewPrayer"></p><p class="zgs-copy" id="zgsPreviewDeclaration"></p>
@@ -505,7 +505,7 @@
           }catch(error){studio.querySelector("#zgsStatus").textContent="Unable to save. Please check available device storage.";}
         });
         studio.querySelector("#zgsShare").addEventListener("click",async function(){
-          const textValue=["GLORY VERSE AFFIRMATION",studio.querySelector("#zgsReference").value,studio.querySelector("#zgsScripture").value,...["Prayer","Declaration","Affirmation","Confession","Inspiration"].map(name=>name.toUpperCase()+": "+studio.querySelector("#zgs"+name).value),"ZURIEL LIVING WORD BIBLE"].filter(Boolean).join("\n\n");
+          const textValue=["The Light 🕯️","His Word.. My Life.. My Victory.",studio.querySelector("#zgsReference").value,studio.querySelector("#zgsScripture").value,...["Prayer","Declaration","Affirmation","Confession","Inspiration"].map(name=>name.toUpperCase()+": "+studio.querySelector("#zgs"+name).value),"Zuriel Living Word"].filter(Boolean).join("\n\n");
           if(!studio.querySelector("#zgsReference").value.trim()||!studio.querySelector("#zgsScripture").value.trim()){studio.querySelector("#zgsStatus").textContent="Add the Scripture reference and text before sharing.";return;}
           try{
             if(navigator.share) await navigator.share({title:"Glory Verse Affirmation",text:textValue});
