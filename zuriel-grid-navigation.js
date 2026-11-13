@@ -118,7 +118,7 @@
   const launch = document.createElement("button");
   launch.type = "button";
   launch.id = "zurielGridLaunch";
-  launch.textContent = "▦  Open Bible Navigation";
+  launch.textContent = "▦  Browse Books • Chapters • Verses";
   const existingNav = document.getElementById("zurielNavigation");
   if (existingNav) existingNav.insertBefore(launch, existingNav.firstChild);
   else root.insertBefore(launch, root.firstChild);
