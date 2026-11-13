@@ -1830,6 +1830,45 @@ const topics=[
         "verse": 8,
         "endVerse": 9
       }
+    ],
+    "definition": "Biblical relationships are shaped by love for God and neighbour, honour, faithfulness, mutual responsibility and truthful care. Scripture gives guidance for family life while recognising that households live within different circumstances and that every person bears God's image.",
+    "oldTestament": "The creation account presents marriage and family as part of human community and stewardship (Genesis 1:26–28; 2:18–24). Israel's covenant instruction called parents to teach God's ways to children and commanded honour, justice and care across generations (Deuteronomy 6:4–9; 5:16).",
+    "newTestament": "Jesus honours marriage, welcomes children and redefines family around doing God's will (Mark 10:6–9,13–16; Mark 3:31–35). The apostles call households to mutual love, respect and care, with all conduct governed by allegiance to Christ (Ephesians 5:21–6:4; Colossians 3:18–21).",
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "בַּיִת",
+        "term": "bayit",
+        "meaning": "house, household, family",
+        "note": "May refer to a physical house or the people and generations belonging to a household."
+      },
+      {
+        "language": "Greek",
+        "script": "οἶκος",
+        "term": "oikos",
+        "meaning": "house, household",
+        "note": "Often includes the household as a social and family unit."
+      },
+      {
+        "language": "Greek",
+        "script": "ἀλλήλων",
+        "term": "allēlōn",
+        "meaning": "one another",
+        "note": "Appears in many instructions about mutual care and responsibility among believers."
+      }
+    ],
+    "relatedExplanations": [
+      "Genesis 2:18–24 — presents companionship and the forming of a new family union.",
+      "Deuteronomy 6:4–9 — makes faith formation part of ordinary family life.",
+      "Mark 10:13–16 — shows Jesus welcoming and blessing children.",
+      "Ephesians 5:21–6:4 — places household relationships under reverence for Christ and mutual responsibility.",
+      "Colossians 3:18–21 — calls family members to conduct shaped by the Lord."
+    ],
+    "application": "Practise listening, honour, patience and truthful communication at home. Protect the vulnerable, reject violence and coercion, and seek wise help when relationships are unsafe or deeply strained.",
+    "questions": [
+      "What would loving and honouring each family member look like in practice?",
+      "What patterns in my home need healing or wise boundaries?",
+      "How can our household make room for God's word and mutual service?"
     ]
   },
   {
@@ -1875,6 +1914,45 @@ const topics=[
         "verse": 10,
         "endVerse": 12
       }
+    ],
+    "definition": "Work is a way to serve God and neighbour through useful, honest activity. Stewardship means managing time, abilities, resources and responsibilities as gifts entrusted by God, not as possessions for selfish gain.",
+    "oldTestament": "Humanity receives a vocation to cultivate and care for creation (Genesis 2:15). Proverbs commends diligence and honest dealings, while the Sabbath limits endless labour and reminds Israel that people and servants belong to God, not merely to an employer (Exodus 20:8–11; Proverbs 10:4; 11:1).",
+    "newTestament": "Jesus teaches faithfulness in small responsibilities and warns against serving wealth. Paul instructs believers to work sincerely as for the Lord and to share with those in need (Matthew 6:19–24; Luke 16:10–13; Ephesians 4:28; Colossians 3:23–24).",
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "עָבַד",
+        "term": "ʿābad",
+        "meaning": "work, serve, labour",
+        "note": "Can describe ordinary labour and service or worship, depending on context."
+      },
+      {
+        "language": "Hebrew",
+        "script": "מְלָאכָה",
+        "term": "melāʾkāh",
+        "meaning": "work, occupation, task",
+        "note": "Used for work and tasks, including the work of creation."
+      },
+      {
+        "language": "Greek",
+        "script": "ἐργάζομαι",
+        "term": "ergazomai",
+        "meaning": "work, labour, accomplish",
+        "note": "A common verb for carrying out work or activity."
+      }
+    ],
+    "relatedExplanations": [
+      "Genesis 2:15 — gives work a place in humanity's original vocation to cultivate and keep the garden.",
+      "Proverbs 11:1 — condemns dishonest business practices and values integrity.",
+      "Luke 16:10 — connects faithfulness in small matters with larger trustworthiness.",
+      "Ephesians 4:28 — directs work toward honest provision and generosity.",
+      "Colossians 3:23–24 — calls believers to work sincerely as serving the Lord."
+    ],
+    "application": "Work honestly, develop your abilities, respect rest and treat colleagues fairly. Use resources responsibly and let the fruit of your labour become a means of service and generosity.",
+    "questions": [
+      "Where can I bring greater integrity or diligence to my work?",
+      "Am I using my resources only for myself, or also to serve others?",
+      "What healthy boundary would help me honour both work and rest?"
     ]
   },
   {
@@ -1920,6 +1998,52 @@ const topics=[
         "verse": 27,
         "endVerse": null
       }
+    ],
+    "definition": "Biblical justice means acting rightly, protecting the vulnerable and giving people what is due; mercy responds to suffering with compassion. God calls His people to practise both, refusing corruption, partiality and empty religious performance.",
+    "oldTestament": "The Law commands impartial justice and special protection for the poor, widow, orphan and foreigner (Deuteronomy 10:17–19; 24:17–22). The prophets condemn worship that coexists with oppression and call for justice, mercy and humility (Isaiah 1:16–17; Micah 6:8; Amos 5:21–24).",
+    "newTestament": "Jesus rebukes religious leaders who neglect justice, mercy and faithfulness, and His parable of the Samaritan shows neighbour-love crossing social boundaries (Matthew 23:23; Luke 10:25–37). The church is called to impartial care and practical support for people in need (James 1:27; 2:1–9).",
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "מִשְׁפָּט",
+        "term": "mišpāṭ",
+        "meaning": "justice, judgement, legal decision",
+        "note": "Can refer to a just decision, legal process or the practice of justice."
+      },
+      {
+        "language": "Hebrew",
+        "script": "חֶסֶד",
+        "term": "ḥesed",
+        "meaning": "steadfast love, mercy, covenant loyalty",
+        "note": "Often describes faithful kindness expressed through action."
+      },
+      {
+        "language": "Greek",
+        "script": "ἔλεος",
+        "term": "eleos",
+        "meaning": "mercy, compassion",
+        "note": "The compassionate response to another's need or misery."
+      },
+      {
+        "language": "Greek",
+        "script": "δικαιοσύνη",
+        "term": "dikaiosynē",
+        "meaning": "righteousness, justice",
+        "note": "The context determines whether the emphasis is right standing, right conduct or justice."
+      }
+    ],
+    "relatedExplanations": [
+      "Deuteronomy 10:17–19 — God's impartial character grounds care for the vulnerable and the foreigner.",
+      "Isaiah 1:16–17 — true repentance includes seeking justice and defending the oppressed.",
+      "Micah 6:8 — summarises the call to do justice, love mercy and walk humbly with God.",
+      "Matthew 23:23 — Jesus insists that justice, mercy and faithfulness are weightier matters of the law.",
+      "James 2:1–9 — condemns favouritism and calls for love of neighbour."
+    ],
+    "application": "Treat people impartially, speak up when someone is mistreated and make compassion practical. Examine whether your worship and public conduct agree with one another.",
+    "questions": [
+      "Who is vulnerable or overlooked in the situation before me?",
+      "Where might I be showing partiality without recognising it?",
+      "What concrete act of justice or mercy can I take?"
     ]
   },
   {
@@ -1965,6 +2089,45 @@ const topics=[
         "verse": 1,
         "endVerse": 5
       }
+    ],
+    "definition": "The return of Christ is the Christian hope that the risen Jesus will come again in glory, judge evil, complete God's saving purposes and bring His people into the fullness of His kingdom. Scripture calls for watchfulness and faithfulness, not date-setting.",
+    "oldTestament": "The prophets look toward the Day of the LORD, when God will judge evil, vindicate His people and renew creation (Isaiah 2:1–4; 11:1–9; Daniel 7:13–14). These hopes form part of the background to New Testament expectation, though each passage must be read in its own setting.",
+    "newTestament": "Jesus teaches that the Son of Man will come and urges readiness without claiming that disciples can calculate the day or hour (Matthew 24:36–44). The apostles connect Christ's appearing with resurrection, judgement, comfort and holy living (1 Thessalonians 4:13–18; Titus 2:11–14; 2 Peter 3:8–13; Revelation 22:12–20).",
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "παρουσία",
+        "term": "parousia",
+        "meaning": "presence, arrival, coming",
+        "note": "Used in the New Testament for the arrival or coming of Christ."
+      },
+      {
+        "language": "Greek",
+        "script": "ἐπιφάνεια",
+        "term": "epiphaneia",
+        "meaning": "appearing, manifestation",
+        "note": "Used for the appearing of Christ in glory."
+      },
+      {
+        "language": "Greek",
+        "script": "γρηγορέω",
+        "term": "grēgoreō",
+        "meaning": "stay awake, keep watch",
+        "note": "In readiness passages it calls for alert and faithful living."
+      }
+    ],
+    "relatedExplanations": [
+      "Daniel 7:13–14 — pictures the Son of Man receiving everlasting dominion.",
+      "Matthew 24:36–44 — teaches watchfulness while rejecting knowledge of the exact day or hour.",
+      "Acts 1:9–11 — the ascension account promises that Jesus will return.",
+      "1 Thessalonians 4:13–18 — comforts grieving believers with the hope of resurrection and reunion with Christ.",
+      "2 Peter 3:8–13 — connects the promised day with patience, judgement and holy living."
+    ],
+    "application": "Live faithfully in the present: love others, pursue holiness, share the gospel and comfort those who grieve. Avoid sensational predictions and test claims about dates against Jesus' teaching.",
+    "questions": [
+      "How does the promise of Christ's return shape the way I live today?",
+      "Am I using this hope to comfort and encourage others?",
+      "What does this passage say about readiness, and what does it leave unknown?"
     ]
   },
   {
@@ -2010,6 +2173,45 @@ const topics=[
         "verse": 11,
         "endVerse": 13
       }
+    ],
+    "definition": "Resurrection is God's raising of the dead to embodied life. Eternal life is life in relationship with God through Jesus, beginning now and reaching its fullness in the resurrection and renewed creation. Christian hope is not merely escape from the body.",
+    "oldTestament": "The Old Testament contains developing hope that God can defeat death and vindicate His people (Isaiah 25:6–9; 26:19; Daniel 12:1–3). These texts are important background to later Jewish and Christian resurrection hope.",
+    "newTestament": "Jesus declares Himself the resurrection and the life, rises bodily and is called the firstfruits of those who have died (John 11:25–26; 1 Corinthians 15:20–28). The New Testament promises resurrection, judgement and life in God's renewed creation (John 5:24–29; 1 Corinthians 15; Revelation 21:1–5).",
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "חָיָה",
+        "term": "ḥāyâ",
+        "meaning": "live, revive, preserve alive",
+        "note": "A broad verb for living or being brought back to life; context determines the sense."
+      },
+      {
+        "language": "Greek",
+        "script": "ἀνάστασις",
+        "term": "anastasis",
+        "meaning": "resurrection, rising",
+        "note": "The standard New Testament noun for resurrection."
+      },
+      {
+        "language": "Greek",
+        "script": "ζωή",
+        "term": "zōē",
+        "meaning": "life",
+        "note": "In John it frequently describes the life that comes through the Son."
+      }
+    ],
+    "relatedExplanations": [
+      "Isaiah 25:6–9 — anticipates God's defeat of death and the wiping away of tears.",
+      "Daniel 12:1–3 — speaks of awakening from the dust and final destinies.",
+      "John 11:25–26 — Jesus identifies Himself as the resurrection and the life.",
+      "1 Corinthians 15:20–28 — explains Christ as firstfruits and the future defeat of death.",
+      "Revelation 21:1–5 — portrays the final hope of renewed creation and God's dwelling with humanity."
+    ],
+    "application": "Let resurrection hope shape grief, courage and priorities. Honour the body, care for those who mourn and live in the light of the life Christ has already begun in His people.",
+    "questions": [
+      "What does Jesus' resurrection mean for my understanding of death?",
+      "How can resurrection hope change the way I face grief or fear?",
+      "What does the promise of renewed creation teach me about life now?"
     ]
   },
   {
@@ -2055,6 +2257,45 @@ const topics=[
         "verse": 1,
         "endVerse": 12
       }
+    ],
+    "definition": "Biblical wisdom in speech means using words truthfully, thoughtfully and lovingly. Speech can heal or wound, build trust or destroy it; wisdom includes knowing when to speak, when to listen and when silence is appropriate.",
+    "oldTestament": "Proverbs repeatedly contrasts truthful, gentle and timely words with deceit, gossip and rash speech (Proverbs 10:19; 12:18; 15:1; 18:21). The ninth commandment forbids false witness, protecting truth and neighbour.",
+    "newTestament": "Jesus teaches that words reveal the heart and that people will answer for careless speech (Matthew 12:34–37). James warns that the tongue can cause great harm, while Paul calls believers to speech that builds others up and gives grace (James 3:1–12; Ephesians 4:29; Colossians 4:6).",
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "לָשׁוֹן",
+        "term": "lāšôn",
+        "meaning": "tongue, language, speech",
+        "note": "Often used figuratively for the power and practice of speech."
+      },
+      {
+        "language": "Greek",
+        "script": "λόγος",
+        "term": "logos",
+        "meaning": "word, speech, message",
+        "note": "A broad term whose meaning is shaped by its context."
+      },
+      {
+        "language": "Greek",
+        "script": "οἰκοδομή",
+        "term": "oikodomē",
+        "meaning": "building up, edification",
+        "note": "Paul uses this image for speech that strengthens the community."
+      }
+    ],
+    "relatedExplanations": [
+      "Proverbs 15:1 — describes how a gentle answer can turn away wrath.",
+      "Proverbs 18:21 — warns that speech has life-and-death consequences.",
+      "Matthew 12:34–37 — connects words with the heart and moral accountability.",
+      "Ephesians 4:29 — instructs believers to speak what builds others up and gives grace.",
+      "James 3:1–12 — explains the disproportionate power of the tongue."
+    ],
+    "application": "Pause before responding in anger, refuse gossip and exaggeration, speak truth with kindness and listen carefully. Repair harm when your words have wounded someone.",
+    "questions": [
+      "Do my words build up or tear down the people who hear them?",
+      "What conversation requires more listening and less reacting?",
+      "Is there a false, harsh or careless statement I need to correct?"
     ]
   },
   {
@@ -2100,6 +2341,45 @@ const topics=[
         "verse": 5,
         "endVerse": 6
       }
+    ],
+    "definition": "Humility is truthful dependence on God and a willingness to regard others with honour rather than self-importance. Servanthood uses one's strength and position for another's good, following the pattern of Jesus.",
+    "oldTestament": "Moses is described as very humble, and the prophets condemn pride and exploitation. The LORD calls His people to walk humbly with Him and to serve rather than boast (Numbers 12:3; Micah 6:8; Proverbs 11:2).",
+    "newTestament": "Jesus takes the form of a servant and washes His disciples' feet; He teaches that greatness in His community is measured by service (Mark 10:42–45; John 13:1–17). Paul urges believers to reject selfish ambition and look to the interests of others (Philippians 2:3–11).",
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "עָנָו",
+        "term": "ʿānāw",
+        "meaning": "humble, meek, afflicted",
+        "note": "Can describe humility and lowliness, sometimes with the experience of affliction."
+      },
+      {
+        "language": "Greek",
+        "script": "ταπεινοφροσύνη",
+        "term": "tapeinophrosynē",
+        "meaning": "humility, lowliness of mind",
+        "note": "In the New Testament it describes a humble attitude toward others."
+      },
+      {
+        "language": "Greek",
+        "script": "διάκονος",
+        "term": "diakonos",
+        "meaning": "servant, minister",
+        "note": "A person who serves; the role is defined by the context."
+      }
+    ],
+    "relatedExplanations": [
+      "Micah 6:8 — joins justice and mercy with humble walking before God.",
+      "Mark 10:42–45 — Jesus contrasts domination with greatness expressed through service.",
+      "John 13:1–17 — Jesus washes His disciples' feet and gives them an example to follow.",
+      "Philippians 2:3–11 — grounds humility in the self-giving pattern of Christ.",
+      "1 Peter 5:5–6 — calls believers to clothe themselves with humility before God and one another."
+    ],
+    "application": "Choose hidden acts of service, welcome correction and give others credit. Humility is not denying God-given gifts or accepting abuse; it is using gifts without pride and serving without seeking control.",
+    "questions": [
+      "Where am I seeking recognition instead of serving?",
+      "Whose interests can I consider more carefully?",
+      "How does Jesus' example correct my idea of greatness?"
     ]
   },
   {
@@ -2145,6 +2425,52 @@ const topics=[
         "verse": 3,
         "endVerse": 4
       }
+    ],
+    "definition": "A biblical promise is a commitment God makes within a particular covenant, audience and setting. God's faithfulness means He remains true to His character and word; promises must be read in context rather than treated as guarantees of any outcome we desire.",
+    "oldTestament": "God's promises to Abraham, Israel and David shape the story of Scripture (Genesis 12:1–3; 15; 2 Samuel 7:12–16). Israel's history shows both divine faithfulness and the consequences of covenant unfaithfulness; the prophets announce restoration grounded in God's mercy.",
+    "newTestament": "The New Testament presents Jesus as the fulfilment of God's saving promises and describes believers sharing the promised blessings through Him (Luke 1:68–75; 2 Corinthians 1:20; Galatians 3:14–29; Hebrews 10:23). Not every promise addressed to ancient Israel transfers directly to every individual believer in the same form.",
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "בְּרִית",
+        "term": "berît",
+        "meaning": "covenant, treaty, solemn commitment",
+        "note": "A key term for God's binding covenant relationship with His people."
+      },
+      {
+        "language": "Hebrew",
+        "script": "אָמַן",
+        "term": "ʾāman",
+        "meaning": "be firm, trustworthy, believe",
+        "note": "The word family conveys reliability and trust."
+      },
+      {
+        "language": "Greek",
+        "script": "ἐπαγγελία",
+        "term": "epangelia",
+        "meaning": "promise",
+        "note": "Used for God's promised gifts and commitments; the passage identifies the promise and recipients."
+      },
+      {
+        "language": "Greek",
+        "script": "πιστός",
+        "term": "pistos",
+        "meaning": "faithful, trustworthy",
+        "note": "Describes reliability and faithfulness."
+      }
+    ],
+    "relatedExplanations": [
+      "Genesis 12:1–3 — God's call and promise to Abraham establish a major covenant storyline.",
+      "2 Samuel 7:12–16 — promises a continuing Davidic house and kingdom.",
+      "Luke 1:68–75 — Zechariah praises God for remembering covenant promises.",
+      "2 Corinthians 1:20 — locates the fulfilment of God's promises in Christ.",
+      "Hebrews 10:23 — urges believers to hold fast because the One who promised is faithful."
+    ],
+    "application": "Ask who received a promise, what it meant in its original covenant setting and how the New Testament relates it to Christ. Trust God's character without claiming that every personal desire is guaranteed.",
+    "questions": [
+      "Who was the original recipient of this promise?",
+      "How does the wider passage or covenant shape its meaning?",
+      "What does this promise reveal about God's character, even if my circumstances differ?"
     ]
   },
   {
@@ -2190,6 +2516,45 @@ const topics=[
         "verse": 10,
         "endVerse": null
       }
+    ],
+    "definition": "Repentance is a turning to God that includes a changed mind, honest recognition of sin and a changed direction of life. It is not mere regret or self-punishment; it responds to God's mercy and bears fruit in changed conduct.",
+    "oldTestament": "The prophets call Israel to return to the LORD with whole hearts, not merely outward signs (Joel 2:12–13; Isaiah 55:6–7). The Hebrew idea of turning back is central to covenant renewal and restoration.",
+    "newTestament": "John the Baptist and Jesus call people to repent and believe the good news (Mark 1:4,14–15). Paul describes repentance that leads toward salvation, while Zacchaeus shows repentance bearing practical fruit in restitution and generosity (2 Corinthians 7:9–11; Luke 19:1–10).",
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "שׁוּב",
+        "term": "šûb",
+        "meaning": "turn, return, come back",
+        "note": "A central Old Testament verb for turning back to God."
+      },
+      {
+        "language": "Greek",
+        "script": "μετάνοια",
+        "term": "metanoia",
+        "meaning": "repentance, change of mind",
+        "note": "In New Testament usage it involves a changed outlook and turning toward God."
+      },
+      {
+        "language": "Greek",
+        "script": "μετανοέω",
+        "term": "metanoeō",
+        "meaning": "repent, change one's mind",
+        "note": "The verb calls for a changed response to God, not merely feeling regret."
+      }
+    ],
+    "relatedExplanations": [
+      "Joel 2:12–13 — calls for wholehearted return to the LORD, grounded in His gracious character.",
+      "Isaiah 55:6–7 — joins seeking the LORD with turning from wicked ways and receiving mercy.",
+      "Mark 1:14–15 — Jesus connects repentance with believing the good news of God's Kingdom.",
+      "Luke 19:1–10 — Zacchaeus' changed conduct gives visible evidence of repentance.",
+      "2 Corinthians 7:9–11 — distinguishes godly grief that leads to repentance from destructive worldly sorrow."
+    ],
+    "application": "Confess sin specifically, receive God's mercy, make restitution where appropriate and take practical steps away from repeated wrongdoing. Seek accountability and support rather than relying on shame alone.",
+    "questions": [
+      "What exactly am I being called to turn away from?",
+      "What changed action would make repentance visible?",
+      "Is there someone I need to make amends to, where doing so is wise and safe?"
     ]
   },
   {
@@ -2236,6 +2601,45 @@ const topics=[
         "verse": 6,
         "endVerse": 13
       }
+    ],
+    "definition": "A covenant is a solemn relationship or commitment established with defined promises, responsibilities and signs. The Bible's covenant story reveals God's faithfulness and explains how He forms a people for Himself, ultimately bringing His saving purposes to fulfilment in Christ.",
+    "oldTestament": "Major covenant moments include God's promise to Noah, His covenant with Abraham, the Sinai covenant with Israel and the promise to David (Genesis 9; 12; 15; Exodus 19–24; 2 Samuel 7). The prophets promise a new covenant marked by forgiveness and transformed hearts (Jeremiah 31:31–34; Ezekiel 36:25–27).",
+    "newTestament": "Jesus identifies the cup with the new covenant in His blood (Luke 22:20). Hebrews explains His priestly ministry and the new covenant's better promises, while Paul connects Abraham's promise to faith in Christ (Hebrews 8–10; Galatians 3). These developments should be read carefully without erasing the original historical setting of earlier covenants.",
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "בְּרִית",
+        "term": "berît",
+        "meaning": "covenant, treaty, solemn commitment",
+        "note": "A central term for binding relational commitments in the Old Testament."
+      },
+      {
+        "language": "Greek",
+        "script": "διαθήκη",
+        "term": "diathēkē",
+        "meaning": "covenant, testament",
+        "note": "Used in the New Testament for covenant; context shapes the precise sense."
+      },
+      {
+        "language": "Greek",
+        "script": "πιστός",
+        "term": "pistos",
+        "meaning": "faithful, trustworthy",
+        "note": "Describes the reliability of God and the trustworthiness expected of His people."
+      }
+    ],
+    "relatedExplanations": [
+      "Genesis 15:1–6 — God's promise to Abraham is received in faith and becomes foundational to the biblical story.",
+      "Exodus 19:3–6 — Israel is called into covenant identity and vocation among the nations.",
+      "2 Samuel 7:12–16 — establishes the promise of David's enduring house and kingdom.",
+      "Jeremiah 31:31–34 — anticipates a new covenant with forgiveness and God's law written on the heart.",
+      "Luke 22:19–20 — Jesus interprets His death in relation to the new covenant."
+    ],
+    "application": "When reading a promise, identify the covenant, its original recipients, its conditions and its place in the wider story. Let God's faithfulness produce trust, gratitude and covenant-shaped faithfulness in your own relationships.",
+    "questions": [
+      "Which covenant is in view in this passage, and who are its original parties?",
+      "What does this covenant reveal about God's character and purpose?",
+      "How does the New Testament connect this covenant theme to Jesus?"
     ]
   },
   {
