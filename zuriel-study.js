@@ -379,8 +379,12 @@
             const verseElements = document.querySelectorAll("#message .verse");
             const target = verseElements[Number(item.verse) - 1];
             if (target) {
+              const verseText = target.textContent.replace(/^\s*\d+\.?\s*/, "").trim();
               target.scrollIntoView({ behavior: "smooth", block: "center" });
               target.classList.add("zuriel-selected-verse");
+              if (window.ZurielStudy && typeof window.ZurielStudy.openForReference === "function") {
+                window.ZurielStudy.openForReference(name, item.chapter, Number(item.verse), verseText, "", -1);
+              }
             }
           });
         });
