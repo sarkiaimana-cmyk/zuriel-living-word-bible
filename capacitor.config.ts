@@ -1,7 +1,7 @@
 import { CapacitorConfig } from "@capacitor/cli";
 
 const config: CapacitorConfig = {
-  appId: "com.zuriel.livingwordbible.github",
+  appId: process.env.ZURIEL_ANDROID_APP_ID || "com.zuriel.livingwordbible.github",
   appName: "Zuriel Living Word Bible",
   webDir: "www",
   backgroundColor: "#102b24",
