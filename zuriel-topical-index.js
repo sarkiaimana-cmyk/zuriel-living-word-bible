@@ -2686,6 +2686,45 @@ const topics=[
         "verse": 24,
         "endVerse": 30
       }
+    ],
+    "definition": "The patriarchs Abraham, Isaac and Jacob are central ancestors of Israel. Their stories trace God's call, covenant promise, human weakness and divine faithfulness across generations.",
+    "oldTestament": "Genesis 12, 15, 17 and 28 show God calling Abraham, confirming covenant promises, and extending the promise through Isaac and Jacob. The narratives include waiting, family conflict and imperfect choices, yet God's purpose continues.",
+    "newTestament": "The New Testament presents Abraham as an example of faith and identifies Christ as the promised offspring through whom blessing reaches the nations (Galatians 3:6–18). Believers are described as Abraham's children through faith, not by ethnic ancestry (Romans 4).",
+    "application": "Read the patriarchal stories honestly: notice both trust and failure. Learn to wait faithfully, honour God's promises without manipulating outcomes, and see how God's grace works through imperfect people.",
+    "questions": [
+      "What did God promise, and how did each generation respond?",
+      "Where did impatience or fear complicate the family's choices?",
+      "How does the promise reaching the nations shape my understanding of faith?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "בְּרִית",
+        "term": "berit",
+        "meaning": "covenant",
+        "note": "The covenant language marks God's committed relationship and promises, not merely a human agreement."
+      },
+      {
+        "language": "Hebrew",
+        "script": "זֶרַע",
+        "term": "zeraʿ",
+        "meaning": "seed, offspring, descendants",
+        "note": "This word can refer collectively to descendants and is important in the promise to Abraham."
+      },
+      {
+        "language": "Hebrew",
+        "script": "בָּרַךְ",
+        "term": "barakh",
+        "meaning": "to bless",
+        "note": "The promise of blessing extends beyond one family toward the families of the earth."
+      }
+    ],
+    "relatedExplanations": [
+      "Genesis 12:1–3 — Abram is called to leave, trust, and become a channel of blessing to all families of the earth.",
+      "Genesis 15:1–6 — God's promise is received by Abram in faith while the fulfilment is still unseen.",
+      "Genesis 17:1–8 — The covenant is reaffirmed and linked with descendants and a lasting relationship with God.",
+      "Genesis 28:10–17 — Jacob receives the promise at Bethel, showing that God's purpose continues across generations.",
+      "Galatians 3:6–18 — Paul explains the promise to Abraham in relation to faith and its fulfilment in Christ."
     ]
   },
   {
@@ -2732,6 +2771,45 @@ const topics=[
         "verse": 20,
         "endVerse": 25
       }
+    ],
+    "definition": "The exodus is God's decisive rescue of Israel from slavery in Egypt. It reveals His hearing of oppressed people, power over oppressive rulers, covenant faithfulness and formation of a worshipping community.",
+    "oldTestament": "Exodus 2–15 tells how God remembers His covenant, confronts Pharaoh, delivers Israel through the sea and leads the people toward covenant life. Deliverance is followed by instruction, worship and dependence in the wilderness.",
+    "newTestament": "The New Testament recalls the exodus as a pattern that helps explain redemption, baptism and freedom from sin. Jesus' saving work is associated with a new exodus, while 1 Corinthians 10 warns believers to learn from Israel's wilderness failures.",
+    "application": "Remember that biblical freedom is freedom for belonging to God and serving Him. Respond to deliverance with worship, trust and obedience; do not romanticise the wilderness or forget God's provision.",
+    "questions": [
+      "How does God respond to the suffering of Israel in Exodus 2–3?",
+      "What is the difference between being rescued from slavery and learning covenant faithfulness?",
+      "What warning and encouragement does 1 Corinthians 10 draw from Israel's journey?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "יָשַׁע",
+        "term": "yashaʿ",
+        "meaning": "to save, deliver",
+        "note": "A broad rescue word used for God's intervention on behalf of His people."
+      },
+      {
+        "language": "Hebrew",
+        "script": "פָּסַח",
+        "term": "pasach",
+        "meaning": "to pass over, spare",
+        "note": "Associated with the Passover account; the narrative explains the protection given under God's instruction."
+      },
+      {
+        "language": "Greek",
+        "script": "ἔξοδος",
+        "term": "exodos",
+        "meaning": "departure, exodus",
+        "note": "Luke 9:31 uses this term when Moses and Elijah speak with Jesus about His coming departure at Jerusalem."
+      }
+    ],
+    "relatedExplanations": [
+      "Exodus 3:7–10 — God sees, hears and knows Israel's affliction and commissions Moses to act.",
+      "Exodus 12:1–14 — Passover marks Israel's deliverance and becomes a lasting memorial of God's rescue.",
+      "Exodus 14:13–31 — The crossing of the sea displays God's power and brings Israel out from Pharaoh's control.",
+      "Deuteronomy 6:20–25 — Israel is instructed to tell the next generation the meaning of God's deliverance.",
+      "1 Corinthians 10:1–13 — Paul draws spiritual warnings and encouragement from Israel's exodus and wilderness journey."
     ]
   },
   {
@@ -2778,6 +2856,45 @@ const topics=[
         "verse": 7,
         "endVerse": 12
       }
+    ],
+    "definition": "The Torah, or Law, is God's covenant instruction to Israel. It reveals His holiness, orders worship and community life, exposes wrongdoing and teaches love of God and neighbour within the covenant.",
+    "oldTestament": "At Sinai, the commandments follow God's rescue of Israel from Egypt (Exodus 19–20). The Law includes moral, civil and ceremonial instructions for Israel's covenant life; Deuteronomy repeatedly calls the people to love God and obey from the heart.",
+    "newTestament": "Jesus fulfils rather than casually discards the Law and Prophets (Matthew 5:17). The apostles teach that the Law reveals sin but cannot justify sinners; righteousness is received through faith, and the Spirit enables love that fulfils the Law's intent (Romans 3; 8; 13:8–10).",
+    "application": "Read each command in its covenant and literary setting. Let the Law teach God's character and the seriousness of sin, while interpreting its fulfilment through Jesus and the New Testament rather than applying every Israelite regulation directly to the church.",
+    "questions": [
+      "What does the command reveal about God's holiness or care for people?",
+      "How does Jesus fulfil or deepen this instruction?",
+      "How can love of God and neighbour shape my response today?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "תּוֹרָה",
+        "term": "torah",
+        "meaning": "instruction, teaching, law",
+        "note": "The word carries the sense of instruction and guidance, not only a list of legal penalties."
+      },
+      {
+        "language": "Hebrew",
+        "script": "מִצְוָה",
+        "term": "mitsvah",
+        "meaning": "commandment",
+        "note": "Used for a command given within the covenant relationship."
+      },
+      {
+        "language": "Greek",
+        "script": "νόμος",
+        "term": "nomos",
+        "meaning": "law",
+        "note": "In the New Testament its precise reference depends on context: Mosaic Law, a principle, or law more generally."
+      }
+    ],
+    "relatedExplanations": [
+      "Exodus 20:1–17 — The commandments begin with God's identity as the One who brought Israel out of Egypt.",
+      "Deuteronomy 6:4–9 — Covenant obedience is grounded in wholehearted love for the LORD.",
+      "Matthew 5:17–20 — Jesus describes His relationship to the Law and Prophets in terms of fulfilment.",
+      "Romans 3:19–26 — Paul explains the Law's role in exposing sin and contrasts it with justification through faith.",
+      "Romans 13:8–10 — Love of neighbour expresses the moral aim of the commandments."
     ]
   },
   {
@@ -2824,6 +2941,45 @@ const topics=[
         "verse": 1,
         "endVerse": 14
       }
+    ],
+    "definition": "The tabernacle was Israel's portable sanctuary, designed according to God's instruction as the place where He would meet with His people. Its worship, priesthood and sacrifices taught that God's holy presence is graciously approached on His terms.",
+    "oldTestament": "Exodus 25–40 describes the tabernacle, its furnishings, priestly service and God's glory filling it. The sanctuary stood at the centre of Israel's camp and later provided a pattern for the temple.",
+    "newTestament": "John 1:14 uses tabernacle language to describe the Word dwelling among us in Jesus. Hebrews presents Christ as the greater high priest who opens access to God; the church is also described as God's dwelling by the Spirit (1 Corinthians 3:16; Ephesians 2:19–22).",
+    "application": "Approach God with reverence and gratitude, remembering that access is provided through Christ. Let the tabernacle's emphasis on God's presence shape worship, holiness and the way the community treats one another.",
+    "questions": [
+      "What do the tabernacle's design and boundaries teach about God's holiness?",
+      "How does Jesus fulfil the theme of God dwelling among His people?",
+      "What does being God's dwelling by the Spirit mean for community life?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "מִשְׁכָּן",
+        "term": "mishkan",
+        "meaning": "dwelling place, tabernacle",
+        "note": "Related to the idea of dwelling and used for Israel's sanctuary."
+      },
+      {
+        "language": "Hebrew",
+        "script": "שָׁכַן",
+        "term": "shakan",
+        "meaning": "to dwell, settle",
+        "note": "The language of dwelling helps explain the biblical theme of God's presence among His people."
+      },
+      {
+        "language": "Greek",
+        "script": "σκηνόω",
+        "term": "skēnoō",
+        "meaning": "to dwell, pitch a tent",
+        "note": "John 1:14 uses this verb for the Word dwelling among humanity."
+      }
+    ],
+    "relatedExplanations": [
+      "Exodus 25:8–9 — God commands a sanctuary so that He may dwell among Israel.",
+      "Exodus 40:34–38 — The glory of the LORD fills the completed tabernacle and guides the people.",
+      "Leviticus 16:1–17 — The Day of Atonement shows the seriousness of approaching God's holy presence.",
+      "John 1:14–18 — The Word becomes flesh and makes the Father known among us.",
+      "Ephesians 2:19–22 — Believers are built together as a dwelling place for God by the Spirit."
     ]
   },
   {
@@ -2870,6 +3026,45 @@ const topics=[
         "verse": 23,
         "endVerse": 28
       }
+    ],
+    "definition": "In Israel, priests served at the sanctuary, represented the people in worship and taught the distinction between holy and common. The high priest's ministry included intercession and atonement rites; the New Testament presents Jesus as the unique and final High Priest.",
+    "oldTestament": "Exodus 28–29 establishes priestly garments and consecration. Leviticus explains offerings and priestly duties, while Leviticus 16 describes the high priest's annual entry on the Day of Atonement.",
+    "newTestament": "Hebrews 4–10 contrasts the repeated earthly priestly ministry with Jesus, who is sinless, compassionate and permanently appointed. His once-for-all offering secures access to God; believers therefore approach with confidence and serve as a holy priesthood (1 Peter 2:5, 9).",
+    "application": "Rest your confidence in Christ's completed work rather than trying to earn access to God. Pray for others, serve with humility and remember that every believer's worshipful service points to God's grace, not personal status.",
+    "questions": [
+      "What responsibilities and limits marked the Old Testament priesthood?",
+      "Why does Hebrews describe Jesus' priesthood as greater and lasting?",
+      "How can I intercede and serve without treating spiritual leadership as status?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "כֹּהֵן",
+        "term": "kohen",
+        "meaning": "priest",
+        "note": "The ordinary Hebrew term for a priest serving in Israel's worship."
+      },
+      {
+        "language": "Hebrew",
+        "script": "כָּפַר",
+        "term": "kaphar",
+        "meaning": "to make atonement, cover",
+        "note": "A key verb in the sacrificial and atonement vocabulary; its use must be read within each ritual context."
+      },
+      {
+        "language": "Greek",
+        "script": "ἀρχιερεύς",
+        "term": "archiereus",
+        "meaning": "chief priest, high priest",
+        "note": "Hebrews uses this title extensively to explain Jesus' unique priestly ministry."
+      }
+    ],
+    "relatedExplanations": [
+      "Exodus 28:1–4 — Aaron and his sons are set apart for priestly service and given garments associated with their office.",
+      "Leviticus 16:11–17 — The high priest makes atonement according to God's instructions on the Day of Atonement.",
+      "Psalm 110:1–4 — The royal figure is declared a priest forever according to the order of Melchizedek.",
+      "Hebrews 4:14–16 — Jesus' priesthood gives believers confidence to approach the throne of grace.",
+      "Hebrews 7:23–28 — Jesus' enduring priesthood and once-for-all offering are contrasted with mortal priests and repeated sacrifices."
     ]
   },
   {
