@@ -981,6 +981,19 @@
         highlightVerse(verse);
         paintSavedHighlights(selectedReference);
         loadSavedNote();
+
+        // Open the study sections automatically so the selected verse's
+        // original-language words and connected Scriptures are immediately visible.
+        const originalWordsSection = document.getElementById("zurielOriginalWords");
+        const originalWordsDetails = originalWordsSection
+          ? originalWordsSection.closest("details") : null;
+        if (originalWordsDetails) originalWordsDetails.open = true;
+
+        const crossReferenceList = document.getElementById("zurielCrossReferenceList");
+        const crossReferenceDetails = crossReferenceList
+          ? crossReferenceList.closest("details") : null;
+        if (crossReferenceDetails) crossReferenceDetails.open = true;
+
         loadOriginalWords(selectedReference);
         loadRelatedScriptures(selectedReference);
 
@@ -988,6 +1001,16 @@
           behavior: "smooth",
           block: "start"
         });
+
+        // Bring the expanded word-study section into view inside the study panel.
+        window.setTimeout(function () {
+          if (originalWordsDetails) {
+            originalWordsDetails.scrollIntoView({
+              behavior: "smooth",
+              block: "nearest"
+            });
+          }
+        }, 120);
       }
     };
   }
