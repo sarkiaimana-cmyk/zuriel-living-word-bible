@@ -164,6 +164,33 @@ select {
 
 .verse:active { background: #edf3ed; }
 
+#zurielVerseActions {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px;
+  margin:12px 0 16px;
+  padding:12px;
+  border:1px solid #d4c18c;
+  border-radius:12px;
+  background:linear-gradient(135deg,#f7f2e5,#e9eee6);
+}
+#zurielVerseActions p {
+  flex:1 1 100%;
+  margin:0;
+  color:#304b3d;
+  font:600 13px/1.5 Arial,sans-serif;
+}
+#zurielVerseActions button {
+  width:100%;
+  margin:0;
+  background:#19324f;
+  color:#fff7e6;
+  border:1px solid #b99b58;
+  font-weight:700;
+}
+#zurielVerseActions button:disabled { opacity:.55; }
+
 .verse-word {
   display:inline;
   border-radius:3px;
@@ -743,6 +770,48 @@ async function openChapter(book, chapter) {
     verses.length + " verses. Tap a verse to open its study panel.";
   message.appendChild(count);
 
+  let selectedVerseInfo = null;
+  const verseActions = document.createElement("section");
+  verseActions.id = "zurielVerseActions";
+  verseActions.setAttribute("aria-live", "polite");
+  const verseActionHint = document.createElement("p");
+  verseActionHint.textContent = "Select a verse to connect its exact Scripture text to your Glory Verse Affirmation.";
+  const createGloryCard = document.createElement("button");
+  createGloryCard.type = "button";
+  createGloryCard.disabled = true;
+  createGloryCard.textContent = "✨ Create Glory Verse Affirmation";
+  createGloryCard.addEventListener("click", function () {
+    if (!selectedVerseInfo) return;
+    if (window.ZurielLibrary &&
+        typeof window.ZurielLibrary.openGloryVerse === "function") {
+      const opened = window.ZurielLibrary.openGloryVerse(
+        selectedVerseInfo.reference,
+        selectedVerseInfo.text,
+        "King James Version"
+      );
+      if (!opened) {
+        status.textContent = "The Glory Verse Studio could not be opened. Please try again.";
+      }
+    } else {
+      status.textContent = "The Study Library is still loading. Please try again in a moment.";
+    }
+  });
+  verseActions.appendChild(verseActionHint);
+  verseActions.appendChild(createGloryCard);
+  message.appendChild(verseActions);
+
+  function selectVerseForGloryCard(verseNumber, verseText) {
+    selectedVerseInfo = {
+      reference: book + " " + chapter + ":" + verseNumber,
+      text: String(verseText || "").trim()
+    };
+    verseActionHint.textContent = "Selected: " + selectedVerseInfo.reference +
+      " • Exact KJV verse text is ready to transfer.";
+    createGloryCard.disabled = !selectedVerseInfo.text;
+    createGloryCard.textContent = "✨ Create Glory Verse Affirmation — " +
+      selectedVerseInfo.reference;
+  }
+
   const progressBox = document.createElement("div");
   progressBox.id = "zurielReadingProgress";
   progressBox.setAttribute("aria-live", "polite");
@@ -787,6 +856,7 @@ async function openChapter(book, chapter) {
       word.addEventListener("click", function (event) {
         event.stopPropagation();
         saveReadingPosition(book, chapter, index + 1);
+        selectVerseForGloryCard(index + 1, verse);
         if (window.ZurielStudy &&
             typeof window.ZurielStudy.openForReference === "function") {
           window.ZurielStudy.openForReference(
@@ -806,6 +876,7 @@ async function openChapter(book, chapter) {
 
     paragraph.addEventListener("click", function () {
       saveReadingPosition(book, chapter, index + 1);
+      selectVerseForGloryCard(index + 1, verse);
       if (
         window.ZurielStudy &&
         typeof window.ZurielStudy.openForReference === "function"
