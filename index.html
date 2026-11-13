@@ -406,22 +406,22 @@ function updateContinueReadingCard() {
     return;
   }
 
-  lastReadingStatus.textContent =
-    "Your last reading position: " +
-    saved.book + " Chapter " + saved.chapter;
+  const reference = saved.book + " " + saved.chapter +
+    (Number.isInteger(saved.verse) ? ":" + saved.verse : "");
 
-  continueButton.textContent =
-    "Continue Reading — " + saved.book + " " + saved.chapter;
+  lastReadingStatus.textContent =
+    "Your last reading position: " + reference;
+
+  continueButton.textContent = "Continue Reading — " + reference;
 
   continueButton.disabled = false;
 }
 
-function saveReadingPosition(book, chapter) {
+function saveReadingPosition(book, chapter, verse) {
   try {
-    localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify({ book: book, chapter: chapter })
-    );
+    const position = { book: book, chapter: chapter };
+    if (Number.isInteger(verse) && verse > 0) position.verse = verse;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(position));
   } catch (error) {
     status.textContent =
       "Reading position could not be saved on this device.";
@@ -623,6 +623,7 @@ async function openChapter(book, chapter) {
       word.setAttribute("aria-label", "Study or highlight the word " + part);
       word.addEventListener("click", function (event) {
         event.stopPropagation();
+        saveReadingPosition(book, chapter, index + 1);
         if (window.ZurielStudy &&
             typeof window.ZurielStudy.openForReference === "function") {
           window.ZurielStudy.openForReference(
@@ -641,6 +642,7 @@ async function openChapter(book, chapter) {
     });
 
     paragraph.addEventListener("click", function () {
+      saveReadingPosition(book, chapter, index + 1);
       if (
         window.ZurielStudy &&
         typeof window.ZurielStudy.openForReference === "function"
