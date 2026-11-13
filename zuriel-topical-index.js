@@ -987,6 +987,45 @@ const topics=[
         "verse": 3,
         "endVerse": 4
       }
+    ],
+    "definition": "Forgiveness is the gracious release of a personal debt or offence rather than nurturing revenge. Biblical forgiveness is rooted in God's mercy; reconciliation seeks restored relationship where truth, repentance and safety make that possible. Forgiveness does not mean calling evil good, denying harm or removing wise boundaries.",
+    "oldTestament": "God reveals Himself as forgiving while taking wrongdoing seriously (Exodus 34:6–7). Joseph's response to his brothers (Genesis 50:15–21) and the Psalms' celebration of mercy show forgiveness within the life of God's people. The Day of Atonement also taught Israel the seriousness of sin and the need for cleansing (Leviticus 16).",
+    "newTestament": "Jesus teaches His disciples to forgive and embodies mercy toward sinners. His death is the basis for God's forgiveness; the church is therefore called to forgive as it has been forgiven (Matthew 18:21–35; Ephesians 1:7; 4:32). Reconciliation is pursued truthfully and responsibly, not by concealing abuse or danger (Matthew 5:23–24; Luke 17:3–4).",
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "סָלַח",
+        "term": "sālaḥ",
+        "meaning": "forgive, pardon",
+        "note": "In the Old Testament this verb is especially associated with God's gracious pardon."
+      },
+      {
+        "language": "Greek",
+        "script": "ἀφίημι",
+        "term": "aphiēmi",
+        "meaning": "release, remit, forgive",
+        "note": "A broad verb; in forgiveness contexts it pictures releasing a debt or offence."
+      },
+      {
+        "language": "Greek",
+        "script": "καταλλάσσω",
+        "term": "katallassō",
+        "meaning": "reconcile",
+        "note": "Used for restored relationship, especially reconciliation with God through Christ."
+      }
+    ],
+    "relatedExplanations": [
+      "Exodus 34:6–7 — God's self-revelation holds mercy together with moral seriousness.",
+      "Psalm 103:8–12 — celebrates God's compassion and the removal of transgressions.",
+      "Matthew 18:21–35 — Jesus' parable connects receiving mercy with extending mercy.",
+      "Ephesians 4:31–32 — calls believers to kindness and forgiveness patterned on God's forgiveness in Christ.",
+      "1 John 1:9 — connects confession with God's faithfulness to forgive and cleanse."
+    ],
+    "application": "Name wrong honestly, seek God's help to release vengeance, and pursue truthful reconciliation where it is safe and appropriate. Forgiveness can coexist with accountability, boundaries and seeking help.",
+    "questions": [
+      "What harm do I need to bring honestly before God?",
+      "What is the difference between forgiving someone and immediately trusting them again?",
+      "Is there a wise, safe step toward peace or accountability that I should take?"
     ]
   },
   {
@@ -1025,6 +1064,45 @@ const topics=[
         "verse": 14,
         "endVerse": null
       }
+    ],
+    "definition": "Holiness means being set apart as belonging to God and reflecting His pure, faithful character. Consecration is the response of offering one's whole life to God; it is not an attempt to earn salvation but a grateful response to His grace.",
+    "oldTestament": "God calls Israel to be a holy people because He is holy (Leviticus 19:1–2). The tabernacle, priesthood, Sabbath and covenant practices taught that worship and ordinary life belong to the LORD. Holiness included justice, truthful conduct and care for neighbours, not ritual alone.",
+    "newTestament": "Believers are made holy in Christ and are also called to grow in holiness through the Spirit. Romans 12 describes whole-life worship, while 1 Peter applies Israel's holiness calling to the church. Hebrews urges peace and holiness without which no one sees the Lord (Romans 6:19–22; 12:1–2; 1 Peter 1:14–16).",
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "קָדוֹשׁ",
+        "term": "qādôš",
+        "meaning": "holy, set apart",
+        "note": "Describes God's holiness and things or people consecrated to Him."
+      },
+      {
+        "language": "Greek",
+        "script": "ἅγιος",
+        "term": "hagios",
+        "meaning": "holy, sacred, set apart",
+        "note": "Used for God's holiness and for believers who belong to Him."
+      },
+      {
+        "language": "Greek",
+        "script": "ἁγιασμός",
+        "term": "hagiasmos",
+        "meaning": "sanctification, holiness",
+        "note": "Describes the process or state of being made holy."
+      }
+    ],
+    "relatedExplanations": [
+      "Leviticus 19:1–2 — grounds Israel's call to holiness in God's own character.",
+      "Micah 6:8 — shows that covenant faithfulness includes justice, mercy and humble walking with God.",
+      "Romans 12:1–2 — presents the body and renewed mind as part of worship.",
+      "1 Peter 1:15–16 — applies the Old Testament holiness call to Christian conduct.",
+      "Hebrews 12:14 — urges believers to pursue peace and holiness."
+    ],
+    "application": "Offer daily choices, speech, relationships, work and private habits to God. Ask not only what is permitted, but what reflects His character and serves others in love.",
+    "questions": [
+      "Which ordinary area of life have I not yet consciously offered to God?",
+      "How does God's holiness shape my treatment of other people?",
+      "What practical habit would help me pursue holiness with grace rather than self-righteousness?"
     ]
   },
   {
@@ -1070,6 +1148,45 @@ const topics=[
         "verse": 5,
         "endVerse": null
       }
+    ],
+    "definition": "Renewal of the mind is the Spirit-enabled reshaping of thought, judgement and desire by God's truth. It changes how believers discern what is good and live out their new identity; it is more than positive thinking.",
+    "oldTestament": "The Psalms describe meditation on God's instruction, and the prophets promise inner renewal and a new heart (Psalm 1:1–3; 119:9–16; Ezekiel 36:26–27). Israel is repeatedly warned against adopting the thinking and worship of surrounding nations.",
+    "newTestament": "Paul calls believers to be transformed by the renewing of the mind (Romans 12:2). The new self is renewed in knowledge after the Creator's image (Colossians 3:9–10), and believers are taught to take thoughts captive in obedience to Christ (2 Corinthians 10:3–5).",
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "הָגָה",
+        "term": "hāgâ",
+        "meaning": "meditate, ponder, murmur",
+        "note": "Can describe reflective repetition or thoughtful meditation, including on God's instruction."
+      },
+      {
+        "language": "Greek",
+        "script": "ἀνακαίνωσις",
+        "term": "anakainōsis",
+        "meaning": "renewal, making new",
+        "note": "In Romans 12:2 it describes the renewal through which transformation takes place."
+      },
+      {
+        "language": "Greek",
+        "script": "νοῦς",
+        "term": "nous",
+        "meaning": "mind, understanding",
+        "note": "Often refers to the faculty of thought, judgement or understanding."
+      }
+    ],
+    "relatedExplanations": [
+      "Psalm 1:1–3 — pictures a life nourished by continual meditation on God's instruction.",
+      "Psalm 119:9–16 — connects storing and pondering God's word with a guarded life.",
+      "Romans 12:1–2 — joins whole-life worship with renewed discernment.",
+      "Ephesians 4:22–24 — describes putting off the old self and putting on the new.",
+      "Philippians 4:8 — directs attention toward what is true, honourable, just and pure."
+    ],
+    "application": "Notice recurring thought patterns, test them against Scripture, and practise replacing lies or destructive assumptions with truth. Pair renewed thinking with concrete obedience and wise support.",
+    "questions": [
+      "Which thought pattern is shaping my choices in an unhealthy way?",
+      "What does the whole passage teach that corrects that thought?",
+      "What repeated practice could help my mind dwell on what is true?"
     ]
   },
   {
@@ -1115,6 +1232,45 @@ const topics=[
         "verse": 11,
         "endVerse": 18
       }
+    ],
+    "definition": "Temptation is an enticement to distrust or disobey God. Self-control is Spirit-shaped strength to govern desires and actions in faithfulness. Temptation itself is not the same as committing sin; the response matters.",
+    "oldTestament": "Genesis 3 shows temptation questioning God's word and goodness. Israel's wilderness failures warn against craving, unbelief and idolatry (Numbers 11; 1 Corinthians 10:1–13). Proverbs repeatedly commends disciplined choices and warns about destructive desire.",
+    "newTestament": "Jesus resists temptation by remaining faithful to the Father and answering with Scripture (Matthew 4:1–11). James traces how desire can lead to sin, while Paul promises that God provides a way to endure temptation and describes self-control as Spirit fruit (James 1:12–15; 1 Corinthians 10:13; Galatians 5:22–23).",
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "נָסָה",
+        "term": "nāśâ",
+        "meaning": "test, try, prove",
+        "note": "Can refer to testing or proving; the context identifies who is testing and for what purpose."
+      },
+      {
+        "language": "Greek",
+        "script": "πειρασμός",
+        "term": "peirasmos",
+        "meaning": "test, trial, temptation",
+        "note": "The same word family can describe testing or enticement; context is essential."
+      },
+      {
+        "language": "Greek",
+        "script": "ἐγκράτεια",
+        "term": "enkrateia",
+        "meaning": "self-control, mastery",
+        "note": "Names disciplined restraint and is listed among the Spirit's fruit in Galatians 5."
+      }
+    ],
+    "relatedExplanations": [
+      "Genesis 3:1–7 — shows temptation distorting God's word and inviting distrust.",
+      "Matthew 4:1–11 — Jesus answers temptation with faithful obedience to Scripture.",
+      "1 Corinthians 10:13 — assures believers of God's faithfulness and a way to endure temptation.",
+      "James 1:13–15 — distinguishes God's character from the progression of human desire toward sin.",
+      "Galatians 5:16–23 — contrasts works of the flesh with the Spirit's fruit, including self-control."
+    ],
+    "application": "Identify situations that repeatedly weaken you, establish practical boundaries, seek trusted accountability and use Scripture in context. When you fail, confess honestly and return to God's grace rather than hiding.",
+    "questions": [
+      "What pattern or circumstance tends to make me vulnerable?",
+      "What practical way of escape or boundary can I put in place?",
+      "How can I respond to failure with repentance rather than despair?"
     ]
   },
   {
@@ -1160,6 +1316,45 @@ const topics=[
         "verse": 4,
         "endVerse": null
       }
+    ],
+    "definition": "Spiritual warfare is the believer's struggle to remain faithful amid temptation, deception, accusation and opposition to God's purposes. Scripture directs believers to stand in the Lord's strength, resist evil and remain grounded in truth, prayer and righteousness.",
+    "oldTestament": "The Old Testament portrays God as Israel's defender and warns against idolatry, injustice and false worship. Job illustrates spiritual accusation, while Daniel depicts unseen conflict without inviting speculation beyond what the text reveals (Job 1–2; Daniel 10).",
+    "newTestament": "Jesus confronts evil through obedience and God's authority. Paul describes the armour of God as truth, righteousness, faith, salvation, the gospel of peace and God's word, accompanied by prayer (Ephesians 6:10–18). James calls believers to submit to God and resist the devil; Peter urges sober vigilance and steadfast faith (James 4:7–8; 1 Peter 5:8–9).",
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "שָׂטָן",
+        "term": "śāṭān",
+        "meaning": "adversary, accuser",
+        "note": "The term can mean an adversary; in some contexts it refers to the spiritual adversary."
+      },
+      {
+        "language": "Greek",
+        "script": "διάβολος",
+        "term": "diabolos",
+        "meaning": "slanderer, devil",
+        "note": "A term for an accuser or slanderer, used as a title for the devil."
+      },
+      {
+        "language": "Greek",
+        "script": "πανοπλία",
+        "term": "panoplia",
+        "meaning": "full armour",
+        "note": "In Ephesians 6 it describes God's complete provision for standing firm."
+      }
+    ],
+    "relatedExplanations": [
+      "Job 1–2 — portrays accusation and suffering while keeping God's sovereignty in view.",
+      "Matthew 4:1–11 — Jesus resists the tempter through obedient trust in Scripture.",
+      "Ephesians 6:10–18 — identifies the armour and practices by which believers stand firm.",
+      "James 4:7–8 — places resistance to the devil after submission to God.",
+      "1 Peter 5:8–9 — calls for alertness and steadfast faith amid opposition."
+    ],
+    "application": "Stand firm through truth, prayer, faith, righteousness and obedience to Christ. Do not attribute every difficulty to a demon or neglect practical, medical or relational help when it is needed.",
+    "questions": [
+      "Which part of God's armour does this passage call me to practise?",
+      "Am I responding to conflict with truth and faith, or with fear and speculation?",
+      "What practical support and prayer can help me stand firm?"
     ]
   },
   {
@@ -1205,6 +1400,45 @@ const topics=[
         "verse": 3,
         "endVerse": 5
       }
+    ],
+    "definition": "Biblical hope is confident expectation grounded in God's character and promises, not mere optimism. Endurance is continuing in faith and obedience through delay, hardship and uncertainty because God remains faithful.",
+    "oldTestament": "The Psalms repeatedly call the soul to hope in God while waiting through distress (Psalm 42–43). The prophets speak hope to people facing judgement and exile, including promises of restoration and God's future reign (Isaiah 40; Lamentations 3:21–26).",
+    "newTestament": "Jesus' resurrection anchors Christian hope. Paul connects suffering, endurance and tested character with hope, while Hebrews urges believers to hold fast because the One who promised is faithful (Romans 5:1–5; 15:13; Hebrews 10:23; 1 Peter 1:3–5).",
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "תִּקְוָה",
+        "term": "tiqwāh",
+        "meaning": "hope, expectation",
+        "note": "Can carry the sense of expectation or something awaited."
+      },
+      {
+        "language": "Greek",
+        "script": "ἐλπίς",
+        "term": "elpis",
+        "meaning": "hope, expectation",
+        "note": "In Christian usage hope is anchored in God's action and promises."
+      },
+      {
+        "language": "Greek",
+        "script": "ὑπομονή",
+        "term": "hypomonē",
+        "meaning": "steadfastness, endurance",
+        "note": "Describes remaining faithful under pressure rather than giving up."
+      }
+    ],
+    "relatedExplanations": [
+      "Psalm 42:5 — the psalmist speaks to his discouraged soul and directs it to hope in God.",
+      "Lamentations 3:21–26 — hope arises from remembering God's steadfast love amid grief.",
+      "Romans 5:3–5 — traces a path from suffering through endurance and character to hope.",
+      "Romans 15:13 — identifies God as the source of hope, joy and peace through the Spirit.",
+      "1 Peter 1:3–5 — grounds living hope in Jesus' resurrection and the promised inheritance."
+    ],
+    "application": "Anchor expectations in God's revealed promises rather than predictions about outcomes. Take the next faithful step, remember past mercies and seek community when endurance feels difficult.",
+    "questions": [
+      "What promise in this passage gives a solid reason for hope?",
+      "Where am I being called to endure faithfully rather than force an outcome?",
+      "Who can encourage me as I wait?"
     ]
   },
   {
@@ -1250,6 +1484,45 @@ const topics=[
         "verse": 33,
         "endVerse": null
       }
+    ],
+    "definition": "Suffering includes the pain, loss, injustice and weakness experienced in a broken world. Biblical comfort is God's compassionate presence and sustaining help; it does not deny grief or promise that every hardship will quickly disappear.",
+    "oldTestament": "The Psalms give honest language for lament and trust. Job refuses simplistic explanations for suffering, and Isaiah portrays God as comforting His people with compassion and future restoration (Job 1–2; Psalms 22, 34; Isaiah 40:1–11).",
+    "newTestament": "Jesus enters human suffering, weeps and bears the cross. The resurrection gives hope beyond death, while Paul describes God as the Father of mercies who comforts sufferers so they can comfort others (John 11:32–36; 2 Corinthians 1:3–5; Romans 8:18–25; 1 Peter 5:10).",
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "נָחַם",
+        "term": "nāḥam",
+        "meaning": "comfort, console; in some forms relent",
+        "note": "The word has a range of meanings; in comfort passages it describes consolation."
+      },
+      {
+        "language": "Greek",
+        "script": "παράκλησις",
+        "term": "paraklēsis",
+        "meaning": "comfort, encouragement, appeal",
+        "note": "Its meaning ranges from consolation to encouragement according to context."
+      },
+      {
+        "language": "Greek",
+        "script": "πάσχω",
+        "term": "paschō",
+        "meaning": "suffer, experience pain",
+        "note": "A common verb for experiencing suffering, including Christ's suffering."
+      }
+    ],
+    "relatedExplanations": [
+      "Psalm 34:18 — assures that the LORD is near to the brokenhearted.",
+      "Isaiah 40:1–11 — announces comfort and God's shepherd-like care for His people.",
+      "John 16:33 — Jesus acknowledges trouble while calling His disciples to courage in Him.",
+      "2 Corinthians 1:3–5 — connects God's comfort received in suffering with comfort shared with others.",
+      "Romans 8:18–25 — places present suffering within the hope of future redemption."
+    ],
+    "application": "Give grief honest expression before God and do not rush another person's mourning. Receive practical support, offer compassionate presence and hold to resurrection hope without minimising present pain.",
+    "questions": [
+      "What lament or loss do I need to bring honestly to God?",
+      "Who might need my patient presence rather than quick advice?",
+      "How does the resurrection shape my hope while pain remains?"
     ]
   },
   {
@@ -1296,6 +1569,52 @@ const topics=[
         "verse": 16,
         "endVerse": 18
       }
+    ],
+    "definition": "Thanksgiving is the grateful recognition of God's goodness and gifts. Worship is the whole-person response of reverence, love and allegiance to God; it includes gathered praise and everyday obedience.",
+    "oldTestament": "Israel's songs and festivals remember God's creation, covenant, deliverance and provision. The Psalms invite all creation to praise the LORD, while the prophets warn that worship without justice and faithfulness is empty (Psalm 100; 103; Isaiah 1:11–17; Micah 6:6–8).",
+    "newTestament": "Jesus gives thanks and teaches worship shaped by spirit and truth. The church sings, gives thanks in Christ's name and offers its bodies as living sacrifices (John 4:23–24; Romans 12:1; Colossians 3:16–17; Hebrews 13:15). Thanksgiving is not denial of suffering but trust in God amid it.",
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "יָדָה",
+        "term": "yādâ",
+        "meaning": "give thanks, praise, confess",
+        "note": "A verb used for thanksgiving and praise, often in worship settings."
+      },
+      {
+        "language": "Hebrew",
+        "script": "תּוֹדָה",
+        "term": "tôdāh",
+        "meaning": "thanksgiving, praise offering",
+        "note": "Can describe thanksgiving expressed in words or offerings."
+      },
+      {
+        "language": "Greek",
+        "script": "εὐχαριστία",
+        "term": "eucharistia",
+        "meaning": "thanksgiving, gratitude",
+        "note": "Used for gratitude expressed toward God."
+      },
+      {
+        "language": "Greek",
+        "script": "προσκυνέω",
+        "term": "proskyneō",
+        "meaning": "worship, bow down",
+        "note": "Often conveys reverence or homage; context determines its expression."
+      }
+    ],
+    "relatedExplanations": [
+      "Psalm 100:1–5 — joins joyful praise with remembering God's goodness and covenant faithfulness.",
+      "Psalm 103:1–5 — calls the whole self to remember God's benefits and compassion.",
+      "Isaiah 1:16–17 — shows that worship must be accompanied by justice and care for the vulnerable.",
+      "Romans 12:1 — describes offering one's life to God as spiritual worship.",
+      "Colossians 3:16–17 — connects worshipful singing with gratitude and Christ-shaped conduct."
+    ],
+    "application": "Practise specific gratitude, worship with understanding and let praise shape how you treat people. Thankfulness can coexist with lament; it does not require pretending that hardship is good.",
+    "questions": [
+      "What specific acts of God's goodness can I remember today?",
+      "Does my worship influence my choices and treatment of others?",
+      "How can I practise gratitude honestly in a difficult season?"
     ]
   },
   {
@@ -1341,6 +1660,38 @@ const topics=[
         "verse": 17,
         "endVerse": null
       }
+    ],
+    "definition": "The Kingdom of God is God's active reign and saving rule. Jesus announces that this reign has drawn near; it is already at work through His ministry and will be fully revealed when God brings all things under His righteous rule.",
+    "oldTestament": "The Old Testament declares the LORD as King over creation and Israel (Psalm 103:19; 145:10–13). Daniel's visions anticipate an everlasting kingdom given by God, and the prophets hope for a righteous Davidic ruler and restored creation (Daniel 2:44; 7:13–14; Isaiah 9:6–7).",
+    "newTestament": "Jesus' preaching, healings, parables, death and resurrection reveal the Kingdom's arrival. The Kingdom is not simply a territory or a political programme; it is God's reign, marked by righteousness, peace and joy in the Spirit (Mark 1:14–15; Matthew 13; Luke 4:16–21; Romans 14:17). Its fullness remains future (1 Corinthians 15:24–28; Revelation 11:15).",
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "מַלְכוּת",
+        "term": "malkût",
+        "meaning": "kingdom, reign, royal rule",
+        "note": "Can refer to kingship or the realm under a king's authority."
+      },
+      {
+        "language": "Greek",
+        "script": "βασιλεία",
+        "term": "basileia",
+        "meaning": "kingdom, reign, royal rule",
+        "note": "In Jesus' teaching it often stresses God's reign rather than merely a geographical territory."
+      }
+    ],
+    "relatedExplanations": [
+      "Daniel 7:13–14 — depicts an everlasting dominion granted by the Ancient of Days.",
+      "Isaiah 9:6–7 — anticipates a righteous Davidic ruler whose kingdom brings justice and peace.",
+      "Mark 1:14–15 — summarises Jesus' announcement that God's Kingdom has drawn near and calls for repentance and faith.",
+      "Matthew 13:31–33 — uses small beginnings to portray the Kingdom's surprising growth and influence.",
+      "Romans 14:17 — describes Kingdom life in terms of righteousness, peace and joy in the Holy Spirit."
+    ],
+    "application": "Put God's priorities first: justice, mercy, truth, reconciliation and service. Live as a faithful witness to the King while remembering that no human movement or institution is identical with God's Kingdom.",
+    "questions": [
+      "What does Jesus' announcement of the Kingdom call me to change?",
+      "Where can I embody its values of justice, mercy and peace?",
+      "How do I hold together the Kingdom's present work and future fullness?"
     ]
   },
   {
@@ -1387,6 +1738,52 @@ const topics=[
         "verse": 22,
         "endVerse": null
       }
+    ],
+    "definition": "A disciple is a learner and follower who gives allegiance to Jesus, receives His teaching and is shaped into His likeness. Obedience is not a way to buy God's love; it is the response of trust and love to the Lord.",
+    "oldTestament": "Israel was called to hear and keep God's covenant instruction, teaching it to the next generation (Deuteronomy 6:4–9). Prophets criticised outward religion without faithful hearts, and the wisdom tradition describes the path of those who walk in God's ways.",
+    "newTestament": "Jesus calls disciples to follow Him, take up the cross and make disciples of all nations. Remaining in His word and keeping His commands are signs of genuine discipleship (Matthew 16:24–26; 28:18–20; John 8:31–32; 14:15). James warns against hearing the word without doing it (James 1:22–25).",
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "שָׁמַע",
+        "term": "šāmaʿ",
+        "meaning": "hear, listen, heed, obey",
+        "note": "In covenant contexts hearing often includes responding obediently."
+      },
+      {
+        "language": "Greek",
+        "script": "μαθητής",
+        "term": "mathētēs",
+        "meaning": "disciple, learner",
+        "note": "A learner who attaches to a teacher and follows that teacher's instruction."
+      },
+      {
+        "language": "Greek",
+        "script": "ἀκολουθέω",
+        "term": "akoloutheō",
+        "meaning": "follow, accompany",
+        "note": "Frequently used for following Jesus as a disciple."
+      },
+      {
+        "language": "Greek",
+        "script": "ὑπακούω",
+        "term": "hypakouō",
+        "meaning": "listen to, obey",
+        "note": "Expresses responsive obedience, not mere hearing."
+      }
+    ],
+    "relatedExplanations": [
+      "Deuteronomy 6:4–9 — shows that loving God includes remembering and teaching His words.",
+      "Matthew 16:24–26 — Jesus defines discipleship through self-denial and cross-bearing.",
+      "John 8:31–32 — connects continuing in Jesus' word with being His disciples.",
+      "John 14:15 — places obedience within love for Jesus.",
+      "James 1:22–25 — contrasts merely hearing God's word with putting it into practice."
+    ],
+    "application": "Choose one teaching of Jesus and practise it concretely. Learn in community, welcome correction, serve others and measure growth by faithful love rather than religious appearance.",
+    "questions": [
+      "What teaching of Jesus do I need to put into practice now?",
+      "What might following Him cost me, and what does He promise?",
+      "Who can help me grow as a faithful disciple?"
     ]
   },
   {
