@@ -477,6 +477,18 @@
           });
         }
         ids.forEach(id => studio.querySelector("#"+id).addEventListener("input",updatePreview));
+        const curatedButton = button("Load verse-specific study example", function(){
+          const reference=studio.querySelector("#zgsReference").value.trim();
+          const entry=window.ZurielFaithContent&&window.ZurielFaithContent.find(reference);
+          if(!entry){studio.querySelector("#zgsStatus").textContent="No curated example is available for this exact reference yet. You can still write your own Scripture-led content.";return;}
+          ["Prayer","Declaration","Affirmation","Confession","Inspiration"].forEach(name=>{
+            studio.querySelector("#zgs"+name).value=entry[name.toLowerCase()];
+          });
+          updatePreview();
+          studio.querySelector("#zgsStatus").textContent="Loaded an individually written faith guide for "+entry.reference+". Add the exact verse text from your chosen translation.";
+        });
+        curatedButton.id="zgsLoadCurated";
+        studio.querySelector("#zgsFinishes").parentElement.appendChild(curatedButton);
         studio.querySelectorAll("[data-finish]").forEach(choice => choice.addEventListener("click",function(){
           studio.dataset.finish=this.dataset.finish;
           studio.querySelectorAll("[data-finish]").forEach(item=>item.setAttribute("aria-pressed",String(item===this)));
