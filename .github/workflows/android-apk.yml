@@ -48,12 +48,6 @@ jobs:
       - name: Prepare offline web app
         run: npm run build:web
 
-      - name: Generate Android project
-        run: npx cap add android
-
-      - name: Sync Android project
-        run: npx cap sync android
-
       - name: Check whether release signing is configured
         id: signing_check
         env:
@@ -70,6 +64,16 @@ jobs:
             echo "available=false" >> "$GITHUB_OUTPUT"
             echo "Stable signing is not configured yet; building the existing debug APK only."
           fi
+
+      - name: Generate Android project
+        env:
+          ZURIEL_ANDROID_APP_ID: ${{ steps.signing_check.outputs.available == 'true' && 'com.zuriel.livingwordbible.release' || 'com.zuriel.livingwordbible.github' }}
+        run: npx cap add android
+
+      - name: Sync Android project
+        env:
+          ZURIEL_ANDROID_APP_ID: ${{ steps.signing_check.outputs.available == 'true' && 'com.zuriel.livingwordbible.release' || 'com.zuriel.livingwordbible.github' }}
+        run: npx cap sync android
 
       - name: Build standalone debug APK
         working-directory: android
@@ -105,6 +109,7 @@ jobs:
           rm -f "$KEYSTORE" "$ALIGNED"
 
       - name: Upload Zuriel debug APK
+        if: steps.signing_check.outputs.available != 'true'
         uses: actions/upload-artifact@v4
         with:
           name: Zuriel-Living-Word-Bible-APK
