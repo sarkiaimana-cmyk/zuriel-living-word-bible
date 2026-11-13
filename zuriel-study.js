@@ -63,6 +63,12 @@
       : null;
   }
 
+  // Request counters prevent a slow response for an older verse from
+  // replacing study results for the verse the reader selected most recently.
+  let originalWordsRequest = 0;
+  let crossReferencesRequest = 0;
+  let lexiconRequest = 0;
+
   async function fetchStudyJson(url) {
     const response = await fetch(url);
     if (!response.ok) throw new Error("Study resource is temporarily unavailable.");
@@ -70,6 +76,7 @@
   }
 
   async function loadOriginalWords(ref) {
+    const requestId = ++originalWordsRequest;
     const target = document.getElementById("zurielOriginalWordResults");
     const lexiconBox = document.getElementById("zurielLexiconDetails");
     if (!target || !ref) return;
@@ -84,6 +91,7 @@
       const data = await fetchStudyJson(
         INTERLINEAR_API + code + "/" + ref.chapter + ".json"
       );
+      if (requestId !== originalWordsRequest) return;
 
       const verses = data.chapter && Array.isArray(data.chapter.content)
         ? data.chapter.content : [];
@@ -146,6 +154,7 @@
         target.appendChild(card);
       });
     } catch (error) {
+      if (requestId !== originalWordsRequest) return;
       target.textContent = error.message + " Connect to the internet once to save this study for offline use.";
     }
   }
@@ -160,6 +169,8 @@
 
   async function loadLexiconEntry(strongs, card, chapterData, ref) {
     const box = document.getElementById("zurielLexiconDetails");
+    const requestId = ++lexiconRequest;
+    if (!box) return;
     const id = normalizeStrongs(strongs);
     if (!id) {
       box.textContent = "This Strong's reference could not be read.";
@@ -169,6 +180,7 @@
     box.textContent = "Loading " + id + " lexicon...";
     try {
       const data = await fetchStudyJson(LEXICON_API + id + ".json");
+      if (requestId !== lexiconRequest) return;
       const entry = data.entry;
       if (!entry || !Array.isArray(entry.senses)) {
         throw new Error("No lexicon definition was returned for " + id + ".");
@@ -239,11 +251,13 @@
       }
       box.appendChild(related);
     } catch (error) {
+      if (requestId !== lexiconRequest) return;
       box.textContent = error.message || "The lexicon entry could not be loaded.";
     }
   }
 
   async function loadRelatedScriptures(ref) {
+    const requestId = ++crossReferencesRequest;
     const list = document.getElementById("zurielCrossReferenceList");
     if (!list || !ref) return;
 
@@ -255,6 +269,7 @@
       const data = await fetchStudyJson(
         CROSS_REFERENCE_API + code + "/" + ref.chapter + ".json"
       );
+      if (requestId !== crossReferencesRequest) return;
       const verses = data.chapter && Array.isArray(data.chapter.content)
         ? data.chapter.content : [];
       const selected = verses.find(item => Number(item.verse) === Number(ref.verse));
@@ -294,6 +309,7 @@
         list.textContent = "Related references were returned, but their book labels could not be matched.";
       }
     } catch (error) {
+      if (requestId !== crossReferencesRequest) return;
       list.textContent = error.message + " Connect to the internet once to save related references for offline use.";
     }
   }
