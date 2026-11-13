@@ -3111,6 +3111,45 @@ const topics=[
         "verse": 1,
         "endVerse": 14
       }
+    ],
+    "definition": "Sacrifice and atonement concern God's provision for dealing with sin, guilt and broken fellowship. Israel's offerings taught that sin is serious and reconciliation depends on God's gracious provision; the New Testament presents Jesus' self-offering as the decisive and sufficient work to which those sacrifices pointed.",
+    "oldTestament": "Leviticus describes offerings within Israel's covenant worship, while Leviticus 17:11 connects blood with life and atonement. The servant song in Isaiah 52:13–53:12 portrays one who bears the suffering of others. These texts must be read within their covenant and literary settings, not as a claim that ritual itself mechanically changes the heart.",
+    "newTestament": "Jesus describes His mission as giving His life for many (Mark 10:45). Romans 3:23–26 explains God's righteousness in relation to Christ's redeeming work, and Hebrews 10 contrasts repeated sacrifices with Christ's once-for-all offering. The cross is central to Christian reconciliation with God.",
+    "application": "Take sin seriously without trying to purchase God's acceptance through religious performance. Confess honestly, receive the mercy offered in Christ, and let gratitude lead to repentance, forgiveness and worship. When studying atonement, notice what each passage says about God's initiative, human need and the cost of reconciliation.",
+    "questions": [
+      "What does this passage reveal about the seriousness of sin and God's desire to reconcile?",
+      "How does Jesus fulfil or surpass the pattern described in the Old Testament passage?",
+      "Where should gratitude for Christ's self-giving lead me to repentance or reconciliation?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "כָּפַר",
+        "term": "kāphar",
+        "meaning": "make atonement, make covering or reconciliation",
+        "note": "The verb is used in sacrificial contexts; its precise force is shaped by the passage and ritual setting."
+      },
+      {
+        "language": "Hebrew",
+        "script": "דָּם",
+        "term": "dām",
+        "meaning": "blood",
+        "note": "In Leviticus 17:11 blood represents life; read the statement within the chapter's teaching about sacrificial worship."
+      },
+      {
+        "language": "Greek",
+        "script": "ἱλαστήριον",
+        "term": "hilastērion",
+        "meaning": "atoning means; mercy seat",
+        "note": "Romans 3:25 uses this important term; interpreters discuss its sacrificial and mercy-seat associations."
+      }
+    ],
+    "relatedExplanations": [
+      "Leviticus 17:11 — the verse links blood with life and explains its role in Israel's altar worship.",
+      "Isaiah 53:4–6 — the servant bears suffering associated with the wrongdoing of others, offering a profound picture of representative suffering.",
+      "Mark 10:45 — Jesus describes His mission in terms of service and giving His life as a ransom for many.",
+      "Romans 3:23–26 — Paul sets human sinfulness beside God's gracious action through Christ, showing that mercy does not mean ignoring justice.",
+      "Hebrews 10:1–14 — the repeated offerings are contrasted with Christ's once-for-all offering and its lasting sufficiency."
     ]
   },
   {
@@ -3157,6 +3196,45 @@ const topics=[
         "verse": 1,
         "endVerse": 11
       }
+    ],
+    "definition": "The promised land is the inheritance God pledged to Abraham's descendants and brought Israel into under Joshua. It is a concrete part of Israel's covenant story, involving gift, promise, obedience and rest. Later Scripture uses the language of inheritance and rest while pointing beyond the land to God's wider purposes.",
+    "oldTestament": "God's promise to Abraham establishes the land within the covenant (Genesis 15). Israel's wilderness generation shows the danger of fear and unbelief, while Joshua leads the people into the inheritance. Joshua 21 celebrates God's faithfulness: the Lord gave Israel the land He had sworn to give.",
+    "newTestament": "Hebrews 3–4 reflects on Israel's wilderness failure and Joshua's generation, teaching that God's promised rest still calls for persevering faith. The New Testament also speaks of believers as heirs through Christ and anticipates the renewed creation; these themes should not erase the historical meaning of Israel's land promise.",
+    "application": "Remember that God's faithfulness does not remove the call to trust and obey. Resist fear-driven choices, encourage others with God's promises in their proper context, and pursue the deeper rest found in trusting Him. Distinguish carefully between promises made to ancient Israel and promises given to the church in Christ.",
+    "questions": [
+      "How do the stories of the wilderness generation and Joshua expose different responses to God's promise?",
+      "What does Joshua 21 teach about God's reliability and the fulfilment of His word?",
+      "How does Hebrews use Israel's story to call readers to persevering faith today?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "נַחֲלָה",
+        "term": "naḥălāh",
+        "meaning": "inheritance, possession",
+        "note": "Often describes an allotted inheritance, including Israel's land and the people's covenant identity."
+      },
+      {
+        "language": "Hebrew",
+        "script": "אָרֶץ",
+        "term": "ʾereṣ",
+        "meaning": "land, earth, territory",
+        "note": "Its scope depends on context; in the patriarchal promises it refers to the promised territory."
+      },
+      {
+        "language": "Greek",
+        "script": "κατάπαυσις",
+        "term": "katapausis",
+        "meaning": "rest, place of rest",
+        "note": "Hebrews uses this term to connect the land narrative with the continuing promise of God's rest."
+      }
+    ],
+    "relatedExplanations": [
+      "Genesis 15:18–21 — the covenant promise names the land and places the inheritance within God's commitment to Abraham.",
+      "Numbers 14:6–9 — Joshua and Caleb urge Israel not to let fear outweigh confidence in God's promise and presence.",
+      "Joshua 1:1–9 — Joshua is commissioned to be courageous, grounded in God's presence and attentive to the covenant instruction.",
+      "Joshua 21:43–45 — the narrator celebrates the fulfilment of God's land promise and the reliability of His word.",
+      "Hebrews 4:1–11 — the writer uses Israel's history to urge readers not to fall short through unbelief but to enter God's promised rest."
     ]
   },
   {
@@ -3202,6 +3280,45 @@ const topics=[
         "verse": 25,
         "endVerse": null
       }
+    ],
+    "definition": "The book of Judges recounts Israel's repeated cycles of unfaithfulness, oppression, cries for help and deliverance through judges raised by God. Its refrain exposes the disorder that follows when people abandon covenant faithfulness and do what seems right in their own eyes.",
+    "oldTestament": "Judges 2 gives the pattern that frames the book: a generation forgets the Lord, Israel turns to other gods, oppression follows, and God raises deliverers. The individual accounts show both God's mercy and the moral weakness of the leaders and people. The book's dark ending prepares readers to long for faithful leadership.",
+    "newTestament": "The New Testament remembers judges as examples of faith and deliverance (Hebrews 11:32–34), while the wider biblical story points to the need for a righteous King. Jesus is not simply another judge in the cycle; He brings a deeper deliverance from sin and gathers a people under God's reign.",
+    "application": "Learn from the danger of spiritual forgetfulness: pass faith on intentionally, return to God rather than normalising compromise, and recognise that temporary relief is not the same as lasting transformation. Read the judges honestly, neither excusing their failures nor overlooking God's patient mercy.",
+    "questions": [
+      "What repeated choices lead Israel from forgetfulness into oppression?",
+      "Where does the story show both God's compassion and the limitations of human deliverers?",
+      "What practices can help my household or community remember God's works across generations?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "שָׁפַט",
+        "term": "šāphaṭ",
+        "meaning": "judge, govern, deliver",
+        "note": "The word can describe judging or governing; in Judges the role includes leadership and rescue."
+      },
+      {
+        "language": "Hebrew",
+        "script": "מוֹשִׁיעַ",
+        "term": "môšîaʿ",
+        "meaning": "deliverer, one who saves",
+        "note": "Related to the verb for saving or delivering; the narrative identifies God as the ultimate source of rescue."
+      },
+      {
+        "language": "Hebrew",
+        "script": "שׁוּב",
+        "term": "šûb",
+        "meaning": "turn, return",
+        "note": "A common biblical verb for turning; the book's movement highlights Israel's repeated turning away from the Lord."
+      }
+    ],
+    "relatedExplanations": [
+      "Judges 2:10–19 — the passage summarises the cycle of forgetfulness, idolatry, oppression, divine compassion and renewed failure.",
+      "Judges 3:7–11 — Othniel's account introduces the pattern of Israel's disobedience and God's raising of a deliverer.",
+      "Judges 6:11–16 — Gideon's call shows God's presence and patience with a fearful leader whom He commissions.",
+      "Judges 7:1–8 — the reduced army makes clear that Israel's victory is not to be credited to superior human strength.",
+      "Judges 21:25 — the closing refrain diagnoses the social and spiritual disorder of a people without faithful covenant direction."
     ]
   },
   {
@@ -3248,6 +3365,45 @@ const topics=[
         "verse": 30,
         "endVerse": 33
       }
+    ],
+    "definition": "Biblical kingship explores human rule under God's authority and the promise that the Lord Himself establishes an enduring kingdom. Israel's monarchy brings both possibilities and dangers: a king may serve justice under God, or imitate surrounding powers and lead the people into unfaithfulness.",
+    "oldTestament": "In 1 Samuel 8 Israel asks for a king like the nations, revealing a desire for visible security and a rejection of God's kingship. God's covenant with David in 2 Samuel 7 promises an enduring house, while Psalm 2 and Isaiah 9 develop hope for God's appointed ruler and righteous reign.",
+    "newTestament": "The Gospels announce Jesus as the promised Son of David and King whose kingdom fulfils God's purposes (Luke 1:30–33; Mark 1:14–15). His reign is not built on domination; He serves, gives His life and calls people to repentance, faith and allegiance. The kingdom is already announced and experienced, yet its fullness is still awaited.",
+    "application": "Place every human authority beneath God's authority. Pray for leaders, practise justice and service, and refuse to confuse political power or personal ambition with the kingdom of God. Let Jesus' teaching shape the way you exercise influence in family, church and community.",
+    "questions": [
+      "What warning does Israel's request for a king give about misplaced trust?",
+      "How does God's covenant with David shape later hope for the Messiah?",
+      "Where should the character of Jesus' kingdom change the way I use influence or authority?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "מֶלֶךְ",
+        "term": "melekh",
+        "meaning": "king",
+        "note": "The term describes a human ruler; Scripture repeatedly places the king under the Lord's covenant authority."
+      },
+      {
+        "language": "Hebrew",
+        "script": "מַלְכוּת",
+        "term": "malkût",
+        "meaning": "kingdom, reign, kingship",
+        "note": "Can refer to royal rule or the realm under a king's authority."
+      },
+      {
+        "language": "Greek",
+        "script": "βασιλεία",
+        "term": "basileia",
+        "meaning": "kingdom, royal reign",
+        "note": "In Jesus' teaching it often stresses God's active reign, not merely a geographical territory."
+      }
+    ],
+    "relatedExplanations": [
+      "1 Samuel 8:4–9 — Israel's demand for a king exposes the tension between human security and trust in the Lord as King.",
+      "2 Samuel 7:8–16 — God promises David a lasting house and a royal line, establishing a major biblical covenant theme.",
+      "Psalm 2:1–12 — the nations' resistance is set against God's installation of His chosen king and the call to wise allegiance.",
+      "Isaiah 9:6–7 — the promised ruler is associated with justice, peace and an enduring Davidic reign.",
+      "Luke 1:30–33 — the angel announces Jesus' Davidic throne and kingdom, connecting His birth with Israel's royal hope."
     ]
   },
   {
@@ -3294,6 +3450,45 @@ const topics=[
         "verse": 70,
         "endVerse": 72
       }
+    ],
+    "definition": "David's life brings together courageous trust, covenant promise, heartfelt worship, serious moral failure and genuine repentance. Scripture presents him neither as flawless nor as a simple hero, but as a king whose story reveals both God's grace and the weight of responsibility.",
+    "oldTestament": "David's confrontation with Goliath is framed by confidence in the Lord rather than confidence in weaponry. In 2 Samuel 7 he responds humbly to God's covenant promise. Later, his abuse of power and sin involving Bathsheba are confronted by Nathan; Psalm 51 gives language to confession, cleansing and a renewed heart.",
+    "newTestament": "The New Testament identifies Jesus as Son of David and distinguishes His perfect faithfulness from the failures of earlier kings. David is remembered as a witness to faith and as the source of psalmic testimony, while his repentance teaches the seriousness of confession and the mercy of God (Matthew 1:1; Acts 13:22–23; Romans 4:6–8).",
+    "application": "Worship should grow from trust in God, not performance or public image. When confronted with wrongdoing, do not hide, blame others or use spiritual activity to avoid repentance. Confess specifically, accept correction, seek to repair harm where possible, and depend on God's mercy while taking responsibility for consequences.",
+    "questions": [
+      "What does David's confidence before Goliath reveal about the object of his faith?",
+      "How does David's response to God's promise model humility and worship?",
+      "What do Nathan's confrontation and Psalm 51 teach about honest repentance and accountability?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "זָמַר",
+        "term": "zāmar",
+        "meaning": "sing praise, make music",
+        "note": "Often used for praise expressed through music and song."
+      },
+      {
+        "language": "Hebrew",
+        "script": "שָׁבַר",
+        "term": "šābar",
+        "meaning": "break",
+        "note": "Psalm 51 uses the image of a broken spirit to describe contrition rather than outward performance."
+      },
+      {
+        "language": "Hebrew",
+        "script": "תְּשׁוּבָה",
+        "term": "təšûbāh",
+        "meaning": "return, turning back",
+        "note": "A later Hebrew noun commonly used for repentance; the biblical idea of returning is expressed through several Hebrew forms."
+      }
+    ],
+    "relatedExplanations": [
+      "1 Samuel 17:32–50 — David faces Goliath trusting the Lord's name and deliverance rather than conventional military advantage.",
+      "2 Samuel 7:18–29 — David responds to God's covenant promise with humility, gratitude and prayer.",
+      "2 Samuel 12:1–13 — Nathan confronts David's abuse of power; David admits his sin, while the narrative also records serious consequences.",
+      "Psalm 51:1–17 — David's prayer asks for mercy, cleansing and a renewed heart, showing that true repentance reaches the inner person.",
+      "Psalm 78:70–72 — David's shepherding role is remembered in terms of integrity of heart and skillful leadership."
     ]
   },
   {
