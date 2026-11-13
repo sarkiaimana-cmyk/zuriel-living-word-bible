@@ -644,8 +644,10 @@
       const label = document.getElementById("zurielHomeReadingPosition");
       const button = document.getElementById("zurielHomeContinueReading");
       if (saved) {
-        label.textContent = "Last opened: " + saved.book + " " + saved.chapter + ".";
-        button.textContent = "Continue — " + saved.book + " " + saved.chapter;
+        const reference = saved.book + " " + saved.chapter +
+          (Number.isInteger(saved.verse) ? ":" + saved.verse : "");
+        label.textContent = "Last studied: " + reference + ".";
+        button.textContent = "Continue — " + reference;
       } else {
         label.textContent = "Your reading journey starts here. Choose any book and chapter.";
         button.textContent = "Choose a Bible Book";
@@ -653,11 +655,22 @@
     }
 
     document.getElementById("zurielHomeContinueReading")
-      .addEventListener("click", function () {
+      .addEventListener("click", async function () {
         const saved = getHomeReadingPosition();
         navigate("read");
         if (saved && typeof window.openChapter === "function") {
-          window.openChapter(saved.book, saved.chapter);
+          await window.openChapter(saved.book, saved.chapter);
+          if (Number.isInteger(saved.verse) && saved.verse > 0) {
+            const verses = document.querySelectorAll("#message .verse");
+            const target = Array.from(verses).find(function (item) {
+              const number = item.querySelector("strong");
+              return number && number.textContent.trim().replace(".", "") === String(saved.verse);
+            });
+            if (target) {
+              target.classList.add("zuriel-selected-verse");
+              target.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+          }
         }
       });
 
