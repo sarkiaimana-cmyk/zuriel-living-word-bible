@@ -701,6 +701,18 @@ window.openChapter = function (book, chapter) {
   });
 };
 
+/* HOME SELECTOR SUPPORT: GET VERSE COUNT WITHOUT OPENING THE CHAPTER */
+window.getChapterVerseCount = async function (book, chapter) {
+  await loadKJV();
+  const code = bookCodes[book];
+  const chapters = code && bibleText[code];
+  const verses = Array.isArray(chapters) ? chapters[chapter - 1] : null;
+  if (!Array.isArray(verses) || verses.length === 0) {
+    throw new Error("Verse data is unavailable for " + book + " " + chapter + ".");
+  }
+  return verses.length;
+};
+
 /* OFFLINE FULL-BIBLE SEARCH */
 
 window.ZurielBibleSearch = {
