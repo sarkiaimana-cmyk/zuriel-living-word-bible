@@ -433,31 +433,65 @@
       if (page === "worship") {
         content.appendChild(card(
           "🎶 SS&S — Songs, Hymns & Worship",
-          "A growing worship library for hymns, gospel songs, praise and contemporary worship. Each entry includes a Scripture connection and a short reflection. Song lyrics are shown only when they are public domain or properly licensed."
+          "A complete worship-study library: every entry opens into its biblical foundation, explanation, reflection, prayer and practical worship response. Full lyrics are included only when they are verified as public domain or supplied under an appropriate licence."
         ));
 
         const collections = ["All Songs", "Traditional Hymn", "Gospel Hymn", "Modern Hymn", "Praise & Chorus", "Scripture Song", "Contemporary Worship"];
         const filterRow = element("div", undefined, "library-nav");
         const list = element("div");
+
+        function addGuideSection(parent, heading, text) {
+          const section = element("section", undefined, "worship-guide-section");
+          section.appendChild(element("h5", heading));
+          section.appendChild(element("p", text));
+          parent.appendChild(section);
+        }
+
+        function buildGuide(song) {
+          const guide = element("details", undefined, "worship-guide");
+          guide.appendChild(element("summary", "Open complete worship guide"));
+          const body = element("div", undefined, "worship-guide-body");
+          addGuideSection(body, "Biblical foundation", "Read " + song.reference + " slowly in its chapter context. Notice who is speaking, what the passage reveals about God, and how its message points to faithful worship. The song's theme is: " + song.theme + ".");
+          addGuideSection(body, "Understanding the message", song.note + " This worship theme invites the believer to respond to God's character and work rather than treating music as an end in itself. Let the Scripture shape the meaning of every line and the attitude of the heart.");
+          addGuideSection(body, "Personal reflection", "Consider how " + song.theme.toLowerCase() + " speaks to your present walk with God. What does this passage ask you to remember, trust, confess, celebrate or put into practice? Where might your thoughts or actions need to come into agreement with the truth of Scripture?");
+          addGuideSection(body, "Worship response", "Begin by reading " + song.reference + " aloud. Spend a quiet moment thanking God for what the passage reveals. Sing or listen attentively to an authorised version of this song, then respond in your own words with praise, surrender and obedience. Let worship continue in the way you live.");
+          addGuideSection(body, "Prayer", "Father, thank You for revealing Yourself through Your Word. As I reflect on " + song.theme.toLowerCase() + ", let this truth take root in my heart. Teach me to worship You sincerely, trust Your promises and live out what I have received from Scripture. May my words, choices and actions bring honour to Jesus. Amen.");
+          addGuideSection(body, "For personal or group study", "1. What does " + song.reference + " teach about God?  2. Which phrase or truth from the passage stands out to you?  3. How does this song help you remember that truth?  4. What practical response can you make today?  5. Who could you encourage with this Scripture?");
+          addGuideSection(body, "Lyrics and usage", "Lyrics are not reproduced here unless their public-domain status or permission for use has been verified. For copyrighted songs, use the authorised hymnal, publisher, church licence or rights-holder source. Zuriel can retain the song's study guide and Scripture references without reproducing protected lyrics.");
+          guide.appendChild(body);
+          return guide;
+        }
+
         function renderSongs(collection) {
           list.replaceChildren();
           const items = originalLibrary.worshipSongs.filter(function (song) {
             return collection === "All Songs" || song.collection === collection;
           });
           items.forEach(function (song) {
-            const box = element("div", undefined, "library-entry");
+            const box = element("article", undefined, "library-entry worship-song-entry");
             box.appendChild(element("small", song.collection));
             box.appendChild(element("h4", song.title));
             box.appendChild(element("p", song.theme));
             box.appendChild(element("strong", "Scripture: " + song.reference));
             box.appendChild(element("p", song.note));
-            box.appendChild(button("Save to My Library", function () {
+            box.appendChild(buildGuide(song));
+            box.appendChild(button("Save Complete Guide to My Library", function () {
+              const fullText = [
+                song.title,
+                song.collection,
+                song.theme,
+                "Scripture: " + song.reference,
+                song.note,
+                "Reflection: Consider how " + song.theme.toLowerCase() + " speaks to your walk with God.",
+                "Prayer: Father, let this Scripture take root in my heart. Teach me to worship You sincerely and live out Your truth. Amen.",
+                "Study: What does this passage reveal about God, and how will I respond?"
+              ].join("\n\n");
               saved.bookmarks.push({
                 title: "Worship Song — " + song.title,
-                text: song.theme + " | " + song.note,
+                text: fullText,
                 reference: song.reference
               });
-              if (persist()) alert("Saved to your personal library.");
+              if (persist()) alert("The complete worship study guide has been saved to your personal library.");
             }));
             list.appendChild(box);
           });
