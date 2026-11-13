@@ -582,6 +582,9 @@
         <p class="word-selection-label" id="zurielSelectedEnglishWord">Selected English word: none</p>
       </div>
 
+      <button type="button" class="study-secondary" id="zurielSaveVerseBookmark">🔖 Save This Verse to My Library</button>
+      <p class="study-small" id="zurielBookmarkStatus" aria-live="polite"></p>
+
       <div id="zurielStudySections">
 
         <details open>
@@ -909,6 +912,41 @@
 
     document.getElementById("zurielHighlightWholeVerse")
       .addEventListener("click", applyVerseHighlight);
+
+    document.getElementById("zurielSaveVerseBookmark")
+      .addEventListener("click", function () {
+        if (!selectedReference) {
+          document.getElementById("zurielBookmarkStatus").textContent =
+            "Select a Scripture verse first.";
+          return;
+        }
+
+        try {
+          const key = "zuriel_personal_library_v1";
+          const data = JSON.parse(localStorage.getItem(key) || "{}");
+          const bookmarks = Array.isArray(data.bookmarks) ? data.bookmarks : [];
+          const reference = selectedReference.book + " " +
+            selectedReference.chapter + ":" + selectedReference.verse;
+          const exists = bookmarks.some(item => item.reference === reference);
+          if (!exists) {
+            bookmarks.push({
+              title: reference,
+              reference: reference,
+              text: selectedReference.text || "",
+              type: "scripture",
+              savedAt: new Date().toISOString()
+            });
+            data.bookmarks = bookmarks;
+            localStorage.setItem(key, JSON.stringify(data));
+          }
+          document.getElementById("zurielBookmarkStatus").textContent =
+            exists ? reference + " is already in My Saved Library." :
+              reference + " saved to My Saved Library on this device.";
+        } catch (error) {
+          document.getElementById("zurielBookmarkStatus").textContent =
+            "Unable to save this bookmark. Please check device storage.";
+        }
+      });
 
     document.getElementById("zurielClearVerseHighlights")
       .addEventListener("click", clearVerseHighlights);
