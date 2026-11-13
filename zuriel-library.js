@@ -899,6 +899,26 @@
         openPage("prayer");
       },
 
+      openGloryVerse: function (reference, scriptureText, translation) {
+        openPage("affirmation");
+        const studio = document.getElementById("zurielGloryStudio");
+        if (!studio) return false;
+        const referenceField = studio.querySelector("#zgsReference");
+        const scriptureField = studio.querySelector("#zgsScripture");
+        referenceField.value = String(reference || "").trim();
+        scriptureField.value = String(scriptureText || "").trim();
+        referenceField.dispatchEvent(new Event("input", { bubbles: true }));
+        scriptureField.dispatchEvent(new Event("input", { bubbles: true }));
+        const status = studio.querySelector("#zgsStatus");
+        if (status) {
+          status.textContent = "Connected from your Bible reader: " +
+            referenceField.value + (translation ? " • " + translation : "") +
+            ". Your exact Scripture text has been carried into the open-book card.";
+        }
+        studio.scrollIntoView({ behavior: "smooth", block: "start" });
+        return true;
+      },
+
       openSaved: function () {
         openPage("saved");
       }
