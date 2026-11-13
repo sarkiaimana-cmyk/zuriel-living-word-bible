@@ -70,7 +70,18 @@
       { title: "Great Are You Lord", collection: "Contemporary Worship", theme: "Worship, breath and the glory of God", reference: "Psalm 150:6", note: "A call for all creation to praise the Lord." },
       { title: "How Great Is Our God", collection: "Contemporary Worship", theme: "The greatness and splendour of God", reference: "Psalm 145:3", note: "A simple, congregational celebration of God's greatness." },
       { title: "Build My Life", collection: "Contemporary Worship", theme: "Christ the firm foundation and a life of devotion", reference: "Matthew 7:24–25", note: "A prayer to build life on the trustworthy words of Jesus." },
-      { title: "In Christ Alone", collection: "Modern Hymn", theme: "The person, cross and resurrection of Jesus", reference: "Colossians 1:15–20", note: "A doctrinally rich modern hymn tracing the hope believers have in Christ." }
+      { title: "In Christ Alone", collection: "Modern Hymn", theme: "The person, cross and resurrection of Jesus", reference: "Colossians 1:15–20", note: "A doctrinally rich modern hymn tracing the hope believers have in Christ." },
+      { title: "Crown Him with Many Crowns", collection: "Traditional Hymn", theme: "The majesty and reign of Christ", reference: "Revelation 19:12–16", note: "A hymn celebrating Jesus as the reigning King." },
+      { title: "O Worship the King", collection: "Traditional Hymn", theme: "God's power, majesty and goodness", reference: "Psalm 104:1", note: "A call to worship the Creator for His greatness and care." },
+      { title: "Jesus Paid It All", collection: "Traditional Hymn", theme: "Christ's atoning work and cleansing grace", reference: "1 Peter 2:24", note: "A confession of the sufficiency of Jesus' saving work." },
+      { title: "Nearer, My God, to Thee", collection: "Traditional Hymn", theme: "Drawing near to God in every season", reference: "James 4:8", note: "A prayerful expression of longing for God's presence." },
+      { title: "Give Thanks", collection: "Praise & Chorus", theme: "Gratitude for God's goodness and salvation", reference: "Psalm 107:1", note: "A simple song of thanksgiving to the Lord." },
+      { title: "I Will Enter His Gates", collection: "Praise & Chorus", theme: "Entering God's presence with thanksgiving", reference: "Psalm 100:4", note: "A joyful praise chorus rooted in the language of Psalm 100." },
+      { title: "This Is the Day", collection: "Praise & Chorus", theme: "Rejoicing in the day God has made", reference: "Psalm 118:24", note: "A short congregational chorus of rejoicing and gratitude." },
+      { title: "Bless the Lord, O My Soul", collection: "Praise & Chorus", theme: "Remembering God's benefits and mercy", reference: "Psalm 103:1–5", note: "A Scripture-shaped call to praise the Lord with the whole heart." },
+      { title: "The Lord Is My Shepherd", collection: "Scripture Song", theme: "God's care, guidance and provision", reference: "Psalm 23:1–6", note: "A Scripture-song theme drawn directly from the words and images of Psalm 23." },
+      { title: "The Lord's Prayer", collection: "Scripture Song", theme: "Worship, surrender and daily dependence", reference: "Matthew 6:9–13", note: "A Scripture-song setting of the prayer Jesus taught His disciples." },
+      { title: "The Blessing", collection: "Contemporary Worship", theme: "God's presence and covenant blessing", reference: "Numbers 6:24–26", note: "A contemporary worship song shaped around the priestly blessing in Numbers." }
     ],
 
     affirmations: [
@@ -425,7 +436,7 @@
           "A growing worship library for hymns, gospel songs, praise and contemporary worship. Each entry includes a Scripture connection and a short reflection. Song lyrics are shown only when they are public domain or properly licensed."
         ));
 
-        const collections = ["All Songs", "Traditional Hymn", "Gospel Hymn", "Modern Hymn", "Contemporary Worship"];
+        const collections = ["All Songs", "Traditional Hymn", "Gospel Hymn", "Modern Hymn", "Praise & Chorus", "Scripture Song", "Contemporary Worship"];
         const filterRow = element("div", undefined, "library-nav");
         const list = element("div");
         function renderSongs(collection) {
