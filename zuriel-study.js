@@ -1006,24 +1006,64 @@
       }
 
       if (matches.length) {
+        const matchedHeading = document.createElement("h3");
+        matchedHeading.textContent = "Directly mapped themes";
+        target.appendChild(matchedHeading);
         matches.forEach(function (topic) { target.appendChild(topicCard(topic)); });
-      } else {
-        const directory = document.createElement("div");
-        directory.className = "study-topic-links";
-        index.list().forEach(function (topic) {
+      }
+
+      const directoryHeading = document.createElement("h3");
+      directoryHeading.textContent = "Explore the topical library";
+      target.appendChild(directoryHeading);
+      const count = document.createElement("p");
+      count.textContent = index.list().length + " curated topics across the Bible's 66 books";
+      target.appendChild(count);
+      const search = document.createElement("input");
+      search.type = "search";
+      search.className = "study-topic-search";
+      search.placeholder = "Search a topic, theme or keyword…";
+      search.setAttribute("aria-label", "Search topical Bible studies");
+      search.style.width = "100%";
+      search.style.boxSizing = "border-box";
+      search.style.padding = "12px";
+      search.style.margin = "8px 0";
+      search.style.borderRadius = "10px";
+      search.style.border = "1px solid var(--border, #c9c2b4)";
+      target.appendChild(search);
+
+      const directory = document.createElement("div");
+      directory.className = "study-topic-links";
+      target.appendChild(directory);
+      function showTopics(query) {
+        directory.replaceChildren();
+        const found = typeof index.search === "function"
+          ? index.search(query).slice(0, 80)
+          : index.list().filter(function (topic) {
+              return (topic.title + " " + topic.summary).toLowerCase().includes(String(query).toLowerCase());
+            }).slice(0, 80);
+        if (!found.length) {
+          const empty = document.createElement("p");
+          empty.textContent = "No matching topic yet. Try a broader word such as faith, prayer, Jesus or hope.";
+          directory.appendChild(empty);
+          return;
+        }
+        found.forEach(function (topic) {
           const button = document.createElement("button");
           button.type = "button";
           button.className = "study-link";
           button.textContent = topic.title;
           button.addEventListener("click", function () {
-            const old = target.querySelector(".study-word");
+            const old = target.querySelector(".zuriel-open-topic");
             if (old) old.remove();
-            target.appendChild(topicCard(topic));
+            const card = topicCard(topic);
+            card.classList.add("zuriel-open-topic");
+            directory.insertBefore(card, directory.firstChild);
           });
           directory.appendChild(button);
         });
-        target.appendChild(directory);
       }
+      search.addEventListener("input", function () { showTopics(search.value); });
+      showTopics("");
     }
 
     // Build an offline study framework from the actual KJV chapter currently
