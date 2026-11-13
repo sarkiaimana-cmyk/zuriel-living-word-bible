@@ -77,6 +77,9 @@
 
   async function loadOriginalWords(ref) {
     const requestId = ++originalWordsRequest;
+    // A new verse selection also invalidates any lexicon lookup started
+    // from the previously selected verse.
+    ++lexiconRequest;
     const target = document.getElementById("zurielOriginalWordResults");
     const lexiconBox = document.getElementById("zurielLexiconDetails");
     if (!target || !ref) return;
