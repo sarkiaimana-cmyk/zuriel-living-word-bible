@@ -46,6 +46,45 @@ const topics=[
         "verse": 8,
         "endVerse": null
       }
+    ],
+    "definition": "God's character is who He eternally is: holy, righteous, loving, merciful, truthful and faithful. Scripture reveals Him through His words and actions.",
+    "oldTestament": "Exodus 34:6–7 gives a foundational self-revelation of the LORD as compassionate, gracious, patient, abounding in covenant love and faithfulness, while taking evil seriously. The Psalms celebrate this mercy.",
+    "newTestament": "Jesus makes the Father known (John 1:18; 14:9). The cross displays God's justice and love; the Spirit forms Christlike character in believers (Romans 5:8; Galatians 5:22–23).",
+    "application": "Let God's revealed character correct distorted pictures of Him. Trust His faithfulness, imitate His mercy, practise truth, and hold His love together with His holiness and justice.",
+    "questions": [
+      "Which aspect of God's character do I most need to understand now?",
+      "Where can I reflect His mercy and truth today?",
+      "Does my picture of God come from Scripture or mainly from experience?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "חֶסֶד",
+        "term": "ḥesed",
+        "meaning": "steadfast love, covenant loyalty, mercy",
+        "note": "Often describes loyal love expressed through faithful action."
+      },
+      {
+        "language": "Hebrew",
+        "script": "אֱמֶת",
+        "term": "ʾemet",
+        "meaning": "truth, reliability, faithfulness",
+        "note": "Describes what is dependable and trustworthy."
+      },
+      {
+        "language": "Greek",
+        "script": "ἀγάπη",
+        "term": "agapē",
+        "meaning": "love",
+        "note": "Its New Testament meaning is shaped by God's self-giving action in Christ."
+      }
+    ],
+    "relatedExplanations": [
+      "Exodus 34:6-7 — Read this passage in its immediate setting to see its contribution to the theme.",
+      "Psalm 103:8-14 — Notice how this passage develops or illustrates the biblical theme.",
+      "Psalm 145:8-9 — Compare this passage with the others to see the theme across Scripture.",
+      "John 4:24 — Observe what this passage reveals about God's action and human response.",
+      "1 John 4:8 — Consider how this passage completes or deepens the study."
     ]
   },
   {
@@ -91,6 +130,38 @@ const topics=[
         "verse": 16,
         "endVerse": 17
       }
+    ],
+    "definition": "Creation is the work of the sovereign God, who brings all things into existence, gives humanity dignity and responsibility, and sustains what He has made.",
+    "oldTestament": "Genesis 1–2 presents God as Creator and humanity as His image-bearers, entrusted with responsible care. Psalms 19 and 104 invite worship through observing creation.",
+    "newTestament": "John identifies the Word as active in creation; Paul says all things were created through and for Christ (John 1:1–3; Colossians 1:15–17). Creation's renewal belongs to Christian hope (Romans 8:19–23).",
+    "application": "Receive life and the natural world as gifts entrusted to you. Honour every person as God's image-bearer and practise responsible stewardship.",
+    "questions": [
+      "How should being made in God's image shape how I treat people?",
+      "What part of creation has God entrusted to my care?",
+      "How does Christ's role in creation deepen my worship?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "בָּרָא",
+        "term": "bārāʾ",
+        "meaning": "create",
+        "note": "Used in Genesis 1 with God as subject, highlighting divine creative action."
+      },
+      {
+        "language": "Greek",
+        "script": "κτίσις",
+        "term": "ktisis",
+        "meaning": "creation, creature",
+        "note": "Can refer to the act of creating or what has been created."
+      }
+    ],
+    "relatedExplanations": [
+      "Genesis 1:1 — Read this passage in its immediate setting to see its contribution to the theme.",
+      "Genesis 1:26-27 — Notice how this passage develops or illustrates the biblical theme.",
+      "Psalm 19:1 — Compare this passage with the others to see the theme across Scripture.",
+      "John 1:3 — Observe what this passage reveals about God's action and human response.",
+      "Colossians 1:16-17 — Consider how this passage completes or deepens the study."
     ]
   },
   {
@@ -137,6 +208,38 @@ const topics=[
         "verse": 17,
         "endVerse": null
       }
+    ],
+    "definition": "The Word of God is His revealed message and authoritative instruction, through which He makes Himself known, teaches truth, searches the heart and equips His people.",
+    "oldTestament": "Deuteronomy 6:4–9 calls Israel to hear, remember and teach the LORD's words. Psalm 119 celebrates the Word as light, wisdom and a treasure kept in the heart.",
+    "newTestament": "Jesus fulfils and authoritatively teaches Scripture; the apostolic writings testify to Him. Scripture equips believers, and the Word must be obeyed, not merely heard (Luke 24:27; 2 Timothy 3:16–17; James 1:22–25).",
+    "application": "Read passages in context, observe what they say, compare Scripture with Scripture, and put one clear instruction into practice.",
+    "questions": [
+      "What does this passage reveal about God and faithful response?",
+      "Am I obeying what I already understand?",
+      "What context might change how I read this verse?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "דָּבָר",
+        "term": "dābār",
+        "meaning": "word, matter, spoken message",
+        "note": "Can refer to a spoken word, a matter or an event."
+      },
+      {
+        "language": "Greek",
+        "script": "λόγος",
+        "term": "logos",
+        "meaning": "word, message, account",
+        "note": "A broad term; John uses it distinctively for the eternal Word made flesh."
+      }
+    ],
+    "relatedExplanations": [
+      "Psalm 119:105 — Read this passage in its immediate setting to see its contribution to the theme.",
+      "Psalm 119:11 — Notice how this passage develops or illustrates the biblical theme.",
+      "2 Timothy 3:16-17 — Compare this passage with the others to see the theme across Scripture.",
+      "Hebrews 4:12 — Observe what this passage reveals about God's action and human response.",
+      "John 17:17 — Consider how this passage completes or deepens the study."
     ]
   },
   {
@@ -182,6 +285,38 @@ const topics=[
         "verse": 24,
         "endVerse": null
       }
+    ],
+    "definition": "Biblical faith is reliance on God and His trustworthy word, expressed through allegiance, obedience and perseverance—not wishful thinking or confidence in our control.",
+    "oldTestament": "Abraham trusted God's promise (Genesis 15:6; 22). Israel's story contrasts trust in the LORD with reliance on visible power or idols; Proverbs calls for wholehearted trust.",
+    "newTestament": "Jesus calls people to believe the good news. Paul explains justification by faith, Hebrews presents persevering faith, and James shows that genuine faith bears fruit in action (Romans 3:21–26; Hebrews 11; James 2:14–26).",
+    "application": "Bring doubts honestly to God, examine promises in context, take the obedient next step and leave outcomes in His hands.",
+    "questions": [
+      "What am I relying on more than God's character?",
+      "What obedient action follows from my faith?",
+      "How can I bring doubts to God without surrendering trust?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "אָמַן",
+        "term": "ʾāman",
+        "meaning": "be firm, trust, believe",
+        "note": "The word family conveys firmness and dependability."
+      },
+      {
+        "language": "Greek",
+        "script": "πίστις",
+        "term": "pistis",
+        "meaning": "faith, trust, faithfulness",
+        "note": "Its precise sense depends on the passage."
+      }
+    ],
+    "relatedExplanations": [
+      "Proverbs 3:5-6 — Read this passage in its immediate setting to see its contribution to the theme.",
+      "Hebrews 11:1 — Notice how this passage develops or illustrates the biblical theme.",
+      "Hebrews 11:6 — Compare this passage with the others to see the theme across Scripture.",
+      "Romans 10:17 — Observe what this passage reveals about God's action and human response.",
+      "Mark 9:24 — Consider how this passage completes or deepens the study."
     ]
   },
   {
@@ -227,6 +362,38 @@ const topics=[
         "verse": 9,
         "endVerse": 10
       }
+    ],
+    "definition": "Grace is God's undeserved favour and generous action toward sinners. Salvation is His rescue from sin, accomplished through Jesus Christ and received by faith, resulting in renewed life.",
+    "oldTestament": "God's saving grace appears in covenant dealings, the exodus, forgiveness and promises of a renewed heart. These prepare readers to understand salvation in Christ.",
+    "newTestament": "The New Testament announces salvation through Jesus' death and resurrection. Ephesians 2 joins grace and faith with good works as the fruit, not purchase price, of salvation (Romans 5:1–11; Titus 3:4–7).",
+    "application": "Rest in Christ's work rather than trying to earn acceptance. Let gratitude produce good works, humility and compassion.",
+    "questions": [
+      "Am I treating obedience as a response to grace or a way to earn it?",
+      "What does this passage say Christ has done?",
+      "How should receiving mercy change how I treat others?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "χάρις",
+        "term": "charis",
+        "meaning": "grace, favour, gracious gift",
+        "note": "Context shows whether the emphasis is favour, gift or gracious action."
+      },
+      {
+        "language": "Greek",
+        "script": "σωτηρία",
+        "term": "sōtēria",
+        "meaning": "salvation, deliverance, rescue",
+        "note": "The passage defines the scope of God's saving deliverance."
+      }
+    ],
+    "relatedExplanations": [
+      "John 3:16 — Read this passage in its immediate setting to see its contribution to the theme.",
+      "Ephesians 2:8-10 — Notice how this passage develops or illustrates the biblical theme.",
+      "Romans 5:1-2 — Compare this passage with the others to see the theme across Scripture.",
+      "Titus 3:4-7 — Observe what this passage reveals about God's action and human response.",
+      "Romans 10:9-10 — Consider how this passage completes or deepens the study."
     ]
   },
   {
@@ -273,6 +440,38 @@ const topics=[
         "verse": 4,
         "endVerse": 5
       }
+    ],
+    "definition": "Life in Christ is the believer's new relationship with God through union with Jesus: forgiven, made new, brought into His people and called to live by His life and teaching.",
+    "oldTestament": "The Old Testament anticipates inner renewal through promises of a new heart and God's Spirit (Ezekiel 36:25–27; Jeremiah 31:31–34).",
+    "newTestament": "Paul describes believers united with Christ in death and resurrection; Jesus pictures abiding as branches in the vine. New identity leads to transformed living (Romans 6:1–11; Galatians 2:20; John 15:1–8).",
+    "application": "Let your identity in Christ shape decisions and relationships. Practise daily dependence on Jesus rather than self-effort.",
+    "questions": [
+      "Which old pattern conflicts with my identity in Christ?",
+      "What does abiding in Jesus look like daily?",
+      "What fruit should become visible in my relationships?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "ἐν Χριστῷ",
+        "term": "en Christō",
+        "meaning": "in Christ",
+        "note": "A recurring expression for belonging to Christ and sharing His saving benefits."
+      },
+      {
+        "language": "Greek",
+        "script": "μένω",
+        "term": "menō",
+        "meaning": "remain, abide, continue",
+        "note": "In John 15 it pictures ongoing dependence on Jesus."
+      }
+    ],
+    "relatedExplanations": [
+      "2 Corinthians 5:17 — Read this passage in its immediate setting to see its contribution to the theme.",
+      "Galatians 2:20 — Notice how this passage develops or illustrates the biblical theme.",
+      "Romans 6:4 — Compare this passage with the others to see the theme across Scripture.",
+      "Colossians 3:1-4 — Observe what this passage reveals about God's action and human response.",
+      "John 15:4-5 — Consider how this passage completes or deepens the study."
     ]
   },
   {
@@ -318,6 +517,38 @@ const topics=[
         "verse": 22,
         "endVerse": 23
       }
+    ],
+    "definition": "The Holy Spirit is God present and active, not an impersonal force. He gives life, empowers witness, guides into truth, distributes gifts and forms Christlike character.",
+    "oldTestament": "The Spirit is active in creation, empowers people for service and speaks through prophets (Genesis 1:2; Numbers 11:25–29; Ezekiel 36:26–27).",
+    "newTestament": "Jesus promises the Spirit; Acts records empowerment for witness, and the letters describe His work in adoption, holiness, gifts and unity (John 14–16; Acts 2; Romans 8; 1 Corinthians 12).",
+    "application": "Depend on the Spirit in prayer and obedience, test claims by Scripture, use gifts to serve and look for Christlike fruit.",
+    "questions": [
+      "Which fruit of the Spirit needs to grow in me?",
+      "How does this passage distinguish the Spirit's work from human effort?",
+      "How can I use what God gives me to build others up?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "רוּחַ",
+        "term": "rûaḥ",
+        "meaning": "spirit, breath, wind",
+        "note": "The passage determines which related sense is intended."
+      },
+      {
+        "language": "Greek",
+        "script": "πνεῦμα",
+        "term": "pneuma",
+        "meaning": "spirit, wind, breath",
+        "note": "May refer to the Holy Spirit, human spirit or wind; context matters."
+      }
+    ],
+    "relatedExplanations": [
+      "John 14:16-17 — Read this passage in its immediate setting to see its contribution to the theme.",
+      "John 16:13 — Notice how this passage develops or illustrates the biblical theme.",
+      "Acts 1:8 — Compare this passage with the others to see the theme across Scripture.",
+      "Romans 8:14-16 — Observe what this passage reveals about God's action and human response.",
+      "Galatians 5:22-23 — Consider how this passage completes or deepens the study."
     ]
   },
   {
@@ -363,6 +594,38 @@ const topics=[
         "verse": 14,
         "endVerse": null
       }
+    ],
+    "definition": "Prayer is the relational response of God's people: worship, confession, thanksgiving, lament and request. Communion with God includes hearing His Word and responding in trust.",
+    "oldTestament": "The Psalms model praise, lament and petition. Abraham, Moses, Hannah, David and Daniel show prayer in personal and communal life.",
+    "newTestament": "Jesus teaches and models prayer and opens access to the Father. The church prays together and brings needs to God through Christ (Matthew 6:5–13; Hebrews 4:14–16; Acts 4:23–31).",
+    "application": "Build an honest, regular pattern of prayer. Include worship, confession, gratitude and requests; let Scripture shape your prayers.",
+    "questions": [
+      "Which part of the Lord's Prayer should reshape my priorities?",
+      "What concern do I need to bring honestly before God?",
+      "How will I respond if God's answer differs from my request?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "תְּפִלָּה",
+        "term": "tefillāh",
+        "meaning": "prayer",
+        "note": "A common Hebrew noun for prayer."
+      },
+      {
+        "language": "Greek",
+        "script": "προσευχή",
+        "term": "proseuchē",
+        "meaning": "prayer",
+        "note": "A general New Testament term; context shows the kind of prayer."
+      }
+    ],
+    "relatedExplanations": [
+      "Matthew 6:9-13 — Read this passage in its immediate setting to see its contribution to the theme.",
+      "Philippians 4:6-7 — Notice how this passage develops or illustrates the biblical theme.",
+      "1 Thessalonians 5:17-18 — Compare this passage with the others to see the theme across Scripture.",
+      "Hebrews 4:16 — Observe what this passage reveals about God's action and human response.",
+      "1 John 5:14 — Consider how this passage completes or deepens the study."
     ]
   },
   {
@@ -408,6 +671,38 @@ const topics=[
         "verse": 9,
         "endVerse": 10
       }
+    ],
+    "definition": "Biblical wisdom is skill in living faithfully before God. Guidance is discernment shaped by Scripture, prayer, wise counsel and obedient attention to circumstances.",
+    "oldTestament": "Proverbs, Job and Ecclesiastes explore wisdom, suffering and life's limits. Proverbs roots wisdom in the fear of the LORD.",
+    "newTestament": "Jesus is God's wisdom; believers ask God for wisdom and live carefully. Decisions are tested by truth, love and maturity (1 Corinthians 1:24,30; James 1:5; Ephesians 5:15–17).",
+    "application": "Seek wisdom before acting, examine motives, consult mature counsel and compare choices with Scripture.",
+    "questions": [
+      "What biblical principle applies to this decision?",
+      "Have I sought wise counsel and listened carefully?",
+      "Am I asking for wisdom so I can obey?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "חָכְמָה",
+        "term": "ḥokmāh",
+        "meaning": "wisdom, skill",
+        "note": "Can describe practical skill and moral or spiritual wisdom."
+      },
+      {
+        "language": "Greek",
+        "script": "σοφία",
+        "term": "sophia",
+        "meaning": "wisdom",
+        "note": "True wisdom is measured in relation to God and His purposes."
+      }
+    ],
+    "relatedExplanations": [
+      "James 1:5 — Read this passage in its immediate setting to see its contribution to the theme.",
+      "Proverbs 3:5-6 — Notice how this passage develops or illustrates the biblical theme.",
+      "Psalm 32:8 — Compare this passage with the others to see the theme across Scripture.",
+      "Psalm 119:105 — Observe what this passage reveals about God's action and human response.",
+      "Colossians 1:9-10 — Consider how this passage completes or deepens the study."
     ]
   },
   {
@@ -454,6 +749,38 @@ const topics=[
         "verse": 1,
         "endVerse": 2
       }
+    ],
+    "definition": "Biblical peace is wholeness and well-being rooted in God's presence and reconciling work. Scripture does not deny distress; it invites people to bring fears to God.",
+    "oldTestament": "The Psalms give language for fear and refuge. Isaiah speaks of peace for those whose minds remain on God; covenant peace includes justice and God's saving presence.",
+    "newTestament": "Jesus offers peace to troubled disciples and reconciles people to God. Paul teaches prayerful dependence, and Peter calls believers to cast anxieties on God's care (John 14:27; Romans 5:1; Philippians 4:6–9; 1 Peter 5:7).",
+    "application": "Name fears honestly, bring them to God, take the next wise step and seek support when distress is heavy. Peace is not pretending pain does not exist.",
+    "questions": [
+      "What specific fear can I bring to God?",
+      "Which truth gives me a reason to trust Him?",
+      "What wise action or supportive conversation do I need?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "שָׁלוֹם",
+        "term": "šālôm",
+        "meaning": "peace, wholeness, well-being",
+        "note": "Often wider than absence of conflict; may include safety and welfare."
+      },
+      {
+        "language": "Greek",
+        "script": "εἰρήνη",
+        "term": "eirēnē",
+        "meaning": "peace",
+        "note": "Can describe peace with God, harmony or tranquillity."
+      }
+    ],
+    "relatedExplanations": [
+      "Isaiah 26:3 — Read this passage in its immediate setting to see its contribution to the theme.",
+      "John 14:27 — Notice how this passage develops or illustrates the biblical theme.",
+      "Philippians 4:6-7 — Compare this passage with the others to see the theme across Scripture.",
+      "1 Peter 5:7 — Observe what this passage reveals about God's action and human response.",
+      "Psalm 46:1-2 — Consider how this passage completes or deepens the study."
     ]
   },
   {
@@ -499,6 +826,38 @@ const topics=[
         "verse": 7,
         "endVerse": null
       }
+    ],
+    "definition": "Biblical courage is faithful action in danger or uncertainty because God is trustworthy. Strength may be physical, moral or spiritual; Scripture teaches dependence on God rather than self-sufficiency.",
+    "oldTestament": "Joshua is charged to be strong and courageous as he leads Israel, with God's presence and instruction as the ground of courage. The Psalms portray the LORD as refuge and strength.",
+    "newTestament": "Jesus strengthens disciples to remain faithful; Paul speaks of strength from the Lord. Christian courage is witness, endurance and love, not aggression (Acts 4:29–31; Ephesians 6:10–18; 2 Corinthians 12:9–10).",
+    "application": "Face responsibilities with prayer, wise preparation and obedience. Courage is not recklessness; ask for help and stand firm in what is right.",
+    "questions": [
+      "What responsibility am I avoiding because I feel afraid?",
+      "What does God's presence promise here—and not promise?",
+      "How can I act courageously without becoming harsh or reckless?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "חָזַק",
+        "term": "ḥāzaq",
+        "meaning": "be strong, become firm, strengthen",
+        "note": "In Joshua 1 the command concerns firmness for faithful leadership."
+      },
+      {
+        "language": "Greek",
+        "script": "ἰσχύς",
+        "term": "ischys",
+        "meaning": "strength, might",
+        "note": "Context shows whether human or divine strength is in view."
+      }
+    ],
+    "relatedExplanations": [
+      "Joshua 1:9 — Read this passage in its immediate setting to see its contribution to the theme.",
+      "Isaiah 41:10 — Notice how this passage develops or illustrates the biblical theme.",
+      "Psalm 27:1 — Compare this passage with the others to see the theme across Scripture.",
+      "Ephesians 6:10 — Observe what this passage reveals about God's action and human response.",
+      "2 Timothy 1:7 — Consider how this passage completes or deepens the study."
     ]
   },
   {
@@ -544,6 +903,45 @@ const topics=[
         "verse": 9,
         "endVerse": 10
       }
+    ],
+    "definition": "Biblical love seeks another's true good through faithful, generous action. Compassion notices suffering and responds with mercy; it is more than emotion and must be joined with truth and justice.",
+    "oldTestament": "God's covenant love is celebrated throughout the Law, Prophets and Psalms. The command to love one's neighbour and care for the vulnerable shows that love must shape public and personal conduct (Leviticus 19:18,34; Hosea 6:6).",
+    "newTestament": "Jesus embodies compassion in His ministry and teaches love of neighbour and enemy. The apostles call the church to sincere love, practical care and self-giving service (Matthew 9:36; Luke 10:25–37; John 13:34–35; 1 Corinthians 13; 1 John 3:16–18).",
+    "application": "Make love visible through patient listening, practical help, forgiveness and protection of the vulnerable. Do not use 'love' to excuse harm or abandon truth.",
+    "questions": [
+      "Who is difficult for me to treat with Christlike love?",
+      "What practical act of compassion can I offer this week?",
+      "How can I hold truth, justice and mercy together?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "אָהַב",
+        "term": "ʾāhab",
+        "meaning": "love, care for",
+        "note": "Used for love in relationships, covenant loyalty and devotion."
+      },
+      {
+        "language": "Greek",
+        "script": "ἀγάπη",
+        "term": "agapē",
+        "meaning": "love",
+        "note": "The New Testament often highlights self-giving love shaped by Christ."
+      },
+      {
+        "language": "Greek",
+        "script": "σπλαγχνίζομαι",
+        "term": "splanchnizomai",
+        "meaning": "be moved with compassion",
+        "note": "A strong expression for being deeply moved toward someone in need."
+      }
+    ],
+    "relatedExplanations": [
+      "1 Corinthians 13:4-7 — Read this passage in its immediate setting to see its contribution to the theme.",
+      "John 13:34-35 — Notice how this passage develops or illustrates the biblical theme.",
+      "Colossians 3:12-14 — Compare this passage with the others to see the theme across Scripture.",
+      "1 John 4:7-12 — Observe what this passage reveals about God's action and human response.",
+      "Romans 12:9-10 — Consider how this passage completes or deepens the study."
     ]
   },
   {
