@@ -3852,6 +3852,880 @@ const topics=[
         "endVerse": 5
       }
     ]
+  },
+  {
+    "title": "Ruth: Loyalty and Redemption",
+    "summary": "Ruth portrays steadfast love, courageous loyalty and God's providence through ordinary faithfulness.",
+    "keywords": [
+      "ruth",
+      "loyalty",
+      "redemption"
+    ],
+    "references": [
+      {
+        "label": "Ruth 1:15-18",
+        "book": "Ruth",
+        "chapter": 1,
+        "verse": 15,
+        "endVerse": 18
+      },
+      {
+        "label": "Ruth 2:8-12",
+        "book": "Ruth",
+        "chapter": 2,
+        "verse": 8,
+        "endVerse": 12
+      },
+      {
+        "label": "Ruth 2:19-23",
+        "book": "Ruth",
+        "chapter": 2,
+        "verse": 19,
+        "endVerse": 23
+      },
+      {
+        "label": "Ruth 3:9-13",
+        "book": "Ruth",
+        "chapter": 3,
+        "verse": 9,
+        "endVerse": 13
+      },
+      {
+        "label": "Ruth 4:13-17",
+        "book": "Ruth",
+        "chapter": 4,
+        "verse": 13,
+        "endVerse": 17
+      }
+    ]
+  },
+  {
+    "title": "Solomon and the Wisdom of Kings",
+    "summary": "Solomon's reign highlights wisdom as God's gift and warns that prosperity must remain under covenant faithfulness.",
+    "keywords": [
+      "solomon",
+      "wisdom",
+      "temple"
+    ],
+    "references": [
+      {
+        "label": "1 Kings 3:5-14",
+        "book": "1 Kings",
+        "chapter": 3,
+        "verse": 5,
+        "endVerse": 14
+      },
+      {
+        "label": "1 Kings 4:29-34",
+        "book": "1 Kings",
+        "chapter": 4,
+        "verse": 29,
+        "endVerse": 34
+      },
+      {
+        "label": "1 Kings 8:22-30",
+        "book": "1 Kings",
+        "chapter": 8,
+        "verse": 22,
+        "endVerse": 30
+      },
+      {
+        "label": "1 Kings 11:1-13",
+        "book": "1 Kings",
+        "chapter": 11,
+        "verse": 1,
+        "endVerse": 13
+      },
+      {
+        "label": "2 Chronicles 7:11-22",
+        "book": "2 Chronicles",
+        "chapter": 7,
+        "verse": 11,
+        "endVerse": 22
+      }
+    ]
+  },
+  {
+    "title": "Remembering God's Works",
+    "summary": "The chronicler calls God's people to remember His acts, worship faithfully and learn from their history.",
+    "keywords": [
+      "remembrance",
+      "history",
+      "worship"
+    ],
+    "references": [
+      {
+        "label": "1 Chronicles 16:8-36",
+        "book": "1 Chronicles",
+        "chapter": 16,
+        "verse": 8,
+        "endVerse": 36
+      },
+      {
+        "label": "1 Chronicles 17:16-27",
+        "book": "1 Chronicles",
+        "chapter": 17,
+        "verse": 16,
+        "endVerse": 27
+      },
+      {
+        "label": "1 Chronicles 29:10-20",
+        "book": "1 Chronicles",
+        "chapter": 29,
+        "verse": 10,
+        "endVerse": 20
+      },
+      {
+        "label": "2 Chronicles 20:5-12",
+        "book": "2 Chronicles",
+        "chapter": 20,
+        "verse": 5,
+        "endVerse": 12
+      },
+      {
+        "label": "2 Chronicles 30:18-22",
+        "book": "2 Chronicles",
+        "chapter": 30,
+        "verse": 18,
+        "endVerse": 22
+      }
+    ]
+  },
+  {
+    "title": "Rebuilding and Renewal",
+    "summary": "The rebuilding narratives show prayerful leadership, perseverance and renewal of community life.",
+    "keywords": [
+      "rebuilding",
+      "renewal",
+      "nehemiah"
+    ],
+    "references": [
+      {
+        "label": "Ezra 3:10-13",
+        "book": "Ezra",
+        "chapter": 3,
+        "verse": 10,
+        "endVerse": 13
+      },
+      {
+        "label": "Ezra 7:6-10",
+        "book": "Ezra",
+        "chapter": 7,
+        "verse": 6,
+        "endVerse": 10
+      },
+      {
+        "label": "Nehemiah 1:4-11",
+        "book": "Nehemiah",
+        "chapter": 1,
+        "verse": 4,
+        "endVerse": 11
+      },
+      {
+        "label": "Nehemiah 4:6-14",
+        "book": "Nehemiah",
+        "chapter": 4,
+        "verse": 6,
+        "endVerse": 14
+      },
+      {
+        "label": "Nehemiah 8:1-12",
+        "book": "Nehemiah",
+        "chapter": 8,
+        "verse": 1,
+        "endVerse": 12
+      }
+    ]
+  },
+  {
+    "title": "Courage and Providence in Esther",
+    "summary": "Esther's story explores courage, wise action and providence in the face of danger.",
+    "keywords": [
+      "esther",
+      "courage",
+      "providence"
+    ],
+    "references": [
+      {
+        "label": "Esther 2:15-18",
+        "book": "Esther",
+        "chapter": 2,
+        "verse": 15,
+        "endVerse": 18
+      },
+      {
+        "label": "Esther 4:10-17",
+        "book": "Esther",
+        "chapter": 4,
+        "verse": 10,
+        "endVerse": 17
+      },
+      {
+        "label": "Esther 5:1-8",
+        "book": "Esther",
+        "chapter": 5,
+        "verse": 1,
+        "endVerse": 8
+      },
+      {
+        "label": "Esther 7:1-6",
+        "book": "Esther",
+        "chapter": 7,
+        "verse": 1,
+        "endVerse": 6
+      },
+      {
+        "label": "Esther 9:20-28",
+        "book": "Esther",
+        "chapter": 9,
+        "verse": 20,
+        "endVerse": 28
+      }
+    ]
+  },
+  {
+    "title": "Love and Faithfulness in Song of Solomon",
+    "summary": "The Song celebrates covenant love, desire and mutual delight within its poetic wisdom setting.",
+    "keywords": [
+      "song of solomon",
+      "love",
+      "marriage"
+    ],
+    "references": [
+      {
+        "label": "Song of Solomon 2:8-17",
+        "book": "Song of Solomon",
+        "chapter": 2,
+        "verse": 8,
+        "endVerse": 17
+      },
+      {
+        "label": "Song of Solomon 3:1-5",
+        "book": "Song of Solomon",
+        "chapter": 3,
+        "verse": 1,
+        "endVerse": 5
+      },
+      {
+        "label": "Song of Solomon 4:9-16",
+        "book": "Song of Solomon",
+        "chapter": 4,
+        "verse": 9,
+        "endVerse": 16
+      },
+      {
+        "label": "Song of Solomon 6:3",
+        "book": "Song of Solomon",
+        "chapter": 6,
+        "verse": 3,
+        "endVerse": null
+      },
+      {
+        "label": "Song of Solomon 8:6-7",
+        "book": "Song of Solomon",
+        "chapter": 8,
+        "verse": 6,
+        "endVerse": 7
+      }
+    ]
+  },
+  {
+    "title": "Hosea: Covenant Love and Return",
+    "summary": "Hosea uses the image of marriage to portray God's steadfast love and call His people to return.",
+    "keywords": [
+      "hosea",
+      "covenant love",
+      "return"
+    ],
+    "references": [
+      {
+        "label": "Hosea 2:14-23",
+        "book": "Hosea",
+        "chapter": 2,
+        "verse": 14,
+        "endVerse": 23
+      },
+      {
+        "label": "Hosea 3:1-5",
+        "book": "Hosea",
+        "chapter": 3,
+        "verse": 1,
+        "endVerse": 5
+      },
+      {
+        "label": "Hosea 6:1-6",
+        "book": "Hosea",
+        "chapter": 6,
+        "verse": 1,
+        "endVerse": 6
+      },
+      {
+        "label": "Hosea 11:1-9",
+        "book": "Hosea",
+        "chapter": 11,
+        "verse": 1,
+        "endVerse": 9
+      },
+      {
+        "label": "Hosea 14:1-9",
+        "book": "Hosea",
+        "chapter": 14,
+        "verse": 1,
+        "endVerse": 9
+      }
+    ]
+  },
+  {
+    "title": "Joel: The Day of the Lord and the Spirit",
+    "summary": "Joel calls for wholehearted return to God and promises the outpouring of His Spirit.",
+    "keywords": [
+      "joel",
+      "day of the lord",
+      "spirit"
+    ],
+    "references": [
+      {
+        "label": "Joel 1:13-20",
+        "book": "Joel",
+        "chapter": 1,
+        "verse": 13,
+        "endVerse": 20
+      },
+      {
+        "label": "Joel 2:12-17",
+        "book": "Joel",
+        "chapter": 2,
+        "verse": 12,
+        "endVerse": 17
+      },
+      {
+        "label": "Joel 2:28-32",
+        "book": "Joel",
+        "chapter": 2,
+        "verse": 28,
+        "endVerse": 32
+      },
+      {
+        "label": "Joel 2:18-27",
+        "book": "Joel",
+        "chapter": 2,
+        "verse": 18,
+        "endVerse": 27
+      },
+      {
+        "label": "Acts 2:14-21",
+        "book": "Acts",
+        "chapter": 2,
+        "verse": 14,
+        "endVerse": 21
+      }
+    ]
+  },
+  {
+    "title": "Obadiah: Pride and Justice",
+    "summary": "Obadiah warns against pride and rejoicing over another's calamity, affirming God's justice.",
+    "keywords": [
+      "obadiah",
+      "pride",
+      "justice"
+    ],
+    "references": [
+      {
+        "label": "Obadiah 1:1-4",
+        "book": "Obadiah",
+        "chapter": 1,
+        "verse": 1,
+        "endVerse": 4
+      },
+      {
+        "label": "Obadiah 1:10-14",
+        "book": "Obadiah",
+        "chapter": 1,
+        "verse": 10,
+        "endVerse": 14
+      },
+      {
+        "label": "Obadiah 1:15-16",
+        "book": "Obadiah",
+        "chapter": 1,
+        "verse": 15,
+        "endVerse": 16
+      },
+      {
+        "label": "Obadiah 1:17-18",
+        "book": "Obadiah",
+        "chapter": 1,
+        "verse": 17,
+        "endVerse": 18
+      },
+      {
+        "label": "Obadiah 1:21",
+        "book": "Obadiah",
+        "chapter": 1,
+        "verse": 21,
+        "endVerse": null
+      }
+    ]
+  },
+  {
+    "title": "Jonah: Mercy Beyond Our Boundaries",
+    "summary": "Jonah confronts narrow compassion and reveals God's concern for people beyond Israel.",
+    "keywords": [
+      "jonah",
+      "mercy",
+      "mission"
+    ],
+    "references": [
+      {
+        "label": "Jonah 1:1-3",
+        "book": "Jonah",
+        "chapter": 1,
+        "verse": 1,
+        "endVerse": 3
+      },
+      {
+        "label": "Jonah 2:1-10",
+        "book": "Jonah",
+        "chapter": 2,
+        "verse": 1,
+        "endVerse": 10
+      },
+      {
+        "label": "Jonah 3:1-10",
+        "book": "Jonah",
+        "chapter": 3,
+        "verse": 1,
+        "endVerse": 10
+      },
+      {
+        "label": "Jonah 4:1-4",
+        "book": "Jonah",
+        "chapter": 4,
+        "verse": 1,
+        "endVerse": 4
+      },
+      {
+        "label": "Jonah 4:9-11",
+        "book": "Jonah",
+        "chapter": 4,
+        "verse": 9,
+        "endVerse": 11
+      }
+    ]
+  },
+  {
+    "title": "Nahum: God's Justice Against Oppression",
+    "summary": "Nahum announces judgment against violent oppression and portrays God as refuge for those who trust Him.",
+    "keywords": [
+      "nahum",
+      "justice",
+      "refuge"
+    ],
+    "references": [
+      {
+        "label": "Nahum 1:2-8",
+        "book": "Nahum",
+        "chapter": 1,
+        "verse": 2,
+        "endVerse": 8
+      },
+      {
+        "label": "Nahum 1:9-15",
+        "book": "Nahum",
+        "chapter": 1,
+        "verse": 9,
+        "endVerse": 15
+      },
+      {
+        "label": "Nahum 2:1-6",
+        "book": "Nahum",
+        "chapter": 2,
+        "verse": 1,
+        "endVerse": 6
+      },
+      {
+        "label": "Nahum 3:1-7",
+        "book": "Nahum",
+        "chapter": 3,
+        "verse": 1,
+        "endVerse": 7
+      },
+      {
+        "label": "Psalm 9:7-10",
+        "book": "Psalm",
+        "chapter": 9,
+        "verse": 7,
+        "endVerse": 10
+      }
+    ]
+  },
+  {
+    "title": "Habakkuk: Faith in Troubled Times",
+    "summary": "Habakkuk brings hard questions to God and learns to live by faith while waiting for His justice.",
+    "keywords": [
+      "habakkuk",
+      "faith",
+      "waiting"
+    ],
+    "references": [
+      {
+        "label": "Habakkuk 1:1-4",
+        "book": "Habakkuk",
+        "chapter": 1,
+        "verse": 1,
+        "endVerse": 4
+      },
+      {
+        "label": "Habakkuk 1:12-17",
+        "book": "Habakkuk",
+        "chapter": 1,
+        "verse": 12,
+        "endVerse": 17
+      },
+      {
+        "label": "Habakkuk 2:1-4",
+        "book": "Habakkuk",
+        "chapter": 2,
+        "verse": 1,
+        "endVerse": 4
+      },
+      {
+        "label": "Habakkuk 3:16-19",
+        "book": "Habakkuk",
+        "chapter": 3,
+        "verse": 16,
+        "endVerse": 19
+      },
+      {
+        "label": "Romans 1:16-17",
+        "book": "Romans",
+        "chapter": 1,
+        "verse": 16,
+        "endVerse": 17
+      }
+    ]
+  },
+  {
+    "title": "Zephaniah: Judgment and Restoration",
+    "summary": "Zephaniah warns of the day of the Lord and promises purification, joy and restoration.",
+    "keywords": [
+      "zephaniah",
+      "restoration",
+      "day of the lord"
+    ],
+    "references": [
+      {
+        "label": "Zephaniah 1:14-18",
+        "book": "Zephaniah",
+        "chapter": 1,
+        "verse": 14,
+        "endVerse": 18
+      },
+      {
+        "label": "Zephaniah 2:1-3",
+        "book": "Zephaniah",
+        "chapter": 2,
+        "verse": 1,
+        "endVerse": 3
+      },
+      {
+        "label": "Zephaniah 3:9-13",
+        "book": "Zephaniah",
+        "chapter": 3,
+        "verse": 9,
+        "endVerse": 13
+      },
+      {
+        "label": "Zephaniah 3:14-17",
+        "book": "Zephaniah",
+        "chapter": 3,
+        "verse": 14,
+        "endVerse": 17
+      },
+      {
+        "label": "Zephaniah 3:18-20",
+        "book": "Zephaniah",
+        "chapter": 3,
+        "verse": 18,
+        "endVerse": 20
+      }
+    ]
+  },
+  {
+    "title": "Haggai: Priorities and God's Presence",
+    "summary": "Haggai challenges misplaced priorities and encourages the people to rebuild in dependence on God's presence.",
+    "keywords": [
+      "haggai",
+      "priorities",
+      "temple"
+    ],
+    "references": [
+      {
+        "label": "Haggai 1:2-11",
+        "book": "Haggai",
+        "chapter": 1,
+        "verse": 2,
+        "endVerse": 11
+      },
+      {
+        "label": "Haggai 1:12-15",
+        "book": "Haggai",
+        "chapter": 1,
+        "verse": 12,
+        "endVerse": 15
+      },
+      {
+        "label": "Haggai 2:1-9",
+        "book": "Haggai",
+        "chapter": 2,
+        "verse": 1,
+        "endVerse": 9
+      },
+      {
+        "label": "Haggai 2:10-19",
+        "book": "Haggai",
+        "chapter": 2,
+        "verse": 10,
+        "endVerse": 19
+      },
+      {
+        "label": "Haggai 2:20-23",
+        "book": "Haggai",
+        "chapter": 2,
+        "verse": 20,
+        "endVerse": 23
+      }
+    ]
+  },
+  {
+    "title": "Malachi: Covenant Faithfulness",
+    "summary": "Malachi calls the community to honour God in worship, relationships and covenant faithfulness.",
+    "keywords": [
+      "malachi",
+      "covenant",
+      "worship"
+    ],
+    "references": [
+      {
+        "label": "Malachi 1:6-14",
+        "book": "Malachi",
+        "chapter": 1,
+        "verse": 6,
+        "endVerse": 14
+      },
+      {
+        "label": "Malachi 2:10-16",
+        "book": "Malachi",
+        "chapter": 2,
+        "verse": 10,
+        "endVerse": 16
+      },
+      {
+        "label": "Malachi 3:1-5",
+        "book": "Malachi",
+        "chapter": 3,
+        "verse": 1,
+        "endVerse": 5
+      },
+      {
+        "label": "Malachi 3:6-12",
+        "book": "Malachi",
+        "chapter": 3,
+        "verse": 6,
+        "endVerse": 12
+      },
+      {
+        "label": "Malachi 4:1-6",
+        "book": "Malachi",
+        "chapter": 4,
+        "verse": 1,
+        "endVerse": 6
+      }
+    ]
+  },
+  {
+    "title": "Philemon: Forgiveness and Reconciliation",
+    "summary": "Paul appeals for a transformed relationship in Christ, grounded in love rather than coercion.",
+    "keywords": [
+      "philemon",
+      "reconciliation",
+      "forgiveness"
+    ],
+    "references": [
+      {
+        "label": "Philemon 1:4-7",
+        "book": "Philemon",
+        "chapter": 1,
+        "verse": 4,
+        "endVerse": 7
+      },
+      {
+        "label": "Philemon 1:8-16",
+        "book": "Philemon",
+        "chapter": 1,
+        "verse": 8,
+        "endVerse": 16
+      },
+      {
+        "label": "Philemon 1:17-21",
+        "book": "Philemon",
+        "chapter": 1,
+        "verse": 17,
+        "endVerse": 21
+      },
+      {
+        "label": "Ephesians 2:13-18",
+        "book": "Ephesians",
+        "chapter": 2,
+        "verse": 13,
+        "endVerse": 18
+      },
+      {
+        "label": "Colossians 3:12-14",
+        "book": "Colossians",
+        "chapter": 3,
+        "verse": 12,
+        "endVerse": 14
+      }
+    ]
+  },
+  {
+    "title": "Truth, Love and Discernment in 2 John",
+    "summary": "Second John joins love with obedience to truth and careful discernment about teaching.",
+    "keywords": [
+      "2 john",
+      "truth",
+      "discernment"
+    ],
+    "references": [
+      {
+        "label": "2 John 1:4-6",
+        "book": "2 John",
+        "chapter": 1,
+        "verse": 4,
+        "endVerse": 6
+      },
+      {
+        "label": "2 John 1:7-8",
+        "book": "2 John",
+        "chapter": 1,
+        "verse": 7,
+        "endVerse": 8
+      },
+      {
+        "label": "2 John 1:9-11",
+        "book": "2 John",
+        "chapter": 1,
+        "verse": 9,
+        "endVerse": 11
+      },
+      {
+        "label": "John 14:15",
+        "book": "John",
+        "chapter": 14,
+        "verse": 15,
+        "endVerse": null
+      },
+      {
+        "label": "1 John 4:1-3",
+        "book": "1 John",
+        "chapter": 4,
+        "verse": 1,
+        "endVerse": 3
+      }
+    ]
+  },
+  {
+    "title": "Hospitality and Faithfulness in 3 John",
+    "summary": "Third John commends generous hospitality and faithful partnership while warning against self-serving leadership.",
+    "keywords": [
+      "3 john",
+      "hospitality",
+      "faithfulness"
+    ],
+    "references": [
+      {
+        "label": "3 John 1:2-4",
+        "book": "3 John",
+        "chapter": 1,
+        "verse": 2,
+        "endVerse": 4
+      },
+      {
+        "label": "3 John 1:5-8",
+        "book": "3 John",
+        "chapter": 1,
+        "verse": 5,
+        "endVerse": 8
+      },
+      {
+        "label": "3 John 1:9-10",
+        "book": "3 John",
+        "chapter": 1,
+        "verse": 9,
+        "endVerse": 10
+      },
+      {
+        "label": "3 John 1:11-12",
+        "book": "3 John",
+        "chapter": 1,
+        "verse": 11,
+        "endVerse": 12
+      },
+      {
+        "label": "Romans 12:13",
+        "book": "Romans",
+        "chapter": 12,
+        "verse": 13,
+        "endVerse": null
+      }
+    ]
+  },
+  {
+    "title": "Contending for the Faith in Jude",
+    "summary": "Jude urges believers to remain grounded in the apostolic faith, show wise mercy and rely on God's keeping power.",
+    "keywords": [
+      "jude",
+      "faith",
+      "perseverance"
+    ],
+    "references": [
+      {
+        "label": "Jude 1:3-4",
+        "book": "Jude",
+        "chapter": 1,
+        "verse": 3,
+        "endVerse": 4
+      },
+      {
+        "label": "Jude 1:5-7",
+        "book": "Jude",
+        "chapter": 1,
+        "verse": 5,
+        "endVerse": 7
+      },
+      {
+        "label": "Jude 1:17-19",
+        "book": "Jude",
+        "chapter": 1,
+        "verse": 17,
+        "endVerse": 19
+      },
+      {
+        "label": "Jude 1:20-23",
+        "book": "Jude",
+        "chapter": 1,
+        "verse": 20,
+        "endVerse": 23
+      },
+      {
+        "label": "Jude 1:24-25",
+        "book": "Jude",
+        "chapter": 1,
+        "verse": 24,
+        "endVerse": 25
+      }
+    ]
   }
 ];
 function normalize(value){return String(value||"").toLowerCase().replace(/\s+/g," ").trim();}
