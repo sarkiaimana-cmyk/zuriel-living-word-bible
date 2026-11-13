@@ -186,7 +186,7 @@
       </div>
     </div>
 
-    <button type="button" class="nav-jump" id="zurielNavOpen" disabled>Open Selected Chapter</button>
+    <button type="button" class="nav-jump" id="zurielNavOpen" disabled>Open Selected Passage</button>
     <div class="nav-current" id="zurielNavCurrent" aria-live="polite">Ready to explore God's Word.</div>
     <p class="nav-status" id="zurielNavStatus">All 66 Bible books are ready.</p>
   `;
@@ -345,7 +345,7 @@
     message.querySelectorAll(".verse.zuriel-nav-highlight").forEach(function (item) { item.classList.remove("zuriel-nav-highlight"); });
     target.classList.add("zuriel-nav-highlight");
     target.scrollIntoView({ behavior: "smooth", block: "center" });
-    const verseText = target.textContent.replace(/^\\s*\\d+\\.?\\s*/, "").trim();
+    const verseText = target.textContent.replace(/^\s*\d+\.?\s*/, "").trim();
     currentLabel.textContent = selectedBook + " " + selectedChapter + ":" + number;
     if (window.ZurielStudy && typeof window.ZurielStudy.openForReference === "function") {
       window.ZurielStudy.openForReference(selectedBook, selectedChapter, number, verseText, "", -1);
@@ -375,7 +375,7 @@
       console.error("Zuriel Navigator:", error);
     } finally {
       openButton.disabled = !chapterSelect.value;
-      openButton.textContent = "Open Selected Chapter";
+      openButton.textContent = "Open Selected Passage";
     }
   }
 
@@ -456,7 +456,7 @@
     for (const book of candidates) {
       const prefix = book.name.toLowerCase() + " ";
       if (!lower.startsWith(prefix)) continue;
-      const parts = raw.slice(book.name.length).trim().match(/^(\\d+)(?::(\\d+))?$/);
+      const parts = raw.slice(book.name.length).trim().match(/^(\d+)(?::(\d+))?$/);
       if (!parts) continue;
       const chapter = Number(parts[1]);
       const verse = Number(parts[2] || 0);
