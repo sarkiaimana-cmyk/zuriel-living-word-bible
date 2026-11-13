@@ -8,6 +8,12 @@ const files = [
   "zuriel-study.js",
   "zuriel-navigation.js",
   "zuriel-introductions.js",
+  "zuriel-grid-navigation.js",
+  "zuriel-faith-content.js",
+  "zuriel-topical-index.js",
+  "zuriel-settings.js",
+  "zuriel-updates.js",
+  "version.json",
   "sw.js",
   "kjv.72bec70fcd.json"
 ];
