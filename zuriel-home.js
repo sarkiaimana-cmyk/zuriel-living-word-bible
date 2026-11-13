@@ -282,6 +282,122 @@
         #zurielHomeDashboard .home-passage-grid { grid-template-columns:1fr; }
       }
 
+      /* PREMIUM MOBILE HOME REFINEMENT */
+      #zurielHomeDashboard {
+        width: 100%; max-width: 760px; margin: 0 auto 24px;
+        padding: 0 0 12px; color: #f8f4e9;
+      }
+      #zurielHomeDashboard .home-hero {
+        position: relative; isolation: isolate; overflow: hidden;
+        padding: 26px 18px 22px; border-radius: 22px;
+        background: radial-gradient(ellipse at 92% 8%, #5479a044 0, transparent 42%),
+          linear-gradient(145deg,#0b1830 0%,#142d50 55%,#244c66 100%);
+        border: 1px solid #c7aa69; box-shadow: 0 12px 28px #10213d26;
+      }
+      #zurielHomeDashboard .home-hero::after {
+        content: "✦"; position: absolute; z-index: -1; right: 18px; bottom: -38px;
+        color: #e8cf91; opacity: .12; font-size: 150px; line-height: 1; pointer-events: none;
+      }
+      #zurielHomeDashboard .home-eyebrow {
+        display: inline-flex; align-items: center; gap: 7px; margin: 0 auto 13px;
+        padding: 6px 11px; border: 1px solid #e8cf9166; border-radius: 30px;
+        background: #ffffff0c; color: #f4dfaa;
+        font: 700 10px/1.3 Arial,sans-serif; letter-spacing: 1.15px;
+      }
+      #zurielHomeDashboard .home-brand {
+        max-width: 520px; margin: 7px auto 10px; color: #fff9e9;
+        font-size: clamp(25px,6vw,34px); line-height: 1.2;
+        letter-spacing: -.45px; text-wrap: balance;
+      }
+      #zurielHomeDashboard .home-tagline {
+        margin: 0; color: #f0d99f; font-size: 13px; letter-spacing: .25px;
+      }
+      #zurielHomeDashboard .home-subtitle {
+        max-width: 440px; margin: 0 auto; color: #e0e8f1;
+        font-size: 13px; line-height: 1.65;
+      }
+      #zurielHomeDashboard .home-hero .home-button {
+        max-width: 360px; margin: 19px auto 0; min-height: 50px;
+        border: 1px solid #f3dfac; border-radius: 12px;
+        background: linear-gradient(110deg,#f0d99f,#d8bb75);
+        box-shadow: 0 5px 14px #00000024;
+      }
+      #zurielHomeDashboard .home-card {
+        padding: 17px; margin-top: 13px; border: 1px solid #d9d0bc;
+        border-radius: 17px; background: linear-gradient(155deg,#172d4b,#10213d);
+        box-shadow: 0 7px 20px #10213d12;
+      }
+      #zurielHomeDashboard .home-card h2 {
+        display: flex; align-items: center; gap: 8px; margin: 0 0 10px;
+        color: #f2dda9; font-size: 17px; line-height: 1.35;
+      }
+      #zurielHomeDashboard .home-card p { margin-top: 7px; margin-bottom: 9px; }
+      #zurielHomeDashboard .home-continue-card {
+        background: linear-gradient(120deg,#203d5c,#132844); border-color: #cbb47b;
+      }
+      #zurielHomeDashboard #zurielHomeReadingPosition { color: #f5f0e4; font-size: 14px; }
+      #zurielHomeDashboard .home-button {
+        min-height: 48px; border-radius: 11px; box-shadow: 0 3px 9px #00000016;
+        transition: transform .16s ease, box-shadow .16s ease;
+      }
+      #zurielHomeDashboard .home-button:active,
+      #zurielHomeDashboard .home-grid button:active { transform: scale(.985); }
+      #zurielHomeDashboard button:focus-visible,
+      #zurielHomeDashboard select:focus-visible,
+      #zurielBottomNavigation button:focus-visible,
+      #zurielTopBack:focus-visible { outline: 3px solid #f2d58d; outline-offset: 3px; }
+      #zurielHomeDashboard .home-passage-grid { gap: 10px; }
+      #zurielHomeDashboard .home-passage-grid select {
+        min-height: 49px; border: 1px solid #c8c2b4; border-radius: 11px; font-size: 15px;
+      }
+      #zurielHomeDashboard .home-passage-grid label {
+        color: #f2dda9; font-size: 12px; letter-spacing: .2px;
+      }
+      #zurielHomeDashboard .home-passage-status { color: #e1e9f3; }
+      #zurielHomeDashboard .home-verse {
+        min-height: 0; margin: 13px 0 8px; padding: 16px;
+        border-left: 3px solid #d8bd7c; border-radius: 0 12px 12px 0;
+        background: #ffffff0b; color: #fff9e9;
+        font-size: clamp(17px,4.4vw,20px); line-height: 1.65;
+      }
+      #zurielHomeDashboard .home-reference { margin-left: 17px; font-size: 13px; }
+      #zurielHomeDashboard .home-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+      #zurielHomeDashboard .home-grid button {
+        min-height: 64px; padding: 10px 8px; border: 1px solid #d8c99f;
+        border-radius: 12px; background: #f7f3e8; color: #18304d;
+        font-size: 13px; line-height: 1.35;
+      }
+      #zurielHomeDashboard details {
+        margin-top: 9px; padding: 13px 14px; border: 1px solid #e0d8c7;
+        border-left: 3px solid #c6a866; border-radius: 12px; background: #f8f5ed;
+      }
+      #zurielHomeDashboard details summary { color: #19324f; font-size: 14px; }
+      #zurielHomeDashboard details p { color: #34465a; font-size: 14px; line-height: 1.7; }
+      #zurielHomeDashboard .home-growth-highlight {
+        border-color: #d8bd7c; background: linear-gradient(145deg,#233f5e,#142943);
+      }
+      #zurielHomeDashboard .home-growth-highlight p { color: #fff7e6; }
+      #zurielHomeDashboard .home-section-note { color: #dce5f1; font-size: 12px; }
+      #zurielBottomNavigation {
+        padding-left: max(5px,env(safe-area-inset-left));
+        padding-right: max(5px,env(safe-area-inset-right));
+        background: #0d1c35; border-top-color: #c8ad70;
+      }
+      #zurielBottomNavigation button { min-height: 56px; font-size: 10px; letter-spacing: -.15px; }
+      #zurielBottomNavigation button.active { background: linear-gradient(135deg,#f0d99f,#d8bd7c); }
+      @media (min-width:600px) {
+        #zurielHomeDashboard .home-hero { padding: 34px 28px 30px; }
+        #zurielHomeDashboard .home-card { padding: 20px; }
+        #zurielHomeDashboard .home-grid button { min-height: 68px; }
+      }
+      @media (max-width:380px) {
+        #zurielHomeDashboard .home-hero { padding: 22px 13px 19px; }
+        #zurielHomeDashboard .home-card { padding: 14px; }
+        #zurielHomeDashboard .home-brand { font-size: 25px; }
+        #zurielBottomNavigation button { font-size: 9px; }
+        #zurielBottomNavigation button span { font-size: 18px; }
+      }
+
       @media (prefers-reduced-motion: reduce) {
         #zurielHomeDashboard .home-verse {
           transition: none;
@@ -314,6 +430,7 @@
 
     dashboard.innerHTML = `
       <section class="home-hero">
+        <p class="home-eyebrow">✦ OFFLINE-FIRST BIBLE • 66 BOOKS</p>
         <p class="home-tagline">
           His Words.. My Life.. My Victory.
         </p>
@@ -360,7 +477,7 @@
         <p class="home-passage-status" id="zurielHomePassageStatus">All 66 books are available offline.</p>
       </section>
 
-      <section class="home-card">
+      <section class="home-card home-scripture-card">
         <h2>🌿 Scripture for Today</h2>
         <p class="home-verse" id="zurielHomeVerse"></p>
         <p class="home-reference" id="zurielHomeReference"></p>
@@ -379,18 +496,21 @@
       </section>
 
       <section class="home-card">
-        <h2>⚡ Quick Access</h2>
+        <h2>⚡ Your Bible Journey</h2>
+        <p class="home-section-note">Go straight to the part of Zuriel you want to explore.</p>
 
         <div class="home-grid">
           <button data-section="read">📖 Read Bible</button>
           <button data-section="study">🔍 Study Centre</button>
           <button data-section="declare">✨ Declarations</button>
           <button data-section="library">📚 Study Library</button>
+          <button data-section="me">👤 My Personal Space</button>
         </div>
       </section>
 
-      <section class="home-card">
+      <section class="home-card home-growth-highlight">
         <h2>🌸 Daily Growth</h2>
+        <p class="home-section-note">A moment in the Word to strengthen your walk with God.</p>
 
         <details>
           <summary>🙏 Prayer</summary>
