@@ -14,6 +14,11 @@
   const style = document.createElement("style");
   style.id = "zurielGridNavigatorStyles";
   style.textContent = `
+    /* Retire the old dropdown/button selector; the grid navigator is the single UI. */
+    #bibleReader > #book,
+    #bibleReader > #openBible,
+    #bibleReader > .study-hint { display:none !important; }
+
     #zurielGridLaunch {
       width:100%;min-height:48px;margin:12px 0 5px;padding:12px 14px;
       border:1px solid #cbb47b;border-radius:11px;
@@ -119,8 +124,8 @@
   launch.type = "button";
   launch.id = "zurielGridLaunch";
   launch.textContent = "▦  Browse Books • Chapters • Verses";
-  const existingNav = document.getElementById("zurielNavigation");
-  if (existingNav) existingNav.insertBefore(launch, existingNav.firstChild);
+  const readerHeading = root.querySelector("h2");
+  if (readerHeading) readerHeading.insertAdjacentElement("afterend", launch);
   else root.insertBefore(launch, root.firstChild);
 
   const modal = document.createElement("section");
@@ -373,6 +378,24 @@
     document.body.style.overflow = "";
     if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
   }
+
+  // Shared entry points keep every reader return action on this one navigator.
+  window.ZurielGridNavigator = {
+    open: openModal,
+    openBook: function (bookName) {
+      const match = books.find(item => item.name === bookName);
+      if (!match) return false;
+      selectedBook = match.name;
+      selectedChapter = 0;
+      selectedVerse = 0;
+      openModal();
+      setTab("chapter");
+      updateCurrent();
+      updateReference();
+      status.textContent = match.name + " selected. Choose a chapter.";
+      return true;
+    }
+  };
 
   launch.addEventListener("click", openModal);
   modal.querySelector("#zgnClose").addEventListener("click", closeModal);
