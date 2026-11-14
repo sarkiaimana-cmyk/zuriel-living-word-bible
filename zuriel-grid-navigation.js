@@ -123,7 +123,8 @@
   const launch = document.createElement("button");
   launch.type = "button";
   launch.id = "zurielGridLaunch";
-  launch.textContent = "▦  Browse Books • Chapters • Verses";
+  launch.textContent = "📖  Choose Passage  ·  KJV";
+  launch.setAttribute("aria-label", "Choose a Bible book, chapter and verse. Current translation: King James Version.");
   const readerHeading = root.querySelector("h2");
   if (readerHeading) readerHeading.insertAdjacentElement("afterend", launch);
   else root.insertBefore(launch, root.firstChild);
@@ -317,19 +318,21 @@
         throw new Error("The selected chapter did not finish opening.");
       }
       if (selectedVerse) {
-        const target = document.querySelectorAll("#message .verse")[selectedVerse - 1];
+        const target = document.querySelector('#message .verse[data-verse-number="' + selectedVerse + '"]');
         if (!target) {
           throw new Error("Chapter opened, but verse " + selectedVerse + " is not present in the displayed chapter.");
         }
         document.querySelectorAll("#message .verse.zuriel-nav-highlight").forEach(el => el.classList.remove("zuriel-nav-highlight"));
         target.classList.add("zuriel-nav-highlight");
         target.scrollIntoView({ behavior: "smooth", block: "center" });
-        const verseText = target.textContent.replace(/^\\s*\\d+\\.?\\s*/, "").trim();
+        const verseText = target.textContent.replace(/^\s*\d+\.?\s*/, "").trim();
         if (window.ZurielStudy && typeof window.ZurielStudy.openForReference === "function") {
           window.ZurielStudy.openForReference(selectedBook, selectedChapter, selectedVerse, verseText, "", -1);
         }
       }
       closeModal();
+      launch.textContent = "📖  " + selectedBook + " " + selectedChapter + (selectedVerse ? ":" + selectedVerse : "") + "  ·  KJV";
+      launch.setAttribute("aria-label", "Current passage " + selectedBook + " " + selectedChapter + (selectedVerse ? ":" + selectedVerse : "") + ". King James Version. Tap to choose another passage.");
       status.textContent = "Opened " + selectedBook + " " + selectedChapter + (selectedVerse ? ":" + selectedVerse : "") + ".";
     } catch (error) {
       status.textContent = "Unable to open this passage. Please try again.";
