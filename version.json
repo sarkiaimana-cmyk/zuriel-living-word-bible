@@ -1,4 +1,4 @@
 {
-  "version": "1.0.8",
-  "releaseNotes": "Introduces a Scripture-linked open-book home card with matching declarations, affirmations, prayers, faith confessions and inspiration. Improves automated study and JavaScript integrity checks. Refreshes the offline app cache."
+  "version": "1.0.9",
+  "releaseNotes": "Expands the Scripture-linked open-book faith collection to cover all 26 featured home verses with original prayers, declarations, affirmations, confessions and inspiration. Adds automated exact-reference coverage checks."
 }

@@ -30,6 +30,13 @@ for (const field of requiredFaithFields) {
   if (!faith.includes(field)) failures.push([ "faith content field: " + field, "missing from zuriel-faith-content.js"]);
 }
 if (!home.includes('id="zurielOpenBookLight"')) failures.push(["Light panel", "missing from home card"]);
+
+const homeReferences = [...home.matchAll(/reference:\\s*"([^"]+)"/g)].map(match => match[1].toLowerCase());
+const faithReferences = new Set([...faith.matchAll(/reference:\\s*"([^"]+)"/g)].map(match => match[1].toLowerCase()));
+for (const reference of homeReferences) {
+  if (!faithReferences.has(reference)) failures.push(["home faith coverage: " + reference, "no exact Scripture-linked response"]);
+}
+
 if (failures.length) {
   console.error("Original-language study integrity checks failed:");
   for (const [label] of failures) console.error(" - " + label);
