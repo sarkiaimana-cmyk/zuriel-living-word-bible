@@ -1,4 +1,4 @@
 {
-  "version": "1.0.2",
-  "releaseNotes": "This release replaces the redundant Me navigation with a direct Devotionals entry and refreshes the offline app cache. Android signing verification remains separate from website updates."
+  "version": "1.0.3",
+  "releaseNotes": "Adds a whole-library KJV structure check before reading: verifies the 66-book index, each book's expected chapter count, and non-empty verse text. Refreshes the offline cache. This structural check does not replace a comparison against a trusted verse-count source."
 }
