@@ -1136,7 +1136,7 @@
     const readFaithWord = document.getElementById("zurielOpenBookRead");
     if (readFaithWord) readFaithWord.addEventListener("click", async function () {
       const verse = faithCardRefs[faithCardIndex];
-      const match = verse && verse.reference.match(/^(.+)\\s+(\\d+):(\\d+)$/);
+      const match = verse && verse.reference.match(/^(.+)\s+(\d+):(\d+)$/);
       if (!match || typeof window.openChapter !== "function") return;
       navigate("read");
       const selector = document.getElementById("book");
