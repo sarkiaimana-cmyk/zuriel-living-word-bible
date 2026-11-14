@@ -9,12 +9,12 @@ const checks = [["exact single-token gloss matching","tappedTokens.length === 1 
 const failures = checks.filter(([label, fragment]) => !study.includes(fragment));
 const requiredReaderPanels = ["zurielOriginalWordResults", "zurielLexiconDetails"];
 for (const id of requiredReaderPanels) {
-  if (!index.includes(id)) failures.push([\x60reader panel: \x24{id}\x60, "missing from index.html"]);
+  if (!index.includes(id)) failures.push([`reader panel: ${id}`, "missing from index.html"]);
 }
 if (failures.length) {
   console.error("Original-language study integrity checks failed:");
   for (const [label] of failures) console.error(" - " + label);
   process.exitCode = 1;
 } else {
-  console.log(\x60Original-language study integrity checks passed (\x24{checks.length + requiredReaderPanels.length} safeguards).\x60);
+  console.log(`Original-language study integrity checks passed (${checks.length + requiredReaderPanels.length} safeguards).`);
 }
