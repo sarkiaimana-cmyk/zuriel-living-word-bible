@@ -7732,6 +7732,38 @@ const topics=[
         "verse": 14,
         "endVerse": 21
       }
+    ],
+    "definition": "Joel moves from a devastating locust crisis to a call for communal repentance and a promise of restoration. The day of the LORD brings both warning and hope; the promised outpouring of the Spirit becomes especially significant in Acts 2.",
+    "oldTestament": "The prophet calls all ages and social groups to return to God with sincere hearts, not merely outward signs. The promise of restored years and the Spirit's outpouring points beyond immediate agricultural recovery to renewed covenant life.",
+    "newTestament": "Peter interprets the Spirit's outpouring at Pentecost through Joel 2 (Acts 2:16-21). The passage announces that God's Spirit is poured out across social boundaries, while the day of the Lord remains a call to repentance and hope.",
+    "application": "Respond to spiritual conviction with honest repentance and renewed dependence on God. Welcome the Spirit's work across generations and social positions; do not reduce Joel's promise to a claim that believers will never face hardship.",
+    "questions": [
+      "What does wholehearted return to God require beyond outward religious activity?",
+      "How does the Spirit's work cross age, gender and social boundaries?",
+      "How can hope in God's restoration coexist with honest grief over loss?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "שׁוּב",
+        "term": "šûb",
+        "meaning": "turn, return",
+        "note": "A central prophetic call to turn back to the LORD in repentance."
+      },
+      {
+        "language": "Hebrew",
+        "script": "רוּחַ",
+        "term": "rûaḥ",
+        "meaning": "wind, breath, spirit",
+        "note": "The context determines whether the word refers to wind, breath or God's Spirit."
+      }
+    ],
+    "relatedExplanations": [
+      "Joel 1:13-14 — leaders and people are called to gather in solemn repentance during crisis.",
+      "Joel 2:12-13 — the call is to return with the whole heart because God is gracious and compassionate.",
+      "Joel 2:25-27 — restoration answers devastation and teaches the people to know the LORD.",
+      "Joel 2:28-32 — God promises an outpouring of His Spirit and calls people to seek Him.",
+      "Acts 2:16-21 — Peter connects Pentecost with Joel's prophetic promise."
     ]
   },
   {
@@ -7778,6 +7810,38 @@ const topics=[
         "verse": 21,
         "endVerse": null
       }
+    ],
+    "definition": "Obadiah is a short prophetic judgment against Edom for arrogance, violence and betrayal of Judah during disaster. It warns that national pride and exploitation are accountable to God's justice.",
+    "oldTestament": "Edom's confidence in its mountain strongholds becomes an image of pride that imagines itself beyond accountability. The prophet condemns standing aloof, rejoicing over Judah's calamity, looting and handing survivors over to their enemies.",
+    "newTestament": "Obadiah is not directly quoted in the New Testament, but its moral vision agrees with the wider biblical warning that God opposes pride and calls His people to love their neighbours, including in times of vulnerability (Luke 10:25-37; James 4:6).",
+    "application": "Do not exploit another person's crisis, celebrate their suffering or remain indifferent when help is possible. Examine personal and community pride, and practise solidarity with those facing loss or injustice.",
+    "questions": [
+      "Where can security, status or success make me feel untouchable?",
+      "Have I remained silent or benefited when another person was harmed?",
+      "What practical act of solidarity can I offer someone in distress?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "זָדוֹן",
+        "term": "zādôn",
+        "meaning": "pride, insolence, presumptuousness",
+        "note": "Obadiah uses this word to expose Edom's arrogant self-confidence."
+      },
+      {
+        "language": "Hebrew",
+        "script": "חָמָס",
+        "term": "ḥāmās",
+        "meaning": "violence, wrongdoing",
+        "note": "A strong term for violent injustice and harmful conduct."
+      }
+    ],
+    "relatedExplanations": [
+      "Obadiah 1:3-4 — Edom's high dwelling place cannot protect it from God's judgment.",
+      "Obadiah 1:10 — violence against a brother nation is named as the reason for shame.",
+      "Obadiah 1:11-14 — the prophet details Edom's complicity when Jerusalem was attacked.",
+      "Obadiah 1:15 — the day of the LORD declares that wrongdoing returns upon the nations.",
+      "Obadiah 1:17-21 — the vision ends with deliverance for Zion and the LORD's kingdom."
     ]
   },
   {
@@ -7824,6 +7888,38 @@ const topics=[
         "verse": 9,
         "endVerse": 11
       }
+    ],
+    "definition": "Jonah exposes the tension between God's compassion and a prophet's resentment. The story challenges readers to consider whether they welcome God's mercy for people they regard as enemies or outsiders.",
+    "oldTestament": "God sends Jonah to Nineveh, the capital of Assyria, a feared imperial power. The city responds to the warning, and God relents from the announced disaster. Jonah's anger reveals how difficult it can be to desire justice for ourselves but judgment for others.",
+    "newTestament": "Jesus refers to Jonah as a sign connected with His death and resurrection (Matthew 12:39-41; Luke 11:29-32). The book's concern for outsiders also resonates with the New Testament mission to all nations.",
+    "application": "Speak truth about wrongdoing without denying the possibility of repentance. Resist selective compassion, pray for those beyond your usual circle and let God's concern challenge your resentment.",
+    "questions": [
+      "Whose repentance or restoration do I find difficult to welcome?",
+      "How can I speak truth while leaving room for God's mercy?",
+      "What does God's concern for a great city teach me about people I overlook?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "רַחוּם",
+        "term": "raḥûm",
+        "meaning": "compassionate, merciful",
+        "note": "Jonah 4:2 describes God's character with this word."
+      },
+      {
+        "language": "Hebrew",
+        "script": "נִינְוֵה",
+        "term": "Nînĕweh",
+        "meaning": "Nineveh",
+        "note": "The great Assyrian city is the setting for the prophet's reluctant mission."
+      }
+    ],
+    "relatedExplanations": [
+      "Jonah 1:1-3 — Jonah resists the mission and flees from the LORD's command.",
+      "Jonah 2:1-10 — Jonah prays from distress and acknowledges that deliverance belongs to the LORD.",
+      "Jonah 3:5-10 — Nineveh responds with repentance, and God does not bring the announced disaster.",
+      "Jonah 4:1-4 — Jonah's anger exposes the conflict between his expectations and God's compassion.",
+      "Jonah 4:10-11 — God's final question highlights His concern for the people of Nineveh."
     ]
   },
   {
@@ -7870,6 +7966,38 @@ const topics=[
         "verse": 7,
         "endVerse": 10
       }
+    ],
+    "definition": "Nahum announces the fall of Nineveh, the Assyrian capital, as a message of justice for peoples crushed by imperial violence. It portrays God as patient yet unwilling to ignore persistent evil.",
+    "oldTestament": "Assyria's military cruelty and domination form the historical background. Nahum's poetry celebrates the end of an oppressive power and offers Judah comfort, while reminding readers that God's patience is not approval of violence.",
+    "newTestament": "Nahum is not directly quoted in the New Testament. Its themes must be held alongside the full biblical witness: God judges oppression, calls His people away from vengeance and commands love of enemies (Romans 12:17-21).",
+    "application": "Take oppression seriously and seek protection and justice for those harmed. Do not turn Nahum into permission for personal revenge; entrust final judgment to God and practise what is right in your own sphere.",
+    "questions": [
+      "What forms of oppression are easy for me to ignore?",
+      "How can I seek justice without becoming consumed by revenge?",
+      "How does God's patience differ from indifference toward evil?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "נָקָם",
+        "term": "nāqām",
+        "meaning": "vengeance, vindication",
+        "note": "In prophetic judgment texts, vengeance belongs to God's just response, not private retaliation."
+      },
+      {
+        "language": "Hebrew",
+        "script": "מָעוֹז",
+        "term": "māʿôz",
+        "meaning": "stronghold, refuge",
+        "note": "Nahum 1:7 calls the LORD a stronghold in the day of trouble."
+      }
+    ],
+    "relatedExplanations": [
+      "Nahum 1:2-3 — God is described as jealous for justice, slow to anger and great in power.",
+      "Nahum 1:7 — the LORD is good, a refuge for those who trust Him in trouble.",
+      "Nahum 1:12-15 — the end of Assyrian oppression is announced as good news for Judah.",
+      "Nahum 2:1-6 — vivid battle poetry portrays Nineveh's collapse.",
+      "Nahum 3:1-7 — the city is condemned for violence, exploitation and cruelty."
     ]
   },
   {
@@ -7916,6 +8044,38 @@ const topics=[
         "verse": 16,
         "endVerse": 17
       }
+    ],
+    "definition": "Habakkuk records a prophet's honest dialogue with God about violence, injustice and the use of Babylon as an instrument of judgment. The book moves from perplexity to watchful trust and worship.",
+    "oldTestament": "The prophet refuses to pretend that injustice is acceptable. God answers that Babylon will itself be judged for arrogance and violence. Habakkuk waits for the vision and learns that the righteous live by faithfulness amid delay.",
+    "newTestament": "Habakkuk 2:4 is quoted in Romans 1:17, Galatians 3:11 and Hebrews 10:38, where it supports teaching about faith and perseverance. The quotation's use in each context should be read carefully within its argument.",
+    "application": "Bring difficult questions to God honestly, remain attentive to His word and do not confuse waiting with passivity. Faith can remain steady even when visible circumstances have not yet changed.",
+    "questions": [
+      "What injustice or unanswered question do I need to bring honestly before God?",
+      "What does patient faithfulness look like while I wait?",
+      "Can I continue to worship when immediate outcomes are uncertain?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "אֱמוּנָה",
+        "term": "ʾĕmûnāh",
+        "meaning": "faithfulness, firmness, reliability",
+        "note": "Habakkuk 2:4 emphasises the steadfast faithfulness by which the righteous live."
+      },
+      {
+        "language": "Hebrew",
+        "script": "חָכָה",
+        "term": "ḥākāh",
+        "meaning": "wait, wait for",
+        "note": "The prophet's waiting is attentive expectation, not denial of the crisis."
+      }
+    ],
+    "relatedExplanations": [
+      "Habakkuk 1:2-4 — the prophet asks why violence and injustice seem unchecked.",
+      "Habakkuk 1:5-11 — God's surprising answer introduces the rise of the Babylonians.",
+      "Habakkuk 2:1-4 — the prophet waits for God's answer; the righteous live by faithfulness.",
+      "Habakkuk 2:6-20 — the woes condemn exploitation, violence, greed and idolatry.",
+      "Habakkuk 3:17-19 — the prophet chooses rejoicing in God even when crops and herds fail."
     ]
   },
   {
