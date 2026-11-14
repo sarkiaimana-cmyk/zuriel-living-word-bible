@@ -52,7 +52,7 @@
       read: "Read Scripture",
       study: "Study Centre",
       declare: "Declarations",
-      me: "My Personal Space",
+      devotional: "Devotionals",
       library: "Study Library"
     };
 
@@ -523,7 +523,7 @@
           <button data-section="study">🔍 Study Centre</button>
           <button data-section="declare">✨ Declarations</button>
           <button data-section="library">📚 Study Library</button>
-          <button data-section="me">👤 My Personal Space</button>
+          <button data-section="devotional">🕊️ Devotionals</button>
         </div>
       </section>
 
@@ -626,7 +626,7 @@
       ["read", "📖", "Read"],
       ["study", "🔍", "Study"],
       ["declare", "✨", "Declare"],
-      ["me", "👤", "Me"],
+      ["devotional", "🕊️", "Devotional"],
       ["library", "📚", "Library"]
     ];
 
@@ -708,12 +708,12 @@
         }
       }
 
-      if (section === "me") {
+      if (section === "devotional") {
         showSections(["zurielLibrary"]);
-        setActiveNavigation("me");
+        setActiveNavigation("devotional");
 
         if (window.ZurielLibrary) {
-          window.ZurielLibrary.openPersonal();
+          window.ZurielLibrary.open("devotional");
         }
 
         const library = document.getElementById("zurielLibrary");
