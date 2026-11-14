@@ -736,6 +736,12 @@
         }
       }
 
+      /* Keep the home screen uncluttered: its hero already carries the
+         app identity, so hide the older site header there. Restore it
+         inside reading and study sections for clear orientation. */
+      const siteHeader = document.querySelector("body > header");
+      if (siteHeader) siteHeader.hidden = section === "home";
+
       currentSection = section;
       updateTopBar(section);
     }
