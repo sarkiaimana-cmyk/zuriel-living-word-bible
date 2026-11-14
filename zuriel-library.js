@@ -899,6 +899,19 @@
         openPage("prayer");
       },
 
+      savePrayer: function (text, reference, title) {
+        const prayerText = String(text || "").trim();
+        if (!prayerText) return false;
+        saved = loadSaved();
+        saved.prayers.push({
+          title: String(title || "The Light — Scripture response").trim(),
+          text: prayerText,
+          reference: String(reference || "").trim(),
+          date: new Date().toLocaleDateString()
+        });
+        return persist();
+      },
+
       openGloryVerse: function (reference, scriptureText, translation) {
         openPage("affirmation");
         const studio = document.getElementById("zurielGloryStudio");
