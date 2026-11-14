@@ -6490,6 +6490,45 @@ const topics=[
         "verse": 5,
         "endVerse": 10
       }
+    ],
+    "definition": "Confession is honest agreement with God about sin; repentance is a changed mind and direction that turns from sin toward God. Biblical repentance is more than regret or fear of consequences: it bears fruit in changed conduct and renewed loyalty.",
+    "oldTestament": "David's confession in Psalm 51 shows grief over sin and a plea for cleansing. Proverbs 28:13 contrasts hiding wrongdoing with confessing and forsaking it. The prophets call Israel to return to the LORD with sincere hearts and changed ways (Joel 2:12–13).",
+    "newTestament": "John teaches believers to confess sin and trust God's faithfulness to forgive and cleanse (1 John 1:9). Jesus calls people to repentance and faith (Mark 1:14–15), while Paul describes godly sorrow as producing repentance (2 Corinthians 7:9–11).",
+    "application": "Name wrongdoing specifically, without excuses or self-hatred. Receive God's mercy, make restitution where appropriate, and establish practical changes that reduce repeated harm. Confession to God is central; trusted accountability can support genuine change.",
+    "questions": [
+      "Am I naming the wrong honestly or minimising it?",
+      "What practical fruit would show that my direction is changing?",
+      "Is there restitution, apology or accountability I should pursue?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "שׁוּב",
+        "term": "shuv",
+        "meaning": "to turn, return",
+        "note": "A key biblical picture of repentance is turning back to God."
+      },
+      {
+        "language": "Hebrew",
+        "script": "יָדָה",
+        "term": "yādāh",
+        "meaning": "to confess, acknowledge; also give thanks",
+        "note": "In confession contexts it can mean openly acknowledging wrongdoing."
+      },
+      {
+        "language": "Greek",
+        "script": "μετάνοια",
+        "term": "metanoia",
+        "meaning": "repentance, change of mind and direction",
+        "note": "In New Testament use, repentance is tied to a changed response toward God."
+      }
+    ],
+    "relatedExplanations": [
+      "Psalm 51:1–12 — David acknowledges his sin and asks God for cleansing and a renewed heart.",
+      "Proverbs 28:13 — Concealing wrongdoing is contrasted with confession and forsaking it.",
+      "Joel 2:12–13 — The call to return to God is to be wholehearted, not merely outward ritual.",
+      "2 Corinthians 7:9–11 — Paul distinguishes godly sorrow from worldly sorrow by the change it produces.",
+      "1 John 1:9 — Confession is met by God's faithfulness, forgiveness and cleansing."
     ]
   },
   {
@@ -6535,6 +6574,45 @@ const topics=[
         "verse": 6,
         "endVerse": 9
       }
+    ],
+    "definition": "Testing refers to trials that reveal and refine faith; perseverance is steadfast faithfulness through pressure. Scripture does not call evil good or require people to remain in preventable danger. It teaches believers to endure hardship with hope, wisdom and support.",
+    "oldTestament": "Job's suffering raises difficult questions about faith and justice, and the book rejects simplistic explanations. Israel's wilderness journey exposes the heart and teaches dependence (Deuteronomy 8:2–5). The Psalms give language for seeking God in distress (Psalm 66:10–12).",
+    "newTestament": "James says trials can develop steadfastness and maturity (James 1:2–4), while also teaching people to ask God for wisdom (1:5). Peter describes faith tested under pressure (1 Peter 1:6–7). Paul speaks of endurance, character and hope (Romans 5:3–5).",
+    "application": "Do not interpret every hardship as punishment or assume you know why it happened. Seek practical help, protect yourself and others from harm, and keep hold of what is true. Let endurance mean faithful trust, not refusing wise treatment or support.",
+    "questions": [
+      "What is this trial revealing about my needs, fears or supports?",
+      "What help should I seek rather than trying to endure alone?",
+      "What faithful next step remains possible today?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "בָּחַן",
+        "term": "bāḥan",
+        "meaning": "to test, examine, prove",
+        "note": "Used for testing that reveals what is genuine."
+      },
+      {
+        "language": "Hebrew",
+        "script": "קָוָה",
+        "term": "qāvāh",
+        "meaning": "to wait with hope",
+        "note": "Often expresses expectant trust while awaiting God's help."
+      },
+      {
+        "language": "Greek",
+        "script": "δοκιμή",
+        "term": "dokimē",
+        "meaning": "tested character, proven quality",
+        "note": "Describes character that has been tested and found genuine."
+      }
+    ],
+    "relatedExplanations": [
+      "Deuteronomy 8:2–5 — Israel's wilderness experience teaches dependence and exposes the heart.",
+      "Job 2:9–10 — Job refuses simplistic conclusions about suffering, though the whole book must be read to understand its debate.",
+      "James 1:2–5 — Trials can produce steadfastness, and believers are invited to ask God for wisdom.",
+      "Romans 5:3–5 — Paul describes a sequence from tribulation to endurance, tested character and hope.",
+      "1 Peter 1:6–7 — Tested faith is compared with gold refined by fire and directed toward praise of Christ."
     ]
   },
   {
@@ -6580,6 +6658,45 @@ const topics=[
         "verse": 8,
         "endVerse": 11
       }
+    ],
+    "definition": "The armor of God is Paul's picture of the spiritual resources and virtues by which believers stand firm against evil. The imagery is not a licence for aggression against people; the struggle is spiritual, and the posture is truth, righteousness, faith, salvation, God's word and prayer.",
+    "oldTestament": "Isaiah portrays the LORD as a warrior clothed in righteousness and salvation (Isaiah 59:16–17). The prophetic imagery helps explain Paul's use of armour language while keeping God, rather than human force, at the centre.",
+    "newTestament": "Ephesians 6:10–18 calls believers to be strong in the Lord, stand against spiritual schemes, take up God's armour and pray continually. The passage follows Paul's teaching on unity, holiness, family and community life.",
+    "application": "Practise truth instead of deception, righteousness instead of harm, peace instead of hostility, faith instead of despair, and Scripture-informed thinking instead of manipulation. Pray for others and remember that people are not the enemy.",
+    "questions": [
+      "Which part of the armour imagery most directly challenges my present habits?",
+      "Am I treating another person as the enemy instead of resisting evil and injustice?",
+      "How can prayer and Scripture shape my response today?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "πανοπλία",
+        "term": "panoplia",
+        "meaning": "complete armour, full equipment",
+        "note": "In Ephesians it describes the full provision needed to stand firm."
+      },
+      {
+        "language": "Greek",
+        "script": "πίστις",
+        "term": "pistis",
+        "meaning": "faith, trust, faithfulness",
+        "note": "The shield image presents trust in God as protection against attacks."
+      },
+      {
+        "language": "Greek",
+        "script": "ῥῆμα",
+        "term": "rhēma",
+        "meaning": "word, utterance",
+        "note": "Ephesians 6:17 speaks of the sword of the Spirit, the word of God."
+      }
+    ],
+    "relatedExplanations": [
+      "Isaiah 59:16–17 — The LORD is pictured wearing righteousness and salvation as armour.",
+      "Ephesians 6:10–13 — The call is to rely on God's strength and stand against spiritual evil.",
+      "Ephesians 6:14–15 — Truth, righteousness and readiness associated with the gospel shape the believer's stance.",
+      "Ephesians 6:16–17 — Faith, salvation and God's word are pictured as defensive and offensive spiritual equipment.",
+      "Ephesians 6:18 — Prayer is the continuing atmosphere of the whole passage, including intercession for all believers."
     ]
   },
   {
@@ -6625,6 +6742,45 @@ const topics=[
         "verse": 13,
         "endVerse": 14
       }
+    ],
+    "definition": "Angels are created spiritual beings who serve God and carry out His purposes. Scripture describes them as messengers and servants, but directs worship and ultimate trust to God alone. Angelic encounters should be interpreted by the message and the wider teaching of Scripture.",
+    "oldTestament": "Angels appear in accounts of protection, guidance and divine messages (Genesis 19; 28:12; Daniel 6:22). The Psalms describe them as servants who carry out God's commands (Psalm 103:20–21).",
+    "newTestament": "Angels announce Jesus' birth and resurrection (Luke 2:8–14; 24:4–7), minister to Jesus and serve God's purposes (Matthew 4:11; Hebrews 1:14). Revelation repeatedly refuses angel worship and directs worship to God (Revelation 19:10; 22:8–9).",
+    "application": "Be grateful for God's care without becoming preoccupied with angels or seeking spiritual experiences. Test every teaching by Scripture, reject angel worship, and keep Jesus at the centre of faith and worship.",
+    "questions": [
+      "Does this teaching direct worship to God or fascination toward spiritual beings?",
+      "What does the passage actually say about the angel's role?",
+      "How does the wider biblical teaching keep Christ central?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "מַלְאָךְ",
+        "term": "malʾākh",
+        "meaning": "messenger, envoy",
+        "note": "The word can refer to a human messenger or a heavenly messenger; context decides."
+      },
+      {
+        "language": "Greek",
+        "script": "ἄγγελος",
+        "term": "angelos",
+        "meaning": "messenger, angel",
+        "note": "Like the Hebrew term, it can describe a messenger and is often used for heavenly beings."
+      },
+      {
+        "language": "Greek",
+        "script": "λειτουργικός",
+        "term": "leitourgikos",
+        "meaning": "ministering, serving",
+        "note": "Hebrews 1:14 describes angels as ministering spirits."
+      }
+    ],
+    "relatedExplanations": [
+      "Genesis 28:12 — Jacob's dream uses a stairway and angels to portray the connection between heaven and earth.",
+      "Psalm 103:20–21 — Angels are servants who obey God's command and bless Him.",
+      "Luke 2:8–14 — The angelic announcement directs attention to the birth of the Saviour and God's glory.",
+      "Hebrews 1:14 — Angels are described as serving spirits sent for the sake of those who inherit salvation.",
+      "Revelation 19:10 — The angel refuses worship and tells John to worship God."
     ]
   },
   {
@@ -6670,6 +6826,45 @@ const topics=[
         "verse": 1,
         "endVerse": 5
       }
+    ],
+    "definition": "The Bible's hope is not merely escape from earth but God's final renewal: resurrection, justice, the defeat of death and the dwelling of God with His people. Images of heaven must be read alongside the promises of bodily resurrection and a renewed creation.",
+    "oldTestament": "The prophets look toward a future in which God makes things new and removes sorrow (Isaiah 25:6–9; 65:17–25). Daniel speaks of resurrection and everlasting life (Daniel 12:1–3).",
+    "newTestament": "Jesus promises a place with the Father (John 14:1–3). Paul teaches bodily resurrection and the renewal of creation (1 Corinthians 15; Romans 8:18–25). Revelation concludes with a new heaven and new earth where God dwells with humanity (Revelation 21–22).",
+    "application": "Let future hope strengthen faithful living now. Grieve honestly, work for justice, care for creation and serve neighbours. Avoid claiming certainty about details Scripture leaves symbolic or unexplained.",
+    "questions": [
+      "How does resurrection hope shape the way I face suffering and death?",
+      "What present action reflects God's promised justice and renewal?",
+      "Which details are explicit biblical promises, and which are my assumptions?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "עוֹלָם",
+        "term": "ʿōlām",
+        "meaning": "long duration, antiquity or future age",
+        "note": "Its precise sense depends on context; it should not automatically be reduced to one technical meaning."
+      },
+      {
+        "language": "Greek",
+        "script": "οὐρανός",
+        "term": "ouranos",
+        "meaning": "heaven, sky",
+        "note": "The word can refer to the visible sky or the heavenly realm depending on context."
+      },
+      {
+        "language": "Greek",
+        "script": "καινός",
+        "term": "kainos",
+        "meaning": "new, fresh in quality",
+        "note": "Used in Revelation's description of the new heaven and new earth."
+      }
+    ],
+    "relatedExplanations": [
+      "Isaiah 25:6–9 — The prophet pictures God's victory over death and the wiping away of tears.",
+      "Daniel 12:1–3 — The passage speaks of deliverance and resurrection to everlasting life or shame.",
+      "1 Corinthians 15:20–26 — Christ's resurrection is the firstfruits and guarantees the defeat of death.",
+      "Romans 8:18–25 — Creation itself is pictured as awaiting liberation and renewal.",
+      "Revelation 21:1–5 — The final vision centres on God dwelling with His people and making all things new."
     ]
   },
   {
