@@ -1,4 +1,4 @@
 {
-  "version": "1.0.3",
-  "releaseNotes": "Adds a whole-library KJV structure check before reading: verifies the 66-book index, each book's expected chapter count, and non-empty verse text. Refreshes the offline cache. This structural check does not replace a comparison against a trusted verse-count source."
+  "version": "1.0.4",
+  "releaseNotes": "Improves original-language word-study recovery: clearer offline versus temporary online errors and a retry action, while preserving the selected Scripture. Refreshes the offline app cache."
 }

@@ -316,7 +316,23 @@
       });
     } catch (error) {
       if (requestId !== originalWordsRequest) return;
-      target.textContent = error.message + " Connect to the internet once to save this study for offline use.";
+      target.replaceChildren();
+
+      const message = document.createElement("p");
+      message.className = "study-small";
+      message.textContent = !navigator.onLine
+        ? "You are offline and this word-study resource is not saved on this device yet. Connect once to load it and make it available for later offline study."
+        : "The original-language resource could not be loaded right now. Your selected verse is safe; please try again in a moment.";
+      target.appendChild(message);
+
+      const retry = document.createElement("button");
+      retry.type = "button";
+      retry.className = "study-secondary";
+      retry.textContent = "Try loading word study again";
+      retry.addEventListener("click", function () {
+        loadOriginalWords(ref);
+      });
+      target.appendChild(retry);
     }
   }
 
