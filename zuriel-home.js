@@ -21,7 +21,26 @@
       { reference: "Romans 8:28", text: "And we know that all things work together for good to them that love God, to them who are the called according to his purpose." },
       { reference: "Philippians 4:13", text: "I can do all things through Christ which strengtheneth me." },
       { reference: "John 15:5", text: "I am the vine, ye are the branches: He that abideth in me, and I in him, the same bringeth forth much fruit." },
-      { reference: "2 Corinthians 5:17", text: "Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new." }
+      { reference: "2 Corinthians 5:17", text: "Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new." },
+      { reference: "Genesis 1:1", text: "In the beginning God created the heaven and the earth." },
+      { reference: "Deuteronomy 31:8", text: "And the LORD, he it is that doth go before thee; he will be with thee, he will not fail thee, neither forsake thee: fear not, neither be dismayed." },
+      { reference: "Joshua 1:9", text: "Have not I commanded thee? Be strong and of a good courage; be not afraid, neither be thou dismayed: for the LORD thy God is with thee whithersoever thou goest." },
+      { reference: "Psalm 23:1", text: "The LORD is my shepherd; I shall not want." },
+      { reference: "Psalm 34:8", text: "O taste and see that the LORD is good: blessed is the man that trusteth in him." },
+      { reference: "Psalm 46:1", text: "God is our refuge and strength, a very present help in trouble." },
+      { reference: "Psalm 91:1", text: "He that dwelleth in the secret place of the most High shall abide under the shadow of the Almighty." },
+      { reference: "Proverbs 18:10", text: "The name of the LORD is a strong tower: the righteous runneth into it, and is safe." },
+      { reference: "Isaiah 41:10", text: "Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee; yea, I will help thee; yea, I will uphold thee with the right hand of my righteousness." },
+      { reference: "Matthew 5:16", text: "Let your light so shine before men, that they may see your good works, and glorify your Father which is in heaven." },
+      { reference: "Matthew 6:33", text: "But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you." },
+      { reference: "John 1:1", text: "In the beginning was the Word, and the Word was with God, and the Word was God." },
+      { reference: "John 14:27", text: "Peace I leave with you, my peace I give unto you: not as the world giveth, give I unto you. Let not your heart be troubled, neither let it be afraid." },
+      { reference: "Romans 12:2", text: "And be not conformed to this world: but be ye transformed by the renewing of your mind, that ye may prove what is that good, and acceptable, and perfect, will of God." },
+      { reference: "2 Timothy 1:7", text: "For God hath not given us the spirit of fear; but of power, and of love, and of a sound mind." },
+      { reference: "Hebrews 11:1", text: "Now faith is the substance of things hoped for, the evidence of things not seen." },
+      { reference: "James 1:5", text: "If any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him." },
+      { reference: "1 Peter 5:7", text: "Casting all your care upon him; for he careth for you." },
+      { reference: "1 John 4:19", text: "We love him, because he first loved us." }
     ];
 
     let verseIndex = 0;
@@ -990,19 +1009,21 @@
           });
       });
 
-    /* INITIAL SCRIPTURE */
+    /* DAILY SCRIPTURE + MANUAL DISCOVERY
+       The selected daily verse is stable for the local calendar day.
+       Readers can still choose another verse at any time. */
 
-    displayVerse(0);
-
-    /* AUTOMATIC SCRIPTURE ROTATION */
-
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      window.setInterval(function () {
-        if (!document.hidden && currentSection === "home") {
-          displayVerse(verseIndex + 1);
-        }
-      }, 45000);
+    function getDailyVerseIndex() {
+      const now = new Date();
+      const dayNumber = Math.floor(Date.UTC(
+        now.getFullYear(), now.getMonth(), now.getDate()
+      ) / 86400000);
+      return dayNumber % verses.length;
     }
+
+    displayVerse(getDailyVerseIndex());
+    verseText.setAttribute("aria-live", "polite");
+    verseReference.setAttribute("aria-live", "polite");
 
     /* START ON HOME */
 
