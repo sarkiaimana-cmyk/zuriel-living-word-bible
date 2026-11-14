@@ -86,7 +86,9 @@ jobs:
         run: ./gradlew assembleDebug
 
       - name: Prepare signed release APK
+        id: signed_release
         if: steps.signing_check.outputs.available == 'true'
+        continue-on-error: true
         working-directory: android
         env:
           ZURIEL_KEYSTORE_BASE64: ${{ secrets.ZURIEL_KEYSTORE_BASE64 }}
@@ -142,7 +144,7 @@ jobs:
           rm -f "$KEYSTORE" "$ALIGNED"
 
       - name: Upload Zuriel debug APK
-        if: success()
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: Zuriel-Living-Word-Bible-APK
@@ -151,10 +153,27 @@ jobs:
           retention-days: 30
 
       - name: Upload signed Zuriel release APK
-        if: steps.signing_check.outputs.available == 'true'
+        if: steps.signing_check.outputs.available == 'true' && steps.signed_release.outcome == 'success'
         uses: actions/upload-artifact@v4
         with:
           name: Zuriel-Living-Word-Bible-Signed-APK
           path: android/app/build/outputs/apk/release/Zuriel-Living-Word-Bible-release.apk
           if-no-files-found: error
           retention-days: 30
+ 
+      - name: Report Android release status
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "## Zuriel Android build"
+            echo ""
+            echo "- Debug APK: built and uploaded when the standalone debug build succeeds."
+            if [[ "${{ steps.signing_check.outputs.available }}" != "true" ]]; then
+              echo "- Signed release APK: not attempted because signing secrets are incomplete."
+            elif [[ "${{ steps.signed_release.outcome }}" == "success" ]]; then
+              echo "- Signed release APK: successfully prepared and uploaded."
+            else
+              echo "- Signed release APK: signing validation/build failed. The debug APK remains available; correct the keystore secret before publishing a signed release."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
