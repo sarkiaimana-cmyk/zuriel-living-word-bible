@@ -843,6 +843,8 @@ async function openChapter(book, chapter) {
   verses.forEach(function (verse, index) {
     const paragraph = document.createElement("p");
     paragraph.className = "verse";
+    paragraph.dataset.verseNumber = String(index + 1);
+    paragraph.setAttribute("aria-label", "Verse " + (index + 1));
 
     const number = document.createElement("strong");
     number.textContent = (index + 1) + ".";
