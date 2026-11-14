@@ -8122,6 +8122,38 @@ const topics=[
         "verse": 18,
         "endVerse": 20
       }
+    ],
+    "definition": "Zephaniah announces the day of the LORD as a searching judgment against idolatry, injustice and complacency, while holding out hope for a purified people who seek the LORD.",
+    "oldTestament": "The prophet speaks in the days of Josiah and confronts Judah's divided loyalties and surrounding nations' violence. The call to seek the LORD in humility (Zephaniah 2:1–3) leads toward the promise of a humble remnant and God's joyful presence among His people (3:12–17).",
+    "newTestament": "The day-of-the-Lord theme continues in New Testament calls to watchfulness and holy living (1 Thessalonians 5:1–11; 2 Peter 3:10–14). The promise of God dwelling among His people resonates with the hope of Revelation 21:3–4, without erasing Zephaniah's original setting.",
+    "application": "Let the warnings against complacency lead to honest repentance, humility and justice. Receive restoration as God's gracious work and respond with joyful faithfulness.",
+    "questions": [
+      "What loyalties or habits compete with wholehearted devotion to God?",
+      "How can humility and justice become visible in my daily choices?",
+      "What does it mean to rejoice because God is present with His people?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "יוֹם יְהוָה",
+        "term": "yôm YHWH",
+        "meaning": "day of the LORD",
+        "note": "A prophetic expression for God's decisive intervention in judgment and salvation."
+      },
+      {
+        "language": "Hebrew",
+        "script": "שְׁאָר",
+        "term": "sheʾār",
+        "meaning": "remnant",
+        "note": "The surviving people who remain after judgment; in Zephaniah the remnant is marked by humility and trust."
+      }
+    ],
+    "relatedExplanations": [
+      "Zephaniah 1:4–6 — the prophet confronts idolatry and divided allegiance in Judah.",
+      "Zephaniah 1:14–18 — the day of the LORD is portrayed as near and deeply serious.",
+      "Zephaniah 2:1–3 — the people are urged to seek the LORD, righteousness and humility.",
+      "Zephaniah 3:9–13 — God promises purified speech and a humble, truthful remnant.",
+      "Zephaniah 3:14–17 — restoration culminates in God's presence and rejoicing among His people."
     ]
   },
   {
@@ -8168,6 +8200,38 @@ const topics=[
         "verse": 20,
         "endVerse": 23
       }
+    ],
+    "definition": "Haggai challenges a returned community that has postponed rebuilding the temple, calling them to examine their priorities and renew faithful work in the assurance of God's presence.",
+    "oldTestament": "After the exile, the people have returned to Jerusalem but become absorbed in their own houses while the temple remains unfinished. Haggai's messages stir Zerubbabel, Joshua and the people to act; God promises to be with them and encourages those who remember the former temple.",
+    "newTestament": "The New Testament presents God's people as a spiritual house built together in Christ (Ephesians 2:19–22; 1 Peter 2:4–5). Haggai's promise that God will shake the nations is quoted in Hebrews 12:26–28, where it points to the unshakable kingdom.",
+    "application": "Examine where good responsibilities have displaced obedience. Take the next faithful step without despising small beginnings, trusting that God's presence matters more than outward splendour.",
+    "questions": [
+      "What important act of obedience have I repeatedly postponed?",
+      "How can I distinguish faithful priorities from mere busyness?",
+      "Where do I need courage to begin again with God's help?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "חָזַק",
+        "term": "ḥāzaq",
+        "meaning": "be strong, take courage",
+        "note": "Repeated encouragement to the leaders and people as they resume the work."
+      },
+      {
+        "language": "Hebrew",
+        "script": "כָּבוֹד",
+        "term": "kāḇôḏ",
+        "meaning": "glory, honour, weight",
+        "note": "Haggai speaks of the latter house's glory in a context of God's promised presence and peace."
+      }
+    ],
+    "relatedExplanations": [
+      "Haggai 1:2–11 — the people are called to consider their ways and recognise misplaced priorities.",
+      "Haggai 1:12–15 — leaders and people respond, and the LORD assures them, 'I am with you'.",
+      "Haggai 2:1–9 — the discouraged are strengthened by God's presence and promise.",
+      "Haggai 2:10–19 — the prophet addresses holiness, defilement and the promise of blessing.",
+      "Haggai 2:20–23 — Zerubbabel receives a promise framed by God's sovereignty over kingdoms."
     ]
   },
   {
@@ -8214,6 +8278,38 @@ const topics=[
         "verse": 1,
         "endVerse": 6
       }
+    ],
+    "definition": "Malachi confronts careless worship, unfaithful relationships and injustice, calling the returned community back to honouring God and living faithfully within His covenant.",
+    "oldTestament": "The book exposes priests who offer defective sacrifices, people who treat worship lightly, and covenant unfaithfulness in family and community life. It also promises that the Lord will come to purify and that a messenger will prepare the way.",
+    "newTestament": "The Gospels connect the messenger promise with John the Baptist's preparatory ministry (Mark 1:2–4; Luke 1:16–17). Malachi's coming-Lord theme calls readers to repentance and readiness, while Jesus' teaching reinforces wholehearted love and integrity.",
+    "application": "Offer God sincere worship rather than leftovers. Practise faithfulness in relationships, deal honestly with others and let hope in God's coming purify present conduct.",
+    "questions": [
+      "Is my worship sincere in both public and private life?",
+      "Where do I need to repair faithfulness in a relationship or responsibility?",
+      "How should the hope of God's justice shape the way I treat others?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "מַלְאָךְ",
+        "term": "malʾāḵ",
+        "meaning": "messenger",
+        "note": "Used for a human or divine messenger; Malachi 3:1 speaks of the messenger who prepares the way."
+      },
+      {
+        "language": "Hebrew",
+        "script": "בְּרִית",
+        "term": "berît",
+        "meaning": "covenant",
+        "note": "The binding relationship and commitments repeatedly invoked in Malachi's rebukes and promises."
+      }
+    ],
+    "relatedExplanations": [
+      "Malachi 1:6–14 — careless offerings reveal dishonour toward God's name.",
+      "Malachi 2:10–16 — covenant faithfulness is tested in family and community relationships.",
+      "Malachi 3:1–5 — the promised messenger and coming Lord are associated with purification and justice.",
+      "Malachi 3:6–12 — the people are challenged over covenant unfaithfulness and withholding.",
+      "Malachi 4:1–6 — the book closes with judgment, healing imagery and the promise of a coming messenger."
     ]
   },
   {
@@ -8260,6 +8356,38 @@ const topics=[
         "verse": 12,
         "endVerse": 14
       }
+    ],
+    "definition": "Philemon is Paul's personal appeal concerning Onesimus, urging a Christian response shaped by love, fellowship and a transformed identity in Christ rather than coercion.",
+    "oldTestament": "The letter does not quote a specific Old Testament passage, but its appeal resonates with biblical commands to love one's neighbour, welcome the vulnerable and practise justice. Its social setting includes the realities of slavery in the Roman world, which must not be confused with an endorsement of that institution.",
+    "newTestament": "Paul asks Philemon to receive Onesimus as a beloved brother and offers to bear any debt. This language echoes reconciliation in Christ (2 Corinthians 5:18–21) and the unity of believers beyond former social divisions (Galatians 3:28).",
+    "application": "Pursue reconciliation where it is safe and appropriate. Recognise the dignity of people, address real harm honestly and let Christian fellowship reshape how power and status are used.",
+    "questions": [
+      "What would it mean to receive another believer as a brother or sister?",
+      "Am I willing to use influence to restore rather than humiliate?",
+      "What practical steps can make reconciliation truthful, safe and just?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "κοινωνία",
+        "term": "koinōnia",
+        "meaning": "fellowship, sharing, partnership",
+        "note": "Paul appeals to shared participation in faith as the basis for receiving Onesimus."
+      },
+      {
+        "language": "Greek",
+        "script": "σπλάγχνα",
+        "term": "splanchna",
+        "meaning": "deep affection, compassion",
+        "note": "A vivid term for heartfelt affection; Paul asks Philemon to refresh the hearts of the saints."
+      }
+    ],
+    "relatedExplanations": [
+      "Philemon 1:4–7 — Paul thanks God for Philemon's love and the refreshment he brings to believers.",
+      "Philemon 1:8–16 — Paul appeals for Onesimus to be received in a transformed relationship.",
+      "Philemon 1:17–21 — Paul identifies himself with Onesimus and offers to cover any debt.",
+      "2 Corinthians 5:17–21 — reconciliation is grounded in God's action through Christ.",
+      "Colossians 3:12–14 — compassion, forgiveness and love shape the community of Christ."
     ]
   },
   {
@@ -8306,6 +8434,38 @@ const topics=[
         "verse": 1,
         "endVerse": 3
       }
+    ],
+    "definition": "Second John holds together love, obedience and truth, warning that Christian hospitality must not become support for teaching that denies the truth about Jesus Christ.",
+    "oldTestament": "The letter's call to walk in truth and love reflects the Old Testament's joining of covenant loyalty with faithful obedience (Deuteronomy 6:4–9; Psalm 86:11). Love is not detached from the truth God has revealed.",
+    "newTestament": "The command to love one another echoes Jesus' teaching (John 13:34–35), while the warning about deceivers complements the testing of spiritual claims in 1 John 4:1–3. The letter distinguishes generous love from endorsing destructive teaching.",
+    "application": "Practise active love while testing teaching carefully against the apostolic witness to Christ. Be hospitable and gracious without surrendering truth or enabling harm.",
+    "questions": [
+      "How do I keep love and truth together when I disagree?",
+      "What standards do I use to test a spiritual claim?",
+      "How can hospitality remain generous without endorsing harmful teaching?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "ἀλήθεια",
+        "term": "alētheia",
+        "meaning": "truth, reality, faithfulness",
+        "note": "In the letter, truth is both confessed and walked in as a way of life."
+      },
+      {
+        "language": "Greek",
+        "script": "περιπατέω",
+        "term": "peripateō",
+        "meaning": "walk, conduct one's life",
+        "note": "The image of walking describes a continuing pattern of conduct, not a single moment."
+      }
+    ],
+    "relatedExplanations": [
+      "2 John 1:4–6 — walking in truth is expressed through obedience and love.",
+      "2 John 1:7–8 — the church is warned to recognise deceivers who deny Christ's coming in the flesh.",
+      "2 John 1:9–11 — teaching about Christ is a boundary for partnership and welcome.",
+      "John 13:34–35 — Jesus makes love for one another a visible mark of discipleship.",
+      "1 John 4:1–3 — believers are told to test spiritual claims rather than accept every spirit."
     ]
   },
   {
@@ -8352,6 +8512,38 @@ const topics=[
         "verse": 13,
         "endVerse": null
       }
+    ],
+    "definition": "Third John commends practical hospitality toward faithful workers, contrasts it with Diotrephes' self-serving behaviour and encourages believers to imitate what is good.",
+    "oldTestament": "Hospitality has deep roots in Israel's Scriptures, where care for strangers and travellers is linked with remembering God's care (Genesis 18:1–8; Leviticus 19:33–34). Faithfulness is shown through concrete treatment of others.",
+    "newTestament": "Gaius supports travelling believers and becomes an example of partnership in the truth. Jesus' teaching about receiving His messengers (Matthew 10:40–42) and the church's shared mission help illuminate the letter's practical concern.",
+    "application": "Support trustworthy people serving the good news, especially when their work requires practical care. Resist controlling leadership and choose conduct that strengthens the community.",
+    "questions": [
+      "Who is doing good work that I can support in a practical way?",
+      "Do my leadership habits welcome others or seek control?",
+      "What does it mean to imitate good in my present relationships?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "φιλοξενία",
+        "term": "philoxenia",
+        "meaning": "hospitality, love of strangers",
+        "note": "A related New Testament term for welcoming others; hospitality is treated as active Christian service."
+      },
+      {
+        "language": "Greek",
+        "script": "ἀλήθεια",
+        "term": "alētheia",
+        "meaning": "truth",
+        "note": "Gaius is praised for walking in truth and supporting those who serve it."
+      }
+    ],
+    "relatedExplanations": [
+      "3 John 1:2–4 — John rejoices that Gaius is walking in the truth.",
+      "3 John 1:5–8 — practical support for travelling workers makes believers fellow workers for the truth.",
+      "3 John 1:9–10 — Diotrephes is criticised for self-promotion and rejecting fellow believers.",
+      "3 John 1:11–12 — the church is urged to imitate good, with Demetrius commended as a trustworthy witness.",
+      "Romans 12:13 — believers are instructed to share with those in need and practise hospitality."
     ]
   },
   {
@@ -8398,6 +8590,38 @@ const topics=[
         "verse": 24,
         "endVerse": 25
       }
+    ],
+    "definition": "Jude urges believers to guard the apostolic faith against corrupt teaching and conduct, while building one another up, showing wise mercy and depending on God's power to keep them.",
+    "oldTestament": "Jude draws on examples of rebellion and judgment from Israel's Scriptures, including the wilderness generation and Sodom. These examples function as warnings against rejecting God's authority and exploiting others.",
+    "newTestament": "The letter calls believers to remember the apostles' warnings, pray in the Holy Spirit and keep themselves in God's love. Its closing praise of God's ability to keep His people connects with the assurance found in John 10:27–29 and Romans 8:31–39.",
+    "application": "Remain grounded in Scripture, strengthen faith through prayer and community, and respond to struggling people with discernment and mercy. Confidence rests finally in God's keeping power, not personal pride.",
+    "questions": [
+      "What helps me remain rooted in the faith handed down in Scripture?",
+      "How can I show mercy without becoming careless about harmful teaching?",
+      "How does God's power to keep His people shape my confidence?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "ἐπαγωνίζομαι",
+        "term": "epagōnizomai",
+        "meaning": "contend earnestly, struggle for",
+        "note": "Jude 3 uses a strong verb for serious commitment to the faith entrusted to the saints."
+      },
+      {
+        "language": "Greek",
+        "script": "οἰκοδομέω",
+        "term": "oikodomeō",
+        "meaning": "build up, strengthen",
+        "note": "Jude 20 calls believers to build themselves up in their most holy faith."
+      }
+    ],
+    "relatedExplanations": [
+      "Jude 1:3–4 — believers are urged to contend for the faith because destructive influences have entered the community.",
+      "Jude 1:5–7 — examples from Israel's story warn against rebellion and immorality.",
+      "Jude 1:17–19 — the church is reminded of apostolic warnings about divisive people.",
+      "Jude 1:20–23 — prayer, love, hope and differentiated mercy guide the community's response.",
+      "Jude 1:24–25 — the letter closes by praising God, who is able to keep believers from stumbling."
     ]
   }
 ];
