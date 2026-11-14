@@ -104,7 +104,15 @@
     ["Trinity","The Christian term for the one God confessed as Father, Son and Holy Spirit. The word itself is not a Bible quotation; the doctrine summarises the New Testament's witness to the Father, Son and Spirit. See Matthew 28:19; John 1:1-18; 2 Corinthians 13:14."],
     ["Unbelief","Lack of trust or refusal to believe, which Scripture treats in varied settings including doubt, resistance and hardened rejection. Read each passage carefully rather than treating every question or struggle as the same condition. See Mark 9:24; John 20:27-29; Hebrews 3:12-19."],
     ["Vocation","A calling or work entrusted to a person. Scripture speaks of God's call to belong to Christ and of varied gifts and responsibilities in serving others. See Romans 8:28-30; 1 Corinthians 7:17; Ephesians 4:1-16."],
-    ["Zeal","Strong commitment or fervour. Scripture commends zeal when guided by knowledge, love and truth, and warns against misdirected religious passion. See Numbers 25:10-13; Romans 10:1-4; 12:11; Titus 2:14."]
+    ["Zeal","Strong commitment or fervour. Scripture commends zeal when guided by knowledge, love and truth, and warns against misdirected religious passion. See Numbers 25:10-13; Romans 10:1-4; 12:11; Titus 2:14."],
+    ["Ascension","The return of the risen Jesus to the Father's presence, witnessed by His disciples. The New Testament connects the ascension with Christ's exaltation, reign and continuing ministry. See Luke 24:50-53; Acts 1:6-11; Ephesians 1:20-23."],
+    ["Compassion","Deep concern that moves toward the suffering or vulnerable with practical care. Scripture repeatedly presents God's compassion as a pattern for His people. See Exodus 34:6; Matthew 9:36; Luke 10:33-37; Colossians 3:12."],
+    ["Consecration","The setting apart of a person, object or time for God's purposes. Biblical consecration involves belonging to God and responding with reverence and obedience. See Exodus 19:10-14; Leviticus 20:7-8; Romans 12:1."],
+    ["Gentile","A person or people from the nations outside Israel. The New Testament describes the inclusion of Gentiles among God's people through the gospel, without erasing the historical setting of Israel's Scriptures. See Genesis 12:3; Acts 10:34-48; Ephesians 2:11-22."],
+    ["Incense","A fragrant substance burned in worship, especially in Israel's sanctuary rituals. Scripture also uses incense as an image of prayer, while warning against empty ritual without faithfulness. See Exodus 30:1-10; Psalm 141:2; Revelation 5:8."],
+    ["Logos","A Greek word meaning word, message or reason, whose meaning depends on context. John's Gospel uses Logos as a title for the eternal Word who was with God and became flesh in Jesus Christ. See John 1:1-18; 1 John 1:1-3."],
+    ["Martyr","A witness who remains faithful under persecution, sometimes to the point of death. In the New Testament the word is connected with testimony to Jesus and the truth of the gospel. See Acts 7:54-60; Revelation 2:13; 6:9-11."],
+    ["Passover","The memorial of Israel's deliverance from slavery in Egypt, marked by the lamb and the meal commanded in Exodus. The New Testament connects Passover imagery with Jesus' death, while retaining the original story's meaning. See Exodus 12; Luke 22:7-20; 1 Corinthians 5:7-8."]
   ];
 
   function readNotes() {
