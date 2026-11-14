@@ -31,6 +31,13 @@ for (const field of requiredFaithFields) {
 }
 if (!home.includes('id="zurielOpenBookLight"')) failures.push(["Light panel", "missing from home card"]);
 
+const reader = await readFile(new URL("../index.html", import.meta.url), "utf8");
+const navigator = await readFile(new URL("../zuriel-grid-navigation.js", import.meta.url), "utf8");
+if (!reader.includes('paragraph.dataset.verseNumber = String(index + 1)')) failures.push(["stable verse identity", "missing from index.html"]);
+if (!navigator.includes('data-verse-number="')) failures.push(["exact verse target", "missing from navigator"]);
+if (!navigator.includes('replace(/^\\s*\\d+\\.?\\s*/, "")) failures.push(["verse text extraction", "invalid or missing verse-number cleanup"]);
+
+
 const homeReferences = [...home.matchAll(/reference:\\s*"([^"]+)"/g)].map(match => match[1].toLowerCase());
 const faithReferences = new Set([...faith.matchAll(/reference:\\s*"([^"]+)"/g)].map(match => match[1].toLowerCase()));
 for (const reference of homeReferences) {

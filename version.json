@@ -1,4 +1,4 @@
 {
-  "version": "1.0.9",
-  "releaseNotes": "Expands the Scripture-linked open-book faith collection to cover all 26 featured home verses with original prayers, declarations, affirmations, confessions and inspiration. Adds automated exact-reference coverage checks."
+  "version": "1.1.0",
+  "releaseNotes": "Improves precise Book-Chapter-Verse navigation, gives each displayed verse a stable identifier, and refreshes the reader passage selector with the current KJV reference. Extends automated reader integrity checks."
 }
