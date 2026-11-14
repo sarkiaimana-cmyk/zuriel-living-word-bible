@@ -318,10 +318,15 @@
       }
       if (selectedVerse) {
         const target = document.querySelectorAll("#message .verse")[selectedVerse - 1];
-        if (target) {
-          document.querySelectorAll("#message .verse.zuriel-nav-highlight").forEach(el => el.classList.remove("zuriel-nav-highlight"));
-          target.classList.add("zuriel-nav-highlight");
-          target.scrollIntoView({ behavior: "smooth", block: "center" });
+        if (!target) {
+          throw new Error("Chapter opened, but verse " + selectedVerse + " is not present in the displayed chapter.");
+        }
+        document.querySelectorAll("#message .verse.zuriel-nav-highlight").forEach(el => el.classList.remove("zuriel-nav-highlight"));
+        target.classList.add("zuriel-nav-highlight");
+        target.scrollIntoView({ behavior: "smooth", block: "center" });
+        const verseText = target.textContent.replace(/^\\s*\\d+\\.?\\s*/, "").trim();
+        if (window.ZurielStudy && typeof window.ZurielStudy.openForReference === "function") {
+          window.ZurielStudy.openForReference(selectedBook, selectedChapter, selectedVerse, verseText, "", -1);
         }
       }
       closeModal();
