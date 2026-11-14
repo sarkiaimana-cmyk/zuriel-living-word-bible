@@ -426,8 +426,6 @@
           scroll-behavior: auto;
         }
       }
-    `;
-
       /* OPEN-BOOK FAITH CARD — inspired by the supplied Zuriel artwork */
       #zurielHomeDashboard .zob-landscape {
         overflow:hidden;position:relative;padding:18px 12px 13px;border:2px solid #c9a958;
@@ -489,6 +487,7 @@
         #zurielHomeDashboard .zob-affirmation-label{font-size:11px}
         #zurielHomeDashboard .zob-affirmation-copy{font-size:11px}
       }
+    `;
 
     document.head.appendChild(style);
 
