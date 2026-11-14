@@ -5648,6 +5648,45 @@ const topics=[
         "verse": 20,
         "endVerse": 21
       }
+    ],
+    "definition": "Biblical parenting is a stewardship of love, nurture, instruction and example. Parents are called to guide children toward wisdom and faith while recognising each child's dignity and avoiding harshness that discourages or harms them.",
+    "oldTestament": "Israel was instructed to teach God's words diligently in ordinary family life and to tell the next generation His works (Deuteronomy 6:4–9; Psalm 78:1–8). Proverbs commends wise training while the law protects children's place within the covenant community.",
+    "newTestament": "Jesus welcomes and honours children (Mark 10:13–16). Paul calls parents to bring children up in the Lord's instruction without provoking or discouraging them (Ephesians 6:1–4; Colossians 3:20–21). Timothy's faith was nurtured through family teaching (2 Timothy 1:5; 3:14–15).",
+    "application": "Make faith visible through your own conduct, create room for questions, teach Scripture in age-appropriate ways and discipline consistently without humiliation or violence. Listen to children and seek help when family pressures become overwhelming.",
+    "questions": [
+      "What do my daily habits teach children about God and love?",
+      "How can I combine clear boundaries with patience and encouragement?",
+      "What truth or story from Scripture can our family discuss this week?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "שָׁנַן",
+        "term": "shānan",
+        "meaning": "sharpen, impress diligently",
+        "note": "Deuteronomy 6 uses this verb for intentional, repeated teaching of God's words."
+      },
+      {
+        "language": "Hebrew",
+        "script": "מוּסָר",
+        "term": "mûsār",
+        "meaning": "instruction, discipline, correction",
+        "note": "In wisdom literature discipline aims at formation and wisdom, not cruelty."
+      },
+      {
+        "language": "Greek",
+        "script": "ἐκτρέφω",
+        "term": "ektrephō",
+        "meaning": "nourish, bring up",
+        "note": "Ephesians 6:4 uses the word for the care and nurture of children."
+      }
+    ],
+    "relatedExplanations": [
+      "Deuteronomy 6:4–9 — love for God is to shape family teaching woven into everyday life.",
+      "Psalm 78:1–8 — one generation is responsible to tell the next about God's works and faithfulness.",
+      "Mark 10:13–16 — Jesus receives children and rebukes those who try to keep them away.",
+      "Ephesians 6:1–4 — children and parents are both addressed, and parental authority is restrained from provoking anger.",
+      "Colossians 3:20–21 — family instruction includes children's response and a warning against discouraging them."
     ]
   },
   {
@@ -5693,6 +5732,45 @@ const topics=[
         "verse": 24,
         "endVerse": 25
       }
+    ],
+    "definition": "Biblical friendship is a relationship of loyalty, truth, encouragement and mutual care. Healthy community offers companionship and correction while helping people remain faithful to God.",
+    "oldTestament": "Wisdom literature praises dependable friends, honest correction and shared strength (Proverbs 17:17; 27:5–10; Ecclesiastes 4:9–12). Israel's covenant life also calls neighbours to love and responsibility (Leviticus 19:18).",
+    "newTestament": "Jesus calls His disciples friends and commands them to love one another as He has loved them (John 15:12–15). The church is urged to encourage, bear burdens, forgive and pursue one another's good (Galatians 6:1–2; Hebrews 10:24–25; Romans 12:10–16).",
+    "application": "Be the kind of friend who listens, keeps confidence appropriately, speaks truth with gentleness and shows up in difficult seasons. Build friendships around mutual faithfulness rather than gossip, pressure or convenience.",
+    "questions": [
+      "Who has strengthened my faith through faithful friendship?",
+      "Do I offer honest encouragement or only agree to keep approval?",
+      "What practical burden can I help someone carry this week?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "רֵעַ",
+        "term": "rēaʿ",
+        "meaning": "friend, companion, neighbour",
+        "note": "A broad relational term whose meaning is shaped by context."
+      },
+      {
+        "language": "Hebrew",
+        "script": "אָהֵב",
+        "term": "ʾāhēb",
+        "meaning": "love, show affection",
+        "note": "Wisdom texts use love language for loyal care that persists through adversity."
+      },
+      {
+        "language": "Greek",
+        "script": "φίλος",
+        "term": "philos",
+        "meaning": "friend, beloved companion",
+        "note": "John 15 uses friendship language to describe Jesus' relationship with His disciples."
+      }
+    ],
+    "relatedExplanations": [
+      "Proverbs 17:17 — a true friend shows love consistently, including in adversity.",
+      "Proverbs 27:5–10 — honest correction and dependable friendship are valued above flattering words.",
+      "Ecclesiastes 4:9–12 — companionship brings practical help, support and resilience.",
+      "John 15:12–15 — Jesus defines friendship among disciples through love and obedience to His command.",
+      "Hebrews 10:24–25 — believers are to encourage one another toward love and good works."
     ]
   },
   {
@@ -5738,6 +5816,45 @@ const topics=[
         "verse": 9,
         "endVerse": 12
       }
+    ],
+    "definition": "Work and vocation include paid employment, family responsibilities, learning, service and the use of abilities for the good of others. Scripture honours diligent, honest work while rejecting exploitation, idleness and the idea that a person's worth is measured by productivity.",
+    "oldTestament": "Humanity is placed in the garden to cultivate and care for it (Genesis 2:15). Wisdom commends diligence and honest labour, while the law protects workers and requires just treatment (Proverbs 14:23; Deuteronomy 24:14–15).",
+    "newTestament": "Jesus dignifies humble service. Paul tells believers to work sincerely as serving the Lord, to live responsibly and to share with those in need (Colossians 3:23–24; 1 Thessalonians 4:9–12; Ephesians 4:28). Scripture also condemns withholding fair wages (James 5:4).",
+    "application": "Work with integrity, develop your skills, honour commitments and treat colleagues fairly. Rest appropriately, resist dishonest shortcuts and remember that caregiving and unseen service also have dignity.",
+    "questions": [
+      "How can I make my work an act of service to God and neighbour?",
+      "Where am I tempted to compromise integrity for quick gain?",
+      "How can I balance diligence with rest and care for others?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "עָבַד",
+        "term": "ʿābad",
+        "meaning": "work, serve, labour",
+        "note": "The same Hebrew root can describe agricultural work and service, linking labour with responsibility."
+      },
+      {
+        "language": "Hebrew",
+        "script": "מְלָאכָה",
+        "term": "melāʾkhāh",
+        "meaning": "work, task, occupation",
+        "note": "Used for human work and for God's creative work in Genesis."
+      },
+      {
+        "language": "Greek",
+        "script": "ἐργάζομαι",
+        "term": "ergazomai",
+        "meaning": "work, labour, accomplish",
+        "note": "A common New Testament verb for doing work; context identifies its purpose and character."
+      }
+    ],
+    "relatedExplanations": [
+      "Genesis 2:15 — work is present before the fall and is part of humanity's entrusted vocation.",
+      "Proverbs 14:23 — diligent labour can bring benefit, while empty talk does not accomplish the task.",
+      "Colossians 3:23–24 — ordinary work is to be done sincerely as service to the Lord.",
+      "1 Thessalonians 4:9–12 — believers are encouraged to live quietly, work responsibly and behave honourably toward outsiders.",
+      "James 5:4 — God hears the cries of workers whose wages have been withheld unjustly."
     ]
   },
   {
@@ -5783,6 +5900,45 @@ const topics=[
         "verse": 1,
         "endVerse": 4
       }
+    ],
+    "definition": "Biblical leadership is accountable stewardship exercised for the good of others under God's authority. It requires character, justice, humility, courage and service; authority is never a licence for manipulation, abuse or self-enrichment.",
+    "oldTestament": "Moses learns to share responsibility through wise, capable leaders (Exodus 18:13–24). Israel's kings and shepherds are judged by justice and care for the people, and the prophets condemn leaders who exploit the flock (Ezekiel 34:1–10; Micah 3:1–4).",
+    "newTestament": "Jesus contrasts servant greatness with domination and presents His own life as the pattern (Mark 10:42–45; John 13:1–17). Church leaders are instructed to shepherd willingly, transparently and by example rather than coercion (Acts 20:28–35; 1 Peter 5:1–4; 1 Timothy 3:1–13).",
+    "application": "Lead by serving, listen to those affected by decisions, share responsibility and welcome accountability. Protect people who raise concerns and establish clear safeguards wherever authority is entrusted.",
+    "questions": [
+      "Whose good is my leadership intended to serve?",
+      "How do I respond when someone questions my decisions?",
+      "What safeguards and accountability help prevent misuse of authority?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "רָעָה",
+        "term": "rāʿāh",
+        "meaning": "shepherd, tend, care for",
+        "note": "The shepherd image describes leadership as protection and provision, not domination."
+      },
+      {
+        "language": "Greek",
+        "script": "ποιμαίνω",
+        "term": "poimainō",
+        "meaning": "shepherd, tend a flock",
+        "note": "Used for pastoral care that includes feeding, guiding and guarding."
+      },
+      {
+        "language": "Greek",
+        "script": "διάκονος",
+        "term": "diakonos",
+        "meaning": "servant, minister",
+        "note": "The word highlights service; Jesus redefines greatness around serving others."
+      }
+    ],
+    "relatedExplanations": [
+      "Exodus 18:13–24 — shared leadership and wise delegation protect both the people and the leader from exhaustion.",
+      "Mark 10:42–45 — Jesus rejects domineering leadership and defines greatness through service.",
+      "Acts 20:28–35 — elders are charged to watch over the church and protect it from destructive teaching and greed.",
+      "1 Peter 5:1–4 — leaders must shepherd willingly and by example, not by coercion or pursuit of dishonest gain.",
+      "Ezekiel 34:1–10 — God condemns shepherds who feed themselves instead of caring for the flock."
     ]
   },
   {
@@ -5828,6 +5984,45 @@ const topics=[
         "verse": 9,
         "endVerse": 10
       }
+    ],
+    "definition": "Integrity is consistency between truth, conviction, speech and action before God and people. Biblical truthfulness rejects deceit, false witness, manipulation and double standards; it seeks honest words joined to just conduct.",
+    "oldTestament": "The law forbids stealing, lying and false testimony, and wisdom praises truthful speech and trustworthy conduct (Leviticus 19:11–18; Proverbs 12:17–22). God delights in truth and condemns dishonest measures and corrupt judgement (Proverbs 11:1; Micah 6:8–11).",
+    "newTestament": "Jesus calls His followers to truthful speech without manipulative oaths (Matthew 5:33–37). Paul urges believers to put away falsehood, speak truth to neighbours and live as renewed people (Ephesians 4:20–25; Colossians 3:9–10).",
+    "application": "Tell the truth even when it costs, correct mistakes promptly and keep promises realistically. Refuse dishonest gain and make amends where your words or actions have harmed someone.",
+    "questions": [
+      "Where am I tempted to present myself differently from the truth?",
+      "Do my promises match what I can responsibly fulfil?",
+      "What repair or confession is needed where I have been dishonest?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "אֱמֶת",
+        "term": "ʾemet",
+        "meaning": "truth, reliability, faithfulness",
+        "note": "The word can describe truthful speech and dependable character."
+      },
+      {
+        "language": "Hebrew",
+        "script": "יָשָׁר",
+        "term": "yāshār",
+        "meaning": "upright, straight, right",
+        "note": "Wisdom literature uses the term for a life marked by moral straightness."
+      },
+      {
+        "language": "Greek",
+        "script": "ἀλήθεια",
+        "term": "alētheia",
+        "meaning": "truth, reality",
+        "note": "In the New Testament truth is both what is reliable and what is revealed in Christ."
+      }
+    ],
+    "relatedExplanations": [
+      "Leviticus 19:11–18 — honesty, fair judgement and love of neighbour belong together in covenant life.",
+      "Proverbs 12:17–22 — truthful witnesses and reliable speech are contrasted with deceit.",
+      "Matthew 5:33–37 — Jesus calls for straightforward speech that does not depend on elaborate oaths.",
+      "Ephesians 4:25 — putting away falsehood is part of the new life and truthful community.",
+      "Colossians 3:9–10 — believers are to reject lying as people being renewed in the image of their Creator."
     ]
   },
   {
