@@ -1,4 +1,4 @@
 {
-  "version": "1.0.4",
-  "releaseNotes": "Improves original-language word-study recovery: clearer offline versus temporary online errors and a retry action, while preserving the selected Scripture. Refreshes the offline app cache."
+  "version": "1.0.5",
+  "releaseNotes": "Adds clear offline and temporary-error recovery with a retry action for Hebrew and Greek lexicon entries. Preserves the selected Scripture and refreshes the offline app cache."
 }

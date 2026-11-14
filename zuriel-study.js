@@ -526,7 +526,23 @@
       box.appendChild(related);
     } catch (error) {
       if (requestId !== lexiconRequest) return;
-      box.textContent = error.message || "The lexicon entry could not be loaded.";
+      box.replaceChildren();
+
+      const message = document.createElement("p");
+      message.className = "study-small";
+      message.textContent = !navigator.onLine
+        ? "You are offline and this lexicon entry has not been saved on this device yet. Connect once to load it for later offline study."
+        : "The lexicon entry could not be loaded right now. Your selected Scripture and original word remain available.";
+      box.appendChild(message);
+
+      const retry = document.createElement("button");
+      retry.type = "button";
+      retry.className = "study-secondary";
+      retry.textContent = "Retry lexicon entry";
+      retry.addEventListener("click", function () {
+        loadLexiconEntry(strongs, card, chapterData, ref);
+      });
+      box.appendChild(retry);
     }
   }
 
