@@ -38,8 +38,8 @@ if (!navigator.includes('data-verse-number="')) failures.push(["exact verse targ
 if (!navigator.includes('replace(/^\s*\d+\.?\s*/, "")) failures.push(["verse text extraction", "invalid or missing verse-number cleanup"]);
 
 
-const homeReferences = [...home.matchAll(/reference:\\s*"([^"]+)"/g)].map(match => match[1].toLowerCase());
-const faithReferences = new Set([...faith.matchAll(/reference:\\s*"([^"]+)"/g)].map(match => match[1].toLowerCase()));
+const homeReferences = [...home.matchAll(/reference:\s*"([^"]+)"/g)].map(match => match[1].toLowerCase());
+const faithReferences = new Set([...faith.matchAll(/reference:\s*"([^"]+)"/g)].map(match => match[1].toLowerCase()));
 for (const reference of homeReferences) {
   if (!faithReferences.has(reference)) failures.push(["home faith coverage: " + reference, "no exact Scripture-linked response"]);
 }
