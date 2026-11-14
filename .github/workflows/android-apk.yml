@@ -93,11 +93,27 @@ jobs:
           KEYSTORE="$RUNNER_TEMP/zuriel-release.jks"
           # Ignore whitespace or stray clipboard characters, then validate the
           # decoded PKCS12 keystore and expected alias before attempting signing.
-          python3 -c 'import base64, os; alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"; raw=os.environ["ZURIEL_KEYSTORE_BASE64"]; clean="".join(ch for ch in raw if ch in alphabet).rstrip("="); clean += "=" * ((-len(clean)) % 4); data=base64.b64decode(clean, validate=True); assert data, "Empty decoded keystore"; open(os.environ["RUNNER_TEMP"] + "/zuriel-release.jks", "wb").write(data)'
+          echo "Step 1/3: decoding the protected keystore secret."
+          python3 - <<'PY'
+          import base64, os
+          alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+          raw = os.environ["ZURIEL_KEYSTORE_BASE64"]
+          clean = "".join(ch for ch in raw if ch in alphabet).rstrip("=")
+          clean += "=" * ((-len(clean)) % 4)
+          data = base64.b64decode(clean, validate=True)
+          if not data:
+              raise SystemExit("Keystore decode produced an empty file.")
+          path = os.path.join(os.environ["RUNNER_TEMP"], "zuriel-release.jks")
+          with open(path, "wb") as handle:
+              handle.write(data)
+          print(f"Decoded keystore file successfully ({len(data)} bytes).")
+          PY
           test -s "$KEYSTORE"
+          echo "Step 2/3: validating PKCS12 format, password and alias."
           keytool -list -keystore "$KEYSTORE" -storetype PKCS12 \
             -storepass "$ZURIEL_KEYSTORE_PASSWORD" \
-            -alias "$ZURIEL_KEY_ALIAS" >/dev/null
+            -alias "$ZURIEL_KEY_ALIAS"
+          echo "Step 3/3: validation passed; building signed release APK."
           ./gradlew assembleRelease
           BUILD_TOOLS="$ANDROID_HOME/build-tools/36.0.0"
           UNSIGNED="app/build/outputs/apk/release/app-release-unsigned.apk"
@@ -114,7 +130,7 @@ jobs:
           rm -f "$KEYSTORE" "$ALIGNED"
 
       - name: Upload Zuriel debug APK
-        if: steps.signing_check.outputs.available != 'true'
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: Zuriel-Living-Word-Bible-APK
