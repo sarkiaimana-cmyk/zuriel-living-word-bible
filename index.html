@@ -570,47 +570,19 @@ function loadBibleBooks() {
 
 function showChapters(book) {
   const selectedBook = bibleBooks.find(item => item.name === book);
-
   if (!selectedBook) {
     message.textContent = "Bible book not found.";
     return;
   }
 
   selector.value = book;
-  message.replaceChildren();
-
-  const heading = document.createElement("h2");
-  heading.textContent = book;
-  message.appendChild(heading);
-
-  const instruction = document.createElement("p");
-  instruction.textContent = "Choose a chapter of " + book + ".";
-  message.appendChild(instruction);
-
-  const chapterBox = document.createElement("div");
-  chapterBox.id = "chapterButtons";
-
-  for (let number = 1; number <= selectedBook.chapters; number++) {
-    const chapterButton = document.createElement("button");
-    chapterButton.type = "button";
-    chapterButton.textContent = "Chapter " + number;
-
-    chapterButton.addEventListener("click", async function () {
-      chapterButton.disabled = true;
-
-      try {
-        await openChapter(book, number);
-      } catch (error) {
-        status.textContent = "Unable to open chapter: " + error.message;
-      } finally {
-        chapterButton.disabled = false;
-      }
-    });
-
-    chapterBox.appendChild(chapterButton);
+  if (window.ZurielGridNavigator &&
+      typeof window.ZurielGridNavigator.openBook === "function") {
+    window.ZurielGridNavigator.openBook(book);
+    return;
   }
 
-  message.appendChild(chapterBox);
+  status.textContent = "The Zuriel Book and Chapter Navigator is loading. Please try again.";
 }
 
 /* OPEN SELECTED BOOK */
@@ -1135,7 +1107,6 @@ loadBibleBooks();
 <script src="zuriel-topical-index.js"></script>
 <script src="zuriel-home.js"></script>
 <script src="zuriel-study.js"></script>
-<script src="zuriel-navigation.js"></script>
 <script src="zuriel-grid-navigation.js"></script>
   <script src="zuriel-introductions.js"></script>
   <script src="zuriel-settings.js"></script>
