@@ -587,14 +587,39 @@
       padding-left:21px;
     }
 
+    #zurielIntroduction .intro-figure {
+      margin:14px 0 18px;
+      padding:8px;
+      overflow:hidden;
+      border:1px solid #b99b58;
+      border-radius:15px;
+      background:linear-gradient(145deg,#0b1930,#203e68);
+      box-shadow:0 8px 22px #00000030;
+    }
+
     #zurielIntroduction .intro-image {
       display:block;
       width:100%;
-      max-height:230px;
+      aspect-ratio:16 / 9;
+      max-height:300px;
       object-fit:cover;
-      border-radius:12px;
-      margin:12px 0;
+      object-position:center;
+      border-radius:10px;
       background:#203e68;
+    }
+
+    #zurielIntroduction .intro-figure figcaption {
+      padding:9px 5px 3px;
+      color:#f1d99e;
+      font-size:13px;
+      font-weight:700;
+      line-height:1.5;
+      text-align:center;
+    }
+
+    @media (max-width:420px) {
+      #zurielIntroduction .intro-figure { padding:6px; }
+      #zurielIntroduction .intro-image { max-height:220px; }
     }
   `;
 
@@ -683,13 +708,25 @@
     toggle.textContent = "Explore " + bookName + " Introduction";
 
     if (book.image) {
+      const figure = document.createElement("figure");
+      figure.className = "intro-figure";
+
       const image = document.createElement("img");
       image.className = "intro-image";
       image.src = book.image;
-      image.alt = bookName + " biblical illustration";
+      image.alt = bookName + " — " + book.subtitle;
       image.loading = "lazy";
       image.decoding = "async";
-      content.appendChild(image);
+      image.fetchPriority = "low";
+
+      const caption = document.createElement("figcaption");
+      caption.textContent =
+        bookName + " • " + book.chapters +
+        " chapters • " + book.subtitle;
+
+      figure.appendChild(image);
+      figure.appendChild(caption);
+      content.appendChild(figure);
     }
 
     addDetails("Traditional authorship", book.author);
