@@ -48,6 +48,9 @@ jobs:
       - name: Prepare offline web app
         run: npm run build:web
 
+      - name: Validate original-language study safeguards
+        run: node scripts/check-study-integrity.mjs
+
       - name: Check whether release signing is configured
         id: signing_check
         env:

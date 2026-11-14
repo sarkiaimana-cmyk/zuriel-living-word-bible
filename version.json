@@ -1,4 +1,4 @@
 {
-  "version": "1.0.6",
-  "releaseNotes": "Corrects verse-number parsing when opening related original-language occurrences, so verse text and study selection stay clean. Refreshes the offline app cache."
+  "version": "1.0.7",
+  "releaseNotes": "Adds automated safeguards for original-language word matching, Strong's references, lexicon recovery and required study panels. Refreshes the offline app cache."
 }
