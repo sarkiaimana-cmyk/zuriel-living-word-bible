@@ -914,7 +914,7 @@
         return persist();
       },
 
-      openGloryVerse: function (reference, scriptureText, translation) {
+      openGloryVerse: function (reference, scriptureText, translation, faithResponse) {
         openPage("affirmation");
         const studio = document.getElementById("zurielGloryStudio");
         if (!studio) return false;
@@ -922,8 +922,24 @@
         const scriptureField = studio.querySelector("#zgsScripture");
         referenceField.value = String(reference || "").trim();
         scriptureField.value = String(scriptureText || "").trim();
-        referenceField.dispatchEvent(new Event("input", { bubbles: true }));
-        scriptureField.dispatchEvent(new Event("input", { bubbles: true }));
+        const responseFields = {
+          prayer: "#zgsPrayer",
+          declaration: "#zgsDeclaration",
+          affirmation: "#zgsAffirmation",
+          confession: "#zgsConfession",
+          inspiration: "#zgsInspiration"
+        };
+        Object.keys(responseFields).forEach(function(key) {
+          const field = studio.querySelector(responseFields[key]);
+          if (field && faithResponse && faithResponse[key]) {
+            field.value = String(faithResponse[key]).trim();
+          }
+        });
+        [referenceField, scriptureField].concat(
+          Object.values(responseFields).map(selector => studio.querySelector(selector)).filter(Boolean)
+        ).forEach(function(field) {
+          field.dispatchEvent(new Event("input", { bubbles: true }));
+        });
         const status = studio.querySelector("#zgsStatus");
         if (status) {
           status.textContent = "Connected from your Bible reader: " +
