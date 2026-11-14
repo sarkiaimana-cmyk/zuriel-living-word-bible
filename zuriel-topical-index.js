@@ -4804,6 +4804,45 @@ const topics=[
         "verse": 18,
         "endVerse": 20
       }
+    ],
+    "definition": "The Great Commission is Jesus' risen authority and command to make disciples among all nations. Christian mission includes proclaiming the gospel, baptizing, teaching obedience to Jesus and bearing witness in the power of the Holy Spirit.",
+    "oldTestament": "God's promise to bless all families through Abraham gives mission a global horizon (Genesis 12:1–3). Israel was called to reflect God's light among the nations, and the Psalms anticipate worldwide praise (Psalm 67; Isaiah 49:6).",
+    "newTestament": "The risen Jesus commissions His disciples to make disciples of all nations (Matthew 28:18–20). Acts shows the Spirit empowering witness from Jerusalem outward, while the church's life and conduct adorn the message (Acts 1:8; 13:1–3; 1 Peter 2:9–12).",
+    "application": "Begin with faithful witness where God has placed you. Explain the good news clearly, serve people with humility, support cross-cultural mission and help new believers grow in obedience to Jesus.",
+    "questions": [
+      "What does Jesus' authority contribute to the confidence and shape of mission?",
+      "Who around me needs to hear or see the good news through faithful love?",
+      "How can I help someone move from hearing the gospel to becoming a disciple?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "μαθητεύσατε",
+        "term": "mathēteusate",
+        "meaning": "make disciples",
+        "note": "The central imperative in Matthew 28:19; the following actions describe disciple-making."
+      },
+      {
+        "language": "Greek",
+        "script": "μάρτυς",
+        "term": "martys",
+        "meaning": "witness",
+        "note": "A witness testifies to what has been seen and known; Acts connects witness with Spirit-given power."
+      },
+      {
+        "language": "Hebrew",
+        "script": "גּוֹיִם",
+        "term": "goyim",
+        "meaning": "nations",
+        "note": "Often refers to the nations beyond Israel; the prophets anticipate God's blessing reaching them."
+      }
+    ],
+    "relatedExplanations": [
+      "Matthew 28:18–20 — Jesus grounds the mission in His universal authority and commands disciple-making, baptism and teaching.",
+      "Acts 1:8 — the Spirit empowers the disciples to testify to Jesus across widening geographical boundaries.",
+      "Genesis 12:1–3 — God's promise to Abraham includes blessing for all families of the earth.",
+      "Isaiah 49:6 — the servant's mission reaches beyond Israel so God's salvation may reach the ends of the earth.",
+      "1 Peter 2:9–12 — God's people proclaim His excellencies through witness and visible good conduct."
     ]
   },
   {
@@ -4850,6 +4889,45 @@ const topics=[
         "verse": 17,
         "endVerse": 35
       }
+    ],
+    "definition": "The early church was the community of people who trusted Jesus, received the Spirit and gathered for apostolic teaching, fellowship, prayer, worship, shared care and witness. Fellowship is active participation in a shared life in Christ, not simply social contact.",
+    "oldTestament": "Israel's gathered worship, covenant identity and care for the vulnerable provide important background (Deuteronomy 6:4–9; Leviticus 19:9–18). The prophets look toward a renewed people gathered under God's promise.",
+    "newTestament": "Acts 2:42–47 describes believers devoted to teaching, fellowship, breaking bread and prayer. The letters show congregations learning generosity, reconciliation, holiness and mutual encouragement across different backgrounds (Acts 4:32–35; Hebrews 10:24–25).",
+    "application": "Take part consistently in a healthy Christian community. Share needs honestly, practise hospitality, learn Scripture together and contribute your gifts so others are strengthened.",
+    "questions": [
+      "Which practices marked the first believers' shared life?",
+      "How can my fellowship become more practical and generous?",
+      "What step could help restore unity or encouragement in my congregation?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "κοινωνία",
+        "term": "koinōnia",
+        "meaning": "fellowship, sharing, participation",
+        "note": "Describes a real sharing in common life, resources and the gospel."
+      },
+      {
+        "language": "Greek",
+        "script": "ἐκκλησία",
+        "term": "ekklēsia",
+        "meaning": "assembly, congregation, church",
+        "note": "In the New Testament it commonly identifies the gathered community belonging to Christ."
+      },
+      {
+        "language": "Greek",
+        "script": "προσκαρτερέω",
+        "term": "proskartereō",
+        "meaning": "devote oneself, persist",
+        "note": "Acts uses this verb for the believers' sustained commitment to shared practices."
+      }
+    ],
+    "relatedExplanations": [
+      "Acts 2:42–47 — the first Jerusalem believers combine apostolic teaching, shared meals, prayer, generosity and public witness.",
+      "Acts 4:32–35 — unity expresses itself in open-handed care so that needs are addressed among the community.",
+      "Romans 12:9–13 — sincere love becomes visible through honour, service, hospitality and practical care.",
+      "1 Corinthians 12:12–27 — the church is one body whose members need and honour one another.",
+      "Hebrews 10:24–25 — gathering helps believers encourage one another toward love and faithful action."
     ]
   },
   {
@@ -4895,6 +4973,45 @@ const topics=[
         "verse": 10,
         "endVerse": 11
       }
+    ],
+    "definition": "Spiritual gifts are abilities and forms of service distributed by the Holy Spirit for the common good and the building up of Christ's church. They are entrusted for humble service, not personal status or competition.",
+    "oldTestament": "God equipped artisans for the tabernacle and empowered leaders for particular responsibilities (Exodus 31:1–6; Numbers 11:16–17). These accounts show that ability and service depend on God's provision.",
+    "newTestament": "Paul teaches that the Spirit distributes gifts as He wills and that every member contributes to the body (1 Corinthians 12:4–11, 27–31). Gifts must operate in love, order and edification (Romans 12:3–8; 1 Corinthians 13–14; 1 Peter 4:10–11).",
+    "application": "Identify ways you can serve, seek mature guidance, develop your abilities and use them to strengthen others. Test every practice by Scripture, love, good order and the honour of Christ.",
+    "questions": [
+      "Does my use of a gift strengthen others or draw attention to myself?",
+      "Which practical need in my church could I help meet?",
+      "How do love and good order guide the use of spiritual gifts?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "χάρισμα",
+        "term": "charisma",
+        "meaning": "gracious gift",
+        "note": "A gift understood as something given by grace, not earned as a badge of superiority."
+      },
+      {
+        "language": "Greek",
+        "script": "διακονία",
+        "term": "diakonia",
+        "meaning": "service, ministry",
+        "note": "Emphasizes practical service and the work entrusted to a person."
+      },
+      {
+        "language": "Greek",
+        "script": "οἰκοδομή",
+        "term": "oikodomē",
+        "meaning": "building up, edification",
+        "note": "A key test in 1 Corinthians: gifts should strengthen the gathered church."
+      }
+    ],
+    "relatedExplanations": [
+      "1 Corinthians 12:4–11 — gifts differ, but the same Spirit distributes them for the common good.",
+      "Romans 12:3–8 — believers are to think soberly and use their differing gifts faithfully within one body.",
+      "1 Peter 4:10–11 — each person is to serve others as a steward of God's varied grace.",
+      "1 Corinthians 13:1–7 — even impressive gifts are empty without self-giving love.",
+      "Ephesians 4:11–16 — Christ gives ministries to equip the saints and build up His body toward maturity."
     ]
   },
   {
@@ -4941,6 +5058,45 @@ const topics=[
         "verse": 18,
         "endVerse": null
       }
+    ],
+    "definition": "The church is described as Christ's body: a people united to Him and joined to one another, with Christ as the head. The image teaches shared belonging, diverse functions, mutual dependence and growth under Christ's direction.",
+    "oldTestament": "The covenant people are portrayed as one gathered community with shared worship and responsibility (Exodus 19:4–6; Psalm 133). These themes prepare for the New Testament picture of a people joined together by God's action.",
+    "newTestament": "Paul teaches that believers are baptized by one Spirit into one body, though they have different gifts and roles (1 Corinthians 12:12–27). Christ is the head who gives the church growth and coherence (Ephesians 1:22–23; 4:15–16; Colossians 1:18).",
+    "application": "Reject isolation and comparison. Honour members whose roles differ from yours, seek reconciliation, and contribute faithfully while keeping Jesus—not personalities—as the church's head.",
+    "questions": [
+      "What does the body image teach about my need for other believers?",
+      "Whose contribution have I overlooked or undervalued?",
+      "How can our congregation show that Christ is the head?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "σῶμα",
+        "term": "sōma",
+        "meaning": "body",
+        "note": "Paul uses the image to explain unity that does not erase different members and functions."
+      },
+      {
+        "language": "Greek",
+        "script": "κεφαλή",
+        "term": "kephalē",
+        "meaning": "head",
+        "note": "In passages about the church, Christ's headship expresses His governing and life-giving place."
+      },
+      {
+        "language": "Greek",
+        "script": "μέλος",
+        "term": "melos",
+        "meaning": "member, part of a body",
+        "note": "Each member belongs to the whole and has a meaningful place in it."
+      }
+    ],
+    "relatedExplanations": [
+      "1 Corinthians 12:12–27 — one body contains many members, and no member can dismiss another as unnecessary.",
+      "Ephesians 1:22–23 — the church is identified as Christ's body under His headship.",
+      "Ephesians 4:15–16 — the body grows as every part works properly and builds itself up in love.",
+      "Colossians 1:18 — Christ is the head of the body, the church, and holds first place.",
+      "Romans 12:4–5 — believers are individually distinct yet mutually joined in Christ."
     ]
   },
   {
@@ -4986,6 +5142,45 @@ const topics=[
         "verse": 1,
         "endVerse": 4
       }
+    ],
+    "definition": "Christian unity is the Spirit-created bond of people reconciled to God through Christ and called to preserve peace, truth and mutual love. It is not sameness or denial of every disagreement; it is shared allegiance to Jesus expressed through humility and patient care.",
+    "oldTestament": "Psalm 133 celebrates the goodness of God's people dwelling together. Israel's covenant life also calls for justice, truth and care across the community (Leviticus 19:15–18; Zechariah 8:16–17).",
+    "newTestament": "Jesus prays for His followers' unity so the world may believe (John 17:20–23). Paul urges believers to maintain the Spirit's unity through humility, patience and love, while holding to one Lord, one faith and one baptism (Ephesians 4:1–6; Philippians 2:1–4).",
+    "application": "Choose humility over rivalry, speak truth without contempt, forgive where repentance is present and address conflict honestly. Protect unity without hiding serious wrongdoing or abandoning biblical conviction.",
+    "questions": [
+      "What attitude in me makes unity harder to preserve?",
+      "How can I pursue peace while remaining truthful?",
+      "What practical act of honour or reconciliation can I take this week?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "ἑνότης",
+        "term": "henotēs",
+        "meaning": "unity, oneness",
+        "note": "Ephesians uses the term for the unity believers are to preserve in the Spirit."
+      },
+      {
+        "language": "Greek",
+        "script": "ταπεινοφροσύνη",
+        "term": "tapeinophrosynē",
+        "meaning": "humility, lowliness of mind",
+        "note": "A posture that puts away pride and makes patient fellowship possible."
+      },
+      {
+        "language": "Greek",
+        "script": "εἰρήνη",
+        "term": "eirēnē",
+        "meaning": "peace",
+        "note": "In the letters, peace includes reconciled relationships and the well-being God gives."
+      }
+    ],
+    "relatedExplanations": [
+      "John 17:20–23 — Jesus prays that His followers may be one, with a unity that bears witness to the world.",
+      "Ephesians 4:1–6 — humility, gentleness, patience and love help preserve the Spirit's unity.",
+      "Philippians 2:1–4 — believers are called away from selfish ambition toward the interests of others.",
+      "Psalm 133:1 — shared life among God's people is celebrated as a good and precious gift.",
+      "Romans 14:1–13 — believers must not despise or condemn one another over disputable matters."
     ]
   },
   {
