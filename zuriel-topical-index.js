@@ -4382,6 +4382,45 @@ const topics=[
         "verse": 1,
         "endVerse": 44
       }
+    ],
+    "definition": "The miracles of Jesus are signs of God's kingdom that reveal His authority, compassion and identity. They include healings, deliverance, provision and power over nature and death. They are not spectacles detached from His message; they point to the restoring reign of God and invite faith.",
+    "oldTestament": "The Old Testament records God's power working through creation, provision, healing and prophetic signs. The Exodus displays His deliverance; Elijah and Elisha perform signs that testify to God's living presence. These works prepare readers to recognise the significance of Jesus' mighty deeds without treating every miracle as an isolated display.",
+    "newTestament": "The Gospels show Jesus healing the sick, cleansing lepers, feeding crowds, calming storms and raising the dead. Matthew 11:2–6 connects His works with messianic hope, while John calls selected miracles signs that reveal His glory and purpose. The apostles later proclaim the risen Jesus as the one through whom God's power is at work.",
+    "application": "Read each miracle in its setting: notice the need, the person Jesus meets, His response and the reaction of witnesses. Let these accounts deepen trust in His compassion and authority. Pray honestly for help while remembering that a miracle story is not a promise that every illness or difficulty will be removed immediately.",
+    "questions": [
+      "What does this miracle reveal about Jesus' authority or compassion?",
+      "How does the person in need respond to Jesus?",
+      "What does the passage invite me to trust, and what should I avoid assuming?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "δύναμις",
+        "term": "dynamis",
+        "meaning": "power, mighty work",
+        "note": "The word can describe effective power and mighty deeds associated with God's activity."
+      },
+      {
+        "language": "Greek",
+        "script": "σημεῖον",
+        "term": "sēmeion",
+        "meaning": "sign, identifying mark",
+        "note": "John often uses this term to show that a miracle points beyond itself to Jesus' identity and glory."
+      },
+      {
+        "language": "Greek",
+        "script": "σπλαγχνίζομαι",
+        "term": "splagchnizomai",
+        "meaning": "to feel compassion deeply",
+        "note": "A vivid word used in Gospel scenes where Jesus is moved by human need."
+      }
+    ],
+    "relatedExplanations": [
+      "Exodus 14:21–31 — The sea crossing reveals God's power to deliver Israel and becomes a foundational memory of divine rescue.",
+      "1 Kings 17:17–24 — Elijah's prayer and the child's restoration testify that the Lord gives life and hears His prophet.",
+      "Mark 4:35–41 — Jesus calms the storm, prompting the disciples to ask who He is; the miracle exposes the depth of His authority.",
+      "Mark 5:21–43 — The healing of the woman and raising of Jairus' daughter place faith, compassion and Jesus' authority over death together.",
+      "John 20:30–31 — John explains that Jesus' signs are recorded to lead readers to believe that He is the Messiah and Son of God."
     ]
   },
   {
@@ -4427,6 +4466,45 @@ const topics=[
         "verse": 32,
         "endVerse": 36
       }
+    ],
+    "definition": "The compassion of Jesus is His active, merciful response to people who are suffering, excluded, confused or burdened. His compassion is more than emotion: it moves Him to teach, heal, feed, welcome and restore people while calling them into God's kingdom.",
+    "oldTestament": "God repeatedly reveals Himself as merciful and compassionate, slow to anger and rich in steadfast love (Exodus 34:6–7; Psalm 103:8–14). The prophets condemn leaders who neglect the vulnerable and promise that God Himself will shepherd His people. Jesus' compassion stands within this consistent biblical revelation of God's heart.",
+    "newTestament": "Jesus is moved by crowds who are harassed and helpless (Matthew 9:35–38), touches a leper (Mark 1:40–45), welcomes children (Mark 10:13–16) and responds to the hungry crowd (Mark 8:1–9). His parables also reveal mercy, especially the Samaritan who acts as a neighbour and the father who welcomes his returning son.",
+    "application": "Receive Christ's mercy without shame, and allow it to shape how you treat others. Notice people who are overlooked, listen before judging, and make compassion practical through time, help, hospitality and prayer. Compassion should be joined to wisdom and truth, not confused with enabling harm.",
+    "questions": [
+      "Who is overlooked or burdened in the passage, and how does Jesus respond?",
+      "What does His compassion reveal about God's character?",
+      "What practical act of mercy can I offer someone this week?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "σπλαγχνίζομαι",
+        "term": "splagchnizomai",
+        "meaning": "to be moved with compassion",
+        "note": "Describes deep compassion that moves toward a person's need."
+      },
+      {
+        "language": "Greek",
+        "script": "ἔλεος",
+        "term": "eleos",
+        "meaning": "mercy, compassion",
+        "note": "A key New Testament term for mercy shown by God and practised by His people."
+      },
+      {
+        "language": "Hebrew",
+        "script": "רַחוּם",
+        "term": "raḥum",
+        "meaning": "compassionate, merciful",
+        "note": "An Old Testament description of God's merciful character."
+      }
+    ],
+    "relatedExplanations": [
+      "Exodus 34:6–7 — God's self-revelation names Him compassionate and gracious, establishing the foundation for biblical mercy.",
+      "Psalm 103:8–14 — The Lord's compassion is compared to a father's care and is attentive to human frailty.",
+      "Matthew 9:35–38 — Jesus sees the crowds as sheep without a shepherd and responds with compassion and a call to pray for workers.",
+      "Mark 1:40–45 — Jesus touches and cleanses a man with leprosy, crossing a social boundary to restore him.",
+      "Luke 10:25–37 — The Samaritan demonstrates neighbour-love through costly, practical care for a wounded stranger."
     ]
   },
   {
@@ -4473,6 +4551,45 @@ const topics=[
         "verse": 21,
         "endVerse": 25
       }
+    ],
+    "definition": "The Cross is the central event of Jesus' saving mission: He willingly gives Himself in obedience to the Father, bearing sin and opening the way for forgiveness and reconciliation. The New Testament explains the Cross through several complementary images, including sacrifice, redemption, victory, reconciliation and the demonstration of divine love.",
+    "oldTestament": "The sacrificial system teaches the seriousness of sin and the need for atonement; Passover remembers deliverance through the blood of the lamb. Isaiah 52:13–53:12 portrays the servant who suffers for others, while Psalm 22 gives language for anguish and trust. These passages contribute to the New Testament's interpretation of Jesus' death.",
+    "newTestament": "Jesus speaks of giving His life as a ransom (Mark 10:45). Paul proclaims Christ crucified as God's wisdom and power (1 Corinthians 1:18–25), and explains reconciliation through His death (Romans 5:6–11). Hebrews presents Jesus' self-offering as once for all, not a sacrifice that must be repeatedly offered.",
+    "application": "Approach the Cross with gratitude, humility and confidence in God's grace. Confess sin honestly, forgive as those who have received mercy, and reject boasting in personal achievement. Christian discipleship also means taking up the cross: choosing faithful love and obedience even when they are costly.",
+    "questions": [
+      "Which image of the Cross does this passage emphasise: sacrifice, ransom, victory or reconciliation?",
+      "How does Jesus' willing self-giving reveal God's love?",
+      "How should receiving grace change the way I treat someone who has wronged me?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "σταυρός",
+        "term": "stauros",
+        "meaning": "cross",
+        "note": "The instrument of Jesus' execution becomes the central sign of His self-giving and God's saving work."
+      },
+      {
+        "language": "Greek",
+        "script": "ἀπολύτρωσις",
+        "term": "apolytrōsis",
+        "meaning": "redemption, release by payment",
+        "note": "Describes liberation from bondage through Christ's saving work."
+      },
+      {
+        "language": "Greek",
+        "script": "καταλλαγή",
+        "term": "katallagē",
+        "meaning": "reconciliation",
+        "note": "Describes restored relationship with God through Christ."
+      }
+    ],
+    "relatedExplanations": [
+      "Exodus 12:1–14 — Passover remembers deliverance from judgment and becomes an important background for New Testament reflection on Christ.",
+      "Isaiah 53:4–6 — The servant bears suffering and the burden of others, a passage Christians have long read in relation to Jesus' saving death.",
+      "Mark 10:42–45 — Jesus contrasts worldly domination with servant leadership and describes His life as a ransom for many.",
+      "Romans 5:6–11 — Christ dies for the ungodly, demonstrating God's love and bringing reconciliation while people are still sinners.",
+      "Hebrews 10:11–18 — Jesus' single offering is contrasted with repeated sacrifices and is presented as sufficient for His people."
     ]
   },
   {
@@ -4518,6 +4635,45 @@ const topics=[
         "verse": 12,
         "endVerse": 28
       }
+    ],
+    "definition": "The resurrection is God's raising of Jesus bodily from the dead on the third day. It is not merely the survival of His influence or a metaphor for hope; it is the decisive vindication of Jesus, the foundation of Christian proclamation and the beginning of God's new creation.",
+    "oldTestament": "Israel's Scriptures contain hope that God will not abandon His faithful one to the realm of the dead (Psalm 16:8–11) and promises that death will not have the final word (Isaiah 25:6–9; Daniel 12:1–3). These texts form part of the biblical horizon in which the apostles announce Jesus' resurrection.",
+    "newTestament": "The Gospels report the empty tomb and appearances of the risen Jesus. Paul summarises the received testimony in 1 Corinthians 15:3–8 and explains that Christ's resurrection is the firstfruits of those who belong to Him. Romans 6 connects His resurrection with new life, while 1 Peter 1:3 describes living hope through His resurrection.",
+    "application": "Let the resurrection ground hope beyond present circumstances without denying grief or pain. Because Jesus is risen, faith is not in vain and faithful labour matters. Live in the newness of life: turn from sin, serve others and hold firmly to the hope of God's future renewal.",
+    "questions": [
+      "What evidence and witnesses do the Gospel accounts present?",
+      "Why does Paul call Christ the firstfruits of those who have died?",
+      "How should resurrection hope shape my choices and courage today?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "ἀνάστασις",
+        "term": "anastasis",
+        "meaning": "resurrection, rising",
+        "note": "The New Testament's central term for being raised from the dead."
+      },
+      {
+        "language": "Greek",
+        "script": "ἐγείρω",
+        "term": "egeirō",
+        "meaning": "to raise, awaken",
+        "note": "Frequently used for God's action in raising Jesus."
+      },
+      {
+        "language": "Greek",
+        "script": "ἀπαρχή",
+        "term": "aparchē",
+        "meaning": "firstfruits, first portion",
+        "note": "Paul uses this harvest image to describe Christ as the beginning and guarantee of the resurrection harvest."
+      }
+    ],
+    "relatedExplanations": [
+      "Psalm 16:8–11 — The psalm expresses confidence that God will not abandon His faithful one to the grave; the apostles apply it to Jesus' resurrection.",
+      "Isaiah 25:6–9 — The prophet pictures God swallowing up death and wiping away tears, a hope echoed in New Testament resurrection teaching.",
+      "Matthew 28:1–10 — The women encounter the empty tomb and the risen Jesus, and are sent to tell the disciples.",
+      "Luke 24:36–49 — Jesus appears to His gathered followers, shows that He is truly risen and opens their understanding of Scripture.",
+      "1 Corinthians 15:12–28 — Paul argues that Christ's resurrection is essential to Christian faith and the firstfruits of the future resurrection."
     ]
   },
   {
@@ -4564,6 +4720,45 @@ const topics=[
         "verse": 9,
         "endVerse": 11
       }
+    ],
+    "definition": "The ascension is Jesus' return to the Father after His resurrection, and His exaltation is His enthronement at God's right hand. These are not signs that Jesus has abandoned His people; they mark His continuing reign, intercession and the sending of the Holy Spirit for the Church's witness.",
+    "oldTestament": "Psalm 110 pictures the Lord's anointed seated at God's right hand, while Daniel 7:13–14 portrays a human-like figure receiving everlasting dominion. These royal visions provide important language for the New Testament's announcement that the risen Jesus reigns with divine authority.",
+    "newTestament": "Acts 1:1–11 records Jesus' ascension and promise of the Spirit. Peter interprets the event through Psalm 110 in Acts 2:32–36. Ephesians 1:20–23 describes Christ exalted above every power and given as head over all things to the Church, while Hebrews 4:14–16 encourages believers because their great High Priest has passed through the heavens.",
+    "application": "Worship Jesus as the reigning Lord and approach God with confidence through Him. The ascension gives the Church a mission, not an excuse for passivity: bear witness in the Spirit's power, serve faithfully and live under Christ's authority. Remember that His reign is greater than the powers that trouble the world.",
+    "questions": [
+      "What promise does Jesus give before His ascension?",
+      "How do Psalm 110 and Daniel 7 help explain Christ's exaltation?",
+      "How does the risen and reigning Christ shape the Church's mission today?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "ἀναλαμβάνω",
+        "term": "analambanō",
+        "meaning": "to take up, receive",
+        "note": "Used in Acts 1 to describe Jesus being taken up into heaven."
+      },
+      {
+        "language": "Greek",
+        "script": "ὑπερυψόω",
+        "term": "hyperypsoō",
+        "meaning": "to exalt highly",
+        "note": "Philippians 2 uses this strong term for God's exaltation of Jesus."
+      },
+      {
+        "language": "Greek",
+        "script": "δεξιός",
+        "term": "dexios",
+        "meaning": "right, right hand",
+        "note": "The right-hand image signifies honour, authority and royal rule."
+      }
+    ],
+    "relatedExplanations": [
+      "Psalm 110:1 — The enthroned Lord at God's right hand becomes a foundational text for New Testament teaching about Jesus' reign.",
+      "Daniel 7:13–14 — The human-like figure receives dominion and a kingdom that will not pass away, imagery applied to Christ's authority.",
+      "Acts 1:1–11 — Jesus commissions His witnesses, promises the Holy Spirit and is taken up before their eyes.",
+      "Acts 2:32–36 — Peter proclaims the resurrection and exaltation of Jesus as Lord and Messiah, drawing on Psalm 110.",
+      "Ephesians 1:19–23 — Christ is seated above every authority and given as head over all things for the Church."
     ]
   },
   {
