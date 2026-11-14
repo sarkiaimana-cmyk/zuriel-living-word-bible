@@ -340,6 +340,35 @@
         }
       }
 
+      // Connect the original-language entry to the offline biblical dictionary.
+      // The English gloss is only a search bridge, not a replacement for the
+      // Hebrew or Greek definition or the word's context in this verse.
+      const dictionaryMatches = bibleDictionary.filter(function (term) {
+        const glossText = entry.senses.map(sense => String(sense.gloss || "")).join(" ").toLowerCase();
+        const title = term[0].toLowerCase();
+        return title.length > 3 && glossText.includes(title);
+      }).slice(0, 4);
+      if (dictionaryMatches.length) {
+        const dictionaryBox = document.createElement("div");
+        dictionaryBox.className = "lexicon-entry";
+        const dictionaryHeading = document.createElement("h4");
+        dictionaryHeading.textContent = "Connected biblical dictionary";
+        dictionaryBox.appendChild(dictionaryHeading);
+        const dictionaryNote = document.createElement("p");
+        dictionaryNote.textContent = "These dictionary entries are suggested by the English gloss. They are related study pathways, not claims that the English term fully defines the original-language word.";
+        dictionaryBox.appendChild(dictionaryNote);
+        dictionaryMatches.forEach(function (term) {
+          const entryBox = document.createElement("div");
+          const termHeading = document.createElement("strong");
+          termHeading.textContent = term[0];
+          const definition = document.createElement("p");
+          definition.textContent = term[1];
+          entryBox.append(termHeading, definition);
+          dictionaryBox.appendChild(entryBox);
+        });
+        box.appendChild(dictionaryBox);
+      }
+
       const related = document.createElement("div");
       related.className = "lexicon-entry";
       const relatedHeading = document.createElement("h4");
@@ -352,7 +381,7 @@
       verses.forEach(function (verse) {
         (verse.words || []).forEach(function (word) {
           if (normalizeStrongs(word.strongs) === id) {
-            matches.push({ verse: verse.verse, gloss: word.gloss || "" });
+            matches.push({ verse: Number(verse.verse), gloss: word.gloss || "" });
           }
         });
       });
@@ -360,10 +389,29 @@
       const uniqueVerses = [...new Map(matches.map(item => [item.verse, item])).values()];
       if (uniqueVerses.length) {
         uniqueVerses.forEach(function (item) {
-          const line = document.createElement("p");
-          line.textContent = ref.book + " " + ref.chapter + ":" + item.verse +
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "study-link";
+          button.textContent = ref.book + " " + ref.chapter + ":" + item.verse +
             (item.gloss ? " — " + item.gloss : "");
-          related.appendChild(line);
+          button.addEventListener("click", async function () {
+            if (typeof window.openChapter !== "function") return;
+            button.disabled = true;
+            try {
+              await window.openChapter(ref.book, ref.chapter);
+              const targetVerse = document.querySelectorAll("#message .verse")[item.verse - 1];
+              if (!targetVerse) throw new Error("That verse is not visible in the reader.");
+              const verseText = targetVerse.textContent.replace(/^\\s*\\d+\\.?\\s*/, "").trim();
+              targetVerse.scrollIntoView({ behavior: "smooth", block: "center" });
+              if (window.ZurielStudy && typeof window.ZurielStudy.openForReference === "function") {
+                window.ZurielStudy.openForReference(ref.book, ref.chapter, item.verse, verseText, "", -1);
+              }
+            } catch (error) {
+              button.disabled = false;
+              console.error("Zuriel related word occurrence:", error);
+            }
+          });
+          related.appendChild(button);
         });
       } else {
         const line = document.createElement("p");
