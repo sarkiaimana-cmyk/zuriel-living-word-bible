@@ -48,7 +48,10 @@ jobs:
       - name: Prepare offline web app
         run: npm run build:web
 
-      - name: Validate original-language study safeguards
+      - name: Syntax-check application JavaScript
+        run: for file in *.js; do node --check "$file"; done
+
+      - name: Validate study and open-book safeguards
         run: node scripts/check-study-integrity.mjs
 
       - name: Check whether release signing is configured
