@@ -3958,6 +3958,45 @@ const topics=[
         "verse": 6,
         "endVerse": 13
       }
+    ],
+    "definition": "The new covenant is God's promised work of forgiveness, inward renewal and restored relationship with His people, established through the death of Jesus and made effective by the Holy Spirit.",
+    "oldTestament": "Jeremiah 31:31–34 promises a covenant distinct from the broken covenant at Sinai: God's instruction will be written on the heart, His people will know Him, and their sins will be forgiven. Ezekiel 36:25–27 adds cleansing, a new heart and God's Spirit enabling faithful obedience. These promises do not portray God as abandoning His purposes; they announce their renewal and deepening.",
+    "newTestament": "At the Last Supper Jesus identifies the cup with the new covenant in His blood (Luke 22:19–20). Paul describes ministers of a new covenant whose life comes from the Spirit (2 Corinthians 3:4–6), and Hebrews 8 explains Christ's superior priestly ministry and the promised covenant. The new covenant is grounded in Jesus' once-for-all self-offering.",
+    "application": "Receive forgiveness as God's gift, not as something earned. Ask the Spirit to shape your desires and conduct, and let Scripture move from information into the choices of the heart. Remember that covenant grace calls believers into faithful love, worship and obedience.",
+    "questions": [
+      "How does Jeremiah describe the difference between the old and new covenants?",
+      "How does Jesus connect the new covenant with His death?",
+      "What would it look like for God's Word to shape one decision in my heart today?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "בְּרִית",
+        "term": "berit",
+        "meaning": "covenant, binding relationship",
+        "note": "Used for God's covenant commitments and the relationship He establishes with His people."
+      },
+      {
+        "language": "Greek",
+        "script": "διαθήκη",
+        "term": "diathēkē",
+        "meaning": "covenant, testament",
+        "note": "The New Testament term used for the covenant established through Christ."
+      },
+      {
+        "language": "Greek",
+        "script": "καρδία",
+        "term": "kardia",
+        "meaning": "heart, inner person",
+        "note": "Jeremiah's promise concerns inward transformation, not merely external conformity."
+      }
+    ],
+    "relatedExplanations": [
+      "Jeremiah 31:31–34 — God promises a renewed covenant marked by His instruction within the heart, personal knowledge of Him and forgiveness.",
+      "Ezekiel 36:25–27 — Cleansing, a new heart and the indwelling Spirit describe God's power to renew His people.",
+      "Luke 22:19–20 — Jesus interprets the cup in relation to the new covenant established through His sacrificial death.",
+      "2 Corinthians 3:4–6 — Paul contrasts a ministry of the Spirit with reliance on the letter alone; life and sufficiency come from God.",
+      "Hebrews 8:6–13 — Christ mediates a better covenant and the writer quotes Jeremiah to explain its promised renewal."
     ]
   },
   {
@@ -4004,6 +4043,45 @@ const topics=[
         "verse": 1,
         "endVerse": 18
       }
+    ],
+    "definition": "The incarnation is the Christian confession that the eternal Son of God truly entered human history and became human in Jesus Christ. The Gospel accounts present His birth as the fulfilment of God's promises and the arrival of the promised Messiah.",
+    "oldTestament": "Isaiah 7:14 and 9:6–7 are read in the Christian canon in connection with the promised child and Davidic ruler. The wider biblical hope includes God's presence with His people, the coming of a righteous king and blessing for the nations. These texts should be read in their original historical settings as well as in their New Testament reception.",
+    "newTestament": "Matthew 1:18–25 presents Jesus' conception by the Holy Spirit and identifies Him as Immanuel. Luke 2 narrates His birth in Bethlehem and the angelic announcement to shepherds. John 1:1–18 reaches beyond the manger to declare that the eternal Word became flesh and made the Father known. The incarnation joins true humanity with the identity and mission of the Son.",
+    "application": "Let the humility of Christ's coming reshape pride, fear and indifference. Worship Jesus as Lord, honour the dignity of human life, and welcome God's presence in ordinary circumstances. Read the birth narratives as the beginning of the saving mission that leads to the cross and resurrection.",
+    "questions": [
+      "What do Matthew and Luke each emphasise about Jesus' birth?",
+      "How does John 1 deepen the meaning of the incarnation?",
+      "How should Christ's humility influence the way I treat others?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "מָשִׁיחַ",
+        "term": "māšîaḥ",
+        "meaning": "anointed one, Messiah",
+        "note": "The Old Testament term for one set apart by anointing; it contributes to the hope of God's promised king."
+      },
+      {
+        "language": "Greek",
+        "script": "σάρξ",
+        "term": "sarx",
+        "meaning": "flesh, human existence",
+        "note": "John uses this word to affirm that the Word truly entered human life."
+      },
+      {
+        "language": "Greek",
+        "script": "μονογενής",
+        "term": "monogenēs",
+        "meaning": "only, unique, one and only",
+        "note": "Used in John to describe the unique relationship of the Son to the Father."
+      }
+    ],
+    "relatedExplanations": [
+      "Isaiah 7:14 — In its historical setting the sign addresses the crisis of the house of David; Matthew receives the passage as part of the story of Jesus, Immanuel.",
+      "Isaiah 9:6–7 — The promised royal child is associated with David's throne, justice and enduring peace.",
+      "Matthew 1:18–25 — Matthew explains Jesus' conception, Joseph's obedience and the significance of the name Immanuel.",
+      "Luke 2:1–20 — Jesus is born in Bethlehem; the announcement to shepherds presents good news and the arrival of the Saviour.",
+      "John 1:1–18 — The eternal Word is with God, is divine, creates, enters human life and reveals the Father."
     ]
   },
   {
@@ -4050,6 +4128,45 @@ const topics=[
         "verse": 1,
         "endVerse": 4
       }
+    ],
+    "definition": "The identity of Jesus Christ is the central question of Christian faith: He is the promised Messiah, the Son of God, Lord and the one who uniquely reveals the Father. The New Testament presents His divine identity and genuine humanity through His words, works, death and resurrection.",
+    "oldTestament": "Israel's Scriptures establish the hope of a coming Davidic ruler, the Lord's anointed and a servant through whom God's saving purpose would be revealed. Psalm 2, Isaiah 9:6–7 and Daniel 7:13–14 provide important royal and messianic imagery that the New Testament writers draw upon when presenting Jesus.",
+    "newTestament": "Peter confesses Jesus as the Messiah and Son of the living God (Matthew 16:13–17). John records Jesus' unity with the Father (John 10:30–38), while Colossians 1:15–20 describes Him as the image of the invisible God and the one through whom all things hold together. Hebrews 1:1–4 presents the Son as the radiance of God's glory and the exact representation of His being.",
+    "application": "Build faith on the whole witness of Scripture rather than reducing Jesus to a teacher, example or source of help alone. Read His words, trust His saving work, worship Him as Lord and let His character guide discipleship. Hold together His majesty and His compassion.",
+    "questions": [
+      "What does Peter's confession reveal about Jesus?",
+      "How do Colossians 1 and Hebrews 1 describe Christ's relationship to creation and God?",
+      "What difference should confessing Jesus as Lord make to my priorities?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "Χριστός",
+        "term": "Christos",
+        "meaning": "Christ, Anointed One",
+        "note": "The Greek equivalent of Messiah, identifying Jesus as God's promised anointed king."
+      },
+      {
+        "language": "Greek",
+        "script": "υἱός",
+        "term": "huios",
+        "meaning": "son",
+        "note": "In titles such as Son of God, the word expresses Jesus' unique relationship and identity."
+      },
+      {
+        "language": "Greek",
+        "script": "κύριος",
+        "term": "kyrios",
+        "meaning": "lord, master",
+        "note": "A title of authority and honour; its application to Jesus is central to early Christian confession."
+      }
+    ],
+    "relatedExplanations": [
+      "Matthew 16:13–17 — Peter identifies Jesus as the Messiah and Son of the living God, a confession Jesus says is revealed by the Father.",
+      "John 1:1–18 — The prologue presents the Word's eternal existence, divine identity, creative work and incarnation.",
+      "John 10:30–38 — Jesus' words and works provoke debate about His relationship with the Father and His unique authority.",
+      "Colossians 1:15–20 — Christ is described as supreme over creation and the church, with all things reconciled through His cross.",
+      "Hebrews 1:1–4 — The Son is God's climactic revelation, sustainer of all things and exalted above the angels."
     ]
   },
   {
@@ -4096,6 +4213,45 @@ const topics=[
         "verse": 27,
         "endVerse": 36
       }
+    ],
+    "definition": "The teachings of Jesus announce the kingdom of God and call people to repentance, faith, love, mercy, integrity and obedient discipleship. His teaching addresses both the inner life and public conduct, showing what life under God's reign looks like.",
+    "oldTestament": "Jesus teaches within Israel's Scriptures. The Law and Prophets call for wholehearted love of God and neighbour, justice, mercy and covenant faithfulness (Deuteronomy 6:4–5; Leviticus 19:18; Micah 6:8). Jesus does not treat righteousness as mere public performance; He calls His hearers to the purpose and depth of God's commands.",
+    "newTestament": "The Sermon on the Mount describes the character of kingdom people (Matthew 5–7). Jesus teaches trust rather than anxious pursuit of possessions (Matthew 6:19–34), and He warns that hearing must lead to practice (Matthew 7:24–27). He calls disciples to deny themselves and follow Him (Mark 8:34–38), and to love even their enemies (Luke 6:27–36).",
+    "application": "Read Jesus' teaching slowly and identify the response He asks for. Practise mercy, truthful speech, forgiveness, generosity and prayer. Do not use knowledge of His words as a substitute for obeying them; build daily life on His instruction with the help of the Spirit.",
+    "questions": [
+      "Which kingdom value in the Beatitudes challenges me most?",
+      "What is one practical way to love an enemy or difficult neighbour?",
+      "What teaching of Jesus do I need to put into practice rather than merely admire?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "βασιλεία",
+        "term": "basileia",
+        "meaning": "kingdom, reign, rule",
+        "note": "Jesus' kingdom teaching concerns God's active reign, not only a geographical territory."
+      },
+      {
+        "language": "Greek",
+        "script": "μετανοέω",
+        "term": "metanoeō",
+        "meaning": "repent, change one's mind and direction",
+        "note": "Repentance involves a changed response to God, expressed in a changed life."
+      },
+      {
+        "language": "Greek",
+        "script": "δικαιοσύνη",
+        "term": "dikaiosynē",
+        "meaning": "righteousness, justice",
+        "note": "In Jesus' teaching righteousness includes a life aligned with God's will."
+      }
+    ],
+    "relatedExplanations": [
+      "Matthew 5:1–12 — The Beatitudes describe the people who are blessed under God's reign, including the humble, merciful and peacemakers.",
+      "Matthew 6:19–34 — Jesus redirects the heart from anxious accumulation toward trust in the Father and seeking His kingdom.",
+      "Matthew 7:24–27 — The wise hearer puts Jesus' words into practice; obedience is the foundation that withstands storms.",
+      "Mark 8:34–38 — Discipleship involves self-denial, taking up the cross and following Jesus above the world's approval.",
+      "Luke 6:27–36 — Jesus calls His followers to love enemies, show mercy and reflect the Father's generosity."
     ]
   },
   {
@@ -4141,6 +4297,45 @@ const topics=[
         "verse": 9,
         "endVerse": 14
       }
+    ],
+    "definition": "A parable is a teaching story or comparison that uses familiar situations to disclose truth about God's kingdom and expose the hearer's response. Jesus' parables invite careful listening, reflection and a decision, not merely curiosity about a story's details.",
+    "oldTestament": "The Old Testament uses memorable stories, images and comparisons to teach wisdom and confront injustice. Nathan's story to David (2 Samuel 12:1–7) and the vineyard song in Isaiah 5:1–7 show how a narrative can reveal a truth that a hearer may otherwise resist. Jesus teaches within this prophetic and wisdom tradition.",
+    "newTestament": "Matthew 13 gathers kingdom parables, including the sower and the weeds. The Good Samaritan challenges narrow definitions of neighbour-love (Luke 10:25–37); the father and two sons reveal grace and the danger of resentment (Luke 15:11–32); the Pharisee and tax collector expose self-righteousness and commend humble dependence on God (Luke 18:9–14).",
+    "application": "Ask what the story reveals about God, the kingdom and the human heart. Notice the original audience and the question or conflict that prompted the parable. Avoid forcing every small detail into a hidden symbol; let the main point and the Gospel context guide interpretation.",
+    "questions": [
+      "What question or audience situation leads into the parable I am reading?",
+      "What does the parable reveal about God's kingdom or character?",
+      "Which response in the story challenges my own attitudes or actions?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "παραβολή",
+        "term": "parabolē",
+        "meaning": "parable, comparison, illustrative story",
+        "note": "A comparison that places a familiar scene alongside a spiritual truth."
+      },
+      {
+        "language": "Greek",
+        "script": "σπείρω",
+        "term": "speirō",
+        "meaning": "to sow, scatter seed",
+        "note": "The sowing image in Jesus' teaching highlights hearing and receiving the Word."
+      },
+      {
+        "language": "Greek",
+        "script": "ἔλεος",
+        "term": "eleos",
+        "meaning": "mercy, compassion",
+        "note": "The Good Samaritan narrative shows neighbour-love through practical mercy."
+      }
+    ],
+    "relatedExplanations": [
+      "Matthew 13:1–23 — The parable of the sower explains different responses to the word and calls for receptive, fruitful hearing.",
+      "Matthew 13:24–30 — The weeds among the wheat picture the coexistence of good and evil until God's final judgement; Jesus later explains the image.",
+      "Luke 10:25–37 — The Good Samaritan answers a question about neighbour-love by showing compassion across social boundaries.",
+      "Luke 15:11–32 — The father welcomes the returning son, while the elder brother exposes resentment toward grace.",
+      "Luke 18:9–14 — The contrast between the Pharisee and tax collector teaches humility and dependence on God's mercy."
     ]
   },
   {
