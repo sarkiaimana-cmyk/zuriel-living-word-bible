@@ -506,7 +506,7 @@
               await window.openChapter(ref.book, ref.chapter);
               const targetVerse = document.querySelectorAll("#message .verse")[item.verse - 1];
               if (!targetVerse) throw new Error("That verse is not visible in the reader.");
-              const verseText = targetVerse.textContent.replace(/^\\s*\\d+\\.?\\s*/, "").trim();
+              const verseText = targetVerse.textContent.replace(/^\s*\d+\.?\s*/, "").trim();
               targetVerse.scrollIntoView({ behavior: "smooth", block: "center" });
               if (window.ZurielStudy && typeof window.ZurielStudy.openForReference === "function") {
                 window.ZurielStudy.openForReference(ref.book, ref.chapter, item.verse, verseText, "", -1);
@@ -593,7 +593,7 @@
             const verseElements = document.querySelectorAll("#message .verse");
             const target = verseElements[verseNumber - 1];
             if (!target) throw new Error("The connected verse could not be located in the reader.");
-            const verseText = target.textContent.replace(/^\\s*\\d+\\.?\\s*/, "").trim();
+            const verseText = target.textContent.replace(/^\s*\d+\.?\s*/, "").trim();
             target.scrollIntoView({ behavior: "smooth", block: "center" });
             target.classList.add("zuriel-selected-verse");
             if (window.ZurielStudy && typeof window.ZurielStudy.openForReference === "function") {

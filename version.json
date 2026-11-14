@@ -1,4 +1,4 @@
 {
-  "version": "1.0.5",
-  "releaseNotes": "Adds clear offline and temporary-error recovery with a retry action for Hebrew and Greek lexicon entries. Preserves the selected Scripture and refreshes the offline app cache."
+  "version": "1.0.6",
+  "releaseNotes": "Corrects verse-number parsing when opening related original-language occurrences, so verse text and study selection stay clean. Refreshes the offline app cache."
 }
