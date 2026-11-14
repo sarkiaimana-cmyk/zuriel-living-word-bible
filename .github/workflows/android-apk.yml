@@ -93,7 +93,19 @@ jobs:
           KEYSTORE="$RUNNER_TEMP/zuriel-release.jks"
           # Ignore whitespace or stray clipboard characters, then validate the
           # decoded PKCS12 keystore and expected alias before attempting signing.
-          printf '%s' "$ZURIEL_KEYSTORE_BASE64" | base64 --decode --ignore-garbage > "$KEYSTORE"
+          python3 - <<'PY'
+          import base64, os
+          raw = os.environ["ZURIEL_KEYSTORE_BASE64"]
+          alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+          clean = "".join(ch for ch in raw if ch in alphabet)
+          clean = clean.rstrip("=")
+          clean += "=" * ((-len(clean)) % 4)
+          data = base64.b64decode(clean, validate=True)
+          if not data:
+              raise SystemExit("The configured keystore secret decoded to an empty file.")
+          with open(os.environ["RUNNER_TEMP"] + "/zuriel-release.jks", "wb") as output:
+              output.write(data)
+          PY
           test -s "$KEYSTORE"
           keytool -list -keystore "$KEYSTORE" -storetype PKCS12 \
             -storepass "$ZURIEL_KEYSTORE_PASSWORD" \
