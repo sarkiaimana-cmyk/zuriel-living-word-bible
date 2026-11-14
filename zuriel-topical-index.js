@@ -6068,6 +6068,45 @@ const topics=[
         "verse": 19,
         "endVerse": 20
       }
+    ],
+    "definition": "Anger is a powerful response to perceived wrong or frustration. Scripture distinguishes righteous concern about evil from destructive anger that harms others. Reconciliation seeks truth, repentance where needed, forgiveness and restored peace without denying justice or safety.",
+    "oldTestament": "Cain's anger exposes how resentment can grow into sin (Genesis 4:5–8). Proverbs warns that a hot temper produces conflict (Proverbs 15:1; 29:11). The prophets also show that God opposes injustice; not every expression of moral anger is selfish.",
+    "newTestament": "Jesus teaches reconciliation and truthful peacemaking (Matthew 5:21–24; 18:15–17). Paul commands believers to be slow to anger, to reject bitterness and to pursue peace as far as it depends on them (Ephesians 4:26–32; Romans 12:18). Forgiveness does not require remaining in danger or concealing abuse.",
+    "application": "Pause before responding. Name the wrong honestly, listen carefully, and speak truth without insult or retaliation. Where you have caused harm, take responsibility and make amends. Seek wise help when conflict is entrenched; prioritise safety where there is abuse or threat.",
+    "questions": [
+      "What usually triggers my anger, and what fear or desire lies beneath it?",
+      "Have I confused forgiveness with pretending that harm did not happen?",
+      "What truthful, safe step could move this conflict toward peace?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "אַף",
+        "term": "ʾaph",
+        "meaning": "anger; literally nose or nostril in some idioms",
+        "note": "A common Hebrew expression for anger; context determines whether it describes human or divine anger."
+      },
+      {
+        "language": "Hebrew",
+        "script": "שָׁלוֹם",
+        "term": "shalom",
+        "meaning": "peace, wholeness, well-being",
+        "note": "Biblical peace is more than the absence of conflict; it includes well-being and right relationship."
+      },
+      {
+        "language": "Greek",
+        "script": "ὀργή",
+        "term": "orgē",
+        "meaning": "anger, wrath",
+        "note": "Used for human anger and divine judgment; the subject and context are essential."
+      }
+    ],
+    "relatedExplanations": [
+      "Genesis 4:5–8 — Cain's unchecked anger becomes violence; the narrative warns about sin's destructive progression.",
+      "Proverbs 15:1 — A gentle answer can turn away wrath, highlighting the power of a measured response.",
+      "Matthew 5:23–24 — Jesus makes reconciliation with an offended brother or sister a serious matter of worshipful obedience.",
+      "Ephesians 4:26–32 — Paul addresses anger, truthful speech, kindness and forgiveness within the community.",
+      "Romans 12:18 — Believers are called to pursue peace as far as it is genuinely within their responsibility."
     ]
   },
   {
@@ -6114,6 +6153,45 @@ const topics=[
         "verse": 3,
         "endVerse": 7
       }
+    ],
+    "definition": "Grief is the sorrow experienced in loss, suffering or disappointment. Biblical lament brings honest pain before God, expressing questions and tears while continuing to seek His presence. Comfort does not erase loss; it accompanies the grieving with compassion and hope.",
+    "oldTestament": "The Psalms give language for tears, fear and unanswered questions (Psalm 13; 42; 88). Job's friends initially serve him best when they sit silently with him (Job 2:11–13). Ecclesiastes recognises that there is a time to mourn (Ecclesiastes 3:1–4).",
+    "newTestament": "Jesus weeps at Lazarus's tomb (John 11:32–36), showing that hope and sorrow can coexist. He blesses those who mourn (Matthew 5:4). The church is called to comfort one another, and Christian hope looks toward resurrection without minimising present suffering (2 Corinthians 1:3–4; 1 Thessalonians 4:13–18).",
+    "application": "Allow grief to be honest and unhurried. Pray with the words you actually have, accept practical support, and avoid pressuring yourself or others to recover on a timetable. If grief becomes overwhelming or makes daily life unsafe, seek compassionate professional and pastoral support.",
+    "questions": [
+      "Which loss or sorrow do I need to bring honestly before God?",
+      "Who can sit with me or receive my support without rushing the process?",
+      "How can resurrection hope comfort me without denying today's pain?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "בָּכָה",
+        "term": "bākāh",
+        "meaning": "to weep, lament",
+        "note": "Used for literal tears and expressions of deep sorrow."
+      },
+      {
+        "language": "Hebrew",
+        "script": "נָחַם",
+        "term": "nāḥam",
+        "meaning": "to comfort or console; in other forms, to relent",
+        "note": "Its sense depends on the Hebrew stem and context."
+      },
+      {
+        "language": "Greek",
+        "script": "παρακαλέω",
+        "term": "parakaleō",
+        "meaning": "to comfort, encourage, appeal",
+        "note": "The word can describe coming alongside someone with encouragement or consolation."
+      }
+    ],
+    "relatedExplanations": [
+      "Psalm 13 — The movement from 'How long?' to trust shows that lament can include both protest and faith.",
+      "Job 2:11–13 — The friends' silent presence illustrates compassionate companionship before explanations.",
+      "Matthew 5:4 — Jesus calls mourners blessed and promises God's comfort.",
+      "John 11:32–36 — Jesus' tears reveal compassion in the face of death even as the resurrection story unfolds.",
+      "2 Corinthians 1:3–4 — Comfort received from God equips believers to comfort others in affliction."
     ]
   },
   {
@@ -6160,6 +6238,45 @@ const topics=[
         "verse": 27,
         "endVerse": null
       }
+    ],
+    "definition": "Fear is a response to danger, uncertainty or perceived threat. Scripture does not shame people for feeling afraid; it repeatedly invites them to remember God's presence, seek wisdom and act faithfully. Courage is not denial of danger but trust expressed through wise action.",
+    "oldTestament": "God assures Joshua of His presence as he faces a daunting responsibility (Joshua 1:5–9). The Psalms describe refuge amid real trouble (Psalm 23; 46; 56:3–4). Isaiah speaks comfort to a people facing uncertainty (Isaiah 41:10).",
+    "newTestament": "Jesus tells His disciples not to let troubled hearts rule them and promises His peace (John 14:27). The early church prays for boldness amid opposition (Acts 4:23–31). Paul contrasts a spirit of fear with power, love and sound judgment (2 Timothy 1:7).",
+    "application": "Identify the actual danger rather than letting imagined outcomes dominate. Pray, seek trustworthy counsel, prepare wisely and take the next faithful step. God's presence is not a promise that believers will never suffer; it is assurance that they are not abandoned.",
+    "questions": [
+      "What is the specific fear I am carrying today?",
+      "What practical action or wise support is available to me?",
+      "Which Scripture helps me remember God's presence without pretending the danger is unreal?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "יָרֵא",
+        "term": "yārēʾ",
+        "meaning": "to fear, be afraid; also to revere",
+        "note": "The context distinguishes terror from reverent fear of God."
+      },
+      {
+        "language": "Hebrew",
+        "script": "חָסָה",
+        "term": "ḥāsāh",
+        "meaning": "to take refuge, seek shelter",
+        "note": "Often pictures trusting God as a safe refuge."
+      },
+      {
+        "language": "Greek",
+        "script": "φόβος",
+        "term": "phobos",
+        "meaning": "fear, alarm, reverence",
+        "note": "The word's meaning depends on whether the context concerns threat or reverence."
+      }
+    ],
+    "relatedExplanations": [
+      "Joshua 1:5–9 — Courage is grounded in God's promised presence and the call to keep His instruction.",
+      "Psalm 46:1–3 — The psalm declares God a refuge even when the created order seems unstable.",
+      "Isaiah 41:10 — God's strengthening and help address a fearful people in a difficult historical setting.",
+      "John 14:27 — Jesus gives peace to His disciples as He prepares them for His departure and coming trouble.",
+      "2 Timothy 1:7 — Paul encourages Timothy toward courageous, loving and disciplined service rather than timid retreat."
     ]
   },
   {
@@ -6205,6 +6322,45 @@ const topics=[
         "verse": 7,
         "endVerse": 11
       }
+    ],
+    "definition": "Biblical waiting is active trust over time. It involves hope, endurance, prayer and obedience when an answer or outcome has not yet arrived. Patience is not passivity; it is steadfast faith that refuses to force an outcome through wrongdoing.",
+    "oldTestament": "The Psalms repeatedly call worshippers to wait for the LORD with courage and hope (Psalm 27:14; 37:7). Abraham and Sarah's story shows both the difficulty of waiting and the consequences of trying to secure the promise by human schemes (Genesis 15–16; 21).",
+    "newTestament": "James describes steadfastness under testing (James 1:2–4). Paul links hope with patient endurance (Romans 8:24–25; 12:12). The farmer's patience becomes an image for believers who wait for the Lord while continuing in faithful practice (James 5:7–11).",
+    "application": "Keep doing what Scripture clearly calls you to do while leaving the timing of uncertain outcomes with God. Set wise routines, seek counsel and resist shortcuts that compromise integrity. Waiting can include taking responsible action; it does not require tolerating preventable harm.",
+    "questions": [
+      "Where am I tempted to force an outcome rather than act faithfully?",
+      "What can I responsibly do while I wait?",
+      "Which promise or truth gives hope without pretending I know God's timetable?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "קָוָה",
+        "term": "qāvāh",
+        "meaning": "to wait, hope, look eagerly",
+        "note": "Often conveys expectant waiting rather than empty delay."
+      },
+      {
+        "language": "Hebrew",
+        "script": "יָחַל",
+        "term": "yāḥal",
+        "meaning": "to wait, hope",
+        "note": "Used for hopeful expectation, often directed toward the LORD."
+      },
+      {
+        "language": "Greek",
+        "script": "ὑπομονή",
+        "term": "hypomonē",
+        "meaning": "steadfastness, endurance, perseverance",
+        "note": "Describes remaining faithful under pressure rather than giving up."
+      }
+    ],
+    "relatedExplanations": [
+      "Psalm 27:14 — Waiting for the LORD is joined to courage and strength.",
+      "Psalm 37:7 — The worshipper is called to be still before God and resist envy of those who prosper through wrongdoing.",
+      "Romans 8:24–25 — Hope concerns what is not yet seen and therefore calls for patient endurance.",
+      "James 1:2–4 — Trials can produce steadfastness, moving believers toward maturity.",
+      "James 5:7–11 — The farmer and the prophets illustrate patient faith while awaiting the Lord's purposes."
     ]
   },
   {
@@ -6250,6 +6406,45 @@ const topics=[
         "verse": 9,
         "endVerse": 10
       }
+    ],
+    "definition": "Guidance is the process of seeking and following what is wise and faithful before God. Discernment tests choices by Scripture, prayer, truthful counsel, character, circumstances and the fruit a decision is likely to produce. Not every strong feeling or open door is a divine command.",
+    "oldTestament": "Proverbs commends seeking wisdom and acknowledging God in one's paths (Proverbs 3:5–7; 11:14). Israel's story also warns against acting without seeking counsel (Joshua 9:14). The Psalms portray God's instruction as a lamp for the next step (Psalm 119:105).",
+    "newTestament": "Jesus teaches that a tree is recognised by its fruit (Matthew 7:15–20). Paul urges believers to test and approve what is good (Romans 12:1–2; 1 Thessalonians 5:21–22). James encourages asking God for wisdom, and the early church discerns together through prayer, Scripture and communal deliberation (James 1:5; Acts 15).",
+    "application": "Start with what Scripture clearly teaches. Pray honestly, gather relevant facts, consider consequences, consult mature and trustworthy people, and examine motives. Be willing to revise a decision when new facts emerge; do not use 'God told me' to silence questions or control others.",
+    "questions": [
+      "What clear biblical principles apply to this decision?",
+      "Have I gathered facts and sought wise, independent counsel?",
+      "What fruit might this choice produce in my character and relationships?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "חָכְמָה",
+        "term": "ḥokmāh",
+        "meaning": "wisdom, skill, sound judgement",
+        "note": "Wisdom in Scripture is practical skill for living faithfully, not merely information."
+      },
+      {
+        "language": "Hebrew",
+        "script": "בִּין",
+        "term": "bîn",
+        "meaning": "to understand, discern",
+        "note": "Often concerns distinguishing and perceiving what is meaningful or right."
+      },
+      {
+        "language": "Greek",
+        "script": "δοκιμάζω",
+        "term": "dokimazō",
+        "meaning": "to test, examine, approve",
+        "note": "Used for careful testing that establishes what is genuine or acceptable."
+      }
+    ],
+    "relatedExplanations": [
+      "Proverbs 3:5–7 — Trust in the LORD is paired with humility and turning away from evil.",
+      "Joshua 9:14 — Israel's leaders make a decision without seeking the LORD, illustrating the danger of incomplete discernment.",
+      "Psalm 119:105 — God's word is pictured as light for the path, often guiding the next step rather than revealing every future detail.",
+      "Romans 12:1–2 — A renewed mind learns to discern what is good and pleasing to God.",
+      "James 1:5 — Those lacking wisdom are invited to ask God, who gives generously."
     ]
   },
   {
