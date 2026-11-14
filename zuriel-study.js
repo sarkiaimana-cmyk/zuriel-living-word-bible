@@ -1331,6 +1331,58 @@
         parent.appendChild(paragraph);
       }
 
+      // A book-level reading lens helps readers notice literary form without
+      // pretending that every chapter or paragraph in a book has one genre.
+      function literaryReadingLens(book) {
+        const groups = [
+          {
+            books: ["Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy"],
+            label: "Torah, covenant and beginnings",
+            guidance: "Follow the movement of creation, promise, deliverance, covenant, worship and Israel's formation. Read laws within their covenant setting and ask what they reveal about God's character, holiness, justice and care. Distinguish the original covenant audience from how later biblical books apply these texts."
+          },
+          {
+            books: ["Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel", "1 Kings", "2 Kings", "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther"],
+            label: "Historical narrative",
+            guidance: "Notice the setting, people, decisions, consequences and the narrator's evaluation. A recorded action is not automatically an instruction to imitate it. Ask how the episode contributes to the larger story of Israel, covenant faithfulness, leadership, exile or restoration."
+          },
+          {
+            books: ["Job", "Psalms", "Proverbs", "Ecclesiastes", "Song of Solomon", "Lamentations"],
+            label: "Poetry and wisdom",
+            guidance: "Watch for parallel lines, images, emotion, metaphor, repetition and poetic contrast. Wisdom sayings often express a general pattern for faithful living rather than an unconditional promise for every circumstance. In lament, notice both honest grief and the movement of trust."
+          },
+          {
+            books: ["Isaiah", "Jeremiah", "Ezekiel", "Daniel", "Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum", "Habakkuk", "Zephaniah", "Haggai", "Zechariah", "Malachi"],
+            label: "Prophetic literature",
+            guidance: "Identify the prophet's original audience, historical crisis and covenant concerns. Distinguish warning, judgement, symbolic action, promise and hope. Consider how later Scripture uses the prophecy, while avoiding the assumption that every image refers directly to a modern event."
+          },
+          {
+            books: ["Matthew", "Mark", "Luke", "John"],
+            label: "Gospel narrative",
+            guidance: "Read each episode in the flow of Jesus' identity, teaching, signs, kingdom announcement, death and resurrection. Notice the Gospel writer's emphasis and original audience. Parallel accounts can illuminate one another, while each Gospel retains its own structure and purpose."
+          },
+          {
+            books: ["Acts"],
+            label: "Early-church narrative",
+            guidance: "Follow the Spirit-empowered witness of the early church, the spread of the gospel and the inclusion of the nations. Distinguish events the book reports from practices it explicitly commends or commands, and read each episode within Acts' larger mission narrative."
+          },
+          {
+            books: ["Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians", "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians", "1 Timothy", "2 Timothy", "Titus", "Philemon", "Hebrews", "James", "1 Peter", "2 Peter", "1 John", "2 John", "3 John", "Jude"],
+            label: "Letters and theological instruction",
+            guidance: "Trace the author's argument from paragraph to paragraph. Identify the audience, occasion, problem, commands, reasons and encouragements. Read a command alongside its stated purpose and the letter's wider teaching; do not detach a sentence from the issue it addresses."
+          },
+          {
+            books: ["Revelation"],
+            label: "Apocalyptic prophecy and letter",
+            guidance: "Attend to the book's first-century churches, worship scenes, symbolic visions and Old Testament imagery. Ask what the message meant to its first hearers and how it calls the church to faithful witness. Christians differ on some details of its timeline and symbols, so distinguish clear themes from debated interpretations."
+          }
+        ];
+        const match = groups.find(group => group.books.includes(book));
+        return match || {
+          label: "Literary context",
+          guidance: "Identify whether this passage is narrative, poetry, law, prophecy, teaching or a letter. Its literary form affects how its images, commands, promises and arguments should be understood."
+        };
+      }
+
       context.replaceChildren();
       const index = verses.indexOf(selected);
       const previous = index > 0 ? verseRecord(verses[index - 1]) : null;
@@ -1341,6 +1393,9 @@
       addLine(context, "Read the passage in context",
         "Begin with " + ref.book + " chapter " + ref.chapter +
         ". Read the whole chapter before drawing a conclusion from one verse.");
+      const readingLens = literaryReadingLens(ref.book);
+      addLine(context, "Literary reading lens — " + readingLens.label,
+        readingLens.guidance + " This is a starting point for the book; check the actual form of the selected paragraph.");
       if (previous) {
         addLine(context, "Immediately before — verse " + previous.number,
           previous.text);
