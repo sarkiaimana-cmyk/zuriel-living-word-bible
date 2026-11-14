@@ -26,6 +26,31 @@
     ["Revelation", 4, 11, "The Creator is worthy"]
   ];
 
+  // Concise offline starter dictionary. Entries are study summaries;
+  // readers should check each term in its passage and language context.
+  const bibleDictionary = [
+    ["Atonement","God's provision for dealing with sin and restoring relationship; in the Old Testament it is closely associated with sacrifice and cleansing. See Leviticus 16; Romans 3:23–26."],
+    ["Covenant","A solemn relationship established by promise and obligation. Biblical covenants reveal God's purposes and faithfulness. See Genesis 15; Exodus 19–24; Luke 22:20."],
+    ["Disciple","A learner and follower who receives a teacher's instruction and seeks to live by it. Christian discipleship centres on following Jesus. See Luke 9:23; John 8:31."],
+    ["Faith","Trust and reliance upon God; biblical faith includes confidence, loyalty and faithful response. See Genesis 15:6; Hebrews 11:1–6."],
+    ["Forgiveness","The release of a debt or offence; Scripture calls believers to receive God's mercy and forgive others without denying truth or justice. See Matthew 6:12–15; Ephesians 4:32."],
+    ["Grace","God's generous favour and action toward people, not earned as a wage. Grace saves and trains believers for godly living. See Ephesians 2:8–10; Titus 2:11–14."],
+    ["Holiness","Being set apart for God and living in a way that reflects His character. It includes worship, moral integrity and love. See Leviticus 19:2; 1 Peter 1:15–16."],
+    ["Justification","God's righteous declaration concerning those who trust in Christ; Paul connects it with grace, faith and Christ's saving work. See Romans 3:21–28; 5:1."],
+    ["Kingdom of God","God's reign and saving rule. Jesus announces the kingdom and teaches its values, present work and future fullness. See Mark 1:14–15; Matthew 6:10, 33."],
+    ["Mercy","Compassion shown toward those in need or distress, often with practical help. God's mercy is a pattern for His people. See Psalm 103:8–14; Luke 10:30–37."],
+    ["Redemption","Deliverance or release, often pictured as rescue from slavery or debt. The New Testament speaks of redemption through Christ. See Exodus 6:6; Ephesians 1:7."],
+    ["Repentance","A turning from sin toward God, involving a changed mind, direction and conduct. See Joel 2:12–13; Mark 1:15; Acts 3:19."],
+    ["Righteousness","What is right according to God's character and standards; it can describe just conduct and God's saving action. See Psalm  righteousness; Romans 1:16–17."],
+    ["Sanctification","Being made holy and increasingly shaped toward faithful life with God. The New Testament connects this with the Spirit, truth and obedience. See John 17:17; 1 Thessalonians 4:3."],
+    ["Salvation","God's rescue from sin and its consequences, bringing people into life and reconciliation through Jesus Christ. See Luke 19:10; Ephesians 2:8–10."],
+    ["Shalom","Hebrew term often translated peace; it can include wholeness, well-being, safety and right relationship. See Numbers 6:24–26; Isaiah 9:6."],
+    ["Sin","Human rebellion, wrongdoing or failure to live in faithfulness to God; Scripture describes both acts and the deeper condition. See Genesis 3; Romans 3:23; 1 John 1:8–9."],
+    ["Stewardship","Responsible care of what has been entrusted by God, including resources, gifts, creation and relationships. See Genesis 2:15; Luke 16:10–13."],
+    ["Wisdom","Skill in living rightly before God, joining understanding with just and faithful action. See Proverbs 1:7; James 1:5; 3:13–18."],
+    ["Worship","Honouring God with reverence, love, trust and obedient life, not merely singing or ceremony. See Deuteronomy 6:4–5; John 4:23–24; Romans 12:1."]
+  ];
+
   function readNotes() {
     try {
       return JSON.parse(localStorage.getItem(NOTES_KEY)) || {};
@@ -702,6 +727,18 @@
         </details>
 
         <details>
+          <summary>📖 Biblical Dictionary — Search Key Terms</summary>
+          <div class="study-body">
+            <p>Search concise explanations of important biblical words and themes. These are introductory study summaries, not exhaustive lexical definitions; always read the linked passages in context.</p>
+            <label for="zurielDictionarySearch">Search dictionary</label>
+            <input id="zurielDictionarySearch" type="search" placeholder="Try grace, covenant, faith, holiness…" autocomplete="off">
+            <div id="zurielDictionaryResults" aria-live="polite">
+              <p>Type a word to explore its meaning and Scripture connections.</p>
+            </div>
+          </div>
+        </details>
+
+        <details>
           <summary>🔗 4. Connected Scriptures</summary>
           <div class="study-body">
             <p>Related Scriptures for the selected verse. Tap a reference to open it.</p>
@@ -863,6 +900,38 @@
 
     const main = document.querySelector("main");
     (main || document.body).appendChild(panel);
+
+    // Searchable offline biblical dictionary.
+    const dictionarySearch = panel.querySelector("#zurielDictionarySearch");
+    const dictionaryResults = panel.querySelector("#zurielDictionaryResults");
+    function renderDictionary(query) {
+      if (!dictionaryResults) return;
+      dictionaryResults.replaceChildren();
+      const term = String(query || "").trim().toLowerCase();
+      const matches = bibleDictionary.filter(entry =>
+        !term || (entry[0] + " " + entry[1]).toLowerCase().includes(term)
+      ).slice(0, 12);
+      if (!matches.length) {
+        const empty = document.createElement("p");
+        empty.textContent = "No matching starter entry. Try a broader biblical term.";
+        dictionaryResults.appendChild(empty);
+        return;
+      }
+      matches.forEach(entry => {
+        const item = document.createElement("article");
+        item.className = "study-word";
+        const heading = document.createElement("h3");
+        heading.textContent = entry[0];
+        const meaning = document.createElement("p");
+        meaning.textContent = entry[1];
+        item.append(heading, meaning);
+        dictionaryResults.appendChild(item);
+      });
+    }
+    if (dictionarySearch) {
+      dictionarySearch.addEventListener("input", () => renderDictionary(dictionarySearch.value));
+      renderDictionary("");
+    }
 
     function readHighlights() {
       try {
