@@ -428,6 +428,68 @@
       }
     `;
 
+      /* OPEN-BOOK FAITH CARD — inspired by the supplied Zuriel artwork */
+      #zurielHomeDashboard .zob-landscape {
+        overflow:hidden;position:relative;padding:18px 12px 13px;border:2px solid #c9a958;
+        border-radius:16px;background:
+          radial-gradient(ellipse at 88% 19%,#fff6bd 0,transparent 22%),
+          linear-gradient(180deg,#78c5e9 0%,#d5edee 29%,#8bb6a0 47%,#315c4a 70%,#172f36 100%);
+        box-shadow:inset 0 0 0 2px #fff5d055,0 10px 24px #08172b55;
+      }
+      #zurielHomeDashboard .zob-brandline {
+        max-width:440px;margin:0 auto 18px;padding:9px 8px;text-align:center;
+        border:2px solid #d9b95f;border-radius:12px;background:linear-gradient(120deg,#071a3d,#12386a,#071a3d);
+        color:#fff8e9;font:700 clamp(20px,5vw,29px)/1.12 Georgia,serif;
+        text-shadow:0 2px 2px #0008;box-shadow:0 5px 12px #07172d55;
+      }
+      #zurielHomeDashboard .zob-brandline em {color:#ffda58;font-style:italic;}
+      #zurielHomeDashboard .zob-book {
+        display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;
+        position:relative;overflow:hidden;border:1px solid #8b6427;border-radius:48% 48% 12px 12px / 8% 8% 12px 12px;
+        background:linear-gradient(90deg,#c8a66b,#fff7df 9%,#fffdf4 47%,#c8a66b 50%,#fffdf4 54%,#fff7e6 91%,#b48a4b);
+        box-shadow:0 12px 18px #07172d77,inset 0 -8px 12px #98652d55;
+        transform:perspective(700px) rotateX(1deg);
+      }
+      #zurielHomeDashboard .zob-book:after {
+        content:"";position:absolute;top:0;bottom:0;left:50%;width:3px;
+        background:linear-gradient(90deg,#8e6b3b66,#fff9e6,#8e6b3b66);pointer-events:none;
+      }
+      #zurielHomeDashboard .zob-page {min-width:0;padding:15px 10px 18px;text-align:center;color:#142b52;}
+      #zurielHomeDashboard .zob-ribbon {
+        display:block;margin:0 auto 12px;padding:5px 4px;max-width:100%;
+        border:1px solid #d8bd7c;border-radius:5px;background:#10264e;color:#fff5db;
+        font:700 10px/1.3 Georgia,serif;letter-spacing:.5px;
+      }
+      #zurielHomeDashboard .zob-scripture-copy {
+        margin:0;color:#102b59;font:italic 700 clamp(16px,4vw,22px)/1.35 Georgia,serif;
+        overflow-wrap:anywhere;
+      }
+      #zurielHomeDashboard .zob-declaration-copy {
+        margin:0 0 12px;color:#17294a;font:700 clamp(13px,3.2vw,17px)/1.4 Georgia,serif;
+        overflow-wrap:anywhere;
+      }
+      #zurielHomeDashboard .zob-affirmation-label {
+        display:block;margin:9px auto 5px;padding:6px 4px;max-width:190px;
+        border-radius:5px;background:#791d35;color:#ffe17c;
+        font:italic 700 13px/1.15 Georgia,serif;
+      }
+      #zurielHomeDashboard .zob-affirmation-copy {
+        margin:0;color:#17294a;font:italic 600 12px/1.4 Georgia,serif;overflow-wrap:anywhere;
+      }
+      #zurielHomeDashboard .zob-footer {
+        margin:14px auto 0;padding:9px 6px;max-width:420px;text-align:center;
+        border:2px solid #d9b95f;border-radius:9px;background:#0c2045;color:#f5d77e;
+        font:700 14px/1.3 Georgia,serif;letter-spacing:.25px;
+      }
+      #zurielHomeDashboard .zob-faith-actions {display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+      #zurielHomeDashboard .zob-faith-actions .home-button {font-size:12px;padding:10px 6px;}
+      @media(max-width:360px){
+        #zurielHomeDashboard .zob-page{padding:11px 6px 14px}
+        #zurielHomeDashboard .zob-ribbon{font-size:9px}
+        #zurielHomeDashboard .zob-affirmation-label{font-size:11px}
+        #zurielHomeDashboard .zob-affirmation-copy{font-size:11px}
+      }
+
     document.head.appendChild(style);
 
     /* TOP RETURN BAR */
@@ -527,40 +589,42 @@
         </div>
       </section>
 
-      <section class="home-card home-growth-highlight">
-        <h2>🌸 Daily Growth</h2>
-        <p class="home-section-note">A moment in the Word to strengthen your walk with God.</p>
-
+      <section class="home-card home-growth-highlight" id="zurielOpenBookFaithCard">
+        <div class="zob-landscape">
+          <p class="zob-brandline">His Word...<br><em>My Life... My Victory!</em></p>
+          <div class="zob-book">
+            <div class="zob-page zob-scripture-page">
+              <span class="zob-ribbon" id="zurielOpenBookReference">SCRIPTURE</span>
+              <p class="zob-scripture-copy" id="zurielOpenBookScripture">Your Scripture for today.</p>
+            </div>
+            <div class="zob-page zob-response-page">
+              <span class="zob-ribbon">MY DECLARATION</span>
+              <p class="zob-declaration-copy" id="zurielOpenBookDeclaration">Let God's Word shape your response.</p>
+              <span class="zob-affirmation-label">Glory Verse Affirmation</span>
+              <p class="zob-affirmation-copy" id="zurielOpenBookAffirmation"></p>
+            </div>
+          </div>
+          <p class="zob-footer">✦ Zuriel Living Word Bible ✦</p>
+        </div>
+        <div class="zob-faith-actions">
+          <button type="button" class="home-button" id="zurielOpenBookRead">📖 Read This Passage</button>
+          <button type="button" class="home-button home-secondary" id="zurielOpenBookNext">✦ Another Word for Today</button>
+        </div>
         <details>
           <summary>🙏 Prayer</summary>
-          <p>
-            Father, thank You for Your Word. Give me understanding,
-            wisdom and strength to walk in Your truth today. Amen.
-          </p>
+          <p id="zurielOpenBookPrayer"></p>
         </details>
-
         <details>
-          <summary>✨ Glory Verse Affirmation</summary>
-          <p>
-            I am born of God. His Word lives in me.
-            His wisdom guides me, and His grace empowers me.
-          </p>
+          <summary>🕊️ Faith Confession</summary>
+          <p id="zurielOpenBookConfession"></p>
         </details>
-
+        <details>
+          <summary>🌿 Inspiration</summary>
+          <p id="zurielOpenBookInspiration"></p>
+        </details>
         <details>
           <summary>🕯️ Light</summary>
-          <p>
-            Thy word is a lamp unto my feet,
-            and a light unto my path. — Psalm 119:105
-          </p>
-        </details>
-
-        <details>
-          <summary>🕊️ Inspiration</summary>
-          <p>
-            Keep your heart established in God's faithfulness.
-            Let His Word guide your thoughts and actions.
-          </p>
+          <p id="zurielOpenBookLight">Thy word is a lamp unto my feet, and a light unto my path. — Psalm 119:105</p>
         </details>
       </section>
 
@@ -1030,6 +1094,60 @@
     displayVerse(getDailyVerseIndex());
     verseText.setAttribute("aria-live", "polite");
     verseReference.setAttribute("aria-live", "polite");
+
+    /* SCRIPTURE-LINKED OPEN BOOK: use the curated faith response for the
+       exact reference. Never manufacture a prayer or declaration when no
+       matching entry exists. */
+    const faithCardRefs = verses.filter(function (item) {
+      return window.ZurielFaithContent &&
+        typeof window.ZurielFaithContent.find === "function" &&
+        window.ZurielFaithContent.find(item.reference);
+    });
+    let faithCardIndex = faithCardRefs.length
+      ? getDailyVerseIndex() % faithCardRefs.length : 0;
+
+    function renderOpenBookFaithCard() {
+      const verse = faithCardRefs[faithCardIndex];
+      if (!verse) return;
+      const response = window.ZurielFaithContent.find(verse.reference);
+      if (!response) return;
+      const setText = function (id, value) {
+        const node = document.getElementById(id);
+        if (node) node.textContent = value || "This reflection is not supplied yet.";
+      };
+      setText("zurielOpenBookReference", verse.reference.toUpperCase());
+      setText("zurielOpenBookScripture", verse.text);
+      setText("zurielOpenBookDeclaration", response.declaration);
+      setText("zurielOpenBookAffirmation", response.affirmation);
+      setText("zurielOpenBookPrayer", response.prayer);
+      setText("zurielOpenBookConfession", response.confession);
+      setText("zurielOpenBookInspiration", response.inspiration);
+    }
+
+    renderOpenBookFaithCard();
+
+    const nextFaithWord = document.getElementById("zurielOpenBookNext");
+    if (nextFaithWord) nextFaithWord.addEventListener("click", function () {
+      if (!faithCardRefs.length) return;
+      faithCardIndex = (faithCardIndex + 1) % faithCardRefs.length;
+      renderOpenBookFaithCard();
+    });
+
+    const readFaithWord = document.getElementById("zurielOpenBookRead");
+    if (readFaithWord) readFaithWord.addEventListener("click", async function () {
+      const verse = faithCardRefs[faithCardIndex];
+      const match = verse && verse.reference.match(/^(.+)\\s+(\\d+):(\\d+)$/);
+      if (!match || typeof window.openChapter !== "function") return;
+      navigate("read");
+      const selector = document.getElementById("book");
+      if (selector) selector.value = match[1];
+      await window.openChapter(match[1], Number(match[2]));
+      const target = document.querySelectorAll("#message .verse")[Number(match[3]) - 1];
+      if (target) {
+        target.scrollIntoView({behavior:"smooth",block:"center"});
+        target.click();
+      }
+    });
 
     /* START ON HOME */
 
