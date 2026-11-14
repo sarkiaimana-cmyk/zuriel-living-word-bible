@@ -230,8 +230,13 @@
 
       const intro = document.createElement("p");
       intro.className = "study-small";
-      intro.textContent = language + " original-language words, in source-text order. Tap a word for its lexicon.";
+      intro.textContent = language + " original-language words, in source-text order. Tap a word to explore its lexicon, grammar information supplied by the source, and related study connections.";
       target.appendChild(intro);
+
+      const methodNote = document.createElement("p");
+      methodNote.className = "study-small";
+      methodNote.textContent = "Study carefully: an English gloss is a brief guide, not the full meaning of a word in every passage. Read the surrounding verse and paragraph. Grammar details appear only when the source provides them; an undecoded source tag is shown as-is rather than guessed.";
+      target.appendChild(methodNote);
 
       verseData.words.forEach(function (word) {
         const card = document.createElement("div");
@@ -254,10 +259,15 @@
 
         const meta = document.createElement("span");
         meta.className = "word-meta";
+        const grammarNote = word.parsingFull
+          ? "Grammar: " + word.parsingFull
+          : word.parsing
+            ? "Source parsing tag: " + word.parsing
+            : "Grammar detail not supplied";
         meta.textContent = [
           word.transliteration || "",
           word.strongs ? "Strong's " + word.strongs : "No Strong's number",
-          word.parsingFull || word.parsing || ""
+          grammarNote
         ].filter(Boolean).join(" • ");
         button.appendChild(meta);
 
@@ -310,6 +320,11 @@
       heading.textContent = "Strong's " + id + " — " +
         (entry.language === "greek" ? "Greek" : entry.language === "aramaic" ? "Aramaic" : "Hebrew");
       box.appendChild(heading);
+
+      const contextNote = document.createElement("p");
+      contextNote.className = "study-small";
+      contextNote.textContent = "Lexicon guide: the lemma and listed senses describe a word's range of use. The best sense for this verse must be judged from its sentence, paragraph, book and wider biblical context. Strong's numbers are indexing aids, not meanings by themselves.";
+      box.appendChild(contextNote);
 
       entry.senses.forEach(function (sense) {
         const item = document.createElement("div");
