@@ -852,7 +852,14 @@
         </details>
 
         <details>
-          <summary>🔤 3. Hebrew and Greek Word Study</summary>
+          <summary>🙏 3. The Light — Prayer, Declaration and Faith</summary>
+          <div class="study-body" id="zurielFaithResponse" aria-live="polite">
+            <p>Select a verse to see a connected prayer, declaration, affirmation, confession and inspiration where a curated entry is available.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>🔤 4. Hebrew and Greek Word Study</summary>
           <div class="study-body" id="zurielOriginalWords">
             <p>Original-language words for your selected verse. Tap any word to open its Strong's lexicon entry.</p>
             <div id="zurielOriginalWordResults" aria-live="polite">
@@ -1339,6 +1346,60 @@
       showTopics("");
     }
 
+    // Verse-linked devotional material is kept separate from Bible wording.
+    // Range references match only when the selected verse falls inside that range.
+    function renderFaithResponse(ref) {
+      const target = document.getElementById("zurielFaithResponse");
+      if (!target) return;
+      target.replaceChildren();
+
+      const library = window.ZurielFaithContent;
+      const entry = library && typeof library.list === "function"
+        ? library.list().map(function(item) {
+            return library.find(item.reference);
+          }).filter(Boolean).find(function(item) {
+            const match = item.reference.match(/^(.*)\\s+(\\d+):(\\d+)(?:-(\\d+))?$/);
+            if (!match) return false;
+            const book = match[1].toLowerCase().replace(/\\s+/g, " ").trim();
+            const selectedBook = String(ref.book).toLowerCase().replace(/\\s+/g, " ").trim();
+            const chapter = Number(match[2]);
+            const firstVerse = Number(match[3]);
+            const lastVerse = Number(match[4] || match[3]);
+            return book === selectedBook &&
+              chapter === Number(ref.chapter) &&
+              Number(ref.verse) >= firstVerse &&
+              Number(ref.verse) <= lastVerse;
+          })
+        : null;
+
+      if (!entry) {
+        const note = document.createElement("p");
+        note.textContent = "A verse-specific prayer and faith response has not yet been curated for this passage. You can still write your own prayer and reflection in My Personal Study Journal below.";
+        target.appendChild(note);
+        return;
+      }
+
+      const intro = document.createElement("p");
+      intro.className = "study-small";
+      intro.textContent = "A Scripture-connected devotional response for " + entry.reference + ". These are original study reflections, not quotations from the Bible.";
+      target.appendChild(intro);
+
+      [
+        ["Prayer", entry.prayer],
+        ["Declaration", entry.declaration],
+        ["Affirmation", entry.affirmation],
+        ["Faith confession", entry.confession],
+        ["Inspiration", entry.inspiration]
+      ].forEach(function(section) {
+        if (!section[1]) return;
+        const heading = document.createElement("h3");
+        heading.textContent = section[0];
+        const paragraph = document.createElement("p");
+        paragraph.textContent = section[1];
+        target.append(heading, paragraph);
+      });
+    }
+
     // Build an offline study framework from the actual KJV chapter currently
     // on screen. It gives the reader immediate literary context without
     // pretending that automated prompts are a scholarly commentary.
@@ -1651,6 +1712,7 @@
         panel.style.display = "block";
         highlightVerse(verse);
         renderStudyFramework(selectedReference);
+        renderFaithResponse(selectedReference);
         paintSavedHighlights(selectedReference);
         loadSavedNote();
 
