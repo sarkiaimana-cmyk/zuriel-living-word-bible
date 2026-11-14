@@ -7291,178 +7291,267 @@ const topics=[
   },
   {
     "title": "Remembering God's Works",
-    "summary": "The chronicler calls God's people to remember His acts, worship faithfully and learn from their history.",
+    "summary": "Biblical remembrance: recalling God's acts so gratitude, trust and obedience shape the present.",
     "keywords": [
       "remembrance",
-      "history",
-      "worship"
+      "testimony",
+      "gratitude",
+      "faithfulness"
     ],
     "references": [
       {
-        "label": "1 Chronicles 16:8-36",
-        "book": "1 Chronicles",
-        "chapter": 16,
-        "verse": 8,
-        "endVerse": 36
+        "label": "Deuteronomy 8:2-3",
+        "book": "Deuteronomy",
+        "chapter": 8,
+        "verse": 2,
+        "endVerse": 3
       },
       {
-        "label": "1 Chronicles 17:16-27",
-        "book": "1 Chronicles",
-        "chapter": 17,
-        "verse": 16,
-        "endVerse": 27
+        "label": "Joshua 4:4-7",
+        "book": "Joshua",
+        "chapter": 4,
+        "verse": 4,
+        "endVerse": 7
       },
       {
-        "label": "1 Chronicles 29:10-20",
-        "book": "1 Chronicles",
-        "chapter": 29,
-        "verse": 10,
-        "endVerse": 20
+        "label": "Psalm 77:11-14",
+        "book": "Psalm",
+        "chapter": 77,
+        "verse": 11,
+        "endVerse": 14
       },
       {
-        "label": "2 Chronicles 20:5-12",
-        "book": "2 Chronicles",
-        "chapter": 20,
-        "verse": 5,
-        "endVerse": 12
+        "label": "Luke 22:19",
+        "book": "Luke",
+        "chapter": 22,
+        "verse": 19,
+        "endVerse": null
       },
       {
-        "label": "2 Chronicles 30:18-22",
-        "book": "2 Chronicles",
-        "chapter": 30,
-        "verse": 18,
-        "endVerse": 22
+        "label": "2 Peter 1:12-15",
+        "book": "2 Peter",
+        "chapter": 1,
+        "verse": 12,
+        "endVerse": 15
       }
+    ],
+    "definition": "Remembering God's works is the deliberate act of bringing His revealed deeds and promises to mind. In Scripture, remembrance is more than nostalgia: it renews worship, guards against pride and strengthens faithful obedience.",
+    "oldTestament": "Israel was repeatedly told to remember the exodus, wilderness provision and covenant. Memorial stones, feasts and retold testimonies helped each generation recognise that life and blessing depended on the LORD (Deuteronomy 8; Joshua 4).",
+    "newTestament": "Jesus gave the meal of remembrance centred on His self-giving death (Luke 22:19; 1 Corinthians 11:23-26). The apostles also recalled the truth already received so believers would remain established in it (2 Peter 1:12-15).",
+    "application": "Keep a truthful record of answered prayer, lessons learned and Scripture promises. Remember with gratitude, not as a formula that guarantees identical outcomes; let past faithfulness encourage present obedience.",
+    "questions": [
+      "Which act of God's faithfulness do I need to remember today?",
+      "What spiritual lesson should I pass on to another generation?",
+      "How can remembrance lead to fresh obedience rather than simply looking backward?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "זָכַר",
+        "term": "zākar",
+        "meaning": "remember, call to mind, bring into action",
+        "note": "Biblical remembering often carries practical consequences: worship, loyalty and obedience."
+      },
+      {
+        "language": "Greek",
+        "script": "ἀνάμνησις",
+        "term": "anamnēsis",
+        "meaning": "remembrance, memorial",
+        "note": "Used for the remembrance Jesus commanded at the Lord's Supper."
+      }
+    ],
+    "relatedExplanations": [
+      "Deuteronomy 8:2-3 — remembering the wilderness teaches dependence on God's word rather than self-sufficiency.",
+      "Joshua 4:4-7 — memorial stones give future generations an opportunity to ask and hear what God has done.",
+      "Psalm 77:11-14 — the psalmist answers distress by recalling God's mighty deeds and holiness.",
+      "Luke 22:19 — Jesus gives His disciples a lasting memorial focused on His body given for them.",
+      "2 Peter 1:12-15 — Peter deliberately reminds believers of truth they already know."
     ]
   },
   {
     "title": "Rebuilding and Renewal",
-    "summary": "The rebuilding narratives show prayerful leadership, perseverance and renewal of community life.",
+    "summary": "God restores people and communities, calling them to repent, rebuild faithfully and hope in His renewing work.",
     "keywords": [
-      "rebuilding",
+      "restoration",
       "renewal",
-      "nehemiah"
+      "rebuilding",
+      "repentance",
+      "hope"
     ],
     "references": [
       {
-        "label": "Ezra 3:10-13",
-        "book": "Ezra",
-        "chapter": 3,
-        "verse": 10,
-        "endVerse": 13
-      },
-      {
-        "label": "Ezra 7:6-10",
-        "book": "Ezra",
-        "chapter": 7,
-        "verse": 6,
-        "endVerse": 10
-      },
-      {
-        "label": "Nehemiah 1:4-11",
+        "label": "Nehemiah 2:17-20",
         "book": "Nehemiah",
-        "chapter": 1,
-        "verse": 4,
-        "endVerse": 11
+        "chapter": 2,
+        "verse": 17,
+        "endVerse": 20
       },
       {
-        "label": "Nehemiah 4:6-14",
+        "label": "Nehemiah 4:6",
         "book": "Nehemiah",
         "chapter": 4,
         "verse": 6,
-        "endVerse": 14
+        "endVerse": null
       },
       {
-        "label": "Nehemiah 8:1-12",
-        "book": "Nehemiah",
-        "chapter": 8,
-        "verse": 1,
-        "endVerse": 12
+        "label": "Isaiah 43:18-19",
+        "book": "Isaiah",
+        "chapter": 43,
+        "verse": 18,
+        "endVerse": 19
+      },
+      {
+        "label": "2 Corinthians 5:17",
+        "book": "2 Corinthians",
+        "chapter": 5,
+        "verse": 17,
+        "endVerse": null
+      },
+      {
+        "label": "Revelation 21:5",
+        "book": "Revelation",
+        "chapter": 21,
+        "verse": 5,
+        "endVerse": null
       }
+    ],
+    "definition": "Biblical rebuilding is the restoration of what has been broken under God's direction. It includes practical work, renewed worship, justice, repentance and patient dependence; it is not merely returning to the past.",
+    "oldTestament": "Nehemiah combines prayer, careful planning, courageous leadership and shared labour as Jerusalem's wall is rebuilt amid opposition. The prophets also promise restoration while calling the people away from injustice and unfaithfulness.",
+    "newTestament": "In Christ, people become new creations and are reconciled to God (2 Corinthians 5:17-20). The church is built together as God's dwelling, and Revelation looks toward the final renewal of all things (Ephesians 2:19-22; Revelation 21:5).",
+    "application": "Name what is broken honestly. Pray, seek wise counsel, make a realistic plan, repair what you can and involve trustworthy people. Spiritual renewal must be visible in truthful, loving and just action.",
+    "questions": [
+      "What needs rebuilding: trust, worship, relationships, habits or a community responsibility?",
+      "What first faithful step can I take, and who should work alongside me?",
+      "Am I seeking God's renewal or simply trying to recreate the past?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "חָדַשׁ",
+        "term": "ḥādaš",
+        "meaning": "be new, renew, repair",
+        "note": "The verb can describe renewal or making something new; context determines the nuance."
+      },
+      {
+        "language": "Greek",
+        "script": "καινός",
+        "term": "kainos",
+        "meaning": "new, fresh in quality",
+        "note": "In the New Testament it often describes newness brought by God's saving work."
+      }
+    ],
+    "relatedExplanations": [
+      "Nehemiah 2:17-20 — the rebuilding begins with honest recognition, shared purpose and confidence in God's help.",
+      "Nehemiah 4:6 — the people make progress because they work wholeheartedly together.",
+      "Isaiah 43:18-19 — God promises a new work and calls His people to perceive it.",
+      "2 Corinthians 5:17 — union with Christ brings a genuinely new identity and life.",
+      "Revelation 21:5 — the final hope is God's comprehensive renewal, not merely human repair."
     ]
   },
   {
     "title": "Courage and Providence in Esther",
-    "summary": "Esther's story explores courage, wise action and providence in the face of danger.",
+    "summary": "Esther explores courage, wise timing and God's hidden providence in the preservation of His people.",
     "keywords": [
-      "esther",
+      "Esther",
       "courage",
-      "providence"
+      "providence",
+      "wisdom",
+      "deliverance"
     ],
     "references": [
       {
-        "label": "Esther 2:15-18",
+        "label": "Esther 2:17",
         "book": "Esther",
         "chapter": 2,
-        "verse": 15,
-        "endVerse": 18
+        "verse": 17,
+        "endVerse": null
       },
       {
-        "label": "Esther 4:10-17",
+        "label": "Esther 4:13-16",
         "book": "Esther",
         "chapter": 4,
-        "verse": 10,
-        "endVerse": 17
+        "verse": 13,
+        "endVerse": 16
       },
       {
-        "label": "Esther 5:1-8",
+        "label": "Esther 5:1-3",
         "book": "Esther",
         "chapter": 5,
         "verse": 1,
-        "endVerse": 8
+        "endVerse": 3
       },
       {
-        "label": "Esther 7:1-6",
+        "label": "Esther 7:3-6",
         "book": "Esther",
         "chapter": 7,
-        "verse": 1,
+        "verse": 3,
         "endVerse": 6
       },
       {
-        "label": "Esther 9:20-28",
+        "label": "Esther 9:20-22",
         "book": "Esther",
         "chapter": 9,
         "verse": 20,
-        "endVerse": 28
+        "endVerse": 22
       }
+    ],
+    "definition": "Esther tells how a threatened Jewish community is preserved through a sequence of ordinary decisions, unexpected reversals, courage and carefully chosen words. God's name is not explicitly mentioned in the Hebrew book, yet providence is a central theme.",
+    "oldTestament": "Set in the Persian court, the narrative shows the vulnerability of exiled Jews and the danger of Haman's decree. Mordecai urges Esther to recognise the responsibility of her position; she prepares through fasting before approaching the king.",
+    "newTestament": "The book does not directly predict a New Testament event, but its themes of deliverance, faithful courage and advocacy resonate with the wider biblical witness. Christian readers should not turn Esther into a promise that every risk will end in immediate earthly rescue.",
+    "application": "Use influence responsibly, prepare carefully, seek wise counsel and speak for those exposed to injustice. Courage may require risk, but it should be joined to humility, discernment and concern for others.",
+    "questions": [
+      "Where might my position give me an opportunity to protect or help someone?",
+      "How do preparation and wise timing strengthen courageous action?",
+      "How can I trust God's providence when His activity is not immediately obvious?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "עֵת",
+        "term": "ʿēt",
+        "meaning": "time, appointed occasion",
+        "note": "Esther's story highlights the importance of recognising a decisive moment; the word itself has a broad range of uses."
+      },
+      {
+        "language": "Hebrew",
+        "script": "צוֹם",
+        "term": "ṣôm",
+        "meaning": "fast, fasting",
+        "note": "Fasting in Esther expresses urgent dependence and communal solidarity before action."
+      }
+    ],
+    "relatedExplanations": [
+      "Esther 2:17 — Esther's unexpected position in the palace becomes part of the story's unfolding events.",
+      "Esther 4:13-16 — Mordecai challenges Esther to consider responsibility and possible purpose in her position.",
+      "Esther 5:1-3 — Esther approaches the king with courage and careful timing.",
+      "Esther 7:3-6 — she clearly identifies the threat and pleads for the lives of her people.",
+      "Esther 9:20-22 — the community establishes Purim as a remembrance of reversal and deliverance."
     ]
   },
   {
     "title": "Love and Faithfulness in Song of Solomon",
-    "summary": "The Song celebrates covenant love, desire and mutual delight within its poetic wisdom setting.",
+    "summary": "The Song celebrates marital love, desire, mutual delight and faithful commitment within poetic wisdom literature.",
     "keywords": [
-      "song of solomon",
       "love",
-      "marriage"
+      "marriage",
+      "desire",
+      "faithfulness",
+      "poetry"
     ],
     "references": [
       {
-        "label": "Song of Solomon 2:8-17",
+        "label": "Song of Solomon 2:16",
         "book": "Song of Solomon",
         "chapter": 2,
-        "verse": 8,
-        "endVerse": 17
+        "verse": 16,
+        "endVerse": null
       },
       {
-        "label": "Song of Solomon 3:1-5",
-        "book": "Song of Solomon",
-        "chapter": 3,
-        "verse": 1,
-        "endVerse": 5
-      },
-      {
-        "label": "Song of Solomon 4:9-16",
+        "label": "Song of Solomon 4:9-10",
         "book": "Song of Solomon",
         "chapter": 4,
         "verse": 9,
-        "endVerse": 16
-      },
-      {
-        "label": "Song of Solomon 6:3",
-        "book": "Song of Solomon",
-        "chapter": 6,
-        "verse": 3,
-        "endVerse": null
+        "endVerse": 10
       },
       {
         "label": "Song of Solomon 8:6-7",
@@ -7470,31 +7559,72 @@ const topics=[
         "chapter": 8,
         "verse": 6,
         "endVerse": 7
+      },
+      {
+        "label": "Proverbs 5:18-19",
+        "book": "Proverbs",
+        "chapter": 5,
+        "verse": 18,
+        "endVerse": 19
+      },
+      {
+        "label": "Ephesians 5:25-33",
+        "book": "Ephesians",
+        "chapter": 5,
+        "verse": 25,
+        "endVerse": 33
       }
+    ],
+    "definition": "Song of Solomon is a collection of love poetry celebrating the beauty, longing, delight and exclusiveness of committed love. Its poetic images should be read as poetry, with sensitivity to voice, setting and metaphor.",
+    "oldTestament": "The Song honours embodied affection and mutual desire within a covenant-shaped moral world. Its repeated concern with timing, exclusivity and the strength of love sits alongside Proverbs' call to rejoice faithfully in one's spouse.",
+    "newTestament": "The New Testament calls husbands and wives to mutual honour and sacrificial love (Ephesians 5:21-33; 1 Peter 3:7). Some Christian traditions also read the Song allegorically as a picture of divine love, but its human love-poetry should not be erased.",
+    "application": "Cultivate tenderness, fidelity, mutual respect and honest communication. Do not use the Song to excuse coercion or to pressure another person; biblical love honours the beloved and respects consent and dignity.",
+    "questions": [
+      "What does mutual delight and honour look like in a faithful relationship?",
+      "How can love be expressed with patience, dignity and truthful communication?",
+      "How do I distinguish the poem's imagery from a literal instruction?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "אַהֲבָה",
+        "term": "ʾahăbāh",
+        "meaning": "love, affection",
+        "note": "A broad term for love; the Song explores its emotional, relational and physical dimensions."
+      },
+      {
+        "language": "Hebrew",
+        "script": "דּוֹד",
+        "term": "dôd",
+        "meaning": "beloved, love; affectionate address",
+        "note": "A recurring poetic term in the Song, whose precise nuance depends on context."
+      }
+    ],
+    "relatedExplanations": [
+      "Song of Solomon 2:16 — mutual belonging is expressed as a poetic declaration of affection.",
+      "Song of Solomon 4:9-10 — the beloved's words portray the power of affection and admiration.",
+      "Song of Solomon 8:6-7 — love is described as powerful and not purchasable.",
+      "Proverbs 5:18-19 — wisdom literature encourages enduring delight and faithfulness in marriage.",
+      "Ephesians 5:25-33 — Christian marriage is called to self-giving love modelled on Christ's care for the church."
     ]
   },
   {
     "title": "Hosea: Covenant Love and Return",
-    "summary": "Hosea uses the image of marriage to portray God's steadfast love and call His people to return.",
+    "summary": "Hosea portrays Israel's unfaithfulness and God's persistent covenant love, while taking idolatry and injustice seriously.",
     "keywords": [
-      "hosea",
-      "covenant love",
-      "return"
+      "Hosea",
+      "covenant",
+      "steadfast love",
+      "repentance",
+      "idolatry"
     ],
     "references": [
       {
-        "label": "Hosea 2:14-23",
+        "label": "Hosea 2:19-20",
         "book": "Hosea",
         "chapter": 2,
-        "verse": 14,
-        "endVerse": 23
-      },
-      {
-        "label": "Hosea 3:1-5",
-        "book": "Hosea",
-        "chapter": 3,
-        "verse": 1,
-        "endVerse": 5
+        "verse": 19,
+        "endVerse": 20
       },
       {
         "label": "Hosea 6:1-6",
@@ -7511,12 +7641,51 @@ const topics=[
         "endVerse": 9
       },
       {
-        "label": "Hosea 14:1-9",
+        "label": "Hosea 14:1-4",
         "book": "Hosea",
         "chapter": 14,
         "verse": 1,
-        "endVerse": 9
+        "endVerse": 4
+      },
+      {
+        "label": "Matthew 9:13",
+        "book": "Matthew",
+        "chapter": 9,
+        "verse": 13,
+        "endVerse": null
       }
+    ],
+    "definition": "Hosea uses the prophet's painful marriage as a sign-act portraying Israel's covenant betrayal and the LORD's pursuing love. The book holds together the seriousness of sin, the call to return and God's compassionate commitment.",
+    "oldTestament": "Hosea confronts idolatry, political dependence and social corruption in the northern kingdom. God's parental compassion in chapter 11 reveals both grief over rebellion and a refusal to treat His people as disposable.",
+    "newTestament": "Jesus quotes Hosea 6:6 to challenge religious performance without mercy (Matthew 9:13; 12:7). Hosea's call to return contributes to the biblical witness that genuine repentance turns from false worship toward faithful relationship with God.",
+    "application": "Return to God honestly rather than hiding behind religious activity. Let received mercy produce mercy toward others, and reject the idols—whether power, security or status—that compete with wholehearted faithfulness.",
+    "questions": [
+      "What competing loyalties are drawing my trust away from God?",
+      "Does my religious activity produce mercy, justice and faithfulness?",
+      "What would a concrete return to God look like in my choices this week?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "חֶסֶד",
+        "term": "ḥesed",
+        "meaning": "steadfast love, covenant loyalty, mercy",
+        "note": "Hosea 6:6 contrasts covenant loyalty with empty ritual performance."
+      },
+      {
+        "language": "Hebrew",
+        "script": "שׁוּב",
+        "term": "šûb",
+        "meaning": "turn, return",
+        "note": "A key prophetic word for turning back to God; it can describe both human return and God's restorative action."
+      }
+    ],
+    "relatedExplanations": [
+      "Hosea 2:19-20 — covenant restoration is pictured through betrothal marked by righteousness, justice, steadfast love and faithfulness.",
+      "Hosea 6:1-6 — the call to return is joined to the warning that outward devotion can be shallow; God desires steadfast love and knowledge of Him.",
+      "Hosea 11:1-9 — God's compassion is portrayed with parental imagery, showing the tension between judgment and mercy.",
+      "Hosea 14:1-4 — Israel is invited to return with words of repentance and receives a promise of healing love.",
+      "Matthew 9:13 — Jesus applies Hosea's emphasis on mercy to His welcome of those regarded as sinners."
     ]
   },
   {
