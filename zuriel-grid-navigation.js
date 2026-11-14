@@ -311,6 +311,11 @@
     status.textContent = "Opening " + selectedBook + " " + selectedChapter + (selectedVerse ? ":" + selectedVerse : "") + "…";
     try {
       await window.openChapter(selectedBook, selectedChapter);
+      const readerHeading = document.querySelector("#message h2");
+      const expectedHeading = selectedBook + " " + selectedChapter + " — King James Version";
+      if (!readerHeading || readerHeading.textContent !== expectedHeading) {
+        throw new Error("The selected chapter did not finish opening.");
+      }
       if (selectedVerse) {
         const target = document.querySelectorAll("#message .verse")[selectedVerse - 1];
         if (target) {
@@ -330,7 +335,7 @@
     }
   }
 
-  function parseReference(raw) {
+  async function parseReference(raw) {
     const value = String(raw || "").trim();
     const match = value.match(/^(.+?)\s+(\d+)(?::(\d+))?$/);
     if (!match) {
@@ -348,17 +353,27 @@
       status.textContent = "That chapter or verse number is outside the selected book.";
       return;
     }
+    if (verse) {
+      status.textContent = "Checking " + book.name + " " + chapter + ":" + verse + "…";
+      try {
+        const count = await window.getChapterVerseCount(book.name, chapter);
+        if (verse > count) {
+          status.textContent = book.name + " " + chapter + " has only " + count + " verses.";
+          return;
+        }
+      } catch (error) {
+        status.textContent = "Verse data could not be checked. Please choose the chapter first.";
+        return;
+      }
+    }
     selectedBook = book.name;
     selectedChapter = chapter;
     selectedVerse = verse;
     updateCurrent();
-    if (verse) {
-      setTab("verse");
-      openPassage();
-    } else {
-      setTab("chapter");
-      openPassage();
-    }
+    updateReference();
+    if (verse) setTab("verse");
+    else setTab("chapter");
+    await openPassage();
   }
 
   function openModal() {
