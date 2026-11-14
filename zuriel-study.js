@@ -208,8 +208,13 @@
     const lexiconBox = document.getElementById("zurielLexiconDetails");
     if (!target || !ref) return;
 
-    target.textContent = "Loading Hebrew or Greek words...";
-    lexiconBox.replaceChildren();
+    target.textContent = selectedEnglishWord
+      ? "Finding the original-language record for “" + selectedEnglishWord + "”…"
+      : "Tap a word in the selected verse to open its focused word study.";
+    if (!selectedEnglishWord) {
+      lexiconBox.replaceChildren();
+      return;
+    }
 
     try {
       const code = apiBookCode(ref.book);
@@ -229,16 +234,35 @@
         return;
       }
 
+      function wordTokens(value) {
+        return String(value || "").toLocaleLowerCase()
+          .replace(/[’']/g, "")
+          .match(/[a-z0-9]+/g) || [];
+      }
+      const tappedTokens = wordTokens(selectedEnglishWord);
+      const exactMatches = verseData.words.filter(function (word) {
+        const glossTokens = wordTokens(word.gloss);
+        return tappedTokens.length === 1 && glossTokens.includes(tappedTokens[0]);
+      });
       target.replaceChildren();
+      lexiconBox.replaceChildren();
+      if (!exactMatches.length) {
+        const note = document.createElement("p");
+        note.className = "study-small";
+        note.textContent = "The source interlinear data does not provide a reliable gloss match for “" +
+          selectedEnglishWord + "” in this verse. Zuriel will not guess which Hebrew or Greek word it represents.";
+        target.appendChild(note);
+        return;
+      }
 
-      const language = verseData.words.some(word => word.language === "aramaic")
+      const language = exactMatches.some(word => word.language === "aramaic")
         ? "Aramaic"
-        : verseData.words.some(word => word.language === "greek")
+        : exactMatches.some(word => word.language === "greek")
           ? "Greek" : "Hebrew";
 
       const intro = document.createElement("p");
       intro.className = "study-small";
-      intro.textContent = language + " original-language words, in source-text order. Tap a word to explore its lexicon, grammar information supplied by the source, and related study connections.";
+      intro.textContent = "Focused study for “" + selectedEnglishWord + "” — matching source word record(s) only.";
       target.appendChild(intro);
 
       const methodNote = document.createElement("p");
@@ -246,7 +270,7 @@
       methodNote.textContent = "Study carefully: an English gloss is a brief guide, not the full meaning of a word in every passage. Read the surrounding verse and paragraph. Grammar details appear only when the source provides them; an undecoded source tag is shown as-is rather than guessed.";
       target.appendChild(methodNote);
 
-      verseData.words.forEach(function (word) {
+      exactMatches.forEach(function (word) {
         const card = document.createElement("div");
         card.className = "original-word-card";
 
@@ -1774,35 +1798,32 @@
         paintSavedHighlights(selectedReference);
         loadSavedNote();
 
-        // Open the study sections automatically so the selected verse's
-        // original-language words and connected Scriptures are immediately visible.
         const originalWordsSection = document.getElementById("zurielOriginalWords");
         const originalWordsDetails = originalWordsSection
           ? originalWordsSection.closest("details") : null;
-        if (originalWordsDetails) originalWordsDetails.open = true;
-
         const crossReferenceList = document.getElementById("zurielCrossReferenceList");
         const crossReferenceDetails = crossReferenceList
           ? crossReferenceList.closest("details") : null;
-        if (crossReferenceDetails) crossReferenceDetails.open = true;
 
-        loadOriginalWords(selectedReference);
+        if (selectedEnglishWord) {
+          if (originalWordsDetails) originalWordsDetails.open = true;
+          loadOriginalWords(selectedReference);
+          panel.dataset.mode = "word";
+          document.getElementById("zurielSelectionNotice").textContent =
+            "Focused word study: " + selectedEnglishWord +
+            ". Your selected Scripture remains available in the reader.";
+        } else {
+          if (originalWordsDetails) originalWordsDetails.open = false;
+          if (crossReferenceDetails) crossReferenceDetails.open = false;
+          panel.dataset.mode = "verse";
+          const results = document.getElementById("zurielOriginalWordResults");
+          const lexicon = document.getElementById("zurielLexiconDetails");
+          if (results) results.textContent = "Tap a word in the selected verse to study that word here.";
+          if (lexicon) lexicon.replaceChildren();
+        }
+
         loadRelatedScriptures(selectedReference);
-
-        panel.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-
-        // Bring the expanded word-study section into view inside the study panel.
-        window.setTimeout(function () {
-          if (originalWordsDetails) {
-            originalWordsDetails.scrollIntoView({
-              behavior: "smooth",
-              block: "nearest"
-            });
-          }
-        }, 120);
+        panel.scrollTop = 0;
       }
     };
   }
