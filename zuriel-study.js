@@ -48,7 +48,21 @@
     ["Sin","Human rebellion, wrongdoing or failure to live in faithfulness to God; Scripture describes both acts and the deeper condition. See Genesis 3; Romans 3:23; 1 John 1:8–9."],
     ["Stewardship","Responsible care of what has been entrusted by God, including resources, gifts, creation and relationships. See Genesis 2:15; Luke 16:10–13."],
     ["Wisdom","Skill in living rightly before God, joining understanding with just and faithful action. See Proverbs 1:7; James 1:5; 3:13–18."],
-    ["Worship","Honouring God with reverence, love, trust and obedient life, not merely singing or ceremony. See Deuteronomy 6:4–5; John 4:23–24; Romans 12:1."]
+    ["Worship","Honouring God with reverence, love, trust and obedient life, not merely singing or ceremony. See Deuteronomy 6:4–5; John 4:23–24; Romans 12:1."],
+    ["Adoption","A gracious act by which God brings believers into His family with the status and privileges of children. See Romans 8:15-17; Galatians 4:4-7; Ephesians 1:5."],
+    ["Anointing","The act of applying oil as a sign of consecration, appointment or honour; Scripture also uses anointing language for the Spirit's empowering work. Read the context carefully. See 1 Samuel 16:13; Luke 4:18; 1 John 2:20,27."],
+    ["Apostle","A person sent with a commission. The New Testament especially uses the title for Jesus' commissioned witnesses, including the Twelve and Paul. See Luke 6:13; Acts 1:21-26; 1 Corinthians 15:7-9."],
+    ["Blessing","God's favour and provision, and the good spoken or sought for another. Biblical blessing is not a guarantee of wealth or a trouble-free life. See Genesis 12:2-3; Numbers 6:24-26; Ephesians 1:3."],
+    ["Discernment","The ability to distinguish what is true, wise and pleasing to God through Scripture-shaped understanding and mature practice. See 1 Kings 3:9; Romans 12:2; Hebrews 5:14; Philippians 1:9-10."],
+    ["Exile","The forced removal of a people from their homeland, especially Judah's deportation to Babylon. Exile becomes a major biblical setting for judgment, faithfulness and hope of restoration. See 2 Kings 25; Jeremiah 29; Daniel 1."],
+    ["Gospel","Good news: in the New Testament, the announcement of God's saving reign and the death and resurrection of Jesus Christ. See Mark 1:14-15; Romans 1:1-4; 1 Corinthians 15:1-5."],
+    ["Intercession","Prayer made on behalf of another person or community. Scripture presents intercession as loving dependence on God, not control over Him. See Exodus 32:11-14; Romans 8:26-27,34; 1 Timothy 2:1."],
+    ["Justice","What is right and fair according to God's character, including impartial judgment and protection of the vulnerable. Biblical justice is joined to mercy and faithfulness. See Deuteronomy 10:17-19; Micah 6:8; Luke 11:42."],
+    ["Lament","A truthful prayer that brings grief, confusion or protest before God while continuing to address Him. Lament is a faithful biblical response to suffering, not the opposite of faith. See Psalms 13; 42; Lamentations 3."],
+    ["Sabbath","The seventh-day rest given in the creation pattern and commanded to Israel as a sign of trust, worship and liberation. Christians differ on its covenant application, so read Exodus 20:8-11; Deuteronomy 5:12-15; Mark 2:27-28."],
+    ["Tabernacle","The portable sanctuary where Israel worshipped during the wilderness journey; it represented God's presence among His covenant people. See Exodus 25:8-9; 40:34-38; Hebrews 9:1-12."],
+    ["Testimony","A witness or truthful account of what someone has seen, heard or experienced. Biblical testimony points beyond the speaker to God's acts and truth. See Psalm 66:16; John 4:39; Acts 1:8."],
+    ["Zion","A name associated with Jerusalem, especially the city as the place of God's dwelling and kingship; later Scripture also uses Zion imagery for God's people and promised hope. See Psalm 2:6; 48:1-2; Hebrews 12:22."]
   ];
 
   function readNotes() {
