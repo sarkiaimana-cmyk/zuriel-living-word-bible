@@ -678,6 +678,8 @@
 
         saved.prayers.forEach(item => {
           const box = element("div", undefined, "library-entry");
+          if (item.title) box.appendChild(element("h4", item.title));
+          if (item.reference) box.appendChild(element("strong", item.reference));
           box.appendChild(element("small", item.date));
           box.appendChild(element("p", item.text));
           content.appendChild(box);
