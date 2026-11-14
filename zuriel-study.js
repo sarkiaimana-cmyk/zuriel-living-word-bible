@@ -487,20 +487,30 @@
         button.className = "study-link";
         button.textContent = name + " " + item.chapter + ":" + item.verse +
           (item.endVerse ? "–" + item.endVerse : "");
-        button.addEventListener("click", function () {
+        button.addEventListener("click", async function () {
           if (typeof window.openChapter !== "function") return;
-          window.openChapter(name, item.chapter).then(function () {
+          const verseNumber = Number(item.verse);
+          const chapterNumber = Number(item.chapter);
+          if (!Number.isInteger(verseNumber) || verseNumber < 1 ||
+              !Number.isInteger(chapterNumber) || chapterNumber < 1) return;
+          button.disabled = true;
+          try {
+            await window.openChapter(name, chapterNumber);
             const verseElements = document.querySelectorAll("#message .verse");
-            const target = verseElements[Number(item.verse) - 1];
-            if (target) {
-              const verseText = target.textContent.replace(/^\s*\d+\.?\s*/, "").trim();
-              target.scrollIntoView({ behavior: "smooth", block: "center" });
-              target.classList.add("zuriel-selected-verse");
-              if (window.ZurielStudy && typeof window.ZurielStudy.openForReference === "function") {
-                window.ZurielStudy.openForReference(name, item.chapter, Number(item.verse), verseText, "", -1);
-              }
+            const target = verseElements[verseNumber - 1];
+            if (!target) throw new Error("The connected verse could not be located in the reader.");
+            const verseText = target.textContent.replace(/^\\s*\\d+\\.?\\s*/, "").trim();
+            target.scrollIntoView({ behavior: "smooth", block: "center" });
+            target.classList.add("zuriel-selected-verse");
+            if (window.ZurielStudy && typeof window.ZurielStudy.openForReference === "function") {
+              window.ZurielStudy.openForReference(name, chapterNumber, verseNumber, verseText, "", -1);
             }
-          });
+          } catch (error) {
+            button.disabled = false;
+            const status = document.createElement("p");
+            status.textContent = error.message || "This connected passage could not be opened. Please try again.";
+            list.appendChild(status);
+          }
         });
         list.appendChild(button);
       });
@@ -830,7 +840,8 @@
         <details>
           <summary>🔗 4. Connected Scriptures</summary>
           <div class="study-body">
-            <p>Related Scriptures for the selected verse. Tap a reference to open it.</p>
+            <p>Related Scriptures for the selected verse. Tap a reference to open it and compare the full passage.</p>
+            <p class="study-small">A connection may be a quotation, shared theme, parallel account, prophecy or fulfilment, or another textual link. Read both passages in context; a reference by itself does not prove that two verses mean exactly the same thing.</p>
             <div id="zurielCrossReferenceList" aria-live="polite">
               <p>Select a verse to find connected Scriptures.</p>
             </div>
