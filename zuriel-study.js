@@ -1430,6 +1430,32 @@
         saveButton.disabled = !!saved;
       });
       target.appendChild(saveButton);
+
+      const studioButton = document.createElement("button");
+      studioButton.type = "button";
+      studioButton.textContent = "Create Glory Verse Affirmation from this Scripture";
+      studioButton.addEventListener("click", function() {
+        const personalLibrary = window.ZurielLibrary;
+        if (!personalLibrary || typeof personalLibrary.openGloryVerse !== "function") {
+          studioButton.textContent = "Glory Verse Affirmation is not ready yet";
+          return;
+        }
+        const response = {
+          prayer: entry.prayer || "",
+          declaration: entry.declaration || "",
+          affirmation: entry.affirmation || "",
+          confession: entry.confession || "",
+          inspiration: entry.inspiration || ""
+        };
+        const opened = personalLibrary.openGloryVerse(
+          entry.reference,
+          selectedReference && selectedReference.text || "",
+          "KJV",
+          response
+        );
+        if (!opened) studioButton.textContent = "Could not open the affirmation card";
+      });
+      target.appendChild(studioButton);
     }
 
     // Build an offline study framework from the actual KJV chapter currently
