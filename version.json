@@ -1,4 +1,4 @@
 {
-  "version": "1.1.0",
-  "releaseNotes": "Improves precise Book-Chapter-Verse navigation, gives each displayed verse a stable identifier, and refreshes the reader passage selector with the current KJV reference. Extends automated reader integrity checks."
+  "version": "1.1.1",
+  "releaseNotes": "Expands the offline Bible dictionary with ten carefully contextualised study terms, including Beatitudes, Diaspora, Epistle, Fasting, Hermeneutics and Hosanna. Definitions include Scripture references and interpretation cautions where needed."
 }
