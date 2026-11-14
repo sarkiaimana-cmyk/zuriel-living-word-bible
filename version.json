@@ -1,4 +1,4 @@
 {
-  "version": "1.0.1",
-  "releaseNotes": "Update centre introduced in Settings. This release adds a safe in-app update check and clearer update guidance."
+  "version": "1.0.2",
+  "releaseNotes": "This release replaces the redundant Me navigation with a direct Devotionals entry and refreshes the offline app cache. Android signing verification remains separate from website updates."
 }
