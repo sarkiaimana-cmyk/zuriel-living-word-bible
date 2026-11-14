@@ -3535,6 +3535,45 @@ const topics=[
         "verse": 13,
         "endVerse": 18
       }
+    ],
+    "definition": "Wisdom literature teaches the art of living faithfully before God. Proverbs gives practical instruction, Job wrestles with undeserved suffering, Ecclesiastes examines life's limits, and the Psalms and Song of Songs give poetic expression to worship, longing and love.",
+    "oldTestament": "Proverbs connects wisdom with the fear of the LORD and applies it to speech, work, relationships and justice. Job refuses simplistic explanations for suffering. Ecclesiastes exposes the limits of achievement and calls readers to reverent dependence on God.",
+    "newTestament": "Jesus is presented as God's wisdom and the one greater than Solomon (Matthew 12:42; 1 Corinthians 1:24, 30). James describes wisdom from above as pure, peaceable, gentle and full of mercy (James 3:13–18).",
+    "application": "Read wisdom texts with attention to genre and context. Test practical advice against the whole counsel of Scripture, bring honest questions to God, and choose the way of humility, justice and reverence.",
+    "questions": [
+      "How does this passage define wisdom rather than mere knowledge?",
+      "What assumption about success, suffering or happiness is being challenged?",
+      "What wise and faithful action can I take today?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "חָכְמָה",
+        "term": "ḥokmāh",
+        "meaning": "wisdom, skill, practical insight",
+        "note": "In wisdom books it includes skill for living rightly, not merely information."
+      },
+      {
+        "language": "Hebrew",
+        "script": "יָרֵא",
+        "term": "yārēʾ",
+        "meaning": "fear, reverence",
+        "note": "In the phrase 'fear of the LORD' it conveys reverent awe expressed in trust and obedience."
+      },
+      {
+        "language": "Greek",
+        "script": "σοφία",
+        "term": "sophia",
+        "meaning": "wisdom",
+        "note": "The New Testament uses the term for wisdom that is grounded in God and revealed supremely in Christ."
+      }
+    ],
+    "relatedExplanations": [
+      "Proverbs 1:1–7 — wisdom begins with reverent relationship to the LORD.",
+      "Job 28:12–28 — human skill cannot master wisdom; God is its source.",
+      "Ecclesiastes 12:9–14 — life's reflection ends with reverence for God and accountability.",
+      "Matthew 12:42 — Jesus identifies Himself as greater than Solomon.",
+      "James 3:13–18 — heavenly wisdom is recognised by its humble and peaceable fruit."
     ]
   },
   {
@@ -3581,6 +3620,45 @@ const topics=[
         "verse": 31,
         "endVerse": null
       }
+    ],
+    "definition": "The fear of the LORD is reverent awe, loyal trust and obedient submission to God. It recognises His holiness and authority without reducing relationship with Him to terror; Scripture joins reverence with love, confidence and worship.",
+    "oldTestament": "Proverbs calls the fear of the LORD the beginning of knowledge and wisdom (Proverbs 1:7; 9:10). Deuteronomy connects it with loving God, walking in His ways and keeping His commands. The Psalms show that those who fear God can also take refuge in His steadfast love.",
+    "newTestament": "Believers are called to worship God with reverence and awe (Hebrews 12:28–29). The early church walked in the fear of the Lord and the encouragement of the Holy Spirit (Acts 9:31). In Christ, reverence is not opposed to confidence before God.",
+    "application": "Let reverence shape worship, choices and private conduct. Refuse both casual disregard for God's holiness and a fearful picture that ignores His grace in Christ.",
+    "questions": [
+      "What does this passage reveal about God's holiness and goodness?",
+      "Where might familiarity have weakened my reverence?",
+      "How can reverence become loving obedience in one practical decision?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "יִרְאָה",
+        "term": "yirʾāh",
+        "meaning": "fear, reverence, awe",
+        "note": "Its meaning depends on context and can include dread, deep respect or worshipful reverence."
+      },
+      {
+        "language": "Hebrew",
+        "script": "יָרֵא",
+        "term": "yārēʾ",
+        "meaning": "to fear, revere",
+        "note": "Used for the response of awe and loyalty owed to God."
+      },
+      {
+        "language": "Greek",
+        "script": "φόβος",
+        "term": "phobos",
+        "meaning": "fear, reverence",
+        "note": "Can describe alarm or reverential respect; context determines the sense."
+      }
+    ],
+    "relatedExplanations": [
+      "Deuteronomy 10:12–13 — fearing God is joined to love, walking in His ways and keeping His commands.",
+      "Proverbs 1:7 — reverence for the LORD is the starting point of true knowledge.",
+      "Psalm 130:3–4 — God's forgiveness produces reverent fear, not careless presumption.",
+      "Acts 9:31 — the church's life combines reverence for the Lord with the Spirit's encouragement.",
+      "Hebrews 12:28–29 — grace leads to grateful worship marked by reverence and awe."
     ]
   },
   {
@@ -3627,6 +3705,45 @@ const topics=[
         "verse": 1,
         "endVerse": 6
       }
+    ],
+    "definition": "The Psalms give God's people inspired language for praise, lament, confession, thanksgiving, wisdom and trust. They teach believers to bring the whole truth of human experience before God while allowing His character and promises to reshape their response.",
+    "oldTestament": "The Psalter includes individual and communal prayers, royal psalms, songs of ascent and wisdom reflections. Lament often moves from distress to appeal and renewed trust, though not every psalm resolves its grief within the poem.",
+    "newTestament": "Jesus prayed the Psalms and quoted them in His suffering. The early church used them in worship, and the New Testament encourages believers to sing psalms, hymns and spiritual songs (Matthew 27:46; Acts 4:24–26; Ephesians 5:19; Colossians 3:16).",
+    "application": "Use a psalm as a pattern for honest prayer. Name grief without pretending, remember what is true about God, ask for help, and allow praise to grow without forcing an artificial ending.",
+    "questions": [
+      "What emotion or situation does the psalm bring honestly before God?",
+      "What does the psalm remember about God's character or past faithfulness?",
+      "How does its movement—or unresolved tension—guide my prayer?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "תְּהִלָּה",
+        "term": "tehillāh",
+        "meaning": "praise, song of praise",
+        "note": "Related to the Psalter's language of celebrating God's character and deeds."
+      },
+      {
+        "language": "Hebrew",
+        "script": "תְּפִלָּה",
+        "term": "tefillāh",
+        "meaning": "prayer, supplication",
+        "note": "A broad word for prayerful appeal and communion with God."
+      },
+      {
+        "language": "Greek",
+        "script": "ψαλμός",
+        "term": "psalmos",
+        "meaning": "psalm, song accompanied by a stringed instrument",
+        "note": "Used in the New Testament for psalms in worship and instruction."
+      }
+    ],
+    "relatedExplanations": [
+      "Psalm 13 — a short lament moves from urgent questions toward trust in God's steadfast love.",
+      "Psalm 42–43 — repeated questions and remembered worship give language to spiritual heaviness.",
+      "Psalm 51 — confession seeks mercy and inner renewal rather than outward appearance alone.",
+      "Psalm 103 — praise grows from remembering God's compassion and forgiveness.",
+      "Luke 24:44–47 — Jesus places the Psalms within the Scriptures that bear witness to His mission."
     ]
   },
   {
@@ -3673,6 +3790,45 @@ const topics=[
         "verse": 8,
         "endVerse": 10
       }
+    ],
+    "definition": "The prophets spoke God's covenant word into real historical situations. They confronted idolatry, exploitation and empty worship, called people to repentance, announced judgment, and held out hope for restoration and God's righteous reign.",
+    "oldTestament": "Prophets addressed kings, priests and communities, applying the covenant to public life. Their calls for justice defend the vulnerable and expose worship that is disconnected from righteousness (Isaiah 1:10–17; Amos 5:21–24; Micah 6:6–8).",
+    "newTestament": "Jesus announces good news to the poor and liberation for the oppressed (Luke 4:16–21). He fulfils the prophetic hope while the apostles call the church to practical mercy, impartiality and integrity (James 1:27; 2:1–9).",
+    "application": "Read prophetic warnings in their covenant and historical context. Examine whether worship, business, leadership and relationships reflect God's concern for truth and vulnerable people.",
+    "questions": [
+      "Which injustice or covenant failure is the prophet confronting?",
+      "How does the passage connect worship with everyday conduct?",
+      "What truthful, merciful action is within my responsibility?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "מִשְׁפָּט",
+        "term": "mishpāṭ",
+        "meaning": "justice, judgment, right order",
+        "note": "Often describes fair decisions and the ordering of community life according to what is right."
+      },
+      {
+        "language": "Hebrew",
+        "script": "צְדָקָה",
+        "term": "tsĕdāqāh",
+        "meaning": "righteousness, rightness, justice",
+        "note": "Can describe upright conduct and right relationships, including social responsibility."
+      },
+      {
+        "language": "Greek",
+        "script": "δικαιοσύνη",
+        "term": "dikaiosynē",
+        "meaning": "righteousness, justice",
+        "note": "In the New Testament it concerns right standing and conduct shaped by God's righteousness."
+      }
+    ],
+    "relatedExplanations": [
+      "Isaiah 1:10–17 — God rejects worship that coexists with injustice and commands care for the vulnerable.",
+      "Amos 5:21–24 — religious gatherings cannot substitute for justice and righteousness.",
+      "Micah 6:6–8 — faithful life is summarised as doing justice, loving mercy and walking humbly with God.",
+      "Luke 4:16–21 — Jesus announces His mission using Isaiah's language of good news and release.",
+      "James 2:1–9 — favouritism contradicts faith in Christ and violates the royal law of love."
     ]
   },
   {
@@ -3718,6 +3874,45 @@ const topics=[
         "verse": 1,
         "endVerse": 5
       }
+    ],
+    "definition": "Israel and Judah's exile was a devastating historical judgment connected to covenant unfaithfulness, yet Scripture also presents it as a setting for repentance, renewed hope and God's faithfulness. Restoration is grounded in God's mercy, not national pride.",
+    "oldTestament": "The fall of Samaria and Jerusalem, deportation and life in Babylon form the historical background to major prophetic and exilic writings. Jeremiah speaks of a future hope; Ezekiel promises cleansing and a new heart; Ezra and Nehemiah describe return and rebuilding.",
+    "newTestament": "The New Testament draws on exile and restoration themes to describe God's gathering of a people in Christ. Jesus speaks of the kingdom's fulfilment, while the apostles describe believers as a holy people whose ultimate hope is God's renewed creation (1 Peter 2:9–12; Revelation 21:1–5).",
+    "application": "Take the warnings of Scripture seriously, but do not mistake discipline for abandonment. Seek repentance, remain faithful in difficult seasons, and ground hope in God's character and promises rather than a guarantee of immediate comfort.",
+    "questions": [
+      "What covenant failure does the historical passage identify?",
+      "How does God preserve hope and faithfulness during displacement or loss?",
+      "What does genuine repentance and restoration look like in this context?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "שׁוּב",
+        "term": "shuv",
+        "meaning": "return, turn back",
+        "note": "A key biblical word for turning back to God; context can describe physical return or repentance."
+      },
+      {
+        "language": "Hebrew",
+        "script": "חָדָשׁ",
+        "term": "ḥādāsh",
+        "meaning": "new, renew",
+        "note": "Appears in promises of renewal, including the promise of a new heart."
+      },
+      {
+        "language": "Greek",
+        "script": "ἀποκατάστασις",
+        "term": "apokatastasis",
+        "meaning": "restoration, setting things in order",
+        "note": "A restoration term used in Acts 3:21; its scope should be read in its full context."
+      }
+    ],
+    "relatedExplanations": [
+      "2 Kings 17:7–23 — the northern kingdom's fall is explained through persistent covenant unfaithfulness.",
+      "Jeremiah 29:4–14 — exiles are told to seek the welfare of their place of residence while holding God's promise of future hope.",
+      "Ezekiel 36:24–28 — restoration includes cleansing, a new heart and God's Spirit enabling obedience.",
+      "Ezra 1:1–4 — the return begins under Persian rule and is presented as God's providential work.",
+      "1 Peter 2:9–12 — New Testament believers are described as God's people, called to visible goodness among the nations."
     ]
   },
   {
