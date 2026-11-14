@@ -6910,6 +6910,45 @@ const topics=[
         "verse": 11,
         "endVerse": 15
       }
+    ],
+    "definition": "Biblical judgment is God's righteous evaluation of human actions and the exercise of His justice. Accountability means that choices matter before God. Scripture holds together God's patience and mercy with His opposition to evil; judgment is not permission for people to condemn arrogantly.",
+    "oldTestament": "The prophets denounce exploitation, dishonest worship and injustice toward the vulnerable (Amos 5:21–24; Micah 6:8). Abraham appeals to God's justice (Genesis 18:25), while the Psalms celebrate the LORD as righteous judge (Psalm 9:7–8).",
+    "newTestament": "Jesus warns against hypocrisy and teaches that people are accountable for their actions (Matthew 7:1–5; 25:31–46). Paul speaks of God's impartial judgment (Romans 2:1–11) and the final accountability of all before Christ (2 Corinthians 5:10).",
+    "application": "Examine your own conduct before criticising others. Practise justice, mercy and humility, especially toward people with less power. Leave final judgment to God while taking responsibility for repairing harm and resisting injustice.",
+    "questions": [
+      "Where do I excuse in myself what I criticise in others?",
+      "How should accountability change the way I treat vulnerable people?",
+      "Am I confusing a warning about God's judgment with permission to judge another person's heart?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "מִשְׁפָּט",
+        "term": "mishpāṭ",
+        "meaning": "justice, judgment, legal decision",
+        "note": "Often concerns right ordering and fair treatment, not only a courtroom verdict."
+      },
+      {
+        "language": "Hebrew",
+        "script": "צֶדֶק",
+        "term": "ṣedeq",
+        "meaning": "righteousness, justice",
+        "note": "Describes what is right and just in relationships and public life."
+      },
+      {
+        "language": "Greek",
+        "script": "κρίσις",
+        "term": "krisis",
+        "meaning": "judgment, decision",
+        "note": "The context determines whether it refers to a legal decision, evaluation or divine judgment."
+      }
+    ],
+    "relatedExplanations": [
+      "Genesis 18:25 — Abraham appeals to God's character as the judge of all the earth who does what is right.",
+      "Amos 5:21–24 — God rejects worship that coexists with injustice and calls for justice to flow continually.",
+      "Micah 6:8 — The prophet summarises the life God requires as justice, mercy and humble walking with Him.",
+      "Matthew 7:1–5 — Jesus confronts hypocritical judgment and calls for honest self-examination.",
+      "Romans 2:1–11 — Paul insists that God's judgment is impartial and exposes human hypocrisy."
     ]
   },
   {
@@ -6955,6 +6994,45 @@ const topics=[
         "verse": 1,
         "endVerse": 9
       }
+    ],
+    "definition": "The New Testament letters are pastoral and theological writings sent to churches and individuals. They explain the significance of Jesus, address real questions and conflicts, and guide Christian belief and conduct. Each letter should be read with attention to its author, recipients, occasion and argument.",
+    "oldTestament": "The letters frequently reason from Israel's Scriptures, using the Law, Prophets and Writings to explain God's promises and the Messiah. Their quotations and allusions should be read in the context of the original passages (for example, Romans 4; Hebrews 8–10).",
+    "newTestament": "The letters include Paul's writings, Hebrews and the general letters associated with James, Peter, John and Jude. They address salvation, church unity, leadership, suffering, holiness, hope and faithful witness. Their instructions are grounded in the gospel and applied to particular communities.",
+    "application": "Read a whole letter before isolating a verse. Identify the problem being addressed, follow the writer's reasoning, notice repeated words and distinguish a specific local instruction from a broader principle. Apply the teaching in ways consistent with the letter's purpose and the whole Bible.",
+    "questions": [
+      "Who first received this letter, and what situation prompted it?",
+      "What is the writer's main argument across the whole section?",
+      "How does the instruction flow from the gospel and shape community life?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "ἐπιστολή",
+        "term": "epistolē",
+        "meaning": "letter, written communication",
+        "note": "The standard Greek term for a letter or epistle."
+      },
+      {
+        "language": "Greek",
+        "script": "χάρις",
+        "term": "charis",
+        "meaning": "grace, favour, gracious gift",
+        "note": "A major theme in the letters, often describing God's generous action."
+      },
+      {
+        "language": "Greek",
+        "script": "παράκλησις",
+        "term": "paraklēsis",
+        "meaning": "encouragement, appeal, consolation",
+        "note": "Letters often teach through encouragement, exhortation and comfort."
+      }
+    ],
+    "relatedExplanations": [
+      "Romans 1:1–7 — Paul's greeting identifies his calling, the gospel and the recipients before the letter's argument unfolds.",
+      "1 Corinthians 1:10–13 — The letter addresses divisions in a real congregation and calls for unity in Christ.",
+      "Galatians 1:6–9 — Paul states the urgent problem of a distorted gospel and defends the message received.",
+      "James 1:19–27 — Practical instruction joins listening, speech, action and care for vulnerable people.",
+      "1 Peter 1:1–9 — Peter writes to believers facing hardship and anchors their hope in Christ's resurrection."
     ]
   },
   {
@@ -7000,6 +7078,45 @@ const topics=[
         "verse": 1,
         "endVerse": 5
       }
+    ],
+    "definition": "Revelation is apocalyptic prophecy and a pastoral letter to seven churches. Through visions and symbolic imagery, it unveils God's sovereignty, exposes oppressive powers, calls the church to faithful endurance and announces the final victory of God and the Lamb.",
+    "oldTestament": "Revelation draws deeply on Daniel, Ezekiel, Isaiah, Zechariah and the Psalms. Its symbols are not isolated puzzles; they echo Israel's Scriptures and should be interpreted with those backgrounds in view (Daniel 7; Ezekiel 1; Zechariah 4).",
+    "newTestament": "John addresses seven historical churches with distinct strengths and failures (Revelation 2–3). The visions portray the Lamb's victory, the exposure of evil, judgment, perseverance and the new creation (Revelation 5; 12–14; 21–22).",
+    "application": "Read Revelation as a call to worship God, resist idolatry and remain faithful under pressure. Avoid sensational date-setting or confident identifications that the text does not establish. Let its hope produce courage, holiness and compassion now.",
+    "questions": [
+      "What does this vision reveal about God and the Lamb?",
+      "What compromise or pressure is the message confronting in its first audience?",
+      "How can its promise of final justice strengthen faithful action today?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "ἀποκάλυψις",
+        "term": "apokalypsis",
+        "meaning": "unveiling, revelation",
+        "note": "The title signals an unveiling of realities and purposes, not merely a timetable of future events."
+      },
+      {
+        "language": "Greek",
+        "script": "μαρτυρία",
+        "term": "martyria",
+        "meaning": "testimony, witness",
+        "note": "Faithful testimony to Jesus is central to the book's picture of discipleship."
+      },
+      {
+        "language": "Greek",
+        "script": "νικάω",
+        "term": "nikaō",
+        "meaning": "to conquer, overcome",
+        "note": "The churches are repeatedly called to overcome through faithful allegiance, not worldly domination."
+      }
+    ],
+    "relatedExplanations": [
+      "Revelation 1:1–8 — The opening identifies the revelation as centred on Jesus Christ and blesses those who hear and keep it.",
+      "Revelation 2–3 — The messages address real congregations with praise, correction, warning and promises to those who overcome.",
+      "Revelation 5:1–14 — The slain Lamb is worthy to open the scroll and receives worship from heaven.",
+      "Revelation 12:10–11 — The victory of God's people is linked to the Lamb and faithful testimony, even at great cost.",
+      "Revelation 21:1–5 — The book's hope culminates in new creation and God's dwelling with humanity."
     ]
   },
   {
@@ -7046,6 +7163,45 @@ const topics=[
         "verse": 13,
         "endVerse": 17
       }
+    ],
+    "definition": "Ruth tells how covenant loyalty, courageous kindness and God's providence work through ordinary decisions in a time of hardship. The story honours Ruth, a Moabite woman, and shows how her family line becomes part of the ancestry of David.",
+    "oldTestament": "Set during the time of the judges, the book contrasts famine, bereavement and vulnerability with faithful care. Ruth's loyalty to Naomi and Boaz's protection of the vulnerable reflect Israel's covenant responsibilities (Ruth 1–4; compare Leviticus 19:9–10; Deuteronomy 24:19).",
+    "newTestament": "Matthew includes Ruth in the genealogy of Jesus (Matthew 1:5), placing a foreign woman within the Messiah's family line. The book's themes of providence, inclusion and redemption contribute to the wider biblical story without making Boaz a direct one-to-one allegory of Christ.",
+    "application": "Practise loyal kindness through concrete actions. Notice people whose security is fragile, protect their dignity and use your influence to help rather than exploit. Recognise God's providence without pretending that suffering is simple or instantly resolved.",
+    "questions": [
+      "What does Ruth's loyalty cost her, and what does it make possible?",
+      "How does Boaz use his position to protect rather than take advantage?",
+      "Where can I practise practical kindness toward someone vulnerable?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "חֶסֶד",
+        "term": "ḥesed",
+        "meaning": "steadfast love, loyal kindness",
+        "note": "A key theme of loyal care in Ruth and throughout the Old Testament."
+      },
+      {
+        "language": "Hebrew",
+        "script": "גָּאַל",
+        "term": "gāʾal",
+        "meaning": "to redeem, act as a kinsman-redeemer",
+        "note": "The family-redeemer role in Ruth has specific social and legal features in its ancient setting."
+      },
+      {
+        "language": "Hebrew",
+        "script": "מָנוֹחַ",
+        "term": "mānōaḥ",
+        "meaning": "rest, security",
+        "note": "Naomi seeks a place of security for Ruth; the theme is practical well-being."
+      }
+    ],
+    "relatedExplanations": [
+      "Ruth 1:16–17 — Ruth pledges loyalty to Naomi and identifies herself with Naomi's people and God.",
+      "Ruth 2:8–12 — Boaz protects Ruth and recognises her courageous kindness.",
+      "Ruth 2:20 — Naomi begins to recognise God's kindness and the possibility of family redemption.",
+      "Ruth 3:9–13 — Ruth asks Boaz to act as a family redeemer, and he responds with integrity and care.",
+      "Ruth 4:13–17 — The family line continues, and the closing genealogy connects the story to David."
     ]
   },
   {
@@ -7092,6 +7248,45 @@ const topics=[
         "verse": 11,
         "endVerse": 22
       }
+    ],
+    "definition": "Solomon's story explores wisdom, leadership, worship, prosperity and the danger of divided loyalty. His reign includes the temple's dedication and celebrated wisdom, but also shows how power, wealth and compromise can undermine a leader's faithfulness.",
+    "oldTestament": "Solomon asks God for wisdom to govern and receives a discerning heart (1 Kings 3:5–14). He builds and dedicates the temple (1 Kings 6–8), yet later accumulates wealth, alliances and religious compromises that fracture his loyalty (1 Kings 11).",
+    "newTestament": "Jesus refers to Solomon's splendour while teaching that trust in God's provision exceeds anxiety about status (Matthew 6:28–30). Jesus also says that one greater than Solomon is present (Matthew 12:42), directing attention to His own wisdom and authority.",
+    "application": "Seek wisdom for service rather than status. Evaluate leadership by justice, humility and faithfulness, not merely success or impressive buildings. Notice how small compromises can grow when power is not accountable.",
+    "questions": [
+      "Am I asking for wisdom to serve others or to increase my own status?",
+      "What warning signs of divided loyalty appear in Solomon's later life?",
+      "How should Jesus' teaching reshape my understanding of greatness and wisdom?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "חָכְמָה",
+        "term": "ḥokmāh",
+        "meaning": "wisdom, skill, sound judgement",
+        "note": "In Solomon's narrative it includes discerning leadership and practical understanding."
+      },
+      {
+        "language": "Hebrew",
+        "script": "מִשְׁפָּט",
+        "term": "mishpāṭ",
+        "meaning": "justice, judgment",
+        "note": "A wise ruler is expected to judge fairly and protect the people."
+      },
+      {
+        "language": "Greek",
+        "script": "σοφία",
+        "term": "sophia",
+        "meaning": "wisdom",
+        "note": "The New Testament uses this word for wisdom, ultimately directing believers to God's wisdom in Christ."
+      }
+    ],
+    "relatedExplanations": [
+      "1 Kings 3:5–14 — Solomon asks for an understanding heart to govern God's people rather than riches or long life.",
+      "1 Kings 8:22–30 — Solomon's temple prayer recognises God's greatness and asks Him to hear His people.",
+      "1 Kings 10:1–9 — The Queen of Sheba observes Solomon's wisdom and the prosperity of his kingdom.",
+      "1 Kings 11:1–13 — Solomon's divided allegiance leads to idolatry and the announcement of kingdom division.",
+      "Matthew 12:42 — Jesus identifies Himself as greater than Solomon and calls His hearers to respond to Him."
     ]
   },
   {
