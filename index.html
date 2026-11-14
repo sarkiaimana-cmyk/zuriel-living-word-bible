@@ -467,8 +467,48 @@ async function loadKJV() {
 
     const data = await response.json();
 
-    if (!data || !Array.isArray(data.GEN)) {
+    if (!data || typeof data !== "object" || Array.isArray(data)) {
       throw new Error("The KJV Bible data format is not recognised.");
+    }
+
+    if (!Array.isArray(bibleBooks) || bibleBooks.length !== 66) {
+      throw new Error("The Bible book index is incomplete. The Scripture library was not opened.");
+    }
+
+    let checkedBooks = 0;
+    let checkedChapters = 0;
+    let checkedVerses = 0;
+
+    for (const book of bibleBooks) {
+      const code = bookCodes[book.name];
+      const chapters = code ? data[code] : null;
+
+      if (!code || !Array.isArray(chapters) || chapters.length !== book.chapters) {
+        throw new Error("Scripture data is missing or incomplete for " + book.name + ". Please update the Bible data before reading.");
+      }
+
+      for (let chapterIndex = 0; chapterIndex < chapters.length; chapterIndex++) {
+        const verses = chapters[chapterIndex];
+
+        if (!Array.isArray(verses) || verses.length === 0) {
+          throw new Error("Scripture data is unavailable for " + book.name + " chapter " + (chapterIndex + 1) + ".");
+        }
+
+        for (let verseIndex = 0; verseIndex < verses.length; verseIndex++) {
+          if (typeof verses[verseIndex] !== "string" || !verses[verseIndex].trim()) {
+            throw new Error("A verse is missing or invalid in " + book.name + " chapter " + (chapterIndex + 1) + ", verse " + (verseIndex + 1) + ".");
+          }
+          checkedVerses++;
+        }
+
+        checkedChapters++;
+      }
+
+      checkedBooks++;
+    }
+
+    if (checkedBooks !== 66 || checkedChapters === 0 || checkedVerses === 0) {
+      throw new Error("The Scripture library did not pass its integrity check.");
     }
 
     bibleText = data;
