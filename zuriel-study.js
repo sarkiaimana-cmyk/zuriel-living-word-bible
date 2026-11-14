@@ -1358,10 +1358,10 @@
         ? library.list().map(function(item) {
             return library.find(item.reference);
           }).filter(Boolean).find(function(item) {
-            const match = item.reference.match(/^(.*)\\s+(\\d+):(\\d+)(?:-(\\d+))?$/);
+            const match = item.reference.match(/^(.*)\s+(\d+):(\d+)(?:-(\d+))?$/);
             if (!match) return false;
-            const book = match[1].toLowerCase().replace(/\\s+/g, " ").trim();
-            const selectedBook = String(ref.book).toLowerCase().replace(/\\s+/g, " ").trim();
+            const book = match[1].toLowerCase().replace(/\s+/g, " ").trim();
+            const selectedBook = String(ref.book).toLowerCase().replace(/\s+/g, " ").trim();
             const chapter = Number(match[2]);
             const firstVerse = Number(match[3]);
             const lastVerse = Number(match[4] || match[3]);
@@ -1376,6 +1376,15 @@
         const note = document.createElement("p");
         note.textContent = "A verse-specific prayer and faith response has not yet been curated for this passage. You can still write your own prayer and reflection in My Personal Study Journal below.";
         target.appendChild(note);
+        const journalButton = document.createElement("button");
+        journalButton.type = "button";
+        journalButton.textContent = "Open My Prayer Journal";
+        journalButton.addEventListener("click", function() {
+          if (window.ZurielLibrary && typeof window.ZurielLibrary.openPrayer === "function") {
+            window.ZurielLibrary.openPrayer();
+          }
+        });
+        target.appendChild(journalButton);
         return;
       }
 
@@ -1398,6 +1407,29 @@
         paragraph.textContent = section[1];
         target.append(heading, paragraph);
       });
+
+      const saveButton = document.createElement("button");
+      saveButton.type = "button";
+      saveButton.textContent = "Save The Light response to My Prayer Journal";
+      saveButton.addEventListener("click", function() {
+        const responseText = [
+          "Scripture: " + entry.reference,
+          "Prayer: " + (entry.prayer || ""),
+          "Declaration: " + (entry.declaration || ""),
+          "Affirmation: " + (entry.affirmation || ""),
+          "Faith confession: " + (entry.confession || ""),
+          "Inspiration: " + (entry.inspiration || "")
+        ].filter(function(line) { return !line.endsWith(": "); }).join("\n\n");
+        const library = window.ZurielLibrary;
+        if (!library || typeof library.savePrayer !== "function") {
+          saveButton.textContent = "Prayer Journal is not ready yet";
+          return;
+        }
+        const saved = library.savePrayer(responseText, entry.reference, "The Light — " + entry.reference);
+        saveButton.textContent = saved ? "Saved to My Prayer Journal ✓" : "Could not save — check device storage";
+        saveButton.disabled = !!saved;
+      });
+      target.appendChild(saveButton);
     }
 
     // Build an offline study framework from the actual KJV chapter currently
