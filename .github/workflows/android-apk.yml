@@ -103,6 +103,12 @@ jobs:
           data = base64.b64decode(clean, validate=True)
           if not data:
               raise SystemExit("Keystore decode produced an empty file.")
+          if len(data) < 1024:
+              raise SystemExit(
+                  f"Decoded keystore is only {len(data)} bytes; this is not a complete "
+                  "PKCS12 signing file. Check the ZURIEL_KEYSTORE_BASE64 GitHub secret "
+                  "against the full local Base64 backup without sharing it."
+              )
           path = os.path.join(os.environ["RUNNER_TEMP"], "zuriel-release.jks")
           with open(path, "wb") as handle:
               handle.write(data)
