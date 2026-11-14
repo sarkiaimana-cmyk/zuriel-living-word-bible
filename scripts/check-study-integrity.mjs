@@ -35,7 +35,7 @@ const reader = await readFile(new URL("../index.html", import.meta.url), "utf8")
 const navigator = await readFile(new URL("../zuriel-grid-navigation.js", import.meta.url), "utf8");
 if (!reader.includes('paragraph.dataset.verseNumber = String(index + 1)')) failures.push(["stable verse identity", "missing from index.html"]);
 if (!navigator.includes('data-verse-number="')) failures.push(["exact verse target", "missing from navigator"]);
-if (!navigator.includes('replace(/^\\s*\\d+\\.?\\s*/, "")) failures.push(["verse text extraction", "invalid or missing verse-number cleanup"]);
+if (!navigator.includes('replace(/^\s*\d+\.?\s*/, "")) failures.push(["verse text extraction", "invalid or missing verse-number cleanup"]);
 
 
 const homeReferences = [...home.matchAll(/reference:\\s*"([^"]+)"/g)].map(match => match[1].toLowerCase());
