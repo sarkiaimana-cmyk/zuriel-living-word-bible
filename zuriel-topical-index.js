@@ -5226,6 +5226,45 @@ const topics=[
         "verse": 12,
         "endVerse": 17
       }
+    ],
+    "definition": "Christian character is the Spirit-shaped pattern of life that reflects Jesus in motives, choices, relationships and conduct. Fruit is evidence of a living connection to Christ, not a way to purchase God's acceptance.",
+    "oldTestament": "The law and wisdom writings call God's people to love, justice, faithfulness and integrity. The prophets promise inner renewal in which God's Spirit enables a faithful walk (Micah 6:8; Psalm 15; Ezekiel 36:26–27).",
+    "newTestament": "Jesus teaches that a tree is known by its fruit and that disciples bear fruit by abiding in Him (Matthew 7:15–20; John 15:1–8). Paul contrasts works of the flesh with the Spirit's fruit and describes the new character believers are to put on (Galatians 5:16–26; Colossians 3:12–17).",
+    "application": "Ask the Spirit to shape your responses in ordinary situations. Choose one area—such as patience, truthfulness or kindness—and practise it through a concrete action today.",
+    "questions": [
+      "Which fruit of the Spirit is most tested in my present relationships?",
+      "What does abiding in Christ look like in my daily routine?",
+      "Is my conduct producing peace and goodness, or feeding conflict and selfishness?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "καρπός",
+        "term": "karpos",
+        "meaning": "fruit, result, outcome",
+        "note": "Paul uses the singular collective expression 'fruit of the Spirit' to describe a unified Spirit-formed character."
+      },
+      {
+        "language": "Greek",
+        "script": "πνεῦμα",
+        "term": "pneuma",
+        "meaning": "spirit, breath",
+        "note": "In Galatians 5 the context identifies the Holy Spirit as the one whose leading shapes the believer's life."
+      },
+      {
+        "language": "Greek",
+        "script": "ἀγάπη",
+        "term": "agapē",
+        "meaning": "love",
+        "note": "The first item in the fruit list; Christian love is expressed in self-giving action."
+      }
+    ],
+    "relatedExplanations": [
+      "Matthew 7:15–20 — Jesus teaches discernment by the lasting fruit of a person's life, not outward claims alone.",
+      "John 15:1–8 — fruitfulness depends on remaining in Christ, the true vine.",
+      "Galatians 5:16–26 — the Spirit's fruit contrasts with destructive patterns of the flesh.",
+      "Ephesians 5:8–10 — life in the Lord is to produce goodness, righteousness and truth.",
+      "Colossians 3:12–17 — compassion, humility, patience, forgiveness and love shape the community of Christ."
     ]
   },
   {
@@ -5271,6 +5310,45 @@ const topics=[
         "verse": 16,
         "endVerse": 17
       }
+    ],
+    "definition": "Christian freedom is liberation from sin's dominion and from using human rules as a means of earning righteousness. It is not permission for selfishness; freedom is guided by love, truth, conscience and concern for another person's spiritual good.",
+    "oldTestament": "Israel's deliverance from slavery became the foundation for covenant life and care for others (Exodus 20:1–2; Deuteronomy 15:12–15). The prophets reject religious practice that ignores justice and mercy (Isaiah 58:6–10).",
+    "newTestament": "Paul insists that Christ has set believers free, while warning them not to use freedom to serve the flesh (Galatians 5:1, 13). Romans 14 and 1 Corinthians 8–10 address disputable practices, conscience, love and the refusal to make another stumble.",
+    "application": "Distinguish clear biblical commands from matters where believers may differ. Do not pressure another person's conscience, and willingly limit a personal liberty when love requires it; do not let human preferences replace the gospel.",
+    "questions": [
+      "Am I treating a personal preference as though it were a command of God?",
+      "How could my choice affect a believer with a more sensitive conscience?",
+      "Does my understanding of freedom lead me to serve others in love?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "ἐλευθερία",
+        "term": "eleutheria",
+        "meaning": "freedom, liberty",
+        "note": "In Paul's letters freedom in Christ is directed toward loving service, not self-indulgence."
+      },
+      {
+        "language": "Greek",
+        "script": "συνείδησις",
+        "term": "syneidēsis",
+        "meaning": "conscience, moral awareness",
+        "note": "In 1 Corinthians and Romans, conscience must be treated carefully and formed by truth."
+      },
+      {
+        "language": "Greek",
+        "script": "πρόσκομμα",
+        "term": "proskomma",
+        "meaning": "stumbling block, obstacle",
+        "note": "Paul warns against using liberty in a way that harms another person's faith."
+      }
+    ],
+    "relatedExplanations": [
+      "Romans 14:13–23 — believers should pursue peace and avoid pressuring others to act against conscience.",
+      "1 Corinthians 8:1–13 — knowledge without love can wound a fellow believer; love limits liberty for another's good.",
+      "1 Corinthians 10:23–33 — not everything permissible is helpful, and actions should seek the good of others and God's glory.",
+      "Galatians 5:1–13 — Christ's freedom rejects bondage and becomes an opportunity to serve through love.",
+      "1 Peter 2:16–17 — freedom is not a cover for evil but a life lived as God's servants."
     ]
   },
   {
@@ -5317,6 +5395,45 @@ const topics=[
         "verse": 6,
         "endVerse": 10
       }
+    ],
+    "definition": "Biblical stewardship recognises that possessions and resources are entrusted by God. Scripture warns against greed and the love of money, commends honest work and generosity, and teaches contentment rooted in God rather than wealth.",
+    "oldTestament": "Israel's law provided for the poor, fair dealings and generosity, while wisdom literature warns that riches are uncertain and righteousness matters more than gain (Deuteronomy 15:7–11; Proverbs 11:24–28; 30:7–9).",
+    "newTestament": "Jesus warns that money can become a rival master and tells His followers to seek God's kingdom (Matthew 6:19–24, 33; Luke 12:13–21). Paul teaches contentment, generosity and cheerful giving, while warning that the love of money brings spiritual danger (2 Corinthians 9:6–11; 1 Timothy 6:6–10, 17–19).",
+    "application": "Make honest provision, plan responsibly, resist comparison and give freely within your means. Treat money as a tool for faithful service, not as the measure of your worth or security.",
+    "questions": [
+      "What currently shapes my sense of security more: God or possessions?",
+      "Where could I practise generosity without neglecting legitimate responsibilities?",
+      "Does my financial behaviour reflect contentment, honesty and care for people in need?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "πλεονεξία",
+        "term": "pleonexia",
+        "meaning": "greed, covetousness",
+        "note": "A desire to have more that can become idolatrous and distort relationships."
+      },
+      {
+        "language": "Greek",
+        "script": "αὐτάρκεια",
+        "term": "autarkeia",
+        "meaning": "contentment, sufficiency",
+        "note": "In 1 Timothy 6:6, godliness with contentment is described as great gain."
+      },
+      {
+        "language": "Greek",
+        "script": "ἁπλότης",
+        "term": "haplotēs",
+        "meaning": "generosity, sincerity, simplicity",
+        "note": "In giving contexts it can describe open-handed generosity."
+      }
+    ],
+    "relatedExplanations": [
+      "Proverbs 3:9–10 — honouring God with resources expresses trust and gratitude.",
+      "Matthew 6:19–24 — Jesus contrasts lasting treasure with earthly wealth and warns that money can become a master.",
+      "Luke 12:13–21 — the rich fool's stored wealth cannot secure life before God.",
+      "2 Corinthians 9:6–11 — giving is to be willing and cheerful, with God supplying resources for generosity.",
+      "1 Timothy 6:6–10 — contentment guards against the destructive desire to become rich."
     ]
   },
   {
@@ -5362,6 +5479,45 @@ const topics=[
         "verse": 14,
         "endVerse": 17
       }
+    ],
+    "definition": "God calls His people to recognise the dignity of those who are poor, exposed to injustice or unable to protect themselves. Biblical compassion is practical: it shares resources, defends justice and refuses to exploit vulnerability.",
+    "oldTestament": "The law commands open-handed help for the poor and fair treatment of workers, foreigners, widows and orphans (Deuteronomy 15:7–11; 24:14–22). Prophets condemn worship that coexists with oppression and call for justice and mercy (Isaiah 1:16–17; 58:6–10).",
+    "newTestament": "Jesus identifies with the needy and teaches generous hospitality without expectation of repayment (Luke 4:18–19; 14:12–14; Matthew 25:31–46). James insists that faith must respond to a brother or sister lacking basic necessities (James 2:14–17).",
+    "application": "Notice needs nearby, listen respectfully and offer practical help that protects dignity. Support fair treatment, avoid exploitative practices and work with trustworthy community efforts where needs exceed what you can provide alone.",
+    "questions": [
+      "Whose hardship is easy for me to overlook?",
+      "What practical response would preserve dignity rather than create dependence or shame?",
+      "How do my choices about fairness and resources affect vulnerable people?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "עָנִי",
+        "term": "ʿānî",
+        "meaning": "poor, afflicted, humble",
+        "note": "The term can describe material poverty and affliction; context clarifies the emphasis."
+      },
+      {
+        "language": "Hebrew",
+        "script": "מִשְׁפָּט",
+        "term": "mishpāṭ",
+        "meaning": "justice, judgment, right order",
+        "note": "Biblical justice includes fair treatment and protection from oppression."
+      },
+      {
+        "language": "Greek",
+        "script": "πτωχός",
+        "term": "ptōchos",
+        "meaning": "poor, destitute",
+        "note": "Often describes people in severe material need, especially in the Gospels."
+      }
+    ],
+    "relatedExplanations": [
+      "Deuteronomy 15:7–11 — Israel is commanded not to harden the heart or close the hand against a needy neighbour.",
+      "Proverbs 19:17 — kindness to the poor is treated as lending to the LORD, who sees the act.",
+      "Isaiah 58:6–10 — true fasting is joined to loosening injustice and sharing with the hungry and oppressed.",
+      "Luke 14:12–14 — Jesus commends hospitality toward people who cannot repay the invitation.",
+      "James 2:14–17 — words of blessing without practical provision expose a faith that is not acting."
     ]
   },
   {
@@ -5408,6 +5564,45 @@ const topics=[
         "verse": 1,
         "endVerse": 7
       }
+    ],
+    "definition": "Biblical marriage is presented as a faithful covenant union in which husband and wife share life before God. Scripture calls spouses to loyalty, mutual honour, tenderness and sacrificial love; it never licenses coercion, violence or humiliation.",
+    "oldTestament": "Genesis 1–2 grounds human dignity and presents marriage as a one-flesh union. The prophets use covenant marriage imagery to describe faithfulness and expose betrayal, while wisdom celebrates faithful love (Genesis 2:18–25; Proverbs 5:15–19; Malachi 2:14–16).",
+    "newTestament": "Jesus points back to the creation pattern and teaches the seriousness of marital faithfulness (Matthew 19:3–9). Ephesians 5:21–33 places marriage within mutual submission and Christlike self-giving love; other letters call spouses to respect and considerate care (Colossians 3:18–19; 1 Peter 3:1–7).",
+    "application": "Practise honest communication, fidelity, patience and shared responsibility. Seek wise pastoral or professional support when conflict becomes entrenched; where there is abuse or danger, prioritise safety and seek trusted help rather than treating harm as something to endure silently.",
+    "questions": [
+      "How does Christ's self-giving love challenge selfishness in marriage?",
+      "What does mutual honour look like in everyday decisions?",
+      "How can a couple seek help early when trust or safety is under strain?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "בְּרִית",
+        "term": "berît",
+        "meaning": "covenant, binding commitment",
+        "note": "The covenant idea helps explain the seriousness of marital faithfulness in prophetic texts."
+      },
+      {
+        "language": "Hebrew",
+        "script": "דָּבַק",
+        "term": "dābaq",
+        "meaning": "cling, hold fast",
+        "note": "Genesis 2:24 uses the verb for the enduring bond of husband and wife."
+      },
+      {
+        "language": "Greek",
+        "script": "ἀγαπάω",
+        "term": "agapaō",
+        "meaning": "love, act for another's good",
+        "note": "Ephesians 5 uses this verb for the husband's Christ-patterned self-giving love."
+      }
+    ],
+    "relatedExplanations": [
+      "Genesis 2:18–25 — marriage is portrayed as a one-flesh bond marked by shared life and kinship.",
+      "Matthew 19:3–9 — Jesus appeals to creation and treats marital faithfulness with seriousness.",
+      "Ephesians 5:21–33 — the passage frames marriage through mutual submission and Christ's sacrificial care for the church.",
+      "Colossians 3:18–19 — household instruction calls spouses to ordered relationships without harshness.",
+      "1 Peter 3:1–7 — spouses are addressed with attention to conduct, honour and shared spiritual dignity."
     ]
   },
   {
