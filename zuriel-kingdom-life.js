@@ -103,6 +103,15 @@
       const values = read(DONE); write(DONE,values.includes(title) ? values.filter(x => x !== title) : values.concat(title)); openTopic(title);
     },"zkl-secondary"));
     detail.appendChild(tools);
+    tools.appendChild(button("✍ Save a study insight",() => {
+      const summary = [topic.definition, topic.application].filter(Boolean).join("\n\n");
+      const firstRef = topic.references && topic.references[0] ? topic.references[0].label : "";
+      if (window.ZurielPersonalSpace && window.ZurielPersonalSpace.saveInsight({title:topic.title,reference:firstRef,text:summary})) {
+        const status = root.querySelector("#zklStatus"); if (status) status.textContent = "Study insight saved in My Study Space.";
+      } else {
+        const status = root.querySelector("#zklStatus"); if (status) status.textContent = "Open My Study Space and save your insight there.";
+      }
+    },"zkl-secondary"));
     section(detail,"The central truth",topic.definition);
     section(detail,"The Old Testament witness",topic.oldTestament);
     section(detail,"The New Testament witness",topic.newTestament);
@@ -209,8 +218,10 @@
     const list = el("div","zkl-grid");list.id="zklLessons";browse.appendChild(list);root.appendChild(browse);
     const detail = el("article","zkl-detail");detail.id="zklDetail";detail.hidden=true;root.appendChild(detail);
     const status = el("p","zkl-status","");status.id="zklStatus";status.setAttribute("role","status");status.setAttribute("aria-live","polite");root.appendChild(status);
-    main.appendChild(root);renderList();
+    main.appendChild(root);
+    if (window.ZurielGrowthPathways && typeof window.ZurielGrowthPathways.mount === "function") window.ZurielGrowthPathways.mount(root);
+    renderList();
   }
   function open() { if (root) { root.hidden=false; closeTopic(); } }
-  window.ZurielKingdomLife = {mount:mount,open:open};
+  window.ZurielKingdomLife = {mount:mount,open:open,openTopic:openTopic};
 })();
