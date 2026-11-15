@@ -516,13 +516,17 @@
           valley: { label: "Mountain valley", url: "https://images.unsplash.com/photo-1768365423849-6f694d85cf33?auto=format&fit=crop&fm=jpg&q=82&w=1800" }
         };
         let activeWallpaperImage = null;
+        let wallpaperRequestToken = 0;
         function loadStudioWallpaper(key) {
+          const requestToken = ++wallpaperRequestToken;
+          activeWallpaperImage = null;
           const choice = wallpaperCatalog[key];
           if (!choice) return;
           const status = studio.querySelector("#zgsStatus");
           const image = new Image();
           image.crossOrigin = "anonymous";
           image.onload = function () {
+            if (requestToken !== wallpaperRequestToken) return;
             activeWallpaperImage = image;
             studio.dataset.wallpaper = key;
             studio.querySelector("#zurielGloryPreview").style.setProperty("--zgs-wallpaper-image", 'url("' + choice.url + '")');
@@ -532,6 +536,7 @@
             status.textContent = choice.label + " wallpaper loaded. It will be available offline after this device caches it.";
           };
           image.onerror = function () {
+            if (requestToken !== wallpaperRequestToken) return;
             status.textContent = "This wallpaper could not load. Connect to the internet once, then try again. Your other card content is safe.";
           };
           image.src = choice.url;
@@ -640,6 +645,7 @@
             const canvas = document.createElement("canvas");
             const ctx = canvas.getContext("2d");
             if (!ctx) throw new Error("Image export is not supported in this browser.");
+            if (!activeWallpaperImage) throw new Error("Please wait for the selected wallpaper to finish loading before exporting your card.");
             const width = 1600, margin = 100, gap = 70, columnWidth = (width - margin * 2 - gap) / 2;
             const scriptureSize = Number(studio.querySelector("#zgsScriptureSize").value) * 2;
             const faithSize = Number(studio.querySelector("#zgsFaithSize").value) * 2;
