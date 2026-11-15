@@ -9,7 +9,7 @@
       .normalize("NFC")
       .replace(/[’]/g, "'")
       .toLocaleLowerCase()
-      .replace(/^[^\\p{L}\\p{N}]+|[^\\p{L}\\p{N}]+$/gu, "");
+      .replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, "");
   }
 
   function matchSelectedKJVWord(readerText, sourceText, annotations, wordIndex) {
@@ -17,8 +17,8 @@
       return { ok: false, reason: "No selected word position was supplied." };
     }
 
-    const readerTokens = String(readerText || "").match(/\\S+/g) || [];
-    const sourceSpans = [...String(sourceText || "").matchAll(/\\S+/g)].map(function (match) {
+    const readerTokens = String(readerText || "").match(/\S+/g) || [];
+    const sourceSpans = [...String(sourceText || "").matchAll(/\S+/g)].map(function (match) {
       return {
         text: match[0],
         start: match.index,
@@ -46,7 +46,7 @@
       const end = Number(annotation && annotation.end);
       if (!Number.isInteger(start) || !Number.isInteger(end) || end <= start) return false;
       if (start < selected.end && end > selected.start) {
-        return /[\\p{L}\\p{N}]/u.test(String(sourceText).slice(start, end));
+        return /[\p{L}\p{N}]/u.test(String(sourceText).slice(start, end));
       }
       return false;
     });
