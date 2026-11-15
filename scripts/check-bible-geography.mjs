@@ -30,42 +30,48 @@ const bookChapters = {
 };
 if (!data || data.metadata?.sourceCommit !== "7eb18a5ee62f27b9b93bd6689ea272d76dd23b8f") failures.push("Pinned OpenBible source data is missing.");
 if (!String(data?.metadata?.license).includes("CC BY 4.0")) failures.push("OpenBible attribution/license is missing.");
-const region = data?.regions?.find(item => item.id === "galilee");
-if (!region || region.places.length !== 4) failures.push("The first Galilee region must contain four curated places.");
+const galilee = data?.regions?.find(item => item.id === "galilee");
+const judea = data?.regions?.find(item => item.id === "judea");
+if (!galilee || galilee.places.length !== 4) failures.push("Galilee must contain four curated places.");
+if (!judea || judea.places.length !== 8) failures.push("Jerusalem and Judea must contain eight curated places.");
+if (data?.regions?.length !== 2) failures.push("The Geography Centre must contain exactly two reviewed regions.");
 const ids = new Set();
-for (const place of region?.places || []) {
-  if (ids.has(place.id)) failures.push("Duplicate place id: " + place.id);
-  ids.add(place.id);
-  if (!Number.isFinite(place.longitude) || !Number.isFinite(place.latitude)) failures.push(place.name + ": coordinates are invalid.");
-  if (place.longitude < region.bounds.west || place.longitude > region.bounds.east || place.latitude < region.bounds.south || place.latitude > region.bounds.north) failures.push(place.name + ": coordinates fall outside the region bounds.");
-  if (!Number.isInteger(place.score) || place.score < 0 || place.score > 1000) failures.push(place.name + ": source score is invalid.");
-  if (!place.ancientId || !place.modernId || !place.resolutionName || !place.precision) failures.push(place.name + ": provenance/precision metadata is incomplete.");
-  if (!Array.isArray(place.references) || !place.references.length) failures.push(place.name + ": Scripture links are missing.");
-  for (const ref of place.references || []) {
-    if (!bookChapters[ref.book] || !Number.isInteger(ref.chapter) || ref.chapter < 1 || ref.chapter > bookChapters[ref.book] || !Number.isInteger(ref.verse) || ref.verse < 1) failures.push(place.name + ": invalid Scripture reference.");
+for (const region of data?.regions || []) {
+  for (const place of region.places || []) {
+    if (ids.has(place.id)) failures.push("Duplicate place id: " + place.id);
+    ids.add(place.id);
+    if (!Number.isFinite(place.longitude) || !Number.isFinite(place.latitude)) failures.push(place.name + ": coordinates are invalid.");
+    if (place.longitude < region.bounds.west || place.longitude > region.bounds.east || place.latitude < region.bounds.south || place.latitude > region.bounds.north) failures.push(place.name + ": coordinates fall outside region bounds.");
+    if (!Number.isInteger(place.score) || place.score < 0 || place.score > 1000) failures.push(place.name + ": source score is invalid.");
+    if (!place.ancientId || !place.modernId || !place.resolutionName || !place.precision) failures.push(place.name + ": provenance/precision metadata is incomplete.");
+    if (!Array.isArray(place.references) || !place.references.length) failures.push(place.name + ": Scripture links are missing.");
+    for (const ref of place.references || []) {
+      if (!bookChapters[ref.book] || !Number.isInteger(ref.chapter) || ref.chapter < 1 || ref.chapter > bookChapters[ref.book] || !Number.isInteger(ref.verse) || ref.verse < 1) failures.push(place.name + ": invalid Scripture reference.");
+    }
+  }
+  for (const journey of region.journeys || []) {
+    if (!journey.stops || journey.stops.length < 2) failures.push(journey.title + ": journey needs at least two stops.");
+    for (const stop of journey.stops || []) {
+      if (!region.places.some(place => place.id === stop.placeId)) failures.push(journey.title + ": stop points to an unknown place.");
+      const ref = stop.reference || {};
+      if (!bookChapters[ref.book] || ref.chapter < 1 || ref.chapter > bookChapters[ref.book] || ref.verse < 1) failures.push(journey.title + ": invalid Scripture reference.");
+    }
   }
 }
-for (const journey of region?.journeys || []) {
-  if (journey.stops.length < 2) failures.push(journey.title + ": journey needs at least two stops.");
-  for (const stop of journey.stops) {
-    if (!ids.has(stop.placeId)) failures.push(journey.title + ": stop points to an unknown place.");
-    if (!bookChapters[stop.reference.book] || stop.reference.chapter < 1 || stop.reference.chapter > bookChapters[stop.reference.book] || stop.reference.verse < 1) failures.push(journey.title + ": invalid Scripture reference.");
-  }
-}
-for (const fragment of ['root.id = "zurielGeographyCentre"', "window.ZurielGeographyData", "window.openChapter", "window.ZurielStudy.openForReference", "aria-label", "mapNotice"]) {
+for (const fragment of ['data.regions.forEach(function (region)', 'root.id = "zurielGeographyCentre-" + region.id', "window.ZurielGeographyData", "window.openChapter", "window.ZurielStudy.openForReference", "aria-label", "mapNotice"]) {
   if (!moduleSource.includes(fragment)) failures.push("Geography module integration is missing: " + fragment);
 }
 if (/fetch\s*\(|XMLHttpRequest|WebSocket|https:\/\//.test(moduleSource)) failures.push("The geography UI must not require network access.");
 if (!index.includes('src="zuriel-geography-data.js"') || !index.includes('src="zuriel-geography.js"')) failures.push("Web entry point omits geography files.");
 if (index.indexOf('src="zuriel-geography-data.js"') > index.indexOf('src="zuriel-geography.js"') || index.indexOf('src="zuriel-geography.js"') < index.indexOf('src="zuriel-study.js"')) failures.push("Geography scripts are not loaded after their dependencies.");
-if (!worker.includes('"./zuriel-geography-data.js"') || !worker.includes('"./zuriel-geography.js"') || !worker.includes("zuriel-bible-offline-v103")) failures.push("Offline cache does not include geography data and module.");
+if (!worker.includes('"./zuriel-geography-data.js"') || !worker.includes('"./zuriel-geography.js"') || !worker.includes("zuriel-bible-offline-v104")) failures.push("Offline cache does not include geography data and module.");
 if (!packaging.includes('"zuriel-geography-data.js"') || !packaging.includes('"zuriel-geography.js"')) failures.push("Android web packaging omits geography files.");
 if (!prWorkflow.includes("node scripts/check-bible-geography.mjs") || !androidWorkflow.includes("node scripts/check-bible-geography.mjs")) failures.push("Geography validation is not included in both workflows.");
-if (JSON.parse(version).version !== "1.4.11" || !updates.includes('const APP_VERSION = "1.4.11";')) failures.push("App version metadata is inconsistent.");
+if (JSON.parse(version).version !== "1.4.12" || !updates.includes('const APP_VERSION = "1.4.12";')) failures.push("App version metadata is inconsistent.");
 if (failures.length) {
   console.error("Bible Geography checks failed:");
   failures.forEach(item => console.error(" - " + item));
   process.exitCode = 1;
 } else {
-  console.log("Bible Geography checks passed: pinned source attribution, four in-bounds regional places, confidence/precision metadata, Scripture references, journey stops, offline-only UI, Android packaging and release metadata.");
+  console.log("Bible Geography checks passed: two pinned offline regions, twelve in-bounds place records, confidence/precision metadata, Scripture references, journey stops, offline-only UI and Android packaging.");
 }
