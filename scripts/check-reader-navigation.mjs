@@ -3,6 +3,11 @@ import fs from "node:fs";
 const reader = fs.readFileSync("index.html", "utf8");
 const navigator = fs.readFileSync("zuriel-grid-navigation.js", "utf8");
 const home = fs.readFileSync("zuriel-home.js", "utf8");
+const geography = fs.readFileSync("zuriel-geography.js", "utf8");
+const study = fs.readFileSync("zuriel-study.js", "utf8");
+const kingdom = fs.readFileSync("zuriel-kingdom-life.js", "utf8");
+const library = fs.readFileSync("zuriel-library.js", "utf8");
+const navigation = fs.readFileSync("zuriel-navigation.js", "utf8");
 
 function requireMatch(source, pattern, message) {
   if (!pattern.test(source)) throw new Error(message);
@@ -63,8 +68,24 @@ requireMatch(
   /window\.selectBibleVerse\(saved\.verse\)/,
   "Home Continue Reading must restore and activate the saved verse."
 );
+requireMatch(geography, /window\.selectBibleVerse\(reference\.verse\)/,
+  "Bible Geography references must use the shared verse activation action.");
+requireMatch(study, /window\.selectBibleVerse\(item\.verse\)/,
+  "Advanced Study topical and word-occurrence links must use shared verse activation.");
+requireMatch(study, /window\.selectBibleVerse\(verseNumber\)/,
+  "Advanced Study connected Scripture links must use shared verse activation.");
+requireMatch(kingdom, /window\.selectBibleVerse\(verse\)/,
+  "Kingdom Life references must use shared verse activation.");
+requireMatch(library, /window\.selectBibleVerse\(verseNumber\)/,
+  "Words of Jesus references must use shared verse activation.");
+requireMatch(library, /window\.selectBibleVerse\(Number\(match\[3\]\)\)/,
+  "Saved-library bookmarks must use shared verse activation.");
+requireMatch(home, /window\.selectBibleVerse\(Number\(match\[3\]\)\)/,
+  "Home Scripture cards must use shared verse activation.");
+requireMatch(navigation, /window\.selectBibleVerse\(number\)/,
+  "The chapter-and-verse navigation panel must use shared verse activation.");
 if (home.includes("setupHomePassageSelector") || home.includes("zurielHomePassageCard")) {
   throw new Error("The retired duplicate home passage selector must not return.");
 }
 
-console.log("Reader navigation checks passed: errors propagate, the full-screen navigator verifies exact verses, and Continue Reading restores the saved verse.");
+console.log("Reader navigation checks passed: errors propagate, responsive reading width is enforced, and search, navigator, Continue Reading, Geography, Advanced Study, Kingdom Life, Words of Jesus, bookmarks, home Scripture cards and verse navigation all use the shared verse activation path.");
