@@ -2,7 +2,7 @@
 
 "use strict";
 
-const CACHE_NAME = "zuriel-bible-offline-v112";
+const CACHE_NAME = "zuriel-bible-offline-v113";
 
 const CORE_FILES = [
   "./",
@@ -75,6 +75,20 @@ self.addEventListener("fetch", function (event) {
   const url = new URL(request.url);
 
   if (url.origin !== self.location.origin) {
+    if (url.origin === "https://images.unsplash.com") {
+      event.respondWith(
+        caches.open(CACHE_NAME).then(async function (cache) {
+          const cached = await cache.match(request);
+          if (cached) return cached;
+          const response = await fetch(request);
+          if (response && response.ok && response.type !== "opaque") {
+            await cache.put(request, response.clone());
+          }
+          return response;
+        })
+      );
+      return;
+    }
     if (
       url.origin === "https://bible.helloao.org" &&
       url.pathname.startsWith("/api/d/")

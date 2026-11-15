@@ -45,13 +45,22 @@ const checks = [
   ["complete app footer", "Zuriel Living Word Bible"],
   ["export calculates Scripture line height", "leftLines.length * lineHeight(scriptureSize)"],
   ["export calculates faith line height", "rightLines.length * lineHeight(faithSize)"],
-  ["shared card includes complete app name", '"Zuriel Living Word Bible"' ]
+  ["shared card includes complete app name", '"Zuriel Living Word Bible"' ],
+  ["photographic wallpaper picker", 'id="zgsWallpapers"'],
+  ["four curated realistic wallpaper choices", 'data-wallpaper="valley"'],
+  ["wallpaper selection loads image", "function loadStudioWallpaper(key)"],
+  ["wallpaper appears in live preview", "--zgs-wallpaper-image"],
+  ["wallpaper is painted into PNG export", "ctx.drawImage(image"],
+  ["separate image sharing action", 'id="zgsShareImage"'],
+  ["download and share image actions are distinct", 'exportButton.id === "zgsShareImage"'],
+  ["selected wallpaper is saved with card", "wallpaper:studio.dataset.wallpaper"],
 ];
 for (const [label, fragment] of checks) {
   if (!library.includes(fragment)) failures.push(label + " is missing.");
 }
 if (!index.includes("window.getBibleVerseText = async function (reference)")) failures.push("Offline KJV passage retrieval is missing.");
-if (!worker.includes("zuriel-bible-offline-v112")) failures.push("Offline cache version was not refreshed for the Studio/navigation fix.");
+if (!worker.includes("zuriel-bible-offline-v113")) failures.push("Offline cache version was not refreshed for the Studio/navigation fix.");
+if (!worker.includes('url.origin === "https://images.unsplash.com"')) failures.push("Service worker does not cache selected Unsplash wallpapers.");
 if (home.includes("Your Bible Journey")) failures.push("The duplicate home shortcut-button grid is still present.");
 const navBlock = home.match(/const navItems = \[([\s\S]*?)\];/);
 if (!navBlock || (navBlock[1].match(/\["(?:home|read|study|library|kingdom|personal)"/g) || []).length !== 6) {
