@@ -24,6 +24,18 @@ Where the source lists competing identifications, Zuriel must not hide the alter
 
 A region or water body may be represented by a centre or representative point. Such a point must never be described as an exact ancient site or shoreline. Places with unknown or materially disputed locations must remain unmapped or be shown only with an explicit uncertainty explanation.
 
+## Second regional release: Jerusalem and Judea
+
+The second offline locator covers Jerusalem and the surrounding Judean hill country. It contains source-backed candidates for Hebron (Tel Rumeida), Bethlehem, Jerusalem, the Mount of Olives, Gethsemane, Bethany (Al Eizariya), Old Testament Jericho (Tell es-Sultan), and the Gospel-era Jericho candidate (Tell el-Alayiq).
+
+The two Jericho records are intentionally kept distinct because the upstream dataset contains separate ancient-place records and separate modern candidate locations. Jerusalem and Bethlehem are represented by points in their modern settlements, not by exact ancient gates, buildings or boundaries. The Mount of Olives point represents a location on the hill; Gethsemane's point carries a 250-metre precision radius. These limitations remain visible in the app.
+
+Two Scripture reading sequences are included:
+- Bethany → Mount of Olives → Jerusalem, linked to Luke 19:29 and 19:41.
+- Jericho → Jerusalem, linked to Luke 19:1 and 19:28.
+
+These are narrative reading connections, not measured roads, exact itineraries or travel-time claims.
+
 ## Scripture connections
 
 The upstream ancient-place records include OSIS verse identifiers. Zuriel's curated data retains selected book, chapter and verse references and opens those references through the local Bible reader. A place-to-passage link must be checked against the cited reference before it is published. A journey is a sequence of Scripture-linked stops; it must not imply a precise road, chronology, distance, or travel time unless the biblical text and reliable geographical evidence support that claim.
