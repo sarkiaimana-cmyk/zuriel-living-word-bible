@@ -21,6 +21,7 @@ forbidText(home, "zurielHomePassageCard", "The duplicate home passage selector")
 forbidText(home, "setupHomePassageSelector", "The duplicate home passage selector logic");
 requireText(home, "zurielHomeContinueReading", "The continue-reading shortcut");
 requireText(home, "zurielOpenBookFaithCard", "The Scripture-linked open-book faith card");
+requireText(home, "His Words.. My life.. My Victory", "The approved Open Book card headline");
 requireText(home, "window.getBibleVerseText(verse.reference)", "Open Book exact offline KJV passage retrieval");
 requireText(home, "faithCardRenderToken", "Protection against out-of-order Scripture loads");
 requireText(home, "function canonicalBookName(value)", "Psalm/Psalms reader-name normalization");
