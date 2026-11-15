@@ -27,22 +27,43 @@
     return item;
   }
   function readArray(key) {
+    const raw = localStorage.getItem(key);
+    if (raw === null) return [];
+    let value;
     try {
-      const value = JSON.parse(localStorage.getItem(key) || "[]");
-      return Array.isArray(value) ? value : [];
-    } catch (error) { return []; }
+      value = JSON.parse(raw);
+    } catch (error) {
+      throw new Error("Zuriel could not read saved personal data (" + key + "). Backup or restore was stopped to protect your records.");
+    }
+    if (!Array.isArray(value)) {
+      throw new Error("Zuriel found an unexpected saved-data format (" + key + "). Backup or restore was stopped to protect your records.");
+    }
+    return value;
   }
   function readPosition() {
+    const raw = localStorage.getItem(KEYS.position);
+    if (raw === null) return null;
+    let value;
     try {
-      const value = JSON.parse(localStorage.getItem(KEYS.position) || "null");
-      return value && typeof value === "object" && !Array.isArray(value) ? value : null;
-    } catch (error) { return null; }
+      value = JSON.parse(raw);
+    } catch (error) {
+      throw new Error("Zuriel could not read your saved reading position. Backup or restore was stopped to protect your records.");
+    }
+    if (!value || typeof value !== "object" || Array.isArray(value)) {
+      throw new Error("Zuriel found an unexpected saved reading-position format. Backup or restore was stopped to protect your records.");
+    }
+    return value;
   }
   function readReadingPlans() {
+    const raw = localStorage.getItem(KEYS.readingPlans);
+    if (raw === null) return { schemaVersion: 1, activePlanId: null, plans: {} };
+    let value;
     try {
-      const value = JSON.parse(localStorage.getItem(KEYS.readingPlans) || "null");
-      return safeReadingPlanProgress(value);
-    } catch (error) { return { schemaVersion: 1, activePlanId: null, plans: {} }; }
+      value = JSON.parse(raw);
+    } catch (error) {
+      throw new Error("Zuriel could not read your saved reading-plan progress. Backup or restore was stopped to protect your records.");
+    }
+    return safeReadingPlanProgress(value);
   }
   function collect() {
     return {
