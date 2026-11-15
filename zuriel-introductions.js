@@ -1671,6 +1671,38 @@
     content.appendChild(details);
   }
 
+  function createBookArtwork(bookName, book) {
+    const seed = Array.from(bookName).reduce(function (value, character) {
+      return (value * 31 + character.charCodeAt(0)) % 360;
+    }, 17);
+    const title = bookName.replace(/&/g, "&amp;").replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    const subtitle = String(book.subtitle || "A book of Scripture")
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    const testament = book.testament === "New Testament"
+      ? "NEW TESTAMENT" : "OLD TESTAMENT";
+    const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">' +
+      '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">' +
+      '<stop offset="0" stop-color="hsl(' + seed + ',48%,17%)"/>' +
+      '<stop offset="1" stop-color="hsl(' + ((seed + 48) % 360) + ',52%,36%)"/>' +
+      '</linearGradient><linearGradient id="p" x1="0" y1="0" x2="0" y2="1">' +
+      '<stop offset="0" stop-color="#fffdf3"/><stop offset="1" stop-color="#e8dfc8"/>' +
+      '</linearGradient></defs>' +
+      '<rect width="1200" height="675" fill="url(#g)"/>' +
+      '<circle cx="1010" cy="105" r="170" fill="#ffffff" opacity=".06"/>' +
+      '<circle cx="180" cy="590" r="250" fill="#ffffff" opacity=".045"/>' +
+      '<path d="M120 0V675 M1080 0V675" stroke="#d9bd79" stroke-width="3" opacity=".55"/>' +
+      '<text x="600" y="112" fill="#e9d59e" font-family="Georgia,serif" font-size="24" letter-spacing="7" text-anchor="middle">' + testament + '</text>' +
+      '<text x="600" y="215" fill="#fffaf0" font-family="Georgia,serif" font-size="64" font-weight="bold" text-anchor="middle">' + title + '</text>' +
+      '<text x="600" y="267" fill="#f1dfb5" font-family="Georgia,serif" font-size="28" text-anchor="middle">' + subtitle + '</text>' +
+      '<path d="M275 390 Q430 320 600 382 Q770 320 925 390 L925 545 Q760 475 600 545 Q440 475 275 545 Z" fill="url(#p)" stroke="#b99b58" stroke-width="7"/>' +
+      '<path d="M600 382V545 M305 410 Q440 365 570 412 M630 412 Q760 365 895 410 M305 445 Q440 400 570 447 M630 447 Q760 400 895 445 M305 480 Q440 435 570 482 M630 482 Q760 435 895 480" fill="none" stroke="#9b8c6b" stroke-width="5" opacity=".65"/>' +
+      '<text x="600" y="620" fill="#e9d59e" font-family="Georgia,serif" font-size="22" letter-spacing="5" text-anchor="middle">ZURIEL LIVING WORD BIBLE</text>' +
+      '</svg>';
+    return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+  }
+
   function renderBook(bookName) {
     const book = introductions[bookName];
     if (!book) return;
@@ -1685,17 +1717,21 @@
 
     toggle.textContent = "Explore " + bookName + " Introduction";
 
-    if (book.image) {
+    {
       const figure = document.createElement("figure");
       figure.className = "intro-figure";
 
       const image = document.createElement("img");
       image.className = "intro-image";
-      image.src = book.image;
+      image.src = book.image || createBookArtwork(bookName, book);
       image.alt = bookName + " — " + book.subtitle;
       image.loading = "lazy";
       image.decoding = "async";
       image.fetchPriority = "low";
+      image.onerror = function () {
+        image.onerror = null;
+        image.src = createBookArtwork(bookName, book);
+      };
 
       const caption = document.createElement("figcaption");
       caption.textContent =
