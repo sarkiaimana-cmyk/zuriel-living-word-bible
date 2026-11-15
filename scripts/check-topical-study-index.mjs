@@ -2,11 +2,12 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import vm from "node:vm";
 
-const [source, readerHtml, bookDataSource, kjvSource] = await Promise.all([
+const [source, readerHtml, bookDataSource, kjvSource, studyUiSource] = await Promise.all([
   readFile(new URL("../zuriel-topical-index.js", import.meta.url), "utf8"),
   readFile(new URL("../index.html", import.meta.url), "utf8"),
   readFile(new URL("../bible-data.js", import.meta.url), "utf8"),
-  readFile(new URL("../kjv.72bec70fcd.json", import.meta.url), "utf8")
+  readFile(new URL("../kjv.72bec70fcd.json", import.meta.url), "utf8"),
+  readFile(new URL("../zuriel-study.js", import.meta.url), "utf8")
 ]);
 const bookData = bookDataSource;
 const kjvData = JSON.parse(kjvSource);
@@ -28,6 +29,11 @@ const books = new Set([
 ]);
 const topics = index.list();
 assert.ok(topics.length >= 100, "The curated topical library should retain at least 100 topics.");
+// Long topical explanations should remain available without overwhelming the reader.
+assert.ok(studyUiSource.split('document.createElement("details")').length - 1 >= 4,
+  "Topical explanations, language notes, related passages and reflection questions must be expandable.");
+assert.ok(studyUiSource.includes('document.createElement("summary")'),
+  "Expandable topical sections must have readable summary controls.");
 const titles = new Set();
 let referenceCount = 0;
 for (const topic of topics) {

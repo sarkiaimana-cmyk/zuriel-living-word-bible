@@ -1357,24 +1357,24 @@
         card.appendChild(summary);
         function addSection(title, body) {
           if (!body) return;
-          const section = document.createElement("section");
+          const section = document.createElement("details");
           section.className = "zuriel-topic-study-section";
-          const h = document.createElement("h4");
-          h.textContent = title;
+          const heading = document.createElement("summary");
+          heading.textContent = title;
           const p = document.createElement("p");
           p.textContent = body;
-          section.append(h, p);
+          section.append(heading, p);
           card.appendChild(section);
         }
         addSection("Biblical definition and explanation", topic.definition);
         addSection("Old Testament foundations", topic.oldTestament);
         addSection("New Testament fulfilment and development", topic.newTestament);
         if (Array.isArray(topic.languageWords) && topic.languageWords.length) {
-          const section = document.createElement("section");
+          const section = document.createElement("details");
           section.className = "zuriel-topic-study-section";
-          const h = document.createElement("h4");
-          h.textContent = "Important Hebrew and Greek words";
-          section.appendChild(h);
+          const heading = document.createElement("summary");
+          heading.textContent = "Important Hebrew and Greek words";
+          section.appendChild(heading);
           topic.languageWords.forEach(function(word) {
             const entry = document.createElement("div");
             entry.className = "zuriel-topic-language";
@@ -1390,11 +1390,11 @@
           card.appendChild(section);
         }
         if (Array.isArray(topic.relatedExplanations) && topic.relatedExplanations.length) {
-          const section = document.createElement("section");
+          const section = document.createElement("details");
           section.className = "zuriel-topic-study-section";
-          const h = document.createElement("h4");
-          h.textContent = "Related passages and their connections";
-          section.appendChild(h);
+          const heading = document.createElement("summary");
+          heading.textContent = "Related passages and their connections";
+          section.appendChild(heading);
           topic.relatedExplanations.forEach(function(text) {
             const p = document.createElement("p");
             p.textContent = text;
@@ -1404,11 +1404,11 @@
         }
         addSection("Practical application", topic.application);
         if (Array.isArray(topic.questions) && topic.questions.length) {
-          const section = document.createElement("section");
+          const section = document.createElement("details");
           section.className = "zuriel-topic-study-section";
-          const h = document.createElement("h4");
-          h.textContent = "Questions for personal study";
-          section.appendChild(h);
+          const heading = document.createElement("summary");
+          heading.textContent = "Questions for personal study";
+          section.appendChild(heading);
           const list = document.createElement("ol");
           topic.questions.forEach(function(question) {
             const li = document.createElement("li");
