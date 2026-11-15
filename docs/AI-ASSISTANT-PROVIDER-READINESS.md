@@ -34,13 +34,23 @@ Official references:
 - https://console.groq.com/docs/billing-faqs
 - https://console.groq.com/docs/legal/services-agreement
 
-### Cloudflare Workers — possible low-cost proxy host, not an AI model provider
+### Cloudflare Workers and Workers AI — separate hosting and inference products; possible no-cost pilot candidate
 
-The current Workers Free plan documents 100,000 requests per day and 10 ms CPU time per invocation. This may be enough for a small, carefully bounded proxy, but it does not include third-party model inference. The paid Workers plan has a stated $5 USD monthly minimum, so the free plan must be tested against the proxy's actual needs before it is selected.
+Cloudflare **Workers** can host the server-side proxy. Its current Free plan documents 100,000 requests per day and 10 ms CPU time per invocation. The Paid Workers plan has a stated $5 USD monthly minimum, so Zuriel must remain on the Free plan unless a budget is separately approved.
+
+Cloudflare **Workers AI** is a separate inference product; it does provide hosted models. Its current free allocation is 10,000 Neurons per day, with usage above that allocation requiring the Paid Workers plan. The Free plan must be kept in place and limits must be tested; the application should fail closed when quota is exhausted rather than trigger a paid upgrade.
+
+A promising model to evaluate is Google's `@cf/google/gemma-4-26b-a4b-it`. Cloudflare's model page lists zero data retention, a 256,000-token context window and unit pricing of $0.10 per million input tokens and $0.30 per million output tokens. Google's Gemma 4 model licence is Apache 2.0. The Workers AI data-usage policy says standard inference inputs and outputs are not retained after processing and are not used to train AI models. These statements do not cover content deliberately written to storage or logs, so the proxy must not log or persist prompts or responses.
+
+This is a **candidate for a small, bounded pilot, not an approved production provider**. Before selecting it, verify that this exact model is available under the account's Workers AI Free allocation, test real quota consumption and response quality, review applicable Cloudflare terms, and deploy abuse/rate limits. The model and free allocation may change. No personal study records may be sent by default.
 
 Official references:
-- https://developers.cloudflare.com/workers/platform/limits/
-- https://developers.cloudflare.com/workers/platform/pricing/
+- Workers Free limits: https://developers.cloudflare.com/workers/platform/limits/
+- Workers pricing: https://developers.cloudflare.com/workers/platform/pricing/
+- Workers AI pricing and free allocation: https://developers.cloudflare.com/workers-ai/platform/pricing/
+- Workers AI data usage: https://developers.cloudflare.com/workers-ai/platform/data-usage/
+- Gemma 4 model details: https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/
+- Gemma 4 Apache 2.0 licence: https://ai.google.dev/gemma/apache_2
 
 ### OpenAI API — technically possible, but usage is metered
 
