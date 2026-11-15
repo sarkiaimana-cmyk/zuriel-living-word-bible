@@ -27,7 +27,12 @@ const checks = [
   ["the Light identity", "The Light 🕯️"],
   ["Studio passage-loading control", 'id="zgsLoadScripture"'],
   ["Studio passage retrieval integration", "window.getBibleVerseText(referenceField.value)"],
-  ["brand footer", "Zuriel Living Word"]
+  ["Scripture on left page", "zgs-left-page">\n                <div class="zgs-page-title">THE WORD</div>"],
+  ["faith response on right page", "zgs-right-page">\n                <div class="zgs-page-title">GLORY VERSE AFFIRMATION</div>"],
+  ["bold faith response", ".zgs-active-copy {min-height:105px;font-weight:700;}"],
+  ["declaration is the default card response", 'let activeFaithView = "Declaration";'],
+  ["exact approved card headline", "His Words.. My life.. My Victory"],
+  ["complete app footer", "Zuriel Living Word Bible"]
 ];
 for (const [label, fragment] of checks) {
   if (!library.includes(fragment)) failures.push(label + " is missing.");
