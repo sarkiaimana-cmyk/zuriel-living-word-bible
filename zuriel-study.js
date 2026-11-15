@@ -265,11 +265,6 @@
         return;
       }
 
-      const language = exactMatches.some(word => word.language === "aramaic")
-        ? "Aramaic"
-        : exactMatches.some(word => word.language === "greek")
-          ? "Greek" : "Hebrew";
-
       const intro = document.createElement("p");
       intro.className = "study-small";
       intro.textContent = "Focused study for “" + selectedEnglishWord + "” — matching source word record(s) only.";
@@ -287,6 +282,19 @@
         const button = document.createElement("button");
         button.type = "button";
         button.className = "original-word-button";
+
+        const languageLabel = document.createElement("span");
+        const languageNames = {
+          hebrew: "Hebrew",
+          greek: "Greek",
+          aramaic: "Aramaic"
+        };
+        const languageName = languageNames[String(word.language || "").toLowerCase()];
+        languageLabel.className = "word-language";
+        languageLabel.textContent = languageName
+          ? languageName + " source"
+          : "Source language not identified";
+        card.appendChild(languageLabel);
 
         const original = document.createElement("span");
         original.className = "original-script";
@@ -697,6 +705,15 @@
         border-radius:11px;
         padding:12px;
         margin:10px 0;
+      }
+      #zurielStudyPanel .word-language {
+        display:inline-block;
+        color:#53677f;
+        font-size:12px;
+        font-weight:700;
+        letter-spacing:.04em;
+        text-transform:uppercase;
+        margin:0 0 7px;
       }
       #zurielStudyPanel .original-word-button {
         display:block;
