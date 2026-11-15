@@ -30,7 +30,7 @@ const books = new Set([
 const topics = index.list();
 assert.ok(topics.length >= 100, "The curated topical library should retain at least 100 topics.");
 // Long topical explanations should remain available without overwhelming the reader.
-assert.ok((studyUiSource.match(/document\\.createElement\\("details"\\)/g) || []).length >= 4,
+assert.ok(studyUiSource.split('document.createElement("details")').length - 1 >= 4,
   "Topical explanations, language notes, related passages and reflection questions must be expandable.");
 assert.ok(studyUiSource.includes('document.createElement("summary")'),
   "Expandable topical sections must have readable summary controls.");
