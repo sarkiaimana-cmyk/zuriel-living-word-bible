@@ -29,9 +29,39 @@ header h1 { font-size: 26px; }
 header p { color: #f3d98b; }
 
 main {
-  max-width: 760px;
-  margin: auto;
-  padding: 16px;
+  width: 100%;
+  max-width: 1120px;
+  min-width: 0;
+  margin: 0 auto;
+  padding: clamp(10px, 2vw, 22px);
+}
+
+.card,
+#bibleReader,
+#message {
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+}
+
+.card {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  header {
+    padding: 22px 12px;
+  }
+
+  header h1 {
+    font-size: clamp(21px, 6vw, 26px);
+    overflow-wrap: anywhere;
+  }
 }
 
 .card {
@@ -69,13 +99,34 @@ select {
 }
 
 #message {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
   margin-top: 18px;
   line-height: 1.7;
+  text-align: left;
+  overflow-wrap: anywhere;
   --zuriel-reading-font-size: 18px;
 }
+#message > h2,
+#message > p,
+#message > div,
+#message > section {
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+}
 #message .verse {
+  display: block;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  text-align: left;
+  overflow-wrap: anywhere;
+  word-break: normal;
   font-size: var(--zuriel-reading-font-size, 18px);
-  line-height: 1.9;
+  line-height: 1.85;
   padding: 15px 11px;
   border-radius: 10px;
   scroll-margin-top: 18px;
