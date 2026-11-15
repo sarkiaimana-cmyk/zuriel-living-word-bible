@@ -95,7 +95,7 @@ try {
 } catch (error) {
   failures.push("Offline KJV reference verification failed: " + error.message);
 }
-if (!worker.includes("zuriel-bible-offline-v113")) failures.push("Offline cache version was not refreshed.");
+if (!worker.includes("zuriel-bible-offline-v114")) failures.push("Offline cache version was not refreshed.");
 if (!worker.includes('"./zuriel-library.js"')) failures.push("Service worker does not precache the library module.");
 if (!packaging.includes('"zuriel-library.js"')) failures.push("Android web packaging omits the library module.");
 if (!index.includes("zuriel-library.js")) failures.push("App entry point does not load the library module.");
