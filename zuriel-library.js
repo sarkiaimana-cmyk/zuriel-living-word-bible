@@ -764,14 +764,119 @@
 
       if (page === "jesus") {
         content.appendChild(card(
-          "The Words of Jesus",
-          "A dedicated collection for studying the teachings of Jesus Christ."
+          "❤️ The Words of Jesus",
+          "A Scripture-led study centre for the recorded teachings of Jesus in the four Gospels. Choose a theme, compare Gospel passages, and open the actual Bible text."
         ));
 
-        content.appendChild(element(
-          "p",
-          "This section will connect to the approved Gospel Scripture database, with teachings organised by topic and reference."
-        ));
+        const teachings = [
+          { category:"The Kingdom of God", title:"The good news of God's Kingdom", summary:"Jesus announces God's Kingdom and calls hearers to repent and believe the good news.", refs:["Mark 1:14","Matthew 4:17","Luke 4:43"] },
+          { category:"Love and Relationships", title:"Love God and love your neighbour", summary:"Jesus places wholehearted love for God and practical love for neighbour at the centre of the commandments.", refs:["Matthew 22:37","Matthew 22:39","Mark 12:29"] },
+          { category:"Love and Relationships", title:"Love one another", summary:"Jesus gives His disciples a new commandment to love one another in the pattern of His love.", refs:["John 13:34","John 15:12","John 15:17"] },
+          { category:"Prayer and Trust", title:"How to pray", summary:"Jesus teaches sincerity before the Father and gives His disciples a pattern for prayer.", refs:["Matthew 6:6","Matthew 6:9","Luke 11:2"] },
+          { category:"Prayer and Trust", title:"Ask, seek and knock", summary:"Jesus encourages persistent prayer and confidence in the Father's goodness.", refs:["Matthew 7:7","Luke 11:9","Luke 11:13"] },
+          { category:"Prayer and Trust", title:"Do not be anxious", summary:"Jesus directs attention to the Father's care and calls His followers to seek God's Kingdom first.", refs:["Matthew 6:25","Matthew 6:33","Luke 12:22"] },
+          { category:"Forgiveness and Mercy", title:"Forgive others", summary:"Jesus teaches His followers to forgive and warns against holding on to resentment.", refs:["Matthew 6:14","Matthew 18:21","Luke 6:37"] },
+          { category:"Forgiveness and Mercy", title:"Mercy and compassion", summary:"Jesus calls His hearers to show mercy and compassion as they have received mercy.", refs:["Matthew 5:7","Luke 6:36","Matthew 9:13"] },
+          { category:"Discipleship", title:"Count the cost of following Jesus", summary:"Jesus calls people to take up their cross, follow Him and value Him above every competing loyalty.", refs:["Luke 9:23","Luke 14:27","Matthew 16:24"] },
+          { category:"Discipleship", title:"Continue in His word", summary:"Jesus describes true discipleship as remaining in His word and living in the freedom of truth.", refs:["John 8:31","John 8:32","John 15:7"] },
+          { category:"Humility and Service", title:"The greatest becomes a servant", summary:"Jesus overturns worldly ideas of greatness and presents service as the pattern of His Kingdom.", refs:["Mark 10:43","Mark 10:45","Matthew 23:11"] },
+          { category:"Humility and Service", title:"The example of washing feet", summary:"Jesus uses His act of service to teach His disciples humility and practical care for one another.", refs:["John 13:14","John 13:15","John 13:17"] },
+          { category:"Faith and Courage", title:"Have faith in God", summary:"Jesus teaches His disciples to trust God and to pray with faith, humility and forgiveness.", refs:["Mark 11:22","Mark 11:24","Matthew 21:21"] },
+          { category:"Faith and Courage", title:"Do not let your heart be troubled", summary:"Jesus comforts His disciples with a call to trust the Father and to trust Him.", refs:["John 14:1","John 14:2","John 14:27"] },
+          { category:"The Holy Spirit", title:"The promised Helper", summary:"Jesus promises the Holy Spirit, who will remain with His disciples and teach them.", refs:["John 14:16","John 14:26","John 15:26"] },
+          { category:"The Holy Spirit", title:"The Spirit of truth", summary:"Jesus explains the Spirit's work of guiding His followers into truth and glorifying Christ.", refs:["John 16:13","John 16:14","John 16:7"] },
+          { category:"The Sermon on the Mount", title:"The Beatitudes", summary:"Jesus describes the character and hope of those who belong to the Kingdom of Heaven.", refs:["Matthew 5:3","Matthew 5:6","Matthew 5:9"] },
+          { category:"The Sermon on the Mount", title:"Salt and light", summary:"Jesus calls His disciples to live visibly faithful lives that point others to the Father.", refs:["Matthew 5:13","Matthew 5:14","Matthew 5:16"] },
+          { category:"The Sermon on the Mount", title:"Build on the rock", summary:"Jesus says that hearing His words must lead to putting them into practice.", refs:["Matthew 7:24","Matthew 7:25","Luke 6:47"] },
+          { category:"The Cross and Resurrection", title:"The bread and the cup", summary:"At the Last Supper Jesus interprets the bread and cup in relation to His coming sacrifice and the new covenant.", refs:["Luke 22:19","Luke 22:20","Matthew 26:26"] },
+          { category:"The Cross and Resurrection", title:"Jesus is the resurrection and the life", summary:"Jesus speaks of resurrection hope and identifies Himself as the source of life.", refs:["John 11:25","John 11:26","John 5:24"] },
+          { category:"The Cross and Resurrection", title:"The promise of His return", summary:"Jesus comforts His disciples with the promise that He will receive them to Himself.", refs:["John 14:2","John 14:3","Matthew 24:30"] },
+          { category:"Mission and Witness", title:"The Great Commission", summary:"The risen Jesus sends His disciples to make disciples among all nations and teach obedience to His commands.", refs:["Matthew 28:18","Matthew 28:19","Matthew 28:20"] },
+          { category:"Mission and Witness", title:"You will be My witnesses", summary:"Jesus prepares His followers to bear witness in the power of the Holy Spirit.", refs:["Acts 1:8","Luke 24:48","John 20:21"] }
+        ];
+
+        const search = element("input");
+        search.type = "search";
+        search.placeholder = "Search a teaching, theme or Scripture reference…";
+        search.setAttribute("aria-label", "Search the recorded teachings of Jesus");
+        const filter = element("select");
+        filter.setAttribute("aria-label", "Filter teachings by theme");
+        const allOption = element("option", "All themes");
+        allOption.value = "";
+        filter.appendChild(allOption);
+        [...new Set(teachings.map(item => item.category))].forEach(category => {
+          const option = element("option", category);
+          option.value = category;
+          filter.appendChild(option);
+        });
+        const results = element("div");
+        results.id = "zurielJesusTeachingResults";
+        results.setAttribute("aria-live", "polite");
+        const count = element("p", "", "library-status");
+        const note = element("p", "References open in the Bible reader. Read the surrounding passage to understand each teaching in its original setting.", "study-hint");
+        content.append(search, filter, count, note, results);
+
+        function openJesusReference(reference, actionButton) {
+          const match = String(reference || "").match(/^(.+?)\s+(\d+):(\d+)$/);
+          if (!match || typeof window.openChapter !== "function") return;
+          const book = match[1], chapter = Number(match[2]), verseNumber = Number(match[3]);
+          actionButton.disabled = true;
+          window.openChapter(book, chapter).then(function () {
+            const target = document.querySelectorAll("#message .verse")[verseNumber - 1];
+            if (target) {
+              target.classList.add("zuriel-selected-verse");
+              target.scrollIntoView({ behavior:"smooth", block:"center" });
+              if (window.ZurielStudy && typeof window.ZurielStudy.openForReference === "function") {
+                const verseText = target.textContent.replace(/^\s*\d+\.?\s*/, "").trim();
+                window.ZurielStudy.openForReference(book, chapter, verseNumber, verseText, "", -1);
+              }
+            }
+            actionButton.disabled = false;
+          }).catch(function () {
+            actionButton.disabled = false;
+          });
+        }
+
+        function renderJesusTeachings() {
+          results.replaceChildren();
+          const query = search.value.trim().toLowerCase();
+          const selectedCategory = filter.value;
+          const matches = teachings.filter(item =>
+            (!selectedCategory || item.category === selectedCategory) &&
+            (!query || (item.category + " " + item.title + " " + item.summary + " " + item.refs.join(" ")).toLowerCase().includes(query))
+          );
+          count.textContent = matches.length + " teaching themes • " + matches.reduce((sum, item) => sum + item.refs.length, 0) + " Gospel reference links";
+          if (!matches.length) {
+            results.appendChild(element("p", "No matching teaching found. Try another word or choose All themes."));
+            return;
+          }
+          matches.forEach(function (item) {
+            const box = element("article", undefined, "library-entry");
+            box.appendChild(element("small", item.category));
+            box.appendChild(element("h4", item.title));
+            box.appendChild(element("p", item.summary));
+            const refs = element("div", undefined, "library-nav");
+            item.refs.forEach(function (reference) {
+              const open = button("Open " + reference, function () { openJesusReference(reference, open); });
+              open.className = "study-secondary";
+              refs.appendChild(open);
+            });
+            box.appendChild(refs);
+            box.appendChild(button("Save teaching to My Library", function () {
+              saved = loadSaved();
+              saved.bookmarks.push({
+                title: "Words of Jesus — " + item.title,
+                text: item.summary + "\n\nGospel references: " + item.refs.join("; "),
+                reference: item.refs[0]
+              });
+              if (persist()) count.textContent = "Saved: " + item.title + ". " + matches.length + " teaching themes shown.";
+            }));
+            results.appendChild(box);
+          });
+        }
+        search.addEventListener("input", renderJesusTeachings);
+        filter.addEventListener("change", renderJesusTeachings);
+        renderJesusTeachings();
       }
 
       if (page === "saved") {
