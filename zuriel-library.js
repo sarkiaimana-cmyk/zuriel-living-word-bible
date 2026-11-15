@@ -421,6 +421,7 @@
             #zurielGloryStudio[data-finish="navy"] #zurielGloryPreview {--zgs-paper:#172b49;--zgs-ink:#f6f0df;--zgs-accent:#e7c77d;background:linear-gradient(90deg,#0c1a30,#1b3151 48%,#0d1d35 50%,#1b3151);}
             #zurielGloryStudio[data-finish="forest"] #zurielGloryPreview {--zgs-paper:#e9f0e5;--zgs-ink:#183a30;--zgs-accent:#39765b;background:linear-gradient(90deg,#d4e1d5,#f2f6ec 48%,#d7e3d8 50%,#f2f6ec);}
             #zurielGloryStudio[data-finish="parchment"] #zurielGloryPreview {--zgs-paper:#f0dfbd;--zgs-ink:#4a3520;--zgs-accent:#9a682b;background:repeating-linear-gradient(0deg,#f2e5ca,#f2e5ca 3px,#eddfc2 4px);}
+            #zurielGloryPreview {background-image:linear-gradient(180deg,#10243a35,#10243a55),var(--zgs-wallpaper-image,none);background-size:cover;background-position:center;background-repeat:no-repeat;}
             #zurielGloryPreview:after {content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:#9a835333;box-shadow:0 0 15px #5b472333;pointer-events:none;}
             #zurielGloryPreview .zgs-brand {font-size:15px;letter-spacing:1px;text-align:center;color:var(--zgs-accent);font-weight:800;font-family:Georgia,serif;position:relative;z-index:1;}
             #zurielGloryPreview h3 {text-align:center;color:var(--zgs-ink);font-family:Georgia,serif;font-size:20px;margin:9px 0 15px;position:relative;z-index:1;}
@@ -451,6 +452,7 @@
         const studio = element("section", undefined, "card");
         studio.id = "zurielGloryStudio";
         studio.dataset.finish = "ivory";
+        studio.dataset.wallpaper = "forest";
         studio.innerHTML = `
           <div class="zgs-field"><label for="zgsReference">SCRIPTURE REFERENCE</label><input id="zgsReference" placeholder="e.g. Romans 8:1"></div>
           <div class="zgs-field"><label for="zgsScripture">SCRIPTURE TEXT</label><textarea id="zgsScripture" placeholder="Load a KJV passage by reference or enter your licensed translation text"></textarea><button type="button" id="zgsLoadScripture">Load exact KJV passage from Bible</button><small>Enter a reference above, then load its exact KJV text. Other translations can be added when their licensed API access is ready.</small></div>
@@ -459,6 +461,7 @@
           <div class="zgs-field"><label for="zgsAffirmation">AFFIRMATION</label><textarea id="zgsAffirmation" placeholder="A personal response grounded in the verse"></textarea></div>
           <div class="zgs-field"><label for="zgsConfession">FAITH CONFESSION</label><textarea id="zgsConfession" placeholder="A first-person confession consistent with Scripture"></textarea></div>
           <div class="zgs-field"><label for="zgsInspiration">INSPIRATION / FAITH WORD</label><textarea id="zgsInspiration" placeholder="A short encouragement drawn from this passage"></textarea></div>
+          <div class="zgs-field"><label>REALISTIC WALLPAPERS</label><div class="zgs-actions" id="zgsWallpapers" aria-label="Choose a photographic card wallpaper"><button type="button" data-wallpaper="forest">Forest river</button><button type="button" data-wallpaper="falls">Waterfall light</button><button type="button" data-wallpaper="stream">Forest stream</button><button type="button" data-wallpaper="valley">Mountain valley</button></div><small>Choose a background for your card. Selected wallpapers are cached on this device after loading for later offline use.</small></div>
           <div class="zgs-field"><label>OPEN-BOOK FINISH</label><div class="zgs-actions" id="zgsFinishes">
             <button type="button" data-finish="ivory">Warm ivory</button><button type="button" data-finish="navy">Kingdom navy</button><button type="button" data-finish="forest">Living forest</button><button type="button" data-finish="parchment">Parchment</button>
           </div></div>
@@ -500,12 +503,43 @@
           <div class="zgs-actions">
             <button type="button" id="zgsSave">Save to My Library</button>
             <button type="button" id="zgsShare">Share card text</button>
-            <button type="button" id="zgsSaveImage">Save image to device</button>
+            <button type="button" id="zgsSaveImage">Download image</button><button type="button" id="zgsShareImage">Share image</button>
           </div>
           <p id="zgsStatus" class="library-status" aria-live="polite">Your draft stays on this device until you save it.</p>
         `;
 
         content.appendChild(studio);
+        const wallpaperCatalog = {
+          forest: { label: "Forest river", url: "https://images.unsplash.com/photo-1759182391264-73c1be282907?auto=format&fit=crop&fm=jpg&q=82&w=1800" },
+          falls: { label: "Waterfall light", url: "https://images.unsplash.com/photo-1595132169434-097c5ae1a145?auto=format&fit=crop&fm=jpg&q=82&w=1800" },
+          stream: { label: "Forest stream", url: "https://images.unsplash.com/photo-1765758693002-120e6ab36b87?auto=format&fit=crop&fm=jpg&q=82&w=1800" },
+          valley: { label: "Mountain valley", url: "https://images.unsplash.com/photo-1768365423849-6f694d85cf33?auto=format&fit=crop&fm=jpg&q=82&w=1800" }
+        };
+        let activeWallpaperImage = null;
+        function loadStudioWallpaper(key) {
+          const choice = wallpaperCatalog[key];
+          if (!choice) return;
+          const status = studio.querySelector("#zgsStatus");
+          const image = new Image();
+          image.crossOrigin = "anonymous";
+          image.onload = function () {
+            activeWallpaperImage = image;
+            studio.dataset.wallpaper = key;
+            studio.querySelector("#zurielGloryPreview").style.setProperty("--zgs-wallpaper-image", 'url("' + choice.url + '")');
+            studio.querySelectorAll("[data-wallpaper]").forEach(button => {
+              button.setAttribute("aria-pressed", String(button.dataset.wallpaper === key));
+            });
+            status.textContent = choice.label + " wallpaper loaded. It will be available offline after this device caches it.";
+          };
+          image.onerror = function () {
+            status.textContent = "This wallpaper could not load. Connect to the internet once, then try again. Your other card content is safe.";
+          };
+          image.src = choice.url;
+        }
+        studio.querySelectorAll("[data-wallpaper]").forEach(choice => choice.addEventListener("click", function () {
+          loadStudioWallpaper(this.dataset.wallpaper);
+        }));
+        loadStudioWallpaper("forest");
         const loadScriptureButton = studio.querySelector("#zgsLoadScripture");
         loadScriptureButton.addEventListener("click", async function () {
           const status = studio.querySelector("#zgsStatus");
@@ -580,7 +614,7 @@
           studio.querySelectorAll("[data-finish]").forEach(item=>item.setAttribute("aria-pressed",String(item===this)));
         }));
         studio.querySelector("#zgsSave").addEventListener("click",function(){
-          const record={title:"Glory Verse Affirmation — "+(studio.querySelector("#zgsReference").value.trim()||"Personal Scripture card"),reference:studio.querySelector("#zgsReference").value.trim(),scripture:studio.querySelector("#zgsScripture").value.trim(),prayer:studio.querySelector("#zgsPrayer").value.trim(),declaration:studio.querySelector("#zgsDeclaration").value.trim(),affirmation:studio.querySelector("#zgsAffirmation").value.trim(),confession:studio.querySelector("#zgsConfession").value.trim(),inspiration:studio.querySelector("#zgsInspiration").value.trim(),finish:studio.dataset.finish,date:new Date().toISOString()};
+          const record={title:"Glory Verse Affirmation — "+(studio.querySelector("#zgsReference").value.trim()||"Personal Scripture card"),reference:studio.querySelector("#zgsReference").value.trim(),scripture:studio.querySelector("#zgsScripture").value.trim(),prayer:studio.querySelector("#zgsPrayer").value.trim(),declaration:studio.querySelector("#zgsDeclaration").value.trim(),affirmation:studio.querySelector("#zgsAffirmation").value.trim(),confession:studio.querySelector("#zgsConfession").value.trim(),inspiration:studio.querySelector("#zgsInspiration").value.trim(),finish:studio.dataset.finish,wallpaper:studio.dataset.wallpaper,date:new Date().toISOString()};
           if(!record.reference||!record.scripture){studio.querySelector("#zgsStatus").textContent="Please enter the Scripture reference and exact verse text before saving.";return;}
           try{
             const key="zuriel_glory_verse_cards_v1";
@@ -590,7 +624,7 @@
             studio.querySelector("#zgsStatus").textContent="Saved successfully to this device's Glory Verse cards.";
           }catch(error){studio.querySelector("#zgsStatus").textContent="Unable to save. Please check available device storage.";}
         });
-        studio.querySelector("#zgsSaveImage").addEventListener("click", async function(){
+        studio.querySelectorAll("#zgsSaveImage,#zgsShareImage").forEach(exportButton => exportButton.addEventListener("click", async function(){
           const status = studio.querySelector("#zgsStatus");
           const reference = studio.querySelector("#zgsReference").value.trim();
           const scripture = studio.querySelector("#zgsScripture").value.trim();
@@ -649,6 +683,14 @@
             };
             const colors = palette[studio.dataset.finish] || palette.ivory;
             ctx.fillStyle = colors[0]; ctx.fillRect(0,0,canvas.width,canvas.height);
+            if (activeWallpaperImage) {
+              const image = activeWallpaperImage;
+              const scale = Math.max(canvas.width / image.width, canvas.height / image.height);
+              const drawWidth = image.width * scale, drawHeight = image.height * scale;
+              ctx.drawImage(image,(canvas.width-drawWidth)/2,(canvas.height-drawHeight)/2,drawWidth,drawHeight);
+              ctx.fillStyle = studio.dataset.finish === "navy" ? "rgba(10,24,43,.76)" : "rgba(248,244,232,.76)";
+              ctx.fillRect(0,0,canvas.width,canvas.height);
+            }
             ctx.strokeStyle = colors[2]; ctx.lineWidth = 5;
             ctx.strokeRect(35,35,width-70,canvas.height-70);
             ctx.textAlign = "center"; ctx.fillStyle = colors[2];
@@ -690,23 +732,23 @@
             const safeReference = reference.replace(/[^a-z0-9]+/gi,"-").replace(/^-|-$/g,"").toLowerCase();
             const fileName = "Zuriel-Glory-Verse-" + (safeReference || "card") + ".png";
             const file = new File([blob],fileName,{type:"image/png"});
-            if (navigator.canShare && navigator.canShare({files:[file]}) && navigator.share) {
+            if (exportButton.id === "zgsShareImage" && navigator.canShare && navigator.canShare({files:[file]}) && navigator.share) {
               await navigator.share({files:[file],title:"Glory Verse Affirmation"});
-              status.textContent = "Your open-book image is ready to save or share.";
+              status.textContent = "Your open-book image has been shared.";
             } else {
               const url = URL.createObjectURL(blob);
               const link = document.createElement("a");
               link.href = url; link.download = fileName; link.style.display = "none";
               document.body.appendChild(link); link.click(); link.remove();
               setTimeout(() => URL.revokeObjectURL(url),30000);
-              status.textContent = "Your PNG image has been prepared. Check your device downloads or save prompt.";
+              status.textContent = "Your PNG image has been downloaded. Check your Gallery or Downloads folder.";
             }
           } catch (error) {
             if (error.name !== "AbortError") status.textContent = error.message || "Image export could not be completed on this device.";
           } finally {
             exportButton.disabled = false;
           }
-        });
+        }));
         studio.querySelector("#zgsShare").addEventListener("click",async function(){
           const textValue=["The Light 🕯️","His Words.. My life.. My Victory",studio.querySelector("#zgsReference").value,studio.querySelector("#zgsScripture").value,...["Prayer","Declaration","Affirmation","Confession","Inspiration"].map(name=>name.toUpperCase()+": "+studio.querySelector("#zgs"+name).value),"Zuriel Living Word Bible"].filter(Boolean).join("\n\n");
           if(!studio.querySelector("#zgsReference").value.trim()||!studio.querySelector("#zgsScripture").value.trim()){studio.querySelector("#zgsStatus").textContent="Add the Scripture reference and text before sharing.";return;}
