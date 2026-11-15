@@ -12,7 +12,7 @@ const checks = [["exact single-token gloss matching","tappedTokens.length === 1 
   ["unknown source language is not guessed","Source language not identified"],
   ["unknown lexicon language is not guessed","source language not identified"],
   ["lexicon morphology is source-attributed","Morphology supplied by source:"],
-  ["lexicon does not infer missing morphology","Detailed morphology: not supplied by this lexicon record."],["Strong\\'s identifier normalization","padStart(4, \"0\")"],["lexicon sense validation","!entry || !Array.isArray(entry.senses)"],["lexicon retry action","Retry lexicon entry"],["offline-specific lexicon guidance","not saved on this device yet"]];
+  ["lexicon does not infer missing morphology","Detailed morphology: not supplied by this lexicon record."],["Strong\\'s identifier normalization","padStart(4, \"0\")"],["lexicon sense validation","!entry || !Array.isArray(entry.senses)"],["lexicon retry action","Retry lexicon entry"],["offline-specific lexicon guidance","not saved on this device yet"],["same Strong's occurrence matching","normalizeStrongs(word.strongs) === id"],["contextual word-use caution","an indexed word can carry different shades of meaning in different contexts."],["KJV verse excerpt for related occurrences","KJV context: "],["numbered verse lookup for contextual excerpt","Number(label.textContent.replace(/\\D/g, "")) === item.verse"]];
 const failures = checks.filter(([label, fragment]) => !study.includes(fragment));
 const requiredReaderPanels = ["zurielOriginalWordResults", "zurielLexiconDetails"];
 for (const id of requiredReaderPanels) {
