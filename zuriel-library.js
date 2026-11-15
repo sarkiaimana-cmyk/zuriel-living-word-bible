@@ -974,13 +974,24 @@
         const note = element("p", "References open in the Bible reader. Read the surrounding passage to understand each teaching in its original setting.", "study-hint");
         content.append(search, filter, count, note, results);
 
+        function findJesusVerse(verseNumber) {
+          const verses = document.querySelectorAll("#message .verse");
+          for (const verse of verses) {
+            const label = verse.querySelector("strong");
+            if (label && label.textContent.trim().replace(/\.$/, "") === String(verseNumber)) {
+              return verse;
+            }
+          }
+          return null;
+        }
+
         function openJesusReference(reference, actionButton) {
           const match = String(reference || "").match(/^(.+?)\s+(\d+):(\d+)$/);
           if (!match || typeof window.openChapter !== "function") return;
           const book = match[1], chapter = Number(match[2]), verseNumber = Number(match[3]);
           actionButton.disabled = true;
           window.openChapter(book, chapter).then(function () {
-            const target = document.querySelectorAll("#message .verse")[verseNumber - 1];
+            const target = findJesusVerse(verseNumber);
             if (target) {
               target.classList.add("zuriel-selected-verse");
               target.scrollIntoView({ behavior:"smooth", block:"center" });

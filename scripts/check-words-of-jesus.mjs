@@ -25,6 +25,9 @@ const required = [
   ["theme filter", "Filter teachings by theme"],
   ["open reference in Bible reader", "window.openChapter(book, chapter)"],
   ["highlight selected Gospel verse", "zuriel-selected-verse"],
+  ["exact Jesus verse lookup helper", "function findJesusVerse(verseNumber)"],
+  ["Jesus reference checks the visible verse label", "label.textContent.trim().replace("],
+  ["Jesus reference compares the requested verse number", "String(verseNumber)"],
   ["connect to contextual study", "window.ZurielStudy.openForReference"],
   ["save teaching to personal library", "Words of Jesus — "],
   ["context reminder", "Read the surrounding passage"]
@@ -32,6 +35,10 @@ const required = [
 for (const [label, fragment] of required) {
   if (!library.includes(fragment)) failures.push(label + " is missing.");
 }
+const jesusStart = library.indexOf('if (page === "jesus")');
+const jesusEnd = library.indexOf('if (page === "saved")', jesusStart);
+const jesusSection = jesusStart >= 0 && jesusEnd > jesusStart ? library.slice(jesusStart, jesusEnd) : "";
+if (jesusSection.includes('querySelectorAll("#message .verse")[verseNumber - 1]')) failures.push("Words of Jesus still selects verses by array position.");
 const sectionStart = library.indexOf('if (page === "jesus")');
 const sectionEnd = library.indexOf('if (page === "saved")', sectionStart);
 const section = sectionStart >= 0 && sectionEnd > sectionStart ? library.slice(sectionStart, sectionEnd) : "";
