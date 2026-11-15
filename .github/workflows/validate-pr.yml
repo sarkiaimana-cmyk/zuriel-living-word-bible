@@ -31,6 +31,8 @@ jobs:
 
       - name: Validate study safeguards
         run: node scripts/check-study-integrity.mjs
+      - name: Validate reader navigation and selected verses
+        run: node scripts/check-reader-navigation.mjs
       - name: Test exact KJV original-word linking
         run: node scripts/test-original-word-linking.mjs
       - name: Test Android version metadata
