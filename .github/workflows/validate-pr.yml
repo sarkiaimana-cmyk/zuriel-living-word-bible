@@ -61,6 +61,9 @@ jobs:
       - name: Validate Bible book introductions
         run: node scripts/check-book-introductions.mjs
 
+      - name: Validate offline Bible Geography Centre
+        run: node scripts/check-bible-geography.mjs
+
       - name: Validate Words of Jesus study centre
         run: node scripts/check-words-of-jesus.mjs
 
