@@ -469,7 +469,7 @@
         "The tribe of Dan takes Micah's shrine and captures Laish.",
         "Israel's outrage over a crime in Gibeah leads to civil war."
       ]
-    }
+    },
 
     Ruth: {
       testament: "Old Testament", chapters: 4,
