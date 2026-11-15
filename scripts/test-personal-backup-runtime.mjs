@@ -63,6 +63,8 @@ assert.equal(incoming.notes.length, 1);
 assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, notes: [{ id: "", title: "Bad", text: "Invalid" }] } }), /valid ID/);
 assert.throws(() => api.validateBackup({ ...sample, app: "Other app" }), /recognised Zuriel/);
 assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, readingPlanProgress: { schemaVersion: 1, activePlanId: "meet-jesus-7", plans: { "meet-jesus-7": { completedDays: [0] } } } } }), /reading-plan progress/);
+assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, readingPlanProgress: { schemaVersion: 1, activePlanId: "unknown-plan", plans: { "unknown-plan": { completedDays: [1] } } } } }), /reading-plan progress/);
+assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, readingPlanProgress: { schemaVersion: 1, activePlanId: "meet-jesus-7", plans: { "meet-jesus-7": { completedDays: [8] } } } } }), /reading-plan progress/);
 const olderBackup = JSON.parse(JSON.stringify(sample)); delete olderBackup.data.readingPlanProgress;
 assert.deepEqual(JSON.parse(JSON.stringify(api.validateBackup(olderBackup).readingPlanProgress)), { schemaVersion: 1, activePlanId: null, plans: {} }, "Older backups remain restorable without reading-plan data.");
 
