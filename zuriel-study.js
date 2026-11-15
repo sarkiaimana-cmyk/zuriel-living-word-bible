@@ -703,6 +703,9 @@
         color:#18304d;
         border:1px solid #d8cdaF;
         border-radius:11px;
+        padding:12px;
+        margin:10px 0;
+      }
       #zurielStudyPanel .word-language {
         display:inline-block;
         color:#53677f;
@@ -711,9 +714,6 @@
         letter-spacing:.04em;
         text-transform:uppercase;
         margin:0 0 7px;
-      }
-        padding:12px;
-        margin:10px 0;
       }
       #zurielStudyPanel .original-word-button {
         display:block;
