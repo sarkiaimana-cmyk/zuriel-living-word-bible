@@ -67,7 +67,7 @@ A feature is not considered complete merely because code exists. Completion requ
 - **PR #49** made Reading Plans preserve unreadable or unsupported saved progress and added corruption regression tests.
 - **PR #50** connected the home Open Book Scripture panel to exact bundled offline KJV retrieval, corrected Psalm/Psalms passage lookup and protected against stale asynchronous card loads. It also updated app version metadata to **1.4.19** and offline cache **v111**.
 - **Android workflow run `43722898019`** completed the version 1.4.19 build: debug and signed APK artifacts were uploaded; package ID, version code/name, v2/v3 signatures and matching signing certificate digest against the preceding 1.4.18 CI build were verified. Real-device install/upgrade and installed-app signer continuity remain separate checks.
-- **PR #51** recorded AI provider/hosting readiness findings. Gemini's reviewed terms and free-tier data practices do not fit the general-public family-accessible app; Groq remains only a possible limited pilot, Cloudflare Workers only a possible proxy host, and no provider or key has been selected.
+- **PR #51 and PR #53** recorded AI provider/hosting readiness findings. Gemini's reviewed terms and free-tier data practices do not fit the general-public family-accessible app; Groq remains a possible limited-pilot candidate, and Cloudflare Workers plus the separate Workers AI inference product are documented as another no-cost pilot candidate. No provider has been approved or connected, and no API key has been added.
 
 ## Required workflow for every feature
 
