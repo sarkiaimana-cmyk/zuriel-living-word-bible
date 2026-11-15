@@ -75,7 +75,7 @@
     [["insights","✍️ Insights & Notes"],["prayer","🙏 Prayer Journal"],["progress","📖 Progress"]].forEach(([key,label])=>{const b=btn(label,()=>{tab=key;render();},"zps-tab");b.dataset.zpsTab=key;b.setAttribute("aria-pressed",String(tab===key));tabs.appendChild(b);});
     const panel=el("div","zps-panel");panel.id="zpsPanel";
     const live=el("p","");live.id="zpsStatus";live.setAttribute("role","status");live.setAttribute("aria-live","polite");
-    root.append(style,hero,tabs,panel,live);main.appendChild(root);render();
+    root.append(style,hero,tabs,panel,live);main.appendChild(root);if(window.ZurielBackup&&typeof window.ZurielBackup.mount==="function")window.ZurielBackup.mount(root);render();
   }
   function open(){if(root){root.hidden=false;render();}}
   window.ZurielPersonalSpace={mount:mount,open:open,saveInsight:function(item){if(!item||!item.text)return false;const ok=addEntry(NOTES,{id:String(Date.now())+"-"+Math.random().toString(36).slice(2),title:item.title||"Saved insight",reference:item.reference||"",text:item.text,createdAt:new Date().toISOString()});if(ok)status("Insight saved from your study.");return ok;}};
