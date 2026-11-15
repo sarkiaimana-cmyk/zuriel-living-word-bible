@@ -1,4 +1,4 @@
 {
-  "version": "1.4.18",
-  "releaseNotes": "Protects Personal Study Space records from silent data loss when local storage is damaged; strengthens encrypted backup safety and personal record handling."
+  "version": "1.4.19",
+  "releaseNotes": "Uses exact offline KJV Scripture text in the home Open Book card, improves Psalm/Psalms reference handling, and preserves Personal Study Space backup safeguards."
 }

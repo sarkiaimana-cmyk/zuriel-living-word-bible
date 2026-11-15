@@ -75,7 +75,7 @@ const homeChecks = [
   ["open-book prayer binding", 'setText("zurielOpenBookPrayer", response.prayer)'],
   ["open-book confession binding", 'setText("zurielOpenBookConfession", response.confession)'],
   ["open-book inspiration binding", 'setText("zurielOpenBookInspiration", response.inspiration)'],
-  ["open-book passage navigation", 'window.openChapter(match[1], Number(match[2]))'],
+  ["open-book passage navigation", 'window.openChapter(bookName, Number(match[2]))'],
   ["exact reference lookup", "window.ZurielFaithContent.find(item.reference)"]
 ];
 for (const [label, fragment] of homeChecks) {

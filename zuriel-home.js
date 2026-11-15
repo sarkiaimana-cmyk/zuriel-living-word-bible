@@ -47,6 +47,22 @@
     let currentSection = "home";
     const sectionHistory = [];
 
+    function canonicalBookName(value) {
+      const name = String(value || "").trim().replace(/\s+/g, " ");
+      return name.toLowerCase() === "psalm" ? "Psalms" : name;
+    }
+
+    function findHomeVerseElement(verseNumber) {
+      const verses = document.querySelectorAll("#message .verse");
+      for (const verse of verses) {
+        const label = verse.querySelector("strong");
+        if (label && label.textContent.trim().replace(/\.$/, "") === String(verseNumber)) {
+          return verse;
+        }
+      }
+      return null;
+    }
+
     const sectionNames = {
       home: "Home",
       read: "Read Scripture",
@@ -598,7 +614,7 @@
 
       <section class="home-card home-growth-highlight" id="zurielOpenBookFaithCard">
         <div class="zob-landscape">
-          <p class="zob-brandline">His Word...<br><em>My Life... My Victory!</em></p>
+          <p class="zob-brandline">His Words.. My life.. My Victory</p>
           <div class="zob-book">
             <div class="zob-page zob-scripture-page">
               <span class="zob-ribbon" id="zurielOpenBookReference">SCRIPTURE</span>
@@ -957,6 +973,7 @@
       .addEventListener("click", function () {
         const reference = verses[verseIndex].reference;
         const match = reference.match(/^(.+)\s+(\d+):(\d+)$/);
+        const bookName = match ? canonicalBookName(match[1]) : "";
 
         if (!match || typeof window.openChapter !== "function") return;
 
@@ -965,15 +982,12 @@
         const bookSelector = document.getElementById("book");
 
         if (bookSelector) {
-          bookSelector.value = match[1];
+          bookSelector.value = bookName;
         }
 
-        window.openChapter(match[1], Number(match[2]))
+        window.openChapter(bookName, Number(match[2]))
           .then(function () {
-            const verseElements =
-              document.querySelectorAll("#message .verse");
-
-            const target = verseElements[Number(match[3]) - 1];
+            const target = findHomeVerseElement(Number(match[3]));
 
             if (target) {
               target.scrollIntoView({
@@ -1013,22 +1027,46 @@
     let faithCardIndex = faithCardRefs.length
       ? getDailyVerseIndex() % faithCardRefs.length : 0;
 
-    function renderOpenBookFaithCard() {
+    let faithCardRenderToken = 0;
+    async function renderOpenBookFaithCard() {
+      const renderToken = ++faithCardRenderToken;
       const verse = faithCardRefs[faithCardIndex];
-      if (!verse) return;
-      const response = window.ZurielFaithContent.find(verse.reference);
-      if (!response) return;
       const setText = function (id, value) {
         const node = document.getElementById(id);
         if (node) node.textContent = value || "This reflection is not supplied yet.";
       };
+      if (!verse) {
+        setText("zurielOpenBookScripture", "No Scripture passage is available for this card yet.");
+        return;
+      }
+      const response = window.ZurielFaithContent.find(verse.reference);
+      if (!response) {
+        setText("zurielOpenBookScripture", "A verified Scripture response is not available for this reference yet.");
+        return;
+      }
+
       setText("zurielOpenBookReference", verse.reference.toUpperCase());
-      setText("zurielOpenBookScripture", verse.text);
+      setText("zurielOpenBookScripture", "Loading the exact King James Version passage…");
       setText("zurielOpenBookDeclaration", response.declaration);
       setText("zurielOpenBookAffirmation", response.affirmation);
       setText("zurielOpenBookPrayer", response.prayer);
       setText("zurielOpenBookConfession", response.confession);
       setText("zurielOpenBookInspiration", response.inspiration);
+
+      try {
+        if (typeof window.getBibleVerseText !== "function") {
+          throw new Error("The offline KJV passage service is not available.");
+        }
+        const passage = await window.getBibleVerseText(verse.reference);
+        if (renderToken !== faithCardRenderToken) return;
+        const exactText = String(passage && passage.text || "").replace(/^\d+\.\s*/, "").trim();
+        if (!exactText) throw new Error("The KJV passage returned no verse text.");
+        setText("zurielOpenBookReference", String(passage.reference || verse.reference).toUpperCase());
+        setText("zurielOpenBookScripture", exactText);
+      } catch (error) {
+        if (renderToken !== faithCardRenderToken) return;
+        setText("zurielOpenBookScripture", "The exact KJV passage could not be loaded. Please open this reference in Read Scripture and try again.");
+      }
     }
 
     renderOpenBookFaithCard();
@@ -1045,11 +1083,12 @@
       const verse = faithCardRefs[faithCardIndex];
       const match = verse && verse.reference.match(/^(.+)\s+(\d+):(\d+)$/);
       if (!match || typeof window.openChapter !== "function") return;
+      const bookName = canonicalBookName(match[1]);
       navigate("read");
       const selector = document.getElementById("book");
-      if (selector) selector.value = match[1];
-      await window.openChapter(match[1], Number(match[2]));
-      const target = document.querySelectorAll("#message .verse")[Number(match[3]) - 1];
+      if (selector) selector.value = bookName;
+      await window.openChapter(bookName, Number(match[2]));
+      const target = findHomeVerseElement(Number(match[3]));
       if (target) {
         target.scrollIntoView({behavior:"smooth",block:"center"});
         target.click();
