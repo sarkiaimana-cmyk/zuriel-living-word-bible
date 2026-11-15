@@ -126,18 +126,19 @@
       await window.openChapter(parts.book, parts.chapter);
       const verses = document.querySelectorAll("#message .verse");
       const target = verses[parts.verse - 1];
-      if (target) {
-        try {
-          localStorage.setItem("zurielLastReadingPosition", JSON.stringify({
-            book: parts.book, chapter: parts.chapter, verse: parts.verse
-          }));
-        } catch (storageError) {
-          // The passage still opens when local progress storage is unavailable.
-        }
-        target.scrollIntoView({ behavior: "smooth", block: "center" });
-        target.classList.add("zuriel-nav-highlight");
-        window.setTimeout(() => target.classList.remove("zuriel-nav-highlight"), 2200);
+      if (!target || typeof window.selectBibleVerse !== "function" ||
+          !window.selectBibleVerse(parts.verse)) {
+        throw new Error("The reading-plan verse could not be selected in the Bible reader.");
       }
+      try {
+        localStorage.setItem("zurielLastReadingPosition", JSON.stringify({
+          book: parts.book, chapter: parts.chapter, verse: parts.verse
+        }));
+      } catch (storageError) {
+        // The passage still opens when local progress storage is unavailable.
+      }
+      target.classList.add("zuriel-nav-highlight");
+      window.setTimeout(() => target.classList.remove("zuriel-nav-highlight"), 2200);
       onStatus(reference + " opened in the Bible reader. Read the full passage in its chapter context.");
     } catch (error) {
       onStatus("Zuriel could not open " + reference + ". Please try again from the Bible reader.");

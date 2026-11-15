@@ -27,6 +27,7 @@ for (const fragment of [
   "Mark day complete",
   "Read this passage",
   "window.openChapter",
+  "window.selectBibleVerse(parts.verse)",
   "Your progress is saved privately on this device",
   "Reading plans are optional guides"
 ]) {
