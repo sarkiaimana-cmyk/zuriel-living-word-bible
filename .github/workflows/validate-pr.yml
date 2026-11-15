@@ -31,6 +31,8 @@ jobs:
 
       - name: Validate study safeguards
         run: node scripts/check-study-integrity.mjs
+      - name: Test exact KJV original-word linking
+        run: node scripts/test-original-word-linking.mjs
 
       - name: Validate guided growth and personal space
         run: node scripts/check-growth-pathways.mjs
