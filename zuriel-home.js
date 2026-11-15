@@ -543,6 +543,138 @@
         #zurielHomeDashboard .zob-affirmation-label{font-size:11px}
         #zurielHomeDashboard .zob-affirmation-copy{font-size:11px}
       }
+      
+      /* VIBRANT, PHOTOGRAPHIC HOME DASHBOARD REFINEMENT */
+      body {
+        background: linear-gradient(180deg,#f5f2e9 0%,#edf3f8 48%,#e8eff7 100%);
+        color: #17283e;
+      }
+      #zurielHomeDashboard {
+        color: #17283e;
+        max-width: 780px;
+        padding: 8px 12px 18px;
+      }
+      #zurielHomeDashboard .home-hero {
+        min-height: 228px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-image: linear-gradient(135deg,rgba(8,24,46,.82),rgba(12,48,70,.56)),var(--zuriel-home-wallpaper);
+        background-size: cover;
+        background-position: center;
+        border: 1px solid #c6d8e8;
+        box-shadow: 0 14px 32px rgba(18,44,70,.18);
+        text-align: left;
+      }
+      #zurielHomeDashboard .home-eyebrow {
+        align-self: flex-start;
+        background: rgba(255,255,255,.15);
+        border-color: rgba(255,255,255,.35);
+      }
+      #zurielHomeDashboard .home-tagline,
+      #zurielHomeDashboard .home-brand,
+      #zurielHomeDashboard .home-subtitle { margin-left: 0; margin-right: 0; text-align: left; }
+      #zurielHomeDashboard .home-brand { max-width: 540px; text-shadow: 0 2px 12px rgba(0,0,0,.25); }
+      #zurielHomeDashboard .home-card {
+        color: #1a2b40;
+        background: linear-gradient(145deg,#ffffff,#f4f7fa);
+        border: 1px solid #d4e0e9;
+        box-shadow: 0 8px 22px rgba(19,45,71,.08);
+      }
+      #zurielHomeDashboard .home-card h2 { color: #174c78; }
+      #zurielHomeDashboard .home-continue-card {
+        background: linear-gradient(120deg,#eaf4fb,#ffffff);
+        border: 1px solid #bdd8ea;
+      }
+      #zurielHomeDashboard #zurielHomeReadingPosition { color: #354a60; }
+      #zurielHomeDashboard .home-scripture-card {
+        position: relative;
+        overflow: hidden;
+        background-image: linear-gradient(135deg,rgba(8,24,43,.78),rgba(8,38,48,.48)),url("https://images.unsplash.com/photo-1595132169434-097c5ae1a145?auto=format&fit=crop&fm=jpg&q=82&w=1800");
+        background-size: cover;
+        background-position: center;
+        border-color: #bfd5e4;
+      }
+      #zurielHomeDashboard .home-scripture-card h2,
+      #zurielHomeDashboard .home-scripture-card .home-reference,
+      #zurielHomeDashboard .home-scripture-card .home-subtitle { color: #fff; }
+      #zurielHomeDashboard .home-scripture-card .home-verse {
+        border: 1px solid rgba(255,255,255,.35);
+        border-left: 3px solid #f2d58d;
+        background: rgba(6,19,34,.54);
+        color: #fff;
+        text-shadow: 0 1px 3px rgba(0,0,0,.25);
+      }
+      #zurielHomeDashboard .home-button {
+        border: 1px solid #b6d2e6;
+        background: linear-gradient(115deg,#dff1fc,#c5e3f6);
+        color: #143c60;
+        box-shadow: 0 4px 12px rgba(24,67,100,.10);
+      }
+      #zurielHomeDashboard .home-hero .home-button {
+        background: linear-gradient(110deg,#f7df9f,#e8c66e);
+        color: #142b46;
+        border-color: #ffe7ad;
+      }
+      #zurielHomeDashboard .home-scripture-card .home-button {
+        background: rgba(255,255,255,.93);
+        color: #163c5d;
+        border-color: #d9e7f0;
+      }
+      #zurielHomeDashboard .home-grid button,
+      #zurielHomeDashboard .home-explore-grid button {
+        background: linear-gradient(145deg,#ffffff,#edf5fb);
+        border: 1px solid #c8dce9;
+        color: #173c5c;
+        box-shadow: 0 4px 12px rgba(23,60,92,.06);
+      }
+      #zurielHomeDashboard .home-explore-grid button small { color: #526a7f; }
+      #zurielHomeDashboard details {
+        background: #f8fbfd;
+        border-color: #d6e4ee;
+        border-left-color: #4a91c5;
+      }
+      #zurielHomeDashboard details summary { color: #174c78; }
+      #zurielHomeDashboard details p { color: #344b60; }
+      #zurielHomeDashboard .home-growth-highlight {
+        background: linear-gradient(145deg,#ffffff,#f0f6fa);
+        border-color: #c8dce9;
+      }
+      #zurielHomeDashboard .zob-landscape {
+        background-image: linear-gradient(180deg,rgba(6,20,35,.20),rgba(6,20,35,.45)),url("https://images.unsplash.com/photo-1759182391264-73c1be282907?auto=format&fit=crop&fm=jpg&q=82&w=1800");
+        background-size: cover;
+        background-position: center;
+        border-color: #d6c18a;
+      }
+      #zurielHomeDashboard .zob-brandline,
+      #zurielHomeDashboard .zob-footer { box-shadow: 0 5px 14px rgba(0,0,0,.25); }
+      #zurielBottomNavigation {
+        grid-template-columns: repeat(6,minmax(0,1fr));
+        background: linear-gradient(105deg,#102b4c,#244e83,#315c91);
+        border-top: 1px solid #9fc6e2;
+        box-shadow: 0 -5px 18px rgba(12,34,58,.18);
+      }
+      #zurielBottomNavigation button { color: #eef6fc; font-size: 10px; }
+      #zurielBottomNavigation button.active {
+        background: linear-gradient(135deg,#9bdcf5,#48c1e5);
+        color: #102c49;
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,.55);
+      }
+      #zurielTopReturnBar {
+        background: linear-gradient(105deg,#102b4c,#1d4771);
+        border-bottom-color: #8fc8e6;
+      }
+      #zurielTopBack {
+        background: rgba(255,255,255,.13);
+        border-color: rgba(255,255,255,.4);
+        color: #fff;
+      }
+      #zurielTopSection { color: #f4dfaa; }
+      @media(max-width:420px) {
+        #zurielHomeDashboard { padding-left: 9px; padding-right: 9px; }
+        #zurielHomeDashboard .home-hero { min-height: 210px; }
+        #zurielHomeDashboard .home-card { border-radius: 16px; }
+      }
     `;
 
     document.head.appendChild(style);
@@ -668,6 +800,15 @@
         </div>
       </section>
     `;
+
+    const homeWallpaperSet = [
+      "https://images.unsplash.com/photo-1765758693002-120e6ab36b87?auto=format&fit=crop&fm=jpg&q=82&w=1800",
+      "https://images.unsplash.com/photo-1768365423849-6f694d85cf33?auto=format&fit=crop&fm=jpg&q=82&w=1800",
+      "https://images.unsplash.com/photo-1759182391264-73c1be282907?auto=format&fit=crop&fm=jpg&q=82&w=1800",
+      "https://images.unsplash.com/photo-1595132169434-097c5ae1a145?auto=format&fit=crop&fm=jpg&q=82&w=1800"
+    ];
+    const homeWallpaperIndex = Math.floor(Date.now() / 86400000) % homeWallpaperSet.length;
+    dashboard.style.setProperty("--zuriel-home-wallpaper", 'url("' + homeWallpaperSet[homeWallpaperIndex] + '")');
 
     main.prepend(dashboard);
     main.prepend(topBar);
