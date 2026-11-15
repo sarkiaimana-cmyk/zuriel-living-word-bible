@@ -27,11 +27,11 @@ const required = [
   ["search control", "Search a teaching, theme or Scripture reference"],
   ["theme filter", "Filter teachings by theme"],
   ["open reference in Bible reader", "window.openChapter(book, chapter)"],
-  ["highlight selected Gospel verse", "zuriel-selected-verse"],
+  ["activate selected Gospel verse through the shared reader action", "window.selectBibleVerse(verseNumber)"],
   ["exact Jesus verse lookup helper", "function findJesusVerse(verseNumber)"],
   ["Jesus reference checks the visible verse label", "label.textContent.trim().replace("],
   ["Jesus reference compares the requested verse number", "String(verseNumber)"],
-  ["connect to contextual study", "window.ZurielStudy.openForReference"],
+  ["connect to contextual study through shared verse activation", "window.selectBibleVerse(verseNumber)"],
   ["save teaching to personal library", "Words of Jesus — "],
   ["expandable teaching details", 'element("details", undefined, "zuriel-jesus-details")'],
   ["teaching title as an accessible expand control", 'summary.setAttribute("aria-label", "Expand teaching: " + item.title)'],
@@ -95,7 +95,7 @@ try {
 } catch (error) {
   failures.push("Offline KJV reference verification failed: " + error.message);
 }
-if (!worker.includes("zuriel-bible-offline-v114")) failures.push("Offline cache version was not refreshed.");
+if (!worker.includes("zuriel-bible-offline-v115")) failures.push("Offline cache version was not refreshed.");
 if (!worker.includes('"./zuriel-library.js"')) failures.push("Service worker does not precache the library module.");
 if (!packaging.includes('"zuriel-library.js"')) failures.push("Android web packaging omits the library module.");
 if (!index.includes("zuriel-library.js")) failures.push("App entry point does not load the library module.");

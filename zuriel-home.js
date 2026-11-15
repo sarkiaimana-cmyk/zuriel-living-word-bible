@@ -1122,16 +1122,12 @@
 
         window.openChapter(bookName, Number(match[2]))
           .then(function () {
-            const target = findHomeVerseElement(Number(match[3]));
-
-            if (target) {
-              target.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-              });
-
-              target.click();
+            if (typeof window.selectBibleVerse !== "function" ||
+                !window.selectBibleVerse(Number(match[3]))) {
+              throw new Error("The home Scripture could not be activated in the Bible reader.");
             }
+          }).catch(function (error) {
+            console.error("Zuriel home Scripture:", error);
           });
       });
 
@@ -1223,10 +1219,9 @@
       const selector = document.getElementById("book");
       if (selector) selector.value = bookName;
       await window.openChapter(bookName, Number(match[2]));
-      const target = findHomeVerseElement(Number(match[3]));
-      if (target) {
-        target.scrollIntoView({behavior:"smooth",block:"center"});
-        target.click();
+      if (typeof window.selectBibleVerse !== "function" ||
+          !window.selectBibleVerse(Number(match[3]))) {
+        throw new Error("The Open Book Scripture could not be activated in the Bible reader.");
       }
     });
 

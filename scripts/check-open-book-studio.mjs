@@ -59,7 +59,7 @@ for (const [label, fragment] of checks) {
   if (!library.includes(fragment)) failures.push(label + " is missing.");
 }
 if (!index.includes("window.getBibleVerseText = async function (reference)")) failures.push("Offline KJV passage retrieval is missing.");
-if (!worker.includes("zuriel-bible-offline-v114")) failures.push("Offline cache version was not refreshed for the Studio/navigation fix.");
+if (!worker.includes("zuriel-bible-offline-v115")) failures.push("Offline cache version was not refreshed for the Studio/navigation fix.");
 if (!worker.includes('url.origin === "https://images.unsplash.com"')) failures.push("Service worker does not cache selected Unsplash wallpapers.");
 if (home.includes("Your Bible Journey")) failures.push("The duplicate home shortcut-button grid is still present.");
 const navBlock = home.match(/const navItems = \[([\s\S]*?)\];/);
