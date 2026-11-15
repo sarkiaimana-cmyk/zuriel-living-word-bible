@@ -21,6 +21,11 @@ forbidText(home, "zurielHomePassageCard", "The duplicate home passage selector")
 forbidText(home, "setupHomePassageSelector", "The duplicate home passage selector logic");
 requireText(home, "zurielHomeContinueReading", "The continue-reading shortcut");
 requireText(home, "zurielOpenBookFaithCard", "The Scripture-linked open-book faith card");
+requireText(home, "--zuriel-home-wallpaper", "Rotating photographic home hero backgrounds");
+requireText(home, "home-scripture-card", "The photographic Scripture card");
+requireText(home, "background-image: linear-gradient(180deg,rgba(6,20,35,.20)", "The realistic photographic Open Book landscape");
+requireText(home, "grid-template-columns: repeat(6,minmax(0,1fr))", "The six-destination compact mobile navigation");
+requireText(home, "linear-gradient(180deg,#f5f2e9 0%,#edf3f8 48%,#e8eff7 100%)", "The bright ivory and blue home background");
 requireText(home, "His Words.. My life.. My Victory", "The approved Open Book card headline");
 requireText(home, "window.getBibleVerseText(verse.reference)", "Open Book exact offline KJV passage retrieval");
 requireText(home, "faithCardRenderToken", "Protection against out-of-order Scripture loads");
