@@ -39,7 +39,7 @@ const topicCount = (section.match(/category:/g) || []).length;
 const referenceCount = (section.match(/refs:\[/g) || []).length;
 if (topicCount < 20) failures.push("Expected at least 20 curated Jesus teaching themes; found " + topicCount + ".");
 if (referenceCount < 20) failures.push("Expected Scripture reference collections for the teaching themes.");
-if (!worker.includes("zuriel-bible-offline-v99")) failures.push("Offline cache version was not refreshed.");
+if (!worker.includes("zuriel-bible-offline-v100")) failures.push("Offline cache version was not refreshed.");
 if (!worker.includes('"./zuriel-library.js"')) failures.push("Service worker does not precache the library module.");
 if (!packaging.includes('"zuriel-library.js"')) failures.push("Android web packaging omits the library module.");
 if (!index.includes("zuriel-library.js")) failures.push("App entry point does not load the library module.");
