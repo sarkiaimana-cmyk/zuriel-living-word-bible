@@ -29,6 +29,9 @@ jobs:
       - name: Syntax-check application JavaScript
         run: for file in *.js; do node --check "$file"; done
 
+      - name: Validate streamlined home dashboard and distinct sections
+        run: node scripts/check-home-dashboard.mjs
+
       - name: Validate study safeguards
         run: node scripts/check-study-integrity.mjs
       - name: Validate reader navigation and selected verses
