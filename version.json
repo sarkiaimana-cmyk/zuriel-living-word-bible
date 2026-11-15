@@ -1,4 +1,4 @@
 {
-  "version": "1.4.2",
-  "releaseNotes": "Improves Bible reader navigation reliability by preserving chapter-loading errors for selectors and verifying selected passages."
+  "version": "1.4.3",
+  "releaseNotes": "Improves study reference navigation by locating exact verse numbers instead of relying on list position."
 }
