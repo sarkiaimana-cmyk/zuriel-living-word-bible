@@ -78,11 +78,10 @@
     const book = found ? found.name : match[1], chapter = Number(match[2]), verse = Number(match[3]);
     if (typeof window.ZurielHomeNavigate === "function") window.ZurielHomeNavigate("read");
     window.openChapter(book,chapter).then(() => {
-      const target = Array.from(document.querySelectorAll("#message .verse")).find(node => {
-        const number = node.querySelector("strong");
-        return number && Number(number.textContent.replace(/[^\d]/g,"")) === verse;
-      });
-      if (target) { target.classList.add("zuriel-selected-verse"); target.scrollIntoView({behavior:"smooth",block:"center"}); }
+      if (typeof window.selectBibleVerse !== "function" ||
+          !window.selectBibleVerse(verse)) {
+        throw new Error("The referenced verse could not be activated in the Bible reader.");
+      }
     }).catch(error => {
       const status = root && root.querySelector("#zklStatus");
       if (status) status.textContent = "Could not open passage: " + error.message;
