@@ -27,7 +27,7 @@ A feature is not considered complete merely because code exists. Completion requ
 | 7 | Words of Jesus | Outstanding / needs full audit | Build a dedicated, Scripture-grounded Words of Jesus section with accurate references and clear navigation. |
 | 8 | Christian Topics | Substantial implementation | Audit all topic guides and Scripture links, accuracy, coverage, search, and links into the reader and study tools. |
 | 9 | Open Book Card Studio | Partial | Complete Scripture/declaration layout, long-verse reflow, typography controls, smart placement, backgrounds, preview, and save-to-gallery workflow. |
-| 10 | Personal Spiritual Library | Partial; backup/restore under review | Integrate notes, insights, prayer journal, reading history/progress, and encrypted backup/restore only after PR review, merge, and website/Android file save-restore tests. |
+| 10 | Personal Spiritual Library | Substantial implementation; encrypted backup/restore merged | Notes, insights, prayer journal, reading history/progress, and password-encrypted backup/restore are integrated. Still verify browser download/import and Android file save/restore on real devices. |
 | 11 | Audio and Reading Plans | Outstanding | Design and build reading plans, audio playback/download controls, progress, and offline rules using properly licensed sources. |
 | 12 | Smart Search | Substantial implementation | Validate search accuracy, verse-result opening, highlighting, filters, and performance across the full Bible corpus. |
 | 13 | Offline-First Architecture | Substantial implementation | Test cold-start offline, cache updates, missing-resource recovery, storage limits, and consistency across web and Android. |
@@ -45,7 +45,8 @@ A feature is not considered complete merely because code exists. Completion requ
 - The personal study space includes notes/insights, prayer journal, and progress foundations.
 - Scripture topic resources and search foundations are present; their full acceptance criteria still require auditing.
 - Offline caching and Android packaging are established foundations; each new module must be added to both where applicable.
-- The personal backup/restore work is in **open PR #4**. Its automated validation and dedicated runtime tests passed on its PR branch, but it is **not merged** and its browser/Android file save-restore behaviour still requires verification.
+- Personal backup/restore was merged through **PR #4** into `main` on 2026-11-15. The runtime suite passed AES-GCM round-trip, wrong-password and tamper rejection, schema/record validation, safe merge, duplicate handling, preservation of existing data, and a simulated storage-failure rollback. Browser download/import and Android file save/restore behaviour still require real-device verification.
+- Advanced Bible Study language labelling is being strengthened in **open PR #6**. It labels Hebrew, Greek, or Aramaic only when the source record explicitly identifies the language; otherwise it displays a neutral unknown-language label. This focused improvement is not yet merged.
 - The app's release/install status must be tracked separately from successful CI. A passing workflow does not prove an APK installs or upgrades correctly on the user's phone.
 
 ## Required workflow for every feature
