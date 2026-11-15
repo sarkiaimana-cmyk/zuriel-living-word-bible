@@ -837,6 +837,8 @@
       displaySection(section);
     }
 
+    window.ZurielHomeNavigate = navigate;
+
     /* TOP BACK BUTTON */
 
     document.getElementById("zurielTopBack")
