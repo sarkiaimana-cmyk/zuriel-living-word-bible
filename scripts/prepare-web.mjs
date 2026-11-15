@@ -5,6 +5,7 @@ const files = [
   "bible-data.js",
   "zuriel-library.js",
   "zuriel-home.js",
+  "zuriel-word-linking.js",
   "zuriel-study.js",
   "zuriel-navigation.js",
   "zuriel-introductions.js",
