@@ -40,7 +40,7 @@
   function readReadingPlans() {
     try {
       const value = JSON.parse(localStorage.getItem(KEYS.readingPlans) || "null");
-      return value && typeof value === "object" && !Array.isArray(value) ? value : { schemaVersion: 1, activePlanId: null, plans: {} };
+      return safeReadingPlanProgress(value);
     } catch (error) { return { schemaVersion: 1, activePlanId: null, plans: {} }; }
   }
   function collect() {
