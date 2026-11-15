@@ -46,6 +46,9 @@ if (!personal.includes('["plans","🗓️ Reading Plans"]') || !personal.include
 if (!index.includes('src="zuriel-reading-plans.js"')) failures.push("Web entry point does not load reading plans.");
 if (!serviceWorker.includes('"./zuriel-reading-plans.js"')) failures.push("Offline cache does not include reading plans.");
 if (!packaging.includes('"zuriel-reading-plans.js"')) failures.push("Android package preparation does not include reading plans.");
+if (!personal.includes("Zuriel could not read saved personal data") || !personal.includes("Your records have not been changed.")) failures.push("Personal Study Space must stop safely when saved records cannot be read.");
+if (!personal.includes("catch(error){status(error.message);return false;}")) failures.push("Saving a new personal entry must not overwrite unreadable existing records.");
+if (!personal.includes("Your entry was not deleted.")) failures.push("Deleting a personal entry must report storage failures without claiming success.");
 if (!personal.includes("window.ZurielBackup.mount(root)")) failures.push("My Study Space does not mount backup controls.");
 if (!index.includes('src="zuriel-backup.js"')) failures.push("Web entry point does not load backup module.");
 if (!serviceWorker.includes('"./zuriel-backup.js"')) failures.push("Offline cache does not include backup module.");
