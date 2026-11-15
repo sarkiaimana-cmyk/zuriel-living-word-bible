@@ -688,7 +688,7 @@
               const scale = Math.max(canvas.width / image.width, canvas.height / image.height);
               const drawWidth = image.width * scale, drawHeight = image.height * scale;
               ctx.drawImage(image,(canvas.width-drawWidth)/2,(canvas.height-drawHeight)/2,drawWidth,drawHeight);
-              ctx.fillStyle = studio.dataset.finish === "navy" ? "rgba(10,24,43,.76)" : "rgba(248,244,232,.76)";
+              ctx.fillStyle = studio.dataset.finish === "navy" ? "rgba(10,24,43,.45)" : "rgba(248,244,232,.42)";
               ctx.fillRect(0,0,canvas.width,canvas.height);
             }
             ctx.strokeStyle = colors[2]; ctx.lineWidth = 5;
