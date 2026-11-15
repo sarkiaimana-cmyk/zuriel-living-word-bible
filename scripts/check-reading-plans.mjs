@@ -17,7 +17,7 @@ for (const fragment of [
   "Meet Jesus",
   "Growing in Faith",
   "Prayer & Trust",
-  "const duration: 7",
+  "duration: 7",
   "function readState()",
   "function writeState(state)",
   "function referenceParts(reference)",
