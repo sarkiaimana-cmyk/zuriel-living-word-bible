@@ -29,7 +29,7 @@ const checks = [
 for (const [label, fragment] of checks) {
   if (!library.includes(fragment)) failures.push(label + " is missing.");
 }
-if (!worker.includes("zuriel-bible-offline-v91")) failures.push("Offline cache version was not refreshed.");
+if (!worker.includes("zuriel-bible-offline-v92")) failures.push("Offline cache version was not refreshed.");
 if (!worker.includes('"./zuriel-library.js"')) failures.push("Service worker does not precache the studio module.");
 if (!packaging.includes('"zuriel-library.js"')) failures.push("Android web packaging omits the studio module.");
 if (!index.includes("zuriel-library.js")) failures.push("App entry point does not load the studio module.");
