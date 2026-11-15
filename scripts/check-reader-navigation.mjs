@@ -20,8 +20,13 @@ requireMatch(
 );
 requireMatch(
   reader,
-  /window\.selectBibleVerse\s*=\s*function\s*\(verseNumber\)[\s\S]*?target\.click\(\)[\s\S]*?selectVerseForGloryCard\(index\s*\+\s*1,\s*verse\)/,
-  "The shared verse-selection action must activate the real reader verse handler and prepare verse actions."
+  /window\.selectBibleVerse\s*=\s*function\s*\(verseNumber\)[\s\S]*?target\.click\(\)/,
+  "The shared verse-selection action must activate the real reader verse handler."
+);
+requireMatch(
+  reader,
+  /paragraph\.addEventListener\("click"[\s\S]*?selectVerseForGloryCard\(index\s*\+\s*1,\s*verse\)/,
+  "The real reader verse handler must prepare exact verse actions."
 );
 requireMatch(
   navigator,
