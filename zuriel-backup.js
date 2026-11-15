@@ -173,6 +173,8 @@
       (data.savedLessons.length + data.completedLessons.length) + " lesson-progress records";
   }
   async function exportBackup() {
+    root.querySelector("#zbackupConfirm").hidden = false;
+    root.querySelector("#zbackupPassword").placeholder = "Create a backup password (at least 8 characters)";
     const password = root.querySelector("#zbackupPassword").value;
     const confirmation = root.querySelector("#zbackupConfirm").value;
     if (password.length < 8) { setStatus("Choose a backup password with at least 8 characters."); return; }
@@ -237,6 +239,8 @@
     return next;
   }
   function chooseFile() {
+    root.querySelector("#zbackupConfirm").hidden = true;
+    root.querySelector("#zbackupPassword").placeholder = "Enter the password used for this backup";
     const input = root.querySelector("#zbackupFile");
     input.value = "";
     input.click();
@@ -299,6 +303,7 @@
       try {
         const result = applyRestore(selectedBackup);
         selectedBackup = null; preview.hidden = true; restore.hidden = true;
+        root.querySelector("#zbackupPassword").value = "";
         setStatus("Restore complete. Your records have been merged with the records already on this device.");
         const fileInput = root.querySelector("#zbackupFile"); if (fileInput) fileInput.value = "";
         if (window.ZurielPersonalSpace && typeof window.ZurielPersonalSpace.open === "function") window.ZurielPersonalSpace.open();
@@ -308,6 +313,7 @@
     const privacy = node("p", "", "Privacy: backups are created on this device and are never uploaded by this feature. Backup files are encrypted, but keep the file and password private. Restoring merges records; it does not erase your current notes or journal.");
     const status = node("p", ""); status.id = "zbackupStatus"; status.setAttribute("role", "status"); status.setAttribute("aria-live", "polite");
     const passwordHint = node("p", "", "Use the same password when restoring. Backups are encrypted on this device with AES-256-GCM. Choose a password you can safely remember: forgotten passwords cannot be recovered.");
+    confirmation.hidden = true;
     section.append(heading, intro, password, confirmation, passwordHint, actions, file, preview, restore, privacy, status);
     const tabs = container.querySelector(".zps-tabs");
     if (tabs && tabs.parentNode) tabs.parentNode.insertBefore(section, tabs.nextSibling);
