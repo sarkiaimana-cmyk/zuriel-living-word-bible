@@ -56,6 +56,7 @@ A feature is not considered complete merely because code exists. Completion requ
 - **PR #12** merged the Open Book Card Studio improvements: separate Scripture/faith text sizes, typeface control, adaptive stacked layout for long content, PNG export, native file sharing where supported, and a download fallback. Its automated checks passed; real Android gallery/download and visual rendering tests remain outstanding.
 - PR #24 merged the approved Open Book Card layout correction: Scripture on the left, Glory Verse Affirmation/declaration on the right, the exact approved headline and full app footer. Automated Studio validation passed; scenic styling and real Android rendering remain outstanding.
 - PR #25 merged three offline-first seven-day reading plans, exact passage navigation, private sequential progress, and encrypted backup/restore compatibility. Audio is intentionally not represented by placeholder controls; a licensed audio source must be verified before playback/download implementation.
+- PR #29 expanded the Book Introduction Centre from 7 to 17 books (Genesis through Esther), adding authorship/date/context notes, themes, key references and chapter guides, with automated coverage checks. The remaining 49 book introductions and a source-verified visual Bible map experience are still outstanding.
 - The app's release/install status must be tracked separately from successful CI. A passing workflow does not prove an APK installs or upgrades correctly on the user's phone.
 
 ## Required workflow for every feature
