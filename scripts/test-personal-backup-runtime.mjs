@@ -7,7 +7,7 @@ const source = await readFile(new URL("../zuriel-backup.js", import.meta.url), "
 const marker = "window.ZurielBackup = { mount: mount };";
 assert.ok(source.includes(marker), "Backup module test seam has changed; review before updating this test.");
 const instrumented = source.replace(marker,
-  "window.__test = { encryptBackup, decryptBackup, validateBackup, applyRestore };");
+  "window.__test = { encryptBackup, decryptBackup, validateBackup, applyRestore, collect };");
 const store = new Map();
 const localStorage = {
   getItem: key => store.has(key) ? store.get(key) : null,
@@ -32,6 +32,29 @@ const sandbox = {
 };
 runInNewContext(instrumented, sandbox);
 const api = sandbox.window.__test;
+
+// A damaged local store must stop backup/restore instead of being silently
+// converted to an empty list and exported as if no records existed.
+for (const key of [
+  "zuriel_personal_notes_v1",
+  "zuriel_prayer_journal_v1",
+  "zurielReadingHistory_v1",
+  "zuriel_kingdom_life_saved_v1",
+  "zuriel_kingdom_life_completed_v1"
+]) {
+  store.set(key, "{not valid JSON");
+  assert.throws(() => api.collect(), /could not read saved personal data/, key + " corruption must fail closed");
+  store.delete(key);
+}
+store.set("zurielLastReadingPosition", "{not valid JSON");
+assert.throws(() => api.collect(), /could not read your saved reading position/, "Corrupt reading position must fail closed");
+store.delete("zurielLastReadingPosition");
+store.set("zuriel_reading_plan_progress_v1", "{not valid JSON");
+assert.throws(() => api.collect(), /could not read your saved reading-plan progress/, "Corrupt reading-plan data must fail closed");
+store.delete("zuriel_reading_plan_progress_v1");
+store.set("zuriel_personal_notes_v1", JSON.stringify({ unexpected: true }));
+assert.throws(() => api.collect(), /unexpected saved-data format/, "Unexpected local store shapes must fail closed");
+store.delete("zuriel_personal_notes_v1");
 
 const sample = {
   app: "Zuriel Living Word Bible",
