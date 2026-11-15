@@ -344,14 +344,14 @@
       navStatus.textContent = "The chapter is open, but verse " + number + " was not found in the displayed passage.";
       return false;
     }
+    if (typeof window.selectBibleVerse !== "function" ||
+        !window.selectBibleVerse(number)) {
+      navStatus.textContent = "The chapter is open, but verse " + number + " could not be activated.";
+      return false;
+    }
     message.querySelectorAll(".verse.zuriel-nav-highlight").forEach(function (item) { item.classList.remove("zuriel-nav-highlight"); });
     target.classList.add("zuriel-nav-highlight");
-    target.scrollIntoView({ behavior: "smooth", block: "center" });
-    const verseText = target.textContent.replace(/^\s*\d+\.?\s*/, "").trim();
     currentLabel.textContent = selectedBook + " " + selectedChapter + ":" + number;
-    if (window.ZurielStudy && typeof window.ZurielStudy.openForReference === "function") {
-      window.ZurielStudy.openForReference(selectedBook, selectedChapter, number, verseText, "", -1);
-    }
     return true;
   }
 
