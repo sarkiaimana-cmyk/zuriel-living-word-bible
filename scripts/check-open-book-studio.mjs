@@ -23,7 +23,7 @@ const checks = [
   ["stacked PNG calculates both sections vertically", "leftLines.length * lineHeight(scriptureSize) + sectionGap + rightLines.length * lineHeight(faithSize)"],
   ["stacked PNG draws separate full-width sections", "if (stacked) {\n              let y = top;"],
   ["spread PNG retains two-column layout", "const leftX = margin, rightX = margin + columnWidth + gap;"],
-  ["adaptive PNG layout draws Glory Verse heading", "GLORY VERSE AFFIRMATION — " + " + leftTitle"],
+  ["adaptive PNG layout draws Glory Verse heading", 'drawSection("GLORY VERSE AFFIRMATION — " + leftTitle'],
   ["stacked long-content CSS", 'data-layout="stacked"'],
   ["image export action", "zgsSaveImage"],
   ["canvas PNG rendering", 'canvas.toBlob(value => value ? resolve(value)'],
