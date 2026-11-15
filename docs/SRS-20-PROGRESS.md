@@ -1,0 +1,72 @@
+# Zuriel Living Word Bible — 20-Part Specification Scorecard
+
+**Product:** Zuriel Living Word Bible  
+**Mission:** An independent, free, offline-first Bible reading and study app.  
+**Guiding principle:** Build against the approved 20-part specification. Do not silently omit, duplicate, or downgrade requirements.
+
+## How status is recorded
+
+- **Established** — requirement and direction are documented; this is not a software feature.
+- **Substantial implementation** — meaningful code exists, but the whole specification area is not yet certified complete.
+- **Partial** — foundations or selected features exist; important requirements remain.
+- **Outstanding** — implementation is still required.
+- **Ongoing** — cross-cutting work that must be maintained throughout development.
+
+A feature is not considered complete merely because code exists. Completion requires: implementation, integration with existing modules, automated validation, review of offline and Android packaging impact, and device testing where relevant.
+
+## The 20 specification parts
+
+| # | Specification area | Current assessment | Remaining focus / completion evidence |
+|---:|---|---|---|
+| 1 | Product Vision and Objectives | Established | Preserve the free, dependable, Scripture-centred mission and approved product requirements. |
+| 2 | Main Application Structure | Substantial implementation | Audit every destination, navigation path, back behaviour, responsive layout, and module integration. |
+| 3 | Complete Bible Reading | Substantial implementation | Verify all 66 books, chapter/verse integrity, reading position, full verse rendering, translation provenance/licensing, and offline chapter reading on device. |
+| 4 | Advanced Bible Study | Partial | Complete contextual verse study, Hebrew/Greek word links, morphology, lexicon, cross-references, commentary/exegesis, and reliable verse-to-study navigation. |
+| 5 | Devotional and Daily Growth | Substantial implementation | Verify devotional depth, daily content, Glory Verse Affirmation, monthly Light Glory devotional, prayers, declarations, affirmations, and non-repetitive content. |
+| 6 | Worship and Music | Partial | Review SS&S library, lawful content sources, worship/praise navigation, and offline behaviour. Do not bundle copyrighted lyrics without permission. |
+| 7 | Words of Jesus | Outstanding / needs full audit | Build a dedicated, Scripture-grounded Words of Jesus section with accurate references and clear navigation. |
+| 8 | Christian Topics | Substantial implementation | Audit all topic guides and Scripture links, accuracy, coverage, search, and links into the reader and study tools. |
+| 9 | Open Book Card Studio | Partial | Complete Scripture/declaration layout, long-verse reflow, typography controls, smart placement, backgrounds, preview, and save-to-gallery workflow. |
+| 10 | Personal Spiritual Library | Partial; backup/restore under review | Integrate notes, insights, prayer journal, reading history/progress, and encrypted backup/restore only after PR review, merge, and website/Android file save-restore tests. |
+| 11 | Audio and Reading Plans | Outstanding | Design and build reading plans, audio playback/download controls, progress, and offline rules using properly licensed sources. |
+| 12 | Smart Search | Substantial implementation | Validate search accuracy, verse-result opening, highlighting, filters, and performance across the full Bible corpus. |
+| 13 | Offline-First Architecture | Substantial implementation | Test cold-start offline, cache updates, missing-resource recovery, storage limits, and consistency across web and Android. |
+| 14 | AI Assistant | Outstanding | Define safe, transparent, Scripture-referenced assistance; do not let generated explanations replace or alter Bible text. |
+| 15 | Design and User Experience | Ongoing | Maintain premium navy visual direction, uncluttered home, readable typography, accessibility, responsive layouts, and consistent navigation. |
+| 16 | Technical Architecture | Substantial implementation | Keep web modules, offline cache, data contracts, and Capacitor Android packaging aligned; verify each release build. |
+| 17 | Quality Assurance and Testing | Partial / ongoing | Expand automated tests, integration checks, security/privacy checks, regression tests, and real-device testing. |
+| 18 | Development Priorities | Active process | Work in dependency order, maintain this scorecard, and record blockers and acceptance evidence for each change. |
+| 19 | Successful Release | Outstanding | Require clean CI, verified APK identity/version/signature, artifact checks, install/upgrade testing, and a verified release before recommending installation. |
+| 20 | Final Developer Instruction | Established | Follow the complete approved specification, preserve existing work, avoid unapproved scope changes, and verify before declaring completion. |
+
+## Current known implementation evidence
+
+- Kingdom Life Centre and guided growth pathways are present in the merged application work.
+- The personal study space includes notes/insights, prayer journal, and progress foundations.
+- Scripture topic resources and search foundations are present; their full acceptance criteria still require auditing.
+- Offline caching and Android packaging are established foundations; each new module must be added to both where applicable.
+- The personal backup/restore work is in **open PR #4**. Its automated validation and dedicated runtime tests passed on its PR branch, but it is **not merged** and its browser/Android file save-restore behaviour still requires verification.
+- The app's release/install status must be tracked separately from successful CI. A passing workflow does not prove an APK installs or upgrades correctly on the user's phone.
+
+## Required workflow for every feature
+
+1. Identify the relevant specification part(s) and acceptance criteria before coding.
+2. Inspect existing modules and data contracts to avoid duplication or regressions.
+3. Implement the complete coherent change, including navigation, offline cache, and Android packaging where applicable.
+4. Add or update automated checks for the actual behaviour and important failure cases.
+5. Run the relevant workflows and inspect their results.
+6. Review the diff and security/privacy implications.
+7. Merge only after checks and review are satisfactory.
+8. Verify the merged application and device behaviour where the feature requires it.
+9. Update this scorecard with evidence; distinguish implemented, validated, merged, and device-tested.
+
+## Non-negotiable safeguards
+
+- Never fabricate Scripture, references, translations, licences, or test results.
+- Never label a translation as integrated until its actual text and rights/source are verified.
+- Never expose private study data or signing credentials.
+- Never recommend installing an APK until package ID, version code/name, signing continuity, artifact integrity, and relevant device checks have been verified.
+- Preserve existing Zite work and the GitHub project independently.
+- Keep the home experience tidy and the reading experience complete, readable, and reliable.
+
+**Status note:** This is a working control document. Assessments are conservative and must be revised only when evidence supports a status change.
