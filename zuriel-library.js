@@ -434,6 +434,15 @@
             #zurielGloryStudio .zgs-tabs {display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;}
             #zurielGloryStudio .zgs-tabs button {font-size:11px;line-height:1.25;padding:7px 3px;background:#19324f;color:#fff;}
             #zurielGloryStudio .zgs-tabs button[aria-pressed="true"] {background:#b28b45;color:#172b49;outline:2px solid #e5d2a6;}
+            #zurielGloryStudio .zgs-typography-controls {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:10px;border:1px solid #d7c79f;border-radius:10px;background:#f5f1e7;}
+            #zurielGloryStudio .zgs-typography-controls label {display:grid;gap:5px;color:#19324f;font-size:11px;}
+            #zurielGloryStudio .zgs-typography-controls select {width:100%;min-width:0;padding:8px;border:1px solid #c8b98e;border-radius:7px;background:#fff;color:#203047;font:inherit;}
+            #zurielGloryStudio[data-layout="stacked"] #zurielGloryPreview .zgs-book-spread {grid-template-columns:minmax(0,1fr);gap:8px;}
+            #zurielGloryStudio[data-layout="stacked"] #zurielGloryPreview:after {display:none;}
+            #zurielGloryStudio[data-layout="stacked"] #zurielGloryPreview .zgs-page {padding:8px 4px;border-bottom:1px solid color-mix(in srgb,var(--zgs-accent) 35%,transparent);}
+            #zurielGloryStudio[data-layout="stacked"] #zurielGloryPreview .zgs-copy {font-size:15px;line-height:1.65;}
+            #zurielGloryStudio #zgsSaveImage {background:#19324f;color:#fff7e6;border:1px solid #b99b58;}
+            @media(max-width:520px){#zurielGloryStudio .zgs-typography-controls{grid-template-columns:1fr 1fr}#zurielGloryStudio .zgs-typography-controls label:last-child{grid-column:1/-1}}
             @media(max-width:420px){#zurielGloryPreview{padding:16px 10px}#zurielGloryPreview h3{font-size:16px}#zurielGloryPreview .zgs-book-spread{gap:12px}#zurielGloryPreview .zgs-page{padding:6px 2px}#zurielGloryPreview .zgs-copy{font-size:12px}#zurielGloryPreview .zgs-page-title{font-size:9px}#zurielGloryStudio .zgs-tabs button{font-size:10px;min-height:42px}}
           `;
           root.appendChild(studioStyle);
@@ -460,6 +469,17 @@
             <button type="button" data-zgs-view="Confession" aria-pressed="false">Faith</button>
             <button type="button" data-zgs-view="Inspiration" aria-pressed="false">Inspiration</button>
           </div>
+          <div class="zgs-typography-controls" aria-label="Card typography controls">
+            <label for="zgsScriptureSize">Scripture size
+              <select id="zgsScriptureSize"><option value="12">Small</option><option value="14" selected>Medium</option><option value="17">Large</option><option value="20">Extra large</option></select>
+            </label>
+            <label for="zgsFaithSize">Faith text size
+              <select id="zgsFaithSize"><option value="12">Small</option><option value="14" selected>Medium</option><option value="17">Large</option><option value="20">Extra large</option></select>
+            </label>
+            <label for="zgsTypeface">Typeface
+              <select id="zgsTypeface"><option value="Georgia">Classic serif</option><option value="Arial">Clean sans serif</option></select>
+            </label>
+          </div>
           <article id="zurielGloryPreview" aria-label="Live open-book Glory Verse Affirmation preview">
             <div class="zgs-brand">The Light 🕯️</div>
             <h3 id="zgsPreviewTitle">His Word.. My Life.. My Victory.</h3>
@@ -480,6 +500,7 @@
           <div class="zgs-actions">
             <button type="button" id="zgsSave">Save to My Library</button>
             <button type="button" id="zgsShare">Share card text</button>
+            <button type="button" id="zgsSaveImage">Save image to device</button>
           </div>
           <p id="zgsStatus" class="library-status" aria-live="polite">Your draft stays on this device until you save it.</p>
         `;
@@ -491,11 +512,21 @@
         const previewIds = ["zgsPreviewScripture","zgsPreviewPrayer","zgsPreviewDeclaration","zgsPreviewAffirmation","zgsPreviewConfession","zgsPreviewInspiration"];
         let activeFaithView = "Prayer";
         function updatePreview() {
-          studio.querySelector("#zgsPreviewRef").textContent = studio.querySelector("#zgsReference").value.trim() || "Your Scripture reference";
-          studio.querySelector("#zgsPreviewScripture").textContent = studio.querySelector("#zgsScripture").value.trim() || "Your Scripture will appear here.";
+          const scriptureText = studio.querySelector("#zgsScripture").value.trim();
           const activeText = studio.querySelector("#zgs"+activeFaithView).value.trim();
+          studio.querySelector("#zgsPreviewRef").textContent = studio.querySelector("#zgsReference").value.trim() || "Your Scripture reference";
+          studio.querySelector("#zgsPreviewScripture").textContent = scriptureText || "Your Scripture will appear here.";
           studio.querySelector("#zgsPreviewActiveTitle").textContent = activeFaithView === "Confession" ? "FAITH CONFESSION" : activeFaithView.toUpperCase();
           studio.querySelector("#zgsPreviewActiveContent").textContent = activeText || "Add a Scripture-specific "+activeFaithView.toLowerCase()+" on the left page.";
+          const stacked = scriptureText.length > 420 || activeText.length > 320;
+          studio.dataset.layout = stacked ? "stacked" : "spread";
+          const preview = studio.querySelector("#zurielGloryPreview");
+          preview.style.setProperty("--zgs-scripture-size", studio.querySelector("#zgsScriptureSize").value + "px");
+          preview.style.setProperty("--zgs-faith-size", studio.querySelector("#zgsFaithSize").value + "px");
+          preview.style.setProperty("--zgs-typeface", studio.querySelector("#zgsTypeface").value);
+          studio.querySelector("#zgsPreviewScripture").style.fontSize = studio.querySelector("#zgsScriptureSize").value + "px";
+          studio.querySelector("#zgsPreviewActiveContent").style.fontSize = studio.querySelector("#zgsFaithSize").value + "px";
+          [studio.querySelector("#zgsPreviewScripture"),studio.querySelector("#zgsPreviewActiveContent")].forEach(node => node.style.fontFamily = studio.querySelector("#zgsTypeface").value + ",serif");
         }
         studio.querySelectorAll("[data-zgs-view]").forEach(function(tab){
           tab.addEventListener("click",function(){
@@ -507,6 +538,7 @@
           });
         });
         ids.forEach(id => studio.querySelector("#"+id).addEventListener("input",updatePreview));
+        ["zgsScriptureSize","zgsFaithSize","zgsTypeface"].forEach(id => studio.querySelector("#"+id).addEventListener("change",updatePreview));
         const curatedButton = button("Load verse-specific study example", function(){
           const reference=studio.querySelector("#zgsReference").value.trim();
           const entry=window.ZurielFaithContent&&window.ZurielFaithContent.find(reference);
@@ -533,6 +565,108 @@
             localStorage.setItem(key,JSON.stringify(records));
             studio.querySelector("#zgsStatus").textContent="Saved successfully to this device's Glory Verse cards.";
           }catch(error){studio.querySelector("#zgsStatus").textContent="Unable to save. Please check available device storage.";}
+        });
+        studio.querySelector("#zgsSaveImage").addEventListener("click", async function(){
+          const status = studio.querySelector("#zgsStatus");
+          const reference = studio.querySelector("#zgsReference").value.trim();
+          const scripture = studio.querySelector("#zgsScripture").value.trim();
+          const faithText = studio.querySelector("#zgs"+activeFaithView).value.trim();
+          if (!reference || !scripture) {
+            status.textContent = "Add the Scripture reference and exact verse text before saving an image.";
+            return;
+          }
+          const exportButton = this;
+          exportButton.disabled = true;
+          status.textContent = "Preparing your open-book image…";
+          try {
+            const canvas = document.createElement("canvas");
+            const ctx = canvas.getContext("2d");
+            if (!ctx) throw new Error("Image export is not supported in this browser.");
+            const width = 1600, margin = 100, gap = 70, columnWidth = (width - margin * 2 - gap) / 2;
+            const scriptureSize = Number(studio.querySelector("#zgsScriptureSize").value) * 2;
+            const faithSize = Number(studio.querySelector("#zgsFaithSize").value) * 2;
+            const typeface = studio.querySelector("#zgsTypeface").value;
+            const lineHeight = size => Math.round(size * 1.55);
+            function wrap(text, maxWidth, fontSize) {
+              ctx.font = fontSize + "px " + typeface + ", serif";
+              const lines = [];
+              String(text || "").split(/\n/).forEach(paragraph => {
+                const words = paragraph.split(/\s+/).filter(Boolean);
+                if (!words.length) { lines.push(""); return; }
+                let line = "";
+                words.forEach(word => {
+                  const candidate = line ? line + " " + word : word;
+                  if (line && ctx.measureText(candidate).width > maxWidth) {
+                    lines.push(line);
+                    line = word;
+                  } else line = candidate;
+                });
+                if (line) lines.push(line);
+              });
+              return lines;
+            }
+            const leftTitle = activeFaithView === "Confession" ? "FAITH CONFESSION" : activeFaithView.toUpperCase();
+            const leftLines = wrap(faithText || "Add a Scripture-specific " + activeFaithView.toLowerCase() + ".", columnWidth, faithSize);
+            const rightLines = wrap(scripture, columnWidth, scriptureSize);
+            const top = 300, bottom = 150;
+            const contentHeight = Math.max(leftLines.length * lineHeight(faithSize), rightLines.length * lineHeight(scriptureSize));
+            canvas.width = width;
+            canvas.height = Math.max(1100, top + contentHeight + bottom);
+            const palette = {
+              ivory: ["#f8f0dc","#28354a","#b68a38"],
+              navy: ["#172b49","#f6f0df","#e7c77d"],
+              forest: ["#e9f0e5","#183a30","#39765b"],
+              parchment: ["#f0dfbd","#4a3520","#9a682b"]
+            };
+            const colors = palette[studio.dataset.finish] || palette.ivory;
+            ctx.fillStyle = colors[0]; ctx.fillRect(0,0,canvas.width,canvas.height);
+            ctx.strokeStyle = colors[2]; ctx.lineWidth = 5;
+            ctx.strokeRect(35,35,width-70,canvas.height-70);
+            ctx.textAlign = "center"; ctx.fillStyle = colors[2];
+            ctx.font = "bold 30px Georgia, serif"; ctx.fillText("THE LIGHT 🕯️",width/2,105);
+            ctx.fillStyle = colors[1]; ctx.font = "bold 48px Georgia, serif";
+            ctx.fillText("His Words.. My Life.. My Victory.",width/2,185);
+            ctx.strokeStyle = colors[2]; ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.moveTo(width/2,235); ctx.lineTo(width/2,canvas.height-110); ctx.stroke();
+            const leftX = margin, rightX = margin + columnWidth + gap;
+            function drawColumn(title, lines, x, size) {
+              ctx.textAlign = "center"; ctx.fillStyle = colors[2];
+              ctx.font = "bold 24px Arial, sans-serif"; ctx.fillText(title,x+columnWidth/2,270);
+              ctx.textAlign = "left"; ctx.fillStyle = colors[1];
+              ctx.font = size + "px " + typeface + ", serif";
+              let y = top;
+              lines.forEach(line => { ctx.fillText(line,x,y); y += lineHeight(size); });
+            }
+            drawColumn(leftTitle,leftLines,leftX,faithSize);
+            ctx.textAlign = "center"; ctx.fillStyle = colors[2];
+            ctx.font = "bold 25px Arial, sans-serif"; ctx.fillText(reference,rightX+columnWidth/2,270);
+            ctx.textAlign = "left"; ctx.fillStyle = colors[1];
+            ctx.font = scriptureSize + "px " + typeface + ", serif";
+            let y = top;
+            rightLines.forEach(line => { ctx.fillText(line,rightX,y); y += lineHeight(scriptureSize); });
+            ctx.textAlign = "center"; ctx.fillStyle = colors[2];
+            ctx.font = "bold 24px Georgia, serif";
+            ctx.fillText("Zuriel Living Word Bible",width/2,canvas.height-95);
+            const blob = await new Promise((resolve,reject) => canvas.toBlob(value => value ? resolve(value) : reject(new Error("The image could not be created.")),"image/png"));
+            const safeReference = reference.replace(/[^a-z0-9]+/gi,"-").replace(/^-|-$/g,"").toLowerCase();
+            const fileName = "Zuriel-Glory-Verse-" + (safeReference || "card") + ".png";
+            const file = new File([blob],fileName,{type:"image/png"});
+            if (navigator.canShare && navigator.canShare({files:[file]}) && navigator.share) {
+              await navigator.share({files:[file],title:"Glory Verse Affirmation"});
+              status.textContent = "Your open-book image is ready to save or share.";
+            } else {
+              const url = URL.createObjectURL(blob);
+              const link = document.createElement("a");
+              link.href = url; link.download = fileName; link.style.display = "none";
+              document.body.appendChild(link); link.click(); link.remove();
+              setTimeout(() => URL.revokeObjectURL(url),30000);
+              status.textContent = "Your PNG image has been prepared. Check your device downloads or save prompt.";
+            }
+          } catch (error) {
+            if (error.name !== "AbortError") status.textContent = error.message || "Image export could not be completed on this device.";
+          } finally {
+            exportButton.disabled = false;
+          }
         });
         studio.querySelector("#zgsShare").addEventListener("click",async function(){
           const textValue=["The Light 🕯️","His Word.. My Life.. My Victory.",studio.querySelector("#zgsReference").value,studio.querySelector("#zgsScripture").value,...["Prayer","Declaration","Affirmation","Confession","Inspiration"].map(name=>name.toUpperCase()+": "+studio.querySelector("#zgs"+name).value),"Zuriel Living Word"].filter(Boolean).join("\n\n");
