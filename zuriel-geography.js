@@ -161,16 +161,9 @@
     }
     try {
       await window.openChapter(reference.book, reference.chapter);
-      const verse = Array.from(document.querySelectorAll("#message .verse")).find(element => {
-        const label = element.querySelector("strong");
-        return label && Number(label.textContent.replace(/[^0-9]/g, "")) === reference.verse;
-      });
-      if (!verse) throw new Error("The requested verse is not visible in the reader.");
-      verse.scrollIntoView({ behavior: "smooth", block: "center" });
-      verse.classList.add("zuriel-selected-verse");
-      const verseText = verse.textContent.replace(/^\s*\d+\.?\s*/, "").trim();
-      if (window.ZurielStudy && typeof window.ZurielStudy.openForReference === "function") {
-        window.ZurielStudy.openForReference(reference.book, reference.chapter, reference.verse, verseText, "", -1);
+      if (typeof window.selectBibleVerse !== "function" ||
+          !window.selectBibleVerse(reference.verse)) {
+        throw new Error("The requested verse could not be activated in the Bible reader.");
       }
       statusElement.textContent = "Opened " + reference.book + " " + reference.chapter + ":" + reference.verse + " in the Bible reader.";
     } catch (error) {
