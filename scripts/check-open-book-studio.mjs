@@ -33,7 +33,7 @@ for (const [label, fragment] of checks) {
   if (!library.includes(fragment)) failures.push(label + " is missing.");
 }
 if (!index.includes("window.getBibleVerseText = async function (reference)")) failures.push("Offline KJV passage retrieval is missing.");
-if (!worker.includes("zuriel-bible-offline-v93")) failures.push("Offline cache version was not refreshed for the Studio/navigation fix.");
+if (!worker.includes("zuriel-bible-offline-v94")) failures.push("Offline cache version was not refreshed for the Studio/navigation fix.");
 if (home.includes("Your Bible Journey")) failures.push("The duplicate home shortcut-button grid is still present.");
 const navBlock = home.match(/const navItems = \[([\s\S]*?)\];/);
 if (!navBlock || (navBlock[1].match(/\["(?:home|read|study|library|kingdom|personal)"/g) || []).length !== 6) {
