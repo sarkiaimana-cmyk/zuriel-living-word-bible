@@ -1,4 +1,4 @@
 {
-  "version": "1.4.22",
-  "releaseNotes": "Routes Scripture references across the app through one shared verse-selection action, ensuring verse taps update reading context and study actions consistently."
+  "version": "1.4.23",
+  "releaseNotes": "Keeps word study beside the selected Scripture, completes the Open Book faith responses for all daily Scripture choices, and improves the mobile Study Centre layout."
 }
