@@ -913,6 +913,56 @@
         font-weight:bold;
         overflow-wrap:anywhere;
       }
+
+      #zurielInlineWordStudy {
+        margin:10px 0 16px;
+        padding:14px;
+        border:1px solid #b99b58;
+        border-radius:13px;
+        background:#10213d;
+        color:#f8f4e9;
+        box-shadow:0 5px 18px #00000018;
+        scroll-margin-top:90px;
+      }
+      #zurielInlineWordStudy h3 {
+        margin:0 0 8px;
+        color:#f0d99f;
+        font-size:17px;
+      }
+      #zurielInlineWordStudy p {
+        margin:7px 0;
+        line-height:1.55;
+        overflow-wrap:anywhere;
+      }
+      #zurielInlineWordStudy .inline-word-result {
+        margin:9px 0;
+        padding:10px;
+        border-radius:9px;
+        background:#1c3657;
+        border:1px solid #ffffff24;
+      }
+      #zurielInlineWordStudy .inline-word-original {
+        display:block;
+        color:#f0d99f;
+        font-size:20px;
+        font-weight:700;
+      }
+      #zurielInlineWordStudy .inline-word-gloss {
+        display:block;
+        margin-top:4px;
+        color:#ffffff;
+        font-weight:700;
+      }
+      #zurielInlineWordStudy .inline-word-meta {
+        display:block;
+        margin-top:5px;
+        color:#d9e3ef;
+        font-size:12px;
+      }
+      #zurielInlineWordStudy button {
+        min-height:42px;
+        margin:7px 6px 0 0;
+      }
       @media(max-width:600px) {
         #zurielStudyPanel {
           position:relative;
@@ -1194,7 +1244,8 @@
     `;
 
     const main = document.querySelector("main");
-    (main || document.body).appendChild(panel);
+    const reader = document.getElementById("bibleReader");
+    (reader || main || document.body).appendChild(panel);
 
     // Searchable offline biblical dictionary.
     const dictionarySearch = panel.querySelector("#zurielDictionarySearch");
@@ -1949,6 +2000,118 @@
 
         loadRelatedScriptures(selectedReference);
         panel.scrollTop = 0;
+        panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      },
+
+      /* A word tap keeps the reader in place. The compact explanation is
+         inserted directly after the selected verse; the full Study Centre
+         opens only when the reader explicitly requests it. */
+      openWordInContext: async function (book, chapter, verse, verseText, englishWord, wordIndex) {
+        selectedReference = {
+          book: book,
+          chapter: chapter,
+          verse: verse,
+          text: verseText
+        };
+        selectedEnglishWord = englishWord || "";
+        selectedEnglishWordIndex = Number.isInteger(wordIndex) ? wordIndex : -1;
+        if (!selectedEnglishWord) return false;
+
+        const verseElement = document.querySelector(
+          '#message .verse[data-verse-number="' + Number(verse) + '"]'
+        );
+        if (!verseElement) return false;
+
+        const previousCard = document.getElementById("zurielInlineWordStudy");
+        if (previousCard) previousCard.remove();
+
+        const contextCard = document.createElement("section");
+        contextCard.id = "zurielInlineWordStudy";
+        contextCard.setAttribute("role", "region");
+        contextCard.setAttribute("aria-live", "polite");
+        contextCard.setAttribute("aria-label", "Word study for " + selectedEnglishWord);
+
+        const heading = document.createElement("h3");
+        heading.textContent = "Word study: " + selectedEnglishWord;
+        contextCard.appendChild(heading);
+
+        const status = document.createElement("p");
+        status.textContent = "Checking the exact KJV word alignment and available original-language record…";
+        contextCard.appendChild(status);
+
+        const fullStudyButton = document.createElement("button");
+        fullStudyButton.type = "button";
+        fullStudyButton.textContent = "Open Full Study Centre";
+        fullStudyButton.addEventListener("click", function () {
+          window.ZurielStudy.openForReference(
+            book, chapter, verse, verseText, englishWord, wordIndex
+          );
+        });
+        contextCard.appendChild(fullStudyButton);
+
+        const closeButton = document.createElement("button");
+        closeButton.type = "button";
+        closeButton.className = "study-secondary";
+        closeButton.textContent = "Close";
+        closeButton.addEventListener("click", function () {
+          contextCard.remove();
+        });
+        contextCard.appendChild(closeButton);
+
+        verseElement.parentNode.insertBefore(contextCard, verseElement.nextSibling);
+        panel.style.display = "none";
+        panel.dataset.mode = "word-context";
+        highlightVerse(verse);
+
+        try {
+          await loadOriginalWords(selectedReference);
+        } catch (error) {
+          // loadOriginalWords reports its own source-specific failure in the
+          // hidden Study Centre results area; the reader remains untouched.
+        }
+
+        if (!contextCard.isConnected) return true;
+        const results = document.getElementById("zurielOriginalWordResults");
+        const sourceCards = results
+          ? results.querySelectorAll(".original-word-card")
+          : [];
+
+        if (sourceCards.length) {
+          status.textContent = "Original-language records linked to this exact KJV word:";
+          sourceCards.forEach(function (sourceCard) {
+            const original = sourceCard.querySelector(".original-script");
+            const gloss = sourceCard.querySelector(".original-gloss");
+            const meta = sourceCard.querySelector(".word-meta");
+            const result = document.createElement("div");
+            result.className = "inline-word-result";
+
+            if (original) {
+              const originalText = document.createElement("span");
+              originalText.className = "inline-word-original";
+              originalText.textContent = original.textContent;
+              result.appendChild(originalText);
+            }
+            if (gloss) {
+              const glossText = document.createElement("span");
+              glossText.className = "inline-word-gloss";
+              glossText.textContent = gloss.textContent;
+              result.appendChild(glossText);
+            }
+            if (meta) {
+              const metaText = document.createElement("span");
+              metaText.className = "inline-word-meta";
+              metaText.textContent = meta.textContent;
+              result.appendChild(metaText);
+            }
+            contextCard.insertBefore(result, fullStudyButton);
+          });
+        } else {
+          status.textContent = results && results.textContent
+            ? results.textContent
+            : "No verified original-language record is available for this selected word. Zuriel will not guess a meaning.";
+        }
+
+        return true;
       }
     };
   }
