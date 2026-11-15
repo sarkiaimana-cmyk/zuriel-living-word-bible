@@ -58,6 +58,9 @@ jobs:
       - name: Test Android version metadata
         run: node scripts/test-android-version.mjs
 
+      - name: Validate streamlined home dashboard and distinct sections
+        run: node scripts/check-home-dashboard.mjs
+
       - name: Validate guided growth and personal space
         run: node scripts/check-growth-pathways.mjs
 
