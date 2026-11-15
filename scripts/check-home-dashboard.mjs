@@ -42,6 +42,9 @@ requireText(library, 'if (page === "saved")', "The saved-library content page");
 requireText(worker, "zuriel-bible-offline-v111", "The refreshed offline cache");
 if (JSON.parse(version).version !== "1.4.19") failures.push("App version metadata is not 1.4.19.");
 requireText(updates, 'const APP_VERSION = "1.4.19";', "The in-app version display");
+requireText(updates, "The release signing identity is configured for our verified build", "Accurate Android update readiness guidance");
+forbidText(updates, "a stable signing identity must be configured first", "The obsolete Android signing warning");
+requireText(updates, "in-app APK download and installation are not implemented yet", "Honest Android installation capability disclosure");
 
 if (failures.length) {
   console.error("Home dashboard checks failed:");

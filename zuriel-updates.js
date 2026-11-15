@@ -59,7 +59,7 @@
             status.textContent += " Offline update service is not registered on this visit.";
           }
         } else if (isNativeApp() && newer) {
-          status.textContent += " APK installation is not enabled yet; a stable signing identity must be configured first to protect your existing installation.";
+          status.textContent += " Android update detected. The release signing identity is configured for our verified build, but in-app APK download and installation are not implemented yet. Your current installation is unchanged; only install an official Zuriel APK after its package, version and signing checks pass, and approve installation through Android.";
         }
       } catch (error) {
         status.textContent = error.message || "Could not check for updates. Please try again when connected.";
