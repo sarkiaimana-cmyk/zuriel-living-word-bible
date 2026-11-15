@@ -1,4 +1,4 @@
 {
-  "version": "1.4.21",
-  "releaseNotes": "Expands the Bible reading area to fit the available screen width, with responsive phone spacing, full-width verses and safe text wrapping."
+  "version": "1.4.22",
+  "releaseNotes": "Routes Scripture references across the app through one shared verse-selection action, ensuring verse taps update reading context and study actions consistently."
 }
