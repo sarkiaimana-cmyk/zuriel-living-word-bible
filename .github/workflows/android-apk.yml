@@ -94,7 +94,10 @@ jobs:
         env:
           ZURIEL_ANDROID_APP_ID: ${{ steps.signing_check.outputs.available == 'true' && 'com.zuriel.livingwordbible.release' || 'com.zuriel.livingwordbible.github' }}
         run: npx cap sync android
-\n      - name: Set Android version from app metadata\n        run: node scripts/set-android-version.mjs\n
+
+      - name: Set Android version from app metadata
+        run: node scripts/set-android-version.mjs
+
       - name: Build standalone debug APK
         working-directory: android
         run: ./gradlew assembleDebug
