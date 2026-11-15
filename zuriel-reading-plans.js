@@ -238,13 +238,28 @@
     container.appendChild(element("p", "zrp-foot", "Reading plans are optional guides, not a measure of spiritual worth. Mark a day complete only when you have read its passage. Zuriel opens the passage in the Bible reader; the full chapter remains available for context."));
   }
 
+  function validateProgress(value) {
+    if (!value || typeof value !== "object" || Array.isArray(value) || value.schemaVersion !== 1 ||
+        !value.plans || typeof value.plans !== "object" || Array.isArray(value.plans) ||
+        Object.keys(value.plans).length > 50) return false;
+    if (value.activePlanId !== null && value.activePlanId !== undefined &&
+        !PLANS.some(plan => plan.id === value.activePlanId)) return false;
+    return Object.keys(value.plans).every(id => {
+      const plan = PLANS.find(item => item.id === id);
+      const record = value.plans[id];
+      return !!plan && !!record && typeof record === "object" && !Array.isArray(record) &&
+        (record.startedAt === null || record.startedAt === undefined || typeof record.startedAt === "string") &&
+        Array.isArray(record.completedDays) && record.completedDays.length <= plan.duration &&
+        record.completedDays.every(day => Number.isInteger(day) && day >= 1 && day <= plan.duration);
+    });
+  }
+
   window.ZurielReadingPlans = {
     render: render,
-    list: function () { return PLANS.map(plan => ({ id: plan.id, title: plan.title, duration: plan.duration })); },
-    validateProgress: function (value) {
-      if (!value || typeof value !== "object" || Array.isArray(value) || value.schemaVersion !== 1 ||
-          !value.plans || typeof value.plans !== "object" || Array.isArray(value.plans)) return false;
-      return Object.keys(value.plans).length <= 50;
-    }
+    list: function () { return PLANS.map(plan => ({ id: plan.id, title: plan.title, duration: plan.duration, passages: plan.days.map(day => day[0]) })); },
+    validateProgress: validateProgress,
+    readState: readState,
+    writeState: writeState,
+    parseReference: referenceParts
   };
 })();
