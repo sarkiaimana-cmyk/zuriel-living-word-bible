@@ -1,10 +1,11 @@
 import { readFile } from "node:fs/promises";
 
-const [library, worker, packaging, index, prWorkflow, androidWorkflow] = await Promise.all([
+const [library, worker, packaging, index, home, prWorkflow, androidWorkflow] = await Promise.all([
   readFile(new URL("../zuriel-library.js", import.meta.url), "utf8"),
   readFile(new URL("../sw.js", import.meta.url), "utf8"),
   readFile(new URL("./prepare-web.mjs", import.meta.url), "utf8"),
   readFile(new URL("../index.html", import.meta.url), "utf8"),
+  readFile(new URL("../zuriel-home.js", import.meta.url), "utf8"),
   readFile(new URL("../.github/workflows/validate-pr.yml", import.meta.url), "utf8"),
   readFile(new URL("../.github/workflows/android-apk.yml", import.meta.url), "utf8")
 ]);
@@ -24,12 +25,21 @@ const checks = [
   ["download fallback", "link.download = fileName"],
   ["saved card metadata", "zuriel_glory_verse_cards_v1"],
   ["the Light identity", "The Light 🕯️"],
+  ["offline KJV passage retrieval", "window.getBibleVerseText = async function (reference)"],
+  ["Studio passage-loading control", 'id="zgsLoadScripture"'],
+  ["Studio passage retrieval integration", "window.getBibleVerseText(referenceField.value)"],
   ["brand footer", "Zuriel Living Word"]
 ];
 for (const [label, fragment] of checks) {
   if (!library.includes(fragment)) failures.push(label + " is missing.");
 }
-if (!worker.includes("zuriel-bible-offline-v92")) failures.push("Offline cache version was not refreshed.");
+if (!worker.includes("zuriel-bible-offline-v93")) failures.push("Offline cache version was not refreshed for the Studio/navigation fix.");
+if (home.includes("Your Bible Journey")) failures.push("The duplicate home shortcut-button grid is still present.");
+const navBlock = home.match(/const navItems = \[([\s\S]*?)\];/);
+if (!navBlock || (navBlock[1].match(/\["(?:home|read|study|library|kingdom|personal)"/g) || []).length !== 6) {
+  failures.push("The main bottom navigation should contain exactly six primary destinations.");
+}
+if (!home.includes('window.ZurielLibrary.open("saved")')) failures.push("The Library destination does not open the personal saved library.");
 if (!worker.includes('"./zuriel-library.js"')) failures.push("Service worker does not precache the studio module.");
 if (!packaging.includes('"zuriel-library.js"')) failures.push("Android web packaging omits the studio module.");
 if (!index.includes("zuriel-library.js")) failures.push("App entry point does not load the studio module.");
