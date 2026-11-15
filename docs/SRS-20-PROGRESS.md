@@ -21,7 +21,7 @@ A feature is not considered complete merely because code exists. Completion requ
 | 1 | Product Vision and Objectives | Established | Preserve the free, dependable, Scripture-centred mission and approved product requirements. |
 | 2 | Main Application Structure | Substantial implementation | Audit every destination, navigation path, back behaviour, responsive layout, and module integration. |
 | 3 | Complete Bible Reading | Substantial implementation | Verify all 66 books, chapter/verse integrity, reading position, full verse rendering, translation provenance/licensing, and offline chapter reading on device. |
-| 4 | Advanced Bible Study | Partial | Complete contextual verse study, Hebrew/Greek word links, morphology, lexicon, cross-references, commentary/exegesis, and reliable verse-to-study navigation. |
+| 4 | Advanced Bible Study | Partial; source-language labels strengthened | Per-word Hebrew, Greek and Aramaic labels now use explicit source metadata, with a neutral fallback when language is unknown. Continue with contextual verse study, deeper word links, morphology, lexicon coverage, cross-references, commentary/exegesis, and verse-to-study navigation. |
 | 5 | Devotional and Daily Growth | Substantial implementation | Verify devotional depth, daily content, Glory Verse Affirmation, monthly Light Glory devotional, prayers, declarations, affirmations, and non-repetitive content. |
 | 6 | Worship and Music | Partial | Review SS&S library, lawful content sources, worship/praise navigation, and offline behaviour. Do not bundle copyrighted lyrics without permission. |
 | 7 | Words of Jesus | Outstanding / needs full audit | Build a dedicated, Scripture-grounded Words of Jesus section with accurate references and clear navigation. |
@@ -46,7 +46,7 @@ A feature is not considered complete merely because code exists. Completion requ
 - Scripture topic resources and search foundations are present; their full acceptance criteria still require auditing.
 - Offline caching and Android packaging are established foundations; each new module must be added to both where applicable.
 - Personal backup/restore was merged through **PR #4** into `main` on 2026-11-15. The runtime suite passed AES-GCM round-trip, wrong-password and tamper rejection, schema/record validation, safe merge, duplicate handling, preservation of existing data, and a simulated storage-failure rollback. Browser download/import and Android file save/restore behaviour still require real-device verification.
-- Advanced Bible Study language labelling is being strengthened in **open PR #6**. It labels Hebrew, Greek, or Aramaic only when the source record explicitly identifies the language; otherwise it displays a neutral unknown-language label. This focused improvement is not yet merged.
+- Advanced Bible Study language labelling was merged through **PR #6** on 2026-11-15. It labels Hebrew, Greek, or Aramaic only when the source record explicitly identifies the language; otherwise it displays a neutral unknown-language label. Broader morphology, lexical coverage and scholarly review remain outstanding.
 - The app's release/install status must be tracked separately from successful CI. A passing workflow does not prove an APK installs or upgrades correctly on the user's phone.
 
 ## Required workflow for every feature
