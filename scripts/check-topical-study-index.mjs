@@ -47,6 +47,14 @@ for (const topic of topics) {
     assert.ok(Number.isInteger(ref.chapter) && ref.chapter >= 1, topic.title + " has an invalid chapter.");
     assert.ok(Number.isInteger(ref.verse) && ref.verse >= 1, topic.title + " has an invalid verse.");
     assert.ok(ref.endVerse == null || (Number.isInteger(ref.endVerse) && ref.endVerse >= ref.verse), topic.title + " has an invalid verse range.");
+    const label = String(ref.label || "");
+    const labelMatch = label.match(/^(.+?)\\s+(\\d+):(\\d+)(?:[-–—](\\d+))?$/);
+    assert.ok(labelMatch, topic.title + " has a malformed reference label: " + label);
+    const normalizeBookName = value => value.toLowerCase().replace(/\\s+/g, " ").trim().replace(/^psalm$/, "psalms");
+    assert.equal(normalizeBookName(labelMatch[1]), normalizeBookName(ref.book), topic.title + " label book does not match structured reference: " + label);
+    assert.equal(Number(labelMatch[2]), ref.chapter, topic.title + " label chapter does not match structured reference: " + label);
+    assert.equal(Number(labelMatch[3]), ref.verse, topic.title + " label starting verse does not match structured reference: " + label);
+    assert.equal(labelMatch[4] == null ? null : Number(labelMatch[4]), ref.endVerse == null ? null : ref.endVerse, topic.title + " label verse range does not match structured reference: " + label);
     referenceCount += 1;
   }
 }
