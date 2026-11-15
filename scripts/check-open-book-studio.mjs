@@ -18,6 +18,12 @@ const checks = [
   ["faith response typography control", "zgsFaithSize"],
   ["typeface control", "zgsTypeface"],
   ["adaptive long-content layout", "studio.dataset.layout = stacked ? \"stacked\" : \"spread\""],
+  ["adaptive PNG export threshold", "const stacked = scripture.length > 420 || faithText.length > 320;"],
+  ["stacked PNG uses full content width", "const exportColumnWidth = stacked ? width - exportMargin * 2 : columnWidth;"],
+  ["stacked PNG calculates both sections vertically", "leftLines.length * lineHeight(scriptureSize) + sectionGap + rightLines.length * lineHeight(faithSize)"],
+  ["stacked PNG draws separate full-width sections", "if (stacked) {\n              let y = top;"],
+  ["spread PNG retains two-column layout", "const leftX = margin, rightX = margin + columnWidth + gap;"],
+  ["adaptive PNG layout draws Glory Verse heading", "GLORY VERSE AFFIRMATION — " + " + leftTitle"],
   ["stacked long-content CSS", 'data-layout="stacked"'],
   ["image export action", "zgsSaveImage"],
   ["canvas PNG rendering", 'canvas.toBlob(value => value ? resolve(value)'],
@@ -37,8 +43,8 @@ const checks = [
   ["declaration tab is visibly selected by default", 'data-zgs-view="Declaration" aria-pressed="true"'],
   ["exact approved card headline", "His Words.. My life.. My Victory"],
   ["complete app footer", "Zuriel Living Word Bible"],
-  ["export uses Scripture line height on left", "leftLines.length * lineHeight(scriptureSize)"],
-  ["export uses faith line height on right", "rightLines.length * lineHeight(faithSize)"],
+  ["export calculates Scripture line height", "leftLines.length * lineHeight(scriptureSize)"],
+  ["export calculates faith line height", "rightLines.length * lineHeight(faithSize)"],
   ["shared card includes complete app name", '"Zuriel Living Word Bible"' ]
 ];
 for (const [label, fragment] of checks) {
