@@ -44,9 +44,9 @@ requireText(home, '["personal", "📝", "My Space"]', "The six-item primary navi
 requireText(library, 'if (page === "declarations")', "The declarations content page");
 requireText(library, 'if (page === "devotional")', "The devotional content page");
 requireText(library, 'if (page === "saved")', "The saved-library content page");
-requireText(worker, "zuriel-bible-offline-v113", "The refreshed offline cache");
-if (JSON.parse(version).version !== "1.4.20") failures.push("App version metadata is not 1.4.20.");
-requireText(updates, 'const APP_VERSION = "1.4.20";', "The in-app version display");
+requireText(worker, "zuriel-bible-offline-v114", "The refreshed offline cache");
+if (JSON.parse(version).version !== "1.4.21") failures.push("App version metadata is not 1.4.20.");
+requireText(updates, 'const APP_VERSION = "1.4.21";', "The in-app version display");
 requireText(updates, "The release signing identity is configured for our verified build", "Accurate Android update readiness guidance");
 forbidText(updates, "a stable signing identity must be configured first", "The obsolete Android signing warning");
 requireText(updates, "in-app APK download and installation are not implemented yet", "Honest Android installation capability disclosure");
