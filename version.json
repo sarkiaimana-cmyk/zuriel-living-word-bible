@@ -1,4 +1,4 @@
 {
-  "version": "1.4.19",
-  "releaseNotes": "Uses exact offline KJV Scripture text in the home Open Book card, improves Psalm/Psalms reference handling, and preserves Personal Study Space backup safeguards."
+  "version": "1.4.20",
+  "releaseNotes": "Fixes KJV book-code mappings so the complete offline 66-book Bible, Scripture reader and Open Book card can load correctly; adds full KJV integrity regression checks."
 }
