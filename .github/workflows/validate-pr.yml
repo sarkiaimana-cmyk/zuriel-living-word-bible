@@ -46,6 +46,12 @@ jobs:
       - name: Validate guided growth and personal space
         run: node scripts/check-growth-pathways.mjs
 
+      - name: Validate offline reading plan integration
+        run: node scripts/check-reading-plans.mjs
+
+      - name: Test reading plan progress and references
+        run: node scripts/test-reading-plans.mjs
+
       - name: Validate personal backup and restore
         run: node scripts/check-personal-backup.mjs
 

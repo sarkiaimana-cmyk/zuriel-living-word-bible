@@ -1,4 +1,4 @@
 {
-  "version": "1.4.4",
-  "releaseNotes": "Streamlines the home dashboard and separates declarations, devotionals and saved library navigation."
+  "version": "1.4.5",
+  "releaseNotes": "Adds three offline-first Bible reading plans with private progress and encrypted backup/restore."
 }

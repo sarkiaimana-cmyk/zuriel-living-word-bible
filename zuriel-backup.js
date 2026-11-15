@@ -7,9 +7,11 @@
     history: "zurielReadingHistory_v1",
     position: "zurielLastReadingPosition",
     savedLessons: "zuriel_kingdom_life_saved_v1",
-    completedLessons: "zuriel_kingdom_life_completed_v1"
+    completedLessons: "zuriel_kingdom_life_completed_v1",
+    readingPlans: "zuriel_reading_plan_progress_v1"
   };
   const MAX_FILE = 8 * 1024 * 1024;
+  const READING_PLAN_DURATIONS = { "meet-jesus-7": 7, "growing-in-faith-7": 7, "prayer-and-trust-7": 7 };
   let root, selectedBackup = null;
 
   function node(tag, cls, text) {
@@ -36,6 +38,12 @@
       return value && typeof value === "object" && !Array.isArray(value) ? value : null;
     } catch (error) { return null; }
   }
+  function readReadingPlans() {
+    try {
+      const value = JSON.parse(localStorage.getItem(KEYS.readingPlans) || "null");
+      return safeReadingPlanProgress(value);
+    } catch (error) { return { schemaVersion: 1, activePlanId: null, plans: {} }; }
+  }
   function collect() {
     return {
       notes: readArray(KEYS.notes),
@@ -43,7 +51,8 @@
       readingHistory: readArray(KEYS.history),
       lastReadingPosition: readPosition(),
       savedLessons: readArray(KEYS.savedLessons),
-      completedLessons: readArray(KEYS.completedLessons)
+      completedLessons: readArray(KEYS.completedLessons),
+      readingPlanProgress: readReadingPlans()
     };
   }
   const KDF_ITERATIONS = 250000;
@@ -122,6 +131,29 @@
     });
     return value;
   }
+  function safeReadingPlanProgress(value) {
+    if (value === undefined || value === null) return { schemaVersion: 1, activePlanId: null, plans: {} };
+    if (!value || typeof value !== "object" || Array.isArray(value) || value.schemaVersion !== 1 ||
+        !value.plans || typeof value.plans !== "object" || Array.isArray(value.plans) || Object.keys(value.plans).length > 50 ||
+        (value.activePlanId !== null && value.activePlanId !== undefined && (typeof value.activePlanId !== "string" || value.activePlanId.length > 80))) {
+      throw new Error("The backup contains invalid reading-plan progress.");
+    }
+    const plans = {};
+    Object.keys(value.plans).forEach(id => {
+      const item = value.plans[id];
+      const duration = READING_PLAN_DURATIONS[id];
+      if (!duration || !item || typeof item !== "object" || Array.isArray(item) ||
+          (item.startedAt !== null && item.startedAt !== undefined && (typeof item.startedAt !== "string" || item.startedAt.length > 50)) ||
+          !Array.isArray(item.completedDays) || item.completedDays.length > duration ||
+          item.completedDays.some(day => !Number.isInteger(day) || day < 1 || day > duration)) {
+        throw new Error("The backup contains invalid reading-plan progress.");
+      }
+      plans[id] = { startedAt: item.startedAt || null, completedDays: Array.from(new Set(item.completedDays)) };
+    });
+    const activePlanId = value.activePlanId || null;
+    if (activePlanId && !Object.prototype.hasOwnProperty.call(READING_PLAN_DURATIONS, activePlanId)) throw new Error("The backup contains an invalid active reading plan.");
+    return { schemaVersion: 1, activePlanId, plans };
+  }
   function validateBackup(data) {
     if (!data || typeof data !== "object" || Array.isArray(data) ||
         data.app !== "Zuriel Living Word Bible" || data.schemaVersion !== 1 ||
@@ -135,7 +167,8 @@
       readingHistory: Array.isArray(d.readingHistory) && d.readingHistory.length <= 5000 ? d.readingHistory : null,
       lastReadingPosition: d.lastReadingPosition === null ? null : d.lastReadingPosition,
       savedLessons: Array.isArray(d.savedLessons) && d.savedLessons.length <= 5000 ? d.savedLessons : null,
-      completedLessons: Array.isArray(d.completedLessons) && d.completedLessons.length <= 5000 ? d.completedLessons : null
+      completedLessons: Array.isArray(d.completedLessons) && d.completedLessons.length <= 5000 ? d.completedLessons : null,
+      readingPlanProgress: safeReadingPlanProgress(d.readingPlanProgress)
     };
     if (!clean.readingHistory || !clean.savedLessons || !clean.completedLessons) throw new Error("The backup contains an invalid progress list.");
     clean.readingHistory.forEach(item => {
@@ -167,10 +200,21 @@
   function mergeStrings(current, incoming) {
     return Array.from(new Set(current.concat(incoming)));
   }
+  function mergeReadingPlans(current, incoming) {
+    const plans = {};
+    const ids = new Set(Object.keys(current.plans || {}).concat(Object.keys(incoming.plans || {})));
+    ids.forEach(id => {
+      const a = current.plans[id] || { startedAt: null, completedDays: [] };
+      const b = incoming.plans[id] || { startedAt: null, completedDays: [] };
+      plans[id] = { startedAt: a.startedAt || b.startedAt || null, completedDays: Array.from(new Set((a.completedDays || []).concat(b.completedDays || []))).sort((x,y)=>x-y) };
+    });
+    return { schemaVersion: 1, activePlanId: current.activePlanId || incoming.activePlanId || null, plans };
+  }
   function countText(data) {
     return data.notes.length + " insights/notes • " + data.prayers.length + " prayer entries • " +
       data.readingHistory.length + " reading records • " +
-      (data.savedLessons.length + data.completedLessons.length) + " lesson-progress records";
+      (data.savedLessons.length + data.completedLessons.length) + " lesson-progress records • " +
+      Object.keys(data.readingPlanProgress.plans).length + " reading plans";
   }
   async function exportBackup() {
     root.querySelector("#zbackupConfirm").hidden = false;
@@ -213,7 +257,8 @@
       readingHistory: mergeRecords(current.readingHistory, incoming.readingHistory, item => item.book + "|" + item.chapter),
       lastReadingPosition: current.lastReadingPosition || incoming.lastReadingPosition,
       savedLessons: mergeStrings(current.savedLessons, incoming.savedLessons),
-      completedLessons: mergeStrings(current.completedLessons, incoming.completedLessons)
+      completedLessons: mergeStrings(current.completedLessons, incoming.completedLessons),
+      readingPlanProgress: mergeReadingPlans(current.readingPlanProgress, incoming.readingPlanProgress)
     };
     const values = {
       [KEYS.notes]: next.notes.slice(0, 5000),
@@ -221,7 +266,8 @@
       [KEYS.history]: next.readingHistory.slice(0, 200),
       [KEYS.position]: next.lastReadingPosition,
       [KEYS.savedLessons]: next.savedLessons.slice(0, 5000),
-      [KEYS.completedLessons]: next.completedLessons.slice(0, 5000)
+      [KEYS.completedLessons]: next.completedLessons.slice(0, 5000),
+      [KEYS.readingPlans]: next.readingPlanProgress
     };
     const previous = {};
     Object.keys(values).forEach(key => previous[key] = localStorage.getItem(key));
@@ -284,7 +330,7 @@
     const style = node("style", "");
     style.textContent = "#zurielBackupTools{margin:14px 0;padding:15px;border:1px solid #d9d4c8;border-radius:15px;background:#f7f6f1;color:#24394c}#zurielBackupTools h2{font:700 19px Georgia,serif;color:#193c56;margin:0 0 7px}#zurielBackupTools p{font-size:13px;line-height:1.6;color:#586779}#zurielBackupTools .zbackup-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}#zurielBackupTools button{min-height:43px;border:1px solid #183e5a;border-radius:9px;padding:9px;background:#183e5a;color:#fff;font-weight:700}#zurielBackupTools button.zbackup-light{background:#fff;color:#183e5a}#zurielBackupTools #zbackupPreview{padding:11px;margin:10px 0;background:#fff;border:1px solid #d9dfe1;border-radius:10px}#zurielBackupTools #zbackupRestore{width:100%;background:#315b48;border-color:#315b48}#zurielBackupTools #zbackupStatus{min-height:20px;margin:8px 0 0;color:#315b48;font-weight:700}#zurielBackupTools input[type=file]{display:none}#zurielBackupTools input[type=password]{display:block;width:100%;min-height:44px;margin:8px 0;padding:11px;border:1px solid #cfd4d7;border-radius:9px;background:#fff;color:#24394c}@media(max-width:420px){#zurielBackupTools .zbackup-actions{grid-template-columns:1fr}}";
     const heading = node("h2", "", "Protect your personal records");
-    const intro = node("p", "", "Create an encrypted backup of your saved insights, study notes, prayer journal and reading progress. Restore it when you change phones or browsers.");
+    const intro = node("p", "", "Create an encrypted backup of your saved insights, study notes, prayer journal, reading history and reading-plan progress. Restore it when you change phones or browsers.");
     const password = node("input", ""); password.type = "password"; password.id = "zbackupPassword"; password.autocomplete = "new-password"; password.placeholder = "Backup password (at least 8 characters)"; password.setAttribute("aria-label", "Backup password");
     const confirmation = node("input", ""); confirmation.type = "password"; confirmation.id = "zbackupConfirm"; confirmation.autocomplete = "new-password"; confirmation.placeholder = "Confirm password for export"; confirmation.setAttribute("aria-label", "Confirm backup password");
     const actions = node("div", "zbackup-actions");
