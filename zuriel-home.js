@@ -198,7 +198,7 @@
 
       #zurielHomeDashboard .home-explore-grid {
         display: grid;
-        grid-template-columns: repeat(3,minmax(0,1fr));
+        grid-template-columns: repeat(2,minmax(0,1fr));
         gap: 9px;
         margin-top: 12px;
       }
@@ -648,11 +648,6 @@
             <span aria-hidden="true">🕊️</span>
             <strong>Devotionals</strong>
             <small>Grow through daily reflection</small>
-          </button>
-          <button type="button" data-section="library">
-            <span aria-hidden="true">📚</span>
-            <strong>My Saved Library</strong>
-            <small>Keep notes, prayers and bookmarks</small>
           </button>
         </div>
       </section>
