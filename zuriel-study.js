@@ -526,7 +526,14 @@
 
       const uniqueVerses = [...new Map(matches.map(item => [item.verse, item])).values()];
       if (uniqueVerses.length) {
+        const method = document.createElement("p");
+        method.className = "study-small";
+        method.textContent = "These verses contain the same Strong's index in the supplied interlinear chapter data. Compare each sentence carefully: an indexed word can carry different shades of meaning in different contexts.";
+        related.appendChild(method);
+
         uniqueVerses.forEach(function (item) {
+          const occurrence = document.createElement("div");
+          occurrence.className = "lexicon-entry";
           const button = document.createElement("button");
           button.type = "button";
           button.className = "study-link";
@@ -549,7 +556,21 @@
               console.error("Zuriel related word occurrence:", error);
             }
           });
-          related.appendChild(button);
+          occurrence.appendChild(button);
+
+          const verseElement = Array.from(document.querySelectorAll("#message .verse"))
+            .find(function (element) {
+              const label = element.querySelector("strong");
+              return label && Number(label.textContent.replace(/\D/g, "")) === item.verse;
+            });
+          if (verseElement) {
+            const excerpt = document.createElement("p");
+            excerpt.className = "study-small";
+            excerpt.textContent = "KJV context: " +
+              verseElement.textContent.replace(/^\s*\d+\.?\s*/, "").trim();
+            occurrence.appendChild(excerpt);
+          }
+          related.appendChild(occurrence);
         });
       } else {
         const line = document.createElement("p");
