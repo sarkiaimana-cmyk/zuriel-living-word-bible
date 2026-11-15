@@ -26,7 +26,7 @@ for (const [book, chapters] of Object.entries(expected)) {
   for (const field of ["subtitle:", "author:", "authorStudy:", "date:", "dateStudy:", "place:", "placeStudy:", "audience:", "purpose:", "background:", "themes:", "keyVerses:", "outline:"]) {
     if (!block.includes(field)) failures.push(book + ": missing " + field);
   }
-  if (!block.includes("Chapters ") && !block.includes("Chapter ")) failures.push(book + ": outline lacks chapter coverage labels");
+  if (!/outline:\s*\[\s*"/.test(block)) failures.push(book + ": outline is missing or empty");
 }
 if (!source.includes('"Book outline and chapter guide"')) failures.push("introduction renderer: clear outline heading missing");
 if (!source.includes('title.textContent = titleText')) failures.push("bold section heading renderer missing");
