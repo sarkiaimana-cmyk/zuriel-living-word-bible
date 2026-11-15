@@ -933,6 +933,11 @@ async function openChapter(book, chapter) {
         saveReadingPosition(book, chapter, index + 1);
         selectVerseForGloryCard(index + 1, verse);
         if (window.ZurielStudy &&
+            typeof window.ZurielStudy.openWordInContext === "function") {
+          window.ZurielStudy.openWordInContext(
+            book, chapter, index + 1, verse, part, thisWordIndex
+          );
+        } else if (window.ZurielStudy &&
             typeof window.ZurielStudy.openForReference === "function") {
           window.ZurielStudy.openForReference(
             book, chapter, index + 1, verse, part, thisWordIndex
