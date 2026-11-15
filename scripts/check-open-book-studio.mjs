@@ -54,13 +54,13 @@ const checks = [
   ["separate image sharing action", 'id="zgsShareImage"'],
   ["download and share image actions are distinct", 'exportButton.id === "zgsShareImage"'],
   ["selected wallpaper is saved with card", "wallpaper:studio.dataset.wallpaper"],
-  ["service worker caches selected Unsplash wallpapers", 'url.origin === "https://images.unsplash.com"']
 ];
 for (const [label, fragment] of checks) {
   if (!library.includes(fragment)) failures.push(label + " is missing.");
 }
 if (!index.includes("window.getBibleVerseText = async function (reference)")) failures.push("Offline KJV passage retrieval is missing.");
 if (!worker.includes("zuriel-bible-offline-v113")) failures.push("Offline cache version was not refreshed for the Studio/navigation fix.");
+if (!worker.includes('url.origin === "https://images.unsplash.com"')) failures.push("Service worker does not cache selected Unsplash wallpapers.");
 if (home.includes("Your Bible Journey")) failures.push("The duplicate home shortcut-button grid is still present.");
 const navBlock = home.match(/const navItems = \[([\s\S]*?)\];/);
 if (!navBlock || (navBlock[1].match(/\["(?:home|read|study|library|kingdom|personal)"/g) || []).length !== 6) {
