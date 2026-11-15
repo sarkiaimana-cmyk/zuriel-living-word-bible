@@ -8,6 +8,7 @@ const [study, home, faith] = await Promise.all([
 
 const checks = [["exact single-token gloss matching","tappedTokens.length === 1 && glossTokens.includes(tappedTokens[0])"],["no-guess mismatch explanation","will not guess which Hebrew or Greek word it represents"],["source parsing fallback","\"Source parsing tag: \" + word.parsing"],
   ["per-word source language label","languageLabel.textContent = languageName"],
+  ["normalized Hebrew/Aramaic script direction","original.dir = languageCode === \"hebrew\" || languageCode === \"aramaic\" ? \"rtl\" : \"ltr\""],
   ["unknown source language is not guessed","Source language not identified"],["Strong\\'s identifier normalization","padStart(4, \"0\")"],["lexicon sense validation","!entry || !Array.isArray(entry.senses)"],["lexicon retry action","Retry lexicon entry"],["offline-specific lexicon guidance","not saved on this device yet"]];
 const failures = checks.filter(([label, fragment]) => !study.includes(fragment));
 const requiredReaderPanels = ["zurielOriginalWordResults", "zurielLexiconDetails"];
