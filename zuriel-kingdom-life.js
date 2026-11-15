@@ -93,6 +93,7 @@
     if (!topic || !root) return;
     const detail = root.querySelector("#zklDetail"), browse = root.querySelector("#zklBrowse");
     detail.replaceChildren(); browse.hidden = true; detail.hidden = false;
+    const pathways = root.querySelector("#zurielGrowthPathways"); if (pathways) pathways.hidden = true;
     detail.appendChild(button("← All lessons",closeTopic,"zkl-secondary"));
     detail.append(el("p","zkl-kicker","KINGDOM LIFE • BIBLE STUDY GUIDE"),el("h2","zkl-title",topic.title),el("p","zkl-summary",topic.summary || ""));
     const saved = read(SAVED), done = read(DONE), tools = el("div","zkl-actions");
@@ -154,7 +155,9 @@
   }
   function closeTopic() {
     if (!root) return;
-    root.querySelector("#zklDetail").hidden = true; root.querySelector("#zklBrowse").hidden = false; renderList();
+    root.querySelector("#zklDetail").hidden = true; root.querySelector("#zklBrowse").hidden = false;
+    const pathways = root.querySelector("#zurielGrowthPathways"); if (pathways) pathways.hidden = false;
+    renderList();
     root.scrollIntoView({behavior:"smooth",block:"start"});
   }
   function mount(main) {
