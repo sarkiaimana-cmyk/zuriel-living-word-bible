@@ -58,16 +58,16 @@ for (const region of data?.regions || []) {
     }
   }
 }
-for (const fragment of ['data.regions.forEach(function (region)', 'root.id = "zurielGeographyCentre-" + region.id', "window.ZurielGeographyData", "window.openChapter", "window.ZurielStudy.openForReference", "aria-label", "mapNotice"]) {
+for (const fragment of ['data.regions.forEach(function (region)', 'root.id = "zurielGeographyCentre-" + region.id', "window.ZurielGeographyData", "window.openChapter", "window.selectBibleVerse(reference.verse)", "aria-label", "mapNotice"]) {
   if (!moduleSource.includes(fragment)) failures.push("Geography module integration is missing: " + fragment);
 }
 if (/fetch\s*\(|XMLHttpRequest|WebSocket|https:\/\//.test(moduleSource)) failures.push("The geography UI must not require network access.");
 if (!index.includes('src="zuriel-geography-data.js"') || !index.includes('src="zuriel-geography.js"')) failures.push("Web entry point omits geography files.");
 if (index.indexOf('src="zuriel-geography-data.js"') > index.indexOf('src="zuriel-geography.js"') || index.indexOf('src="zuriel-geography.js"') < index.indexOf('src="zuriel-study.js"')) failures.push("Geography scripts are not loaded after their dependencies.");
-if (!worker.includes('"./zuriel-geography-data.js"') || !worker.includes('"./zuriel-geography.js"') || !worker.includes("zuriel-bible-offline-v114")) failures.push("Offline cache does not include geography data and module.");
+if (!worker.includes('"./zuriel-geography-data.js"') || !worker.includes('"./zuriel-geography.js"') || !worker.includes("zuriel-bible-offline-v115")) failures.push("Offline cache does not include geography data and module.");
 if (!packaging.includes('"zuriel-geography-data.js"') || !packaging.includes('"zuriel-geography.js"')) failures.push("Android web packaging omits geography files.");
 if (!prWorkflow.includes("node scripts/check-bible-geography.mjs") || !androidWorkflow.includes("node scripts/check-bible-geography.mjs")) failures.push("Geography validation is not included in both workflows.");
-if (JSON.parse(version).version !== "1.4.21" || !updates.includes('const APP_VERSION = "1.4.21";')) failures.push("App version metadata is inconsistent.");
+if (JSON.parse(version).version !== "1.4.22" || !updates.includes('const APP_VERSION = "1.4.22";')) failures.push("App version metadata is inconsistent.");
 if (failures.length) {
   console.error("Bible Geography checks failed:");
   failures.forEach(item => console.error(" - " + item));
