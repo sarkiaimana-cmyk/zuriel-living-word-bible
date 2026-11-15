@@ -187,6 +187,7 @@
       };
       const envelope = await encryptBackup(payload, password);
       const blob = new Blob([JSON.stringify(envelope, null, 2)], { type: "application/json" });
+      if (blob.size > MAX_FILE) throw new Error("This backup is larger than the 8 MB restore limit. Reduce stored records before exporting.");
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
