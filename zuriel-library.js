@@ -1085,24 +1085,34 @@
           matches.forEach(function (item) {
             const box = element("article", undefined, "library-entry");
             box.appendChild(element("small", item.category));
-            box.appendChild(element("h4", item.title));
-            box.appendChild(element("p", item.summary));
+            const details = element("details", undefined, "zuriel-jesus-details");
+            const summary = element("summary", item.title);
+            summary.setAttribute("aria-label", "Expand teaching: " + item.title);
+            details.appendChild(summary);
+            details.appendChild(element("p", item.summary));
             const refs = element("div", undefined, "library-nav");
             item.refs.forEach(function (reference) {
               const open = button("Open " + reference, function () { openJesusReference(reference, open); });
               open.className = "study-secondary";
               refs.appendChild(open);
             });
-            box.appendChild(refs);
-            box.appendChild(button("Save teaching to My Library", function () {
+            details.appendChild(refs);
+            details.appendChild(button("Save teaching to My Library", function () {
               saved = loadSaved();
-              saved.bookmarks.push({
-                title: "Words of Jesus — " + item.title,
-                text: item.summary + "\n\nGospel references: " + item.refs.join("; "),
-                reference: item.refs[0]
-              });
-              if (persist()) count.textContent = "Saved: " + item.title + ". " + matches.length + " teaching themes shown.";
+              const title = "Words of Jesus — " + item.title;
+              const exists = saved.bookmarks.some(entry => entry && entry.title === title);
+              if (!exists) {
+                saved.bookmarks.push({
+                  title: title,
+                  text: item.summary + "\n\nGospel references: " + item.refs.join("; "),
+                  reference: item.refs[0]
+                });
+              }
+              if (persist()) count.textContent = exists
+                ? "Already saved: " + item.title + ". " + matches.length + " teaching themes shown."
+                : "Saved: " + item.title + ". " + matches.length + " teaching themes shown.";
             }));
+            box.appendChild(details);
             results.appendChild(box);
           });
         }
