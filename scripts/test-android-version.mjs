@@ -12,15 +12,15 @@ const template = [
   "  }",
   "}"
 ].join("\n");
-const updated = applyAndroidVersion(template, "1.4.0");
-check("semantic version maps to a higher Android versionCode", deriveAndroidVersionCode("1.4.0") === 1004000);
-check("generated Gradle versionCode is replaced", updated.includes("versionCode 1004000"));
-check("generated Gradle versionName matches version.json", updated.includes('versionName "1.4.0"'));
+const updated = applyAndroidVersion(template, "1.4.1");
+check("semantic version maps to a higher Android versionCode", deriveAndroidVersionCode("1.4.1") === 1004001);
+check("generated Gradle versionCode is replaced", updated.includes("versionCode 1004001"));
+check("generated Gradle versionName matches version.json", updated.includes('versionName "1.4.1"'));
 let invalidRejected = false;
 try { deriveAndroidVersionCode("1.4"); } catch { invalidRejected = true; }
 check("invalid semantic version is rejected", invalidRejected);
 let missingTemplateRejected = false;
-try { applyAndroidVersion("android { }", "1.4.0"); } catch { missingTemplateRejected = true; }
+try { applyAndroidVersion("android { }", "1.4.1"); } catch { missingTemplateRejected = true; }
 check("unexpected Gradle template is rejected", missingTemplateRejected);
 
 if (failures.length) {
