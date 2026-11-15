@@ -1,4 +1,4 @@
 {
-  "version": "1.4.8",
-  "releaseNotes": "Adds the first offline Bible Geography Centre region for Galilee, with source-attributed place coordinates, visible confidence and precision notes, Scripture links and a Luke 4 reading sequence."
+  "version": "1.4.9",
+  "releaseNotes": "Expands the Bible Book Introduction Centre to 27 books, adding Isaiah, Jeremiah, Lamentations, Ezekiel and Daniel with historical context, key passages and chapter guides; refreshes offline content."
 }
