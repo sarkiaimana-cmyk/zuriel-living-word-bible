@@ -64,10 +64,10 @@ for (const fragment of ['data.regions.forEach(function (region)', 'root.id = "zu
 if (/fetch\s*\(|XMLHttpRequest|WebSocket|https:\/\//.test(moduleSource)) failures.push("The geography UI must not require network access.");
 if (!index.includes('src="zuriel-geography-data.js"') || !index.includes('src="zuriel-geography.js"')) failures.push("Web entry point omits geography files.");
 if (index.indexOf('src="zuriel-geography-data.js"') > index.indexOf('src="zuriel-geography.js"') || index.indexOf('src="zuriel-geography.js"') < index.indexOf('src="zuriel-study.js"')) failures.push("Geography scripts are not loaded after their dependencies.");
-if (!worker.includes('"./zuriel-geography-data.js"') || !worker.includes('"./zuriel-geography.js"') || !worker.includes("zuriel-bible-offline-v112")) failures.push("Offline cache does not include geography data and module.");
+const cacheVersionMatch = worker.match(/const CACHE_NAME = "zuriel-bible-offline-v(\\d+)";/);\nif (!worker.includes('"./zuriel-geography-data.js"') || !worker.includes('"./zuriel-geography.js"') || !cacheVersionMatch) failures.push("Offline cache does not include geography data/module or a versioned cache.");
 if (!packaging.includes('"zuriel-geography-data.js"') || !packaging.includes('"zuriel-geography.js"')) failures.push("Android web packaging omits geography files.");
 if (!prWorkflow.includes("node scripts/check-bible-geography.mjs") || !androidWorkflow.includes("node scripts/check-bible-geography.mjs")) failures.push("Geography validation is not included in both workflows.");
-if (JSON.parse(version).version !== "1.4.20" || !updates.includes('const APP_VERSION = "1.4.20";')) failures.push("App version metadata is inconsistent.");
+const appVersionMatch = updates.match(/const APP_VERSION = "([^"]+)";/);\nif (!appVersionMatch || JSON.parse(version).version !== appVersionMatch[1]) failures.push("App version metadata is inconsistent between version.json and the in-app update centre.");
 if (failures.length) {
   console.error("Bible Geography checks failed:");
   failures.forEach(item => console.error(" - " + item));
