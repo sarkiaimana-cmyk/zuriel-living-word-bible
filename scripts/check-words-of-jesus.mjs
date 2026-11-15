@@ -25,6 +25,8 @@ const required = [
   ["theme filter", "Filter teachings by theme"],
   ["open reference in Bible reader", "window.openChapter(book, chapter)"],
   ["highlight selected Gospel verse", "zuriel-selected-verse"],
+  ["exact Jesus verse lookup helper", "function findJesusVerse(verseNumber)"],
+  ["Jesus reference matches visible verse label", 'label.textContent.trim().replace(/\\.$/, "") === String(verseNumber)'],
   ["connect to contextual study", "window.ZurielStudy.openForReference"],
   ["save teaching to personal library", "Words of Jesus — "],
   ["context reminder", "Read the surrounding passage"]
