@@ -1,0 +1,34 @@
+name: Validate Zuriel changes
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install project dependencies
+        run: npm ci
+
+      - name: Prepare offline web app
+        run: npm run build:web
+
+      - name: Syntax-check application JavaScript
+        run: for file in *.js; do node --check "$file"; done
+
+      - name: Validate study safeguards
+        run: node scripts/check-study-integrity.mjs
