@@ -26,10 +26,17 @@ for (const fragment of [
   "Existing entries are kept",
   "localStorage.setItem",
   "localStorage.removeItem",
-  "MAX_FILE = 8 * 1024 * 1024"
+  "MAX_FILE = 8 * 1024 * 1024",
+  "AES-256-GCM",
+  "PBKDF2-SHA-256",
+  "crypto.subtle.encrypt",
+  "crypto.subtle.decrypt",
+  "KDF_ITERATIONS = 250000",
+  "zbackupPassword",
+  "zbackupConfirm"
 ]) if (!backup.includes(fragment)) failures.push("Backup safeguard missing: " + fragment);
-if (!backup.includes("createObjectURL") || !backup.includes("application/json")) failures.push("JSON export download is missing.");
-if (!backup.includes("FileReader") || !backup.includes("JSON.parse")) failures.push("Local backup file import is missing.");
+if (!backup.includes("createObjectURL") || !backup.includes("application/json")) failures.push("Encrypted JSON export download is missing.");
+if (!backup.includes("FileReader") || !backup.includes("JSON.parse") || !backup.includes("decryptBackup")) failures.push("Encrypted local backup file import is missing.");
 if (!backup.includes("map.has(key)") || !backup.includes("new Set(current.concat(incoming))")) failures.push("Restore merge/deduplication is missing.");
 if (!backup.includes("previous[key]") || !backup.includes("attempted to return your existing records")) failures.push("Restore rollback protection is missing.");
 if (/fetch\s*\(|XMLHttpRequest|sendBeacon/.test(backup)) failures.push("Backup module must not send personal records over a network.");
