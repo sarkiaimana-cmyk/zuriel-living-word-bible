@@ -96,7 +96,7 @@ const beforeFailure = new Map(store);
 const originalSetItem = localStorage.setItem;
 let failOnce = true;
 localStorage.setItem = (key, value) => {
-  if (key === "zurielReadingHistory_v1" && failOnce) {
+  if (key === "zuriel_reading_plan_progress_v1" && failOnce) {
     failOnce = false;
     throw new Error("Simulated storage quota failure");
   }
