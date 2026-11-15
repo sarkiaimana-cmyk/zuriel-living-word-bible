@@ -978,7 +978,7 @@
           const verses = document.querySelectorAll("#message .verse");
           for (const verse of verses) {
             const label = verse.querySelector("strong");
-            if (label && label.textContent.trim().replace(/\\.$/, "") === String(verseNumber)) {
+            if (label && label.textContent.trim().replace(/\.$/, "") === String(verseNumber)) {
               return verse;
             }
           }
