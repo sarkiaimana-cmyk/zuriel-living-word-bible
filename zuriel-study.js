@@ -289,7 +289,8 @@
           greek: "Greek",
           aramaic: "Aramaic"
         };
-        const languageName = languageNames[String(word.language || "").toLowerCase()];
+        const languageCode = String(word.language || "").trim().toLowerCase();
+        const languageName = languageNames[languageCode];
         languageLabel.className = "word-language";
         languageLabel.textContent = languageName
           ? languageName + " source"
@@ -298,7 +299,7 @@
 
         const original = document.createElement("span");
         original.className = "original-script";
-        original.dir = word.language === "hebrew" || word.language === "aramaic" ? "rtl" : "ltr";
+        original.dir = languageCode === "hebrew" || languageCode === "aramaic" ? "rtl" : "ltr";
         original.textContent = word.text || "Original word unavailable";
         button.appendChild(original);
 
