@@ -51,9 +51,9 @@
       home: "Home",
       read: "Read Scripture",
       study: "Study Centre",
-      declare: "Declarations",
-      devotional: "Devotionals",
-      library: "Study Library",
+      declare: "Declarations of Faith",
+      devotional: "The Light Glory Devotional",
+      library: "My Saved Library",
       kingdom: "Kingdom Life",
       personal: "My Study Space"
     };
@@ -194,6 +194,43 @@
         grid-template-columns: repeat(2,minmax(0,1fr));
         gap: 9px;
         margin-top: 12px;
+      }
+
+      #zurielHomeDashboard .home-explore-grid {
+        display: grid;
+        grid-template-columns: repeat(2,minmax(0,1fr));
+        gap: 9px;
+        margin-top: 12px;
+      }
+      #zurielHomeDashboard .home-explore-grid button {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 5px;
+        min-width: 0;
+        min-height: 108px;
+        margin: 0;
+        padding: 12px 10px;
+        border: 1px solid #d8c99f;
+        border-radius: 12px;
+        background: #f7f3e8;
+        color: #18304d;
+        text-align: left;
+      }
+      #zurielHomeDashboard .home-explore-grid button span { font-size: 20px; }
+      #zurielHomeDashboard .home-explore-grid button strong { font-size: 13px; line-height: 1.3; }
+      #zurielHomeDashboard .home-explore-grid button small { color: #526174; font-size: 11px; line-height: 1.35; }
+      @media(max-width:420px) {
+        #zurielHomeDashboard .home-explore-grid { grid-template-columns: 1fr; }
+        #zurielHomeDashboard .home-explore-grid button {
+          min-height: 64px;
+          display: grid;
+          grid-template-columns: 28px 1fr;
+          align-items: center;
+          column-gap: 8px;
+        }
+        #zurielHomeDashboard .home-explore-grid button span { grid-row: 1 / span 2; }
       }
 
       #zurielHomeDashboard .home-grid button {
@@ -539,27 +576,6 @@
         </button>
       </section>
 
-      <section class="home-card" id="zurielHomePassageCard">
-        <h2>📖 Open Any Bible Passage</h2>
-        <p class="home-subtitle">Choose a book and chapter. You can jump to a verse after it opens.</p>
-        <div class="home-passage-grid">
-          <div>
-            <label for="zurielHomeBook">Bible Book</label>
-            <select id="zurielHomeBook"><option value="">Choose a book</option></select>
-          </div>
-          <div>
-            <label for="zurielHomeChapter">Chapter</label>
-            <select id="zurielHomeChapter" disabled><option value="">Choose chapter</option></select>
-          </div>
-          <div>
-            <label for="zurielHomeVerse">Verse (optional)</label>
-            <select id="zurielHomeVerseSelect" disabled><option value="">Choose verse</option></select>
-          </div>
-        </div>
-        <button type="button" class="home-button" id="zurielHomeOpenPassage" disabled>Open Selected Chapter</button>
-        <p class="home-passage-status" id="zurielHomePassageStatus">All 66 books are available offline.</p>
-      </section>
-
       <section class="home-card home-scripture-card">
         <h2>🌿 Scripture for Today</h2>
         <p class="home-verse" id="zurielHomeVerse"></p>
@@ -619,17 +635,21 @@
         </details>
       </section>
 
-      <section class="home-card">
-        <h2>🌟 Grow Deeper in the Word</h2>
-
-        <p>
-          Explore original-language word studies, Bible introductions,
-          cross-references, commentaries, prayer and personal notes.
-        </p>
-
-        <button class="home-button" id="zurielHomeOpenStudy">
-          Explore Study Library
-        </button>
+      <section class="home-card home-explore-card" aria-labelledby="zurielExploreTitle">
+        <h2 id="zurielExploreTitle">Explore Zuriel</h2>
+        <p class="home-section-note">Each space has its own purpose. Open the one you need.</p>
+        <div class="home-explore-grid">
+          <button type="button" data-section="declare">
+            <span aria-hidden="true">🔥</span>
+            <strong>Declarations</strong>
+            <small>Speak Scripture-based faith</small>
+          </button>
+          <button type="button" data-section="devotional">
+            <span aria-hidden="true">🕊️</span>
+            <strong>Devotionals</strong>
+            <small>Grow through daily reflection</small>
+          </button>
+        </div>
       </section>
     `;
 
@@ -908,131 +928,7 @@
         });
       });
 
-    /* HOME PAGE BOOK • CHAPTER • VERSE SELECTOR */
-    (function setupHomePassageSelector() {
-      const bookSelect = document.getElementById("zurielHomeBook");
-      const chapterSelect = document.getElementById("zurielHomeChapter");
-      const verseSelect = document.getElementById("zurielHomeVerseSelect");
-      const openButton = document.getElementById("zurielHomeOpenPassage");
-      const passageStatus = document.getElementById("zurielHomePassageStatus");
-      const books = typeof bibleBooks !== "undefined" ? bibleBooks : window.bibleBooks;
-
-      if (!bookSelect || !chapterSelect || !verseSelect || !openButton ||
-          !passageStatus || !Array.isArray(books)) {
-        if (passageStatus) passageStatus.textContent = "The Scripture selector is preparing. Please refresh shortly.";
-        return;
-      }
-
-      books.forEach(function (book) {
-        const option = document.createElement("option");
-        option.value = book.name;
-        option.textContent = book.name;
-        bookSelect.appendChild(option);
-      });
-
-      function resetSelect(select, placeholder) {
-        select.replaceChildren();
-        const option = document.createElement("option");
-        option.value = "";
-        option.textContent = placeholder;
-        select.appendChild(option);
-      }
-
-      async function fillVerses(book, chapter) {
-        resetSelect(verseSelect, "Entire chapter");
-        verseSelect.disabled = true;
-        passageStatus.textContent = "Loading verse choices for " + book + " " + chapter + "…";
-        try {
-          if (typeof window.getChapterVerseCount !== "function") {
-            throw new Error("Verse count service is not ready.");
-          }
-          const count = await window.getChapterVerseCount(book, chapter);
-          if (!count) throw new Error("No verses were found for this chapter.");
-          for (let n = 1; n <= count; n++) {
-            const option = document.createElement("option");
-            option.value = String(n);
-            option.textContent = "Verse " + n;
-            verseSelect.appendChild(option);
-          }
-          verseSelect.disabled = false;
-          passageStatus.textContent = book + " " + chapter + " is ready. You can choose a verse or open the whole chapter.";
-        } catch (error) {
-          passageStatus.textContent = "Verse choices could not load. You can still open the chapter.";
-          console.error("Zuriel Home verse choices:", error);
-        }
-      }
-
-      bookSelect.addEventListener("change", function () {
-        resetSelect(chapterSelect, "Choose chapter");
-        resetSelect(verseSelect, "Entire chapter");
-        verseSelect.disabled = true;
-        const book = books.find(function (item) { return item.name === bookSelect.value; });
-        if (!book) {
-          chapterSelect.disabled = true;
-          openButton.disabled = true;
-          passageStatus.textContent = "Choose a Bible book to begin.";
-          return;
-        }
-        for (let n = 1; n <= book.chapters; n++) {
-          const option = document.createElement("option");
-          option.value = String(n);
-          option.textContent = "Chapter " + n;
-          chapterSelect.appendChild(option);
-        }
-        chapterSelect.disabled = false;
-        openButton.disabled = true;
-        passageStatus.textContent = book.name + " selected. Now choose a chapter.";
-      });
-
-      chapterSelect.addEventListener("change", async function () {
-        const book = bookSelect.value;
-        const chapter = Number(chapterSelect.value);
-        resetSelect(verseSelect, "Entire chapter");
-        verseSelect.disabled = true;
-        openButton.disabled = !book || !chapter;
-        if (!book || !chapter) {
-          passageStatus.textContent = "Choose a chapter to see its verses.";
-          return;
-        }
-        await fillVerses(book, chapter);
-      });
-
-      openButton.addEventListener("click", async function () {
-        const book = bookSelect.value;
-        const chapter = Number(chapterSelect.value);
-        const verseNumber = Number(verseSelect.value) || 0;
-        if (!book || !chapter || typeof window.openChapter !== "function") {
-          passageStatus.textContent = "Please choose a Bible book and chapter.";
-          return;
-        }
-        openButton.disabled = true;
-        openButton.textContent = "Opening Scripture…";
-        passageStatus.textContent = "Opening " + book + " " + chapter + (verseNumber ? ":" + verseNumber : "") + "…";
-        navigate("read");
-        try {
-          await window.openChapter(book, chapter);
-          if (verseNumber) {
-            const target = reader.querySelectorAll("#message .verse")[verseNumber - 1];
-            if (target) {
-              target.scrollIntoView({ behavior: "smooth", block: "center" });
-              target.classList.add("zuriel-nav-highlight");
-              passageStatus.textContent = "Opened " + book + " " + chapter + ":" + verseNumber + ".";
-            } else {
-              passageStatus.textContent = "Chapter opened, but the selected verse was not found.";
-            }
-          } else {
-            passageStatus.textContent = "Opened " + book + " " + chapter + ".";
-          }
-          if (typeof updateHomeReadingPosition === "function") updateHomeReadingPosition();
-        } catch (error) {
-          passageStatus.textContent = "Could not open this passage. Please try again.";
-          console.error("Zuriel Home passage selector:", error);
-        } finally {
-          openButton.disabled = false;
-          openButton.textContent = "Open Selected Passage";
-        }
-      });
-    })();
+    /* Passage selection is handled by the single full-screen reader navigator. */
 
     /* CHANGING HOME SCRIPTURE */
 

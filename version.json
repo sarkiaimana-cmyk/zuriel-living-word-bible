@@ -1,4 +1,4 @@
 {
-  "version": "1.4.3",
-  "releaseNotes": "Improves study reference navigation by locating exact verse numbers instead of relying on list position."
+  "version": "1.4.4",
+  "releaseNotes": "Streamlines the home dashboard and separates declarations, devotionals and saved library navigation."
 }
