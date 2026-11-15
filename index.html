@@ -1013,7 +1013,11 @@ window.getBibleVerseText = async function (reference) {
 
 window.openChapter = function (book, chapter) {
   return openChapter(book, chapter).catch(function (error) {
-    status.textContent = "Unable to open reference: " + error.message;
+    const detail = error && error.message ? error.message : "Unknown Scripture loading error.";
+    status.textContent = "Unable to open reference: " + detail;
+    // Preserve rejection so selectors, related-reference buttons and the
+    // passage navigator can report failure instead of claiming success.
+    throw error instanceof Error ? error : new Error(detail);
   });
 };
 
