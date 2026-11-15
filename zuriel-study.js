@@ -915,12 +915,18 @@
       }
       @media(max-width:600px) {
         #zurielStudyPanel {
+          position:relative;
+          z-index:1;
+          inset:auto;
+          right:auto;
+          bottom:auto;
           top:auto;
-          right:0;
-          bottom:0;
+          box-sizing:border-box;
           width:100%;
-          max-height:72vh;
-          border-radius:18px 18px 0 0;
+          max-width:100%;
+          max-height:min(48vh, 420px);
+          margin:12px 0;
+          border-radius:14px;
           padding:14px;
           padding-bottom:calc(14px + env(safe-area-inset-bottom));
         }
