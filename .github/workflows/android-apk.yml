@@ -55,6 +55,8 @@ jobs:
         run: node scripts/check-study-integrity.mjs
       - name: Test exact KJV original-word linking
         run: node scripts/test-original-word-linking.mjs
+      - name: Test Android version metadata
+        run: node scripts/test-android-version.mjs
 
       - name: Validate guided growth and personal space
         run: node scripts/check-growth-pathways.mjs
@@ -94,6 +96,9 @@ jobs:
         env:
           ZURIEL_ANDROID_APP_ID: ${{ steps.signing_check.outputs.available == 'true' && 'com.zuriel.livingwordbible.release' || 'com.zuriel.livingwordbible.github' }}
         run: npx cap sync android
+
+      - name: Set Android version from app metadata
+        run: node scripts/set-android-version.mjs
 
       - name: Build standalone debug APK
         working-directory: android
@@ -157,6 +162,23 @@ jobs:
           "$BUILD_TOOLS/apksigner" verify --verbose --print-certs "$OUTPUT"
           rm -f "$KEYSTORE" "$ALIGNED"
 
+      - name: Verify signed APK package and version metadata
+        if: steps.signing_check.outputs.available == 'true' && steps.signed_release.outcome == 'success'
+        shell: bash
+        run: |
+          set -euo pipefail
+          APK="android/app/build/outputs/apk/release/Zuriel-Living-Word-Bible-release.apk"
+          BUILD_TOOLS="$ANDROID_HOME/build-tools/36.0.0"
+          BADGING="$("$BUILD_TOOLS/aapt" dump badging "$APK")"
+          EXPECTED_VERSION="$(node -p "JSON.parse(require('fs').readFileSync('version.json','utf8')).version")"
+          EXPECTED_CODE="$(node -e "const [a,b,c]=process.argv[1].split('.').map(Number); process.stdout.write(String(a*1000000+b*1000+c))" "$EXPECTED_VERSION")"
+          echo "$BADGING" | grep -F "package: name='com.zuriel.livingwordbible.release'"
+          echo "$BADGING" | grep -F "versionCode='$EXPECTED_CODE'"
+          echo "$BADGING" | grep -F "versionName='$EXPECTED_VERSION'"
+          {
+            echo '### Signed APK identity'
+            echo "$BADGING" | grep -E '^(package:|sdkVersion:|targetSdkVersion:)'
+          } >> "$GITHUB_STEP_SUMMARY"
       - name: Upload Zuriel debug APK
         if: always()
         uses: actions/upload-artifact@v4
