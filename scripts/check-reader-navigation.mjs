@@ -19,9 +19,24 @@ requireMatch(
   "The full-screen passage navigator must verify the requested chapter and exact selected verse before closing."
 );
 requireMatch(
+  reader,
+  /window\.selectBibleVerse\s*=\s*function\s*\(verseNumber\)[\s\S]*?target\.click\(\)[\s\S]*?selectVerseForGloryCard\(index\s*\+\s*1,\s*verse\)/,
+  "The shared verse-selection action must activate the real reader verse handler and prepare verse actions."
+);
+requireMatch(
+  navigator,
+  /window\.selectBibleVerse\(selectedVerse\)/,
+  "The full-screen navigator must use the shared verse-selection action."
+);
+requireMatch(
+  reader,
+  /window\.selectBibleVerse\(item\.verse\)/,
+  "Scripture search results must use the shared verse-selection action."
+);
+requireMatch(
   home,
-  /await\s+window\.openChapter\(saved\.book,\s*saved\.chapter\)[\s\S]*?Number\.isInteger\(saved\.verse\)[\s\S]*?find\(function\s*\(item\)[\s\S]*?saved\.verse/,
-  "Continue Reading must restore the saved verse after opening its chapter."
+  /window\.selectBibleVerse\(saved\.verse\)/,
+  "Home Continue Reading must restore and activate the saved verse."
 );
 if (home.includes("setupHomePassageSelector") || home.includes("zurielHomePassageCard")) {
   throw new Error("The retired duplicate home passage selector must not return.");
