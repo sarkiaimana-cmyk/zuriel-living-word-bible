@@ -76,6 +76,7 @@
       String(item.name).toLowerCase() === match[1].toLowerCase() ||
       (match[1].toLowerCase() === "psalm" && String(item.name).toLowerCase() === "psalms"));
     const book = found ? found.name : match[1], chapter = Number(match[2]), verse = Number(match[3]);
+    if (typeof window.ZurielHomeNavigate === "function") window.ZurielHomeNavigate("read");
     window.openChapter(book,chapter).then(() => {
       const target = Array.from(document.querySelectorAll("#message .verse")).find(node => {
         const number = node.querySelector("strong");
