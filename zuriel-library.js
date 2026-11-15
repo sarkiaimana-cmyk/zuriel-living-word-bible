@@ -429,7 +429,7 @@
             #zurielGloryPreview .zgs-page-title {font:700 10px/1.4 Arial,sans-serif;letter-spacing:1px;text-align:center;color:var(--zgs-accent);margin:3px 0 12px;}
             #zurielGloryPreview .zgs-ref {text-align:center;font-weight:800;color:var(--zgs-accent);font-size:13px;}
             #zurielGloryPreview .zgs-copy {white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.48;margin:9px 0;font-family:Georgia,serif;font-size:14px;}
-            #zurielGloryPreview .zgs-active-copy {min-height:105px;}
+            #zurielGloryPreview .zgs-active-copy {min-height:105px;font-weight:700;}
             #zurielGloryPreview .zgs-footer {text-align:center;font-size:10px;letter-spacing:1px;margin-top:17px;color:var(--zgs-accent);font-weight:800;position:relative;z-index:1;}
             #zurielGloryStudio .zgs-tabs {display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;}
             #zurielGloryStudio .zgs-tabs button {font-size:11px;line-height:1.25;padding:7px 3px;background:#19324f;color:#fff;}
@@ -462,9 +462,9 @@
           <div class="zgs-field"><label>OPEN-BOOK FINISH</label><div class="zgs-actions" id="zgsFinishes">
             <button type="button" data-finish="ivory">Warm ivory</button><button type="button" data-finish="navy">Kingdom navy</button><button type="button" data-finish="forest">Living forest</button><button type="button" data-finish="parchment">Parchment</button>
           </div></div>
-          <div class="zgs-tabs" id="zgsContentTabs" role="group" aria-label="Choose the left-page faith content">
-            <button type="button" data-zgs-view="Prayer" aria-pressed="true">Prayer</button>
-            <button type="button" data-zgs-view="Declaration" aria-pressed="false">Declaration</button>
+          <div class="zgs-tabs" id="zgsContentTabs" role="group" aria-label="Choose the right-page faith content">
+            <button type="button" data-zgs-view="Prayer" aria-pressed="false">Prayer</button>
+            <button type="button" data-zgs-view="Declaration" aria-pressed="true">Declaration</button>
             <button type="button" data-zgs-view="Affirmation" aria-pressed="false">Affirmation</button>
             <button type="button" data-zgs-view="Confession" aria-pressed="false">Faith</button>
             <button type="button" data-zgs-view="Inspiration" aria-pressed="false">Inspiration</button>
@@ -482,20 +482,20 @@
           </div>
           <article id="zurielGloryPreview" aria-label="Live open-book Glory Verse Affirmation preview">
             <div class="zgs-brand">The Light 🕯️</div>
-            <h3 id="zgsPreviewTitle">His Word.. My Life.. My Victory.</h3>
+            <h3 id="zgsPreviewTitle">His Words.. My life.. My Victory</h3>
             <div class="zgs-book-spread">
               <section class="zgs-page zgs-left-page">
-                <div class="zgs-page-title">GLORY VERSE AFFIRMATION</div>
-                <div class="zgs-page-title" id="zgsPreviewActiveTitle">PRAYER</div>
-                <p class="zgs-copy zgs-active-copy" id="zgsPreviewActiveContent">Your Scripture-led prayer will appear here.</p>
-              </section>
-              <section class="zgs-page zgs-right-page">
                 <div class="zgs-page-title">THE WORD</div>
                 <div class="zgs-ref" id="zgsPreviewRef">Your Scripture reference</div>
                 <p class="zgs-copy" id="zgsPreviewScripture">Your Scripture will appear here.</p>
               </section>
+              <section class="zgs-page zgs-right-page">
+                <div class="zgs-page-title">GLORY VERSE AFFIRMATION</div>
+                <div class="zgs-page-title" id="zgsPreviewActiveTitle">DECLARATION</div>
+                <p class="zgs-copy zgs-active-copy" id="zgsPreviewActiveContent">Your Scripture-led declaration will appear here.</p>
+              </section>
             </div>
-            <div class="zgs-footer">Zuriel Living Word</div>
+            <div class="zgs-footer">Zuriel Living Word Bible</div>
           </article>
           <div class="zgs-actions">
             <button type="button" id="zgsSave">Save to My Library</button>
@@ -534,14 +534,14 @@
         const ids = ["zgsReference","zgsScripture","zgsPrayer","zgsDeclaration","zgsAffirmation","zgsConfession","zgsInspiration"];
         const labels = ["SCRIPTURE","PRAYER","DECLARATION","AFFIRMATION","FAITH CONFESSION","INSPIRATION"];
         const previewIds = ["zgsPreviewScripture","zgsPreviewPrayer","zgsPreviewDeclaration","zgsPreviewAffirmation","zgsPreviewConfession","zgsPreviewInspiration"];
-        let activeFaithView = "Prayer";
+        let activeFaithView = "Declaration";
         function updatePreview() {
           const scriptureText = studio.querySelector("#zgsScripture").value.trim();
           const activeText = studio.querySelector("#zgs"+activeFaithView).value.trim();
           studio.querySelector("#zgsPreviewRef").textContent = studio.querySelector("#zgsReference").value.trim() || "Your Scripture reference";
           studio.querySelector("#zgsPreviewScripture").textContent = scriptureText || "Your Scripture will appear here.";
           studio.querySelector("#zgsPreviewActiveTitle").textContent = activeFaithView === "Confession" ? "FAITH CONFESSION" : activeFaithView.toUpperCase();
-          studio.querySelector("#zgsPreviewActiveContent").textContent = activeText || "Add a Scripture-specific "+activeFaithView.toLowerCase()+" on the left page.";
+          studio.querySelector("#zgsPreviewActiveContent").textContent = activeText || "Add a Scripture-specific "+activeFaithView.toLowerCase()+" on the right page.";
           const stacked = scriptureText.length > 420 || activeText.length > 320;
           studio.dataset.layout = stacked ? "stacked" : "spread";
           const preview = studio.querySelector("#zurielGloryPreview");
@@ -630,10 +630,10 @@
               return lines;
             }
             const leftTitle = activeFaithView === "Confession" ? "FAITH CONFESSION" : activeFaithView.toUpperCase();
-            const leftLines = wrap(faithText || "Add a Scripture-specific " + activeFaithView.toLowerCase() + ".", columnWidth, faithSize);
-            const rightLines = wrap(scripture, columnWidth, scriptureSize);
+            const leftLines = wrap(scripture, columnWidth, scriptureSize);
+            const rightLines = wrap(faithText || "Add a Scripture-specific " + activeFaithView.toLowerCase() + ".", columnWidth, faithSize);
             const top = 300, bottom = 150;
-            const contentHeight = Math.max(leftLines.length * lineHeight(faithSize), rightLines.length * lineHeight(scriptureSize));
+            const contentHeight = Math.max(leftLines.length * lineHeight(scriptureSize), rightLines.length * lineHeight(faithSize));
             canvas.width = width;
             canvas.height = Math.max(1100, top + contentHeight + bottom);
             const palette = {
@@ -649,7 +649,7 @@
             ctx.textAlign = "center"; ctx.fillStyle = colors[2];
             ctx.font = "bold 30px Georgia, serif"; ctx.fillText("THE LIGHT 🕯️",width/2,105);
             ctx.fillStyle = colors[1]; ctx.font = "bold 48px Georgia, serif";
-            ctx.fillText("His Words.. My Life.. My Victory.",width/2,185);
+            ctx.fillText("His Words.. My life.. My Victory",width/2,185);
             ctx.strokeStyle = colors[2]; ctx.lineWidth = 2;
             ctx.beginPath(); ctx.moveTo(width/2,235); ctx.lineTo(width/2,canvas.height-110); ctx.stroke();
             const leftX = margin, rightX = margin + columnWidth + gap;
@@ -657,17 +657,17 @@
               ctx.textAlign = "center"; ctx.fillStyle = colors[2];
               ctx.font = "bold 24px Arial, sans-serif"; ctx.fillText(title,x+columnWidth/2,270);
               ctx.textAlign = "left"; ctx.fillStyle = colors[1];
-              ctx.font = size + "px " + typeface + ", serif";
+              ctx.font = "bold " + size + "px " + typeface + ", serif";
               let y = top;
               lines.forEach(line => { ctx.fillText(line,x,y); y += lineHeight(size); });
             }
-            drawColumn(leftTitle,leftLines,leftX,faithSize);
             ctx.textAlign = "center"; ctx.fillStyle = colors[2];
-            ctx.font = "bold 25px Arial, sans-serif"; ctx.fillText(reference,rightX+columnWidth/2,270);
+            ctx.font = "bold 25px Arial, sans-serif"; ctx.fillText(reference,leftX+columnWidth/2,270);
             ctx.textAlign = "left"; ctx.fillStyle = colors[1];
             ctx.font = scriptureSize + "px " + typeface + ", serif";
             let y = top;
-            rightLines.forEach(line => { ctx.fillText(line,rightX,y); y += lineHeight(scriptureSize); });
+            leftLines.forEach(line => { ctx.fillText(line,leftX,y); y += lineHeight(scriptureSize); });
+            drawColumn(leftTitle,rightLines,rightX,faithSize);
             ctx.textAlign = "center"; ctx.fillStyle = colors[2];
             ctx.font = "bold 24px Georgia, serif";
             ctx.fillText("Zuriel Living Word Bible",width/2,canvas.height-95);
@@ -693,7 +693,7 @@
           }
         });
         studio.querySelector("#zgsShare").addEventListener("click",async function(){
-          const textValue=["The Light 🕯️","His Word.. My Life.. My Victory.",studio.querySelector("#zgsReference").value,studio.querySelector("#zgsScripture").value,...["Prayer","Declaration","Affirmation","Confession","Inspiration"].map(name=>name.toUpperCase()+": "+studio.querySelector("#zgs"+name).value),"Zuriel Living Word"].filter(Boolean).join("\n\n");
+          const textValue=["The Light 🕯️","His Words.. My life.. My Victory",studio.querySelector("#zgsReference").value,studio.querySelector("#zgsScripture").value,...["Prayer","Declaration","Affirmation","Confession","Inspiration"].map(name=>name.toUpperCase()+": "+studio.querySelector("#zgs"+name).value),"Zuriel Living Word Bible"].filter(Boolean).join("\n\n");
           if(!studio.querySelector("#zgsReference").value.trim()||!studio.querySelector("#zgsScripture").value.trim()){studio.querySelector("#zgsStatus").textContent="Add the Scripture reference and text before sharing.";return;}
           try{
             if(navigator.share) await navigator.share({title:"Glory Verse Affirmation",text:textValue});

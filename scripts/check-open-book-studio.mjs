@@ -27,7 +27,19 @@ const checks = [
   ["the Light identity", "The Light 🕯️"],
   ["Studio passage-loading control", 'id="zgsLoadScripture"'],
   ["Studio passage retrieval integration", "window.getBibleVerseText(referenceField.value)"],
-  ["brand footer", "Zuriel Living Word"]
+  ["left page Scripture panel", "zgs-left-page"],
+  ["left page Scripture heading", '<div class="zgs-page-title">THE WORD</div>'],
+  ["right page faith panel", "zgs-right-page"],
+  ["faith tabs are labelled for the right page", 'aria-label="Choose the right-page faith content"'],
+  ["right page Glory Verse heading", '<div class="zgs-page-title">GLORY VERSE AFFIRMATION</div>'],
+  ["bold faith response", ".zgs-active-copy {min-height:105px;font-weight:700;}"],
+  ["declaration is the default card response", 'let activeFaithView = "Declaration";'],
+  ["declaration tab is visibly selected by default", 'data-zgs-view="Declaration" aria-pressed="true"'],
+  ["exact approved card headline", "His Words.. My life.. My Victory"],
+  ["complete app footer", "Zuriel Living Word Bible"],
+  ["export uses Scripture line height on left", "leftLines.length * lineHeight(scriptureSize)"],
+  ["export uses faith line height on right", "rightLines.length * lineHeight(faithSize)"],
+  ["shared card includes complete app name", '"Zuriel Living Word Bible"' ]
 ];
 for (const [label, fragment] of checks) {
   if (!library.includes(fragment)) failures.push(label + " is missing.");
