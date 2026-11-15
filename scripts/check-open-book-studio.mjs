@@ -25,7 +25,6 @@ const checks = [
   ["download fallback", "link.download = fileName"],
   ["saved card metadata", "zuriel_glory_verse_cards_v1"],
   ["the Light identity", "The Light 🕯️"],
-  ["offline KJV passage retrieval", "window.getBibleVerseText = async function (reference)"],
   ["Studio passage-loading control", 'id="zgsLoadScripture"'],
   ["Studio passage retrieval integration", "window.getBibleVerseText(referenceField.value)"],
   ["brand footer", "Zuriel Living Word"]
@@ -33,6 +32,7 @@ const checks = [
 for (const [label, fragment] of checks) {
   if (!library.includes(fragment)) failures.push(label + " is missing.");
 }
+if (!index.includes("window.getBibleVerseText = async function (reference)")) failures.push("Offline KJV passage retrieval is missing.");
 if (!worker.includes("zuriel-bible-offline-v93")) failures.push("Offline cache version was not refreshed for the Studio/navigation fix.");
 if (home.includes("Your Bible Journey")) failures.push("The duplicate home shortcut-button grid is still present.");
 const navBlock = home.match(/const navItems = \[([\s\S]*?)\];/);
