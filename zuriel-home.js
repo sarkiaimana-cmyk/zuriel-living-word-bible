@@ -52,6 +52,17 @@
       return name.toLowerCase() === "psalm" ? "Psalms" : name;
     }
 
+    function findHomeVerseElement(verseNumber) {
+      const verses = document.querySelectorAll("#message .verse");
+      for (const verse of verses) {
+        const label = verse.querySelector("strong");
+        if (label && label.textContent.trim().replace(/\.$/, "") === String(verseNumber)) {
+          return verse;
+        }
+      }
+      return null;
+    }
+
     const sectionNames = {
       home: "Home",
       read: "Read Scripture",
@@ -976,10 +987,7 @@
 
         window.openChapter(bookName, Number(match[2]))
           .then(function () {
-            const verseElements =
-              document.querySelectorAll("#message .verse");
-
-            const target = verseElements[Number(match[3]) - 1];
+            const target = findHomeVerseElement(Number(match[3]));
 
             if (target) {
               target.scrollIntoView({
@@ -1080,7 +1088,7 @@
       const selector = document.getElementById("book");
       if (selector) selector.value = bookName;
       await window.openChapter(bookName, Number(match[2]));
-      const target = document.querySelectorAll("#message .verse")[Number(match[3]) - 1];
+      const target = findHomeVerseElement(Number(match[3]));
       if (target) {
         target.scrollIntoView({behavior:"smooth",block:"center"});
         target.click();
