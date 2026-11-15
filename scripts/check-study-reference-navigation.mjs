@@ -7,9 +7,9 @@ const checks = [
   ["same-chapter Strong's occurrences use exact verse lookup", /const targetVerse = findVerseElement\(item\.verse\);/],
   ["cross-references use exact verse lookup", /const target = findVerseElement\(verseNumber\);/],
   ["topical connections use exact verse lookup", /const selected = findVerseElement\(item\.verse\);/],
-  ["reader lookup matches the verse label, not array position", /label\\.textContent\\.trim\\(\\)\\.replace\\(".", ""\\) === String\\(number\\)/]
+  ["reader lookup matches the verse label, not array position", "label.textContent.trim().replace(\".\", \"\") === String(number)"]
 ];
-for (const [label, pattern] of checks) if (!pattern.test(study)) failures.push(label + " is missing.");
+for (const [label, check] of checks) if (!(typeof check === "string" ? study.includes(check) : check.test(study))) failures.push(label + " is missing.");
 if (/querySelectorAll\("#message \.verse"\)\s*\[/.test(study)) failures.push("A study reference still selects a verse by array position.");
 if (failures.length) {
   console.error("Study reference navigation checks failed:");
