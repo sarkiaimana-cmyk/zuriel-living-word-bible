@@ -1,11 +1,14 @@
 import { readFile } from "node:fs/promises";
+import vm from "node:vm";
 
-const [library, worker, packaging, index, workflow] = await Promise.all([
+const [library, worker, packaging, index, workflow, bookDataSource, kjvSource] = await Promise.all([
   readFile(new URL("../zuriel-library.js", import.meta.url), "utf8"),
   readFile(new URL("../sw.js", import.meta.url), "utf8"),
   readFile(new URL("./prepare-web.mjs", import.meta.url), "utf8"),
   readFile(new URL("../index.html", import.meta.url), "utf8"),
-  readFile(new URL("../.github/workflows/validate-pr.yml", import.meta.url), "utf8")
+  readFile(new URL("../.github/workflows/validate-pr.yml", import.meta.url), "utf8"),
+  readFile(new URL("../bible-data.js", import.meta.url), "utf8"),
+  readFile(new URL("../kjv.72bec70fcd.json", import.meta.url), "utf8")
 ]);
 
 const failures = [];
@@ -49,6 +52,49 @@ const topicCount = (section.match(/category:/g) || []).length;
 const referenceCount = (section.match(/refs:\[/g) || []).length;
 if (topicCount < 20) failures.push("Expected at least 20 curated Jesus teaching themes; found " + topicCount + ".");
 if (referenceCount < 20) failures.push("Expected Scripture reference collections for the teaching themes.");
+
+// Resolve every curated Words of Jesus reference against the actual bundled KJV.
+// This catches dead links caused by invalid books, chapters or verse numbers.
+let verifiedReferenceCount = 0;
+try {
+  const readerMapMatch = index.match(/const bookCodes = (\{[\s\S]*?\n\};)/);
+  if (!readerMapMatch) throw new Error("Reader book-code map is missing.");
+  const readerMap = JSON.parse(readerMapMatch[1].replace(/;\s*$/, ""));
+  const bookEntries = [...bookDataSource.matchAll(/\{\s*name:\s*"([^"]+)",\s*chapters:\s*(\d+)\s*\}/g)]
+    .map(match => ({ name: match[1], chapters: Number(match[2]) }));
+  if (bookEntries.length !== 66) throw new Error("Offline Bible index must contain all 66 books.");
+  const kjvData = JSON.parse(kjvSource);
+  if (Object.keys(kjvData).length !== 66) throw new Error("Offline KJV source must contain all 66 books.");
+  const bookLookup = new Map(bookEntries.map(book => [book.name.toLowerCase(), book]));
+  const teachingsStart = section.indexOf("const teachings = [");
+  const teachingsEnd = section.indexOf("\\n        ];", teachingsStart);
+  if (teachingsStart < 0 || teachingsEnd < 0) throw new Error("Curated teaching data could not be isolated for validation.");
+  const arrayStart = section.indexOf("[", teachingsStart);
+  const teachings = vm.runInNewContext("(" + section.slice(arrayStart, teachingsEnd + 10).replace(/;?$/, "") + ")", {}, { timeout: 1000 });
+  if (!Array.isArray(teachings) || teachings.length < 20) throw new Error("Curated teaching data did not load.");
+  for (const teaching of teachings) {
+    if (!Array.isArray(teaching.refs) || teaching.refs.length === 0) {
+      throw new Error(teaching.title + " has no Scripture references.");
+    }
+    for (const reference of teaching.refs) {
+      const match = String(reference).match(/^(.+?)\\s+(\\d+):(\\d+)$/);
+      if (!match) throw new Error(teaching.title + " has a malformed reference: " + reference);
+      const book = bookLookup.get(match[1].toLowerCase().replace(/\\s+/g, " ").trim());
+      if (!book) throw new Error(teaching.title + " refers to an unknown Bible book: " + match[1]);
+      const chapterNumber = Number(match[2]), verseNumber = Number(match[3]);
+      if (chapterNumber < 1 || chapterNumber > book.chapters) throw new Error(teaching.title + " refers to a missing chapter: " + reference);
+      const code = readerMap[book.name];
+      const chapters = code && kjvData[code];
+      const verses = Array.isArray(chapters) ? chapters[chapterNumber - 1] : null;
+      if (!Array.isArray(verses) || verseNumber < 1 || verseNumber > verses.length) {
+        throw new Error(teaching.title + " refers to a missing bundled KJV verse: " + reference);
+      }
+      verifiedReferenceCount += 1;
+    }
+  }
+} catch (error) {
+  failures.push("Offline KJV reference verification failed: " + error.message);
+}
 if (!worker.includes("zuriel-bible-offline-v113")) failures.push("Offline cache version was not refreshed.");
 if (!worker.includes('"./zuriel-library.js"')) failures.push("Service worker does not precache the library module.");
 if (!packaging.includes('"zuriel-library.js"')) failures.push("Android web packaging omits the library module.");
@@ -59,5 +105,5 @@ if (failures.length) {
   failures.forEach(item => console.error(" - " + item));
   process.exitCode = 1;
 } else {
-  console.log("Words of Jesus study-centre checks passed (" + topicCount + " themes, " + referenceCount + " reference collections, searchable and filterable, reader navigation, contextual study, personal saving, offline and Android packaging).");
+  console.log("Words of Jesus study-centre checks passed (" + topicCount + " themes, " + referenceCount + " reference collections, " + verifiedReferenceCount + " individual Scripture links verified against the bundled 66-book KJV, searchable and filterable, reader navigation, contextual study, personal saving, offline and Android packaging).");
 }
