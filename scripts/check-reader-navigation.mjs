@@ -10,6 +10,26 @@ function requireMatch(source, pattern, message) {
 
 requireMatch(
   reader,
+  /main\s*\{[\s\S]*?width:\s*100%[\s\S]*?max-width:\s*1120px[\s\S]*?min-width:\s*0/,
+  "The app main content must use the available screen width without exceeding the desktop reading limit."
+);
+requireMatch(
+  reader,
+  /#message\s*\{[\s\S]*?width:\s*100%[\s\S]*?max-width:\s*none[\s\S]*?text-align:\s*left[\s\S]*?overflow-wrap:\s*anywhere/,
+  "The Scripture body must fill the reader width, stay left-aligned and wrap safely."
+);
+requireMatch(
+  reader,
+  /#message \.verse\s*\{[\s\S]*?width:\s*100%[\s\S]*?min-width:\s*0[\s\S]*?text-align:\s*left/,
+  "Each verse must use the full available reading width without horizontal overflow."
+);
+requireMatch(
+  reader,
+  /@media\s*\(max-width:\s*480px\)[\s\S]*?\.card\s*\{[\s\S]*?padding:\s*14px/,
+  "Reader and card padding must adapt to narrow phone screens."
+);
+requireMatch(
+  reader,
   /window\.openChapter\s*=\s*function\s*\(book,\s*chapter\)[\s\S]*?\.catch\s*\(\s*function\s*\(error\)[\s\S]*?throw\s+error\s+instanceof\s+Error\s*\?/,
   "Reader navigation must rethrow chapter-loading errors so callers cannot report false success."
 );

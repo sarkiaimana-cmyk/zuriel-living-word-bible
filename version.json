@@ -1,4 +1,4 @@
 {
-  "version": "1.4.20",
-  "releaseNotes": "Fixes KJV book-code mappings so the complete offline 66-book Bible, Scripture reader and Open Book card can load correctly; adds full KJV integrity regression checks."
+  "version": "1.4.21",
+  "releaseNotes": "Expands the Bible reading area to fit the available screen width, with responsive phone spacing, full-width verses and safe text wrapping."
 }

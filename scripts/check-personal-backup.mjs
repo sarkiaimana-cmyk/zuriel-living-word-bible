@@ -54,7 +54,7 @@ if (!index.includes('src="zuriel-backup.js"')) failures.push("Web entry point do
 if (!serviceWorker.includes('"./zuriel-backup.js"')) failures.push("Offline cache does not include backup module.");
 if (!packaging.includes('"zuriel-backup.js"')) failures.push("Android package preparation does not include backup module.");
 const info = JSON.parse(version);
-if (info.version !== "1.4.20" || !updates.includes('const APP_VERSION = "1.4.20";')) failures.push("App version metadata is inconsistent.");
+if (info.version !== "1.4.21" || !updates.includes('const APP_VERSION = "1.4.21";')) failures.push("App version metadata is inconsistent.");
 if (failures.length) {
   console.error("Personal backup integrity checks failed:");
   failures.forEach(item => console.error(" - " + item));
