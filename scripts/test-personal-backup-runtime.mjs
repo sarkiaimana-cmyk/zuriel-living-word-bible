@@ -43,7 +43,8 @@ const sample = {
     readingHistory: [{ book: "John", chapter: 3 }],
     lastReadingPosition: { book: "John", chapter: 3, verse: 16 },
     savedLessons: ["lesson-a"],
-    completedLessons: ["lesson-b"]
+    completedLessons: ["lesson-b"],
+    readingPlanProgress: { schemaVersion: 1, activePlanId: "meet-jesus-7", plans: { "meet-jesus-7": { startedAt: "2026-11-15T00:00:00.000Z", completedDays: [1, 2] } } }
   }
 };
 
@@ -61,6 +62,9 @@ const incoming = api.validateBackup(sample);
 assert.equal(incoming.notes.length, 1);
 assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, notes: [{ id: "", title: "Bad", text: "Invalid" }] } }), /valid ID/);
 assert.throws(() => api.validateBackup({ ...sample, app: "Other app" }), /recognised Zuriel/);
+assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, readingPlanProgress: { schemaVersion: 1, activePlanId: "meet-jesus-7", plans: { "meet-jesus-7": { completedDays: [0] } } } } }), /reading-plan progress/);
+const olderBackup = JSON.parse(JSON.stringify(sample)); delete olderBackup.data.readingPlanProgress;
+assert.deepEqual(JSON.parse(JSON.stringify(api.validateBackup(olderBackup).readingPlanProgress)), { schemaVersion: 1, activePlanId: null, plans: {} }, "Older backups remain restorable without reading-plan data.");
 
 store.set("zuriel_personal_notes_v1", JSON.stringify([
   { id: "note-1", title: "Existing version", text: "Keep this", createdAt: "2026-11-13" },
@@ -71,6 +75,7 @@ store.set("zurielReadingHistory_v1", "[]");
 store.set("zurielLastReadingPosition", JSON.stringify({ book: "Psalms", chapter: 23 }));
 store.set("zuriel_kingdom_life_saved_v1", JSON.stringify(["lesson-a"]));
 store.set("zuriel_kingdom_life_completed_v1", "[]");
+store.set("zuriel_reading_plan_progress_v1", JSON.stringify({ schemaVersion: 1, activePlanId: "prayer-and-trust-7", plans: { "meet-jesus-7": { startedAt: "2026-11-14T00:00:00.000Z", completedDays: [1, 3] }, "prayer-and-trust-7": { startedAt: "2026-11-14T00:00:00.000Z", completedDays: [1] } } }));
 const merged = api.applyRestore(incoming);
 const notes = JSON.parse(store.get("zuriel_personal_notes_v1"));
 assert.equal(notes.length, 2, "Duplicate note IDs must not be added.");
@@ -80,6 +85,10 @@ assert.deepEqual(JSON.parse(store.get("zuriel_kingdom_life_saved_v1")), ["lesson
 assert.deepEqual(JSON.parse(store.get("zuriel_kingdom_life_completed_v1")), ["lesson-b"]);
 assert.deepEqual(JSON.parse(store.get("zurielLastReadingPosition")), { book: "Psalms", chapter: 23 });
 assert.equal(merged.readingHistory.length, 1);
+const mergedPlans = JSON.parse(store.get("zuriel_reading_plan_progress_v1"));
+assert.equal(mergedPlans.activePlanId, "prayer-and-trust-7", "Existing active plan selection is preserved.");
+assert.deepEqual(mergedPlans.plans["meet-jesus-7"].completedDays, [1, 2, 3], "Reading plan progress merges without losing completed days.");
+assert.deepEqual(mergedPlans.plans["prayer-and-trust-7"].completedDays, [1]);
 
 // Exercise the rollback path: fail one write after earlier stores have changed,
 // then confirm every original value is restored once storage becomes writable.
@@ -100,4 +109,4 @@ assert.throws(
 assert.deepEqual([...store.entries()], [...beforeFailure.entries()], "Rollback must restore every original local record.");
 localStorage.setItem = originalSetItem;
 
-console.log("Personal backup runtime tests passed: AES-GCM round-trip, wrong password, tampered ciphertext, unsupported schema, record validation, safe merge, duplicate handling, existing-data preservation and rollback after a simulated storage failure.");
+console.log("Personal backup runtime tests passed: AES-GCM round-trip, wrong password, tampered ciphertext, schema compatibility, record and reading-plan validation, safe merge, duplicate handling, existing-data preservation and rollback after a simulated storage failure.");
