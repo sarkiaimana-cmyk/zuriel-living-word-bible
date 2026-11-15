@@ -16,6 +16,7 @@
     regions: [{
       id: "galilee",
       name: "Galilee",
+      initialPlaceId: "capernaum",
       subtitle: "A first offline locator for the Gospel places of northern Galilee",
       bounds: { west: 35.24, east: 35.66, south: 32.65, north: 32.93 },
       mapNotice: "Coordinate locator only — not a surveyed road map, modern political boundary map or reconstruction of the ancient coastline. Water and regional markers use representative points where stated.",
