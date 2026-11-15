@@ -469,7 +469,168 @@
         "The tribe of Dan takes Micah's shrine and captures Laish.",
         "Israel's outrage over a crime in Gibeah leads to civil war."
       ]
-    }
+    },
+
+    Ruth: {
+      testament: "Old Testament", chapters: 4,
+      subtitle: "Loyal Love, Redemption and God's Quiet Providence",
+      author: "The book does not name its human author. Jewish tradition has associated it with Samuel, but the text itself leaves authorship unstated.",
+      authorStudy: "The narrator's perspective, language and genealogy are studied in discussions of the book's date and composition. Samuel's authorship is a traditional proposal, not an explicit statement in the text.",
+      date: "The events are set in the period of the judges, before the monarchy.",
+      dateStudy: "The final composition date is debated. The genealogy reaching David may be relevant to the book's literary setting, but it does not by itself settle the date.",
+      place: "Bethlehem in Judah and the fields and town of Moab are the principal settings.",
+      placeStudy: "The narrative moves between Bethlehem and Moab. Specific field locations are not identified.",
+      audience: "Israel, especially readers considering covenant faithfulness, family responsibility, care for the vulnerable and the line of David.",
+      purpose: "To tell how Ruth, a Moabite widow, finds refuge and a family through loyal love and the role of a family redeemer, while tracing the ancestry of David.",
+      background: "The story takes place during the unsettled era of the judges. Famine leads Naomi's family to Moab. After the deaths of her husband and sons, Naomi returns to Bethlehem with Ruth, whose loyalty and faithfulness become central to the story.",
+      themes: ["Loyal love and covenant faithfulness", "God's providence in ordinary events", "Welcome and inclusion of a foreign widow", "Family responsibility and redemption", "Dignity, provision and care for the vulnerable", "The ancestry of David"],
+      keyVerses: [["Ruth 1:16–17","Ruth expresses steadfast commitment to Naomi and Naomi's people and God."],["Ruth 2:12","Boaz recognises Ruth's refuge under the wings of Israel's God."],["Ruth 3:9","Ruth appeals to the family-redeemer responsibility."],["Ruth 4:14–17","The community celebrates the birth of Obed and the restoration of Naomi's family."]],
+      outline: ["Chapters 1: Famine, loss and Ruth's decision to return to Bethlehem with Naomi.","Chapter 2: Ruth gleans in Boaz's field and receives protection and generosity.","Chapter 3: Ruth approaches Boaz at the threshing floor and asks him to act as redeemer.","Chapter 4: The nearer relative declines; Boaz redeems the family land and marries Ruth."]
+    },
+    "1 Samuel": {
+      testament: "Old Testament", chapters: 31,
+      subtitle: "Samuel, Saul and the Rise of David",
+      author: "The book does not identify a single author. Jewish tradition associates Samuel with the historical records, while the narrative continues beyond his death.",
+      authorStudy: "The books of Samuel appear to draw on historical traditions and records. Their final literary formation is discussed by scholars; a single named author cannot be established from the text.",
+      date: "The narrative covers the transition from the period of the judges to the early monarchy.",
+      dateStudy: "The final form of Samuel is generally understood to have taken shape through a process of transmission and editing. Precise dates and sources remain debated.",
+      place: "The story centres on Shiloh, Ramah, Mizpah, Gibeah, Bethlehem and the regions where David flees from Saul.",
+      placeStudy: "The narrative names many towns and regions, but some ancient site identifications remain debated. Read travel details from the biblical text without assuming every modern identification is certain.",
+      audience: "Israel, learning about prophetic leadership, kingship, covenant obedience and God's choice of David.",
+      purpose: "To narrate Israel's move toward monarchy, the rise and failure of Saul, and God's choice and preparation of David.",
+      background: "The book opens with Hannah's prayer and Samuel's birth. Samuel becomes a prophet and judge. Israel asks for a king; Saul is anointed but repeatedly disobeys. David is chosen, defeats Goliath and becomes the object of Saul's jealousy.",
+      themes: ["God hears prayer and raises leaders", "The authority of God's word", "The limits and responsibilities of kingship", "Obedience rather than outward appearance", "God's choice and preparation of David", "Courage, faith and reliance on God", "Jealousy, persecution and restraint"],
+      keyVerses: [["1 Samuel 2:1–10","Hannah praises God's holiness, justice and power to reverse human fortunes."],["1 Samuel 3:10","Samuel responds to God's call with readiness to listen."],["1 Samuel 15:22","Samuel teaches that obedience is better than sacrifice."],["1 Samuel 16:7","God's choice is not governed by outward appearance."],["1 Samuel 17:45–47","David declares that the battle belongs to the LORD."]],
+      outline: ["Chapters 1–3: Hannah prays; Samuel is born, dedicated and called by God.","Chapters 4–7: The ark is captured and returned; Samuel leads Israel in repentance and renewal.","Chapters 8–12: Israel asks for a king; Saul is chosen and publicly confirmed.","Chapters 13–15: Saul's disobedience undermines his kingship.","Chapters 16–17: David is anointed and defeats Goliath.","Chapters 18–20: Saul grows hostile; Jonathan and David form a covenant friendship.","Chapters 21–27: David lives as a fugitive but refuses to seize the throne by killing Saul.","Chapters 28–31: Saul seeks forbidden counsel, Israel is defeated, and Saul dies."]
+    },
+    "2 Samuel": {
+      testament: "Old Testament", chapters: 24,
+      subtitle: "David's Kingdom, Covenant and Consequences",
+      author: "The book does not name its author. It continues the historical narrative begun in 1 Samuel.",
+      authorStudy: "The text preserves multiple episodes, poems and court narratives. Its sources and final composition are subjects of scholarly study; no single author is named.",
+      date: "The events cover David's reign over Judah and then all Israel.",
+      dateStudy: "The final literary form belongs to the wider history of Samuel and Kings, whose composition and editing are debated.",
+      place: "The narrative moves from Hebron to Jerusalem and includes battles and events across Israel and neighbouring territories.",
+      placeStudy: "Jerusalem becomes David's political and worship centre. The exact location of some battle sites is uncertain.",
+      audience: "Israel and later readers seeking to understand the Davidic dynasty, covenant promise, leadership and the consequences of sin.",
+      purpose: "To record David's rise as king over all Israel, God's covenant promise to David, his failures and the turmoil within his household and kingdom.",
+      background: "After Saul's death, David first rules Judah from Hebron and later becomes king over all Israel. He captures Jerusalem, brings the ark there and receives God's covenant promise. His adultery with Bathsheba and the killing of Uriah bring severe consequences, including rebellion within his family.",
+      themes: ["God's covenant promise to David", "Jerusalem as the royal centre", "The responsibilities and failures of leadership", "Sin, confession, judgement and mercy", "The consequences of injustice within families", "God's faithfulness amid human weakness"],
+      keyVerses: [["2 Samuel 5:3–5","David is anointed king over all Israel."],["2 Samuel 7:12–16","God promises to establish David's house and kingdom."],["2 Samuel 12:13","David acknowledges his sin after Nathan confronts him."],["2 Samuel 22:2–4","David praises God as his rock, fortress and deliverer."],["2 Samuel 23:3–4","David reflects on just rule under the fear of God."]],
+      outline: ["Chapters 1–4: David mourns Saul and Jonathan and becomes king of Judah; conflict continues between the houses.","Chapters 5–6: David becomes king over all Israel, captures Jerusalem and brings the ark to the city.","Chapter 7: God makes a covenant promise concerning David's house and kingdom.","Chapters 8–10: David's kingdom expands and he shows kindness to Mephibosheth.","Chapters 11–12: David sins with Bathsheba; Nathan confronts him.","Chapters 13–18: Violence and rebellion unfold within David's family; Absalom dies.","Chapters 19–20: David returns to Jerusalem amid national division and another revolt.","Chapters 21–24: Closing narratives, songs, mighty men and David's census are recorded."]
+    },
+    "1 Kings": {
+      testament: "Old Testament", chapters: 22,
+      subtitle: "Solomon, the Divided Kingdom and the Prophets",
+      author: "The book does not name its author. Jewish tradition has associated the wider Kings narrative with Jeremiah, but the text does not identify him as its writer.",
+      authorStudy: "Kings is part of a larger historical work that evaluates rulers in relation to covenant faithfulness. Its sources, editorial shaping and date are debated.",
+      date: "The narrative begins near the end of David's reign and continues through the reigns of Israel's and Judah's kings, ending with Jehoshaphat and Ahaziah.",
+      dateStudy: "The final form of Kings is commonly discussed in relation to the Babylonian exile and later editorial activity. Precise stages of composition remain debated.",
+      place: "Jerusalem, Samaria and the territories of Israel and Judah are central; important episodes also occur at Carmel, Horeb and Zarephath.",
+      placeStudy: "The northern and southern kingdoms have distinct royal centres. Some prophetic journey locations are identified in the text, while exact modern site identifications may vary.",
+      audience: "Israel and Judah, including later generations reflecting on the causes and meaning of national division and decline.",
+      purpose: "To explain the succession of kings, the division of the kingdom, the building of the temple and the prophetic call to covenant faithfulness.",
+      background: "David's final years lead to Solomon's succession. Solomon builds the temple but later turns toward foreign gods. After his death the kingdom divides into Israel in the north and Judah in the south. Prophets, especially Elijah, confront idolatry and injustice.",
+      themes: ["Wisdom and the responsibility of leadership", "The temple and worship of the LORD", "Covenant faithfulness and idolatry", "The divided kingdom", "Prophetic courage and divine judgement", "Justice, humility and repentance"],
+      keyVerses: [["1 Kings 3:9","Solomon asks for an understanding heart to govern the people."],["1 Kings 8:23","Solomon acknowledges the uniqueness and covenant faithfulness of God."],["1 Kings 8:27","The temple cannot contain the greatness of God."],["1 Kings 18:21","Elijah challenges Israel to stop wavering between the LORD and Baal."],["1 Kings 19:12–13","Elijah encounters the quiet voice after wind, earthquake and fire."]],
+      outline: ["Chapters 1–2: Solomon succeeds David and establishes his kingdom.","Chapters 3–4: Solomon asks for wisdom and administers the kingdom.","Chapters 5–8: Solomon prepares, builds and dedicates the temple.","Chapters 9–11: Solomon's achievements and foreign alliances are followed by spiritual compromise.","Chapters 12–14: The kingdom divides; Jeroboam and Rehoboam lead the two kingdoms.","Chapters 15–16: A succession of kings rules Israel and Judah.","Chapters 17–19: Elijah announces drought, confronts Baal's prophets and travels to Horeb.","Chapters 20–22: Conflicts with Aram, Naboth's vineyard and the death of Ahab."]
+    },
+    "2 Kings": {
+      testament: "Old Testament", chapters: 25,
+      subtitle: "Prophetic Witness, Exile and the Fall of the Kingdoms",
+      author: "The book does not name its author. It continues the historical account of the kingdoms of Israel and Judah.",
+      authorStudy: "The narrative draws on prophetic and royal traditions. Its final shaping is commonly considered alongside the wider Deuteronomistic history, though details remain debated.",
+      date: "The events continue from the ministry of Elisha through the fall of Samaria and the destruction of Jerusalem, ending with Jehoiachin's release in Babylon.",
+      dateStudy: "The book's final form is often associated with the exilic period, with the closing notice reflecting events in the sixth century BC.",
+      place: "Samaria and Jerusalem are central, with episodes in Moab, Syria, Assyria and Babylon.",
+      placeStudy: "The account spans the northern and southern kingdoms and the empires that dominate the region. Some campaign routes and ancient site identifications require careful historical study.",
+      audience: "The people of Judah and later readers seeking to understand exile, covenant judgement and the continuing hope of God's promises.",
+      purpose: "To trace the decline and fall of Israel and Judah, showing the seriousness of covenant unfaithfulness while preserving signs of God's mercy and promise.",
+      background: "Elijah is taken up and Elisha continues the prophetic ministry. Israel's rulers persist in idolatry, Samaria falls to Assyria, and Judah later falls to Babylon. The book closes with a small sign of hope when Jehoiachin is released from prison.",
+      themes: ["The authority of God's prophetic word", "Covenant consequences and national responsibility", "Idolatry and injustice", "God's compassion and healing", "The fall of Samaria and Jerusalem", "Exile and the preservation of hope"],
+      keyVerses: [["2 Kings 2:9–11","Elijah is taken up and Elisha receives his prophetic mantle."],["2 Kings 5:14","Naaman is healed after obeying the prophetic instruction."],["2 Kings 17:7–8","The fall of Israel is interpreted in light of covenant unfaithfulness."],["2 Kings 19:19","Hezekiah prays that the nations may know the LORD is God."],["2 Kings 25:27–30","Jehoiachin is released and treated with honour in Babylon."]],
+      outline: ["Chapters 1–2: Elijah's final ministry and his departure; Elisha succeeds him.","Chapters 3–8: Elisha's signs, counsel and prophetic ministry.","Chapters 9–10: Jehu's revolt and the destruction of Ahab's house.","Chapters 11–12: Athaliah is removed and Joash repairs the temple.","Chapters 13–17: Israel's decline continues and Samaria falls to Assyria.","Chapters 18–20: Hezekiah trusts God during the Assyrian threat and later becomes ill.","Chapters 21–23: Manasseh's evil, Josiah's reforms and the rediscovery of the Law.","Chapters 24–25: Judah is conquered, Jerusalem and the temple are destroyed, and the people are exiled."]
+    },
+    "1 Chronicles": {
+      testament: "Old Testament", chapters: 29,
+      subtitle: "Israel's Lineage, David and Ordered Worship",
+      author: "The book does not name its author. Jewish tradition associates Chronicles with Ezra, but this attribution is not stated in the text.",
+      authorStudy: "Chronicles retells Israel's history using genealogies and earlier traditions. Its authorship, sources and post-exilic setting are subjects of scholarly discussion.",
+      date: "The narrative retells events from Adam's descendants through David's reign.",
+      dateStudy: "The work is generally understood as a post-exilic composition, though proposed dates and stages of editing vary.",
+      place: "The account looks toward Jerusalem, the site of David's royal centre and the temple prepared by Solomon.",
+      placeStudy: "Chronicles emphasises Jerusalem and the organisation of worship there. Genealogies connect communities across the land and beyond it.",
+      audience: "The restored community of Israel, seeking continuity with its ancestors, covenant identity and ordered worship.",
+      purpose: "To retell Israel's story with emphasis on David's covenant, the temple, the Levites and the organisation of worship.",
+      background: "After extensive genealogies, the book recounts Saul's death and David's reign. It highlights David's preparations for the temple, the ark, the Levites, musicians and divisions of service.",
+      themes: ["Continuity of God's people across generations", "The Davidic covenant", "Worship and the temple", "The role of Levites and musicians", "Leadership, preparation and service", "Seeking God wholeheartedly"],
+      keyVerses: [["1 Chronicles 16:8–11","David's song calls the people to give thanks and seek the LORD."],["1 Chronicles 17:11–14","God promises an enduring house and kingdom to David."],["1 Chronicles 21:13","David entrusts himself to the mercy of the LORD."],["1 Chronicles 29:11–14","David acknowledges God's greatness and the source of every gift."]],
+      outline: ["Chapters 1–9: Genealogies trace the families of Israel and the returned community.","Chapter 10: Saul's death marks the end of his reign.","Chapters 11–12: David becomes king and mighty warriors gather to him.","Chapters 13–16: The ark is brought to Jerusalem and worship is organised.","Chapter 17: God's covenant promise to David is recalled.","Chapters 18–20: David's victories and royal administration are summarised.","Chapters 21–22: The census, altar and preparations for the temple.","Chapters 23–27: Levites, priests, musicians, gatekeepers and military divisions are organised.","Chapters 28–29: David charges Solomon and the people give for the temple."]
+    },
+    "2 Chronicles": {
+      testament: "Old Testament", chapters: 36,
+      subtitle: "Solomon's Temple, Judah's Kings and Restoration",
+      author: "The book does not name its author. It is part of the same historical work as 1 Chronicles.",
+      authorStudy: "The Chronicler's sources and editorial perspective are studied in relation to the post-exilic community. The traditional attribution to Ezra remains a proposal rather than an explicit biblical claim.",
+      date: "The narrative begins with Solomon and continues through the kings of Judah to the decree of Cyrus.",
+      dateStudy: "The book is generally dated to the post-exilic period, though the precise date of composition is debated.",
+      place: "Jerusalem and the temple dominate the narrative, with attention to Judah and the northern tribes.",
+      placeStudy: "The account focuses on Judah's kings and Jerusalem while recalling the wider people of Israel.",
+      audience: "The restored community, learning from Judah's history and seeking renewal in worship and covenant faithfulness.",
+      purpose: "To recount the history of Judah with special attention to the temple, worship, reform, prophetic warning, exile and restoration.",
+      background: "Solomon builds and dedicates the temple. The kingdom divides after his death, and Chronicles concentrates on the southern kingdom of Judah. It highlights reforms under Asa, Jehoshaphat, Hezekiah and Josiah, then records exile and the Persian decree allowing return.",
+      themes: ["The temple as a centre of worship", "Seeking God and returning to Him", "Reform and covenant renewal", "The influence of faithful and unfaithful kings", "Prophetic warning and national accountability", "Judgement followed by the possibility of restoration"],
+      keyVerses: [["2 Chronicles 7:14","God calls His people to humble themselves, pray, seek Him and turn from wicked ways."],["2 Chronicles 15:2","The prophet teaches that the LORD is with those who seek Him."],["2 Chronicles 20:12","Jehoshaphat confesses dependence on God in a time of danger."],["2 Chronicles 30:9","The people are urged to return to the LORD, who is gracious and merciful."],["2 Chronicles 36:22–23","Cyrus announces the opportunity to return and rebuild the temple."]],
+      outline: ["Chapters 1–9: Solomon receives wisdom, builds the temple and establishes worship in Jerusalem.","Chapters 10–12: The kingdom divides and Rehoboam's reign begins.","Chapters 13–20: Judah's kings face conflict; Asa and Jehoshaphat pursue reforms.","Chapters 21–24: Jehoram, Ahaziah, Joash and their successors shape Judah's fortunes.","Chapters 25–28: Amaziah, Uzziah, Jotham and Ahaz reign with mixed outcomes.","Chapters 29–32: Hezekiah restores temple worship and faces the Assyrian threat.","Chapters 33–35: Manasseh repents; Josiah renews the covenant and celebrates Passover.","Chapter 36: Judah's final kings, Jerusalem's fall, exile and Cyrus's decree."]
+    },
+    Ezra: {
+      testament: "Old Testament", chapters: 10,
+      subtitle: "Return from Exile and Restoration of Worship",
+      author: "The book does not explicitly identify its author. Ezra the priest and scribe is central to the later narrative and is traditionally associated with the book.",
+      authorStudy: "Ezra contains first-person memoir material, lists and documents. Its compilation and relationship to Chronicles and Nehemiah are discussed by scholars.",
+      date: "The events cover the first returns under Persian rule and Ezra's later mission to Jerusalem.",
+      dateStudy: "The narrative spans several decades in the Persian period. The relationship between the events in chapters 4–6 and the later mission in chapters 7–10 requires attention to the book's structure.",
+      place: "Jerusalem and the province of Judah under Persian administration.",
+      placeStudy: "The return journeys begin in Babylon and Persia and lead to Jerusalem. The book also names surrounding communities and officials.",
+      audience: "The returned Judean community and later generations learning about restoration, worship and covenant identity.",
+      purpose: "To record the return from exile, rebuilding of the temple, restoration of worship and Ezra's work in teaching the Law.",
+      background: "Persia conquers Babylon and Cyrus permits exiled peoples to return. The first group rebuilds the altar and temple despite opposition. Later, Ezra arrives with authority to teach and organise the community, confronting unfaithfulness.",
+      themes: ["God's faithfulness to restore His people", "Providence through rulers and public decisions", "Worship and rebuilding the temple", "Perseverance amid opposition", "The authority of Scripture and teaching", "Holiness and covenant identity"],
+      keyVerses: [["Ezra 1:1–3","Cyrus issues a decree allowing the people to return and rebuild the temple."],["Ezra 3:11","The people praise the LORD as the temple foundation is laid."],["Ezra 7:10","Ezra devotes himself to studying, practising and teaching God's Law."],["Ezra 9:8–9","Ezra recognises God's grace in granting the community a measure of restoration."]],
+      outline: ["Chapters 1–2: Cyrus's decree and the first return from exile.","Chapters 3–4: The altar and temple foundation are restored; opposition interrupts the work.","Chapters 5–6: The prophets encourage rebuilding and the temple is completed and dedicated.","Chapters 7–8: Ezra receives authority and leads another group to Jerusalem.","Chapters 9–10: Ezra responds to covenant unfaithfulness and the community undertakes reform."]
+    },
+    Nehemiah: {
+      testament: "Old Testament", chapters: 13,
+      subtitle: "Rebuilding Jerusalem and Renewing the Covenant",
+      author: "The book contains first-person accounts from Nehemiah. It does not provide a formal statement identifying the final compiler.",
+      authorStudy: "The memoir material, lists and covenant documents are studied in relation to the book's composition and its connection with Ezra.",
+      date: "The narrative is set during the Persian period, especially the reign of Artaxerxes I in the fifth century BC.",
+      dateStudy: "The book records events across more than one visit by Nehemiah. The sequence and relationship of some reforms are discussed by historians.",
+      place: "Jerusalem is the main setting, with the Persian court at Susa and surrounding regions also mentioned.",
+      placeStudy: "Nehemiah travels from Susa to Jerusalem and organises work around the city's walls and gates. The text names many local sites and neighbouring groups.",
+      audience: "The returned community and later readers learning about prayerful leadership, communal responsibility and covenant renewal.",
+      purpose: "To record the rebuilding of Jerusalem's walls, Nehemiah's leadership and the people's renewal of their commitment to God's Law.",
+      background: "Nehemiah hears that Jerusalem's walls remain broken and prays before seeking the king's permission to return. Despite opposition, the people rebuild the walls. Ezra reads the Law, the people confess their sins and covenant commitments are renewed.",
+      themes: ["Prayer joined with courageous action", "Leadership and shared responsibility", "Perseverance under opposition", "Justice and care for the poor", "Public reading and understanding of Scripture", "Confession and covenant renewal"],
+      keyVerses: [["Nehemiah 1:4–6","Nehemiah responds to Jerusalem's condition with mourning, fasting and prayer."],["Nehemiah 2:17–18","Nehemiah invites the people to rebuild and they strengthen their hands for the work."],["Nehemiah 4:14","The people are encouraged to remember the Lord and protect their families."],["Nehemiah 8:8","The Law is read and explained so the people can understand it."],["Nehemiah 8:10","The joy of the LORD is declared to be the people's strength."]],
+      outline: ["Chapter 1: Nehemiah hears the report about Jerusalem and prays.","Chapters 2–3: Nehemiah arrives, inspects the walls and organises the rebuilding teams.","Chapter 4: The builders face threats and continue with watchful determination.","Chapter 5: Nehemiah confronts exploitation and restores economic justice.","Chapters 6–7: Opposition fails; the wall is completed and the people are registered.","Chapters 8–10: The Law is read, the people confess and a covenant commitment is made.","Chapters 11–12: Jerusalem is repopulated and the wall is dedicated.","Chapter 13: Nehemiah returns and addresses further failures in community life."]
+    },
+    Esther: {
+      testament: "Old Testament", chapters: 10,
+      subtitle: "Courage, Deliverance and Providence in Exile",
+      author: "The book does not name its author. The narrator's identity is unknown.",
+      authorStudy: "The book's literary style, historical setting and relationship to Persian sources are studied by scholars. Its author is not identified in the text.",
+      date: "The events take place during the reign of Ahasuerus, commonly identified with Xerxes I of Persia, in the fifth century BC.",
+      dateStudy: "The identification of Ahasuerus with Xerxes I is widely held, while the precise date and historical details of the narrative continue to be discussed.",
+      place: "Susa, one of the Persian royal capitals, is the principal setting.",
+      placeStudy: "The narrative is set within the Persian imperial court and describes Jewish life in the diaspora. Susa's archaeological remains provide wider historical context.",
+      audience: "Jewish communities living outside the land and later readers reflecting on identity, courage and deliverance.",
+      purpose: "To recount the deliverance of the Jewish people from Haman's planned destruction and explain the origin of the festival of Purim.",
+      background: "Esther becomes queen in the Persian court. Haman plots to destroy the Jews after Mordecai refuses to honour him. Esther risks approaching the king, exposes the plot and helps secure the people's deliverance.",
+      themes: ["Providence and deliverance", "Courage in the face of danger", "Wisdom and timely action", "The vulnerability and resilience of minority communities", "Remembering deliverance through Purim", "Reversal of pride and injustice"],
+      keyVerses: [["Esther 4:14","Mordecai challenges Esther to consider whether she has come to royal position for such a time."],["Esther 4:16","Esther calls for a fast before she approaches the king."],["Esther 7:3–6","Esther reveals her identity and exposes Haman's plot."],["Esther 9:20–22","Mordecai establishes the remembrance of Purim."]],
+      outline: ["Chapters 1–2: Vashti is removed; Esther is chosen as queen and Mordecai uncovers a plot.","Chapters 3–4: Haman's decree threatens the Jews; Mordecai urges Esther to act.","Chapters 5–7: Esther prepares banquets, Haman's pride grows, and his plot is exposed.","Chapters 8–9: A new decree allows the Jews to defend themselves; deliverance is remembered through Purim.","Chapter 10: Mordecai's position and service are briefly recorded."]
+    },
   };
 
   const reader = document.getElementById("bibleReader");
@@ -782,7 +943,7 @@
     const outline = document.createElement("section");
     const outlineTitle = document.createElement("h4");
     outlineTitle.textContent =
-      "Complete " + book.chapters + "-chapter outline";
+      "Book outline and chapter guide";
     outline.appendChild(outlineTitle);
 
     book.outline.forEach(function (description, index) {
