@@ -614,8 +614,8 @@
             function wrap(text, maxWidth, fontSize) {
               ctx.font = fontSize + "px " + typeface + ", serif";
               const lines = [];
-              String(text || "").split(/\n/).forEach(paragraph => {
-                const words = paragraph.split(/\s+/).filter(Boolean);
+              String(text || "").split(/\\n/).forEach(paragraph => {
+                const words = paragraph.split(/\\s+/).filter(Boolean);
                 if (!words.length) { lines.push(""); return; }
                 let line = "";
                 words.forEach(word => {
@@ -630,10 +630,15 @@
               return lines;
             }
             const leftTitle = activeFaithView === "Confession" ? "FAITH CONFESSION" : activeFaithView.toUpperCase();
-            const leftLines = wrap(scripture, columnWidth, scriptureSize);
-            const rightLines = wrap(faithText || "Add a Scripture-specific " + activeFaithView.toLowerCase() + ".", columnWidth, faithSize);
-            const top = 300, bottom = 150;
-            const contentHeight = Math.max(leftLines.length * lineHeight(scriptureSize), rightLines.length * lineHeight(faithSize));
+            const stacked = scripture.length > 420 || faithText.length > 320;
+            const exportMargin = stacked ? 140 : margin;
+            const exportColumnWidth = stacked ? width - exportMargin * 2 : columnWidth;
+            const leftLines = wrap(scripture, exportColumnWidth, scriptureSize);
+            const rightLines = wrap(faithText || "Add a Scripture-specific " + activeFaithView.toLowerCase() + ".", exportColumnWidth, faithSize);
+            const top = 300, bottom = 150, sectionGap = stacked ? 95 : 0;
+            const contentHeight = stacked
+              ? leftLines.length * lineHeight(scriptureSize) + sectionGap + rightLines.length * lineHeight(faithSize)
+              : Math.max(leftLines.length * lineHeight(scriptureSize), rightLines.length * lineHeight(faithSize));
             canvas.width = width;
             canvas.height = Math.max(1100, top + contentHeight + bottom);
             const palette = {
@@ -651,23 +656,33 @@
             ctx.fillStyle = colors[1]; ctx.font = "bold 48px Georgia, serif";
             ctx.fillText("His Words.. My life.. My Victory",width/2,185);
             ctx.strokeStyle = colors[2]; ctx.lineWidth = 2;
-            ctx.beginPath(); ctx.moveTo(width/2,235); ctx.lineTo(width/2,canvas.height-110); ctx.stroke();
-            const leftX = margin, rightX = margin + columnWidth + gap;
-            function drawColumn(title, lines, x, size) {
+            if (!stacked) {
+              ctx.beginPath(); ctx.moveTo(width/2,235); ctx.lineTo(width/2,canvas.height-110); ctx.stroke();
+            }
+            function drawSection(title, referenceText, lines, x, y, maxWidth, size) {
               ctx.textAlign = "center"; ctx.fillStyle = colors[2];
-              ctx.font = "bold 24px Arial, sans-serif"; ctx.fillText(title,x+columnWidth/2,270);
+              ctx.font = "bold 24px Arial, sans-serif";
+              if (referenceText) {
+                ctx.fillText(referenceText,x+maxWidth/2,y);
+                y += 48;
+              }
+              ctx.fillText(title,x+maxWidth/2,y);
+              y += 58;
               ctx.textAlign = "left"; ctx.fillStyle = colors[1];
               ctx.font = "bold " + size + "px " + typeface + ", serif";
-              let y = top;
               lines.forEach(line => { ctx.fillText(line,x,y); y += lineHeight(size); });
+              return y;
             }
-            ctx.textAlign = "center"; ctx.fillStyle = colors[2];
-            ctx.font = "bold 25px Arial, sans-serif"; ctx.fillText(reference,leftX+columnWidth/2,270);
-            ctx.textAlign = "left"; ctx.fillStyle = colors[1];
-            ctx.font = scriptureSize + "px " + typeface + ", serif";
-            let y = top;
-            leftLines.forEach(line => { ctx.fillText(line,leftX,y); y += lineHeight(scriptureSize); });
-            drawColumn(leftTitle,rightLines,rightX,faithSize);
+            if (stacked) {
+              let y = top;
+              y = drawSection("THE WORD",reference,leftLines,exportMargin,y,exportColumnWidth,scriptureSize);
+              y += sectionGap;
+              drawSection("GLORY VERSE AFFIRMATION — " + leftTitle,"",rightLines,exportMargin,y,exportColumnWidth,faithSize);
+            } else {
+              const leftX = margin, rightX = margin + columnWidth + gap;
+              drawSection("THE WORD",reference,leftLines,leftX,top,columnWidth,scriptureSize);
+              drawSection("GLORY VERSE AFFIRMATION — " + leftTitle,"",rightLines,rightX,top,columnWidth,faithSize);
+            }
             ctx.textAlign = "center"; ctx.fillStyle = colors[2];
             ctx.font = "bold 24px Georgia, serif";
             ctx.fillText("Zuriel Living Word Bible",width/2,canvas.height-95);
