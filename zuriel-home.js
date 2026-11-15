@@ -578,19 +578,7 @@
         </p>
       </section>
 
-      <section class="home-card">
-        <h2>⚡ Your Bible Journey</h2>
-        <p class="home-section-note">Go straight to the part of Zuriel you want to explore.</p>
-
-        <div class="home-grid">
-          <button data-section="read">📖 Read Bible</button>
-          <button data-section="study">🔍 Study Centre</button>
-          <button data-section="declare">✨ Declarations</button>
-          <button data-section="library">📚 Study Library</button>
-          <button data-section="devotional">🕊️ Devotionals</button>
-          <button data-section="kingdom">🌱 Kingdom Life</button>
-        </div>
-      </section>
+      
 
       <section class="home-card home-growth-highlight" id="zurielOpenBookFaithCard">
         <div class="zob-landscape">
@@ -699,8 +687,6 @@
       ["home", "🏠", "Home"],
       ["read", "📖", "Read"],
       ["study", "🔍", "Study"],
-      ["declare", "✨", "Declare"],
-      ["devotional", "🕊️", "Devotional"],
       ["library", "📚", "Library"],
       ["kingdom", "🌱", "Grow"],
       ["personal", "📝", "My Space"]
@@ -819,7 +805,7 @@
         setActiveNavigation("library");
 
         if (window.ZurielLibrary) {
-          window.ZurielLibrary.open("study");
+          window.ZurielLibrary.open("saved");
         }
 
         const library = document.getElementById("zurielLibrary");
@@ -914,11 +900,6 @@
       });
 
     updateHomeReadingPosition();
-
-    document.getElementById("zurielHomeOpenStudy")
-      .addEventListener("click", function () {
-        navigate("library");
-      });
 
     dashboard.querySelectorAll("[data-section]")
       .forEach(function (button) {

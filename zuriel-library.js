@@ -453,7 +453,7 @@
         studio.dataset.finish = "ivory";
         studio.innerHTML = `
           <div class="zgs-field"><label for="zgsReference">SCRIPTURE REFERENCE</label><input id="zgsReference" placeholder="e.g. Romans 8:1"></div>
-          <div class="zgs-field"><label for="zgsScripture">SCRIPTURE TEXT (paste from your Bible translation)</label><textarea id="zgsScripture" placeholder="Enter the exact verse text here"></textarea></div>
+          <div class="zgs-field"><label for="zgsScripture">SCRIPTURE TEXT</label><textarea id="zgsScripture" placeholder="Load a KJV passage by reference or enter your licensed translation text"></textarea><button type="button" id="zgsLoadScripture">Load exact KJV passage from Bible</button><small>Enter a reference above, then load its exact KJV text. Other translations can be added when their licensed API access is ready.</small></div>
           <div class="zgs-field"><label for="zgsPrayer">PRAYER</label><textarea id="zgsPrayer" placeholder="Write a prayer shaped by this Scripture"></textarea></div>
           <div class="zgs-field"><label for="zgsDeclaration">DECLARATION</label><textarea id="zgsDeclaration" placeholder="Declare what this Scripture reveals"></textarea></div>
           <div class="zgs-field"><label for="zgsAffirmation">AFFIRMATION</label><textarea id="zgsAffirmation" placeholder="A personal response grounded in the verse"></textarea></div>
@@ -506,6 +506,30 @@
         `;
 
         content.appendChild(studio);
+        const loadScriptureButton = studio.querySelector("#zgsLoadScripture");
+        loadScriptureButton.addEventListener("click", async function () {
+          const status = studio.querySelector("#zgsStatus");
+          const referenceField = studio.querySelector("#zgsReference");
+          const scriptureField = studio.querySelector("#zgsScripture");
+          loadScriptureButton.disabled = true;
+          status.textContent = "Loading the exact KJV passage from your offline Bible…";
+          try {
+            if (typeof window.getBibleVerseText !== "function") {
+              throw new Error("The Bible text service is not ready. Return to the reader and try again.");
+            }
+            const result = await window.getBibleVerseText(referenceField.value);
+            referenceField.value = result.reference;
+            scriptureField.value = result.text;
+            referenceField.dispatchEvent(new Event("input", { bubbles: true }));
+            scriptureField.dispatchEvent(new Event("input", { bubbles: true }));
+            updatePreview();
+            status.textContent = result.reference + " loaded from the King James Version.";
+          } catch (error) {
+            status.textContent = error.message || "The passage could not be loaded.";
+          } finally {
+            loadScriptureButton.disabled = false;
+          }
+        });
         const fields = ["Reference","Scripture","Prayer","Declaration","Affirmation","Confession","Inspiration"];
         const ids = ["zgsReference","zgsScripture","zgsPrayer","zgsDeclaration","zgsAffirmation","zgsConfession","zgsInspiration"];
         const labels = ["SCRIPTURE","PRAYER","DECLARATION","AFFIRMATION","FAITH CONFESSION","INSPIRATION"];

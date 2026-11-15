@@ -1,4 +1,4 @@
 {
-  "version": "1.4.0",
-  "releaseNotes": "Adds private on-device backup export and safe merge restore for saved insights, study notes, prayer journals, reading progress and Kingdom Life lesson progress. Backup files remain under the user's control."
+  "version": "1.4.1",
+  "releaseNotes": "Fixes Open Book Card Studio KJV passage loading, simplifies the home dashboard and clarifies the Library destination. Refreshes offline assets and navigation checks."
 }
