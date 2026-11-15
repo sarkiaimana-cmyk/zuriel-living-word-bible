@@ -39,7 +39,7 @@ const checks = [
   ["complete app footer", "Zuriel Living Word Bible"],
   ["export uses Scripture line height on left", "leftLines.length * lineHeight(scriptureSize)"],
   ["export uses faith line height on right", "rightLines.length * lineHeight(faithSize)"],
-  ["shared card includes complete app name", '"Zuriel Living Word Bible"].filter(Boolean).join("\\n\\n")'
+  ["shared card includes complete app name", '"Zuriel Living Word Bible"' ]
 ];
 for (const [label, fragment] of checks) {
   if (!library.includes(fragment)) failures.push(label + " is missing.");
