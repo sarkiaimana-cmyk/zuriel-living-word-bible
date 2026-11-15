@@ -33,6 +33,8 @@ jobs:
         run: node scripts/check-study-integrity.mjs
       - name: Test exact KJV original-word linking
         run: node scripts/test-original-word-linking.mjs
+      - name: Test Android version metadata
+        run: node scripts/test-android-version.mjs
 
       - name: Validate guided growth and personal space
         run: node scripts/check-growth-pathways.mjs
