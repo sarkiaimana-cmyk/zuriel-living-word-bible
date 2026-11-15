@@ -1124,7 +1124,7 @@
       themes: ["God's comfort in affliction", "Integrity and reconciliation", "The new covenant and the Spirit", "Treasure in fragile vessels", "The ministry of reconciliation", "Generosity and cheerful giving", "Strength made perfect in weakness", "Boasting in the Lord rather than human status"],
       keyVerses: [["2 Corinthians 1:3–4","God is praised as the Father of mercies who comforts His people in affliction."],["2 Corinthians 3:17–18","The Spirit brings freedom and transformation into the Lord's likeness."],["2 Corinthians 4:7","The treasure of the Gospel is carried in fragile human vessels so the power is seen to be God's."],["2 Corinthians 5:17–20","Those in Christ are new creations and are entrusted with the ministry and message of reconciliation."],["2 Corinthians 8:9","Christ's grace is shown through His self-giving for others."],["2 Corinthians 9:6–8","Giving is encouraged as willing, generous and cheerful, with God able to provide sufficiency."],["2 Corinthians 12:9–10","Christ's grace is sufficient and His power is made perfect in weakness."],["2 Corinthians 13:5","Believers are called to examine themselves concerning their faith in Christ."]],
       outline: ["Chapters 1–2: Paul's comfort, travel plans, forgiveness and the sincerity of his ministry.","Chapters 3–5: The new covenant, the treasure in fragile vessels and reconciliation through Christ.","Chapters 6–7: The call to holiness and Paul's joy over the Corinthians' repentance.","Chapters 8–9: Generosity and the collection for believers in need.","Chapters 10–13: Paul's defence of his ministry, the danger of false boasting, weakness, correction and final encouragement."]
-    },,
+    },
     "Galatians": {
       testament: "New Testament",
       chapters: 6,
