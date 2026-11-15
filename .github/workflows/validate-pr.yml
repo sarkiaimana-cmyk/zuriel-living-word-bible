@@ -32,3 +32,6 @@ jobs:
 
       - name: Validate study safeguards
         run: node scripts/check-study-integrity.mjs
+
+      - name: Validate guided growth and personal space
+        run: node scripts/check-growth-pathways.mjs
