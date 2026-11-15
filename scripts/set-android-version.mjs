@@ -1,5 +1,6 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
+import { resolve } from "node:path";
 
 export function deriveAndroidVersionCode(version) {
   const match = String(version || "").match(/^(\d+)\.(\d+)\.(\d+)$/);
@@ -28,7 +29,7 @@ export function applyAndroidVersion(gradleText, version) {
 }
 
 const scriptPath = fileURLToPath(import.meta.url);
-if (process.argv[1] && process.argv[1] === scriptPath) {
+if (process.argv[1] && resolve(process.argv[1]) === scriptPath) {
   const versionData = JSON.parse(await readFile(new URL("../version.json", import.meta.url), "utf8"));
   const gradlePath = new URL("../android/app/build.gradle", import.meta.url);
   const original = await readFile(gradlePath, "utf8");
