@@ -67,7 +67,7 @@ try {
   if (Object.keys(kjvData).length !== 66) throw new Error("Offline KJV source must contain all 66 books.");
   const bookLookup = new Map(bookEntries.map(book => [book.name.toLowerCase(), book]));
   const teachingsStart = section.indexOf("const teachings = [");
-  const teachingsEnd = section.indexOf("\\n        ];", teachingsStart);
+  const teachingsEnd = section.indexOf("\n        ];", teachingsStart);
   if (teachingsStart < 0 || teachingsEnd < 0) throw new Error("Curated teaching data could not be isolated for validation.");
   const arrayStart = section.indexOf("[", teachingsStart);
   const teachings = vm.runInNewContext("(" + section.slice(arrayStart, teachingsEnd + 10).replace(/;?$/, "") + ")", {}, { timeout: 1000 });
@@ -77,9 +77,9 @@ try {
       throw new Error(teaching.title + " has no Scripture references.");
     }
     for (const reference of teaching.refs) {
-      const match = String(reference).match(/^(.+?)\\s+(\\d+):(\\d+)$/);
+      const match = String(reference).match(/^(.+?)\s+(\d+):(\d+)$/);
       if (!match) throw new Error(teaching.title + " has a malformed reference: " + reference);
-      const book = bookLookup.get(match[1].toLowerCase().replace(/\\s+/g, " ").trim());
+      const book = bookLookup.get(match[1].toLowerCase().replace(/\s+/g, " ").trim());
       if (!book) throw new Error(teaching.title + " refers to an unknown Bible book: " + match[1]);
       const chapterNumber = Number(match[2]), verseNumber = Number(match[3]);
       if (chapterNumber < 1 || chapterNumber > book.chapters) throw new Error(teaching.title + " refers to a missing chapter: " + reference);
