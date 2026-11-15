@@ -31,9 +31,9 @@ requireText(home, '["personal", "📝", "My Space"]', "The six-item primary navi
 requireText(library, 'if (page === "declarations")', "The declarations content page");
 requireText(library, 'if (page === "devotional")', "The devotional content page");
 requireText(library, 'if (page === "saved")', "The saved-library content page");
-requireText(worker, "zuriel-bible-offline-v105", "The refreshed offline cache");
-if (JSON.parse(version).version !== "1.4.13") failures.push("App version metadata is not 1.4.13.");
-requireText(updates, 'const APP_VERSION = "1.4.13";', "The in-app version display");
+requireText(worker, "zuriel-bible-offline-v106", "The refreshed offline cache");
+if (JSON.parse(version).version !== "1.4.14") failures.push("App version metadata is not 1.4.14.");
+requireText(updates, 'const APP_VERSION = "1.4.14";', "The in-app version display");
 
 if (failures.length) {
   console.error("Home dashboard checks failed:");
