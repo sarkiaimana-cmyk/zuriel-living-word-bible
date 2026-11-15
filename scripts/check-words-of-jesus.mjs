@@ -27,7 +27,7 @@ const required = [
   ["search control", "Search a teaching, theme or Scripture reference"],
   ["theme filter", "Filter teachings by theme"],
   ["open reference in Bible reader", "window.openChapter(book, chapter)"],
-  ["highlight selected Gospel verse", "zuriel-selected-verse"],
+  ["activate selected Gospel verse through the shared reader action", "window.selectBibleVerse(verseNumber)"],
   ["exact Jesus verse lookup helper", "function findJesusVerse(verseNumber)"],
   ["Jesus reference checks the visible verse label", "label.textContent.trim().replace("],
   ["Jesus reference compares the requested verse number", "String(verseNumber)"],
