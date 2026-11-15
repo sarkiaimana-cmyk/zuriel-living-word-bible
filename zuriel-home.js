@@ -614,7 +614,7 @@
 
       <section class="home-card home-growth-highlight" id="zurielOpenBookFaithCard">
         <div class="zob-landscape">
-          <p class="zob-brandline">His Word...<br><em>My Life... My Victory!</em></p>
+          <p class="zob-brandline">His Words.. My life.. My Victory</p>
           <div class="zob-book">
             <div class="zob-page zob-scripture-page">
               <span class="zob-ribbon" id="zurielOpenBookReference">SCRIPTURE</span>
