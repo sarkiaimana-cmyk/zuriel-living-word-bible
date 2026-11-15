@@ -2,7 +2,15 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import vm from "node:vm";
 
-const source = await readFile(new URL("../zuriel-topical-index.js", import.meta.url), "utf8");
+const [source, readerHtml, bookDataSource, kjvSource] = await Promise.all([
+  readFile(new URL("../zuriel-topical-index.js", import.meta.url), "utf8"),
+  readFile(new URL("../index.html", import.meta.url), "utf8"),
+  readFile(new URL("../bible-data.js", import.meta.url), "utf8"),
+  readFile(new URL("../kjv.72bec70fcd.json", import.meta.url), "utf8")
+]);
+const bookData = bookDataSource;
+const kjvData = JSON.parse(kjvSource);
+
 const sandbox = { window: {} };
 vm.runInNewContext(source, sandbox, { timeout: 1000 });
 const index = sandbox.window.ZurielTopicalIndex;
@@ -34,7 +42,7 @@ for (const topic of topics) {
   assert.ok(Array.isArray(topic.relatedExplanations) && topic.relatedExplanations.length > 0, topic.title + " needs related passage explanations.");
   assert.ok(Array.isArray(topic.references) && topic.references.length > 0, topic.title + " needs Scripture references.");
   for (const ref of topic.references) {
-    const book = String(ref.book || "").toLowerCase().replace(/\\s+/g, " ").trim();
+    const book = String(ref.book || "").toLowerCase().replace(/\s+/g, " ").trim();
     assert.ok(books.has(book), topic.title + " has an unknown Bible book: " + ref.book);
     assert.ok(Number.isInteger(ref.chapter) && ref.chapter >= 1, topic.title + " has an invalid chapter.");
     assert.ok(Number.isInteger(ref.verse) && ref.verse >= 1, topic.title + " has an invalid verse.");
@@ -42,6 +50,41 @@ for (const topic of topics) {
     referenceCount += 1;
   }
 }
+
+// Validate every curated topical reference against the actual bundled KJV.
+// Book-name and positive-number checks alone can miss non-existent chapters
+// and verses, which would otherwise create dead navigation in the study UI.
+const readerMap = filesReaderMap();
+function filesReaderMap() {
+  const match = readerHtml.match(/const bookCodes = (\{[\s\S]*?\n\};)/);
+  assert.ok(match, "Reader book-code map must be available for reference integrity checks.");
+  return JSON.parse(match[1].replace(/;\s*$/, ""));
+}
+const bookEntries = [...bookData.matchAll(/\{\s*name:\s*"([^"]+)",\s*chapters:\s*(\d+)\s*\}/g)]
+  .map(match => ({ name: match[1], chapters: Number(match[2]) }));
+assert.equal(bookEntries.length, 66, "Offline Bible index must contain all 66 books.");
+assert.equal(Object.keys(kjvData).length, 66, "Offline KJV source must contain all 66 books.");
+const bookLookup = new Map(bookEntries.map(book => [book.name.toLowerCase(), book]));
+bookLookup.set("psalm", bookLookup.get("psalms"));
+let validatedReferences = 0;
+for (const topic of topics) {
+  for (const ref of topic.references) {
+    const book = bookLookup.get(String(ref.book || "").toLowerCase().replace(/\s+/g, " ").trim());
+    assert.ok(book, topic.title + " refers to unknown offline Bible book " + ref.book + ".");
+    assert.ok(ref.chapter <= book.chapters, topic.title + " refers to a chapter outside " + book.name + ": " + ref.chapter + ".");
+    const code = readerMap[book.name];
+    const chapters = code && kjvData[code];
+    assert.ok(Array.isArray(chapters), topic.title + " has no KJV data mapping for " + book.name + ".");
+    const verses = chapters[ref.chapter - 1];
+    assert.ok(Array.isArray(verses), topic.title + " refers to a missing KJV chapter: " + book.name + " " + ref.chapter + ".");
+    assert.ok(ref.verse <= verses.length, topic.title + " refers to a missing KJV verse: " + book.name + " " + ref.chapter + ":" + ref.verse + ".");
+    if (ref.endVerse != null) {
+      assert.ok(ref.endVerse <= verses.length, topic.title + " has a reference range beyond the KJV chapter: " + book.name + " " + ref.chapter + ".");
+    }
+    validatedReferences += 1;
+  }
+}
+
 const singular = index.findForReference("Psalm 103:8");
 const plural = index.findForReference("Psalms 103:8");
 assert.ok(singular.length > 0, "Psalm 103:8 should resolve to curated topical studies.");
@@ -51,4 +94,4 @@ assert.deepEqual(
   "Psalm and Psalms must resolve to the same topical references."
 );
 assert.ok(index.search("prayer").length > 0, "Topical search should return relevant studies.");
-console.log("Advanced topical study checks passed: " + topics.length + " topics, " + referenceCount + " Scripture links, required study fields, valid Bible book names, reflection prompts, topical search and Psalm/Psalms alias navigation.");
+console.log("Advanced topical study checks passed: " + topics.length + " topics, " + referenceCount + " Scripture links (" + validatedReferences + " verified against the bundled 66-book KJV), required study fields, valid Bible book names, reflection prompts, topical search and Psalm/Psalms alias navigation.");
