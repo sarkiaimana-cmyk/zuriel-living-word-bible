@@ -43,3 +43,6 @@ jobs:
 
       - name: Validate Words of Jesus study centre
         run: node scripts/check-words-of-jesus.mjs
+
+      - name: Validate Open Book Card Studio
+        run: node scripts/check-open-book-studio.mjs
