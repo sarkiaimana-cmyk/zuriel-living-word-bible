@@ -3,13 +3,20 @@
   "use strict";
   const ROOT="zurielPersonalSpace", NOTES="zuriel_personal_notes_v1", PRAYERS="zuriel_prayer_journal_v1", HISTORY="zurielReadingHistory_v1";
   let root, tab="insights";
-  function read(key){try{const v=JSON.parse(localStorage.getItem(key)||"[]");return Array.isArray(v)?v:[];}catch(e){return[];}}
+  function read(key){
+    const raw=localStorage.getItem(key);
+    if(raw===null)return [];
+    let value;
+    try{value=JSON.parse(raw);}catch(e){throw new Error("Zuriel could not read saved personal data ("+key+"). Your records have not been changed.");}
+    if(!Array.isArray(value))throw new Error("Zuriel found an unexpected saved-data format ("+key+"). Your records have not been changed.");
+    return value;
+  }
   function write(key,value){try{localStorage.setItem(key,JSON.stringify(value));return true;}catch(e){return false;}}
   function el(tag,cls,txt){const n=document.createElement(tag);if(cls)n.className=cls;if(txt!==undefined)n.textContent=txt;return n;}
   function btn(label,fn,cls){const b=el("button",cls||"",label);b.type="button";b.addEventListener("click",fn);return b;}
   function dateLabel(value){try{return new Date(value).toLocaleString();}catch(e){return "Saved entry";}}
   function status(message){const n=root&&root.querySelector("#zpsStatus");if(n)n.textContent=message;}
-  function addEntry(key,entry){const all=read(key);all.unshift(entry);if(!write(key,all.slice(0,300))){status("Device storage is unavailable. Your entry was not saved.");return false;}return true;}
+  function addEntry(key,entry){let all;try{all=read(key);}catch(error){status(error.message);return false;}all.unshift(entry);if(!write(key,all.slice(0,300))){status("Device storage is unavailable. Your entry was not saved.");return false;}return true;}
   function render(){
     if(!root)return;
     const panel=root.querySelector("#zpsPanel");panel.replaceChildren();
@@ -24,7 +31,7 @@
     card.append(el("p","zps-date",dateLabel(item.createdAt)),el("h3","",item.title||"Personal note"));
     if(item.reference)card.append(el("p","zps-reference",item.reference));
     card.append(el("p","zps-copy",item.text||""));
-    card.appendChild(btn("Delete",()=>{if(!confirm("Delete this saved entry from this device?"))return;const all=read(key).filter(x=>x.id!==item.id);write(key,all);render();status("Entry deleted from this device.");},"zps-delete"));
+    card.appendChild(btn("Delete",()=>{if(!confirm("Delete this saved entry from this device?"))return;let all;try{all=read(key);}catch(error){status(error.message);return;}const next=all.filter(x=>x.id!==item.id);if(!write(key,next)){status("Device storage is unavailable. Your entry was not deleted.");return;}render();status("Entry deleted from this device.");},"zps-delete"));
     return card;
   }
   function renderInsights(panel){
@@ -36,7 +43,7 @@
     form.append(title,reference,text,save);
     form.addEventListener("submit",e=>{e.preventDefault();if(!title.value.trim()||!text.value.trim())return;const ok=addEntry(NOTES,{id:String(Date.now())+"-"+Math.random().toString(36).slice(2),title:title.value.trim(),reference:reference.value.trim(),text:text.value.trim(),createdAt:new Date().toISOString()});if(ok){status("Insight saved on this device.");render();}});
     panel.appendChild(form);
-    const items=read(NOTES);panel.append(el("h3","zps-subheading","Your saved insights ("+items.length+")"));
+    let items;try{items=read(NOTES);}catch(error){panel.append(el("p","zps-empty",error.message));status(error.message);return;}panel.append(el("h3","zps-subheading","Your saved insights ("+items.length+")"));
     if(!items.length)panel.append(el("p","zps-empty","Your personal study space is ready. Save your first insight above."));
     items.forEach(item=>panel.appendChild(entryCard(item,NOTES)));
   }
@@ -48,17 +55,17 @@
     const save=btn("Save journal entry",()=>{},"zps-save");save.type="submit";form.append(title,reference,text,save);
     form.addEventListener("submit",e=>{e.preventDefault();if(!title.value.trim()||!text.value.trim())return;const ok=addEntry(PRAYERS,{id:String(Date.now())+"-"+Math.random().toString(36).slice(2),title:title.value.trim(),reference:reference.value.trim(),text:text.value.trim(),createdAt:new Date().toISOString()});if(ok){status("Prayer journal entry saved on this device.");render();}});
     panel.appendChild(form);
-    const items=read(PRAYERS);panel.append(el("h3","zps-subheading","Journal entries ("+items.length+")"));
+    let items;try{items=read(PRAYERS);}catch(error){panel.append(el("p","zps-empty",error.message));status(error.message);return;}panel.append(el("h3","zps-subheading","Journal entries ("+items.length+")"));
     if(!items.length)panel.append(el("p","zps-empty","Your journal is ready whenever you want to write."));
     items.forEach(item=>panel.appendChild(entryCard(item,PRAYERS)));
   }
   function renderProgress(panel){
     panel.append(el("h2","zps-heading","Your reading & growth progress"),el("p","zps-copy","A simple record of the chapters you have opened and lessons you have marked complete."));
-    let position=null;try{position=JSON.parse(localStorage.getItem("zurielLastReadingPosition")||"null");}catch(e){}
-    const history=read(HISTORY),done=read("zuriel_kingdom_life_completed_v1"),saved=read("zuriel_kingdom_life_saved_v1");
+    let position=null;try{const raw=localStorage.getItem("zurielLastReadingPosition");position=raw===null?null:JSON.parse(raw);if(position!==null&&(!position||typeof position!=="object"||Array.isArray(position)))throw new Error("Unexpected reading-position format.");}catch(e){const message="Zuriel could not safely read your saved reading position. Your records have not been changed.";panel.append(el("p","zps-empty",message));status(message);return;}
+    let history,done,saved,notes,prayers;try{history=read(HISTORY);done=read("zuriel_kingdom_life_completed_v1");saved=read("zuriel_kingdom_life_saved_v1");notes=read(NOTES);prayers=read(PRAYERS);}catch(e){panel.append(el("p","zps-empty",e.message));status(e.message);return;}
     const current=position&&position.book&&position.chapter?position.book+" "+position.chapter+(position.verse?":"+position.verse:""):"No reading position saved yet";
     const stats=el("div","zps-stats");
-    [[history.length,"Chapters opened"],[done.length,"Lessons completed"],[saved.length,"Lessons saved"],[read(NOTES).length,"Study notes"],[read(PRAYERS).length,"Journal entries"]].forEach(([n,label])=>{const item=el("div","zps-stat");item.append(el("strong","",String(n)),el("span","",label));stats.appendChild(item);});
+    [[history.length,"Chapters opened"],[done.length,"Lessons completed"],[saved.length,"Lessons saved"],[notes.length,"Study notes"],[prayers.length,"Journal entries"]].forEach(([n,label])=>{const item=el("div","zps-stat");item.append(el("strong","",String(n)),el("span","",label));stats.appendChild(item);});
     panel.append(el("p","zps-current","Continue from: "+current),stats);
     panel.appendChild(btn("Continue reading",()=>{if(!position||!position.book||!position.chapter){status("Open a Bible chapter first; Zuriel will remember your position.");return;}if(window.ZurielHomeNavigate)window.ZurielHomeNavigate("read");if(window.openChapter)window.openChapter(position.book,position.chapter).then(()=>{if(position.verse){const v=document.querySelectorAll("#message .verse")[position.verse-1];if(v)v.scrollIntoView({behavior:"smooth",block:"center"});}}).catch(()=>status("Could not reopen the saved chapter. Please try again."));},"zps-save"));
     panel.append(el("h3","zps-subheading","Recently opened chapters"));
