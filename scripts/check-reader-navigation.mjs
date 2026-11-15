@@ -10,7 +10,7 @@ function requireMatch(source, pattern, message) {
 
 requireMatch(
   reader,
-  /window\.openChapter\s*=\s*function\s*\(book,\s*chapter\)[\s\S]*?catch\s*\(error\)[\s\S]*?throw\s+error\s+instanceof\s+Error\s*\?/,
+  /window\.openChapter\s*=\s*function\s*\(book,\s*chapter\)[\s\S]*?\.catch\s*\(\s*function\s*\(error\)[\s\S]*?throw\s+error\s+instanceof\s+Error\s*\?/,
   "Reader navigation must rethrow chapter-loading errors so callers cannot report false success."
 );
 requireMatch(
