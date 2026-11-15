@@ -126,6 +126,13 @@
       const verses = document.querySelectorAll("#message .verse");
       const target = verses[parts.verse - 1];
       if (target) {
+        try {
+          localStorage.setItem("zurielLastReadingPosition", JSON.stringify({
+            book: parts.book, chapter: parts.chapter, verse: parts.verse
+          }));
+        } catch (storageError) {
+          // The passage still opens when local progress storage is unavailable.
+        }
         target.scrollIntoView({ behavior: "smooth", block: "center" });
         target.classList.add("zuriel-nav-highlight");
         window.setTimeout(() => target.classList.remove("zuriel-nav-highlight"), 2200);
