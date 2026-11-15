@@ -53,7 +53,8 @@
       study: "Study Centre",
       declare: "Declarations",
       devotional: "Devotionals",
-      library: "Study Library"
+      library: "Study Library",
+      kingdom: "Kingdom Life"
     };
 
     /* STYLING */
@@ -228,7 +229,7 @@
         right: 0;
         bottom: 0;
         display: grid;
-        grid-template-columns: repeat(6,minmax(0,1fr));
+        grid-template-columns: repeat(7,minmax(0,1fr));
         gap: 2px;
         padding: 7px 3px calc(7px + env(safe-area-inset-bottom));
         background: #10213d;
@@ -263,7 +264,8 @@
 
       #bibleReader,
       #zurielLibrary,
-      #zurielStudyPanel {
+      #zurielStudyPanel,
+      #zurielKingdomLife {
         scroll-margin-top: 70px;
       }
 
@@ -585,6 +587,7 @@
           <button data-section="declare">✨ Declarations</button>
           <button data-section="library">📚 Study Library</button>
           <button data-section="devotional">🕊️ Devotionals</button>
+          <button data-section="kingdom">🌱 Kingdom Life</button>
         </div>
       </section>
 
@@ -644,6 +647,10 @@
     main.prepend(dashboard);
     main.prepend(topBar);
 
+    if (window.ZurielKingdomLife && typeof window.ZurielKingdomLife.mount === "function") {
+      window.ZurielKingdomLife.mount(main);
+    }
+
     /* HIDE OLD DUPLICATE HOME CONTENT */
 
     Array.from(main.children).forEach(function (section) {
@@ -690,7 +697,8 @@
       ["study", "🔍", "Study"],
       ["declare", "✨", "Declare"],
       ["devotional", "🕊️", "Devotional"],
-      ["library", "📚", "Library"]
+      ["library", "📚", "Library"],
+      ["kingdom", "🌱", "Grow"]
     ];
 
     navItems.forEach(function (item) {
@@ -757,6 +765,14 @@
         }
       }
 
+      if (section === "kingdom") {
+        showSections(["zurielKingdomLife"]);
+        setActiveNavigation("kingdom");
+        if (window.ZurielKingdomLife) window.ZurielKingdomLife.open();
+        const kingdom = document.getElementById("zurielKingdomLife");
+        if (kingdom) kingdom.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
       if (section === "declare") {
         showSections(["zurielLibrary"]);
         setActiveNavigation("declare");
@@ -820,6 +836,8 @@
 
       displaySection(section);
     }
+
+    window.ZurielHomeNavigate = navigate;
 
     /* TOP BACK BUTTON */
 
