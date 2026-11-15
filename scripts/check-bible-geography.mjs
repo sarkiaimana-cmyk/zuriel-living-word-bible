@@ -52,7 +52,7 @@ for (const journey of region?.journeys || []) {
     if (!bookChapters[stop.reference.book] || stop.reference.chapter < 1 || stop.reference.chapter > bookChapters[stop.reference.book] || stop.reference.verse < 1) failures.push(journey.title + ": invalid Scripture reference.");
   }
 }
-for (const fragment of ['id="zurielGeographyCentre"', "window.ZurielGeographyData", "window.openChapter", "window.ZurielStudy.openForReference", "aria-label", "mapNotice"]) {
+for (const fragment of ['root.id = "zurielGeographyCentre"', "window.ZurielGeographyData", "window.openChapter", "window.ZurielStudy.openForReference", "aria-label", "mapNotice"]) {
   if (!moduleSource.includes(fragment)) failures.push("Geography module integration is missing: " + fragment);
 }
 if (/fetch\s*\(|XMLHttpRequest|WebSocket|https:\/\//.test(moduleSource)) failures.push("The geography UI must not require network access.");
