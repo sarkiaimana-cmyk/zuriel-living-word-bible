@@ -1,4 +1,4 @@
 {
-  "version": "1.4.1",
-  "releaseNotes": "Fixes Open Book Card Studio KJV passage loading, simplifies the home dashboard and clarifies the Library destination. Refreshes offline assets and navigation checks."
+  "version": "1.4.2",
+  "releaseNotes": "Improves Bible reader navigation reliability by preserving chapter-loading errors for selectors and verifying selected passages."
 }
