@@ -34,3 +34,9 @@ jobs:
 
       - name: Validate guided growth and personal space
         run: node scripts/check-growth-pathways.mjs
+
+      - name: Validate personal backup and restore
+        run: node scripts/check-personal-backup.mjs
+
+      - name: Exercise encrypted backup runtime
+        run: node scripts/test-personal-backup-runtime.mjs

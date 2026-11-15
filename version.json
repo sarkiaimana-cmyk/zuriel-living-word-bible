@@ -1,4 +1,4 @@
 {
-  "version": "1.3.0",
-  "releaseNotes": "Adds five guided spiritual-growth pathways built from Zuriel's existing topical lessons, plus My Study Space for on-device saved insights, study notes, a prayer journal, reading position and chapter history."
+  "version": "1.4.0",
+  "releaseNotes": "Adds private on-device backup export and safe merge restore for saved insights, study notes, prayer journals, reading progress and Kingdom Life lesson progress. Backup files remain under the user's control."
 }
