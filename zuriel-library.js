@@ -463,8 +463,8 @@
             <button type="button" data-finish="ivory">Warm ivory</button><button type="button" data-finish="navy">Kingdom navy</button><button type="button" data-finish="forest">Living forest</button><button type="button" data-finish="parchment">Parchment</button>
           </div></div>
           <div class="zgs-tabs" id="zgsContentTabs" role="group" aria-label="Choose the left-page faith content">
-            <button type="button" data-zgs-view="Prayer" aria-pressed="true">Prayer</button>
-            <button type="button" data-zgs-view="Declaration" aria-pressed="false">Declaration</button>
+            <button type="button" data-zgs-view="Prayer" aria-pressed="false">Prayer</button>
+            <button type="button" data-zgs-view="Declaration" aria-pressed="true">Declaration</button>
             <button type="button" data-zgs-view="Affirmation" aria-pressed="false">Affirmation</button>
             <button type="button" data-zgs-view="Confession" aria-pressed="false">Faith</button>
             <button type="button" data-zgs-view="Inspiration" aria-pressed="false">Inspiration</button>
