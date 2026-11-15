@@ -1,4 +1,4 @@
 {
-  "version": "1.1.1",
-  "releaseNotes": "Expands the offline Bible dictionary with ten carefully contextualised study terms, including Beatitudes, Diaspora, Epistle, Fasting, Hermeneutics and Hosanna. Definitions include Scripture references and interpretation cautions where needed."
+  "version": "1.2.0",
+  "releaseNotes": "Introduces the Kingdom Life & Spiritual Growth Centre, connected to Zuriel's existing topical Bible study index. Includes searchable lessons, topic filters, Scripture links into the reader, Hebrew and Greek insights where available, reflection questions, practical application, and on-device saved/completed lesson markers."
 }
