@@ -56,33 +56,34 @@
   }
 
   function readState() {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored === null) return emptyState();
+    let value;
     try {
-      const value = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
-      if (!value || typeof value !== "object" || Array.isArray(value) ||
-          value.schemaVersion !== 1 || !value.plans ||
-          typeof value.plans !== "object" || Array.isArray(value.plans)) return emptyState();
-      const clean = emptyState();
-      clean.activePlanId = typeof value.activePlanId === "string" &&
-        PLANS.some(plan => plan.id === value.activePlanId) ? value.activePlanId : null;
-      PLANS.forEach(plan => {
-        const item = value.plans[plan.id];
-        if (!item || typeof item !== "object" || Array.isArray(item)) return;
-        const completed = Array.isArray(item.completedDays)
-          ? [...new Set(item.completedDays.filter(day => Number.isInteger(day) && day >= 1 && day <= plan.duration))]
-          : [];
-        clean.plans[plan.id] = {
-          startedAt: typeof item.startedAt === "string" ? item.startedAt.slice(0, 50) : null,
-          completedDays: completed
-        };
-      });
-      return clean;
+      value = JSON.parse(stored);
     } catch (error) {
-      return emptyState();
+      throw new Error("Saved reading-plan progress is unreadable. It has not been changed.");
     }
+    if (!validateProgress(value)) {
+      throw new Error("Saved reading-plan progress has an unsupported or invalid structure. It has not been changed.");
+    }
+    const clean = emptyState();
+    clean.activePlanId = typeof value.activePlanId === "string" ? value.activePlanId : null;
+    PLANS.forEach(plan => {
+      const item = value.plans[plan.id];
+      if (!item) return;
+      clean.plans[plan.id] = {
+        startedAt: typeof item.startedAt === "string" ? item.startedAt.slice(0, 50) : null,
+        completedDays: [...new Set(item.completedDays)]
+      };
+    });
+    return clean;
   }
 
   function writeState(state) {
     try {
+      readState();
+      if (!validateProgress(state)) return false;
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       return true;
     } catch (error) {
@@ -146,7 +147,14 @@
   function render(container, onStatus) {
     if (!container) return;
     const report = typeof onStatus === "function" ? onStatus : function () {};
-    const state = readState();
+    let state;
+    try {
+      state = readState();
+    } catch (error) {
+      container.appendChild(element("p", "zrp-intro", error.message || "Saved reading-plan progress could not be read. No progress has been changed."));
+      report(error.message || "Saved reading-plan progress could not be read. No progress has been changed.");
+      return;
+    }
     const active = PLANS.find(plan => plan.id === state.activePlanId) || null;
     const activeProgress = active ? (state.plans[active.id] || { completedDays: [] }) : null;
     const completed = activeProgress ? activeProgress.completedDays : [];
