@@ -30,6 +30,7 @@ const checks = [
   ["left page Scripture panel", "zgs-left-page"],
   ["left page Scripture heading", '<div class="zgs-page-title">THE WORD</div>'],
   ["right page faith panel", "zgs-right-page"],
+  ["faith tabs are labelled for the right page", 'aria-label="Choose the right-page faith content"'],
   ["right page Glory Verse heading", '<div class="zgs-page-title">GLORY VERSE AFFIRMATION</div>'],
   ["bold faith response", ".zgs-active-copy {min-height:105px;font-weight:700;}"],
   ["declaration is the default card response", 'let activeFaithView = "Declaration";'],
