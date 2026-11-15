@@ -16,12 +16,15 @@ requireMatch(
 requireMatch(
   navigator,
   /await\s+window\.openChapter\(selectedBook,\s*selectedChapter\)[\s\S]*?expectedHeading[\s\S]*?if\s*\(selectedVerse\)[\s\S]*?data-verse-number/,
-  "The passage navigator must verify the requested chapter and exact selected verse before closing."
+  "The full-screen passage navigator must verify the requested chapter and exact selected verse before closing."
 );
 requireMatch(
   home,
-  /await\s+window\.openChapter\(book,\s*chapter\)[\s\S]*?if\s*\(verseNumber\)[\s\S]*?selected verse was not found/,
-  "The home passage selector must check the selected verse after opening a chapter."
+  /await\s+window\.openChapter\(saved\.book,\s*saved\.chapter\)[\s\S]*?Number\.isInteger\(saved\.verse\)[\s\S]*?find\(function\s*\(item\)[\s\S]*?saved\.verse/,
+  "Continue Reading must restore the saved verse after opening its chapter."
 );
+if (home.includes("setupHomePassageSelector") || home.includes("zurielHomePassageCard")) {
+  throw new Error("The retired duplicate home passage selector must not return.");
+}
 
-console.log("Reader navigation checks passed: errors propagate and selected passages are verified.");
+console.log("Reader navigation checks passed: errors propagate, the full-screen navigator verifies exact verses, and Continue Reading restores the saved verse.");
