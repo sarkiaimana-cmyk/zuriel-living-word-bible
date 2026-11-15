@@ -1054,14 +1054,9 @@
           const book = match[1], chapter = Number(match[2]), verseNumber = Number(match[3]);
           actionButton.disabled = true;
           window.openChapter(book, chapter).then(function () {
-            const target = findJesusVerse(verseNumber);
-            if (target) {
-              target.classList.add("zuriel-selected-verse");
-              target.scrollIntoView({ behavior:"smooth", block:"center" });
-              if (window.ZurielStudy && typeof window.ZurielStudy.openForReference === "function") {
-                const verseText = target.textContent.replace(/^\s*\d+\.?\s*/, "").trim();
-                window.ZurielStudy.openForReference(book, chapter, verseNumber, verseText, "", -1);
-              }
+            if (typeof window.selectBibleVerse !== "function" ||
+                !window.selectBibleVerse(verseNumber)) {
+              throw new Error("The referenced teaching verse could not be activated.");
             }
             actionButton.disabled = false;
           }).catch(function () {
@@ -1154,11 +1149,12 @@
           const match = String(reference || "").match(/^(.+?)\s+(\d+):(\d+)$/);
           if (!match || typeof window.openChapter !== "function") return;
           window.openChapter(match[1], Number(match[2])).then(function () {
-            const verse = document.querySelectorAll("#message .verse")[Number(match[3]) - 1];
-            if (verse) {
-              verse.classList.add("zuriel-selected-verse");
-              verse.scrollIntoView({ behavior: "smooth", block: "center" });
+            if (typeof window.selectBibleVerse !== "function" ||
+                !window.selectBibleVerse(Number(match[3]))) {
+              throw new Error("The bookmarked verse could not be activated in the Bible reader.");
             }
+          }).catch(function (error) {
+            console.error("Zuriel bookmarked Scripture:", error);
           });
         }
 
