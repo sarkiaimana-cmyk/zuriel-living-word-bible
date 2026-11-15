@@ -24,6 +24,8 @@ requireText(home, "zurielOpenBookFaithCard", "The Scripture-linked open-book fai
 requireText(home, "window.getBibleVerseText(verse.reference)", "Open Book exact offline KJV passage retrieval");
 requireText(home, "faithCardRenderToken", "Protection against out-of-order Scripture loads");
 requireText(home, "function canonicalBookName(value)", "Psalm/Psalms reader-name normalization");
+requireText(home, "function findHomeVerseElement(verseNumber)", "Exact home-card verse navigation");
+forbidText(home, 'document.querySelectorAll("#message .verse")[Number(match[3]) - 1]', "Position-based Open Book verse navigation");
 forbidText(home, 'setText("zurielOpenBookScripture", verse.text)', "Hard-coded home verse text in the Open Book Scripture panel");
 requireText(index, 'requestedBookName.toLowerCase() === "psalm" ? "Psalms" : requestedBookName', "KJV verse lookup Psalm alias normalization");
 requireText(home, 'window.ZurielLibrary.open("declarations")', "The declarations route");
