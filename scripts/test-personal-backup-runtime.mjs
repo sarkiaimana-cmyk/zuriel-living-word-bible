@@ -76,7 +76,7 @@ const notes = JSON.parse(store.get("zuriel_personal_notes_v1"));
 assert.equal(notes.length, 2, "Duplicate note IDs must not be added.");
 assert.equal(notes.find(item => item.id === "note-1").text, "Keep this", "Existing matching records must be preserved.");
 assert.ok(notes.some(item => item.id === "note-2"), "Unmatched existing notes must remain.");
-assert.deepEqual(JSON.parse(store.get("zuriel_kingdom_life_saved_v1)), ["lesson-a"]);
+assert.deepEqual(JSON.parse(store.get("zuriel_kingdom_life_saved_v1")), ["lesson-a"]);
 assert.deepEqual(JSON.parse(store.get("zuriel_kingdom_life_completed_v1")), ["lesson-b"]);
 assert.deepEqual(JSON.parse(store.get("zurielLastReadingPosition")), { book: "Psalms", chapter: 23 });
 assert.equal(merged.readingHistory.length, 1);
