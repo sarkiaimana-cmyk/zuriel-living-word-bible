@@ -138,6 +138,7 @@
   }
 
   const INTERLINEAR_API = "https://bible.helloao.org/api/d/bsb-interlinear/";
+  const KJV_API = "https://bible.helloao.org/api/eng_kjv/";
   const LEXICON_API = "https://bible.helloao.org/api/d/stepbible-lexicon/lexicon/";
   const CROSS_REFERENCE_API = "https://bible.helloao.org/api/d/open-cross-ref/";
   const API_BOOK_CODES = [
@@ -230,49 +231,82 @@
       const code = apiBookCode(ref.book);
       if (!code) throw new Error("This Bible book is not mapped for original-language study.");
 
-      const data = await fetchStudyJson(
-        INTERLINEAR_API + code + "/" + ref.chapter + ".json"
-      );
+      const [data, kjvChapter, kjvWordData] = await Promise.all([
+        fetchStudyJson(INTERLINEAR_API + code + "/" + ref.chapter + ".json"),
+        fetchStudyJson(KJV_API + code + "/" + ref.chapter + ".simple.json"),
+        fetchStudyJson(KJV_API + code + "/" + ref.chapter + ".words.simple.json")
+      ]);
       if (requestId !== originalWordsRequest) return;
 
       const verses = data.chapter && Array.isArray(data.chapter.content)
         ? data.chapter.content : [];
       const verseData = verses.find(item => Number(item.verse) === Number(ref.verse));
-
       if (!verseData || !Array.isArray(verseData.words) || !verseData.words.length) {
         target.textContent = "No original-language word records were supplied for this verse.";
         return;
       }
 
-      function wordTokens(value) {
-        return String(value || "").toLocaleLowerCase()
-          .replace(/[’']/g, "")
-          .match(/[a-z0-9]+/g) || [];
-      }
-      const tappedTokens = wordTokens(selectedEnglishWord);
-      const exactMatches = verseData.words.filter(function (word) {
-        const glossTokens = wordTokens(word.gloss);
-        return tappedTokens.length === 1 && glossTokens.includes(tappedTokens[0]);
-      });
+      const kjvVerses = kjvChapter.chapter && Array.isArray(kjvChapter.chapter.content)
+        ? kjvChapter.chapter.content : [];
+      const kjvVerse = kjvVerses.find(item =>
+        item.type === "verse" && Number(item.number) === Number(ref.verse)
+      );
+      const annotations = kjvWordData.verses &&
+        Array.isArray(kjvWordData.verses[String(ref.verse)])
+        ? kjvWordData.verses[String(ref.verse)] : [];
+      const linker = window.ZurielWordLinking;
+      const linkedWord = linker && typeof linker.matchSelectedKJVWord === "function"
+        ? linker.matchSelectedKJVWord(
+            ref.text || "",
+            kjvVerse && kjvVerse.text || "",
+            annotations,
+            selectedEnglishWordIndex
+          )
+        : { ok: false, reason: "The exact KJV word-linking resource is not available." };
+
       target.replaceChildren();
       lexiconBox.replaceChildren();
+      if (!linkedWord.ok) {
+        const note = document.createElement("p");
+        note.className = "study-small";
+        note.textContent = linkedWord.reason +
+          " Zuriel will not guess which Hebrew or Greek word belongs to this English word.";
+        target.appendChild(note);
+        return;
+      }
+
+      const strongsIds = new Set(linkedWord.strongs
+        .map(normalizeStrongs).filter(Boolean));
+      if (!strongsIds.size) {
+        const note = document.createElement("p");
+        note.className = "study-small";
+        note.textContent = "No Strong's annotation is supplied for “" +
+          selectedEnglishWord + "” in this KJV verse. The word remains readable, but Zuriel will not invent an original-language link.";
+        target.appendChild(note);
+        return;
+      }
+
+      const exactMatches = verseData.words.filter(function (word) {
+        return strongsIds.has(normalizeStrongs(word.strongs));
+      });
       if (!exactMatches.length) {
         const note = document.createElement("p");
         note.className = "study-small";
-        note.textContent = "The source interlinear data does not provide a reliable gloss match for “" +
-          selectedEnglishWord + "” in this verse. Zuriel will not guess which Hebrew or Greek word it represents.";
+        note.textContent = "The KJV annotation supplies " + [...strongsIds].join(", ") +
+          ", but no matching word record was found in the BSB interlinear verse. The source datasets do not align for every item, so Zuriel will not substitute a gloss-based guess.";
         target.appendChild(note);
         return;
       }
 
       const intro = document.createElement("p");
       intro.className = "study-small";
-      intro.textContent = "Focused study for “" + selectedEnglishWord + "” — matching source word record(s) only.";
+      intro.textContent = "Focused study for “" + selectedEnglishWord +
+        "” — linked through the KJV word annotation and matching Strong's index.";
       target.appendChild(intro);
 
       const methodNote = document.createElement("p");
       methodNote.className = "study-small";
-      methodNote.textContent = "Study carefully: an English gloss is a brief guide, not the full meaning of a word in every passage. Read the surrounding verse and paragraph. Grammar details appear only when the source provides them; an undecoded source tag is shown as-is rather than guessed.";
+      methodNote.textContent = "The selected KJV word is matched by its source character range, then joined to the Berean interlinear records by Strong's number. The interlinear gloss is the Berean Standard Bible's English phrase, not a KJV definition. Read the verse and paragraph in context; source alignments can differ and no missing link is guessed. Grammar details are shown only when supplied by the source.";
       target.appendChild(methodNote);
 
       exactMatches.forEach(function (word) {
@@ -392,7 +426,7 @@
 
       const sourceNotice = document.createElement("p");
       sourceNotice.className = "study-small";
-      sourceNotice.textContent = "Language and grammatical details below are shown only when supplied by the lexicon source. Zuriel does not infer missing morphology or language metadata.";
+      sourceNotice.textContent = "Language and grammatical details below are shown only when supplied by the source. Interlinear tables: Berean Standard Bible (public domain). Lexicon: STEPBible.org / Tyndale House, Cambridge (CC BY 4.0), adapted by the Free Use Bible API. Zuriel does not infer missing morphology or language metadata.";
       box.appendChild(sourceNotice);
 
       const contextNote = document.createElement("p");
