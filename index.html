@@ -573,6 +573,16 @@ function saveReadingPosition(book, chapter, verse) {
     const position = { book: book, chapter: chapter };
     if (Number.isInteger(verse) && verse > 0) position.verse = verse;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(position));
+    try {
+      const history = JSON.parse(localStorage.getItem("zurielReadingHistory_v1") || "[]");
+      const list = Array.isArray(history) ? history : [];
+      if (!list.length || list[0].book !== book || list[0].chapter !== chapter) {
+        list.unshift({ book: book, chapter: chapter, openedAt: new Date().toISOString() });
+      }
+      localStorage.setItem("zurielReadingHistory_v1", JSON.stringify(list.slice(0, 200)));
+    } catch (historyError) {
+      // Reading position remains available even if chapter history cannot be stored.
+    }
   } catch (error) {
     status.textContent =
       "Reading position could not be saved on this device.";
@@ -1148,6 +1158,8 @@ loadBibleBooks();
 <script src="zuriel-faith-content.js"></script>
 <script src="zuriel-topical-index.js"></script>
 <script src="zuriel-kingdom-life.js"></script>
+<script src="zuriel-growth-pathways.js"></script>
+<script src="zuriel-personal-space.js"></script>
 <script src="zuriel-home.js"></script>
 <script src="zuriel-study.js"></script>
 <script src="zuriel-grid-navigation.js"></script>

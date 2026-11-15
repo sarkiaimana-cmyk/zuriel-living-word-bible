@@ -54,7 +54,8 @@
       declare: "Declarations",
       devotional: "Devotionals",
       library: "Study Library",
-      kingdom: "Kingdom Life"
+      kingdom: "Kingdom Life",
+      personal: "My Study Space"
     };
 
     /* STYLING */
@@ -229,7 +230,7 @@
         right: 0;
         bottom: 0;
         display: grid;
-        grid-template-columns: repeat(7,minmax(0,1fr));
+        grid-template-columns: repeat(8,minmax(0,1fr));
         gap: 2px;
         padding: 7px 3px calc(7px + env(safe-area-inset-bottom));
         background: #10213d;
@@ -650,6 +651,9 @@
     if (window.ZurielKingdomLife && typeof window.ZurielKingdomLife.mount === "function") {
       window.ZurielKingdomLife.mount(main);
     }
+    if (window.ZurielPersonalSpace && typeof window.ZurielPersonalSpace.mount === "function") {
+      window.ZurielPersonalSpace.mount(main);
+    }
 
     /* HIDE OLD DUPLICATE HOME CONTENT */
 
@@ -698,7 +702,8 @@
       ["declare", "✨", "Declare"],
       ["devotional", "🕊️", "Devotional"],
       ["library", "📚", "Library"],
-      ["kingdom", "🌱", "Grow"]
+      ["kingdom", "🌱", "Grow"],
+      ["personal", "📝", "My Space"]
     ];
 
     navItems.forEach(function (item) {
@@ -771,6 +776,14 @@
         if (window.ZurielKingdomLife) window.ZurielKingdomLife.open();
         const kingdom = document.getElementById("zurielKingdomLife");
         if (kingdom) kingdom.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      if (section === "personal") {
+        showSections(["zurielPersonalSpace"]);
+        setActiveNavigation("personal");
+        if (window.ZurielPersonalSpace) window.ZurielPersonalSpace.open();
+        const personal = document.getElementById("zurielPersonalSpace");
+        if (personal) personal.scrollIntoView({ behavior: "smooth", block: "start" });
       }
 
       if (section === "declare") {
