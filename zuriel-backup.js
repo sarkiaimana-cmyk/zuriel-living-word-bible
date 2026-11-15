@@ -46,6 +46,66 @@
       completedLessons: readArray(KEYS.completedLessons)
     };
   }
+  const KDF_ITERATIONS = 250000;
+  function toBase64(bytes) {
+    let binary = "";
+    for (let offset = 0; offset < bytes.length; offset += 32768) {
+      binary += String.fromCharCode(...bytes.subarray(offset, offset + 32768));
+    }
+    return btoa(binary);
+  }
+  function fromBase64(value) {
+    const binary = atob(value);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    return bytes;
+  }
+  async function deriveKey(password, salt) {
+    if (!window.crypto || !crypto.subtle) throw new Error("Secure backup encryption is unavailable in this browser. Please use the secure Zuriel website or a supported app build.");
+    const material = await crypto.subtle.importKey("raw", new TextEncoder().encode(password), "PBKDF2", false, ["deriveKey"]);
+    return crypto.subtle.deriveKey(
+      { name: "PBKDF2", salt: salt, iterations: KDF_ITERATIONS, hash: "SHA-256" },
+      material, { name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"]
+    );
+  }
+  async function encryptBackup(payload, password) {
+    const salt = crypto.getRandomValues(new Uint8Array(16));
+    const iv = crypto.getRandomValues(new Uint8Array(12));
+    const key = await deriveKey(password, salt);
+    const plain = new TextEncoder().encode(JSON.stringify(payload));
+    const encrypted = await crypto.subtle.encrypt({ name: "AES-GCM", iv: iv }, key, plain);
+    return {
+      format: "zuriel-encrypted-backup",
+      schemaVersion: 1,
+      cipher: "AES-256-GCM",
+      kdf: "PBKDF2-SHA-256",
+      iterations: KDF_ITERATIONS,
+      salt: toBase64(salt),
+      iv: toBase64(iv),
+      ciphertext: toBase64(new Uint8Array(encrypted))
+    };
+  }
+  async function decryptBackup(envelope, password) {
+    if (!envelope || envelope.format !== "zuriel-encrypted-backup" ||
+        envelope.schemaVersion !== 1 || envelope.cipher !== "AES-256-GCM" ||
+        envelope.kdf !== "PBKDF2-SHA-256" || envelope.iterations !== KDF_ITERATIONS ||
+        typeof envelope.salt !== "string" || typeof envelope.iv !== "string" ||
+        typeof envelope.ciphertext !== "string" || envelope.ciphertext.length > MAX_FILE * 2) {
+      throw new Error("This is not a supported encrypted Zuriel backup file.");
+    }
+    try {
+      const salt = fromBase64(envelope.salt), iv = fromBase64(envelope.iv);
+      if (salt.length !== 16 || iv.length !== 12) throw new Error("Invalid encryption metadata.");
+      const key = await deriveKey(password, salt);
+      const plain = await crypto.subtle.decrypt(
+        { name: "AES-GCM", iv: iv }, key, fromBase64(envelope.ciphertext)
+      );
+      return JSON.parse(new TextDecoder().decode(plain));
+    } catch (error) {
+      if (error && error.message && error.message.includes("Secure backup encryption")) throw error;
+      throw new Error("The backup could not be unlocked. Check your password and try again.");
+    }
+  }
   function setStatus(message) {
     const target = root && root.querySelector("#zbackupStatus");
     if (target) target.textContent = message;
@@ -112,25 +172,32 @@
       data.readingHistory.length + " reading records • " +
       (data.savedLessons.length + data.completedLessons.length) + " lesson-progress records";
   }
-  function exportBackup() {
+  async function exportBackup() {
+    const password = root.querySelector("#zbackupPassword").value;
+    const confirmation = root.querySelector("#zbackupConfirm").value;
+    if (password.length < 8) { setStatus("Choose a backup password with at least 8 characters."); return; }
+    if (password !== confirmation) { setStatus("The two backup passwords do not match."); return; }
     try {
-      const data = collect();
+      setStatus("Encrypting your private backup on this device…");
       const payload = {
         app: "Zuriel Living Word Bible",
         schemaVersion: 1,
         exportedAt: new Date().toISOString(),
-        data: data
+        data: collect()
       };
-      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+      const envelope = await encryptBackup(payload, password);
+      const blob = new Blob([JSON.stringify(envelope, null, 2)], { type: "application/json" });
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = "Zuriel-My-Study-Space-Backup-" + new Date().toISOString().slice(0, 10) + ".json";
+      link.download = "Zuriel-Encrypted-Study-Space-Backup-" + new Date().toISOString().slice(0, 10) + ".json";
       document.body.appendChild(link);
       link.click();
       link.remove();
       setTimeout(() => URL.revokeObjectURL(url), 1500);
-      setStatus("Backup created. Keep the downloaded file somewhere private and safe.");
+      root.querySelector("#zbackupPassword").value = "";
+      root.querySelector("#zbackupConfirm").value = "";
+      setStatus("Encrypted backup created. Keep the file and password safe; Zuriel cannot recover a forgotten password.");
     } catch (error) {
       setStatus("Backup could not be created: " + error.message);
     }
@@ -178,13 +245,17 @@
     if (file.size > MAX_FILE) { setStatus("This backup is larger than the 8 MB safety limit."); return; }
     const reader = new FileReader();
     reader.onerror = () => setStatus("Zuriel could not read that file. Please choose the backup again.");
-    reader.onload = () => {
+    reader.onload = async () => {
       try {
-        const parsed = JSON.parse(String(reader.result || ""));
+        const envelope = JSON.parse(String(reader.result || ""));
+        const password = root.querySelector("#zbackupPassword").value;
+        if (!password) throw new Error("Enter the backup password before choosing the file.");
+        setStatus("Unlocking and checking your encrypted backup…");
+        const parsed = await decryptBackup(envelope, password);
         selectedBackup = validateBackup(parsed);
         const preview = root.querySelector("#zbackupPreview");
         preview.replaceChildren(
-          node("strong", "", "Backup checked successfully"),
+          node("strong", "", "Encrypted backup unlocked and checked"),
           node("p", "", countText(selectedBackup)),
           node("p", "", "Restore adds records that are not already on this device. Existing entries are kept; nothing is deleted.")
         );
@@ -208,7 +279,9 @@
     const style = node("style", "");
     style.textContent = "#zurielBackupTools{margin:14px 0;padding:15px;border:1px solid #d9d4c8;border-radius:15px;background:#f7f6f1;color:#24394c}#zurielBackupTools h2{font:700 19px Georgia,serif;color:#193c56;margin:0 0 7px}#zurielBackupTools p{font-size:13px;line-height:1.6;color:#586779}#zurielBackupTools .zbackup-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}#zurielBackupTools button{min-height:43px;border:1px solid #183e5a;border-radius:9px;padding:9px;background:#183e5a;color:#fff;font-weight:700}#zurielBackupTools button.zbackup-light{background:#fff;color:#183e5a}#zurielBackupTools #zbackupPreview{padding:11px;margin:10px 0;background:#fff;border:1px solid #d9dfe1;border-radius:10px}#zurielBackupTools #zbackupRestore{width:100%;background:#315b48;border-color:#315b48}#zurielBackupTools #zbackupStatus{min-height:20px;margin:8px 0 0;color:#315b48;font-weight:700}#zurielBackupTools input{display:none}@media(max-width:420px){#zurielBackupTools .zbackup-actions{grid-template-columns:1fr}}";
     const heading = node("h2", "", "Protect your personal records");
-    const intro = node("p", "", "Create a private backup of your saved insights, study notes, prayer journal and reading progress. Restore it when you change phones or browsers.");
+    const intro = node("p", "", "Create an encrypted backup of your saved insights, study notes, prayer journal and reading progress. Restore it when you change phones or browsers.");
+    const password = node("input", ""); password.type = "password"; password.id = "zbackupPassword"; password.autocomplete = "new-password"; password.placeholder = "Backup password (at least 8 characters)"; password.setAttribute("aria-label", "Backup password");
+    const confirmation = node("input", ""); confirmation.type = "password"; confirmation.id = "zbackupConfirm"; confirmation.autocomplete = "new-password"; confirmation.placeholder = "Confirm password for export"; confirmation.setAttribute("aria-label", "Confirm backup password");
     const actions = node("div", "zbackup-actions");
     actions.append(
       button("⬇ Export My Backup", exportBackup),
@@ -233,7 +306,8 @@
     restore.id = "zbackupRestore"; restore.hidden = true;
     const privacy = node("p", "", "Privacy: backups are created on this device and are never uploaded by this feature. The JSON file is readable, so keep it in a private location and do not share it. Restoring merges records; it does not erase your current notes or journal.");
     const status = node("p", ""); status.id = "zbackupStatus"; status.setAttribute("role", "status"); status.setAttribute("aria-live", "polite");
-    section.append(heading, intro, actions, file, preview, restore, privacy, status);
+    const passwordHint = node("p", "", "Use the same password when restoring. Backups are encrypted on this device with AES-256-GCM. Choose a password you can safely remember: forgotten passwords cannot be recovered.");
+    section.append(heading, intro, password, confirmation, passwordHint, actions, file, preview, restore, privacy, status);
     const tabs = container.querySelector(".zps-tabs");
     if (tabs && tabs.parentNode) tabs.parentNode.insertBefore(section, tabs.nextSibling);
     else container.appendChild(section);
