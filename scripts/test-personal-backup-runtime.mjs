@@ -76,9 +76,28 @@ const notes = JSON.parse(store.get("zuriel_personal_notes_v1"));
 assert.equal(notes.length, 2, "Duplicate note IDs must not be added.");
 assert.equal(notes.find(item => item.id === "note-1").text, "Keep this", "Existing matching records must be preserved.");
 assert.ok(notes.some(item => item.id === "note-2"), "Unmatched existing notes must remain.");
-assert.deepEqual(JSON.parse(store.get("zuriel_kingdom_life_saved_v1")), ["lesson-a"]);
+assert.deepEqual(JSON.parse(store.get("zuriel_kingdom_life_saved_v1)), ["lesson-a"]);
 assert.deepEqual(JSON.parse(store.get("zuriel_kingdom_life_completed_v1")), ["lesson-b"]);
 assert.deepEqual(JSON.parse(store.get("zurielLastReadingPosition")), { book: "Psalms", chapter: 23 });
 assert.equal(merged.readingHistory.length, 1);
 
-console.log("Personal backup runtime tests passed: AES-GCM round-trip, wrong password, tampered ciphertext, unsupported schema, record validation, safe merge, duplicate handling and existing-data preservation.");
+// Exercise the rollback path: fail one write after earlier stores have changed,
+// then confirm every original value is restored once storage becomes writable.
+const beforeFailure = new Map(store);
+const originalSetItem = localStorage.setItem;
+let failOnce = true;
+localStorage.setItem = (key, value) => {
+  if (key === "zurielReadingHistory_v1" && failOnce) {
+    failOnce = false;
+    throw new Error("Simulated storage quota failure");
+  }
+  originalSetItem(key, value);
+};
+assert.throws(
+  () => api.applyRestore(incoming),
+  /attempted to return your existing records/
+);
+assert.deepEqual([...store.entries()], [...beforeFailure.entries()], "Rollback must restore every original local record.");
+localStorage.setItem = originalSetItem;
+
+console.log("Personal backup runtime tests passed: AES-GCM round-trip, wrong password, tampered ciphertext, unsupported schema, record validation, safe merge, duplicate handling, existing-data preservation and rollback after a simulated storage failure.");
