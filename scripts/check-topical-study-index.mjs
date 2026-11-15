@@ -56,11 +56,11 @@ for (const topic of topics) {
 // and verses, which would otherwise create dead navigation in the study UI.
 const readerMap = filesReaderMap();
 function filesReaderMap() {
-  const match = readerHtml.match(/const bookCodes = (\\{[\\s\\S]*?\\n\\};)/);
+  const match = readerHtml.match(/const bookCodes = (\{[\s\S]*?\n\};)/);
   assert.ok(match, "Reader book-code map must be available for reference integrity checks.");
-  return JSON.parse(match[1].replace(/;\\s*$/, ""));
+  return JSON.parse(match[1].replace(/;\s*$/, ""));
 }
-const bookEntries = [...bookData.matchAll(/\\{\\s*name:\\s*"([^"]+)",\\s*chapters:\\s*(\\d+)\\s*\\}/g)]
+const bookEntries = [...bookData.matchAll(/\{\s*name:\s*"([^"]+)",\s*chapters:\s*(\d+)\s*\}/g)]
   .map(match => ({ name: match[1], chapters: Number(match[2]) }));
 assert.equal(bookEntries.length, 66, "Offline Bible index must contain all 66 books.");
 assert.equal(Object.keys(kjvData).length, 66, "Offline KJV source must contain all 66 books.");
@@ -69,7 +69,7 @@ bookLookup.set("psalm", bookLookup.get("psalms"));
 let validatedReferences = 0;
 for (const topic of topics) {
   for (const ref of topic.references) {
-    const book = bookLookup.get(String(ref.book || "").toLowerCase().replace(/\\s+/g, " ").trim());
+    const book = bookLookup.get(String(ref.book || "").toLowerCase().replace(/\s+/g, " ").trim());
     assert.ok(book, topic.title + " refers to unknown offline Bible book " + ref.book + ".");
     assert.ok(ref.chapter <= book.chapters, topic.title + " refers to a chapter outside " + book.name + ": " + ref.chapter + ".");
     const code = readerMap[book.name];
