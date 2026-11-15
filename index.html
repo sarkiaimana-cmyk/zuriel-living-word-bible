@@ -977,6 +977,38 @@ async function moveChapter(direction) {
   }
 }
 
+/* SAFE SCRIPTURE RETRIEVAL FOR THE OPEN-BOOK STUDIO */
+window.getBibleVerseText = async function (reference) {
+  const input = String(reference || "").trim();
+  const match = input.match(/^(.+?)\s+(\d+)(?::(\d+)(?:-(\d+))?)?$/);
+  if (!match) throw new Error("Enter a reference such as John 3:16 or Psalm 23.");
+  const bookName = match[1].trim().replace(/\s+/g, " ");
+  const book = bibleBooks.find(item => item.name.toLowerCase() === bookName.toLowerCase());
+  if (!book) throw new Error("That Bible book was not recognised.");
+  const chapter = Number(match[2]);
+  if (!Number.isInteger(chapter) || chapter < 1 || chapter > book.chapters) {
+    throw new Error("That chapter is outside " + book.name + ".");
+  }
+  await loadKJV();
+  const code = bookCodes[book.name];
+  const verses = bibleText[code] && bibleText[code][chapter - 1];
+  if (!Array.isArray(verses) || !verses.length) {
+    throw new Error("KJV text is unavailable for " + book.name + " " + chapter + ".");
+  }
+  const first = match[3] ? Number(match[3]) : 1;
+  const last = match[4] ? Number(match[4]) : (match[3] ? first : verses.length);
+  if (!Number.isInteger(first) || !Number.isInteger(last) || first < 1 ||
+      last < first || last > verses.length || last - first > 79) {
+    throw new Error("Choose a valid verse or a passage of up to 80 verses.");
+  }
+  const text = verses.slice(first - 1, last).map((verse, index) =>
+    (first + index) + ". " + verse
+  ).join("\n");
+  const normalized = book.name + " " + chapter +
+    (match[3] ? ":" + first + (last > first ? "-" + last : "") : "");
+  return { reference: normalized, text: text, translation: "King James Version" };
+};
+
 /* CONNECTION FOR STUDY CROSS-REFERENCES */
 
 window.openChapter = function (book, chapter) {
