@@ -19,10 +19,10 @@ let bibleBooks = [];
 let kjv = {};
 let bookCodes = {};
 try {
-  const mapping = reader.match(/const bookCodes = (\\{[\\s\\S]*?\\n\\};)/);
+  const mapping = reader.match(/const bookCodes = (\{[\s\S]*?\n\};)/);
   if (!mapping) throw new Error("The reader's book-code map could not be found.");
-  bookCodes = JSON.parse(mapping[1].replace(/;\\s*$/, ""));
-  bibleBooks = [...bookIndex.matchAll(/\\{\\s*name:\\s*"([^"]+)",\\s*chapters:\\s*(\\d+)\\s*\\}/g)]
+  bookCodes = JSON.parse(mapping[1].replace(/;\s*$/, ""));
+  bibleBooks = [...bookIndex.matchAll(/\{\s*name:\s*"([^"]+)",\s*chapters:\s*(\d+)\s*\}/g)]
     .map(match => ({ name: match[1], chapters: Number(match[2]) }));
   kjv = JSON.parse(kjvSource);
   if (bibleBooks.length !== 66) failures.push(["66-book Bible index", "expected 66 books, found " + bibleBooks.length]);
@@ -126,7 +126,7 @@ const homeReferences = [...home.matchAll(/reference:\s*"([^"]+)"/g)].map(match =
 const faithReferences = new Set([...faith.matchAll(/["']?reference["']?\s*:\s*["']([^"']+)["']/g)].map(match => match[1].toLowerCase()));
 for (const reference of homeReferences) {
   if (!faithReferences.has(reference)) failures.push(["home faith coverage: " + reference, "no exact Scripture-linked response"]);
-  const match = reference.match(/^(.+?)\\s+(\\d+):(\\d+)$/);
+  const match = reference.match(/^(.+?)\s+(\d+):(\d+)$/);
   if (match) {
     const requestedName = match[1].toLowerCase() === "psalm" ? "Psalms" : match[1];
     const book = bibleBooks.find(item => item.name.toLowerCase() === requestedName.toLowerCase());
