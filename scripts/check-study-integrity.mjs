@@ -99,8 +99,11 @@ if (!reader.includes('paragraph.dataset.verseNumber = String(index + 1)')) {
   failures.push(["stable verse identity", "missing from index.html"]);
 }
 if (!navigator.includes('data-verse-number="')) failures.push(["exact verse target", "missing from navigator"]);
-if (!navigator.includes('replace(/^\\s*\\d+\\.?\\s*/')) {
-  failures.push(["verse text extraction", "invalid or missing verse-number cleanup"]);
+if (!navigator.includes("window.selectBibleVerse(selectedVerse)")) {
+  failures.push(["navigator verse activation", "selected verses must use the shared reader selection action"]);
+}
+if (!reader.includes("window.selectBibleVerse = function (verseNumber)")) {
+  failures.push(["shared verse selection", "reader must expose one validated verse activation path"]);
 }
 
 const homeChecks = [
