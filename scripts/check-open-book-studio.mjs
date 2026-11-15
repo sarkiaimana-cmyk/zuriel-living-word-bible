@@ -33,6 +33,7 @@ const checks = [
   ["right page Glory Verse heading", '<div class="zgs-page-title">GLORY VERSE AFFIRMATION</div>'],
   ["bold faith response", ".zgs-active-copy {min-height:105px;font-weight:700;}"],
   ["declaration is the default card response", 'let activeFaithView = "Declaration";'],
+  ["declaration tab is visibly selected by default", 'data-zgs-view="Declaration" aria-pressed="true"'],
   ["exact approved card headline", "His Words.. My life.. My Victory"],
   ["complete app footer", "Zuriel Living Word Bible"],
   ["export uses Scripture line height on left", "leftLines.length * lineHeight(scriptureSize)"],
