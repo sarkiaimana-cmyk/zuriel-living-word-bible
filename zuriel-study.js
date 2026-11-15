@@ -378,15 +378,22 @@
       const data = await fetchStudyJson(LEXICON_API + id + ".json");
       if (requestId !== lexiconRequest) return;
       const entry = data.entry;
-      if (!entry || !Array.isArray(entry.senses)) {
-        throw new Error("No lexicon definition was returned for " + id + ".");
+      if (!entry || !Array.isArray(entry.senses) || !entry.senses.length) {
+        throw new Error("No verified lexicon senses were returned for " + id + ".");
       }
 
       box.replaceChildren();
       const heading = document.createElement("h3");
+      const lexiconLanguage = String(entry.language || "").trim().toLowerCase();
+      const lexiconLanguageNames = { hebrew: "Hebrew", greek: "Greek", aramaic: "Aramaic" };
       heading.textContent = "Strong's " + id + " — " +
-        (entry.language === "greek" ? "Greek" : entry.language === "aramaic" ? "Aramaic" : "Hebrew");
+        (lexiconLanguageNames[lexiconLanguage] || "source language not identified");
       box.appendChild(heading);
+
+      const sourceNotice = document.createElement("p");
+      sourceNotice.className = "study-small";
+      sourceNotice.textContent = "Language and grammatical details below are shown only when supplied by the lexicon source. Zuriel does not infer missing morphology or language metadata.";
+      box.appendChild(sourceNotice);
 
       const contextNote = document.createElement("p");
       contextNote.className = "study-small";
@@ -412,6 +419,13 @@
         const grammar = document.createElement("p");
         grammar.textContent = "Part of speech: " + (sense.partOfSpeech || "Not supplied");
         item.appendChild(grammar);
+
+        const morphologyValue = sense.morphology || sense.parsingFull || sense.parsing;
+        const morphology = document.createElement("p");
+        morphology.textContent = morphologyValue
+          ? "Morphology supplied by source: " + String(morphologyValue)
+          : "Detailed morphology: not supplied by this lexicon record.";
+        item.appendChild(morphology);
 
         const definition = document.createElement("p");
         definition.textContent = sense.definition || "No extended definition supplied.";
