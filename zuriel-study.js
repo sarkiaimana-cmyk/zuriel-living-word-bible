@@ -497,12 +497,12 @@
               const item = topic.references[0];
               if (typeof window.openChapter !== "function") return;
               window.openChapter(item.book, item.chapter).then(function () {
-                const selectedVerse = findVerseElement(item.verse);
-                if (!selectedVerse) return;
-                const text = selectedVerse.textContent.replace(/^\s*\d+\.?\s*/, "").trim();
-                if (window.ZurielStudy && typeof window.ZurielStudy.openForReference === "function") {
-                  window.ZurielStudy.openForReference(item.book, item.chapter, item.verse, text, "", -1);
+                if (typeof window.selectBibleVerse !== "function" ||
+                    !window.selectBibleVerse(item.verse)) {
+                  console.warn("Zuriel topical connection could not activate its referenced verse.");
                 }
+              }).catch(function (error) {
+                console.error("Zuriel topical connection:", error);
               });
             });
             topicalBox.appendChild(button);
@@ -577,12 +577,9 @@
             button.disabled = true;
             try {
               await window.openChapter(ref.book, ref.chapter);
-              const targetVerse = findVerseElement(item.verse);
-              if (!targetVerse) throw new Error("That verse is not visible in the reader.");
-              const verseText = targetVerse.textContent.replace(/^\s*\d+\.?\s*/, "").trim();
-              targetVerse.scrollIntoView({ behavior: "smooth", block: "center" });
-              if (window.ZurielStudy && typeof window.ZurielStudy.openForReference === "function") {
-                window.ZurielStudy.openForReference(ref.book, ref.chapter, item.verse, verseText, "", -1);
+              if (typeof window.selectBibleVerse !== "function" ||
+                  !window.selectBibleVerse(item.verse)) {
+                throw new Error("That verse could not be activated in the reader.");
               }
             } catch (error) {
               button.disabled = false;
@@ -677,13 +674,9 @@
           button.disabled = true;
           try {
             await window.openChapter(name, chapterNumber);
-            const target = findVerseElement(verseNumber);
-            if (!target) throw new Error("The connected verse could not be located in the reader.");
-            const verseText = target.textContent.replace(/^\s*\d+\.?\s*/, "").trim();
-            target.scrollIntoView({ behavior: "smooth", block: "center" });
-            target.classList.add("zuriel-selected-verse");
-            if (window.ZurielStudy && typeof window.ZurielStudy.openForReference === "function") {
-              window.ZurielStudy.openForReference(name, chapterNumber, verseNumber, verseText, "", -1);
+            if (typeof window.selectBibleVerse !== "function" ||
+                !window.selectBibleVerse(verseNumber)) {
+              throw new Error("The connected verse could not be activated in the reader.");
             }
           } catch (error) {
             button.disabled = false;
