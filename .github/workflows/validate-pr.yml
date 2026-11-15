@@ -35,6 +35,8 @@ jobs:
         run: node scripts/check-reader-navigation.mjs
       - name: Test exact KJV original-word linking
         run: node scripts/test-original-word-linking.mjs
+      - name: Validate exact study reference navigation
+        run: node scripts/check-study-reference-navigation.mjs
       - name: Test Android version metadata
         run: node scripts/test-android-version.mjs
 
