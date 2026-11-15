@@ -497,8 +497,7 @@
               const item = topic.references[0];
               if (typeof window.openChapter !== "function") return;
               window.openChapter(item.book, item.chapter).then(function () {
-                const verseElements = document.querySelectorAll("#message .verse");
-                const selectedVerse = verseElements[item.verse - 1];
+                const selectedVerse = findVerseElement(item.verse);
                 if (!selectedVerse) return;
                 const text = selectedVerse.textContent.replace(/^\s*\d+\.?\s*/, "").trim();
                 if (window.ZurielStudy && typeof window.ZurielStudy.openForReference === "function") {
@@ -578,7 +577,7 @@
             button.disabled = true;
             try {
               await window.openChapter(ref.book, ref.chapter);
-              const targetVerse = document.querySelectorAll("#message .verse")[item.verse - 1];
+              const targetVerse = findVerseElement(item.verse);
               if (!targetVerse) throw new Error("That verse is not visible in the reader.");
               const verseText = targetVerse.textContent.replace(/^\s*\d+\.?\s*/, "").trim();
               targetVerse.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -678,8 +677,7 @@
           button.disabled = true;
           try {
             await window.openChapter(name, chapterNumber);
-            const verseElements = document.querySelectorAll("#message .verse");
-            const target = verseElements[verseNumber - 1];
+            const target = findVerseElement(verseNumber);
             if (!target) throw new Error("The connected verse could not be located in the reader.");
             const verseText = target.textContent.replace(/^\s*\d+\.?\s*/, "").trim();
             target.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -1337,8 +1335,7 @@
       function openReference(item) {
         if (typeof window.openChapter !== "function") return;
         window.openChapter(item.book, item.chapter).then(function () {
-          const verseElements = document.querySelectorAll("#message .verse");
-          const selected = verseElements[item.verse - 1];
+          const selected = findVerseElement(item.verse);
           if (!selected) return;
           const verseText = selected.textContent.replace(/^\s*\d+\.?\s*/, "").trim();
           selected.scrollIntoView({ behavior: "smooth", block: "center" });
