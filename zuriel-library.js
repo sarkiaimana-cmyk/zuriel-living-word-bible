@@ -633,7 +633,7 @@
             const leftLines = wrap(scripture, columnWidth, scriptureSize);
             const rightLines = wrap(faithText || "Add a Scripture-specific " + activeFaithView.toLowerCase() + ".", columnWidth, faithSize);
             const top = 300, bottom = 150;
-            const contentHeight = Math.max(leftLines.length * lineHeight(faithSize), rightLines.length * lineHeight(scriptureSize));
+            const contentHeight = Math.max(leftLines.length * lineHeight(scriptureSize), rightLines.length * lineHeight(faithSize));
             canvas.width = width;
             canvas.height = Math.max(1100, top + contentHeight + bottom);
             const palette = {
@@ -693,7 +693,7 @@
           }
         });
         studio.querySelector("#zgsShare").addEventListener("click",async function(){
-          const textValue=["The Light 🕯️","His Words.. My life.. My Victory",studio.querySelector("#zgsReference").value,studio.querySelector("#zgsScripture").value,...["Prayer","Declaration","Affirmation","Confession","Inspiration"].map(name=>name.toUpperCase()+": "+studio.querySelector("#zgs"+name).value),"Zuriel Living Word"].filter(Boolean).join("\n\n");
+          const textValue=["The Light 🕯️","His Words.. My life.. My Victory",studio.querySelector("#zgsReference").value,studio.querySelector("#zgsScripture").value,...["Prayer","Declaration","Affirmation","Confession","Inspiration"].map(name=>name.toUpperCase()+": "+studio.querySelector("#zgs"+name).value),"Zuriel Living Word Bible"].filter(Boolean).join("\n\n");
           if(!studio.querySelector("#zgsReference").value.trim()||!studio.querySelector("#zgsScripture").value.trim()){studio.querySelector("#zgsStatus").textContent="Add the Scripture reference and text before sharing.";return;}
           try{
             if(navigator.share) await navigator.share({title:"Glory Verse Affirmation",text:textValue});
