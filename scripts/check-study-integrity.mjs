@@ -1,15 +1,50 @@
 import { readFile } from "node:fs/promises";
 
-const [study, home, faith, linking, reader, navigator] = await Promise.all([
+const [study, home, faith, linking, reader, navigator, bookIndex, kjvSource] = await Promise.all([
   readFile(new URL("../zuriel-study.js", import.meta.url), "utf8"),
   readFile(new URL("../zuriel-home.js", import.meta.url), "utf8"),
   readFile(new URL("../zuriel-faith-content.js", import.meta.url), "utf8"),
   readFile(new URL("../zuriel-word-linking.js", import.meta.url), "utf8"),
   readFile(new URL("../index.html", import.meta.url), "utf8"),
-  readFile(new URL("../zuriel-grid-navigation.js", import.meta.url), "utf8")
+  readFile(new URL("../zuriel-grid-navigation.js", import.meta.url), "utf8"),
+  readFile(new URL("../bible-data.js", import.meta.url), "utf8"),
+  readFile(new URL("../kjv.72bec70fcd.json", import.meta.url), "utf8")
 ]);
 
 const failures = [];
+
+// Validate the actual KJV data against the reader's book-code map. A single
+// mismatched code blocks loadKJV() for the entire Bible, not just that book.
+let bibleBooks = [];
+let kjv = {};
+let bookCodes = {};
+try {
+  const mapping = reader.match(/const bookCodes = (\\{[\\s\\S]*?\\n\\};)/);
+  if (!mapping) throw new Error("The reader's book-code map could not be found.");
+  bookCodes = JSON.parse(mapping[1].replace(/;\\s*$/, ""));
+  bibleBooks = [...bookIndex.matchAll(/\\{\\s*name:\\s*"([^"]+)",\\s*chapters:\\s*(\\d+)\\s*\\}/g)]
+    .map(match => ({ name: match[1], chapters: Number(match[2]) }));
+  kjv = JSON.parse(kjvSource);
+  if (bibleBooks.length !== 66) failures.push(["66-book Bible index", "expected 66 books, found " + bibleBooks.length]);
+  if (Object.keys(kjv).length !== 66) failures.push(["66-book KJV database", "expected 66 books, found " + Object.keys(kjv).length]);
+  for (const book of bibleBooks) {
+    const code = bookCodes[book.name];
+    const chapters = code ? kjv[code] : null;
+    if (!Array.isArray(chapters) || chapters.length !== book.chapters) {
+      failures.push(["KJV book mapping: " + book.name, "code " + String(code) + " is missing or has the wrong chapter count"]);
+      continue;
+    }
+    for (let chapter = 0; chapter < chapters.length; chapter++) {
+      const verses = chapters[chapter];
+      if (!Array.isArray(verses) || !verses.length || verses.some(verse => typeof verse !== "string" || !verse.trim())) {
+        failures.push(["KJV chapter integrity: " + book.name + " " + (chapter + 1), "chapter contains missing or invalid verse text"]);
+      }
+    }
+  }
+} catch (error) {
+  failures.push(["KJV database integrity", error.message]);
+}
+
 const checks = [
   ["KJV word-annotation source", 'const KJV_API = "https://bible.helloao.org/api/eng_kjv/"'],
   ["KJV simplified chapter is loaded", '.simple.json'],
@@ -91,6 +126,17 @@ const homeReferences = [...home.matchAll(/reference:\s*"([^"]+)"/g)].map(match =
 const faithReferences = new Set([...faith.matchAll(/["']?reference["']?\s*:\s*["']([^"']+)["']/g)].map(match => match[1].toLowerCase()));
 for (const reference of homeReferences) {
   if (!faithReferences.has(reference)) failures.push(["home faith coverage: " + reference, "no exact Scripture-linked response"]);
+  const match = reference.match(/^(.+?)\\s+(\\d+):(\\d+)$/);
+  if (match) {
+    const requestedName = match[1].toLowerCase() === "psalm" ? "Psalms" : match[1];
+    const book = bibleBooks.find(item => item.name.toLowerCase() === requestedName.toLowerCase());
+    const verse = book && kjv[bookCodes[book.name]]?.[Number(match[2]) - 1]?.[Number(match[3]) - 1];
+    if (typeof verse !== "string" || !verse.trim()) {
+      failures.push(["Open Book KJV lookup: " + reference, "the exact verse is not available from the offline database"]);
+    }
+  } else {
+    failures.push(["Open Book reference format: " + reference, "expected Book chapter:verse"]);
+  }
 }
 
 if (failures.length) {
