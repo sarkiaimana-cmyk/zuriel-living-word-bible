@@ -940,6 +940,17 @@ async function openChapter(book, chapter) {
     });
   }
 
+  // Shared activation path for every way a reader can choose a verse.
+  window.selectBibleVerse = function (verseNumber) {
+    const number = Number(verseNumber);
+    if (!Number.isInteger(number) || number < 1 || number > verseElements.length) return false;
+    const target = verseElements[number - 1];
+    if (!target || !message.contains(target)) return false;
+    target.click();
+    target.scrollIntoView({ behavior: "smooth", block: "center" });
+    return true;
+  };
+
   status.textContent = "Now reading " + book + " chapter " + chapter + ".";
 
   message.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -1133,15 +1144,15 @@ async function runZurielBibleSearch() {
           await window.openChapter(item.book, item.chapter);
           const verseElement = message.querySelectorAll(".verse")[item.verse - 1];
 
-          if (verseElement) {
-            message.querySelectorAll(".verse.zuriel-search-highlight")
-              .forEach(function (element) {
-                element.classList.remove("zuriel-search-highlight");
-              });
-
-            verseElement.classList.add("zuriel-search-highlight");
-            verseElement.scrollIntoView({ behavior: "smooth", block: "center" });
+          if (!verseElement || typeof window.selectBibleVerse !== "function" ||
+              !window.selectBibleVerse(item.verse)) {
+            throw new Error("The selected verse could not be activated in the reader.");
           }
+          message.querySelectorAll(".verse.zuriel-search-highlight")
+            .forEach(function (element) {
+              element.classList.remove("zuriel-search-highlight");
+            });
+          verseElement.classList.add("zuriel-search-highlight");
         } catch (error) {
           status.textContent = "Unable to open search result: " + error.message;
         }
@@ -1173,6 +1184,10 @@ async function continueReading() {
 
   try {
     await openChapter(saved.book, saved.chapter);
+    if (Number.isInteger(saved.verse) && saved.verse > 0 &&
+        typeof window.selectBibleVerse === "function") {
+      window.selectBibleVerse(saved.verse);
+    }
   } catch (error) {
     message.textContent = "Unable to continue reading: " + error.message;
   }

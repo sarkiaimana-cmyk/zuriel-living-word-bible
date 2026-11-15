@@ -322,13 +322,13 @@
         if (!target) {
           throw new Error("Chapter opened, but verse " + selectedVerse + " is not present in the displayed chapter.");
         }
-        document.querySelectorAll("#message .verse.zuriel-nav-highlight").forEach(el => el.classList.remove("zuriel-nav-highlight"));
-        target.classList.add("zuriel-nav-highlight");
-        target.scrollIntoView({ behavior: "smooth", block: "center" });
-        const verseText = target.textContent.replace(/^\s*\d+\.?\s*/, "").trim();
-        if (window.ZurielStudy && typeof window.ZurielStudy.openForReference === "function") {
-          window.ZurielStudy.openForReference(selectedBook, selectedChapter, selectedVerse, verseText, "", -1);
+        if (typeof window.selectBibleVerse !== "function" ||
+            !window.selectBibleVerse(selectedVerse)) {
+          throw new Error("Chapter opened, but the selected verse could not be activated.");
         }
+        document.querySelectorAll("#message .verse.zuriel-nav-highlight")
+          .forEach(el => el.classList.remove("zuriel-nav-highlight"));
+        target.classList.add("zuriel-nav-highlight");
       }
       closeModal();
       launch.textContent = "📖  " + selectedBook + " " + selectedChapter + (selectedVerse ? ":" + selectedVerse : "") + "  ·  KJV";

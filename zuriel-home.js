@@ -1063,14 +1063,8 @@
         if (saved && typeof window.openChapter === "function") {
           await window.openChapter(saved.book, saved.chapter);
           if (Number.isInteger(saved.verse) && saved.verse > 0) {
-            const verses = document.querySelectorAll("#message .verse");
-            const target = Array.from(verses).find(function (item) {
-              const number = item.querySelector("strong");
-              return number && number.textContent.trim().replace(".", "") === String(saved.verse);
-            });
-            if (target) {
-              target.classList.add("zuriel-selected-verse");
-              target.scrollIntoView({ behavior: "smooth", block: "center" });
+            if (typeof window.selectBibleVerse === "function") {
+              window.selectBibleVerse(saved.verse);
             }
           }
         }
