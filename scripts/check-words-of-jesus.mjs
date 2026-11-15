@@ -30,6 +30,9 @@ const required = [
   ["Jesus reference compares the requested verse number", "String(verseNumber)"],
   ["connect to contextual study", "window.ZurielStudy.openForReference"],
   ["save teaching to personal library", "Words of Jesus — "],
+  ["expandable teaching details", 'element("details", undefined, "zuriel-jesus-details")'],
+  ["teaching title as an accessible expand control", 'summary.setAttribute("aria-label", "Expand teaching: " + item.title)'],
+  ["duplicate-save protection", "saved.bookmarks.some(entry => entry && entry.title === title)"],
   ["context reminder", "Read the surrounding passage"]
 ];
 for (const [label, fragment] of required) {
