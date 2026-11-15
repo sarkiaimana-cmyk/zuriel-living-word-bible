@@ -17,7 +17,7 @@ const result = linker.matchSelectedKJVWord(
   text,
   text,
   [{ start, end: start + 3, strongs: ["H0430"] }],
-  2
+  3
 );
 check("selected token resolves to its KJV Strong's annotation",
   result.ok && result.strongs.length === 1 && result.strongs[0] === "H0430");
