@@ -11,6 +11,7 @@
     readingPlans: "zuriel_reading_plan_progress_v1"
   };
   const MAX_FILE = 8 * 1024 * 1024;
+  const READING_PLAN_DURATIONS = { "meet-jesus-7": 7, "growing-in-faith-7": 7, "prayer-and-trust-7": 7 };
   let root, selectedBackup = null;
 
   function node(tag, cls, text) {
@@ -140,16 +141,17 @@
     const plans = {};
     Object.keys(value.plans).forEach(id => {
       const item = value.plans[id];
-      if (!/^[a-z0-9-]{1,80}$/.test(id) || !item || typeof item !== "object" || Array.isArray(item) ||
+      const duration = READING_PLAN_DURATIONS[id];
+      if (!duration || !item || typeof item !== "object" || Array.isArray(item) ||
           (item.startedAt !== null && item.startedAt !== undefined && (typeof item.startedAt !== "string" || item.startedAt.length > 50)) ||
-          !Array.isArray(item.completedDays) || item.completedDays.length > 366 ||
-          item.completedDays.some(day => !Number.isInteger(day) || day < 1 || day > 366)) {
+          !Array.isArray(item.completedDays) || item.completedDays.length > duration ||
+          item.completedDays.some(day => !Number.isInteger(day) || day < 1 || day > duration)) {
         throw new Error("The backup contains invalid reading-plan progress.");
       }
       plans[id] = { startedAt: item.startedAt || null, completedDays: Array.from(new Set(item.completedDays)) };
     });
     const activePlanId = value.activePlanId || null;
-    if (activePlanId && !/^[a-z0-9-]{1,80}$/.test(activePlanId)) throw new Error("The backup contains an invalid active reading plan.");
+    if (activePlanId && !Object.prototype.hasOwnProperty.call(READING_PLAN_DURATIONS, activePlanId)) throw new Error("The backup contains an invalid active reading plan.");
     return { schemaVersion: 1, activePlanId, plans };
   }
   function validateBackup(data) {
