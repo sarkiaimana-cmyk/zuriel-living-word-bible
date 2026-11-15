@@ -26,11 +26,11 @@ assert.deepEqual(JSON.parse(JSON.stringify(api.readState())), {
 
 store.set("zuriel_reading_plan_progress_v1", "{broken-json");
 assert.throws(() => api.readState(), /unreadable/);
-assert.equal(api.writeState(progress), false, "A new plan must not overwrite unreadable saved progress.");
+assert.equal(api.writeState({ schemaVersion: 1, activePlanId: null, plans: {} }), false, "A new plan must not overwrite unreadable saved progress.");
 assert.equal(store.get("zuriel_reading_plan_progress_v1"), "{broken-json", "Unreadable saved progress must remain untouched.");
 store.set("zuriel_reading_plan_progress_v1", JSON.stringify({ schemaVersion: 99, activePlanId: null, plans: {} }));
 assert.throws(() => api.readState(), /unsupported or invalid structure/);
-assert.equal(api.writeState(progress), false, "A new plan must not overwrite a future or invalid schema.");
+assert.equal(api.writeState({ schemaVersion: 1, activePlanId: null, plans: {} }), false, "A new plan must not overwrite a future or invalid schema.");
 assert.equal(JSON.parse(store.get("zuriel_reading_plan_progress_v1")).schemaVersion, 99);
 store.delete("zuriel_reading_plan_progress_v1");
 
