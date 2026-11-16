@@ -711,7 +711,7 @@
       { name:"Prayer and declaration", hue:45, mark:'<path d="M210 55C175 96 145 126 145 160A65 65 0 0 0 275 160C275 126 245 96 210 55Z" fill="none" stroke="#f4e6c5" stroke-width="8"/><path d="M178 155L200 177L245 128" fill="none" stroke="#d9bd79" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>' }
     ];
     const theme = themes[index % themes.length];
-    const words = String(heading || theme.name).split(/\\s+/);
+    const words = String(heading || theme.name).split(/\s+/);
     const rows = [];
     let row = "";
     words.forEach(function (word) {
