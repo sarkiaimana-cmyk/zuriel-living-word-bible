@@ -963,7 +963,7 @@ async function openChapter(book, chapter) {
 
     paragraph.addEventListener("click", function () {
       saveReadingPosition(book, chapter, index + 1);
-      selectVerseForGloryCard(index + 1, verse);
+      selectVerseForGloryCard(index + 1, displayVerseText);
       if (
         window.ZurielStudy &&
         typeof window.ZurielStudy.openForReference === "function"
