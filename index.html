@@ -1087,7 +1087,7 @@ window.getBibleVerseText = async function (reference) {
     throw new Error("Choose a valid verse or a passage of up to 80 verses.");
   }
   const text = verses.slice(first - 1, last).map((verse, index) =>
-    (first + index) + ". " + String(verse).replace(/^¶\\s*/, "")
+    (first + index) + ". " + String(verse).replace(/^¶\s*/, "")
   ).join("\n");
   const normalized = book.name + " " + chapter +
     (match[3] ? ":" + first + (last > first ? "-" + last : "") : "");
