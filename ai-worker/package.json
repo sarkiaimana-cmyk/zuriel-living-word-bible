@@ -1,0 +1,14 @@
+{
+  "name": "zuriel-ai-assistant-pilot",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/worker.test.mjs",
+    "check:scripture": "node scripts/prepare-scripture-assets.mjs --check",
+    "prepare:scripture": "node scripts/prepare-scripture-assets.mjs",
+    "deploy": "npm run prepare:scripture && wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.157.0"
+  }
+}
