@@ -5,6 +5,7 @@
     notes: "zuriel_personal_notes_v1",
     prayers: "zuriel_prayer_journal_v1",
     history: "zurielReadingHistory_v1",
+    recentlyOpenedChapters: "zurielRecentlyOpenedChapters-v1",
     position: "zurielLastReadingPosition",
     savedLessons: "zuriel_kingdom_life_saved_v1",
     completedLessons: "zuriel_kingdom_life_completed_v1",
@@ -89,6 +90,7 @@
       notes: readArray(KEYS.notes),
       prayers: readArray(KEYS.prayers),
       readingHistory: readArray(KEYS.history),
+      recentlyOpenedChapters: safeRecentChapters(readArray(KEYS.recentlyOpenedChapters)),
       lastReadingPosition: readPosition(),
       savedLessons: readArray(KEYS.savedLessons),
       completedLessons: readArray(KEYS.completedLessons),
@@ -262,6 +264,18 @@
     });
     return clean;
   }
+  function safeRecentChapters(value) {
+    if (value === undefined || value === null) return [];
+    if (!Array.isArray(value) || value.length > 5000) throw new Error("The backup contains an invalid recently opened chapter list.");
+    return value.map(item => {
+      if (!item || typeof item.book !== "string" || !item.book.trim() || item.book.length > 80 ||
+          !Number.isInteger(item.chapter) || item.chapter < 1 || item.chapter > 200 ||
+          (item.openedAt !== undefined && typeof item.openedAt !== "string")) {
+        throw new Error("The backup contains an invalid recently opened chapter entry.");
+      }
+      return { book: item.book.trim(), chapter: item.chapter, openedAt: item.openedAt || "" };
+    });
+  }
   function safeGloryVerseCards(value) {
     if (value === undefined || value === null) return [];
     if (!Array.isArray(value) || value.length > 5000) {
@@ -303,6 +317,7 @@
       notes: safeRecords(d.notes, "Saved insights and notes", 5000),
       prayers: safeRecords(d.prayers, "Prayer journal", 6000),
       readingHistory: Array.isArray(d.readingHistory) && d.readingHistory.length <= 5000 ? d.readingHistory : null,
+      recentlyOpenedChapters: safeRecentChapters(d.recentlyOpenedChapters),
       lastReadingPosition: d.lastReadingPosition === null ? null : d.lastReadingPosition,
       savedLessons: Array.isArray(d.savedLessons) && d.savedLessons.length <= 5000 ? d.savedLessons : null,
       completedLessons: Array.isArray(d.completedLessons) && d.completedLessons.length <= 5000 ? d.completedLessons : null,
@@ -376,6 +391,15 @@
     });
     return merged;
   }
+  function mergeRecentChapters(current, incoming) {
+    const map = new Map();
+    (current || []).concat(incoming || []).forEach(item => {
+      const key = item.book.trim().toLowerCase() + "|" + item.chapter;
+      const previous = map.get(key);
+      if (!previous || String(item.openedAt || "") > String(previous.openedAt || "")) map.set(key, item);
+    });
+    return Array.from(map.values()).sort((a, b) => String(b.openedAt || "").localeCompare(String(a.openedAt || ""))).slice(0, 100);
+  }
   function mergeGloryVerseCards(current, incoming) {
     const map = new Map();
     (current || []).concat(incoming || []).forEach(item => {
@@ -396,7 +420,7 @@
   }
   function countText(data) {
     return data.notes.length + " insights/notes • " + data.prayers.length + " prayer entries • " +
-      data.readingHistory.length + " reading records • " +
+      (data.readingHistory.length + data.recentlyOpenedChapters.length) + " reading records • " +
       (data.savedLessons.length + data.completedLessons.length) + " lesson-progress records • " +
       Object.keys(data.readingPlanProgress.plans).length + " reading plans • " +
       Object.keys(data.verseStudyNotes).length + " verse studies • " +
@@ -443,6 +467,7 @@
       notes: mergeRecords(current.notes, incoming.notes, item => item.id),
       prayers: mergeRecords(current.prayers, incoming.prayers, item => item.id),
       readingHistory: mergeRecords(current.readingHistory, incoming.readingHistory, item => item.book + "|" + item.chapter),
+      recentlyOpenedChapters: mergeRecentChapters(current.recentlyOpenedChapters, incoming.recentlyOpenedChapters),
       lastReadingPosition: current.lastReadingPosition || incoming.lastReadingPosition,
       savedLessons: mergeStrings(current.savedLessons, incoming.savedLessons),
       completedLessons: mergeStrings(current.completedLessons, incoming.completedLessons),
@@ -456,6 +481,7 @@
       [KEYS.notes]: next.notes.slice(0, 5000),
       [KEYS.prayers]: next.prayers.slice(0, 5000),
       [KEYS.history]: next.readingHistory.slice(0, 200),
+      [KEYS.recentlyOpenedChapters]: next.recentlyOpenedChapters,
       [KEYS.position]: next.lastReadingPosition,
       [KEYS.savedLessons]: next.savedLessons.slice(0, 5000),
       [KEYS.completedLessons]: next.completedLessons.slice(0, 5000),
