@@ -3,8 +3,18 @@ import assert from "node:assert/strict";
 import { handleRequest } from "../src/index.js";
 
 const origin = "https://localhost";
-const index = [{ name: "John", code: "JOH", chapters: 21 }, { name: "Psalms", code: "PSA", chapters: 150 }];
-const chapter = ["For God so loved the world.", "That whosoever believeth in him."];
+const index = [
+  { name: "John", code: "JOH", chapters: 21 },
+  { name: "Psalms", code: "PSA", chapters: 150 },
+  ...Array.from({ length: 64 }, (_, i) => ({
+    name: "Fixture Book " + (i + 1),
+    code: "X" + String(i).padStart(2, "0"),
+    chapters: 1
+  }))
+];
+const chapter = Array.from({ length: 17 }, (_, i) => "Fixture verse " + (i + 1));
+chapter[15] = "For God so loved the world.";
+chapter[16] = "That whosoever believeth in him.";
 function makeEnv(overrides = {}) {
   return {
     ALLOWED_ORIGINS: origin,
@@ -62,7 +72,7 @@ test("rejects unsupported references before calling the model", async () => {
 });
 
 test("rejects verse ranges beyond the available chapter", async () => {
-  const response = await handleRequest(request({ question: "Explain this.", reference: "John 3:1-3" }), makeEnv());
+  const response = await handleRequest(request({ question: "Explain this.", reference: "John 3:18" }), makeEnv());
   assert.equal(response.status, 400);
 });
 
