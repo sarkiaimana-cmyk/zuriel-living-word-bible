@@ -1147,6 +1147,20 @@
     verseText.setAttribute("aria-live", "polite");
     verseReference.setAttribute("aria-live", "polite");
 
+    /* Automatically refresh the home Scripture while the app is visible.
+       Manual Next remains available; rotation pauses in background tabs. */
+    const scriptureRotationTimer = window.setInterval(function () {
+      if (document.visibilityState === "hidden") return;
+      displayVerse(verseIndex + 1);
+      if (faithCardRefs.length) {
+        faithCardIndex = (faithCardIndex + 1) % faithCardRefs.length;
+        renderOpenBookFaithCard();
+      }
+    }, 15000);
+    window.addEventListener("pagehide", function () {
+      window.clearInterval(scriptureRotationTimer);
+    }, { once: true });
+
     /* SCRIPTURE-LINKED OPEN BOOK: use the curated faith response for the
        exact reference. Never manufacture a prayer or declaration when no
        matching entry exists. */
