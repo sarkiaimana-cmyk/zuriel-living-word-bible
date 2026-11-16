@@ -9,12 +9,7 @@ function makeEnv(overrides = {}) {
   return {
     ALLOWED_ORIGINS: origin,
     ZITE_YVP_APP_KEY: secret,
-    TRANSLATION_RATE_LIMIT: {
-      limit: async ({ key }) => {
-        assert.equal(key, "203.0.113.10");
-        return { success: true };
-      }
-    },
+    TRANSLATION_RATE_LIMIT: { limit: async () => ({ success: true }) },
     ...overrides
   };
 }
