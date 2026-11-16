@@ -640,6 +640,9 @@ function saveReadingPosition(book, chapter, verse) {
   }
 
   updateContinueReadingCard();
+  window.dispatchEvent(new CustomEvent("zuriel:reading-position-changed", {
+    detail: { book: book, chapter: chapter, verse: Number.isInteger(verse) ? verse : 1 }
+  }));
 }
 
 /* LOAD ALL 66 BOOKS */
