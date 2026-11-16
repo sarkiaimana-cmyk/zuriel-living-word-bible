@@ -26,6 +26,8 @@ assert.match(source, /TextToSpeech\.speak/,
   "Read-aloud must use the native speech plugin");
 assert.match(source, /localService === true/,
   "Only locally installed voices may be offered for offline playback");
+assert.match(source, /min-height:48px/,
+  "Audio controls must meet a comfortable Android touch target.");
 assert.match(source, /queueStrategy:\s*0/,
   "Each verse must replace any stale speech request");
 assert.match(source, /TextToSpeech\.stop/,
