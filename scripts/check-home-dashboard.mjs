@@ -64,3 +64,10 @@ if (failures.length) {
 } else {
   console.log("Home dashboard checks passed: one passage navigator, distinct declarations/devotional/saved destinations, preserved reading shortcuts and refreshed offline metadata.");
 }
+
+if (!source.includes("grid-template-columns: repeat(6,minmax(0,1fr));")) {
+  failures.push("The six primary navigation items must use all six available columns.");
+}
+if (source.includes("grid-template-columns: repeat(8,minmax(0,1fr));")) {
+  failures.push("The bottom navigation must not reserve two empty columns.");
+}
