@@ -7,7 +7,7 @@ const source = await readFile(new URL("../zuriel-backup.js", import.meta.url), "
 const marker = "window.ZurielBackup = { mount: mount };";
 assert.ok(source.includes(marker), "Backup module test seam has changed; review before updating this test.");
 const instrumented = source.replace(marker,
-  "window.__test = { encryptBackup, decryptBackup, validateBackup, applyRestore, collect, safeGloryVerseCards, mergeGloryVerseCards };");
+  "window.__test = { encryptBackup, decryptBackup, validateBackup, applyRestore, collect, safeGloryVerseCards, mergeGloryVerseCards, safeRecentChapters, mergeRecentChapters };");
 const store = new Map();
 const localStorage = {
   getItem: key => store.has(key) ? store.get(key) : null,
@@ -39,6 +39,7 @@ for (const key of [
   "zuriel_personal_notes_v1",
   "zuriel_prayer_journal_v1",
   "zurielReadingHistory_v1",
+  "zurielRecentlyOpenedChapters-v1",
   "zuriel_kingdom_life_saved_v1",
   "zuriel_kingdom_life_completed_v1",
   "zuriel-verse-study-notes-v1",
@@ -68,6 +69,7 @@ const sample = {
     notes: [{ id: "note-1", title: "Grace", text: "Saved insight", createdAt: "2026-11-14" }],
     prayers: [{ id: "prayer-1", title: "Family", text: "Prayer entry", createdAt: "2026-11-14" }],
     readingHistory: [{ book: "John", chapter: 3 }],
+    recentlyOpenedChapters: [{ book: "John", chapter: 3, openedAt: "2026-11-15T00:00:00.000Z" }, { book: "Genesis", chapter: 1, openedAt: "2026-11-14T00:00:00.000Z" }],
     lastReadingPosition: { book: "John", chapter: 3, verse: 16 },
     savedLessons: ["lesson-a"],
     completedLessons: ["lesson-b"],
@@ -95,6 +97,8 @@ await assert.rejects(() => api.decryptBackup({ ...encrypted, schemaVersion: 99 }
 
 const incoming = api.validateBackup(sample);
 assert.equal(incoming.notes.length, 1);
+assert.equal(incoming.recentlyOpenedChapters.length, 2);
+assert.throws(() => api.safeRecentChapters([{ book: "John", chapter: 0 }]), /invalid recently opened chapter entry/);
 assert.equal(Object.keys(incoming.verseStudyNotes).length, 1);
 assert.equal(Object.keys(incoming.wordHighlights).length, 1);
 assert.equal(incoming.personalLibrary.bookmarks.length, 1);
@@ -111,12 +115,14 @@ assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, read
 assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, readingPlanProgress: { schemaVersion: 1, activePlanId: "meet-jesus-7", plans: { "meet-jesus-7": { completedDays: [8] } } } } }), /reading-plan progress/);
 const olderBackup = JSON.parse(JSON.stringify(sample));
 olderBackup.schemaVersion = 1;
+delete olderBackup.data.recentlyOpenedChapters;
 delete olderBackup.data.readingPlanProgress;
 delete olderBackup.data.verseStudyNotes;
 delete olderBackup.data.wordHighlights;
 delete olderBackup.data.personalLibrary;
 delete olderBackup.data.gloryVerseCards;
 const legacyData = api.validateBackup(olderBackup);
+assert.deepEqual(JSON.parse(JSON.stringify(legacyData.recentlyOpenedChapters)), [], "Older backups remain restorable without active recent-chapter history.");
 assert.deepEqual(JSON.parse(JSON.stringify(legacyData.readingPlanProgress)), { schemaVersion: 1, activePlanId: null, plans: {} }, "Older backups remain restorable without reading-plan data.");
 assert.deepEqual(JSON.parse(JSON.stringify(legacyData.verseStudyNotes)), {}, "Older backups remain restorable without verse-study notes.");
 assert.deepEqual(JSON.parse(JSON.stringify(legacyData.wordHighlights)), {}, "Older backups remain restorable without highlights.");
@@ -134,6 +140,7 @@ store.set("zuriel_personal_notes_v1", JSON.stringify([
 ]));
 store.set("zuriel_prayer_journal_v1", "[]");
 store.set("zurielReadingHistory_v1", "[]");
+store.set("zurielRecentlyOpenedChapters-v1", JSON.stringify([{ book: "Psalms", chapter: 23, openedAt: "2026-11-16T00:00:00.000Z" }]));
 store.set("zurielLastReadingPosition", JSON.stringify({ book: "Psalms", chapter: 23 }));
 store.set("zuriel_kingdom_life_saved_v1", JSON.stringify(["lesson-a"]));
 store.set("zuriel_kingdom_life_completed_v1", "[]");
@@ -151,6 +158,10 @@ assert.deepEqual(JSON.parse(store.get("zuriel_kingdom_life_saved_v1")), ["lesson
 assert.deepEqual(JSON.parse(store.get("zuriel_kingdom_life_completed_v1")), ["lesson-b"]);
 assert.deepEqual(JSON.parse(store.get("zurielLastReadingPosition")), { book: "Psalms", chapter: 23 });
 assert.equal(merged.readingHistory.length, 1);
+const restoredRecent = JSON.parse(store.get("zurielRecentlyOpenedChapters-v1"));
+assert.equal(restoredRecent.length, 3, "Current and backed-up recently opened chapters are merged without duplicates.");
+assert.ok(restoredRecent.some(item => item.book === "John" && item.chapter === 3), "The backed-up current chapter history is restored.");
+assert.ok(restoredRecent.some(item => item.book === "Psalms" && item.chapter === 23), "Existing current chapter history is preserved.");
 const mergedPlans = JSON.parse(store.get("zuriel_reading_plan_progress_v1"));
 assert.equal(mergedPlans.activePlanId, "prayer-and-trust-7", "Existing active plan selection is preserved.");
 assert.deepEqual(mergedPlans.plans["meet-jesus-7"].completedDays, [1, 2, 3], "Reading plan progress merges without losing completed days.");
