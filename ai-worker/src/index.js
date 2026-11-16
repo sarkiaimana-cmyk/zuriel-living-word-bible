@@ -1,8 +1,9 @@
 const MODEL = "@cf/google/gemma-4-26b-a4b-it";
-const MAX_BODY_BYTES = 2048;
+const MAX_BODY_BYTES = 4096;
 const MAX_QUESTION_CHARS = 1200;
 const MAX_VERSES = 8;
 const MAX_OUTPUT_CHARS = 6000;
+const TURNSTILE_ACTION = "zuriel_ai_question";
 
 const JSON_HEADERS = {
   "content-type": "application/json; charset=utf-8",
@@ -31,11 +32,38 @@ function corsFor(request, env) {
   if (!origin || !allow.includes(origin)) return null;
   return {
     "access-control-allow-origin": origin,
-    "access-control-allow-methods": "POST, OPTIONS",
+    "access-control-allow-methods": "GET, POST, OPTIONS",
     "access-control-allow-headers": "Content-Type",
     "access-control-max-age": "600",
     "vary": "Origin"
   };
+}
+
+async function verifyTurnstile(token, env, clientIp, fetchImpl) {
+  if (typeof token !== "string" || !token.trim() || token.length > 2048) return false;
+  const hostnames = String(env.TURNSTILE_HOSTNAMES || "")
+    .split(",").map(value => value.trim().toLowerCase()).filter(Boolean);
+  if (!env.TURNSTILE_SECRET || !hostnames.length) return null;
+  const body = new URLSearchParams({
+    secret: env.TURNSTILE_SECRET,
+    response: token
+  });
+  if (clientIp && clientIp !== "unknown-client") body.set("remoteip", clientIp);
+  try {
+    const response = await fetchImpl("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      body,
+      signal: AbortSignal.timeout(8000)
+    });
+    if (!response.ok) return null;
+    const result = await response.json();
+    if (!result || result.success !== true) return false;
+    return hostnames.includes(String(result.hostname || "").toLowerCase()) &&
+      result.action === TURNSTILE_ACTION;
+  } catch {
+    return null;
+  }
 }
 
 async function readLimitedBody(request) {
@@ -158,15 +186,24 @@ const SYSTEM_PROMPT = [
   "Answer in a concise study format with: Main idea; Context and meaning; Reflection. Keep the whole response under 500 words."
 ].join(" ");
 
-export async function handleRequest(request, env) {
+export async function handleRequest(request, env, dependencies = {}) {
   const url = new URL(request.url);
-  if (url.pathname !== "/api/assistant") return json({ error: "Not found." }, 404);
+  if (url.pathname !== "/api/assistant" && url.pathname !== "/api/assistant/config") {
+    return json({ error: "Not found." }, 404);
+  }
   const cors = corsFor(request, env);
   if (!cors) return json({ error: "This app origin is not authorised for the pilot." }, 403);
   if (request.method === "OPTIONS") {
     return new Response(null, { status: 204, headers: cors });
   }
-  if (request.method !== "POST") {
+  if (url.pathname === "/api/assistant/config" && request.method === "GET") {
+    return json({
+      enabled: Boolean(env.TURNSTILE_SITE_KEY),
+      siteKey: env.TURNSTILE_SITE_KEY || null,
+      action: TURNSTILE_ACTION
+    }, 200, cors);
+  }
+  if (url.pathname !== "/api/assistant" || request.method !== "POST") {
     return json({ error: "Use POST for a study question." }, 405, cors);
   }
   if (!String(request.headers.get("Content-Type") || "").toLowerCase().startsWith("application/json")) {
@@ -188,16 +225,17 @@ export async function handleRequest(request, env) {
     return json({ error: "The request is not valid JSON." }, 400, cors);
   }
   if (!input || typeof input !== "object" || Array.isArray(input) ||
-      Object.keys(input).some(key => !["question", "reference"].includes(key))) {
-    return json({ error: "Only a question and one Scripture reference are accepted. Personal notes and other data are not accepted." }, 400, cors);
+      Object.keys(input).some(key => !["question", "reference", "turnstileToken"].includes(key))) {
+    return json({ error: "Only a question, one Scripture reference and a one-time security token are accepted. Personal notes and other data are not accepted." }, 400, cors);
   }
   const question = typeof input.question === "string" ? input.question.trim() : "";
   if (question.length < 3 || question.length > MAX_QUESTION_CHARS) {
     return json({ error: "Enter a question between 3 and 1,200 characters." }, 400, cors);
   }
 
-  if (!env.AI || !env.ASSETS || !env.AI_RATE_LIMIT) {
-    return json({ error: "The Zuriel AI pilot service is not configured." }, 503, cors);
+  if (!env.AI || !env.ASSETS || !env.AI_RATE_LIMIT ||
+      !env.TURNSTILE_SECRET || !env.TURNSTILE_SITE_KEY || !env.TURNSTILE_HOSTNAMES) {
+    return json({ error: "The Zuriel AI pilot service is not fully configured." }, 503, cors);
   }
 
   const clientKey = request.headers.get("CF-Connecting-IP") || "unknown-client";
@@ -208,6 +246,19 @@ export async function handleRequest(request, env) {
     }
   } catch {
     return json({ error: "The study assistant is temporarily unavailable. Please try again later." }, 503, cors);
+  }
+
+  const tokenValid = await verifyTurnstile(
+    input.turnstileToken,
+    env,
+    clientKey,
+    dependencies.fetch || globalThis.fetch
+  );
+  if (tokenValid === null) {
+    return json({ error: "The security check is temporarily unavailable. Please try again." }, 503, cors);
+  }
+  if (!tokenValid) {
+    return json({ error: "Please complete the security check again before asking your question." }, 403, cors);
   }
 
   try {
