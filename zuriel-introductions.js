@@ -1550,6 +1550,7 @@
 
     #zurielIntroduction .intro-outline {
       display:flex;
+      align-items:center;
       gap:10px;
       padding:8px 0;
       border-bottom:1px solid #ffffff20;
@@ -1613,7 +1614,7 @@
 
     @media (max-width:420px) {
       #zurielIntroduction .intro-figure { padding:6px; }
-      #zurielIntroduction .intro-image { max-height:220px; }
+      #zurielIntroduction .intro-image { max-height:220px; }\n      #zurielIntroduction .intro-chapter-image { width:76px;height:43px;flex-basis:76px; }
     }
   `;
 
