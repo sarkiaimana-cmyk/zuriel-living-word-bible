@@ -30,7 +30,8 @@ requireText('identityRead.addEventListener("click"', "Direct passage navigation"
 const titles = [...home.matchAll(/title: "([^"]+)", reference: "([^"]+)", wallpaper: (\d+) % homeWallpaperSet\.length/g)];
 if (titles.length < 50) failures.push("The identity sequence must contain at least 50 curated entries.");
 if (new Set(titles.map(item => item[1])).size !== titles.length) failures.push("Identity titles must be unique.");
-if (titles.some(item => Number(item[3]) < 0 || Number(item[3]) >= 5)) failures.push("Each identity must use one of the five curated wallpaper slots.");
+if (titles.some(item => Number(item[3]) < 0 || Number(item[3]) >= titles.length)) failures.push("Each identity must use a valid rotating wallpaper index.");
+if (!home.includes("% homeWallpaperSet.length")) failures.push("Wallpaper selection must wrap safely through the available image set.");
 if (!home.includes('wallpaper: 53 % homeWallpaperSet.length')) failures.push("The expanded identity sequence must include its final curated entry.");
 
 if (failures.length) {
