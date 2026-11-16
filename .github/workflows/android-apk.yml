@@ -2,6 +2,229 @@ name: Build Zuriel Android APK
 
 on:
   workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "bible-data.js"
+      - "zuriel-*.js"
+      - "sw.js"
+      - "kjv.72bec70fcd.json"
+      - "images/**"
+      - "package.json"
+      - "capacitor.config.ts"
+      - "scripts/**"
+      - ".github/workflows/android-apk.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Zuriel
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v4
+        with:
+          packages: "platform-tools platforms;android-36 build-tools;36.0.0"
+
+      - name: Install Capacitor
+        run: npm install
+
+      - name: Prepare offline web app
+        run: npm run build:web
+
+      - name: Syntax-check application JavaScript
+        run: for file in *.js; do node --check "$file"; done
+
+      - name: Validate study and open-book safeguards
+        run: node scripts/check-study-integrity.mjs
+      - name: Test exact KJV original-word linking
+        run: node scripts/test-original-word-linking.mjs
+      - name: Test Android version metadata
+        run: node scripts/test-android-version.mjs
+
+      - name: Validate streamlined home dashboard and distinct sections
+        run: node scripts/check-home-dashboard.mjs
+
+      - name: Validate guided growth and personal space
+        run: node scripts/check-growth-pathways.mjs
+
+      - name: Validate offline reading plan integration
+        run: node scripts/check-reading-plans.mjs
+
+      - name: Test reading plan progress and references
+        run: node scripts/test-reading-plans.mjs
+
+      - name: Validate personal backup and restore
+        run: node scripts/check-personal-backup.mjs
+
+      - name: Validate offline Bible Geography Centre
+        run: node scripts/check-bible-geography.mjs
+
+      - name: Validate Words of Jesus study centre
+        run: node scripts/check-words-of-jesus.mjs
+
+      - name: Validate Open Book Card Studio
+        run: node scripts/check-open-book-studio.mjs
+
+      - name: Check whether release signing is configured
+        id: signing_check
+        env:
+          ZURIEL_KEYSTORE_BASE64: ${{ secrets.ZURIEL_KEYSTORE_BASE64 }}
+          ZURIEL_KEYSTORE_PASSWORD: ${{ secrets.ZURIEL_KEYSTORE_PASSWORD }}
+          ZURIEL_KEY_ALIAS: ${{ secrets.ZURIEL_KEY_ALIAS }}
+          ZURIEL_KEY_PASSWORD: ${{ secrets.ZURIEL_KEY_PASSWORD }}
+        shell: bash
+        run: |
+          if [[ -n "$ZURIEL_KEYSTORE_BASE64" && -n "$ZURIEL_KEYSTORE_PASSWORD" && -n "$ZURIEL_KEY_ALIAS" && -n "$ZURIEL_KEY_PASSWORD" ]]; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+            echo "Stable release signing secrets are configured."
+          else
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "Stable signing is not configured yet; building the existing debug APK only."
+          fi
+
+      - name: Generate Android project
+        env:
+          ZURIEL_ANDROID_APP_ID: ${{ steps.signing_check.outputs.available == 'true' && 'com.zuriel.livingwordbible.release' || 'com.zuriel.livingwordbible.github' }}
+        run: npx cap add android
+
+      - name: Sync Android project
+        env:
+          ZURIEL_ANDROID_APP_ID: ${{ steps.signing_check.outputs.available == 'true' && 'com.zuriel.livingwordbible.release' || 'com.zuriel.livingwordbible.github' }}
+        run: npx cap sync android
+
+      - name: Set Android version from app metadata
+        run: node scripts/set-android-version.mjs
+
+      - name: Build standalone debug APK
+        working-directory: android
+        run: ./gradlew assembleDebug
+
+      - name: Prepare signed release APK
+        id: signed_release
+        if: steps.signing_check.outputs.available == 'true'
+        continue-on-error: true
+        working-directory: android
+        env:
+          ZURIEL_KEYSTORE_BASE64: ${{ secrets.ZURIEL_KEYSTORE_BASE64 }}
+          ZURIEL_KEYSTORE_PASSWORD: ${{ secrets.ZURIEL_KEYSTORE_PASSWORD }}
+          ZURIEL_KEY_ALIAS: ${{ secrets.ZURIEL_KEY_ALIAS }}
+          ZURIEL_KEY_PASSWORD: ${{ secrets.ZURIEL_KEY_PASSWORD }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          KEYSTORE="$RUNNER_TEMP/zuriel-release.jks"
+          # Ignore whitespace or stray clipboard characters, then validate the
+          # decoded PKCS12 keystore and expected alias before attempting signing.
+          echo "Step 1/3: decoding the protected keystore secret."
+          python3 - <<'PY'
+          import base64, os
+          alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+          raw = os.environ["ZURIEL_KEYSTORE_BASE64"]
+          clean = "".join(ch for ch in raw if ch in alphabet).rstrip("=")
+          clean += "=" * ((-len(clean)) % 4)
+          data = base64.b64decode(clean, validate=True)
+          if not data:
+              raise SystemExit("Keystore decode produced an empty file.")
+          if len(data) < 1024:
+              raise SystemExit(
+                  f"Decoded keystore is only {len(data)} bytes; this is not a complete "
+                  "PKCS12 signing file. Check the ZURIEL_KEYSTORE_BASE64 GitHub secret "
+                  "against the full local Base64 backup without sharing it."
+              )
+          path = os.path.join(os.environ["RUNNER_TEMP"], "zuriel-release.jks")
+          with open(path, "wb") as handle:
+              handle.write(data)
+          print(f"Decoded keystore file successfully ({len(data)} bytes).")
+          PY
+          test -s "$KEYSTORE"
+          echo "Step 2/3: validating PKCS12 format, password and alias."
+          keytool -list -keystore "$KEYSTORE" -storetype PKCS12 \
+            -storepass "$ZURIEL_KEYSTORE_PASSWORD" \
+            -alias "$ZURIEL_KEY_ALIAS"
+          echo "Step 3/3: validation passed; building signed release APK."
+          ./gradlew assembleRelease
+          BUILD_TOOLS="$ANDROID_HOME/build-tools/36.0.0"
+          UNSIGNED="app/build/outputs/apk/release/app-release-unsigned.apk"
+          ALIGNED="$RUNNER_TEMP/zuriel-release-aligned.apk"
+          OUTPUT="app/build/outputs/apk/release/Zuriel-Living-Word-Bible-release.apk"
+          "$BUILD_TOOLS/zipalign" -v -p 4 "$UNSIGNED" "$ALIGNED"
+          "$BUILD_TOOLS/apksigner" sign \
+            --ks "$KEYSTORE" \
+            --ks-key-alias "$ZURIEL_KEY_ALIAS" \
+            --ks-pass env:ZURIEL_KEYSTORE_PASSWORD \
+            --key-pass env:ZURIEL_KEY_PASSWORD \
+            --out "$OUTPUT" "$ALIGNED"
+          "$BUILD_TOOLS/apksigner" verify --verbose --print-certs "$OUTPUT"
+          rm -f "$KEYSTORE" "$ALIGNED"
+
+      - name: Verify signed APK package and version metadata
+        if: steps.signing_check.outputs.available == 'true' && steps.signed_release.outcome == 'success'
+        shell: bash
+        run: |
+          set -euo pipefail
+          APK="android/app/build/outputs/apk/release/Zuriel-Living-Word-Bible-release.apk"
+          BUILD_TOOLS="$ANDROID_HOME/build-tools/36.0.0"
+          BADGING="$("$BUILD_TOOLS/aapt" dump badging "$APK")"
+          EXPECTED_VERSION="$(node -p "JSON.parse(require('fs').readFileSync('version.json','utf8')).version")"
+          EXPECTED_CODE="$(node -e "const [a,b,c]=process.argv[1].split('.').map(Number); process.stdout.write(String(a*1000000+b*1000+c))" "$EXPECTED_VERSION")"
+          echo "$BADGING" | grep -F "package: name='com.zuriel.livingwordbible.release'"
+          echo "$BADGING" | grep -F "versionCode='$EXPECTED_CODE'"
+          echo "$BADGING" | grep -F "versionName='$EXPECTED_VERSION'"
+          {
+            echo '### Signed APK identity'
+            echo "$BADGING" | grep -E '^(package:|sdkVersion:|targetSdkVersion:)'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload Zuriel debug APK
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Zuriel-Living-Word-Bible-APK
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload signed Zuriel release APK
+        if: steps.signing_check.outputs.available == 'true' && steps.signed_release.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: Zuriel-Living-Word-Bible-Signed-APK
+          path: android/app/build/outputs/apk/release/Zuriel-Living-Word-Bible-release.apk
+          if-no-files-found: error
+          retention-days: 30
+ 
+      - name: Report Android release status
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "## Zuriel Android build"
+            echo ""
+            echo "- Debug APK: built and uploaded when the standalone debug build succeeds."
+            if [[ "${{ steps.signing_check.outputs.available }}" != "true" ]]; then
+              echo "- Signed release APK: not attempted because signing secrets are incomplete."
+            elif [[ "${{ steps.signed_release.outcome }}" == "success" ]]; then
+              echo "- Signed release APK: successfully prepared and uploaded."
+            else
+              echo "- Signed release APK: signing validation/build failed. The debug APK remains available; correct the keystore secret before publishing a signed release."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
   push:
     branches: [main]
     paths:
