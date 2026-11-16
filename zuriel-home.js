@@ -482,6 +482,28 @@
           scroll-behavior: auto;
         }
       }
+      #zurielHomeDashboard .home-daily-scripture-list {
+        display:grid;grid-template-columns:1fr;gap:10px;
+      }
+      #zurielHomeDashboard .home-daily-scripture {
+        min-width:0;padding:13px;border:1px solid #d6e1e9;border-radius:13px;
+        background:linear-gradient(145deg,#f8fbfd,#edf4f8);
+      }
+      #zurielHomeDashboard .home-daily-scripture-text {
+        margin:0;color:#203b56;font:400 16px/1.65 Georgia,serif;
+      }
+      #zurielHomeDashboard .home-daily-scripture-reference {
+        margin:8px 0 0;color:#174c78;font-size:12px;font-weight:700;
+      }
+      #zurielHomeDashboard .home-daily-scripture .home-button {
+        width:auto;min-width:150px;min-height:44px;margin-top:9px;padding:9px 13px;
+      }
+      @media(min-width:620px) {
+        #zurielHomeDashboard .home-daily-scripture-list {grid-template-columns:repeat(3,minmax(0,1fr));}
+        #zurielHomeDashboard .home-daily-scripture {display:flex;flex-direction:column;align-items:flex-start;}
+        #zurielHomeDashboard .home-daily-scripture .home-button {margin-top:auto;}
+      }
+
       /* OPEN-BOOK FAITH CARD — inspired by the supplied Zuriel artwork */
       #zurielHomeDashboard .zob-landscape {
         overflow:hidden;position:relative;padding:18px 12px 13px;border:2px solid #c9a958;
@@ -677,7 +699,76 @@
       }
     `;
 
+    const identityHeroStyle = document.createElement("style");
+    identityHeroStyle.textContent = `
+      #zurielHomeDashboard .home-identity-hero {
+        position:relative; isolation:isolate; overflow:hidden; min-height:340px;
+        display:flex; flex-direction:column; justify-content:center; align-items:flex-start;
+        gap:8px; padding:clamp(25px,6vw,42px) clamp(18px,5vw,34px);
+        border:1px solid #d9bd78; border-radius:24px;
+        background-color:#10213d;
+        background-image:linear-gradient(100deg,rgba(5,17,35,.88),rgba(8,29,49,.54) 68%,rgba(8,29,49,.28)),var(--zuriel-home-wallpaper);
+        background-size:cover; background-position:center;
+        box-shadow:0 16px 34px rgba(8,24,43,.24);
+        transition:background-image .35s ease,opacity .35s ease;
+      }
+      #zurielHomeDashboard .home-identity-hero::after {
+        content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+        background:linear-gradient(0deg,rgba(5,16,32,.30),transparent 58%);
+      }
+      #zurielHomeDashboard .home-identity-hero .home-eyebrow {
+        margin:0 0 5px;color:#ffe8b0;border-color:rgba(255,232,176,.55);
+        background:rgba(6,19,35,.36);letter-spacing:1.4px;
+      }
+      #zurielHomeDashboard .identity-kicker {
+        margin:5px 0 0;color:#f5d88e;font:700 12px/1.3 Arial,sans-serif;letter-spacing:2.4px;
+      }
+      #zurielHomeDashboard .identity-title {
+        margin:0;max-width:650px;color:#fff9eb;
+        font:700 clamp(30px,7vw,48px)/1.12 Georgia,serif;letter-spacing:-.6px;
+        text-shadow:0 3px 18px rgba(0,0,0,.35);
+      }
+      #zurielHomeDashboard .identity-verse {
+        max-width:620px;min-height:64px;margin:8px 0 0;padding:13px 15px;
+        border-left:3px solid #f0d38b;border-radius:0 12px 12px 0;
+        background:rgba(5,17,32,.55);color:#fffdf7;
+        font:400 clamp(17px,4.3vw,21px)/1.65 Georgia,serif;
+        text-shadow:0 1px 4px rgba(0,0,0,.35);
+        transition:opacity .28s ease;
+      }
+      #zurielHomeDashboard .identity-reference {
+        margin:0;color:#ffe2a0;font:700 14px/1.4 Arial,sans-serif;letter-spacing:.35px;
+      }
+      #zurielHomeDashboard .identity-actions {
+        display:flex;flex-wrap:wrap;gap:9px;width:100%;max-width:430px;margin-top:7px;
+      }
+      #zurielHomeDashboard .identity-actions .home-button {
+        flex:1 1 155px;width:auto;min-height:46px;margin:0;padding:11px 12px;
+      }
+      #zurielHomeDashboard .identity-actions .identity-next {
+        background:rgba(255,255,255,.94);color:#17314d;border-color:#f3e1b5;
+      }
+      #zurielHomeDashboard .home-identity-hero .home-tagline {
+        margin:10px 0 0;color:#ffe5a6;font:700 12px/1.4 Arial,sans-serif;letter-spacing:.3px;
+      }
+      #zurielHomeDashboard .identity-progress {
+        position:absolute;left:0;right:0;bottom:0;height:3px;
+        background:linear-gradient(90deg,#f3d58c,#fff1c8);opacity:.9;
+      }
+      @media(max-width:420px) {
+        #zurielHomeDashboard .home-identity-hero {min-height:330px;border-radius:19px;padding:24px 15px;}
+        #zurielHomeDashboard .identity-title {font-size:clamp(29px,8vw,38px);}
+        #zurielHomeDashboard .identity-verse {font-size:17px;min-height:72px;}
+        #zurielHomeDashboard .identity-actions {display:grid;grid-template-columns:1fr 1fr;}
+        #zurielHomeDashboard .identity-actions .home-button {font-size:12px;padding:10px 7px;}
+      }
+      @media(prefers-reduced-motion:reduce) {
+        #zurielHomeDashboard .identity-verse,
+        #zurielHomeDashboard .home-identity-hero {transition:none;}
+      }
+    `;
     document.head.appendChild(style);
+    document.head.appendChild(identityHeroStyle);
 
     /* TOP RETURN BAR */
 
@@ -697,23 +788,18 @@
     dashboard.id = "zurielHomeDashboard";
 
     dashboard.innerHTML = `
-      <section class="home-hero">
-        <p class="home-eyebrow">✦ OFFLINE-FIRST BIBLE • 66 BOOKS</p>
-        <p class="home-tagline">
-          His Words.. My Life.. My Victory.
-        </p>
-
-        <h1 class="home-brand">
-          Zuriel Living Word Bible
-        </h1>
-
-        <p class="home-subtitle">
-          Read God's Word. Discover its meaning. Live in its truth.
-        </p>
-
-        <button class="home-button" id="zurielHomeOpenBible">
-          📖 Open the Bible
-        </button>
+      <section class="home-hero home-identity-hero" id="zurielIdentityHero" aria-label="Who God is — rotating Scripture">
+        <p class="home-eyebrow">✦ WHO HE IS • THE LIVING WORD</p>
+        <p class="identity-kicker">HE IS...</p>
+        <h1 class="identity-title" id="zurielIdentityTitle">My Healer</h1>
+        <p class="identity-verse" id="zurielIdentityVerse" aria-live="polite">Loading the exact King James Version Scripture…</p>
+        <p class="identity-reference" id="zurielIdentityReference">Psalm 103:3</p>
+        <div class="identity-actions">
+          <button class="home-button" id="zurielIdentityRead" type="button">📖 Read This Scripture</button>
+          <button class="home-button identity-next" id="zurielIdentityNext" type="button" aria-label="Show the next name and Scripture">Next Revelation →</button>
+        </div>
+        <p class="home-tagline">His Words.. My life.. My Victory</p>
+        <span class="identity-progress" id="zurielIdentityProgress" aria-hidden="true"></span>
       </section>
 
       <section class="home-card home-continue-card">
@@ -785,6 +871,28 @@
         </details>
       </section>
 
+      <section class="home-card home-daily-scriptures" id="zurielHomeVerseCollection" aria-labelledby="zurielHomeVerseCollectionTitle">
+        <h2 id="zurielHomeVerseCollectionTitle">📖 Three Scriptures to Carry Today</h2>
+        <p class="home-section-note">Three complete passages, loaded from the offline King James Version. Open any verse to read its chapter.</p>
+        <div class="home-daily-scripture-list">
+          <article class="home-daily-scripture" data-reference="Psalm 23:1">
+            <p class="home-daily-scripture-text">Loading Psalm 23:1…</p>
+            <p class="home-daily-scripture-reference">Psalm 23:1</p>
+            <button class="home-button" type="button" data-home-read-reference="Psalm 23:1">Read in Bible</button>
+          </article>
+          <article class="home-daily-scripture" data-reference="Isaiah 41:10">
+            <p class="home-daily-scripture-text">Loading Isaiah 41:10…</p>
+            <p class="home-daily-scripture-reference">Isaiah 41:10</p>
+            <button class="home-button" type="button" data-home-read-reference="Isaiah 41:10">Read in Bible</button>
+          </article>
+          <article class="home-daily-scripture" data-reference="Philippians 4:13">
+            <p class="home-daily-scripture-text">Loading Philippians 4:13…</p>
+            <p class="home-daily-scripture-reference">Philippians 4:13</p>
+            <button class="home-button" type="button" data-home-read-reference="Philippians 4:13">Read in Bible</button>
+          </article>
+        </div>
+      </section>
+
       <section class="home-card home-explore-card" aria-labelledby="zurielExploreTitle">
         <h2 id="zurielExploreTitle">Explore Zuriel</h2>
         <p class="home-section-note">Each space has its own purpose. Open the one you need.</p>
@@ -809,6 +917,7 @@
       "https://images.unsplash.com/photo-1759182391264-73c1be282907?auto=format&fit=crop&fm=jpg&q=82&w=1800",
       "https://images.unsplash.com/photo-1595132169434-097c5ae1a145?auto=format&fit=crop&fm=jpg&q=82&w=1800"
     ];
+    homeWallpaperSet.push("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&fm=jpg&q=82&w=1800");
     const homeWallpaperIndex = Math.floor(Date.now() / 86400000) % homeWallpaperSet.length;
     dashboard.style.setProperty("--zuriel-home-wallpaper", 'url("' + homeWallpaperSet[homeWallpaperIndex] + '")');
 
@@ -1083,6 +1192,136 @@
 
     /* Passage selection is handled by the single full-screen reader navigator. */
 
+    /* CONTINUOUS IDENTITY SCRIPTURE HERO.
+       Each title, exact KJV verse and photographic background move as one unit. */
+    const identityScriptures = [
+      { title: "My Healer", reference: "Psalm 103:3", wallpaper: 0 % homeWallpaperSet.length },
+      { title: "My Comforter", reference: "John 14:16", wallpaper: 1 % homeWallpaperSet.length },
+      { title: "My Provider", reference: "Genesis 22:14", wallpaper: 2 % homeWallpaperSet.length },
+      { title: "Everlasting Father", reference: "Isaiah 9:6", wallpaper: 3 % homeWallpaperSet.length },
+      { title: "The Glorious King", reference: "Psalm 24:10", wallpaper: 4 % homeWallpaperSet.length },
+      { title: "My Shepherd", reference: "Psalm 23:1", wallpaper: 5 % homeWallpaperSet.length },
+      { title: "My Refuge", reference: "Psalm 46:1", wallpaper: 6 % homeWallpaperSet.length },
+      { title: "My Strength", reference: "Isaiah 40:29", wallpaper: 7 % homeWallpaperSet.length },
+      { title: "My Peace", reference: "John 14:27", wallpaper: 8 % homeWallpaperSet.length },
+      { title: "My Light", reference: "Psalm 27:1", wallpaper: 9 % homeWallpaperSet.length },
+      { title: "My Redeemer", reference: "Job 19:25", wallpaper: 10 % homeWallpaperSet.length },
+      { title: "My Rock", reference: "Psalm 18:2", wallpaper: 11 % homeWallpaperSet.length },
+      { title: "My Fortress", reference: "Psalm 91:2", wallpaper: 12 % homeWallpaperSet.length },
+      { title: "My Shield", reference: "Genesis 15:1", wallpaper: 13 % homeWallpaperSet.length },
+      { title: "My Hope", reference: "Romans 15:13", wallpaper: 14 % homeWallpaperSet.length },
+      { title: "My Wisdom", reference: "James 1:5", wallpaper: 15 % homeWallpaperSet.length },
+      { title: "My Salvation", reference: "Isaiah 12:2", wallpaper: 16 % homeWallpaperSet.length },
+      { title: "My Deliverer", reference: "Psalm 34:17", wallpaper: 17 % homeWallpaperSet.length },
+      { title: "My Sustainer", reference: "Hebrews 1:3", wallpaper: 18 % homeWallpaperSet.length },
+      { title: "My Advocate", reference: "1 John 2:1", wallpaper: 19 % homeWallpaperSet.length },
+      { title: "My Intercessor", reference: "Hebrews 7:25", wallpaper: 20 % homeWallpaperSet.length },
+      { title: "My High Priest", reference: "Hebrews 4:14", wallpaper: 21 % homeWallpaperSet.length },
+      { title: "My Friend", reference: "John 15:15", wallpaper: 22 % homeWallpaperSet.length },
+      { title: "The Bread of Life", reference: "John 6:35", wallpaper: 23 % homeWallpaperSet.length },
+      { title: "The Good Shepherd", reference: "John 10:11", wallpaper: 24 % homeWallpaperSet.length },
+      { title: "The Resurrection and the Life", reference: "John 11:25", wallpaper: 25 % homeWallpaperSet.length },
+      { title: "The Way, the Truth and the Life", reference: "John 14:6", wallpaper: 26 % homeWallpaperSet.length },
+      { title: "The True Vine", reference: "John 15:1", wallpaper: 27 % homeWallpaperSet.length },
+      { title: "The King of Kings", reference: "1 Timothy 6:15", wallpaper: 28 % homeWallpaperSet.length },
+      { title: "The Lord of Lords", reference: "Deuteronomy 10:17", wallpaper: 29 % homeWallpaperSet.length },
+      { title: "The Ancient of Days", reference: "Daniel 7:9", wallpaper: 30 % homeWallpaperSet.length },
+      { title: "Faithful and True", reference: "Revelation 19:11", wallpaper: 31 % homeWallpaperSet.length },
+      { title: "The Alpha and Omega", reference: "Revelation 22:13", wallpaper: 32 % homeWallpaperSet.length },
+      { title: "Immanuel — God With Us", reference: "Matthew 1:23", wallpaper: 33 % homeWallpaperSet.length },
+      { title: "Wonderful Counsellor", reference: "Isaiah 9:6", wallpaper: 34 % homeWallpaperSet.length },
+      { title: "Mighty God", reference: "Isaiah 9:6", wallpaper: 35 % homeWallpaperSet.length },
+      { title: "The Door", reference: "John 10:9", wallpaper: 36 % homeWallpaperSet.length },
+      { title: "The Living Water", reference: "John 7:37", wallpaper: 37 % homeWallpaperSet.length },
+      { title: "The Lamb of God", reference: "John 1:29", wallpaper: 38 % homeWallpaperSet.length },
+      { title: "The Bright Morning Star", reference: "Revelation 22:16", wallpaper: 39 % homeWallpaperSet.length },
+      { title: "The Author and Finisher of Faith", reference: "Hebrews 12:2", wallpaper: 40 % homeWallpaperSet.length },
+      { title: "The Lord Who Sanctifies", reference: "Exodus 31:13", wallpaper: 41 % homeWallpaperSet.length },
+      { title: "The God Who Sees Me", reference: "Genesis 16:13", wallpaper: 42 % homeWallpaperSet.length },
+      { title: "The God of All Comfort", reference: "2 Corinthians 1:3", wallpaper: 43 % homeWallpaperSet.length },
+      { title: "The Father of Mercies", reference: "2 Corinthians 1:3", wallpaper: 44 % homeWallpaperSet.length },
+      { title: "The Everlasting God", reference: "Isaiah 40:28", wallpaper: 45 % homeWallpaperSet.length },
+      { title: "The Holy One", reference: "Isaiah 43:15", wallpaper: 46 % homeWallpaperSet.length },
+      { title: "The Righteous Judge", reference: "2 Timothy 4:8", wallpaper: 47 % homeWallpaperSet.length },
+      { title: "The Giver of Every Good Gift", reference: "James 1:17", wallpaper: 48 % homeWallpaperSet.length },
+      { title: "The Unchanging One", reference: "Malachi 3:6", wallpaper: 49 % homeWallpaperSet.length },
+      { title: "The Lord Our Banner", reference: "Exodus 17:15", wallpaper: 50 % homeWallpaperSet.length },
+      { title: "The Lord Who Gives Peace", reference: "Judges 6:24", wallpaper: 51 % homeWallpaperSet.length },
+      { title: "The Lord Our Righteousness", reference: "Jeremiah 23:6", wallpaper: 52 % homeWallpaperSet.length },
+      { title: "The Lord Who Is There", reference: "Ezekiel 48:35", wallpaper: 53 % homeWallpaperSet.length }
+    ];
+    const identityHero = document.getElementById("zurielIdentityHero");
+    const identityTitle = document.getElementById("zurielIdentityTitle");
+    const identityVerse = document.getElementById("zurielIdentityVerse");
+    const identityReference = document.getElementById("zurielIdentityReference");
+    const identityRead = document.getElementById("zurielIdentityRead");
+    const identityNext = document.getElementById("zurielIdentityNext");
+    const identityProgress = document.getElementById("zurielIdentityProgress");
+    let identityIndex = Math.floor(Date.now() / 86400000) % identityScriptures.length;
+    let identityRenderToken = 0;
+
+    async function renderIdentityScripture(nextIndex) {
+      identityIndex = (nextIndex + identityScriptures.length) % identityScriptures.length;
+      const item = identityScriptures[identityIndex];
+      const token = ++identityRenderToken;
+      identityHero.style.opacity = "0.82";
+      identityTitle.textContent = item.title;
+      identityReference.textContent = item.reference;
+      identityVerse.style.opacity = "0";
+      identityProgress.style.width = ((identityIndex + 1) / identityScriptures.length * 100) + "%";
+      dashboard.style.setProperty("--zuriel-home-wallpaper", 'url("' + homeWallpaperSet[item.wallpaper] + '")');
+      const nextItem = identityScriptures[(identityIndex + 1) % identityScriptures.length];
+      const preload = new Image();
+      preload.decoding = "async";
+      preload.src = homeWallpaperSet[nextItem.wallpaper];
+      try {
+        if (typeof window.getBibleVerseText !== "function") {
+          throw new Error("The offline KJV Scripture service is not ready.");
+        }
+        const passage = await window.getBibleVerseText(item.reference);
+        if (token !== identityRenderToken) return;
+        const exactText = String(passage && passage.text || "").replace(/^\d+\.\s*/, "").trim();
+        if (!exactText) throw new Error("The exact KJV verse was not returned.");
+        identityVerse.textContent = "“" + exactText + "”";
+      } catch (error) {
+        if (token !== identityRenderToken) return;
+        identityVerse.textContent = "Open this reference in Read Scripture to view the exact King James Version text.";
+      }
+      identityVerse.style.opacity = "1";
+      identityHero.style.opacity = "1";
+    }
+
+    function openIdentityReference() {
+      const item = identityScriptures[identityIndex];
+      const match = item.reference.match(/^(.+)\s+(\d+):(\d+)$/);
+      if (!match || typeof window.openChapter !== "function") return;
+      const bookName = canonicalBookName(match[1]);
+      navigate("read");
+      const bookSelector = document.getElementById("book");
+      if (bookSelector) bookSelector.value = bookName;
+      window.openChapter(bookName, Number(match[2])).then(function () {
+        if (typeof window.selectBibleVerse !== "function" ||
+            !window.selectBibleVerse(Number(match[3]))) {
+          throw new Error("The selected identity Scripture could not be opened.");
+        }
+      }).catch(function (error) {
+        console.error("Zuriel identity Scripture:", error);
+      });
+    }
+
+    identityRead.addEventListener("click", openIdentityReference);
+    identityNext.addEventListener("click", function () {
+      renderIdentityScripture(identityIndex + 1);
+    });
+    renderIdentityScripture(identityIndex);
+    const identityRotationTimer = window.setInterval(function () {
+      if (document.visibilityState === "hidden") return;
+      renderIdentityScripture(identityIndex + 1);
+    }, 15000);
+    window.addEventListener("pagehide", function () {
+      window.clearInterval(identityRotationTimer);
+    }, { once: true });
+
     /* CHANGING HOME SCRIPTURE */
 
     const verseText = document.getElementById("zurielHomeVerse");
@@ -1279,6 +1518,47 @@
         }
       });
     }
+
+    /* THREE SIMULTANEOUS HOME VERSES.
+       Text always comes from the bundled offline KJV; never substitute a paraphrase. */
+    const dailyVerseCards = dashboard.querySelectorAll("[data-home-read-reference]");
+    dailyVerseCards.forEach(function (button) {
+      button.addEventListener("click", async function () {
+        const match = String(button.dataset.homeReadReference || "").match(/^(.+)\s+(\d+):(\d+)$/);
+        if (!match || typeof window.openChapter !== "function") return;
+        const bookName = canonicalBookName(match[1]);
+        button.disabled = true;
+        try {
+          navigate("read");
+          const selector = document.getElementById("book");
+          if (selector) selector.value = bookName;
+          await window.openChapter(bookName, Number(match[2]));
+          if (typeof window.selectBibleVerse !== "function" ||
+              !window.selectBibleVerse(Number(match[3]))) {
+            throw new Error("The selected Home Scripture could not be opened.");
+          }
+        } catch (error) {
+          console.error("Zuriel Home Scripture collection:", error);
+        } finally {
+          button.disabled = false;
+        }
+      });
+    });
+    dashboard.querySelectorAll(".home-daily-scripture").forEach(async function (card) {
+      const reference = card.dataset.reference;
+      const textNode = card.querySelector(".home-daily-scripture-text");
+      try {
+        if (typeof window.getBibleVerseText !== "function") {
+          throw new Error("The offline Bible service is unavailable.");
+        }
+        const passage = await window.getBibleVerseText(reference);
+        const exactText = String(passage && passage.text || "").replace(/^\d+\.\s*/, "").trim();
+        if (!exactText) throw new Error("No exact KJV verse text was returned.");
+        textNode.textContent = exactText;
+      } catch (error) {
+        textNode.textContent = "This offline Scripture could not be loaded. Open the Bible reader and try again.";
+      }
+    });
 
     /* START ON HOME */
 

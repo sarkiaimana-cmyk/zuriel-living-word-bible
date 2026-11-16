@@ -28,6 +28,13 @@ requireText(home, "grid-template-columns: repeat(6,minmax(0,1fr))", "The six-des
 requireText(home, "linear-gradient(180deg,#f5f2e9 0%,#edf3f8 48%,#e8eff7 100%)", "The bright ivory and blue home background");
 requireText(home, "His Words.. My life.. My Victory", "The approved Open Book card headline");
 requireText(home, "window.getBibleVerseText(verse.reference)", "Open Book exact offline KJV passage retrieval");
+requireText(home, 'id="zurielHomeVerseCollection"', "Three simultaneously visible Home Scriptures");
+requireText(home, 'data-reference="Psalm 23:1"', "First offline Home Scripture");
+requireText(home, 'data-reference="Isaiah 41:10"', "Second offline Home Scripture");
+requireText(home, 'data-reference="Philippians 4:13"', "Third offline Home Scripture");
+requireText(home, 'window.getBibleVerseText(reference)', "Exact offline KJV text for every Home Scripture card");
+requireText(home, 'data-home-read-reference', "Direct navigation from each Home Scripture card");
+
 requireText(home, "faithCardRenderToken", "Protection against out-of-order Scripture loads");
 requireText(home, "window.setInterval(function ()", "Automatic home Scripture rotation");
 requireText(home, 'document.visibilityState === "hidden"', "Pause automatic Scripture rotation when the app is in the background");
