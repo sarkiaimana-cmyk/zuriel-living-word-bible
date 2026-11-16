@@ -60,7 +60,7 @@ function clearHarness(failOnLegacy = false) {
   };
   const sandbox = { window: {}, localStorage };
   vm.runInNewContext('const STORAGE_KEY = "zurielRecentlyOpenedChapters-v1";\n' +
-    clearFunction + '\\nwindow.__clearHistory = clearHistory;', sandbox, { timeout: 1000 });
+    clearFunction + '\nwindow.__clearHistory = clearHistory;', sandbox, { timeout: 1000 });
   return { clear: sandbox.window.__clearHistory, store };
 }
 const clearSuccess = clearHarness();
