@@ -230,7 +230,7 @@
           (item.verseColor && !validColor(item.verseColor)) ||
           (item.words !== undefined && (!item.words || typeof item.words !== "object" || Array.isArray(item.words) ||
             Object.keys(item.words).length > 200 ||
-            Object.keys(item.words).some(word => !/^\\d{1,3}$/.test(word) || !validColor(item.words[word]))))) {
+            Object.keys(item.words).some(word => !/^\d{1,3}$/.test(word) || !validColor(item.words[word]))))) {
         throw new Error("The backup contains an invalid word-highlight record.");
       }
       clean[key] = { verseColor: item.verseColor || "", words: { ...(item.words || {}) } };
