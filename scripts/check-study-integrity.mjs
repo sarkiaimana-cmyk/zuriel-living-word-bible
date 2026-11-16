@@ -132,8 +132,17 @@ if (study.includes("verseElement.parentNode.insertBefore(contextCard")) failures
 
 const homeReferences = [...home.matchAll(/reference:\s*"([^"]+)"/g)].map(match => match[1].toLowerCase());
 const faithReferences = new Set([...faith.matchAll(/["']?reference["']?\s*:\s*["']([^"']+)["']/g)].map(match => match[1].toLowerCase()));
+const identityBlock = home.match(/const identityScriptures = \[([\s\S]*?)\n    \];/);
+const identityReferences = new Set(identityBlock
+  ? [...identityBlock[1].matchAll(/reference:\s*"([^"]+)"/g)].map(match => match[1].toLowerCase())
+  : []);
 for (const reference of homeReferences) {
-  if (!faithReferences.has(reference)) failures.push(["home faith coverage: " + reference, "no exact Scripture-linked response"]);
+  // Identity-hero entries are Scripture-only rotating slides, not Open Book
+  // devotional records; validate their exact offline KJV references below,
+  // while requiring faith responses only for other home-card references.
+  if (!identityReferences.has(reference) && !faithReferences.has(reference)) {
+    failures.push(["home faith coverage: " + reference, "no exact Scripture-linked response"]);
+  }
   const match = reference.match(/^(.+?)\s+(\d+):(\d+)$/);
   if (match) {
     const requestedName = match[1].toLowerCase() === "psalm" ? "Psalms" : match[1];
