@@ -6,7 +6,7 @@
   "use strict";
 
   const STORAGE_KEY = "zurielRecentlyOpenedChapters-v1";
-  const MAX_ITEMS = 100;
+  const MAX_ITEMS = 500;
 
   function readItems() {
     try {
