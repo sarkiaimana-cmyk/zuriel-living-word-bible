@@ -115,6 +115,11 @@ assert.deepEqual(JSON.parse(JSON.stringify(legacyData.readingPlanProgress)), { s
 assert.deepEqual(JSON.parse(JSON.stringify(legacyData.verseStudyNotes)), {}, "Older backups remain restorable without verse-study notes.");
 assert.deepEqual(JSON.parse(JSON.stringify(legacyData.wordHighlights)), {}, "Older backups remain restorable without highlights.");
 assert.deepEqual(JSON.parse(JSON.stringify(legacyData.personalLibrary)), { prayers: [], notes: [], bookmarks: [] }, "Older backups remain restorable without saved-library data.");
+const emptyPositionSample = JSON.parse(JSON.stringify(sample));
+emptyPositionSample.data.lastReadingPosition = null;
+api.applyRestore(api.validateBackup(emptyPositionSample));
+assert.equal(store.has("zurielLastReadingPosition"), false, "An empty reading position must remove the key instead of storing invalid JSON null.");
+assert.equal(api.collect().lastReadingPosition, null, "A backup without a reading position must remain readable after restore.");
 
 store.set("zuriel_personal_notes_v1", JSON.stringify([
   { id: "note-1", title: "Existing version", text: "Keep this", createdAt: "2026-11-13" },
