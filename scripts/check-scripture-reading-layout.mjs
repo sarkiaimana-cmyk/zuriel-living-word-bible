@@ -11,7 +11,13 @@ const verseStart = css.lastIndexOf("#zurielReaderStudyLayout > #message .verse {
 const verseEnd = css.indexOf("}", verseStart);
 assert.ok(verseStart >= 0 && verseEnd > verseStart);
 const verseRule = css.slice(verseStart, verseEnd);
-for (const declaration of ["width:100%", "max-width:100%", "min-width:0", "text-align:left", "white-space:normal", "overflow-wrap:anywhere"])
+const sharedWidthStart = css.indexOf("#zurielReaderStudyLayout > #message > *,");
+const sharedWidthEnd = css.indexOf("}", sharedWidthStart);
+assert.ok(sharedWidthStart >= 0 && sharedWidthEnd > sharedWidthStart);
+const sharedWidthRule = css.slice(sharedWidthStart, sharedWidthEnd);
+for (const declaration of ["width:100%", "max-width:100%", "min-width:0"])
+  assert.ok(sharedWidthRule.includes(declaration), "Missing full-width container declaration: " + declaration);
+for (const declaration of ["text-align:left", "white-space:normal", "overflow-wrap:anywhere"])
   assert.ok(verseRule.includes(declaration), "Missing full-width verse declaration: " + declaration);
 const panelStart = css.indexOf("#zurielStudyPanel {");
 const panelEnd = css.indexOf("}", panelStart);
