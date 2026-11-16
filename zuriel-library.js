@@ -841,7 +841,9 @@
               link.href = url; link.download = fileName; link.style.display = "none";
               document.body.appendChild(link); link.click(); link.remove();
               setTimeout(() => URL.revokeObjectURL(url),30000);
-              status.textContent = exportButton.id === "zgsShareImage"\n                ? "Direct image sharing is not supported here, so the PNG was saved to your Downloads folder."\n                : "Your PNG image was saved to your Downloads folder. You can open it from your device files.";
+              status.textContent = exportButton.id === "zgsShareImage"
+                ? "Direct image sharing is not supported here, so the PNG was saved to your Downloads folder."
+                : "Your PNG image was saved to your Downloads folder. You can open it from your device files.";
             }
           } catch (error) {
             if (error.name !== "AbortError") status.textContent = error.message || "Image export could not be completed on this device.";
