@@ -1,6 +1,6 @@
 # Zuriel AI Assistant — safety and architecture specification
 
-**Status: foundation defined; no AI provider, API key, backend, or live chat feature is connected.**
+**Status: foundation defined; a stateless Cloudflare Workers AI backend pilot is under review in PR #85. It is not deployed, no provider credentials are configured, and no live chat feature is connected to the app.**
 
 ## Product purpose
 
@@ -12,6 +12,18 @@ The assistant must preserve the distinction between:
 3. **AI explanation** — generated interpretation or summary, clearly labelled as AI-generated and linked to the evidence it used.
 
 Never blend generated wording into a Scripture quotation or present an AI paraphrase as a Bible translation.
+
+## First backend pilot scope
+
+The first pilot is deliberately narrower than the full assistant vision:
+- One reader-selected KJV reference at a time, limited to eight verses.
+- A short question about that passage; the server retrieves the exact text from chapter assets generated from Zuriel's bundled KJV source.
+- The model returns an explanation only. Exact Scripture is returned in a separate field and displayed separately from generated text.
+- The server rejects generated Bible references outside the selected passage.
+- No topic-only search, cross-reference generation, translation comparison, original-language claims, chat history, notes, prayer entries, testimony, or backup uploads.
+- No answer is simulated when the service is unavailable, unconfigured, rate-limited, or out of free quota.
+
+This pilot scope is not the final assistant specification. Further capabilities must be added only with their own source retrieval and citation validation.
 
 ## Required experience
 
