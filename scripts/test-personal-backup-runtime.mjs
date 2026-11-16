@@ -93,7 +93,13 @@ await assert.rejects(() => api.decryptBackup({ ...encrypted, schemaVersion: 99 }
 
 const incoming = api.validateBackup(sample);
 assert.equal(incoming.notes.length, 1);
+assert.equal(Object.keys(incoming.verseStudyNotes).length, 1);
+assert.equal(Object.keys(incoming.wordHighlights).length, 1);
+assert.equal(incoming.personalLibrary.bookmarks.length, 1);
 assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, notes: [{ id: "", title: "Bad", text: "Invalid" }] } }), /valid ID/);
+assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, wordHighlights: { "John|3|16": { words: { "1": "not-a-colour" } } } } }), /invalid word-highlight/);
+assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, verseStudyNotes: { "John|3|16": { note: "x".repeat(12001) } } } }), /invalid verse-study note/);
+assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, personalLibrary: { bookmarks: [null] } } }), /invalid My Saved Library entry/);
 assert.throws(() => api.validateBackup({ ...sample, app: "Other app" }), /recognised Zuriel/);
 assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, readingPlanProgress: { schemaVersion: 1, activePlanId: "meet-jesus-7", plans: { "meet-jesus-7": { completedDays: [0] } } } } }), /reading-plan progress/);
 assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, readingPlanProgress: { schemaVersion: 1, activePlanId: "unknown-plan", plans: { "unknown-plan": { completedDays: [1] } } } } }), /reading-plan progress/);
