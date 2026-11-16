@@ -908,7 +908,7 @@ async function openChapter(book, chapter) {
   verses.forEach(function (verse, index) {
     const rawVerseText = String(verse);
     const paragraphStart = rawVerseText.startsWith("¶");
-    const displayVerseText = rawVerseText.replace(/^¶\\s*/, "");
+    const displayVerseText = rawVerseText.replace(/^¶\s*/, "");
     const paragraph = document.createElement("p");
     paragraph.className = paragraphStart ? "verse verse-paragraph-start" : "verse";
     paragraph.dataset.verseNumber = String(index + 1);
@@ -919,7 +919,7 @@ async function openChapter(book, chapter) {
 
     paragraph.appendChild(number);
 
-    const wordParts = String(verse).match(/\S+|\s+/g) || [];
+    const wordParts = displayVerseText.match(/\S+|\s+/g) || [];
     let wordIndex = 0;
     wordParts.forEach(function (part) {
       if (/^\s+$/.test(part)) {
