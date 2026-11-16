@@ -36,6 +36,9 @@ if (!source.includes("for (let chapterNumber = 1; chapterNumber <= book.chapters
 if (!source.includes("image.src = createChapterArtwork(bookName, chapterNumber, description)")) failures.push("chapter-guide images are not assigned from offline artwork");
 if (!source.includes('image.loading = "lazy"')) failures.push("chapter-guide artwork must load lazily to protect mobile performance");
 if (!source.includes("intro-chapter-image")) failures.push("chapter-guide image styling is missing");
+if (!source.includes('image.alt = bookName + " chapter " + chapterNumber + " illustration"')) failures.push("chapter-guide images must have descriptive alternative text");
+if (!source.includes('return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg)')) failures.push("chapter-guide artwork must be generated locally as offline SVG");
+if (/fetch\\s*\\(|XMLHttpRequest/.test(source)) failures.push("book and chapter artwork must not require a network request");
 if (!source.includes("image.src = book.image || createBookArtwork(bookName, book)")) failures.push("every book introduction must render an image, even without a supplied photo");
 if (!source.includes("image.onerror = function ()")) failures.push("a missing local image must fall back to offline artwork");
 if (failures.length) {
