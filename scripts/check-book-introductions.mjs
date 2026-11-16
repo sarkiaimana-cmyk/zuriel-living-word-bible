@@ -56,7 +56,7 @@ try {
   assert.ok(first.startsWith("data:image/svg+xml;charset=utf-8,"));
   assert.notEqual(first, second, "Each chapter must have its own generated artwork.");
   const svg = decodeURIComponent(first.split(",")[1]);
-  assert.ok(svg.includes("Song &amp; Solomon"), "Book labels must be escaped for SVG.");
+  assert.ok(svg.includes("SONG &amp; SOLOMON"), "Book labels must be escaped for SVG.");
   assert.ok(svg.includes("Love &lt;joy&gt; &amp; grace"), "Chapter descriptions must be escaped for SVG.");
   assert.ok(svg.includes("CHAPTER 1"));
 } catch (error) {
