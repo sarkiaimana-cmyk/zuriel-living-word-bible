@@ -58,16 +58,16 @@ if (!backup.includes("zuriel_reading_plan_progress_v1") ||
 // Validate every guided reading passage against the actual bundled 66-book KJV.
 // This catches misspelled books, missing chapters and verse ranges that run past a chapter.
 try {
-  const readerMapMatch = index.match(/const bookCodes = (\\{[\\s\\S]*?\\n\\};)/);
+  const readerMapMatch = index.match(/const bookCodes = (\{[\s\S]*?\n\};)/);
   if (!readerMapMatch) throw new Error("Reader book-code map is missing.");
-  const readerMap = JSON.parse(readerMapMatch[1].replace(/;\\s*$/, ""));
-  const bookEntries = [...bookDataSource.matchAll(/\\{\\s*name:\\s*"([^"]+)",\\s*chapters:\\s*(\\d+)\\s*\\}/g)]
+  const readerMap = JSON.parse(readerMapMatch[1].replace(/;\s*$/, ""));
+  const bookEntries = [...bookDataSource.matchAll(/\{\s*name:\s*"([^"]+)",\s*chapters:\s*(\d+)\s*\}/g)]
     .map(match => ({ name: match[1], chapters: Number(match[2]) }));
   if (bookEntries.length !== 66) throw new Error("Offline Bible index must contain all 66 books.");
   const kjvData = JSON.parse(kjvSource);
   if (Object.keys(kjvData).length !== 66) throw new Error("Offline KJV source must contain all 66 books.");
   const bookLookup = new Map(bookEntries.map(book => [book.name.toLowerCase(), book]));
-  const planMatch = plans.match(/const PLANS = (\\[[\\s\\S]*?\\n  \\]);/);
+  const planMatch = plans.match(/const PLANS = (\[[\s\S]*?\n  \]);/);
   if (!planMatch) throw new Error("Curated reading-plan data could not be isolated.");
   const curatedPlans = vm.runInNewContext("(" + planMatch[1] + ")", {}, { timeout: 1000 });
   if (!Array.isArray(curatedPlans) || !curatedPlans.length) throw new Error("No curated reading plans were found.");
@@ -78,9 +78,9 @@ try {
     }
     for (const day of plan.days) {
       const reference = String(day[0] || "");
-      const match = reference.match(/^(.+?)\\s+(\\d+)(?::(\\d+))?(?:-(\\d+))?$/);
+      const match = reference.match(/^(.+?)\s+(\d+)(?::(\d+))?(?:-(\d+))?$/);
       if (!match) throw new Error(plan.title + " has a malformed passage reference: " + reference);
-      const book = bookLookup.get(match[1].toLowerCase().replace(/\\s+/g, " ").trim());
+      const book = bookLookup.get(match[1].toLowerCase().replace(/\s+/g, " ").trim());
       if (!book) throw new Error(plan.title + " refers to an unknown Bible book: " + match[1]);
       const chapterNumber = Number(match[2]);
       if (chapterNumber < 1 || chapterNumber > book.chapters) {
