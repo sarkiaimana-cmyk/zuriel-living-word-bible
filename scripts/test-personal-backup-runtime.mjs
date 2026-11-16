@@ -73,7 +73,7 @@ const sample = {
     lastReadingPosition: { book: "John", chapter: 3, verse: 16 },
     savedLessons: ["lesson-a"],
     completedLessons: ["lesson-b"],
-    readingPlanProgress: { schemaVersion: 1, activePlanId: "meet-jesus-7", plans: { "meet-jesus-7": { startedAt: "2026-11-15T00:00:00.000Z", completedDays: [1, 2] } } },
+    readingPlanProgress: { schemaVersion: 1, activePlanId: "walk-with-jesus-30", plans: { "meet-jesus-7": { startedAt: "2026-11-15T00:00:00.000Z", completedDays: [1, 2] }, "walk-with-jesus-30": { startedAt: "2026-11-15T00:00:00.000Z", completedDays: [1, 30] } } },
     verseStudyNotes: { "John|3|16": { title: "Grace", note: "God's love", application: "Trust in Christ", updated: "2026-11-15T00:00:00.000Z" } },
     wordHighlights: { "John|3|16": { verseColor: "#f5d76e", words: { "1": "#f5d76e" } } },
     personalLibrary: {
@@ -120,6 +120,8 @@ assert.throws(() => api.validateBackup({ ...sample, app: "Other app" }), /recogn
 assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, readingPlanProgress: { schemaVersion: 1, activePlanId: "meet-jesus-7", plans: { "meet-jesus-7": { completedDays: [0] } } } } }), /reading-plan progress/);
 assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, readingPlanProgress: { schemaVersion: 1, activePlanId: "unknown-plan", plans: { "unknown-plan": { completedDays: [1] } } } } }), /reading-plan progress/);
 assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, readingPlanProgress: { schemaVersion: 1, activePlanId: "meet-jesus-7", plans: { "meet-jesus-7": { completedDays: [8] } } } } }), /reading-plan progress/);
+assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, readingPlanProgress: { schemaVersion: 1, activePlanId: "walk-with-jesus-30", plans: { "walk-with-jesus-30": { completedDays: [31] } } } } }), /reading-plan progress/);
+assert.equal(api.validateBackup(sample).readingPlanProgress.plans["walk-with-jesus-30"].completedDays.length, 2, "The 30-day plan must survive backup validation.");
 const olderBackup = JSON.parse(JSON.stringify(sample));
 olderBackup.schemaVersion = 1;
 delete olderBackup.data.recentlyOpenedChapters;
