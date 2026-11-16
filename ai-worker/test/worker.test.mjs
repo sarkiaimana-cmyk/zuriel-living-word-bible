@@ -226,7 +226,7 @@ test("exposes only the public Turnstile site key in client configuration", async
   assert.equal(data.enabled, true);
   assert.equal(data.siteKey, "test-site-key");
   assert.equal(data.action, "zuriel_ai_question");
-  assert.doesNotHaveProperty(data, "secret");
+  assert.equal(Object.hasOwn(data, "secret"), false);
 });
 
 test("supports an approved preflight request", async () => {
