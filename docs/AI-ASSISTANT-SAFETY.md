@@ -19,6 +19,7 @@ The first pilot is deliberately narrower than the full assistant vision:
 - One reader-selected KJV reference at a time, limited to eight verses.
 - A short question about that passage; the server retrieves the exact text from chapter assets generated from Zuriel's bundled KJV source.
 - The model returns an explanation only. Exact Scripture is returned in a separate field and displayed separately from generated text.
+- Each request requires a fresh Turnstile token verified server-side against the configured hostname and action.
 - The server rejects generated Bible references outside the selected passage.
 - No topic-only search, cross-reference generation, translation comparison, original-language claims, chat history, notes, prayer entries, testimony, or backup uploads.
 - No answer is simulated when the service is unavailable, unconfigured, rate-limited, or out of free quota.
@@ -53,7 +54,7 @@ This pilot scope is not the final assistant specification. Further capabilities 
 - Any future feature that shares personal content must be opt-in, narrowly scoped, clearly explained, and revocable.
 - Do not include secrets, provider keys, signing credentials, or private tokens in browser JavaScript, the service worker, repository files, APK assets, logs, or chat messages.
 - If a hosted model is selected, all provider calls must go through a server-side proxy. The client must never receive the provider secret.
-- Apply request size limits, rate limits, timeouts, safe error handling, and abuse protection at the proxy.
+- Apply request size limits, rate limits, timeouts, safe error handling, and abuse protection at the proxy. Public pilot requests also require mandatory server-side Turnstile validation; CORS is not authentication.
 - Minimise retention. Make conversation history opt-in; provide a clear delete action. Do not persist sensitive prompts in analytics or diagnostic logs.
 - Do not add advertising, tracking, or unrelated analytics to the assistant.
 - Do not claim conversations are private from a provider unless the selected provider's current terms and configuration have been verified.
@@ -101,7 +102,7 @@ A backend hosting plan must also be selected. Do not place a paid or secret-depe
 - Provider keys never appear in client bundles, APK assets, logs or responses.
 - Prompt-injection strings in user and retrieved content cannot override safeguards or access private data.
 - Offline mode leaves reader, search, reading plans and personal space usable.
-- Rate-limit, timeout, malformed response and provider outage paths are handled without crashing the app.
+- Rate-limit, timeout, malformed response, Turnstile failure/replay and provider outage paths are handled without crashing the app.
 - Conversation deletion and retention settings behave as documented.
 - Accessibility: keyboard navigation, screen-reader labels, readable contrast and responsive mobile layout.
 
