@@ -7,7 +7,7 @@ const end = source.indexOf("\`;", start);
 assert.ok(start >= 0 && end > start);
 const css = source.slice(start, end);
 assert.ok(css.includes("grid-template-columns:minmax(0,1fr);"));
-const verseStart = css.indexOf("#zurielReaderStudyLayout > #message .verse {");
+const verseStart = css.lastIndexOf("#zurielReaderStudyLayout > #message .verse {");
 const verseEnd = css.indexOf("}", verseStart);
 assert.ok(verseStart >= 0 && verseEnd > verseStart);
 const verseRule = css.slice(verseStart, verseEnd);
