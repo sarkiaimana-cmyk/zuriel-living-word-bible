@@ -24,6 +24,10 @@ requireMatch(history, /MAX_ITEMS = 500/,
   "History must remain bounded to protect local device storage.");
 requireMatch(history, /Your saved notes and bookmarks are unchanged/,
   "Clearing history must explicitly preserve other personal study data.");
+requireMatch(history, /textContent = "View all history"/,
+  "Home must provide a direct route to the complete chapter history.");
+requireMatch(history, /ZurielPersonalSpace\.openProgress\(\)/,
+  "The View all history action must open the full progress history.");
 requireMatch(history, /textContent = item\.book \+ " " \+ item\.chapter/,
   "History labels must be rendered as text, not injected markup.");
 
