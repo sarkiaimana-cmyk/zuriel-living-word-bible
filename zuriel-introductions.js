@@ -1614,7 +1614,8 @@
 
     @media (max-width:420px) {
       #zurielIntroduction .intro-figure { padding:6px; }
-      #zurielIntroduction .intro-image { max-height:220px; }\n      #zurielIntroduction .intro-chapter-image { width:76px;height:43px;flex-basis:76px; }
+      #zurielIntroduction .intro-image { max-height:220px; }
+      #zurielIntroduction .intro-chapter-image { width:76px;height:43px;flex-basis:76px; }
     }
   `;
 
