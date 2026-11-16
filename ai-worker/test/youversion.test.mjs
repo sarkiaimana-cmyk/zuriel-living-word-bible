@@ -79,10 +79,10 @@ test("lists only English Bible versions licensed to the registered YouVersion ap
 });
 
 test("passes a validated pagination token to the licensed English Bible list", async () => {
-  const response = await send(request("/api/youversion/bibles?next_page_token=next_page-2"), makeEnv(),
+  const response = await send(request("/api/youversion/bibles?next_page_token=next%2Bpage%3D%3D"), makeEnv(),
     async url => {
       const parsed = new URL(url);
-      assert.equal(parsed.searchParams.get("next_page_token"), "next_page-2");
+      assert.equal(parsed.searchParams.get("next_page_token"), "next+page==");
       return Response.json({ data: [], next_page_token: null });
     });
   assert.equal(response.status, 200);
