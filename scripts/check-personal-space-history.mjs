@@ -8,7 +8,7 @@ assert.match(source, /mergeChapterHistory\(legacyHistory\)/,
   "Progress must combine current and legacy chapter history.");
 assert.match(source, /const key=book\.toLowerCase\(\)\+"\|"\+chapter/,
   "Combined history must de-duplicate book/chapter pairs.");
-assert.match(source, /merged\.slice\(0,100\)/,
+assert.match(source, /merged\.slice\(0,500\)/,
   "Combined history must remain bounded.");
 assert.match(source, /await window\.openChapter\(item\.book,item\.chapter\)/,
   "Progress history entries must reopen the exact chapter through the Bible reader.");
