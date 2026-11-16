@@ -1524,7 +1524,7 @@
     const dailyVerseCards = dashboard.querySelectorAll("[data-home-read-reference]");
     dailyVerseCards.forEach(function (button) {
       button.addEventListener("click", async function () {
-        const match = String(button.dataset.homeReadReference || "").match(/^(.+)\\s+(\\d+):(\\d+)$/);
+        const match = String(button.dataset.homeReadReference || "").match(/^(.+)\s+(\d+):(\d+)$/);
         if (!match || typeof window.openChapter !== "function") return;
         const bookName = canonicalBookName(match[1]);
         button.disabled = true;
@@ -1552,7 +1552,7 @@
           throw new Error("The offline Bible service is unavailable.");
         }
         const passage = await window.getBibleVerseText(reference);
-        const exactText = String(passage && passage.text || "").replace(/^\\d+\\.\\s*/, "").trim();
+        const exactText = String(passage && passage.text || "").replace(/^\d+\.\s*/, "").trim();
         if (!exactText) throw new Error("No exact KJV verse text was returned.");
         textNode.textContent = exactText;
       } catch (error) {
