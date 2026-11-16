@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test test/worker.test.mjs",
+    "test": "node --test test/*.test.mjs",
     "check:scripture": "node scripts/prepare-scripture-assets.mjs --check",
     "prepare:scripture": "node scripts/prepare-scripture-assets.mjs",
     "deploy": "npm run prepare:scripture && wrangler deploy"
