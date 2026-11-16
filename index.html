@@ -623,9 +623,20 @@ function updateContinueReadingCard() {
 }
 
 function saveReadingPosition(book, chapter, verse) {
+  let savedVerse = Number.isInteger(verse) && verse > 0 ? verse : 1;
+  if (!(Number.isInteger(verse) && verse > 0)) {
+    try {
+      const previous = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+      if (previous && previous.book === book && previous.chapter === chapter &&
+          Number.isInteger(previous.verse) && previous.verse > 0) {
+        savedVerse = previous.verse;
+      }
+    } catch (error) {
+      // A damaged previous position must not prevent the current chapter from opening.
+    }
+  }
   try {
-    const position = { book: book, chapter: chapter };
-    if (Number.isInteger(verse) && verse > 0) position.verse = verse;
+    const position = { book: book, chapter: chapter, verse: savedVerse };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(position));
     try {
       const history = JSON.parse(localStorage.getItem("zurielReadingHistory_v1") || "[]");
@@ -644,7 +655,7 @@ function saveReadingPosition(book, chapter, verse) {
 
   updateContinueReadingCard();
   window.dispatchEvent(new CustomEvent("zuriel:reading-position-changed", {
-    detail: { book: book, chapter: chapter, verse: Number.isInteger(verse) ? verse : 1 }
+    detail: { book: book, chapter: chapter, verse: savedVerse }
   }));
 }
 
