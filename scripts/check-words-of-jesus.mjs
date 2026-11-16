@@ -24,6 +24,16 @@ const required = [
   ["Sermon on the Mount", "The Beatitudes"],
   ["cross and resurrection", "Jesus is the resurrection and the life"],
   ["Great Commission", "The Great Commission"],
+  ["Lord's Prayer", "The Lord's Prayer"],
+  ["Golden Rule", "The Golden Rule"],
+  ["treasure in heaven", "Lay up treasure in heaven"],
+  ["abiding in Christ", "Abide in the vine"],
+  ["new birth", "Born of the Spirit"],
+  ["living water", "Rivers of living water"],
+  ["parable of the sower", "The parable of the sower"],
+  ["Good Samaritan", "The Good Samaritan"],
+  ["service to people in need", "Serve Christ by serving the least"],
+  ["watchfulness", "Watch and be ready"],
   ["search control", "Search a teaching, theme or Scripture reference"],
   ["theme filter", "Filter teachings by theme"],
   ["open reference in Bible reader", "window.openChapter(book, chapter)"],
@@ -54,7 +64,7 @@ const sectionEnd = library.indexOf('if (page === "saved")', sectionStart);
 const section = sectionStart >= 0 && sectionEnd > sectionStart ? library.slice(sectionStart, sectionEnd) : "";
 const topicCount = (section.match(/category:/g) || []).length;
 const referenceCount = (section.match(/refs:\[/g) || []).length;
-if (topicCount < 20) failures.push("Expected at least 20 curated Jesus teaching themes; found " + topicCount + ".");
+if (topicCount < 40) failures.push("Expected at least 40 curated Jesus teaching themes; found " + topicCount + ".");
 if (referenceCount < 20) failures.push("Expected Scripture reference collections for the teaching themes.");
 
 // Resolve every curated Words of Jesus reference against the actual bundled KJV.
