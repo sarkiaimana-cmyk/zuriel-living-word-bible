@@ -1009,6 +1009,12 @@ async function openChapter(book, chapter) {
 
   status.textContent = "Now reading " + book + " chapter " + chapter + ".";
 
+  // Record every successfully rendered chapter, including normal reader navigation.
+  if (window.ZurielRecentlyOpened &&
+      typeof window.ZurielRecentlyOpened.recordChapter === "function") {
+    window.ZurielRecentlyOpened.recordChapter(book, chapter);
+  }
+
   message.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
