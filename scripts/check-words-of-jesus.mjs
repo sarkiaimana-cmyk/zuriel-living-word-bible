@@ -36,7 +36,11 @@ const required = [
   ["expandable teaching details", 'element("details", undefined, "zuriel-jesus-details")'],
   ["teaching title as an accessible expand control", 'summary.setAttribute("aria-label", "Expand teaching: " + item.title)'],
   ["duplicate-save protection", "saved.bookmarks.some(entry => entry && entry.title === title)"],
-  ["context reminder", "Read the surrounding passage"]
+  ["context reminder", "Read the surrounding passage"],
+  ["reference opening progress feedback", 'count.textContent = "Opening " + reference'],
+  ["successful reference opening feedback", 'count.textContent = "Opened " + reference'],
+  ["visible reference opening failure feedback", 'count.textContent = "Could not open " + reference'],
+  ["unavailable reader feedback", "The Bible reader is not ready yet. Please try again."]
 ];
 for (const [label, fragment] of required) {
   if (!library.includes(fragment)) failures.push(label + " is missing.");
