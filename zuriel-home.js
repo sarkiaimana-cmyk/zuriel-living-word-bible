@@ -688,7 +688,7 @@
         background-image:linear-gradient(100deg,rgba(5,17,35,.88),rgba(8,29,49,.54) 68%,rgba(8,29,49,.28)),var(--zuriel-home-wallpaper);
         background-size:cover; background-position:center;
         box-shadow:0 16px 34px rgba(8,24,43,.24);
-        transition:background-image .35s ease;
+        transition:background-image .35s ease,opacity .35s ease;
       }
       #zurielHomeDashboard .home-identity-hero::after {
         content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
@@ -745,9 +745,8 @@
         #zurielHomeDashboard .home-identity-hero {transition:none;}
       }
     `;
-    document.head.appendChild(identityHeroStyle);
-
     document.head.appendChild(style);
+    document.head.appendChild(identityHeroStyle);
 
     /* TOP RETURN BAR */
 
@@ -1172,6 +1171,7 @@
       identityIndex = (nextIndex + identityScriptures.length) % identityScriptures.length;
       const item = identityScriptures[identityIndex];
       const token = ++identityRenderToken;
+      identityHero.style.opacity = "0.82";
       identityTitle.textContent = item.title;
       identityReference.textContent = item.reference;
       identityVerse.style.opacity = "0";
@@ -1195,6 +1195,7 @@
         identityVerse.textContent = "Open this reference in Read Scripture to view the exact King James Version text.";
       }
       identityVerse.style.opacity = "1";
+      identityHero.style.opacity = "1";
     }
 
     function openIdentityReference() {
