@@ -1155,7 +1155,7 @@ window.ZurielBibleSearch = {
               book: book.name,
               chapter: chapterIndex + 1,
               verse: verseIndex + 1,
-              text: verseText
+              text: String(verseText).replace(/^¶\s*/, "")
             });
 
             if (matches.length >= maximum) return matches;
