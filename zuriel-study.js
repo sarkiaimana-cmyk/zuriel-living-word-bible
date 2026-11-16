@@ -1019,7 +1019,7 @@
           position:fixed;
           left:12px;
           right:12px;
-          bottom:calc(12px + env(safe-area-inset-bottom));
+          bottom:calc(68px + env(safe-area-inset-bottom));
           top:auto;
           z-index:1000;
           width:auto;
