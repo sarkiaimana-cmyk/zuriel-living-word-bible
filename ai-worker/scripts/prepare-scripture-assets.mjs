@@ -48,8 +48,9 @@ for (const book of books) {
   for (let i = 0; i < chapters.length; i++) {
     const verses = chapters[i];
     if (!Array.isArray(verses) || !verses.length ||
-        verses.some(verse => typeof verse !== "string" || !verse.trim())) {
-      throw new Error("Missing or invalid verses in " + book.name + " " + (i + 1));
+        verses.some(verse => typeof verse !== "string" || !verse.trim() ||
+          verse.includes("\uFFFD") || /[\u0000-\u0008\u000B\u000C\u000E-\u001F]/.test(verse))) {
+      throw new Error("Missing, corrupted or invalid verse text in " + book.name + " " + (i + 1));
     }
     chapterCount++;
     verseCount += verses.length;
@@ -64,6 +65,22 @@ if (Object.keys(bookCodes).length !== 66) throw new Error("Book-code map must co
 if (chapterCount !== 1189 || verseCount !== 31102) {
   throw new Error("KJV source totals do not match the expected 66-book, 1,189-chapter, 31,102-verse edition.");
 }
+// Anchor samples protect against an accidentally substituted or damaged
+// Scripture dataset while the full structure/count checks protect completeness.
+const integritySamples = [
+  ["Genesis", 1, 1, "In the beginning God created the heaven and the earth."],
+  ["Psalms", 23, 1, "A Psalm of David. The LORD [is] my shepherd; I shall not want."],
+  ["John", 3, 16, "¶ For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life."],
+  ["Revelation", 22, 21, "The grace of our Lord Jesus Christ [be] with you all. Amen."]
+];
+for (const [bookName, chapter, verse, expected] of integritySamples) {
+  const code = bookCodes[bookName];
+  const actual = bible[code] && bible[code][chapter - 1] && bible[code][chapter - 1][verse - 1];
+  if (actual !== expected) {
+    throw new Error("KJV accuracy anchor mismatch at " + bookName + " " + chapter + ":" + verse + ": " + JSON.stringify(actual));
+  }
+}
+
 if (!checkOnly) {
   await mkdir(temporaryRoot, { recursive: true });
   await writeFile(path.join(temporaryRoot, "scripture-index.json"), JSON.stringify(index), "utf8");
