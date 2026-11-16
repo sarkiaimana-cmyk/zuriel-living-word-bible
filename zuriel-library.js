@@ -10,6 +10,25 @@
 
   const STORAGE_KEY = "zuriel_personal_library_v1";
 
+  // Audio is playable only when both the composition and the actual recording
+  // have documented rights for the requested use. A song title alone is never
+  // treated as permission to stream or download a recording.
+  function canPlayWorshipAudio(song) {
+    if (!song || song.rightsStatus !== "verified" ||
+        song.compositionRights !== "cleared" ||
+        song.recordingRights !== "cleared" ||
+        song.streamingAllowed !== true ||
+        typeof song.audioUrl !== "string" ||
+        typeof song.rightsSource !== "string" || !song.rightsSource.trim()) return false;
+    try {
+      const url = new URL(song.audioUrl);
+      return url.protocol === "https:";
+    } catch (error) {
+      return false;
+    }
+  }
+
+
   const originalLibrary = {
     devotionals: [
       { title: "Hope in God", verse: "Romans 15:13", message: "Let your heart remain anchored in God. His faithfulness is greater than every circumstance.", prayer: "Father, fill my heart with hope, peace and joy through the Holy Spirit." },
@@ -892,12 +911,22 @@
       if (page === "worship") {
         content.appendChild(card(
           "🎶 SS&S — Songs, Hymns & Worship",
-          "A complete worship-study library: every entry opens into its biblical foundation, explanation, reflection, prayer and practical worship response. Full lyrics are included only when they are verified as public domain or supplied under an appropriate licence."
+          "A complete worship-study library: every entry opens into its biblical foundation, explanation, reflection, prayer and practical worship response. Full lyrics are included only when they are verified as public domain or supplied under an appropriate licence.",
+          "Worship study guides are available now. Audio playback is enabled only for recordings with verified composition rights, recording rights and streaming permission. No recording is streamed or downloaded without those checks."
         ));
 
         const collections = ["All Songs", "Traditional Hymn", "Gospel Hymn", "Modern Hymn", "Praise & Chorus", "Scripture Song", "Contemporary Worship"];
+        const searchInput = element("input");
+        searchInput.type = "search";
+        searchInput.maxLength = 100;
+        searchInput.placeholder = "Search songs, hymns, themes or Scriptures…";
+        searchInput.setAttribute("aria-label", "Search worship songs and hymns");
+        searchInput.autocomplete = "off";
+        const searchStatus = element("p", undefined, "Browse the worship collection or search by title, theme or Scripture.");
+        searchStatus.setAttribute("aria-live", "polite");
         const filterRow = element("div", undefined, "library-nav");
         const list = element("div");
+        let activeCollection = "All Songs";
 
         function addGuideSection(parent, heading, text) {
           const section = element("section", undefined, "worship-guide-section");
@@ -922,16 +951,38 @@
         }
 
         function renderSongs(collection) {
+          activeCollection = collection || activeCollection;
           list.replaceChildren();
+          const query = searchInput.value.trim().toLowerCase();
           const items = originalLibrary.worshipSongs.filter(function (song) {
-            return collection === "All Songs" || song.collection === collection;
+            const inCollection = activeCollection === "All Songs" || song.collection === activeCollection;
+            const searchable = [song.title, song.collection, song.theme, song.reference, song.note, song.study]
+              .filter(Boolean).join(" ").toLowerCase();
+            return inCollection && (!query || searchable.includes(query));
           });
+          searchStatus.textContent = "Showing " + items.length + " of " +
+            originalLibrary.worshipSongs.filter(song => activeCollection === "All Songs" || song.collection === activeCollection).length +
+            " songs in " + activeCollection + (query ? " matching “" + query + "”." : ".");
           items.forEach(function (song) {
             const box = element("article", undefined, "library-entry worship-song-entry");
             box.appendChild(element("small", song.collection));
             box.appendChild(element("h4", song.title));
             box.appendChild(element("p", song.theme));
             box.appendChild(element("strong", "Scripture: " + song.reference));
+            if (canPlayWorshipAudio(song)) {
+              const player = document.createElement("audio");
+              player.controls = true;
+              player.preload = "none";
+              player.src = song.audioUrl;
+              player.setAttribute("aria-label", "Authorised recording of " + song.title);
+              if (song.downloadAllowed !== true) player.setAttribute("controlsList", "nodownload");
+              box.appendChild(player);
+            } else {
+              box.appendChild(element("p",
+                "Study guide available. Audio is not enabled for this song because verified recording and streaming permissions are not on file.",
+                "worship-audio-unavailable"
+              ));
+            }
             box.appendChild(element("p", song.note));
             box.appendChild(buildGuide(song));
             box.appendChild(button("Save Complete Guide to My Library", function () {
@@ -954,13 +1005,16 @@
             }));
             list.appendChild(box);
           });
-          if (!items.length) list.appendChild(element("p", "No songs in this collection yet."));
+          if (!items.length) list.appendChild(element("p", query ? "No worship songs match this search. Try another word, theme or Scripture." : "No songs in this collection yet."));
         }
+        searchInput.addEventListener("input", function () { renderSongs(activeCollection); });
         collections.forEach(function (collection) {
           filterRow.appendChild(button(collection, function () {
             renderSongs(collection);
           }));
         });
+        content.appendChild(searchInput);
+        content.appendChild(searchStatus);
         content.appendChild(filterRow);
         content.appendChild(list);
         renderSongs("All Songs");
