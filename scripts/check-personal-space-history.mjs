@@ -24,5 +24,5 @@ assert.match(source, /Search all recently opened Bible chapters/,
   "Personal Study Space must provide search across the retained reading history.");
 assert.match(source, /showAllHistory\?500:20/,
   "Personal Study Space must let readers expand beyond the recent 20 chapters.");
-assert.match(source, /Show all \+filtered\.length\+" chapters"/,
+assert.ok(source.includes('"Show all "+filtered.length+" chapters"'),
   "Personal Study Space must provide a visible Show all history action.");
