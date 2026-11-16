@@ -61,7 +61,8 @@ assert.equal(api.addEntry("notes", {
 const saved = JSON.parse(store.get("notes"));
 assert.equal(saved.length, 300, "The personal store must remain bounded to 300 entries.");
 assert.equal(saved[0].id, "new-entry", "The new entry must be saved first.");
-assert.ok(saved.some(item => item.id === "old-299"), "Existing records within the retention limit must remain.");
+assert.ok(saved.some(item => item.id === "old-0"), "The newest pre-existing records must remain.");
+assert.ok(!saved.some(item => item.id === "old-299"), "The oldest record must be evicted when the 300-entry limit is reached.");
 
 // A corrupt store must not be silently replaced when a user saves another entry.
 store.set("notes", "{still broken");
