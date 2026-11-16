@@ -162,6 +162,10 @@ try {
   const images = Array.from({ length: 10 }, (_, index) => render(index, "Section " + index));
   assert.ok(images.every(value => value.startsWith("data:image/svg+xml;charset=utf-8,")));
   assert.equal(new Set(images).size, 10, "Each Study Centre section must receive distinct artwork.");
+  assert.ok(images.every(value => value.length < 6000),
+    "Each generated illustration must remain lightweight for mobile devices.");
+  assert.ok(!study.slice(start, end).includes("fetch("),
+    "Study illustrations must not require a network request.");
   const svg = decodeURIComponent(render(0, "Meaning & Context").split(",")[1]);
   assert.ok(svg.includes("Meaning &amp; Context"), "Study artwork labels must be safely escaped.");
   assert.ok(svg.includes("ZURIEL STUDY CENTRE"));
