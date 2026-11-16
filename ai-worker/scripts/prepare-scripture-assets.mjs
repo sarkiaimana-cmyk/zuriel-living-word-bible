@@ -1,4 +1,4 @@
-import { readFile, mkdir, writeFile } from "node:fs/promises";
+import { readFile, mkdir, writeFile, rm, rename } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import vm from "node:vm";
@@ -8,6 +8,7 @@ const root = path.resolve(here, "../..");
 const sourcePath = path.join(root, "bible-data.js");
 const biblePath = path.join(root, "kjv.72bec70fcd.json");
 const outputRoot = path.resolve(here, "../public");
+const temporaryRoot = path.resolve(here, "../.public-build");
 const checkOnly = process.argv.includes("--check");
 
 const bookCodes = {
@@ -53,7 +54,7 @@ for (const book of books) {
     chapterCount++;
     verseCount += verses.length;
     if (!checkOnly) {
-      const folder = path.join(outputRoot, "scripture", code);
+      const folder = path.join(temporaryRoot, "scripture", code);
       await mkdir(folder, { recursive: true });
       await writeFile(path.join(folder, (i + 1) + ".json"), JSON.stringify(verses), "utf8");
     }
@@ -64,7 +65,9 @@ if (chapterCount !== 1189 || verseCount !== 31102) {
   throw new Error("KJV source totals do not match the expected 66-book, 1,189-chapter, 31,102-verse edition.");
 }
 if (!checkOnly) {
-  await mkdir(outputRoot, { recursive: true });
-  await writeFile(path.join(outputRoot, "scripture-index.json"), JSON.stringify(index), "utf8");
+  await mkdir(temporaryRoot, { recursive: true });
+  await writeFile(path.join(temporaryRoot, "scripture-index.json"), JSON.stringify(index), "utf8");
+  await rm(outputRoot, { recursive: true, force: true });
+  await rename(temporaryRoot, outputRoot);
 }
 console.log("KJV source verified: " + books.length + " books, " + chapterCount + " chapters, " + verseCount + " verses." + (checkOnly ? " No files written." : " Chapter assets generated."));
