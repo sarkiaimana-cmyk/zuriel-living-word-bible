@@ -76,7 +76,7 @@
         merged.push({book:book,chapter:chapter,openedAt:typeof item.openedAt==="string"?item.openedAt:""});
       });
     });
-    return merged.slice(0,100);
+    return merged.slice(0,500);
   }
   function renderProgress(panel){
     panel.append(el("h2","zps-heading","Your reading & growth progress"),el("p","zps-copy","A simple record of the chapters you have opened and lessons you have marked complete."));
