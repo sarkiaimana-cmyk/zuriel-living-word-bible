@@ -92,9 +92,9 @@
       savedLessons: readArray(KEYS.savedLessons),
       completedLessons: readArray(KEYS.completedLessons),
       readingPlanProgress: readReadingPlans(),
-      verseStudyNotes: readObject(KEYS.verseStudyNotes, "Verse study notes"),
-      wordHighlights: readObject(KEYS.wordHighlights, "Word highlights"),
-      personalLibrary: readObject(KEYS.personalLibrary, "My Saved Library")
+      verseStudyNotes: safeStudyNotes(readObject(KEYS.verseStudyNotes, "Verse study notes")),
+      wordHighlights: safeWordHighlights(readObject(KEYS.wordHighlights, "Word highlights")),
+      personalLibrary: safePersonalLibrary(readObject(KEYS.personalLibrary, "My Saved Library"))
     };
   }
   const KDF_ITERATIONS = 250000;
