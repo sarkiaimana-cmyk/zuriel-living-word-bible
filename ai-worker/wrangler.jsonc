@@ -1,0 +1,27 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "zuriel-ai-assistant-pilot",
+  "main": "src/index.js",
+  "compatibility_date": "2026-11-16",
+  "ai": {
+    "binding": "AI"
+  },
+  "ratelimits": [
+    {
+      "name": "AI_RATE_LIMIT",
+      "namespace_id": "84111626",
+      "simple": {
+        "limit": 5,
+        "period": 60
+      }
+    }
+  ],
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
+  },
+  "vars": {
+    "ALLOWED_ORIGINS": "https://localhost"
+  }
+}
