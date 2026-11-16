@@ -907,8 +907,17 @@
         ));
 
         const collections = ["All Songs", "Traditional Hymn", "Gospel Hymn", "Modern Hymn", "Praise & Chorus", "Scripture Song", "Contemporary Worship"];
+        const searchInput = element("input");
+        searchInput.type = "search";
+        searchInput.maxLength = 100;
+        searchInput.placeholder = "Search songs, hymns, themes or Scriptures…";
+        searchInput.setAttribute("aria-label", "Search worship songs and hymns");
+        searchInput.autocomplete = "off";
+        const searchStatus = element("p", undefined, "Browse the worship collection or search by title, theme or Scripture.");
+        searchStatus.setAttribute("aria-live", "polite");
         const filterRow = element("div", undefined, "library-nav");
         const list = element("div");
+        let activeCollection = "All Songs";
 
         function addGuideSection(parent, heading, text) {
           const section = element("section", undefined, "worship-guide-section");
@@ -933,10 +942,18 @@
         }
 
         function renderSongs(collection) {
+          activeCollection = collection || activeCollection;
           list.replaceChildren();
+          const query = searchInput.value.trim().toLowerCase();
           const items = originalLibrary.worshipSongs.filter(function (song) {
-            return collection === "All Songs" || song.collection === collection;
+            const inCollection = activeCollection === "All Songs" || song.collection === activeCollection;
+            const searchable = [song.title, song.collection, song.theme, song.reference, song.note, song.study]
+              .filter(Boolean).join(" ").toLowerCase();
+            return inCollection && (!query || searchable.includes(query));
           });
+          searchStatus.textContent = "Showing " + items.length + " of " +
+            originalLibrary.worshipSongs.filter(song => activeCollection === "All Songs" || song.collection === activeCollection).length +
+            " songs in " + activeCollection + (query ? " matching “" + query + "”." : ".");
           items.forEach(function (song) {
             const box = element("article", undefined, "library-entry worship-song-entry");
             box.appendChild(element("small", song.collection));
@@ -979,13 +996,16 @@
             }));
             list.appendChild(box);
           });
-          if (!items.length) list.appendChild(element("p", "No songs in this collection yet."));
+          if (!items.length) list.appendChild(element("p", query ? "No worship songs match this search. Try another word, theme or Scripture." : "No songs in this collection yet."));
         }
+        searchInput.addEventListener("input", function () { renderSongs(activeCollection); });
         collections.forEach(function (collection) {
           filterRow.appendChild(button(collection, function () {
             renderSongs(collection);
           }));
         });
+        content.appendChild(searchInput);
+        content.appendChild(searchStatus);
         content.appendChild(filterRow);
         content.appendChild(list);
         renderSongs("All Songs");
