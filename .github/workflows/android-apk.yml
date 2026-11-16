@@ -67,6 +67,12 @@ jobs:
       - name: Validate study and open-book safeguards
         run: node scripts/check-study-integrity.mjs
 
+      - name: Test AI pilot backend security
+        run: node --test ai-worker/test/worker.test.mjs
+
+      - name: Check AI client/backend boundary
+        run: node scripts/check-ai-worker-boundary.mjs
+
       - name: Exercise original-language resource cache
         run: node scripts/test-study-resource-cache.mjs
       - name: Test exact KJV original-word linking
