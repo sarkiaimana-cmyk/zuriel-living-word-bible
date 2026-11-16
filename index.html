@@ -670,6 +670,7 @@ function loadBibleBooks() {
 /* CHAPTER SELECTION */
 
 function showChapters(book) {
+  window.dispatchEvent(new CustomEvent("zuriel:chapter-closed"));
   const selectedBook = bibleBooks.find(item => item.name === book);
   if (!selectedBook) {
     message.textContent = "Bible book not found.";
@@ -1007,6 +1008,10 @@ async function openChapter(book, chapter) {
     return true;
   };
 
+  window.dispatchEvent(new CustomEvent("zuriel:chapter-opened", {
+    detail: { book: book, chapter: chapter, verses: verses.slice() }
+  }));
+
   status.textContent = "Now reading " + book + " chapter " + chapter + ".";
 
   // Record every successfully rendered chapter, including normal reader navigation.
@@ -1286,6 +1291,7 @@ loadBibleBooks();
   <script src="zuriel-introductions.js"></script>
   <script src="zuriel-settings.js"></script>
   <script src="zuriel-updates.js"></script>
+  <script src="zuriel-audio.js" defer></script>
   
 
 <!-- REGISTER THE OFFLINE ENGINE -->
