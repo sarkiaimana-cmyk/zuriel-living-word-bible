@@ -18,6 +18,7 @@ if (topicalBlockStart < 0 || topicalBlockEnd < 0) {
   failures.push("Topical Scripture links must use the guarded async reference-opening path.");
 } else {
   const topicalBlock = study.slice(topicalBlockStart, topicalBlockEnd);
+  if (!topicalBlock.includes(String.raw`replace(/^\s*\d+\.?\s*/`)) failures.push("Topical verse text extraction must strip the verse number using a valid whitespace regex.");
   if (!topicalBlock.includes("await window.openChapter(item.book, item.chapter)")) failures.push("Topical links must wait for the exact chapter to load.");
   if (!topicalBlock.includes("window.selectBibleVerse(item.verse)")) failures.push("Topical links must activate the exact requested verse.");
   if (!topicalBlock.includes("catch (error)")) failures.push("Topical link failures must be handled visibly.");
