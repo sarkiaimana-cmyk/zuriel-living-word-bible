@@ -18,6 +18,8 @@ for (const fragment of [
   "Growing in Faith",
   "Prayer & Trust",
   "duration: 7",
+  "Walk with Jesus",
+  "duration: 30",
   "function readState()",
   "Saved reading-plan progress is unreadable. It has not been changed.",
   "Saved reading-plan progress has an unsupported or invalid structure. It has not been changed.",
