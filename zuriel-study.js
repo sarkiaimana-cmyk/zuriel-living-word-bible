@@ -704,7 +704,7 @@
     style.textContent = `
       #zurielReaderStudyLayout {
         display:grid;
-        grid-template-columns:minmax(0,1fr) minmax(280px,360px);
+        grid-template-columns:minmax(0,1fr);
         gap:18px;
         align-items:start;
         width:100%;
