@@ -16,6 +16,8 @@ assert.ok(reader.includes("book, chapter, index + 1, displayVerseText, part, thi
   "Word study must receive clean verse text and matching word indexes.");
 assert.ok(reader.includes('String(verse).replace(/^¶\\s*/, "")'),
   "Safe verse retrieval must remove paragraph markers from cards and references.");
+assert.ok(reader.includes('text: String(verseText).replace(/^¶\\s*/, "")'),
+  "Bible search results must also omit editorial paragraph markers.");
 assert.ok(reader.includes("#message .verse.verse-paragraph-start") &&
           reader.includes("margin-top: 1.15em;"),
   "Paragraph starts must be represented by spacing, not a visible pilcrow.");
