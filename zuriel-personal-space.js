@@ -76,7 +76,7 @@
         merged.push({book:book,chapter:chapter,openedAt:typeof item.openedAt==="string"?item.openedAt:""});
       });
     });
-    return merged.slice(0,100);
+    return merged.slice(0,500);
   }
   function renderProgress(panel){
     panel.append(el("h2","zps-heading","Your reading & growth progress"),el("p","zps-copy","A simple record of the chapters you have opened and lessons you have marked complete."));
@@ -89,7 +89,39 @@
     panel.appendChild(btn("Continue reading",()=>{if(!position||!position.book||!position.chapter){status("Open a Bible chapter first; Zuriel will remember your position.");return;}if(window.ZurielHomeNavigate)window.ZurielHomeNavigate("read");if(window.openChapter)window.openChapter(position.book,position.chapter).then(()=>{if(position.verse){const v=document.querySelectorAll("#message .verse")[position.verse-1];if(v)v.scrollIntoView({behavior:"smooth",block:"center"});}}).catch(()=>status("Could not reopen the saved chapter. Please try again."));},"zps-save"));
     panel.append(el("h3","zps-subheading","Recently opened chapters"));
     if(!history.length)panel.append(el("p","zps-empty","Your chapter history will appear here as you read."));
-    history.slice(0,20).forEach(item=>{const line=el("div","zps-history");line.append(el("span","",item.book+" "+item.chapter),btn("Open",async()=>{if(typeof window.openChapter!=="function"){status("The Bible reader is not ready yet.");return;}if(window.ZurielHomeNavigate)window.ZurielHomeNavigate("read");try{await window.openChapter(item.book,item.chapter);status("Opened "+item.book+" "+item.chapter+".");}catch(error){status("Could not reopen "+item.book+" "+item.chapter+". Please try again.");}},"zps-small"));panel.appendChild(line);});
+    const historySearch=el("input","");
+    historySearch.type="search";
+    historySearch.placeholder="Search opened books or chapters";
+    historySearch.setAttribute("aria-label","Search all recently opened Bible chapters");
+    const historyList=el("div","");
+    let showAllHistory=false;
+    function renderHistoryList(){
+      historyList.replaceChildren();
+      const query=historySearch.value.trim().toLowerCase();
+      const filtered=history.filter(item=>(item.book+" "+item.chapter).toLowerCase().includes(query));
+      const visible=filtered.slice(0,showAllHistory?500:20);
+      if(!visible.length){historyList.appendChild(el("p","zps-empty","No opened chapters match this search."));return;}
+      visible.forEach(item=>{
+        const line=el("div","zps-history");
+        line.append(el("span","",item.book+" "+item.chapter),btn("Open",async()=>{
+          if(typeof window.openChapter!=="function"){status("The Bible reader is not ready yet.");return;}
+          if(window.ZurielHomeNavigate)window.ZurielHomeNavigate("read");
+          try{await window.openChapter(item.book,item.chapter);status("Opened "+item.book+" "+item.chapter+".");}
+          catch(error){status("Could not reopen "+item.book+" "+item.chapter+". Please try again.");}
+        },"zps-small"));
+        historyList.appendChild(line);
+      });
+      historyList.appendChild(el("p","zps-footnote","Showing "+visible.length+" of "+filtered.length+" matching chapters."));
+      if(filtered.length>20){
+        historyList.appendChild(btn(showAllHistory?"Show recent 20":"Show all "+filtered.length+" chapters",()=>{
+          showAllHistory=!showAllHistory;
+          renderHistoryList();
+        },"zps-small"));
+      }
+    }
+    historySearch.addEventListener("input",function(){showAllHistory=true;renderHistoryList();});
+    panel.append(historySearch,historyList);
+    renderHistoryList();
     panel.append(el("p","zps-footnote","Reading progress is based on chapters opened, not a claim that every verse has been read. Notes and journal entries are stored locally and are not synced or backed up automatically."));
   }
   function mount(main){
