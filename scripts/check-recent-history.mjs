@@ -28,6 +28,8 @@ requireMatch(history, /function clearHistory\(\)/,
   "Clearing history must use one shared action for current and legacy history stores.");
 requireMatch(history, /zurielReadingHistory_v1/,
   "Clearing history must remove the legacy history source so cleared entries cannot reappear.");
+requireMatch(history, /if \(!clearHistory\(\)\)/,
+  "The Home clear action must use the safe shared clear operation.");
 requireMatch(history, /clear: clearHistory/,
   "The shared history clear action must be exposed for safe reuse.");
 requireMatch(history, /Your saved notes and bookmarks are unchanged/,
