@@ -506,6 +506,11 @@
             <button type="button" id="zgsSaveImage">Download image</button><button type="button" id="zgsShareImage">Share image</button>
           </div>
           <p id="zgsStatus" class="library-status" aria-live="polite">Your draft stays on this device until you save it.</p>
+          <section class="zgs-saved-library" aria-labelledby="zgsSavedHeading">
+            <h3 id="zgsSavedHeading">MY SAVED GLORY VERSE CARDS</h3>
+            <p>Saved cards stay on this device and can be reopened or deleted here.</p>
+            <div id="zgsSavedCards" aria-live="polite"></div>
+          </section>
         `;
 
         content.appendChild(studio);
@@ -618,15 +623,89 @@
           studio.dataset.finish=this.dataset.finish;
           studio.querySelectorAll("[data-finish]").forEach(item=>item.setAttribute("aria-pressed",String(item===this)));
         }));
+        const savedCardsKey = "zuriel_glory_verse_cards_v1";
+        function readSavedCards() {
+          try {
+            const value = JSON.parse(localStorage.getItem(savedCardsKey) || "[]");
+            return Array.isArray(value) ? value.filter(item => item && typeof item === "object") : [];
+          } catch (_) {
+            return [];
+          }
+        }
+        function renderSavedCards() {
+          const list = studio.querySelector("#zgsSavedCards");
+          list.replaceChildren();
+          const records = readSavedCards();
+          if (!records.length) {
+            const empty = document.createElement("p");
+            empty.textContent = "No saved cards yet. Save a Scripture card to see it here.";
+            list.appendChild(empty);
+            return;
+          }
+          records.slice().reverse().forEach((record, reverseIndex) => {
+            const index = records.length - 1 - reverseIndex;
+            const item = document.createElement("article");
+            item.className = "zgs-saved-card";
+            const heading = document.createElement("strong");
+            heading.textContent = record.title || ("Glory Verse Affirmation — " + (record.reference || "Saved card"));
+            const reference = document.createElement("p");
+            reference.textContent = record.reference || "No reference";
+            const actions = document.createElement("div");
+            actions.className = "zgs-saved-actions";
+            const load = document.createElement("button");
+            load.type = "button";
+            load.textContent = "Open card";
+            load.addEventListener("click", function () {
+              const current = readSavedCards()[index];
+              if (!current) {
+                studio.querySelector("#zgsStatus").textContent = "This saved card is no longer available.";
+                renderSavedCards();
+                return;
+              }
+              studio.querySelector("#zgsReference").value = current.reference || "";
+              studio.querySelector("#zgsScripture").value = current.scripture || "";
+              ["Prayer","Declaration","Affirmation","Confession","Inspiration"].forEach(name => {
+                studio.querySelector("#zgs" + name).value = current[name.toLowerCase()] || "";
+              });
+              if (current.finish) {
+                studio.dataset.finish = current.finish;
+                studio.querySelectorAll("[data-finish]").forEach(choice => choice.setAttribute("aria-pressed", String(choice.dataset.finish === current.finish)));
+              }
+              updatePreview();
+              if (current.wallpaper && wallpaperCatalog[current.wallpaper]) loadStudioWallpaper(current.wallpaper);
+              studio.querySelector("#zgsStatus").textContent = "Reopened " + (current.reference || "your saved card") + ".";
+              studio.querySelector("#zgsReference").scrollIntoView({ behavior: "smooth", block: "center" });
+            });
+            const remove = document.createElement("button");
+            remove.type = "button";
+            remove.textContent = "Delete";
+            remove.addEventListener("click", function () {
+              const latest = readSavedCards();
+              if (!latest[index]) return;
+              latest.splice(index, 1);
+              try {
+                localStorage.setItem(savedCardsKey, JSON.stringify(latest));
+                studio.querySelector("#zgsStatus").textContent = "Saved card deleted from this device.";
+                renderSavedCards();
+              } catch (_) {
+                studio.querySelector("#zgsStatus").textContent = "Unable to update saved cards. Please check device storage.";
+              }
+            });
+            actions.append(load, remove);
+            item.append(heading, reference, actions);
+            list.appendChild(item);
+          });
+        }
+        renderSavedCards();
         studio.querySelector("#zgsSave").addEventListener("click",function(){
           const record={title:"Glory Verse Affirmation — "+(studio.querySelector("#zgsReference").value.trim()||"Personal Scripture card"),reference:studio.querySelector("#zgsReference").value.trim(),scripture:studio.querySelector("#zgsScripture").value.trim(),prayer:studio.querySelector("#zgsPrayer").value.trim(),declaration:studio.querySelector("#zgsDeclaration").value.trim(),affirmation:studio.querySelector("#zgsAffirmation").value.trim(),confession:studio.querySelector("#zgsConfession").value.trim(),inspiration:studio.querySelector("#zgsInspiration").value.trim(),finish:studio.dataset.finish,wallpaper:studio.dataset.wallpaper,date:new Date().toISOString()};
           if(!record.reference||!record.scripture){studio.querySelector("#zgsStatus").textContent="Please enter the Scripture reference and exact verse text before saving.";return;}
           try{
-            const key="zuriel_glory_verse_cards_v1";
-            const records=JSON.parse(localStorage.getItem(key)||"[]");
+            const records=readSavedCards();
             records.push(record);
-            localStorage.setItem(key,JSON.stringify(records));
-            studio.querySelector("#zgsStatus").textContent="Saved successfully to this device's Glory Verse cards.";
+            localStorage.setItem(savedCardsKey,JSON.stringify(records));
+            renderSavedCards();
+            studio.querySelector("#zgsStatus").textContent="Saved successfully. Your card is now listed in My Saved Glory Verse Cards.";
           }catch(error){studio.querySelector("#zgsStatus").textContent="Unable to save. Please check available device storage.";}
         });
         studio.querySelectorAll("#zgsSaveImage,#zgsShareImage").forEach(exportButton => exportButton.addEventListener("click", async function(){
