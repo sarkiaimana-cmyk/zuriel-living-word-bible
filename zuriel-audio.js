@@ -93,7 +93,7 @@ import { TextToSpeech } from "@capacitor-community/text-to-speech";
     try {
       while (nextVerse < chapter.verses.length && token === generation) {
         const index = nextVerse;
-        const text = String(chapter.verses[index] || "").trim();
+        const text = String(chapter.verses[index] || "").replace(/^¶\\s*/, "").trim();
         if (!text) {
           nextVerse++;
           continue;
