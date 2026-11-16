@@ -129,7 +129,13 @@ if (!home.includes('id="zurielOpenBookLight"')) failures.push(["Light panel", "m
 if (!study.includes("openWordInContext: async function")) failures.push(["contextual word study", "the reader needs a contextual word explanation that does not force navigation"]);
 if (!reader.includes("window.ZurielStudy.openWordInContext")) failures.push(["contextual word-study reader wiring", "word taps must use the inline study action"]);
 if (!study.includes('(reader || main || document.body).appendChild(panel)')) failures.push(["reader-local Study Centre placement", "the full Study Centre must be mounted with the Bible reader"]);
-if (!study.includes('layout.id = "zurielReaderStudyLayout"') || !study.includes("grid-template-columns:minmax(0,1fr) minmax(280px,360px)")) failures.push(["responsive side-by-side Study Centre", "the desktop reader and study panel must use a two-column layout"]);
+if (!study.includes('layout.id = "zurielReaderStudyLayout"') ||
+    !study.includes("grid-template-columns:minmax(0,1fr);") ||
+    !study.includes("#zurielReaderStudyLayout > #message .verse") ||
+    !study.includes("text-align:left") ||
+    study.includes("grid-template-columns:minmax(0,1fr) minmax(280px,360px)")) {
+  failures.push(["full-width Scripture reading layout", "the Bible text must occupy the full available width, align left and wrap naturally without a side-by-side study column"]);
+}
 if (study.includes("verseElement.parentNode.insertBefore(contextCard")) failures.push(["no inserted word card between verses", "word context must stay in the study panel, not interrupt Scripture"]);
 
 const homeReferences = [...home.matchAll(/reference:\s*"([^"]+)"/g)].map(match => match[1].toLowerCase());
