@@ -697,6 +697,49 @@
     }
   }
 
+  function createStudySectionArtwork(index, heading) {
+    const themes = [
+      { name:"Historical context", hue:211, mark:'<path d="M80 112Q145 72 210 112V184Q145 144 80 184Z M210 112Q275 72 340 112V184Q275 144 210 184Z" fill="none" stroke="#f4e6c5" stroke-width="9" stroke-linejoin="round"/><path d="M210 112V184" stroke="#d9bd79" stroke-width="6"/>' },
+      { name:"Meaning and exposition", hue:228, mark:'<circle cx="210" cy="135" r="67" fill="none" stroke="#f4e6c5" stroke-width="8"/><path d="M210 52V91M210 179V218M127 135H166M254 135H293M165 90L191 116M229 154L255 180M255 90L229 116M191 154L165 180" stroke="#d9bd79" stroke-width="8" stroke-linecap="round"/>' },
+      { name:"Prayer and faith", hue:33, mark:'<path d="M210 58V95M165 72L184 105M255 72L236 105M132 114L171 127M288 114L249 127" stroke="#f4e6c5" stroke-width="8" stroke-linecap="round"/><path d="M174 145Q210 117 246 145V193H174Z" fill="#d9bd79"/><path d="M190 145V130Q210 105 230 130V145" fill="none" stroke="#f4e6c5" stroke-width="8"/>' },
+      { name:"Hebrew and Greek", hue:159, mark:'<text x="210" y="154" text-anchor="middle" font-family="serif" font-size="92" font-weight="bold" fill="#fff3d7">א Ω</text><path d="M130 182H290" stroke="#d9bd79" stroke-width="6" stroke-linecap="round"/>' },
+      { name:"Biblical dictionary", hue:267, mark:'<path d="M145 62H260Q280 62 280 82V192H165Q145 192 145 172Z" fill="none" stroke="#f4e6c5" stroke-width="8"/><path d="M165 95H255M165 124H255M165 153H230" stroke="#d9bd79" stroke-width="7" stroke-linecap="round"/>' },
+      { name:"Connected Scriptures", hue:190, mark:'<circle cx="145" cy="130" r="36" fill="none" stroke="#f4e6c5" stroke-width="8"/><circle cx="275" cy="130" r="36" fill="none" stroke="#f4e6c5" stroke-width="8"/><circle cx="210" cy="70" r="27" fill="none" stroke="#d9bd79" stroke-width="7"/><path d="M174 112L191 91M229 91L246 112M181 130H239" stroke="#d9bd79" stroke-width="8" stroke-linecap="round"/>' },
+      { name:"Theology and deeper study", hue:244, mark:'<path d="M210 52L283 93V177L210 218L137 177V93Z" fill="none" stroke="#f4e6c5" stroke-width="8"/><path d="M210 83V145M210 174V178" stroke="#d9bd79" stroke-width="12" stroke-linecap="round"/>' },
+      { name:"Topical connections", hue:145, mark:'<path d="M210 48L232 112L300 112L245 151L266 216L210 176L154 216L175 151L120 112L188 112Z" fill="none" stroke="#f4e6c5" stroke-width="8" stroke-linejoin="round"/>' },
+      { name:"Personal study journal", hue:18, mark:'<path d="M150 55H265Q285 55 285 75V200H170Q150 200 150 180Z" fill="none" stroke="#f4e6c5" stroke-width="8"/><path d="M180 96H255M180 128H255M180 160H235" stroke="#d9bd79" stroke-width="7" stroke-linecap="round"/><path d="M135 75V200" stroke="#d9bd79" stroke-width="8"/>' },
+      { name:"Prayer and declaration", hue:45, mark:'<path d="M210 55C175 96 145 126 145 160A65 65 0 0 0 275 160C275 126 245 96 210 55Z" fill="none" stroke="#f4e6c5" stroke-width="8"/><path d="M178 155L200 177L245 128" fill="none" stroke="#d9bd79" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>' }
+    ];
+    const theme = themes[index % themes.length];
+    const words = String(heading || theme.name).split(/\s+/);
+    const rows = [];
+    let row = "";
+    words.forEach(function (word) {
+      const candidate = row ? row + " " + word : word;
+      if (row && candidate.length > 29) {
+        rows.push(row);
+        row = word;
+      } else row = candidate;
+    });
+    if (row) rows.push(row);
+    if (rows.length > 2) rows.splice(2, rows.length - 2, rows[1].slice(0, 26) + "…");
+    const safeRows = rows.map(function (value) {
+      return value.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+    });
+    const titleMarkup = safeRows.map(function (value, index) {
+      return '<tspan x="410" dy="' + (index === 0 ? 0 : 38) + '">' + value + '</tspan>';
+    }).join("");
+    const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="960" height="240" viewBox="0 0 960 240">' +
+      '<defs><linearGradient id="studyBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="hsl(' + theme.hue + ',48%,15%)"/><stop offset="1" stop-color="hsl(' + ((theme.hue + 36) % 360) + ',48%,34%)"/></linearGradient></defs>' +
+      '<rect width="960" height="240" rx="18" fill="url(#studyBg)"/><circle cx="800" cy="35" r="160" fill="#fff" opacity=".05"/><circle cx="45" cy="235" r="120" fill="#fff" opacity=".04"/>' +
+      '<g transform="translate(25 0)">' + theme.mark + '</g>' +
+      '<path d="M365 45V195" stroke="#d9bd79" stroke-width="2" opacity=".65"/>' +
+      '<text x="410" y="91" fill="#f4e6c5" font-family="Georgia,serif" font-size="17" letter-spacing="4">ZURIEL STUDY CENTRE</text>' +
+      '<text x="410" y="139" fill="#fffaf0" font-family="Georgia,serif" font-size="27" font-weight="bold">' + titleMarkup + '</text>' +
+      '<path d="M410 205H865" stroke="#d9bd79" stroke-width="3" opacity=".7"/></svg>';
+    return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+  }
+
   function createStudyPanel() {
     if (document.getElementById("zurielStudyPanel")) return;
 
@@ -760,6 +803,19 @@
       #zurielInlineWordStudy .inline-word-meta { display:block; margin-top:4px; }
       #zurielStudyPanel h2,
       #zurielStudyPanel h3 { color:#e8cf91; }
+      #zurielStudyPanel .study-section-art {
+        display:block;
+        width:100%;
+        height:auto;
+        max-height:126px;
+        aspect-ratio:16 / 4;
+        object-fit:cover;
+        margin:0 0 13px;
+        border:1px solid #d7c18a;
+        border-radius:10px;
+        background:#1c3657;
+      }
+      #zurielStudyPanel .study-section-art + p { margin-top:0; }
       #zurielStudyPanel .study-verse {
         background:#1c3657;
         border:1px solid #b99b58;
@@ -1292,6 +1348,22 @@
 
     const main = document.querySelector("main");
     const reader = document.getElementById("bibleReader");
+    const studySections = panel.querySelectorAll("#zurielStudySections details");
+    studySections.forEach(function (section, index) {
+      const body = section.querySelector(".study-body");
+      const summary = section.querySelector("summary");
+      if (!body || !summary) return;
+      const illustration = document.createElement("img");
+      illustration.className = "study-section-art";
+      illustration.src = createStudySectionArtwork(index, summary.textContent.trim());
+      illustration.alt = "Illustration for " + summary.textContent.trim();
+      illustration.loading = "lazy";
+      illustration.decoding = "async";
+      illustration.width = 960;
+      illustration.height = 240;
+      body.prepend(illustration);
+    });
+
     (reader || main || document.body).appendChild(panel);
 
     // Keep the reading controls full-width, then place the verse and study
