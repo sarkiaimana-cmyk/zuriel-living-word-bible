@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import vm from "node:vm";
 
 const [index, source, serviceWorker, packageText, prepare] = await Promise.all([
   readFile("index.html", "utf8"),
@@ -45,5 +46,54 @@ assert.match(serviceWorker, /zuriel-bible-offline-v118/,
   "The offline cache must be versioned for the new player");
 assert.match(serviceWorker, /\.\/zuriel-audio\.js/,
   "The bundled audio player must be cached for offline use");
+
+// Exercise the selected-verse resume logic, not just its source-code presence.
+const helperStart = source.indexOf("function savedStartingVerse(detail)");
+const helperEnd = source.indexOf("function updateButtons()", helperStart);
+assert.ok(helperStart >= 0 && helperEnd > helperStart, "Audio selected-verse helpers must remain testable.");
+const helperSource = source.slice(helperStart, helperEnd);
+const savedPosition = new Map([["zurielLastReadingPosition", JSON.stringify({
+  book: "John", chapter: 3, verse: 16
+})]]);
+const sandbox = {
+  window: {},
+  localStorage: { getItem: key => savedPosition.has(key) ? savedPosition.get(key) : null },
+  JSON, Number
+};
+const harness = `
+  let chapter = { book: "John", chapter: 3, verses: Array(21).fill("verse") };
+  let playing = false;
+  let nextVerse = 0;
+  let buttonUpdates = 0;
+  let lastStatus = "";
+  function updateButtons() { buttonUpdates++; }
+  function setStatus(value) { lastStatus = value; }
+  ${helperSource}
+  window.__test = { savedStartingVerse, updateFromReadingPosition,
+    get nextVerse() { return nextVerse; },
+    setPlaying(value) { playing = value; },
+    get buttonUpdates() { return buttonUpdates; },
+    get lastStatus() { return lastStatus; } };
+`;
+vm.runInNewContext(harness, sandbox, { timeout: 1000 });
+const api = sandbox.window.__test;
+assert.equal(api.savedStartingVerse({ book: "John", chapter: 3, verses: Array(21).fill("verse") }), 15,
+  "A saved John 3:16 position must start speech at verse 16.");
+assert.equal(api.savedStartingVerse({ book: "John", chapter: 4, verses: Array(54).fill("verse") }), 0,
+  "A saved position from another chapter must not leak into the newly opened chapter.");
+assert.equal(api.savedStartingVerse({ book: "John", chapter: 3, verses: Array(10).fill("verse") }), 0,
+  "A saved verse beyond the current chapter length must safely fall back to verse 1.");
+savedPosition.set("zurielLastReadingPosition", "{broken");
+assert.equal(api.savedStartingVerse({ book: "John", chapter: 3, verses: Array(21).fill("verse") }), 0,
+  "Corrupt saved position data must safely fall back to verse 1.");
+api.updateFromReadingPosition({ book: "John", chapter: 3, verse: 8 });
+assert.equal(api.nextVerse, 7, "Selecting John 3:8 must set the next audio start point to verse 8.");
+assert.match(api.lastStatus, /John 3:8/);
+api.setPlaying(true);
+api.updateFromReadingPosition({ book: "John", chapter: 3, verse: 9 });
+assert.equal(api.nextVerse, 7, "A verse selection must not interrupt playback already in progress.");
+api.setPlaying(false);
+api.updateFromReadingPosition({ book: "John", chapter: 3, verse: 22 });
+assert.equal(api.nextVerse, 7, "An out-of-range verse must not change the audio start point.");
 
 console.log("Offline Scripture read-aloud integration checks passed.");
