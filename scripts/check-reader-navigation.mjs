@@ -50,7 +50,7 @@ requireMatch(
 );
 requireMatch(
   reader,
-  /paragraph\.addEventListener\("click"[\s\S]*?selectVerseForGloryCard\(index\s*\+\s*1,\s*verse\)/,
+  /paragraph\.addEventListener\("click"[\s\S]*?selectVerseForGloryCard\(index\s*\+\s*1,\s*displayVerseText\)/,
   "The real reader verse handler must prepare exact verse actions."
 );
 requireMatch(
