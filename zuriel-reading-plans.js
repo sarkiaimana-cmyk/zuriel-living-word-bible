@@ -49,6 +49,46 @@
         ["Jeremiah 29:11-14", "Read the promise in its chapter context and seek the Lord."]
       ]
     }
+    },
+    {
+      id: "walk-with-jesus-30",
+      title: "Walk with Jesus",
+      duration: 30,
+      description: "A month-long journey through the birth, ministry, teachings, compassion, cross and resurrection of Jesus.",
+      days: [
+        ["Luke 1:26-38", "Receive the angel's announcement of Jesus' birth and consider Mary's response of faith."],
+        ["Matthew 1:18-25", "Reflect on the name Jesus and the promise of Immanuel."],
+        ["Luke 2:1-20", "Read the birth of Jesus and the good news announced to the shepherds."],
+        ["Matthew 2:1-12", "Consider the wise men who came to worship the newborn King."],
+        ["Luke 2:41-52", "See Jesus as a boy in the temple, devoted to His Father's purpose."],
+        ["Matthew 3:13-17", "Witness Jesus' baptism and the Father's testimony."],
+        ["Matthew 4:1-11", "Reflect on Jesus' faithfulness during temptation."],
+        ["Mark 1:14-20", "Hear Jesus announce the Kingdom and call His first disciples."],
+        ["John 1:35-51", "Follow the first disciples as they come to know Jesus."],
+        ["John 2:1-11", "Read the sign at Cana and the first public manifestation of Jesus' glory."],
+        ["John 3:1-17", "Consider Jesus' teaching about the new birth and God's love."],
+        ["John 4:1-26", "Listen as Jesus offers living water and reveals true worship."],
+        ["Luke 5:1-11", "Reflect on the miraculous catch and the call to follow Jesus."],
+        ["Matthew 5:1-16", "Study the Beatitudes and Jesus' call to be salt and light."],
+        ["Matthew 5:17-30", "Consider Jesus' teaching on the Law, reconciliation and the heart."],
+        ["Matthew 6:5-15", "Learn the pattern of prayer Jesus gave His disciples."],
+        ["Matthew 6:25-34", "Hear Jesus teach freedom from anxiety and trust in the Father's care."],
+        ["Matthew 7:7-27", "Reflect on asking, seeking, the narrow way and putting Jesus' words into practice."],
+        ["Mark 4:35-41", "See Jesus calm the storm and consider His authority."],
+        ["Mark 5:21-43", "Read two accounts of healing and restoration through Jesus."],
+        ["Luke 10:25-37", "Learn neighbour-love through the parable of the Good Samaritan."],
+        ["Luke 15:11-32", "Reflect on the Father's mercy in the parable of the lost son."],
+        ["John 6:1-14", "Witness Jesus feed the multitude and provide beyond what seemed possible."],
+        ["John 10:1-18", "Hear Jesus describe Himself as the Good Shepherd."],
+        ["John 11:17-27", "Consider Jesus' words: the resurrection and the life."],
+        ["Luke 19:1-10", "See Jesus seek and save the lost in the encounter with Zacchaeus."],
+        ["John 13:1-17", "Learn humility and servant-hearted love from Jesus washing His disciples' feet."],
+        ["John 14:1-14", "Receive Jesus' comfort and His teaching about the way to the Father."],
+        ["Luke 22:14-23", "Reflect on the Last Supper and Jesus' words about the new covenant."],
+        ["John 20:1-18", "Read the resurrection account and Mary's encounter with the risen Jesus."]
+      ]
+    }
+
   ];
 
   function emptyState() {
