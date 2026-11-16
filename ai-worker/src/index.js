@@ -68,11 +68,17 @@ async function readLimitedBody(request) {
   return new TextDecoder().decode(joined);
 }
 
-async function loadIndex(env) {
-  const response = await env.ASSETS.fetch(new Request("https://zuriel-assets.invalid/scripture-index.json"));
+async function loadIndex(env, request) {
+  const assetUrl = new URL("/scripture-index.json", request.url);
+  const response = await env.ASSETS.fetch(new Request(assetUrl));
   if (!response.ok) throw new Error("Scripture index unavailable");
   const index = await response.json();
-  if (!Array.isArray(index) || index.length !== 66) throw new Error("Scripture index invalid");
+  if (!Array.isArray(index) || index.length !== 66 ||
+      index.some(item => !item || typeof item.name !== "string" ||
+        !/^[A-Z0-9]{3}$/.test(item.code) ||
+        !Number.isInteger(item.chapters) || item.chapters < 1)) {
+    throw new Error("Scripture index invalid");
+  }
   return index;
 }
 
@@ -93,9 +99,10 @@ function parseReference(value, index) {
   return { book, chapter, firstVerse, lastVerse };
 }
 
-async function readChapter(env, code, chapter) {
+async function readChapter(env, code, chapter, request) {
   const path = "/scripture/" + encodeURIComponent(code) + "/" + chapter + ".json";
-  const response = await env.ASSETS.fetch(new Request("https://zuriel-assets.invalid" + path));
+  const assetUrl = new URL(path, request.url);
+  const response = await env.ASSETS.fetch(new Request(assetUrl));
   if (!response.ok) return null;
   const verses = await response.json();
   if (!Array.isArray(verses) || !verses.length ||
@@ -182,12 +189,12 @@ export async function handleRequest(request, env) {
   }
 
   try {
-    const index = await loadIndex(env);
+    const index = await loadIndex(env, request);
     const parsed = parseReference(input.reference, index);
     if (!parsed) {
       return json({ error: "Use a valid KJV reference such as John 3:16 or Psalm 23:1-4. The pilot supports up to eight verses at a time." }, 400, cors);
     }
-    const chapterVerses = await readChapter(env, parsed.book.code, parsed.chapter);
+    const chapterVerses = await readChapter(env, parsed.book.code, parsed.chapter, request);
     if (!chapterVerses || parsed.lastVerse > chapterVerses.length) {
       return json({ error: "That verse range is not available in the local KJV source." }, 400, cors);
     }
