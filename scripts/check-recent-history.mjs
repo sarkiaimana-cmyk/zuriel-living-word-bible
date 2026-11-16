@@ -20,7 +20,7 @@ requireMatch(history, /recordChapter\(book, chapter\)/,
   "Only successfully opened chapters should be recorded.");
 requireMatch(index, /ZurielRecentlyOpened\.recordChapter\(book, chapter\)/,
   "The core reader must record ordinary chapter opens, not only external reference opens.");
-requireMatch(history, /MAX_ITEMS = 100/,
+requireMatch(history, /MAX_ITEMS = 500/,
   "History must remain bounded to protect local device storage.");
 requireMatch(history, /Your saved notes and bookmarks are unchanged/,
   "Clearing history must explicitly preserve other personal study data.");
