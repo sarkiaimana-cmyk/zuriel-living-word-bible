@@ -59,10 +59,29 @@
     if(!items.length)panel.append(el("p","zps-empty","Your journal is ready whenever you want to write."));
     items.forEach(item=>panel.appendChild(entryCard(item,PRAYERS)));
   }
+  function mergeChapterHistory(legacyItems){
+    const currentItems=window.ZurielRecentlyOpened&&typeof window.ZurielRecentlyOpened.list==="function"
+      ?window.ZurielRecentlyOpened.list():[];
+    const merged=[],seen=new Set();
+    [currentItems,legacyItems].forEach(items=>{
+      if(!Array.isArray(items))return;
+      items.forEach(item=>{
+        if(!item||typeof item.book!=="string"||!item.book.trim()||
+          !Number.isInteger(Number(item.chapter))||Number(item.chapter)<1)return;
+        const book=item.book.trim().replace(/\s+/g," ");
+        const chapter=Number(item.chapter);
+        const key=book.toLowerCase()+"|"+chapter;
+        if(seen.has(key))return;
+        seen.add(key);
+        merged.push({book:book,chapter:chapter,openedAt:typeof item.openedAt==="string"?item.openedAt:""});
+      });
+    });
+    return merged.slice(0,100);
+  }
   function renderProgress(panel){
     panel.append(el("h2","zps-heading","Your reading & growth progress"),el("p","zps-copy","A simple record of the chapters you have opened and lessons you have marked complete."));
     let position=null;try{const raw=localStorage.getItem("zurielLastReadingPosition");position=raw===null?null:JSON.parse(raw);if(position!==null&&(!position||typeof position!=="object"||Array.isArray(position)))throw new Error("Unexpected reading-position format.");}catch(e){const message="Zuriel could not safely read your saved reading position. Your records have not been changed.";panel.append(el("p","zps-empty",message));status(message);return;}
-    let history,done,saved,notes,prayers;try{history=read(HISTORY);done=read("zuriel_kingdom_life_completed_v1");saved=read("zuriel_kingdom_life_saved_v1");notes=read(NOTES);prayers=read(PRAYERS);}catch(e){panel.append(el("p","zps-empty",e.message));status(e.message);return;}
+    let history,done,saved,notes,prayers;try{const legacyHistory=read(HISTORY);history=mergeChapterHistory(legacyHistory);done=read("zuriel_kingdom_life_completed_v1");saved=read("zuriel_kingdom_life_saved_v1");notes=read(NOTES);prayers=read(PRAYERS);}catch(e){panel.append(el("p","zps-empty",e.message));status(e.message);return;}
     const current=position&&position.book&&position.chapter?position.book+" "+position.chapter+(position.verse?":"+position.verse:""):"No reading position saved yet";
     const stats=el("div","zps-stats");
     [[history.length,"Chapters opened"],[done.length,"Lessons completed"],[saved.length,"Lessons saved"],[notes.length,"Study notes"],[prayers.length,"Journal entries"]].forEach(([n,label])=>{const item=el("div","zps-stat");item.append(el("strong","",String(n)),el("span","",label));stats.appendChild(item);});
@@ -70,7 +89,7 @@
     panel.appendChild(btn("Continue reading",()=>{if(!position||!position.book||!position.chapter){status("Open a Bible chapter first; Zuriel will remember your position.");return;}if(window.ZurielHomeNavigate)window.ZurielHomeNavigate("read");if(window.openChapter)window.openChapter(position.book,position.chapter).then(()=>{if(position.verse){const v=document.querySelectorAll("#message .verse")[position.verse-1];if(v)v.scrollIntoView({behavior:"smooth",block:"center"});}}).catch(()=>status("Could not reopen the saved chapter. Please try again."));},"zps-save"));
     panel.append(el("h3","zps-subheading","Recently opened chapters"));
     if(!history.length)panel.append(el("p","zps-empty","Your chapter history will appear here as you read."));
-    history.slice(0,20).forEach(item=>{const line=el("div","zps-history");line.append(el("span","",item.book+" "+item.chapter),btn("Open",()=>{if(window.ZurielHomeNavigate)window.ZurielHomeNavigate("read");if(window.openChapter)window.openChapter(item.book,item.chapter);},"zps-small"));panel.appendChild(line);});
+    history.slice(0,20).forEach(item=>{const line=el("div","zps-history");line.append(el("span","",item.book+" "+item.chapter),btn("Open",async()=>{if(typeof window.openChapter!=="function"){status("The Bible reader is not ready yet.");return;}if(window.ZurielHomeNavigate)window.ZurielHomeNavigate("read");try{await window.openChapter(item.book,item.chapter);status("Opened "+item.book+" "+item.chapter+".");}catch(error){status("Could not reopen "+item.book+" "+item.chapter+". Please try again.");}},"zps-small"));panel.appendChild(line);});
     panel.append(el("p","zps-footnote","Reading progress is based on chapters opened, not a claim that every verse has been read. Notes and journal entries are stored locally and are not synced or backed up automatically."));
   }
   function mount(main){

@@ -58,6 +58,9 @@ jobs:
       - name: Test reading plan progress and references
         run: node scripts/test-reading-plans.mjs
 
+      - name: Validate Personal Study Space chapter history integration
+        run: node scripts/check-personal-space-history.mjs
+
       - name: Validate personal backup and restore
         run: node scripts/check-personal-backup.mjs
 
