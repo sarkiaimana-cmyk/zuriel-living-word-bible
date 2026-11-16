@@ -416,10 +416,10 @@
       [KEYS.position]: next.lastReadingPosition,
       [KEYS.savedLessons]: next.savedLessons.slice(0, 5000),
       [KEYS.completedLessons]: next.completedLessons.slice(0, 5000),
-      [KEYS.readingPlans]: next.readingPlanProgress,
       [KEYS.verseStudyNotes]: next.verseStudyNotes,
       [KEYS.wordHighlights]: next.wordHighlights,
-      [KEYS.personalLibrary]: next.personalLibrary
+      [KEYS.personalLibrary]: next.personalLibrary,
+      [KEYS.readingPlans]: next.readingPlanProgress
     };
     const previous = {};
     Object.keys(values).forEach(key => previous[key] = localStorage.getItem(key));
