@@ -44,8 +44,6 @@ jobs:
         run: node scripts/check-word-study-layout.mjs
       - name: Validate exact study reference navigation
         run: node scripts/check-study-reference-navigation.mjs
-      - name: Validate guarded topical Scripture navigation
-        run: node scripts/check-study-reference-navigation.mjs
       - name: Validate Advanced Bible Study topical index
         run: node scripts/check-topical-study-index.mjs
       - name: Test Android version metadata
