@@ -27,7 +27,7 @@ import { TextToSpeech } from "@capacitor-community/text-to-speech";
       "#zurielAudioPlayer h3{margin:0 0 7px;font:700 15px Arial,sans-serif;color:#19324f}" +
       "#zurielAudioPlayer p{margin:7px 0;font:13px/1.5 Arial,sans-serif}" +
       "#zurielAudioPlayer .zra-controls{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}" +
-      "#zurielAudioPlayer button,#zurielAudioPlayer select{min-height:42px;margin:0;padding:8px 11px;border:1px solid #c6d1cb;border-radius:8px;font:600 13px Arial,sans-serif}" +
+      "#zurielAudioPlayer button,#zurielAudioPlayer select{min-height:48px;margin:0;padding:8px 11px;border:1px solid #c6d1cb;border-radius:8px;font:600 13px Arial,sans-serif}" +
       "#zurielAudioPlayer button{background:#193e5a;color:#fff}" +
       "#zurielAudioPlayer button:disabled{opacity:.5}" +
       "#zurielAudioPlayer select{flex:1 1 135px;min-width:0;background:#fff;color:#19324f}" +
@@ -69,9 +69,37 @@ import { TextToSpeech } from "@capacitor-community/text-to-speech";
     return voices;
   }
 
+  function savedStartingVerse(detail) {
+    try {
+      const raw = localStorage.getItem("zurielLastReadingPosition");
+      if (!raw) return 0;
+      const saved = JSON.parse(raw);
+      if (!saved || saved.book !== detail.book ||
+          Number(saved.chapter) !== Number(detail.chapter) ||
+          !Number.isInteger(saved.verse) || saved.verse < 1 ||
+          saved.verse > detail.verses.length) return 0;
+      return saved.verse - 1;
+    } catch (error) {
+      return 0;
+    }
+  }
+
+  function updateFromReadingPosition(position) {
+    if (!chapter || playing || !position ||
+        position.book !== chapter.book ||
+        Number(position.chapter) !== chapter.chapter ||
+        !Number.isInteger(position.verse) ||
+        position.verse < 1 || position.verse > chapter.verses.length) return;
+    nextVerse = position.verse - 1;
+    updateButtons();
+    setStatus("Ready to read from " + chapter.book + " " + chapter.chapter + ":" +
+      position.verse + ". Choose Read when you are ready.");
+  }
+
   function updateButtons() {
     if (playButton) {
-      playButton.textContent = playing ? "Playing…" : (nextVerse > 0 ? "Continue reading" : "▶ Read chapter aloud");
+      playButton.textContent = playing ? "Playing…" :
+        (nextVerse > 0 ? "▶ Read from verse " + (nextVerse + 1) : "▶ Read chapter aloud");
       playButton.disabled = playing || !chapter || !voices.length || nextVerse >= chapter.verses.length;
     }
     if (stopButton) stopButton.disabled = !playing;
@@ -93,7 +121,7 @@ import { TextToSpeech } from "@capacitor-community/text-to-speech";
     try {
       while (nextVerse < chapter.verses.length && token === generation) {
         const index = nextVerse;
-        const text = String(chapter.verses[index] || "").trim();
+        const text = String(chapter.verses[index] || "").replace(/^¶\s*/, "").trim();
         if (!text) {
           nextVerse++;
           continue;
@@ -159,7 +187,7 @@ import { TextToSpeech } from "@capacitor-community/text-to-speech";
       chapter: Number(detail.chapter),
       verses: Array.isArray(detail.verses) ? detail.verses.map(String) : []
     };
-    nextVerse = 0;
+    nextVerse = savedStartingVerse({ book: chapter.book, chapter: chapter.chapter, verses: chapter.verses });
     voices = [];
     selectedVoiceIndex = -1;
 
@@ -239,7 +267,9 @@ import { TextToSpeech } from "@capacitor-community/text-to-speech";
       }) || voices[0];
       selectedVoiceIndex = preferred.index;
       voiceSelect.value = String(selectedVoiceIndex);
-      setStatus(voices.length + " offline English voice" + (voices.length === 1 ? "" : "s") + " ready. This chapter can be read aloud without internet.");
+      setStatus(voices.length + " offline English voice" + (voices.length === 1 ? "" : "s") +
+        " ready. " + (nextVerse > 0 ? "Ready from verse " + (nextVerse + 1) + "." : "The chapter is ready to read.") +
+        " Playback works without internet.");
       updateButtons();
     } catch (error) {
       setStatus("The device speech engine could not be reached. Check Android Text-to-Speech settings and try again.");
@@ -250,6 +280,10 @@ import { TextToSpeech } from "@capacitor-community/text-to-speech";
   window.addEventListener("zuriel:chapter-opened", function (event) {
     const detail = event.detail || {};
     mount(detail);
+  });
+
+  window.addEventListener("zuriel:reading-position-changed", function (event) {
+    updateFromReadingPosition(event.detail || {});
   });
 
   window.addEventListener("zuriel:chapter-closed", function () {
