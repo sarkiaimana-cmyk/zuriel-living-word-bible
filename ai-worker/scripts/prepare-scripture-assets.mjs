@@ -71,7 +71,7 @@ const integritySamples = [
   ["Genesis", 1, 1, "In the beginning God created the heaven and the earth."],
   ["Psalms", 23, 1, "A Psalm of David. The LORD [is] my shepherd; I shall not want."],
   ["John", 3, 16, "¶ For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life."],
-  ["Revelation", 22, 21, "The grace of our Lord Jesus Christ be with you all. Amen."]
+  ["Revelation", 22, 21, "The grace of our Lord Jesus Christ [be] with you all. Amen."]
 ];
 for (const [bookName, chapter, verse, expected] of integritySamples) {
   const code = bookCodes[bookName];
