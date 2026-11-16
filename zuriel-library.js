@@ -443,6 +443,14 @@
             #zurielGloryStudio[data-layout="stacked"] #zurielGloryPreview .zgs-page {padding:8px 4px;border-bottom:1px solid color-mix(in srgb,var(--zgs-accent) 35%,transparent);}
             #zurielGloryStudio[data-layout="stacked"] #zurielGloryPreview .zgs-copy {font-size:15px;line-height:1.65;}
             #zurielGloryStudio #zgsSaveImage {background:#19324f;color:#fff7e6;border:1px solid #b99b58;}
+            #zurielGloryStudio .zgs-saved-library {margin-top:18px;padding:14px;border:1px solid #d8ceb8;border-radius:12px;background:rgba(255,255,255,.72);}
+            #zurielGloryStudio .zgs-saved-library h3 {margin:0 0 6px;color:#19324f;font-size:14px;letter-spacing:.04em;}
+            #zurielGloryStudio .zgs-saved-library p {margin:5px 0 10px;font-size:13px;}
+            #zurielGloryStudio .zgs-saved-card {display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;padding:10px 0;border-top:1px solid #e2dac9;}
+            #zurielGloryStudio .zgs-saved-card strong {color:#19324f;overflow-wrap:anywhere;}
+            #zurielGloryStudio .zgs-saved-card p {margin:2px 0;flex:1 1 100%;}
+            #zurielGloryStudio .zgs-saved-actions {display:flex;gap:8px;flex-wrap:wrap;}
+            #zurielGloryStudio .zgs-saved-actions button {min-height:38px;padding:7px 12px;border:1px solid #b99b58;border-radius:8px;background:#19324f;color:#fff7e6;font:inherit;}
             @media(max-width:520px){#zurielGloryStudio .zgs-typography-controls{grid-template-columns:1fr 1fr}#zurielGloryStudio .zgs-typography-controls label:last-child{grid-column:1/-1}}
             @media(max-width:420px){#zurielGloryPreview{padding:16px 10px}#zurielGloryPreview h3{font-size:16px}#zurielGloryPreview .zgs-book-spread{gap:12px}#zurielGloryPreview .zgs-page{padding:6px 2px}#zurielGloryPreview .zgs-copy{font-size:12px}#zurielGloryPreview .zgs-page-title{font-size:9px}#zurielGloryStudio .zgs-tabs button{font-size:10px;min-height:42px}}
           `;
