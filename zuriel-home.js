@@ -1174,10 +1174,13 @@
         setText("zurielOpenBookScripture", "No Scripture passage is available for this card yet.");
         return;
       }
-      const response = window.ZurielFaithContent &&
-        typeof window.ZurielFaithContent.find === "function"
-        ? window.ZurielFaithContent.find(verse.reference)
-        : null;
+      function getFaithResponse(item) {
+        return window.ZurielFaithContent &&
+          typeof window.ZurielFaithContent.find === "function"
+          ? window.ZurielFaithContent.find(item.reference)
+          : null;
+      }
+      const response = getFaithResponse(verse);
 
       setText("zurielOpenBookReference", verse.reference.toUpperCase());
       if (!response) {
