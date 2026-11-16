@@ -7,7 +7,7 @@ const source = await readFile(new URL("../zuriel-backup.js", import.meta.url), "
 const marker = "window.ZurielBackup = { mount: mount };";
 assert.ok(source.includes(marker), "Backup module test seam has changed; review before updating this test.");
 const instrumented = source.replace(marker,
-  "window.__test = { encryptBackup, decryptBackup, validateBackup, applyRestore, collect };");
+  "window.__test = { encryptBackup, decryptBackup, validateBackup, applyRestore, collect, safeGloryVerseCards, mergeGloryVerseCards };");
 const store = new Map();
 const localStorage = {
   getItem: key => store.has(key) ? store.get(key) : null,
@@ -43,7 +43,8 @@ for (const key of [
   "zuriel_kingdom_life_completed_v1",
   "zuriel-verse-study-notes-v1",
   "zuriel-word-highlights-v1",
-  "zuriel_personal_library_v1"
+  "zuriel_personal_library_v1",
+  "zuriel_glory_verse_cards_v1"
 ]) {
   store.set(key, "{not valid JSON");
   assert.throws(() => api.collect(), /could not read saved personal data/, key + " corruption must fail closed");
@@ -77,7 +78,8 @@ const sample = {
       prayers: [{ title: "Family", text: "Keep our family", date: "2026-11-15" }],
       notes: [{ title: "Study note", text: "Remember grace", date: "2026-11-15" }],
       bookmarks: [{ title: "John 3:16", reference: "John 3:16", text: "For God so loved the world", type: "scripture", savedAt: "2026-11-15T00:00:00.000Z" }]
-    }
+    },
+    gloryVerseCards: [{ title: "Glory Verse Affirmation — John 3:16", reference: "John 3:16", scripture: "For God so loved the world", declaration: "I walk in His love.", finish: "navy", wallpaper: "forest", date: "2026-11-15T00:00:00.000Z" }]
   }
 };
 
@@ -96,6 +98,9 @@ assert.equal(incoming.notes.length, 1);
 assert.equal(Object.keys(incoming.verseStudyNotes).length, 1);
 assert.equal(Object.keys(incoming.wordHighlights).length, 1);
 assert.equal(incoming.personalLibrary.bookmarks.length, 1);
+assert.equal(incoming.gloryVerseCards.length, 1);
+assert.throws(() => api.safeGloryVerseCards([{ reference: "John 3:16", scripture: "Text", wallpaper: "unknown" }]), /unsupported Glory Verse Card wallpaper/);
+assert.throws(() => api.safeGloryVerseCards([{ reference: "", scripture: "Text" }]), /without its Scripture reference or text/);
 assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, notes: [{ id: "", title: "Bad", text: "Invalid" }] } }), /valid ID/);
 assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, wordHighlights: { "John|3|16": { words: { "1": "not-a-colour" } } } } }), /invalid word-highlight/);
 assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, verseStudyNotes: { "John|3|16": { note: "x".repeat(12001) } } } }), /invalid verse-study note/);
@@ -110,11 +115,13 @@ delete olderBackup.data.readingPlanProgress;
 delete olderBackup.data.verseStudyNotes;
 delete olderBackup.data.wordHighlights;
 delete olderBackup.data.personalLibrary;
+delete olderBackup.data.gloryVerseCards;
 const legacyData = api.validateBackup(olderBackup);
 assert.deepEqual(JSON.parse(JSON.stringify(legacyData.readingPlanProgress)), { schemaVersion: 1, activePlanId: null, plans: {} }, "Older backups remain restorable without reading-plan data.");
 assert.deepEqual(JSON.parse(JSON.stringify(legacyData.verseStudyNotes)), {}, "Older backups remain restorable without verse-study notes.");
 assert.deepEqual(JSON.parse(JSON.stringify(legacyData.wordHighlights)), {}, "Older backups remain restorable without highlights.");
 assert.deepEqual(JSON.parse(JSON.stringify(legacyData.personalLibrary)), { prayers: [], notes: [], bookmarks: [] }, "Older backups remain restorable without saved-library data.");
+assert.deepEqual(JSON.parse(JSON.stringify(legacyData.gloryVerseCards)), [], "Older backups remain restorable without saved Glory Verse Cards.");
 const emptyPositionSample = JSON.parse(JSON.stringify(sample));
 emptyPositionSample.data.lastReadingPosition = null;
 api.applyRestore(api.validateBackup(emptyPositionSample));
@@ -134,6 +141,7 @@ store.set("zuriel_reading_plan_progress_v1", JSON.stringify({ schemaVersion: 1, 
 store.set("zuriel-verse-study-notes-v1", JSON.stringify({ "John|3|16": { title: "Existing", note: "Keep existing note", application: "", updated: "2026-11-14T00:00:00.000Z" } }));
 store.set("zuriel-word-highlights-v1", JSON.stringify({ "John|3|16": { verseColor: "#ff0", words: { "2": "#0f0" } } }));
 store.set("zuriel_personal_library_v1", JSON.stringify({ prayers: [], notes: [], bookmarks: [{ title: "Existing bookmark", reference: "Psalm 23:1", text: "The LORD is my shepherd", type: "scripture" }] }));
+store.set("zuriel_glory_verse_cards_v1", JSON.stringify([{ title: "Existing card", reference: "Psalm 23:1", scripture: "The LORD is my shepherd", date: "2026-11-12" }]));
 const merged = api.applyRestore(incoming);
 const notes = JSON.parse(store.get("zuriel_personal_notes_v1"));
 assert.equal(notes.length, 2, "Duplicate note IDs must not be added.");
@@ -156,6 +164,9 @@ const restoredLibrary = JSON.parse(store.get("zuriel_personal_library_v1"));
 assert.equal(restoredLibrary.bookmarks.length, 2, "Existing and backed-up bookmarks are retained.");
 assert.equal(restoredLibrary.prayers.length, 1, "Saved-library prayers are included.");
 assert.equal(restoredLibrary.notes.length, 1, "Saved-library notes are included.");
+const restoredCards = JSON.parse(store.get("zuriel_glory_verse_cards_v1"));
+assert.equal(restoredCards.length, 2, "Existing and backed-up Glory Verse Cards are both retained.");
+assert.ok(restoredCards.some(item => item.reference === "John 3:16"), "The backed-up Glory Verse Card is restored.");
 
 // Exercise the rollback path: fail one write after earlier stores have changed,
 // then confirm every original value is restored once storage becomes writable.
