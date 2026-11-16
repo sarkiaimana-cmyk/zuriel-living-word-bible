@@ -8,7 +8,7 @@ const root = path.resolve(here, "../..");
 const sourcePath = path.join(root, "bible-data.js");
 const biblePath = path.join(root, "kjv.72bec70fcd.json");
 const outputRoot = path.resolve(here, "../public");
-const temporaryRoot = path.resolve(here, "../.public-build");
+const temporaryRoot = path.resolve(here, "../.wrangler/public-build");
 const checkOnly = process.argv.includes("--check");
 
 const bookCodes = {
