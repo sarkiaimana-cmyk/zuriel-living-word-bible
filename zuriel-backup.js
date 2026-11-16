@@ -11,7 +11,8 @@
     readingPlans: "zuriel_reading_plan_progress_v1",
     verseStudyNotes: "zuriel-verse-study-notes-v1",
     wordHighlights: "zuriel-word-highlights-v1",
-    personalLibrary: "zuriel_personal_library_v1"
+    personalLibrary: "zuriel_personal_library_v1",
+    gloryVerseCards: "zuriel_glory_verse_cards_v1"
   };
   const MAX_FILE = 8 * 1024 * 1024;
   const READING_PLAN_DURATIONS = { "meet-jesus-7": 7, "growing-in-faith-7": 7, "prayer-and-trust-7": 7 };
@@ -94,7 +95,8 @@
       readingPlanProgress: readReadingPlans(),
       verseStudyNotes: safeStudyNotes(readObject(KEYS.verseStudyNotes, "Verse study notes")),
       wordHighlights: safeWordHighlights(readObject(KEYS.wordHighlights, "Word highlights")),
-      personalLibrary: safePersonalLibrary(readObject(KEYS.personalLibrary, "My Saved Library"))
+      personalLibrary: safePersonalLibrary(readObject(KEYS.personalLibrary, "My Saved Library")),
+      gloryVerseCards: safeGloryVerseCards(readArray(KEYS.gloryVerseCards))
     };
   }
   const KDF_ITERATIONS = 250000;
@@ -260,6 +262,36 @@
     });
     return clean;
   }
+  function safeGloryVerseCards(value) {
+    if (value === undefined || value === null) return [];
+    if (!Array.isArray(value) || value.length > 5000) {
+      throw new Error("The backup contains an invalid Glory Verse Card list.");
+    }
+    const fields = ["title", "reference", "scripture", "prayer", "declaration", "affirmation", "confession", "inspiration", "finish", "wallpaper", "date"];
+    return value.map(item => {
+      if (!item || typeof item !== "object" || Array.isArray(item)) {
+        throw new Error("The backup contains an invalid Glory Verse Card entry.");
+      }
+      const clean = {};
+      fields.forEach(key => {
+        if (item[key] === undefined) return;
+        if (typeof item[key] !== "string" || item[key].length > (key === "scripture" ? 20000 : 12000)) {
+          throw new Error("The backup contains an invalid Glory Verse Card field: " + key + ".");
+        }
+        clean[key] = item[key];
+      });
+      if (!clean.reference || !clean.scripture) {
+        throw new Error("The backup contains a Glory Verse Card without its Scripture reference or text.");
+      }
+      if (clean.finish && !["ivory", "navy", "forest", "parchment"].includes(clean.finish)) {
+        throw new Error("The backup contains an unsupported Glory Verse Card finish.");
+      }
+      if (clean.wallpaper && !["forest", "falls", "stream", "valley"].includes(clean.wallpaper)) {
+        throw new Error("The backup contains an unsupported Glory Verse Card wallpaper.");
+      }
+      return clean;
+    });
+  }
   function validateBackup(data) {
     if (!data || typeof data !== "object" || Array.isArray(data) ||
         data.app !== "Zuriel Living Word Bible" || ![1, 2].includes(data.schemaVersion) ||
@@ -277,7 +309,8 @@
       readingPlanProgress: safeReadingPlanProgress(d.readingPlanProgress),
       verseStudyNotes: safeStudyNotes(d.verseStudyNotes),
       wordHighlights: safeWordHighlights(d.wordHighlights),
-      personalLibrary: safePersonalLibrary(d.personalLibrary)
+      personalLibrary: safePersonalLibrary(d.personalLibrary),
+      gloryVerseCards: safeGloryVerseCards(d.gloryVerseCards)
     };
     if (!clean.readingHistory || !clean.savedLessons || !clean.completedLessons) throw new Error("The backup contains an invalid progress list.");
     clean.readingHistory.forEach(item => {
@@ -343,6 +376,14 @@
     });
     return merged;
   }
+  function mergeGloryVerseCards(current, incoming) {
+    const map = new Map();
+    (current || []).concat(incoming || []).forEach(item => {
+      const key = [item.reference || "", item.title || "", item.date || "", item.scripture || ""].join("|");
+      if (!map.has(key)) map.set(key, item);
+    });
+    return Array.from(map.values()).slice(-5000);
+  }
   function mergeReadingPlans(current, incoming) {
     const plans = {};
     const ids = new Set(Object.keys(current.plans || {}).concat(Object.keys(incoming.plans || {})));
@@ -360,7 +401,8 @@
       Object.keys(data.readingPlanProgress.plans).length + " reading plans • " +
       Object.keys(data.verseStudyNotes).length + " verse studies • " +
       Object.keys(data.wordHighlights).length + " highlighted passages • " +
-      data.personalLibrary.bookmarks.length + " bookmarks";
+      data.personalLibrary.bookmarks.length + " bookmarks • " +
+      data.gloryVerseCards.length + " Glory Verse Cards";
   }
   async function exportBackup() {
     root.querySelector("#zbackupConfirm").hidden = false;
@@ -407,7 +449,8 @@
       readingPlanProgress: mergeReadingPlans(current.readingPlanProgress, incoming.readingPlanProgress),
       verseStudyNotes: mergeKeyedObjects(current.verseStudyNotes, incoming.verseStudyNotes, "updated"),
       wordHighlights: mergeHighlights(current.wordHighlights, incoming.wordHighlights),
-      personalLibrary: mergePersonalLibrary(current.personalLibrary, incoming.personalLibrary)
+      personalLibrary: mergePersonalLibrary(current.personalLibrary, incoming.personalLibrary),
+      gloryVerseCards: mergeGloryVerseCards(current.gloryVerseCards, incoming.gloryVerseCards)
     };
     const values = {
       [KEYS.notes]: next.notes.slice(0, 5000),
@@ -419,6 +462,7 @@
       [KEYS.verseStudyNotes]: next.verseStudyNotes,
       [KEYS.wordHighlights]: next.wordHighlights,
       [KEYS.personalLibrary]: next.personalLibrary,
+      [KEYS.gloryVerseCards]: next.gloryVerseCards,
       [KEYS.readingPlans]: next.readingPlanProgress
     };
     const previous = {};
