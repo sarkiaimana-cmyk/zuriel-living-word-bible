@@ -223,7 +223,7 @@ async function handleYouVersionRequest(request, env, dependencies, cors) {
   let selectedVersionId = null;
   if (url.pathname === "/api/youversion/bibles") {
     const token = url.searchParams.get("next_page_token");
-    if (token && (token.length > 256 || !/^[A-Za-z0-9._~-]+$/.test(token))) {
+    if (token && (token.length > 256 || !/^[A-Za-z0-9._~+/=-]+$/.test(token))) {
       return json({ error: "The Bible list page token is invalid." }, 400, cors);
     }
     if ([...url.searchParams.keys()].some(key => key !== "next_page_token")) {
