@@ -1730,7 +1730,7 @@
       return String(value || "").replace(/&/g, "&amp;").replace(/</g, "&lt;")
         .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
     }
-    const bookLabel = escapeSvg(bookName);
+    const bookLabel = escapeSvg(String(bookName).toUpperCase());
     const chapterLabel = "CHAPTER " + chapterNumber;
     const summary = escapeSvg(String(description || "Read this chapter in its book context.").slice(0, 92));
     const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">' +
@@ -1742,7 +1742,7 @@
       '<circle cx="545" cy="70" r="100" fill="#fff" opacity=".06"/>' +
       '<circle cx="75" cy="300" r="120" fill="#fff" opacity=".045"/>' +
       '<path d="M40 24H600M40 336H600" stroke="#dfc58b" stroke-width="2" opacity=".65"/>' +
-      '<text x="320" y="82" text-anchor="middle" fill="#f2dfb3" font-family="Georgia,serif" font-size="20" letter-spacing="4">' + bookLabel.toUpperCase() + '</text>' +
+      '<text x="320" y="82" text-anchor="middle" fill="#f2dfb3" font-family="Georgia,serif" font-size="20" letter-spacing="4">' + bookLabel + '</text>' +
       '<text x="320" y="166" text-anchor="middle" fill="#fffaf0" font-family="Georgia,serif" font-size="48" font-weight="bold">' + chapterLabel + '</text>' +
       '<path d="M195 205Q258 182 320 210Q382 182 445 205V265Q382 244 320 270Q258 244 195 265Z" fill="#f4ead2" stroke="#d8bd7b" stroke-width="4"/>' +
       '<path d="M320 210V270M210 220Q262 207 306 222M334 222Q378 207 430 220M210 238Q262 225 306 240M334 240Q378 225 430 238" fill="none" stroke="#9b8c6b" stroke-width="3" opacity=".7"/>' +
