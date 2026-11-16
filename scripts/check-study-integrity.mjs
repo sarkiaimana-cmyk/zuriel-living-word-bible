@@ -1,4 +1,6 @@
 import { readFile } from "node:fs/promises";
+import assert from "node:assert/strict";
+import vm from "node:vm";
 
 const [study, home, faith, linking, reader, navigator, bookIndex, kjvSource] = await Promise.all([
   readFile(new URL("../zuriel-study.js", import.meta.url), "utf8"),
@@ -147,6 +149,34 @@ for (const reference of homeReferences) {
   }
 }
 
+// Exercise the offline artwork generator: each study section gets a distinct,
+ // accessible illustration without a network dependency.
+try {
+  const start = study.indexOf("function createStudySectionArtwork(index, heading)");
+  const end = study.indexOf("function createStudyPanel()", start);
+  if (start < 0 || end <= start) throw new Error("Study artwork generator could not be isolated.");
+  const source = study.slice(start, end) + "\\nwindow.__createStudyArt = createStudySectionArtwork;";
+  const sandbox = { window: {}, String, encodeURIComponent };
+  vm.runInNewContext(source, sandbox, { timeout: 1000 });
+  const render = sandbox.window.__createStudyArt;
+  const images = Array.from({ length: 10 }, (_, index) => render(index, "Section " + index));
+  assert.ok(images.every(value => value.startsWith("data:image/svg+xml;charset=utf-8,")));
+  assert.equal(new Set(images).size, 10, "Each Study Centre section must receive distinct artwork.");
+  const svg = decodeURIComponent(render(0, "Meaning & Context").split(",")[1]);
+  assert.ok(svg.includes("Meaning &amp; Context"), "Study artwork labels must be safely escaped.");
+  assert.ok(svg.includes("ZURIEL STUDY CENTRE"));
+} catch (error) {
+  failures.push(["offline Study Centre artwork runtime", error.message]);
+}
+if (!study.includes('illustration.alt = "Illustration for " + summary.textContent.trim()')) {
+  failures.push(["Study Centre illustration accessibility", "each section image must have descriptive alt text"]);
+}
+if (!study.includes('illustration.loading = "lazy"') || !study.includes('illustration.decoding = "async"')) {
+  failures.push(["Study Centre mobile performance", "illustrations must be lazy-loaded and asynchronously decoded"]);
+}
+if (!study.includes('body.prepend(illustration)')) {
+  failures.push(["Study Centre illustration placement", "each section illustration must appear before its study content"]);
+}
 if (failures.length) {
   console.error("Original-language study integrity checks failed:");
   for (const [label, detail] of failures) console.error(" - " + label + ": " + detail);
