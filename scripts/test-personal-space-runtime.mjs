@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import { runInNewContext } from "node:vm";
 
 const source = await readFile(new URL("../zuriel-personal-space.js", import.meta.url), "utf8");
-const marker = "window.ZurielPersonalSpace={mount:mount,open:open,saveInsight:function(item){if(!item||!item.text)return false;const ok=addEntry(NOTES,{id:String(Date.now())+\"-\"+Math.random().toString(36).slice(2),title:item.title||\"Saved insight\",reference:item.reference||\"\",text:item.text,createdAt:new Date().toISOString()});if(ok)status(\"Insight saved from your study.\");return ok;}};";
+const marker = "window.ZurielPersonalSpace={mount:mount,open:open,openProgress:openProgress,saveInsight:function(item){if(!item||!item.text)return false;const ok=addEntry(NOTES,{id:String(Date.now())+\"-\"+Math.random().toString(36).slice(2),title:item.title||\"Saved insight\",reference:item.reference||\"\",text:item.text,createdAt:new Date().toISOString()});if(ok)status(\"Insight saved from your study.\");return ok;}};";
 assert.ok(source.includes(marker), "Personal Study Space test seam has changed; review before updating this test.");
 
 const instrumented = source.replace(marker,
