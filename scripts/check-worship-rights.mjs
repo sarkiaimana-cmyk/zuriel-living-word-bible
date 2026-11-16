@@ -36,6 +36,14 @@ for (const [field, value] of [
 assert.equal(canPlay(null), false);
 assert.ok(source.includes("Audio is not enabled for this song because verified recording and streaming permissions are not on file."),
   "Unverified songs must display a clear no-audio status instead of a misleading Play action.");
+assert.ok(source.includes('Search songs, hymns, themes or Scriptures…'),
+  "The worship library must provide an accessible search across songs, themes and Scripture references.");
+assert.ok(source.includes('searchInput.setAttribute("aria-label", "Search worship songs and hymns")'),
+  "The worship search must have an accessible label.");
+assert.ok(source.includes('searchInput.addEventListener("input"'),
+  "Typing in worship search must refresh results without losing the selected collection.");
+assert.ok(source.includes('searchable.includes(query)'),
+  "Worship search must match song title, collection, theme, Scripture reference and study notes.");
 assert.ok(source.includes('player.preload = "none"'),
   "Authorised recordings must not preload large media files on mobile.");
-console.log("Worship rights safeguards passed: separate composition and recording rights, streaming permission, HTTPS source, explicit unavailable state and no media preloading.");
+console.log("Worship library checks passed: accessible search and filtering, separate composition and recording rights, streaming permission, HTTPS source, explicit unavailable state and no media preloading.");
