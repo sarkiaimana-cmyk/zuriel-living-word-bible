@@ -1013,6 +1013,20 @@
           padding:14px;
           padding-bottom:calc(14px + env(safe-area-inset-bottom));
         }
+        /* A tapped word opens a compact bottom sheet while the selected
+           verse stays in place above it. Full Study Centre remains in-flow. */
+        #zurielStudyPanel[data-mode="word-context"] {
+          position:fixed;
+          left:12px;
+          right:12px;
+          bottom:calc(12px + env(safe-area-inset-bottom));
+          top:auto;
+          z-index:1000;
+          width:auto;
+          max-height:min(42vh,360px);
+          margin:0;
+          box-shadow:0 12px 34px #0006;
+        }
       }
     `;
     document.head.appendChild(style);
