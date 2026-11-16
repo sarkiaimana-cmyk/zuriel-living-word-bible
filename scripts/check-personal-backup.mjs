@@ -14,13 +14,15 @@ for (const key of [
   "zuriel_personal_notes_v1",
   "zuriel_prayer_journal_v1",
   "zurielReadingHistory_v1",
+  "zurielRecentlyOpenedChapters-v1",
   "zurielLastReadingPosition",
   "zuriel_kingdom_life_saved_v1",
   "zuriel_kingdom_life_completed_v1",
   "zuriel_reading_plan_progress_v1",
   "zuriel-verse-study-notes-v1",
   "zuriel-word-highlights-v1",
-  "zuriel_personal_library_v1"
+  "zuriel_personal_library_v1",
+  "zuriel_glory_verse_cards_v1"
 ]) if (!backup.includes(key)) failures.push("Backup is missing storage key: " + key);
 for (const fragment of [
   "schemaVersion: 1",
@@ -28,6 +30,10 @@ for (const fragment of [
   "safeStudyNotes",
   "safeWordHighlights",
   "safePersonalLibrary",
+  "safeGloryVerseCards",
+  "safeRecentChapters",
+  "mergeRecentChapters",
+  "slice(0, 500)",
   "mergeHighlights",
   "mergePersonalLibrary",
   "validateBackup",

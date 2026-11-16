@@ -5,13 +5,15 @@
     notes: "zuriel_personal_notes_v1",
     prayers: "zuriel_prayer_journal_v1",
     history: "zurielReadingHistory_v1",
+    recentlyOpenedChapters: "zurielRecentlyOpenedChapters-v1",
     position: "zurielLastReadingPosition",
     savedLessons: "zuriel_kingdom_life_saved_v1",
     completedLessons: "zuriel_kingdom_life_completed_v1",
     readingPlans: "zuriel_reading_plan_progress_v1",
     verseStudyNotes: "zuriel-verse-study-notes-v1",
     wordHighlights: "zuriel-word-highlights-v1",
-    personalLibrary: "zuriel_personal_library_v1"
+    personalLibrary: "zuriel_personal_library_v1",
+    gloryVerseCards: "zuriel_glory_verse_cards_v1"
   };
   const MAX_FILE = 8 * 1024 * 1024;
   const READING_PLAN_DURATIONS = { "meet-jesus-7": 7, "growing-in-faith-7": 7, "prayer-and-trust-7": 7 };
@@ -88,13 +90,15 @@
       notes: readArray(KEYS.notes),
       prayers: readArray(KEYS.prayers),
       readingHistory: readArray(KEYS.history),
+      recentlyOpenedChapters: safeRecentChapters(readArray(KEYS.recentlyOpenedChapters)),
       lastReadingPosition: readPosition(),
       savedLessons: readArray(KEYS.savedLessons),
       completedLessons: readArray(KEYS.completedLessons),
       readingPlanProgress: readReadingPlans(),
       verseStudyNotes: safeStudyNotes(readObject(KEYS.verseStudyNotes, "Verse study notes")),
       wordHighlights: safeWordHighlights(readObject(KEYS.wordHighlights, "Word highlights")),
-      personalLibrary: safePersonalLibrary(readObject(KEYS.personalLibrary, "My Saved Library"))
+      personalLibrary: safePersonalLibrary(readObject(KEYS.personalLibrary, "My Saved Library")),
+      gloryVerseCards: safeGloryVerseCards(readArray(KEYS.gloryVerseCards))
     };
   }
   const KDF_ITERATIONS = 250000;
@@ -260,6 +264,48 @@
     });
     return clean;
   }
+  function safeRecentChapters(value) {
+    if (value === undefined || value === null) return [];
+    if (!Array.isArray(value) || value.length > 5000) throw new Error("The backup contains an invalid recently opened chapter list.");
+    return value.map(item => {
+      if (!item || typeof item.book !== "string" || !item.book.trim() || item.book.length > 80 ||
+          !Number.isInteger(item.chapter) || item.chapter < 1 || item.chapter > 200 ||
+          (item.openedAt !== undefined && typeof item.openedAt !== "string")) {
+        throw new Error("The backup contains an invalid recently opened chapter entry.");
+      }
+      return { book: item.book.trim(), chapter: item.chapter, openedAt: item.openedAt || "" };
+    });
+  }
+  function safeGloryVerseCards(value) {
+    if (value === undefined || value === null) return [];
+    if (!Array.isArray(value) || value.length > 5000) {
+      throw new Error("The backup contains an invalid Glory Verse Card list.");
+    }
+    const fields = ["title", "reference", "scripture", "prayer", "declaration", "affirmation", "confession", "inspiration", "finish", "wallpaper", "date"];
+    return value.map(item => {
+      if (!item || typeof item !== "object" || Array.isArray(item)) {
+        throw new Error("The backup contains an invalid Glory Verse Card entry.");
+      }
+      const clean = {};
+      fields.forEach(key => {
+        if (item[key] === undefined) return;
+        if (typeof item[key] !== "string" || item[key].length > (key === "scripture" ? 20000 : 12000)) {
+          throw new Error("The backup contains an invalid Glory Verse Card field: " + key + ".");
+        }
+        clean[key] = item[key];
+      });
+      if (!clean.reference || !clean.scripture) {
+        throw new Error("The backup contains a Glory Verse Card without its Scripture reference or text.");
+      }
+      if (clean.finish && !["ivory", "navy", "forest", "parchment"].includes(clean.finish)) {
+        throw new Error("The backup contains an unsupported Glory Verse Card finish.");
+      }
+      if (clean.wallpaper && !["forest", "falls", "stream", "valley"].includes(clean.wallpaper)) {
+        throw new Error("The backup contains an unsupported Glory Verse Card wallpaper.");
+      }
+      return clean;
+    });
+  }
   function validateBackup(data) {
     if (!data || typeof data !== "object" || Array.isArray(data) ||
         data.app !== "Zuriel Living Word Bible" || ![1, 2].includes(data.schemaVersion) ||
@@ -271,13 +317,15 @@
       notes: safeRecords(d.notes, "Saved insights and notes", 5000),
       prayers: safeRecords(d.prayers, "Prayer journal", 6000),
       readingHistory: Array.isArray(d.readingHistory) && d.readingHistory.length <= 5000 ? d.readingHistory : null,
+      recentlyOpenedChapters: safeRecentChapters(d.recentlyOpenedChapters),
       lastReadingPosition: d.lastReadingPosition === null ? null : d.lastReadingPosition,
       savedLessons: Array.isArray(d.savedLessons) && d.savedLessons.length <= 5000 ? d.savedLessons : null,
       completedLessons: Array.isArray(d.completedLessons) && d.completedLessons.length <= 5000 ? d.completedLessons : null,
       readingPlanProgress: safeReadingPlanProgress(d.readingPlanProgress),
       verseStudyNotes: safeStudyNotes(d.verseStudyNotes),
       wordHighlights: safeWordHighlights(d.wordHighlights),
-      personalLibrary: safePersonalLibrary(d.personalLibrary)
+      personalLibrary: safePersonalLibrary(d.personalLibrary),
+      gloryVerseCards: safeGloryVerseCards(d.gloryVerseCards)
     };
     if (!clean.readingHistory || !clean.savedLessons || !clean.completedLessons) throw new Error("The backup contains an invalid progress list.");
     clean.readingHistory.forEach(item => {
@@ -343,6 +391,23 @@
     });
     return merged;
   }
+  function mergeRecentChapters(current, incoming) {
+    const map = new Map();
+    (current || []).concat(incoming || []).forEach(item => {
+      const key = item.book.trim().toLowerCase() + "|" + item.chapter;
+      const previous = map.get(key);
+      if (!previous || String(item.openedAt || "") > String(previous.openedAt || "")) map.set(key, item);
+    });
+    return Array.from(map.values()).sort((a, b) => String(b.openedAt || "").localeCompare(String(a.openedAt || ""))).slice(0, 500);
+  }
+  function mergeGloryVerseCards(current, incoming) {
+    const map = new Map();
+    (current || []).concat(incoming || []).forEach(item => {
+      const key = [item.reference || "", item.title || "", item.date || "", item.scripture || ""].join("|");
+      if (!map.has(key)) map.set(key, item);
+    });
+    return Array.from(map.values()).slice(-5000);
+  }
   function mergeReadingPlans(current, incoming) {
     const plans = {};
     const ids = new Set(Object.keys(current.plans || {}).concat(Object.keys(incoming.plans || {})));
@@ -355,12 +420,13 @@
   }
   function countText(data) {
     return data.notes.length + " insights/notes • " + data.prayers.length + " prayer entries • " +
-      data.readingHistory.length + " reading records • " +
+      (data.readingHistory.length + data.recentlyOpenedChapters.length) + " reading records • " +
       (data.savedLessons.length + data.completedLessons.length) + " lesson-progress records • " +
       Object.keys(data.readingPlanProgress.plans).length + " reading plans • " +
       Object.keys(data.verseStudyNotes).length + " verse studies • " +
       Object.keys(data.wordHighlights).length + " highlighted passages • " +
-      data.personalLibrary.bookmarks.length + " bookmarks";
+      data.personalLibrary.bookmarks.length + " bookmarks • " +
+      data.gloryVerseCards.length + " Glory Verse Cards";
   }
   async function exportBackup() {
     root.querySelector("#zbackupConfirm").hidden = false;
@@ -401,24 +467,28 @@
       notes: mergeRecords(current.notes, incoming.notes, item => item.id),
       prayers: mergeRecords(current.prayers, incoming.prayers, item => item.id),
       readingHistory: mergeRecords(current.readingHistory, incoming.readingHistory, item => item.book + "|" + item.chapter),
+      recentlyOpenedChapters: mergeRecentChapters(current.recentlyOpenedChapters, incoming.recentlyOpenedChapters),
       lastReadingPosition: current.lastReadingPosition || incoming.lastReadingPosition,
       savedLessons: mergeStrings(current.savedLessons, incoming.savedLessons),
       completedLessons: mergeStrings(current.completedLessons, incoming.completedLessons),
       readingPlanProgress: mergeReadingPlans(current.readingPlanProgress, incoming.readingPlanProgress),
       verseStudyNotes: mergeKeyedObjects(current.verseStudyNotes, incoming.verseStudyNotes, "updated"),
       wordHighlights: mergeHighlights(current.wordHighlights, incoming.wordHighlights),
-      personalLibrary: mergePersonalLibrary(current.personalLibrary, incoming.personalLibrary)
+      personalLibrary: mergePersonalLibrary(current.personalLibrary, incoming.personalLibrary),
+      gloryVerseCards: mergeGloryVerseCards(current.gloryVerseCards, incoming.gloryVerseCards)
     };
     const values = {
       [KEYS.notes]: next.notes.slice(0, 5000),
       [KEYS.prayers]: next.prayers.slice(0, 5000),
       [KEYS.history]: next.readingHistory.slice(0, 200),
+      [KEYS.recentlyOpenedChapters]: next.recentlyOpenedChapters,
       [KEYS.position]: next.lastReadingPosition,
       [KEYS.savedLessons]: next.savedLessons.slice(0, 5000),
       [KEYS.completedLessons]: next.completedLessons.slice(0, 5000),
       [KEYS.verseStudyNotes]: next.verseStudyNotes,
       [KEYS.wordHighlights]: next.wordHighlights,
       [KEYS.personalLibrary]: next.personalLibrary,
+      [KEYS.gloryVerseCards]: next.gloryVerseCards,
       [KEYS.readingPlans]: next.readingPlanProgress
     };
     const previous = {};

@@ -443,6 +443,7 @@
             #zurielGloryStudio[data-layout="stacked"] #zurielGloryPreview .zgs-page {padding:8px 4px;border-bottom:1px solid color-mix(in srgb,var(--zgs-accent) 35%,transparent);}
             #zurielGloryStudio[data-layout="stacked"] #zurielGloryPreview .zgs-copy {font-size:15px;line-height:1.65;}
             #zurielGloryStudio #zgsSaveImage {background:#19324f;color:#fff7e6;border:1px solid #b99b58;}
+            #zurielGloryStudio .zgs-actions button {min-height:48px;padding:10px 12px;font-size:13px;touch-action:manipulation;}
             #zurielGloryStudio .zgs-saved-library {margin-top:18px;padding:14px;border:1px solid #d8ceb8;border-radius:12px;background:rgba(255,255,255,.72);}
             #zurielGloryStudio .zgs-saved-library h3 {margin:0 0 6px;color:#19324f;font-size:14px;letter-spacing:.04em;}
             #zurielGloryStudio .zgs-saved-library p {margin:5px 0 10px;font-size:13px;}
@@ -511,7 +512,7 @@
           <div class="zgs-actions">
             <button type="button" id="zgsSave">Save to My Library</button>
             <button type="button" id="zgsShare">Share card text</button>
-            <button type="button" id="zgsSaveImage">Download image</button><button type="button" id="zgsShareImage">Share image</button>
+            <button type="button" id="zgsSaveImage">Save image</button><button type="button" id="zgsShareImage">Share image</button>
           </div>
           <p id="zgsStatus" class="library-status" aria-live="polite">Your draft stays on this device until you save it.</p>
           <section class="zgs-saved-library" aria-labelledby="zgsSavedHeading">
@@ -763,9 +764,15 @@
             const leftLines = wrap(scripture, exportColumnWidth, scriptureSize);
             const rightLines = wrap(faithText || "Add a Scripture-specific " + activeFaithView.toLowerCase() + ".", exportColumnWidth, faithSize);
             const top = 300, bottom = 150, sectionGap = stacked ? 95 : 0;
+            const referenceHeadingHeight = 48 + 58;
+            const faithHeadingHeight = 58;
             const contentHeight = stacked
-              ? leftLines.length * lineHeight(scriptureSize) + sectionGap + rightLines.length * lineHeight(faithSize)
-              : Math.max(leftLines.length * lineHeight(scriptureSize), rightLines.length * lineHeight(faithSize));
+              ? referenceHeadingHeight + leftLines.length * lineHeight(scriptureSize) +
+                sectionGap + faithHeadingHeight + rightLines.length * lineHeight(faithSize)
+              : referenceHeadingHeight + Math.max(
+                leftLines.length * lineHeight(scriptureSize),
+                rightLines.length * lineHeight(faithSize)
+              );
             canvas.width = width;
             canvas.height = Math.max(1100, top + contentHeight + bottom);
             const palette = {
@@ -834,7 +841,9 @@
               link.href = url; link.download = fileName; link.style.display = "none";
               document.body.appendChild(link); link.click(); link.remove();
               setTimeout(() => URL.revokeObjectURL(url),30000);
-              status.textContent = "Your PNG image has been downloaded. Check your Gallery or Downloads folder.";
+              status.textContent = exportButton.id === "zgsShareImage"
+                ? "Direct image sharing is not supported here, so the PNG was saved to your Downloads folder."
+                : "Your PNG image was saved to your Downloads folder. You can open it from your device files.";
             }
           } catch (error) {
             if (error.name !== "AbortError") status.textContent = error.message || "Image export could not be completed on this device.";
