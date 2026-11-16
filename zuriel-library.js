@@ -443,7 +443,7 @@
             #zurielGloryStudio[data-layout="stacked"] #zurielGloryPreview .zgs-page {padding:8px 4px;border-bottom:1px solid color-mix(in srgb,var(--zgs-accent) 35%,transparent);}
             #zurielGloryStudio[data-layout="stacked"] #zurielGloryPreview .zgs-copy {font-size:15px;line-height:1.65;}
             #zurielGloryStudio #zgsSaveImage {background:#19324f;color:#fff7e6;border:1px solid #b99b58;}
-            #zurielGloryStudio .zgs-actions button {min-height:46px;padding:10px 12px;font-size:13px;touch-action:manipulation;}
+            #zurielGloryStudio .zgs-actions button {min-height:48px;padding:10px 12px;font-size:13px;touch-action:manipulation;}
             #zurielGloryStudio .zgs-saved-library {margin-top:18px;padding:14px;border:1px solid #d8ceb8;border-radius:12px;background:rgba(255,255,255,.72);}
             #zurielGloryStudio .zgs-saved-library h3 {margin:0 0 6px;color:#19324f;font-size:14px;letter-spacing:.04em;}
             #zurielGloryStudio .zgs-saved-library p {margin:5px 0 10px;font-size:13px;}
@@ -841,7 +841,7 @@
               link.href = url; link.download = fileName; link.style.display = "none";
               document.body.appendChild(link); link.click(); link.remove();
               setTimeout(() => URL.revokeObjectURL(url),30000);
-              status.textContent = "Your PNG image has been downloaded. Check your Gallery or Downloads folder.";
+              status.textContent = exportButton.id === "zgsShareImage"\n                ? "Direct image sharing is not supported here, so the PNG was saved to your Downloads folder."\n                : "Your PNG image was saved to your Downloads folder. You can open it from your device files.";
             }
           } catch (error) {
             if (error.name !== "AbortError") status.textContent = error.message || "Image export could not be completed on this device.";
