@@ -16,9 +16,13 @@ const index = [
 const chapter = Array.from({ length: 17 }, (_, i) => "Fixture verse " + (i + 1));
 chapter[15] = "For God so loved the world.";
 chapter[16] = "That whosoever believeth in him.";
+
 function makeEnv(overrides = {}) {
   return {
     ALLOWED_ORIGINS: origin,
+    TURNSTILE_SECRET: "test-secret",
+    TURNSTILE_SITE_KEY: "test-site-key",
+    TURNSTILE_HOSTNAMES: "localhost",
     ASSETS: {
       fetch: async request => {
         const url = new URL(request.url);
@@ -33,16 +37,30 @@ function makeEnv(overrides = {}) {
     ...overrides
   };
 }
+
 function request(body, extraHeaders = {}) {
+  const payload = { turnstileToken: "one-time-test-token", ...body };
   return new Request("https://worker.example/api/assistant", {
     method: "POST",
     headers: { Origin: origin, "Content-Type": "application/json", ...extraHeaders },
-    body: JSON.stringify(body)
+    body: JSON.stringify(payload)
   });
 }
 
+async function validSiteverify(url, options) {
+  assert.equal(url, "https://challenges.cloudflare.com/turnstile/v0/siteverify");
+  const fields = new URLSearchParams(options.body);
+  assert.equal(fields.get("secret"), "test-secret");
+  assert.equal(fields.get("response"), "one-time-test-token");
+  return Response.json({ success: true, hostname: "localhost", action: "zuriel_ai_question" });
+}
+
+function send(req, env = makeEnv(), fetchImpl = validSiteverify) {
+  return handleRequest(req, env, { fetch: fetchImpl });
+}
+
 test("returns exact KJV source separately from labelled AI explanation", async () => {
-  const response = await handleRequest(request({ question: "What is the main idea?", reference: "John 3:16-17" }), makeEnv());
+  const response = await send(request({ question: "What is the main idea?", reference: "John 3:16-17" }));
   assert.equal(response.status, 200);
   const data = await response.json();
   assert.equal(data.reference, "John 3:16-17");
@@ -57,7 +75,7 @@ test("returns exact KJV source separately from labelled AI explanation", async (
 });
 
 test("normalizes Psalm alias and retrieves canonical Psalms text", async () => {
-  const response = await handleRequest(request({ question: "Explain this verse.", reference: "Psalm 23:1" }), makeEnv());
+  const response = await send(request({ question: "Explain this verse.", reference: "Psalm 23:1" }));
   assert.equal(response.status, 200);
   const data = await response.json();
   assert.equal(data.reference, "Psalms 23:1");
@@ -67,40 +85,44 @@ test("normalizes Psalm alias and retrieves canonical Psalms text", async () => {
 test("rejects unsupported references before calling the model", async () => {
   let called = false;
   const env = makeEnv({ AI: { run: async () => { called = true; return { response: "No" }; } } });
-  const response = await handleRequest(request({ question: "Explain this.", reference: "John 99:1" }), env);
+  const response = await send(request({ question: "Explain this.", reference: "John 99:1" }), env);
   assert.equal(response.status, 400);
   assert.equal(called, false);
 });
 
 test("rejects verse ranges beyond the available chapter", async () => {
-  const response = await handleRequest(request({ question: "Explain this.", reference: "John 3:18" }), makeEnv());
+  const response = await send(request({ question: "Explain this.", reference: "John 3:18" }));
   assert.equal(response.status, 400);
 });
 
 test("rejects more than eight verses", async () => {
-  const response = await handleRequest(request({ question: "Explain this.", reference: "John 3:1-10" }), makeEnv());
+  const response = await send(request({ question: "Explain this.", reference: "John 3:1-10" }));
   assert.equal(response.status, 400);
 });
 
 test("rejects personal notes and unexpected request fields", async () => {
-  const response = await handleRequest(request({ question: "Explain this.", reference: "John 3:16", notes: "private prayer journal" }), makeEnv());
+  const response = await send(request({ question: "Explain this.", reference: "John 3:16", notes: "private prayer journal" }));
   assert.equal(response.status, 400);
 });
 
-test("rate limits a connection before calling the model", async () => {
+test("rate limits a connection before calling Turnstile or the model", async () => {
   let called = false;
   const env = makeEnv({
     AI_RATE_LIMIT: { limit: async ({ key }) => { assert.equal(key, "203.0.113.10"); return { success: false }; } },
     AI: { run: async () => { called = true; return { response: "No" }; } }
   });
-  const response = await handleRequest(request({ question: "Explain this.", reference: "John 3:16" }, { "CF-Connecting-IP": "203.0.113.10" }), env);
+  const response = await send(
+    request({ question: "Explain this.", reference: "John 3:16" }, { "CF-Connecting-IP": "203.0.113.10" }),
+    env,
+    async () => { called = true; return Response.json({ success: true }); }
+  );
   assert.equal(response.status, 429);
   assert.equal(called, false);
 });
 
 test("fails closed when rate limiting is unavailable", async () => {
   const env = makeEnv({ AI_RATE_LIMIT: { limit: async () => { throw new Error("unavailable"); } } });
-  const response = await handleRequest(request({ question: "Explain this.", reference: "John 3:16" }), env);
+  const response = await send(request({ question: "Explain this.", reference: "John 3:16" }), env);
   assert.equal(response.status, 503);
 });
 
@@ -108,20 +130,20 @@ test("rejects an unapproved origin", async () => {
   const bad = new Request("https://worker.example/api/assistant", {
     method: "POST",
     headers: { Origin: "https://attacker.example", "Content-Type": "application/json" },
-    body: JSON.stringify({ question: "Explain this.", reference: "John 3:16" })
+    body: JSON.stringify({ question: "Explain this.", reference: "John 3:16", turnstileToken: "token" })
   });
-  const response = await handleRequest(bad, makeEnv());
+  const response = await send(bad);
   assert.equal(response.status, 403);
 });
 
 test("rejects oversized requests", async () => {
-  const response = await handleRequest(request({ question: "x".repeat(2500), reference: "John 3:16" }), makeEnv());
+  const response = await send(request({ question: "x".repeat(5000), reference: "John 3:16" }));
   assert.equal(response.status, 413);
 });
 
 test("handles provider failure without exposing internal error details", async () => {
   const env = makeEnv({ AI: { run: async () => { throw new Error("private provider internals"); } } });
-  const response = await handleRequest(request({ question: "Explain this.", reference: "John 3:16" }), env);
+  const response = await send(request({ question: "Explain this.", reference: "John 3:16" }), env);
   assert.equal(response.status, 502);
   const data = await response.json();
   assert.doesNotMatch(JSON.stringify(data), /private provider internals/);
@@ -131,7 +153,7 @@ test("rejects model-generated references outside the selected passage", async ()
   const env = makeEnv({
     AI: { run: async () => ({ response: "See Romans 8:28 for another promise." }) }
   });
-  const response = await handleRequest(request({ question: "Explain this.", reference: "John 3:16" }), env);
+  const response = await send(request({ question: "Explain this.", reference: "John 3:16" }), env);
   assert.equal(response.status, 502);
   const data = await response.json();
   assert.match(data.error, /outside the selected passage/);
@@ -141,14 +163,70 @@ test("allows a model mention of the exact selected reference", async () => {
   const env = makeEnv({
     AI: { run: async () => ({ response: "John 3:16 presents the central theme of this passage." }) }
   });
-  const response = await handleRequest(request({ question: "Explain this.", reference: "John 3:16" }), env);
+  const response = await send(request({ question: "Explain this.", reference: "John 3:16" }), env);
   assert.equal(response.status, 200);
 });
 
-test("rejects missing provider configuration", async () => {
-  const env = makeEnv({ AI: null });
-  const response = await handleRequest(request({ question: "Explain this.", reference: "John 3:16" }), env);
+test("rejects missing Turnstile token", async () => {
+  const response = await send(request({ question: "Explain this.", reference: "John 3:16", turnstileToken: "" }));
+  assert.equal(response.status, 403);
+});
+
+test("rejects a failed Turnstile validation", async () => {
+  const response = await send(
+    request({ question: "Explain this.", reference: "John 3:16" }),
+    makeEnv(),
+    async () => Response.json({ success: false, "error-codes": ["invalid-input-response"] })
+  );
+  assert.equal(response.status, 403);
+});
+
+test("rejects a Turnstile hostname or action mismatch", async () => {
+  const response = await send(
+    request({ question: "Explain this.", reference: "John 3:16" }),
+    makeEnv(),
+    async () => Response.json({ success: true, hostname: "attacker.example", action: "login" })
+  );
+  assert.equal(response.status, 403);
+});
+
+test("fails closed when Turnstile verification is unavailable", async () => {
+  const response = await send(
+    request({ question: "Explain this.", reference: "John 3:16" }),
+    makeEnv(),
+    async () => { throw new Error("network failure"); }
+  );
   assert.equal(response.status, 503);
+});
+
+test("rejects missing Turnstile server configuration", async () => {
+  const response = await send(
+    request({ question: "Explain this.", reference: "John 3:16" }),
+    makeEnv({ TURNSTILE_SECRET: "" })
+  );
+  assert.equal(response.status, 503);
+});
+
+test("rejects missing AI provider configuration", async () => {
+  const response = await send(
+    request({ question: "Explain this.", reference: "John 3:16" }),
+    makeEnv({ AI: null })
+  );
+  assert.equal(response.status, 503);
+});
+
+test("exposes only the public Turnstile site key in client configuration", async () => {
+  const configRequest = new Request("https://worker.example/api/assistant/config", {
+    method: "GET",
+    headers: { Origin: origin }
+  });
+  const response = await send(configRequest);
+  assert.equal(response.status, 200);
+  const data = await response.json();
+  assert.equal(data.enabled, true);
+  assert.equal(data.siteKey, "test-site-key");
+  assert.equal(data.action, "zuriel_ai_question");
+  assert.equal(Object.hasOwn(data, "secret"), false);
 });
 
 test("supports an approved preflight request", async () => {
@@ -156,7 +234,7 @@ test("supports an approved preflight request", async () => {
     method: "OPTIONS",
     headers: { Origin: origin }
   });
-  const response = await handleRequest(preflight, makeEnv());
+  const response = await send(preflight);
   assert.equal(response.status, 204);
   assert.equal(response.headers.get("access-control-allow-origin"), origin);
 });

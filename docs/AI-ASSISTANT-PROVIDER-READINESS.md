@@ -61,6 +61,20 @@ Official references (reviewed 2026-11-16):
 - Workers Rate Limiting API: https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/
 - Workers Secrets: https://developers.cloudflare.com/workers/configuration/secrets/
 
+### Cloudflare Turnstile — free bot-abuse protection for the pilot
+
+Cloudflare Turnstile has a Free plan with unlimited challenges and verification requests, up to 20 widgets per account and 10 hostnames per widget. It can be used independently of other Cloudflare services. The pilot requires a Managed widget and mandatory server-side Siteverify validation; client-side widget success alone is not sufficient. Tokens are single-use and expire after five minutes.
+
+Turnstile supports Android WebViews, provided JavaScript and DOM storage are enabled and the WebView can access `challenges.cloudflare.com`, required frames, cookies and local storage. This must be verified on the actual Android device before the AI feature is enabled.
+
+The sitekey is public and may be stored in app configuration. The secret must remain a Cloudflare Worker Secret and must never enter the repository or APK. Siteverify must check both the configured hostname and the fixed action `zuriel_ai_question`.
+
+Official references:
+- Turnstile Free plan: https://developers.cloudflare.com/turnstile/plans/
+- Get started and mandatory server validation: https://developers.cloudflare.com/turnstile/get-started/
+- Siteverify token validation: https://developers.cloudflare.com/turnstile/get-started/server-side-validation/
+- Android WebView requirements: https://developers.cloudflare.com/turnstile/get-started/mobile-implementation/
+
 ### OpenAI API — technically possible, but usage is metered
 
 OpenAI publishes per-model token pricing. This is a pay-for-usage service, not a dependable no-cost inference allowance for Zuriel. It should not be selected unless a sustainable budget and spending cap are separately approved.
@@ -82,7 +96,7 @@ Official reference:
 
 - Cloudflare account confirmed on the Free plan; exact Gemma model available under the daily Free allocation.
 - Server-side Worker deployed with secrets configured outside the repository.
-- Rate limiting, request-size limits, output limits, timeouts and no-body-logging verified.
+- Rate limiting, request-size limits, output limits, timeouts, no-body-logging and server-verified Turnstile protection verified.
 - Verified Scripture retrieval and citation validation tested against Zuriel's exact local KJV dataset; no model-generated Bible quotations accepted as source text.
 - Prompt-injection, privacy, timeout, malformed-response, quota-exhaustion and offline tests passed.
 - User-facing provider/data disclosure and explicit consent before any personal content could ever be shared.
