@@ -16,7 +16,7 @@
     gloryVerseCards: "zuriel_glory_verse_cards_v1"
   };
   const MAX_FILE = 8 * 1024 * 1024;
-  const READING_PLAN_DURATIONS = { "meet-jesus-7": 7, "growing-in-faith-7": 7, "prayer-and-trust-7": 7 };
+  const READING_PLAN_DURATIONS = { "meet-jesus-7": 7, "growing-in-faith-7": 7, "prayer-and-trust-7": 7, "walk-with-jesus-30": 30 };
   let root, selectedBackup = null;
 
   function node(tag, cls, text) {
