@@ -30,6 +30,29 @@
     }
   }
 
+  function clearHistory() {
+    const keys = [STORAGE_KEY, "zurielReadingHistory_v1"];
+    let previous;
+    try {
+      previous = keys.map(function (key) {
+        return { key: key, value: localStorage.getItem(key) };
+      });
+      keys.forEach(function (key) { localStorage.removeItem(key); });
+      return true;
+    } catch (error) {
+      if (previous) {
+        previous.forEach(function (item) {
+          try {
+            if (item.value !== null) localStorage.setItem(item.key, item.value);
+          } catch (rollbackError) {
+            // Keep the failure visible; do not claim the history was cleared.
+          }
+        });
+      }
+      return false;
+    }
+  }
+
   function recordChapter(book, chapter) {
     const name = String(book || "").trim().replace(/\s+/g, " ");
     const number = Number(chapter);
@@ -123,8 +146,8 @@
     clear.className = "home-button home-secondary";
     clear.textContent = "Clear reading history";
     clear.addEventListener("click", function () {
-      if (!saveItems([])) {
-        status.textContent = "History could not be cleared because device storage is unavailable.";
+      if (!clearHistory()) {
+        status.textContent = "History could not be fully cleared because device storage is unavailable. Your other study records were not intentionally changed.";
         return;
       }
       status.textContent = "Recently opened history cleared. Your saved notes and bookmarks are unchanged.";
@@ -161,6 +184,7 @@
   window.ZurielRecentlyOpened = {
     list: function () { return readItems().slice(); },
     recordChapter: recordChapter,
+    clear: clearHistory,
     refresh: render
   };
 
