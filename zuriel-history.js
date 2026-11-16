@@ -101,6 +101,18 @@
     heading.textContent = "🕘 Recently Opened";
     const description = document.createElement("p");
     description.textContent = "Return to your latest Bible chapters.";
+    const viewAll = document.createElement("button");
+    viewAll.type = "button";
+    viewAll.className = "home-button home-secondary";
+    viewAll.textContent = "View all history";
+    viewAll.addEventListener("click", function () {
+      if (typeof window.ZurielHomeNavigate === "function") window.ZurielHomeNavigate("personal");
+      if (window.ZurielPersonalSpace && typeof window.ZurielPersonalSpace.openProgress === "function") {
+        window.ZurielPersonalSpace.openProgress();
+      } else if (status) {
+        status.textContent = "Open My Study Space and choose Progress to view your full history.";
+      }
+    });
     const list = document.createElement("div");
     list.id = "zurielRecentlyOpenedList";
     const status = document.createElement("p");
@@ -120,6 +132,7 @@
     });
     card.appendChild(heading);
     card.appendChild(description);
+    card.appendChild(viewAll);
     card.appendChild(list);
     card.appendChild(status);
     card.appendChild(clear);
