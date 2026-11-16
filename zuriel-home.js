@@ -677,6 +677,76 @@
       }
     `;
 
+    const identityHeroStyle = document.createElement("style");
+    identityHeroStyle.textContent = `
+      #zurielHomeDashboard .home-identity-hero {
+        position:relative; isolation:isolate; overflow:hidden; min-height:340px;
+        display:flex; flex-direction:column; justify-content:center; align-items:flex-start;
+        gap:8px; padding:clamp(25px,6vw,42px) clamp(18px,5vw,34px);
+        border:1px solid #d9bd78; border-radius:24px;
+        background-color:#10213d;
+        background-image:linear-gradient(100deg,rgba(5,17,35,.88),rgba(8,29,49,.54) 68%,rgba(8,29,49,.28)),var(--zuriel-home-wallpaper);
+        background-size:cover; background-position:center;
+        box-shadow:0 16px 34px rgba(8,24,43,.24);
+        transition:background-image .35s ease;
+      }
+      #zurielHomeDashboard .home-identity-hero::after {
+        content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+        background:linear-gradient(0deg,rgba(5,16,32,.30),transparent 58%);
+      }
+      #zurielHomeDashboard .home-identity-hero .home-eyebrow {
+        margin:0 0 5px;color:#ffe8b0;border-color:rgba(255,232,176,.55);
+        background:rgba(6,19,35,.36);letter-spacing:1.4px;
+      }
+      #zurielHomeDashboard .identity-kicker {
+        margin:5px 0 0;color:#f5d88e;font:700 12px/1.3 Arial,sans-serif;letter-spacing:2.4px;
+      }
+      #zurielHomeDashboard .identity-title {
+        margin:0;max-width:650px;color:#fff9eb;
+        font:700 clamp(30px,7vw,48px)/1.12 Georgia,serif;letter-spacing:-.6px;
+        text-shadow:0 3px 18px rgba(0,0,0,.35);
+      }
+      #zurielHomeDashboard .identity-verse {
+        max-width:620px;min-height:64px;margin:8px 0 0;padding:13px 15px;
+        border-left:3px solid #f0d38b;border-radius:0 12px 12px 0;
+        background:rgba(5,17,32,.55);color:#fffdf7;
+        font:400 clamp(17px,4.3vw,21px)/1.65 Georgia,serif;
+        text-shadow:0 1px 4px rgba(0,0,0,.35);
+        transition:opacity .28s ease;
+      }
+      #zurielHomeDashboard .identity-reference {
+        margin:0;color:#ffe2a0;font:700 14px/1.4 Arial,sans-serif;letter-spacing:.35px;
+      }
+      #zurielHomeDashboard .identity-actions {
+        display:flex;flex-wrap:wrap;gap:9px;width:100%;max-width:430px;margin-top:7px;
+      }
+      #zurielHomeDashboard .identity-actions .home-button {
+        flex:1 1 155px;width:auto;min-height:46px;margin:0;padding:11px 12px;
+      }
+      #zurielHomeDashboard .identity-actions .identity-next {
+        background:rgba(255,255,255,.94);color:#17314d;border-color:#f3e1b5;
+      }
+      #zurielHomeDashboard .home-identity-hero .home-tagline {
+        margin:10px 0 0;color:#ffe5a6;font:700 12px/1.4 Arial,sans-serif;letter-spacing:.3px;
+      }
+      #zurielHomeDashboard .identity-progress {
+        position:absolute;left:0;right:0;bottom:0;height:3px;
+        background:linear-gradient(90deg,#f3d58c,#fff1c8);opacity:.9;
+      }
+      @media(max-width:420px) {
+        #zurielHomeDashboard .home-identity-hero {min-height:330px;border-radius:19px;padding:24px 15px;}
+        #zurielHomeDashboard .identity-title {font-size:clamp(29px,8vw,38px);}
+        #zurielHomeDashboard .identity-verse {font-size:17px;min-height:72px;}
+        #zurielHomeDashboard .identity-actions {display:grid;grid-template-columns:1fr 1fr;}
+        #zurielHomeDashboard .identity-actions .home-button {font-size:12px;padding:10px 7px;}
+      }
+      @media(prefers-reduced-motion:reduce) {
+        #zurielHomeDashboard .identity-verse,
+        #zurielHomeDashboard .home-identity-hero {transition:none;}
+      }
+    `;
+    document.head.appendChild(identityHeroStyle);
+
     document.head.appendChild(style);
 
     /* TOP RETURN BAR */
@@ -697,23 +767,18 @@
     dashboard.id = "zurielHomeDashboard";
 
     dashboard.innerHTML = `
-      <section class="home-hero">
-        <p class="home-eyebrow">✦ OFFLINE-FIRST BIBLE • 66 BOOKS</p>
-        <p class="home-tagline">
-          His Words.. My Life.. My Victory.
-        </p>
-
-        <h1 class="home-brand">
-          Zuriel Living Word Bible
-        </h1>
-
-        <p class="home-subtitle">
-          Read God's Word. Discover its meaning. Live in its truth.
-        </p>
-
-        <button class="home-button" id="zurielHomeOpenBible">
-          📖 Open the Bible
-        </button>
+      <section class="home-hero home-identity-hero" id="zurielIdentityHero" aria-label="Who God is — rotating Scripture">
+        <p class="home-eyebrow">✦ WHO HE IS • THE LIVING WORD</p>
+        <p class="identity-kicker">HE IS...</p>
+        <h1 class="identity-title" id="zurielIdentityTitle">My Healer</h1>
+        <p class="identity-verse" id="zurielIdentityVerse" aria-live="polite">Loading the exact King James Version Scripture…</p>
+        <p class="identity-reference" id="zurielIdentityReference">Psalm 103:3</p>
+        <div class="identity-actions">
+          <button class="home-button" id="zurielIdentityRead" type="button">📖 Read This Scripture</button>
+          <button class="home-button identity-next" id="zurielIdentityNext" type="button" aria-label="Show the next name and Scripture">Next Revelation →</button>
+        </div>
+        <p class="home-tagline">His Words.. My life.. My Victory</p>
+        <span class="identity-progress" id="zurielIdentityProgress" aria-hidden="true"></span>
       </section>
 
       <section class="home-card home-continue-card">
@@ -809,6 +874,7 @@
       "https://images.unsplash.com/photo-1759182391264-73c1be282907?auto=format&fit=crop&fm=jpg&q=82&w=1800",
       "https://images.unsplash.com/photo-1595132169434-097c5ae1a145?auto=format&fit=crop&fm=jpg&q=82&w=1800"
     ];
+    homeWallpaperSet.push("https://images.unsplash.com/photo-1759182391264-73c1be282907?auto=format&fit=crop&fm=jpg&q=82&w=1800");
     const homeWallpaperIndex = Math.floor(Date.now() / 86400000) % homeWallpaperSet.length;
     dashboard.style.setProperty("--zuriel-home-wallpaper", 'url("' + homeWallpaperSet[homeWallpaperIndex] + '")');
 
@@ -1082,6 +1148,85 @@
       });
 
     /* Passage selection is handled by the single full-screen reader navigator. */
+
+    /* CONTINUOUS IDENTITY SCRIPTURE HERO.
+       Each title, exact KJV verse and photographic background move as one unit. */
+    const identityScriptures = [
+      { title: "My Healer", reference: "Psalm 103:3", wallpaper: 0 },
+      { title: "My Comforter", reference: "John 14:16", wallpaper: 1 },
+      { title: "My Provider", reference: "Genesis 22:14", wallpaper: 2 },
+      { title: "Everlasting Father", reference: "Isaiah 9:6", wallpaper: 3 },
+      { title: "The Glorious King", reference: "Psalm 24:10", wallpaper: 4 }
+    ];
+    const identityHero = document.getElementById("zurielIdentityHero");
+    const identityTitle = document.getElementById("zurielIdentityTitle");
+    const identityVerse = document.getElementById("zurielIdentityVerse");
+    const identityReference = document.getElementById("zurielIdentityReference");
+    const identityRead = document.getElementById("zurielIdentityRead");
+    const identityNext = document.getElementById("zurielIdentityNext");
+    const identityProgress = document.getElementById("zurielIdentityProgress");
+    let identityIndex = Math.floor(Date.now() / 86400000) % identityScriptures.length;
+    let identityRenderToken = 0;
+
+    async function renderIdentityScripture(nextIndex) {
+      identityIndex = (nextIndex + identityScriptures.length) % identityScriptures.length;
+      const item = identityScriptures[identityIndex];
+      const token = ++identityRenderToken;
+      identityTitle.textContent = item.title;
+      identityReference.textContent = item.reference;
+      identityVerse.style.opacity = "0";
+      identityProgress.style.width = ((identityIndex + 1) / identityScriptures.length * 100) + "%";
+      dashboard.style.setProperty("--zuriel-home-wallpaper", 'url("' + homeWallpaperSet[item.wallpaper] + '")');
+      const nextItem = identityScriptures[(identityIndex + 1) % identityScriptures.length];
+      const preload = new Image();
+      preload.decoding = "async";
+      preload.src = homeWallpaperSet[nextItem.wallpaper];
+      try {
+        if (typeof window.getBibleVerseText !== "function") {
+          throw new Error("The offline KJV Scripture service is not ready.");
+        }
+        const passage = await window.getBibleVerseText(item.reference);
+        if (token !== identityRenderToken) return;
+        const exactText = String(passage && passage.text || "").replace(/^\d+\.\s*/, "").trim();
+        if (!exactText) throw new Error("The exact KJV verse was not returned.");
+        identityVerse.textContent = "“" + exactText + "”";
+      } catch (error) {
+        if (token !== identityRenderToken) return;
+        identityVerse.textContent = "Open this reference in Read Scripture to view the exact King James Version text.";
+      }
+      identityVerse.style.opacity = "1";
+    }
+
+    function openIdentityReference() {
+      const item = identityScriptures[identityIndex];
+      const match = item.reference.match(/^(.+)\s+(\d+):(\d+)$/);
+      if (!match || typeof window.openChapter !== "function") return;
+      const bookName = canonicalBookName(match[1]);
+      navigate("read");
+      const bookSelector = document.getElementById("book");
+      if (bookSelector) bookSelector.value = bookName;
+      window.openChapter(bookName, Number(match[2])).then(function () {
+        if (typeof window.selectBibleVerse !== "function" ||
+            !window.selectBibleVerse(Number(match[3]))) {
+          throw new Error("The selected identity Scripture could not be opened.");
+        }
+      }).catch(function (error) {
+        console.error("Zuriel identity Scripture:", error);
+      });
+    }
+
+    identityRead.addEventListener("click", openIdentityReference);
+    identityNext.addEventListener("click", function () {
+      renderIdentityScripture(identityIndex + 1);
+    });
+    renderIdentityScripture(identityIndex);
+    const identityRotationTimer = window.setInterval(function () {
+      if (document.visibilityState === "hidden") return;
+      renderIdentityScripture(identityIndex + 1);
+    }, 16000);
+    window.addEventListener("pagehide", function () {
+      window.clearInterval(identityRotationTimer);
+    }, { once: true });
 
     /* CHANGING HOME SCRIPTURE */
 
