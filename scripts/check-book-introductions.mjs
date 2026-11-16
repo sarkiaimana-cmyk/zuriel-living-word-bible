@@ -48,7 +48,7 @@ try {
   const artworkStart = source.indexOf("function createChapterArtwork(bookName, chapterNumber, description)");
   const artworkEnd = source.indexOf("function renderBook(bookName)", artworkStart);
   if (artworkStart < 0 || artworkEnd <= artworkStart) throw new Error("Chapter artwork function could not be isolated.");
-  const artworkSource = source.slice(artworkStart, artworkEnd) + "\\nwindow.__createChapterArtwork = createChapterArtwork;";
+  const artworkSource = source.slice(artworkStart, artworkEnd) + "\nwindow.__createChapterArtwork = createChapterArtwork;";
   const sandbox = { window: {}, Array, String, encodeURIComponent };
   vm.runInNewContext(artworkSource, sandbox, { timeout: 1000 });
   const first = sandbox.window.__createChapterArtwork("Song & Solomon", 1, "Love <joy> & grace");
