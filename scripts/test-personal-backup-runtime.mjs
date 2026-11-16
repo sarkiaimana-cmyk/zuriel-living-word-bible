@@ -96,6 +96,13 @@ await assert.rejects(() => api.decryptBackup(damaged, "correct horse battery"), 
 await assert.rejects(() => api.decryptBackup({ ...encrypted, schemaVersion: 99 }, "correct horse battery"), /not a supported/);
 
 const incoming = api.validateBackup(sample);
+const largeHistory = Array.from({ length: 620 }, (_, index) => ({
+  book: "History Book " + index,
+  chapter: 1,
+  openedAt: new Date(2026, 0, 1, 0, index).toISOString()
+}));
+assert.equal(api.mergeRecentChapters([], largeHistory).length, 500,
+  "Encrypted restore must preserve the expanded history cap without unbounded growth.");
 assert.equal(incoming.notes.length, 1);
 assert.equal(incoming.recentlyOpenedChapters.length, 2);
 assert.throws(() => api.safeRecentChapters([{ book: "John", chapter: 0 }]), /invalid recently opened chapter entry/);
