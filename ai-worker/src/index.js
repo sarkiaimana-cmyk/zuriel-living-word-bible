@@ -186,16 +186,170 @@ const SYSTEM_PROMPT = [
   "Answer in a concise study format with: Main idea; Context and meaning; Reflection. Keep the whole response under 500 words."
 ].join(" ");
 
+const YVP_BASE = "https://api.youversion.com/v1";
+
+function yvpErrorStatus(status) {
+  if (status === 401) return 502;
+  if (status === 403) return 403;
+  if (status === 404) return 404;
+  if (status === 429) return 429;
+  return 502;
+}
+
+async function handleYouVersionRequest(request, env, dependencies, cors) {
+  if (request.method !== "GET") {
+    return json({ error: "Use GET to request licensed Bible versions or passages." }, 405, cors);
+  }
+  if (!env.ZITE_YVP_APP_KEY) {
+    return json({ error: "YouVersion access is not configured. The offline KJV remains available." }, 503, cors);
+  }
+  if (!env.TRANSLATION_RATE_LIMIT) {
+    return json({ error: "The translation service is not safely rate-limited yet." }, 503, cors);
+  }
+
+  const clientKey = request.headers.get("CF-Connecting-IP") || "unknown-client";
+  try {
+    const limit = await env.TRANSLATION_RATE_LIMIT.limit({ key: clientKey });
+    if (!limit || !limit.success) {
+      return json({ error: "The translation service is receiving too many requests. Please wait and try again." }, 429, cors);
+    }
+  } catch {
+    return json({ error: "The translation service is temporarily unavailable." }, 503, cors);
+  }
+
+  const url = new URL(request.url);
+  let upstreamUrl;
+  let kind;
+  if (url.pathname === "/api/youversion/bibles") {
+    const token = url.searchParams.get("next_page_token");
+    if (token && (token.length > 256 || !/^[A-Za-z0-9._~-]+$/.test(token))) {
+      return json({ error: "The Bible list page token is invalid." }, 400, cors);
+    }
+    if ([...url.searchParams.keys()].some(key => key !== "next_page_token")) {
+      return json({ error: "Only the supported page token may be supplied." }, 400, cors);
+    }
+    upstreamUrl = new URL(YVP_BASE + "/bibles");
+    upstreamUrl.searchParams.append("language_ranges[]", "en");
+    upstreamUrl.searchParams.set("page_size", "100");
+    if (token) upstreamUrl.searchParams.set("next_page_token", token);
+    kind = "bibles";
+  } else {
+    const match = url.pathname.match(/^\/api\/youversion\/bibles\/(\d+)\/passages\/([A-Z0-9]{3}\.\d{1,3}(?:\.\d{1,3}(?:-\d{1,3})?)?)$/);
+    if (!match) return json({ error: "The requested YouVersion resource was not recognised." }, 404, cors);
+    if ([...url.searchParams.keys()].some(key => key !== "format")) {
+      return json({ error: "Only the text or HTML passage format may be selected." }, 400, cors);
+    }
+    const format = url.searchParams.get("format") || "html";
+    if (format !== "html" && format !== "text") {
+      return json({ error: "Choose html or text passage format." }, 400, cors);
+    }
+    upstreamUrl = new URL(YVP_BASE + "/bibles/" + match[1] + "/passages/" + encodeURIComponent(match[2]));
+    upstreamUrl.searchParams.set("format", format);
+    kind = "passage";
+  }
+
+  let response;
+  try {
+    const fetchImpl = dependencies.fetch || globalThis.fetch;
+    response = await fetchImpl(upstreamUrl.toString(), {
+      method: "GET",
+      headers: {
+        "X-YVP-App-Key": env.ZITE_YVP_APP_KEY,
+        "Accept": "application/json"
+      },
+      signal: AbortSignal.timeout(10000)
+    });
+  } catch {
+    return json({ error: "YouVersion could not be reached. Your offline KJV is unchanged." }, 502, cors);
+  }
+
+  if (response.status === 204 && kind === "bibles") {
+    return json({ data: [], next_page_token: null, source: "YouVersion Platform" }, 200, cors);
+  }
+  if (!response.ok) {
+    const status = yvpErrorStatus(response.status);
+    const message = response.status === 403
+      ? "YouVersion did not grant this Bible content to the Zuriel app key. Check the publisher licence for this version."
+      : response.status === 404
+        ? "The requested Bible passage was not found in this version."
+        : response.status === 429
+          ? "YouVersion rate limit reached. Please wait before trying again."
+          : response.status === 401
+            ? "YouVersion rejected the server-side app key. Check the configured secret."
+            : "YouVersion is temporarily unavailable.";
+    const retryAfter = response.headers && response.headers.get("Retry-After");
+    return json({ error: message }, status, retryAfter ? { ...cors, "retry-after": retryAfter } : cors);
+  }
+
+  let payload;
+  try {
+    payload = await response.json();
+  } catch {
+    return json({ error: "YouVersion returned an unreadable response." }, 502, cors);
+  }
+  if (!payload || typeof payload !== "object" || Array.isArray(payload)) {
+    return json({ error: "YouVersion returned an unexpected response." }, 502, cors);
+  }
+
+  if (kind === "bibles") {
+    if (!Array.isArray(payload.data)) {
+      return json({ error: "YouVersion did not return a Bible version list." }, 502, cors);
+    }
+    const data = payload.data.filter(item => item && Number.isInteger(Number(item.id)) &&
+      typeof item.title === "string" && typeof item.abbreviation === "string")
+      .map(item => ({
+        id: Number(item.id),
+        title: item.title,
+        abbreviation: item.abbreviation,
+        copyright: typeof item.copyright === "string" ? item.copyright : "",
+        promotional_content: typeof item.promotional_content === "string" ? item.promotional_content : "",
+        language: item.language && typeof item.language === "object"
+          ? { iso_639_1: item.language.iso_639_1 || "", name: item.language.name || "" }
+          : null,
+        youversion_deep_link: typeof item.youversion_deep_link === "string" ? item.youversion_deep_link : ""
+      }));
+    return json({
+      data,
+      next_page_token: typeof payload.next_page_token === "string" ? payload.next_page_token : null,
+      source: "YouVersion Platform",
+      notice: "Only versions returned by the registered app key are listed. Content access remains subject to each publisher licence."
+    }, 200, cors);
+  }
+
+  const item = payload.data && typeof payload.data === "object" ? payload.data : payload;
+  if (!item || typeof item.content !== "string" || !item.content.trim()) {
+    return json({ error: "YouVersion returned no passage text for this request." }, 502, cors);
+  }
+  return json({
+    source: "YouVersion Platform",
+    version: {
+      id: Number(item.version_id || item.bible_id || 0),
+      abbreviation: typeof item.version_abbreviation === "string" ? item.version_abbreviation : "",
+      title: typeof item.version_title === "string" ? item.version_title : ""
+    },
+    passage: {
+      id: typeof item.id === "string" ? item.id : "",
+      reference: typeof item.reference === "string" ? item.reference : "",
+      content: item.content,
+      copyright: typeof item.copyright === "string" ? item.copyright : "",
+      promotional_content: typeof item.promotional_content === "string" ? item.promotional_content : ""
+    },
+    format: url.searchParams.get("format") || "html",
+    notice: "Display the publisher's copyright and attribution with this Scripture. Online API text is not stored for offline use unless the relevant licence expressly permits it."
+  }, 200, cors);
+}
+
 export async function handleRequest(request, env, dependencies = {}) {
   const url = new URL(request.url);
-  if (url.pathname !== "/api/assistant" && url.pathname !== "/api/assistant/config") {
-    return json({ error: "Not found." }, 404);
-  }
+  const assistantRoute = url.pathname === "/api/assistant" || url.pathname === "/api/assistant/config";
+  const youVersionRoute = url.pathname === "/api/youversion/bibles" || url.pathname.startsWith("/api/youversion/bibles/");
+  if (!assistantRoute && !youVersionRoute) return json({ error: "Not found." }, 404);
   const cors = corsFor(request, env);
   if (!cors) return json({ error: "This app origin is not authorised for the pilot." }, 403);
   if (request.method === "OPTIONS") {
     return new Response(null, { status: 204, headers: cors });
   }
+  if (youVersionRoute) return handleYouVersionRequest(request, env, dependencies, cors);
   if (url.pathname === "/api/assistant/config" && request.method === "GET") {
     return json({
       enabled: Boolean(env.TURNSTILE_SITE_KEY),
