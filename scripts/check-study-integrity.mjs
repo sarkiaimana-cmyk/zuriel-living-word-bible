@@ -155,7 +155,7 @@ try {
   const start = study.indexOf("function createStudySectionArtwork(index, heading)");
   const end = study.indexOf("function createStudyPanel()", start);
   if (start < 0 || end <= start) throw new Error("Study artwork generator could not be isolated.");
-  const source = study.slice(start, end) + "\\nwindow.__createStudyArt = createStudySectionArtwork;";
+  const source = study.slice(start, end) + "\nwindow.__createStudyArt = createStudySectionArtwork;";
   const sandbox = { window: {}, String, encodeURIComponent };
   vm.runInNewContext(source, sandbox, { timeout: 1000 });
   const render = sandbox.window.__createStudyArt;
