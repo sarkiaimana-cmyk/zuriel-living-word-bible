@@ -1317,7 +1317,7 @@
     const identityRotationTimer = window.setInterval(function () {
       if (document.visibilityState === "hidden") return;
       renderIdentityScripture(identityIndex + 1);
-    }, 16000);
+    }, 15000);
     window.addEventListener("pagehide", function () {
       window.clearInterval(identityRotationTimer);
     }, { once: true });
