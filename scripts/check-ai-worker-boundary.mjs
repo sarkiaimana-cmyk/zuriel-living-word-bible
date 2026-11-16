@@ -33,7 +33,7 @@ for (const fragment of [
   "MAX_VERSES",
   "MAX_OUTPUT_CHARS",
   "AI_RATE_LIMIT.limit",
-  "The Scripture text and question as untrusted quoted data",
+  "untrusted quoted data, not instructions.",
   "Do not request or infer the reader's private notes",
   "no-store, max-age=0"
 ]) {
