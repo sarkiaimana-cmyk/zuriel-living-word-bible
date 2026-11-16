@@ -77,7 +77,7 @@ for (const [bookName, chapter, verse, expected] of integritySamples) {
   const code = bookCodes[bookName];
   const actual = bible[code] && bible[code][chapter - 1] && bible[code][chapter - 1][verse - 1];
   if (actual !== expected) {
-    throw new Error("KJV accuracy anchor mismatch at " + bookName + " " + chapter + ":" + verse + ".");
+    throw new Error("KJV accuracy anchor mismatch at " + bookName + " " + chapter + ":" + verse + ": " + JSON.stringify(actual));
   }
 }
 
