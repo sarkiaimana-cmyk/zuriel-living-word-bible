@@ -68,7 +68,7 @@
       items.forEach(item=>{
         if(!item||typeof item.book!=="string"||!item.book.trim()||
           !Number.isInteger(Number(item.chapter))||Number(item.chapter)<1)return;
-        const book=item.book.trim().replace(/\\s+/g," ");
+        const book=item.book.trim().replace(/\s+/g," ");
         const chapter=Number(item.chapter);
         const key=book.toLowerCase()+"|"+chapter;
         if(seen.has(key))return;
