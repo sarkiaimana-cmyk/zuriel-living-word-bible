@@ -1,4 +1,4 @@
-import { readFile, mkdir, writeFile, rm } from "node:fs/promises";
+import { readFile, mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import vm from "node:vm";
@@ -60,6 +60,9 @@ for (const book of books) {
   }
 }
 if (Object.keys(bookCodes).length !== 66) throw new Error("Book-code map must contain exactly 66 entries.");
+if (chapterCount !== 1189 || verseCount !== 31102) {
+  throw new Error("KJV source totals do not match the expected 66-book, 1,189-chapter, 31,102-verse edition.");
+}
 if (!checkOnly) {
   await mkdir(outputRoot, { recursive: true });
   await writeFile(path.join(outputRoot, "scripture-index.json"), JSON.stringify(index), "utf8");
