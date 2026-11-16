@@ -17,10 +17,19 @@ for (const key of [
   "zurielLastReadingPosition",
   "zuriel_kingdom_life_saved_v1",
   "zuriel_kingdom_life_completed_v1",
-  "zuriel_reading_plan_progress_v1"
+  "zuriel_reading_plan_progress_v1",
+  "zuriel-verse-study-notes-v1",
+  "zuriel-word-highlights-v1",
+  "zuriel_personal_library_v1"
 ]) if (!backup.includes(key)) failures.push("Backup is missing storage key: " + key);
 for (const fragment of [
   "schemaVersion: 1",
+  "schemaVersion: 2",
+  "safeStudyNotes",
+  "safeWordHighlights",
+  "safePersonalLibrary",
+  "mergeHighlights",
+  "mergePersonalLibrary",
   "validateBackup",
   "safeRecords",
   "Restore & Merge Records",
@@ -61,5 +70,5 @@ if (failures.length) {
   failures.forEach(item => console.error(" - " + item));
   process.exitCode = 1;
 } else {
-  console.log("Personal backup integrity checks passed: seven local data stores, JSON export/import, merge, validation, rollback, offline and Android inclusion.");
+  console.log("Personal backup integrity checks passed: all local study records, bookmarks and progress stores, encrypted export/import, merge, validation, rollback, offline and Android inclusion.");
 }
