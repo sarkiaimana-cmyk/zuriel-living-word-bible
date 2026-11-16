@@ -34,7 +34,7 @@ const checks = [
   ["clear Share image action", 'id="zgsShareImage">Share image</button>'],
   ["clear Save to My Library action", 'id="zgsSave">Save to My Library</button>'],
   ["clear Share card text action", 'id="zgsShare">Share card text</button>'],
-  ["large mobile touch targets for card actions", "min-height:46px;padding:10px 12px;font-size:13px;touch-action:manipulation;"],
+  ["large mobile touch targets for card actions", "min-height:48px;padding:10px 12px;font-size:13px;touch-action:manipulation;"],
   ["canvas PNG rendering", 'canvas.toBlob(value => value ? resolve(value)'],
   ["native file sharing where supported", "navigator.canShare({files:[file]})"],
   ["download fallback", "link.download = fileName"],
