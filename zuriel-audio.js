@@ -27,7 +27,7 @@ import { TextToSpeech } from "@capacitor-community/text-to-speech";
       "#zurielAudioPlayer h3{margin:0 0 7px;font:700 15px Arial,sans-serif;color:#19324f}" +
       "#zurielAudioPlayer p{margin:7px 0;font:13px/1.5 Arial,sans-serif}" +
       "#zurielAudioPlayer .zra-controls{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}" +
-      "#zurielAudioPlayer button,#zurielAudioPlayer select{min-height:42px;margin:0;padding:8px 11px;border:1px solid #c6d1cb;border-radius:8px;font:600 13px Arial,sans-serif}" +
+      "#zurielAudioPlayer button,#zurielAudioPlayer select{min-height:48px;margin:0;padding:8px 11px;border:1px solid #c6d1cb;border-radius:8px;font:600 13px Arial,sans-serif}" +
       "#zurielAudioPlayer button{background:#193e5a;color:#fff}" +
       "#zurielAudioPlayer button:disabled{opacity:.5}" +
       "#zurielAudioPlayer select{flex:1 1 135px;min-width:0;background:#fff;color:#19324f}" +
