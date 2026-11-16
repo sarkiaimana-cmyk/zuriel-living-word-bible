@@ -20,6 +20,8 @@ for (const fragment of [
   "Meet Jesus",
   "Growing in Faith",
   "Prayer & Trust",
+  "Walk with Jesus",
+  "duration: 30",
   "duration: 7",
   "function readState()",
   "Saved reading-plan progress is unreadable. It has not been changed.",
@@ -103,7 +105,7 @@ try {
       verifiedPassages += 1;
     }
   }
-  if (verifiedPassages < 21) throw new Error("Expected at least 21 verified reading-plan passages.");
+  if (verifiedPassages < 51) throw new Error("Expected at least 51 verified reading-plan passages, including the 30-day plan.");
 } catch (error) {
   failures.push("Bundled KJV reading-plan reference verification failed: " + error.message);
 }
@@ -112,5 +114,5 @@ if (failures.length) {
   failures.forEach(item => console.error(" - " + item));
   process.exitCode = 1;
 } else {
-  console.log("Reading plan integration checks passed: three offline plans, exact bundled-KJV passage validation, private progress, Bible navigation, encrypted backup, web cache and Android packaging.");
+  console.log("Reading plan integration checks passed: four offline plans (including a 30-day journey), 51 exact bundled-KJV passage validations, private progress, Bible navigation, encrypted backup, web cache and Android packaging.");
 }

@@ -14,12 +14,15 @@ const api = sandbox.window.ZurielReadingPlans;
 
 assert.ok(api, "Reading plan module must expose its public API.");
 const plans = api.list();
-assert.equal(plans.length, 3, "Three curated starter plans should be available.");
+assert.equal(plans.length, 4, "Four curated starter plans should be available.");
 for (const plan of plans) {
-  assert.equal(plan.duration, 7);
-  assert.equal(plan.passages.length, 7);
+  assert.equal(plan.passages.length, plan.duration);
   assert.ok(plan.title && plan.id);
 }
+const monthPlan = plans.find(plan => plan.id === "walk-with-jesus-30");
+assert.ok(monthPlan, "The 30-day Walk with Jesus plan must be available.");
+assert.equal(monthPlan.duration, 30);
+assert.equal(monthPlan.passages.length, 30);
 assert.deepEqual(JSON.parse(JSON.stringify(api.readState())), {
   schemaVersion: 1, activePlanId: null, plans: {}
 });
@@ -62,6 +65,6 @@ assert.equal(api.parseReference("John 0"), null, "Chapter zero must be rejected.
 assert.equal(api.parseReference("not a Scripture reference"), null);
 
 const allReferences = plans.flatMap(plan => plan.passages);
-assert.equal(allReferences.length, 21);
+assert.equal(allReferences.length, 51);
 for (const reference of allReferences) assert.ok(api.parseReference(reference), "Every curated passage must parse: " + reference);
-console.log("Reading plan runtime checks passed: three seven-day plans, 21 passages, private progress persistence, duplicate-day cleanup, invalid-state rejection and Scripture-reference parsing.");
+console.log("Reading plan runtime checks passed: four plans including a 30-day Jesus journey, 51 passages, private progress persistence, duplicate-day cleanup, invalid-state rejection and Scripture-reference parsing.");
