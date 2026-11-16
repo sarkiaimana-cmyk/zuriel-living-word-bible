@@ -49,7 +49,7 @@ for (const book of books) {
     const verses = chapters[i];
     if (!Array.isArray(verses) || !verses.length ||
         verses.some(verse => typeof verse !== "string" || !verse.trim() ||
-          verse.includes("\\uFFFD") || /[\\u0000-\\u0008\\u000B\\u000C\\u000E-\\u001F]/.test(verse))) {
+          verse.includes("\uFFFD") || /[\u0000-\u0008\u000B\u000C\u000E-\u001F]/.test(verse))) {
       throw new Error("Missing, corrupted or invalid verse text in " + book.name + " " + (i + 1));
     }
     chapterCount++;
