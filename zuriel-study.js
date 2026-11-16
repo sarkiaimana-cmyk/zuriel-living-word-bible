@@ -1014,6 +1014,63 @@
           padding-bottom:calc(14px + env(safe-area-inset-bottom));
         }
       }
+      /* Scripture is the primary reading surface: use the full available
+         width on phones and desktops instead of squeezing it beside study tools. */
+      #bibleReader {
+        width:100%;
+        max-width:100%;
+        min-width:0;
+      }
+      #zurielReaderStudyLayout {
+        display:grid;
+        grid-template-columns:minmax(0,1fr);
+        gap:16px;
+        align-items:stretch;
+        width:100%;
+        max-width:100%;
+        min-width:0;
+      }
+      #zurielReaderStudyLayout > #message {
+        display:block;
+        grid-column:1 / -1;
+        width:100%;
+        max-width:100%;
+        min-width:0;
+        margin:0;
+        padding:0;
+        text-align:left;
+        justify-self:stretch;
+      }
+      #zurielReaderStudyLayout > #message > * {
+        max-width:100%;
+        min-width:0;
+      }
+      #zurielReaderStudyLayout > #message .verse {
+        display:block;
+        width:100%;
+        max-width:100%;
+        min-width:0;
+        margin-left:0;
+        margin-right:0;
+        text-align:left;
+        white-space:normal;
+        overflow-wrap:anywhere;
+        word-break:normal;
+        hyphens:auto;
+        font-size:clamp(16px, 1.8vw, 19px);
+        line-height:1.8;
+        padding:clamp(12px, 2vw, 17px) clamp(8px, 1.8vw, 15px);
+      }
+      #zurielStudyPanel {
+        position:static;
+        top:auto;
+        width:100%;
+        max-width:100%;
+        max-height:none;
+        overflow:visible;
+        overscroll-behavior:auto;
+        margin:0;
+      }
     `;
     document.head.appendChild(style);
 
