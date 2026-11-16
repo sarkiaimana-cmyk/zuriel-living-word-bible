@@ -711,15 +711,32 @@
       { name:"Prayer and declaration", hue:45, mark:'<path d="M210 55C175 96 145 126 145 160A65 65 0 0 0 275 160C275 126 245 96 210 55Z" fill="none" stroke="#f4e6c5" stroke-width="8"/><path d="M178 155L200 177L245 128" fill="none" stroke="#d9bd79" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>' }
     ];
     const theme = themes[index % themes.length];
-    const safe = String(heading || theme.name).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+    const words = String(heading || theme.name).split(/\\s+/);
+    const rows = [];
+    let row = "";
+    words.forEach(function (word) {
+      const candidate = row ? row + " " + word : word;
+      if (row && candidate.length > 29) {
+        rows.push(row);
+        row = word;
+      } else row = candidate;
+    });
+    if (row) rows.push(row);
+    if (rows.length > 2) rows.splice(2, rows.length - 2, rows[1].slice(0, 26) + "…");
+    const safeRows = rows.map(function (value) {
+      return value.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+    });
+    const titleMarkup = safeRows.map(function (value, index) {
+      return '<tspan x="410" dy="' + (index === 0 ? 0 : 38) + '">' + value + '</tspan>';
+    }).join("");
     const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="960" height="240" viewBox="0 0 960 240">' +
       '<defs><linearGradient id="studyBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="hsl(' + theme.hue + ',48%,15%)"/><stop offset="1" stop-color="hsl(' + ((theme.hue + 36) % 360) + ',48%,34%)"/></linearGradient></defs>' +
       '<rect width="960" height="240" rx="18" fill="url(#studyBg)"/><circle cx="800" cy="35" r="160" fill="#fff" opacity=".05"/><circle cx="45" cy="235" r="120" fill="#fff" opacity=".04"/>' +
       '<g transform="translate(25 0)">' + theme.mark + '</g>' +
       '<path d="M365 45V195" stroke="#d9bd79" stroke-width="2" opacity=".65"/>' +
-      '<text x="410" y="105" fill="#f4e6c5" font-family="Georgia,serif" font-size="17" letter-spacing="4">ZURIEL STUDY CENTRE</text>' +
-      '<text x="410" y="155" fill="#fffaf0" font-family="Georgia,serif" font-size="31" font-weight="bold">' + safe + '</text>' +
-      '<path d="M410 178H865" stroke="#d9bd79" stroke-width="3" opacity=".7"/></svg>';
+      '<text x="410" y="91" fill="#f4e6c5" font-family="Georgia,serif" font-size="17" letter-spacing="4">ZURIEL STUDY CENTRE</text>' +
+      '<text x="410" y="139" fill="#fffaf0" font-family="Georgia,serif" font-size="27" font-weight="bold">' + titleMarkup + '</text>' +
+      '<path d="M410 205H865" stroke="#d9bd79" stroke-width="3" opacity=".7"/></svg>';
     return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
   }
 
