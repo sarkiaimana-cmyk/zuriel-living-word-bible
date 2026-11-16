@@ -1,4 +1,4 @@
 {
-  "version": "1.4.25",
-  "releaseNotes": "Introduces the continuous Who He Is Scripture experience with exact offline KJV verse retrieval, synchronized photographic backgrounds, and smoother Home navigation."
+  "version": "1.4.26",
+  "releaseNotes": "Adds three simultaneously visible Home Scriptures loaded from the offline KJV, each with direct Bible-reader navigation."
 }
