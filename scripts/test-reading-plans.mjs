@@ -54,11 +54,14 @@ assert.equal(api.validateProgress({
 }), false);
 
 assert.deepEqual(JSON.parse(JSON.stringify(api.parseReference("John 3:16-17"))), {
-  book: "John", chapter: 3, verse: 16
+  book: "John", chapter: 3, verse: 16, endVerse: 17, wholeChapter: false
 });
 assert.deepEqual(JSON.parse(JSON.stringify(api.parseReference("Psalm 23"))), {
-  book: "Psalms", chapter: 23, verse: 1
+  book: "Psalms", chapter: 23, verse: 1, endVerse: 1, wholeChapter: true
 });
+assert.equal(api.parseReference("John 3:18-16"), null);
+assert.equal(api.parseReference("John 3:0"), null);
+assert.equal(api.parseReference("John 0"), null);
 assert.equal(api.parseReference("not a Scripture reference"), null);
 
 const allReferences = plans.flatMap(plan => plan.passages);
