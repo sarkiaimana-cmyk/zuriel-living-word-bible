@@ -26,6 +26,11 @@ check("word panel can open the full study centre on request",
 check("closing word panel leaves reading selection intact",
   study.includes('panel.dataset.mode = "verse"') &&
   study.includes('closeButton.textContent = "Close word panel"'));
+check("mobile word study opens as a compact bottom sheet over the current reader view",
+  study.includes('#zurielStudyPanel[data-mode="word-context"]') &&
+  study.includes("position:fixed") &&
+  study.includes("max-height:min(42vh,360px)") &&
+  study.includes("bottom:calc(12px + env(safe-area-inset-bottom))"));
 
 if (failures.length) {
   console.error("Contextual word-study layout checks failed:");
