@@ -10,6 +10,25 @@
 
   const STORAGE_KEY = "zuriel_personal_library_v1";
 
+  // Audio is playable only when both the composition and the actual recording
+  // have documented rights for the requested use. A song title alone is never
+  // treated as permission to stream or download a recording.
+  function canPlayWorshipAudio(song) {
+    if (!song || song.rightsStatus !== "verified" ||
+        song.compositionRights !== "cleared" ||
+        song.recordingRights !== "cleared" ||
+        song.streamingAllowed !== true ||
+        typeof song.audioUrl !== "string" ||
+        typeof song.rightsSource !== "string" || !song.rightsSource.trim()) return false;
+    try {
+      const url = new URL(song.audioUrl);
+      return url.protocol === "https:";
+    } catch (error) {
+      return false;
+    }
+  }
+
+
   const originalLibrary = {
     devotionals: [
       { title: "Hope in God", verse: "Romans 15:13", message: "Let your heart remain anchored in God. His faithfulness is greater than every circumstance.", prayer: "Father, fill my heart with hope, peace and joy through the Holy Spirit." },
@@ -883,7 +902,8 @@
       if (page === "worship") {
         content.appendChild(card(
           "🎶 SS&S — Songs, Hymns & Worship",
-          "A complete worship-study library: every entry opens into its biblical foundation, explanation, reflection, prayer and practical worship response. Full lyrics are included only when they are verified as public domain or supplied under an appropriate licence."
+          "A complete worship-study library: every entry opens into its biblical foundation, explanation, reflection, prayer and practical worship response. Full lyrics are included only when they are verified as public domain or supplied under an appropriate licence.",
+          "Worship study guides are available now. Audio playback is enabled only for recordings with verified composition rights, recording rights and streaming permission. No recording is streamed or downloaded without those checks."
         ));
 
         const collections = ["All Songs", "Traditional Hymn", "Gospel Hymn", "Modern Hymn", "Praise & Chorus", "Scripture Song", "Contemporary Worship"];
@@ -923,6 +943,20 @@
             box.appendChild(element("h4", song.title));
             box.appendChild(element("p", song.theme));
             box.appendChild(element("strong", "Scripture: " + song.reference));
+            if (canPlayWorshipAudio(song)) {
+              const player = document.createElement("audio");
+              player.controls = true;
+              player.preload = "none";
+              player.src = song.audioUrl;
+              player.setAttribute("aria-label", "Authorised recording of " + song.title);
+              if (song.downloadAllowed !== true) player.setAttribute("controlsList", "nodownload");
+              box.appendChild(player);
+            } else {
+              box.appendChild(element("p",
+                "Study guide available. Audio is not enabled for this song because verified recording and streaming permissions are not on file.",
+                "worship-audio-unavailable"
+              ));
+            }
             box.appendChild(element("p", song.note));
             box.appendChild(buildGuide(song));
             box.appendChild(button("Save Complete Guide to My Library", function () {
