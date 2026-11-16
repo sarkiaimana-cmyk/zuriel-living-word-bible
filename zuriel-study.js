@@ -1443,7 +1443,7 @@
           if (!selected) {
             throw new Error("The selected verse is not available in the reader.");
           }
-          const verseText = selected.textContent.replace(/^\\s*\\d+\\.?\\s*/, "").trim();
+          const verseText = selected.textContent.replace(/^\s*\d+\.?\s*/, "").trim();
           selected.scrollIntoView({ behavior: "smooth", block: "center" });
           selected.classList.add("zuriel-selected-verse");
           if (window.ZurielStudy && typeof window.ZurielStudy.openForReference === "function") {
