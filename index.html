@@ -132,6 +132,9 @@ select {
   scroll-margin-top: 18px;
   transition: background .18s ease, border-color .18s ease;
 }
+#message .verse.verse-paragraph-start {
+  margin-top: 1.15em;
+}
 #message .verse.zuriel-nav-highlight,
 #message .verse.zuriel-selected-verse {
   background: #fff0c9 !important;
@@ -903,8 +906,11 @@ async function openChapter(book, chapter) {
 
   const verseElements = [];
   verses.forEach(function (verse, index) {
+    const rawVerseText = String(verse);
+    const paragraphStart = rawVerseText.startsWith("¶");
+    const displayVerseText = rawVerseText.replace(/^¶\\s*/, "");
     const paragraph = document.createElement("p");
-    paragraph.className = "verse";
+    paragraph.className = paragraphStart ? "verse verse-paragraph-start" : "verse";
     paragraph.dataset.verseNumber = String(index + 1);
     paragraph.setAttribute("aria-label", "Verse " + (index + 1));
 
@@ -932,16 +938,16 @@ async function openChapter(book, chapter) {
       word.addEventListener("click", function (event) {
         event.stopPropagation();
         saveReadingPosition(book, chapter, index + 1);
-        selectVerseForGloryCard(index + 1, verse);
+        selectVerseForGloryCard(index + 1, displayVerseText);
         if (window.ZurielStudy &&
             typeof window.ZurielStudy.openWordInContext === "function") {
           window.ZurielStudy.openWordInContext(
-            book, chapter, index + 1, verse, part, thisWordIndex
+            book, chapter, index + 1, displayVerseText, part, thisWordIndex
           );
         } else if (window.ZurielStudy &&
             typeof window.ZurielStudy.openForReference === "function") {
           window.ZurielStudy.openForReference(
-            book, chapter, index + 1, verse, part, thisWordIndex
+            book, chapter, index + 1, displayVerseText, part, thisWordIndex
           );
         }
       });
@@ -963,7 +969,7 @@ async function openChapter(book, chapter) {
         typeof window.ZurielStudy.openForReference === "function"
       ) {
         window.ZurielStudy.openForReference(
-          book, chapter, index + 1, verse, "", -1
+          book, chapter, index + 1, displayVerseText, "", -1
         );
       } else {
         status.textContent = "The Scripture Study panel is not available.";
@@ -1081,7 +1087,7 @@ window.getBibleVerseText = async function (reference) {
     throw new Error("Choose a valid verse or a passage of up to 80 verses.");
   }
   const text = verses.slice(first - 1, last).map((verse, index) =>
-    (first + index) + ". " + verse
+    (first + index) + ". " + String(verse).replace(/^¶\\s*/, "")
   ).join("\n");
   const normalized = book.name + " " + chapter +
     (match[3] ? ":" + first + (last > first ? "-" + last : "") : "");
