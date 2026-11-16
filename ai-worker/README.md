@@ -16,6 +16,19 @@ This folder contains a server-side, stateless pilot endpoint. It is deliberately
 
 The endpoint is an initial passage-explanation pilot. It does not yet support topical search, conversation history, translation comparison, external web retrieval, original-language research, or AI-generated cross-references.
 
+## Secure YouVersion Bible text proxy
+
+The Worker also contains a server-side YouVersion Platform proxy for the future multi-translation reader:
+
+- `GET /api/youversion/bibles` lists English Bible versions returned to the registered app key. The proxy does not request `all_available=true`, so it does not deliberately expose versions outside the app's licensed list.
+- `GET /api/youversion/bibles/{versionId}/passages/{USFM}` retrieves a single passage or chapter. The `format` query may be `html` or `text`.
+- The app key is read only from the Worker secret `ZITE_YVP_APP_KEY`; it is never accepted from the client or returned in a response.
+- Requests are origin-checked, rate-limited, time-bounded and returned with `no-store` headers.
+- Publisher copyright and promotional attribution are returned with passage content. Do not save licensed passages for offline use unless the exact publisher licence expressly permits it.
+- The endpoint remains disabled until `ZITE_YVP_APP_KEY` is configured. Only versions returned to the registered app key can be used; a provider 403 is treated as a licensing denial.
+
+The client-side translation selector and parallel-reading screen are not enabled yet. They must be connected only after the app key, accessible version list, publisher terms and required attribution display have been verified.
+
 ## Scripture asset preparation
 
 From the repository root:
