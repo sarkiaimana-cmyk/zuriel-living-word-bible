@@ -106,12 +106,12 @@ assert.deepEqual(JSON.parse(JSON.stringify(merged)), [
   { book: "Genesis", chapter: 1, openedAt: "legacy" }
 ], "Current history must take precedence and duplicate book/chapter pairs must be removed.");
 
-const longHistory = Array.from({ length: 120 }, (_, index) => ({
+const longHistory = Array.from({ length: 600 }, (_, index) => ({
   book: "Book " + index,
   chapter: 1,
   openedAt: ""
 }));
 windowObject.ZurielRecentlyOpened = { list: () => [] };
-assert.equal(api.mergeChapterHistory(longHistory).length, 100, "Merged chapter history must remain bounded to 100 entries.");
+assert.equal(api.mergeChapterHistory(longHistory).length, 500, "Merged chapter history must remain bounded to 500 entries.");
 
 console.log("Personal Study Space runtime tests passed: safe reads, corrupt-record preservation, bounded saves, failed-write preservation, shared/legacy history merge, duplicate removal and history limits.");
