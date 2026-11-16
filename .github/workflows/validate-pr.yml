@@ -43,6 +43,12 @@ jobs:
 
       - name: Validate study safeguards
         run: node scripts/check-study-integrity.mjs
+
+      - name: Test AI pilot backend security
+        run: node --test ai-worker/test/worker.test.mjs
+
+      - name: Check AI client/backend boundary
+        run: node scripts/check-ai-worker-boundary.mjs
       - name: Validate reader navigation and selected verses
         run: node scripts/check-reader-navigation.mjs
       - name: Validate Recently Opened reading history
