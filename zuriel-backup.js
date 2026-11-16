@@ -336,7 +336,7 @@
     ["prayers", "notes", "bookmarks"].forEach(name => {
       const map = new Map();
       (current && current[name] || []).concat(incoming && incoming[name] || []).forEach(item => {
-        const key = item.reference || item.id || [item.title || "", item.text || "", item.date || item.savedAt || ""].join("|");
+        const key = item.id || [item.type || "", item.reference || "", item.title || "", item.text || "", item.date || item.savedAt || ""].join("|");
         if (!map.has(key)) map.set(key, item);
       });
       merged[name] = Array.from(map.values()).slice(-5000);
