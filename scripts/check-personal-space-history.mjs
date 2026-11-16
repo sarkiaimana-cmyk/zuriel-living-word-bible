@@ -6,7 +6,7 @@ assert.match(source, /window\.ZurielRecentlyOpened\s*&&\s*typeof window\.ZurielR
   "Personal Study Space must read the shared Recently Opened chapter history.");
 assert.match(source, /mergeChapterHistory\(legacyHistory\)/,
   "Progress must combine current and legacy chapter history.");
-assert.match(source, /const key=book\.toLowerCase\(\)\+"\\\|"\+chapter/,
+assert.match(source, /const key=book\.toLowerCase\(\)\+"\|"\+chapter/,
   "Combined history must de-duplicate book/chapter pairs.");
 assert.match(source, /merged\.slice\(0,100\)/,
   "Combined history must remain bounded.");
