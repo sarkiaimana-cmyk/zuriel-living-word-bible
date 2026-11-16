@@ -30,7 +30,7 @@ check("mobile word study opens as a compact bottom sheet over the current reader
   study.includes('#zurielStudyPanel[data-mode="word-context"]') &&
   study.includes("position:fixed") &&
   study.includes("max-height:min(42vh,360px)") &&
-  study.includes("bottom:calc(12px + env(safe-area-inset-bottom))"));
+  study.includes("bottom:calc(68px + env(safe-area-inset-bottom))"));
 
 if (failures.length) {
   console.error("Contextual word-study layout checks failed:");
