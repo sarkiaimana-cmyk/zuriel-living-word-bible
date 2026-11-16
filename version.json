@@ -1,4 +1,4 @@
 {
-  "version": "1.4.23",
-  "releaseNotes": "Keeps word study beside the selected Scripture, completes the Open Book faith responses for all daily Scripture choices, and improves the mobile Study Centre layout."
+  "version": "1.4.24",
+  "releaseNotes": "Adds optional offline Scripture read-aloud using locally installed device voices, with playback controls and clear setup guidance when an offline voice is unavailable."
 }

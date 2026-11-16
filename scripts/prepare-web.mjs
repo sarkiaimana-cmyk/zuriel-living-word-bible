@@ -1,4 +1,5 @@
 import { cp, mkdir, rm } from "node:fs/promises";
+import { build } from "esbuild";
 
 const files = [
   "index.html",
@@ -35,4 +36,15 @@ for (const file of files) {
 
 await cp("images", "www/images", { recursive: true });
 
-console.log("Zuriel web app prepared for Android packaging.");
+await build({
+  entryPoints: ["zuriel-audio.js"],
+  bundle: true,
+  platform: "browser",
+  format: "iife",
+  target: ["es2020"],
+  outfile: "www/zuriel-audio.js",
+  minify: true,
+  sourcemap: false
+});
+
+console.log("Zuriel web app and offline Scripture audio controls prepared for Android packaging.");
