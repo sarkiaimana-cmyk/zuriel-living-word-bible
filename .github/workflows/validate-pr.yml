@@ -57,6 +57,10 @@ jobs:
         run: node scripts/test-original-word-linking.mjs
       - name: Validate responsive contextual word-study panel
         run: node scripts/check-word-study-layout.mjs
+      - name: Validate full-width Scripture reading layout
+        run: node scripts/check-scripture-reading-layout.mjs
+      - name: Validate KJV paragraph formatting
+        run: node scripts/check-kjv-paragraph-formatting.mjs
       - name: Validate exact study reference navigation
         run: node scripts/check-study-reference-navigation.mjs
       - name: Validate Advanced Bible Study topical index
