@@ -25,4 +25,4 @@ requireMatch(history, /Your saved notes and bookmarks are unchanged/,
 requireMatch(history, /textContent = item\.book \+ " " \+ item\.chapter/,
   "History labels must be rendered as text, not injected markup.");
 
-console.log("Recently Opened safeguards passed: isolated storage, successful-open recording, exact chapter reopening, bounded history, safe text rendering, preserved notes/bookmarks, and offline asset registration.");
+requireMatch(index, /ZurielRecentlyOpened\\.recordChapter\\(book, chapter\\)/,\n  "The core reader must record ordinary chapter opens, not only external reference opens.");\n\nconsole.log("Recently Opened safeguards passed: isolated storage, successful-open recording, exact chapter reopening, bounded history, safe text rendering, preserved notes/bookmarks, and offline asset registration.");
