@@ -1100,6 +1100,7 @@
     document.getElementById("zurielNextVerse")
       .addEventListener("click", function () {
         displayVerse(verseIndex + 1);
+        renderOpenBookFaithCard();
       });
 
     /* OPEN HOME VERSE IN THE READER */
@@ -1152,10 +1153,7 @@
     const scriptureRotationTimer = window.setInterval(function () {
       if (document.visibilityState === "hidden") return;
       displayVerse(verseIndex + 1);
-      if (faithCardRefs.length) {
-        faithCardIndex = (faithCardIndex + 1) % faithCardRefs.length;
-        renderOpenBookFaithCard();
-      }
+      renderOpenBookFaithCard();
     }, 15000);
     window.addEventListener("pagehide", function () {
       window.clearInterval(scriptureRotationTimer);
@@ -1164,18 +1162,10 @@
     /* SCRIPTURE-LINKED OPEN BOOK: use the curated faith response for the
        exact reference. Never manufacture a prayer or declaration when no
        matching entry exists. */
-    const faithCardRefs = verses.filter(function (item) {
-      return window.ZurielFaithContent &&
-        typeof window.ZurielFaithContent.find === "function" &&
-        window.ZurielFaithContent.find(item.reference);
-    });
-    let faithCardIndex = faithCardRefs.length
-      ? getDailyVerseIndex() % faithCardRefs.length : 0;
-
     let faithCardRenderToken = 0;
     async function renderOpenBookFaithCard() {
       const renderToken = ++faithCardRenderToken;
-      const verse = faithCardRefs[faithCardIndex];
+      const verse = verses[verseIndex];
       const setText = function (id, value) {
         const node = document.getElementById(id);
         if (node) node.textContent = value || "This reflection is not supplied yet.";
@@ -1184,19 +1174,27 @@
         setText("zurielOpenBookScripture", "No Scripture passage is available for this card yet.");
         return;
       }
-      const response = window.ZurielFaithContent.find(verse.reference);
-      if (!response) {
-        setText("zurielOpenBookScripture", "A verified Scripture response is not available for this reference yet.");
-        return;
-      }
+      const response = window.ZurielFaithContent &&
+        typeof window.ZurielFaithContent.find === "function"
+        ? window.ZurielFaithContent.find(verse.reference)
+        : null;
 
       setText("zurielOpenBookReference", verse.reference.toUpperCase());
+      if (!response) {
+        setText("zurielOpenBookDeclaration", "A declaration is not yet supplied for this Scripture.");
+        setText("zurielOpenBookAffirmation", "An affirmation is not yet supplied for this Scripture.");
+        setText("zurielOpenBookPrayer", "A prayer is not yet supplied for this Scripture.");
+        setText("zurielOpenBookConfession", "A confession is not yet supplied for this Scripture.");
+        setText("zurielOpenBookInspiration", "An inspiration is not yet supplied for this Scripture.");
+      }
       setText("zurielOpenBookScripture", "Loading the exact King James Version passage…");
-      setText("zurielOpenBookDeclaration", response.declaration);
-      setText("zurielOpenBookAffirmation", response.affirmation);
-      setText("zurielOpenBookPrayer", response.prayer);
-      setText("zurielOpenBookConfession", response.confession);
-      setText("zurielOpenBookInspiration", response.inspiration);
+      if (response) {
+        setText("zurielOpenBookDeclaration", response.declaration);
+        setText("zurielOpenBookAffirmation", response.affirmation);
+        setText("zurielOpenBookPrayer", response.prayer);
+        setText("zurielOpenBookConfession", response.confession);
+        setText("zurielOpenBookInspiration", response.inspiration);
+      }
 
       try {
         if (typeof window.getBibleVerseText !== "function") {
@@ -1218,14 +1216,13 @@
 
     const nextFaithWord = document.getElementById("zurielOpenBookNext");
     if (nextFaithWord) nextFaithWord.addEventListener("click", function () {
-      if (!faithCardRefs.length) return;
-      faithCardIndex = (faithCardIndex + 1) % faithCardRefs.length;
+      displayVerse(verseIndex + 1);
       renderOpenBookFaithCard();
     });
 
     const readFaithWord = document.getElementById("zurielOpenBookRead");
     if (readFaithWord) readFaithWord.addEventListener("click", async function () {
-      const verse = faithCardRefs[faithCardIndex];
+      const verse = verses[verseIndex];
       const match = verse && verse.reference.match(/^(.+)\s+(\d+):(\d+)$/);
       if (!match || typeof window.openChapter !== "function") return;
       const bookName = canonicalBookName(match[1]);
