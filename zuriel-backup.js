@@ -424,7 +424,10 @@
     const previous = {};
     Object.keys(values).forEach(key => previous[key] = localStorage.getItem(key));
     try {
-      Object.keys(values).forEach(key => localStorage.setItem(key, JSON.stringify(values[key])));
+      Object.keys(values).forEach(key => {
+        if (values[key] === null) localStorage.removeItem(key);
+        else localStorage.setItem(key, JSON.stringify(values[key]));
+      });
     } catch (error) {
       Object.keys(previous).forEach(key => {
         try {
