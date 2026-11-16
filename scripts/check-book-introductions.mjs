@@ -31,6 +31,11 @@ for (const [book, chapters] of Object.entries(expected)) {
 if (!source.includes('"Book outline and chapter guide"')) failures.push("introduction renderer: clear outline heading missing");
 if (!source.includes('title.textContent = titleText')) failures.push("bold section heading renderer missing");
 if (!source.includes("function createBookArtwork(bookName, book)")) failures.push("offline book artwork fallback generator is missing");
+if (!source.includes("function createChapterArtwork(bookName, chapterNumber, description)")) failures.push("offline chapter artwork generator is missing");
+if (!source.includes("for (let chapterNumber = 1; chapterNumber <= book.chapters; chapterNumber++)")) failures.push("every chapter must receive a chapter-guide image row");
+if (!source.includes("image.src = createChapterArtwork(bookName, chapterNumber, description)")) failures.push("chapter-guide images are not assigned from offline artwork");
+if (!source.includes('image.loading = "lazy"')) failures.push("chapter-guide artwork must load lazily to protect mobile performance");
+if (!source.includes("intro-chapter-image")) failures.push("chapter-guide image styling is missing");
 if (!source.includes("image.src = book.image || createBookArtwork(bookName, book)")) failures.push("every book introduction must render an image, even without a supplied photo");
 if (!source.includes("image.onerror = function ()")) failures.push("a missing local image must fall back to offline artwork");
 if (failures.length) {
