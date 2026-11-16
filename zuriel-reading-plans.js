@@ -48,7 +48,6 @@
         ["1 Thessalonians 5:12-24", "Notice the instructions about prayer and thanksgiving."],
         ["Jeremiah 29:11-14", "Read the promise in its chapter context and seek the Lord."]
       ]
-    }
     },
     {
       id: "walk-with-jesus-30",
