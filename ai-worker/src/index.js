@@ -220,6 +220,7 @@ async function handleYouVersionRequest(request, env, dependencies, cors) {
   const url = new URL(request.url);
   let upstreamUrl;
   let kind;
+  let selectedVersionId = null;
   if (url.pathname === "/api/youversion/bibles") {
     const token = url.searchParams.get("next_page_token");
     if (token && (token.length > 256 || !/^[A-Za-z0-9._~-]+$/.test(token))) {
@@ -243,6 +244,7 @@ async function handleYouVersionRequest(request, env, dependencies, cors) {
     if (format !== "html" && format !== "text") {
       return json({ error: "Choose html or text passage format." }, 400, cors);
     }
+    selectedVersionId = Number(match[1]);
     upstreamUrl = new URL(YVP_BASE + "/bibles/" + match[1] + "/passages/" + encodeURIComponent(match[2]));
     upstreamUrl.searchParams.set("format", format);
     kind = "passage";
@@ -323,7 +325,7 @@ async function handleYouVersionRequest(request, env, dependencies, cors) {
   return json({
     source: "YouVersion Platform",
     version: {
-      id: Number(item.version_id || item.bible_id || 0),
+      id: selectedVersionId,
       abbreviation: typeof item.version_abbreviation === "string" ? item.version_abbreviation : "",
       title: typeof item.version_title === "string" ? item.version_title : ""
     },
