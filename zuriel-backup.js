@@ -398,7 +398,7 @@
       const previous = map.get(key);
       if (!previous || String(item.openedAt || "") > String(previous.openedAt || "")) map.set(key, item);
     });
-    return Array.from(map.values()).sort((a, b) => String(b.openedAt || "").localeCompare(String(a.openedAt || ""))).slice(0, 100);
+    return Array.from(map.values()).sort((a, b) => String(b.openedAt || "").localeCompare(String(a.openedAt || ""))).slice(0, 500);
   }
   function mergeGloryVerseCards(current, incoming) {
     const map = new Map();
