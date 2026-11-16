@@ -31,6 +31,16 @@ assert.match(source, /TextToSpeech\.stop/,
   "The player must provide a real stop action");
 assert.match(source, /No locally installed English voice/,
   "Missing offline voices must be explained instead of pretending audio is ready");
+assert.match(source, /function savedStartingVerse\(detail\)/,
+  "The audio player must resume from the current saved Scripture verse.");
+assert.match(source, /zuriel:reading-position-changed/,
+  "The audio player must follow verse selection made after the chapter opens.");
+assert.match(source, /Read from verse /,
+  "The play control must show the selected starting verse.");
+assert.match(index, /zuriel:reading-position-changed/,
+  "The Bible reader must notify the audio player when a verse is selected.");
+assert.match(index, /detail: \{ book: book, chapter: chapter, verse:/,
+  "The selected reading position event must include the exact book, chapter and verse.");
 assert.match(serviceWorker, /zuriel-bible-offline-v118/,
   "The offline cache must be versioned for the new player");
 assert.match(serviceWorker, /\.\/zuriel-audio\.js/,
