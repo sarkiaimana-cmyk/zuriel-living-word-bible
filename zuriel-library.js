@@ -1050,17 +1050,28 @@
 
         function openJesusReference(reference, actionButton) {
           const match = String(reference || "").match(/^(.+?)\s+(\d+):(\d+)$/);
-          if (!match || typeof window.openChapter !== "function") return;
+          if (!match) {
+            count.textContent = "This Scripture reference is not in a recognised format.";
+            return;
+          }
+          if (typeof window.openChapter !== "function") {
+            count.textContent = "The Bible reader is not ready yet. Please try again.";
+            return;
+          }
           const book = match[1], chapter = Number(match[2]), verseNumber = Number(match[3]);
           actionButton.disabled = true;
+          count.textContent = "Opening " + reference + " in the Bible reader…";
           window.openChapter(book, chapter).then(function () {
             if (typeof window.selectBibleVerse !== "function" ||
                 !window.selectBibleVerse(verseNumber)) {
               throw new Error("The referenced teaching verse could not be activated.");
             }
             actionButton.disabled = false;
-          }).catch(function () {
+            count.textContent = "Opened " + reference + " in the Bible reader.";
+          }).catch(function (error) {
             actionButton.disabled = false;
+            const detail = error && error.message ? error.message : "Please try again.";
+            count.textContent = "Could not open " + reference + ": " + detail;
           });
         }
 
