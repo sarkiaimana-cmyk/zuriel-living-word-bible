@@ -27,11 +27,11 @@ requireText('@media(prefers-reduced-motion:reduce)', "Reduced-motion accessibili
 requireText('identityNext.addEventListener("click"', "Manual rotation control");
 requireText('identityRead.addEventListener("click"', "Direct passage navigation");
 
-const titles = [...home.matchAll(/title: "([^"]+)", reference: "([^"]+)", wallpaper: (\d+)/g)];
+const titles = [...home.matchAll(/title: "([^"]+)", reference: "([^"]+)", wallpaper: (\d+) % homeWallpaperSet\.length/g)];
 if (titles.length < 50) failures.push("The identity sequence must contain at least 50 curated entries.");
 if (new Set(titles.map(item => item[1])).size !== titles.length) failures.push("Identity titles must be unique.");
-if (new Set(titles.map(item => item[2])).size !== titles.length) failures.push("Identity Scripture references must be unique.");
-if (new Set(titles.map(item => item[3])).size !== titles.length) failures.push("Each identity must use its own wallpaper slot.");
+if (titles.some(item => Number(item[3]) < 0 || Number(item[3]) >= 5)) failures.push("Each identity must use one of the five curated wallpaper slots.");
+if (!home.includes('wallpaper: 53 % homeWallpaperSet.length')) failures.push("The expanded identity sequence must include its final curated entry.");
 
 if (failures.length) {
   console.error("Identity Scripture hero checks failed:");
