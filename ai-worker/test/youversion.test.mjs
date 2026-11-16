@@ -33,7 +33,7 @@ function send(req, env = makeEnv(), fetchImpl = async () => {
 
 test("lists only English Bible versions licensed to the registered YouVersion app key", async () => {
   const response = await send(
-    request("/api/youversion/bibles", { headers: { "CF-Connecting-IP": "203.0.113.10" } }),
+    request("/api/youversion/bibles", { headers: { "CF-Connecting-IP": "203.0.113.10", "X-YVP-App-Key": "attacker-controlled-key" } }),
     makeEnv(),
     async (url, options) => {
       const parsed = new URL(url);
