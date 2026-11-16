@@ -152,6 +152,7 @@ import { TextToSpeech } from "@capacitor-community/text-to-speech";
 
   async function mount(detail) {
     await stopPlayback();
+    const setupToken = ++generation;
     chapter = {
       book: String(detail.book || ""),
       chapter: Number(detail.chapter),
@@ -218,7 +219,7 @@ import { TextToSpeech } from "@capacitor-community/text-to-speech";
 
     try {
       await loadOfflineVoices();
-      if (!chapter || !panel || !panel.isConnected) return;
+      if (setupToken !== generation || !chapter || !panel || !panel.isConnected) return;
       if (!voices.length) {
         setStatus("No locally installed English voice was found. Use “Set up device voice” to install one. Online-only voices are not used by this offline player.");
         playButton.disabled = true;
