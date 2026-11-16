@@ -22,6 +22,12 @@ requireMatch(index, /ZurielRecentlyOpened\.recordChapter\(book, chapter\)/,
   "The core reader must record ordinary chapter opens, not only external reference opens.");
 requireMatch(history, /MAX_ITEMS = 500/,
   "History must remain bounded to protect local device storage.");
+requireMatch(history, /function clearHistory\(\)/,
+  "Clearing history must use one shared action for current and legacy history stores.");
+requireMatch(history, /zurielReadingHistory_v1/,
+  "Clearing history must remove the legacy history source so cleared entries cannot reappear.");
+requireMatch(history, /clear: clearHistory/,
+  "The shared history clear action must be exposed for safe reuse.");
 requireMatch(history, /Your saved notes and bookmarks are unchanged/,
   "Clearing history must explicitly preserve other personal study data.");
 requireMatch(history, /textContent = "View all history"/,
