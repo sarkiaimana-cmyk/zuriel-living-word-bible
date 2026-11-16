@@ -36,6 +36,8 @@ jobs:
         run: node scripts/check-study-integrity.mjs
       - name: Validate reader navigation and selected verses
         run: node scripts/check-reader-navigation.mjs
+      - name: Validate Recently Opened reading history
+        run: node scripts/check-recent-history.mjs
       - name: Test exact KJV original-word linking
         run: node scripts/test-original-word-linking.mjs
       - name: Validate responsive contextual word-study panel

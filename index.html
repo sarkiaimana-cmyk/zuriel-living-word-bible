@@ -1009,6 +1009,12 @@ async function openChapter(book, chapter) {
 
   status.textContent = "Now reading " + book + " chapter " + chapter + ".";
 
+  // Record every successfully rendered chapter, including normal reader navigation.
+  if (window.ZurielRecentlyOpened &&
+      typeof window.ZurielRecentlyOpened.recordChapter === "function") {
+    window.ZurielRecentlyOpened.recordChapter(book, chapter);
+  }
+
   message.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
@@ -1271,6 +1277,7 @@ loadBibleBooks();
 <script src="zuriel-personal-space.js"></script>
 <script src="zuriel-backup.js"></script>
 <script src="zuriel-home.js"></script>
+<script src="zuriel-history.js"></script>
 <script src="zuriel-word-linking.js"></script>
 <script src="zuriel-study.js"></script>
 <script src="zuriel-geography-data.js"></script>
