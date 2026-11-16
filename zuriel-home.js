@@ -482,6 +482,28 @@
           scroll-behavior: auto;
         }
       }
+      #zurielHomeDashboard .home-daily-scripture-list {
+        display:grid;grid-template-columns:1fr;gap:10px;
+      }
+      #zurielHomeDashboard .home-daily-scripture {
+        min-width:0;padding:13px;border:1px solid #d6e1e9;border-radius:13px;
+        background:linear-gradient(145deg,#f8fbfd,#edf4f8);
+      }
+      #zurielHomeDashboard .home-daily-scripture-text {
+        margin:0;color:#203b56;font:400 16px/1.65 Georgia,serif;
+      }
+      #zurielHomeDashboard .home-daily-scripture-reference {
+        margin:8px 0 0;color:#174c78;font-size:12px;font-weight:700;
+      }
+      #zurielHomeDashboard .home-daily-scripture .home-button {
+        width:auto;min-width:150px;min-height:44px;margin-top:9px;padding:9px 13px;
+      }
+      @media(min-width:620px) {
+        #zurielHomeDashboard .home-daily-scripture-list {grid-template-columns:repeat(3,minmax(0,1fr));}
+        #zurielHomeDashboard .home-daily-scripture {display:flex;flex-direction:column;align-items:flex-start;}
+        #zurielHomeDashboard .home-daily-scripture .home-button {margin-top:auto;}
+      }
+
       /* OPEN-BOOK FAITH CARD — inspired by the supplied Zuriel artwork */
       #zurielHomeDashboard .zob-landscape {
         overflow:hidden;position:relative;padding:18px 12px 13px;border:2px solid #c9a958;
@@ -847,6 +869,28 @@
           <summary>🕯️ Light</summary>
           <p id="zurielOpenBookLight">Thy word is a lamp unto my feet, and a light unto my path. — Psalm 119:105</p>
         </details>
+      </section>
+
+      <section class="home-card home-daily-scriptures" id="zurielHomeVerseCollection" aria-labelledby="zurielHomeVerseCollectionTitle">
+        <h2 id="zurielHomeVerseCollectionTitle">📖 Three Scriptures to Carry Today</h2>
+        <p class="home-section-note">Three complete passages, loaded from the offline King James Version. Open any verse to read its chapter.</p>
+        <div class="home-daily-scripture-list">
+          <article class="home-daily-scripture" data-reference="Psalm 23:1">
+            <p class="home-daily-scripture-text">Loading Psalm 23:1…</p>
+            <p class="home-daily-scripture-reference">Psalm 23:1</p>
+            <button class="home-button" type="button" data-home-read-reference="Psalm 23:1">Read in Bible</button>
+          </article>
+          <article class="home-daily-scripture" data-reference="Isaiah 41:10">
+            <p class="home-daily-scripture-text">Loading Isaiah 41:10…</p>
+            <p class="home-daily-scripture-reference">Isaiah 41:10</p>
+            <button class="home-button" type="button" data-home-read-reference="Isaiah 41:10">Read in Bible</button>
+          </article>
+          <article class="home-daily-scripture" data-reference="Philippians 4:13">
+            <p class="home-daily-scripture-text">Loading Philippians 4:13…</p>
+            <p class="home-daily-scripture-reference">Philippians 4:13</p>
+            <button class="home-button" type="button" data-home-read-reference="Philippians 4:13">Read in Bible</button>
+          </article>
+        </div>
       </section>
 
       <section class="home-card home-explore-card" aria-labelledby="zurielExploreTitle">
@@ -1474,6 +1518,47 @@
         }
       });
     }
+
+    /* THREE SIMULTANEOUS HOME VERSES.
+       Text always comes from the bundled offline KJV; never substitute a paraphrase. */
+    const dailyVerseCards = dashboard.querySelectorAll("[data-home-read-reference]");
+    dailyVerseCards.forEach(function (button) {
+      button.addEventListener("click", async function () {
+        const match = String(button.dataset.homeReadReference || "").match(/^(.+)\\s+(\\d+):(\\d+)$/);
+        if (!match || typeof window.openChapter !== "function") return;
+        const bookName = canonicalBookName(match[1]);
+        button.disabled = true;
+        try {
+          navigate("read");
+          const selector = document.getElementById("book");
+          if (selector) selector.value = bookName;
+          await window.openChapter(bookName, Number(match[2]));
+          if (typeof window.selectBibleVerse !== "function" ||
+              !window.selectBibleVerse(Number(match[3]))) {
+            throw new Error("The selected Home Scripture could not be opened.");
+          }
+        } catch (error) {
+          console.error("Zuriel Home Scripture collection:", error);
+        } finally {
+          button.disabled = false;
+        }
+      });
+    });
+    dashboard.querySelectorAll(".home-daily-scripture").forEach(async function (card) {
+      const reference = card.dataset.reference;
+      const textNode = card.querySelector(".home-daily-scripture-text");
+      try {
+        if (typeof window.getBibleVerseText !== "function") {
+          throw new Error("The offline Bible service is unavailable.");
+        }
+        const passage = await window.getBibleVerseText(reference);
+        const exactText = String(passage && passage.text || "").replace(/^\\d+\\.\\s*/, "").trim();
+        if (!exactText) throw new Error("No exact KJV verse text was returned.");
+        textNode.textContent = exactText;
+      } catch (error) {
+        textNode.textContent = "This offline Scripture could not be loaded. Open the Bible reader and try again.";
+      }
+    });
 
     /* START ON HOME */
 
