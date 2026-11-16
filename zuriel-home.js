@@ -764,7 +764,9 @@
         <div class="zob-faith-actions">
           <button type="button" class="home-button" id="zurielOpenBookRead">📖 Read This Passage</button>
           <button type="button" class="home-button home-secondary" id="zurielOpenBookNext">✦ Another Word for Today</button>
+          <button type="button" class="home-button" id="zurielOpenBookCreateCard">🖼️ Create & Share Card</button>
         </div>
+        <p id="zurielOpenBookCardStatus" class="home-subtitle" aria-live="polite"></p>
         <details>
           <summary>🙏 Prayer</summary>
           <p id="zurielOpenBookPrayer"></p>
@@ -1238,6 +1240,45 @@
         throw new Error("The Open Book Scripture could not be activated in the Bible reader.");
       }
     });
+
+    /* CONNECT THE HOME OPEN BOOK TO THE EXISTING SHARE-CARD STUDIO.
+       Carry the exact selected KJV verse and only its matching curated response. */
+    const createShareCardButton = document.getElementById("zurielOpenBookCreateCard");
+    if (createShareCardButton) {
+      createShareCardButton.addEventListener("click", async function () {
+        const status = document.getElementById("zurielOpenBookCardStatus");
+        const verse = verses[verseIndex];
+        if (!verse || typeof window.getBibleVerseText !== "function") {
+          if (status) status.textContent = "The offline Scripture service is not ready. Please try again.";
+          return;
+        }
+        createShareCardButton.disabled = true;
+        if (status) status.textContent = "Preparing your exact Scripture for the share-card studio…";
+        try {
+          const passage = await window.getBibleVerseText(verse.reference);
+          const scriptureText = String(passage && passage.text || "")
+            .replace(/^\\d+\\.\\s*/, "").trim();
+          if (!scriptureText) throw new Error("The exact KJV verse text could not be loaded.");
+          if (!window.ZurielLibrary ||
+              typeof window.ZurielLibrary.openGloryVerse !== "function") {
+            throw new Error("The Glory Verse Affirmation Studio is not available yet.");
+          }
+          const faithResponse = window.ZurielFaithContent &&
+            typeof window.ZurielFaithContent.find === "function"
+            ? window.ZurielFaithContent.find(verse.reference) : null;
+          navigate("library");
+          const opened = window.ZurielLibrary.openGloryVerse(
+            verse.reference, scriptureText, "KJV", faithResponse || {}
+          );
+          if (!opened) throw new Error("The share-card studio could not be opened.");
+          if (status) status.textContent = "Your Scripture is ready in Glory Verse Affirmation Studio. Use Download image or Share image there.";
+        } catch (error) {
+          if (status) status.textContent = error.message || "The share card could not be prepared.";
+        } finally {
+          createShareCardButton.disabled = false;
+        }
+      });
+    }
 
     /* START ON HOME */
 
