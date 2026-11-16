@@ -76,6 +76,9 @@ jobs:
       - name: Exercise encrypted backup runtime
         run: node scripts/test-personal-backup-runtime.mjs
 
+      - name: Exercise Personal Study Space storage runtime
+        run: node scripts/test-personal-space-runtime.mjs
+
       - name: Validate Bible book introductions
         run: node scripts/check-book-introductions.mjs
 
