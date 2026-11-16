@@ -1426,18 +1426,36 @@
         : "No curated topic is mapped directly to " + reference + " yet. Browse the topic directory below to explore related biblical themes.";
       target.appendChild(intro);
 
-      function openReference(item) {
-        if (typeof window.openChapter !== "function") return;
-        window.openChapter(item.book, item.chapter).then(function () {
+      async function openReference(item, button) {
+        if (!item || typeof window.openChapter !== "function") {
+          intro.textContent = "The Bible reader is not ready. Please reopen the Study Centre and try again.";
+          return;
+        }
+        if (button) button.disabled = true;
+        intro.textContent = "Opening " + item.label + "…";
+        try {
+          await window.openChapter(item.book, item.chapter);
+          if (typeof window.selectBibleVerse !== "function" ||
+              !window.selectBibleVerse(item.verse)) {
+            throw new Error("The exact verse could not be located in the loaded chapter.");
+          }
           const selected = findVerseElement(item.verse);
-          if (!selected) return;
-          const verseText = selected.textContent.replace(/^\s*\d+\.?\s*/, "").trim();
+          if (!selected) {
+            throw new Error("The selected verse is not available in the reader.");
+          }
+          const verseText = selected.textContent.replace(/^\\s*\\d+\\.?\\s*/, "").trim();
           selected.scrollIntoView({ behavior: "smooth", block: "center" });
           selected.classList.add("zuriel-selected-verse");
           if (window.ZurielStudy && typeof window.ZurielStudy.openForReference === "function") {
             window.ZurielStudy.openForReference(item.book, item.chapter, item.verse, verseText, "", -1);
           }
-        });
+          intro.textContent = "Opened " + item.label + " in the Bible reader.";
+        } catch (error) {
+          intro.textContent = "Could not open " + item.label + ": " +
+            (error && error.message ? error.message : "Please try again.");
+        } finally {
+          if (button) button.disabled = false;
+        }
       }
 
       function topicCard(topic) {
@@ -1522,7 +1540,7 @@
           button.type = "button";
           button.className = "study-link";
           button.textContent = item.label;
-          button.addEventListener("click", function() { openReference(item); });
+          button.addEventListener("click", function() { openReference(item, button); });
           links.appendChild(button);
         });
         card.appendChild(links);
