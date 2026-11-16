@@ -763,9 +763,15 @@
             const leftLines = wrap(scripture, exportColumnWidth, scriptureSize);
             const rightLines = wrap(faithText || "Add a Scripture-specific " + activeFaithView.toLowerCase() + ".", exportColumnWidth, faithSize);
             const top = 300, bottom = 150, sectionGap = stacked ? 95 : 0;
+            const referenceHeadingHeight = 48 + 58;
+            const faithHeadingHeight = 58;
             const contentHeight = stacked
-              ? leftLines.length * lineHeight(scriptureSize) + sectionGap + rightLines.length * lineHeight(faithSize)
-              : Math.max(leftLines.length * lineHeight(scriptureSize), rightLines.length * lineHeight(faithSize));
+              ? referenceHeadingHeight + leftLines.length * lineHeight(scriptureSize) +
+                sectionGap + faithHeadingHeight + rightLines.length * lineHeight(faithSize)
+              : referenceHeadingHeight + Math.max(
+                leftLines.length * lineHeight(scriptureSize),
+                rightLines.length * lineHeight(faithSize)
+              );
             canvas.width = width;
             canvas.height = Math.max(1100, top + contentHeight + bottom);
             const palette = {
