@@ -1,4 +1,6 @@
 import { readFile } from "node:fs/promises";
+import assert from "node:assert/strict";
+import vm from "node:vm";
 
 const source = await readFile(new URL("../zuriel-introductions.js", import.meta.url), "utf8");
 const expected = {
@@ -41,6 +43,25 @@ if (!source.includes('return "data:image/svg+xml;charset=utf-8," + encodeURIComp
 if (/fetch\s*\(|XMLHttpRequest/.test(source)) failures.push("book and chapter artwork must not require a network request");
 if (!source.includes("image.src = book.image || createBookArtwork(bookName, book)")) failures.push("every book introduction must render an image, even without a supplied photo");
 if (!source.includes("image.onerror = function ()")) failures.push("a missing local image must fall back to offline artwork");
+// Execute the small SVG generator to verify chapter art is unique and safely escaped.
+try {
+  const artworkStart = source.indexOf("function createChapterArtwork(bookName, chapterNumber, description)");
+  const artworkEnd = source.indexOf("function renderBook(bookName)", artworkStart);
+  if (artworkStart < 0 || artworkEnd <= artworkStart) throw new Error("Chapter artwork function could not be isolated.");
+  const artworkSource = source.slice(artworkStart, artworkEnd) + "\\nwindow.__createChapterArtwork = createChapterArtwork;";
+  const sandbox = { window: {}, Array, String, encodeURIComponent };
+  vm.runInNewContext(artworkSource, sandbox, { timeout: 1000 });
+  const first = sandbox.window.__createChapterArtwork("Song & Solomon", 1, "Love <joy> & grace");
+  const second = sandbox.window.__createChapterArtwork("Song & Solomon", 2, "Another chapter");
+  assert.ok(first.startsWith("data:image/svg+xml;charset=utf-8,"));
+  assert.notEqual(first, second, "Each chapter must have its own generated artwork.");
+  const svg = decodeURIComponent(first.split(",")[1]);
+  assert.ok(svg.includes("Song &amp; Solomon"), "Book labels must be escaped for SVG.");
+  assert.ok(svg.includes("Love &lt;joy&gt; &amp; grace"), "Chapter descriptions must be escaped for SVG.");
+  assert.ok(svg.includes("CHAPTER 1"));
+} catch (error) {
+  failures.push("Chapter artwork runtime validation failed: " + error.message);
+}
 if (failures.length) {
   console.error("Book introduction checks failed:");
   failures.forEach(item => console.error(" - " + item));
