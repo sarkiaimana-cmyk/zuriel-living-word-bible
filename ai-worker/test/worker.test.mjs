@@ -6,7 +6,8 @@ const origin = "https://localhost";
 const index = [
   { name: "John", code: "JOH", chapters: 21 },
   { name: "Psalms", code: "PSA", chapters: 150 },
-  ...Array.from({ length: 64 }, (_, i) => ({
+  { name: "Romans", code: "ROM", chapters: 16 },
+  ...Array.from({ length: 63 }, (_, i) => ({
     name: "Fixture Book " + (i + 1),
     code: "X" + String(i).padStart(2, "0"),
     chapters: 1
@@ -124,6 +125,24 @@ test("handles provider failure without exposing internal error details", async (
   assert.equal(response.status, 502);
   const data = await response.json();
   assert.doesNotMatch(JSON.stringify(data), /private provider internals/);
+});
+
+test("rejects model-generated references outside the selected passage", async () => {
+  const env = makeEnv({
+    AI: { run: async () => ({ response: "See Romans 8:28 for another promise." }) }
+  });
+  const response = await handleRequest(request({ question: "Explain this.", reference: "John 3:16" }), env);
+  assert.equal(response.status, 502);
+  const data = await response.json();
+  assert.match(data.error, /outside the selected passage/);
+});
+
+test("allows a model mention of the exact selected reference", async () => {
+  const env = makeEnv({
+    AI: { run: async () => ({ response: "John 3:16 presents the central theme of this passage." }) }
+  });
+  const response = await handleRequest(request({ question: "Explain this.", reference: "John 3:16" }), env);
+  assert.equal(response.status, 200);
 });
 
 test("rejects missing provider configuration", async () => {
