@@ -110,9 +110,16 @@
     if (!match) return null;
     const book = match[1] === "Psalm" ? "Psalms" : match[1];
     const chapter = Number(match[2]);
+    const wholeChapter = !match[3];
     const verse = match[3] ? Number(match[3]) : 1;
-    if (!Number.isInteger(chapter) || chapter < 1 || !Number.isInteger(verse) || verse < 1) return null;
-    return { book: book, chapter: chapter, verse: verse };
+    const endVerse = match[4] ? Number(match[4]) : verse;
+    if (!Number.isInteger(chapter) || chapter < 1 ||
+        !Number.isInteger(verse) || verse < 1 ||
+        !Number.isInteger(endVerse) || endVerse < verse) return null;
+    return {
+      book: book, chapter: chapter, verse: verse,
+      endVerse: endVerse, wholeChapter: wholeChapter
+    };
   }
 
   async function openPassage(reference, onStatus) {
