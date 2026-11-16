@@ -118,7 +118,8 @@ import { TextToSpeech } from "@capacitor-community/text-to-speech";
       }
       if (token === generation && nextVerse >= chapter.verses.length) {
         playing = false;
-        setStatus("Finished reading " + chapter.book + " " + chapter.chapter + ".");
+        nextVerse = 0;
+        setStatus("Finished reading " + chapter.book + " " + chapter.chapter + ". You can listen again whenever you are ready.");
       }
     } catch (error) {
       if (token === generation) {
@@ -138,7 +139,7 @@ import { TextToSpeech } from "@capacitor-community/text-to-speech";
     playing = false;
     await stopSpeech();
     updateButtons();
-    setStatus("Read-aloud stopped. You can continue from the next verse.");
+    setStatus("Read-aloud stopped. You can continue from the current verse.");
   }
 
   function makeButton(label, handler, className) {
