@@ -32,6 +32,8 @@ for (const fragment of [
   "safePersonalLibrary",
   "safeGloryVerseCards",
   "safeRecentChapters",
+  "mergeRecentChapters",
+  "slice(0, 500)",
   "mergeHighlights",
   "mergePersonalLibrary",
   "validateBackup",
