@@ -321,6 +321,28 @@
         color: #24634a;
       }
 
+      #zurielLibrary .zuriel-reference-library { display:block; }
+      #zurielLibrary .zrl-intro { padding:16px; margin:12px 0; border-radius:16px; color:#f8f2e6; background:linear-gradient(135deg,#35245c,#5d477d); line-height:1.65; }
+      #zurielLibrary .zrl-intro p { margin:6px 0; }
+      #zurielLibrary #zrlSearch { min-height:48px; margin:12px 0; background:#fffdf8; border:1px solid #d8cdb9; }
+      #zurielLibrary .zrl-filters { display:flex; flex-wrap:wrap; gap:7px; margin:10px 0 14px; }
+      #zurielLibrary .zrl-chip { min-height:38px; margin:0; padding:8px 12px; border:1px solid #d8cbb6; border-radius:22px; background:#f5f0e7; color:#45375b; font:600 13px Arial,sans-serif; }
+      #zurielLibrary .zrl-chip.is-active { background:#493665; color:#fff; border-color:#493665; }
+      #zurielLibrary .zrl-count { color:#71677b; font:600 12px Arial,sans-serif; }
+      #zurielLibrary .zrl-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+      #zurielLibrary .zrl-resource-card { min-width:0; padding:15px; border:1px solid #e5dccd; border-radius:15px; background:linear-gradient(160deg,#fffefa,#f7f1e7); box-shadow:0 5px 16px #3023440d; }
+      #zurielLibrary .zrl-card-top { display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px; }
+      #zurielLibrary .zrl-kind { color:#5b4777; font:700 11px Arial,sans-serif; text-transform:uppercase; letter-spacing:.06em; }
+      #zurielLibrary .zrl-age { color:#8a806f; font:11px Arial,sans-serif; }
+      #zurielLibrary .zrl-resource-card h3 { color:#302445; font-size:17px; line-height:1.3; margin:12px 0 7px; }
+      #zurielLibrary .zrl-resource-card p { color:#625c62; font-size:13px; line-height:1.55; }
+      #zurielLibrary .zrl-resource-card .zrl-byline { color:#81768a; font-size:11px; }
+      #zurielLibrary .zrl-open,#zurielLibrary .zrl-close { width:100%; margin:8px 0 0; background:#493665; color:#fff; border-radius:9px; }
+      #zurielLibrary .zrl-detail { margin:16px 0; padding:18px; border:1px solid #d8cbb6; border-left:4px solid #b39355; border-radius:14px; background:#fbf7ee; }
+      #zurielLibrary .zrl-detail h3 { color:#302445; }
+      #zurielLibrary .zrl-detail h4 { color:#5b4777; }
+      #zurielLibrary .zrl-eyebrow { color:#8b7547; font:700 11px Arial,sans-serif; letter-spacing:.1em; }
+      @media(max-width:520px) { #zurielLibrary .zrl-grid { grid-template-columns:1fr; } }
       #zurielLibrary input {
         width: 100%;
         padding: 12px;
@@ -343,6 +365,7 @@
 
     const pages = [
       ["study", "📖 Deep Bible Study"],
+      ["references", "📚 Dictionaries & Commentaries"],
       ["devotional", "🕊️ Devotionals"],
       ["worship", "🎶 SS&S • Hymns & Worship"],
       ["affirmation", "✨ Glory Verse Affirmation"],
@@ -364,15 +387,128 @@
           "Explore Scripture through reliable study resources."
         ));
 
+        const openReferenceLibrary = document.createElement("button");
+        openReferenceLibrary.type = "button";
+        openReferenceLibrary.textContent = "Open Dictionaries & Commentaries";
+        openReferenceLibrary.addEventListener("click", () => openPage("references"));
+        content.appendChild(openReferenceLibrary);
+
         originalLibrary.studyTopics.forEach(topic => {
           const box = element("div", undefined, "library-entry");
           box.appendChild(element("h4", topic));
           box.appendChild(element(
             "p",
-            "Study resource section. Verified source material and licensed content will be connected here."
+            "Study pathway. Open Dictionaries & Commentaries to explore the resource catalogue and its source notes."
           ));
           content.appendChild(box);
         });
+      }
+
+      if (page === "references") {
+        const resources = [
+          { title: "Easton's Bible Dictionary", kind: "Dictionaries", author: "Matthew George Easton", date: "1897", scope: "A concise reference work explaining biblical people, places, customs and terms.", provenance: "Historical public-domain reference work; edition and source text must be verified before full text is bundled.", tags: "dictionary people places customs terms" },
+          { title: "Smith's Bible Dictionary", kind: "Dictionaries", author: "William Smith", date: "1863", scope: "A historical Bible dictionary covering names, geography, objects and cultural background.", provenance: "Historical public-domain reference work; verify the selected digitised edition and transcription.", tags: "dictionary geography history people places" },
+          { title: "Strong's Exhaustive Concordance", kind: "Language", author: "James Strong and contributors", date: "1890", scope: "A concordance and numbering system commonly used to locate Hebrew and Greek word entries.", provenance: "Historical public-domain work. Numbering aids identification; it is not a substitute for grammatical or contextual study.", tags: "strong concordance hebrew greek original language" },
+          { title: "Matthew Henry's Commentary", kind: "Commentaries", author: "Matthew Henry", date: "1706–1721", scope: "A classic devotional and explanatory commentary covering the books of the Bible.", provenance: "Historical public-domain commentary; verify edition, completeness and book coverage before bundling.", tags: "commentary exposition devotional verse chapter" },
+          { title: "Treasury of Scripture Knowledge", kind: "Cross References", author: "R. A. Torrey (editorial tradition)", date: "19th century", scope: "A large collection of cross-references designed to compare Scripture with Scripture.", provenance: "Historical reference work. Confirm the exact edition and rights status of any digitised transcription.", tags: "cross references topical parallel scripture" },
+          { title: "John Gill's Exposition of the Bible", kind: "Commentaries", author: "John Gill", date: "1746–1763", scope: "A verse-by-verse exposition with historical, theological and language observations.", provenance: "Historical public-domain work; edition and transcription quality require verification.", tags: "commentary exposition hebrew greek theology" }
+        ];
+        const categories = ["All Resources", "Commentaries", "Dictionaries", "Language", "Cross References"];
+        let activeCategory = "All Resources";
+        let activeResource = null;
+        const panel = element("section", undefined, "zuriel-reference-library");
+        const intro = element("div", undefined, "zrl-intro");
+        intro.appendChild(element("p", "A carefully organised reference shelf for deeper, Scripture-centred study."));
+        intro.appendChild(element("p", "Resource records identify historic works and their provenance. Full texts are not represented as installed unless a verified, rights-cleared edition is actually supplied."));
+        panel.appendChild(intro);
+
+        const search = element("input");
+        search.type = "search";
+        search.id = "zrlSearch";
+        search.placeholder = "Search title, author, subject or keyword";
+        search.setAttribute("aria-label", "Search dictionaries and commentaries");
+        panel.appendChild(search);
+
+        const filters = element("div", undefined, "zrl-filters");
+        categories.forEach(category => {
+          const chip = button(category, () => {
+            activeCategory = category;
+            renderResources();
+          });
+          chip.className = "zrl-chip" + (category === activeCategory ? " is-active" : "");
+          chip.setAttribute("aria-pressed", category === activeCategory ? "true" : "false");
+          filters.appendChild(chip);
+        });
+        panel.appendChild(filters);
+
+        const count = element("p", undefined, "zrl-count");
+        count.setAttribute("aria-live", "polite");
+        panel.appendChild(count);
+        const list = element("div", undefined, "zrl-grid");
+        panel.appendChild(list);
+        const detail = element("section", undefined, "zrl-detail");
+        detail.hidden = true;
+        panel.appendChild(detail);
+        content.appendChild(panel);
+
+        function renderResources() {
+          const query = search.value.trim().toLowerCase();
+          const filtered = resources.filter(item => {
+            const categoryMatch = activeCategory === "All Resources" || item.kind === activeCategory;
+            const text = [item.title, item.author, item.scope, item.tags, item.kind].join(" ").toLowerCase();
+            return categoryMatch && (!query || text.includes(query));
+          });
+          filters.replaceChildren();
+          categories.forEach(category => {
+            const chip = button(category, () => {
+              activeCategory = category;
+              renderResources();
+            });
+            chip.className = "zrl-chip" + (category === activeCategory ? " is-active" : "");
+            chip.setAttribute("aria-pressed", category === activeCategory ? "true" : "false");
+            filters.appendChild(chip);
+          });
+          list.replaceChildren();
+          count.textContent = filtered.length + " reference " + (filtered.length === 1 ? "resource" : "resources");
+          if (!filtered.length) {
+            list.appendChild(element("p", "No resources match that search. Try another title, author or subject."));
+          }
+          filtered.forEach(item => {
+            const cardNode = element("article", undefined, "zrl-resource-card");
+            const top = element("div", undefined, "zrl-card-top");
+            top.appendChild(element("span", item.kind, "zrl-kind"));
+            top.appendChild(element("span", "Historic reference", "zrl-age"));
+            cardNode.appendChild(top);
+            cardNode.appendChild(element("h3", item.title));
+            cardNode.appendChild(element("p", item.scope));
+            cardNode.appendChild(element("p", item.author + " • " + item.date, "zrl-byline"));
+            const open = button("View resource details", () => showDetails(item));
+            open.className = "zrl-open";
+            cardNode.appendChild(open);
+            list.appendChild(cardNode);
+          });
+          if (activeResource && filtered.includes(activeResource)) showDetails(activeResource);
+          else { detail.hidden = true; detail.replaceChildren(); }
+        }
+
+        function showDetails(item) {
+          activeResource = item;
+          detail.hidden = false;
+          detail.replaceChildren();
+          detail.appendChild(element("p", "RESOURCE DETAILS", "zrl-eyebrow"));
+          detail.appendChild(element("h3", item.title));
+          detail.appendChild(element("p", item.scope));
+          detail.appendChild(element("p", "Author: " + item.author + " • First published: " + item.date));
+          detail.appendChild(element("h4", "Source and rights notes"));
+          detail.appendChild(element("p", item.provenance));
+          detail.appendChild(element("p", "Availability: Catalogue record only. The complete text is not currently bundled in Zuriel through this entry."));
+          const close = button("Close details", () => { activeResource = null; detail.hidden = true; detail.replaceChildren(); });
+          close.className = "zrl-close";
+          detail.appendChild(close);
+        }
+
+        search.addEventListener("input", renderResources);
+        renderResources();
       }
 
       if (page === "devotional") {
