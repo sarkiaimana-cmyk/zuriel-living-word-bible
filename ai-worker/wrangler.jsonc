@@ -14,6 +14,14 @@
         "limit": 5,
         "period": 60
       }
+    },
+    {
+      "name": "TRANSLATION_RATE_LIMIT",
+      "namespace_id": "84111627",
+      "simple": {
+        "limit": 20,
+        "period": 60
+      }
     }
   ],
   "assets": {
@@ -24,9 +32,9 @@
     ]
   },
   "vars": {
-    "ALLOWED_ORIGINS": "https://sarkiaimana-cmyk.github.io",
+    "ALLOWED_ORIGINS": "https://sarkiaimana-cmyk.github.io,https://localhost",
     "TURNSTILE_SITE_KEY": "0x4AAAAAAGDJ2eZVtTQdsRyQ",
-    "TURNSTILE_HOSTNAMES": "sarkiaimana-cmyk.github.io"
+    "TURNSTILE_HOSTNAMES": "sarkiaimana-cmyk.github.io,localhost"
   },
   "secrets": {
     "required": [
