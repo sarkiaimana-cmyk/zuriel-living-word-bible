@@ -97,5 +97,8 @@ jobs:
       - name: Validate Open Book Card Studio
         run: node scripts/check-open-book-studio.mjs
 
+      - name: Validate Dictionary and Commentary reference library
+        run: node scripts/check-reference-library.mjs
+
       - name: Validate worship audio rights gate
         run: node scripts/check-worship-rights.mjs
