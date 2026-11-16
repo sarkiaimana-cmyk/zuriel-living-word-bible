@@ -40,7 +40,10 @@ for (const key of [
   "zuriel_prayer_journal_v1",
   "zurielReadingHistory_v1",
   "zuriel_kingdom_life_saved_v1",
-  "zuriel_kingdom_life_completed_v1"
+  "zuriel_kingdom_life_completed_v1",
+  "zuriel-verse-study-notes-v1",
+  "zuriel-word-highlights-v1",
+  "zuriel_personal_library_v1"
 ]) {
   store.set(key, "{not valid JSON");
   assert.throws(() => api.collect(), /could not read saved personal data/, key + " corruption must fail closed");
@@ -58,7 +61,7 @@ store.delete("zuriel_personal_notes_v1");
 
 const sample = {
   app: "Zuriel Living Word Bible",
-  schemaVersion: 1,
+  schemaVersion: 2,
   exportedAt: "2026-11-15T00:00:00.000Z",
   data: {
     notes: [{ id: "note-1", title: "Grace", text: "Saved insight", createdAt: "2026-11-14" }],
@@ -67,7 +70,14 @@ const sample = {
     lastReadingPosition: { book: "John", chapter: 3, verse: 16 },
     savedLessons: ["lesson-a"],
     completedLessons: ["lesson-b"],
-    readingPlanProgress: { schemaVersion: 1, activePlanId: "meet-jesus-7", plans: { "meet-jesus-7": { startedAt: "2026-11-15T00:00:00.000Z", completedDays: [1, 2] } } }
+    readingPlanProgress: { schemaVersion: 1, activePlanId: "meet-jesus-7", plans: { "meet-jesus-7": { startedAt: "2026-11-15T00:00:00.000Z", completedDays: [1, 2] } } },
+    verseStudyNotes: { "John|3|16": { title: "Grace", note: "God's love", application: "Trust in Christ", updated: "2026-11-15T00:00:00.000Z" } },
+    wordHighlights: { "John|3|16": { verseColor: "#f5d76e", words: { "1": "#f5d76e" } } },
+    personalLibrary: {
+      prayers: [{ title: "Family", text: "Keep our family", date: "2026-11-15" }],
+      notes: [{ title: "Study note", text: "Remember grace", date: "2026-11-15" }],
+      bookmarks: [{ title: "John 3:16", reference: "John 3:16", text: "For God so loved the world", type: "scripture", savedAt: "2026-11-15T00:00:00.000Z" }]
+    }
   }
 };
 
@@ -83,13 +93,33 @@ await assert.rejects(() => api.decryptBackup({ ...encrypted, schemaVersion: 99 }
 
 const incoming = api.validateBackup(sample);
 assert.equal(incoming.notes.length, 1);
+assert.equal(Object.keys(incoming.verseStudyNotes).length, 1);
+assert.equal(Object.keys(incoming.wordHighlights).length, 1);
+assert.equal(incoming.personalLibrary.bookmarks.length, 1);
 assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, notes: [{ id: "", title: "Bad", text: "Invalid" }] } }), /valid ID/);
+assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, wordHighlights: { "John|3|16": { words: { "1": "not-a-colour" } } } } }), /invalid word-highlight/);
+assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, verseStudyNotes: { "John|3|16": { note: "x".repeat(12001) } } } }), /invalid verse-study note/);
+assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, personalLibrary: { bookmarks: [null] } } }), /invalid My Saved Library entry/);
 assert.throws(() => api.validateBackup({ ...sample, app: "Other app" }), /recognised Zuriel/);
 assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, readingPlanProgress: { schemaVersion: 1, activePlanId: "meet-jesus-7", plans: { "meet-jesus-7": { completedDays: [0] } } } } }), /reading-plan progress/);
 assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, readingPlanProgress: { schemaVersion: 1, activePlanId: "unknown-plan", plans: { "unknown-plan": { completedDays: [1] } } } } }), /reading-plan progress/);
 assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, readingPlanProgress: { schemaVersion: 1, activePlanId: "meet-jesus-7", plans: { "meet-jesus-7": { completedDays: [8] } } } } }), /reading-plan progress/);
-const olderBackup = JSON.parse(JSON.stringify(sample)); delete olderBackup.data.readingPlanProgress;
-assert.deepEqual(JSON.parse(JSON.stringify(api.validateBackup(olderBackup).readingPlanProgress)), { schemaVersion: 1, activePlanId: null, plans: {} }, "Older backups remain restorable without reading-plan data.");
+const olderBackup = JSON.parse(JSON.stringify(sample));
+olderBackup.schemaVersion = 1;
+delete olderBackup.data.readingPlanProgress;
+delete olderBackup.data.verseStudyNotes;
+delete olderBackup.data.wordHighlights;
+delete olderBackup.data.personalLibrary;
+const legacyData = api.validateBackup(olderBackup);
+assert.deepEqual(JSON.parse(JSON.stringify(legacyData.readingPlanProgress)), { schemaVersion: 1, activePlanId: null, plans: {} }, "Older backups remain restorable without reading-plan data.");
+assert.deepEqual(JSON.parse(JSON.stringify(legacyData.verseStudyNotes)), {}, "Older backups remain restorable without verse-study notes.");
+assert.deepEqual(JSON.parse(JSON.stringify(legacyData.wordHighlights)), {}, "Older backups remain restorable without highlights.");
+assert.deepEqual(JSON.parse(JSON.stringify(legacyData.personalLibrary)), { prayers: [], notes: [], bookmarks: [] }, "Older backups remain restorable without saved-library data.");
+const emptyPositionSample = JSON.parse(JSON.stringify(sample));
+emptyPositionSample.data.lastReadingPosition = null;
+api.applyRestore(api.validateBackup(emptyPositionSample));
+assert.equal(store.has("zurielLastReadingPosition"), false, "An empty reading position must remove the key instead of storing invalid JSON null.");
+assert.equal(api.collect().lastReadingPosition, null, "A backup without a reading position must remain readable after restore.");
 
 store.set("zuriel_personal_notes_v1", JSON.stringify([
   { id: "note-1", title: "Existing version", text: "Keep this", createdAt: "2026-11-13" },
@@ -101,6 +131,9 @@ store.set("zurielLastReadingPosition", JSON.stringify({ book: "Psalms", chapter:
 store.set("zuriel_kingdom_life_saved_v1", JSON.stringify(["lesson-a"]));
 store.set("zuriel_kingdom_life_completed_v1", "[]");
 store.set("zuriel_reading_plan_progress_v1", JSON.stringify({ schemaVersion: 1, activePlanId: "prayer-and-trust-7", plans: { "meet-jesus-7": { startedAt: "2026-11-14T00:00:00.000Z", completedDays: [1, 3] }, "prayer-and-trust-7": { startedAt: "2026-11-14T00:00:00.000Z", completedDays: [1] } } }));
+store.set("zuriel-verse-study-notes-v1", JSON.stringify({ "John|3|16": { title: "Existing", note: "Keep existing note", application: "", updated: "2026-11-14T00:00:00.000Z" } }));
+store.set("zuriel-word-highlights-v1", JSON.stringify({ "John|3|16": { verseColor: "#ff0", words: { "2": "#0f0" } } }));
+store.set("zuriel_personal_library_v1", JSON.stringify({ prayers: [], notes: [], bookmarks: [{ title: "Existing bookmark", reference: "Psalm 23:1", text: "The LORD is my shepherd", type: "scripture" }] }));
 const merged = api.applyRestore(incoming);
 const notes = JSON.parse(store.get("zuriel_personal_notes_v1"));
 assert.equal(notes.length, 2, "Duplicate note IDs must not be added.");
@@ -114,6 +147,15 @@ const mergedPlans = JSON.parse(store.get("zuriel_reading_plan_progress_v1"));
 assert.equal(mergedPlans.activePlanId, "prayer-and-trust-7", "Existing active plan selection is preserved.");
 assert.deepEqual(mergedPlans.plans["meet-jesus-7"].completedDays, [1, 2, 3], "Reading plan progress merges without losing completed days.");
 assert.deepEqual(mergedPlans.plans["prayer-and-trust-7"].completedDays, [1]);
+const restoredStudyNotes = JSON.parse(store.get("zuriel-verse-study-notes-v1"));
+assert.equal(restoredStudyNotes["John|3|16"].note, "God's love", "The newer verse-study note should be restored.");
+const restoredHighlights = JSON.parse(store.get("zuriel-word-highlights-v1"));
+assert.equal(restoredHighlights["John|3|16"].verseColor, "#ff0", "Existing verse highlight colour is preserved.");
+assert.deepEqual(restoredHighlights["John|3|16"].words, { "1": "#f5d76e", "2": "#0f0" }, "Word highlights merge without losing either device's saved words.");
+const restoredLibrary = JSON.parse(store.get("zuriel_personal_library_v1"));
+assert.equal(restoredLibrary.bookmarks.length, 2, "Existing and backed-up bookmarks are retained.");
+assert.equal(restoredLibrary.prayers.length, 1, "Saved-library prayers are included.");
+assert.equal(restoredLibrary.notes.length, 1, "Saved-library notes are included.");
 
 // Exercise the rollback path: fail one write after earlier stores have changed,
 // then confirm every original value is restored once storage becomes writable.
@@ -134,4 +176,4 @@ assert.throws(
 assert.deepEqual([...store.entries()], [...beforeFailure.entries()], "Rollback must restore every original local record.");
 localStorage.setItem = originalSetItem;
 
-console.log("Personal backup runtime tests passed: AES-GCM round-trip, wrong password, tampered ciphertext, schema compatibility, record and reading-plan validation, safe merge, duplicate handling, existing-data preservation and rollback after a simulated storage failure.");
+console.log("Personal backup runtime tests passed: AES-GCM round-trip, wrong password, tampered ciphertext, legacy and current schema compatibility, record, study-note, highlight and saved-library validation, safe merge, existing-data preservation and rollback after a simulated storage failure.");

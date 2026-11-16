@@ -8,7 +8,10 @@
     position: "zurielLastReadingPosition",
     savedLessons: "zuriel_kingdom_life_saved_v1",
     completedLessons: "zuriel_kingdom_life_completed_v1",
-    readingPlans: "zuriel_reading_plan_progress_v1"
+    readingPlans: "zuriel_reading_plan_progress_v1",
+    verseStudyNotes: "zuriel-verse-study-notes-v1",
+    wordHighlights: "zuriel-word-highlights-v1",
+    personalLibrary: "zuriel_personal_library_v1"
   };
   const MAX_FILE = 8 * 1024 * 1024;
   const READING_PLAN_DURATIONS = { "meet-jesus-7": 7, "growing-in-faith-7": 7, "prayer-and-trust-7": 7 };
@@ -36,6 +39,21 @@
       throw new Error("Zuriel could not read saved personal data (" + key + "). Backup or restore was stopped to protect your records.");
     }
     if (!Array.isArray(value)) {
+      throw new Error("Zuriel found an unexpected saved-data format (" + key + "). Backup or restore was stopped to protect your records.");
+    }
+    return value;
+  }
+  function readObject(key, label) {
+    const raw = localStorage.getItem(key);
+    if (raw === null) return {};
+    let value;
+    try {
+      value = JSON.parse(raw);
+    } catch (error) {
+      throw new Error("Zuriel could not read saved personal data (" + key + "). Backup or restore was stopped to protect your records.");
+    }
+    if (!value || typeof value !== "object" || Array.isArray(value) ||
+        Object.keys(value).length > 5000 || JSON.stringify(value).length > 2 * 1024 * 1024) {
       throw new Error("Zuriel found an unexpected saved-data format (" + key + "). Backup or restore was stopped to protect your records.");
     }
     return value;
@@ -73,7 +91,10 @@
       lastReadingPosition: readPosition(),
       savedLessons: readArray(KEYS.savedLessons),
       completedLessons: readArray(KEYS.completedLessons),
-      readingPlanProgress: readReadingPlans()
+      readingPlanProgress: readReadingPlans(),
+      verseStudyNotes: safeStudyNotes(readObject(KEYS.verseStudyNotes, "Verse study notes")),
+      wordHighlights: safeWordHighlights(readObject(KEYS.wordHighlights, "Word highlights")),
+      personalLibrary: safePersonalLibrary(readObject(KEYS.personalLibrary, "My Saved Library"))
     };
   }
   const KDF_ITERATIONS = 250000;
@@ -175,9 +196,73 @@
     if (activePlanId && !Object.prototype.hasOwnProperty.call(READING_PLAN_DURATIONS, activePlanId)) throw new Error("The backup contains an invalid active reading plan.");
     return { schemaVersion: 1, activePlanId, plans };
   }
+  function safeStudyNotes(value) {
+    if (value === undefined || value === null) return {};
+    if (!value || typeof value !== "object" || Array.isArray(value) ||
+        Object.keys(value).length > 5000 || JSON.stringify(value).length > 2 * 1024 * 1024) {
+      throw new Error("The backup contains invalid verse-study notes.");
+    }
+    const clean = {};
+    Object.keys(value).forEach(key => {
+      const item = value[key];
+      if (!key || key.length > 140 || !item || typeof item !== "object" || Array.isArray(item) ||
+          (item.title !== undefined && (typeof item.title !== "string" || item.title.length > 200)) ||
+          (item.note !== undefined && (typeof item.note !== "string" || item.note.length > 12000)) ||
+          (item.application !== undefined && (typeof item.application !== "string" || item.application.length > 12000)) ||
+          (item.updated !== undefined && (typeof item.updated !== "string" || item.updated.length > 50))) {
+        throw new Error("The backup contains an invalid verse-study note.");
+      }
+      clean[key] = { title: item.title || "", note: item.note || "", application: item.application || "", updated: item.updated || "" };
+    });
+    return clean;
+  }
+  function safeWordHighlights(value) {
+    if (value === undefined || value === null) return {};
+    if (!value || typeof value !== "object" || Array.isArray(value) ||
+        Object.keys(value).length > 5000 || JSON.stringify(value).length > 2 * 1024 * 1024) {
+      throw new Error("The backup contains invalid word highlights.");
+    }
+    const clean = {};
+    const validColor = color => typeof color === "string" && /^#[0-9a-f]{3,8}$/i.test(color);
+    Object.keys(value).forEach(key => {
+      const item = value[key];
+      if (!key || key.length > 140 || !item || typeof item !== "object" || Array.isArray(item) ||
+          (item.verseColor && !validColor(item.verseColor)) ||
+          (item.words !== undefined && (!item.words || typeof item.words !== "object" || Array.isArray(item.words) ||
+            Object.keys(item.words).length > 200 ||
+            Object.keys(item.words).some(word => !/^\d{1,3}$/.test(word) || !validColor(item.words[word]))))) {
+        throw new Error("The backup contains an invalid word-highlight record.");
+      }
+      clean[key] = { verseColor: item.verseColor || "", words: { ...(item.words || {}) } };
+    });
+    return clean;
+  }
+  function safePersonalLibrary(value) {
+    if (value === undefined || value === null) return { prayers: [], notes: [], bookmarks: [] };
+    if (!value || typeof value !== "object" || Array.isArray(value)) {
+      throw new Error("The backup contains an invalid My Saved Library record.");
+    }
+    const clean = {};
+    ["prayers", "notes", "bookmarks"].forEach(name => {
+      const list = value[name] === undefined ? [] : value[name];
+      if (!Array.isArray(list) || list.length > 5000) throw new Error("The backup contains an invalid My Saved Library " + name + " list.");
+      clean[name] = list.map(item => {
+        if (!item || typeof item !== "object" || Array.isArray(item)) throw new Error("The backup contains an invalid My Saved Library entry.");
+        const copy = {};
+        Object.keys(item).forEach(key => {
+          const field = item[key];
+          if (typeof field === "string" && field.length > 12000) throw new Error("The backup contains an oversized My Saved Library entry.");
+          if (field === null || ["string", "number", "boolean"].includes(typeof field)) copy[key] = field;
+          else throw new Error("The backup contains an unsupported My Saved Library field.");
+        });
+        return copy;
+      });
+    });
+    return clean;
+  }
   function validateBackup(data) {
     if (!data || typeof data !== "object" || Array.isArray(data) ||
-        data.app !== "Zuriel Living Word Bible" || data.schemaVersion !== 1 ||
+        data.app !== "Zuriel Living Word Bible" || ![1, 2].includes(data.schemaVersion) ||
         !data.data || typeof data.data !== "object" || Array.isArray(data.data)) {
       throw new Error("This is not a recognised Zuriel backup file.");
     }
@@ -189,7 +274,10 @@
       lastReadingPosition: d.lastReadingPosition === null ? null : d.lastReadingPosition,
       savedLessons: Array.isArray(d.savedLessons) && d.savedLessons.length <= 5000 ? d.savedLessons : null,
       completedLessons: Array.isArray(d.completedLessons) && d.completedLessons.length <= 5000 ? d.completedLessons : null,
-      readingPlanProgress: safeReadingPlanProgress(d.readingPlanProgress)
+      readingPlanProgress: safeReadingPlanProgress(d.readingPlanProgress),
+      verseStudyNotes: safeStudyNotes(d.verseStudyNotes),
+      wordHighlights: safeWordHighlights(d.wordHighlights),
+      personalLibrary: safePersonalLibrary(d.personalLibrary)
     };
     if (!clean.readingHistory || !clean.savedLessons || !clean.completedLessons) throw new Error("The backup contains an invalid progress list.");
     clean.readingHistory.forEach(item => {
@@ -221,6 +309,40 @@
   function mergeStrings(current, incoming) {
     return Array.from(new Set(current.concat(incoming)));
   }
+  function mergeKeyedObjects(current, incoming, dateKey) {
+    const merged = { ...(incoming || {}) };
+    Object.keys(current || {}).forEach(key => {
+      const a = current[key], b = merged[key];
+      if (!b) { merged[key] = a; return; }
+      const aDate = Date.parse(a && a[dateKey] || "");
+      const bDate = Date.parse(b && b[dateKey] || "");
+      if (!Number.isFinite(bDate) || (Number.isFinite(aDate) && aDate >= bDate)) merged[key] = a;
+    });
+    return merged;
+  }
+  function mergeHighlights(current, incoming) {
+    const merged = { ...(incoming || {}) };
+    Object.keys(current || {}).forEach(key => {
+      const a = current[key] || {}, b = merged[key] || {};
+      merged[key] = {
+        verseColor: a.verseColor || b.verseColor || "",
+        words: { ...(b.words || {}), ...(a.words || {}) }
+      };
+    });
+    return merged;
+  }
+  function mergePersonalLibrary(current, incoming) {
+    const merged = {};
+    ["prayers", "notes", "bookmarks"].forEach(name => {
+      const map = new Map();
+      (current && current[name] || []).concat(incoming && incoming[name] || []).forEach(item => {
+        const key = item.id || [item.type || "", item.reference || "", item.title || "", item.text || "", item.date || item.savedAt || ""].join("|");
+        if (!map.has(key)) map.set(key, item);
+      });
+      merged[name] = Array.from(map.values()).slice(-5000);
+    });
+    return merged;
+  }
   function mergeReadingPlans(current, incoming) {
     const plans = {};
     const ids = new Set(Object.keys(current.plans || {}).concat(Object.keys(incoming.plans || {})));
@@ -235,7 +357,10 @@
     return data.notes.length + " insights/notes • " + data.prayers.length + " prayer entries • " +
       data.readingHistory.length + " reading records • " +
       (data.savedLessons.length + data.completedLessons.length) + " lesson-progress records • " +
-      Object.keys(data.readingPlanProgress.plans).length + " reading plans";
+      Object.keys(data.readingPlanProgress.plans).length + " reading plans • " +
+      Object.keys(data.verseStudyNotes).length + " verse studies • " +
+      Object.keys(data.wordHighlights).length + " highlighted passages • " +
+      data.personalLibrary.bookmarks.length + " bookmarks";
   }
   async function exportBackup() {
     root.querySelector("#zbackupConfirm").hidden = false;
@@ -248,7 +373,7 @@
       setStatus("Encrypting your private backup on this device…");
       const payload = {
         app: "Zuriel Living Word Bible",
-        schemaVersion: 1,
+        schemaVersion: 2,
         exportedAt: new Date().toISOString(),
         data: collect()
       };
@@ -279,7 +404,10 @@
       lastReadingPosition: current.lastReadingPosition || incoming.lastReadingPosition,
       savedLessons: mergeStrings(current.savedLessons, incoming.savedLessons),
       completedLessons: mergeStrings(current.completedLessons, incoming.completedLessons),
-      readingPlanProgress: mergeReadingPlans(current.readingPlanProgress, incoming.readingPlanProgress)
+      readingPlanProgress: mergeReadingPlans(current.readingPlanProgress, incoming.readingPlanProgress),
+      verseStudyNotes: mergeKeyedObjects(current.verseStudyNotes, incoming.verseStudyNotes, "updated"),
+      wordHighlights: mergeHighlights(current.wordHighlights, incoming.wordHighlights),
+      personalLibrary: mergePersonalLibrary(current.personalLibrary, incoming.personalLibrary)
     };
     const values = {
       [KEYS.notes]: next.notes.slice(0, 5000),
@@ -288,12 +416,18 @@
       [KEYS.position]: next.lastReadingPosition,
       [KEYS.savedLessons]: next.savedLessons.slice(0, 5000),
       [KEYS.completedLessons]: next.completedLessons.slice(0, 5000),
+      [KEYS.verseStudyNotes]: next.verseStudyNotes,
+      [KEYS.wordHighlights]: next.wordHighlights,
+      [KEYS.personalLibrary]: next.personalLibrary,
       [KEYS.readingPlans]: next.readingPlanProgress
     };
     const previous = {};
     Object.keys(values).forEach(key => previous[key] = localStorage.getItem(key));
     try {
-      Object.keys(values).forEach(key => localStorage.setItem(key, JSON.stringify(values[key])));
+      Object.keys(values).forEach(key => {
+        if (values[key] === null) localStorage.removeItem(key);
+        else localStorage.setItem(key, JSON.stringify(values[key]));
+      });
     } catch (error) {
       Object.keys(previous).forEach(key => {
         try {
