@@ -20,7 +20,7 @@ assert.match(source, /function savedStartingVerse\(detail\)/);
 assert.match(source, /zuriel:reading-position-changed/);
 assert.match(index, /zuriel:reading-position-changed/);
 assert.match(source, /min-height:48px/);
-assert.match(source, /replace\(\^¶\\s\*/);
+assert.match(source, /replace\(\/\^¶\\s\*\/,/);
 assert.match(source, /queueStrategy:\s*0/);
 assert.match(source, /TextToSpeech\.stop/);
 assert.match(source, /No locally installed English voice/);
