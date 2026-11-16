@@ -29,6 +29,10 @@ requireText(home, "linear-gradient(180deg,#f5f2e9 0%,#edf3f8 48%,#e8eff7 100%)",
 requireText(home, "His Words.. My life.. My Victory", "The approved Open Book card headline");
 requireText(home, "window.getBibleVerseText(verse.reference)", "Open Book exact offline KJV passage retrieval");
 requireText(home, "faithCardRenderToken", "Protection against out-of-order Scripture loads");
+requireText(home, "window.setInterval(function ()", "Automatic home Scripture rotation");
+requireText(home, 'document.visibilityState === "hidden"', "Pause automatic Scripture rotation when the app is in the background");
+requireText(home, 'id="zurielOpenBookCreateCard"', "Visible Open Book share-card action");
+requireText(home, "window.ZurielLibrary.openGloryVerse(", "Exact Scripture handoff from the home card to the share-card studio");
 requireText(home, "function canonicalBookName(value)", "Psalm/Psalms reader-name normalization");
 requireText(home, "function findHomeVerseElement(verseNumber)", "Exact home-card verse navigation");
 forbidText(home, 'document.querySelectorAll("#message .verse")[Number(match[3]) - 1]', "Position-based Open Book verse navigation");
