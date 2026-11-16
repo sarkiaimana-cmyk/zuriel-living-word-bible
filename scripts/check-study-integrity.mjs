@@ -124,9 +124,11 @@ for (const field of requiredFaithFields) {
   if (!faith.includes(field)) failures.push(["faith content field: " + field, "missing from zuriel-faith-content.js"]);
 }
 if (!home.includes('id="zurielOpenBookLight"')) failures.push(["Light panel", "missing from home card"]);
-if (!study.includes("openWordInContext: async function")) failures.push(["contextual word study", "the reader needs an inline word explanation that does not open the full-screen panel"]);
+if (!study.includes("openWordInContext: async function")) failures.push(["contextual word study", "the reader needs a contextual word explanation that does not force navigation"]);
 if (!reader.includes("window.ZurielStudy.openWordInContext")) failures.push(["contextual word-study reader wiring", "word taps must use the inline study action"]);
 if (!study.includes('(reader || main || document.body).appendChild(panel)')) failures.push(["reader-local Study Centre placement", "the full Study Centre must be mounted with the Bible reader"]);
+if (!study.includes('layout.id = "zurielReaderStudyLayout"') || !study.includes("grid-template-columns:minmax(0,1fr) minmax(280px,360px)")) failures.push(["responsive side-by-side Study Centre", "the desktop reader and study panel must use a two-column layout"]);
+if (study.includes("verseElement.parentNode.insertBefore(contextCard")) failures.push(["no inserted word card between verses", "word context must stay in the study panel, not interrupt Scripture"]);
 
 const homeReferences = [...home.matchAll(/reference:\s*"([^"]+)"/g)].map(match => match[1].toLowerCase());
 const faithReferences = new Set([...faith.matchAll(/["']?reference["']?\s*:\s*["']([^"']+)["']/g)].map(match => match[1].toLowerCase()));

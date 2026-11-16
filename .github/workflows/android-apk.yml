@@ -55,6 +55,8 @@ jobs:
         run: node scripts/check-study-integrity.mjs
       - name: Test exact KJV original-word linking
         run: node scripts/test-original-word-linking.mjs
+      - name: Validate responsive contextual word-study panel
+        run: node scripts/check-word-study-layout.mjs
       - name: Test Android version metadata
         run: node scripts/test-android-version.mjs
 

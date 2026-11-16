@@ -702,25 +702,62 @@
 
     const style = document.createElement("style");
     style.textContent = `
+      #zurielReaderStudyLayout {
+        display:grid;
+        grid-template-columns:minmax(0,1fr) minmax(280px,360px);
+        gap:18px;
+        align-items:start;
+        width:100%;
+        min-width:0;
+      }
+      #zurielReaderStudyLayout > #message { min-width:0; }
       #zurielStudyPanel {
-        position:fixed;
-        z-index:10000;
-        right:18px;
-        top:86px;
-        width:min(430px,calc(100vw - 36px));
-        max-height:calc(100vh - 110px);
+        position:sticky;
+        top:14px;
+        z-index:2;
+        box-sizing:border-box;
+        width:100%;
+        max-height:min(78vh,900px);
         overflow-y:auto;
         overscroll-behavior:contain;
-        box-shadow:0 12px 40px #0005;
+        box-shadow:0 8px 28px #0003;
         background:#10213d;
         color:#f8f4e9;
         border:1px solid #b99b58;
-        border-radius:18px;
-        padding:18px;
-        margin:22px 0;
-        line-height:1.75;
+        border-radius:16px;
+        padding:16px;
+        margin:0;
+        line-height:1.7;
         scroll-margin-top:18px;
       }
+      #zurielStudyPanel[data-mode="word-context"] > :not(#zurielInlineWordStudy) {
+        display:none !important;
+      }
+      #zurielInlineWordStudy {
+        margin:0;
+        padding:14px;
+        border:1px solid #b99b58;
+        border-radius:12px;
+        background:#1c3657;
+        color:#f8f4e9;
+      }
+      #zurielInlineWordStudy h3 { margin:0 0 8px; color:#f0d99f; }
+      #zurielInlineWordStudy p { line-height:1.55; overflow-wrap:anywhere; }
+      #zurielInlineWordStudy .inline-word-result {
+        background:#fff;
+        color:#18304d;
+        border-radius:9px;
+        padding:11px;
+        margin:9px 0;
+      }
+      #zurielInlineWordStudy .inline-word-original {
+        display:block;
+        font-size:25px;
+        font-weight:700;
+        line-height:1.7;
+      }
+      #zurielInlineWordStudy .inline-word-gloss,
+      #zurielInlineWordStudy .inline-word-meta { display:block; margin-top:4px; }
       #zurielStudyPanel h2,
       #zurielStudyPanel h3 { color:#e8cf91; }
       #zurielStudyPanel .study-verse {
@@ -963,20 +1000,16 @@
         min-height:42px;
         margin:7px 6px 0 0;
       }
-      @media(max-width:600px) {
+      @media(max-width:760px) {
+        #zurielReaderStudyLayout {
+          grid-template-columns:minmax(0,1fr);
+          gap:12px;
+        }
         #zurielStudyPanel {
           position:relative;
-          z-index:1;
-          inset:auto;
-          right:auto;
-          bottom:auto;
           top:auto;
-          box-sizing:border-box;
-          width:100%;
-          max-width:100%;
-          max-height:min(48vh, 420px);
-          margin:12px 0;
-          border-radius:14px;
+          max-height:min(55vh,480px);
+          margin:0 0 12px;
           padding:14px;
           padding-bottom:calc(14px + env(safe-area-inset-bottom));
         }
@@ -1246,6 +1279,17 @@
     const main = document.querySelector("main");
     const reader = document.getElementById("bibleReader");
     (reader || main || document.body).appendChild(panel);
+
+    // Keep the reading controls full-width, then place the verse and study
+    // panel together. Desktop uses two columns; small screens stack naturally.
+    const message = document.getElementById("message");
+    if (reader && message && !document.getElementById("zurielReaderStudyLayout")) {
+      const layout = document.createElement("div");
+      layout.id = "zurielReaderStudyLayout";
+      reader.insertBefore(layout, message);
+      layout.appendChild(message);
+      layout.appendChild(panel);
+    }
 
     // Searchable offline biblical dictionary.
     const dictionarySearch = panel.querySelector("#zurielDictionarySearch");
@@ -2003,9 +2047,8 @@
         panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
       },
 
-      /* A word tap keeps the reader in place. The compact explanation is
-         inserted directly after the selected verse; the full Study Centre
-         opens only when the reader explicitly requests it. */
+      /* A word tap opens a compact contextual panel beside the passage.
+         It never inserts content between verses or scrolls the reader away. */
       openWordInContext: async function (book, chapter, verse, verseText, englishWord, wordIndex) {
         selectedReference = {
           book: book,
@@ -2052,22 +2095,23 @@
         const closeButton = document.createElement("button");
         closeButton.type = "button";
         closeButton.className = "study-secondary";
-        closeButton.textContent = "Close";
+        closeButton.textContent = "Close word panel";
         closeButton.addEventListener("click", function () {
           contextCard.remove();
+          panel.style.display = "none";
+          panel.dataset.mode = "verse";
         });
         contextCard.appendChild(closeButton);
 
-        verseElement.parentNode.insertBefore(contextCard, verseElement.nextSibling);
-        panel.style.display = "none";
+        panel.prepend(contextCard);
         panel.dataset.mode = "word-context";
+        panel.style.display = "block";
         highlightVerse(verse);
 
         try {
           await loadOriginalWords(selectedReference);
         } catch (error) {
-          // loadOriginalWords reports its own source-specific failure in the
-          // hidden Study Centre results area; the reader remains untouched.
+          // The source-specific message is rendered in the Study Centre.
         }
 
         if (!contextCard.isConnected) return true;
@@ -2077,7 +2121,7 @@
           : [];
 
         if (sourceCards.length) {
-          status.textContent = "Original-language records linked to this exact KJV word:";
+          status.textContent = "Verified original-language records linked to this KJV word:";
           sourceCards.forEach(function (sourceCard) {
             const original = sourceCard.querySelector(".original-script");
             const gloss = sourceCard.querySelector(".original-gloss");

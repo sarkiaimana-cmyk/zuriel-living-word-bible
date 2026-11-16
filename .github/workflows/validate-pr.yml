@@ -38,6 +38,8 @@ jobs:
         run: node scripts/check-reader-navigation.mjs
       - name: Test exact KJV original-word linking
         run: node scripts/test-original-word-linking.mjs
+      - name: Validate responsive contextual word-study panel
+        run: node scripts/check-word-study-layout.mjs
       - name: Validate exact study reference navigation
         run: node scripts/check-study-reference-navigation.mjs
       - name: Validate Advanced Bible Study topical index
