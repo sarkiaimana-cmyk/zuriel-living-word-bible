@@ -29,6 +29,15 @@ jobs:
       - name: Syntax-check application JavaScript
         run: for file in *.js; do node --check "$file"; done
 
+      - name: Syntax-check AI pilot Worker
+        run: node --check ai-worker/src/index.js
+
+      - name: Test AI pilot privacy and request safeguards
+        run: node --test ai-worker/test/worker.test.mjs
+
+      - name: Verify all KJV source assets for AI pilot
+        run: node ai-worker/scripts/prepare-scripture-assets.mjs --check
+
       - name: Validate streamlined home dashboard and distinct sections
         run: node scripts/check-home-dashboard.mjs
 
