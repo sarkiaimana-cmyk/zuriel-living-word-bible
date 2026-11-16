@@ -283,7 +283,7 @@
         right: 0;
         bottom: 0;
         display: grid;
-        grid-template-columns: repeat(8,minmax(0,1fr));
+        grid-template-columns: repeat(6,minmax(0,1fr));
         gap: 2px;
         padding: 7px 3px calc(7px + env(safe-area-inset-bottom));
         background: #10213d;

@@ -6,7 +6,7 @@
   "use strict";
 
   const STORAGE_KEY = "zurielRecentlyOpenedChapters-v1";
-  const MAX_ITEMS = 100;
+  const MAX_ITEMS = 500;
 
   function readItems() {
     try {
@@ -26,6 +26,29 @@
       localStorage.setItem(STORAGE_KEY, JSON.stringify(items.slice(0, MAX_ITEMS)));
       return true;
     } catch (error) {
+      return false;
+    }
+  }
+
+  function clearHistory() {
+    const keys = [STORAGE_KEY, "zurielReadingHistory_v1"];
+    let previous;
+    try {
+      previous = keys.map(function (key) {
+        return { key: key, value: localStorage.getItem(key) };
+      });
+      keys.forEach(function (key) { localStorage.removeItem(key); });
+      return true;
+    } catch (error) {
+      if (previous) {
+        previous.forEach(function (item) {
+          try {
+            if (item.value !== null) localStorage.setItem(item.key, item.value);
+          } catch (rollbackError) {
+            // Keep the failure visible; do not claim the history was cleared.
+          }
+        });
+      }
       return false;
     }
   }
@@ -101,6 +124,18 @@
     heading.textContent = "🕘 Recently Opened";
     const description = document.createElement("p");
     description.textContent = "Return to your latest Bible chapters.";
+    const viewAll = document.createElement("button");
+    viewAll.type = "button";
+    viewAll.className = "home-button home-secondary";
+    viewAll.textContent = "View all history";
+    viewAll.addEventListener("click", function () {
+      if (typeof window.ZurielHomeNavigate === "function") window.ZurielHomeNavigate("personal");
+      if (window.ZurielPersonalSpace && typeof window.ZurielPersonalSpace.openProgress === "function") {
+        window.ZurielPersonalSpace.openProgress();
+      } else if (status) {
+        status.textContent = "Open My Study Space and choose Progress to view your full history.";
+      }
+    });
     const list = document.createElement("div");
     list.id = "zurielRecentlyOpenedList";
     const status = document.createElement("p");
@@ -111,8 +146,8 @@
     clear.className = "home-button home-secondary";
     clear.textContent = "Clear reading history";
     clear.addEventListener("click", function () {
-      if (!saveItems([])) {
-        status.textContent = "History could not be cleared because device storage is unavailable.";
+      if (!clearHistory()) {
+        status.textContent = "History could not be fully cleared because device storage is unavailable. Your other study records were not intentionally changed.";
         return;
       }
       status.textContent = "Recently opened history cleared. Your saved notes and bookmarks are unchanged.";
@@ -120,6 +155,7 @@
     });
     card.appendChild(heading);
     card.appendChild(description);
+    card.appendChild(viewAll);
     card.appendChild(list);
     card.appendChild(status);
     card.appendChild(clear);
@@ -148,6 +184,7 @@
   window.ZurielRecentlyOpened = {
     list: function () { return readItems().slice(); },
     recordChapter: recordChapter,
+    clear: clearHistory,
     refresh: render
   };
 
