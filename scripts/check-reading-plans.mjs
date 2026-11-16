@@ -82,7 +82,8 @@ try {
       const reference = String(day[0] || "");
       const match = reference.match(/^(.+?)\s+(\d+)(?::(\d+))?(?:-(\d+))?$/);
       if (!match) throw new Error(plan.title + " has a malformed passage reference: " + reference);
-      const book = bookLookup.get(match[1].toLowerCase().replace(/\s+/g, " ").trim());
+      const bookName = match[1].toLowerCase().replace(/\s+/g, " ").trim();
+      const book = bookLookup.get(bookName === "psalm" ? "psalms" : bookName);
       if (!book) throw new Error(plan.title + " refers to an unknown Bible book: " + match[1]);
       const chapterNumber = Number(match[2]);
       if (chapterNumber < 1 || chapterNumber > book.chapters) {
