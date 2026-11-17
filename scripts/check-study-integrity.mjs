@@ -150,6 +150,17 @@ if (!study.includes("let activeWordContextCleanup = null;") ||
   failures.push(["word-study listener lifecycle", "replacing a contextual panel must release the previous keyboard listener"]);
 }
 
+
+if (home.includes('document.getElementById("zurielHomeOpenBible")')) {
+  failures.push(["retired Home control binding", "the removed zurielHomeOpenBible element must not be bound"]);
+}
+if (home.includes("setInterval(")) {
+  failures.push(["stable Home Scripture display", "Home revelations and daily Scripture must not rotate automatically"]);
+}
+for (const id of ["zurielIdentityTitle","zurielIdentityVerse","zurielNextVerse","zurielHomeVerse","zurielOpenBookScripture","zurielOpenBookPrayer","zurielOpenBookConfession","zurielOpenBookInspiration"]) {
+  if (!home.includes('id="' + id + '"')) failures.push(["Home dashboard control: " + id, "missing from Home dashboard markup"]);
+}
+
 const homeReferences = [...home.matchAll(/reference:\s*"([^"]+)"/g)].map(match => match[1].toLowerCase());
 const faithReferences = new Set([...faith.matchAll(/["']?reference["']?\s*:\s*["']([^"']+)["']/g)].map(match => match[1].toLowerCase()));
 const identityBlock = home.match(/const identityScriptures = \[([\s\S]*?)\n    \];/);
