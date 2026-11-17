@@ -415,6 +415,31 @@ footer {
   font:600 13px/1.3 Arial,sans-serif;
   overflow-wrap:anywhere;
 }
+#zurielVerseActions .zuriel-action-group {
+  grid-column:1/-1;
+  min-width:0;
+  margin:0;
+  padding:0 9px;
+  border:1px solid #536984;
+  border-radius:11px;
+  background:#172e4a;
+}
+#zurielVerseActions .zuriel-action-group[hidden] { display:none !important; }
+#zurielVerseActions .zuriel-action-group summary {
+  display:flex;
+  align-items:center;
+  min-height:42px;
+  cursor:pointer;
+  color:#f4e6c5;
+  font:700 13px/1.4 Arial,sans-serif;
+  list-style-position:inside;
+}
+#zurielVerseActions .zuriel-action-group-items {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:7px;
+  padding:0 0 9px;
+}
 #zurielVerseActions .zuriel-verse-action[hidden] { display:none !important; }
 #zurielVerseActions .zuriel-overlay-back { grid-column:1/-1; }
 #zurielVerseActions.has-study-content { display:block; }
@@ -968,13 +993,24 @@ async function openChapter(book, chapter) {
   verseActionHint.textContent = "Choose what you want to explore in this verse.";
   verseActions.appendChild(verseActionHint);
 
-  const verseActionItems = [
-    ["Prayer","🙏"],["Declaration","📣"],["Affirmation","✨"],
-    ["Faith","🛡️"],["Inspiration","💡"],["Compare translations","⇄"],
-    ["Cross-references","🔗"],["Dictionary","📖"],["Commentary & theology","📚"],
-    ["Original-language words","🔤"],["Study context","📜"],["Share card","🖼️"],
-    ["Word meanings","🔎"],["Highlight","🖍️"],["Personal notes","📝"],
-    ["Full Study Centre","🏛️"]
+  const verseActionGroups = [
+    {
+      title:"🙏 Faith & Response",
+      open:true,
+      items:[["Prayer","🙏"],["Declaration","📣"],["Affirmation","✨"],["Faith","🛡️"],["Inspiration","💡"]]
+    },
+    {
+      title:"📖 Study & Understanding",
+      open:false,
+      items:[["Cross-references","🔗"],["Dictionary","📖"],["Commentary & theology","📚"],
+        ["Original-language words","🔤"],["Study context","📜"],["Word meanings","🔎"]]
+    },
+    {
+      title:"🧰 Reading Tools",
+      open:false,
+      items:[["Compare translations","⇄"],["Share card","🖼️"],["Highlight","🖍️"],
+        ["Personal notes","📝"],["Full Study Centre","🏛️"]]
+    }
   ];
 
   let studyPanelHome = null;
@@ -995,9 +1031,8 @@ async function openChapter(book, chapter) {
     externalPanelCurrent = null;
     externalPanelHome = null;
     externalPanelNextSibling = null;
-    verseActions.querySelectorAll(".zuriel-verse-action").forEach(function (button) {
-      button.hidden = false;
-    });
+    verseActions.querySelectorAll(".zuriel-verse-action").forEach(function (button) { button.hidden = false; });
+    verseActions.querySelectorAll(".zuriel-action-group").forEach(function (group) { group.hidden = false; });
     const back = verseActions.querySelector(".zuriel-overlay-back");
     if (back) back.remove();
     verseActionHint.hidden = false;
@@ -1012,9 +1047,8 @@ async function openChapter(book, chapter) {
       externalPanelCurrent = panel;
       externalPanelHome = panel.parentNode;
       externalPanelNextSibling = panel.nextSibling;
-      verseActions.querySelectorAll(".zuriel-verse-action").forEach(function (button) {
-        button.hidden = true;
-      });
+      verseActions.querySelectorAll(".zuriel-verse-action").forEach(function (button) { button.hidden = true; });
+      verseActions.querySelectorAll(".zuriel-action-group").forEach(function (group) { group.hidden = true; });
       verseActionHint.hidden = true;
       const back = document.createElement("button");
       back.type = "button";
@@ -1131,9 +1165,8 @@ async function openChapter(book, chapter) {
           (targets[action] || []).some(function (term) { return label.includes(term); });
       });
     }
-    verseActions.querySelectorAll(".zuriel-verse-action").forEach(function (button) {
-      button.hidden = true;
-    });
+    verseActions.querySelectorAll(".zuriel-verse-action").forEach(function (button) { button.hidden = true; });
+    verseActions.querySelectorAll(".zuriel-action-group").forEach(function (group) { group.hidden = true; });
     verseActionHint.hidden = true;
     const back = document.createElement("button");
     back.type = "button";
@@ -1159,13 +1192,24 @@ async function openChapter(book, chapter) {
     }
   }
 
-  verseActionItems.forEach(function (item) {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "zuriel-verse-action";
-    button.textContent = item[1] + " " + item[0];
-    button.addEventListener("click", function () { openSelectedStudy(item[0]); });
-    verseActions.appendChild(button);
+  verseActionGroups.forEach(function (groupData) {
+    const group = document.createElement("details");
+    group.className = "zuriel-action-group";
+    group.open = groupData.open;
+    const heading = document.createElement("summary");
+    heading.textContent = groupData.title;
+    const actions = document.createElement("div");
+    actions.className = "zuriel-action-group-items";
+    groupData.items.forEach(function (item) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "zuriel-verse-action";
+      button.textContent = item[1] + " " + item[0];
+      button.addEventListener("click", function () { openSelectedStudy(item[0]); });
+      actions.appendChild(button);
+    });
+    group.append(heading, actions);
+    verseActions.appendChild(group);
   });
   const closeActions = document.createElement("button");
   closeActions.type = "button";
