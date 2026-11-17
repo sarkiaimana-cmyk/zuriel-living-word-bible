@@ -1,0 +1,908 @@
+{
+  "schemaVersion": 1,
+  "title": "Zuriel Original-Language Word Study Collection — Batch 1",
+  "description": "Context-sensitive Hebrew, Greek and Aramaic word-study cards. These are study aids, not a substitute for verse-level parsing or critical lexicons.",
+  "editorialPolicy": [
+    "Transliterations and glosses are concise aids; check the actual form and syntax in each passage.",
+    "No Strong's identifiers, morphology, pronunciation audio or exhaustive semantic claims are supplied unless separately verified.",
+    "Do not derive theology from etymology alone; context governs meaning.",
+    "Respect Jewish reading conventions for the divine name."
+  ],
+  "entries": [
+    {
+      "id": "word-study-001",
+      "term": "Agapao",
+      "language": "Greek",
+      "originalForm": "ἀγαπάω",
+      "contextualGloss": "to love; to show love through committed action",
+      "scriptureReferences": [
+        "John 3:16",
+        "John 13:34",
+        "1 John 4:10-11"
+      ],
+      "interpretiveCaution": "Meaning depends on context; do not claim the verb always carries a technical meaning unavailable to other Greek love words.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-002",
+      "term": "Phileo",
+      "language": "Greek",
+      "originalForm": "φιλέω",
+      "contextualGloss": "to love, show affection or regard",
+      "scriptureReferences": [
+        "John 11:3,36",
+        "John 16:27",
+        "Revelation 3:19"
+      ],
+      "interpretiveCaution": "Do not build a rigid hierarchy of love from this word alone.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-003",
+      "term": "Eirene",
+      "language": "Greek",
+      "originalForm": "εἰρήνη",
+      "contextualGloss": "peace, well-being or harmony",
+      "scriptureReferences": [
+        "John 14:27",
+        "Romans 5:1",
+        "Ephesians 2:14"
+      ],
+      "interpretiveCaution": "Its meaning ranges with context; it can describe peace with God, communal peace or well-being.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-004",
+      "term": "Elpis",
+      "language": "Greek",
+      "originalForm": "ἐλπίς",
+      "contextualGloss": "hope or confident expectation",
+      "scriptureReferences": [
+        "Romans 5:2-5",
+        "1 Peter 1:3",
+        "Hebrews 6:19"
+      ],
+      "interpretiveCaution": "Biblical hope is grounded in God, not a guarantee of every preferred outcome.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-005",
+      "term": "Pistis",
+      "language": "Greek",
+      "originalForm": "πίστις",
+      "contextualGloss": "faith, trust, faithfulness or reliability",
+      "scriptureReferences": [
+        "Romans 1:17",
+        "Galatians 2:16",
+        "Hebrews 11:1"
+      ],
+      "interpretiveCaution": "Debates about faith and faithfulness require attention to syntax and context.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-006",
+      "term": "Pisteuo",
+      "language": "Greek",
+      "originalForm": "πιστεύω",
+      "contextualGloss": "to believe, trust or entrust oneself",
+      "scriptureReferences": [
+        "John 1:12",
+        "John 3:16",
+        "Acts 16:31"
+      ],
+      "interpretiveCaution": "In John it often describes personal trust, not mere agreement with a proposition.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-007",
+      "term": "Dikaios",
+      "language": "Greek",
+      "originalForm": "δίκαιος",
+      "contextualGloss": "righteous, just or in the right",
+      "scriptureReferences": [
+        "Matthew 1:19",
+        "Romans 5:7",
+        "1 Peter 3:18"
+      ],
+      "interpretiveCaution": "The ethical and forensic senses depend on the passage.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-008",
+      "term": "Dikaioo",
+      "language": "Greek",
+      "originalForm": "δικαιόω",
+      "contextualGloss": "to justify, vindicate or declare righteous",
+      "scriptureReferences": [
+        "Romans 3:24",
+        "4:5",
+        "James 2:21-25"
+      ],
+      "interpretiveCaution": "Compare each author's argument; Paul and James address different distortions.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-009",
+      "term": "Hagios",
+      "language": "Greek",
+      "originalForm": "ἅγιος",
+      "contextualGloss": "holy; set apart for God",
+      "scriptureReferences": [
+        "Mark 1:24",
+        "Romans 1:7",
+        "1 Peter 1:15-16"
+      ],
+      "interpretiveCaution": "The term can describe God, the Spirit, people and things dedicated to God.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-010",
+      "term": "Hagiasmos",
+      "language": "Greek",
+      "originalForm": "ἁγιασμός",
+      "contextualGloss": "sanctification or holiness",
+      "scriptureReferences": [
+        "Romans 6:19,22",
+        "1 Thessalonians 4:3-4",
+        "Hebrews 12:14"
+      ],
+      "interpretiveCaution": "The word occurs in contexts of both status and lived holiness.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-011",
+      "term": "Charisma",
+      "language": "Greek",
+      "originalForm": "χάρισμα",
+      "contextualGloss": "gracious gift",
+      "scriptureReferences": [
+        "Romans 12:6",
+        "1 Corinthians 12:4,9",
+        "1 Peter 4:10"
+      ],
+      "interpretiveCaution": "Not every gift is a public platform or evidence of superior spiritual rank.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-012",
+      "term": "Koinonia",
+      "language": "Greek",
+      "originalForm": "κοινωνία",
+      "contextualGloss": "sharing, participation, fellowship or partnership",
+      "scriptureReferences": [
+        "Acts 2:42",
+        "1 Corinthians 10:16",
+        "Philippians 1:5"
+      ],
+      "interpretiveCaution": "Its meaning is active participation, not simply social contact.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-013",
+      "term": "Oikonomia",
+      "language": "Greek",
+      "originalForm": "οἰκονομία",
+      "contextualGloss": "stewardship, administration or entrusted arrangement",
+      "scriptureReferences": [
+        "Luke 16:2-4",
+        "Ephesians 1:10",
+        "1 Timothy 1:4"
+      ],
+      "interpretiveCaution": "Do not assume every occurrence refers to a modern economic system.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-014",
+      "term": "Diakonos",
+      "language": "Greek",
+      "originalForm": "διάκονος",
+      "contextualGloss": "servant, minister or attendant",
+      "scriptureReferences": [
+        "Mark 10:43",
+        "Romans 16:1",
+        "Philippians 1:1"
+      ],
+      "interpretiveCaution": "Context determines whether it is a general description or recognised ministry role.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-015",
+      "term": "Doulos",
+      "language": "Greek",
+      "originalForm": "δοῦλος",
+      "contextualGloss": "slave or bondservant",
+      "scriptureReferences": [
+        "Matthew 6:24",
+        "Romans 1:1",
+        "Philippians 2:7"
+      ],
+      "interpretiveCaution": "Ancient slavery was coercive; avoid romanticising it when explaining the metaphor.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-016",
+      "term": "Soteria",
+      "language": "Greek",
+      "originalForm": "σωτηρία",
+      "contextualGloss": "salvation, rescue or deliverance",
+      "scriptureReferences": [
+        "Luke 1:69",
+        "Acts 4:12",
+        "Ephesians 1:13"
+      ],
+      "interpretiveCaution": "The rescue may be present or future and should be defined by the passage.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-017",
+      "term": "Soter",
+      "language": "Greek",
+      "originalForm": "σωτήρ",
+      "contextualGloss": "saviour or deliverer",
+      "scriptureReferences": [
+        "Luke 2:11",
+        "John 4:42",
+        "Titus 2:13"
+      ],
+      "interpretiveCaution": "The title had wider ancient uses; New Testament claims about Jesus give it distinctive force.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-018",
+      "term": "Apolytrosis",
+      "language": "Greek",
+      "originalForm": "ἀπολύτρωσις",
+      "contextualGloss": "redemption or release",
+      "scriptureReferences": [
+        "Romans 3:24",
+        "Ephesians 1:7",
+        "Hebrews 9:15"
+      ],
+      "interpretiveCaution": "The metaphor draws on release and ransom imagery; do not invent a literal recipient of payment.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-019",
+      "term": "Hilasterion",
+      "language": "Greek",
+      "originalForm": "ἱλαστήριον",
+      "contextualGloss": "mercy seat or means/place of atonement",
+      "scriptureReferences": [
+        "Romans 3:25",
+        "Hebrews 9:5"
+      ],
+      "interpretiveCaution": "The translation and theological implications are debated; present the main options.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-020",
+      "term": "Parresia",
+      "language": "Greek",
+      "originalForm": "παρρησία",
+      "contextualGloss": "boldness, openness or confidence",
+      "scriptureReferences": [
+        "Acts 4:29",
+        "Hebrews 4:16",
+        "1 John 5:14"
+      ],
+      "interpretiveCaution": "Biblical boldness is confidence before God and truthful witness, not arrogance.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-021",
+      "term": "Makrothymia",
+      "language": "Greek",
+      "originalForm": "μακροθυμία",
+      "contextualGloss": "patience or long-suffering",
+      "scriptureReferences": [
+        "Romans 2:4",
+        "Galatians 5:22",
+        "Colossians 3:12"
+      ],
+      "interpretiveCaution": "Patience does not require remaining in danger or accepting injustice.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-022",
+      "term": "Prautes",
+      "language": "Greek",
+      "originalForm": "πραΰτης",
+      "contextualGloss": "gentleness or meekness",
+      "scriptureReferences": [
+        "Matthew 5:5",
+        "Galatians 5:23",
+        "James 3:13"
+      ],
+      "interpretiveCaution": "Meekness is not weakness or permission for others to exploit someone.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-023",
+      "term": "Sophronismos",
+      "language": "Greek",
+      "originalForm": "σωφρονισμός",
+      "contextualGloss": "sound-mindedness, self-control or disciplined judgement",
+      "scriptureReferences": [
+        "2 Timothy 1:7"
+      ],
+      "interpretiveCaution": "The verse contrasts fear with God's empowering gifts; avoid reducing it to a personality trait.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-024",
+      "term": "Metanoeo",
+      "language": "Greek",
+      "originalForm": "μετανοέω",
+      "contextualGloss": "to repent or change one's mind and direction",
+      "scriptureReferences": [
+        "Matthew 4:17",
+        "Acts 2:38",
+        "Revelation 2:5"
+      ],
+      "interpretiveCaution": "Repentance in context includes a changed response and direction, not only feeling regret.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-025",
+      "term": "Parakaleo",
+      "language": "Greek",
+      "originalForm": "παρακαλέω",
+      "contextualGloss": "to appeal, encourage, comfort or urge",
+      "scriptureReferences": [
+        "Romans 12:1",
+        "2 Corinthians 1:4",
+        "1 Thessalonians 5:11"
+      ],
+      "interpretiveCaution": "Translate according to the situation; it does not always mean comfort.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-026",
+      "term": "Oikodome",
+      "language": "Greek",
+      "originalForm": "οἰκοδομή",
+      "contextualGloss": "building, edification or strengthening",
+      "scriptureReferences": [
+        "Romans 14:19",
+        "1 Corinthians 14:3,26",
+        "Ephesians 4:12"
+      ],
+      "interpretiveCaution": "The image is communal strengthening, not self-promotion.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-027",
+      "term": "Aletheia",
+      "language": "Greek",
+      "originalForm": "ἀλήθεια",
+      "contextualGloss": "truth, truthfulness or reality",
+      "scriptureReferences": [
+        "John 8:32",
+        "John 14:6",
+        "Ephesians 4:25"
+      ],
+      "interpretiveCaution": "John's theological use is rich, but not every occurrence carries the full range.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-028",
+      "term": "Zoe",
+      "language": "Greek",
+      "originalForm": "ζωή",
+      "contextualGloss": "life; in John often life received through the Son",
+      "scriptureReferences": [
+        "John 1:4",
+        "10:10",
+        "17:3"
+      ],
+      "interpretiveCaution": "Do not reduce eternal life to duration only; John also stresses relationship with God.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-029",
+      "term": "Sarx",
+      "language": "Greek",
+      "originalForm": "σάρξ",
+      "contextualGloss": "flesh; human bodily existence or human nature, depending on context",
+      "scriptureReferences": [
+        "John 1:14",
+        "Romans 8:3-8",
+        "Galatians 5:16-24"
+      ],
+      "interpretiveCaution": "Paul's uses vary; the body itself is not inherently evil.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-030",
+      "term": "Nous",
+      "language": "Greek",
+      "originalForm": "νοῦς",
+      "contextualGloss": "mind, understanding or reasoning faculty",
+      "scriptureReferences": [
+        "Romans 12:2",
+        "1 Corinthians 2:16",
+        "Ephesians 4:17"
+      ],
+      "interpretiveCaution": "Avoid treating the term as a technical map of separate human components.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-031",
+      "term": "Exousia",
+      "language": "Greek",
+      "originalForm": "ἐξουσία",
+      "contextualGloss": "authority, right or delegated power",
+      "scriptureReferences": [
+        "Matthew 28:18",
+        "Luke 10:19",
+        "Romans 13:1"
+      ],
+      "interpretiveCaution": "Identify who grants, exercises and limits authority in each passage.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-032",
+      "term": "Dynamis",
+      "language": "Greek",
+      "originalForm": "δύναμις",
+      "contextualGloss": "power, ability or mighty work",
+      "scriptureReferences": [
+        "Luke 4:14",
+        "Acts 1:8",
+        "2 Corinthians 12:9"
+      ],
+      "interpretiveCaution": "It can refer to capacity or a mighty act; it does not promise spectacular signs on demand.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-033",
+      "term": "Semeion",
+      "language": "Greek",
+      "originalForm": "σημεῖον",
+      "contextualGloss": "sign or identifying mark",
+      "scriptureReferences": [
+        "John 2:11",
+        "20:30-31",
+        "Acts 2:22"
+      ],
+      "interpretiveCaution": "In John signs point beyond themselves to Jesus' identity and mission.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-034",
+      "term": "Mysterion",
+      "language": "Greek",
+      "originalForm": "μυστήριον",
+      "contextualGloss": "a mystery or previously hidden purpose now disclosed",
+      "scriptureReferences": [
+        "Romans 16:25-26",
+        "Ephesians 3:3-6",
+        "Colossians 1:26-27"
+      ],
+      "interpretiveCaution": "Biblical mystery is revealed truth, not an invitation to unsupported secret codes.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-035",
+      "term": "Oikoumene",
+      "language": "Greek",
+      "originalForm": "οἰκουμένη",
+      "contextualGloss": "inhabited world or ordered world",
+      "scriptureReferences": [
+        "Luke 2:1",
+        "Acts 17:6",
+        "Hebrews 2:5"
+      ],
+      "interpretiveCaution": "The geographic scope varies; it does not always mean every location on the modern globe.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-036",
+      "term": "Yada",
+      "language": "Hebrew",
+      "originalForm": "יָדַע",
+      "contextualGloss": "to know, recognise or experience",
+      "scriptureReferences": [
+        "Genesis 4:1",
+        "Exodus  conoc  conocer"
+      ],
+      "interpretiveCaution": "The verb has a broad range; relational knowledge is one contextual use, not the only meaning.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-037",
+      "term": "Chesed",
+      "language": "Hebrew",
+      "originalForm": "חֶסֶד",
+      "contextualGloss": "steadfast love, kindness or loyal love",
+      "scriptureReferences": [
+        "Exodus 34:6",
+        "Psalm 136",
+        "Micah 7:18-20"
+      ],
+      "interpretiveCaution": "No single English equivalent captures every occurrence.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-038",
+      "term": "Chanan",
+      "language": "Hebrew",
+      "originalForm": "חָנַן",
+      "contextualGloss": "to show favour or be gracious",
+      "scriptureReferences": [
+        "Exodus 33:19",
+        "Psalm 102:13",
+        "Proverbs 19:17"
+      ],
+      "interpretiveCaution": "Distinguish the verb from related nouns and from later theological shorthand.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-039",
+      "term": "Racham",
+      "language": "Hebrew",
+      "originalForm": "רָחַם",
+      "contextualGloss": "to show compassion or mercy",
+      "scriptureReferences": [
+        "Exodus 33:19",
+        "Isaiah 49:15",
+        "Hosea 2:23"
+      ],
+      "interpretiveCaution": "The imagery of compassion is contextual; avoid simplistic claims based only on word roots.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-040",
+      "term": "Shama",
+      "language": "Hebrew",
+      "originalForm": "שָׁמַע",
+      "contextualGloss": "to hear, listen or heed",
+      "scriptureReferences": [
+        "Deuteronomy 6:4",
+        "1 Samuel 15:22"
+      ],
+      "interpretiveCaution": "In many contexts hearing includes responding, but the sense should be established from the sentence.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-041",
+      "term": "Barak",
+      "language": "Hebrew",
+      "originalForm": "בָּרַךְ",
+      "contextualGloss": "to bless, kneel or bless God",
+      "scriptureReferences": [
+        "Genesis 12:2-3",
+        "Numbers 6:24-26",
+        "Psalm 103:1-2"
+      ],
+      "interpretiveCaution": "The verb's form and object matter; blessing God differs from God blessing people.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-042",
+      "term": "Qavah",
+      "language": "Hebrew",
+      "originalForm": "קָוָה",
+      "contextualGloss": "to wait, hope or look eagerly",
+      "scriptureReferences": [
+        "Psalm 27:14",
+        "40:1",
+        "Isaiah 40:31"
+      ],
+      "interpretiveCaution": "The image of waiting is not a promise of instant resolution.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-043",
+      "term": "Yasha",
+      "language": "Hebrew",
+      "originalForm": "יָשַׁע",
+      "contextualGloss": "to save, deliver or bring into safety",
+      "scriptureReferences": [
+        "Exodus 14:13",
+        "Psalm 18:2",
+        "Isaiah  спасение"
+      ],
+      "interpretiveCaution": "Read whether the passage describes physical rescue, communal deliverance or broader salvation.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-044",
+      "term": "Shuv",
+      "language": "Hebrew",
+      "originalForm": "שׁוּב",
+      "contextualGloss": "to turn, return or restore",
+      "scriptureReferences": [
+        "Deuteronomy 30:2",
+        "Psalm 51:13",
+        "Joel 2:12"
+      ],
+      "interpretiveCaution": "The word can describe physical return or moral turning; context determines which.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-045",
+      "term": "Tsedaqah",
+      "language": "Hebrew",
+      "originalForm": "צְדָקָה",
+      "contextualGloss": "righteousness, justice or right conduct",
+      "scriptureReferences": [
+        "Genesis 15:6",
+        "Psalm  righteousness 24",
+        "Proverbs 21:3"
+      ],
+      "interpretiveCaution": "Its relational, legal and ethical dimensions should be considered in context.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-046",
+      "term": "Mishpat",
+      "language": "Hebrew",
+      "originalForm": "מִשְׁפָּט",
+      "contextualGloss": "justice, judgement, legal decision or ordinance",
+      "scriptureReferences": [
+        "Deuteronomy 16:18-20",
+        "Psalm 89:14",
+        "Isaiah 1:17"
+      ],
+      "interpretiveCaution": "It may refer to a court decision, a just order or the practice of justice.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-047",
+      "term": "Emet",
+      "language": "Hebrew",
+      "originalForm": "אֱמֶת",
+      "contextualGloss": "truth, firmness or faithfulness",
+      "scriptureReferences": [
+        "Exodus 34:6",
+        "Psalm 25:5",
+        "Proverbs 3:3"
+      ],
+      "interpretiveCaution": "The term can emphasise reliability as well as factual truth.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-048",
+      "term": "Yirah",
+      "language": "Hebrew",
+      "originalForm": "יִרְאָה",
+      "contextualGloss": "fear, awe or reverence",
+      "scriptureReferences": [
+        "Proverbs 1:7",
+        "9:10",
+        "Psalm 111:10"
+      ],
+      "interpretiveCaution": "The appropriate nuance depends on context; reverence is not always a complete translation.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-049",
+      "term": "Lev / Levav",
+      "language": "Hebrew",
+      "originalForm": "לֵב / לֵבָב",
+      "contextualGloss": "heart; inner person, thought, will and feeling",
+      "scriptureReferences": [
+        "Deuteronomy 6:5",
+        "1 Samuel 16:7",
+        "Proverbs 4:23"
+      ],
+      "interpretiveCaution": "Ancient Hebrew often locates thinking as well as feeling in the heart.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-050",
+      "term": "Nefesh",
+      "language": "Hebrew",
+      "originalForm": "נֶפֶשׁ",
+      "contextualGloss": "living being, life, person or self",
+      "scriptureReferences": [
+        "Genesis 2:7",
+        "Leviticus 17:11",
+        "Psalm 42:1"
+      ],
+      "interpretiveCaution": "Avoid assuming it always denotes an immortal immaterial entity distinct from the body.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-051",
+      "term": "Ruach",
+      "language": "Hebrew",
+      "originalForm": "רוּחַ",
+      "contextualGloss": "wind, breath or spirit",
+      "scriptureReferences": [
+        "Genesis 1:2",
+        "6:17",
+        "Ezekiel 37:1-14"
+      ],
+      "interpretiveCaution": "The same word has several senses; use grammar and context to identify the intended one.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-052",
+      "term": "Kavod",
+      "language": "Hebrew",
+      "originalForm": "כָּבוֹד",
+      "contextualGloss": "glory, honour or weight",
+      "scriptureReferences": [
+        "Exodus 24:16-17",
+        "33:18",
+        "Isaiah 6:3"
+      ],
+      "interpretiveCaution": "The word's concrete and figurative uses should not be collapsed.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-053",
+      "term": "Qadosh",
+      "language": "Hebrew",
+      "originalForm": "קָדוֹשׁ",
+      "contextualGloss": "holy or set apart",
+      "scriptureReferences": [
+        "Leviticus 19:2",
+        "Isaiah 6:3",
+        "Psalm 99:3"
+      ],
+      "interpretiveCaution": "Holiness includes God's uniqueness and the ethical calling of His people.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-054",
+      "term": "Mishkan",
+      "language": "Hebrew",
+      "originalForm": "מִשְׁכָּן",
+      "contextualGloss": "dwelling place or tabernacle",
+      "scriptureReferences": [
+        "Exodus 25:8-9",
+        "40:34-38"
+      ],
+      "interpretiveCaution": "The tabernacle is a particular sanctuary structure, not a generic name for every worship building.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-055",
+      "term": "Adon",
+      "language": "Hebrew",
+      "originalForm": "אָדוֹן",
+      "contextualGloss": "lord, master or owner",
+      "scriptureReferences": [
+        "Genesis 18:12",
+        "Exodus 21:5",
+        "Psalm 110:1"
+      ],
+      "interpretiveCaution": "The title's force depends on speaker, referent and grammatical form.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-056",
+      "term": "Elohim",
+      "language": "Hebrew",
+      "originalForm": "אֱלֹהִים",
+      "contextualGloss": "God, god or divine beings, according to context",
+      "scriptureReferences": [
+        "Genesis 1:1",
+        "Psalm 82:1",
+        "Exodus 20:3"
+      ],
+      "interpretiveCaution": "Although grammatically plural in form, it commonly takes singular verbs when referring to Israel's God.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-057",
+      "term": "El Shaddai",
+      "language": "Hebrew",
+      "originalForm": "אֵל שַׁדַּי",
+      "contextualGloss": "traditional divine title often rendered God Almighty",
+      "scriptureReferences": [
+        "Genesis 17:1",
+        "28:3",
+        "Exodus 6:3"
+      ],
+      "interpretiveCaution": "The precise etymology of Shaddai is debated; do not present one derivation as certain.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-058",
+      "term": "YHWH",
+      "language": "Hebrew",
+      "originalForm": "יהוה",
+      "contextualGloss": "the covenant name of Israel's God",
+      "scriptureReferences": [
+        "Exodus 3:14-15",
+        "6:2-8",
+        "Psalm 8:1"
+      ],
+      "interpretiveCaution": "Jewish reading traditions often avoid pronouncing the name; follow respectful conventions.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-059",
+      "term": "Elohim Tsevaot",
+      "language": "Hebrew",
+      "originalForm": "אֱלֹהִים צְבָאוֹת",
+      "contextualGloss": "God of hosts or armies",
+      "scriptureReferences": [
+        "1 Samuel 1:3",
+        "Psalm 46:7",
+        "Isaiah 6:3"
+      ],
+      "interpretiveCaution": "The title evokes divine sovereignty; explain the military imagery in its literary context.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-060",
+      "term": "Abba",
+      "language": "Aramaic",
+      "originalForm": "אַבָּא",
+      "contextualGloss": "father; familiar form of address",
+      "scriptureReferences": [
+        "Mark 14:36",
+        "Romans 8:15",
+        "Galatians 4:6"
+      ],
+      "interpretiveCaution": "It is not accurately reduced to the childish English word 'Daddy'.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-061",
+      "term": "Maranatha",
+      "language": "Aramaic",
+      "originalForm": "מָרַנָא תָא",
+      "contextualGloss": "commonly understood as 'Our Lord, come'",
+      "scriptureReferences": [
+        "1 Corinthians 16:22"
+      ],
+      "interpretiveCaution": "The phrase's segmentation is discussed; mark the usual interpretation without overstating certainty.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-062",
+      "term": "Talitha koum",
+      "language": "Aramaic",
+      "originalForm": "טַלִיתָא קוּם",
+      "contextualGloss": "'Little girl, arise'",
+      "scriptureReferences": [
+        "Mark 5:41"
+      ],
+      "interpretiveCaution": "The Gospel preserves the spoken phrase and supplies its meaning; do not treat it as a magical formula.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-063",
+      "term": "Ephphatha",
+      "language": "Aramaic",
+      "originalForm": "אֶפְפָתָא",
+      "contextualGloss": "'Be opened'",
+      "scriptureReferences": [
+        "Mark 7:34"
+      ],
+      "interpretiveCaution": "The word is part of a specific healing narrative, not a required ritual utterance.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-064",
+      "term": "Raca",
+      "language": "Aramaic",
+      "originalForm": "רֵיקָא",
+      "contextualGloss": "an insult expressing contempt or worthlessness",
+      "scriptureReferences": [
+        "Matthew 5:22"
+      ],
+      "interpretiveCaution": "Its exact nuance is debated; focus on Jesus' warning against contemptuous speech.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-065",
+      "term": "Mammon",
+      "language": "Aramaic-derived",
+      "originalForm": "מָמוֹנָא",
+      "contextualGloss": "wealth or possessions, personified as a rival master",
+      "scriptureReferences": [
+        "Matthew 6:24",
+        "Luke 16:9-13"
+      ],
+      "interpretiveCaution": "The warning is about allegiance to wealth, not the claim that all possessions are evil.",
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    }
+  ]
+}
