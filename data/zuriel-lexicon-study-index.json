@@ -303,22 +303,6 @@
         "Acts 2:38"
       ],
       "contextPrompt": "Read repentance with the call to turn toward God and its observable fruit; avoid reducing it to regret alone."
-    },
-    {
-      "id": "G4151",
-      "language": "Greek",
-      "lemma": "πνεῦμα",
-      "transliteration": "pneuma",
-      "studyLabel": "Spirit; wind; breath, according to context",
-      "topicLinks": [
-        "Prayer",
-        "Holy Spirit"
-      ],
-      "keyReferences": [
-        "Romans 8:26-27",
-        "1 Corinthians 12:4-11"
-      ],
-      "contextPrompt": "Use passage context and source parsing. Duplicate Strong's IDs should be deduplicated in UI lookup results."
     }
   ]
 }
