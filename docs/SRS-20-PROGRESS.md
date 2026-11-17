@@ -112,3 +112,20 @@ A feature is not considered complete merely because code exists. Completion requ
 - **Still device-dependent:** install/upgrade on the user's Android phone, cold-start offline launch, chapter/verse reading interaction, backup file export/import, Open Book PNG gallery save/share, and visual accessibility checks. Passing CI cannot substitute for these checks.
 - **Still gated by external rights or decisions:** additional translation access, licensed recorded Audio Bible, and selection/deployment of a privacy-appropriate AI provider. Do not enable placeholders or imply these are already live.
 
+
+
+## Non-negotiable verse-by-verse experience — confirmed 2026-11-17
+
+The following user requirements are part of the product acceptance criteria, not optional future polish:
+
+1. **Tap any English word in a displayed KJV verse:** open a compact, readable word-detail pop-up/sheet without losing the reader's place. Show the word's contextual English meaning first, then (when the exact source data supports it) the original Hebrew, Aramaic or Greek lemma, original script, transliteration, Strong's index, lexicon senses/definition, grammatical parsing and morphology. Include related occurrences and cross-references where available.
+2. **Never guess an original-language link:** connect the selected KJV word to Hebrew/Greek only through exact, verse-level alignment/Strong's source records. If the source does not establish the relationship, explain that the link is unavailable rather than inventing a definition. Clearly label the source and distinguish a lexicon's range of senses from the meaning in this particular verse.
+3. **Every verse should have its own faith response:** a passage/verse-specific prayer, declaration, affirmation, faith confession, inspiration and a short personalised Word/faith focus. The content must be relevant to that verse's actual meaning and context, not a generic repeated paragraph. It must remain separate from Scripture text and be clearly identified as original devotional material.
+4. **Coverage and integrity:** aim for full 66-book, verse-level coverage. Where a reviewed, verse-specific entry is not yet available, show an honest "not yet curated" state or a clearly labelled contextual draft; do not silently reuse a neighbouring verse's content or claim full coverage. Every response must be checked against the passage context and avoid promises that the verse itself does not make.
+5. **Personalisation:** allow the reader to save or adapt the prayer, declaration, affirmation, confession and faith focus for their own circumstances, while preserving the original source text and the user's edits separately.
+
+### Current implementation versus target
+
+- The study module already supports verse selection, KJV word selection/highlighting, source-linked KJV-to-Strong's matching, interlinear Hebrew/Greek/Aramaic records, STEPBible/Tyndale House lexicon lookups, source-supplied morphology, related word occurrences and cross-references. Resources downloaded once can be cached for later offline study. Some original-language data requires an initial network connection and is not guaranteed for every English KJV word.
+- The faith-response library currently contains a limited curated set (55 entries in the current source file), and the renderer explicitly reports when a verse has no curated entry. This is **not yet full verse-by-verse coverage** and must not be described as complete.
+- The tap-to-study experience and the faith-response coverage therefore remain priority integration/verification work. The target is a compact pop-up for a tapped word, with the full advanced study details available on expansion; the main Scripture column must remain full-width and readable.
