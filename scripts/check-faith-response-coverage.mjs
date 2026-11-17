@@ -48,7 +48,16 @@ function parseReference(reference) {
 }
 
 const requiredFields = ["prayer", "declaration", "affirmation", "confession", "inspiration"];
-const records = library.list().map(item => library.find(item.reference)).filter(Boolean);
+const visibleRecords = library.list();
+const records = typeof library.auditList === "function"
+  ? library.auditList()
+  : visibleRecords.map(item => library.find(item.reference)).filter(Boolean);
+if (new Set(visibleRecords.map(item => String(item.reference || "").trim().toLowerCase())).size !== visibleRecords.length) {
+  throw new Error("The visible faith-response list must contain unique verse references.");
+}
+if (records.length < visibleRecords.length) {
+  throw new Error("The faith-response audit list cannot contain fewer records than the visible list.");
+}
 const exact = new Map();
 const invalid = [];
 const duplicates = [];
@@ -90,6 +99,8 @@ const missingExact = totalVerses - exact.size;
 const percentage = totalVerses ? (exact.size / totalVerses * 100) : 0;
 console.log("Zuriel verse-specific faith-response coverage");
 console.log("Offline KJV verses checked: " + totalVerses.toLocaleString("en-US"));
+console.log("Raw curated records checked: " + records.length.toLocaleString("en-US"));
+console.log("Unique visible verse references: " + visibleRecords.length.toLocaleString("en-US"));
 console.log("Exact single-verse response records: " + exact.size.toLocaleString("en-US"));
 console.log("Coverage: " + percentage.toFixed(3) + "%");
 console.log("Verses still requiring their own unique record: " + missingExact.toLocaleString("en-US"));
