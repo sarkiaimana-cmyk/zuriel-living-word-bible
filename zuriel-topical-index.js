@@ -1063,6 +1063,13 @@ const topics=[
           "chapter": 12,
           "verse": 14,
           "endVerse": null
+        },
+        {
+          "label": "Micah 6:8",
+          "book": "Micah",
+          "chapter": 6,
+          "verse": 8,
+          "endVerse": null
         }
       ],
       "definition": "Holiness means being set apart as belonging to God and reflecting His pure, faithful character. Consecration is the response of offering one's whole life to God; it is not an attempt to earn salvation but a grateful response to His grace.",
@@ -1092,11 +1099,11 @@ const topics=[
         }
       ],
       "relatedExplanations": [
-        "Leviticus 19:1–2 — grounds Israel's call to holiness in God's own character.",
-        "Micah 6:8 — shows that covenant faithfulness includes justice, mercy and humble walking with God.",
         "Romans 12:1–2 — presents the body and renewed mind as part of worship.",
         "1 Peter 1:15–16 — applies the Old Testament holiness call to Christian conduct.",
-        "Hebrews 12:14 — urges believers to pursue peace and holiness."
+        "2 Corinthians 7:1 — calls believers to pursue holiness in response to God's promises.",
+        "Hebrews 12:14 — urges believers to pursue peace and holiness.",
+        "Micah 6:8 — shows that covenant faithfulness includes justice, mercy and humble walking with God."
       ],
       "application": "Offer daily choices, speech, relationships, work and private habits to God. Ask not only what is permitted, but what reflects His character and serves others in love.",
       "questions": [
