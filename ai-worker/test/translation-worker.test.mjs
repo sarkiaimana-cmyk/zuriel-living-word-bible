@@ -38,16 +38,12 @@ test("translation-only Worker rejects AI and unrelated routes", async () => {
 });
 
 test("translation-only Worker forwards only licensed version-list requests", async () => {
+  let upstream;
   const response = await handleTranslationRequest(
     request("/api/youversion/bibles"),
     env(),
     async (url, options) => {
-      const parsed = new URL(url);
-      assert.equal(parsed.origin, "https://api.youversion.com");
-      assert.equal(parsed.pathname, "/v1/bibles");
-      assert.equal(parsed.searchParams.get("language_ranges[]"), "en");
-      assert.equal(parsed.searchParams.has("all_available"), false);
-      assert.equal(options.headers["X-YVP-App-Key"], appKey);
+      upstream = { url: new URL(url), options };
       return Response.json({
         data: [{
           id: 3034,
@@ -60,6 +56,12 @@ test("translation-only Worker forwards only licensed version-list requests", asy
     }
   );
   assert.equal(response.status, 200);
+  assert.ok(upstream, "The licensed YouVersion endpoint should be contacted.");
+  assert.equal(upstream.url.origin, "https://api.youversion.com");
+  assert.equal(upstream.url.pathname, "/v1/bibles");
+  assert.equal(upstream.url.searchParams.get("language_ranges[]"), "en");
+  assert.equal(upstream.url.searchParams.has("all_available"), false);
+  assert.equal(upstream.options.headers["X-YVP-App-Key"], appKey);
   assert.equal(response.headers.get("cache-control"), "no-store, max-age=0");
   const payload = await response.json();
   assert.equal(payload.data[0].abbreviation, "BSB");
