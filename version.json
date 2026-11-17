@@ -1,4 +1,4 @@
 {
-  "version": "1.4.36",
-  "releaseNotes": "Improves verse action routing so Prayer, Declaration, Affirmation, Faith, Inspiration, Cross-references, Personal notes and Highlight lead to their corresponding Study Centre resources. Refreshes offline cache."
+  "version": "1.4.37",
+  "releaseNotes": "Improves connected Scripture navigation: selecting a cross-reference opens the exact verse in the reader and loads its Study Centre context. Adds a retry control when reference data cannot be fetched; downloaded reference data remains cacheable for offline study."
 }
