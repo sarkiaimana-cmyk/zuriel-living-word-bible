@@ -137,6 +137,8 @@ if (!study.includes('layout.id = "zurielReaderStudyLayout"') ||
   failures.push(["full-width Scripture reading layout", "the Bible text must occupy the full available width, align left and wrap naturally without a side-by-side study column"]);
 }
 if (study.includes("verseElement.parentNode.insertBefore(contextCard")) failures.push(["no inserted word card between verses", "word context must stay in the study panel, not interrupt Scripture"]);
+if (!study.includes('@media (max-width:640px)') || !study.includes('position:fixed;') || !study.includes('max-height:min(62dvh,560px)')) failures.push(["mobile word-study bottom sheet", "the focused word panel must be reachable on small screens without narrowing the Scripture reader"]);
+if (!study.includes('event.key === "Escape"') || !study.includes('document.removeEventListener("keydown", handleContextKeydown)')) failures.push(["word-study Escape dismissal", "the contextual panel must close cleanly from the keyboard and release its listener"]);
 
 const homeReferences = [...home.matchAll(/reference:\s*"([^"]+)"/g)].map(match => match[1].toLowerCase());
 const faithReferences = new Set([...faith.matchAll(/["']?reference["']?\s*:\s*["']([^"']+)["']/g)].map(match => match[1].toLowerCase()));
