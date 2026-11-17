@@ -91,9 +91,9 @@ if (!packaging.includes('entryPoints: ["zuriel-native-media.js"]') ||
     !packaging.includes('outfile: "www/zuriel-native-media.js"')) {
   failures.push("Android packaging does not bundle the native media bridge.");
 }
-if (!index.includes("capacitor.isNativePlatform()") ||
-    !index.includes('nativeMediaScript.src = "zuriel-native-media.js"')) {
-  failures.push("The native media bridge is not conditionally loaded in Capacitor.");
+if (!index.includes('<script src="zuriel-native-media.js"></script>') ||
+    index.indexOf('<script src="zuriel-native-media.js"></script>') > index.indexOf('<script src="zuriel-library.js"></script>')) {
+  failures.push("The native media bridge must load before the card library so Save and Share cannot race its initialization.");
 }
 if (!index.includes("window.getBibleVerseText = async function (reference)")) failures.push("Offline KJV passage retrieval is missing.");
 if (!/const CACHE_NAME = "zuriel-bible-offline-v\d+";/.test(worker)) failures.push("Offline cache version is missing for the Studio/navigation integration.");
