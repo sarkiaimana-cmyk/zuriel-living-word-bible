@@ -441,7 +441,8 @@ footer {
   padding:0 0 9px;
 }
 #zurielVerseActions .zuriel-verse-action[hidden] { display:none !important; }
-#zurielVerseActions .zuriel-overlay-back { grid-column:1/-1; }
+#zurielVerseActions .zuriel-overlay-back,
+#zurielVerseActions .zuriel-action-close { grid-column:1/-1; }
 #zurielVerseActions.has-study-content { display:block; }
 #zurielVerseActions #zurielStudyPanel {
   display:block !important;
@@ -1102,7 +1103,8 @@ async function openChapter(book, chapter) {
     const verse = message.querySelector('.verse[data-verse-number="' + selectedVerseInfo.verse + '"]');
     if (!verse) return;
     const rect = verse.getBoundingClientRect();
-    const estimatedHeight = Math.min(window.innerHeight * 0.76, 620);
+    const maxHeight = Math.min(window.innerHeight * 0.76, 620);
+    const estimatedHeight = Math.min(Math.max(verseActions.scrollHeight || 220, 180), maxHeight);
     const top = Math.max(10, Math.min(rect.top, window.innerHeight - estimatedHeight - 10));
     verseActions.style.top = top + "px";
   }
@@ -1227,6 +1229,11 @@ async function openChapter(book, chapter) {
   verseActions.appendChild(closeActions);
   message.appendChild(verseActions);
   window.addEventListener("resize", positionVerseOverlay);
+  window.addEventListener("scroll", function (event) {
+    if (!verseActions.hidden &&
+        (event.target === document || event.target === document.documentElement ||
+         event.target === document.body)) positionVerseOverlay();
+  }, true);
 
   function selectVerseForGloryCard(verseNumber, verseText) {
     selectedVerseInfo = {
