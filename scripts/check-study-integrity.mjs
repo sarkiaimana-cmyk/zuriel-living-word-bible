@@ -276,7 +276,7 @@ try {
   assert.equal("in a beginning God".toLowerCase().includes("in the beginning"), false);
   const normalizeSearchText = value => String(value || "")
     .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-    .replace(/[’‘]/g, "'").replace(/\\s+/g, " ").trim().toLowerCase();
+    .replace(/[’‘]/g, "'").replace(/\s+/g, " ").trim().toLowerCase();
   assert.equal(normalizeSearchText("  HÉSED  "), "hesed");
   assert.equal(normalizeSearchText("GOD’S   WORD"), "god's word");
   assert.equal(normalizeSearchText("God's word").includes(normalizeSearchText("god’s word")), true);
