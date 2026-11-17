@@ -282,6 +282,50 @@ for (const requiredTerm of ["atonement", "covenant", "grace", "kingdom of god", 
   assert.ok(dictionaryTitles.includes(requiredTerm), "dictionary includes " + requiredTerm);
 }
 
+ 
+// Validate every curated cross-reference against the actual offline 66-book
+// KJV corpus. This prevents an attractive label from shipping with a broken
+// target, misspelled book name, or invalid chapter/verse.
+try {
+  const start = study.indexOf("const curatedCrossReferences = {");
+  const end = study.indexOf("\n  };", start);
+  if (start < 0 || end <= start) throw new Error("Curated cross-reference data could not be isolated.");
+  const declaration = study.slice(start, end + "\n  };".length)
+    .replace(/^const curatedCrossReferences = /, "");
+  const curated = vm.runInNewContext("(" + declaration + ")", {}, { timeout: 1000 });
+  const entries = Object.entries(curated);
+  assert.ok(entries.length >= 19, "at least 19 curated Scripture source passages are maintained");
+  let checkedTargets = 0;
+  for (const [sourceReference, targets] of entries) {
+    const sourceMatch = sourceReference.match(/^(.+?)\s+(\d+):(\d+)$/);
+    assert.ok(sourceMatch, "curated source reference has a valid format: " + sourceReference);
+    const sourceBook = bibleBooks.find(book => book.name === sourceMatch[1]);
+    assert.ok(sourceBook, "curated source book exists: " + sourceReference);
+    const sourceVerse = kjv[bookCodes[sourceBook.name]]?.[Number(sourceMatch[2]) - 1]?.[Number(sourceMatch[3]) - 1];
+    assert.ok(typeof sourceVerse === "string" && sourceVerse.trim(), "curated source verse exists: " + sourceReference);
+    assert.ok(Array.isArray(targets) && targets.length, "curated source has at least one target: " + sourceReference);
+    for (const target of targets) {
+      const targetBook = bibleBooks.find(book => book.name === target.book);
+      assert.ok(targetBook, "curated target book exists: " + target.book);
+      assert.ok(Number.isInteger(target.chapter) && target.chapter >= 1 && target.chapter <= targetBook.chapters,
+        "curated target chapter is valid: " + target.book);
+      const targetVerse = kjv[bookCodes[targetBook.name]]?.[target.chapter - 1]?.[target.verse - 1];
+      assert.ok(Number.isInteger(target.verse) && target.verse >= 1 &&
+        typeof targetVerse === "string" && targetVerse.trim(),
+        "curated target verse exists: " + target.book + " " + target.chapter + ":" + target.verse);
+      assert.ok(typeof target.relationship === "string" && target.relationship.trim(),
+        "curated target relationship is labelled");
+      assert.ok(typeof target.note === "string" && target.note.trim(),
+        "curated target explanation is present");
+      checkedTargets++;
+    }
+  }
+  console.log("Curated cross-reference integrity passed: " + entries.length +
+    " source passages and " + checkedTargets + " valid offline KJV targets.");
+} catch (error) {
+  failures.push(["curated cross-reference integrity", error.message]);
+}
+
 if (failures.length) {
   console.error("Original-language study integrity checks failed:");
   for (const [label, detail] of failures) console.error(" - " + label + ": " + detail);
