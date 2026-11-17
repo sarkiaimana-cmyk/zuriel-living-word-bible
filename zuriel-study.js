@@ -1521,7 +1521,9 @@
 
     function readHighlights() {
       try {
-        return JSON.parse(localStorage.getItem(HIGHLIGHTS_KEY)) || {};
+        const saved = JSON.parse(localStorage.getItem(HIGHLIGHTS_KEY) || "{}");
+        return saved && typeof saved === "object" && !Array.isArray(saved)
+          ? saved : {};
       } catch (error) {
         return {};
       }
@@ -1536,11 +1538,19 @@
       const verseElement = findVerseElement(ref.verse);
       if (!verseElement) return;
 
-      verseElement.style.backgroundColor = record.verseColor || "";
+      verseElement.style.backgroundColor =
+        typeof record.verseColor === "string" ? record.verseColor : "";
       verseElement.querySelectorAll(".verse-word").forEach(function (word) {
         const index = word.dataset.wordIndex;
+        const savedColor = record.words && record.words[index];
+        const savedToken = record.wordTokens && record.wordTokens[index];
+        const currentToken = String(word.textContent || "").trim();
+        // If a token identity was saved, never paint a different word merely
+        // because it occupies the same position in another text rendering.
+        const tokenMatches = !savedToken ||
+          savedToken.normalize("NFC").toLowerCase() === currentToken.normalize("NFC").toLowerCase();
         word.style.backgroundColor =
-          record.words && record.words[index] ? record.words[index] : "";
+          tokenMatches && typeof savedColor === "string" ? savedColor : "";
       });
     }
 
@@ -1552,8 +1562,16 @@
       } else {
         delete all[key];
       }
-      localStorage.setItem(HIGHLIGHTS_KEY, JSON.stringify(all));
+      try {
+        localStorage.setItem(HIGHLIGHTS_KEY, JSON.stringify(all));
+      } catch (error) {
+        const status = document.getElementById("zurielHighlightStatus");
+        if (status) status.textContent =
+          "The highlight could not be saved. Device storage may be full or unavailable.";
+        return false;
+      }
       paintSavedHighlights(ref);
+      return true;
     }
 
     function getCurrentHighlightRecord() {
@@ -1565,18 +1583,22 @@
       const record = getCurrentHighlightRecord();
       record.words = record.words || {};
       record.words[String(selectedEnglishWordIndex)] = activeHighlightColor;
-      saveHighlightRecord(selectedReference, record);
-      document.getElementById("zurielHighlightStatus").textContent =
-        "Word highlighted. Your choice is saved on this device.";
+      record.wordTokens = record.wordTokens || {};
+      record.wordTokens[String(selectedEnglishWordIndex)] = String(selectedEnglishWord || "").trim();
+      if (saveHighlightRecord(selectedReference, record)) {
+        document.getElementById("zurielHighlightStatus").textContent =
+          "Word highlighted. Its text identity is saved with the highlight on this device.";
+      }
     }
 
     function applyVerseHighlight() {
       if (!selectedReference) return;
       const record = getCurrentHighlightRecord();
       record.verseColor = activeHighlightColor;
-      saveHighlightRecord(selectedReference, record);
-      document.getElementById("zurielHighlightStatus").textContent =
-        "The whole verse is highlighted and saved on this device.";
+      if (saveHighlightRecord(selectedReference, record)) {
+        document.getElementById("zurielHighlightStatus").textContent =
+          "The whole verse is highlighted and saved on this device.";
+      }
     }
 
     function clearVerseHighlights() {
