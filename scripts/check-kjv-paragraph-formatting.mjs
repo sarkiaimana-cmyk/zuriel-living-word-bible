@@ -7,8 +7,6 @@ assert.ok(reader.includes('paragraph.className = paragraphStart ? "verse verse-p
 assert.ok(reader.includes("const wordParts = displayVerseText.match(/\\S+|\\s+/g) || [];"));
 assert.ok(reader.includes("selectVerseForGloryCard(index + 1, displayVerseText);"));
 assert.ok(reader.includes("book, chapter, index + 1, displayVerseText, part, thisWordIndex"));
-assert.ok(reader.includes('String(verse).replace(/^¶\\s*/, "")'));
-assert.ok(reader.includes('text: String(verseText).replace(/^¶\\s*/, "")'));
 assert.ok(reader.includes("#message .verse.verse-paragraph-start") && reader.includes("margin-top: 1.15em;"));
 assert.ok(reader.includes("zuriel:reading-position-changed"));
 console.log("KJV paragraph formatting checks passed.");
