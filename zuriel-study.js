@@ -798,7 +798,37 @@
     "Hebrews 10:37": [{ book:"Habakkuk", chapter:2, verse:3, relationship:"Direct quotation", note:"The writer draws on Habakkuk's vision and its appointed time." }],
     "1 Peter 2:6": [{ book:"Isaiah", chapter:28, verse:16, relationship:"Direct quotation", note:"Peter quotes the chosen cornerstone laid in Zion." }],
     "1 Peter 2:7": [{ book:"Psalm", chapter:118, verse:22, relationship:"Direct quotation", note:"Peter quotes the stone rejected by builders and made the cornerstone." }],
-    "Revelation 1:7": [{ book:"Zechariah", chapter:12, verse:10, relationship:"Prophecy / fulfilment", note:"Revelation echoes Zechariah's vision of the one who is pierced." }]
+    "Revelation 1:7": [{ book:"Zechariah", chapter:12, verse:10, relationship:"Prophecy / fulfilment", note:"Revelation echoes Zechariah's vision of the one who is pierced." }],
+
+    "Matthew 13:35": [{ book:"Psalm", chapter:78, verse:2, relationship:"Direct quotation", note:"Matthew identifies Jesus' use of parables with the psalm's words about speaking in parables." }],
+    "Matthew 21:13": [
+      { book:"Isaiah", chapter:56, verse:7, relationship:"Direct quotation", note:"Jesus quotes the promise that God's house is to be called a house of prayer." },
+      { book:"Jeremiah", chapter:7, verse:11, relationship:"Direct quotation", note:"Jesus also invokes Jeremiah's rebuke of treating the temple as a den of robbers." }
+    ],
+    "Mark 4:12": [{ book:"Isaiah", chapter:6, verse:9, relationship:"Direct quotation", note:"Mark's account uses Isaiah's words about hearing without perceiving." }],
+    "Luke 3:4": [{ book:"Isaiah", chapter:40, verse:3, relationship:"Direct quotation", note:"Luke quotes Isaiah's voice calling for the Lord's way to be prepared." }],
+    "Luke 22:37": [{ book:"Isaiah", chapter:53, verse:12, relationship:"Prophecy / fulfilment", note:"Jesus applies the servant passage's words about being numbered with transgressors to His coming suffering." }],
+    "John 6:31": [{ book:"Psalm", chapter:78, verse:24, relationship:"Scriptural pattern", note:"The crowd recalls the wilderness manna tradition, which Psalm 78 recounts." }],
+    "John 15:25": [
+      { book:"Psalm", chapter:35, verse:19, relationship:"Direct quotation", note:"John's wording echoes the psalm's complaint about being hated without cause." },
+      { book:"Psalm", chapter:69, verse:4, relationship:"Direct quotation", note:"The same statement also echoes the righteous sufferer's words in Psalm 69." }
+    ],
+    "John 19:28": [{ book:"Psalm", chapter:69, verse:21, relationship:"Prophecy / fulfilment", note:"John connects Jesus' thirst and the offered drink with the suffering described in the psalm." }],
+    "Acts 7:49": [{ book:"Isaiah", chapter:66, verse:1, relationship:"Direct quotation", note:"Stephen quotes Isaiah's declaration that heaven is God's throne and earth His footstool." }],
+    "Acts 13:34": [{ book:"Isaiah", chapter:55, verse:3, relationship:"Scriptural promise", note:"Paul connects the resurrection promise with the sure mercies promised to David." }],
+    "Acts 13:35": [{ book:"Psalm", chapter:16, verse:10, relationship:"Direct quotation", note:"Paul quotes the psalm's statement that God's Holy One will not see corruption." }],
+    "Acts 15:16": [{ book:"Amos", chapter:9, verse:11, relationship:"Direct quotation", note:"James cites Amos's promise concerning the restoration of David's fallen tent." }],
+    "Romans 9:27": [{ book:"Isaiah", chapter:10, verse:22, relationship:"Direct quotation", note:"Paul quotes Isaiah's remnant theme concerning Israel." }],
+    "Romans 10:15": [{ book:"Isaiah", chapter:52, verse:7, relationship:"Direct quotation", note:"Paul draws on Isaiah's picture of the beautiful feet of the one bringing good news." }],
+    "Romans 11:26": [{ book:"Isaiah", chapter:59, verse:20, relationship:"Scriptural promise", note:"Paul's description of the Deliverer from Zion draws on Isaiah's promised Redeemer." }],
+    "Romans 15:12": [{ book:"Isaiah", chapter:11, verse:10, relationship:"Direct quotation", note:"Paul quotes Isaiah's promise of the root of Jesse who will rule the nations." }],
+    "1 Corinthians 1:19": [{ book:"Isaiah", chapter:29, verse:14, relationship:"Direct quotation", note:"Paul quotes God's promise to overturn the wisdom of the wise." }],
+    "Hebrews 2:6": [{ book:"Psalm", chapter:8, verse:4, relationship:"Direct quotation", note:"The writer begins a quotation from Psalm 8 about humanity and the Son of Man." }],
+    "Hebrews 3:7": [{ book:"Psalm", chapter:95, verse:7, relationship:"Direct quotation", note:"The warning begins by quoting the invitation to hear God's voice today." }],
+    "Hebrews 8:8": [{ book:"Jeremiah", chapter:31, verse:31, relationship:"Direct quotation", note:"The writer quotes Jeremiah's promise of a new covenant with the house of Israel and Judah." }],
+    "1 Peter 1:24": [{ book:"Isaiah", chapter:40, verse:6, relationship:"Direct quotation", note:"Peter quotes Isaiah's contrast between fading human life and the enduring word of the Lord." }],
+    "1 Peter 2:22": [{ book:"Isaiah", chapter:53, verse:9, relationship:"Prophecy / fulfilment", note:"Peter describes Christ's sinlessness using the servant passage's language." }],
+    "2 Peter 3:8": [{ book:"Psalm", chapter:90, verse:4, relationship:"Direct quotation", note:"Peter recalls the psalm's comparison of God's timescale with a thousand years." }]
   };
 
   async function loadRelatedScriptures(ref) {
