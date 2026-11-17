@@ -801,6 +801,33 @@
       }
       #zurielInlineWordStudy .inline-word-gloss,
       #zurielInlineWordStudy .inline-word-meta { display:block; margin-top:4px; }
+      /* On narrow screens, keep the selected word study reachable without
+         inserting content between Scripture verses or shrinking the reader. */
+      @media (max-width:640px) {
+        #zurielStudyPanel[data-mode="word-context"] {
+          position:fixed;
+          inset:auto 0 0 0;
+          z-index:10000;
+          box-sizing:border-box;
+          width:100%;
+          max-height:min(62dvh,560px);
+          overflow-y:auto;
+          overscroll-behavior:contain;
+          -webkit-overflow-scrolling:touch;
+          border-radius:18px 18px 0 0;
+          padding:12px 14px calc(12px + env(safe-area-inset-bottom));
+          margin:0;
+          box-shadow:0 -12px 40px #0007;
+          touch-action:pan-y;
+        }
+        #zurielStudyPanel[data-mode="word-context"] #zurielInlineWordStudy {
+          border:0;
+          border-radius:0;
+          padding:0;
+          background:transparent;
+        }
+      }
+
       #zurielStudyPanel h2,
       #zurielStudyPanel h3 { color:#e8cf91; }
       #zurielStudyPanel .study-section-art {
@@ -2236,10 +2263,25 @@
         status.textContent = "Checking the exact KJV word alignment and available original-language record…";
         contextCard.appendChild(status);
 
+        const closeContextPanel = function () {
+          contextCard.remove();
+          document.removeEventListener("keydown", handleContextKeydown);
+          panel.style.display = "none";
+          panel.dataset.mode = "verse";
+        };
+        const handleContextKeydown = function (event) {
+          if (event.key === "Escape" && contextCard.isConnected) {
+            event.preventDefault();
+            closeContextPanel();
+          }
+        };
+        document.addEventListener("keydown", handleContextKeydown);
+
         const fullStudyButton = document.createElement("button");
         fullStudyButton.type = "button";
         fullStudyButton.textContent = "Open Full Study Centre";
         fullStudyButton.addEventListener("click", function () {
+          document.removeEventListener("keydown", handleContextKeydown);
           window.ZurielStudy.openForReference(
             book, chapter, verse, verseText, englishWord, wordIndex
           );
@@ -2250,11 +2292,7 @@
         closeButton.type = "button";
         closeButton.className = "study-secondary";
         closeButton.textContent = "Close word panel";
-        closeButton.addEventListener("click", function () {
-          contextCard.remove();
-          panel.style.display = "none";
-          panel.dataset.mode = "verse";
-        });
+        closeButton.addEventListener("click", closeContextPanel);
         contextCard.appendChild(closeButton);
 
         panel.prepend(contextCard);
