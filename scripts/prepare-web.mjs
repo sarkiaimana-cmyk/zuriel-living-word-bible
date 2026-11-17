@@ -22,6 +22,7 @@ const files = [
   "zuriel-backup.js",
   "zuriel-settings.js",
   "zuriel-updates.js",
+  "zuriel-translations.js",
   "version.json",
   "sw.js",
   "kjv.72bec70fcd.json"
