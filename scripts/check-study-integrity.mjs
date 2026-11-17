@@ -288,11 +288,11 @@ try {
 // further results without hiding entries behind a permanent 12-item limit.
 const dictionaryBlock = study.match(/const bibleDictionary = \[([\s\S]*?)\n  \];/);
 assert.ok(dictionaryBlock, "offline biblical dictionary array exists");
-const dictionaryTitles = [...dictionaryBlock[1].matchAll(/\["([^"]+)"/g)].map(match => match[1].toLowerCase());
-assert.ok(dictionaryTitles.length >= 150, "dictionary contains at least 200 curated entries");
-assert.equal(new Set(dictionaryTitles).size, dictionaryTitles.length, "dictionary entry titles are unique");
 const dictionaryData = vm.runInNewContext("(" + dictionaryBlock[0]
   .replace(/^const bibleDictionary = /, "").replace(/;\\s*$/, "") + ")");
+const dictionaryTitles = dictionaryData.map(entry => String(entry[0]).toLowerCase());
+assert.ok(dictionaryTitles.length >= 200, "dictionary contains at least 200 curated entries");
+assert.equal(new Set(dictionaryTitles).size, dictionaryTitles.length, "dictionary entry titles are unique");
 const aliasEntries = dictionaryData.filter(entry => Array.isArray(entry[2]) && entry[2].length);
 assert.ok(aliasEntries.length >= 25, "dictionary has at least 25 entries with curated alternate terms");
 for (const [term, expectedTitle] of [
