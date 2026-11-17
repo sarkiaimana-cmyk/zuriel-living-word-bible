@@ -126,6 +126,14 @@ for (const field of requiredFaithFields) {
   if (!faith.includes(field)) failures.push(["faith content field: " + field, "missing from zuriel-faith-content.js"]);
 }
 if (!home.includes('id="zurielOpenBookLight"')) failures.push(["Light panel", "missing from home card"]);
+if (!study.includes("Related Scripture references") ||
+    !study.includes("CROSS_REFERENCE_API + code + \"/\" + chapter + \".json\"") ||
+    !study.includes("references.slice(0, 8)")) {
+  failures.push(["word-study related Scripture links", "the compact word panel must show grounded cross-references for the selected verse"]);
+}
+if (!study.includes("window.ZurielStudyArtwork = function(index, heading)")) {
+  failures.push(["offline study artwork export", "the library needs access to the same local SVG artwork used by the Study Centre"]);
+}
 if (!study.includes("openWordInContext: async function")) failures.push(["contextual word study", "the reader needs a contextual word explanation that does not force navigation"]);
 if (!reader.includes("window.ZurielStudy.openWordInContext")) failures.push(["contextual word-study reader wiring", "word taps must use the inline study action"]);
 if (!study.includes('(reader || main || document.body).appendChild(panel)')) failures.push(["reader-local Study Centre placement", "the full Study Centre must be mounted with the Bible reader"]);
@@ -148,6 +156,17 @@ if (!study.includes("let activeWordContextCleanup = null;") ||
     !study.includes("if (activeWordContextCleanup) activeWordContextCleanup();") ||
     !study.includes("activeWordContextCleanup = cleanupContextListener;")) {
   failures.push(["word-study listener lifecycle", "replacing a contextual panel must release the previous keyboard listener"]);
+}
+
+
+if (home.includes('document.getElementById("zurielHomeOpenBible")')) {
+  failures.push(["retired Home control binding", "the removed zurielHomeOpenBible element must not be bound"]);
+}
+if (home.includes("setInterval(")) {
+  failures.push(["stable Home Scripture display", "Home revelations and daily Scripture must not rotate automatically"]);
+}
+for (const id of ["zurielIdentityTitle","zurielIdentityVerse","zurielNextVerse","zurielHomeVerse","zurielOpenBookScripture","zurielOpenBookPrayer","zurielOpenBookConfession","zurielOpenBookInspiration"]) {
+  if (!home.includes('id="' + id + '"')) failures.push(["Home dashboard control: " + id, "missing from Home dashboard markup"]);
 }
 
 const homeReferences = [...home.matchAll(/reference:\s*"([^"]+)"/g)].map(match => match[1].toLowerCase());

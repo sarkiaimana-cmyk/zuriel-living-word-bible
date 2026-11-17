@@ -744,6 +744,11 @@
     return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
   }
 
+  // Reuse the same lightweight, offline SVG artwork in the Library's study cards.
+  window.ZurielStudyArtwork = function(index, heading) {
+    return createStudySectionArtwork(index, heading);
+  };
+
   function createStudyPanel() {
     if (document.getElementById("zurielStudyPanel")) return;
 
@@ -805,6 +810,13 @@
       }
       #zurielInlineWordStudy .inline-word-gloss,
       #zurielInlineWordStudy .inline-word-meta { display:block; margin-top:4px; }
+      #zurielInlineWordStudy .inline-word-related {
+        margin:12px 0;padding:12px;border:1px solid #c9d8e4;
+        border-radius:10px;background:#f4f7fa;color:#18304d;
+      }
+      #zurielInlineWordStudy .inline-word-related h4 {margin:0 0 8px;color:#174c78;}
+      #zurielInlineWordStudy .inline-word-related p {color:#344b60;font-size:13px;}
+      #zurielInlineWordStudy .inline-word-related button {display:inline-block;width:auto;margin:5px 6px 0 0;padding:8px 10px;min-height:38px;}
       /* On narrow screens, keep the selected word study reachable without
          inserting content between Scripture verses or shrinking the reader. */
       @media (max-width:640px) {
@@ -1818,7 +1830,8 @@
       }
 
       const intro = document.createElement("p");
-      intro.className = "study-small";
+      intro.className = "study-small zuriel-faith-disclaimer";
+      intro.style.cssText = "display:block;margin:0 0 14px;padding:11px 12px;border-left:4px solid #d9bd79;border-radius:7px;background:#fff4d6;color:#26384d;font-size:13px;font-weight:700;line-height:1.55;opacity:1";
       intro.textContent = "A Scripture-connected devotional response for " + entry.reference + ". These are original study reflections, not quotations from the Bible.";
       target.appendChild(intro);
 
@@ -2362,6 +2375,66 @@
           status.textContent = results && results.textContent
             ? results.textContent
             : "No verified original-language record is available for this selected word. Zuriel will not guess a meaning.";
+        }
+
+        // Add verse-level cross-references directly to the compact word panel.
+        // These are connected passages for the selected verse, not invented
+        // lexical definitions or claims that every passage uses the same lemma.
+        const relatedBox = document.createElement("section");
+        relatedBox.className = "inline-word-related";
+        const relatedHeading = document.createElement("h4");
+        relatedHeading.textContent = "Related Scripture references";
+        const relatedStatus = document.createElement("p");
+        relatedStatus.textContent = "Finding connected Scriptures for " +
+          book + " " + chapter + ":" + verse + "…";
+        relatedBox.append(relatedHeading, relatedStatus);
+        contextCard.appendChild(relatedBox);
+
+        try {
+          const code = apiBookCode(book);
+          if (!code) throw new Error("This book is not mapped for cross-reference lookup.");
+          const crossData = await fetchStudyJson(
+            CROSS_REFERENCE_API + code + "/" + chapter + ".json"
+          );
+          if (contextRequestId !== wordContextRequest || !contextCard.isConnected) return true;
+          const chapterVerses = crossData.chapter && Array.isArray(crossData.chapter.content)
+            ? crossData.chapter.content : [];
+          const selected = chapterVerses.find(item => Number(item.verse) === Number(verse));
+          const references = selected && Array.isArray(selected.references)
+            ? selected.references.slice(0, 8) : [];
+          relatedStatus.textContent = "";
+          if (!references.length) {
+            relatedStatus.textContent = "No cross-reference entries are available for this verse yet.";
+          }
+          references.forEach(function(item) {
+            const name = englishBookName(item.book);
+            if (!name) return;
+            const referenceButton = document.createElement("button");
+            referenceButton.type = "button";
+            referenceButton.className = "study-link";
+            referenceButton.textContent = name + " " + item.chapter + ":" + item.verse +
+              (item.endVerse ? "–" + item.endVerse : "");
+            referenceButton.addEventListener("click", async function() {
+              referenceButton.disabled = true;
+              try {
+                await window.openChapter(name, Number(item.chapter));
+                if (typeof window.selectBibleVerse !== "function" ||
+                    !window.selectBibleVerse(Number(item.verse))) {
+                  throw new Error("The related verse could not be activated.");
+                }
+                relatedStatus.textContent = "Opened " + referenceButton.textContent + ".";
+              } catch(error) {
+                referenceButton.disabled = false;
+                relatedStatus.textContent = error.message || "Could not open this related verse.";
+              }
+            });
+            relatedBox.appendChild(referenceButton);
+          });
+        } catch(error) {
+          if (contextRequestId !== wordContextRequest || !contextCard.isConnected) return true;
+          relatedStatus.textContent = !navigator.onLine
+            ? "Connect once to load these cross-references for later offline use."
+            : "Related Scripture references could not be loaded right now.";
         }
 
         return true;

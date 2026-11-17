@@ -36,8 +36,9 @@ requireText(home, 'window.getBibleVerseText(reference)', "Exact offline KJV text
 requireText(home, 'data-home-read-reference', "Direct navigation from each Home Scripture card");
 
 requireText(home, "faithCardRenderToken", "Protection against out-of-order Scripture loads");
-requireText(home, "window.setInterval(function ()", "Automatic home Scripture rotation");
-requireText(home, 'document.visibilityState === "hidden"', "Pause automatic Scripture rotation when the app is in the background");
+forbidText(home, "setInterval(", "Automatic Home Scripture rotation");
+requireText(home, 'identityNext.addEventListener("click"', "Manual identity revelation selection");
+requireText(home, 'zurielNextVerse', "Manual daily Scripture selection");
 requireText(home, 'id="zurielOpenBookCreateCard"', "Visible Open Book share-card action");
 requireText(home, "window.ZurielLibrary.openGloryVerse(", "Exact Scripture handoff from the home card to the share-card studio");
 requireText(home, "function canonicalBookName(value)", "Psalm/Psalms reader-name normalization");
@@ -52,6 +53,9 @@ requireText(home, '["library", "📚", "Library"]', "The dedicated Library navig
 requireText(home, 'data-section="declare"', "The declarations home shortcut");
 requireText(home, 'data-section="devotional"', "The devotional home shortcut");
 requireText(home, '["personal", "📝", "My Space"]', "The six-item primary navigation");
+requireText(library, "zlib-study-topic", "Illustrated Deep Bible Study pathways");
+requireText(library, "openStudyTopic(topic)", "Actionable Deep Bible Study pathways");
+requireText(library, "window.ZurielStudyArtwork(index, topic)", "Offline artwork in the Library study pathways");
 requireText(library, 'if (page === "declarations")', "The declarations content page");
 requireText(library, 'if (page === "devotional")', "The devotional content page");
 requireText(library, 'if (page === "saved")', "The saved-library content page");

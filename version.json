@@ -1,4 +1,4 @@
 {
-  "version": "1.4.32",
-  "releaseNotes": "Improves original-language word accuracy by rejecting annotations that cross word boundaries and adds regression coverage for repeated words and invalid offsets."
+  "version": "1.4.33",
+  "releaseNotes": "Repairs Home dashboard initialization, stabilises Scripture display, adds distinct Home faith responses, connects declarations and study pathways to the Open Book Studio, and improves word-study related Scripture links."
 }

@@ -334,6 +334,9 @@
         margin-bottom: 5px;
         color: #24634a;
       }
+      #zurielLibrary .zlib-study-topic {border:1px solid #d9e2e9;border-radius:13px;background:#fff;padding:13px;margin:12px 0;}
+      #zurielLibrary .zlib-study-art {display:block;width:100%;height:auto;max-height:145px;object-fit:cover;border-radius:9px;margin:0 0 10px;background:#172b49;}
+      #zurielLibrary .zlib-study-topic .zrl-open {width:100%;margin-top:8px;}
 
       #zurielLibrary .library-status {
         font-weight: bold;
@@ -413,13 +416,76 @@
         openReferenceLibrary.addEventListener("click", () => openPage("references"));
         content.appendChild(openReferenceLibrary);
 
-        originalLibrary.studyTopics.forEach(topic => {
-          const box = element("div", undefined, "library-entry");
+        const topicDescriptions = {
+          "Understanding Scripture":"Read each passage in its literary, historical and whole-Bible context.",
+          "Hebrew Word Studies":"Explore Hebrew words, source labels, morphology and lexicon records where verified data is available.",
+          "Greek Word Studies":"Explore Greek words, source labels, morphology and lexicon records where verified data is available.",
+          "Bible Dictionaries":"Open the reference shelf and review dictionary entries and source notes.",
+          "Bible Concordance":"Follow connected words and Scripture occurrences without treating an index as a complete definition.",
+          "Cross References":"Compare related passages and open their exact references in the KJV reader.",
+          "Bible Commentaries":"Browse the commentary catalogue and its edition and provenance notes.",
+          "Bible Introductions":"Open book introductions, background, key themes, images and chapter outlines.",
+          "Bible Outlines":"Explore the book outline and chapter-by-chapter guide in the introduction centre.",
+          "Bible History":"Study historical and literary context alongside the selected Scripture.",
+          "Bible Geography":"Explore offline Bible regions, places and journeys linked to Scripture.",
+          "Biblical Theology":"Study the meaning of a passage within the wider teaching of Scripture."
+        };
+        function openStudyTopic(topic) {
+          if (topic === "Bible Dictionaries" || topic === "Bible Commentaries") {
+            openPage("references");
+            return;
+          }
+          if (topic === "Bible Introductions" || topic === "Bible Outlines") {
+            if (window.ZurielHomeNavigate) window.ZurielHomeNavigate("read");
+            const introduction = document.getElementById("zurielIntroduction");
+            if (introduction) {
+              const toggle = introduction.querySelector("button.intro-button");
+              const body = toggle && toggle.nextElementSibling;
+              if (body && body.hidden && toggle) toggle.click();
+              introduction.scrollIntoView({behavior:"smooth",block:"start"});
+            }
+            return;
+          }
+          if (window.ZurielHomeNavigate) window.ZurielHomeNavigate("study");
+          const panel = document.getElementById("zurielStudyPanel");
+          if (!panel) return;
+          const terms = {
+            "Understanding Scripture":"Historical Context",
+            "Hebrew Word Studies":"Hebrew and Greek Word Study",
+            "Greek Word Studies":"Hebrew and Greek Word Study",
+            "Bible Concordance":"Cross References",
+            "Cross References":"Cross References",
+            "Bible History":"Historical Context",
+            "Bible Geography":"Geography",
+            "Biblical Theology":"Meaning and Exposition"
+          };
+          const target = terms[topic] || "Meaning and Exposition";
+          const section = Array.from(panel.querySelectorAll("details")).find(function(item) {
+            const summary = item.querySelector("summary");
+            return summary && summary.textContent.toLowerCase().includes(target.toLowerCase());
+          });
+          if (section) {
+            section.open = true;
+            section.scrollIntoView({behavior:"smooth",block:"start"});
+          }
+        }
+        originalLibrary.studyTopics.forEach((topic, index) => {
+          const box = element("article", undefined, "library-entry zlib-study-topic");
+          if (typeof window.ZurielStudyArtwork === "function") {
+            const image = element("img", undefined, "zlib-study-art");
+            image.src = window.ZurielStudyArtwork(index, topic);
+            image.alt = topic + " illustration";
+            image.loading = "lazy";
+            image.decoding = "async";
+            image.width = 960;
+            image.height = 240;
+            box.appendChild(image);
+          }
           box.appendChild(element("h4", topic));
-          box.appendChild(element(
-            "p",
-            "Study pathway. Open Dictionaries & Commentaries to explore the resource catalogue and its source notes."
-          ));
+          box.appendChild(element("p", topicDescriptions[topic] || "Open this Scripture study pathway."));
+          const action = button("Open study area", function(){ openStudyTopic(topic); });
+          action.className = "zrl-open";
+          box.appendChild(action);
           content.appendChild(box);
         });
       }
@@ -889,7 +955,8 @@
             const canvas = document.createElement("canvas");
             const ctx = canvas.getContext("2d");
             if (!ctx) throw new Error("Image export is not supported in this browser.");
-            if (!activeWallpaperImage) throw new Error("Please wait for the selected wallpaper to finish loading before exporting your card.");
+            // A wallpaper is an enhancement, not a prerequisite: image export
+            // must still work offline using the selected solid finish.
             const width = 1600, margin = 100, gap = 70, columnWidth = (width - margin * 2 - gap) / 2;
             const scriptureSize = Number(studio.querySelector("#zgsScriptureSize").value) * 2;
             const faithSize = Number(studio.querySelector("#zgsFaithSize").value) * 2;
@@ -945,6 +1012,12 @@
               const drawWidth = image.width * scale, drawHeight = image.height * scale;
               ctx.drawImage(image,(canvas.width-drawWidth)/2,(canvas.height-drawHeight)/2,drawWidth,drawHeight);
               ctx.fillStyle = studio.dataset.finish === "navy" ? "rgba(10,24,43,.45)" : "rgba(248,244,232,.42)";
+              ctx.fillRect(0,0,canvas.width,canvas.height);
+            }
+            else {
+              ctx.fillStyle = studio.dataset.finish === "navy" ? "#172b49" :
+                studio.dataset.finish === "forest" ? "#e9f0e5" :
+                studio.dataset.finish === "parchment" ? "#f0dfbd" : "#f8f0dc";
               ctx.fillRect(0,0,canvas.width,canvas.height);
             }
             ctx.strokeStyle = colors[2]; ctx.lineWidth = 5;
@@ -1010,15 +1083,41 @@
         studio.querySelector("#zgsShare").addEventListener("click",async function(){
           const textValue=["The Light 🕯️","His Words.. My life.. My Victory",studio.querySelector("#zgsReference").value,studio.querySelector("#zgsScripture").value,...["Prayer","Declaration","Affirmation","Confession","Inspiration"].map(name=>name.toUpperCase()+": "+studio.querySelector("#zgs"+name).value),"Zuriel Living Word Bible"].filter(Boolean).join("\n\n");
           if(!studio.querySelector("#zgsReference").value.trim()||!studio.querySelector("#zgsScripture").value.trim()){studio.querySelector("#zgsStatus").textContent="Add the Scripture reference and text before sharing.";return;}
-          try{
-            if(navigator.share) await navigator.share({title:"Glory Verse Affirmation",text:textValue});
-            else if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(textValue);studio.querySelector("#zgsStatus").textContent="Card text copied. You can paste it into your sharing app.";}
-            else {studio.querySelector("#zgsStatus").textContent="Sharing is not available in this browser. You can select and copy the preview text.";}
-          }catch(error){if(error.name!=="AbortError")studio.querySelector("#zgsStatus").textContent="Sharing could not be completed on this device.";}
+          try {
+            if (navigator.share) {
+              await navigator.share({title:"Glory Verse Affirmation",text:textValue});
+              studio.querySelector("#zgsStatus").textContent = "Your Scripture card text has been shared.";
+            } else if (navigator.clipboard && navigator.clipboard.writeText) {
+              await navigator.clipboard.writeText(textValue);
+              studio.querySelector("#zgsStatus").textContent = "Card text copied. Paste it into your preferred sharing app.";
+            } else {
+              const fallback = document.createElement("textarea");
+              fallback.value = textValue;
+              fallback.setAttribute("readonly", "");
+              fallback.style.cssText = "position:fixed;left:-9999px;top:0";
+              document.body.appendChild(fallback);
+              fallback.select();
+              const copied = document.execCommand("copy");
+              fallback.remove();
+              studio.querySelector("#zgsStatus").textContent = copied
+                ? "Card text copied. Paste it into your preferred sharing app."
+                : "Please select the card text in the preview and copy it manually.";
+            }
+          } catch(error) {
+            if (error.name !== "AbortError") {
+              studio.querySelector("#zgsStatus").textContent = "Sharing could not be completed. You can still use Save image or copy the preview text.";
+            }
+          }
         });
         updatePreview();
 
-        originalLibrary.affirmations.forEach(item => {
+        const affirmationReferences = [
+          "1 John 5:1", "Ephesians 3:16", "1 Corinthians 1:30",
+          "2 Corinthians 12:9", "2 Corinthians 5:17", "Ephesians 1:6",
+          "John 14:26", "1 Corinthians 2:16", "Psalm 46:1",
+          "2 Peter 1:5", "Hebrews 4:16", "John 15:5"
+        ];
+        originalLibrary.affirmations.forEach((item, index) => {
           const box = element("div", undefined, "library-entry");
           box.appendChild(element("p", item));
           box.appendChild(button("Save declaration", function () {
@@ -1026,6 +1125,27 @@
             persist();
             alert("Saved to your personal library.");
           }));
+          const createCard = button("Create Open Book Share Card", async function () {
+            const reference = affirmationReferences[index];
+            createCard.disabled = true;
+            try {
+              if (typeof window.getBibleVerseText !== "function") {
+                throw new Error("The offline Bible text service is not ready.");
+              }
+              const passage = await window.getBibleVerseText(reference);
+              const opened = window.ZurielLibrary && window.ZurielLibrary.openGloryVerse(
+                reference, passage.text, "KJV",
+                { declaration:item, affirmation:item }
+              );
+              if (!opened) throw new Error("The Open Book Card Studio could not be opened.");
+            } catch (error) {
+              createCard.textContent = error.message || "Unable to create card";
+              createCard.disabled = false;
+            }
+          });
+          createCard.className = "zgs-open-declaration-card";
+          box.appendChild(createCard);
+          box.appendChild(element("small", "Scripture: " + affirmationReferences[index]));
           content.appendChild(box);
         });
       }
@@ -1598,9 +1718,8 @@
         };
         Object.keys(responseFields).forEach(function(key) {
           const field = studio.querySelector(responseFields[key]);
-          if (field && faithResponse && faithResponse[key]) {
-            field.value = String(faithResponse[key]).trim();
-          }
+          if (field) field.value = faithResponse && faithResponse[key]
+            ? String(faithResponse[key]).trim() : "";
         });
         [referenceField, scriptureField].concat(
           Object.values(responseFields).map(selector => studio.querySelector(selector)).filter(Boolean)

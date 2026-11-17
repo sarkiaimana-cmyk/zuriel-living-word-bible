@@ -530,7 +530,16 @@
         content:"";position:absolute;top:0;bottom:0;left:50%;width:3px;
         background:linear-gradient(90deg,#8e6b3b66,#fff9e6,#8e6b3b66);pointer-events:none;
       }
-      #zurielHomeDashboard .zob-page {min-width:0;padding:15px 10px 18px;text-align:center;color:#142b52;}
+      #zurielHomeDashboard .zob-page {
+        position:relative;z-index:1;min-width:0;min-height:150px;
+        padding:15px 10px 18px;text-align:center;color:#142b52;
+        background:#fffdf4;isolation:isolate;
+      }
+      #zurielHomeDashboard .zob-page p {
+        position:relative;z-index:1;color:#142b52!important;
+        opacity:1!important;visibility:visible!important;
+        white-space:normal;overflow-wrap:anywhere;
+      }
       #zurielHomeDashboard .zob-ribbon {
         display:block;margin:0 auto 12px;padding:5px 4px;max-width:100%;
         border:1px solid #d8bd7c;border-radius:5px;background:#10264e;color:#fff5db;
@@ -853,19 +862,19 @@
           <button type="button" class="home-button" id="zurielOpenBookCreateCard">🖼️ Create & Share Card</button>
         </div>
         <p id="zurielOpenBookCardStatus" class="home-subtitle" aria-live="polite"></p>
-        <details>
+        <details open>
           <summary>🙏 Prayer</summary>
           <p id="zurielOpenBookPrayer"></p>
         </details>
-        <details>
+        <details open>
           <summary>🕊️ Faith Confession</summary>
           <p id="zurielOpenBookConfession"></p>
         </details>
-        <details>
+        <details open>
           <summary>🌿 Inspiration</summary>
           <p id="zurielOpenBookInspiration"></p>
         </details>
-        <details>
+        <details open>
           <summary>🕯️ Light</summary>
           <p id="zurielOpenBookLight">Thy word is a lamp unto my feet, and a light unto my path. — Psalm 119:105</p>
         </details>
@@ -1136,11 +1145,9 @@
 
     /* HOME BUTTON CONNECTIONS */
 
-    document.getElementById("zurielHomeOpenBible")
-      .addEventListener("click", function () {
-        navigate("read");
-      });
-
+    // The former zurielHomeOpenBible control was retired from the dashboard.
+    // Do not bind events to removed markup: one null listener previously
+    // stopped every Home interaction and asynchronous Scripture panel below.
     function getHomeReadingPosition() {
       try {
         const saved = JSON.parse(localStorage.getItem("zurielLastReadingPosition"));
@@ -1314,14 +1321,7 @@
       renderIdentityScripture(identityIndex + 1);
     });
     renderIdentityScripture(identityIndex);
-    const identityRotationTimer = window.setInterval(function () {
-      if (document.visibilityState === "hidden") return;
-      renderIdentityScripture(identityIndex + 1);
-    }, 15000);
-    window.addEventListener("pagehide", function () {
-      window.clearInterval(identityRotationTimer);
-    }, { once: true });
-
+    // Revelation changes only when the reader taps "Next Revelation".
     /* CHANGING HOME SCRIPTURE */
 
     const verseText = document.getElementById("zurielHomeVerse");
@@ -1389,17 +1389,7 @@
     verseText.setAttribute("aria-live", "polite");
     verseReference.setAttribute("aria-live", "polite");
 
-    /* Automatically refresh the home Scripture while the app is visible.
-       Manual Next remains available; rotation pauses in background tabs. */
-    const scriptureRotationTimer = window.setInterval(function () {
-      if (document.visibilityState === "hidden") return;
-      displayVerse(verseIndex + 1);
-      renderOpenBookFaithCard();
-    }, 15000);
-    window.addEventListener("pagehide", function () {
-      window.clearInterval(scriptureRotationTimer);
-    }, { once: true });
-
+    // Scripture for Today remains stable until the reader chooses another verse.
     /* SCRIPTURE-LINKED OPEN BOOK: use the curated faith response for the
        exact reference. Never manufacture a prayer or declaration when no
        matching entry exists. */
