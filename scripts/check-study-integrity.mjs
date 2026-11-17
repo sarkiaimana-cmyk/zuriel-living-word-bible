@@ -55,7 +55,7 @@ const checks = [
   ["dictionary supports multi-word searches", "tokens.every(token => combined.includes(token))"],
   ["dictionary result ranking is stable (original order breaks score ties)", "a.index - b.index"],
   ["dictionary results support progressive browsing", "dictionaryVisibleLimit += 12"],
-  ["dictionary result count is reported", "Showing " + matches.length + " of " + totalMatches + " matching entries."],
+  ["dictionary result count is reported", '+ " matching entries."'],
   ["concordance interface is part of the Study Centre", 'id="zurielConcordanceQuery"'],
   ["concordance results open the selected verse", "window.selectBibleVerse(item.verse)"],
   ["cross-reference relationships are not invented", "relationship not classified by source."],
