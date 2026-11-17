@@ -1,4 +1,4 @@
 {
-  "version": "1.4.34",
-  "releaseNotes": "Completes the Scripture-specific prayer, declaration, affirmation, faith confession and inspiration fields when saved declarations open in the Open Book Card Studio."
+  "version": "1.4.35",
+  "releaseNotes": "Improves Open Book Card Studio image saving to the Zuriel Gallery album and Android sharing, with clearer completion feedback. Preserves existing saved cards and personal study data."
 }
