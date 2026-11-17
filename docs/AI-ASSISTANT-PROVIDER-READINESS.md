@@ -1,6 +1,6 @@
 # Zuriel AI Assistant — provider readiness review
 
-**Review date:** 2026-11-16  
+**Review date:** 2026-11-17  
 **Decision:** Cloudflare Workers + Workers AI is the preferred candidate for a tightly capped, no-cost pilot. It is not yet deployed, connected to Zuriel, or approved for public production use.
 
 ## Requirements that must not be traded away
@@ -39,9 +39,9 @@ Official references:
 
 Cloudflare Workers can host the server-side proxy. The current Workers Free plan documents 100,000 requests per day and 10 ms CPU time per invocation. The Workers Paid plan has a $5 USD monthly minimum, so the Zuriel pilot must remain on the Free plan and must not be upgraded without a separate, explicit budget decision.
 
-Workers AI is included in the Workers Free plan with a daily allowance of **10,000 Neurons at no charge**. The allowance resets at 00:00 UTC; when the Free allowance is exhausted, further inference operations fail. The project must not enable the Paid plan to bypass this limit. Current model pricing lists `@cf/google/gemma-4-26b-a4b-it` at 9,091 Neurons per million input tokens and 27,273 Neurons per million output tokens. Actual usage must be measured in a small pilot; do not promise a fixed number of user questions per day.
+Workers AI is included in the Workers Free plan with a daily allowance of **10,000 Neurons at no charge**. The allowance resets at 00:00 UTC; when the Free allowance is exhausted, further inference operations fail on the Free plan. The project must not enable the Paid plan to bypass this limit. Cloudflare's pricing documentation now describes more granular per-model unit pricing while retaining Neurons as the backend billing unit. The current Gemma 4 model page lists `@cf/google/gemma-4-26b-a4b-it` at **$0.10 per million input tokens and $0.30 per million output tokens**. Do not translate the daily Neuron allowance into a fixed number of questions; measure actual dashboard usage in a small pilot and keep the Free-plan hard stop.
 
-Cloudflare's model page identifies Gemma 4 26B A4B as hosted by Cloudflare and marks it as supporting zero data retention. Google's Gemma 4 model is published under Apache License 2.0; distribution and attribution notices must be handled correctly if model materials are ever redistributed. The selected model is not a Bible source and must never be treated as one.
+Cloudflare's current model page identifies Gemma 4 26B A4B as hosted by Cloudflare and marks it as supporting zero data retention. The model remains in the current model catalogue. Recheck model availability and pricing immediately before any deployment because Cloudflare can change model access and pricing. Google's Gemma 4 model is published under Apache License 2.0; distribution and attribution notices must be handled correctly if model materials are ever redistributed. The selected model is not a Bible source and must never be treated as one.
 
 Cloudflare's Workers AI data-usage policy says standard, non-stateful inference inputs and outputs are processed only as needed to deliver the response and are not retained afterwards, subject to limited legal/operational exceptions. Cloudflare says it does not use Workers AI customer content to train AI models. This protection does not apply to content the application deliberately writes to storage, logs, or caches. The proxy must therefore avoid request/response body logging, storage, caching, conversation persistence and analytics containing prompts.
 
@@ -51,10 +51,12 @@ Secrets must be configured using Cloudflare Worker Secrets, not plaintext Wrangl
 
 **Pilot decision:** proceed with a server-side prototype and test harness only after the Cloudflare account owner has confirmed that the account remains on the Free plan and the exact model is available under the Free allocation. Do not add the assistant screen to the Android app or expose a public endpoint until the backend has passed its security, grounding, quota and outage tests. No personal study records may be sent by default.
 
-Official references (reviewed 2026-11-16):
+Official references (reviewed 2026-11-17):
 - Workers Free limits: https://developers.cloudflare.com/workers/platform/limits/
 - Workers pricing: https://developers.cloudflare.com/workers/platform/pricing/
 - Workers AI pricing and daily Free allocation: https://developers.cloudflare.com/workers-ai/platform/pricing/
+- Gemma 4 model pricing and zero-data-retention label: https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/
+- Workers AI model availability and deprecation updates: https://developers.cloudflare.com/changelog/product/workers-ai/
 - Workers AI data usage and retention: https://developers.cloudflare.com/workers-ai/platform/data-usage/
 - Gemma 4 model details and model-specific zero-retention label: https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/
 - Gemma 4 Apache 2.0 licence: https://ai.google.dev/gemma/apache_2
