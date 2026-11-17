@@ -26,6 +26,9 @@ jobs:
       - name: Prepare offline web app
         run: npm run build:web
 
+      - name: Verify offline core assets and local script precache
+        run: node scripts/check-offline-core-assets.mjs
+
       - name: Syntax-check application JavaScript
         run: for file in *.js; do node --check "$file"; done
 
