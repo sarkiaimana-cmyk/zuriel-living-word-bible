@@ -745,16 +745,45 @@
     }
   }
 
+  const curatedCrossReferences = {
+    "Matthew 1:22": [{ book:"Isaiah", chapter:7, verse:14, relationship:"Prophecy / fulfilment", note:"Matthew identifies Jesus' birth as fulfilling Isaiah's sign." }],
+    "Matthew 2:5": [{ book:"Micah", chapter:5, verse:2, relationship:"Prophecy / fulfilment", note:"The promised ruler is associated with Bethlehem." }],
+    "Matthew 4:4": [{ book:"Deuteronomy", chapter:8, verse:3, relationship:"Direct quotation", note:"Jesus quotes Moses on living by God's word." }],
+    "Matthew 4:7": [{ book:"Deuteronomy", chapter:6, verse:16, relationship:"Direct quotation", note:"Jesus answers temptation with Israel's wilderness instruction." }],
+    "Matthew 4:10": [{ book:"Deuteronomy", chapter:6, verse:13, relationship:"Direct quotation", note:"Jesus cites the command to worship and serve God alone." }],
+    "Matthew 12:17": [{ book:"Isaiah", chapter:42, verse:1, relationship:"Prophecy / fulfilment", note:"Matthew applies Isaiah's servant passage to Jesus." }],
+    "Matthew 21:4": [{ book:"Zechariah", chapter:9, verse:9, relationship:"Prophecy / fulfilment", note:"The king's humble arrival is linked to Zechariah's prophecy." }],
+    "Mark 1:2": [{ book:"Malachi", chapter:3, verse:1, relationship:"Prophecy / fulfilment", note:"The messenger preparing the way is drawn from Malachi." }],
+    "Mark 1:3": [{ book:"Isaiah", chapter:40, verse:3, relationship:"Prophecy / fulfilment", note:"The voice preparing the Lord's way is drawn from Isaiah." }],
+    "Luke 4:18": [{ book:"Isaiah", chapter:61, verse:1, relationship:"Direct quotation", note:"Jesus reads and applies Isaiah's good-news and liberation passage." }],
+    "John 12:38": [{ book:"Isaiah", chapter:53, verse:1, relationship:"Prophecy / fulfilment", note:"John connects unbelief to Isaiah's servant prophecy." }],
+    "Acts 2:16": [{ book:"Joel", chapter:2, verse:28, relationship:"Prophecy / fulfilment", note:"Peter explains Pentecost through Joel's promise of the Spirit." }],
+    "Acts 2:25": [{ book:"Psalm", chapter:16, verse:8, relationship:"Direct quotation", note:"Peter quotes David's words about the Lord's presence." }],
+    "Acts 2:34": [{ book:"Psalm", chapter:110, verse:1, relationship:"Direct quotation", note:"Peter quotes the enthronement psalm in his message about Jesus." }],
+    "Romans 10:13": [{ book:"Joel", chapter:2, verse:32, relationship:"Direct quotation", note:"Paul applies Joel's promise about calling on the Lord." }],
+    "Hebrews 1:5": [{ book:"Psalm", chapter:2, verse:7, relationship:"Direct quotation", note:"The writer quotes the royal sonship psalm." }],
+    "John 19:36": [{ book:"Exodus", chapter:12, verse:46, relationship:"Scriptural pattern", note:"The unbroken bones echo the Passover instructions." }],
+    "John 19:37": [{ book:"Zechariah", chapter:12, verse:10, relationship:"Prophecy / fulfilment", note:"John connects the piercing of Jesus with Zechariah's prophecy." }],
+    "Matthew 8:24": [
+      { book:"Mark", chapter:4, verse:37, relationship:"Parallel passage", note:"Mark's account of the same storm on the lake." },
+      { book:"Luke", chapter:8, verse:23, relationship:"Parallel passage", note:"Luke's account of the same storm on the lake." }
+    ]
+  };
+
   async function loadRelatedScriptures(ref) {
     const requestId = ++crossReferencesRequest;
     const list = document.getElementById("zurielCrossReferenceList");
     if (!list || !ref) return;
-
     list.textContent = "Finding related Scriptures...";
+
+    const referenceKey = String(ref.book) + " " + ref.chapter + ":" + ref.verse;
+    const curated = curatedCrossReferences[referenceKey] || [];
+    let remoteReferences = [];
+    let remoteError = null;
+
     try {
       const code = apiBookCode(ref.book);
       if (!code) throw new Error("This Bible book is not mapped for cross-references.");
-
       const data = await fetchStudyJson(
         CROSS_REFERENCE_API + code + "/" + ref.chapter + ".json"
       );
@@ -762,105 +791,122 @@
       const verses = data.chapter && Array.isArray(data.chapter.content)
         ? data.chapter.content : [];
       const selected = verses.find(item => Number(item.verse) === Number(ref.verse));
-      const references = selected && Array.isArray(selected.references)
+      remoteReferences = selected && Array.isArray(selected.references)
         ? selected.references.slice(0, 12) : [];
-
-      list.replaceChildren();
-      if (!references.length) {
-        list.textContent = "No connected Scripture references are listed for this verse.";
-        return;
-      }
-
-      references.forEach(function (item) {
-        const name = englishBookName(item.book);
-        if (!name) return;
-
-        const referenceCard = document.createElement("div");
-        referenceCard.className = "study-word";
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "study-link";
-        button.textContent = name + " " + item.chapter + ":" + item.verse +
-          (item.endVerse ? "–" + item.endVerse : "");
-        const relationshipValue = String(
-          item.relationship || item.type || item.category || item.kind || ""
-        ).toLowerCase().replace(/[ _-]+/g, " ").trim();
-        const relationshipLabels = {
-          quotation: "Direct quotation",
-          quote: "Direct quotation",
-          parallel: "Parallel passage",
-          "parallel passage": "Parallel passage",
-          prophecy: "Prophecy",
-          fulfilment: "Fulfilment",
-          fulfillment: "Fulfilment",
-          "prophecy fulfilment": "Prophecy / fulfilment",
-          "prophecy fulfillment": "Prophecy / fulfilment",
-          theme: "Thematic connection",
-          thematic: "Thematic connection",
-          "thematic connection": "Thematic connection"
-        };
-        const relationship = document.createElement("p");
-        relationship.className = "study-small";
-        relationship.textContent = relationshipLabels[relationshipValue] ||
-          "Related Scripture — relationship not classified by source.";
-        referenceCard.append(button, relationship);
-        list.appendChild(referenceCard);
-        button.addEventListener("click", async function () {
-          if (typeof window.openChapter !== "function") return;
-          const verseNumber = Number(item.verse);
-          const chapterNumber = Number(item.chapter);
-          if (!Number.isInteger(verseNumber) || verseNumber < 1 ||
-              !Number.isInteger(chapterNumber) || chapterNumber < 1) return;
-          button.disabled = true;
-          try {
-            await window.openChapter(name, chapterNumber);
-            if (typeof window.selectBibleVerse !== "function" ||
-                !window.selectBibleVerse(verseNumber)) {
-              throw new Error("The connected verse could not be activated in the reader.");
-            }
-            const targetVerse = findVerseElement(verseNumber);
-            if (!targetVerse) {
-              throw new Error("The connected verse text is not present in the reader.");
-            }
-            const targetText = targetVerse.textContent
-              .replace(/^\s*\d+\.?\s*/, "").trim();
-            targetVerse.scrollIntoView({ behavior: "smooth", block: "center" });
-            targetVerse.classList.add("zuriel-selected-verse");
-            if (window.ZurielStudy &&
-                typeof window.ZurielStudy.openForReference === "function") {
-              window.ZurielStudy.openForReference(
-                name, chapterNumber, verseNumber, targetText, "", -1
-              );
-            }
-          } catch (error) {
-            button.disabled = false;
-            const status = document.createElement("p");
-            status.setAttribute("role", "status");
-            status.textContent = error.message || "This connected passage could not be opened. Please try again.";
-            list.appendChild(status);
-          }
-        });
-      });
-
-      if (!list.children.length) {
-        list.textContent = "Related references were returned, but their book labels could not be matched.";
-      }
     } catch (error) {
-      if (requestId !== crossReferencesRequest) return;
-      list.replaceChildren();
-      const message = document.createElement("p");
-      message.setAttribute("role", "status");
-      message.textContent = error.message +
-        " Connect once to cache this chapter's references for later offline study.";
-      list.appendChild(message);
-      const retry = document.createElement("button");
-      retry.type = "button";
-      retry.className = "study-secondary";
-      retry.textContent = "Retry connected Scriptures";
-      retry.addEventListener("click", function () {
-        loadRelatedScriptures(ref);
+      remoteError = error;
+    }
+    if (requestId !== crossReferencesRequest) return;
+
+    const seen = new Set();
+    const references = [];
+    curated.forEach(function (item) {
+      const key = item.book + "|" + item.chapter + "|" + item.verse;
+      if (!seen.has(key)) {
+        seen.add(key);
+        references.push(Object.assign({ curated: true }, item));
+      }
+    });
+    remoteReferences.forEach(function (item) {
+      const name = englishBookName(item.book);
+      const verse = Number(item.verse);
+      const chapter = Number(item.chapter);
+      if (!name || !Number.isInteger(verse) || verse < 1 ||
+          !Number.isInteger(chapter) || chapter < 1) return;
+      const key = name + "|" + chapter + "|" + verse;
+      if (seen.has(key)) return;
+      seen.add(key);
+      references.push(Object.assign({}, item, { book: name, curated: false }));
+    });
+
+    list.replaceChildren();
+    if (!references.length) {
+      const empty = document.createElement("p");
+      empty.textContent = remoteError
+        ? "No locally curated connection is available for this verse, and the online reference service could not be reached. Connect and try again."
+        : "No connected Scripture references are listed for this verse.";
+      list.appendChild(empty);
+    }
+
+    references.slice(0, 12).forEach(function (item) {
+      const name = item.book;
+      const referenceCard = document.createElement("div");
+      referenceCard.className = "study-word";
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "study-link";
+      button.textContent = name + " " + item.chapter + ":" + item.verse +
+        (item.endVerse ? "–" + item.endVerse : "");
+      const relationshipValue = String(
+        item.relationship || item.type || item.category || item.kind || ""
+      ).toLowerCase().replace(/[ _-]+/g, " ").trim();
+      const relationshipLabels = {
+        quotation: "Direct quotation",
+        quote: "Direct quotation",
+        parallel: "Parallel passage",
+        "parallel passage": "Parallel passage",
+        prophecy: "Prophecy",
+        fulfilment: "Fulfilment",
+        fulfillment: "Fulfilment",
+        "prophecy fulfilment": "Prophecy / fulfilment",
+        "prophecy fulfillment": "Prophecy / fulfilment",
+        theme: "Thematic connection",
+        thematic: "Thematic connection",
+        "thematic connection": "Thematic connection",
+        "scriptural pattern": "Scriptural pattern"
+      };
+      const relationship = document.createElement("p");
+      relationship.className = "study-small";
+      relationship.textContent = (item.curated ? "Curated • " : "") +
+        (relationshipLabels[relationshipValue] ||
+          "Related Scripture — relationship not classified by source") +
+        (item.note ? " — " + item.note : "");
+      referenceCard.append(button, relationship);
+      list.appendChild(referenceCard);
+      button.addEventListener("click", async function () {
+        if (typeof window.openChapter !== "function") return;
+        const verseNumber = Number(item.verse);
+        const chapterNumber = Number(item.chapter);
+        if (!Number.isInteger(verseNumber) || verseNumber < 1 ||
+            !Number.isInteger(chapterNumber) || chapterNumber < 1) return;
+        button.disabled = true;
+        try {
+          await window.openChapter(name, chapterNumber);
+          if (typeof window.selectBibleVerse !== "function" ||
+              !window.selectBibleVerse(verseNumber)) {
+            throw new Error("The connected verse could not be activated in the reader.");
+          }
+          const targetVerse = findVerseElement(verseNumber);
+          if (!targetVerse) {
+            throw new Error("The connected verse text is not present in the reader.");
+          }
+          const targetText = targetVerse.textContent
+            .replace(/^\s*\d+\.?\s*/, "").trim();
+          targetVerse.scrollIntoView({ behavior: "smooth", block: "center" });
+          targetVerse.classList.add("zuriel-selected-verse");
+          if (window.ZurielStudy &&
+              typeof window.ZurielStudy.openForReference === "function") {
+            window.ZurielStudy.openForReference(
+              name, chapterNumber, verseNumber, targetText, "", -1
+            );
+          }
+        } catch (error) {
+          button.disabled = false;
+          const status = document.createElement("p");
+          status.setAttribute("role", "status");
+          status.textContent = error.message || "This connected passage could not be opened. Please try again.";
+          list.appendChild(status);
+        }
       });
-      list.appendChild(retry);
+    });
+
+    if (remoteError && references.length) {
+      const offlineNote = document.createElement("p");
+      offlineNote.className = "study-small";
+      offlineNote.textContent = "Showing locally curated connections. Online references are unavailable until you reconnect.";
+      list.appendChild(offlineNote);
+    } else if (!remoteError && !references.length) {
+      list.textContent = "No connected Scripture references are listed for this verse.";
     }
   }
 
