@@ -1023,6 +1023,7 @@ async function openChapter(book, chapter) {
   function restoreExternalVersePanel() {
     if (!externalPanelCurrent || !externalPanelHome) return;
     externalPanelCurrent.style.margin = "";
+    if (externalPanelCurrent.tagName === "DETAILS") externalPanelCurrent.open = false;
     if (externalPanelNextSibling && externalPanelNextSibling.parentNode === externalPanelHome) {
       externalPanelHome.insertBefore(externalPanelCurrent, externalPanelNextSibling);
     } else {
