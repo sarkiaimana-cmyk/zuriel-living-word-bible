@@ -37,35 +37,15 @@ test("translation-only Worker rejects AI and unrelated routes", async () => {
   assert.equal(upstreamCalled, false);
 });
 
-test("translation-only Worker forwards only licensed version-list requests", async () => {
-  let upstream;
+test("translation-only Worker delegates allowed routes to the shared protected proxy", async () => {
   const response = await handleTranslationRequest(
     request("/api/youversion/bibles"),
-    env(),
-    async (url, options) => {
-      upstream = { url: new URL(url), options };
-      return Response.json({
-        data: [{
-          id: 3034,
-          abbreviation: "BSB",
-          title: "Berean Standard Bible",
-          language: { iso_639_1: "en", name: "English" }
-        }],
-        next_page_token: null
-      });
-    }
+    env({ ZITE_YVP_APP_KEY: "" })
   );
-  assert.equal(response.status, 200);
-  assert.ok(upstream, "The licensed YouVersion endpoint should be contacted.");
-  assert.equal(upstream.url.origin, "https://api.youversion.com");
-  assert.equal(upstream.url.pathname, "/v1/bibles");
-  assert.equal(upstream.url.searchParams.get("language_ranges[]"), "en");
-  assert.equal(upstream.url.searchParams.has("all_available"), false);
-  assert.equal(upstream.options.headers["X-YVP-App-Key"], appKey);
-  assert.equal(response.headers.get("cache-control"), "no-store, max-age=0");
+  assert.equal(response.status, 503);
   const payload = await response.json();
-  assert.equal(payload.data[0].abbreviation, "BSB");
-  assert.doesNotMatch(JSON.stringify(payload), new RegExp(appKey));
+  assert.match(payload.error, /YouVersion access is not configured/);
+  assert.equal(response.headers.get("cache-control"), "no-store, max-age=0");
 });
 
 test("translation-only Worker rejects unapproved origins before contacting YouVersion", async () => {
