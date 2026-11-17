@@ -50,10 +50,15 @@ jobs:
       - name: Test translation proxy safeguards
         run: node --test test/youversion.test.mjs test/translation-worker.test.mjs
 
-      - name: Deploy translation-only Worker with server-only YouVersion key
+      - name: Bootstrap Worker, install YouVersion secret, and deploy protected version
         run: |
-          set -eu
+          set -euo pipefail
           umask 077
-          trap 'rm -f .zuriel-translation-secrets.json' EXIT
-          node -e 'const fs=require("node:fs"); const key=process.env.ZITE_YVP_APP_KEY; if(typeof key!=="string" || !key.trim()) { console.error("YouVersion app key is missing."); process.exit(1); } fs.writeFileSync(".zuriel-translation-secrets.json", JSON.stringify({ZITE_YVP_APP_KEY:key}), {mode:0o600, flag:"wx"});'
-          npx wrangler deploy --config wrangler.translations.jsonc --secrets-file .zuriel-translation-secrets.json
+          trap 'rm -f .wrangler.translations.bootstrap.jsonc' EXIT
+          node -e 'const fs=require("node:fs"); const c=JSON.parse(fs.readFileSync("wrangler.translations.jsonc","utf8")); delete c.secrets; fs.writeFileSync(".wrangler.translations.bootstrap.jsonc", JSON.stringify(c,null,2)+"\\n", {mode:0o600, flag:"wx"});'
+          # First create the Worker without its required key. Its handler fails closed until the secret is installed.
+          npx wrangler deploy --config .wrangler.translations.bootstrap.jsonc
+          # Add the key only after the Worker script exists; secret put deploys a new version immediately.
+          printf '%s' "$ZITE_YVP_APP_KEY" | npx wrangler secret put ZITE_YVP_APP_KEY --config wrangler.translations.jsonc
+          # Deploy once more using the full config so required-secret validation is enforced.
+          npx wrangler deploy --config wrangler.translations.jsonc
