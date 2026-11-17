@@ -1339,7 +1339,7 @@
         </details>
 
         <details>
-          <summary>🔗 4. Connected Scriptures</summary>
+          <summary>🔗 6. Connected Scriptures</summary>
           <div class="study-body">
             <p>Related Scriptures for the selected verse. Tap a reference to open it and compare the full passage.</p>
             <p class="study-small">A connection may be a quotation, shared theme, parallel account, prophecy or fulfilment, or another textual link. The source does not classify every link. Zuriel labels a relationship only when the source supplies that information; otherwise it is shown as an unclassified related Scripture. Read both passages in context.</p>
@@ -1350,7 +1350,7 @@
         </details>
 
         <details>
-          <summary>📚 5. Bible Concordance — Find Words and Phrases</summary>
+          <summary>📚 7. Bible Concordance — Find Words and Phrases</summary>
           <div class="study-body">
             <p>Search the offline King James Version for an exact English word or a phrase. Word searches match whole words, not partial spellings. Phrase searches find the exact phrase within a verse.</p>
             <label for="zurielConcordanceQuery">Word or phrase</label>
@@ -1369,7 +1369,7 @@
         </details>
 
         <details>
-          <summary>📚 6. Theology and Deeper Study</summary>
+          <summary>📚 8. Theology and Deeper Study</summary>
           <div class="study-body" id="zurielDeeperStudy">
             <p>Explore biblical themes, teachings and connections.
             Distinguish the meaning of Scripture from personal interpretation.</p>
@@ -1377,14 +1377,14 @@
         </details>
 
         <details>
-          <summary>🧭 6. Topical Scripture Connections</summary>
+          <summary>🧭 9. Topical Scripture Connections</summary>
           <div class="study-body" id="zurielTopicalConnections" aria-live="polite">
             <p>Select a verse to discover its mapped biblical themes and related passages.</p>
           </div>
         </details>
 
         <details>
-          <summary>📝 7. My Personal Study Journal</summary>
+          <summary>📝 10. My Personal Study Journal</summary>
           <div class="study-body">
             <p>Your notes are saved separately for each verse on this device.</p>
 
@@ -1638,7 +1638,7 @@
         const summary = document.createElement("p");
         summary.className = "study-small";
         summary.textContent = "Showing " + matches.length +
-          (matches.length === 100 ? " or more (first 100) " : " ") +
+          (matches.length === 100 ? " (maximum shown) " : " ") +
           "matching KJV verses. Tap a result to open that verse.";
         concordanceResults.appendChild(summary);
         matches.forEach(function (item) {
