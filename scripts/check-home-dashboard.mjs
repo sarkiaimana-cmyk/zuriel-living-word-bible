@@ -70,9 +70,9 @@ if (!cacheVersionMatch) failures.push("The offline cache name/version is missing
 const appVersion = JSON.parse(version).version;
 const updateVersionMatch = updates.match(/const APP_VERSION = "([^"]+)";/);
 if (!appVersion || !updateVersionMatch || appVersion !== updateVersionMatch[1]) failures.push("App version metadata is inconsistent between version.json and the in-app update centre.");
-requireText(updates, "The release signing identity is configured for our verified build", "Accurate Android update readiness guidance");
-forbidText(updates, "a stable signing identity must be configured first", "The obsolete Android signing warning");
-requireText(updates, "in-app APK download and installation are not implemented yet", "Honest Android installation capability disclosure");
+requireText(updates, "safe APK updating is not ready yet", "Accurate Android update readiness guidance");
+requireText(updates, "verify the installed app package and matching signing certificate", "Installed app identity verification requirement");
+requireText(updates, "Please do not install a test APK as an update", "Honest Android installation safety disclosure");
 
 if (failures.length) {
   console.error("Home dashboard checks failed:");
