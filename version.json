@@ -1,4 +1,4 @@
 {
-  "version": "1.4.45",
-  "releaseNotes": "Added an offline KJV concordance for exact-word and exact-phrase searches with verse navigation; clarified source-supported labels for connected Scriptures and strengthened original-language study guidance. Existing Bible and study resources are preserved."
+  "version": "1.4.46",
+  "releaseNotes": "Expanded the offline biblical dictionary from 102 to 156 unique entries across biblical themes, worship, covenant, salvation and doctrine; added progressive browsing beyond the first 12 results and strengthened dictionary integrity checks."
 }
