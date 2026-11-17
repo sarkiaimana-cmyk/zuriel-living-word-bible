@@ -1,12 +1,13 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
-const [index, client, worker, config, deployment, packaging, serviceWorker, version, updates] = await Promise.all([
+const [index, client, worker, config, deployment, aiDeployment, packaging, serviceWorker, version, updates] = await Promise.all([
   readFile("index.html", "utf8"),
   readFile("zuriel-translations.js", "utf8"),
   readFile("ai-worker/src/translation-worker.js", "utf8"),
   readFile("ai-worker/wrangler.translations.jsonc", "utf8"),
   readFile(".github/workflows/deploy-translations-worker.yml", "utf8"),
+  readFile(".github/workflows/deploy-ai-worker.yml", "utf8"),
   readFile("scripts/prepare-web.mjs", "utf8"),
   readFile("sw.js", "utf8"),
   readFile("version.json", "utf8"),
@@ -53,6 +54,7 @@ requireText(deployment, "workflow_dispatch:", "Manual-only translation deploymen
 requireText(deployment, "inputs.confirm_deployment == true", "Explicit deployment confirmation");
 requireText(deployment, "secrets.ZITE_YVP_APP_KEY", "Server-side YouVersion secret injection");
 requireText(deployment, "wrangler deploy --config wrangler.translations.jsonc", "Dedicated translation Worker deployment");
+forbidText(aiDeployment, /ZITE_YVP_APP_KEY/, "YouVersion app key in the AI-only deployment workflow");
 requireText(packaging, '"zuriel-translations.js"', "Android web packaging entry");
 requireText(serviceWorker, '"./zuriel-translations.js"', "Offline shell precache entry");
 
