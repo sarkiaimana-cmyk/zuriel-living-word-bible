@@ -208,6 +208,9 @@
   }
 
   select.addEventListener("change", function () {
+    requestSequence++;
+    if (activeController) activeController.abort();
+    activeController = null;
     selectedVersionId = select.value;
     loadButton.disabled = !selectedVersionId || !currentChapter || !API_BASE;
     passage.hidden = true;
@@ -220,6 +223,12 @@
 
   loadButton.addEventListener("click", loadPassage);
   panel.addEventListener("toggle", function () {
+    if (!panel.open && activeController) {
+      requestSequence++;
+      activeController.abort();
+      activeController = null;
+      return;
+    }
     if (panel.open) {
       if (!API_BASE) {
         status("Secure online translation access has not been connected yet. Your offline KJV is unchanged.");
