@@ -54,7 +54,8 @@ const checks = [
   ["dictionary title-prefix matches rank highly", "title.startsWith(term)"],
   ["dictionary supports multi-word searches", "tokens.every(token => combined.includes(token))"],
   ["dictionary result ranking is stable (original order breaks score ties)", "a.index - b.index"],
-  ["dictionary result list stays mobile-friendly", ".slice(0, 12)"],
+  ["dictionary results support progressive browsing", "dictionaryVisibleLimit += 12"],
+  ["dictionary result count is reported", "Showing " + matches.length + " of " + totalMatches + " matching entries."],
   ["concordance interface is part of the Study Centre", 'id="zurielConcordanceQuery"'],
   ["concordance results open the selected verse", "window.selectBibleVerse(item.verse)"],
   ["cross-reference relationships are not invented", "relationship not classified by source."],
@@ -266,6 +267,18 @@ try {
   assert.equal("in a beginning God".toLowerCase().includes("in the beginning"), false);
 } catch (error) {
   failures.push(["concordance matching runtime", error.message]);
+}
+
+
+// Verify the offline dictionary has broad, unique coverage and can reveal
+// further results without hiding entries behind a permanent 12-item limit.
+const dictionaryBlock = study.match(/const bibleDictionary = \[([\s\S]*?)\n  \];/);
+assert.ok(dictionaryBlock, "offline biblical dictionary array exists");
+const dictionaryTitles = [...dictionaryBlock[1].matchAll(/\["([^"]+)"/g)].map(match => match[1].toLowerCase());
+assert.ok(dictionaryTitles.length >= 150, "dictionary contains at least 150 curated entries");
+assert.equal(new Set(dictionaryTitles).size, dictionaryTitles.length, "dictionary entry titles are unique");
+for (const requiredTerm of ["atonement", "covenant", "grace", "kingdom of god", "messiah", "new covenant", "resurrection", "salvation", "holy spirit", "justification by faith"]) {
+  assert.ok(dictionaryTitles.includes(requiredTerm), "dictionary includes " + requiredTerm);
 }
 
 if (failures.length) {
