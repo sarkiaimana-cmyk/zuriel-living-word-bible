@@ -1,0 +1,1001 @@
+{
+  "schemaVersion": 1,
+  "title": "Zuriel Connected Scripture Trails — Batch 2",
+  "description": "A second curated collection of contextual pathways, extending book coverage and linking Old Testament books with related canonical passages.",
+  "count": 24,
+  "bookCoverage": [
+    "Ruth",
+    "1 Samuel",
+    "2 Kings",
+    "1 Chronicles",
+    "Ezra",
+    "Nehemiah",
+    "Esther",
+    "Job",
+    "Psalms",
+    "Proverbs",
+    "Ecclesiastes",
+    "Song of Songs",
+    "Lamentations",
+    "Ezekiel",
+    "Daniel",
+    "Hosea",
+    "Joel",
+    "Amos",
+    "Obadiah",
+    "Jonah",
+    "Micah",
+    "Nahum",
+    "Habakkuk",
+    "Zechariah"
+  ],
+  "editorialPrinciples": [
+    "Read each passage in its own literary and historical context.",
+    "Distinguish direct quotation or explicit fulfilment from thematic connection.",
+    "Do not use prophetic texts to target modern ethnic or national groups.",
+    "Do not turn wisdom observations into unconditional guarantees.",
+    "Pastoral application must not excuse abuse, victim-blaming, or revenge."
+  ],
+  "trails": [
+    {
+      "id": "connected-scripture-trail-042",
+      "title": "Ruth: Loyal Love and Redemption",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Ruth 1:1–18",
+          "connectionNote": "Read the passage in its original book setting and identify its main claim."
+        },
+        {
+          "step": 2,
+          "reference": "Ruth 2:8–12",
+          "connectionNote": "Notice the theme, image, or narrative development that connects with the next passage."
+        },
+        {
+          "step": 3,
+          "reference": "Ruth 4:9–17",
+          "connectionNote": "Compare the later passage carefully; distinguish explicit quotation from thematic resemblance."
+        },
+        {
+          "step": 4,
+          "reference": "Matthew 1:1–6",
+          "connectionNote": "Observe how the theme is developed in the wider biblical story."
+        },
+        {
+          "step": 5,
+          "reference": "Ephesians 1:3–7",
+          "connectionNote": "Summarise the connection while preserving each passage's own context."
+        }
+      ],
+      "overview": "Ruth's story of loyalty, provision, family redemption, and inclusion in the ancestry of Jesus.",
+      "contextCaution": "Do not turn every detail into a direct prediction; distinguish the narrative's historical story from later canonical connections.",
+      "studyQuestions": [
+        "What is happening in each passage and who is being addressed?",
+        "Which words, images, events, or themes connect the passages?",
+        "Is the relationship a quotation, fulfilment claim, narrative echo, or thematic parallel?",
+        "What faithful response follows when the whole context is considered?"
+      ],
+      "lifeApplication": "Record one insight grounded in context, one prayerful response, and one practical action consistent with the passages."
+    },
+    {
+      "id": "connected-scripture-trail-043",
+      "title": "Samuel: Listening and Faithful Leadership",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "1 Samuel 3:1–21",
+          "connectionNote": "Read the passage in its original book setting and identify its main claim."
+        },
+        {
+          "step": 2,
+          "reference": "1 Samuel 8:4–22",
+          "connectionNote": "Notice the theme, image, or narrative development that connects with the next passage."
+        },
+        {
+          "step": 3,
+          "reference": "1 Samuel 16:1–13",
+          "connectionNote": "Compare the later passage carefully; distinguish explicit quotation from thematic resemblance."
+        },
+        {
+          "step": 4,
+          "reference": "Psalm 78:70–72",
+          "connectionNote": "Observe how the theme is developed in the wider biblical story."
+        },
+        {
+          "step": 5,
+          "reference": "Acts 13:20–23",
+          "connectionNote": "Summarise the connection while preserving each passage's own context."
+        }
+      ],
+      "overview": "Trace Samuel's prophetic calling, Israel's request for a king, David's anointing, and later reflection on God's choice of leadership.",
+      "contextCaution": "The narrative records both faithful and flawed leaders; distinguish what Scripture describes from what it commends.",
+      "studyQuestions": [
+        "What is happening in each passage and who is being addressed?",
+        "Which words, images, events, or themes connect the passages?",
+        "Is the relationship a quotation, fulfilment claim, narrative echo, or thematic parallel?",
+        "What faithful response follows when the whole context is considered?"
+      ],
+      "lifeApplication": "Record one insight grounded in context, one prayerful response, and one practical action consistent with the passages."
+    },
+    {
+      "id": "connected-scripture-trail-044",
+      "title": "Kings: Idolatry and the Call to Return",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "1 Kings 18:17–39",
+          "connectionNote": "Read the passage in its original book setting and identify its main claim."
+        },
+        {
+          "step": 2,
+          "reference": "2 Kings 17:7–18",
+          "connectionNote": "Notice the theme, image, or narrative development that connects with the next passage."
+        },
+        {
+          "step": 3,
+          "reference": "2 Kings 22:8–20",
+          "connectionNote": "Compare the later passage carefully; distinguish explicit quotation from thematic resemblance."
+        },
+        {
+          "step": 4,
+          "reference": "2 Kings 23:1–3",
+          "connectionNote": "Observe how the theme is developed in the wider biblical story."
+        },
+        {
+          "step": 5,
+          "reference": "2 Chronicles 7:13–22",
+          "connectionNote": "Summarise the connection while preserving each passage's own context."
+        }
+      ],
+      "overview": "Study prophetic confrontation, covenant unfaithfulness, rediscovery of the Law, and the call to humble return.",
+      "contextCaution": "These accounts interpret national history theologically; avoid simplistic claims that every hardship has the same cause.",
+      "studyQuestions": [
+        "What is happening in each passage and who is being addressed?",
+        "Which words, images, events, or themes connect the passages?",
+        "Is the relationship a quotation, fulfilment claim, narrative echo, or thematic parallel?",
+        "What faithful response follows when the whole context is considered?"
+      ],
+      "lifeApplication": "Record one insight grounded in context, one prayerful response, and one practical action consistent with the passages."
+    },
+    {
+      "id": "connected-scripture-trail-045",
+      "title": "Chronicles: Remembering God's Faithfulness",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "1 Chronicles 16:7–36",
+          "connectionNote": "Read the passage in its original book setting and identify its main claim."
+        },
+        {
+          "step": 2,
+          "reference": "1 Chronicles 29:10–19",
+          "connectionNote": "Notice the theme, image, or narrative development that connects with the next passage."
+        },
+        {
+          "step": 3,
+          "reference": "2 Chronicles 20:1–22",
+          "connectionNote": "Compare the later passage carefully; distinguish explicit quotation from thematic resemblance."
+        },
+        {
+          "step": 4,
+          "reference": "2 Chronicles 30:6–9",
+          "connectionNote": "Observe how the theme is developed in the wider biblical story."
+        },
+        {
+          "step": 5,
+          "reference": "Luke 1:68–75",
+          "connectionNote": "Summarise the connection while preserving each passage's own context."
+        }
+      ],
+      "overview": "Explore remembrance, worship, dependence, and covenant hope through the Chronicler's retelling of Israel's story.",
+      "contextCaution": "Chronicles retells earlier history with its own post-exilic perspective; compare parallel accounts thoughtfully.",
+      "studyQuestions": [
+        "What is happening in each passage and who is being addressed?",
+        "Which words, images, events, or themes connect the passages?",
+        "Is the relationship a quotation, fulfilment claim, narrative echo, or thematic parallel?",
+        "What faithful response follows when the whole context is considered?"
+      ],
+      "lifeApplication": "Record one insight grounded in context, one prayerful response, and one practical action consistent with the passages."
+    },
+    {
+      "id": "connected-scripture-trail-046",
+      "title": "Ezra: Scripture and Renewal",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Ezra 3:10–13",
+          "connectionNote": "Read the passage in its original book setting and identify its main claim."
+        },
+        {
+          "step": 2,
+          "reference": "Ezra 7:6–10",
+          "connectionNote": "Notice the theme, image, or narrative development that connects with the next passage."
+        },
+        {
+          "step": 3,
+          "reference": "Ezra 9:5–15",
+          "connectionNote": "Compare the later passage carefully; distinguish explicit quotation from thematic resemblance."
+        },
+        {
+          "step": 4,
+          "reference": "Nehemiah 8:1–12",
+          "connectionNote": "Observe how the theme is developed in the wider biblical story."
+        },
+        {
+          "step": 5,
+          "reference": "2 Timothy 3:14–17",
+          "connectionNote": "Summarise the connection while preserving each passage's own context."
+        }
+      ],
+      "overview": "Connect restoration after exile with devotion to God's instruction, confession, communal understanding, and Scripture's formative role.",
+      "contextCaution": "Ezra's community setting is specific; do not use its boundary practices to justify hostility toward people today.",
+      "studyQuestions": [
+        "What is happening in each passage and who is being addressed?",
+        "Which words, images, events, or themes connect the passages?",
+        "Is the relationship a quotation, fulfilment claim, narrative echo, or thematic parallel?",
+        "What faithful response follows when the whole context is considered?"
+      ],
+      "lifeApplication": "Record one insight grounded in context, one prayerful response, and one practical action consistent with the passages."
+    },
+    {
+      "id": "connected-scripture-trail-047",
+      "title": "Nehemiah: Prayerful Rebuilding",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Nehemiah 1:4–11",
+          "connectionNote": "Read the passage in its original book setting and identify its main claim."
+        },
+        {
+          "step": 2,
+          "reference": "Nehemiah 2:11–20",
+          "connectionNote": "Notice the theme, image, or narrative development that connects with the next passage."
+        },
+        {
+          "step": 3,
+          "reference": "Nehemiah 4:7–23",
+          "connectionNote": "Compare the later passage carefully; distinguish explicit quotation from thematic resemblance."
+        },
+        {
+          "step": 4,
+          "reference": "Nehemiah 8:9–12",
+          "connectionNote": "Observe how the theme is developed in the wider biblical story."
+        },
+        {
+          "step": 5,
+          "reference": "1 Corinthians 3:9–11",
+          "connectionNote": "Summarise the connection while preserving each passage's own context."
+        }
+      ],
+      "overview": "Follow prayer, planning, perseverance, shared labour, and renewal of the community around God's purposes.",
+      "contextCaution": "Nehemiah's wall-building is a historical task; modern applications should focus on faithful service rather than claiming identical authority.",
+      "studyQuestions": [
+        "What is happening in each passage and who is being addressed?",
+        "Which words, images, events, or themes connect the passages?",
+        "Is the relationship a quotation, fulfilment claim, narrative echo, or thematic parallel?",
+        "What faithful response follows when the whole context is considered?"
+      ],
+      "lifeApplication": "Record one insight grounded in context, one prayerful response, and one practical action consistent with the passages."
+    },
+    {
+      "id": "connected-scripture-trail-048",
+      "title": "Esther: Providence and Courage",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Esther 2:15–18",
+          "connectionNote": "Read the passage in its original book setting and identify its main claim."
+        },
+        {
+          "step": 2,
+          "reference": "Esther 4:10–17",
+          "connectionNote": "Notice the theme, image, or narrative development that connects with the next passage."
+        },
+        {
+          "step": 3,
+          "reference": "Esther 5:1–8",
+          "connectionNote": "Compare the later passage carefully; distinguish explicit quotation from thematic resemblance."
+        },
+        {
+          "step": 4,
+          "reference": "Esther 7:1–6",
+          "connectionNote": "Observe how the theme is developed in the wider biblical story."
+        },
+        {
+          "step": 5,
+          "reference": "Romans 8:28–39",
+          "connectionNote": "Summarise the connection while preserving each passage's own context."
+        }
+      ],
+      "overview": "Study courage, timely action, communal fasting, and deliverance in a narrative where God's name is not explicitly mentioned.",
+      "contextCaution": "Romans 8 is not a direct commentary on Esther; the connection is thematic and must respect each book's setting.",
+      "studyQuestions": [
+        "What is happening in each passage and who is being addressed?",
+        "Which words, images, events, or themes connect the passages?",
+        "Is the relationship a quotation, fulfilment claim, narrative echo, or thematic parallel?",
+        "What faithful response follows when the whole context is considered?"
+      ],
+      "lifeApplication": "Record one insight grounded in context, one prayerful response, and one practical action consistent with the passages."
+    },
+    {
+      "id": "connected-scripture-trail-049",
+      "title": "Job: Faith in the Mystery of Suffering",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Job 1:20–22",
+          "connectionNote": "Read the passage in its original book setting and identify its main claim."
+        },
+        {
+          "step": 2,
+          "reference": "Job 2:7–10",
+          "connectionNote": "Notice the theme, image, or narrative development that connects with the next passage."
+        },
+        {
+          "step": 3,
+          "reference": "Job 19:23–27",
+          "connectionNote": "Compare the later passage carefully; distinguish explicit quotation from thematic resemblance."
+        },
+        {
+          "step": 4,
+          "reference": "Job 38:1–18",
+          "connectionNote": "Observe how the theme is developed in the wider biblical story."
+        },
+        {
+          "step": 5,
+          "reference": "James 5:10–11",
+          "connectionNote": "Summarise the connection while preserving each passage's own context."
+        }
+      ],
+      "overview": "Consider faithful lament, the limits of human explanation, God's response, and the New Testament's example of Job's endurance.",
+      "contextCaution": "Job strongly resists simplistic explanations of suffering; do not blame sufferers or claim to know God's hidden reasons.",
+      "studyQuestions": [
+        "What is happening in each passage and who is being addressed?",
+        "Which words, images, events, or themes connect the passages?",
+        "Is the relationship a quotation, fulfilment claim, narrative echo, or thematic parallel?",
+        "What faithful response follows when the whole context is considered?"
+      ],
+      "lifeApplication": "Record one insight grounded in context, one prayerful response, and one practical action consistent with the passages."
+    },
+    {
+      "id": "connected-scripture-trail-050",
+      "title": "Psalms: Lament that Moves Toward Trust",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Psalm 13:1–6",
+          "connectionNote": "Read the passage in its original book setting and identify its main claim."
+        },
+        {
+          "step": 2,
+          "reference": "Psalm 42:1–11",
+          "connectionNote": "Notice the theme, image, or narrative development that connects with the next passage."
+        },
+        {
+          "step": 3,
+          "reference": "Psalm 73:1–28",
+          "connectionNote": "Compare the later passage carefully; distinguish explicit quotation from thematic resemblance."
+        },
+        {
+          "step": 4,
+          "reference": "Psalm 77:1–20",
+          "connectionNote": "Observe how the theme is developed in the wider biblical story."
+        },
+        {
+          "step": 5,
+          "reference": "Romans 8:18–27",
+          "connectionNote": "Summarise the connection while preserving each passage's own context."
+        }
+      ],
+      "overview": "Trace honest lament, spiritual struggle, remembrance, renewed trust, and hope amid weakness.",
+      "contextCaution": "The Psalms give language for prayer, not a requirement to resolve grief quickly or hide difficult emotions.",
+      "studyQuestions": [
+        "What is happening in each passage and who is being addressed?",
+        "Which words, images, events, or themes connect the passages?",
+        "Is the relationship a quotation, fulfilment claim, narrative echo, or thematic parallel?",
+        "What faithful response follows when the whole context is considered?"
+      ],
+      "lifeApplication": "Record one insight grounded in context, one prayerful response, and one practical action consistent with the passages."
+    },
+    {
+      "id": "connected-scripture-trail-051",
+      "title": "Proverbs: Speech that Gives Life",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Proverbs 10:19–21",
+          "connectionNote": "Read the passage in its original book setting and identify its main claim."
+        },
+        {
+          "step": 2,
+          "reference": "Proverbs 12:18–22",
+          "connectionNote": "Notice the theme, image, or narrative development that connects with the next passage."
+        },
+        {
+          "step": 3,
+          "reference": "Proverbs 15:1–4",
+          "connectionNote": "Compare the later passage carefully; distinguish explicit quotation from thematic resemblance."
+        },
+        {
+          "step": 4,
+          "reference": "Proverbs 18:20–21",
+          "connectionNote": "Observe how the theme is developed in the wider biblical story."
+        },
+        {
+          "step": 5,
+          "reference": "James 3:1–12",
+          "connectionNote": "Summarise the connection while preserving each passage's own context."
+        }
+      ],
+      "overview": "Study the power of speech, restraint, truthful words, and the responsibility that comes with teaching.",
+      "contextCaution": "Wisdom sayings describe general moral patterns; they are not mechanical guarantees for every circumstance.",
+      "studyQuestions": [
+        "What is happening in each passage and who is being addressed?",
+        "Which words, images, events, or themes connect the passages?",
+        "Is the relationship a quotation, fulfilment claim, narrative echo, or thematic parallel?",
+        "What faithful response follows when the whole context is considered?"
+      ],
+      "lifeApplication": "Record one insight grounded in context, one prayerful response, and one practical action consistent with the passages."
+    },
+    {
+      "id": "connected-scripture-trail-052",
+      "title": "Ecclesiastes: Time, Limits, and Meaning",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Ecclesiastes 1:1–11",
+          "connectionNote": "Read the passage in its original book setting and identify its main claim."
+        },
+        {
+          "step": 2,
+          "reference": "Ecclesiastes 3:1–14",
+          "connectionNote": "Notice the theme, image, or narrative development that connects with the next passage."
+        },
+        {
+          "step": 3,
+          "reference": "Ecclesiastes 5:10–20",
+          "connectionNote": "Compare the later passage carefully; distinguish explicit quotation from thematic resemblance."
+        },
+        {
+          "step": 4,
+          "reference": "Ecclesiastes 9:7–10",
+          "connectionNote": "Observe how the theme is developed in the wider biblical story."
+        },
+        {
+          "step": 5,
+          "reference": "1 Corinthians 15:58",
+          "connectionNote": "Summarise the connection while preserving each passage's own context."
+        }
+      ],
+      "overview": "Explore human limits, the seasons of life, the danger of wealth, gratitude, and meaningful labour before God.",
+      "contextCaution": "Read Ecclesiastes as a carefully shaped wisdom book with a searching voice; do not isolate its observations from its conclusion.",
+      "studyQuestions": [
+        "What is happening in each passage and who is being addressed?",
+        "Which words, images, events, or themes connect the passages?",
+        "Is the relationship a quotation, fulfilment claim, narrative echo, or thematic parallel?",
+        "What faithful response follows when the whole context is considered?"
+      ],
+      "lifeApplication": "Record one insight grounded in context, one prayerful response, and one practical action consistent with the passages."
+    },
+    {
+      "id": "connected-scripture-trail-053",
+      "title": "Song of Songs: Love and Faithful Delight",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Song of Songs 2:8–17",
+          "connectionNote": "Read the passage in its original book setting and identify its main claim."
+        },
+        {
+          "step": 2,
+          "reference": "Song of Songs 4:9–16",
+          "connectionNote": "Notice the theme, image, or narrative development that connects with the next passage."
+        },
+        {
+          "step": 3,
+          "reference": "Song of Songs 8:6–7",
+          "connectionNote": "Compare the later passage carefully; distinguish explicit quotation from thematic resemblance."
+        },
+        {
+          "step": 4,
+          "reference": "Proverbs 5:15–20",
+          "connectionNote": "Observe how the theme is developed in the wider biblical story."
+        },
+        {
+          "step": 5,
+          "reference": "1 Corinthians 7:1–5",
+          "connectionNote": "Summarise the connection while preserving each passage's own context."
+        }
+      ],
+      "overview": "Reflect on poetic celebration of mutual love, desire, commitment, and the goodness of marital affection.",
+      "contextCaution": "Interpret the Song's poetry in its literary form; avoid presenting one interpretive tradition as the only possible reading.",
+      "studyQuestions": [
+        "What is happening in each passage and who is being addressed?",
+        "Which words, images, events, or themes connect the passages?",
+        "Is the relationship a quotation, fulfilment claim, narrative echo, or thematic parallel?",
+        "What faithful response follows when the whole context is considered?"
+      ],
+      "lifeApplication": "Record one insight grounded in context, one prayerful response, and one practical action consistent with the passages."
+    },
+    {
+      "id": "connected-scripture-trail-054",
+      "title": "Lamentations: Grief and Steadfast Mercy",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Lamentations 1:1–12",
+          "connectionNote": "Read the passage in its original book setting and identify its main claim."
+        },
+        {
+          "step": 2,
+          "reference": "Lamentations 3:19–33",
+          "connectionNote": "Notice the theme, image, or narrative development that connects with the next passage."
+        },
+        {
+          "step": 3,
+          "reference": "Lamentations 5:15–22",
+          "connectionNote": "Compare the later passage carefully; distinguish explicit quotation from thematic resemblance."
+        },
+        {
+          "step": 4,
+          "reference": "Psalm 44:9–26",
+          "connectionNote": "Observe how the theme is developed in the wider biblical story."
+        },
+        {
+          "step": 5,
+          "reference": "2 Corinthians 1:3–7",
+          "connectionNote": "Summarise the connection while preserving each passage's own context."
+        }
+      ],
+      "overview": "Give language to communal grief while attending to remembered mercy and the need for comfort.",
+      "contextCaution": "The book mourns Jerusalem's devastation; its hope does not erase trauma or make lament unfaithful.",
+      "studyQuestions": [
+        "What is happening in each passage and who is being addressed?",
+        "Which words, images, events, or themes connect the passages?",
+        "Is the relationship a quotation, fulfilment claim, narrative echo, or thematic parallel?",
+        "What faithful response follows when the whole context is considered?"
+      ],
+      "lifeApplication": "Record one insight grounded in context, one prayerful response, and one practical action consistent with the passages."
+    },
+    {
+      "id": "connected-scripture-trail-055",
+      "title": "Ezekiel: A New Heart and Renewed Life",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Ezekiel 11:17–20",
+          "connectionNote": "Read the passage in its original book setting and identify its main claim."
+        },
+        {
+          "step": 2,
+          "reference": "Ezekiel 18:30–32",
+          "connectionNote": "Notice the theme, image, or narrative development that connects with the next passage."
+        },
+        {
+          "step": 3,
+          "reference": "Ezekiel 36:22–28",
+          "connectionNote": "Compare the later passage carefully; distinguish explicit quotation from thematic resemblance."
+        },
+        {
+          "step": 4,
+          "reference": "Ezekiel 37:1–14",
+          "connectionNote": "Observe how the theme is developed in the wider biblical story."
+        },
+        {
+          "step": 5,
+          "reference": "John 3:3–8",
+          "connectionNote": "Summarise the connection while preserving each passage's own context."
+        }
+      ],
+      "overview": "Follow promises of cleansing, a new heart, God's Spirit, and life from what appears dead.",
+      "contextCaution": "Ezekiel's visions address Israel's exile and restoration; John uses new-birth imagery in a distinct conversation.",
+      "studyQuestions": [
+        "What is happening in each passage and who is being addressed?",
+        "Which words, images, events, or themes connect the passages?",
+        "Is the relationship a quotation, fulfilment claim, narrative echo, or thematic parallel?",
+        "What faithful response follows when the whole context is considered?"
+      ],
+      "lifeApplication": "Record one insight grounded in context, one prayerful response, and one practical action consistent with the passages."
+    },
+    {
+      "id": "connected-scripture-trail-056",
+      "title": "Daniel: Faithfulness Under Empire",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Daniel 1:8–21",
+          "connectionNote": "Read the passage in its original book setting and identify its main claim."
+        },
+        {
+          "step": 2,
+          "reference": "Daniel 3:13–28",
+          "connectionNote": "Notice the theme, image, or narrative development that connects with the next passage."
+        },
+        {
+          "step": 3,
+          "reference": "Daniel 6:10–23",
+          "connectionNote": "Compare the later passage carefully; distinguish explicit quotation from thematic resemblance."
+        },
+        {
+          "step": 4,
+          "reference": "Daniel 7:9–14",
+          "connectionNote": "Observe how the theme is developed in the wider biblical story."
+        },
+        {
+          "step": 5,
+          "reference": "1 Peter 2:11–17",
+          "connectionNote": "Summarise the connection while preserving each passage's own context."
+        }
+      ],
+      "overview": "Study faithful witness under pressure, God's sovereignty, and hope beyond earthly power.",
+      "contextCaution": "Daniel includes narrative and apocalyptic visions; interpret symbols with care and avoid speculative timelines.",
+      "studyQuestions": [
+        "What is happening in each passage and who is being addressed?",
+        "Which words, images, events, or themes connect the passages?",
+        "Is the relationship a quotation, fulfilment claim, narrative echo, or thematic parallel?",
+        "What faithful response follows when the whole context is considered?"
+      ],
+      "lifeApplication": "Record one insight grounded in context, one prayerful response, and one practical action consistent with the passages."
+    },
+    {
+      "id": "connected-scripture-trail-057",
+      "title": "Hosea: Covenant Love and Return",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Hosea 2:14–23",
+          "connectionNote": "Read the passage in its original book setting and identify its main claim."
+        },
+        {
+          "step": 2,
+          "reference": "Hosea 6:1–6",
+          "connectionNote": "Notice the theme, image, or narrative development that connects with the next passage."
+        },
+        {
+          "step": 3,
+          "reference": "Hosea 11:1–9",
+          "connectionNote": "Compare the later passage carefully; distinguish explicit quotation from thematic resemblance."
+        },
+        {
+          "step": 4,
+          "reference": "Hosea 14:1–9",
+          "connectionNote": "Observe how the theme is developed in the wider biblical story."
+        },
+        {
+          "step": 5,
+          "reference": "Matthew 9:10–13",
+          "connectionNote": "Summarise the connection while preserving each passage's own context."
+        }
+      ],
+      "overview": "Explore covenant unfaithfulness, divine compassion, the call to return, and Jesus' use of Hosea's call to mercy.",
+      "contextCaution": "Hosea's marriage imagery is prophetic symbolism; handle its painful imagery sensitively and do not use it to excuse abuse.",
+      "studyQuestions": [
+        "What is happening in each passage and who is being addressed?",
+        "Which words, images, events, or themes connect the passages?",
+        "Is the relationship a quotation, fulfilment claim, narrative echo, or thematic parallel?",
+        "What faithful response follows when the whole context is considered?"
+      ],
+      "lifeApplication": "Record one insight grounded in context, one prayerful response, and one practical action consistent with the passages."
+    },
+    {
+      "id": "connected-scripture-trail-058",
+      "title": "Joel: The Day of the Lord and the Spirit",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Joel 1:13–20",
+          "connectionNote": "Read the passage in its original book setting and identify its main claim."
+        },
+        {
+          "step": 2,
+          "reference": "Joel 2:12–17",
+          "connectionNote": "Notice the theme, image, or narrative development that connects with the next passage."
+        },
+        {
+          "step": 3,
+          "reference": "Joel 2:28–32",
+          "connectionNote": "Compare the later passage carefully; distinguish explicit quotation from thematic resemblance."
+        },
+        {
+          "step": 4,
+          "reference": "Acts 2:14–21",
+          "connectionNote": "Observe how the theme is developed in the wider biblical story."
+        },
+        {
+          "step": 5,
+          "reference": "Romans 10:11–13",
+          "connectionNote": "Summarise the connection while preserving each passage's own context."
+        }
+      ],
+      "overview": "Trace Joel's call to communal repentance, promise of the Spirit, and the New Testament's use of the prophecy.",
+      "contextCaution": "Joel's prophetic setting and Peter's Pentecost interpretation should both be read in context.",
+      "studyQuestions": [
+        "What is happening in each passage and who is being addressed?",
+        "Which words, images, events, or themes connect the passages?",
+        "Is the relationship a quotation, fulfilment claim, narrative echo, or thematic parallel?",
+        "What faithful response follows when the whole context is considered?"
+      ],
+      "lifeApplication": "Record one insight grounded in context, one prayerful response, and one practical action consistent with the passages."
+    },
+    {
+      "id": "connected-scripture-trail-059",
+      "title": "Amos: Justice at the Gate",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Amos 2:6–8",
+          "connectionNote": "Read the passage in its original book setting and identify its main claim."
+        },
+        {
+          "step": 2,
+          "reference": "Amos 5:10–15",
+          "connectionNote": "Notice the theme, image, or narrative development that connects with the next passage."
+        },
+        {
+          "step": 3,
+          "reference": "Amos 5:21–24",
+          "connectionNote": "Compare the later passage carefully; distinguish explicit quotation from thematic resemblance."
+        },
+        {
+          "step": 4,
+          "reference": "Amos 7:10–17",
+          "connectionNote": "Observe how the theme is developed in the wider biblical story."
+        },
+        {
+          "step": 5,
+          "reference": "Luke 4:16–21",
+          "connectionNote": "Summarise the connection while preserving each passage's own context."
+        }
+      ],
+      "overview": "Study the prophet's challenge to exploitation, corrupt worship, and indifference to the vulnerable.",
+      "contextCaution": "Amos addresses concrete social injustice in Israel; avoid reducing the message to a vague slogan.",
+      "studyQuestions": [
+        "What is happening in each passage and who is being addressed?",
+        "Which words, images, events, or themes connect the passages?",
+        "Is the relationship a quotation, fulfilment claim, narrative echo, or thematic parallel?",
+        "What faithful response follows when the whole context is considered?"
+      ],
+      "lifeApplication": "Record one insight grounded in context, one prayerful response, and one practical action consistent with the passages."
+    },
+    {
+      "id": "connected-scripture-trail-060",
+      "title": "Obadiah: Pride and the Fate of Nations",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Obadiah 1:1–4",
+          "connectionNote": "Read the passage in its original book setting and identify its main claim."
+        },
+        {
+          "step": 2,
+          "reference": "Obadiah 1:10–15",
+          "connectionNote": "Notice the theme, image, or narrative development that connects with the next passage."
+        },
+        {
+          "step": 3,
+          "reference": "Obadiah 1:17–21",
+          "connectionNote": "Compare the later passage carefully; distinguish explicit quotation from thematic resemblance."
+        },
+        {
+          "step": 4,
+          "reference": "Proverbs 16:18",
+          "connectionNote": "Observe how the theme is developed in the wider biblical story."
+        },
+        {
+          "step": 5,
+          "reference": "Luke 1:51–53",
+          "connectionNote": "Summarise the connection while preserving each passage's own context."
+        }
+      ],
+      "overview": "Consider pride, violence against kin, accountability among nations, and God's concern for justice.",
+      "contextCaution": "Obadiah addresses Edom and Jerusalem's crisis; later thematic links should not be used to target modern peoples.",
+      "studyQuestions": [
+        "What is happening in each passage and who is being addressed?",
+        "Which words, images, events, or themes connect the passages?",
+        "Is the relationship a quotation, fulfilment claim, narrative echo, or thematic parallel?",
+        "What faithful response follows when the whole context is considered?"
+      ],
+      "lifeApplication": "Record one insight grounded in context, one prayerful response, and one practical action consistent with the passages."
+    },
+    {
+      "id": "connected-scripture-trail-061",
+      "title": "Jonah: Mercy Beyond Our Boundaries",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Jonah 1:1–17",
+          "connectionNote": "Read the passage in its original book setting and identify its main claim."
+        },
+        {
+          "step": 2,
+          "reference": "Jonah 3:1–10",
+          "connectionNote": "Notice the theme, image, or narrative development that connects with the next passage."
+        },
+        {
+          "step": 3,
+          "reference": "Jonah 4:1–11",
+          "connectionNote": "Compare the later passage carefully; distinguish explicit quotation from thematic resemblance."
+        },
+        {
+          "step": 4,
+          "reference": "Matthew 12:38–41",
+          "connectionNote": "Observe how the theme is developed in the wider biblical story."
+        },
+        {
+          "step": 5,
+          "reference": "Luke 6:35–36",
+          "connectionNote": "Summarise the connection while preserving each passage's own context."
+        }
+      ],
+      "overview": "Explore reluctant mission, repentance, God's compassion for outsiders, and Jesus' reference to Jonah.",
+      "contextCaution": "Jesus' sign-of-Jonah teaching has its own Gospel context; do not flatten the book into a simple moral tale.",
+      "studyQuestions": [
+        "What is happening in each passage and who is being addressed?",
+        "Which words, images, events, or themes connect the passages?",
+        "Is the relationship a quotation, fulfilment claim, narrative echo, or thematic parallel?",
+        "What faithful response follows when the whole context is considered?"
+      ],
+      "lifeApplication": "Record one insight grounded in context, one prayerful response, and one practical action consistent with the passages."
+    },
+    {
+      "id": "connected-scripture-trail-062",
+      "title": "Micah: Justice, Mercy, and the Coming Ruler",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Micah 4:1–5",
+          "connectionNote": "Read the passage in its original book setting and identify its main claim."
+        },
+        {
+          "step": 2,
+          "reference": "Micah 5:2–5",
+          "connectionNote": "Notice the theme, image, or narrative development that connects with the next passage."
+        },
+        {
+          "step": 3,
+          "reference": "Micah 6:6–8",
+          "connectionNote": "Compare the later passage carefully; distinguish explicit quotation from thematic resemblance."
+        },
+        {
+          "step": 4,
+          "reference": "Matthew 2:1–6",
+          "connectionNote": "Observe how the theme is developed in the wider biblical story."
+        },
+        {
+          "step": 5,
+          "reference": "John 7:40–43",
+          "connectionNote": "Summarise the connection while preserving each passage's own context."
+        }
+      ],
+      "overview": "Connect hope for God's reign, the promised ruler from Bethlehem, and the call to do justice, love mercy, and walk humbly.",
+      "contextCaution": "Micah's prophetic poetry addresses its own historical crisis; Gospel references show later messianic interpretation.",
+      "studyQuestions": [
+        "What is happening in each passage and who is being addressed?",
+        "Which words, images, events, or themes connect the passages?",
+        "Is the relationship a quotation, fulfilment claim, narrative echo, or thematic parallel?",
+        "What faithful response follows when the whole context is considered?"
+      ],
+      "lifeApplication": "Record one insight grounded in context, one prayerful response, and one practical action consistent with the passages."
+    },
+    {
+      "id": "connected-scripture-trail-063",
+      "title": "Nahum: God's Justice Against Violence",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Nahum 1:2–8",
+          "connectionNote": "Read the passage in its original book setting and identify its main claim."
+        },
+        {
+          "step": 2,
+          "reference": "Nahum 1:12–15",
+          "connectionNote": "Notice the theme, image, or narrative development that connects with the next passage."
+        },
+        {
+          "step": 3,
+          "reference": "Nahum 2:1–7",
+          "connectionNote": "Compare the later passage carefully; distinguish explicit quotation from thematic resemblance."
+        },
+        {
+          "step": 4,
+          "reference": "Nahum 3:1–7",
+          "connectionNote": "Observe how the theme is developed in the wider biblical story."
+        },
+        {
+          "step": 5,
+          "reference": "Romans 12:17–21",
+          "connectionNote": "Summarise the connection while preserving each passage's own context."
+        }
+      ],
+      "overview": "Consider God's opposition to violent oppression and the biblical call to leave vengeance to God.",
+      "contextCaution": "Nahum speaks against a specific imperial oppressor; do not use it to justify personal revenge or violence.",
+      "studyQuestions": [
+        "What is happening in each passage and who is being addressed?",
+        "Which words, images, events, or themes connect the passages?",
+        "Is the relationship a quotation, fulfilment claim, narrative echo, or thematic parallel?",
+        "What faithful response follows when the whole context is considered?"
+      ],
+      "lifeApplication": "Record one insight grounded in context, one prayerful response, and one practical action consistent with the passages."
+    },
+    {
+      "id": "connected-scripture-trail-064",
+      "title": "Habakkuk: Living by Faith in Troubled Times",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Habakkuk 1:2–11",
+          "connectionNote": "Read the passage in its original book setting and identify its main claim."
+        },
+        {
+          "step": 2,
+          "reference": "Habakkuk 2:1–4",
+          "connectionNote": "Notice the theme, image, or narrative development that connects with the next passage."
+        },
+        {
+          "step": 3,
+          "reference": "Habakkuk 3:16–19",
+          "connectionNote": "Compare the later passage carefully; distinguish explicit quotation from thematic resemblance."
+        },
+        {
+          "step": 4,
+          "reference": "Romans 1:16–17",
+          "connectionNote": "Observe how the theme is developed in the wider biblical story."
+        },
+        {
+          "step": 5,
+          "reference": "Hebrews 10:35–39",
+          "connectionNote": "Summarise the connection while preserving each passage's own context."
+        }
+      ],
+      "overview": "Follow the prophet's questions, God's answer, the call to steadfast faith, and later New Testament use of Habakkuk.",
+      "contextCaution": "Paul and Hebrews quote Habakkuk in distinct arguments; read each quotation within its own context.",
+      "studyQuestions": [
+        "What is happening in each passage and who is being addressed?",
+        "Which words, images, events, or themes connect the passages?",
+        "Is the relationship a quotation, fulfilment claim, narrative echo, or thematic parallel?",
+        "What faithful response follows when the whole context is considered?"
+      ],
+      "lifeApplication": "Record one insight grounded in context, one prayerful response, and one practical action consistent with the passages."
+    },
+    {
+      "id": "connected-scripture-trail-065",
+      "title": "Zechariah: The Humble King and God's Future",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Zechariah 3:1–10",
+          "connectionNote": "Read the passage in its original book setting and identify its main claim."
+        },
+        {
+          "step": 2,
+          "reference": "Zechariah 4:6–10",
+          "connectionNote": "Notice the theme, image, or narrative development that connects with the next passage."
+        },
+        {
+          "step": 3,
+          "reference": "Zechariah 9:9–10",
+          "connectionNote": "Compare the later passage carefully; distinguish explicit quotation from thematic resemblance."
+        },
+        {
+          "step": 4,
+          "reference": "Zechariah 12:10",
+          "connectionNote": "Observe how the theme is developed in the wider biblical story."
+        },
+        {
+          "step": 5,
+          "reference": "Matthew 21:1–11",
+          "connectionNote": "Summarise the connection while preserving each passage's own context."
+        }
+      ],
+      "overview": "Trace cleansing, God's Spirit-enabled work, the humble king, and prophetic hope as received in the Gospel story.",
+      "contextCaution": "Zechariah contains complex visions and poetry; avoid assigning every image a certain modern fulfilment.",
+      "studyQuestions": [
+        "What is happening in each passage and who is being addressed?",
+        "Which words, images, events, or themes connect the passages?",
+        "Is the relationship a quotation, fulfilment claim, narrative echo, or thematic parallel?",
+        "What faithful response follows when the whole context is considered?"
+      ],
+      "lifeApplication": "Record one insight grounded in context, one prayerful response, and one practical action consistent with the passages."
+    }
+  ]
+}
