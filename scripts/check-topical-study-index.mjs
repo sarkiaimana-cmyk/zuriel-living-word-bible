@@ -28,7 +28,7 @@ const books = new Set([
   "3 john","jude","revelation"
 ]);
 const topics = index.list();
-assert.ok(topics.length >= 100, "The curated topical library should retain at least 100 topics.");
+assert.ok(topics.length >= 130, "The curated topical library should contain at least 130 reviewed topics.");
 // Long topical explanations should remain available without overwhelming the reader.
 assert.ok(studyUiSource.split('document.createElement("details")').length - 1 >= 4,
   "Topical explanations, language notes, related passages and reflection questions must be expandable.");
@@ -45,6 +45,13 @@ for (const topic of topics) {
   }
   assert.ok(Array.isArray(topic.questions) && topic.questions.length >= 2, topic.title + " needs reflection questions.");
   assert.ok(Array.isArray(topic.languageWords), topic.title + " needs a languageWords array.");
+  assert.ok(topic.languageWords.length >= 2, topic.title + " needs at least two contextual original-language study entries.");
+  for (const word of topic.languageWords) {
+    for (const field of ["language","script","term","meaning","note"]) {
+      assert.ok(typeof word[field] === "string" && word[field].trim(), topic.title + " has an incomplete language-word entry (" + field + ").");
+    }
+    assert.ok(["Hebrew","Greek"].includes(word.language), topic.title + " has an unsupported original-language label.");
+  }
   assert.ok(Array.isArray(topic.relatedExplanations) && topic.relatedExplanations.length > 0, topic.title + " needs related passage explanations.");
   assert.ok(Array.isArray(topic.references) && topic.references.length > 0, topic.title + " needs Scripture references.");
   for (const ref of topic.references) {
