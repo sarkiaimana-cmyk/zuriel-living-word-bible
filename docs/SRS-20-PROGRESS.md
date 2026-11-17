@@ -100,7 +100,8 @@ A feature is not considered complete merely because code exists. Completion requ
 - **PR #111** merged: the 30-day Walk with Jesus plan. Its 30 passages are checked against the bundled KJV, and encrypted backup validation rejects progress outside the plan's 30 days.
 - **PR #112** merged: AI pilot security boundary and runtime safeguards. This is not a live AI Assistant, has no connected provider/API key, and remains gated from deployment.
 - **PR #113** merged: reopening the same chapter preserves the selected verse; opening another chapter starts at verse 1; malformed prior position data cannot block chapter opening. The read-aloud event follows the saved verse.
-- **Application integration commit for the features above:** `c999f29707672bcbb5d343cbbaee8e5e0a102d60`; subsequent commits on `main` updated this scorecard and its evidence.
+- **PR #114** merged: CI now checks that every offline core precache asset exists, all local application scripts are precached, paths are safe and unique, and the in-app update version matches the release metadata. Its validation and signed Android build both passed.
+- **Application integration commit for PRs #109–#113:** `c999f29707672bcbb5d343cbbaee8e5e0a102d60`. PR #114 adds a CI-only offline asset guardrail; the resulting current main commit is recorded in GitHub.
 - **Current app metadata:** version **1.4.26**; Android versionCode **1004026**; service-worker cache **zuriel-bible-offline-v121**.
 - **Current Home Scripture behaviour:** 54 curated identity Scripture entries; the hero rotation interval is exactly **15,000 ms** and uses offline KJV retrieval.
 - **Words of Jesus:** the live catalogue currently contains **50 curated teaching themes**, not 24. The automated checker validates each reference against the bundled 66-book KJV.
