@@ -121,6 +121,9 @@ jobs:
       - name: Validate Open Book Card Studio
         run: node scripts/check-open-book-studio.mjs
 
+      - name: Exercise native gallery save and sharing bridge
+        run: node scripts/test-native-media-bridge.mjs
+
       - name: Validate offline Scripture read-aloud
         run: node scripts/check-audio-reader.mjs
 
