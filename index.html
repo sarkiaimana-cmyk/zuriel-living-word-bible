@@ -969,8 +969,10 @@ async function openChapter(book, chapter) {
   const verseActionItems = [
     ["Prayer","🙏"],["Declaration","📣"],["Affirmation","✨"],
     ["Faith","🛡️"],["Inspiration","💡"],["Compare translations","⇄"],
-    ["Cross-references","🔗"],["Share card","🖼️"],["Word meanings","🔤"],
-    ["Highlight","🖍️"],["Personal notes","📝"],["Full Study Centre","📚"]
+    ["Cross-references","🔗"],["Dictionary","📖"],["Commentary & theology","📚"],
+    ["Original-language words","🔤"],["Study context","📜"],["Share card","🖼️"],
+    ["Word meanings","🔎"],["Highlight","🖍️"],["Personal notes","📝"],
+    ["Full Study Centre","🏛️"]
   ];
 
   let studyPanelHome = null;
@@ -1034,10 +1036,6 @@ async function openChapter(book, chapter) {
         ". The secure YouVersion comparison panel will open when its service is configured.";
       return;
     }
-    if (action === "Word meanings") {
-      status.textContent = "Tap a word in this verse to open its verified Hebrew or Greek word study.";
-      return;
-    }
     if (!window.ZurielStudy || typeof window.ZurielStudy.openForReference !== "function") {
       status.textContent = "The Scripture Study Centre is not available. Please try again.";
       return;
@@ -1064,6 +1062,7 @@ async function openChapter(book, chapter) {
       "Commentary & theology":["meaning and exposition","theology and deeper study"],
       "Dictionary":["biblical dictionary"],
       "Original-language words":["hebrew and greek word study"],
+      "Word meanings":["hebrew and greek word study"],
       "Cross-references":["connected scriptures"],
       "Personal notes":["my personal study journal"],
       "Study context":["scripture and historical context","historical and literary context"],
@@ -1123,7 +1122,11 @@ async function openChapter(book, chapter) {
       .forEach(function (node) { node.classList.remove("zuriel-selected-verse"); });
   });
   verseActions.appendChild(closeActions);
-  message.appendChild(verseActions);\n  window.addEventListener("resize", positionVerseOverlay);\n  window.addEventListener("scroll", function () { if (!verseActions.hidden) positionVerseOverlay(); }, true);
+  message.appendChild(verseActions);
+  window.addEventListener("resize", positionVerseOverlay);
+  window.addEventListener("scroll", function () {
+    if (!verseActions.hidden) positionVerseOverlay();
+  }, true);
 
   function selectVerseForGloryCard(verseNumber, verseText) {
     selectedVerseInfo = {
@@ -1136,8 +1139,11 @@ async function openChapter(book, chapter) {
     const selectedVerseElement = message.querySelector(
       '.verse[data-verse-number="' + verseNumber + '"]'
     );
-    if (selectedVerseElement) selectedVerseElement.after(verseActions);
+    if (studyPanelHome) restoreStudyPanelToReader();
+    if (selectedVerseElement) selectedVerseElement.classList.add("zuriel-selected-verse");
+    verseActions.classList.remove("has-study-content");
     verseActions.hidden = false;
+    positionVerseOverlay();
   }
 
   const progressBox = document.createElement("div");
