@@ -33,6 +33,7 @@ const checks = [
   ["comfortable Android touch target", ".zgs-actions button {min-height:48px;"],
   ["clear Android gallery save confirmation", "Your card was saved to the Zuriel Living Word Bible album in your Gallery."],
   ["honest share cancellation handling", "Sharing was cancelled. Your card and saved-card library remain unchanged."],
+  ["honest native share delivery status", "Zuriel cannot confirm whether the receiving app completed delivery."],
   ["Android native gallery integration", "nativeMedia.saveImageToGallery(dataUrl,fileName)"],
   ["Android native image sharing integration", "nativeMedia.shareImage(dataUrl,fileName)"],
   ["clear Save image action", 'id="zgsSaveImage">Save image</button>'],
