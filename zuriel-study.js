@@ -1773,14 +1773,19 @@
       const rankedMatches = bibleDictionary.map((entry, index) => {
         const title = normalize(entry[0]);
         const definition = normalize(entry[1]);
-        const combined = title + " " + definition;
+        const aliases = Array.isArray(entry[2]) ? entry[2].map(normalize) : [];
+        const aliasText = aliases.join(" ");
+        const combined = title + " " + definition + " " + aliasText;
         const allTokensMatch = tokens.every(token => combined.includes(token));
+        const aliasMatch = aliases.some(alias => alias === term || alias.includes(term) ||
+          (tokens.length && tokens.every(token => alias.includes(token))));
         let score = 0;
         if (!term) score = 1;
         else if (title === term) score = 100;
         else if (title.startsWith(term)) score = 80;
         else if (tokens.length && tokens.every(token => title.split(" ").some(word => word.startsWith(token)))) score = 65;
         else if (title.includes(term)) score = 50;
+        else if (aliasMatch) score = 45;
         else if (allTokensMatch) score = 30;
         else if (definition.includes(term)) score = 20;
         return { entry, index, score };
@@ -1811,6 +1816,12 @@
         const meaning = document.createElement("p");
         meaning.textContent = entry[1];
         item.append(heading, meaning);
+        if (Array.isArray(entry[2]) && entry[2].length) {
+          const aliases = document.createElement("p");
+          aliases.className = "study-small";
+          aliases.textContent = "Also indexed as: " + entry[2].join(" • ");
+          item.appendChild(aliases);
+        }
         dictionaryResults.appendChild(item);
       });
       if (matches.length < totalMatches) {
