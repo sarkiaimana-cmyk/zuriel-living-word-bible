@@ -933,29 +933,35 @@ async function openChapter(book, chapter) {
       book, chapter, selectedVerseInfo.verse, selectedVerseInfo.text, "", -1
     );
     const panel = document.getElementById("zurielStudyPanel");
-    if (panel) {
-      const terms = {
-        "Prayer":["prayer"], "Declaration":["declaration"], "Affirmation":["affirmation","glory"],
-        "Faith":["faith"], "Inspiration":["inspiration","application"],
-        "Cross-references":["cross reference","connected scripture"],
-        "Highlight":["highlight"], "Personal notes":["personal study","journal","note"],
-        "Full Study Centre":[]
-      }[action] || [];
-      const sections = Array.from(panel.querySelectorAll("details"));
+    const sectionsRoot = document.getElementById("zurielStudySections");
+    if (sectionsRoot) {
+      const sections = Array.from(sectionsRoot.querySelectorAll("details"));
+      const targets = {
+        "Prayer":["prayer and declaration"],
+        "Declaration":["prayer and declaration"],
+        "Affirmation":["the light"],
+        "Faith":["the light"],
+        "Inspiration":["meaning and exposition"],
+        "Cross-references":["connected scriptures"],
+        "Personal notes":["my personal study journal"]
+      };
       sections.forEach(function (section) {
         const summary = section.querySelector("summary");
         const label = summary ? summary.textContent.toLowerCase() : "";
-        section.open = terms.some(function (term) { return label.includes(term); });
+        section.open = (targets[action] || []).some(function (term) {
+          return label.includes(term);
+        });
       });
-      if (action === "Highlight") {
-        const control = document.getElementById("zurielHighlightWholeVerse");
-        if (control) control.scrollIntoView({behavior:"smooth",block:"center"});
-      } else if (action === "Personal notes") {
-        const note = document.getElementById("zurielStudyNote");
-        if (note) note.scrollIntoView({behavior:"smooth",block:"center"});
-      } else {
-        panel.scrollIntoView({behavior:"smooth",block:"nearest"});
-      }
+    }
+    verseActions.hidden = true;
+    if (action === "Highlight") {
+      const control = document.getElementById("zurielHighlightWholeVerse");
+      if (control) control.scrollIntoView({behavior:"smooth",block:"center"});
+    } else if (action === "Personal notes") {
+      const note = document.getElementById("zurielStudyNote");
+      if (note) note.scrollIntoView({behavior:"smooth",block:"center"});
+    } else if (panel) {
+      panel.scrollIntoView({behavior:"smooth",block:"nearest"});
     }
   }
 
