@@ -1061,9 +1061,24 @@
             const safeReference = reference.replace(/[^a-z0-9]+/gi,"-").replace(/^-|-$/g,"").toLowerCase();
             const fileName = "Zuriel-Glory-Verse-" + (safeReference || "card") + ".png";
             const file = new File([blob],fileName,{type:"image/png"});
-            if (exportButton.id === "zgsShareImage" && navigator.canShare && navigator.canShare({files:[file]}) && navigator.share) {
+            const dataUrl = await new Promise((resolve,reject) => {
+              const reader = new FileReader();
+              reader.onload = () => resolve(String(reader.result || ""));
+              reader.onerror = () => reject(new Error("The card image could not be prepared for Android."));
+              reader.readAsDataURL(blob);
+            });
+            const nativeMedia = window.ZurielNativeMedia;
+            if (nativeMedia && nativeMedia.isNativeAndroid()) {
+              if (exportButton.id === "zgsShareImage") {
+                await nativeMedia.shareImage(dataUrl,fileName);
+                status.textContent = "Android's share menu is open. Choose WhatsApp or another app to share your card.";
+              } else {
+                await nativeMedia.saveImageToGallery(dataUrl,fileName);
+                status.textContent = "Your card was saved to the Zuriel Living Word Bible album in your Gallery.";
+              }
+            } else if (exportButton.id === "zgsShareImage" && navigator.canShare && navigator.canShare({files:[file]}) && navigator.share) {
               await navigator.share({files:[file],title:"Glory Verse Affirmation"});
-              status.textContent = "Your open-book image has been shared.";
+              status.textContent = "The card was handed to your device's sharing options.";
             } else {
               const url = URL.createObjectURL(blob);
               const link = document.createElement("a");
@@ -1071,11 +1086,13 @@
               document.body.appendChild(link); link.click(); link.remove();
               setTimeout(() => URL.revokeObjectURL(url),30000);
               status.textContent = exportButton.id === "zgsShareImage"
-                ? "Direct image sharing is not supported here, so the PNG was saved to your Downloads folder."
-                : "Your PNG image was saved to your Downloads folder. You can open it from your device files.";
+                ? "Image sharing is unavailable in this browser. The PNG was downloaded instead."
+                : "Your PNG image was downloaded. You can open it from your device files.";
             }
           } catch (error) {
-            if (error.name !== "AbortError") status.textContent = error.message || "Image export could not be completed on this device.";
+            status.textContent = error && error.name === "AbortError"
+              ? "Sharing was cancelled. Your card and saved-card library remain unchanged."
+              : (error.message || "Image export could not be completed on this device.");
           } finally {
             exportButton.disabled = false;
           }
