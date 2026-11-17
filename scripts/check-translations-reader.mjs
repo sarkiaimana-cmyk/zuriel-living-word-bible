@@ -37,6 +37,7 @@ requireText(client, "Publisher attribution was not supplied", "Fail-closed attri
 requireText(client, "Online text is not stored for offline use.", "No-offline-storage notice");
 requireText(client, "window.ZURIEL_TRANSLATION_API_BASE", "Explicit deployment endpoint configuration");
 requireText(client, "window.ZurielTranslations", "Translation reader public readiness API");
+requireText(client, "activeController.abort()", "Cancellation of stale or closed-panel passage requests");
 forbidText(client, /localStorage|sessionStorage|caches\.|indexedDB/i, "Persistent storage of licensed online Bible text");
 forbidText(client, /innerHTML|outerHTML/i, "Unsafe HTML insertion for publisher passage text");
 forbidText(client, /ZITE_YVP_APP_KEY|X-YVP-App-Key|api\.youversion\.com/i, "Provider credentials or direct upstream API access in client code");
