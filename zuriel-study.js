@@ -1501,17 +1501,51 @@
     function renderDictionary(query) {
       if (!dictionaryResults) return;
       dictionaryResults.replaceChildren();
-      const term = String(query || "").trim().toLowerCase();
-      const matches = bibleDictionary.filter(entry =>
-        !term || (entry[0] + " " + entry[1]).toLowerCase().includes(term)
-      ).slice(0, 12);
+
+      // Normalize accents and whitespace so searches behave consistently
+      // across devices and keyboard layouts.
+      const normalize = value => String(value || "")
+        .normalize("NFD")
+        .replace(/[\\u0300-\\u036f]/g, "")
+        .toLowerCase()
+        .trim()
+        .replace(/\\s+/g, " ");
+      const term = normalize(query);
+      const tokens = term.split(" ").filter(Boolean);
+
+      const matches = bibleDictionary.map((entry, index) => {
+        const title = normalize(entry[0]);
+        const definition = normalize(entry[1]);
+        const combined = title + " " + definition;
+        const allTokensMatch = tokens.every(token => combined.includes(token));
+        let score = 0;
+        if (!term) score = 1;
+        else if (title === term) score = 100;
+        else if (title.startsWith(term)) score = 80;
+        else if (tokens.length && tokens.every(token => title.split(" ").some(word => word.startsWith(token)))) score = 65;
+        else if (title.includes(term)) score = 50;
+        else if (allTokensMatch) score = 30;
+        else if (definition.includes(term)) score = 20;
+        return { entry, index, score };
+      }).filter(item => item.score > 0)
+        .sort((a, b) => b.score - a.score || a.index - b.index)
+        .slice(0, 12);
+
       if (!matches.length) {
         const empty = document.createElement("p");
-        empty.textContent = "No matching starter entry. Try a broader biblical term.";
+        empty.textContent = "No matching entry. Try a shorter phrase or another biblical term.";
         dictionaryResults.appendChild(empty);
         return;
       }
-      matches.forEach(entry => {
+
+      const count = document.createElement("p");
+      count.className = "study-small";
+      count.textContent = term
+        ? "Best matches (" + matches.length + " shown; up to 12 at a time)."
+        : "Browse the dictionary. Search to narrow the entries.";
+      dictionaryResults.appendChild(count);
+
+      matches.forEach(({ entry }) => {
         const item = document.createElement("article");
         item.className = "study-word";
         const heading = document.createElement("h3");
