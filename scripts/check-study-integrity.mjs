@@ -248,8 +248,7 @@ if (!study.includes('body.prepend(illustration)')) {
 // Exercise concordance matching independently of the interface.
 try {
   const escapeConcordanceTerm = term =>
-    term.replace(/[-\\/\\\\^$*+?.()|[\\]{}]/g, "\\\\if (failures.length) {
-  console.error("Original-language study integrity checks failed:");");
+    term.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
   const wholeWord = term => new RegExp(
     "(^|[^a-z0-9])" + escapeConcordanceTerm(term) + "([^a-z0-9]|$)", "i"
   );
