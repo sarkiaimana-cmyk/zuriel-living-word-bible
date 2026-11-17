@@ -108,4 +108,10 @@ assert.deepEqual(
   "Psalm and Psalms must resolve to the same topical references."
 );
 assert.ok(index.search("prayer").length > 0, "Topical search should return relevant studies.");
+assert.ok(index.search("hesed").some(topic => topic.title === "God's Character"),
+  "Topical search should find original-language words, including normalized Hebrew transliteration.");
+assert.ok(index.search("covenant loyalty").some(topic => topic.title === "God's Character"),
+  "Topical search should include meanings and notes within original-language entries.");
+assert.ok(index.search("Exodus 34:6-7").some(topic => topic.title === "God's Character"),
+  "Topical search should find Scripture references as well as topic titles.");
 console.log("Advanced topical study checks passed: " + topics.length + " topics, " + referenceCount + " Scripture links (" + validatedReferences + " verified against the bundled 66-book KJV), required study fields, valid Bible book names, reflection prompts, topical search and Psalm/Psalms alias navigation.");
