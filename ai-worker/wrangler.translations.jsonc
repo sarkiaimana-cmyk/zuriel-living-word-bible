@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "zuriel-bible-translations",
+  "main": "src/translation-worker.js",
+  "compatibility_date": "2026-11-16",
+  "ratelimits": [
+    {
+      "name": "TRANSLATION_RATE_LIMIT",
+      "namespace_id": "84111628",
+      "simple": {
+        "limit": 20,
+        "period": 60
+      }
+    }
+  ],
+  "vars": {
+    "ALLOWED_ORIGINS": "https://sarkiaimana-cmyk.github.io,https://localhost"
+  },
+  "secrets": {
+    "required": [
+      "ZITE_YVP_APP_KEY"
+    ]
+  }
+}

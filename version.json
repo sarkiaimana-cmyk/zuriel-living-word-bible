@@ -1,4 +1,4 @@
 {
-  "version": "1.4.26",
-  "releaseNotes": "Adds three simultaneously visible Home Scriptures loaded from the offline KJV, each with direct Bible-reader navigation."
+  "version": "1.4.27",
+  "releaseNotes": "Prepares secure, optional YouVersion translation comparison; online access remains off until the licensed service is configured."
 }
