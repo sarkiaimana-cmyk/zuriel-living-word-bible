@@ -26,7 +26,7 @@
     ["Revelation", 4, 11, "The Creator is worthy"]
   ];
 
-  // Concise offline starter dictionary. Entries are study summaries;
+  // Offline biblical dictionary. Entries are concise study summaries;
   // readers should check each term in its passage and language context.
   const bibleDictionary = [
     ["Atonement","God's provision for dealing with sin and restoring relationship; in the Old Testament it is closely associated with sacrifice and cleansing. See Leviticus 16; Romans 3:23–26."],
@@ -130,7 +130,61 @@
     ["Parakletos","A Greek term translated Advocate, Helper or Comforter depending on context. John uses it for the Holy Spirit and for Jesus Christ as advocate; the specific meaning should be read in each passage. See John 14:16-17; 15:26; 1 John 2:1."],
     ["Torah","A Hebrew word meaning instruction or teaching, often referring to the first five books of the Bible and, in wider contexts, God’s instruction. Read references to the Law in their covenant and literary setting. See Deuteronomy 6:4-9; Psalm 1:1-2; Matthew 5:17-20."],
     ["Typology","A way later Scripture presents earlier people, events or institutions as patterns that point toward a greater fulfilment. Typological readings should be grounded in the biblical text rather than imaginative resemblance. See Romans 5:14; 1 Corinthians 10:1-11; Hebrews 8:5."],
-    ["New creation","The renewed life God brings through Christ and the promised renewal of all things. The New Testament uses the language both for present transformation and future hope. See Isaiah 65:17; 2 Corinthians 5:17; Galatians 6:15; Revelation 21:1-5."],
+    ["New creation","The renewed life God brings through Christ and the promised renewal of all things. The New Testament uses the language both for present transformation and future hope. See Isaiah 65:17; 2 Corinthians 5:17; Galatians 6:15; Revelation 21:1-5."],,
+    ["Altar","A structure or designated place for presenting offerings and worship. Altars mark sacrifice, remembrance and covenant encounters in Scripture; their meaning depends on the passage. See Genesis 8:20; 12:7-8; Exodus 20:24; Hebrews 13:10."],
+    ["Ark of the Covenant","The sacred chest associated with God's covenant with Israel, containing covenant testimony and kept in the sanctuary. It signified God's covenant presence but was never an object to manipulate as a guarantee of victory. See Exodus 25:10-22; 1 Samuel 4; Hebrews 9:4."],
+    ["Atoning sacrifice","An offering associated with dealing with sin and restoring covenant relationship. The New Testament presents Jesus' self-offering as decisive; read it alongside the Old Testament sacrificial system. See Leviticus 16; Hebrews 9:11-14; 10:1-14."],
+    ["Bema","A Greek term for a raised platform or judgment seat. In the New Testament it can refer to an official tribunal and is used in teaching about accountability before Christ. See John 19:13; Acts 18:12-17; 2 Corinthians 5:10."],
+    ["Boaz","A man in Ruth who acts with generosity and fulfils the role of family redeemer within Israel's customs. His story highlights loyalty, provision and God's care in ordinary life. See Ruth 2-4."],
+    ["Cherubim","Heavenly beings associated in Scripture with God's throne and the guarded holiness of His presence. They are not ordinary human angels; descriptions vary by biblical context. See Genesis 3:24; Exodus 25:18-22; Ezekiel 10; Revelation 4:6-8."],
+    ["Circumcision","The covenant sign given to Abraham's household and later required of male Israelites. The New Testament discusses its covenant significance and distinguishes outward sign from inward faithfulness. See Genesis 17; Romans 2:28-29; Galatians 5:6."],
+    ["Clean and unclean","Categories in Israel's law concerning ritual status, food, bodily conditions and worship. Ritual uncleanness was not always the same as moral sin; Jesus and the apostles address these categories in their covenant settings. See Leviticus 11-15; Mark 7:14-23; Acts 10."],
+    ["Confession","Acknowledging truth before God or others. Scripture includes confession of sin, confession of faith and public testimony; each use should be read in its setting. See Leviticus 5:5; Psalm 32:5; Romans 10:9-10; 1 John 1:9."],
+    ["Covenant mediator","A person who serves between parties in establishing or representing a covenant. Moses mediates the Sinai covenant, while the New Testament describes Jesus as mediator of the new covenant. See Exodus 20:18-21; Galatians 3:19-20; Hebrews 8:6; 9:15."],
+    ["Day of Atonement","The annual day described in Leviticus 16 when Israel's high priest performed rites for cleansing and atonement. Hebrews uses this ritual background to explain Christ's once-for-all priestly work. See Leviticus 16; Hebrews 9:6-14."],
+    ["Deacon","A servant or minister entrusted with practical service in the church. The New Testament describes qualifications for recognised service; traditions differ on the precise structure of the office. See Acts 6:1-6; Philippians 1:1; 1 Timothy 3:8-13."],
+    ["Elder","A recognised leader in a local community, associated with oversight, teaching and care. New Testament descriptions emphasise character and faithful service rather than status. See Acts 14:23; 1 Timothy 3:1-7; Titus 1:5-9; 1 Peter 5:1-4."],
+    ["Epiphany","A term used in Christian tradition for the manifestation or appearing of Christ. In the New Testament related Greek words describe Christ's appearing and the revealing of God's grace. See Luke 2:29-32; Titus 2:11-13; 2 Timothy 1:10."],
+    ["Firstfruits","The first portion of a harvest presented to God, expressing gratitude and trust. The New Testament uses firstfruits imagery for the Spirit's work and Christ's resurrection as the beginning of the coming harvest. See Exodus 23:19; Leviticus 23:9-14; 1 Corinthians 15:20-23; Romans 8:23."],
+    ["Fellowship","Shared participation and mutual life among people joined in Christ. Biblical fellowship includes truth, prayer, generosity and practical care, not simply social contact. See Acts 2:42-47; 1 John 1:3-7; Philippians 2:1-4."],
+    ["Firstborn","A term for the first child born, carrying family and inheritance significance. Scripture also uses it figuratively for rank, inheritance or supremacy; it does not always mean the first created being. See Exodus 4:22; Psalm 89:27; Colossians 1:15-18; Hebrews 1:6."],
+    ["Gentleness","Strength expressed with humility, patience and restraint rather than harshness. It is named among the fruit of the Spirit and expected in Christian relationships. See Matthew 11:29; Galatians 5:22-23; 6:1; Ephesians 4:2."],
+    ["Glorification","The final completion of salvation when believers share in the resurrection glory promised by God. Christian hope looks toward bodily renewal and conformity to Christ. See Romans 8:17, 29-30; Philippians 3:20-21; 1 John 3:2."],
+    ["High priest","The chief priest in Israel's sanctuary system, responsible for particular duties including the Day of Atonement. Hebrews presents Jesus as the great high priest whose ministry surpasses the earlier priesthood. See Leviticus 16; Hebrews 4:14-16; 7:23-28."],
+    ["Inheritance","A possession or share received, often through family descent or covenant promise. Scripture also uses inheritance for the future life and hope God gives His people. See Genesis 15:7-8; Numbers 26:52-56; Ephesians 1:11-14; 1 Peter 1:3-5."],
+    ["Intertestamental period","A historical label for the centuries between the Old and New Testaments in many Christian Bible arrangements. The period includes major political, cultural and religious developments that help explain the New Testament setting; it is not a single biblical book."],
+    ["Justification by faith","Paul's teaching that people are put right with God through faith in Jesus Christ, not by earning status through works of the law. The relationship between faith, works and obedience must be read across Paul's argument. See Romans 3-5; Galatians 2-3; James 2:14-26."],
+    ["Kingdom of heaven","Matthew's frequent expression for the reign of God. It does not simply mean the place people go after death; it describes God's rule and its promised fulfilment. See Matthew 4:17; 5:3; 13:1-52."],
+    ["Kinsman-redeemer","A close family member who could act to protect a relative's interests, including redeeming land or preserving a family line under Israel's law. Ruth uses this custom in its account of Boaz. See Leviticus 25:25; Ruth 3-4."],
+    ["Leprosy","A Bible translation term used for several skin conditions and related ritual classifications; it should not automatically be equated with modern Hansen's disease. The law describes examination and purification procedures. See Leviticus 13-14; Luke 5:12-14."],
+    ["Laying on of hands","A physical act used in Scripture in blessing, commissioning, identification and prayer for healing. Its significance depends on the occasion and should not be treated as a magical technique. See Genesis 48:14-20; Numbers 27:18-23; Acts 13:1-3; 1 Timothy 4:14."],
+    ["Mediation","Acting between parties or representing one party to another. Biblical mediation may involve covenant, priestly service or reconciliation; the New Testament calls Jesus the one mediator between God and humanity. See Exodus 32:30-32; 1 Timothy 2:5; Hebrews 9:15."],
+    ["Mercy seat","The cover of the ark of the covenant, associated with the place where atonement was made on the Day of Atonement. Some translations render the related term as atonement cover. See Exodus 25:17-22; Leviticus 16:14-15; Hebrews 9:5."],
+    ["New birth","The spiritual life and transformation described by Jesus as being born from above or born again. John connects this with the work of the Spirit and faith in Christ. See John 3:1-8; Titus 3:4-7; 1 Peter 1:3, 23."],
+    ["Offering","A gift or sacrifice presented to God. Scripture describes different offerings with distinct purposes; they should not be collapsed into one general ritual. See Leviticus 1-7; Hebrews 13:15-16."],
+    ["Ordination","The setting apart or public recognition of people for particular ministry responsibilities. Biblical examples include prayer and laying on of hands, but traditions differ in how ordination is practised. See Numbers 27:18-23; Acts 6:1-6; 1 Timothy 4:14."],
+    ["Parousia","A Greek term meaning presence or arrival, used in the New Testament for the coming of Christ. Interpret teaching about the Parousia alongside its pastoral purpose of hope, readiness and faithfulness. See Matthew 24:3, 27; 1 Thessalonians 4:15-18; 2 Peter 3:4."],
+    ["Passover lamb","The lamb whose blood marked Israelite homes during the Exodus deliverance. The New Testament uses Passover imagery in speaking about Jesus' death; read the connection with Exodus 12 in view. See Exodus 12:1-28; John 19:14-37; 1 Corinthians 5:7."],
+    ["Pentateuch","A name for the first five books of the Bible: Genesis, Exodus, Leviticus, Numbers and Deuteronomy. These books establish creation, covenant, law, worship and Israel's wilderness story."],
+    ["Priesthood","The office and service of priests who represented the people in sanctuary worship and handled offerings under Israel's covenant law. Hebrews compares this priesthood with Christ's unique and enduring priestly ministry. See Exodus 28-29; Leviticus 8-9; Hebrews 5-10."],
+    ["Redemption of creation","The promised renewal of the created order, which Scripture connects with the liberation of creation from decay and the new heavens and new earth. See Romans 8:18-25; 2 Peter 3:13; Revelation 21:1-5."],
+    ["Remnant","A surviving group preserved through judgment or crisis. Prophets use remnant language to speak of judgment, hope and God's continuing faithfulness; read it in its historical setting. See Isaiah 10:20-22; Jeremiah 23:3; Romans 11:1-5."],
+    ["Repentance and faith","The paired response of turning toward God and trusting the good news. The New Testament presents both as central to receiving and living in response to the gospel. See Mark 1:14-15; Acts 20:21; Hebrews 6:1."],
+    ["Samaritan","A person from Samaria, a region and people with a complex history of relationship with Judeans. Jesus' encounters with Samaritans challenge social hostility and reveal the reach of God's mercy. See Luke 10:25-37; John 4:1-42."],
+    ["Sanctification by the Spirit","The work of the Holy Spirit in setting people apart for God and shaping them in holiness. Scripture connects this work with faith, truth and obedient life. See Romans 15:16; 1 Corinthians 6:11; 2 Thessalonians 2:13; 1 Peter 1:2."],
+    ["Shekinah","A later Jewish term often used to describe God's dwelling or manifest presence. The word itself does not occur in the Hebrew Bible; discuss the concept through biblical passages about God's glory and presence. See Exodus 40:34-38; 1 Kings 8:10-11."],
+    ["Shepherd","A person who cares for sheep; Scripture uses shepherd imagery for leaders and for God Himself. Jesus identifies Himself as the good shepherd who lays down His life for the sheep. See Psalm 23; Ezekiel 34; John 10:1-18; 1 Peter 5:2-4."],
+    ["Sin offering","An offering in Israel's law associated with purification and atonement for particular sins and impurity. Translations and scholarly descriptions vary; read the ritual instructions in Leviticus carefully. See Leviticus 4-5; 6:24-30."],
+    ["Sovereignty of God","A theological expression for God's supreme authority and rule over creation and history. Scripture also affirms human responsibility; passages should be read without flattening either theme. See Psalm 103:19; Daniel 4:34-35; Acts 17:24-28."],
+    ["Spiritual gifts","Abilities or services given by the Holy Spirit for the good of the church and its mission. New Testament lists are not identical and should be read as examples rather than one exhaustive catalogue. See Romans 12:3-8; 1 Corinthians 12-14; Ephesians 4:7-16; 1 Peter 4:10-11."],
+    ["Synagogue","A Jewish gathering place for prayer, Scripture reading and teaching. Synagogues appear frequently in the Gospels and Acts as settings for Jesus' ministry and the early Christian mission. See Luke 4:16-21; Acts 13:14-16."],
+    ["The Lord's Supper","The meal Jesus instituted with His disciples before His death, remembered by Christians as proclamation of His death and participation in the new covenant. Christian traditions differ on aspects of its practice and theology. See Luke 22:14-20; 1 Corinthians 10:16-17; 11:23-29."],
+    ["The Word of God","An expression that can refer to God's spoken message, Scripture, the gospel proclamation or, in John's Gospel, Jesus the eternal Word. Identify the referent from the passage rather than assuming every occurrence means the same thing. See Psalm 119:105; Mark 7:13; John 1:1-18; Hebrews 4:12."],
+    ["Unleavened bread","Bread made without yeast, especially associated with Israel's hurried departure from Egypt and the Feast of Unleavened Bread. Paul also uses leaven as an image in teaching about corrupting influence. See Exodus 12:14-20; Deuteronomy 16:3-8; 1 Corinthians 5:6-8."],
+    ["Vine and branches","Jesus' image for the relationship between Himself and His disciples: life and fruitfulness depend on remaining in Him. The passage calls for enduring love and obedience, not a technique for guaranteed success. See John 15:1-17."],
+    ["Widow and orphan","People especially vulnerable in the social world of the Bible and repeatedly named as those whom God's people must protect. Care for them is a test of justice and sincere worship. See Deuteronomy 10:18; Isaiah 1:17; James 1:27."],
+    ["Yom Kippur","The Hebrew name for the Day of Atonement, the annual day of fasting and sanctuary purification described in Leviticus 16 and 23:26-32. The Hebrew name means Day of Atonement."],
+    ["Zeal of the Lord","A biblical expression for God's passionate commitment to His purposes and promises. It appears in prophetic hope and should be distinguished from human anger or religious aggression. See 2 Kings 19:31; Isaiah 9:7; 37:32."]
   ];
 
   function readNotes() {
@@ -1541,6 +1595,7 @@
     // Searchable offline biblical dictionary.
     const dictionarySearch = panel.querySelector("#zurielDictionarySearch");
     const dictionaryResults = panel.querySelector("#zurielDictionaryResults");
+    let dictionaryVisibleLimit = 12;
     function renderDictionary(query) {
       if (!dictionaryResults) return;
       dictionaryResults.replaceChildren();
@@ -1572,7 +1627,7 @@
         return { entry, index, score };
       }).filter(item => item.score > 0)
         .sort((a, b) => b.score - a.score || a.index - b.index)
-        .slice(0, 12);
+        .slice(0, dictionaryVisibleLimit);
 
       if (!matches.length) {
         const empty = document.createElement("p");
@@ -1583,9 +1638,15 @@
 
       const count = document.createElement("p");
       count.className = "study-small";
+      const totalMatches = bibleDictionary.filter(entry => {
+        const title = normalize(entry[0]);
+        const definition = normalize(entry[1]);
+        const combined = title + " " + definition;
+        return !term || title.includes(term) || tokens.every(token => combined.includes(token));
+      }).length;
       count.textContent = term
-        ? "Best matches (" + matches.length + " shown; up to 12 at a time)."
-        : "Browse the dictionary. Search to narrow the entries.";
+        ? "Showing " + matches.length + " of " + totalMatches + " matching entries."
+        : "Browse " + bibleDictionary.length + " entries. Search to narrow the dictionary.";
       dictionaryResults.appendChild(count);
 
       matches.forEach(({ entry }) => {
@@ -1598,9 +1659,23 @@
         item.append(heading, meaning);
         dictionaryResults.appendChild(item);
       });
+      if (matches.length < totalMatches) {
+        const more = document.createElement("button");
+        more.type = "button";
+        more.className = "study-action-button";
+        more.textContent = "Show more entries";
+        more.addEventListener("click", function () {
+          dictionaryVisibleLimit += 12;
+          renderDictionary(dictionarySearch ? dictionarySearch.value : query);
+        });
+        dictionaryResults.appendChild(more);
+      }
     }
     if (dictionarySearch) {
-      dictionarySearch.addEventListener("input", () => renderDictionary(dictionarySearch.value));
+      dictionarySearch.addEventListener("input", () => {
+        dictionaryVisibleLimit = 12;
+        renderDictionary(dictionarySearch.value);
+      });
       renderDictionary("");
     }
 
