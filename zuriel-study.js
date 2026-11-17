@@ -1358,17 +1358,6 @@
           </div>
         </details>
 
-        <details>
-          <summary>🙏 7. Prayer and Declaration</summary>
-          <div class="study-body" id="zurielPrayerDeclaration">
-            <h3>Prayer</h3>
-            <p>Heavenly Father, give me understanding as I study Your Word.
-            Help me receive its truth and walk in wisdom. In Jesus' name, Amen.</p>
-            <h3>Declaration</h3>
-            <p>I receive God's Word with faith. I grow in understanding,
-            walk in His wisdom and live according to His truth.</p>
-          </div>
-        </details>
       </div>
 
       <div id="zurielGenesisStudy" style="display:none">
