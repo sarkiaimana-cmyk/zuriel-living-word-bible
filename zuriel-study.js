@@ -1506,10 +1506,10 @@
       // across devices and keyboard layouts.
       const normalize = value => String(value || "")
         .normalize("NFD")
-        .replace(/[\\u0300-\\u036f]/g, "")
+        .replace(/[\u0300-\u036f]/g, "")
         .toLowerCase()
         .trim()
-        .replace(/\\s+/g, " ");
+        .replace(/\s+/g, " ");
       const term = normalize(query);
       const tokens = term.split(" ").filter(Boolean);
 
