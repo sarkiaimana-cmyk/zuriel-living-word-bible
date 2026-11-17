@@ -1603,9 +1603,10 @@
 
     function clearVerseHighlights() {
       if (!selectedReference) return;
-      saveHighlightRecord(selectedReference, { words: {} });
-      document.getElementById("zurielHighlightStatus").textContent =
-        "Highlights cleared for this verse.";
+      if (saveHighlightRecord(selectedReference, { words: {} })) {
+        document.getElementById("zurielHighlightStatus").textContent =
+          "Highlights cleared for this verse.";
+      }
     }
 
     function findVerseElement(number) {
