@@ -53,7 +53,7 @@ const checks = [
   ["dictionary exact-title matches rank first", "title === term) score = 100"],
   ["dictionary title-prefix matches rank highly", "title.startsWith(term)"],
   ["dictionary supports multi-word searches", "tokens.every(token => combined.includes(token))"],
-  ["dictionary result ranking is stable", "b.index - a.index"],
+  ["dictionary result ranking is stable (original order breaks score ties)", "a.index - b.index"],
   ["dictionary result list stays mobile-friendly", ".slice(0, 12)"],
   ["highlight storage rejects malformed top-level data", "!Array.isArray(saved)"],
   ["word highlights retain selected token identity", "record.wordTokens = record.wordTokens || {}"],
