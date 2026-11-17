@@ -139,6 +139,16 @@ if (!study.includes('layout.id = "zurielReaderStudyLayout"') ||
 if (study.includes("verseElement.parentNode.insertBefore(contextCard")) failures.push(["no inserted word card between verses", "word context must stay in the study panel, not interrupt Scripture"]);
 if (!study.includes('@media (max-width:640px)') || !study.includes('position:fixed;') || !study.includes('max-height:min(62dvh,560px)')) failures.push(["mobile word-study bottom sheet", "the focused word panel must be reachable on small screens without narrowing the Scripture reader"]);
 if (!study.includes('event.key === "Escape"') || !study.includes('document.removeEventListener("keydown", handleContextKeydown)')) failures.push(["word-study Escape dismissal", "the contextual panel must close cleanly from the keyboard and release its listener"]);
+if (!study.includes("let wordContextRequest = 0;") ||
+    !study.includes("const contextRequestId = ++wordContextRequest;") ||
+    !study.includes("contextRequestId !== wordContextRequest || !contextCard.isConnected")) {
+  failures.push(["rapid word-tap response isolation", "a slower earlier word lookup must never populate a newer selected word's panel"]);
+}
+if (!study.includes("let activeWordContextCleanup = null;") ||
+    !study.includes("if (activeWordContextCleanup) activeWordContextCleanup();") ||
+    !study.includes("activeWordContextCleanup = cleanupContextListener;")) {
+  failures.push(["word-study listener lifecycle", "replacing a contextual panel must release the previous keyboard listener"]);
+}
 
 const homeReferences = [...home.matchAll(/reference:\s*"([^"]+)"/g)].map(match => match[1].toLowerCase());
 const faithReferences = new Set([...faith.matchAll(/["']?reference["']?\s*:\s*["']([^"']+)["']/g)].map(match => match[1].toLowerCase()));
