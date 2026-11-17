@@ -168,6 +168,10 @@
   let originalWordsRequest = 0;
   let crossReferencesRequest = 0;
   let lexiconRequest = 0;
+  // A fast second tap must invalidate the first contextual panel. Keep one
+  // keyboard listener at a time so repeated word taps cannot leak handlers.
+  let wordContextRequest = 0;
+  let activeWordContextCleanup = null;
 
   // Keep successfully downloaded interlinear, lexicon and cross-reference
   // records in Cache Storage so a verse studied once can be revisited offline.
@@ -2231,6 +2235,8 @@
       /* A word tap opens a compact contextual panel beside the passage.
          It never inserts content between verses or scrolls the reader away. */
       openWordInContext: async function (book, chapter, verse, verseText, englishWord, wordIndex) {
+        const contextRequestId = ++wordContextRequest;
+        if (activeWordContextCleanup) activeWordContextCleanup();
         selectedReference = {
           book: book,
           chapter: chapter,
@@ -2263,9 +2269,16 @@
         status.textContent = "Checking the exact KJV word alignment and available original-language record…";
         contextCard.appendChild(status);
 
+        const cleanupContextListener = function () {
+          document.removeEventListener("keydown", handleContextKeydown);
+          if (activeWordContextCleanup === cleanupContextListener) {
+            activeWordContextCleanup = null;
+          }
+        };
         const closeContextPanel = function () {
           contextCard.remove();
-          document.removeEventListener("keydown", handleContextKeydown);
+          cleanupContextListener();
+          if (contextRequestId === wordContextRequest) wordContextRequest++;
           panel.style.display = "none";
           panel.dataset.mode = "verse";
         };
@@ -2276,12 +2289,14 @@
           }
         };
         document.addEventListener("keydown", handleContextKeydown);
+        activeWordContextCleanup = cleanupContextListener;
 
         const fullStudyButton = document.createElement("button");
         fullStudyButton.type = "button";
         fullStudyButton.textContent = "Open Full Study Centre";
         fullStudyButton.addEventListener("click", function () {
-          document.removeEventListener("keydown", handleContextKeydown);
+          cleanupContextListener();
+          if (contextRequestId === wordContextRequest) wordContextRequest++;
           window.ZurielStudy.openForReference(
             book, chapter, verse, verseText, englishWord, wordIndex
           );
@@ -2306,7 +2321,9 @@
           // The source-specific message is rendered in the Study Centre.
         }
 
-        if (!contextCard.isConnected) return true;
+        // loadOriginalWords has its own request guard, but this second guard
+        // protects the compact panel from reading another tap's newer results.
+        if (contextRequestId !== wordContextRequest || !contextCard.isConnected) return true;
         const results = document.getElementById("zurielOriginalWordResults");
         const sourceCards = results
           ? results.querySelectorAll(".original-word-card")

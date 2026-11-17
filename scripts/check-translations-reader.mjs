@@ -73,8 +73,8 @@ const release = JSON.parse(version);
 const installed = updates.match(/const APP_VERSION = "([^"]+)";/);
 assert.ok(installed, "In-app update centre must declare its installed version.");
 assert.equal(installed[1], release.version, "In-app update version must match version.json.");
-assert.equal(release.version, "1.4.29", "Current release metadata must be version 1.4.28.");
-assert.match(serviceWorker, /zuriel-bible-offline-v124/);
+assert.equal(release.version, "1.4.30", "Current release metadata must be version 1.4.30.");
+assert.match(serviceWorker, /zuriel-bible-offline-v125/);
 
 if (failures.length) {
   console.error("YouVersion translation reader checks failed:");

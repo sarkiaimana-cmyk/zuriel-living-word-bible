@@ -1,4 +1,4 @@
 {
-  "version": "1.4.29",
-  "releaseNotes": "Improves focused word study on mobile with a reachable bottom sheet and keyboard dismissal."
+  "version": "1.4.30",
+  "releaseNotes": "Prevents overlapping word taps from showing stale original-language results and cleans up replaced study-panel listeners."
 }
