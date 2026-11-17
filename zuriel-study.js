@@ -1961,12 +1961,12 @@
           return;
         }
         const addition = "Guided application — " + ref.book + " " + ref.chapter + ":" + ref.verse +
-          "\\nObserve: What does the verse say?\\nUnderstand: What did it mean in its original context?" +
-          "\\nRespond: What response to God is appropriate?\\nPractise: What specific action or attitude should change?" +
-          "\\nLove: How should this shape my treatment of others?\\nPray and review: What step will I take and review?";
+          "\nObserve: What does the verse say?\nUnderstand: What did it mean in its original context?" +
+          "\nRespond: What response to God is appropriate?\nPractise: What specific action or attitude should change?" +
+          "\nLove: How should this shape my treatment of others?\nPray and review: What step will I take and review?";
         if (!field.value.includes("Guided application — " + ref.book + " " + ref.chapter + ":" + ref.verse)) {
           field.value = field.value.trim()
-            ? field.value.trim() + "\\n\\n" + addition
+            ? field.value.trim() + "\n\n" + addition
             : addition;
         }
         field.focus();
