@@ -1574,7 +1574,7 @@
               <option value="phrase">Exact phrase</option>
             </select>
             <button type="button" class="study-action" id="zurielConcordanceSearch">Search Concordance</button>
-            <p class="study-small">Results are from the offline KJV text. Up to 100 matching verses are shown per search. English concordance results are not Hebrew or Greek lemma searches.</p>
+            <p class="study-small">Results are from the complete offline KJV text. The concordance counts all matching verses and displays up to 200 results per search. It searches English words and phrases; it does not yet claim Hebrew or Greek lemma concordance coverage.</p>
             <div id="zurielConcordanceResults" aria-live="polite">
               <p>Enter at least three characters to search the KJV concordance.</p>
             </div>
