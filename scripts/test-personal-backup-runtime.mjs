@@ -113,6 +113,12 @@ assert.equal(incoming.gloryVerseCards.length, 1);
 assert.throws(() => api.safeGloryVerseCards([{ reference: "John 3:16", scripture: "Text", wallpaper: "unknown" }]), /unsupported Glory Verse Card wallpaper/);
 assert.throws(() => api.safeGloryVerseCards([{ reference: "", scripture: "Text" }]), /without its Scripture reference or text/);
 assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, notes: [{ id: "", title: "Bad", text: "Invalid" }] } }), /valid ID/);
+assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, readingHistory: [{ book: "John", chapter: 0 }] } }), /invalid reading-history entry/,
+  "An exported backup must not contain malformed reading history.");
+assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, savedLessons: ["lesson-a", 42] } }), /invalid lesson record/,
+  "An exported backup must not contain non-string lesson IDs.");
+assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, lastReadingPosition: { book: "John", chapter: 3, verse: 0 } } }), /invalid last-reading position/,
+  "An exported backup must not contain an impossible verse position.");
 assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, wordHighlights: { "John|3|16": { words: { "1": "not-a-colour" } } } } }), /invalid word-highlight/);
 assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, verseStudyNotes: { "John|3|16": { note: "x".repeat(12001) } } } }), /invalid verse-study note/);
 assert.throws(() => api.validateBackup({ ...sample, data: { ...sample.data, personalLibrary: { bookmarks: [null] } } }), /invalid My Saved Library entry/);
