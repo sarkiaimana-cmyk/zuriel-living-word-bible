@@ -1,4 +1,4 @@
 {
-  "version": "1.4.48",
-  "releaseNotes": "Added a locally bundled, explicitly labelled set of curated Scripture connections for selected Gospel and New Testament passages. Curated links remain available offline; online references are merged when available, and unclassified source references are still labelled transparently."
+  "version": "1.4.49",
+  "releaseNotes": "Expanded the curated offline Connected Scriptures library with 29 additional New Testament quotations and prophecy links. Added an integrity audit that checks every curated source and target against the complete offline KJV corpus."
 }
