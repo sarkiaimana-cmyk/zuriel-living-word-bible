@@ -55,7 +55,7 @@ jobs:
           set -euo pipefail
           umask 077
           trap 'rm -f .wrangler.translations.bootstrap.jsonc' EXIT
-          node -e 'const fs=require("node:fs"); const c=JSON.parse(fs.readFileSync("wrangler.translations.jsonc","utf8")); delete c.secrets; fs.writeFileSync(".wrangler.translations.bootstrap.jsonc", JSON.stringify(c,null,2)+"\\n", {mode:0o600, flag:"wx"});'
+          node -e 'const fs=require("node:fs"); const c=JSON.parse(fs.readFileSync("wrangler.translations.jsonc","utf8")); delete c.secrets; fs.writeFileSync(".wrangler.translations.bootstrap.jsonc", JSON.stringify(c,null,2)+"\n", {mode:0o600, flag:"wx"});'
           # First create the Worker without its required key. Its handler fails closed until the secret is installed.
           npx wrangler deploy --config .wrangler.translations.bootstrap.jsonc
           # Add the key only after the Worker script exists; secret put deploys a new version immediately.
