@@ -6,7 +6,8 @@
   "scripts": {
     "build:web": "node scripts/prepare-web.mjs",
     "android:sync": "npm run build:web && cap sync android",
-    "android:build": "npm run build:web && cap sync android"
+    "android:build": "npm run build:web && cap sync android",
+    "study:faith-coverage": "node scripts/check-faith-response-coverage.mjs"
   },
   "dependencies": {
     "@capacitor/android": "8.6.0",
