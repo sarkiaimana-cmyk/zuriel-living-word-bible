@@ -55,7 +55,10 @@
       const start = Number(annotation && annotation.start);
       const end = Number(annotation && annotation.end);
       if (!Number.isInteger(start) || !Number.isInteger(end) || end <= start) return false;
-      if (start < selected.end && end > selected.start) {
+      // Require the complete annotation to belong to this one token.
+      // Mere overlap can attach a malformed cross-word source range to two
+      // English words and create a false original-language association.
+      if (start >= selected.start && end <= selected.end) {
         return /[a-z0-9]/i.test(source.slice(start, end));
       }
       return false;
