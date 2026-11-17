@@ -1,4 +1,4 @@
 {
-  "version": "1.4.35",
-  "releaseNotes": "Introduces a verse-first reading screen: select a verse to reveal its contextual actions, open only the chosen study resource, and launch translation comparison from the selected verse. Refreshes the offline cache."
+  "version": "1.4.36",
+  "releaseNotes": "Improves verse action routing so Prayer, Declaration, Affirmation, Faith, Inspiration, Cross-references, Personal notes and Highlight lead to their corresponding Study Centre resources. Refreshes offline cache."
 }
