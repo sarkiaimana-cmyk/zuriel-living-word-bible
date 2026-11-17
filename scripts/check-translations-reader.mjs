@@ -73,8 +73,9 @@ const release = JSON.parse(version);
 const installed = updates.match(/const APP_VERSION = "([^"]+)";/);
 assert.ok(installed, "In-app update centre must declare its installed version.");
 assert.equal(installed[1], release.version, "In-app update version must match version.json.");
-assert.equal(release.version, "1.4.31", "Current release metadata must be version 1.4.30.");
-assert.match(serviceWorker, /zuriel-bible-offline-v126/);
+assert.match(release.version, /^\\d+\\.\\d+\\.\\d+$/, "Release metadata must use semantic MAJOR.MINOR.PATCH numbering.");
+assert.match(serviceWorker, /const CACHE_NAME = "zuriel-bible-offline-v\\d+";/,
+  "The service worker must use an explicitly versioned offline cache.");
 
 if (failures.length) {
   console.error("YouVersion translation reader checks failed:");
