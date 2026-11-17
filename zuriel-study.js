@@ -767,7 +767,38 @@
     "Matthew 8:24": [
       { book:"Mark", chapter:4, verse:37, relationship:"Parallel passage", note:"Mark's account of the same storm on the lake." },
       { book:"Luke", chapter:8, verse:23, relationship:"Parallel passage", note:"Luke's account of the same storm on the lake." }
-    ]
+    ],
+
+    "Matthew 5:21": [{ book:"Exodus", chapter:20, verse:13, relationship:"Direct quotation", note:"Jesus refers to the commandment against murder." }],
+    "Matthew 5:27": [{ book:"Exodus", chapter:20, verse:14, relationship:"Direct quotation", note:"Jesus refers to the commandment against adultery." }],
+    "Matthew 9:13": [{ book:"Hosea", chapter:6, verse:6, relationship:"Direct quotation", note:"Jesus quotes Hosea to teach the priority of mercy over empty ritual." }],
+    "Matthew 11:10": [{ book:"Malachi", chapter:3, verse:1, relationship:"Prophecy / fulfilment", note:"Jesus identifies the promised messenger who prepares the way." }],
+    "Matthew 13:14": [{ book:"Isaiah", chapter:6, verse:9, relationship:"Direct quotation", note:"Jesus applies Isaiah's words about hearing without understanding." }],
+    "Matthew 15:4": [{ book:"Exodus", chapter:20, verse:12, relationship:"Direct quotation", note:"Jesus cites the command to honour father and mother." }],
+    "Matthew 15:8": [{ book:"Isaiah", chapter:29, verse:13, relationship:"Direct quotation", note:"Jesus quotes Isaiah's rebuke of honour expressed only with the lips." }],
+    "Matthew 22:37": [{ book:"Deuteronomy", chapter:6, verse:5, relationship:"Direct quotation", note:"Jesus gives the great command to love God with the whole being." }],
+    "Matthew 22:39": [{ book:"Leviticus", chapter:19, verse:18, relationship:"Direct quotation", note:"Jesus quotes the command to love one's neighbour." }],
+    "Matthew 22:44": [{ book:"Psalm", chapter:110, verse:1, relationship:"Direct quotation", note:"Jesus quotes David's enthronement psalm." }],
+    "Mark 7:6": [{ book:"Isaiah", chapter:29, verse:13, relationship:"Direct quotation", note:"Mark records Jesus applying Isaiah's words about heart and worship." }],
+    "Mark 12:10": [{ book:"Psalm", chapter:118, verse:22, relationship:"Direct quotation", note:"Jesus quotes the rejected stone that becomes the cornerstone." }],
+    "Luke 20:17": [{ book:"Psalm", chapter:118, verse:22, relationship:"Direct quotation", note:"Jesus quotes the rejected stone that becomes the cornerstone." }],
+    "John 1:23": [{ book:"Isaiah", chapter:40, verse:3, relationship:"Direct quotation", note:"John the Baptist identifies his mission with Isaiah's voice in the wilderness." }],
+    "John 2:17": [{ book:"Psalm", chapter:69, verse:9, relationship:"Direct quotation", note:"The disciples remember the psalm about zeal for God's house." }],
+    "John 10:34": [{ book:"Psalm", chapter:82, verse:6, relationship:"Direct quotation", note:"Jesus quotes the wording of Psalm 82 in His response." }],
+    "John 13:18": [{ book:"Psalm", chapter:41, verse:9, relationship:"Direct quotation", note:"Jesus connects the betrayal with the psalm's words about a trusted companion." }],
+    "John 19:24": [{ book:"Psalm", chapter:22, verse:18, relationship:"Prophecy / fulfilment", note:"John connects the soldiers' casting lots with the psalm." }],
+    "Acts 3:22": [{ book:"Deuteronomy", chapter:18, verse:15, relationship:"Direct quotation", note:"Peter identifies Jesus with the prophet Moses said God would raise up." }],
+    "Acts 4:11": [{ book:"Psalm", chapter:118, verse:22, relationship:"Direct quotation", note:"Peter applies the rejected-stone psalm to Jesus." }],
+    "Acts 13:33": [{ book:"Psalm", chapter:2, verse:7, relationship:"Direct quotation", note:"Paul quotes the royal sonship psalm in his message about Jesus." }],
+    "Romans 8:36": [{ book:"Psalm", chapter:44, verse:22, relationship:"Direct quotation", note:"Paul quotes the psalm while describing suffering for God's sake." }],
+    "Romans 9:25": [{ book:"Hosea", chapter:2, verse:23, relationship:"Direct quotation", note:"Paul applies Hosea's promise concerning those called God's people." }],
+    "Romans 12:19": [{ book:"Deuteronomy", chapter:32, verse:35, relationship:"Direct quotation", note:"Paul quotes the Lord's declaration that vengeance belongs to Him." }],
+    "Romans 15:3": [{ book:"Psalm", chapter:69, verse:9, relationship:"Direct quotation", note:"Paul uses the psalm to describe Christ's self-giving endurance." }],
+    "Galatians 3:11": [{ book:"Habakkuk", chapter:2, verse:4, relationship:"Direct quotation", note:"Paul quotes the prophet on the righteous living by faith." }],
+    "Hebrews 10:37": [{ book:"Habakkuk", chapter:2, verse:3, relationship:"Direct quotation", note:"The writer draws on Habakkuk's vision and its appointed time." }],
+    "1 Peter 2:6": [{ book:"Isaiah", chapter:28, verse:16, relationship:"Direct quotation", note:"Peter quotes the chosen cornerstone laid in Zion." }],
+    "1 Peter 2:7": [{ book:"Psalm", chapter:118, verse:22, relationship:"Direct quotation", note:"Peter quotes the stone rejected by builders and made the cornerstone." }],
+    "Revelation 1:7": [{ book:"Zechariah", chapter:12, verse:10, relationship:"Prophecy / fulfilment", note:"Revelation echoes Zechariah's vision of the one who is pierced." }]
   };
 
   async function loadRelatedScriptures(ref) {
