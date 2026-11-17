@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "title": "Zuriel Connected Scripture Trails — Batch 2",
   "description": "A second curated collection of contextual pathways, extending book coverage and linking Old Testament books with related canonical passages.",
-  "count": 24,
+  "count": 25,
   "bookCoverage": [
     "Ruth",
     "1 Samuel",
@@ -996,6 +996,46 @@
         "What faithful response follows when the whole context is considered?"
       ],
       "lifeApplication": "Record one insight grounded in context, one prayerful response, and one practical action consistent with the passages."
+    },
+    {
+      "id": "connected-scripture-trail-066",
+      "title": "Malachi: Covenant Faithfulness and the Coming Messenger",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Malachi 1:6–14",
+          "connectionNote": "Read Malachi's challenge to careless worship and covenant dishonour."
+        },
+        {
+          "step": 2,
+          "reference": "Malachi 2:10–16",
+          "connectionNote": "Observe the prophet's concern for covenant faithfulness and justice."
+        },
+        {
+          "step": 3,
+          "reference": "Malachi 3:1–5",
+          "connectionNote": "Trace the promise of a messenger who prepares the way."
+        },
+        {
+          "step": 4,
+          "reference": "Malachi 3:6–12",
+          "connectionNote": "Consider the call to return to God and the promise of his unchanging faithfulness."
+        },
+        {
+          "step": 5,
+          "reference": "Malachi 4:1–6",
+          "connectionNote": "Read the closing promise of the coming day and messenger within Malachi's final appeal."
+        }
+      ],
+      "overview": "Explore Malachi's call to faithful worship, covenant integrity, justice, return to God, and hope for the messenger who prepares the way.",
+      "contextCaution": "Malachi addresses post-exilic Judah in its own covenant setting; the New Testament's use of messenger imagery should be read in its Gospel context.",
+      "studyQuestions": [
+        "What failures does Malachi identify among the people and leaders?",
+        "How are worship, covenant faithfulness, and justice connected?",
+        "What does the promised messenger mean within Malachi and in later Gospel interpretation?",
+        "What does returning to God look like in the passage's original setting and in faithful application?"
+      ],
+      "lifeApplication": "Identify one area where worship and daily integrity need to align, then record a practical response shaped by the passage."
     }
   ]
 }
