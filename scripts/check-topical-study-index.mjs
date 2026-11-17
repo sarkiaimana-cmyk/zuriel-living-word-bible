@@ -28,7 +28,7 @@ const books = new Set([
   "3 john","jude","revelation"
 ]);
 const topics = index.list();
-assert.ok(topics.length >= 130, "The curated topical library should contain at least 130 reviewed topics.");
+assert.ok(topics.length >= 160, "The curated topical library should contain at least 160 reviewed topics.");
 // Long topical explanations should remain available without overwhelming the reader.
 assert.ok(studyUiSource.split('document.createElement("details")').length - 1 >= 4,
   "Topical explanations, language notes, related passages and reflection questions must be expandable.");
@@ -44,6 +44,8 @@ for (const topic of topics) {
     assert.ok(typeof topic[field] === "string" && topic[field].trim(), topic.title + " is missing " + field + ".");
   }
   assert.ok(Array.isArray(topic.questions) && topic.questions.length >= 2, topic.title + " needs reflection questions.");
+  assert.ok(Array.isArray(topic.references) && topic.references.length >= 5, topic.title + " needs at least five Scripture references.");
+  assert.ok(Array.isArray(topic.relatedExplanations) && topic.relatedExplanations.length === topic.references.length, topic.title + " needs a context explanation for every Scripture reference.");
   assert.ok(Array.isArray(topic.languageWords), topic.title + " needs a languageWords array.");
   assert.ok(topic.languageWords.length >= 2, topic.title + " needs at least two contextual original-language study entries.");
   for (const word of topic.languageWords) {
@@ -128,7 +130,7 @@ for (const topic of topics) {
     }
   }
 }
-assert.ok(wordReferenceCount >= 40, "Topical original-language entries should link to their verified Scripture contexts.");
+assert.ok(wordReferenceCount >= 90, "The expanded topical lexicon should include at least 90 verified word-to-Scripture links.");
 assert.ok(studyUiSource.includes('refsLabel.textContent = "Word-study passages:"'),
   "Topical Hebrew and Greek entries must display their related Scripture references.");
 assert.ok(studyUiSource.includes("openReference(item, referenceButton)"),
