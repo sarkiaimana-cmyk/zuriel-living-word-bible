@@ -1675,7 +1675,7 @@
         else if (definition.includes(term)) score = 20;
         return { entry, index, score };
       }).filter(item => item.score > 0)
-        .sort((a, b) => b.score - a.score || a.index - b.index);
+        .sort((a, b) => b.score - a.score || (!term ? a.entry[0].localeCompare(b.entry[0]) : a.index - b.index));
       const totalMatches = rankedMatches.length;
       const matches = rankedMatches.slice(0, dictionaryVisibleLimit);
 
