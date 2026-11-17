@@ -1248,6 +1248,13 @@
         </details>
 
         <details>
+          <summary>🧭 Guided Life Application</summary>
+          <div class="study-body" id="zurielLifeApplication" aria-live="polite">
+            <p>Select a Scripture verse to build a careful, passage-centred application.</p>
+          </div>
+        </details>
+
+        <details>
           <summary>🙏 3. The Light — Prayer, Declaration and Faith</summary>
           <div class="study-body" id="zurielFaithResponse" aria-live="polite">
             <p>Select a verse to see a connected prayer, declaration, affirmation, confession and inspiration where a curated entry is available.</p>
@@ -1900,6 +1907,74 @@
       target.appendChild(studioButton);
     }
 
+    // A guided application is intentionally a set of text-grounded questions,
+    // not an automatic claim about what every reader must do in every situation.
+    function renderLifeApplication(ref) {
+      const target = document.getElementById("zurielLifeApplication");
+      if (!target || !ref) return;
+      target.replaceChildren();
+
+      const heading = document.createElement("h3");
+      heading.textContent = "Apply " + ref.book + " " + ref.chapter + ":" + ref.verse;
+      target.appendChild(heading);
+
+      const selectedText = document.createElement("blockquote");
+      selectedText.className = "study-verse-context";
+      selectedText.textContent = ref.text || "Selected verse text is not available.";
+      target.appendChild(selectedText);
+
+      const reminder = document.createElement("p");
+      reminder.className = "study-small";
+      reminder.textContent = "Read the surrounding paragraph before applying this verse. The questions below are reflection prompts, not a substitute for the passage's original meaning.";
+      target.appendChild(reminder);
+
+      const steps = [
+        ["Observe", "What does this verse actually say? Note its main subject, action, promise, command, reason or warning."],
+        ["Understand", "What did these words mean to the original audience? Consider the chapter, book purpose, historical setting and literary form."],
+        ["Respond to God", "What does this passage reveal about God's character, purposes or work? What response of trust, worship, repentance or gratitude is appropriate?"],
+        ["Practise the truth", "What specific attitude, decision, habit or action should be shaped by this passage? Keep the application consistent with the whole teaching of Scripture."],
+        ["Love and responsibility", "How might this truth affect the way you treat family, neighbours, the church, people in need or those under your care?"],
+        ["Pray and review", "What will you ask God to help you live out? What practical step can you review honestly after putting the Word into practice?"]
+      ];
+
+      const list = document.createElement("ol");
+      steps.forEach(function(step) {
+        const item = document.createElement("li");
+        const title = document.createElement("strong");
+        title.textContent = step[0] + ": ";
+        const copy = document.createElement("span");
+        copy.textContent = step[1];
+        item.append(title, copy);
+        list.appendChild(item);
+      });
+      target.appendChild(list);
+
+      const applyButton = document.createElement("button");
+      applyButton.type = "button";
+      applyButton.className = "study-action";
+      applyButton.textContent = "Add these prompts to My Personal Study";
+      applyButton.addEventListener("click", function() {
+        const field = document.getElementById("zurielStudyApplication");
+        const status = document.getElementById("zurielStudySaveStatus");
+        if (!field) {
+          if (status) status.textContent = "The personal study field is not available.";
+          return;
+        }
+        const addition = "Guided application — " + ref.book + " " + ref.chapter + ":" + ref.verse +
+          "\\nObserve: What does the verse say?\\nUnderstand: What did it mean in its original context?" +
+          "\\nRespond: What response to God is appropriate?\\nPractise: What specific action or attitude should change?" +
+          "\\nLove: How should this shape my treatment of others?\\nPray and review: What step will I take and review?";
+        if (!field.value.includes("Guided application — " + ref.book + " " + ref.chapter + ":" + ref.verse)) {
+          field.value = field.value.trim()
+            ? field.value.trim() + "\\n\\n" + addition
+            : addition;
+        }
+        field.focus();
+        if (status) status.textContent = "Guided prompts added. Review and personalise them, then choose Save My Study.";
+      });
+      target.appendChild(applyButton);
+    }
+
     // Build an offline study framework from the actual KJV chapter currently
     // on screen. It gives the reader immediate literary context without
     // pretending that automated prompts are a scholarly commentary.
@@ -2212,6 +2287,7 @@
         panel.style.display = "block";
         highlightVerse(verse);
         renderStudyFramework(selectedReference);
+        renderLifeApplication(selectedReference);
         renderFaithResponse(selectedReference);
         paintSavedHighlights(selectedReference);
         loadSavedNote();
