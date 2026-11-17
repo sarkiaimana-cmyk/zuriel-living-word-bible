@@ -48,6 +48,10 @@ try {
 }
 
 const checks = [
+  ["highlight storage rejects malformed top-level data", "!Array.isArray(saved)"],
+  ["word highlights retain selected token identity", "record.wordTokens = record.wordTokens || {}"],
+  ["word highlights compare saved token text", "savedToken.normalize(\"NFC\").toLowerCase()"],
+  ["highlight storage failures are reported", "Device storage may be full or unavailable."],
   ["KJV word-annotation source", 'const KJV_API = "https://bible.helloao.org/api/eng_kjv/"'],
   ["KJV simplified chapter is loaded", '.simple.json'],
   ["KJV simplified word annotations are loaded", '.words.simple.json'],
