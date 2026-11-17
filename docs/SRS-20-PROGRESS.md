@@ -49,7 +49,7 @@ A feature is not considered complete merely because code exists. Completion requ
 - Advanced Bible Study language labelling was merged through **PR #6** on 2026-11-15. It labels Hebrew, Greek, or Aramaic only when the source record explicitly identifies the language; otherwise it displays a neutral unknown-language label. Broader morphology, lexical coverage and scholarly review remain outstanding.
 - **PR #9** merged a consistency fix so normalized Hebrew/Aramaic metadata controls both the visible label and right-to-left script direction.
 - **PR #10** merged safer lexicon rendering: unknown language metadata is not labelled Hebrew by default, empty lexicon senses are rejected, and morphology is attributed to the source only when supplied.
-- **PR #11** merged the first dedicated Words of Jesus study centre: 24 curated themes, search, theme filters, Gospel reference navigation, contextual study links, and saving to My Library. The teaching index still needs a broader reference audit and expansion.
+- **PR #11** merged the first dedicated Words of Jesus study centre: 50 curated themes, search, theme filters, Gospel reference navigation, contextual study links, and saving to My Library. The teaching index still needs a broader reference audit and expansion.
 - **PR #15** merged contextual Strong's-index occurrence cards with KJV verse excerpts and an explicit caution that one index does not guarantee identical nuance in every context.
 - **PR #16** merged source-accurate KJV word selection: KJV word annotations are aligned by token offsets and joined to BSB interlinear records by Strong's number. It no longer guesses from BSB English glosses; mismatched source records are reported without inventing a link. Six focused automated tests pass. Berean interlinear attribution and STEPBible/Tyndale House CC BY 4.0 lexicon attribution are displayed.
 - **PR #18** merged Android version metadata derived from version.json and a pre-upload signed APK package/version verification step. The first build on this updated workflow must pass before device installation is considered.
@@ -100,7 +100,7 @@ A feature is not considered complete merely because code exists. Completion requ
 - **PR #111** merged: the 30-day Walk with Jesus plan. Its 30 passages are checked against the bundled KJV, and encrypted backup validation rejects progress outside the plan's 30 days.
 - **PR #112** merged: AI pilot security boundary and runtime safeguards. This is not a live AI Assistant, has no connected provider/API key, and remains gated from deployment.
 - **PR #113** merged: reopening the same chapter preserves the selected verse; opening another chapter starts at verse 1; malformed prior position data cannot block chapter opening. The read-aloud event follows the saved verse.
-- **Current main commit:** `c999f29707672bcbb5d343cbbaee8e5e0a102d60`.
+- **Application integration commit for the features above:** `c999f29707672bcbb5d343cbbaee8e5e0a102d60`; subsequent commits on `main` updated this scorecard and its evidence.
 - **Current app metadata:** version **1.4.26**; Android versionCode **1004026**; service-worker cache **zuriel-bible-offline-v121**.
 - **Current Home Scripture behaviour:** 54 curated identity Scripture entries; the hero rotation interval is exactly **15,000 ms** and uses offline KJV retrieval.
 - **Words of Jesus:** the live catalogue currently contains **50 curated teaching themes**, not 24. The automated checker validates each reference against the bundled 66-book KJV.
