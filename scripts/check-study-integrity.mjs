@@ -245,6 +245,24 @@ if (!study.includes('illustration.loading = "lazy"') || !study.includes('illustr
 if (!study.includes('body.prepend(illustration)')) {
   failures.push(["Study Centre illustration placement", "each section illustration must appear before its study content"]);
 }
+// Exercise concordance matching independently of the interface.
+try {
+  const escapeConcordanceTerm = term =>
+    term.replace(/[-\\/\\\\^$*+?.()|[\\]{}]/g, "\\\\if (failures.length) {
+  console.error("Original-language study integrity checks failed:");");
+  const wholeWord = term => new RegExp(
+    "(^|[^a-z0-9])" + escapeConcordanceTerm(term) + "([^a-z0-9]|$)", "i"
+  );
+  assert.equal(wholeWord("grace").test("God gives grace freely."), true);
+  assert.equal(wholeWord("grace").test("graceful"), false);
+  assert.equal(wholeWord("a.b").test("an a.b example"), true);
+  assert.equal(wholeWord("a.b").test("an axb example"), false);
+  assert.equal("in the beginning God".toLowerCase().includes("in the beginning"), true);
+  assert.equal("in a beginning God".toLowerCase().includes("in the beginning"), false);
+} catch (error) {
+  failures.push(["concordance matching runtime", error.message]);
+}
+
 if (failures.length) {
   console.error("Original-language study integrity checks failed:");
   for (const [label, detail] of failures) console.error(" - " + label + ": " + detail);
