@@ -306,7 +306,8 @@ try {
     assert.ok(typeof sourceVerse === "string" && sourceVerse.trim(), "curated source verse exists: " + sourceReference);
     assert.ok(Array.isArray(targets) && targets.length, "curated source has at least one target: " + sourceReference);
     for (const target of targets) {
-      const targetBook = bibleBooks.find(book => book.name === target.book);
+      const targetBookName = target.book === "Psalm" ? "Psalms" : target.book;
+      const targetBook = bibleBooks.find(book => book.name === targetBookName);
       assert.ok(targetBook, "curated target book exists: " + target.book);
       assert.ok(Number.isInteger(target.chapter) && target.chapter >= 1 && target.chapter <= targetBook.chapters,
         "curated target chapter is valid: " + target.book);
