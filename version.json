@@ -1,4 +1,4 @@
 {
-  "version": "1.4.33",
-  "releaseNotes": "Repairs Home dashboard initialization, stabilises Scripture display, adds distinct Home faith responses, connects declarations and study pathways to the Open Book Studio, and improves word-study related Scripture links."
+  "version": "1.4.34",
+  "releaseNotes": "Completes the Scripture-specific prayer, declaration, affirmation, faith confession and inspiration fields when saved declarations open in the Open Book Card Studio."
 }

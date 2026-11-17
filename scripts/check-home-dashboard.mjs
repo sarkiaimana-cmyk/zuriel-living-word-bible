@@ -56,6 +56,12 @@ requireText(home, '["personal", "📝", "My Space"]', "The six-item primary navi
 requireText(library, "zlib-study-topic", "Illustrated Deep Bible Study pathways");
 requireText(library, "openStudyTopic(topic)", "Actionable Deep Bible Study pathways");
 requireText(library, "window.ZurielStudyArtwork(index, topic)", "Offline artwork in the Library study pathways");
+
+requireText(library, "window.ZurielFaithContent.find(reference)", "Verse-specific content handoff from saved declarations");
+for (const field of ["response.prayer","response.declaration","response.affirmation","response.confession","response.inspiration"]) {
+  requireText(library, field, "Complete Open Book Studio field: " + field);
+}
+
 requireText(library, 'if (page === "declarations")', "The declarations content page");
 requireText(library, 'if (page === "devotional")', "The devotional content page");
 requireText(library, 'if (page === "saved")', "The saved-library content page");
