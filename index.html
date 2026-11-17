@@ -1225,49 +1225,45 @@ window.getChapterVerseCount = async function (book, chapter) {
 /* OFFLINE FULL-BIBLE SEARCH */
 
 window.ZurielBibleSearch = {
-  search: async function (query, limit) {
+  search: async function (query, limit, mode) {
     const term = String(query || "").trim().toLowerCase();
-
-    if (term.length < 3) {
-      throw new Error("Please enter at least 3 characters.");
+    if (term.length < 3) throw new Error("Please enter at least 3 characters.");
+    if (mode && mode !== "word" && mode !== "phrase") {
+      throw new Error("Choose an exact word or phrase search.");
     }
-
     const data = await loadKJV();
     const maximum = Number.isInteger(limit) && limit > 0
-      ? Math.min(limit, 50)
-      : 30;
+      ? Math.min(limit, mode ? 200 : 50) : 30;
+    const escaped = term.replace(/[.*+?^\${}()|[\]\\]/g, "\\$&");
+    const exactWordPattern = mode === "word"
+      ? new RegExp("(^|[^a-z0-9])" + escaped + "([^a-z0-9]|$)", "i")
+      : null;
     const matches = [];
-
     for (const book of bibleBooks) {
       const code = bookCodes[book.name];
       const chapters = data[code];
-
       if (!Array.isArray(chapters)) continue;
-
       for (let chapterIndex = 0; chapterIndex < chapters.length; chapterIndex++) {
         const verses = chapters[chapterIndex];
         if (!Array.isArray(verses)) continue;
-
         for (let verseIndex = 0; verseIndex < verses.length; verseIndex++) {
           const verseText = verses[verseIndex];
-
-          if (
-            typeof verseText === "string" &&
-            verseText.toLowerCase().includes(term)
-          ) {
+          const searchable = typeof verseText === "string" ? verseText : "";
+          const found = mode === "word"
+            ? exactWordPattern.test(searchable)
+            : searchable.toLowerCase().includes(term);
+          if (found) {
             matches.push({
               book: book.name,
               chapter: chapterIndex + 1,
               verse: verseIndex + 1,
-              text: String(verseText).replace(/^¶\s*/, "")
+              text: searchable.replace(/^¶\s*/, "")
             });
-
             if (matches.length >= maximum) return matches;
           }
         }
       }
     }
-
     return matches;
   }
 };
