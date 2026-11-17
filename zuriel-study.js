@@ -1844,7 +1844,7 @@
         if (Array.isArray(entry[2]) && entry[2].length) {
           const aliases = document.createElement("p");
           aliases.className = "study-small";
-          aliases.textContent = "Also indexed as: " + entry[2].join(" • ");
+          aliases.textContent = "Also searchable as: " + entry[2].join(" • ");
           item.appendChild(aliases);
         }
         const advanced = entry[3];
