@@ -1,4 +1,4 @@
 {
-  "version": "1.4.52",
-  "releaseNotes": "Corrected display labels for curated direct quotations, prophetic fulfilment links, scriptural promises and patterns in the Connected Scriptures panel; expanded offline references remain validated against the KJV."
+  "version": "1.4.53",
+  "releaseNotes": "Expanded the offline dictionary with curated Hebrew and Greek transliterations and alternate biblical terms; improved alias-aware search. Strengthened KJV concordance normalization, exact word and phrase matching, and full-corpus occurrence totals while preserving original verse wording. This remains an English KJV concordance, not a Hebrew/Greek lemma concordance."
 }
