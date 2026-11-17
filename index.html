@@ -1053,8 +1053,11 @@ async function openChapter(book, chapter) {
     verseActionHint.hidden = false;
     verseActionHint.textContent = "Selected " + (selectedVerseInfo ? selectedVerseInfo.reference : "verse") +
       " • Choose another study option.";
+    verseActions.classList.remove("has-study-content");
     verseActions.scrollTop = 0;
   }
+
+  window.addEventListener("zuriel:word-context-closed", restoreStudyPanelToReader);
 
   function positionVerseOverlay() {
     if (!selectedVerseInfo) return;
@@ -1248,6 +1251,7 @@ async function openChapter(book, chapter) {
         selectVerseForGloryCard(index + 1, displayVerseText);
         if (window.ZurielStudy &&
             typeof window.ZurielStudy.openWordInContext === "function") {
+          openSelectedStudy("Word meanings");
           window.ZurielStudy.openWordInContext(
             book, chapter, index + 1, displayVerseText, part, thisWordIndex
           );
