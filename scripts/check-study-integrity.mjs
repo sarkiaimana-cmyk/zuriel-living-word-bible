@@ -48,10 +48,6 @@ try {
 }
 
 const checks = [
-    ["verse action box is a fixed overlay, not an in-flow section", "position:fixed !important"],
-    ["verse action box does not insert itself after the verse", "selectedVerseElement.after(verseActions)"],
-    ["verse study content is mounted inside the selected-verse overlay", "verseActions.appendChild(panel)"],
-    ["verse overlay includes dictionary and commentary options", "Commentary & theology"],
     ["study panel does not scroll the reader away from Scripture", "do not scroll away from Scripture"],
   ["dictionary search normalizes Unicode accents", '.normalize("NFD")'],
   ["dictionary exact-title matches rank first", "title === term) score = 100"],
@@ -97,6 +93,9 @@ for (const [label, fragment] of checks) {
   if (!study.includes(fragment)) failures.push([label, "missing from zuriel-study.js"]);
 }
 const readerChecks = [
+  ["verse action box is a fixed overlay, not an in-flow section", "position:fixed !important"],
+  ["verse study content is mounted inside the selected-verse overlay", "verseActions.appendChild(panel)"],
+  ["verse overlay includes dictionary and commentary options", "Commentary & theology"],
   ["concordance supports exact whole-word searches", 'new RegExp("(^|[^a-z0-9])" + escaped + "([^a-z0-9]|$)", "i")'],
   ["concordance supports exact phrase searches", "searchable.includes(term)"],
   ["concordance normalizes Unicode and diacritics", '.normalize("NFD")'],
@@ -105,6 +104,9 @@ const readerChecks = [
   ["concordance supports up to 200 matches", "Math.min(limit, mode ? 200 : 50)"],
   ["concordance scans all verses before applying the display limit", "const visible = matches.slice(0, maximum)"]
 ];
+if (reader.includes("selectedVerseElement.after(verseActions)")) {
+  failures.push(["verse action box does not push later verses down", "legacy in-flow insertion remains in index.html"]);
+}
 for (const [label, fragment] of readerChecks) {
   if (!reader.includes(fragment)) failures.push([label, "missing from index.html Bible search engine"]);
 }
