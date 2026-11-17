@@ -687,7 +687,7 @@
               throw new Error("The connected verse text is not present in the reader.");
             }
             const targetText = targetVerse.textContent
-              .replace(/^\\s*\\d+\\.?\\s*/, "").trim();
+              .replace(/^\s*\d+\.?\s*/, "").trim();
             targetVerse.scrollIntoView({ behavior: "smooth", block: "center" });
             targetVerse.classList.add("zuriel-selected-verse");
             if (window.ZurielStudy &&
