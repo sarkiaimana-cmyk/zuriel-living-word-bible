@@ -49,7 +49,7 @@ try {
 
 const checks = [
   ["dictionary search normalizes Unicode accents", '.normalize("NFD")'],
-  ["dictionary search collapses whitespace", '.replace(/\\s+/g, " ")'],
+  ["dictionary search collapses whitespace", '.replace(/\s+/g, " ")'],
   ["dictionary exact-title matches rank first", "title === term) score = 100"],
   ["dictionary title-prefix matches rank highly", "title.startsWith(term)"],
   ["dictionary supports multi-word searches", "tokens.every(token => combined.includes(token))"],
@@ -59,10 +59,7 @@ const checks = [
   ["dictionary result count is reported", '+ " matching entries."'],
   ["dictionary searches curated aliases", "const aliases = Array.isArray(entry[2]) ? entry[2].map(normalize) : []"],
   ["dictionary displays alternate index terms", '"Also indexed as: " + entry[2].join(" • ")'],
-  ["concordance normalizes Unicode and diacritics", '.normalize("NFD")'],
   ["concordance normalizes curly apostrophes", '.replace(/[’‘]/g, "\'")'],
-  ["concordance reports total occurrence count", "visible.totalMatches = matches.length"],
-  ["concordance preserves original KJV verse wording", "text: verseOriginal.replace"],
   ["concordance interface is part of the Study Centre", 'id="zurielConcordanceQuery"'],
   ["concordance results open the selected verse", "window.selectBibleVerse(item.verse)"],
   ["cross-reference relationships are not invented", "relationship not classified by source."],
@@ -99,6 +96,10 @@ for (const [label, fragment] of checks) {
 const readerChecks = [
   ["concordance supports exact whole-word searches", 'new RegExp("(^|[^a-z0-9])" + escaped + "([^a-z0-9]|$)", "i")'],
   ["concordance supports exact phrase searches", "searchable.includes(term)"],
+  ["concordance normalizes Unicode and diacritics", '.normalize("NFD")'],
+  ["concordance normalizes curly apostrophes", "replace(/[’‘]/g"],
+  ["concordance reports total occurrence count", "visible.totalMatches = matches.length"],
+  ["concordance preserves original KJV verse wording", "text: verseOriginal.replace"],
   ["concordance supports up to 200 matches", "Math.min(limit, mode ? 200 : 50)"],
   ["concordance scans all verses before applying the display limit", "const visible = matches.slice(0, maximum)"]
 ];
@@ -274,7 +275,7 @@ try {
   assert.equal("in the beginning God".toLowerCase().includes("in the beginning"), true);
   assert.equal("in a beginning God".toLowerCase().includes("in the beginning"), false);
   const normalizeSearchText = value => String(value || "")
-    .normalize("NFD").replace(/[\\u0300-\\u036f]/g, "")
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
     .replace(/[’‘]/g, "'").replace(/\\s+/g, " ").trim().toLowerCase();
   assert.equal(normalizeSearchText("  HÉSED  "), "hesed");
   assert.equal(normalizeSearchText("GOD’S   WORD"), "god's word");
