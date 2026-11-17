@@ -1,4 +1,4 @@
 {
-  "version": "1.4.50",
-  "releaseNotes": "Improved Advanced Bible Study search across topic explanations, reflection questions, Scripture references and Hebrew/Greek word notes, with relevance-ranked results and accent-insensitive transliteration matching."
+  "version": "1.4.51",
+  "releaseNotes": "Expanded curated offline cross-references with additional direct quotations, prophetic fulfilment links and scriptural patterns, each explicitly classified and validated against the bundled KJV."
 }
