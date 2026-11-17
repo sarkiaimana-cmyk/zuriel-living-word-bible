@@ -114,7 +114,7 @@ for (const topic of topics) {
   for (const word of topic.languageWords) {
     if (!Array.isArray(word.references)) continue;
     for (const ref of word.references) {
-      const book = bookLookup.get(String(ref.book || "").toLowerCase().replace(/\\s+/g, " ").trim());
+      const book = bookLookup.get(String(ref.book || "").toLowerCase().replace(/\s+/g, " ").trim());
       assert.ok(book, topic.title + " word " + word.term + " refers to unknown book " + ref.book + ".");
       assert.ok(ref.chapter <= book.chapters, topic.title + " word " + word.term + " refers to a missing chapter.");
       const code = readerMap[book.name];
