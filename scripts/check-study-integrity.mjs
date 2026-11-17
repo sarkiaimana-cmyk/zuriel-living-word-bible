@@ -292,7 +292,7 @@ try {
   if (start < 0 || end <= start) throw new Error("Curated cross-reference data could not be isolated.");
   const declaration = study.slice(start, end + "\n  };".length)
     .replace(/^const curatedCrossReferences = /, "")
-    .replace(/;\\s*$/, "");
+    .replace(/;\s*$/, "");
   const curated = vm.runInNewContext("(" + declaration + ")", {}, { timeout: 1000 });
   const entries = Object.entries(curated);
   assert.ok(entries.length >= 19, "at least 19 curated Scripture source passages are maintained");
