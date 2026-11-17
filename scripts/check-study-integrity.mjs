@@ -295,7 +295,7 @@ try {
     .replace(/;\s*$/, "");
   const curated = vm.runInNewContext("(" + declaration + ")", {}, { timeout: 1000 });
   const entries = Object.entries(curated);
-  assert.ok(entries.length >= 19, "at least 19 curated Scripture source passages are maintained");
+  assert.ok(entries.length >= 70, "at least 70 curated Scripture source passages are maintained");
   let checkedTargets = 0;
   for (const [sourceReference, targets] of entries) {
     const sourceMatch = sourceReference.match(/^(.+?)\s+(\d+):(\d+)$/);
