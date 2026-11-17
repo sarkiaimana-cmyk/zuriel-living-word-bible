@@ -904,6 +904,7 @@
       const relationshipLabels = {
         quotation: "Direct quotation",
         quote: "Direct quotation",
+        "direct quotation": "Direct quotation",
         parallel: "Parallel passage",
         "parallel passage": "Parallel passage",
         prophecy: "Prophecy",
@@ -911,6 +912,8 @@
         fulfillment: "Fulfilment",
         "prophecy fulfilment": "Prophecy / fulfilment",
         "prophecy fulfillment": "Prophecy / fulfilment",
+        "prophecy / fulfilment": "Prophecy / fulfilment",
+        "scriptural promise": "Scriptural promise",
         theme: "Thematic connection",
         thematic: "Thematic connection",
         "thematic connection": "Thematic connection",
