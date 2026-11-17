@@ -1,4 +1,4 @@
 {
-  "version": "1.4.39",
-  "releaseNotes": "Inspection found and corrected an escaped-whitespace parsing defect in connected Scripture navigation so verse numbers are stripped correctly from displayed verse text. Existing offline KJV, study and devotional resources are preserved. Offline cache refreshed."
+  "version": "1.4.40",
+  "releaseNotes": "Improved verse and word highlight storage safeguards. Word highlights now retain selected word text identity to reduce incorrect positional matches if text changes; storage failures are reported instead of silently interrupting the reader. Offline cache refreshed."
 }
