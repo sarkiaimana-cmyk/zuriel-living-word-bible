@@ -28,7 +28,7 @@ const books = new Set([
   "3 john","jude","revelation"
 ]);
 const topics = index.list();
-assert.ok(topics.length >= 100, "The curated topical library should retain at least 100 topics.");
+assert.ok(topics.length >= 130, "The curated topical library should contain at least 130 reviewed topics.");
 // Long topical explanations should remain available without overwhelming the reader.
 assert.ok(studyUiSource.split('document.createElement("details")').length - 1 >= 4,
   "Topical explanations, language notes, related passages and reflection questions must be expandable.");
@@ -45,6 +45,13 @@ for (const topic of topics) {
   }
   assert.ok(Array.isArray(topic.questions) && topic.questions.length >= 2, topic.title + " needs reflection questions.");
   assert.ok(Array.isArray(topic.languageWords), topic.title + " needs a languageWords array.");
+  assert.ok(topic.languageWords.length >= 2, topic.title + " needs at least two contextual original-language study entries.");
+  for (const word of topic.languageWords) {
+    for (const field of ["language","script","term","meaning","note"]) {
+      assert.ok(typeof word[field] === "string" && word[field].trim(), topic.title + " has an incomplete language-word entry (" + field + ").");
+    }
+    assert.ok(["Hebrew","Greek"].includes(word.language), topic.title + " has an unsupported original-language label.");
+  }
   assert.ok(Array.isArray(topic.relatedExplanations) && topic.relatedExplanations.length > 0, topic.title + " needs related passage explanations.");
   assert.ok(Array.isArray(topic.references) && topic.references.length > 0, topic.title + " needs Scripture references.");
   for (const ref of topic.references) {
@@ -99,6 +106,34 @@ for (const topic of topics) {
   }
 }
 
+// Original-language topic entries may carry their own verse links. Verify
+// those references against the same bundled KJV so a lexicon shortcut can
+// never navigate to a missing chapter or verse.
+let wordReferenceCount = 0;
+for (const topic of topics) {
+  for (const word of topic.languageWords) {
+    if (!Array.isArray(word.references)) continue;
+    for (const ref of word.references) {
+      const book = bookLookup.get(String(ref.book || "").toLowerCase().replace(/\s+/g, " ").trim());
+      assert.ok(book, topic.title + " word " + word.term + " refers to unknown book " + ref.book + ".");
+      assert.ok(ref.chapter <= book.chapters, topic.title + " word " + word.term + " refers to a missing chapter.");
+      const code = readerMap[book.name];
+      const chapters = code && kjvData[code];
+      const verses = chapters && chapters[ref.chapter - 1];
+      assert.ok(Array.isArray(verses), topic.title + " word " + word.term + " refers to a missing KJV chapter.");
+      assert.ok(ref.verse <= verses.length, topic.title + " word " + word.term + " refers to a missing KJV verse.");
+      if (ref.endVerse != null) assert.ok(ref.endVerse <= verses.length, topic.title + " word " + word.term + " has a range beyond the KJV chapter.");
+      assert.ok(ref.label, topic.title + " word " + word.term + " is missing a reference label.");
+      wordReferenceCount += 1;
+    }
+  }
+}
+assert.ok(wordReferenceCount >= 40, "Topical original-language entries should link to their verified Scripture contexts.");
+assert.ok(studyUiSource.includes('refsLabel.textContent = "Word-study passages:"'),
+  "Topical Hebrew and Greek entries must display their related Scripture references.");
+assert.ok(studyUiSource.includes("openReference(item, referenceButton)"),
+  "Topical word-study references must open the matching Bible passage.");
+
 const singular = index.findForReference("Psalm 103:8");
 const plural = index.findForReference("Psalms 103:8");
 assert.ok(singular.length > 0, "Psalm 103:8 should resolve to curated topical studies.");
@@ -108,4 +143,4 @@ assert.deepEqual(
   "Psalm and Psalms must resolve to the same topical references."
 );
 assert.ok(index.search("prayer").length > 0, "Topical search should return relevant studies.");
-console.log("Advanced topical study checks passed: " + topics.length + " topics, " + referenceCount + " Scripture links (" + validatedReferences + " verified against the bundled 66-book KJV), required study fields, valid Bible book names, reflection prompts, topical search and Psalm/Psalms alias navigation.");
+console.log("Advanced topical study checks passed: " + topics.length + " topics, " + referenceCount + " topical Scripture links, " + wordReferenceCount + " original-language Scripture links (" + validatedReferences + " topical references verified against the bundled 66-book KJV), required study fields, valid Bible book names, reflection prompts, topical search and Psalm/Psalms alias navigation.");

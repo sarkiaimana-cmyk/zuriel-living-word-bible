@@ -1676,6 +1676,22 @@
             const note = document.createElement("p");
             note.textContent = word.note;
             entry.append(p, meaning, note);
+            if (Array.isArray(word.references) && word.references.length) {
+              const refsLabel = document.createElement("p");
+              refsLabel.className = "study-small";
+              refsLabel.textContent = "Word-study passages:";
+              entry.appendChild(refsLabel);
+              word.references.forEach(function(item) {
+                const referenceButton = document.createElement("button");
+                referenceButton.type = "button";
+                referenceButton.className = "study-link";
+                referenceButton.textContent = item.label;
+                referenceButton.addEventListener("click", function() {
+                  openReference(item, referenceButton);
+                });
+                entry.appendChild(referenceButton);
+              });
+            }
             section.appendChild(entry);
           });
           card.appendChild(section);
