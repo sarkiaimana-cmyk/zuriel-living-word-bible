@@ -1,0 +1,323 @@
+{
+  "schemaVersion": 1,
+  "title": "Zuriel Deep Study Guides — Context, Meaning and Life Application",
+  "description": "Original guided study frameworks for careful reading. Each guide connects observation, interpretation, response and related Scripture while recording cautions against common misreadings.",
+  "method": [
+    "Read the full passage in its book context before using the guide.",
+    "Observation asks what the text says; interpretation asks what it meant in context; application asks how its truth should shape faithful life.",
+    "Cross-references are reading trails, not proof-text substitutes. Read each in its own context.",
+    "Where a guide notes a caution, retain it when presenting summaries or devotional content."
+  ],
+  "guides": [
+    {
+      "id": "deep-study-01",
+      "title": "Creation and vocation",
+      "primaryPassage": "Genesis 1:1–2:3",
+      "contextSummary": "Genesis opens by presenting God as Creator and ordering the world as good. Humanity is made in God's image and given responsibility within creation.",
+      "observationPrompt": "Observe the repeated phrases, the sequence of days, and the relationship between blessing and human vocation.",
+      "interpretationPrompt": "What does the passage say about God's authority, human dignity and care for the created world?",
+      "lifeApplicationPrompt": "How can I reflect God's image through responsible work, relationships and care for creation?",
+      "crossReferences": [
+        "Psalm 8",
+        "Psalm 104",
+        "John 1:1-5",
+        "Colossians 1:15-17"
+      ],
+      "interpretiveCaution": "Do not treat the passage as a modern scientific textbook or ignore its theological claims."
+    },
+    {
+      "id": "deep-study-02",
+      "title": "The call of Abraham",
+      "primaryPassage": "Genesis 12:1-9",
+      "contextSummary": "God calls Abram to leave familiar surroundings and promises land, descendants and blessing that will extend to all families of the earth.",
+      "observationPrompt": "Trace the commands, promises and Abram's response. Notice the altar-building and movement through the land.",
+      "interpretationPrompt": "How does the promise shape the story that follows, and how is blessing meant to reach beyond Abram?",
+      "lifeApplicationPrompt": "Where is faithful obedience required before I can see the whole outcome?",
+      "crossReferences": [
+        "Genesis 15:1-6",
+        "17:1-8",
+        "22:15-18",
+        "Galatians 3:6-14"
+      ],
+      "interpretiveCaution": "Do not turn the promise to Abram into an unconditional guarantee of wealth for every believer."
+    },
+    {
+      "id": "deep-study-03",
+      "title": "The Exodus and deliverance",
+      "primaryPassage": "Exodus 3:1-15; 12:1-14; 14:10-31",
+      "contextSummary": "The Exodus portrays God hearing the oppressed, confronting Pharaoh's power and forming a people who belong to Him.",
+      "observationPrompt": "Notice God's self-identification, the people's cries, the signs and the repeated language of remembering.",
+      "interpretationPrompt": "What does deliverance reveal about God's character and the identity of the redeemed community?",
+      "lifeApplicationPrompt": "How should freedom from oppression shape worship, justice and care for others?",
+      "crossReferences": [
+        "Exodus 15:1-21",
+        "Deuteronomy 6:20-25",
+        "Luke 9:28-31",
+        "1 Corinthians 5:7-8"
+      ],
+      "interpretiveCaution": "Respect the Exodus as Israel's foundational story; later biblical echoes do not erase its original setting."
+    },
+    {
+      "id": "deep-study-04",
+      "title": "Covenant and the law",
+      "primaryPassage": "Exodus 19:1-8; 20:1-17",
+      "contextSummary": "The covenant presents Israel's calling as a people rescued by God and instructed in faithful communal life.",
+      "observationPrompt": "Notice that deliverance precedes the covenant commands. Group the commandments by relationship to God and neighbour.",
+      "interpretationPrompt": "How do grace, covenant identity and obedience relate in this passage?",
+      "lifeApplicationPrompt": "Which command exposes an area where my conduct needs to align with love for God and neighbour?",
+      "crossReferences": [
+        "Deuteronomy 5:1-22",
+        "Matthew 22:34-40",
+        "Romans 13:8-10"
+      ],
+      "interpretiveCaution": "Avoid presenting the law as a means by which Israel earned the Exodus or as though every covenant detail applies identically to Christians."
+    },
+    {
+      "id": "deep-study-05",
+      "title": "The Davidic covenant",
+      "primaryPassage": "2 Samuel 7:1-17",
+      "contextSummary": "God's promise to David gives a lasting royal hope that becomes important in later messianic expectation.",
+      "observationPrompt": "Observe the contrast between David's plan to build a house and God's promise to establish David's house.",
+      "interpretationPrompt": "What does the promise say about God's initiative, kingship and the future of David's line?",
+      "lifeApplicationPrompt": "How does this passage direct hope toward God's faithful rule rather than human status?",
+      "crossReferences": [
+        "Psalm 89:19-37",
+        "Isaiah 9:6-7",
+        "Luke 1:30-33",
+        "Acts 13:22-23"
+      ],
+      "interpretiveCaution": "Distinguish the historical promise to David from later canonical interpretations of its fulfilment."
+    },
+    {
+      "id": "deep-study-06",
+      "title": "Wisdom and the fear of the Lord",
+      "primaryPassage": "Proverbs 1:1-7; 3:1-12",
+      "contextSummary": "Proverbs frames wisdom as skill for faithful living, beginning with reverence for the Lord.",
+      "observationPrompt": "Identify the purpose statements, contrasts and parental instruction. Notice how wisdom touches speech, work and relationships.",
+      "interpretationPrompt": "What does fear of the Lord mean in this context, and how does it differ from mere anxiety?",
+      "lifeApplicationPrompt": "What practical decision would change if I sought wisdom before reacting?",
+      "crossReferences": [
+        "Job 28:28",
+        "Psalm 111:10",
+        "Ecclesiastes 12:13",
+        "James 1:5"
+      ],
+      "interpretiveCaution": "Proverbs often states general patterns of wise living, not mechanical guarantees that every righteous person will avoid hardship."
+    },
+    {
+      "id": "deep-study-07",
+      "title": "Suffering and honest faith",
+      "primaryPassage": "Job 1:1-22; 2:1-10; 38:1-7; 42:1-6",
+      "contextSummary": "Job explores undeserved suffering, human limits and the danger of simplistic explanations for another person's pain.",
+      "observationPrompt": "Track the narrator's description, the friends' claims, Job's protests and God's response from the whirlwind.",
+      "interpretationPrompt": "Which explanations are challenged by the book, and what remains beyond human knowledge?",
+      "lifeApplicationPrompt": "How can I accompany someone in pain without blaming them or pretending to know God's hidden reasons?",
+      "crossReferences": [
+        "Psalm 13",
+        "Psalm 73",
+        "John 9:1-3",
+        "Romans 8:18-39"
+      ],
+      "interpretiveCaution": "Do not use Job to claim that a person's suffering proves hidden sin or that every loss will be restored in the same form."
+    },
+    {
+      "id": "deep-study-08",
+      "title": "The shepherd king",
+      "primaryPassage": "Psalm 23",
+      "contextSummary": "The psalm portrays the Lord as shepherd and host, expressing trust through provision, guidance, protection and welcome.",
+      "observationPrompt": "Follow the movement from pasture and path to the valley and the table. Notice the shift in address from 'He' to 'You'.",
+      "interpretationPrompt": "How does the psalm express trust in God's presence even when danger remains?",
+      "lifeApplicationPrompt": "What does following the Shepherd look like in today's choices and fears?",
+      "crossReferences": [
+        "Psalm 78:52-55",
+        "Ezekiel 34:11-16",
+        "John 10:1-18",
+        "Revelation 7:16-17"
+      ],
+      "interpretiveCaution": "The psalm's comfort does not promise a life without valleys or enemies."
+    },
+    {
+      "id": "deep-study-09",
+      "title": "The servant and the suffering",
+      "primaryPassage": "Isaiah 52:13–53:12",
+      "contextSummary": "The servant song describes suffering, rejection and vindication in language later applied by the New Testament to Jesus.",
+      "observationPrompt": "Observe the servant's actions, the community's confession and the movement from suffering to exaltation.",
+      "interpretationPrompt": "How does the passage connect suffering, bearing wrongdoing and God's saving purpose?",
+      "lifeApplicationPrompt": "How should Christ's self-giving shape humility, gratitude and service?",
+      "crossReferences": [
+        "Matthew 8:14-17",
+        "Acts 8:26-35",
+        "1 Peter 2:21-25"
+      ],
+      "interpretiveCaution": "Read the passage in Isaiah's larger servant context and distinguish direct wording from later apostolic interpretation."
+    },
+    {
+      "id": "deep-study-10",
+      "title": "The new covenant promise",
+      "primaryPassage": "Jeremiah 31:31-34; Ezekiel 36:24-28",
+      "contextSummary": "The prophets announce renewal involving forgiveness, an inwardly written law and God's Spirit enabling faithful life.",
+      "observationPrompt": "Compare what God promises to do in each passage. Note the language of heart, cleansing, knowledge and Spirit.",
+      "interpretationPrompt": "What is new about the promised covenant and how does God bring about transformation?",
+      "lifeApplicationPrompt": "Where do I need God's truth to move from outward familiarity to inward obedience?",
+      "crossReferences": [
+        "Luke 22:19-20",
+        "Hebrews 8:6-13",
+        "10:15-18",
+        "2 Corinthians 3:3-6"
+      ],
+      "interpretiveCaution": "Do not detach the promise from its original setting in Israel's restoration and the New Testament's covenant reading."
+    },
+    {
+      "id": "deep-study-11",
+      "title": "The kingdom announced",
+      "primaryPassage": "Mark 1:14-20",
+      "contextSummary": "Jesus announces God's kingdom and calls people to repent, believe and follow Him.",
+      "observationPrompt": "Notice the time markers, the content of Jesus' announcement and the immediate responses of the first disciples.",
+      "interpretationPrompt": "What does the nearness of God's kingdom demand, and what does following Jesus involve?",
+      "lifeApplicationPrompt": "What must I turn from, trust and reorder as a disciple?",
+      "crossReferences": [
+        "Matthew 4:12-22",
+        "Luke 4:16-21",
+        "Mark 4:1-34"
+      ],
+      "interpretiveCaution": "The kingdom is God's reign; do not reduce it to personal success or a political slogan."
+    },
+    {
+      "id": "deep-study-12",
+      "title": "The Sermon on the Mount",
+      "primaryPassage": "Matthew 5:1-16; 6:19-34; 7:24-29",
+      "contextSummary": "Jesus describes the character and practice of life under God's reign, including humility, mercy, integrity and trust.",
+      "observationPrompt": "Identify the audience, repeated contrasts and images. Read each saying within the sermon rather than in isolation.",
+      "interpretationPrompt": "What kind of righteousness does Jesus describe, and how does it differ from public performance?",
+      "lifeApplicationPrompt": "Which teaching can I put into practice in a concrete relationship or decision today?",
+      "crossReferences": [
+        "Luke 6:20-49",
+        "James 1:22-25",
+        "1 Peter 2:9-12"
+      ],
+      "interpretiveCaution": "Avoid treating individual sayings as detached slogans or using them to shame people facing hardship."
+    },
+    {
+      "id": "deep-study-13",
+      "title": "The Good Samaritan",
+      "primaryPassage": "Luke 10:25-37",
+      "contextSummary": "Jesus answers a question about neighbour-love with a story that challenges boundaries and exposes the difference between knowing and doing.",
+      "observationPrompt": "Observe the lawyer's questions, the characters' actions and Jesus' final question.",
+      "interpretationPrompt": "How does the story redefine the practical question of who acts as a neighbour?",
+      "lifeApplicationPrompt": "Whose need can I respond to with mercy rather than excuse or distance?",
+      "crossReferences": [
+        "Leviticus 19:18,33-34",
+        "Luke 6:27-36",
+        "James 2:14-17"
+      ],
+      "interpretiveCaution": "Do not turn the parable into a claim that salvation is earned by charitable acts; attend to its narrative purpose."
+    },
+    {
+      "id": "deep-study-14",
+      "title": "The lost and found",
+      "primaryPassage": "Luke 15:1-32",
+      "contextSummary": "Three linked parables respond to criticism of Jesus welcoming sinners and highlight God's joy over the lost being found.",
+      "observationPrompt": "Compare what is lost, the search or waiting, the celebration and the reactions of others.",
+      "interpretationPrompt": "What do the stories reveal about God's welcome and the danger of resentment toward mercy?",
+      "lifeApplicationPrompt": "Can I rejoice when someone receives restoration, even when I feel overlooked?",
+      "crossReferences": [
+        "Ezekiel 34:11-16",
+        "Luke 19:1-10",
+        "Matthew 18:10-14"
+      ],
+      "interpretiveCaution": "The older brother is part of the third parable's challenge; do not stop the reading at the younger son's return."
+    },
+    {
+      "id": "deep-study-15",
+      "title": "The vine and branches",
+      "primaryPassage": "John 15:1-17",
+      "contextSummary": "Jesus uses the vine image to describe dependence on Him, fruitfulness, obedience and love among disciples.",
+      "observationPrompt": "Trace the repeated words 'abide', 'fruit', 'love' and 'command'. Notice the movement from image to direct instruction.",
+      "interpretationPrompt": "What is the source of fruitfulness, and how are love and obedience connected?",
+      "lifeApplicationPrompt": "What habits help me remain attentive to Christ's teaching and love others faithfully?",
+      "crossReferences": [
+        "Psalm 80:8-19",
+        "John 13:34-35",
+        "Galatians 5:22-25",
+        "1 John 4:7-12"
+      ],
+      "interpretiveCaution": "Do not interpret fruitfulness only as visible achievement, popularity or material prosperity."
+    },
+    {
+      "id": "deep-study-16",
+      "title": "The resurrection of Jesus",
+      "primaryPassage": "Luke 24:1-12; 1 Corinthians 15:1-8,12-26",
+      "contextSummary": "The Gospel testimony and Paul's summary present Jesus' resurrection as central to apostolic proclamation and Christian hope.",
+      "observationPrompt": "Notice the witnesses, the remembered words of Jesus and Paul's sequence of testimony and consequence.",
+      "interpretationPrompt": "Why does Paul say faith is empty if Christ has not been raised? What follows if He has been raised?",
+      "lifeApplicationPrompt": "How should resurrection hope affect courage, grief, integrity and perseverance?",
+      "crossReferences": [
+        "Acts 2:22-36",
+        "Romans 6:1-11",
+        "1 Peter 1:3-9"
+      ],
+      "interpretiveCaution": "Distinguish the historical claim of resurrection from speculative details not stated in the texts."
+    },
+    {
+      "id": "deep-study-17",
+      "title": "Life in the Spirit",
+      "primaryPassage": "Romans 8:1-17",
+      "contextSummary": "Paul contrasts life governed by the flesh with life in the Spirit and describes adoption and belonging to God.",
+      "observationPrompt": "Follow the repeated contrasts and the language of Spirit, mind, life, sonship and witness.",
+      "interpretationPrompt": "What does the Spirit do, and how does adoption shape the believer's identity?",
+      "lifeApplicationPrompt": "How can I respond to the Spirit's leading through truth, prayer and Christlike conduct?",
+      "crossReferences": [
+        "John 14:16-27",
+        "Galatians 5:16-26",
+        "Ephesians 1:13-14"
+      ],
+      "interpretiveCaution": "Do not use 'flesh' to mean the physical body is evil; read Paul's moral and theological contrast carefully."
+    },
+    {
+      "id": "deep-study-18",
+      "title": "Gifts and the body",
+      "primaryPassage": "1 Corinthians 12:4-27; Romans 12:3-8",
+      "contextSummary": "Paul describes diverse gifts and members serving one body, with no basis for pride or contempt.",
+      "observationPrompt": "List the repeated words about one Spirit, many gifts, one body and mutual care.",
+      "interpretationPrompt": "How do diversity and unity belong together, and why are apparently weaker members honoured?",
+      "lifeApplicationPrompt": "How can I use what I have received to serve others rather than compete for recognition?",
+      "crossReferences": [
+        "Ephesians 4:1-16",
+        "1 Peter 4:10-11"
+      ],
+      "interpretiveCaution": "These passages do not provide a ranking of spiritual worth or permission to pressure people into public displays."
+    },
+    {
+      "id": "deep-study-19",
+      "title": "The armour of God",
+      "primaryPassage": "Ephesians 6:10-20",
+      "contextSummary": "Paul calls believers to stand firm in God's strength and describes spiritual resistance through the imagery of armour.",
+      "observationPrompt": "Identify each piece and the truth, righteousness, peace, faith, salvation, word and prayer associated with it.",
+      "interpretationPrompt": "Who or what is the struggle against according to the passage, and where does strength come from?",
+      "lifeApplicationPrompt": "What practices help me stand firm in truth, faith, prayer and peace today?",
+      "crossReferences": [
+        "Isaiah 11:5",
+        "52:7",
+        "59:17",
+        "1 Thessalonians 5:8"
+      ],
+      "interpretiveCaution": "The passage does not authorise hostility toward people; it explicitly frames the struggle as not against flesh and blood."
+    },
+    {
+      "id": "deep-study-20",
+      "title": "The new creation hope",
+      "primaryPassage": "Revelation 21:1-8; 22:1-5",
+      "contextSummary": "Revelation closes with God's dwelling among His people, the end of death and the healing imagery of the river and tree of life.",
+      "observationPrompt": "Notice what passes away, what God makes new and the repeated promise of God's presence.",
+      "interpretationPrompt": "How does the vision answer the suffering and evil described earlier in Revelation?",
+      "lifeApplicationPrompt": "How can future hope strengthen faithful witness, endurance and care now?",
+      "crossReferences": [
+        "Isaiah 25:6-9",
+        "65:17-25",
+        "Romans 8:18-25",
+        "2 Peter 3:13"
+      ],
+      "interpretiveCaution": "Do not use symbolic imagery to build unsupported date predictions or detailed speculative timetables."
+    }
+  ]
+}
