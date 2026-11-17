@@ -53,6 +53,9 @@ requireText(home, '["library", "📚", "Library"]', "The dedicated Library navig
 requireText(home, 'data-section="declare"', "The declarations home shortcut");
 requireText(home, 'data-section="devotional"', "The devotional home shortcut");
 requireText(home, '["personal", "📝", "My Space"]', "The six-item primary navigation");
+requireText(library, "zlib-study-topic", "Illustrated Deep Bible Study pathways");
+requireText(library, "openStudyTopic(topic)", "Actionable Deep Bible Study pathways");
+requireText(library, "window.ZurielStudyArtwork(index, topic)", "Offline artwork in the Library study pathways");
 requireText(library, 'if (page === "declarations")', "The declarations content page");
 requireText(library, 'if (page === "devotional")', "The devotional content page");
 requireText(library, 'if (page === "saved")', "The saved-library content page");
