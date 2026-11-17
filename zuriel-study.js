@@ -1877,9 +1877,12 @@
         }
         const summary = document.createElement("p");
         summary.className = "study-small";
-        summary.textContent = "Showing " + matches.length +
-          (matches.length === 100 ? " (maximum shown) " : " ") +
-          "matching KJV verses. Tap a result to open that verse.";
+        const totalMatches = Number.isInteger(matches.totalMatches)
+          ? matches.totalMatches : matches.length;
+        summary.textContent = "Found " + totalMatches +
+          " matching KJV verses; showing " + matches.length +
+          (totalMatches > matches.length ? " (display limit reached)" : "") +
+          ". Tap a result to open that verse.";
         concordanceResults.appendChild(summary);
         matches.forEach(function (item) {
           const result = document.createElement("button");
