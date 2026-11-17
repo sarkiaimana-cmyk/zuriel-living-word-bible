@@ -46,10 +46,27 @@ Only after all checks above are complete:
 If a required secret or public widget setting is missing, the workflow stops before deployment. A successful deployment still does not prove Android WebView Turnstile works; test the challenge on the actual phone before enabling the assistant.
 
 
-## YouVersion translation access (optional)
+## YouVersion translation access (separate Worker)
 
-When ready to enable the multi-translation reader, add the existing YouVersion app key as the GitHub Actions repository secret `ZITE_YVP_APP_KEY`. Do not paste it into ChatGPT, source files, app settings or commits. The manual deployment workflow uploads it as a Cloudflare Worker secret when present.
+The multi-translation reader uses a dedicated translation-only Cloudflare Worker. It is separate from the AI pilot so licensed Bible lookup does not require enabling AI, configuring Turnstile, or connecting an AI provider.
 
-The proxy requests only the English versions licensed to the registered app key (`language_ranges[]=en`); it never requests the `all_available=true` catalogue. Check that the exact versions selected for Zuriel appear in `GET /api/youversion/bibles`. A version that returns 403 is not licensed for this app key and must remain unavailable until the publisher agreement is accepted.
+Before deployment:
+1. Confirm the YouVersion Platform app key is valid and the app has the intended English Bible versions selected.
+2. Confirm the exact publisher access and attribution requirements for each version. A provider 403 is a licensing denial, not an error to work around.
+3. Confirm the Cloudflare account remains on the Workers Free plan. Do not upgrade to Workers Paid for Zuriel.
+4. In GitHub repository Settings → Secrets and variables → Actions, add:
+   - `CLOUDFLARE_ACCOUNT_ID`
+   - `CLOUDFLARE_API_TOKEN` (scoped to the Zuriel account with Workers edit permission)
+   - `ZITE_YVP_APP_KEY` (the YouVersion Platform app key)
+5. Never paste any of these values into ChatGPT, app settings, source files, commits, issues or pull requests.
 
-The app must display the copyright and publisher attribution returned with each passage. Do not cache licensed text for offline use unless the applicable publisher licence expressly allows it. The local KJV remains the offline fallback.
+Manual deployment:
+1. Open the repository's Actions tab.
+2. Select **Deploy Zuriel Bible translations proxy (manual)**.
+3. Select Run workflow and tick the confirmation checkbox only after the account and publisher checks above are complete.
+4. The workflow runs the translation proxy tests, uploads the app key as a Worker Secret, and deploys `wrangler.translations.jsonc`.
+5. Record the resulting Worker URL. The Android/web client endpoint remains intentionally blank until that URL and the actual publisher-authorised version list have been checked.
+
+The translation-only Worker exposes only `/api/youversion/bibles` and its passage routes. It does not expose the AI assistant endpoint, does not require Turnstile, applies its own request rate limit, checks exact allowed origins, and returns `no-store` responses. The app requests a passage only after the reader explicitly chooses a version and taps Load. It displays publisher copyright/attribution and does not persist online Bible text or cache it for offline use. The bundled KJV remains the offline fallback.
+
+Do not enable a version simply because it appears in a public catalogue. Only versions returned to the registered Zuriel app key may be offered, and each passage must retain the publisher's required attribution.
