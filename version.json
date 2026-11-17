@@ -1,4 +1,4 @@
 {
-  "version": "1.4.28",
-  "releaseNotes": "Deduplicates visible verse-specific faith references without deleting source content and adds a coverage audit."
+  "version": "1.4.29",
+  "releaseNotes": "Improves focused word study on mobile with a reachable bottom sheet and keyboard dismissal."
 }
