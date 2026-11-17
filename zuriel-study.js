@@ -2682,7 +2682,7 @@
 
         loadRelatedScriptures(selectedReference);
         panel.scrollTop = 0;
-        panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        // The reader owns the selected-verse overlay; do not scroll away from Scripture.
       },
 
       /* A word tap opens a compact contextual panel beside the passage.
