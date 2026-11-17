@@ -59,6 +59,9 @@ jobs:
       - name: Validate study safeguards
         run: node scripts/check-study-integrity.mjs
 
+      - name: Audit verse-specific faith response coverage
+        run: npm run study:faith-coverage
+
       - name: Test AI pilot backend security
         run: node --test ai-worker/test/worker.test.mjs
 

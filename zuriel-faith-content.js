@@ -66,6 +66,17 @@
   const map = new Map(entries.map(item=>[item.reference.toLowerCase(),item]));
   window.ZurielFaithContent = {
     find:function(reference){return map.get(String(reference||"").trim().toLowerCase())||null;},
-    list:function(){return entries.map(item=>({reference:item.reference}));}
+    list:function(){
+      const unique = new Map();
+      entries.forEach(function(item){
+        unique.set(String(item.reference||"").trim().toLowerCase(), item);
+      });
+      return Array.from(unique.values()).map(function(item){
+        return {reference:item.reference};
+      });
+    },
+    auditList:function(){
+      return entries.map(function(item){return Object.assign({}, item);});
+    }
   };
 })();
