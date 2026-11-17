@@ -8623,6 +8623,2694 @@ const topics=[
       "Jude 1:20–23 — prayer, love, hope and differentiated mercy guide the community's response.",
       "Jude 1:24–25 — the letter closes by praising God, who is able to keep believers from stumbling."
     ]
+  },
+  {
+    "title": "Assurance of Salvation",
+    "summary": "Confidence in God's saving work, grounded in Christ and the testimony of Scripture.",
+    "keywords": [
+      "assurance",
+      "salvation",
+      "security",
+      "confidence"
+    ],
+    "references": [
+      {
+        "label": "John 10:27-29",
+        "book": "John",
+        "chapter": 10,
+        "verse": 27,
+        "endVerse": 29
+      },
+      {
+        "label": "Romans 8:1-4",
+        "book": "Romans",
+        "chapter": 8,
+        "verse": 1,
+        "endVerse": 4
+      },
+      {
+        "label": "Romans 8:31-39",
+        "book": "Romans",
+        "chapter": 8,
+        "verse": 31,
+        "endVerse": 39
+      },
+      {
+        "label": "1 John 5:11-13",
+        "book": "1 John",
+        "chapter": 5,
+        "verse": 11,
+        "endVerse": 13
+      },
+      {
+        "label": "Ephesians 1:13-14",
+        "book": "Ephesians",
+        "chapter": 1,
+        "verse": 13,
+        "endVerse": 14
+      }
+    ],
+    "definition": "Christian assurance is confidence rooted in God's promise and Christ's completed work, accompanied by the Spirit's witness and a living response of faith. It is not presumption or a claim that a believer never struggles.",
+    "oldTestament": "God's covenant faithfulness gives the background for confidence. The Psalms repeatedly appeal to God's steadfast love and reliable word (Psalm 23; 46; 121).",
+    "newTestament": "Jesus describes His people as hearing His voice and being held by Him (John 10:27–29). Romans 8 grounds assurance in God's action in Christ, while 1 John gives pastoral tests and encouragement for genuine faith.",
+    "application": "Rest your confidence in Christ rather than fluctuating feelings. Examine your life honestly, confess sin, receive God's promises in context and continue in faith and love.",
+    "questions": [
+      "What does this passage say God has done, rather than what I must achieve?",
+      "Am I confusing assurance with permission to ignore repentance?",
+      "Which promise in its context can steady my faith today?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "βεβαιόω",
+        "term": "bebaioō",
+        "meaning": "confirm, establish",
+        "note": "Used for making something firm or reliable; interpret according to the passage."
+      },
+      {
+        "language": "Greek",
+        "script": "μαρτυρία",
+        "term": "martyria",
+        "meaning": "testimony, witness",
+        "note": "The New Testament uses witness language for testimony about Jesus and God's work."
+      }
+    ],
+    "relatedExplanations": [
+      "John 10:27–29 — Jesus describes the security of His sheep in the Father's and Son's keeping.",
+      "Romans 8:1–4 — condemnation is answered by God's action through Christ and the Spirit.",
+      "Romans 8:31–39 — no created power can separate believers from God's love in Christ.",
+      "1 John 5:11–13 — John explains why he writes so believers may know they have eternal life.",
+      "Ephesians 1:13–14 — the Spirit is described as the seal and pledge of the promised inheritance."
+    ]
+  },
+  {
+    "title": "Justification by Faith",
+    "summary": "God's gracious declaration of righteousness through faith in Jesus Christ.",
+    "keywords": [
+      "justification",
+      "righteousness",
+      "faith",
+      "grace"
+    ],
+    "references": [
+      {
+        "label": "Genesis 15:6",
+        "book": "Genesis",
+        "chapter": 15,
+        "verse": 6,
+        "endVerse": null
+      },
+      {
+        "label": "Romans 3:21-26",
+        "book": "Romans",
+        "chapter": 3,
+        "verse": 21,
+        "endVerse": 26
+      },
+      {
+        "label": "Romans 4:1-8",
+        "book": "Romans",
+        "chapter": 4,
+        "verse": 1,
+        "endVerse": 8
+      },
+      {
+        "label": "Galatians 2:15-21",
+        "book": "Galatians",
+        "chapter": 2,
+        "verse": 15,
+        "endVerse": 21
+      },
+      {
+        "label": "Philippians 3:8-9",
+        "book": "Philippians",
+        "chapter": 3,
+        "verse": 8,
+        "endVerse": 9
+      }
+    ],
+    "definition": "Justification is God's righteous verdict for those who trust in Christ. It rests on God's grace and Christ's saving work, not on human achievement; good works follow as the fruit of living faith.",
+    "oldTestament": "Abraham's faith is counted as righteousness (Genesis 15:6), and the Psalms celebrate forgiveness and the blessedness of the one whose sin is not counted against them (Psalm 32:1–2).",
+    "newTestament": "Paul explains that people are justified by grace through faith in Jesus Christ (Romans 3–4; Galatians 2–3). James addresses empty claims to faith, showing that genuine faith is demonstrated by action (James 2:14–26).",
+    "application": "Reject both self-righteousness and careless living. Receive grace humbly and let gratitude produce practical obedience and love.",
+    "questions": [
+      "On what basis does this passage say a person is made right with God?",
+      "How does grace challenge pride and despair?",
+      "What fruit should living faith produce in my conduct?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "δικαιόω",
+        "term": "dikaioō",
+        "meaning": "justify, declare righteous",
+        "note": "A legal or relational term whose force must be read in the argument of the passage."
+      },
+      {
+        "language": "Greek",
+        "script": "πίστις",
+        "term": "pistis",
+        "meaning": "faith, trust, faithfulness",
+        "note": "The surrounding context determines the emphasis in a particular text."
+      }
+    ],
+    "relatedExplanations": [
+      "Genesis 15:6 — Abraham's trust in God's promise is counted to him as righteousness.",
+      "Romans 3:21–26 — Paul presents God's righteousness through faith in Jesus and the saving significance of His death.",
+      "Romans 4:1–8 — Abraham and David illustrate righteousness apart from boasting in works.",
+      "Galatians 2:15–21 — Paul rejects justification through works of the law and centres life on Christ.",
+      "Philippians 3:8–9 — Paul contrasts personal righteousness from law-keeping with righteousness through faith in Christ."
+    ]
+  },
+  {
+    "title": "Adoption into God's Family",
+    "summary": "Believers receive the status and privileges of God's children through Christ.",
+    "keywords": [
+      "adoption",
+      "children of God",
+      "sonship",
+      "family"
+    ],
+    "references": [
+      {
+        "label": "John 1:12-13",
+        "book": "John",
+        "chapter": 1,
+        "verse": 12,
+        "endVerse": 13
+      },
+      {
+        "label": "Romans 8:14-17",
+        "book": "Romans",
+        "chapter": 8,
+        "verse": 14,
+        "endVerse": 17
+      },
+      {
+        "label": "Galatians 4:4-7",
+        "book": "Galatians",
+        "chapter": 4,
+        "verse": 4,
+        "endVerse": 7
+      },
+      {
+        "label": "Ephesians 1:3-6",
+        "book": "Ephesians",
+        "chapter": 1,
+        "verse": 3,
+        "endVerse": 6
+      },
+      {
+        "label": "1 John 3:1-3",
+        "book": "1 John",
+        "chapter": 3,
+        "verse": 1,
+        "endVerse": 3
+      }
+    ],
+    "definition": "Adoption describes God's gracious welcome of believers into His family through Jesus Christ, giving them a new identity, access to the Father and hope as heirs.",
+    "oldTestament": "Israel is described as God's son in the covenant story (Exodus 4:22; Hosea 11:1). The language prepares readers for the fuller family relationship revealed through Christ.",
+    "newTestament": "John speaks of becoming God's children through receiving Christ. Paul connects adoption with the Spirit's witness, inheritance and freedom from slavery to fear (Romans 8; Galatians 4).",
+    "application": "Live from your received identity rather than striving to earn God's welcome. Treat fellow believers as family and extend dignity to people who are overlooked.",
+    "questions": [
+      "What does being God's child mean in this passage?",
+      "Where am I living from fear rather than the Spirit's assurance?",
+      "How should my identity shape the way I welcome others?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "υἱοθεσία",
+        "term": "huiothesia",
+        "meaning": "adoption, placement as a son",
+        "note": "A term used by Paul for the new family status believers receive in Christ."
+      },
+      {
+        "language": "Greek",
+        "script": "τέκνον",
+        "term": "teknon",
+        "meaning": "child, offspring",
+        "note": "Often highlights relationship and belonging; context determines its nuance."
+      }
+    ],
+    "relatedExplanations": [
+      "John 1:12–13 — receiving Christ is connected with becoming children of God.",
+      "Romans 8:14–17 — the Spirit leads God's children and bears witness to their adoption and inheritance.",
+      "Galatians 4:4–7 — Christ redeems so believers receive adoption and the Spirit of the Son.",
+      "Ephesians 1:3–6 — adoption is included in Paul's account of God's gracious purpose in Christ.",
+      "1 John 3:1–3 — God's love gives believers the name and hope of His children."
+    ]
+  },
+  {
+    "title": "Reconciliation with God",
+    "summary": "God restores peace and relationship through the death and resurrection of Jesus.",
+    "keywords": [
+      "reconciliation",
+      "peace with God",
+      "atonement",
+      "relationship"
+    ],
+    "references": [
+      {
+        "label": "Isaiah 53:4-6",
+        "book": "Isaiah",
+        "chapter": 53,
+        "verse": 4,
+        "endVerse": 6
+      },
+      {
+        "label": "Romans 5:1-11",
+        "book": "Romans",
+        "chapter": 5,
+        "verse": 1,
+        "endVerse": 11
+      },
+      {
+        "label": "2 Corinthians 5:17-21",
+        "book": "2 Corinthians",
+        "chapter": 5,
+        "verse": 17,
+        "endVerse": 21
+      },
+      {
+        "label": "Colossians 1:19-22",
+        "book": "Colossians",
+        "chapter": 1,
+        "verse": 19,
+        "endVerse": 22
+      },
+      {
+        "label": "Ephesians 2:13-18",
+        "book": "Ephesians",
+        "chapter": 2,
+        "verse": 13,
+        "endVerse": 18
+      }
+    ],
+    "definition": "Reconciliation is God's work of overcoming the hostility caused by sin and bringing people into peace with Himself through Jesus Christ. It also creates a calling to pursue truthful, just and humble relationships with others.",
+    "oldTestament": "The sacrificial system, covenant promises and servant song in Isaiah 53 provide important background for understanding sin, forgiveness and restored relationship.",
+    "newTestament": "Paul says God reconciles through Christ and entrusts the message of reconciliation to His people (2 Corinthians 5). Christ also breaks down hostility between formerly divided groups (Ephesians 2).",
+    "application": "Receive peace with God through Christ. Where safe and appropriate, take truthful steps toward reconciliation with others without excusing abuse, denying justice or forcing unsafe contact.",
+    "questions": [
+      "What has God done to make peace through Christ?",
+      "Is there a relationship where I need to seek truth, repentance or wise help?",
+      "How can I become a messenger of peace without hiding injustice?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "καταλλάσσω",
+        "term": "katallassō",
+        "meaning": "reconcile, restore relationship",
+        "note": "Used in the New Testament for restored relationship, especially between God and humanity."
+      },
+      {
+        "language": "Greek",
+        "script": "εἰρήνη",
+        "term": "eirēnē",
+        "meaning": "peace, wholeness",
+        "note": "Can describe peace with God and the well-being associated with restored relationship."
+      }
+    ],
+    "relatedExplanations": [
+      "Isaiah 53:4–6 — the servant bears suffering associated with the people's wrongdoing.",
+      "Romans 5:1–11 — justification by faith brings peace with God through Jesus Christ.",
+      "2 Corinthians 5:17–21 — reconciliation is God's initiative through Christ and becomes a ministry entrusted to believers.",
+      "Colossians 1:19–22 — Christ's reconciling work is connected with His death and the hope of presenting believers holy.",
+      "Ephesians 2:13–18 — Christ makes peace and creates one new humanity from divided groups."
+    ]
+  },
+  {
+    "title": "Sanctification and Growth in Holiness",
+    "summary": "The Spirit shapes believers into Christlike people in daily life.",
+    "keywords": [
+      "sanctification",
+      "holiness",
+      "growth",
+      "transformation"
+    ],
+    "references": [
+      {
+        "label": "Leviticus 20:7-8",
+        "book": "Leviticus",
+        "chapter": 20,
+        "verse": 7,
+        "endVerse": 8
+      },
+      {
+        "label": "John 17:15-19",
+        "book": "John",
+        "chapter": 17,
+        "verse": 15,
+        "endVerse": 19
+      },
+      {
+        "label": "Romans 6:19-23",
+        "book": "Romans",
+        "chapter": 6,
+        "verse": 19,
+        "endVerse": 23
+      },
+      {
+        "label": "1 Thessalonians 4:1-8",
+        "book": "1 Thessalonians",
+        "chapter": 4,
+        "verse": 1,
+        "endVerse": 8
+      },
+      {
+        "label": "2 Corinthians 3:17-18",
+        "book": "2 Corinthians",
+        "chapter": 3,
+        "verse": 17,
+        "endVerse": 18
+      }
+    ],
+    "definition": "Sanctification is God's work of setting people apart for Himself and forming holy character in them. Scripture speaks of belonging to God and of ongoing growth in obedience through the Spirit.",
+    "oldTestament": "Israel is called to be holy because the LORD is holy (Leviticus 19:2). Covenant worship and daily ethics are joined: belonging to God affects conduct.",
+    "newTestament": "Jesus prays for His disciples to be sanctified in truth (John 17). Paul describes freedom from sin's rule and calls believers to present their lives to God (Romans 6).",
+    "application": "Choose one concrete area of obedience, seek the Spirit's help, use Scripture and accountable community, and remember that growth is not a way to purchase God's love.",
+    "questions": [
+      "What does holiness look like in the actual context of this passage?",
+      "Which habit or attitude needs to be brought under Christ's lordship?",
+      "Who can encourage and support faithful growth?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "קָדוֹשׁ",
+        "term": "qādôsh",
+        "meaning": "holy, set apart",
+        "note": "Describes what belongs to God and is distinct for His purposes."
+      },
+      {
+        "language": "Greek",
+        "script": "ἁγιασμός",
+        "term": "hagiasmos",
+        "meaning": "sanctification, holiness",
+        "note": "Used for the process or state of being made holy; interpret in context."
+      }
+    ],
+    "relatedExplanations": [
+      "Leviticus 20:7–8 — Israel's call to holiness is grounded in the LORD who sanctifies them.",
+      "John 17:15–19 — Jesus asks the Father to sanctify His disciples in truth and sends them into the world.",
+      "Romans 6:19–23 — freedom from sin leads to a life devoted to righteousness and its fruit.",
+      "1 Thessalonians 4:1–8 — holiness shapes concrete conduct, including sexual integrity.",
+      "2 Corinthians 3:17–18 — transformation into the Lord's likeness is associated with the Spirit."
+    ]
+  },
+  {
+    "title": "Baptism and New Life",
+    "summary": "Baptism is a public sign of identification with Christ and the community of faith.",
+    "keywords": [
+      "baptism",
+      "water baptism",
+      "new life",
+      "discipleship"
+    ],
+    "references": [
+      {
+        "label": "Matthew 28:18-20",
+        "book": "Matthew",
+        "chapter": 28,
+        "verse": 18,
+        "endVerse": 20
+      },
+      {
+        "label": "Acts 2:37-41",
+        "book": "Acts",
+        "chapter": 2,
+        "verse": 37,
+        "endVerse": 41
+      },
+      {
+        "label": "Romans 6:3-11",
+        "book": "Romans",
+        "chapter": 6,
+        "verse": 3,
+        "endVerse": 11
+      },
+      {
+        "label": "Galatians 3:26-29",
+        "book": "Galatians",
+        "chapter": 3,
+        "verse": 26,
+        "endVerse": 29
+      },
+      {
+        "label": "1 Peter 3:18-22",
+        "book": "1 Peter",
+        "chapter": 3,
+        "verse": 18,
+        "endVerse": 22
+      }
+    ],
+    "definition": "Christian baptism is commanded by Jesus and is closely associated in the New Testament with repentance, faith, identification with Christ and incorporation into the community of disciples. Christian traditions differ on some details of its administration and relation to faith.",
+    "oldTestament": "Water imagery includes cleansing, deliverance through the sea and prophetic promises of cleansing (Exodus 14; Ezekiel 36:25–27). These provide background without making every water image a direct reference to Christian baptism.",
+    "newTestament": "Jesus commands baptism in the making of disciples (Matthew 28). Acts records baptism in the early church, while Romans 6 connects baptism's imagery with union with Christ in His death and resurrection.",
+    "application": "Study the teaching of Jesus and the apostles, discuss questions with trusted church leaders, and let baptism point to a life of allegiance to Christ and His people.",
+    "questions": [
+      "What does Jesus command in the Great Commission?",
+      "How does Romans 6 connect baptism with Christ's death and resurrection?",
+      "What next step of discipleship does this passage call me to take?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "βαπτίζω",
+        "term": "baptizō",
+        "meaning": "baptize, immerse",
+        "note": "The verb is used in varied contexts; its meaning should be established from each passage."
+      },
+      {
+        "language": "Greek",
+        "script": "μαθητής",
+        "term": "mathētēs",
+        "meaning": "disciple, learner",
+        "note": "A disciple is a learner and follower, not merely an observer."
+      }
+    ],
+    "relatedExplanations": [
+      "Matthew 28:18–20 — baptism belongs within Jesus' command to make disciples of all nations.",
+      "Acts 2:37–41 — Peter calls his hearers to repent and be baptized in response to the gospel.",
+      "Romans 6:3–11 — baptism imagery explains participation in Christ's death and resurrection life.",
+      "Galatians 3:26–29 — baptism into Christ is linked with belonging to Him and the unity of believers.",
+      "1 Peter 3:18–22 — Peter relates baptism to appeal toward God through the resurrection of Jesus."
+    ]
+  },
+  {
+    "title": "The Lord's Supper and Remembrance",
+    "summary": "The church remembers Christ's death and proclaims His return through the shared meal.",
+    "keywords": [
+      "Lord's supper",
+      "communion",
+      "eucharist",
+      "remembrance"
+    ],
+    "references": [
+      {
+        "label": "Exodus 12:21-27",
+        "book": "Exodus",
+        "chapter": 12,
+        "verse": 21,
+        "endVerse": 27
+      },
+      {
+        "label": "Matthew 26:26-29",
+        "book": "Matthew",
+        "chapter": 26,
+        "verse": 26,
+        "endVerse": 29
+      },
+      {
+        "label": "Luke 22:14-20",
+        "book": "Luke",
+        "chapter": 22,
+        "verse": 14,
+        "endVerse": 20
+      },
+      {
+        "label": "1 Corinthians 10:16-17",
+        "book": "1 Corinthians",
+        "chapter": 10,
+        "verse": 16,
+        "endVerse": 17
+      },
+      {
+        "label": "1 Corinthians 11:23-29",
+        "book": "1 Corinthians",
+        "chapter": 11,
+        "verse": 23,
+        "endVerse": 29
+      }
+    ],
+    "definition": "The Lord's Supper is the meal Jesus instituted for His disciples. It remembers His self-giving death, proclaims it until He comes and expresses the church's shared participation in Christ.",
+    "oldTestament": "The Passover remembers God's deliverance of Israel from slavery in Egypt (Exodus 12). Jesus' final meal with His disciples takes place in the Passover setting and gives the bread and cup their Christ-centred significance.",
+    "newTestament": "The Gospel accounts record Jesus' words over bread and cup. Paul instructs the church to remember Christ, examine its conduct and discern the body, addressing divisions and disregard for poorer members.",
+    "application": "Approach the meal with gratitude, faith, self-examination and care for fellow believers. Do not separate remembrance of Christ from love and unity in the church.",
+    "questions": [
+      "What does Jesus say the bread and cup signify?",
+      "How does the meal proclaim the Lord's death and anticipate His return?",
+      "Does my treatment of fellow believers reflect the unity this meal expresses?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "ἀνάμνησις",
+        "term": "anamnēsis",
+        "meaning": "remembrance, memorial",
+        "note": "In Luke 22 and 1 Corinthians 11 it is associated with remembering Jesus."
+      },
+      {
+        "language": "Greek",
+        "script": "κοινωνία",
+        "term": "koinōnia",
+        "meaning": "sharing, participation, fellowship",
+        "note": "Paul uses the word for participation in the cup and bread in 1 Corinthians 10."
+      }
+    ],
+    "relatedExplanations": [
+      "Exodus 12:21–27 — Passover is established as a remembrance of God's deliverance.",
+      "Matthew 26:26–29 — Jesus interprets the bread and cup in relation to His body, blood and coming kingdom.",
+      "Luke 22:14–20 — Jesus commands remembrance as He gives the meal to His disciples.",
+      "1 Corinthians 10:16–17 — participation in the bread and cup is connected with the one body.",
+      "1 Corinthians 11:23–29 — Paul corrects abuses and calls the church to remember Christ and examine itself."
+    ]
+  },
+  {
+    "title": "Fasting and Seeking God",
+    "summary": "Fasting is a disciplined response of humility, prayer and seeking God, never a way to manipulate Him.",
+    "keywords": [
+      "fasting",
+      "prayer",
+      "humility",
+      "seeking God"
+    ],
+    "references": [
+      {
+        "label": "Isaiah 58:3-9",
+        "book": "Isaiah",
+        "chapter": 58,
+        "verse": 3,
+        "endVerse": 9
+      },
+      {
+        "label": "Matthew 6:16-18",
+        "book": "Matthew",
+        "chapter": 6,
+        "verse": 16,
+        "endVerse": 18
+      },
+      {
+        "label": "Matthew 9:14-15",
+        "book": "Matthew",
+        "chapter": 9,
+        "verse": 14,
+        "endVerse": 15
+      },
+      {
+        "label": "Acts 13:1-3",
+        "book": "Acts",
+        "chapter": 13,
+        "verse": 1,
+        "endVerse": 3
+      },
+      {
+        "label": "Acts 14:21-23",
+        "book": "Acts",
+        "chapter": 14,
+        "verse": 21,
+        "endVerse": 23
+      }
+    ],
+    "definition": "Biblical fasting is abstaining from food for a spiritual purpose, often joined with prayer, repentance, grief or seeking God's guidance. Scripture rejects fasting that is separated from justice, mercy and sincere devotion.",
+    "oldTestament": "Israel's Scriptures describe fasting in times of repentance, grief and urgent prayer. Isaiah 58 challenges religious performance that ignores oppression and neglect of neighbours.",
+    "newTestament": "Jesus assumes His followers may fast but warns against doing it for public admiration (Matthew 6). The early church fasts while worshipping and discerning mission (Acts 13).",
+    "application": "If medically and personally appropriate, consider a modest fast joined with prayer and practical obedience. People with health conditions, pregnancy, medication needs or eating-disorder history should seek qualified advice and choose another form of devotion if needed.",
+    "questions": [
+      "What motive does Jesus warn against in Matthew 6?",
+      "Does my devotion lead to justice and care for others?",
+      "What is the prayerful purpose of this fast, and is it wise for my health?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "צוּם",
+        "term": "tsûm",
+        "meaning": "fast",
+        "note": "The Hebrew verb describes abstaining from food, often in a religious setting."
+      },
+      {
+        "language": "Greek",
+        "script": "νηστεύω",
+        "term": "nēsteuō",
+        "meaning": "fast, abstain from food",
+        "note": "The New Testament verb is used for religious fasting; context explains its purpose."
+      }
+    ],
+    "relatedExplanations": [
+      "Isaiah 58:3–9 — God challenges fasting that neglects justice and care for the vulnerable.",
+      "Matthew 6:16–18 — Jesus teaches His disciples not to turn fasting into a public performance.",
+      "Matthew 9:14–15 — Jesus places fasting in relation to His presence and the coming change of the kingdom.",
+      "Acts 13:1–3 — worship, fasting and prayer accompany the church's commissioning of Barnabas and Saul.",
+      "Acts 14:21–23 — prayer and fasting accompany the appointment of elders in new churches."
+    ]
+  },
+  {
+    "title": "Sabbath, Rest and Renewal",
+    "summary": "God's pattern of rest invites trust, worship and humane rhythms of life.",
+    "keywords": [
+      "sabbath",
+      "rest",
+      "renewal",
+      "work"
+    ],
+    "references": [
+      {
+        "label": "Genesis 2:1-3",
+        "book": "Genesis",
+        "chapter": 2,
+        "verse": 1,
+        "endVerse": 3
+      },
+      {
+        "label": "Exodus 20:8-11",
+        "book": "Exodus",
+        "chapter": 20,
+        "verse": 8,
+        "endVerse": 11
+      },
+      {
+        "label": "Deuteronomy 5:12-15",
+        "book": "Deuteronomy",
+        "chapter": 5,
+        "verse": 12,
+        "endVerse": 15
+      },
+      {
+        "label": "Mark 2:23-28",
+        "book": "Mark",
+        "chapter": 2,
+        "verse": 23,
+        "endVerse": 28
+      },
+      {
+        "label": "Hebrews 4:1-11",
+        "book": "Hebrews",
+        "chapter": 4,
+        "verse": 1,
+        "endVerse": 11
+      }
+    ],
+    "definition": "Sabbath is the seventh-day rest commanded to Israel as a sign of God's creation and deliverance. The New Testament presents Jesus as Lord of the Sabbath and uses the theme of rest to speak of trusting God's promise. Christian traditions differ on how Sabbath commands relate to weekly practice.",
+    "oldTestament": "Genesis links the seventh day with God's completed creation. Exodus grounds Sabbath in creation, while Deuteronomy also connects it with Israel's liberation from slavery.",
+    "newTestament": "Jesus challenges interpretations that burden people and teaches that the Sabbath was made for humanity (Mark 2). Hebrews uses the language of rest to call readers to persevering faith.",
+    "application": "Build sustainable rhythms of worship, rest and care. Let rest express trust in God and protect the dignity of workers and family members.",
+    "questions": [
+      "What does the Sabbath command reveal about God as Creator and Deliverer?",
+      "Does my schedule honour the limits and needs of other people?",
+      "How does Hebrews connect rest with faith and perseverance?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "שַׁבָּת",
+        "term": "shabbāt",
+        "meaning": "Sabbath, cessation",
+        "note": "The noun is related to ceasing or resting; its covenant setting matters."
+      },
+      {
+        "language": "Greek",
+        "script": "κατάπαυσις",
+        "term": "katapausis",
+        "meaning": "rest, resting place",
+        "note": "Hebrews uses this term for the rest promised by God."
+      }
+    ],
+    "relatedExplanations": [
+      "Genesis 2:1–3 — God blesses and sets apart the seventh day after creation.",
+      "Exodus 20:8–11 — Israel's Sabbath observance is grounded in God's creation pattern.",
+      "Deuteronomy 5:12–15 — Sabbath also remembers liberation from slavery in Egypt.",
+      "Mark 2:23–28 — Jesus asserts authority over the Sabbath and emphasises its purpose for people.",
+      "Hebrews 4:1–11 — God's rest remains a promise that calls for faith and perseverance."
+    ]
+  },
+  {
+    "title": "Evangelism and Sharing the Gospel",
+    "summary": "The church bears witness to Jesus through truthful proclamation, love and lived faith.",
+    "keywords": [
+      "evangelism",
+      "gospel",
+      "witness",
+      "sharing faith"
+    ],
+    "references": [
+      {
+        "label": "Isaiah 52:7",
+        "book": "Isaiah",
+        "chapter": 52,
+        "verse": 7,
+        "endVerse": null
+      },
+      {
+        "label": "Matthew 5:13-16",
+        "book": "Matthew",
+        "chapter": 5,
+        "verse": 13,
+        "endVerse": 16
+      },
+      {
+        "label": "Matthew 28:18-20",
+        "book": "Matthew",
+        "chapter": 28,
+        "verse": 18,
+        "endVerse": 20
+      },
+      {
+        "label": "Acts 1:6-8",
+        "book": "Acts",
+        "chapter": 1,
+        "verse": 6,
+        "endVerse": 8
+      },
+      {
+        "label": "1 Peter 3:15-16",
+        "book": "1 Peter",
+        "chapter": 3,
+        "verse": 15,
+        "endVerse": 16
+      }
+    ],
+    "definition": "Evangelism is communicating the good news of God's kingdom and salvation through Jesus Christ. It includes clear words, credible conduct, respect for listeners and dependence on the Holy Spirit.",
+    "oldTestament": "Israel is called to make God's character and saving acts known among the nations (Psalm 96; Isaiah 52:7). The promise to Abraham anticipates blessing extending to all families of the earth.",
+    "newTestament": "Jesus commissions His disciples to make disciples of all nations. Acts describes Spirit-empowered witness, and Peter instructs believers to explain their hope with gentleness and respect.",
+    "application": "Learn to explain the gospel clearly from Scripture, listen carefully, respect people's freedom and show the compassion of Christ. Avoid coercion, manipulation or promises the gospel does not make.",
+    "questions": [
+      "What is the good news about Jesus in this passage?",
+      "Who can I serve and listen to before speaking?",
+      "Can I explain my hope with gentleness and respect?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "εὐαγγέλιον",
+        "term": "euangelion",
+        "meaning": "good news, gospel",
+        "note": "In Christian usage the term announces God's saving action in Jesus."
+      },
+      {
+        "language": "Greek",
+        "script": "μαρτυρέω",
+        "term": "martyreō",
+        "meaning": "bear witness, testify",
+        "note": "A witness reports what is known; the term appears in the church's testimony about Jesus."
+      }
+    ],
+    "relatedExplanations": [
+      "Isaiah 52:7 — the messenger's good news announces God's reign and comfort for Zion.",
+      "Matthew 5:13–16 — visible good works are to direct attention to the Father.",
+      "Matthew 28:18–20 — Jesus commissions disciples to make disciples among all nations.",
+      "Acts 1:6–8 — the Spirit empowers the disciples to be witnesses from Jerusalem outward.",
+      "1 Peter 3:15–16 — believers are to explain their hope with gentleness, respect and a clear conscience."
+    ]
+  },
+  {
+    "title": "The Mission of God and the Nations",
+    "summary": "God's purpose to bless the nations unfolds through Israel and reaches its centre in Christ.",
+    "keywords": [
+      "mission",
+      "nations",
+      "missions",
+      "global church"
+    ],
+    "references": [
+      {
+        "label": "Genesis 12:1-3",
+        "book": "Genesis",
+        "chapter": 12,
+        "verse": 1,
+        "endVerse": 3
+      },
+      {
+        "label": "Psalm 67:1-7",
+        "book": "Psalms",
+        "chapter": 67,
+        "verse": 1,
+        "endVerse": 7
+      },
+      {
+        "label": "Isaiah 49:5-6",
+        "book": "Isaiah",
+        "chapter": 49,
+        "verse": 5,
+        "endVerse": 6
+      },
+      {
+        "label": "Matthew 28:18-20",
+        "book": "Matthew",
+        "chapter": 28,
+        "verse": 18,
+        "endVerse": 20
+      },
+      {
+        "label": "Revelation 7:9-10",
+        "book": "Revelation",
+        "chapter": 7,
+        "verse": 9,
+        "endVerse": 10
+      }
+    ],
+    "definition": "The mission of God is His purpose to make His name known, bring blessing and gather worshippers from every people through His saving work. The church participates as a witness, not as the owner of the mission.",
+    "oldTestament": "God's call to Abraham includes blessing for all families of the earth. Israel's worship and prophetic hope anticipate the nations coming to know the LORD.",
+    "newTestament": "Jesus sends His disciples to all nations, and Revelation portrays a redeemed multitude from every nation, tribe, people and language worshipping God and the Lamb.",
+    "application": "Pray for peoples and communities beyond your own, welcome cultural diversity, support trustworthy mission work and practise the gospel locally as well as globally.",
+    "questions": [
+      "How does God's promise to Abraham reach beyond one family?",
+      "What does the Great Commission ask the church to do?",
+      "How can my church reflect the multi-ethnic worship pictured in Revelation?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "גּוֹיִם",
+        "term": "gôyim",
+        "meaning": "nations, peoples",
+        "note": "Often refers to nations or peoples beyond Israel, though context determines usage."
+      },
+      {
+        "language": "Greek",
+        "script": "ἔθνος",
+        "term": "ethnos",
+        "meaning": "nation, people group",
+        "note": "The plural is often used for the nations in mission passages."
+      }
+    ],
+    "relatedExplanations": [
+      "Genesis 12:1–3 — God's promise to Abraham includes blessing for all families of the earth.",
+      "Psalm 67:1–7 — Israel asks for blessing so God's saving way may be known among all nations.",
+      "Isaiah 49:5–6 — the servant's mission extends God's salvation to the ends of the earth.",
+      "Matthew 28:18–20 — Jesus sends His disciples to make disciples of all nations.",
+      "Revelation 7:9–10 — the redeemed multitude from every people worships God and the Lamb."
+    ]
+  },
+  {
+    "title": "Church Leadership and Accountability",
+    "summary": "Christian leadership is service under Christ, shaped by character, humility and accountability.",
+    "keywords": [
+      "leadership",
+      "elders",
+      "pastors",
+      "accountability"
+    ],
+    "references": [
+      {
+        "label": "Exodus 18:17-23",
+        "book": "Exodus",
+        "chapter": 18,
+        "verse": 17,
+        "endVerse": 23
+      },
+      {
+        "label": "Mark 10:42-45",
+        "book": "Mark",
+        "chapter": 10,
+        "verse": 42,
+        "endVerse": 45
+      },
+      {
+        "label": "Acts 20:28-32",
+        "book": "Acts",
+        "chapter": 20,
+        "verse": 28,
+        "endVerse": 32
+      },
+      {
+        "label": "1 Timothy 3:1-13",
+        "book": "1 Timothy",
+        "chapter": 3,
+        "verse": 1,
+        "endVerse": 13
+      },
+      {
+        "label": "1 Peter 5:1-4",
+        "book": "1 Peter",
+        "chapter": 5,
+        "verse": 1,
+        "endVerse": 4
+      }
+    ],
+    "definition": "Biblical leadership is entrusted responsibility exercised for the good of others under God's authority. Leaders are called to serve rather than dominate and to meet standards of character and accountability.",
+    "oldTestament": "Moses receives wise counsel to share responsibility and appoint capable, trustworthy leaders (Exodus 18). Israel's prophets condemn shepherds who exploit rather than care for the flock (Ezekiel 34).",
+    "newTestament": "Jesus defines greatness through service. The pastoral letters describe qualifications for overseers and deacons, while Peter forbids domineering leadership and points to Christ as the chief Shepherd.",
+    "application": "Evaluate leadership by character, service, truth and accountability, not charisma or claims of special status. Leaders should welcome appropriate scrutiny and protect vulnerable people.",
+    "questions": [
+      "Does this leader serve others or seek control and status?",
+      "Are decisions transparent and accountable?",
+      "How does Jesus redefine greatness in this passage?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "ποιμήν",
+        "term": "poimēn",
+        "meaning": "shepherd, pastor",
+        "note": "A shepherd image describes care and responsibility, not entitlement to control."
+      },
+      {
+        "language": "Greek",
+        "script": "ἐπίσκοπος",
+        "term": "episkopos",
+        "meaning": "overseer, supervisor",
+        "note": "A New Testament leadership term whose role is described by its context."
+      }
+    ],
+    "relatedExplanations": [
+      "Exodus 18:17–23 — shared leadership and wise delegation prevent exhaustion and improve justice.",
+      "Mark 10:42–45 — Jesus contrasts domineering authority with servant leadership.",
+      "Acts 20:28–32 — elders are charged to care for the church and guard against destructive teaching.",
+      "1 Timothy 3:1–13 — leadership qualifications emphasise tested character and responsible conduct.",
+      "1 Peter 5:1–4 — elders are told to shepherd willingly and without domineering, awaiting Christ's reward."
+    ]
+  },
+  {
+    "title": "Church Discipline and Restoration",
+    "summary": "The church addresses serious wrongdoing with truth, protection, accountability and a goal of restoration.",
+    "keywords": [
+      "church discipline",
+      "correction",
+      "restoration",
+      "accountability"
+    ],
+    "references": [
+      {
+        "label": "Leviticus 19:17-18",
+        "book": "Leviticus",
+        "chapter": 19,
+        "verse": 17,
+        "endVerse": 18
+      },
+      {
+        "label": "Matthew 18:15-20",
+        "book": "Matthew",
+        "chapter": 18,
+        "verse": 15,
+        "endVerse": 20
+      },
+      {
+        "label": "1 Corinthians 5:1-13",
+        "book": "1 Corinthians",
+        "chapter": 5,
+        "verse": 1,
+        "endVerse": 13
+      },
+      {
+        "label": "Galatians 6:1-2",
+        "book": "Galatians",
+        "chapter": 6,
+        "verse": 1,
+        "endVerse": 2
+      },
+      {
+        "label": "2 Corinthians 2:5-11",
+        "book": "2 Corinthians",
+        "chapter": 2,
+        "verse": 5,
+        "endVerse": 11
+      }
+    ],
+    "definition": "Church discipline is the community's serious and proportionate response to persistent, harmful or unrepentant wrongdoing. Its biblical aims include truth, protection of the vulnerable, repentance and restoration; it must never be used to conceal abuse or silence victims.",
+    "oldTestament": "Leviticus commands honest correction rather than hidden hatred or revenge. Israel's covenant life joins holiness with responsibility for neighbours.",
+    "newTestament": "Jesus outlines a process for addressing sin within the community. Paul addresses a serious case in Corinth and later urges comfort and reaffirmation of love where repentance has occurred.",
+    "application": "Seek wise, impartial and safe help when serious harm occurs. Protect those at risk, follow lawful safeguarding duties and never pressure a harmed person into unsafe reconciliation.",
+    "questions": [
+      "What process does Jesus describe for addressing wrongdoing?",
+      "Who needs protection and impartial support in this situation?",
+      "How can truth and restoration be pursued without excusing harm?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "ἐλέγχω",
+        "term": "elenchō",
+        "meaning": "expose, reprove, correct",
+        "note": "The term can describe bringing wrongdoing into the open; context determines tone and purpose."
+      },
+      {
+        "language": "Greek",
+        "script": "καταρτίζω",
+        "term": "katartizō",
+        "meaning": "restore, mend, equip",
+        "note": "Galatians 6:1 uses the verb for restoring someone gently."
+      }
+    ],
+    "relatedExplanations": [
+      "Leviticus 19:17–18 — correction is commanded as an alternative to hatred and revenge.",
+      "Matthew 18:15–20 — Jesus describes accountable steps for addressing sin within the community.",
+      "1 Corinthians 5:1–13 — Paul confronts a serious public matter and the church's responsibility.",
+      "Galatians 6:1–2 — restoration should be gentle and accompanied by mutual burden-bearing.",
+      "2 Corinthians 2:5–11 — Paul urges forgiveness, comfort and reaffirmed love for the repentant person."
+    ]
+  },
+  {
+    "title": "Discernment and Testing Spiritual Claims",
+    "summary": "Believers test teaching and spiritual claims against the truth about Christ and the fruit of faithful conduct.",
+    "keywords": [
+      "discernment",
+      "testing spirits",
+      "wisdom",
+      "doctrine"
+    ],
+    "references": [
+      {
+        "label": "Deuteronomy 13:1-4",
+        "book": "Deuteronomy",
+        "chapter": 13,
+        "verse": 1,
+        "endVerse": 4
+      },
+      {
+        "label": "Matthew 7:15-20",
+        "book": "Matthew",
+        "chapter": 7,
+        "verse": 15,
+        "endVerse": 20
+      },
+      {
+        "label": "Acts 17:10-12",
+        "book": "Acts",
+        "chapter": 17,
+        "verse": 10,
+        "endVerse": 12
+      },
+      {
+        "label": "1 Corinthians 14:29-33",
+        "book": "1 Corinthians",
+        "chapter": 14,
+        "verse": 29,
+        "endVerse": 33
+      },
+      {
+        "label": "1 John 4:1-6",
+        "book": "1 John",
+        "chapter": 4,
+        "verse": 1,
+        "endVerse": 6
+      }
+    ],
+    "definition": "Biblical discernment is the careful evaluation of teaching, conduct and spiritual claims in the light of God's revealed truth. It requires humility, scriptural testing, wise community and attention to fruit.",
+    "oldTestament": "Israel is warned not to follow signs or claims that lead away from the LORD. Faithfulness to God is the measure, not spectacle alone.",
+    "newTestament": "Jesus warns about false prophets and their fruit. The Bereans examine Scripture, Paul calls for orderly evaluation, and John tells believers to test the spirits.",
+    "application": "Do not accept a message solely because it is dramatic, popular or attributed to a spiritual experience. Examine its view of Christ, its biblical context, its fruit and its treatment of people.",
+    "questions": [
+      "Does this teaching remain faithful to the biblical witness about God and Christ?",
+      "What kind of fruit does this message and its messenger produce?",
+      "Have I tested the claim carefully with Scripture and wise counsel?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "δοκιμάζω",
+        "term": "dokimazō",
+        "meaning": "test, examine, approve",
+        "note": "Often describes testing something to establish its quality or genuineness."
+      },
+      {
+        "language": "Greek",
+        "script": "διάκρισις",
+        "term": "diakrisis",
+        "meaning": "distinguishing, discernment",
+        "note": "The word family concerns distinguishing or evaluating; the specific sense is contextual."
+      }
+    ],
+    "relatedExplanations": [
+      "Deuteronomy 13:1–4 — even a sign is not a reason to follow a message that turns people from God.",
+      "Matthew 7:15–20 — Jesus says false prophets are recognised by their fruit.",
+      "Acts 17:10–12 — the Bereans examine the Scriptures to assess Paul's message.",
+      "1 Corinthians 14:29–33 — prophetic speech is to be weighed in an orderly gathering.",
+      "1 John 4:1–6 — believers are told to test spiritual claims, especially what they confess about Jesus Christ."
+    ]
+  },
+  {
+    "title": "False Teaching and Sound Doctrine",
+    "summary": "The church guards the apostolic message and resists teaching that distorts Christ or exploits people.",
+    "keywords": [
+      "false teaching",
+      "sound doctrine",
+      "heresy",
+      "truth"
+    ],
+    "references": [
+      {
+        "label": "Deuteronomy 18:20-22",
+        "book": "Deuteronomy",
+        "chapter": 18,
+        "verse": 20,
+        "endVerse": 22
+      },
+      {
+        "label": "Matthew 24:4-5",
+        "book": "Matthew",
+        "chapter": 24,
+        "verse": 4,
+        "endVerse": 5
+      },
+      {
+        "label": "Acts 20:28-31",
+        "book": "Acts",
+        "chapter": 20,
+        "verse": 28,
+        "endVerse": 31
+      },
+      {
+        "label": "Galatians 1:6-9",
+        "book": "Galatians",
+        "chapter": 1,
+        "verse": 6,
+        "endVerse": 9
+      },
+      {
+        "label": "2 Timothy 4:1-5",
+        "book": "2 Timothy",
+        "chapter": 4,
+        "verse": 1,
+        "endVerse": 5
+      }
+    ],
+    "definition": "False teaching is instruction that contradicts or distorts the biblical gospel and leads people away from faithful worship and conduct. Sound doctrine is teaching consistent with the apostolic witness and the whole counsel of Scripture.",
+    "oldTestament": "Israel's prophets warn against messages that claim divine authority falsely or encourage unfaithfulness. The test is fidelity to the LORD and His covenant word.",
+    "newTestament": "Jesus warns against deceptive claims. Paul warns elders about destructive teaching and insists that the gospel must not be replaced by another message.",
+    "application": "Check claims against Scripture in context, seek reliable teachers and do not confuse confidence, wealth or popularity with truth. Ask questions without fear and protect those vulnerable to manipulation.",
+    "questions": [
+      "Does this message preserve the gospel of Jesus Christ?",
+      "Is Scripture being quoted in context or used to control people?",
+      "Does the teaching produce truth, love and holiness, or exploitation and fear?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "ἑτεροδιδασκαλέω",
+        "term": "heterodidaskaleō",
+        "meaning": "teach different doctrine",
+        "note": "Used in the Pastoral Epistles for teaching that departs from sound instruction."
+      },
+      {
+        "language": "Greek",
+        "script": "ὑγιαίνω",
+        "term": "hygiainō",
+        "meaning": "be healthy, sound",
+        "note": "Used metaphorically for healthy or sound teaching."
+      }
+    ],
+    "relatedExplanations": [
+      "Deuteronomy 18:20–22 — Israel is warned about presumptuous claims made in God's name.",
+      "Matthew 24:4–5 — Jesus warns His disciples not to be led astray by false claims.",
+      "Acts 20:28–31 — Paul warns church leaders that destructive teachers may arise from within.",
+      "Galatians 1:6–9 — Paul rejects any message that replaces the gospel he proclaimed.",
+      "2 Timothy 4:1–5 — Timothy is charged to teach faithfully even when people prefer what suits their desires."
+    ]
+  },
+  {
+    "title": "Hospitality and Welcoming the Stranger",
+    "summary": "God's people practise generous welcome and care for guests, strangers and fellow believers.",
+    "keywords": [
+      "hospitality",
+      "welcome",
+      "strangers",
+      "generosity"
+    ],
+    "references": [
+      {
+        "label": "Genesis 18:1-8",
+        "book": "Genesis",
+        "chapter": 18,
+        "verse": 1,
+        "endVerse": 8
+      },
+      {
+        "label": "Leviticus 19:33-34",
+        "book": "Leviticus",
+        "chapter": 19,
+        "verse": 33,
+        "endVerse": 34
+      },
+      {
+        "label": "Matthew 25:34-40",
+        "book": "Matthew",
+        "chapter": 25,
+        "verse": 34,
+        "endVerse": 40
+      },
+      {
+        "label": "Romans 12:9-13",
+        "book": "Romans",
+        "chapter": 12,
+        "verse": 9,
+        "endVerse": 13
+      },
+      {
+        "label": "Hebrews 13:1-3",
+        "book": "Hebrews",
+        "chapter": 13,
+        "verse": 1,
+        "endVerse": 3
+      }
+    ],
+    "definition": "Biblical hospitality is practical welcome and care for guests, strangers and those in need. It reflects God's generosity and must be offered with wisdom, safety and respect.",
+    "oldTestament": "Abraham's welcome of visitors and Israel's command to love the stranger are grounded in God's care for His people and their memory of being strangers in Egypt.",
+    "newTestament": "Jesus identifies care for the vulnerable with service rendered to Him. The letters instruct believers to practise hospitality and remember those who suffer.",
+    "application": "Offer welcome in ways that are safe and sustainable: share food, listen, include newcomers, support displaced people and protect the dignity of those receiving help.",
+    "questions": [
+      "Who is treated as a stranger or outsider in my community?",
+      "What practical form of welcome is safe and possible for me?",
+      "How does remembering God's welcome change my attitude?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "φιλοξενία",
+        "term": "philoxenia",
+        "meaning": "hospitality, love of strangers",
+        "note": "Literally combines love and stranger; used for welcoming others."
+      },
+      {
+        "language": "Greek",
+        "script": "ξένος",
+        "term": "xenos",
+        "meaning": "stranger, guest, foreigner",
+        "note": "Its meaning depends on whether the person is a guest, outsider or foreigner in context."
+      }
+    ],
+    "relatedExplanations": [
+      "Genesis 18:1–8 — Abraham welcomes visitors with practical care and generosity.",
+      "Leviticus 19:33–34 — Israel is commanded to treat the stranger with love and dignity.",
+      "Matthew 25:34–40 — Jesus identifies care for the vulnerable with service to Him.",
+      "Romans 12:9–13 — hospitality belongs among the practical expressions of sincere love.",
+      "Hebrews 13:1–3 — believers are told to continue in love, hospitality and remembrance of prisoners."
+    ]
+  },
+  {
+    "title": "Care for Widows, Orphans and the Vulnerable",
+    "summary": "True worship includes protecting and providing for people at risk of neglect or exploitation.",
+    "keywords": [
+      "widows",
+      "orphans",
+      "vulnerable",
+      "justice",
+      "care"
+    ],
+    "references": [
+      {
+        "label": "Deuteronomy 10:17-19",
+        "book": "Deuteronomy",
+        "chapter": 10,
+        "verse": 17,
+        "endVerse": 19
+      },
+      {
+        "label": "Psalm 68:4-6",
+        "book": "Psalms",
+        "chapter": 68,
+        "verse": 4,
+        "endVerse": 6
+      },
+      {
+        "label": "Isaiah 1:16-17",
+        "book": "Isaiah",
+        "chapter": 1,
+        "verse": 16,
+        "endVerse": 17
+      },
+      {
+        "label": "James 1:26-27",
+        "book": "James",
+        "chapter": 1,
+        "verse": 26,
+        "endVerse": 27
+      },
+      {
+        "label": "1 Timothy 5:3-8",
+        "book": "1 Timothy",
+        "chapter": 5,
+        "verse": 3,
+        "endVerse": 8
+      }
+    ],
+    "definition": "Scripture repeatedly identifies widows, orphans, strangers and the poor as people whose needs must not be ignored or exploited. Care is a concrete expression of covenant faithfulness and genuine devotion.",
+    "oldTestament": "The LORD is described as defender of the fatherless and widow. Israel's law and prophets condemn withholding justice or provision from vulnerable neighbours.",
+    "newTestament": "James connects pure religion with care for orphans and widows. Paul gives instructions for a church's practical support while recognising family responsibility and community stewardship.",
+    "application": "Notice who is overlooked, listen to their stated needs, support trustworthy care and challenge exploitation. Design help that protects dignity rather than creating dependency or control.",
+    "questions": [
+      "Who is vulnerable or overlooked in this passage?",
+      "What does the text require from God's people in practical terms?",
+      "How can care be offered with dignity, accountability and respect?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "יָתוֹם",
+        "term": "yātôm",
+        "meaning": "orphan, fatherless child",
+        "note": "A term frequently used in commands to protect children without a father."
+      },
+      {
+        "language": "Greek",
+        "script": "χήρα",
+        "term": "chēra",
+        "meaning": "widow",
+        "note": "Widows appear in New Testament teaching about practical care and community responsibility."
+      }
+    ],
+    "relatedExplanations": [
+      "Deuteronomy 10:17–19 — God defends the vulnerable and commands His people to love the stranger.",
+      "Psalm 68:4–6 — God is portrayed as a father to the fatherless and defender of widows.",
+      "Isaiah 1:16–17 — repentance is joined with seeking justice and defending the oppressed.",
+      "James 1:26–27 — care for orphans and widows is part of pure religion before God.",
+      "1 Timothy 5:3–8 — Paul outlines responsible support for widows and the role of family care."
+    ]
+  },
+  {
+    "title": "Sexual Integrity and Faithfulness",
+    "summary": "Scripture calls people to honour God and others through faithful, responsible sexual conduct.",
+    "keywords": [
+      "sexual integrity",
+      "purity",
+      "faithfulness",
+      "marriage"
+    ],
+    "references": [
+      {
+        "label": "Genesis 2:18-25",
+        "book": "Genesis",
+        "chapter": 2,
+        "verse": 18,
+        "endVerse": 25
+      },
+      {
+        "label": "Proverbs 5:15-23",
+        "book": "Proverbs",
+        "chapter": 5,
+        "verse": 15,
+        "endVerse": 23
+      },
+      {
+        "label": "Matthew 5:27-30",
+        "book": "Matthew",
+        "chapter": 5,
+        "verse": 27,
+        "endVerse": 30
+      },
+      {
+        "label": "1 Corinthians 6:12-20",
+        "book": "1 Corinthians",
+        "chapter": 6,
+        "verse": 12,
+        "endVerse": 20
+      },
+      {
+        "label": "1 Thessalonians 4:3-8",
+        "book": "1 Thessalonians",
+        "chapter": 4,
+        "verse": 3,
+        "endVerse": 8
+      }
+    ],
+    "definition": "Biblical sexual integrity means honouring God and the dignity of other people in desire, relationships, commitments and bodily conduct. It rejects exploitation, coercion, betrayal and objectification.",
+    "oldTestament": "Genesis presents human partnership and covenant union, while wisdom literature warns against adultery and destructive sexual choices. The law also includes protections and responsibilities that must be read in their historical context.",
+    "newTestament": "Jesus addresses not only outward acts but the heart. Paul teaches that the body matters to Christian discipleship and calls believers to holiness and respect for others.",
+    "application": "Practise honesty, consent, faithfulness and self-control. Seek wise pastoral or professional support where patterns of harm, coercion or addiction are involved; never blame victims for another person's wrongdoing.",
+    "questions": [
+      "Does this passage honour the dignity and agency of every person?",
+      "Where are boundaries, faithfulness or honesty needed?",
+      "What support would help me practise integrity without shame or secrecy?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "ἁγιασμός",
+        "term": "hagiasmos",
+        "meaning": "holiness, sanctification",
+        "note": "In 1 Thessalonians 4 it frames God's call to holy conduct."
+      },
+      {
+        "language": "Greek",
+        "script": "σῶμα",
+        "term": "sōma",
+        "meaning": "body",
+        "note": "Paul's teaching treats the body as significant to belonging to Christ."
+      }
+    ],
+    "relatedExplanations": [
+      "Genesis 2:18–25 — the creation account describes human partnership and the formation of a one-flesh union.",
+      "Proverbs 5:15–23 — wisdom urges faithfulness and warns about the consequences of adultery.",
+      "Matthew 5:27–30 — Jesus addresses the heart behind sexual wrongdoing and calls for serious moral action.",
+      "1 Corinthians 6:12–20 — Paul teaches that the body belongs to the Lord and must not be used for exploitation.",
+      "1 Thessalonians 4:3–8 — believers are called to holiness, self-control and respect for others."
+    ]
+  },
+  {
+    "title": "Singleness and Faithful Life",
+    "summary": "Scripture honours faithful singleness as a meaningful life of discipleship and service.",
+    "keywords": [
+      "singleness",
+      "celibacy",
+      "calling",
+      "relationships"
+    ],
+    "references": [
+      {
+        "label": "Isaiah 56:3-5",
+        "book": "Isaiah",
+        "chapter": 56,
+        "verse": 3,
+        "endVerse": 5
+      },
+      {
+        "label": "Matthew 19:10-12",
+        "book": "Matthew",
+        "chapter": 19,
+        "verse": 10,
+        "endVerse": 12
+      },
+      {
+        "label": "1 Corinthians 7:7-9",
+        "book": "1 Corinthians",
+        "chapter": 7,
+        "verse": 7,
+        "endVerse": 9
+      },
+      {
+        "label": "1 Corinthians 7:25-35",
+        "book": "1 Corinthians",
+        "chapter": 7,
+        "verse": 25,
+        "endVerse": 35
+      },
+      {
+        "label": "1 Timothy 5:1-2",
+        "book": "1 Timothy",
+        "chapter": 5,
+        "verse": 1,
+        "endVerse": 2
+      }
+    ],
+    "definition": "Singleness is a life circumstance that Scripture treats with dignity. Paul recognises it as a possible gift and context for undivided devotion, while also affirming marriage as good.",
+    "oldTestament": "Isaiah 56 promises belonging and honour to faithful people who might fear exclusion because of family status. God's welcome is not measured by marriage or descendants.",
+    "newTestament": "Jesus speaks of different circumstances of singleness, and Paul addresses unmarried believers without treating them as incomplete. The church is called to be a genuine family.",
+    "application": "Do not treat unmarried people as unfinished or less mature. Build meaningful community, honour personal boundaries and support each person's faithful calling.",
+    "questions": [
+      "How does this passage challenge assumptions about marriage and worth?",
+      "What forms of service and community are open in my present season?",
+      "How can the church treat single people as full members of God's family?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "ἄγαμος",
+        "term": "agamos",
+        "meaning": "unmarried",
+        "note": "Paul uses the term in 1 Corinthians 7 when discussing unmarried people."
+      },
+      {
+        "language": "Greek",
+        "script": "χάρισμα",
+        "term": "charisma",
+        "meaning": "gift, gracious endowment",
+        "note": "Paul uses gift language while discussing differing callings in 1 Corinthians 7."
+      }
+    ],
+    "relatedExplanations": [
+      "Isaiah 56:3–5 — faithful people without descendants are promised a place and name among God's people.",
+      "Matthew 19:10–12 — Jesus acknowledges different circumstances of singleness in the kingdom context.",
+      "1 Corinthians 7:7–9 — Paul recognises differing gifts and discusses marriage and singleness pastorally.",
+      "1 Corinthians 7:25–35 — Paul considers the practical concerns and opportunities of unmarried life.",
+      "1 Timothy 5:1–2 — the church is instructed to treat members of different ages and genders with familial respect."
+    ]
+  },
+  {
+    "title": "Contentment and Freedom from Envy",
+    "summary": "Contentment grows from trust in God rather than comparison, greed or changing circumstances.",
+    "keywords": [
+      "contentment",
+      "envy",
+      "greed",
+      "sufficiency"
+    ],
+    "references": [
+      {
+        "label": "Psalm 23:1-6",
+        "book": "Psalms",
+        "chapter": 23,
+        "verse": 1,
+        "endVerse": 6
+      },
+      {
+        "label": "Proverbs 30:7-9",
+        "book": "Proverbs",
+        "chapter": 30,
+        "verse": 7,
+        "endVerse": 9
+      },
+      {
+        "label": "Matthew 6:25-34",
+        "book": "Matthew",
+        "chapter": 6,
+        "verse": 25,
+        "endVerse": 34
+      },
+      {
+        "label": "Philippians 4:10-13",
+        "book": "Philippians",
+        "chapter": 4,
+        "verse": 10,
+        "endVerse": 13
+      },
+      {
+        "label": "1 Timothy 6:6-10",
+        "book": "1 Timothy",
+        "chapter": 6,
+        "verse": 6,
+        "endVerse": 10
+      }
+    ],
+    "definition": "Biblical contentment is a settled trust in God's care that resists envy and the endless demand for more. It does not forbid honest work, wise planning or seeking justice in hardship.",
+    "oldTestament": "The Psalms portray the LORD as shepherd and provider. Proverbs asks for neither poverty nor riches, but for provision sufficient to live faithfully.",
+    "newTestament": "Jesus teaches His followers not to be ruled by anxiety over possessions. Paul describes learning contentment in both abundance and need and warns against the love of money.",
+    "application": "Practise gratitude, resist comparison, use resources responsibly and seek help when needs are real. Contentment should never be used to excuse exploitation or prevent people from pursuing fair provision.",
+    "questions": [
+      "What desire or comparison is stealing gratitude from me?",
+      "What does this passage teach about God's care and my responsibilities?",
+      "Am I confusing contentment with accepting injustice or avoidable hardship?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "αὐτάρκεια",
+        "term": "autarkeia",
+        "meaning": "contentment, sufficiency",
+        "note": "In Christian teaching it describes sufficiency rooted in God rather than self-satisfaction."
+      },
+      {
+        "language": "Greek",
+        "script": "πλεονεξία",
+        "term": "pleonexia",
+        "meaning": "greed, covetousness",
+        "note": "A desire to have more that Scripture warns can become idolatrous."
+      }
+    ],
+    "relatedExplanations": [
+      "Psalm 23:1–6 — the shepherd image expresses trust in the LORD's provision and presence.",
+      "Proverbs 30:7–9 — the prayer asks for neither poverty nor riches, but daily provision and integrity.",
+      "Matthew 6:25–34 — Jesus addresses anxiety and calls disciples to seek God's kingdom.",
+      "Philippians 4:10–13 — Paul describes learning contentment through changing circumstances in Christ.",
+      "1 Timothy 6:6–10 — godliness with contentment is contrasted with the destructive love of money."
+    ]
+  },
+  {
+    "title": "Divine Providence and God's Guidance of History",
+    "summary": "God remains active and purposeful even when human events are complex and painful.",
+    "keywords": [
+      "providence",
+      "sovereignty",
+      "guidance",
+      "history"
+    ],
+    "references": [
+      {
+        "label": "Genesis 50:15-21",
+        "book": "Genesis",
+        "chapter": 50,
+        "verse": 15,
+        "endVerse": 21
+      },
+      {
+        "label": "Esther 4:12-17",
+        "book": "Esther",
+        "chapter": 4,
+        "verse": 12,
+        "endVerse": 17
+      },
+      {
+        "label": "Proverbs 16:1-9",
+        "book": "Proverbs",
+        "chapter": 16,
+        "verse": 1,
+        "endVerse": 9
+      },
+      {
+        "label": "Romans 8:28-30",
+        "book": "Romans",
+        "chapter": 8,
+        "verse": 28,
+        "endVerse": 30
+      },
+      {
+        "label": "Ephesians 1:9-11",
+        "book": "Ephesians",
+        "chapter": 1,
+        "verse": 9,
+        "endVerse": 11
+      }
+    ],
+    "definition": "Divine providence describes God's wise and sustaining rule over creation and history. Scripture affirms God's purpose without denying human responsibility, real suffering or the mystery of particular events.",
+    "oldTestament": "Joseph recognises that God worked toward preservation through events intended for harm (Genesis 50). Esther's story explores courageous action in a crisis where God's name is not explicitly mentioned.",
+    "newTestament": "Paul speaks of God's purpose for those who love Him and of His plan centred in Christ. These passages do not give permission to label every painful event as good in itself.",
+    "application": "Act faithfully with the wisdom and information available, grieve real harm, resist fatalism and entrust outcomes to God. Do not tell sufferers that abuse or tragedy was good or deserved.",
+    "questions": [
+      "What human choices and consequences are visible in this story?",
+      "How does the passage show God's purpose without denying suffering?",
+      "What faithful action is mine to take now?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "יָעַץ",
+        "term": "yāʿats",
+        "meaning": "advise, counsel, plan",
+        "note": "The word family can describe counsel or planning; the passage determines the nuance."
+      },
+      {
+        "language": "Greek",
+        "script": "πρόθεσις",
+        "term": "prothesis",
+        "meaning": "purpose, plan",
+        "note": "Paul uses this term for God's purpose in passages such as Romans 8 and Ephesians 1."
+      }
+    ],
+    "relatedExplanations": [
+      "Genesis 50:15–21 — Joseph distinguishes the brothers' harmful intention from God's preserving purpose.",
+      "Esther 4:12–17 — Esther and Mordecai face a crisis requiring courage and responsibility.",
+      "Proverbs 16:1–9 — human planning is real, yet the LORD's purposes remain decisive.",
+      "Romans 8:28–30 — Paul speaks of God's purpose to conform His people to the image of His Son.",
+      "Ephesians 1:9–11 — God's purpose is centred on bringing all things together in Christ."
+    ]
+  },
+  {
+    "title": "Healing, Sickness and Compassion",
+    "summary": "Scripture presents God as healer and calls His people to prayer, compassion and wise care.",
+    "keywords": [
+      "healing",
+      "sickness",
+      "health",
+      "compassion"
+    ],
+    "references": [
+      {
+        "label": "Exodus 15:25-27",
+        "book": "Exodus",
+        "chapter": 15,
+        "verse": 25,
+        "endVerse": 27
+      },
+      {
+        "label": "Psalm 103:1-5",
+        "book": "Psalms",
+        "chapter": 103,
+        "verse": 1,
+        "endVerse": 5
+      },
+      {
+        "label": "Mark 1:29-34",
+        "book": "Mark",
+        "chapter": 1,
+        "verse": 29,
+        "endVerse": 34
+      },
+      {
+        "label": "James 5:13-16",
+        "book": "James",
+        "chapter": 5,
+        "verse": 13,
+        "endVerse": 16
+      },
+      {
+        "label": "2 Corinthians 12:7-10",
+        "book": "2 Corinthians",
+        "chapter": 12,
+        "verse": 7,
+        "endVerse": 10
+      }
+    ],
+    "definition": "The Bible records God's healing power and Jesus' compassion toward the sick, while also acknowledging faithful people who suffer and are not immediately healed. Prayer and medical care need not be treated as enemies.",
+    "oldTestament": "Israel's Scriptures praise God as healer and describe healing within the wider story of covenant, mercy and human frailty. Wisdom literature does not promise that every illness is caused by a particular sin.",
+    "newTestament": "Jesus heals many as signs of God's kingdom and compassion. James encourages prayer for the sick, while Paul's account of an unremoved weakness warns against simplistic claims that every illness reflects insufficient faith.",
+    "application": "Pray with compassion, seek appropriate qualified medical care, support caregivers and avoid blaming sick people. Never promise a guaranteed cure or tell someone to stop prescribed treatment.",
+    "questions": [
+      "How does Jesus respond to sick and suffering people in this passage?",
+      "What forms of prayer, practical support and professional care are appropriate?",
+      "Does my interpretation blame someone for suffering without biblical warrant?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "רָפָא",
+        "term": "rāp̄āʾ",
+        "meaning": "heal, restore",
+        "note": "Used for healing and restoration; context may be physical or metaphorical."
+      },
+      {
+        "language": "Greek",
+        "script": "ἰάομαι",
+        "term": "iaomai",
+        "meaning": "heal, make well",
+        "note": "A New Testament healing verb used in accounts of Jesus' ministry and pastoral teaching."
+      }
+    ],
+    "relatedExplanations": [
+      "Exodus 15:25–27 — God reveals Himself as healer within Israel's wilderness journey.",
+      "Psalm 103:1–5 — the psalm praises God for forgiveness, healing and compassion.",
+      "Mark 1:29–34 — Jesus heals and serves many who are sick and oppressed.",
+      "James 5:13–16 — the church is instructed to pray for the sick and care for one another.",
+      "2 Corinthians 12:7–10 — Paul describes weakness that remains and the sufficiency of Christ's grace."
+    ]
+  },
+  {
+    "title": "Spiritual Maturity and Growing in Christ",
+    "summary": "Maturity develops through truth, love, endurance and increasing Christlike character.",
+    "keywords": [
+      "spiritual maturity",
+      "growth",
+      "discipleship",
+      "maturity"
+    ],
+    "references": [
+      {
+        "label": "Psalm 1:1-3",
+        "book": "Psalms",
+        "chapter": 1,
+        "verse": 1,
+        "endVerse": 3
+      },
+      {
+        "label": "Ephesians 4:11-16",
+        "book": "Ephesians",
+        "chapter": 4,
+        "verse": 11,
+        "endVerse": 16
+      },
+      {
+        "label": "Colossians 1:9-12",
+        "book": "Colossians",
+        "chapter": 1,
+        "verse": 9,
+        "endVerse": 12
+      },
+      {
+        "label": "Hebrews 5:11-14",
+        "book": "Hebrews",
+        "chapter": 5,
+        "verse": 11,
+        "endVerse": 14
+      },
+      {
+        "label": "2 Peter 3:17-18",
+        "book": "2 Peter",
+        "chapter": 3,
+        "verse": 17,
+        "endVerse": 18
+      }
+    ],
+    "definition": "Spiritual maturity is growing toward Christlike understanding, character and service. It involves receiving Scripture, practising discernment, loving others and persevering through difficulty.",
+    "oldTestament": "Psalm 1 pictures the flourishing person as rooted in God's instruction. Wisdom literature connects maturity with teachability, restraint and righteous conduct.",
+    "newTestament": "Paul describes the church growing toward the fullness of Christ as members serve one another in love. Hebrews calls readers to move beyond immaturity, and Peter urges growth in grace and knowledge.",
+    "application": "Choose a sustainable pattern of Scripture, prayer, fellowship, service and honest self-examination. Measure growth by Christlike love and faithfulness, not merely by knowledge or public visibility.",
+    "questions": [
+      "What evidence of growth does this passage describe?",
+      "Where do I need to move from hearing truth to practising it?",
+      "How can my gifts strengthen others and build up the church?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "τέλειος",
+        "term": "teleios",
+        "meaning": "mature, complete",
+        "note": "Depending on context, it can describe maturity or completeness rather than absolute flawlessness."
+      },
+      {
+        "language": "Greek",
+        "script": "αὐξάνω",
+        "term": "auxanō",
+        "meaning": "grow, increase",
+        "note": "Used for growth in spiritual life and the spread of the word."
+      }
+    ],
+    "relatedExplanations": [
+      "Psalm 1:1–3 — a life rooted in God's instruction is pictured as a fruitful tree.",
+      "Ephesians 4:11–16 — the church grows toward Christlike maturity through truth and mutual service.",
+      "Colossians 1:9–12 — Paul prays for knowledge that produces fruitful and patient living.",
+      "Hebrews 5:11–14 — maturity includes trained discernment through practice.",
+      "2 Peter 3:17–18 — believers are urged to guard against error and grow in grace and knowledge of Christ."
+    ]
+  },
+  {
+    "title": "Christian Freedom and Responsible Choice",
+    "summary": "Freedom in Christ is freedom from sin's dominion and freedom to serve others in love.",
+    "keywords": [
+      "freedom",
+      "liberty",
+      "conscience",
+      "responsibility"
+    ],
+    "references": [
+      {
+        "label": "Exodus 20:1-2",
+        "book": "Exodus",
+        "chapter": 20,
+        "verse": 1,
+        "endVerse": 2
+      },
+      {
+        "label": "John 8:31-36",
+        "book": "John",
+        "chapter": 8,
+        "verse": 31,
+        "endVerse": 36
+      },
+      {
+        "label": "Romans 6:15-23",
+        "book": "Romans",
+        "chapter": 6,
+        "verse": 15,
+        "endVerse": 23
+      },
+      {
+        "label": "1 Corinthians 8:1-13",
+        "book": "1 Corinthians",
+        "chapter": 8,
+        "verse": 1,
+        "endVerse": 13
+      },
+      {
+        "label": "Galatians 5:1-14",
+        "book": "Galatians",
+        "chapter": 5,
+        "verse": 1,
+        "endVerse": 14
+      }
+    ],
+    "definition": "Christian freedom is grounded in Christ's liberating work. It is not licence for selfishness; believers are freed from sin's rule and called to serve one another through love.",
+    "oldTestament": "The exodus is the foundational story of liberation from slavery, followed by a covenant life ordered toward worship and justice.",
+    "newTestament": "Jesus says the Son makes people free. Paul warns against returning to slavery and teaches that freedom must be expressed through love and concern for another person's conscience.",
+    "application": "Use freedom to love, serve and build others up. Consider how choices affect people with different backgrounds and convictions; do not turn personal liberty into pressure or contempt.",
+    "questions": [
+      "From what does Christ set people free in this passage?",
+      "How can my choice affect another person's conscience or wellbeing?",
+      "Am I using freedom to serve or to insist on my own way?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "ἐλευθερία",
+        "term": "eleutheria",
+        "meaning": "freedom, liberty",
+        "note": "Paul uses the term for freedom grounded in Christ and directed toward loving service."
+      },
+      {
+        "language": "Greek",
+        "script": "συνείδησις",
+        "term": "syneidēsis",
+        "meaning": "conscience",
+        "note": "The term refers to moral awareness and is discussed in relation to differing convictions."
+      }
+    ],
+    "relatedExplanations": [
+      "Exodus 20:1–2 — the commandments begin with God's identity as the One who brought Israel out of slavery.",
+      "John 8:31–36 — Jesus connects true freedom with abiding in His word and freedom from sin.",
+      "Romans 6:15–23 — freedom from sin leads to service of righteousness rather than renewed slavery.",
+      "1 Corinthians 8:1–13 — knowledge must be governed by love and care for another believer's conscience.",
+      "Galatians 5:1–14 — freedom in Christ is not an opportunity for self-indulgence but a call to serve in love."
+    ]
+  },
+  {
+    "title": "Justice, Oppression and Righteous Public Life",
+    "summary": "God calls His people to oppose exploitation and practise justice with mercy and integrity.",
+    "keywords": [
+      "justice",
+      "oppression",
+      "righteousness",
+      "public life"
+    ],
+    "references": [
+      {
+        "label": "Deuteronomy 16:18-20",
+        "book": "Deuteronomy",
+        "chapter": 16,
+        "verse": 18,
+        "endVerse": 20
+      },
+      {
+        "label": "Psalm 82:1-4",
+        "book": "Psalms",
+        "chapter": 82,
+        "verse": 1,
+        "endVerse": 4
+      },
+      {
+        "label": "Proverbs 31:8-9",
+        "book": "Proverbs",
+        "chapter": 31,
+        "verse": 8,
+        "endVerse": 9
+      },
+      {
+        "label": "Micah 6:6-8",
+        "book": "Micah",
+        "chapter": 6,
+        "verse": 6,
+        "endVerse": 8
+      },
+      {
+        "label": "James 2:1-9",
+        "book": "James",
+        "chapter": 2,
+        "verse": 1,
+        "endVerse": 9
+      }
+    ],
+    "definition": "Biblical justice concerns right relationships, impartial judgment, protection from exploitation and faithful treatment of neighbours. It includes personal conduct and the responsibilities of those who exercise authority.",
+    "oldTestament": "Israel's law and prophets demand impartial courts, honest measures and defence of the poor. Worship is condemned when it coexists with oppression and injustice.",
+    "newTestament": "Jesus rejects partiality and identifies love of neighbour as central to obedience. James condemns favouritism toward the wealthy and calls for practical faith.",
+    "application": "Practise honesty, oppose discrimination and exploitation, listen to people affected by decisions and support fair processes. Pursue justice without hatred or false accusation.",
+    "questions": [
+      "Who is being disadvantaged or silenced in this passage?",
+      "What would impartial and truthful action look like here?",
+      "How can mercy and justice be held together in my response?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "מִשְׁפָּט",
+        "term": "mishpāṭ",
+        "meaning": "justice, judgment",
+        "note": "Can refer to a legal decision, justice or an ordinance depending on context."
+      },
+      {
+        "language": "Hebrew",
+        "script": "צְדָקָה",
+        "term": "tsĕdāqāh",
+        "meaning": "righteousness, justice",
+        "note": "Often describes right conduct and faithful relationships, not only legal status."
+      }
+    ],
+    "relatedExplanations": [
+      "Deuteronomy 16:18–20 — judges are commanded to act impartially and reject bribery.",
+      "Psalm 82:1–4 — rulers are called to defend the weak and rescue the needy.",
+      "Proverbs 31:8–9 — the wise are urged to speak for those who cannot speak for themselves.",
+      "Micah 6:6–8 — God calls for justice, mercy and humble walking with Him.",
+      "James 2:1–9 — favouritism toward the rich contradicts faith and the royal law of love."
+    ]
+  },
+  {
+    "title": "Truthfulness, Honesty and Integrity",
+    "summary": "God's people are called to truthful speech and trustworthy conduct in private and public.",
+    "keywords": [
+      "truthfulness",
+      "honesty",
+      "integrity",
+      "lying"
+    ],
+    "references": [
+      {
+        "label": "Exodus 20:16",
+        "book": "Exodus",
+        "chapter": 20,
+        "verse": 16,
+        "endVerse": null
+      },
+      {
+        "label": "Psalm 15:1-5",
+        "book": "Psalms",
+        "chapter": 15,
+        "verse": 1,
+        "endVerse": 5
+      },
+      {
+        "label": "Proverbs 12:17-22",
+        "book": "Proverbs",
+        "chapter": 12,
+        "verse": 17,
+        "endVerse": 22
+      },
+      {
+        "label": "Matthew 5:33-37",
+        "book": "Matthew",
+        "chapter": 5,
+        "verse": 33,
+        "endVerse": 37
+      },
+      {
+        "label": "Ephesians 4:25-32",
+        "book": "Ephesians",
+        "chapter": 4,
+        "verse": 25,
+        "endVerse": 32
+      }
+    ],
+    "definition": "Integrity is consistency between what a person professes and how they live. Biblical truthfulness rejects deception, false witness, manipulation and dishonest gain, while speaking truth with love.",
+    "oldTestament": "The commandments prohibit false witness, and wisdom literature praises truthful speech and condemns deceit. Psalm 15 describes integrity as a mark of life with God.",
+    "newTestament": "Jesus teaches plain, reliable speech. Paul tells the church to put away falsehood because believers belong to one another and must build others up with their words.",
+    "application": "Tell the truth even when it costs you, correct misinformation, keep promises where possible and admit mistakes promptly. Do not use bluntness as an excuse for cruelty.",
+    "questions": [
+      "Are my words accurate and fair to the people involved?",
+      "Where do I need to correct a false impression or admit an error?",
+      "How can I speak truth in a way that builds rather than harms?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "אֱמֶת",
+        "term": "ʾemet",
+        "meaning": "truth, reliability, faithfulness",
+        "note": "Describes what is dependable and trustworthy."
+      },
+      {
+        "language": "Greek",
+        "script": "ἀλήθεια",
+        "term": "alētheia",
+        "meaning": "truth, reality",
+        "note": "A broad term whose force is shaped by its context and contrast with falsehood."
+      }
+    ],
+    "relatedExplanations": [
+      "Exodus 20:16 — the commandment forbids false witness against a neighbour.",
+      "Psalm 15:1–5 — integrity and truthful speech are marks of a person who walks faithfully with God.",
+      "Proverbs 12:17–22 — truthful speech is contrasted with lying and deceit.",
+      "Matthew 5:33–37 — Jesus calls for speech so reliable that elaborate oath-making is unnecessary.",
+      "Ephesians 4:25–32 — believers are to put away falsehood and speak what builds up others."
+    ]
+  },
+  {
+    "title": "Grief, Lament and Hope",
+    "summary": "Scripture gives language for honest sorrow while holding suffering before God's presence and promises.",
+    "keywords": [
+      "grief",
+      "lament",
+      "mourning",
+      "comfort"
+    ],
+    "references": [
+      {
+        "label": "Psalm 13:1-6",
+        "book": "Psalms",
+        "chapter": 13,
+        "verse": 1,
+        "endVerse": 6
+      },
+      {
+        "label": "Psalm 42:1-11",
+        "book": "Psalms",
+        "chapter": 42,
+        "verse": 1,
+        "endVerse": 11
+      },
+      {
+        "label": "Lamentations 3:19-26",
+        "book": "Lamentations",
+        "chapter": 3,
+        "verse": 19,
+        "endVerse": 26
+      },
+      {
+        "label": "John 11:17-ай",
+        "book": "John",
+        "chapter": 11,
+        "verse": 17,
+        "endVerse": 44
+      },
+      {
+        "label": "1 Thessalonians 4:13-18",
+        "book": "1 Thessalonians",
+        "chapter": 4,
+        "verse": 13,
+        "endVerse": 18
+      }
+    ],
+    "definition": "Biblical lament is honest prayer in the presence of pain, loss or injustice. It names sorrow, asks for God's help and often moves toward renewed trust without pretending grief has disappeared.",
+    "oldTestament": "The Psalms and Lamentations preserve prayers of anguish, protest, confession and hope. Their presence in Scripture shows that sorrow can be brought honestly before God.",
+    "newTestament": "Jesus weeps at Lazarus's tomb and promises resurrection life. Paul encourages grieving believers with the hope of Christ's return and resurrection, not with a command to suppress sorrow.",
+    "application": "Give grief room, seek compassionate community and professional support when needed, and bring honest words to God. Do not impose quick explanations or timelines on another person's mourning.",
+    "questions": [
+      "What loss or pain does the passage name honestly?",
+      "What does the prayer ask of God?",
+      "How does Christian hope support grief without denying it?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "קִינָה",
+        "term": "qînâ",
+        "meaning": "lament, dirge",
+        "note": "A term for a lament or mourning song."
+      },
+      {
+        "language": "Greek",
+        "script": "κλαίω",
+        "term": "klaiō",
+        "meaning": "weep, mourn",
+        "note": "Used for weeping in the Gospels and other New Testament contexts."
+      }
+    ],
+    "relatedExplanations": [
+      "Psalm 13:1–6 — the psalm moves from urgent complaint toward trust and praise.",
+      "Psalm 42:1–11 — the writer speaks to his own soul while longing for God amid distress.",
+      "Lamentations 3:19–26 — hope is expressed through remembering God's steadfast love in suffering.",
+      "John 11:17–44 — Jesus weeps with mourners and calls Lazarus from the tomb.",
+      "1 Thessalonians 4:13–18 — resurrection hope comforts believers who grieve the dead."
+    ]
+  },
+  {
+    "title": "Waiting, Patience and God's Timing",
+    "summary": "Faithful waiting involves endurance, prayer and trust without passive neglect of responsibility.",
+    "keywords": [
+      "waiting",
+      "patience",
+      "timing",
+      "endurance"
+    ],
+    "references": [
+      {
+        "label": "Psalm 27:13-14",
+        "book": "Psalms",
+        "chapter": 27,
+        "verse": 13,
+        "endVerse": 14
+      },
+      {
+        "label": "Isaiah 40:28-31",
+        "book": "Isaiah",
+        "chapter": 40,
+        "verse": 28,
+        "endVerse": 31
+      },
+      {
+        "label": "Habakkuk 2:1-4",
+        "book": "Habakkuk",
+        "chapter": 2,
+        "verse": 1,
+        "endVerse": 4
+      },
+      {
+        "label": "Romans 8:24-25",
+        "book": "Romans",
+        "chapter": 8,
+        "verse": 24,
+        "endVerse": 25
+      },
+      {
+        "label": "James 5:7-11",
+        "book": "James",
+        "chapter": 5,
+        "verse": 7,
+        "endVerse": 11
+      }
+    ],
+    "definition": "Biblical patience is steadfastness under delay, pressure or uncertainty. Waiting on God is not denial of pain or refusal to act; it is continued faithfulness while entrusting outcomes to Him.",
+    "oldTestament": "The Psalms call worshippers to wait for the LORD, and the prophets connect waiting with trust in God's word amid injustice and delay.",
+    "newTestament": "Paul describes hope as waiting for what is not yet seen. James uses the farmer's patience and the prophets' endurance to encourage believers under pressure.",
+    "application": "Keep doing the good that is yours to do, seek wise counsel, make practical plans and resist panic-driven choices. Waiting should deepen trust, not excuse neglect or harmful delay.",
+    "questions": [
+      "What is outside my control, and what responsibility remains mine?",
+      "What promise or truth sustains the passage's call to wait?",
+      "What faithful action can I take while the outcome remains uncertain?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "קָוָה",
+        "term": "qāvâ",
+        "meaning": "wait, hope, expect",
+        "note": "The verb can express waiting with expectation and hope."
+      },
+      {
+        "language": "Greek",
+        "script": "ὑπομονή",
+        "term": "hypomonē",
+        "meaning": "steadfastness, endurance",
+        "note": "A key New Testament term for persevering under trial."
+      }
+    ],
+    "relatedExplanations": [
+      "Psalm 27:13–14 — the psalmist encourages courage and waiting for the LORD.",
+      "Isaiah 40:28–31 — God's inexhaustible strength sustains those who hope in Him.",
+      "Habakkuk 2:1–4 — the prophet waits for God's answer and is called to live by faith.",
+      "Romans 8:24–25 — Christian hope includes patient waiting for what is not yet seen.",
+      "James 5:7–11 — the farmer and prophets illustrate patience while awaiting the Lord."
+    ]
+  },
+  {
+    "title": "Anger, Peacemaking and Self-Control",
+    "summary": "Scripture teaches believers to address anger truthfully without allowing it to become destructive.",
+    "keywords": [
+      "anger",
+      "peacemaking",
+      "self-control",
+      "conflict"
+    ],
+    "references": [
+      {
+        "label": "Proverbs 15:1-4",
+        "book": "Proverbs",
+        "chapter": 15,
+        "verse": 1,
+        "endVerse": 4
+      },
+      {
+        "label": "Ecclesiastes 7:8-9",
+        "book": "Ecclesiastes",
+        "chapter": 7,
+        "verse": 8,
+        "endVerse": 9
+      },
+      {
+        "label": "Matthew 5:21-26",
+        "book": "Matthew",
+        "chapter": 5,
+        "verse": 21,
+        "endVerse": 26
+      },
+      {
+        "label": "Ephesians 4:26-32",
+        "book": "Ephesians",
+        "chapter": 4,
+        "verse": 26,
+        "endVerse": 32
+      },
+      {
+        "label": "James 1:19-20",
+        "book": "James",
+        "chapter": 1,
+        "verse": 19,
+        "endVerse": 20
+      }
+    ],
+    "definition": "Anger is an emotional response that Scripture treats with seriousness. It may signal real wrong, but it must not become revenge, abuse, contempt or uncontrolled speech. Righteous action requires truth, restraint and justice.",
+    "oldTestament": "Wisdom literature contrasts gentle answers with words that inflame conflict and warns against being quick-tempered. The prophets show that anger at injustice must be directed toward faithful action.",
+    "newTestament": "Jesus addresses anger and contempt alongside reconciliation. Paul warns against letting anger become sin or persist destructively, and James calls believers to be quick to hear and slow to speak.",
+    "application": "Pause before reacting, name the real issue, set safe boundaries and seek help when conflict involves intimidation or violence. Peacemaking does not require remaining in danger.",
+    "questions": [
+      "What is beneath my anger: hurt, fear, injustice or wounded pride?",
+      "What response is truthful, safe and proportionate?",
+      "Do I need to apologise, set a boundary or seek mediation?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "אַף",
+        "term": "ʾap̄",
+        "meaning": "anger, nose, face",
+        "note": "A Hebrew term whose concrete and emotional senses depend on context."
+      },
+      {
+        "language": "Greek",
+        "script": "ὀργή",
+        "term": "orgē",
+        "meaning": "anger, wrath",
+        "note": "Used for human anger and divine wrath; the passage determines its moral meaning."
+      }
+    ],
+    "relatedExplanations": [
+      "Proverbs 15:1–4 — gentle speech can turn away wrath, while destructive words wound.",
+      "Ecclesiastes 7:8–9 — patience is contrasted with a quick temper.",
+      "Matthew 5:21–26 — Jesus addresses anger and contempt and urges reconciliation.",
+      "Ephesians 4:26–32 — anger must not become an opening for sin; speech should build up.",
+      "James 1:19–20 — quick listening and slow anger are urged because human anger does not produce God's righteousness."
+    ]
+  },
+  {
+    "title": "Prayer for Others and Intercession",
+    "summary": "Intercession brings other people and communities before God with compassion and perseverance.",
+    "keywords": [
+      "intercession",
+      "praying for others",
+      "prayer",
+      "community"
+    ],
+    "references": [
+      {
+        "label": "Genesis 18:22-33",
+        "book": "Genesis",
+        "chapter": 18,
+        "verse": 22,
+        "endVerse": 33
+      },
+      {
+        "label": "Exodus 32:9-14",
+        "book": "Exodus",
+        "chapter": 32,
+        "verse": 9,
+        "endVerse": 14
+      },
+      {
+        "label": "Daniel 9:1-19",
+        "book": "Daniel",
+        "chapter": 9,
+        "verse": 1,
+        "endVerse": 19
+      },
+      {
+        "label": "John 17:6-26",
+        "book": "John",
+        "chapter": 17,
+        "verse": 6,
+        "endVerse": 26
+      },
+      {
+        "label": "1 Timothy 2:1-6",
+        "book": "1 Timothy",
+        "chapter": 2,
+        "verse": 1,
+        "endVerse": 6
+      }
+    ],
+    "definition": "Intercession is prayer on behalf of others. Scripture presents it as an expression of love, solidarity and dependence on God, not as a means of controlling people or forcing a desired outcome.",
+    "oldTestament": "Abraham, Moses and Daniel pray in relation to the needs and sins of others. Their prayers include appeal to God's character, covenant and mercy.",
+    "newTestament": "Jesus prays for His disciples and those who will believe through their message. Paul urges prayer for all people, including those in authority, so that communities may live peacefully.",
+    "application": "Pray specifically and compassionately, listen to the people concerned, respect their agency and combine prayer with practical help where appropriate.",
+    "questions": [
+      "Whose needs are brought before God in this passage?",
+      "What does the prayer reveal about God's character?",
+      "What practical act of care can accompany my intercession?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "פָּלַל",
+        "term": "pālal",
+        "meaning": "intercede, pray",
+        "note": "The verb is associated with prayer and intercession in several Old Testament contexts."
+      },
+      {
+        "language": "Greek",
+        "script": "ἐντυγχάνω",
+        "term": "entynchánō",
+        "meaning": "appeal, intercede",
+        "note": "Used in New Testament contexts of appeal or intercession."
+      }
+    ],
+    "relatedExplanations": [
+      "Genesis 18:22–33 — Abraham appeals to God's justice while interceding for Sodom.",
+      "Exodus 32:9–14 — Moses pleads for Israel after the golden calf episode.",
+      "Daniel 9:1–19 — Daniel confesses communal sin and appeals to God's mercy and covenant.",
+      "John 17:6–26 — Jesus prays for His disciples and future believers.",
+      "1 Timothy 2:1–6 — Paul urges prayers for all people and those in authority."
+    ]
+  },
+  {
+    "title": "Spiritual Gifts and Their Purpose",
+    "summary": "Gifts are given by the Spirit for service, love and the building up of the church.",
+    "keywords": [
+      "spiritual gifts",
+      "gifts of the Spirit",
+      "service",
+      "church"
+    ],
+    "references": [
+      {
+        "label": "Exodus 31:1-6",
+        "book": "Exodus",
+        "chapter": 31,
+        "verse": 1,
+        "endVerse": 6
+      },
+      {
+        "label": "Romans 12:3-8",
+        "book": "Romans",
+        "chapter": 12,
+        "verse": 3,
+        "endVerse": 8
+      },
+      {
+        "label": "1 Corinthians 12:4-11",
+        "book": "1 Corinthians",
+        "chapter": 12,
+        "verse": 4,
+        "endVerse": 11
+      },
+      {
+        "label": "1 Corinthians 12:12-27",
+        "book": "1 Corinthians",
+        "chapter": 12,
+        "verse": 12,
+        "endVerse": 27
+      },
+      {
+        "label": "1 Peter 4:10-11",
+        "book": "1 Peter",
+        "chapter": 4,
+        "verse": 10,
+        "endVerse": 11
+      }
+    ],
+    "definition": "Spiritual gifts are varied abilities and services enabled by God for the good of others and the building up of the church. They are not measures of personal worth or permission to dominate.",
+    "oldTestament": "The Spirit equips Bezalel and others with skill for the tabernacle's work, showing that God-given ability can serve communal worship and practical craftsmanship.",
+    "newTestament": "Paul describes diverse gifts within one body and insists that love governs their use. Peter calls believers to serve one another as faithful stewards of God's varied grace.",
+    "application": "Identify ways you can serve, receive feedback from the community and use abilities to strengthen others. Do not rank people by visible gifts or claim authority over others on that basis.",
+    "questions": [
+      "Who benefits from the gift described in this passage?",
+      "How does love govern the use of gifts?",
+      "What ability can I offer faithfully without seeking status?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "χάρισμα",
+        "term": "charisma",
+        "meaning": "gracious gift",
+        "note": "Paul uses the term for gifts given by grace for service."
+      },
+      {
+        "language": "Greek",
+        "script": "διακονία",
+        "term": "diakonia",
+        "meaning": "service, ministry",
+        "note": "The word describes practical service and ministry in varied settings."
+      }
+    ],
+    "relatedExplanations": [
+      "Exodus 31:1–6 — the Spirit equips artisans for skilled work in the tabernacle.",
+      "Romans 12:3–8 — believers are urged to use differing gifts humbly within one body.",
+      "1 Corinthians 12:4–11 — gifts differ, but the same Spirit works for the common good.",
+      "1 Corinthians 12:12–27 — the church is one body with many members who need one another.",
+      "1 Peter 4:10–11 — each person is to serve others as a steward of God's varied grace."
+    ]
+  },
+  {
+    "title": "The Fruit of the Spirit in Daily Character",
+    "summary": "The Spirit produces Christlike qualities that shape relationships and everyday conduct.",
+    "keywords": [
+      "fruit of the Spirit",
+      "love",
+      "joy",
+      "peace",
+      "character"
+    ],
+    "references": [
+      {
+        "label": "Psalm 1:1-3",
+        "book": "Psalms",
+        "chapter": 1,
+        "verse": 1,
+        "endVerse": 3
+      },
+      {
+        "label": "John 15:1-8",
+        "book": "John",
+        "chapter": 15,
+        "verse": 1,
+        "endVerse": 8
+      },
+      {
+        "label": "Romans 8:5-14",
+        "book": "Romans",
+        "chapter": 8,
+        "verse": 5,
+        "endVerse": 14
+      },
+      {
+        "label": "Galatians 5:16-26",
+        "book": "Galatians",
+        "chapter": 5,
+        "verse": 16,
+        "endVerse": 26
+      },
+      {
+        "label": "Colossians 3:12-17",
+        "book": "Colossians",
+        "chapter": 3,
+        "verse": 12,
+        "endVerse": 17
+      }
+    ],
+    "definition": "The fruit of the Spirit is the character produced by the Holy Spirit in those who belong to Christ. Paul contrasts it with destructive works of the flesh and presents it as a unified pattern of life.",
+    "oldTestament": "The Psalms picture the righteous as a tree planted by streams of water. The prophets promise God's Spirit will renew His people and produce faithful obedience.",
+    "newTestament": "Jesus teaches that fruitfulness comes from abiding in Him. Paul lists the fruit of the Spirit and calls believers to walk by the Spirit rather than serve selfish desires.",
+    "application": "Choose one quality named in Galatians 5 and practise it in a real relationship today. Ask the Spirit for help and seek accountability rather than treating character growth as self-improvement alone.",
+    "questions": [
+      "Which fruit is most needed in my current relationships?",
+      "What behaviour does the passage contrast with Spirit-led character?",
+      "What practical choice would make this fruit visible today?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "καρπός",
+        "term": "karpos",
+        "meaning": "fruit, produce",
+        "note": "Used metaphorically for the visible result or outcome of a life."
+      },
+      {
+        "language": "Greek",
+        "script": "πνεῦμα",
+        "term": "pneuma",
+        "meaning": "spirit, breath, wind",
+        "note": "In Galatians 5 the context identifies the Holy Spirit and Spirit-led life."
+      }
+    ],
+    "relatedExplanations": [
+      "Psalm 1:1–3 — a life rooted in God's instruction is pictured as fruitful.",
+      "John 15:1–8 — Jesus teaches that fruitfulness depends on abiding in Him.",
+      "Romans 8:5–14 — life in the Spirit is contrasted with life governed by the flesh.",
+      "Galatians 5:16–26 — Paul contrasts destructive works with the fruit of the Spirit.",
+      "Colossians 3:12–17 — compassion, forgiveness, love and peace shape the community of Christ."
+    ]
+  },
+  {
+    "title": "Thanksgiving in Every Circumstance",
+    "summary": "Gratitude remembers God's goodness while remaining honest about hardship and lament.",
+    "keywords": [
+      "thanksgiving",
+      "gratitude",
+      "praise",
+      "remembering"
+    ],
+    "references": [
+      {
+        "label": "Psalm 100:1-5",
+        "book": "Psalms",
+        "chapter": 100,
+        "verse": 1,
+        "endVerse": 5
+      },
+      {
+        "label": "Psalm 107:1-9",
+        "book": "Psalms",
+        "chapter": 107,
+        "verse": 1,
+        "endVerse": 9
+      },
+      {
+        "label": "Daniel 6:6-10",
+        "book": "Daniel",
+        "chapter": 6,
+        "verse": 6,
+        "endVerse": 10
+      },
+      {
+        "label": "Luke 17:11-19",
+        "book": "Luke",
+        "chapter": 17,
+        "verse": 11,
+        "endVerse": 19
+      },
+      {
+        "label": "1 Thessalonians 5:16-18",
+        "book": "1 Thessalonians",
+        "chapter": 5,
+        "verse": 16,
+        "endVerse": 18
+      }
+    ],
+    "definition": "Biblical thanksgiving is the practice of acknowledging God's goodness and gifts. It can coexist with grief and requests for help; it does not require calling evil good or denying pain.",
+    "oldTestament": "Israel's worship remembers God's creation, covenant and deliverance. The Psalms give thanks in both joyful and difficult circumstances.",
+    "newTestament": "Jesus notices the Samaritan who returns to give thanks. Paul calls believers to gratitude as part of a life shaped by prayer and hope, even amid hardship.",
+    "application": "Name specific gifts, thank people where appropriate and remember God's past faithfulness. Make room for lament when circumstances are painful; gratitude should not silence honest sorrow.",
+    "questions": [
+      "What reason for thanksgiving does this passage identify?",
+      "What hardship must be acknowledged honestly rather than hidden?",
+      "How can gratitude shape my response without denying reality?"
+    ],
+    "languageWords": [
+      {
+        "language": "Hebrew",
+        "script": "יָדָה",
+        "term": "yādâ",
+        "meaning": "give thanks, praise, confess",
+        "note": "The verb can describe giving thanks or praise, depending on context."
+      },
+      {
+        "language": "Greek",
+        "script": "εὐχαριστέω",
+        "term": "eucharisteō",
+        "meaning": "give thanks",
+        "note": "Used for expressing gratitude, including in prayer and worship."
+      }
+    ],
+    "relatedExplanations": [
+      "Psalm 100:1–5 — worship is grounded in the LORD's goodness and enduring faithfulness.",
+      "Psalm 107:1–9 — thanksgiving remembers God's rescue and provision for the needy.",
+      "Daniel 6:6–10 — Daniel continues his practice of prayer and thanksgiving under threat.",
+      "Luke 17:11–19 — one healed Samaritan returns to thank Jesus and receives a word about faith.",
+      "1 Thessalonians 5:16–18 — joy, prayer and thanksgiving are presented as God's will in Christ."
+    ]
+  },
+  {
+    "title": "The Holy Spirit's Guidance and Leading",
+    "summary": "The Spirit leads believers in truth, holiness, witness and faithful obedience to Christ.",
+    "keywords": [
+      "Spirit guidance",
+      "leading of the Holy Spirit",
+      "Holy Spirit",
+      "discernment"
+    ],
+    "references": [
+      {
+        "label": "Ezekiel 36:25-27",
+        "book": "Ezekiel",
+        "chapter": 36,
+        "verse": 25,
+        "endVerse": 27
+      },
+      {
+        "label": "John 14:25-27",
+        "book": "John",
+        "chapter": 14,
+        "verse": 25,
+        "endVerse": 27
+      },
+      {
+        "label": "John 16:12-15",
+        "book": "John",
+        "chapter": 16,
+        "verse": 12,
+        "endVerse": 15
+      },
+      {
+        "label": "Romans 8:12-16",
+        "book": "Romans",
+        "chapter": 8,
+        "verse": 12,
+        "endVerse": 16
+      },
+      {
+        "label": "Galatians 5:16-25",
+        "book": "Galatians",
+        "chapter": 5,
+        "verse": 16,
+        "endVerse": 25
+      }
+    ],
+    "definition": "The Holy Spirit guides God's people in ways consistent with the truth of Christ, the apostolic witness and holy living. Claims of personal guidance should be tested and held with humility.",
+    "oldTestament": "The prophets promise a renewed heart and God's Spirit enabling His people to walk in His ways (Ezekiel 36:25–27). The Spirit also equips particular people for service.",
+    "newTestament": "Jesus promises the Spirit's teaching and witness. Paul describes the Spirit leading believers away from sin and producing fruit, while the church tests teaching and prophecy in community.",
+    "application": "Seek guidance through Scripture, prayer, wise counsel and attention to Christlike fruit. Avoid using 'God told me' to pressure others or bypass accountability.",
+    "questions": [
+      "Does the claimed guidance agree with the teaching of Jesus and Scripture?",
+      "What fruit is this decision likely to produce?",
+      "Have I sought wise counsel and allowed room for correction?"
+    ],
+    "languageWords": [
+      {
+        "language": "Greek",
+        "script": "παράκλητος",
+        "term": "paraklētos",
+        "meaning": "advocate, helper, comforter",
+        "note": "John uses this title for the Spirit's role with Jesus' disciples."
+      },
+      {
+        "language": "Greek",
+        "script": "ὁδηγέω",
+        "term": "hodēgeō",
+        "meaning": "lead, guide",
+        "note": "A verb for guiding; its object and context establish the kind of guidance meant."
+      }
+    ],
+    "relatedExplanations": [
+      "Ezekiel 36:25–27 — God promises cleansing and the gift of His Spirit for obedient life.",
+      "John 14:25–27 — Jesus promises the Spirit's teaching and His peace to the disciples.",
+      "John 16:12–15 — the Spirit glorifies Christ and guides the disciples into truth.",
+      "Romans 8:12–16 — those led by the Spirit are described as God's children.",
+      "Galatians 5:16–25 — walking by the Spirit is shown through a contrast of conduct and character."
+    ]
   }
 ];
 function normalize(value){return String(value||"").toLowerCase().replace(/\s+/g," ").trim();}
