@@ -10711,7 +10711,7 @@ const topics=[
         "endVerse": 26
       },
       {
-        "label": "John 11:17-ай",
+        "label": "John 11:17-44",
         "book": "John",
         "chapter": 11,
         "verse": 17,
