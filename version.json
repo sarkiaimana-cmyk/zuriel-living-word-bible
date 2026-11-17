@@ -1,4 +1,4 @@
 {
   "version": "1.4.27",
-  "releaseNotes": "Adds a secure, optional YouVersion translation comparison panel while keeping the KJV fully available offline."
+  "releaseNotes": "Prepares secure, optional YouVersion translation comparison; online access remains off until the licensed service is configured."
 }
