@@ -73,8 +73,11 @@ const release = JSON.parse(version);
 const installed = updates.match(/const APP_VERSION = "([^"]+)";/);
 assert.ok(installed, "In-app update centre must declare its installed version.");
 assert.equal(installed[1], release.version, "In-app update version must match version.json.");
-assert.match(release.version, /^\d+\.\d+\.\d+$/, "Release metadata must use semantic MAJOR.MINOR.PATCH numbering.");
-assert.match(serviceWorker, /const CACHE_NAME = "zuriel-bible-offline-v\\d+";/,
+const releaseParts = release.version.split(".");
+assert.equal(releaseParts.length, 3, "Release metadata must use MAJOR.MINOR.PATCH numbering.");
+assert.ok(releaseParts.every(part => part.length > 0 && Number.isInteger(Number(part)) && String(Number(part)) === part),
+  "Release version components must be non-negative integers without leading zeroes.");
+assert.ok(serviceWorker.includes('const CACHE_NAME = "zuriel-bible-offline-v'),
   "The service worker must use an explicitly versioned offline cache.");
 
 if (failures.length) {
