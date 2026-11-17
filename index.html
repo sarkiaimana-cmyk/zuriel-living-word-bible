@@ -480,6 +480,9 @@ const bookCodes = {
   "2 Peter":"2PE","1 John":"1JO","2 John":"2JO",
   "3 John":"3JO","Jude":"JUD","Revelation":"REV"
 };
+window.ZurielBibleBookCode = function (bookName) {
+  return bookCodes[bookName] || null;
+};
 
 const STORAGE_KEY = "zurielLastReadingPosition";
 const selector = document.getElementById("book");
@@ -1312,6 +1315,7 @@ loadBibleBooks();
   <script src="zuriel-settings.js"></script>
   <script src="zuriel-updates.js"></script>
   <script src="zuriel-audio.js" defer></script>
+  <script src="zuriel-translations.js"></script>
   
 
 <!-- REGISTER THE OFFLINE ENGINE -->
