@@ -318,7 +318,7 @@
 
       const methodNote = document.createElement("p");
       methodNote.className = "study-small";
-      methodNote.textContent = "The selected KJV word is matched by its source character range, then joined to the Berean interlinear records by Strong's number. The interlinear gloss is the Berean Standard Bible's English phrase, not a KJV definition. Read the verse and paragraph in context; source alignments can differ and no missing link is guessed. Grammar details are shown only when supplied by the source.";
+      methodNote.textContent = "The selected KJV word is matched by its source character range, then joined to the Berean interlinear records by Strong's number. A Strong's number is an index, not a complete definition. The interlinear gloss is the Berean Standard Bible's English phrase, not a KJV definition; a lemma identifies a dictionary headword, while its listed senses show a range of use. The best sense depends on the verse and wider context. Grammar details are shown only when supplied by the source, and no missing link or meaning is guessed.";
       target.appendChild(methodNote);
 
       exactMatches.forEach(function (word) {
@@ -672,11 +672,36 @@
         const name = englishBookName(item.book);
         if (!name) return;
 
+        const referenceCard = document.createElement("div");
+        referenceCard.className = "study-word";
         const button = document.createElement("button");
         button.type = "button";
         button.className = "study-link";
         button.textContent = name + " " + item.chapter + ":" + item.verse +
           (item.endVerse ? "–" + item.endVerse : "");
+        const relationshipValue = String(
+          item.relationship || item.type || item.category || item.kind || ""
+        ).toLowerCase().replace(/[ _-]+/g, " ").trim();
+        const relationshipLabels = {
+          quotation: "Direct quotation",
+          quote: "Direct quotation",
+          parallel: "Parallel passage",
+          "parallel passage": "Parallel passage",
+          prophecy: "Prophecy",
+          fulfilment: "Fulfilment",
+          fulfillment: "Fulfilment",
+          "prophecy fulfilment": "Prophecy / fulfilment",
+          "prophecy fulfillment": "Prophecy / fulfilment",
+          theme: "Thematic connection",
+          thematic: "Thematic connection",
+          "thematic connection": "Thematic connection"
+        };
+        const relationship = document.createElement("p");
+        relationship.className = "study-small";
+        relationship.textContent = relationshipLabels[relationshipValue] ||
+          "Related Scripture — relationship not classified by source.";
+        referenceCard.append(button, relationship);
+        list.appendChild(referenceCard);
         button.addEventListener("click", async function () {
           if (typeof window.openChapter !== "function") return;
           const verseNumber = Number(item.verse);
@@ -712,7 +737,6 @@
             list.appendChild(status);
           }
         });
-        list.appendChild(button);
       });
 
       if (!list.children.length) {
@@ -1318,7 +1342,7 @@
           <summary>🔗 4. Connected Scriptures</summary>
           <div class="study-body">
             <p>Related Scriptures for the selected verse. Tap a reference to open it and compare the full passage.</p>
-            <p class="study-small">A connection may be a quotation, shared theme, parallel account, prophecy or fulfilment, or another textual link. Read both passages in context; a reference by itself does not prove that two verses mean exactly the same thing.</p>
+            <p class="study-small">A connection may be a quotation, shared theme, parallel account, prophecy or fulfilment, or another textual link. The source does not classify every link. Zuriel labels a relationship only when the source supplies that information; otherwise it is shown as an unclassified related Scripture. Read both passages in context.</p>
             <div id="zurielCrossReferenceList" aria-live="polite">
               <p>Select a verse to find connected Scriptures.</p>
             </div>
@@ -1326,7 +1350,26 @@
         </details>
 
         <details>
-          <summary>📚 5. Theology and Deeper Study</summary>
+          <summary>📚 5. Bible Concordance — Find Words and Phrases</summary>
+          <div class="study-body">
+            <p>Search the offline King James Version for an exact English word or a phrase. Word searches match whole words, not partial spellings. Phrase searches find the exact phrase within a verse.</p>
+            <label for="zurielConcordanceQuery">Word or phrase</label>
+            <input id="zurielConcordanceQuery" type="search" minlength="3" placeholder="For example: grace, covenant, in the beginning" autocomplete="off">
+            <label for="zurielConcordanceMode">Search type</label>
+            <select id="zurielConcordanceMode">
+              <option value="word">Exact word</option>
+              <option value="phrase">Exact phrase</option>
+            </select>
+            <button type="button" class="study-action" id="zurielConcordanceSearch">Search Concordance</button>
+            <p class="study-small">Results are from the offline KJV text. Up to 100 matching verses are shown per search. English concordance results are not Hebrew or Greek lemma searches.</p>
+            <div id="zurielConcordanceResults" aria-live="polite">
+              <p>Enter at least three characters to search the KJV concordance.</p>
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>📚 6. Theology and Deeper Study</summary>
           <div class="study-body" id="zurielDeeperStudy">
             <p>Explore biblical themes, teachings and connections.
             Distinguish the meaning of Scripture from personal interpretation.</p>
@@ -1559,6 +1602,78 @@
     if (dictionarySearch) {
       dictionarySearch.addEventListener("input", () => renderDictionary(dictionarySearch.value));
       renderDictionary("");
+    }
+
+    // Offline KJV concordance: whole-word and exact-phrase search use the
+    // same validated 66-book Bible data as the reader.
+    const concordanceQuery = panel.querySelector("#zurielConcordanceQuery");
+    const concordanceMode = panel.querySelector("#zurielConcordanceMode");
+    const concordanceButton = panel.querySelector("#zurielConcordanceSearch");
+    const concordanceResults = panel.querySelector("#zurielConcordanceResults");
+    let concordanceRequest = 0;
+    async function runConcordanceSearch() {
+      if (!concordanceQuery || !concordanceMode || !concordanceResults || !concordanceButton) return;
+      const query = concordanceQuery.value.trim();
+      const mode = concordanceMode.value;
+      const requestId = ++concordanceRequest;
+      concordanceResults.replaceChildren();
+      if (query.length < 3) {
+        concordanceResults.textContent = "Please enter at least three characters.";
+        return;
+      }
+      if (!window.ZurielBibleSearch || typeof window.ZurielBibleSearch.search !== "function") {
+        concordanceResults.textContent = "The offline Bible search engine is not available yet.";
+        return;
+      }
+      concordanceButton.disabled = true;
+      concordanceResults.textContent = "Searching the complete offline KJV...";
+      try {
+        const matches = await window.ZurielBibleSearch.search(query, 100, mode);
+        if (requestId !== concordanceRequest) return;
+        concordanceResults.replaceChildren();
+        if (!matches.length) {
+          concordanceResults.textContent = "No matching KJV verses found. Check the spelling or try a different search type.";
+          return;
+        }
+        const summary = document.createElement("p");
+        summary.className = "study-small";
+        summary.textContent = "Showing " + matches.length +
+          (matches.length === 100 ? " or more (first 100) " : " ") +
+          "matching KJV verses. Tap a result to open that verse.";
+        concordanceResults.appendChild(summary);
+        matches.forEach(function (item) {
+          const result = document.createElement("button");
+          result.type = "button";
+          result.className = "study-link";
+          result.textContent = item.book + " " + item.chapter + ":" + item.verse + " — " + item.text;
+          result.addEventListener("click", async function () {
+            try {
+              await window.openChapter(item.book, item.chapter);
+              if (typeof window.selectBibleVerse !== "function" ||
+                  !window.selectBibleVerse(item.verse)) {
+                throw new Error("The selected concordance verse could not be opened.");
+              }
+            } catch (error) {
+              concordanceResults.textContent = "Unable to open this concordance result: " +
+                (error && error.message ? error.message : "Please try again.");
+            }
+          });
+          concordanceResults.appendChild(result);
+        });
+      } catch (error) {
+        if (requestId === concordanceRequest) {
+          concordanceResults.textContent = error && error.message
+            ? error.message : "The concordance search could not be completed.";
+        }
+      } finally {
+        if (requestId === concordanceRequest) concordanceButton.disabled = false;
+      }
+    }
+    if (concordanceButton) concordanceButton.addEventListener("click", runConcordanceSearch);
+    if (concordanceQuery) {
+      concordanceQuery.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") runConcordanceSearch();
+      });
     }
 
     function readHighlights() {
