@@ -45,8 +45,10 @@ The first command verifies all 66 books, 1,189 chapters and every verse without 
 From the repository root:
 
 ```bash
-node --test ai-worker/test/worker.test.mjs
+cd ai-worker && npm test
 ```
+
+This runs the AI boundary tests, the shared YouVersion proxy tests and the translation-only Worker isolation tests.
 
 ## Turnstile protection
 
