@@ -124,5 +124,5 @@ if (failures.length) {
   failures.forEach(item => console.error(" - " + item));
   process.exitCode = 1;
 } else {
-  console.log("Original-language word-linking tests passed (11 cases).");
+  console.log("Original-language word-linking tests passed (12 checks).");
 }
