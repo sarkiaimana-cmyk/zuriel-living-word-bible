@@ -1226,7 +1226,14 @@ window.getChapterVerseCount = async function (book, chapter) {
 
 window.ZurielBibleSearch = {
   search: async function (query, limit, mode) {
-    const term = String(query || "").trim().toLowerCase();
+    const normalizeSearchText = value => String(value || "")
+      .normalize("NFD")
+      .replace(/[\\u0300-\\u036f]/g, "")
+      .replace(/[’‘]/g, "'")
+      .replace(/\\s+/g, " ")
+      .trim()
+      .toLowerCase();
+    const term = normalizeSearchText(query);
     if (term.length < 3) throw new Error("Please enter at least 3 characters.");
     if (mode && mode !== "word" && mode !== "phrase") {
       throw new Error("Choose an exact word or phrase search.");
@@ -1259,12 +1266,13 @@ window.ZurielBibleSearch = {
               verse: verseIndex + 1,
               text: searchable.replace(/^¶\s*/, "")
             });
-            if (matches.length >= maximum) return matches;
           }
         }
       }
     }
-    return matches;
+    const visible = matches.slice(0, maximum);
+    visible.totalMatches = matches.length;
+    return visible;
   }
 };
 
