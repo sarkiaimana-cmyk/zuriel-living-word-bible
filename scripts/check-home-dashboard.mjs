@@ -52,6 +52,13 @@ requireText(home, 'window.ZurielLibrary.open("saved")', "The bottom-navigation s
 requireText(home, '["library", "📚", "Library"]', "The dedicated Library navigation item");
 requireText(home, 'data-section="declare"', "The declarations home shortcut");
 requireText(home, 'data-section="devotional"', "The devotional home shortcut");
+requireText(home, 'data-library-page="worship"', "The direct Home shortcut to SS&S Songs, Hymns and Worship");
+requireText(home, 'data-library-page="references"', "The direct Home shortcut to Dictionaries and Commentaries");
+requireText(home, 'dashboard.querySelectorAll("[data-library-page]")', "Home study-library shortcut event binding");
+requireText(home, 'window.ZurielLibrary.open(button.dataset.libraryPage)', "Home shortcut opens the selected library page");
+requireText(library, 'if (page === "worship")', "The SS&S worship collection page");
+requireText(library, 'if (page === "references")', "The dictionaries and commentaries reference shelf");
+requireText(home, "Scripture-led reflection and prayer", "Accurate devotional shortcut description without implying automatic daily rotation");
 requireText(home, '["personal", "📝", "My Space"]', "The six-item primary navigation");
 requireText(library, "zlib-study-topic", "Illustrated Deep Bible Study pathways");
 requireText(library, "openStudyTopic(topic)", "Actionable Deep Bible Study pathways");
