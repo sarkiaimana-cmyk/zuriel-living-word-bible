@@ -928,6 +928,396 @@
       "studyQuestions": "Practice observing before interpreting and applying.",
       "lifeApplication": "Cross-references should illuminate, not override, the passage being read.",
       "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-071",
+      "title": "Covenant faithfulness in everyday life",
+      "overview": "Covenant faithfulness in Scripture is expressed through loyal love, justice, worship and keeping commitments before God and neighbour.",
+      "scriptureReferences": [
+        "Deuteronomy 7:9",
+        "Psalm 89:1-4",
+        "Micah 6:8"
+      ],
+      "studyQuestions": "Compare God's covenant loyalty with the responses expected of His people.",
+      "lifeApplication": "Practise truthful commitments and steadfast love without treating covenant language as permission to control others.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-072",
+      "title": "Holiness and belonging to God",
+      "overview": "Holiness describes being set apart for God and living in ways shaped by His character and purposes.",
+      "scriptureReferences": [
+        "Leviticus 19:1-18",
+        "1 Peter 1:13-16",
+        "Hebrews 12:14"
+      ],
+      "studyQuestions": "Notice how worship, neighbour-love and conduct are joined in these passages.",
+      "lifeApplication": "Pursue holiness through love and obedience, not superiority or contempt for others.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-073",
+      "title": "Growing in Christlike character",
+      "overview": "Christian growth involves the renewing work of God and an increasingly mature pattern of love, truth and service.",
+      "scriptureReferences": [
+        "Romans 12:1-2",
+        "Ephesians 4:11-16",
+        "Colossians 1:9-12"
+      ],
+      "studyQuestions": "Identify the practices and community relationships connected with maturity.",
+      "lifeApplication": "Measure growth by faithful character rather than comparison, status or perfectionism.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-074",
+      "title": "Conscience and Christian freedom",
+      "overview": "The New Testament teaches believers to act with a clear conscience while considering the faith and wellbeing of others.",
+      "scriptureReferences": [
+        "Romans 14:1-23",
+        "1 Corinthians 8:1-13",
+        "1 Timothy 1:5"
+      ],
+      "studyQuestions": "Distinguish clear moral commands from matters where believers may differ.",
+      "lifeApplication": "Do not weaponise personal convictions to shame or control another person's conscience.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-075",
+      "title": "Fasting and wholehearted devotion",
+      "overview": "Biblical fasting can accompany prayer, repentance, grief and seeking God, while the prophets reject fasting detached from justice.",
+      "scriptureReferences": [
+        "Isaiah 58:1-12",
+        "Matthew 6:16-18",
+        "Acts 13:1-3"
+      ],
+      "studyQuestions": "Compare outward religious practice with the motives and actions God commends.",
+      "lifeApplication": "Fasting is not a way to manipulate God; people with medical or health needs should choose safe forms of devotion.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-076",
+      "title": "Intercession for others",
+      "overview": "Intercession brings the needs of people, communities and leaders before God in prayer.",
+      "scriptureReferences": [
+        "Exodus 32:11-14",
+        "Daniel 9:1-19",
+        "1 Timothy 2:1-4"
+      ],
+      "studyQuestions": "Observe who is prayed for and how prayer relates to compassion and responsibility.",
+      "lifeApplication": "Let prayer lead to appropriate practical care rather than replacing it.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-077",
+      "title": "Healing, compassion and restoration",
+      "overview": "Healing narratives reveal Jesus' compassion and authority while inviting careful attention to each person's story.",
+      "scriptureReferences": [
+        "Mark 1:29-34",
+        "Mark 5:21-43",
+        "James 5:13-16"
+      ],
+      "studyQuestions": "Notice the people involved, their needs and the response of the community.",
+      "lifeApplication": "Pray with compassion without blaming sick people or promising guaranteed outcomes; appropriate medical care remains valuable.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-078",
+      "title": "Disability, dignity and welcome",
+      "overview": "Scripture affirms human dignity and challenges communities to honour people who are often overlooked.",
+      "scriptureReferences": [
+        "Leviticus 19:14",
+        "Luke 14:12-14",
+        "1 Corinthians 12:21-26"
+      ],
+      "studyQuestions": "Ask how the passages challenge assumptions about worth, ability and belonging.",
+      "lifeApplication": "Build accessible communities and never treat disability as proof of personal sin or weak faith.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-079",
+      "title": "Faithfulness under persecution",
+      "overview": "Biblical witnesses describe courage, endurance and hope amid opposition to faithful belief and practice.",
+      "scriptureReferences": [
+        "Matthew 5:10-12",
+        "Acts 5:27-32",
+        "1 Peter 4:12-19"
+      ],
+      "studyQuestions": "Distinguish suffering for faithful conduct from suffering caused by harmful choices.",
+      "lifeApplication": "Offer support and protection to those at risk; do not glorify abuse or seek persecution.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-080",
+      "title": "Discipleship and the cost of following Jesus",
+      "overview": "Jesus calls disciples to learn from Him, reorder allegiance and follow in daily faithfulness.",
+      "scriptureReferences": [
+        "Luke 9:23-26",
+        "Luke 14:25-33",
+        "John 8:31-32"
+      ],
+      "studyQuestions": "Read the call to discipleship alongside Jesus' teaching and example.",
+      "lifeApplication": "Do not use the language of sacrifice to demand unsafe or exploitative loyalty to a person.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-081",
+      "title": "Teaching and making disciples",
+      "overview": "The church's teaching mission joins the words of Jesus with lived obedience and patient formation.",
+      "scriptureReferences": [
+        "Matthew 28:18-20",
+        "Acts 2:42-47",
+        "2 Timothy 2:1-2"
+      ],
+      "studyQuestions": "Identify what is taught, practised and passed on in each passage.",
+      "lifeApplication": "Teach with humility, accuracy and accountability rather than manipulation.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-082",
+      "title": "Evangelism with gentleness and respect",
+      "overview": "Christian witness communicates the Gospel truthfully while treating listeners with patience and dignity.",
+      "scriptureReferences": [
+        "Matthew 9:35-38",
+        "Acts 17:16-34",
+        "1 Peter 3:15-16"
+      ],
+      "studyQuestions": "Observe how the message is communicated to different audiences.",
+      "lifeApplication": "Never coerce, threaten or exploit vulnerable people in religious outreach.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-083",
+      "title": "Reconciliation after conflict",
+      "overview": "Biblical reconciliation involves truth, repentance, forgiveness and the possibility of restored relationships.",
+      "scriptureReferences": [
+        "Genesis 33:1-11",
+        "Matthew 5:23-24",
+        "2 Corinthians 5:17-20"
+      ],
+      "studyQuestions": "Notice the steps taken and the limits or conditions present in each story.",
+      "lifeApplication": "Reconciliation must not be forced; safety, justice and changed behaviour matter.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-084",
+      "title": "Accountability in spiritual leadership",
+      "overview": "Scripture describes leaders as servants who answer to God and must be trustworthy in character and conduct.",
+      "scriptureReferences": [
+        "Ezekiel 34:1-16",
+        "Luke 12:41-48",
+        "1 Timothy 3:1-13"
+      ],
+      "studyQuestions": "Compare shepherd imagery with the qualifications and warnings for leaders.",
+      "lifeApplication": "Create transparent safeguarding and reporting processes; spiritual authority does not remove accountability.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-085",
+      "title": "Correction, restoration and church discipline",
+      "overview": "New Testament correction aims at truth, protection and restoration while recognising the seriousness of wrongdoing.",
+      "scriptureReferences": [
+        "Matthew 18:15-20",
+        "Galatians 6:1-2",
+        "1 Corinthians 5:1-13"
+      ],
+      "studyQuestions": "Examine the aims, witnesses and community responsibilities in each passage.",
+      "lifeApplication": "Never use discipline procedures to silence victims, conceal crimes or bypass lawful safeguarding.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-086",
+      "title": "Anger, patience and self-control",
+      "overview": "Scripture recognises anger but warns against destructive speech, retaliation and prolonged resentment.",
+      "scriptureReferences": [
+        "Psalm 4:4",
+        "Ephesians 4:26-32",
+        "James 1:19-20"
+      ],
+      "studyQuestions": "Distinguish anger at wrongdoing from actions that harm others.",
+      "lifeApplication": "Use truthful boundaries and seek help when anger becomes threatening or unsafe.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-087",
+      "title": "Anxiety, fear and God's care",
+      "overview": "Biblical passages invite honest prayer and trust while acknowledging real pressures and human vulnerability.",
+      "scriptureReferences": [
+        "Psalm 56:3-4",
+        "Matthew 6:25-34",
+        "Philippians 4:4-9"
+      ],
+      "studyQuestions": "Notice the practical instructions and the reasons given for hope.",
+      "lifeApplication": "Do not shame people for anxiety; spiritual support can accompany professional care.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-088",
+      "title": "Loneliness and life in community",
+      "overview": "Scripture presents companionship, mutual burden-bearing and welcome as important features of God's people.",
+      "scriptureReferences": [
+        "Genesis 2:18",
+        "Ecclesiastes 4:9-12",
+        "Hebrews 10:23-25"
+      ],
+      "studyQuestions": "Identify how companionship and shared responsibility are described.",
+      "lifeApplication": "Make room for people who are isolated and respect those who need time or safe boundaries.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-089",
+      "title": "Hospitality across social boundaries",
+      "overview": "Jesus and the early church challenge exclusion by welcoming people across social and cultural divisions.",
+      "scriptureReferences": [
+        "Luke 5:27-32",
+        "Luke 19:1-10",
+        "Acts 10:23-35"
+      ],
+      "studyQuestions": "Observe who is welcomed and what changes through the encounter.",
+      "lifeApplication": "Practise welcome without stereotyping, coercion or ignoring personal safety.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-090",
+      "title": "Stewardship of time and gifts",
+      "overview": "Biblical stewardship treats time, abilities and resources as entrusted gifts to be used faithfully.",
+      "scriptureReferences": [
+        "Psalm 90:12",
+        "Matthew 25:14-30",
+        "Ephesians 5:15-17"
+      ],
+      "studyQuestions": "Compare wisdom about limited time with the parable's call to responsibility.",
+      "lifeApplication": "Avoid equating productivity with human worth or using stewardship to justify burnout.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-091",
+      "title": "Integrity in business and daily transactions",
+      "overview": "Scripture calls for honest measures, fair treatment and truthfulness in economic life.",
+      "scriptureReferences": [
+        "Leviticus 19:35-36",
+        "Proverbs 11:1",
+        "James 5:1-6"
+      ],
+      "studyQuestions": "Identify the people harmed by dishonest practices and the standards of fairness named.",
+      "lifeApplication": "Apply honesty to wages, pricing, contracts and debts; do not spiritualise exploitation.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-092",
+      "title": "Contentment without passivity",
+      "overview": "Biblical contentment resists envy and greed while allowing wise effort, justice and provision for needs.",
+      "scriptureReferences": [
+        "Psalm 131",
+        "Philippians 4:10-13",
+        "Hebrews 13:5-6"
+      ],
+      "studyQuestions": "Read Paul's words in the context of both abundance and need.",
+      "lifeApplication": "Contentment does not mean accepting preventable injustice or refusing practical improvement.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-093",
+      "title": "Hospitality and care within the family",
+      "overview": "Scripture calls family members to honour, care and responsibility while recognising the needs of the vulnerable.",
+      "scriptureReferences": [
+        "Ruth 1:6-18",
+        "Mark 7:9-13",
+        "1 Timothy 5:3-8"
+      ],
+      "studyQuestions": "Compare loyalty, provision and Jesus' criticism of religious excuses.",
+      "lifeApplication": "Family duty must not be used to demand unsafe contact or excuse neglect and abuse.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-094",
+      "title": "Wisdom in choosing companions",
+      "overview": "Proverbs and New Testament teaching encourage relationships that strengthen truth, wisdom and faithful living.",
+      "scriptureReferences": [
+        "Proverbs 13:20",
+        "Proverbs 27:17",
+        "1 Corinthians 15:33"
+      ],
+      "studyQuestions": "Notice how companionship influences habits, counsel and character.",
+      "lifeApplication": "Avoid simplistic labels; encourage relationships marked by mutual respect and healthy boundaries.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-095",
+      "title": "The ministry of encouragement",
+      "overview": "Biblical encouragement strengthens faith, courage and perseverance through truthful words and practical support.",
+      "scriptureReferences": [
+        "Deuteronomy 3:28",
+        "Acts 11:22-26",
+        "1 Thessalonians 5:11-14"
+      ],
+      "studyQuestions": "Identify who gives encouragement and what the community is urged to do.",
+      "lifeApplication": "Encourage honestly; do not minimise pain or promise outcomes Scripture does not guarantee.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-096",
+      "title": "Remembering God's works",
+      "overview": "Scripture uses remembrance to form gratitude, identity and faithfulness across generations.",
+      "scriptureReferences": [
+        "Deuteronomy 8:1-18",
+        "Psalm 77:11-20",
+        "Luke 22:19"
+      ],
+      "studyQuestions": "Trace what is remembered and how memory shapes present action.",
+      "lifeApplication": "Remember with honesty; do not rewrite painful history or use testimony to pressure others.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-097",
+      "title": "The wisdom of silence and listening",
+      "overview": "Biblical wisdom values careful listening, restraint and speech suited to its moment.",
+      "scriptureReferences": [
+        "Proverbs 10:19",
+        "Ecclesiastes 3:7",
+        "James 1:19"
+      ],
+      "studyQuestions": "Compare when silence protects wisdom and when truth must be spoken.",
+      "lifeApplication": "Silence is not required when someone needs protection or when wrongdoing must be reported.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-098",
+      "title": "The Gospel and reconciliation between peoples",
+      "overview": "The New Testament describes Christ breaking hostility and forming a community across former divisions.",
+      "scriptureReferences": [
+        "Acts 10:34-48",
+        "Galatians 2:11-14",
+        "Ephesians 2:13-22"
+      ],
+      "studyQuestions": "Examine the barriers challenged and the practical consequences for fellowship.",
+      "lifeApplication": "Pursue unity with justice; do not demand that harmed people ignore discrimination.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-099",
+      "title": "Hope and endurance in old age",
+      "overview": "Scripture honours lifelong faithfulness and speaks of God's care through changing seasons of life.",
+      "scriptureReferences": [
+        "Psalm 71:17-18",
+        "Isaiah 46:3-4",
+        "Luke 2:25-38"
+      ],
+      "studyQuestions": "Notice the witness, service and hope of older people in these passages.",
+      "lifeApplication": "Value older adults as people with agency and gifts; do not reduce them to burdens or symbols.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-100",
+      "title": "Creation, gratitude and wonder",
+      "overview": "The Psalms and wisdom texts invite attention to creation as a witness to God's generosity and power.",
+      "scriptureReferences": [
+        "Psalm 8",
+        "Psalm 19:1-6",
+        "Job 38:1-18"
+      ],
+      "studyQuestions": "Observe the imagery and the limits it places on human pride.",
+      "lifeApplication": "Let wonder lead to gratitude and responsible care, not unsupported claims about nature.",
+      "resourceType": "topical-study-guide"
     }
   ]
 }
