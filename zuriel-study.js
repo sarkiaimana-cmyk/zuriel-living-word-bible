@@ -744,6 +744,11 @@
     return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
   }
 
+  // Reuse the same lightweight, offline SVG artwork in the Library's study cards.
+  window.ZurielStudyArtwork = function(index, heading) {
+    return createStudySectionArtwork(index, heading);
+  };
+
   function createStudyPanel() {
     if (document.getElementById("zurielStudyPanel")) return;
 
