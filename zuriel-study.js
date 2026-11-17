@@ -1612,7 +1612,7 @@
       const term = normalize(query);
       const tokens = term.split(" ").filter(Boolean);
 
-      const matches = bibleDictionary.map((entry, index) => {
+      const rankedMatches = bibleDictionary.map((entry, index) => {
         const title = normalize(entry[0]);
         const definition = normalize(entry[1]);
         const combined = title + " " + definition;
@@ -1627,8 +1627,9 @@
         else if (definition.includes(term)) score = 20;
         return { entry, index, score };
       }).filter(item => item.score > 0)
-        .sort((a, b) => b.score - a.score || a.index - b.index)
-        .slice(0, dictionaryVisibleLimit);
+        .sort((a, b) => b.score - a.score || a.index - b.index);
+      const totalMatches = rankedMatches.length;
+      const matches = rankedMatches.slice(0, dictionaryVisibleLimit);
 
       if (!matches.length) {
         const empty = document.createElement("p");
@@ -1639,12 +1640,6 @@
 
       const count = document.createElement("p");
       count.className = "study-small";
-      const totalMatches = bibleDictionary.filter(entry => {
-        const title = normalize(entry[0]);
-        const definition = normalize(entry[1]);
-        const combined = title + " " + definition;
-        return !term || title.includes(term) || tokens.every(token => combined.includes(token));
-      }).length;
       count.textContent = term
         ? "Showing " + matches.length + " of " + totalMatches + " matching entries."
         : "Browse " + bibleDictionary.length + " entries. Search to narrow the dictionary.";
