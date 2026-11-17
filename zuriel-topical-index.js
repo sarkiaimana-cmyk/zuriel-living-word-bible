@@ -8625,19 +8625,65 @@ const topics=[
     ]
   }
 ];
-function normalize(value){return String(value||"").toLowerCase().replace(/\s+/g," ").trim();}
+function normalize(value){
+ return String(value||"").normalize("NFD").replace(/\p{M}/gu,"").toLowerCase().replace(/[’‘]/g,"'").replace(/\s+/g," ").trim();
+}
 function normalizeBook(value){const book=normalize(value);return book==="psalm"?"psalms":book;}
+function searchableFields(topic){
+ return {
+  title:normalize(topic.title),
+  keywords:normalize((topic.keywords||[]).join(" ")),
+  summary:normalize(topic.summary),
+  definition:normalize(topic.definition),
+  oldTestament:normalize(topic.oldTestament),
+  newTestament:normalize(topic.newTestament),
+  application:normalize(topic.application),
+  questions:normalize((topic.questions||[]).join(" ")),
+  languageWords:normalize((topic.languageWords||[]).map(item=>[item.language,item.script,item.term,item.meaning,item.note].join(" ")).join(" ")),
+  references:normalize((topic.references||[]).map(item=>item.label+" "+item.book+" "+item.chapter+":"+item.verse).join(" ")),
+  relatedExplanations:normalize((topic.relatedExplanations||[]).join(" "))
+ };
+}
 function findForReference(reference){
  const match=String(reference||"").match(/^(.+?)\s+(\d+):(\d+)$/);
  if(!match)return [];
  const book=normalizeBook(match[1]), chapter=Number(match[2]), verse=Number(match[3]);
  return topics.filter(topic=>topic.references.some(item=>normalizeBook(item.book)===book && item.chapter===chapter && verse>=item.verse && verse<=(item.endVerse||item.verse)));
 }
+function scoreTopic(fields, tokens, phrase){
+ let score=0;
+ const weights={title:10,keywords:8,summary:5,definition:4,languageWords:4,references:3,application:2,oldTestament:2,newTestament:2,questions:1,relatedExplanations:1};
+ for(const [field,weight] of Object.entries(weights)){
+  const value=fields[field]||"";
+  if(value.includes(phrase))score+=weight*3;
+  for(const token of tokens)if(value.includes(token))score+=weight;
+ }
+ return score;
+}
 window.ZurielTopicalIndex={
  list:function(){return topics.slice();},
  findForReference:findForReference,
- findByKeyword:function(word){const key=normalize(word);if(!key)return [];return topics.filter(topic=>topic.keywords.some(item=>item.includes(key)||key.includes(item)));},
- search:function(query){const key=normalize(query);if(!key)return topics.slice();return topics.filter(topic=>normalize(topic.title+" "+topic.summary+" "+topic.keywords.join(" ")).includes(key));},
+ findByKeyword:function(word){
+  const key=normalize(word);if(!key)return [];
+  const tokens=key.split(" ").filter(Boolean);
+  return topics.filter(topic=>{
+   const fields=searchableFields(topic);
+   const corpus=Object.values(fields).join(" ");
+   return corpus.includes(key)||tokens.every(token=>corpus.includes(token));
+  });
+ },
+ search:function(query){
+  const key=normalize(query);if(!key)return topics.slice();
+  const tokens=key.split(" ").filter(Boolean);
+  const matches=topics.map((topic,index)=>{
+   const fields=searchableFields(topic);
+   const corpus=Object.values(fields).join(" ");
+   if(!corpus.includes(key)&&!tokens.every(token=>corpus.includes(token)))return null;
+   return {topic,index,score:scoreTopic(fields,tokens,key)};
+  }).filter(Boolean);
+  matches.sort((a,b)=>b.score-a.score||a.index-b.index);
+  return matches.map(item=>item.topic);
+ },
  getTopic:function(title){const key=normalize(title);return topics.find(topic=>normalize(topic.title)===key)||null;}
 };
 })();
