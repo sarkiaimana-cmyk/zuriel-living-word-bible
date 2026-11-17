@@ -1,13 +1,15 @@
 import { readFile } from "node:fs/promises";
 
-const [library, worker, packaging, index, home, prWorkflow, androidWorkflow] = await Promise.all([
+const [library, worker, packaging, index, home, prWorkflow, androidWorkflow, nativeMedia, packageJson] = await Promise.all([
   readFile(new URL("../zuriel-library.js", import.meta.url), "utf8"),
   readFile(new URL("../sw.js", import.meta.url), "utf8"),
   readFile(new URL("./prepare-web.mjs", import.meta.url), "utf8"),
   readFile(new URL("../index.html", import.meta.url), "utf8"),
   readFile(new URL("../zuriel-home.js", import.meta.url), "utf8"),
   readFile(new URL("../.github/workflows/validate-pr.yml", import.meta.url), "utf8"),
-  readFile(new URL("../.github/workflows/android-apk.yml", import.meta.url), "utf8")
+  readFile(new URL("../.github/workflows/android-apk.yml", import.meta.url), "utf8"),
+  readFile(new URL("../zuriel-native-media.js", import.meta.url), "utf8"),
+  readFile(new URL("../package.json", import.meta.url), "utf8")
 ]);
 const failures = [];
 const checks = [
@@ -29,7 +31,11 @@ const checks = [
   ["image export action", "zgsSaveImage"],
   ["plain-language save action", 'id="zgsSaveImage">Save image</button>'],
   ["comfortable Android touch target", ".zgs-actions button {min-height:48px;"],
-  ["honest share fallback when image sharing is unsupported", "Direct image sharing is not supported here, so the PNG was saved to your Downloads folder."],
+  ["clear Android gallery save confirmation", "Your card was saved to the Zuriel Living Word Bible album in your Gallery."],
+  ["honest share cancellation handling", "Sharing was cancelled. Your card and saved-card library remain unchanged."],
+  ["honest native share delivery status", "Zuriel cannot confirm whether the receiving app completed delivery."],
+  ["Android native gallery integration", "nativeMedia.saveImageToGallery(dataUrl,fileName)"],
+  ["Android native image sharing integration", "nativeMedia.shareImage(dataUrl,fileName)"],
   ["clear Save image action", 'id="zgsSaveImage">Save image</button>'],
   ["clear Share image action", 'id="zgsShareImage">Share image</button>'],
   ["clear Save to My Library action", 'id="zgsSave">Save to My Library</button>'],
@@ -72,6 +78,23 @@ const checks = [
 ];
 for (const [label, fragment] of checks) {
   if (!library.includes(fragment)) failures.push(label + " is missing.");
+}
+if (!nativeMedia.includes("Media.savePhoto")) failures.push("Native Android gallery saving is missing.");
+if (!nativeMedia.includes("Filesystem.writeFile")) failures.push("Native temporary image-file creation for sharing is missing.");
+if (!nativeMedia.includes("Share.share")) failures.push("Native Android sharing sheet integration is missing.");
+if (!nativeMedia.includes("Media.createAlbum")) failures.push("Zuriel's dedicated gallery album creation is missing.");
+if (!packageJson.includes('"@capacitor-community/media": "9.1.0"') ||
+    !packageJson.includes('"@capacitor/filesystem": "8.1.5"') ||
+    !packageJson.includes('"@capacitor/share": "8.0.3"')) {
+  failures.push("Pinned Capacitor 8 native media, filesystem and share dependencies are missing.");
+}
+if (!packaging.includes('entryPoints: ["zuriel-native-media.js"]') ||
+    !packaging.includes('outfile: "www/zuriel-native-media.js"')) {
+  failures.push("Android packaging does not bundle the native media bridge.");
+}
+if (!index.includes('<script src="zuriel-native-media.js"></script>') ||
+    index.indexOf('<script src="zuriel-native-media.js"></script>') > index.indexOf('<script src="zuriel-library.js"></script>')) {
+  failures.push("The native media bridge must load before the card library so Save and Share cannot race its initialization.");
 }
 if (!index.includes("window.getBibleVerseText = async function (reference)")) failures.push("Offline KJV passage retrieval is missing.");
 if (!/const CACHE_NAME = "zuriel-bible-offline-v\d+";/.test(worker)) failures.push("Offline cache version is missing for the Studio/navigation integration.");
