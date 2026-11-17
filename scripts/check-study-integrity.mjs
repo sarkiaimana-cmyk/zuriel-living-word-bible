@@ -81,7 +81,7 @@ const linkerChecks = [
   ["token positions are mapped to source offsets", "function getWordSpans(value)"],
   ["reader and source token sequences are compared", "tokenKey(readerTokens[index].text) !== tokenKey(sourceSpans[index].text)"],
   ["source annotation offsets are validated", "Number(annotation && annotation.start)"],
-  ["selected token overlaps its annotation range", "start < selected.end && end > selected.start"],
+  ["annotation range is fully contained in the selected token", "start >= selected.start && end <= selected.end"],
   ["legacy WebView-compatible token scanning", "while ((match = pattern.exec(text)) !== null)"],
   ["Strong's identifiers come from annotation arrays", "Array.isArray(annotation.strongs)"],
   ["missing word positions are rejected", "No selected word position was supplied."]
