@@ -106,6 +106,34 @@ for (const topic of topics) {
   }
 }
 
+// Original-language topic entries may carry their own verse links. Verify
+// those references against the same bundled KJV so a lexicon shortcut can
+// never navigate to a missing chapter or verse.
+let wordReferenceCount = 0;
+for (const topic of topics) {
+  for (const word of topic.languageWords) {
+    if (!Array.isArray(word.references)) continue;
+    for (const ref of word.references) {
+      const book = bookLookup.get(String(ref.book || "").toLowerCase().replace(/\\s+/g, " ").trim());
+      assert.ok(book, topic.title + " word " + word.term + " refers to unknown book " + ref.book + ".");
+      assert.ok(ref.chapter <= book.chapters, topic.title + " word " + word.term + " refers to a missing chapter.");
+      const code = readerMap[book.name];
+      const chapters = code && kjvData[code];
+      const verses = chapters && chapters[ref.chapter - 1];
+      assert.ok(Array.isArray(verses), topic.title + " word " + word.term + " refers to a missing KJV chapter.");
+      assert.ok(ref.verse <= verses.length, topic.title + " word " + word.term + " refers to a missing KJV verse.");
+      if (ref.endVerse != null) assert.ok(ref.endVerse <= verses.length, topic.title + " word " + word.term + " has a range beyond the KJV chapter.");
+      assert.ok(ref.label, topic.title + " word " + word.term + " is missing a reference label.");
+      wordReferenceCount += 1;
+    }
+  }
+}
+assert.ok(wordReferenceCount >= 40, "Topical original-language entries should link to their verified Scripture contexts.");
+assert.ok(studyUiSource.includes('refsLabel.textContent = "Word-study passages:"'),
+  "Topical Hebrew and Greek entries must display their related Scripture references.");
+assert.ok(studyUiSource.includes("openReference(item, referenceButton)"),
+  "Topical word-study references must open the matching Bible passage.");
+
 const singular = index.findForReference("Psalm 103:8");
 const plural = index.findForReference("Psalms 103:8");
 assert.ok(singular.length > 0, "Psalm 103:8 should resolve to curated topical studies.");
@@ -115,4 +143,4 @@ assert.deepEqual(
   "Psalm and Psalms must resolve to the same topical references."
 );
 assert.ok(index.search("prayer").length > 0, "Topical search should return relevant studies.");
-console.log("Advanced topical study checks passed: " + topics.length + " topics, " + referenceCount + " Scripture links (" + validatedReferences + " verified against the bundled 66-book KJV), required study fields, valid Bible book names, reflection prompts, topical search and Psalm/Psalms alias navigation.");
+console.log("Advanced topical study checks passed: " + topics.length + " topics, " + referenceCount + " topical Scripture links, " + wordReferenceCount + " original-language Scripture links (" + validatedReferences + " topical references verified against the bundled 66-book KJV), required study fields, valid Bible book names, reflection prompts, topical search and Psalm/Psalms alias navigation.");
