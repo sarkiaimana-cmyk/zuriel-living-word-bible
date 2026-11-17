@@ -1,4 +1,4 @@
 {
-  "version": "1.4.49",
-  "releaseNotes": "Expanded the curated offline Connected Scriptures library with 29 additional New Testament quotations and prophecy links. Added an integrity audit that checks every curated source and target against the complete offline KJV corpus."
+  "version": "1.4.50",
+  "releaseNotes": "Improved Advanced Bible Study search across topic explanations, reflection questions, Scripture references and Hebrew/Greek word notes, with relevance-ranked results and accent-insensitive transliteration matching."
 }
