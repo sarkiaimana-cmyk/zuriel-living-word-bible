@@ -1071,7 +1071,7 @@
             if (nativeMedia && nativeMedia.isNativeAndroid()) {
               if (exportButton.id === "zgsShareImage") {
                 await nativeMedia.shareImage(dataUrl,fileName);
-                status.textContent = "Android's share menu is open. Choose WhatsApp or another app to share your card.";
+                status.textContent = "Android sharing has finished. Zuriel cannot confirm whether the receiving app completed delivery.";
               } else {
                 await nativeMedia.saveImageToGallery(dataUrl,fileName);
                 status.textContent = "Your card was saved to the Zuriel Living Word Bible album in your Gallery.";
