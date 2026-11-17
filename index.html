@@ -433,6 +433,7 @@ footer {
   background:#10213d !important;
 }
 #zurielVerseActions #zurielStudyPanel > h2 { font-size:19px; }
+#zurielVerseActions #zurielTranslationCompare { margin:0; padding:10px; width:100%; box-sizing:border-box; }
 #zurielVerseActions #zurielStudyPanel > p { color:#e8edf3; }
 #zurielVerseActions #zurielStudyPanel .study-body { overflow-wrap:anywhere; }
 #zurielVerseActions #zurielStudyPanel details { margin:9px 0; }
@@ -979,6 +980,56 @@ async function openChapter(book, chapter) {
   let studyPanelHome = null;
   let studyPanelNextSibling = null;
   let studyPanelCloseBound = false;
+  let externalPanelHome = null;
+  let externalPanelNextSibling = null;
+  let externalPanelCurrent = null;
+
+  function restoreExternalVersePanel() {
+    if (!externalPanelCurrent || !externalPanelHome) return;
+    externalPanelCurrent.style.margin = "";
+    if (externalPanelNextSibling && externalPanelNextSibling.parentNode === externalPanelHome) {
+      externalPanelHome.insertBefore(externalPanelCurrent, externalPanelNextSibling);
+    } else {
+      externalPanelHome.appendChild(externalPanelCurrent);
+    }
+    externalPanelCurrent = null;
+    externalPanelHome = null;
+    externalPanelNextSibling = null;
+    verseActions.querySelectorAll(".zuriel-verse-action").forEach(function (button) {
+      button.hidden = false;
+    });
+    const back = verseActions.querySelector(".zuriel-overlay-back");
+    if (back) back.remove();
+    verseActionHint.hidden = false;
+    verseActions.classList.remove("has-study-content");
+  }
+
+  window.ZurielVerseOverlay = {
+    openExternal: function (panel) {
+      if (!panel || !verseActions || verseActions.hidden) return false;
+      if (studyPanelHome) restoreStudyPanelToReader();
+      if (externalPanelCurrent) restoreExternalVersePanel();
+      externalPanelCurrent = panel;
+      externalPanelHome = panel.parentNode;
+      externalPanelNextSibling = panel.nextSibling;
+      verseActions.querySelectorAll(".zuriel-verse-action").forEach(function (button) {
+        button.hidden = true;
+      });
+      verseActionHint.hidden = true;
+      const back = document.createElement("button");
+      back.type = "button";
+      back.className = "zuriel-verse-action zuriel-overlay-back";
+      back.textContent = "← Back to verse options";
+      back.addEventListener("click", restoreExternalVersePanel);
+      verseActions.appendChild(back);
+      panel.open = true;
+      panel.style.margin = "0";
+      verseActions.appendChild(panel);
+      verseActions.classList.add("has-study-content");
+      positionVerseOverlay();
+      return true;
+    }
+  };
 
   function restoreStudyPanelToReader() {
     const panel = document.getElementById("zurielStudyPanel");
@@ -1138,6 +1189,7 @@ async function openChapter(book, chapter) {
       '.verse[data-verse-number="' + verseNumber + '"]'
     );
     if (studyPanelHome) restoreStudyPanelToReader();
+    if (externalPanelCurrent) restoreExternalVersePanel();
     if (selectedVerseElement) selectedVerseElement.classList.add("zuriel-selected-verse");
     verseActions.classList.remove("has-study-content");
     verseActions.hidden = false;
