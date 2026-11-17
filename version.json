@@ -1,4 +1,4 @@
 {
-  "version": "1.4.34",
-  "releaseNotes": "Completes the Scripture-specific prayer, declaration, affirmation, faith confession and inspiration fields when saved declarations open in the Open Book Card Studio."
+  "version": "1.4.35",
+  "releaseNotes": "Introduces a verse-first reading screen: select a verse to reveal its contextual actions, open only the chosen study resource, and launch translation comparison from the selected verse. Refreshes the offline cache."
 }
