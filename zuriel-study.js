@@ -2514,6 +2514,8 @@
         "Keep the exact Bible wording separate from your explanation. Where Christians understand a passage differently, note the alternatives fairly rather than presenting one inference as a direct quotation.");
       addLine(meaning, "4. Apply it faithfully",
         "Ask what the passage reveals about God, what response it calls for, and how that response fits the whole teaching of Scripture.");
+      addLine(meaning, "Commentary and source transparency",
+        "This section is a context-led study framework built from the selected KJV chapter and the book's literary setting. It is not a quotation from a published commentary, and it does not yet provide a complete source-attributed verse-by-verse commentary library. Zuriel will distinguish its own study guidance from commentary material whose source and permissions have been verified.");
 
       renderTopicalConnections(ref);
 
