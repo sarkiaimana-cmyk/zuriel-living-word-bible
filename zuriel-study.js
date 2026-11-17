@@ -2734,6 +2734,7 @@
           if (contextRequestId === wordContextRequest) wordContextRequest++;
           panel.style.display = "none";
           panel.dataset.mode = "verse";
+          window.dispatchEvent(new CustomEvent("zuriel:word-context-closed"));
         };
         const handleContextKeydown = function (event) {
           if (event.key === "Escape" && contextCard.isConnected) {
