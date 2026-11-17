@@ -227,6 +227,23 @@ if (!study.includes('illustration.loading = "lazy"') || !study.includes('illustr
 if (!study.includes('body.prepend(illustration)')) {
   failures.push(["Study Centre illustration placement", "each section illustration must appear before its study content"]);
 }
+const lifeApplicationChecks = [
+  ["dedicated Scripture-guided Life Application panel", 'id="zurielLifeApplication"'],
+  ["Life Application is rendered for selected references", "renderLifeApplication(selectedReference)"],
+  ["Life Application includes the selected verse reference", 'heading.textContent = "Apply " + ref.book + " " + ref.chapter + ":" + ref.verse'],
+  ["Life Application keeps the selected verse text visible", "selectedText.textContent = ref.text ||"],
+  ["Life Application distinguishes observation and original meaning", '["Observe", "What does this verse actually say?'],
+  ["Life Application asks for a God-centred response", '["Respond to God",'],
+  ["Life Application includes practical action and relationships", '["Practise the truth",'],
+  ["Life Application reminds readers to review context", "Read the surrounding paragraph before applying this verse."],
+  ["Life Application does not overwrite existing personal notes", "field.value = field.value.trim()"],
+  ["Life Application routes reflection into the existing saved application field", 'getElementById("zurielStudyApplication")'],
+  ["Life Application tells readers to save their own reviewed response", "choose Save My Study."]
+];
+for (const [label, fragment] of lifeApplicationChecks) {
+  if (!study.includes(fragment)) failures.push([label, "missing from zuriel-study.js"]);
+}
+
 if (failures.length) {
   console.error("Original-language study integrity checks failed:");
   for (const [label, detail] of failures) console.error(" - " + label + ": " + detail);
