@@ -15,10 +15,10 @@ if (!library || typeof library.list !== "function" || typeof library.find !== "f
   throw new Error("ZurielFaithContent did not initialise with the expected public API.");
 }
 
-const mappingMatch = reader.match(/const bookCodes = (\\{[\\s\\S]*?\\n\\};)/);
+const mappingMatch = reader.match(/const bookCodes = (\{[\s\S]*?\n\};)/);
 if (!mappingMatch) throw new Error("Could not read the Bible book-code map.");
-const bookCodes = JSON.parse(mappingMatch[1].replace(/;\\s*$/, ""));
-const books = [...bookIndex.matchAll(/\\{\\s*name:\\s*"([^"]+)",\\s*chapters:\\s*(\\d+)\\s*\\}/g)]
+const bookCodes = JSON.parse(mappingMatch[1].replace(/;\s*$/, ""));
+const books = [...bookIndex.matchAll(/\{\s*name:\s*"([^"]+)",\s*chapters:\s*(\d+)\s*\}/g)]
   .map(match => ({ name: match[1], chapters: Number(match[2]) }));
 const kjv = JSON.parse(kjvSource);
 const canonicalBooks = new Map(books.map(book => [book.name.toLowerCase(), book]));
@@ -31,7 +31,7 @@ const totalVerses = books.reduce((total, book) => {
 }, 0);
 
 function parseReference(reference) {
-  const match = String(reference || "").trim().match(/^(.+?)\\s+(\\d+):(\\d+)(?:-(\\d+))?$/);
+  const match = String(reference || "").trim().match(/^(.+?)\s+(\d+):(\d+)(?:-(\d+))?$/);
   if (!match) return null;
   const rawName = match[1].toLowerCase();
   const bookName = rawName === "psalm" ? "psalms" : rawName;
