@@ -58,6 +58,17 @@ forbidText(aiDeployment, /ZITE_YVP_APP_KEY/, "YouVersion app key in the AI-only 
 requireText(packaging, '"zuriel-translations.js"', "Android web packaging entry");
 requireText(serviceWorker, '"./zuriel-translations.js"', "Offline shell precache entry");
 
+const translationConfig = JSON.parse(config);
+assert.equal(translationConfig.name, "zuriel-bible-translations");
+assert.equal(translationConfig.main, "src/translation-worker.js");
+assert.ok(translationConfig.ratelimits.some(binding =>
+  binding.name === "TRANSLATION_RATE_LIMIT" && binding.simple.limit === 20 && binding.simple.period === 60
+));
+assert.deepEqual(translationConfig.secrets.required, ["ZITE_YVP_APP_KEY"]);
+assert.equal(translationConfig.vars.ALLOWED_ORIGINS, "https://sarkiaimana-cmyk.github.io,https://localhost");
+assert.equal(Boolean(translationConfig.ai), false, "Translation-only Worker must not bind an AI provider.");
+assert.equal(Boolean(translationConfig.vars.TURNSTILE_SITE_KEY), false, "Translation-only Worker must not depend on AI Turnstile.");
+
 const release = JSON.parse(version);
 const installed = updates.match(/const APP_VERSION = "([^"]+)";/);
 assert.ok(installed, "In-app update centre must declare its installed version.");
