@@ -682,9 +682,24 @@
                 !window.selectBibleVerse(verseNumber)) {
               throw new Error("The connected verse could not be activated in the reader.");
             }
+            const targetVerse = findVerseElement(verseNumber);
+            if (!targetVerse) {
+              throw new Error("The connected verse text is not present in the reader.");
+            }
+            const targetText = targetVerse.textContent
+              .replace(/^\\s*\\d+\\.?\\s*/, "").trim();
+            targetVerse.scrollIntoView({ behavior: "smooth", block: "center" });
+            targetVerse.classList.add("zuriel-selected-verse");
+            if (window.ZurielStudy &&
+                typeof window.ZurielStudy.openForReference === "function") {
+              window.ZurielStudy.openForReference(
+                name, chapterNumber, verseNumber, targetText, "", -1
+              );
+            }
           } catch (error) {
             button.disabled = false;
             const status = document.createElement("p");
+            status.setAttribute("role", "status");
             status.textContent = error.message || "This connected passage could not be opened. Please try again.";
             list.appendChild(status);
           }
@@ -697,7 +712,20 @@
       }
     } catch (error) {
       if (requestId !== crossReferencesRequest) return;
-      list.textContent = error.message + " Connect to the internet once to save related references for offline use.";
+      list.replaceChildren();
+      const message = document.createElement("p");
+      message.setAttribute("role", "status");
+      message.textContent = error.message +
+        " Connect once to cache this chapter's references for later offline study.";
+      list.appendChild(message);
+      const retry = document.createElement("button");
+      retry.type = "button";
+      retry.className = "study-secondary";
+      retry.textContent = "Retry connected Scriptures";
+      retry.addEventListener("click", function () {
+        loadRelatedScriptures(ref);
+      });
+      list.appendChild(retry);
     }
   }
 
