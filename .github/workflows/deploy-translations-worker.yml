@@ -50,15 +50,32 @@ jobs:
       - name: Test translation proxy safeguards
         run: node --test test/youversion.test.mjs test/translation-worker.test.mjs
 
-      - name: Bootstrap Worker, install YouVersion secret, and deploy protected version
+      - name: Confirm the Cloudflare token account
+        run: npx wrangler whoami
+
+      - name: Bootstrap the fail-closed Worker
         run: |
           set -euo pipefail
           umask 077
           trap 'rm -f .wrangler.translations.bootstrap.jsonc' EXIT
           node -e 'const fs=require("node:fs"); const c=JSON.parse(fs.readFileSync("wrangler.translations.jsonc","utf8")); delete c.secrets; fs.writeFileSync(".wrangler.translations.bootstrap.jsonc", JSON.stringify(c,null,2)+"\n", {mode:0o600, flag:"wx"});'
-          # First create the Worker without its required key. Its handler fails closed until the secret is installed.
-          npx wrangler deploy --config .wrangler.translations.bootstrap.jsonc
-          # Add the key only after the Worker script exists; secret put deploys a new version immediately.
-          printf '%s' "$ZITE_YVP_APP_KEY" | npx wrangler secret put ZITE_YVP_APP_KEY --config wrangler.translations.jsonc
-          # Deploy once more using the full config so required-secret validation is enforced.
-          npx wrangler deploy --config wrangler.translations.jsonc
+          if ! npx wrangler deploy --config .wrangler.translations.bootstrap.jsonc; then
+            echo "::error::Cloudflare rejected the initial Worker deployment. Check that CLOUDFLARE_ACCOUNT_ID belongs to the account included in the API token and that the token can create Workers at the Workers product scope."
+            exit 1
+          fi
+
+      - name: Install the YouVersion app key as a Worker secret
+        run: |
+          set -euo pipefail
+          if ! printf '%s' "$ZITE_YVP_APP_KEY" | npx wrangler secret put ZITE_YVP_APP_KEY --config wrangler.translations.jsonc; then
+            echo "::error::Cloudflare rejected the Worker secret operation. Check the token's account scope and grant Workers Scripts Write (or Workers Editor for this Worker). Do not create another YouVersion key for this permission error."
+            exit 1
+          fi
+
+      - name: Deploy the protected translation Worker
+        run: |
+          set -euo pipefail
+          if ! npx wrangler deploy --config wrangler.translations.jsonc; then
+            echo "::error::The final Worker deployment failed after secret installation. Review the Cloudflare account and Worker permissions; the YouVersion key is not printed by this workflow."
+            exit 1
+          fi
