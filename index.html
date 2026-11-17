@@ -372,7 +372,81 @@ footer {
 #message .verse.zuriel-selected-verse { background:#fff4d7; border-left:4px solid #a51b4b; padding-left:12px; }
 @media(max-width:360px) { #zurielVerseActions { grid-template-columns:1fr; } }
 
-</style>
+
+/* Verse study opens as a floating overlay and never takes space between verses. */
+#zurielVerseActions[hidden] { display:none !important; }
+#zurielVerseActions {
+  position:fixed !important;
+  z-index:12000 !important;
+  left:10px !important;
+  right:10px !important;
+  top:12px;
+  width:auto !important;
+  max-width:720px;
+  max-height:76vh;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:7px;
+  margin:0 auto !important;
+  padding:12px;
+  border:1px solid #c9ae70;
+  border-radius:16px;
+  background:#10213d;
+  color:#fff8e8;
+  box-shadow:0 16px 48px #07132388;
+}
+#zurielVerseActions p {
+  grid-column:1/-1;
+  margin:0 0 4px;
+  color:#f4e6c5;
+  font:600 13px/1.5 Arial,sans-serif;
+}
+#zurielVerseActions .zuriel-verse-action {
+  min-width:0;
+  min-height:43px;
+  margin:0;
+  padding:9px 7px;
+  border:1px solid #b99b58;
+  border-radius:10px;
+  background:#1c3657;
+  color:#fff8e8;
+  font:600 13px/1.3 Arial,sans-serif;
+  overflow-wrap:anywhere;
+}
+#zurielVerseActions .zuriel-verse-action[hidden] { display:none !important; }
+#zurielVerseActions .zuriel-overlay-back { grid-column:1/-1; }
+#zurielVerseActions.has-study-content { display:block; }
+#zurielVerseActions #zurielStudyPanel {
+  display:block !important;
+  position:static !important;
+  width:100% !important;
+  max-width:none !important;
+  max-height:none !important;
+  overflow:visible !important;
+  margin:0 !important;
+  padding:12px !important;
+  border:0 !important;
+  border-radius:10px !important;
+  box-shadow:none !important;
+  background:#10213d !important;
+}
+#zurielVerseActions #zurielStudyPanel > h2 { font-size:19px; }
+#zurielVerseActions #zurielStudyPanel > p { color:#e8edf3; }
+#zurielVerseActions #zurielStudyPanel .study-body { overflow-wrap:anywhere; }
+#zurielVerseActions #zurielStudyPanel details { margin:9px 0; }
+#message .verse.zuriel-selected-verse {
+  background:#fff2cf;
+  outline:2px solid #c6a65e;
+  outline-offset:-2px;
+  border-radius:8px;
+}
+@media(max-width:420px) {
+  #zurielVerseActions { left:7px !important; right:7px !important; max-height:78vh; padding:9px; gap:6px; }
+  #zurielVerseActions .zuriel-verse-action { font-size:12px; min-height:42px; }
+}
+\n</style>
 </head>
 
 <body>
@@ -899,6 +973,45 @@ async function openChapter(book, chapter) {
     ["Highlight","🖍️"],["Personal notes","📝"],["Full Study Centre","📚"]
   ];
 
+  let studyPanelHome = null;
+  let studyPanelNextSibling = null;
+  let studyPanelCloseBound = false;
+
+  function restoreStudyPanelToReader() {
+    const panel = document.getElementById("zurielStudyPanel");
+    if (!panel || !studyPanelHome) return;
+    panel.style.display = "none";
+    panel.style.maxHeight = "";
+    panel.style.overflowY = "";
+    panel.style.margin = "";
+    if (studyPanelNextSibling && studyPanelNextSibling.parentNode === studyPanelHome) {
+      studyPanelHome.insertBefore(panel, studyPanelNextSibling);
+    } else {
+      studyPanelHome.appendChild(panel);
+    }
+    studyPanelHome = null;
+    studyPanelNextSibling = null;
+    verseActions.querySelectorAll(".zuriel-verse-action").forEach(function (button) {
+      button.hidden = false;
+    });
+    const back = verseActions.querySelector(".zuriel-overlay-back");
+    if (back) back.remove();
+    verseActionHint.hidden = false;
+    verseActionHint.textContent = "Selected " + (selectedVerseInfo ? selectedVerseInfo.reference : "verse") +
+      " • Choose another study option.";
+    verseActions.scrollTop = 0;
+  }
+
+  function positionVerseOverlay() {
+    if (!selectedVerseInfo) return;
+    const verse = message.querySelector('.verse[data-verse-number="' + selectedVerseInfo.verse + '"]');
+    if (!verse) return;
+    const rect = verse.getBoundingClientRect();
+    const estimatedHeight = Math.min(window.innerHeight * 0.76, 620);
+    const top = Math.max(10, Math.min(rect.top, window.innerHeight - estimatedHeight - 10));
+    verseActions.style.top = top + "px";
+  }
+
   function openSelectedStudy(action) {
     if (!selectedVerseInfo) return;
     if (action === "Share card") {
@@ -918,50 +1031,77 @@ async function openChapter(book, chapter) {
           reference: selectedVerseInfo.reference, text: selectedVerseInfo.text }
       }));
       status.textContent = "Selected " + selectedVerseInfo.reference +
-        ". Choose an available translation in the translation controls to compare.";
+        ". The secure YouVersion comparison panel will open when its service is configured.";
       return;
     }
     if (action === "Word meanings") {
-      status.textContent = "Tap an individual word in the selected verse to open its word study.";
+      status.textContent = "Tap a word in this verse to open its verified Hebrew or Greek word study.";
       return;
     }
     if (!window.ZurielStudy || typeof window.ZurielStudy.openForReference !== "function") {
       status.textContent = "The Scripture Study Centre is not available. Please try again.";
       return;
     }
+    const panel = document.getElementById("zurielStudyPanel");
+    if (!panel) {
+      status.textContent = "The study panel could not be found. Please try again.";
+      return;
+    }
+    if (!studyPanelHome) {
+      studyPanelHome = panel.parentNode;
+      studyPanelNextSibling = panel.nextSibling;
+    }
     window.ZurielStudy.openForReference(
       book, chapter, selectedVerseInfo.verse, selectedVerseInfo.text, "", -1
     );
-    const panel = document.getElementById("zurielStudyPanel");
     const sectionsRoot = document.getElementById("zurielStudySections");
+    const targets = {
+      "Prayer":["the light"],
+      "Declaration":["the light"],
+      "Affirmation":["the light"],
+      "Faith":["the light"],
+      "Inspiration":["meaning and exposition"],
+      "Commentary & theology":["meaning and exposition","theology and deeper study"],
+      "Dictionary":["biblical dictionary"],
+      "Original-language words":["hebrew and greek word study"],
+      "Cross-references":["connected scriptures"],
+      "Personal notes":["my personal study journal"],
+      "Study context":["scripture and historical context","historical and literary context"],
+      "Full Study Centre":[]
+    };
     if (sectionsRoot) {
-      const sections = Array.from(sectionsRoot.querySelectorAll("details"));
-      const targets = {
-        "Prayer":["prayer and declaration"],
-        "Declaration":["prayer and declaration"],
-        "Affirmation":["the light"],
-        "Faith":["the light"],
-        "Inspiration":["meaning and exposition"],
-        "Cross-references":["connected scriptures"],
-        "Personal notes":["my personal study journal"]
-      };
-      sections.forEach(function (section) {
+      Array.from(sectionsRoot.querySelectorAll("details")).forEach(function (section) {
         const summary = section.querySelector("summary");
         const label = summary ? summary.textContent.toLowerCase() : "";
-        section.open = (targets[action] || []).some(function (term) {
-          return label.includes(term);
-        });
+        section.open = action === "Full Study Centre" ||
+          (targets[action] || []).some(function (term) { return label.includes(term); });
       });
     }
-    verseActions.hidden = true;
-    if (action === "Highlight") {
-      const control = document.getElementById("zurielHighlightWholeVerse");
-      if (control) control.scrollIntoView({behavior:"smooth",block:"center"});
-    } else if (action === "Personal notes") {
-      const note = document.getElementById("zurielStudyNote");
-      if (note) note.scrollIntoView({behavior:"smooth",block:"center"});
-    } else if (panel) {
-      panel.scrollIntoView({behavior:"smooth",block:"nearest"});
+    verseActions.querySelectorAll(".zuriel-verse-action").forEach(function (button) {
+      button.hidden = true;
+    });
+    verseActionHint.hidden = true;
+    const back = document.createElement("button");
+    back.type = "button";
+    back.className = "zuriel-verse-action zuriel-overlay-back";
+    back.textContent = "← Back to verse options";
+    back.addEventListener("click", restoreStudyPanelToReader);
+    verseActions.appendChild(back);
+    panel.style.display = "block";
+    panel.style.maxHeight = "none";
+    panel.style.overflowY = "visible";
+    panel.style.margin = "0";
+    verseActions.appendChild(panel);
+    verseActions.classList.add("has-study-content");
+    positionVerseOverlay();
+    if (!studyPanelCloseBound) {
+      const closeStudy = document.getElementById("zurielCloseStudy");
+      if (closeStudy) {
+        closeStudy.addEventListener("click", function () {
+          window.setTimeout(restoreStudyPanelToReader, 0);
+        });
+        studyPanelCloseBound = true;
+      }
     }
   }
 
@@ -983,7 +1123,7 @@ async function openChapter(book, chapter) {
       .forEach(function (node) { node.classList.remove("zuriel-selected-verse"); });
   });
   verseActions.appendChild(closeActions);
-  message.appendChild(verseActions);
+  message.appendChild(verseActions);\n  window.addEventListener("resize", positionVerseOverlay);\n  window.addEventListener("scroll", function () { if (!verseActions.hidden) positionVerseOverlay(); }, true);
 
   function selectVerseForGloryCard(verseNumber, verseText) {
     selectedVerseInfo = {
