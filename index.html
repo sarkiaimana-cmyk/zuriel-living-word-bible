@@ -1082,6 +1082,9 @@ async function openChapter(book, chapter) {
     verseActions.querySelectorAll(".zuriel-verse-action").forEach(function (button) {
       button.hidden = false;
     });
+    verseActions.querySelectorAll(".zuriel-action-group").forEach(function (group) {
+      group.hidden = false;
+    });
     const back = verseActions.querySelector(".zuriel-overlay-back");
     if (back) back.remove();
     verseActionHint.hidden = false;
