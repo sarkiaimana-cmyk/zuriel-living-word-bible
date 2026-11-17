@@ -59,6 +59,9 @@ const checks = [
   ["dictionary result count is reported", '+ " matching entries."'],
   ["dictionary searches curated aliases", "const aliases = Array.isArray(entry[2]) ? entry[2].map(normalize) : []"],
   ["dictionary displays alternate index terms", '"Also indexed as: " + entry[2].join(" • ")'],
+  ["dictionary exposes expanded language and theology notes", "const advanced = entry[3]"],
+  ["dictionary distinguishes theological significance from lexical note", '["Theological significance", advanced.theology]'],
+  ["dictionary includes interpretive cautions", '["Interpretive caution", advanced.caution]'],
   ["concordance interface is part of the Study Centre", 'id="zurielConcordanceQuery"'],
   ["concordance results open the selected verse", "window.selectBibleVerse(item.verse)"],
   ["cross-reference relationships are not invented", "relationship not classified by source."],
@@ -298,6 +301,8 @@ const dictionaryTitles = dictionaryData.map(entry => String(entry[0]).toLowerCas
 assert.ok(dictionaryTitles.length >= 200, "dictionary contains at least 200 curated entries");
 assert.equal(new Set(dictionaryTitles).size, dictionaryTitles.length, "dictionary entry titles are unique");
 const aliasEntries = dictionaryData.filter(entry => Array.isArray(entry[2]) && entry[2].length);
+const advancedEntries = dictionaryData.filter(entry => entry[3] && entry[3].languageNote && entry[3].theology && entry[3].caution && entry[3].passages);
+assert.ok(advancedEntries.length >= 25, "dictionary contains at least 25 expanded language and theology entries");
 assert.ok(aliasEntries.length >= 25, "dictionary has at least 25 entries with curated alternate terms");
 for (const [term, expectedTitle] of [
   ["berith", "Covenant"], ["charis", "Grace"], ["metanoia", "Repentance"],
