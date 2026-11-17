@@ -859,7 +859,7 @@
       relationship.className = "study-small";
       relationship.textContent = (item.curated ? "Curated • " : "") +
         (relationshipLabels[relationshipValue] ||
-          "Related Scripture — relationship not classified by source") +
+          "Related Scripture — relationship not classified by source.") +
         (item.note ? " — " + item.note : "");
       referenceCard.append(button, relationship);
       list.appendChild(referenceCard);
