@@ -57,6 +57,12 @@ const checks = [
   ["dictionary results support progressive browsing", "dictionaryVisibleLimit += 12"],
   ["dictionary browse is alphabetical", "!term ? a.entry[0].localeCompare(b.entry[0])"],
   ["dictionary result count is reported", '+ " matching entries."'],
+  ["dictionary searches curated aliases", "const aliases = Array.isArray(entry[2]) ? entry[2].map(normalize) : []"],
+  ["dictionary displays alternate index terms", '"Also indexed as: " + entry[2].join(" • ")'],
+  ["concordance normalizes Unicode and diacritics", '.normalize("NFD")'],
+  ["concordance normalizes curly apostrophes", '.replace(/[’‘]/g, "\'")'],
+  ["concordance reports total occurrence count", "visible.totalMatches = matches.length"],
+  ["concordance preserves original KJV verse wording", "text: verseOriginal.replace"],
   ["concordance interface is part of the Study Centre", 'id="zurielConcordanceQuery"'],
   ["concordance results open the selected verse", "window.selectBibleVerse(item.verse)"],
   ["cross-reference relationships are not invented", "relationship not classified by source."],
@@ -266,6 +272,12 @@ try {
   assert.equal(wholeWord("a.b").test("an axb example"), false);
   assert.equal("in the beginning God".toLowerCase().includes("in the beginning"), true);
   assert.equal("in a beginning God".toLowerCase().includes("in the beginning"), false);
+  const normalizeSearchText = value => String(value || "")
+    .normalize("NFD").replace(/[\\u0300-\\u036f]/g, "")
+    .replace(/[’‘]/g, "'").replace(/\\s+/g, " ").trim().toLowerCase();
+  assert.equal(normalizeSearchText("  HÉSED  "), "hesed");
+  assert.equal(normalizeSearchText("GOD’S   WORD"), "god's word");
+  assert.equal(normalizeSearchText("God's word").includes(normalizeSearchText("god’s word")), true);
 } catch (error) {
   failures.push(["concordance matching runtime", error.message]);
 }
@@ -278,6 +290,20 @@ assert.ok(dictionaryBlock, "offline biblical dictionary array exists");
 const dictionaryTitles = [...dictionaryBlock[1].matchAll(/\["([^"]+)"/g)].map(match => match[1].toLowerCase());
 assert.ok(dictionaryTitles.length >= 150, "dictionary contains at least 200 curated entries");
 assert.equal(new Set(dictionaryTitles).size, dictionaryTitles.length, "dictionary entry titles are unique");
+const dictionaryData = vm.runInNewContext("(" + dictionaryBlock[0]
+  .replace(/^const bibleDictionary = /, "").replace(/;\\s*$/, "") + ")");
+const aliasEntries = dictionaryData.filter(entry => Array.isArray(entry[2]) && entry[2].length);
+assert.ok(aliasEntries.length >= 25, "dictionary has at least 25 entries with curated alternate terms");
+for (const [term, expectedTitle] of [
+  ["berith", "Covenant"], ["charis", "Grace"], ["metanoia", "Repentance"],
+  ["dikaiosyne", "Righteousness"], ["soteria", "Salvation"],
+  ["ekklesia", "Church"], ["parakletos", "Advocate"], ["anastasis", "Resurrection"]
+]) {
+  const entry = dictionaryData.find(item => item[0] === expectedTitle);
+  assert.ok(entry && entry[2].includes(term), "dictionary indexes " + term + " under " + expectedTitle);
+}
+assert.ok(study.includes("else if (aliasMatch) score = 45"),
+  "dictionary search ranks exact curated aliases above definition-only matches");
 for (const requiredTerm of ["atonement", "covenant", "grace", "kingdom of god", "messiah", "new covenant", "resurrection", "salvation", "holy spirit", "justification by faith"]) {
   assert.ok(dictionaryTitles.includes(requiredTerm), "dictionary includes " + requiredTerm);
 }
