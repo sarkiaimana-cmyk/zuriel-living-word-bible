@@ -55,6 +55,61 @@ check("different source text is rejected rather than guessed", !mismatch.ok);
 const invalidIndex = linker.matchSelectedKJVWord("God is good.", "God is good.", [], -1);
 check("invalid word index is rejected", !invalidIndex.ok);
 
+// Repeated words must resolve by the tapped occurrence, not by text alone.
+const repeatedText = "The Word was with God, and the Word was God.";
+const secondWordStart = repeatedText.indexOf("Word", repeatedText.indexOf("Word") + 1);
+const repeated = linker.matchSelectedKJVWord(
+  repeatedText,
+  repeatedText,
+  [{ start: secondWordStart, end: secondWordStart + 4, strongs: ["G3056"] }],
+  7
+);
+check("repeated words use the selected occurrence offset",
+  repeated.ok && repeated.token === "Word" &&
+  repeated.strongs.length === 1 && repeated.strongs[0] === "G3056");
+
+// A source range spanning two English words must not be attached to either.
+const crossWordText = "God is good.";
+const crossWord = linker.matchSelectedKJVWord(
+  crossWordText,
+  crossWordText,
+  [{ start: 0, end: 6, strongs: ["H0430"] }],
+  0
+);
+check("cross-word annotation ranges are rejected",
+  crossWord.ok && crossWord.strongs.length === 0);
+
+// Out-of-bounds offsets must never create an original-language association.
+const outOfBounds = linker.matchSelectedKJVWord(
+  "God is good.",
+  "God is good.",
+  [{ start: 40, end: 43, strongs: ["H0430"] }],
+  0
+);
+check("out-of-bounds annotation offsets are rejected",
+  outOfBounds.ok && outOfBounds.strongs.length === 0);
+
+// Duplicate source IDs on the same selected word should be returned once.
+const duplicateIds = linker.matchSelectedKJVWord(
+  "God is good.",
+  "God is good.",
+  [
+    { start: 0, end: 3, strongs: ["H0430"] },
+    { start: 0, end: 3, strongs: ["H0430"] }
+  ],
+  0
+);
+check("duplicate Strong's IDs are deduplicated",
+  duplicateIds.ok && duplicateIds.strongs.length === 1);
+
+const outsideIndex = linker.matchSelectedKJVWord(
+  "God is good.",
+  "God is good.",
+  [],
+  9
+);
+check("word indexes beyond the verse are rejected", !outsideIndex.ok);
+
 const untagged = linker.matchSelectedKJVWord(
   "Selah.",
   "Selah.",
@@ -69,5 +124,5 @@ if (failures.length) {
   failures.forEach(item => console.error(" - " + item));
   process.exitCode = 1;
 } else {
-  console.log("Original-language word-linking tests passed (6 cases).");
+  console.log("Original-language word-linking tests passed (12 checks).");
 }

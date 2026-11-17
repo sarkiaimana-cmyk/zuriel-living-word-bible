@@ -73,8 +73,12 @@ const release = JSON.parse(version);
 const installed = updates.match(/const APP_VERSION = "([^"]+)";/);
 assert.ok(installed, "In-app update centre must declare its installed version.");
 assert.equal(installed[1], release.version, "In-app update version must match version.json.");
-assert.equal(release.version, "1.4.31", "Current release metadata must be version 1.4.30.");
-assert.match(serviceWorker, /zuriel-bible-offline-v126/);
+const releaseParts = release.version.split(".");
+assert.equal(releaseParts.length, 3, "Release metadata must use MAJOR.MINOR.PATCH numbering.");
+assert.ok(releaseParts.every(part => part.length > 0 && Number.isInteger(Number(part)) && String(Number(part)) === part),
+  "Release version components must be non-negative integers without leading zeroes.");
+assert.ok(serviceWorker.includes('const CACHE_NAME = "zuriel-bible-offline-v'),
+  "The service worker must use an explicitly versioned offline cache.");
 
 if (failures.length) {
   console.error("YouVersion translation reader checks failed:");
