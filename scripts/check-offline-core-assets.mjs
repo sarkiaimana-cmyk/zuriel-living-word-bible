@@ -1,9 +1,10 @@
 import assert from "node:assert/strict";
 import { readFile, access } from "node:fs/promises";
 
-const [worker, index] = await Promise.all([
+const [worker, index, updates] = await Promise.all([
   readFile("sw.js", "utf8"),
-  readFile("index.html", "utf8")
+  readFile("index.html", "utf8"),
+  readFile("zuriel-updates.js", "utf8")
 ]);
 
 const cacheMatch = worker.match(/const CACHE_NAME = "zuriel-bible-offline-v(\d+)";/);
@@ -38,6 +39,9 @@ for (const path of localScripts) {
 const version = JSON.parse(await readFile("version.json", "utf8"));
 assert.match(version.version, /^\d+\.\d+\.\d+$/, "App version must use numeric MAJOR.MINOR.PATCH format.");
 assert.ok(version.releaseNotes && version.releaseNotes.trim(), "Each app release must explain its changes.");
+const updateVersion = updates.match(/const APP_VERSION = "([^"]+)";/);
+assert.ok(updateVersion, "The in-app update centre must declare its installed version.");
+assert.equal(updateVersion[1], version.version, "The in-app update centre version must match version.json.");
 
 console.log("Offline core asset checks passed: cache v" + cacheMatch[1] +
   ", " + coreFiles.length + " existing precache assets, and " +
