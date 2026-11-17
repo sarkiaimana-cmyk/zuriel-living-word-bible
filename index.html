@@ -1296,7 +1296,16 @@ loadBibleBooks();
 </script>
 
   
-<script src="zuriel-native-media.js"></script>
+<script>
+  (function () {
+    var capacitor = window.Capacitor;
+    if (!capacitor || typeof capacitor.isNativePlatform !== "function" || !capacitor.isNativePlatform()) return;
+    var nativeMediaScript = document.createElement("script");
+    nativeMediaScript.src = "zuriel-native-media.js";
+    nativeMediaScript.async = true;
+    document.head.appendChild(nativeMediaScript);
+  })();
+</script>
 <script src="zuriel-library.js"></script>
 <script src="zuriel-faith-content.js"></script>
 <script src="zuriel-topical-index.js"></script>
