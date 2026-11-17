@@ -29,6 +29,9 @@ jobs:
       - name: Verify offline core assets and local script precache
         run: node scripts/check-offline-core-assets.mjs
 
+      - name: Verify complete offline KJV corpus counts
+        run: node scripts/check-kjv-corpus-counts.mjs
+
       - name: Syntax-check application JavaScript
         run: for file in *.js; do node --check "$file"; done
 
