@@ -987,6 +987,10 @@ async function openChapter(book, chapter) {
     };
     verseActionHint.textContent = "Selected " + selectedVerseInfo.reference +
       " • Choose an action below.";
+    const selectedVerseElement = message.querySelector(
+      '.verse[data-verse-number="' + verseNumber + '"]'
+    );
+    if (selectedVerseElement) selectedVerseElement.after(verseActions);
     verseActions.hidden = false;
   }
 
