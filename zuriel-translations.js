@@ -246,6 +246,20 @@
     updateChapter(event.detail);
   });
 
+  window.addEventListener("zuriel:compare-verse", function (event) {
+    const detail = event && event.detail ? event.detail : {};
+    if (!detail.reference) return;
+    panel.open = true;
+    panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    if (!API_BASE) {
+      status("Online translation comparison is not connected yet. Your selected verse and offline KJV remain available.");
+      return;
+    }
+    status("Choose an authorised translation below. The comparison panel is ready for " +
+      detail.reference + ". Load the chapter to compare its wording.");
+    loadVersions();
+  });
+
   window.ZurielTranslations = {
     configured: Boolean(API_BASE),
     refreshVersions: function () {
