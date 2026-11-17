@@ -55,9 +55,6 @@ const checks = [
   ["dictionary supports multi-word searches", "tokens.every(token => combined.includes(token))"],
   ["dictionary result ranking is stable (original order breaks score ties)", "a.index - b.index"],
   ["dictionary result list stays mobile-friendly", ".slice(0, 12)"],
-  ["concordance supports exact whole-word searches", 'new RegExp("(^|[^a-z0-9])" + escaped + "([^a-z0-9]|$)", "i")'],
-  ["concordance supports exact phrase searches", 'searchable.toLowerCase().includes(term)'],
-  ["concordance supports up to 200 matches", "Math.min(limit, mode ? 200 : 50)"],
   ["concordance interface is part of the Study Centre", 'id="zurielConcordanceQuery"'],
   ["concordance results open the selected verse", "window.selectBibleVerse(item.verse)"],
   ["cross-reference relationships are not invented", "relationship not classified by source."],
@@ -72,7 +69,7 @@ const checks = [
   ["selected KJV annotation is matched", "matchSelectedKJVWord("],
   ["Strong's annotations are joined to interlinear records", "strongsIds.has(normalizeStrongs(word.strongs))"],
   ["source alignment mismatch is not guessed", "Zuriel will not guess which Hebrew or Greek word belongs to this English word."],
-  ["BSB gloss is distinguished from KJV wording", "The interlinear gloss is the Berean Standard Bible's English phrase, not a KJV definition."],
+  ["BSB gloss is distinguished from KJV wording", "The interlinear gloss is the Berean Standard Bible's English phrase, not a KJV definition; a lemma identifies a dictionary headword"],
   ["source parsing fallback", '"Source parsing tag: " + word.parsing'],
   ["per-word source language label", "languageLabel.textContent = languageName"],
   ["normalized Hebrew/Aramaic script direction", 'original.dir = languageCode === "hebrew" || languageCode === "aramaic" ? "rtl" : "ltr"'],
@@ -91,6 +88,15 @@ const checks = [
 for (const [label, fragment] of checks) {
   if (!study.includes(fragment)) failures.push([label, "missing from zuriel-study.js"]);
 }
+const readerChecks = [
+  ["concordance supports exact whole-word searches", 'new RegExp("(^|[^a-z0-9])" + escaped + "([^a-z0-9]|$)", "i")'],
+  ["concordance supports exact phrase searches", "searchable.toLowerCase().includes(term)"],
+  ["concordance supports up to 200 matches", "Math.min(limit, mode ? 200 : 50)"]
+];
+for (const [label, fragment] of readerChecks) {
+  if (!reader.includes(fragment)) failures.push([label, "missing from index.html Bible search engine"]);
+}
+
 if (study.includes("glossTokens.includes")) {
   failures.push(["no gloss-based word guessing", "legacy gloss matching remains in zuriel-study.js"]);
 }
