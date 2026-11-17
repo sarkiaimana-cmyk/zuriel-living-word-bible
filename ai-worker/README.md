@@ -18,17 +18,17 @@ The endpoint is an initial passage-explanation pilot. It does not yet support to
 
 ## Secure YouVersion Bible text proxy
 
-The Worker also contains a server-side YouVersion Platform proxy for the future multi-translation reader:
+The shared server-side handler includes a YouVersion Platform proxy for the future multi-translation reader. The production translation-only entry point is `src/translation-worker.js`, deployed separately with `wrangler.translations.jsonc`.
 
 - `GET /api/youversion/bibles` lists English Bible versions returned to the registered app key. The proxy does not request `all_available=true`, so it does not deliberately expose versions outside the app's licensed list.
 - `GET /api/youversion/bibles/{versionId}/passages/{USFM}` retrieves a single passage or chapter. The `format` query may be `html` or `text`.
 - The app key is read only from the Worker secret `ZITE_YVP_APP_KEY`; it is never accepted from the client or returned in a response.
 - Requests are origin-checked, rate-limited, time-bounded and returned with `no-store` headers.
 - Publisher copyright and promotional attribution are returned with passage content. Do not save licensed passages for offline use unless the exact publisher licence expressly permits it.
-- The endpoint remains disabled until `ZITE_YVP_APP_KEY` is configured. Only versions returned to the registered app key can be used; a provider 403 is treated as a licensing denial.
+- The dedicated translation Worker exposes no AI route and does not require the AI pilot's Turnstile configuration or AI binding.
+- The client-side reader offers an explicit online comparison panel. It requests passage text only after the user chooses a version and presses Load; it does not persist online text. The bundled KJV remains available offline.
 
-The client-side translation selector and parallel-reading screen are not enabled yet. They must be connected only after the app key, accessible version list, publisher terms and required attribution display have been verified.
-
+The translation-only Worker remains undeployed until the Cloudflare account owner has confirmed the Free plan, added the scoped Cloudflare credentials and YouVersion app key as GitHub Actions secrets, and confirmed the publisher rights and attribution for the returned versions. See `DEPLOYMENT.md` for the manual deployment steps.
 ## Scripture asset preparation
 
 From the repository root:
