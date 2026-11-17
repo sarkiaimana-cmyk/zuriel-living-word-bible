@@ -1,4 +1,4 @@
 {
-  "version": "1.4.37",
-  "releaseNotes": "Improves connected Scripture navigation: selecting a cross-reference opens the exact verse in the reader and loads its Study Centre context. Adds a retry control when reference data cannot be fetched; downloaded reference data remains cacheable for offline study."
+  "version": "1.4.38",
+  "releaseNotes": "Improves connected Scripture navigation and retry handling. Removes a duplicate generic prayer/declaration panel so the verse-linked The Light section is the single home for curated prayer, declaration, affirmation, faith confession and inspiration. Offline cache refreshed."
 }
