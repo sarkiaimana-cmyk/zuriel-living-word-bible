@@ -58,7 +58,7 @@ const checks = [
   ["dictionary browse is alphabetical", "!term ? a.entry[0].localeCompare(b.entry[0])"],
   ["dictionary result count is reported", '+ " matching entries."'],
   ["dictionary searches curated aliases", "const aliases = Array.isArray(entry[2]) ? entry[2].map(normalize) : []"],
-  ["dictionary displays alternate index terms", '"Also indexed as: " + entry[2].join(" • ")'],
+  ["dictionary displays alternate index terms", '"Also searchable as: " + entry[2].join(" • ")'],
   ["dictionary exposes expanded language and theology notes", "const advanced = entry[3]"],
   ["dictionary distinguishes theological significance from lexical note", '["Theological significance", advanced.theology]'],
   ["dictionary includes interpretive cautions", '["Interpretive caution", advanced.caution]'],
