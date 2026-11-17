@@ -30,7 +30,6 @@ In the GitHub repository, open **Settings → Secrets and variables → Actions 
 | `CLOUDFLARE_ACCOUNT_ID` | Account ID from the Cloudflare dashboard |
 | `CLOUDFLARE_API_TOKEN` | Cloudflare API token created with the official **Edit Cloudflare Workers** template, scoped only to the Zuriel account |
 | `TURNSTILE_SECRET` | Private Turnstile secret key |
-| `ZITE_YVP_APP_KEY` | Optional YouVersion Platform app key for the protected Bible translation proxy |
 
 Never paste any of these secret values into ChatGPT, source code, a commit, an issue or a pull request. The deployment workflow reads them as GitHub Actions secrets and does not print their values.
 
