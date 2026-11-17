@@ -1255,10 +1255,11 @@ window.ZurielBibleSearch = {
         if (!Array.isArray(verses)) continue;
         for (let verseIndex = 0; verseIndex < verses.length; verseIndex++) {
           const verseText = verses[verseIndex];
-          const searchable = typeof verseText === "string" ? verseText : "";
+          const verseOriginal = typeof verseText === "string" ? verseText : "";
+          const searchable = normalizeSearchText(verseOriginal);
           const found = mode === "word"
             ? exactWordPattern.test(searchable)
-            : searchable.toLowerCase().includes(term);
+            : searchable.includes(term);
           if (found) {
             matches.push({
               book: book.name,
