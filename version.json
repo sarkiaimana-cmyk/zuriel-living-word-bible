@@ -1,4 +1,4 @@
 {
-  "version": "1.4.43",
-  "releaseNotes": "Expanded the offline Bible dictionary with eight contextual study terms covering covenant faithfulness, eschatology, exegesis, koinonia, parakletos, Torah, typology and new creation. Existing offline Bible reading and study resources are preserved; offline cache refreshed."
+  "version": "1.4.44",
+  "releaseNotes": "Improved the offline Bible dictionary search with accent-insensitive matching, multi-word queries and relevance-ranked results. Added regression checks for dictionary search behaviour; all existing offline Bible and study content is preserved."
 }
