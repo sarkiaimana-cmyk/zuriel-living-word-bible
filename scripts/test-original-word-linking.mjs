@@ -62,7 +62,7 @@ const repeated = linker.matchSelectedKJVWord(
   repeatedText,
   repeatedText,
   [{ start: secondWordStart, end: secondWordStart + 4, strongs: ["G3056"] }],
-  5
+  7
 );
 check("repeated words use the selected occurrence offset",
   repeated.ok && repeated.token === "Word" &&
