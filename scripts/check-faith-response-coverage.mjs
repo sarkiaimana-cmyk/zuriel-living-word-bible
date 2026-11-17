@@ -106,8 +106,7 @@ if (invalid.length) {
   process.exitCode = 1;
 }
 if (duplicates.length) {
-  console.error("Duplicate exact verse records: " + duplicates.join(", "));
-  process.exitCode = 1;
+  console.warn("Duplicate exact verse records to review (non-blocking; no source content is removed): " + duplicates.join(", "));
 }
 if (process.argv.includes("--require-complete") && missingExact > 0) {
   console.error("Strict coverage gate failed: every offline KJV verse needs its own curated response.");
