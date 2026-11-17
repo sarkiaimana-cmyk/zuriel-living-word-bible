@@ -1,4 +1,4 @@
 {
-  "version": "1.4.44",
-  "releaseNotes": "Improved the offline Bible dictionary search with accent-insensitive matching, multi-word queries and relevance-ranked results. Added regression checks for dictionary search behaviour; all existing offline Bible and study content is preserved."
+  "version": "1.4.45",
+  "releaseNotes": "Added an offline KJV concordance for exact-word and exact-phrase searches with verse navigation; clarified source-supported labels for connected Scriptures and strengthened original-language study guidance. Existing Bible and study resources are preserved."
 }
