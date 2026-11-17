@@ -29,6 +29,7 @@ const books = new Set([
 ]);
 const topics = index.list();
 assert.ok(topics.length >= 160, "The curated topical library should contain at least 160 reviewed topics.");
+// Batch 2 quality gate: the expanded library must remain structured, searchable and context-linked.
 // Long topical explanations should remain available without overwhelming the reader.
 assert.ok(studyUiSource.split('document.createElement("details")').length - 1 >= 4,
   "Topical explanations, language notes, related passages and reflection questions must be expandable.");
