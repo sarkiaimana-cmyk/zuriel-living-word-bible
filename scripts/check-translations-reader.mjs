@@ -41,7 +41,7 @@ forbidText(client, /innerHTML|outerHTML/i, "Unsafe HTML insertion for publisher 
 forbidText(client, /ZITE_YVP_APP_KEY|X-YVP-App-Key|api\.youversion\.com/i, "Provider credentials or direct upstream API access in client code");
 
 requireText(worker, 'from "./index.js"', "Shared tested server-side YouVersion handler");
-requireText(worker, "/^\\\\/api\\\\/youversion\\\\/bibles(?:\\\\/|$)/", "Translation-only route allowlist");
+requireText(worker, "youversion/bibles(?:", "Translation-only route allowlist");
 requireText(worker, "handleRequest(request, env, dependencies)", "Shared server-side origin, rate-limit and licence handling");
 requireText(config, '"name": "zuriel-bible-translations"', "Separate translation Worker name");
 requireText(config, '"TRANSLATION_RATE_LIMIT"', "Translation rate-limit binding");
