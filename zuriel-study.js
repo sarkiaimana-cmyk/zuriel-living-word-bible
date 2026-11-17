@@ -224,7 +224,7 @@
     ["Self-Control","Self-control is part of Spirit-shaped character and wise discipline. Scripture applies it to speech, desires, leadership and perseverance. See Proverbs 25:28; 1 Corinthians 9:24-27; Galatians 5:22-23; 2 Peter 1:5-8."],
     ["Courage and Boldness","Biblical courage rests in God's presence and truth, not in denial of danger. See Joshua 1:6-9; Psalm 27:1; Acts 4:23-31; 2 Timothy 1:7-8."],
     ["Fear and Anxiety","Scripture acknowledges fear and invites people to bring concerns to God while taking wise action. Comfort passages should not be used to shame those who struggle. See Psalm 56:3-4; Matthew 6:25-34; Philippians 4:6-9; 1 Peter 5:6-7."],
-    ["Grief and Mourning","The Bible makes room for tears and mourning while offering hope in God's presence and resurrection. See Psalm  grieving; John 11:17-44; Romans 12:15; 1 Thessalonians 4:13-18."],
+    ["Grief and Mourning","The Bible makes room for tears and mourning while offering hope in God's presence and resurrection. See Psalms 6; 31; 42; 88; 130; John 11:17-44; Romans 12:15; 1 Thessalonians 4:13-18."],
     ["Suffering for Righteousness","The New Testament prepares believers for opposition and calls them to faithful witness without retaliation. See Matthew 5:10-12; John 15:18-21; 1 Peter 3:13-17; 4:12-19."],
     ["Persecution and Endurance","Biblical teaching on persecution combines sober realism, prayer for enemies, courage and hope in God's justice. See Matthew 10:16-25; Acts 5:40-42; 2 Timothy 3:10-12; Revelation 2:8-11."],
     ["Comfort in Affliction","God's comfort sustains people in suffering and equips them to comfort others. See Psalm 23; Isaiah 40:1-11; 2 Corinthians 1:3-7; 2 Thessalonians 2:16-17."],
