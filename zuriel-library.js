@@ -889,7 +889,8 @@
             const canvas = document.createElement("canvas");
             const ctx = canvas.getContext("2d");
             if (!ctx) throw new Error("Image export is not supported in this browser.");
-            if (!activeWallpaperImage) throw new Error("Please wait for the selected wallpaper to finish loading before exporting your card.");
+            // A wallpaper is an enhancement, not a prerequisite: image export
+            // must still work offline using the selected solid finish.
             const width = 1600, margin = 100, gap = 70, columnWidth = (width - margin * 2 - gap) / 2;
             const scriptureSize = Number(studio.querySelector("#zgsScriptureSize").value) * 2;
             const faithSize = Number(studio.querySelector("#zgsFaithSize").value) * 2;
@@ -945,6 +946,12 @@
               const drawWidth = image.width * scale, drawHeight = image.height * scale;
               ctx.drawImage(image,(canvas.width-drawWidth)/2,(canvas.height-drawHeight)/2,drawWidth,drawHeight);
               ctx.fillStyle = studio.dataset.finish === "navy" ? "rgba(10,24,43,.45)" : "rgba(248,244,232,.42)";
+              ctx.fillRect(0,0,canvas.width,canvas.height);
+            }
+            else {
+              ctx.fillStyle = studio.dataset.finish === "navy" ? "#172b49" :
+                studio.dataset.finish === "forest" ? "#e9f0e5" :
+                studio.dataset.finish === "parchment" ? "#f0dfbd" : "#f8f0dc";
               ctx.fillRect(0,0,canvas.width,canvas.height);
             }
             ctx.strokeStyle = colors[2]; ctx.lineWidth = 5;
@@ -1010,15 +1017,41 @@
         studio.querySelector("#zgsShare").addEventListener("click",async function(){
           const textValue=["The Light 🕯️","His Words.. My life.. My Victory",studio.querySelector("#zgsReference").value,studio.querySelector("#zgsScripture").value,...["Prayer","Declaration","Affirmation","Confession","Inspiration"].map(name=>name.toUpperCase()+": "+studio.querySelector("#zgs"+name).value),"Zuriel Living Word Bible"].filter(Boolean).join("\n\n");
           if(!studio.querySelector("#zgsReference").value.trim()||!studio.querySelector("#zgsScripture").value.trim()){studio.querySelector("#zgsStatus").textContent="Add the Scripture reference and text before sharing.";return;}
-          try{
-            if(navigator.share) await navigator.share({title:"Glory Verse Affirmation",text:textValue});
-            else if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(textValue);studio.querySelector("#zgsStatus").textContent="Card text copied. You can paste it into your sharing app.";}
-            else {studio.querySelector("#zgsStatus").textContent="Sharing is not available in this browser. You can select and copy the preview text.";}
-          }catch(error){if(error.name!=="AbortError")studio.querySelector("#zgsStatus").textContent="Sharing could not be completed on this device.";}
+          try {
+            if (navigator.share) {
+              await navigator.share({title:"Glory Verse Affirmation",text:textValue});
+              studio.querySelector("#zgsStatus").textContent = "Your Scripture card text has been shared.";
+            } else if (navigator.clipboard && navigator.clipboard.writeText) {
+              await navigator.clipboard.writeText(textValue);
+              studio.querySelector("#zgsStatus").textContent = "Card text copied. Paste it into your preferred sharing app.";
+            } else {
+              const fallback = document.createElement("textarea");
+              fallback.value = textValue;
+              fallback.setAttribute("readonly", "");
+              fallback.style.cssText = "position:fixed;left:-9999px;top:0";
+              document.body.appendChild(fallback);
+              fallback.select();
+              const copied = document.execCommand("copy");
+              fallback.remove();
+              studio.querySelector("#zgsStatus").textContent = copied
+                ? "Card text copied. Paste it into your preferred sharing app."
+                : "Please select the card text in the preview and copy it manually.";
+            }
+          } catch(error) {
+            if (error.name !== "AbortError") {
+              studio.querySelector("#zgsStatus").textContent = "Sharing could not be completed. You can still use Save image or copy the preview text.";
+            }
+          }
         });
         updatePreview();
 
-        originalLibrary.affirmations.forEach(item => {
+        const affirmationReferences = [
+          "1 John 5:1", "Ephesians 3:16", "1 Corinthians 1:30",
+          "2 Corinthians 12:9", "2 Corinthians 5:17", "Ephesians 1:6",
+          "John 14:26", "1 Corinthians 2:16", "Psalm 46:1",
+          "2 Peter 1:5", "Hebrews 4:16", "John 15:5"
+        ];
+        originalLibrary.affirmations.forEach((item, index) => {
           const box = element("div", undefined, "library-entry");
           box.appendChild(element("p", item));
           box.appendChild(button("Save declaration", function () {
@@ -1026,6 +1059,27 @@
             persist();
             alert("Saved to your personal library.");
           }));
+          const createCard = button("Create Open Book Share Card", async function () {
+            const reference = affirmationReferences[index];
+            createCard.disabled = true;
+            try {
+              if (typeof window.getBibleVerseText !== "function") {
+                throw new Error("The offline Bible text service is not ready.");
+              }
+              const passage = await window.getBibleVerseText(reference);
+              const opened = window.ZurielLibrary && window.ZurielLibrary.openGloryVerse(
+                reference, passage.text, "KJV",
+                { declaration:item, affirmation:item }
+              );
+              if (!opened) throw new Error("The Open Book Card Studio could not be opened.");
+            } catch (error) {
+              createCard.textContent = error.message || "Unable to create card";
+              createCard.disabled = false;
+            }
+          });
+          createCard.className = "zgs-open-declaration-card";
+          box.appendChild(createCard);
+          box.appendChild(element("small", "Scripture: " + affirmationReferences[index]));
           content.appendChild(box);
         });
       }
@@ -1598,9 +1652,8 @@
         };
         Object.keys(responseFields).forEach(function(key) {
           const field = studio.querySelector(responseFields[key]);
-          if (field && faithResponse && faithResponse[key]) {
-            field.value = String(faithResponse[key]).trim();
-          }
+          if (field) field.value = faithResponse && faithResponse[key]
+            ? String(faithResponse[key]).trim() : "";
         });
         [referenceField, scriptureField].concat(
           Object.values(responseFields).map(selector => studio.querySelector(selector)).filter(Boolean)
