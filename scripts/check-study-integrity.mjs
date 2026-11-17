@@ -48,6 +48,11 @@ try {
 }
 
 const checks = [
+    ["verse action box is a fixed overlay, not an in-flow section", "position:fixed !important"],
+    ["verse action box does not insert itself after the verse", "selectedVerseElement.after(verseActions)"],
+    ["verse study content is mounted inside the selected-verse overlay", "verseActions.appendChild(panel)"],
+    ["verse overlay includes dictionary and commentary options", "Commentary & theology"],
+    ["study panel does not scroll the reader away from Scripture", "do not scroll away from Scripture"],
   ["dictionary search normalizes Unicode accents", '.normalize("NFD")'],
   ["dictionary exact-title matches rank first", "title === term) score = 100"],
   ["dictionary title-prefix matches rank highly", "title.startsWith(term)"],
