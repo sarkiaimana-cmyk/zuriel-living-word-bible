@@ -1133,9 +1133,15 @@
                 throw new Error("The offline Bible text service is not ready.");
               }
               const passage = await window.getBibleVerseText(reference);
+              const response = window.ZurielFaithContent &&
+                typeof window.ZurielFaithContent.find === "function"
+                ? window.ZurielFaithContent.find(reference) : null;
+              if (!response || !response.prayer || !response.declaration ||
+                  !response.affirmation || !response.confession || !response.inspiration) {
+                throw new Error("The complete Scripture-specific prayer, declaration, affirmation, confession and inspiration are not ready for this card.");
+              }
               const opened = window.ZurielLibrary && window.ZurielLibrary.openGloryVerse(
-                reference, passage.text, "KJV",
-                { declaration:item, affirmation:item }
+                reference, passage.text, "KJV", response
               );
               if (!opened) throw new Error("The Open Book Card Studio could not be opened.");
             } catch (error) {
