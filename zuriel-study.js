@@ -1818,7 +1818,8 @@
       }
 
       const intro = document.createElement("p");
-      intro.className = "study-small";
+      intro.className = "study-small zuriel-faith-disclaimer";
+      intro.style.cssText = "display:block;margin:0 0 14px;padding:11px 12px;border-left:4px solid #d9bd79;border-radius:7px;background:#fff4d6;color:#26384d;font-size:13px;font-weight:700;line-height:1.55;opacity:1";
       intro.textContent = "A Scripture-connected devotional response for " + entry.reference + ". These are original study reflections, not quotations from the Bible.";
       target.appendChild(intro);
 
