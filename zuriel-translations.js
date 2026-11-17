@@ -250,7 +250,10 @@
     const detail = event && event.detail ? event.detail : {};
     if (!detail.reference) return;
     panel.open = true;
-    panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    const shownInVerseOverlay = window.ZurielVerseOverlay &&
+      typeof window.ZurielVerseOverlay.openExternal === "function" &&
+      window.ZurielVerseOverlay.openExternal(panel);
+    if (!shownInVerseOverlay) panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
     if (!API_BASE) {
       status("Online translation comparison is not connected yet. Your selected verse and offline KJV remain available.");
       return;
