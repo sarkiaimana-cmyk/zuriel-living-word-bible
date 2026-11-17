@@ -1,4 +1,4 @@
 {
-  "version": "1.4.30",
-  "releaseNotes": "Prevents overlapping word taps from showing stale original-language results and cleans up replaced study-panel listeners."
+  "version": "1.4.31",
+  "releaseNotes": "Adds sixteen distinct, Scripture-linked prayers, declarations, affirmations, confessions and inspirations."
 }
