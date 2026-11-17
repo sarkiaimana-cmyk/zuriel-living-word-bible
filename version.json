@@ -1,4 +1,4 @@
 {
-  "version": "1.4.38",
-  "releaseNotes": "Improves connected Scripture navigation and retry handling. Removes a duplicate generic prayer/declaration panel so the verse-linked The Light section is the single home for curated prayer, declaration, affirmation, faith confession and inspiration. Offline cache refreshed."
+  "version": "1.4.39",
+  "releaseNotes": "Inspection found and corrected an escaped-whitespace parsing defect in connected Scripture navigation so verse numbers are stripped correctly from displayed verse text. Existing offline KJV, study and devotional resources are preserved. Offline cache refreshed."
 }
