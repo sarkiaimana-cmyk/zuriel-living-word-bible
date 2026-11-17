@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "title": "Zuriel Connected Scripture Trails — Batch 2",
   "description": "A second curated collection of contextual pathways, extending book coverage and linking Old Testament books with related canonical passages.",
-  "count": 25,
+  "count": 33,
   "bookCoverage": [
     "Ruth",
     "1 Samuel",
@@ -28,7 +28,15 @@
     "Nahum",
     "Habakkuk",
     "Zechariah",
-    "Malachi"
+    "Malachi",
+    "Numbers",
+    "Joshua",
+    "Judges",
+    "Zephaniah",
+    "Haggai",
+    "Philemon",
+    "2 John",
+    "3 John"
   ],
   "editorialPrinciples": [
     "Read each passage in its own literary and historical context.",
@@ -1037,6 +1045,326 @@
         "What does returning to God look like in the passage's original setting and in faithful application?"
       ],
       "lifeApplication": "Identify one area where worship and daily integrity need to align, then record a practical response shaped by the passage."
+    },
+    {
+      "id": "connected-scripture-trail-067",
+      "title": "Numbers: Wilderness Testing and God's Provision",
+      "overview": "Follow Israel's wilderness testing, the priestly blessing, the bronze serpent episode, and later biblical reflection on unbelief and faith.",
+      "contextCaution": "Numbers recounts Israel's covenant journey and wilderness failures. Jesus' comparison with the bronze serpent in John 3 should be read from the explicit comparison in that passage, not extended to every wilderness detail.",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Numbers 6:22–27",
+          "connectionNote": "The priestly blessing places Israel's life under the Lord's name, protection, grace, and peace."
+        },
+        {
+          "step": 2,
+          "reference": "Numbers 14:1–10",
+          "connectionNote": "The people's fear at the report of the land shows how distrust challenges the promise and leadership God has given."
+        },
+        {
+          "step": 3,
+          "reference": "Numbers 21:4–9",
+          "connectionNote": "The bronze serpent episode joins judgment, confession, and God's appointed means of healing in the wilderness narrative."
+        },
+        {
+          "step": 4,
+          "reference": "John 3:14–17",
+          "connectionNote": "Jesus explicitly compares his being lifted up with Moses lifting the serpent, directing attention to faith and God's saving love."
+        },
+        {
+          "step": 5,
+          "reference": "Hebrews 3:7–19",
+          "connectionNote": "Hebrews uses Israel's wilderness unbelief as a warning to its hearers not to harden their hearts."
+        }
+      ],
+      "studyQuestions": [
+        "What does the priestly blessing reveal about God's care for Israel?",
+        "How do fear and unbelief shape the events in Numbers 14 and 21?",
+        "What precise comparison does Jesus make with the bronze serpent in John 3?",
+        "How does Hebrews apply the wilderness generation's failure to its own audience?"
+      ],
+      "lifeApplication": "Identify one place where fear may be competing with trust, then respond with a prayer and an action grounded in the passages."
+    },
+    {
+      "id": "connected-scripture-trail-068",
+      "title": "Joshua: Promise, Courage, and Covenant Faithfulness",
+      "overview": "Trace Joshua's commission, the crossing of the Jordan, the fall of Jericho, the covenant challenge, and the biblical theme of entering God's rest.",
+      "contextCaution": "Joshua narrates Israel's entry into the land within its ancient covenant and conquest setting. Hebrews 4 develops the theme of rest; it should not be used to erase the historical meaning of Joshua.",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Joshua 1:1–9",
+          "connectionNote": "God commissions Joshua after Moses' death and grounds courage in God's presence and the instruction already given."
+        },
+        {
+          "step": 2,
+          "reference": "Joshua 3:7–17",
+          "connectionNote": "The Jordan crossing confirms Joshua's leadership and recalls God's power to bring Israel through the waters."
+        },
+        {
+          "step": 3,
+          "reference": "Joshua 6:1–21",
+          "connectionNote": "Jericho's fall is narrated as an act of divine judgment and deliverance, not as a technique for obtaining personal success."
+        },
+        {
+          "step": 4,
+          "reference": "Joshua 23:1–16",
+          "connectionNote": "Joshua's farewell warns Israel to remain faithful to the covenant and not turn toward the gods of surrounding nations."
+        },
+        {
+          "step": 5,
+          "reference": "Hebrews 4:1–11",
+          "connectionNote": "Hebrews reflects on the promise of God's rest and urges its hearers to persevere in faith and obedience."
+        }
+      ],
+      "studyQuestions": [
+        "What grounds Joshua's courage in chapter 1?",
+        "How does the Jordan crossing echo earlier events in Israel's story?",
+        "What does the Jericho narrative say about God's action and Israel's obedience?",
+        "How does Hebrews 4 develop the theme of rest without simply repeating Joshua's historical account?"
+      ],
+      "lifeApplication": "Choose one responsibility where courage and obedience are needed, and define a practical step that remains faithful to God's word."
+    },
+    {
+      "id": "connected-scripture-trail-069",
+      "title": "Judges: Rebellion, Deliverance, and the Need for Faithful Leadership",
+      "overview": "Examine the recurring pattern of Israel's unfaithfulness, God's raising of deliverers, Gideon's call, and the book's closing diagnosis of social disorder.",
+      "contextCaution": "Judges repeatedly reports morally troubling actions and failed leadership. Description is not endorsement; read each episode in the book's wider critique of Israel's covenant unfaithfulness.",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Judges 2:6–19",
+          "connectionNote": "The passage summarises the recurring cycle of disobedience, oppression, crying out, and deliverance that shapes the book."
+        },
+        {
+          "step": 2,
+          "reference": "Judges 6:11–24",
+          "connectionNote": "Gideon's call shows both his hesitation and God's assurance, while the narrative identifies the Lord as the source of deliverance."
+        },
+        {
+          "step": 3,
+          "reference": "Judges 7:1–8",
+          "connectionNote": "The reduction of Gideon's army prevents Israel from treating victory as proof of its own military strength."
+        },
+        {
+          "step": 4,
+          "reference": "Judges 10:10–16",
+          "connectionNote": "Israel confesses its idolatry and removes foreign gods; the text presents repentance within the continuing cycle of the judges."
+        },
+        {
+          "step": 5,
+          "reference": "Judges 21:25",
+          "connectionNote": "The closing refrain diagnoses the disorder of the period and invites readers to consider the book's repeated failures of covenant faithfulness."
+        }
+      ],
+      "studyQuestions": [
+        "What stages recur in the cycle described in Judges 2?",
+        "How does Gideon's response develop from fear toward action?",
+        "Why is the army reduced, and what does the narrator emphasise about the victory?",
+        "How does the final refrain help interpret the troubling stories in Judges?"
+      ],
+      "lifeApplication": "Name one recurring pattern that pulls a person or community away from faithfulness, and identify a concrete step toward repentance and accountability."
+    },
+    {
+      "id": "connected-scripture-trail-070",
+      "title": "Zephaniah: The Day of the Lord and the Hope of the Humble",
+      "overview": "Move from the prophet's warning of judgment to the call to seek the Lord, the preservation of a humble remnant, and the promise of God's restoring presence.",
+      "contextCaution": "Zephaniah addresses Judah in a specific historical setting and uses prophetic language for the Day of the Lord. Do not assign every image to a modern event without textual grounds.",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Zephaniah 1:2–18",
+          "connectionNote": "The opening oracle announces judgment against idolatry and complacency in Judah, stressing the seriousness of the Day of the Lord."
+        },
+        {
+          "step": 2,
+          "reference": "Zephaniah 2:1–3",
+          "connectionNote": "Before judgment, the prophet calls the humble to seek the Lord, righteousness, and humility."
+        },
+        {
+          "step": 3,
+          "reference": "Zephaniah 3:8–13",
+          "connectionNote": "Judgment gives way to the promise of purified peoples and a humble remnant who take refuge in the Lord."
+        },
+        {
+          "step": 4,
+          "reference": "Zephaniah 3:14–17",
+          "connectionNote": "The prophet calls Zion to rejoice because the Lord is present among his people and acts to save."
+        },
+        {
+          "step": 5,
+          "reference": "Revelation 21:1–5",
+          "connectionNote": "Revelation's vision of God's dwelling with humanity offers a later canonical horizon of restored creation; it is not a direct quotation of every detail in Zephaniah."
+        }
+      ],
+      "studyQuestions": [
+        "Which forms of idolatry and complacency does Zephaniah confront?",
+        "What does the call to seek humility mean in its original setting?",
+        "How is the remnant described in Zephaniah 3?",
+        "What similarities and differences do you see between Zephaniah's restoration promise and Revelation's vision?"
+      ],
+      "lifeApplication": "Practise humility by naming one area needing correction and one action that reflects hope in God's restoring work."
+    },
+    {
+      "id": "connected-scripture-trail-071",
+      "title": "Haggai: Rebuilding, Priorities, and God's Presence",
+      "overview": "Follow Haggai's challenge to rebuild the temple, the people's renewed obedience, God's encouragement, and the historical record of the rebuilding work.",
+      "contextCaution": "Haggai speaks to the returned Judean community under Persian rule. The temple and its restoration are concrete historical concerns; do not reduce the prophecy to a guarantee of personal wealth or material success.",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Haggai 1:2–11",
+          "connectionNote": "Haggai confronts the returned community for neglecting the temple while prioritising its own houses and comfort."
+        },
+        {
+          "step": 2,
+          "reference": "Haggai 1:12–15",
+          "connectionNote": "The leaders and people respond to the prophetic message, and the text records their renewed work with the assurance of God's presence."
+        },
+        {
+          "step": 3,
+          "reference": "Haggai 2:1–9",
+          "connectionNote": "God encourages those who remember the former temple and promises his presence and future glory despite the modest appearance of the rebuilding."
+        },
+        {
+          "step": 4,
+          "reference": "Zechariah 4:6–10",
+          "connectionNote": "Zechariah's message to Zerubbabel similarly insists that the work will be accomplished by God's Spirit rather than human might."
+        },
+        {
+          "step": 5,
+          "reference": "Ezra 5:1–2",
+          "connectionNote": "Ezra records the historical resumption of building under prophetic encouragement, linking the prophetic message to the community's actual work."
+        }
+      ],
+      "studyQuestions": [
+        "What misplaced priorities does Haggai identify?",
+        "What changes after the people hear and respond to the message?",
+        "How does Haggai encourage those who see the new temple as unimpressive?",
+        "How do Zechariah and Ezra complement Haggai's account?"
+      ],
+      "lifeApplication": "Review one responsibility that has been neglected and set a realistic, faithful next step without confusing obedience with a promise of material prosperity."
+    },
+    {
+      "id": "connected-scripture-trail-072",
+      "title": "Philemon: Receiving One Another as Brothers and Sisters",
+      "overview": "Read Paul's personal appeal for Onesimus alongside New Testament teaching on belonging in Christ, transformed relationships, and Christian service.",
+      "contextCaution": "Philemon addresses a real first-century household and the institution of slavery. Paul's appeal reshapes the relationship by asking Philemon to receive Onesimus as a beloved brother; do not claim that the letter explicitly narrates Onesimus's later freedom or resolves every question about slavery.",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Philemon 8–21",
+          "connectionNote": "Paul appeals rather than merely commands, asking Philemon to receive Onesimus no longer only as a slave but as a beloved brother in the Lord."
+        },
+        {
+          "step": 2,
+          "reference": "Colossians 4:7–9",
+          "connectionNote": "Onesimus is named among Paul's trusted messengers, providing a related glimpse of his place in the early Christian network."
+        },
+        {
+          "step": 3,
+          "reference": "Galatians 3:26–29",
+          "connectionNote": "Paul's teaching that believers are one in Christ supplies a wider theological context for the new identity and kinship expressed in Philemon."
+        },
+        {
+          "step": 4,
+          "reference": "Ephesians 6:5–9",
+          "connectionNote": "The household instructions address both enslaved people and masters and place both under the Lord's authority, while retaining the historical realities of the household code."
+        },
+        {
+          "step": 5,
+          "reference": "1 Corinthians 7:20–24",
+          "connectionNote": "Paul addresses believers' varied social circumstances and urges faithfulness to the Lord; read this passage carefully rather than using it to excuse injustice."
+        }
+      ],
+      "studyQuestions": [
+        "How does Paul use relationship, love, and appeal in his request to Philemon?",
+        "What does Colossians 4 add to our knowledge of Onesimus?",
+        "How does belonging in Christ challenge status distinctions in Galatians 3?",
+        "What do these passages say—and not say—about the social institution of slavery?"
+      ],
+      "lifeApplication": "Consider a relationship shaped by unequal status or power and identify one concrete way to honour another person's dignity and shared standing before Christ."
+    },
+    {
+      "id": "connected-scripture-trail-073",
+      "title": "2 John: Truth, Love, and Discernment",
+      "overview": "Explore the letter's connection between walking in truth, obeying Christ's command to love, and testing teaching about Jesus.",
+      "contextCaution": "Second John is a brief pastoral letter addressing a particular community and itinerant teachers. Its warning about hospitality concerns teachers who deny the apostolic teaching about Christ; do not turn it into a blanket rejection of strangers or disagreement.",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "2 John 4–6",
+          "connectionNote": "The letter joins walking in truth with the command to love, defining love in relation to God's commandments."
+        },
+        {
+          "step": 2,
+          "reference": "John 14:15–24",
+          "connectionNote": "Jesus connects love for him with keeping his commandments and promises the presence of the Father and the Son with those who love him."
+        },
+        {
+          "step": 3,
+          "reference": "1 John 4:1–6",
+          "connectionNote": "First John instructs believers to test the spirits and gives a Christ-centred criterion for discerning teaching."
+        },
+        {
+          "step": 4,
+          "reference": "1 John 2:18–27",
+          "connectionNote": "The letter warns about those who deny the Son and urges the community to remain in the message it received."
+        },
+        {
+          "step": 5,
+          "reference": "Jude 3–4",
+          "connectionNote": "Jude similarly urges believers to contend for the faith amid teaching that distorts the grace of God and the identity of Jesus."
+        }
+      ],
+      "studyQuestions": [
+        "How does 2 John define the relationship between truth and love?",
+        "What does Jesus say about love and obedience in John 14?",
+        "What specific test does 1 John 4 give for evaluating teaching?",
+        "How can a community practise discernment without abandoning genuine love and hospitality?"
+      ],
+      "lifeApplication": "Choose one teaching to examine carefully against the biblical witness about Jesus, and pair discernment with a loving, truthful response."
+    },
+    {
+      "id": "connected-scripture-trail-074",
+      "title": "3 John: Hospitality, Integrity, and Faithful Leadership",
+      "overview": "Study the commendation of Gaius, the harmful conduct of Diotrephes, and the positive example of Demetrius in the life of the early church.",
+      "contextCaution": "Third John is a personal letter about named people and a local church situation. Avoid turning its brief descriptions into unsupported claims about every detail of their motives or later history.",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "3 John 5–8",
+          "connectionNote": "Gaius is commended for practical hospitality toward travelling Christian workers, who are described as serving the truth."
+        },
+        {
+          "step": 2,
+          "reference": "3 John 9–10",
+          "connectionNote": "Diotrephes is criticised for seeking prominence, rejecting apostolic authority, and obstructing those who welcome the workers."
+        },
+        {
+          "step": 3,
+          "reference": "3 John 11–12",
+          "connectionNote": "The letter contrasts harmful conduct with doing good and commends Demetrius as having a good testimony."
+        },
+        {
+          "step": 4,
+          "reference": "Romans 12:9–13",
+          "connectionNote": "Paul's instructions to love sincerely and practise hospitality provide a broader New Testament picture of the virtues commended in Gaius."
+        },
+        {
+          "step": 5,
+          "reference": "1 Peter 4:8–11",
+          "connectionNote": "Peter connects hospitality and service with using gifts to serve others and glorify God."
+        }
+      ],
+      "studyQuestions": [
+        "What practical actions make Gaius's hospitality commendable?",
+        "Which behaviours does the letter identify in Diotrephes, and why are they harmful?",
+        "How is Demetrius presented as a contrasting example?",
+        "How do Romans 12 and 1 Peter 4 broaden the teaching on hospitality and service?"
+      ],
+      "lifeApplication": "Identify one practical way to support faithful service in your community while refusing behaviour that seeks status at others' expense."
     }
   ]
 }
