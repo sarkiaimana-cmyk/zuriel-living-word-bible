@@ -50,8 +50,10 @@ jobs:
       - name: Test translation proxy safeguards
         run: node --test test/youversion.test.mjs test/translation-worker.test.mjs
 
-      - name: Upload server-only YouVersion app key
-        run: printf '%s' "$ZITE_YVP_APP_KEY" | npx wrangler secret put ZITE_YVP_APP_KEY --config wrangler.translations.jsonc
-
-      - name: Deploy translation-only Worker
-        run: npx wrangler deploy --config wrangler.translations.jsonc
+      - name: Deploy translation-only Worker with server-only YouVersion key
+        run: |
+          set -eu
+          umask 077
+          trap 'rm -f .zuriel-translation-secrets.json' EXIT
+          node -e 'const fs=require("node:fs"); const key=process.env.ZITE_YVP_APP_KEY; if(typeof key!=="string" || !key.trim()) { console.error("YouVersion app key is missing."); process.exit(1); } fs.writeFileSync(".zuriel-translation-secrets.json", JSON.stringify({ZITE_YVP_APP_KEY:key}), {mode:0o600, flag:"wx"});'
+          npx wrangler deploy --config wrangler.translations.jsonc --secrets-file .zuriel-translation-secrets.json
