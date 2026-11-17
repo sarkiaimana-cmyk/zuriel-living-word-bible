@@ -24,9 +24,11 @@ function forbidText(source, pattern, label) {
 
 requireText(index, 'src="zuriel-translations.js"', "Translation reader entry point");
 requireText(index, "window.ZurielBibleBookCode = function", "Reader USFM book-code bridge");
+requireText(index, "window.ZurielVerseOverlay", "Selected-verse overlay host for external study panels");
 requireText(index, 'window.ZURIEL_TRANSLATION_API_BASE = "";', "Explicit empty translation endpoint until the proxy is deployed");
 requireText(client, 'id = "zurielTranslationCompare"', "Collapsible translation comparison panel");
 requireText(client, "zuriel:chapter-opened", "Reader chapter event integration");
+requireText(client, "window.ZurielVerseOverlay.openExternal(panel)", "YouVersion comparison opens in selected-verse overlay");
 requireText(client, '"/api/youversion/bibles"', "Licensed English version list request");
 requireText(client, "?format=text", "Plain-text passage request");
 requireText(client, 'cache: "no-store"', "No-store request policy");
