@@ -446,7 +446,8 @@ footer {
   #zurielVerseActions { left:7px !important; right:7px !important; max-height:78vh; padding:9px; gap:6px; }
   #zurielVerseActions .zuriel-verse-action { font-size:12px; min-height:42px; }
 }
-\n</style>
+
+</style>
 </head>
 
 <body>
@@ -1124,9 +1125,6 @@ async function openChapter(book, chapter) {
   verseActions.appendChild(closeActions);
   message.appendChild(verseActions);
   window.addEventListener("resize", positionVerseOverlay);
-  window.addEventListener("scroll", function () {
-    if (!verseActions.hidden) positionVerseOverlay();
-  }, true);
 
   function selectVerseForGloryCard(verseNumber, verseText) {
     selectedVerseInfo = {
