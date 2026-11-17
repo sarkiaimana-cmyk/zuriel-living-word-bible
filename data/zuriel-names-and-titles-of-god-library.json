@@ -1,0 +1,717 @@
+{
+  "schemaVersion": 1,
+  "title": "Zuriel Names and Titles of God Study Library",
+  "description": "Contextual reference collection of biblical names, titles and descriptions of God, with original-language forms, Scripture references and interpretive notes.",
+  "editorialPolicy": [
+    "Original-language glosses are concise study aids, not exhaustive lexicon definitions.",
+    "Some traditional forms and etymologies are debated; uncertainty is stated where relevant.",
+    "Read each title in its literary, historical and covenant context.",
+    "Distinguish titles used for God, titles used for Jesus, and poetic descriptions.",
+    "References are study starting points; read the full passage."
+  ],
+  "entries": [
+    {
+      "id": "divine-title-001",
+      "name": "YHWH",
+      "originalForm": "יהוה",
+      "language": "Hebrew",
+      "senseAndContext": "The divine name revealed to Moses; commonly rendered LORD in English Bibles.",
+      "scriptureReferences": [
+        "Exodus 3:13-15",
+        "6:2-8",
+        "Psalm 83:18"
+      ],
+      "studyNote": "Study God's self-revelation and deliverance; English traditions differ on vocalisation.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-002",
+      "name": "Elohim",
+      "originalForm": "אֱלֹהִים",
+      "language": "Hebrew",
+      "senseAndContext": "A common designation for God, prominent in creation and worship texts.",
+      "scriptureReferences": [
+        "Genesis 1:1,26-27",
+        "Psalm 19:1"
+      ],
+      "studyNote": "Read its grammatical and literary setting; do not build simplistic claims on form alone.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-003",
+      "name": "El",
+      "originalForm": "אֵל",
+      "language": "Hebrew",
+      "senseAndContext": "A Semitic word for God, appearing in poetry and compound titles.",
+      "scriptureReferences": [
+        "Genesis 14:18-20",
+        "Psalm 18:2",
+        "Isaiah 40:18"
+      ],
+      "studyNote": "Context determines the emphasis of this broad designation.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-004",
+      "name": "Adonai",
+      "originalForm": "אֲדֹנָי",
+      "language": "Hebrew",
+      "senseAndContext": "Lord or Master; a reverential title expressing divine authority.",
+      "scriptureReferences": [
+        "Psalm 8:1",
+        "110:1",
+        "Isaiah 6:1"
+      ],
+      "studyNote": "Notice the response of worship and service.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-005",
+      "name": "El Elyon",
+      "originalForm": "אֵל עֶלְיוֹן",
+      "language": "Hebrew",
+      "senseAndContext": "God Most High; a title highlighting supreme rule.",
+      "scriptureReferences": [
+        "Genesis 14:18-22",
+        "Psalm 7:17",
+        "Daniel 4:34"
+      ],
+      "studyNote": "Read first in the story of Melchizedek and Abram.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-006",
+      "name": "El Shaddai",
+      "originalForm": "אֵל שַׁדַּי",
+      "language": "Hebrew",
+      "senseAndContext": "Traditionally rendered God Almighty; its precise etymology is debated.",
+      "scriptureReferences": [
+        "Genesis 17:1-8",
+        "28:3",
+        "Exodus 6:2-3"
+      ],
+      "studyNote": "Focus on covenant promises; do not present disputed etymology as settled.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-007",
+      "name": "El Olam",
+      "originalForm": "אֵל עוֹלָם",
+      "language": "Hebrew",
+      "senseAndContext": "God Everlasting; associated with God's enduring nature.",
+      "scriptureReferences": [
+        "Genesis 21:33",
+        "Psalm 90:1-2",
+        "Isaiah 40:28"
+      ],
+      "studyNote": "Consider faithfulness across generations.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-008",
+      "name": "El Roi",
+      "originalForm": "אֵל רֳאִי",
+      "language": "Hebrew",
+      "senseAndContext": "The God who sees; Hagar's expression after her encounter in the wilderness.",
+      "scriptureReferences": [
+        "Genesis 16:7-14"
+      ],
+      "studyNote": "Keep Hagar's vulnerability and story central.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-009",
+      "name": "YHWH Yireh",
+      "originalForm": "יְהוָה יִרְאֶה",
+      "language": "Hebrew",
+      "senseAndContext": "The LORD will provide or see to it; associated with Abraham on Moriah.",
+      "scriptureReferences": [
+        "Genesis 22:1-14"
+      ],
+      "studyNote": "Do not turn this testing narrative into a guarantee of every desired outcome.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-010",
+      "name": "YHWH Rapha",
+      "originalForm": "יְהוָה רֹפְאֶךָ",
+      "language": "Hebrew",
+      "senseAndContext": "The LORD who heals you; spoken after the waters of Marah.",
+      "scriptureReferences": [
+        "Exodus 15:22-27",
+        "Psalm 103:1-5"
+      ],
+      "studyNote": "Read covenant context and the wider biblical witness about healing.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-011",
+      "name": "YHWH Nissi",
+      "originalForm": "יְהוָה נִסִּי",
+      "language": "Hebrew",
+      "senseAndContext": "The LORD is my banner; Moses names an altar after the conflict with Amalek.",
+      "scriptureReferences": [
+        "Exodus 17:8-16"
+      ],
+      "studyNote": "Notice communal struggle and the memorial altar.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-012",
+      "name": "YHWH Shalom",
+      "originalForm": "יְהוָה שָׁלוֹם",
+      "language": "Hebrew",
+      "senseAndContext": "The LORD is peace; Gideon's altar name after a divine encounter.",
+      "scriptureReferences": [
+        "Judges 6:11-24"
+      ],
+      "studyNote": "Peace here is more than a pleasant feeling; read Gideon's fear and calling.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-013",
+      "name": "YHWH Tsidqenu",
+      "originalForm": "יְהוָה צִדְקֵנוּ",
+      "language": "Hebrew",
+      "senseAndContext": "The LORD is our righteousness; a title in Jeremiah's promise of a righteous ruler.",
+      "scriptureReferences": [
+        "Jeremiah 23:5-6",
+        "33:14-16"
+      ],
+      "studyNote": "Read within Jeremiah's hope for just leadership and restoration.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-014",
+      "name": "YHWH Sabaoth",
+      "originalForm": "יְהוָה צְבָאוֹת",
+      "language": "Hebrew",
+      "senseAndContext": "The LORD of hosts; stresses God's command over heavenly hosts.",
+      "scriptureReferences": [
+        "1 Samuel 1:3",
+        "Psalm 24:10",
+        "Isaiah 6:1-5"
+      ],
+      "studyNote": "The title is not a licence for human aggression.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-015",
+      "name": "YHWH Shammah",
+      "originalForm": "יְהוָה שָׁמָּה",
+      "language": "Hebrew",
+      "senseAndContext": "The LORD is there; the name of the restored city in Ezekiel's vision.",
+      "scriptureReferences": [
+        "Ezekiel 48:30-35"
+      ],
+      "studyNote": "The vision culminates in God's presence among His people.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-016",
+      "name": "YHWH Mekaddishkem",
+      "originalForm": "יְהוָה מְקַדִּשְׁכֶם",
+      "language": "Hebrew",
+      "senseAndContext": "The LORD who sanctifies you; a covenant declaration.",
+      "scriptureReferences": [
+        "Exodus 31:12-17",
+        "Leviticus 20:7-8"
+      ],
+      "studyNote": "Sanctification is God's work, connected with covenant life.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-017",
+      "name": "Qanna",
+      "originalForm": "קַנָּא",
+      "language": "Hebrew",
+      "senseAndContext": "A description of God as jealous, expressing exclusive covenant loyalty.",
+      "scriptureReferences": [
+        "Exodus 20:4-6",
+        "34:14",
+        "Deuteronomy 4:23-24"
+      ],
+      "studyNote": "Explain the metaphor within covenant faithfulness and rejection of idolatry.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-018",
+      "name": "Ehyeh-Asher-Ehyeh",
+      "originalForm": "אֶהְיֶה אֲשֶׁר אֶהְיֶה",
+      "language": "Hebrew",
+      "senseAndContext": "God's phrase to Moses, rendered I AM WHO I AM or I WILL BE WHAT I WILL BE.",
+      "scriptureReferences": [
+        "Exodus 3:13-15"
+      ],
+      "studyNote": "Translations reflect interpretive choices; note the promise of God's presence.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-019",
+      "name": "Ab",
+      "originalForm": "אָב",
+      "language": "Hebrew",
+      "senseAndContext": "Father; a relational title expressing care, authority and covenant relationship.",
+      "scriptureReferences": [
+        "Deuteronomy 32:6",
+        "Isaiah 63:16",
+        "Malachi 2:10"
+      ],
+      "studyNote": "Read within the specific covenant and communal context.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-020",
+      "name": "Goel",
+      "originalForm": "גֹּאֵל",
+      "language": "Hebrew",
+      "senseAndContext": "Redeemer or kinsman-redeemer; one who rescues or upholds family rights.",
+      "scriptureReferences": [
+        "Ruth 3:9-13",
+        "Isaiah 41:14",
+        "43:14"
+      ],
+      "studyNote": "Distinguish family law in Ruth from prophetic imagery.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-021",
+      "name": "Rohi",
+      "originalForm": "רֹעִי",
+      "language": "Hebrew",
+      "senseAndContext": "My shepherd; the LORD pictured as caring and guiding His people.",
+      "scriptureReferences": [
+        "Psalm 23",
+        "80:1",
+        "Ezekiel 34:11-16"
+      ],
+      "studyNote": "Explore provision and guidance alongside Ezekiel's critique of failed shepherds.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-022",
+      "name": "Melek",
+      "originalForm": "מֶלֶךְ",
+      "language": "Hebrew",
+      "senseAndContext": "King; a title for God's sovereign and righteous rule.",
+      "scriptureReferences": [
+        "Psalm 47:6-8",
+        "95:3",
+        "Isaiah 33:22"
+      ],
+      "studyNote": "Connect royal imagery with justice and care.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-023",
+      "name": "Shofet",
+      "originalForm": "שֹׁפֵט",
+      "language": "Hebrew",
+      "senseAndContext": "Judge; God judges the earth with righteousness.",
+      "scriptureReferences": [
+        "Genesis 18:25",
+        "Psalm 7:11",
+        "96:13"
+      ],
+      "studyNote": "Judgement is accountable justice, not permission for vengeance.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-024",
+      "name": "Kadosh Yisrael",
+      "originalForm": "קְדוֹשׁ יִשְׂרָאֵל",
+      "language": "Hebrew",
+      "senseAndContext": "The Holy One of Israel; links holiness with covenant relationship.",
+      "scriptureReferences": [
+        "Isaiah 1:4",
+        "41:14",
+        "43:3"
+      ],
+      "studyNote": "Trace how holiness and redemption appear together in Isaiah.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-025",
+      "name": "Tzur",
+      "originalForm": "צוּר",
+      "language": "Hebrew",
+      "senseAndContext": "Rock; poetic image of stability, refuge and faithfulness.",
+      "scriptureReferences": [
+        "Deuteronomy 32:4",
+        "Psalm 18:2",
+        "62:6-7"
+      ],
+      "studyNote": "Read the metaphor with the surrounding song or prayer.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-026",
+      "name": "Magen",
+      "originalForm": "מָגֵן",
+      "language": "Hebrew",
+      "senseAndContext": "Shield; image of God's protection and help.",
+      "scriptureReferences": [
+        "Genesis 15:1",
+        "Psalm 3:3",
+        "84:11"
+      ],
+      "studyNote": "Not a promise that believers will never face harm.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-027",
+      "name": "Ezer",
+      "originalForm": "עֵזֶר",
+      "language": "Hebrew",
+      "senseAndContext": "Helper; used of God as the one who aids His people.",
+      "scriptureReferences": [
+        "Exodus 18:4",
+        "Deuteronomy 33:7",
+        "Psalm 121:1-2"
+      ],
+      "studyNote": "The word does not imply inferiority; compare its use for God and in Genesis 2.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-028",
+      "name": "Pele Yoetz",
+      "originalForm": "פֶּלֶא יוֹעֵץ",
+      "language": "Hebrew",
+      "senseAndContext": "Wonderful Counsellor; part of Isaiah's royal-child titles.",
+      "scriptureReferences": [
+        "Isaiah 9:6-7"
+      ],
+      "studyNote": "Read the oracle's themes of justice, peace and enduring rule.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-029",
+      "name": "Sar Shalom",
+      "originalForm": "שַׂר שָׁלוֹם",
+      "language": "Hebrew",
+      "senseAndContext": "Prince of Peace; a royal title in Isaiah's vision.",
+      "scriptureReferences": [
+        "Isaiah 9:6-7",
+        "11:1-9"
+      ],
+      "studyNote": "Study with the promised ruler's character and peace imagery.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-030",
+      "name": "Abir Yaakov",
+      "originalForm": "אֲבִיר יַעֲקֹב",
+      "language": "Hebrew",
+      "senseAndContext": "Mighty One of Jacob; stresses God's strength toward Jacob's descendants.",
+      "scriptureReferences": [
+        "Genesis 49:24",
+        "Isaiah 49:26",
+        "60:16"
+      ],
+      "studyNote": "Observe its use in blessing and restoration poetry.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-031",
+      "name": "Rishon VaAcharon",
+      "originalForm": "רִאשׁוֹן וְאַחֲרוֹן",
+      "language": "Hebrew",
+      "senseAndContext": "First and Last; declaration of God's sovereignty over history.",
+      "scriptureReferences": [
+        "Isaiah 44:6",
+        "48:12"
+      ],
+      "studyNote": "Read in its polemic against idols and assurance to Israel.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-032",
+      "name": "Qedem",
+      "originalForm": "קֶדֶם",
+      "language": "Hebrew",
+      "senseAndContext": "Ancient or of old; poetic descriptor of God's everlasting action.",
+      "scriptureReferences": [
+        "Deuteronomy 33:27",
+        "Habakkuk 1:12"
+      ],
+      "studyNote": "Treat as a biblical descriptor, not a separate personal name.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-033",
+      "name": "El Gibbor",
+      "originalForm": "אֵל גִּבּוֹר",
+      "language": "Hebrew",
+      "senseAndContext": "Mighty God; a title in prophetic and royal contexts.",
+      "scriptureReferences": [
+        "Isaiah 9:6",
+        "10:21"
+      ],
+      "studyNote": "Compare immediate context; avoid isolating the phrase.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-034",
+      "name": "Rachum",
+      "originalForm": "רַחוּם",
+      "language": "Hebrew",
+      "senseAndContext": "Compassionate or merciful; description of God's character.",
+      "scriptureReferences": [
+        "Exodus 34:6",
+        "Deuteronomy 4:31",
+        "Psalm 103:8"
+      ],
+      "studyNote": "Read the full cluster of character descriptions.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-035",
+      "name": "Chanun",
+      "originalForm": "חַנּוּן",
+      "language": "Hebrew",
+      "senseAndContext": "Gracious; description of God's generous favour.",
+      "scriptureReferences": [
+        "Exodus 34:6",
+        "Psalm 116:5",
+        "Joel 2:13"
+      ],
+      "studyNote": "Grace is joined with patience, faithfulness and calls to return.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-036",
+      "name": "Erekh Appayim",
+      "originalForm": "אֶרֶךְ אַפַּיִם",
+      "language": "Hebrew",
+      "senseAndContext": "Slow to anger; phrase describing God's patience.",
+      "scriptureReferences": [
+        "Exodus 34:6",
+        "Numbers 14:18",
+        "Psalm 145:8"
+      ],
+      "studyNote": "Read patience alongside justice.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-037",
+      "name": "Rav Chesed",
+      "originalForm": "רַב־חֶסֶד",
+      "language": "Hebrew",
+      "senseAndContext": "Abounding in steadfast love; description of covenant mercy.",
+      "scriptureReferences": [
+        "Exodus 34:6",
+        "Numbers 14:18",
+        "Psalm 86:5"
+      ],
+      "studyNote": "Chesed has a range of relational meanings; avoid one narrow gloss.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-038",
+      "name": "Emet",
+      "originalForm": "אֱמֶת",
+      "language": "Hebrew",
+      "senseAndContext": "Truth or faithfulness; description of God's reliability.",
+      "scriptureReferences": [
+        "Exodus 34:6",
+        "Psalm 31:5",
+        "146:6"
+      ],
+      "studyNote": "Consider truth as dependable faithfulness.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-039",
+      "name": "Pater",
+      "originalForm": "πατήρ",
+      "language": "Greek",
+      "senseAndContext": "Father; relational title used by Jesus and the apostles.",
+      "scriptureReferences": [
+        "Matthew 6:9",
+        "John 17:1-5",
+        "Romans 8:15-16"
+      ],
+      "studyNote": "Read in prayer, teaching and adoption contexts.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-040",
+      "name": "Theos",
+      "originalForm": "θεός",
+      "language": "Greek",
+      "senseAndContext": "God; the ordinary Greek designation throughout the New Testament.",
+      "scriptureReferences": [
+        "John 1:1",
+        "Acts 17:24-28",
+        "Romans 1:7"
+      ],
+      "studyNote": "Let grammar and context guide interpretation.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-041",
+      "name": "Kyrios",
+      "originalForm": "κύριος",
+      "language": "Greek",
+      "senseAndContext": "Lord; title of authority used for God and Jesus.",
+      "scriptureReferences": [
+        "Luke 2:11",
+        "Romans 10:9-13",
+        "Philippians 2:9-11"
+      ],
+      "studyNote": "Study how Israel's Scriptures inform New Testament usage.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-042",
+      "name": "Pantokrator",
+      "originalForm": "παντοκράτωρ",
+      "language": "Greek",
+      "senseAndContext": "Almighty or ruler over all; prominent in Revelation.",
+      "scriptureReferences": [
+        "2 Corinthians 6:18",
+        "Revelation 1:8",
+        "19:6"
+      ],
+      "studyNote": "Read within Revelation's worship and hope amid opposition.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-043",
+      "name": "Soter",
+      "originalForm": "σωτήρ",
+      "language": "Greek",
+      "senseAndContext": "Saviour; title describing God and Jesus as deliverer.",
+      "scriptureReferences": [
+        "Luke 1:47",
+        "Titus 2:13",
+        "Jude 25"
+      ],
+      "studyNote": "Compare its use across the New Testament.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-044",
+      "name": "Poimen",
+      "originalForm": "ποιμήν",
+      "language": "Greek",
+      "senseAndContext": "Shepherd; Jesus is the good shepherd who lays down His life.",
+      "scriptureReferences": [
+        "John 10:11-18",
+        "Hebrews 13:20",
+        "1 Peter 2:25"
+      ],
+      "studyNote": "Notice the contrast with those who abandon the flock.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-045",
+      "name": "Alpha and Omega",
+      "originalForm": "τὸ Ἄλφα καὶ τὸ Ὦ",
+      "language": "Greek",
+      "senseAndContext": "First and last Greek letters; title expressing comprehensive sovereignty.",
+      "scriptureReferences": [
+        "Revelation 1:8",
+        "21:6",
+        "22:13"
+      ],
+      "studyNote": "Observe the speaker and context in each occurrence.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-046",
+      "name": "Logos",
+      "originalForm": "λόγος",
+      "language": "Greek",
+      "senseAndContext": "Word; John's prologue describes the one who was with God, was God and became flesh.",
+      "scriptureReferences": [
+        "John 1:1-18",
+        "1 John 1:1-3",
+        "Revelation 19:13"
+      ],
+      "studyNote": "Read themes of creation, life, revelation and incarnation.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-047",
+      "name": "Emmanuel",
+      "originalForm": "עִמָּנוּ אֵל",
+      "language": "Hebrew",
+      "senseAndContext": "God with us; Matthew applies Isaiah's sign-language to Jesus.",
+      "scriptureReferences": [
+        "Isaiah 7:14",
+        "Matthew 1:22-23",
+        "28:20"
+      ],
+      "studyNote": "Study Isaiah's historical setting and Matthew's fulfilment reading.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-048",
+      "name": "Lamb of God",
+      "originalForm": "ὁ ἀμνὸς τοῦ θεοῦ",
+      "language": "Greek",
+      "senseAndContext": "John the Baptist's designation for Jesus, linked with the removal of sin.",
+      "scriptureReferences": [
+        "John 1:29-36",
+        "Revelation 5:6-14",
+        "1 Peter 1:18-19"
+      ],
+      "studyNote": "Compare Gospel introduction, Revelation imagery and Passover themes.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-049",
+      "name": "I AM",
+      "originalForm": "ἐγώ εἰμι",
+      "language": "Greek",
+      "senseAndContext": "A Greek expression used in John's Gospel in sayings revealing Jesus' identity.",
+      "scriptureReferences": [
+        "John 8:24-28",
+        "8:58",
+        "18:5-6"
+      ],
+      "studyNote": "Read each saying in dialogue; the expression also has ordinary uses.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-050",
+      "name": "Image of the Invisible God",
+      "originalForm": "εἰκὼν τοῦ θεοῦ τοῦ ἀοράτου",
+      "language": "Greek",
+      "senseAndContext": "Christ makes the invisible God known and is described in relation to creation.",
+      "scriptureReferences": [
+        "Colossians 1:15-20",
+        "2 Corinthians 4:4-6"
+      ],
+      "studyNote": "Read the whole passage and its claims about creation and reconciliation.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-051",
+      "name": "Ancient of Days",
+      "originalForm": "עַתִּיק יוֹמִין",
+      "language": "Aramaic",
+      "senseAndContext": "Visionary title in Daniel depicting divine authority and judgement.",
+      "scriptureReferences": [
+        "Daniel 7:9-14"
+      ],
+      "studyNote": "Respect the apocalyptic symbols and distinguish figures in the scene.",
+      "resourceType": "name-or-title-of-god"
+    },
+    {
+      "id": "divine-title-052",
+      "name": "Most High",
+      "originalForm": "עֶלְיוֹן / ὕψιστος",
+      "language": "Hebrew and Greek",
+      "senseAndContext": "Title emphasising God's supreme authority.",
+      "scriptureReferences": [
+        "Genesis 14:18-22",
+        "Luke 1:32",
+        "Acts 7:48"
+      ],
+      "studyNote": "Compare contexts across both Testaments.",
+      "resourceType": "name-or-title-of-god"
+    }
+  ]
+}
