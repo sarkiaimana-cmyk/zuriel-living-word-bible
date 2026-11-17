@@ -38,6 +38,17 @@ for (const file of files) {
 await cp("images", "www/images", { recursive: true });
 
 await build({
+  entryPoints: ["zuriel-native-media.js"],
+  bundle: true,
+  platform: "browser",
+  format: "iife",
+  target: ["es2020"],
+  outfile: "www/zuriel-native-media.js",
+  minify: true,
+  sourcemap: false
+});
+
+await build({
   entryPoints: ["zuriel-audio.js"],
   bundle: true,
   platform: "browser",
