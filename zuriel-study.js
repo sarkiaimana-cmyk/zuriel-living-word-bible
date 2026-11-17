@@ -1228,7 +1228,7 @@
 
       <div id="zurielStudySections">
 
-        <details open>
+        <details>
           <summary>📜 1. Scripture and Historical Context</summary>
           <div class="study-body" id="zurielContext">
             <p>Select a passage to begin its study.</p>
