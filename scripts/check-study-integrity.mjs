@@ -296,6 +296,15 @@ try {
   const curated = vm.runInNewContext("(" + declaration + ")", {}, { timeout: 1000 });
   const entries = Object.entries(curated);
   assert.ok(entries.length >= 70, "at least 70 curated Scripture source passages are maintained");
+  for (const label of [
+    '"direct quotation": "Direct quotation"',
+    '"prophecy / fulfilment": "Prophecy / fulfilment"',
+    '"scriptural promise": "Scriptural promise"',
+    '"scriptural pattern": "Scriptural pattern"',
+    '"parallel passage": "Parallel passage"'
+  ]) {
+    assert.ok(study.includes(label), "The cross-reference UI must display this curated relationship type: " + label);
+  }
   let checkedTargets = 0;
   for (const [sourceReference, targets] of entries) {
     const sourceMatch = sourceReference.match(/^(.+?)\s+(\d+):(\d+)$/);
