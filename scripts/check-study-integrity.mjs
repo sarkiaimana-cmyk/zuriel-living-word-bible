@@ -315,10 +315,14 @@ try {
       assert.ok(Number.isInteger(target.verse) && target.verse >= 1 &&
         typeof targetVerse === "string" && targetVerse.trim(),
         "curated target verse exists: " + target.book + " " + target.chapter + ":" + target.verse);
-      assert.ok(typeof target.relationship === "string" && target.relationship.trim(),
-        "curated target relationship is labelled");
-      assert.ok(typeof target.note === "string" && target.note.trim(),
-        "curated target explanation is present");
+      const relationshipTypes = [
+        "Direct quotation", "Prophecy / fulfilment", "Scriptural pattern",
+        "Parallel passage", "Scriptural promise"
+      ];
+      assert.ok(relationshipTypes.includes(target.relationship),
+        "curated target uses a recognised relationship label: " + target.relationship);
+      assert.ok(typeof target.note === "string" && target.note.trim().length >= 24,
+        "curated target explanation is present and meaningful");
       checkedTargets++;
     }
   }
