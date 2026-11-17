@@ -1,4 +1,4 @@
 {
-  "version": "1.4.27",
-  "releaseNotes": "Prepares secure, optional YouVersion translation comparison; online access remains off until the licensed service is configured."
+  "version": "1.4.28",
+  "releaseNotes": "Deduplicates visible verse-specific faith references without deleting source content and adds a coverage audit."
 }
