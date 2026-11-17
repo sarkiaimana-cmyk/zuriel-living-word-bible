@@ -98,8 +98,9 @@ for (const [label, fragment] of checks) {
 }
 const readerChecks = [
   ["concordance supports exact whole-word searches", 'new RegExp("(^|[^a-z0-9])" + escaped + "([^a-z0-9]|$)", "i")'],
-  ["concordance supports exact phrase searches", "searchable.toLowerCase().includes(term)"],
-  ["concordance supports up to 200 matches", "Math.min(limit, mode ? 200 : 50)"]
+  ["concordance supports exact phrase searches", "searchable.includes(term)"],
+  ["concordance supports up to 200 matches", "Math.min(limit, mode ? 200 : 50)"],
+  ["concordance scans all verses before applying the display limit", "const visible = matches.slice(0, maximum)"]
 ];
 for (const [label, fragment] of readerChecks) {
   if (!reader.includes(fragment)) failures.push([label, "missing from index.html Bible search engine"]);
