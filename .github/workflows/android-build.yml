@@ -1,0 +1,60 @@
+name: Android build validation
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "android/**"
+      - "scripts/**"
+      - "capacitor.config.ts"
+      - "package.json"
+      - "package-lock.json"
+      - "index.html"
+      - "zuriel-*.js"
+      - "version.json"
+      - ".github/workflows/android-build.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build-debug-apk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate Capacitor Android project when absent
+        run: |
+          if [ ! -d android ]; then
+            npx cap add android
+          fi
+
+      - name: Build web assets and sync Android
+        run: npm run android:sync
+
+      - name: Assemble debug APK
+        working-directory: android
+        run: ./gradlew assembleDebug
+
+      - name: Upload QA APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: zuriel-android-debug-qa
+          path: android/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+          retention-days: 14
