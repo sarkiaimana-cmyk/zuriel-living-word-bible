@@ -85,6 +85,18 @@ assert.equal((await noCache.api(url)).source, "network");
 assert.equal(noCache.operations.fetches.length, 1);
 assert.equal(noCache.operations.puts.length, 0);
 
+// Previously downloaded commentary chapter and source catalogue must also work offline.
+for (const resourceUrl of [
+  "https://bible.helloao.org/api/c/matthew-henry/JHN/3.simple.json",
+  "https://bible.helloao.org/api/available_commentaries.json"
+]) {
+  const offlineWithSavedResource = makeHarness({ fetchFails: true });
+  offlineWithSavedResource.records.set(resourceUrl, response({ source: "saved-commentary", url: resourceUrl }));
+  const saved = await offlineWithSavedResource.api(resourceUrl);
+  assert.equal(saved.source, "saved-commentary", "Previously downloaded commentary and catalogue data must be readable offline.");
+  assert.equal(offlineWithSavedResource.operations.fetches.length, 0, "A cached commentary resource must not require an API request.");
+}
+
 // If neither a cached copy nor the network is available, fail clearly.
 const offlineMiss = makeHarness({ fetchFails: true });
 await assert.rejects(() => offlineMiss.api(url), /Network unavailable/);
