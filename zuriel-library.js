@@ -1104,7 +1104,19 @@
             const safeReference = reference.replace(/[^a-z0-9]+/gi,"-").replace(/^-|-$/g,"").toLowerCase();
             const fileName = "Zuriel-Glory-Verse-" + (safeReference || "card") + ".png";
             const file = new File([blob],fileName,{type:"image/png"});
-            if (exportButton.id === "zgsSaveImage" &&
+            if (exportButton.id === "zgsShareImage" &&
+                window.ZurielMedia &&
+                typeof window.ZurielMedia.canShareImage === "function" &&
+                window.ZurielMedia.canShareImage()) {
+              const dataUrl = await new Promise((resolve,reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(String(reader.result || ""));
+                reader.onerror = () => reject(reader.error || new Error("The PNG could not be prepared for Android sharing."));
+                reader.readAsDataURL(blob);
+              });
+              await window.ZurielMedia.shareImage({dataUrl:dataUrl,fileName:fileName});
+              status.textContent = "Android sharing options opened. Zuriel cannot confirm whether the receiving app completed delivery.";
+            } else if (exportButton.id === "zgsSaveImage" &&
                 window.ZurielMedia &&
                 typeof window.ZurielMedia.isAvailable === "function" &&
                 window.ZurielMedia.isAvailable()) {
@@ -1130,7 +1142,7 @@
                 : "Your PNG image was saved to your Downloads folder. You can open it from your device files.";
             }
           } catch (error) {
-            if (error.name !== "AbortError") status.textContent = error.message || "Image export could not be completed on this device.";
+            status.textContent = error && error.name === "AbortError" ? "Sharing was cancelled. Your card and saved-card library remain unchanged." : (error.message || "Image export could not be completed on this device.");
           } finally {
             exportButton.disabled = false;
           }
