@@ -36,7 +36,7 @@ requireText(home, "His Words.. My life.. My Victory", "The approved Open Book ca
 requireText(home, "window.getBibleVerseText(verse.reference)", "Open Book exact offline KJV passage retrieval");
 const homeVerseBlock = home.match(/const verses = \[([\s\S]*?)\];/);
 const homeVerseReferences = homeVerseBlock ? Array.from(homeVerseBlock[1].matchAll(/reference: "([^"]+)"/g), match => match[1].toLowerCase()) : [];
-const faithReferences = new Set(Array.from(faith.matchAll(/\{reference:"([^"]+)"/g), match => match[1].toLowerCase()));
+const faithReferences = new Set(Array.from(faith.matchAll(/["\']?reference["\']?\s*:\s*"([^"]+)"/g), match => match[1].toLowerCase()));
 const missingFaithResponses = homeVerseReferences.filter(reference => !faithReferences.has(reference));
 if (missingFaithResponses.length) failures.push("Every rotating home verse needs its own prayer, declaration, affirmation, confession and inspiration: " + missingFaithResponses.join(", "));
 for (const id of ["zurielOpenBookPrayer","zurielOpenBookConfession","zurielOpenBookInspiration"]) requireText(home, id, "Working Open Book faith response panel " + id);
