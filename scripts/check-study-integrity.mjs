@@ -70,6 +70,8 @@ const checks = [
   ["concordance results open the selected verse", "window.selectBibleVerse(item.verse)"],
   ["cross-reference relationships are not invented", "relationship not classified by source."],
   ["original-language notes distinguish Strong's index from definition", "A Strong's number is an index, not a complete definition."],
+  ["study response is cloned before JSON is consumed", "cacheCopy = response.clone()"],
+  ["study resources are saved to the on-device cache", "studyCache.put(url, cacheCopy)"],
   ["highlight storage rejects malformed top-level data", "!Array.isArray(saved)"],
   ["word highlights retain selected token identity", "record.wordTokens = record.wordTokens || {}"],
   ["word highlights compare saved token text", "savedToken.normalize(\"NFC\").toLowerCase()"],
