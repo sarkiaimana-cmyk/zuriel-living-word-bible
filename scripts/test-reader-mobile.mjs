@@ -51,9 +51,14 @@ try {
   });
   const page = await context.newPage();
   const translationRequests = [];
-  await page.addInitScript(() => {
-    window.ZURIEL_TRANSLATION_API_BASE = "https://zuriel-test-worker.example";
-  });
+  async function ensureOpen(details) {
+    if (!(await details.evaluate(element => element.open))) await details.locator("summary").click();
+  }
+  await page.route("**/zuriel-config.js", route => route.fulfill({
+    status:200,
+    contentType:"application/javascript",
+    body:'window.ZURIEL_TRANSLATION_API_BASE = "https://zuriel-test-worker.example";'
+  }));
   await page.route("https://zuriel-test-worker.example/**", async route => {
     const url = new URL(route.request().url());
     translationRequests.push(url.pathname + url.search);
@@ -161,7 +166,7 @@ try {
   });
   assert.equal(await firstVerse.getAttribute("aria-expanded"),"true");
   const studyGroup = actions.locator(".zuriel-action-group").filter({hasText:"Study & Understanding"});
-  await studyGroup.locator("summary").click();
+  await ensureOpen(studyGroup);
   await actions.locator(".zuriel-verse-action").filter({hasText:"Dictionary"}).click();
   await page.locator("#zurielDictionarySearch").waitFor({state:"visible"});
   await page.locator("#zurielDictionarySearch").fill("faith");
@@ -180,7 +185,7 @@ try {
   // Selected-verse commentary resolves the matching passage and its caution.
   await firstVerse.click();
   const studyGroupAgain = actions.locator(".zuriel-action-group").filter({hasText:"Study & Understanding"});
-  await studyGroupAgain.locator("summary").click();
+  await ensureOpen(studyGroupAgain);
   await actions.locator(".zuriel-verse-action").filter({hasText:"Commentary & theology"}).click();
   await page.waitForFunction(() =>
     (document.getElementById("zurielPassageCommentaryResults")?.textContent || "").includes("Creation")
@@ -193,7 +198,7 @@ try {
 
   // Historical commentary is source-filtered, verse-specific and cached for later offline reading.
   const historicalSection = page.locator("#zurielHistoricalCommentarySection");
-  await historicalSection.locator("summary").click();
+  await ensureOpen(historicalSection);
   const historicalSelect = page.locator("#zurielHistoricalCommentarySource");
   await page.waitForFunction(() => {
     const select = document.getElementById("zurielHistoricalCommentarySource");
@@ -219,7 +224,7 @@ try {
   // Concordance counts every occurrence and supports short whole words.
   await firstVerse.click();
   const concordanceTools = actions.locator(".zuriel-action-group").filter({hasText:"Reading Tools"});
-  await concordanceTools.locator("summary").click();
+  await ensureOpen(concordanceTools);
   await actions.locator(".zuriel-verse-action").filter({hasText:"Full Study Centre"}).click();
   await page.locator("#zurielConcordanceQuery").waitFor({state:"visible"});
   await page.locator("#zurielConcordanceMode").selectOption("word");
@@ -243,7 +248,7 @@ try {
   // The secure YouVersion client compares the exact selected verse beside offline KJV.
   await firstVerse.click();
   const toolsGroup = actions.locator(".zuriel-action-group").filter({hasText:"Reading Tools"});
-  await toolsGroup.locator("summary").click();
+  await ensureOpen(toolsGroup);
   await actions.locator(".zuriel-verse-action").filter({hasText:"Compare translations"}).click();
   const translationPanel = page.locator("#zurielTranslationCompare");
   await translationPanel.waitFor({state:"visible"});
@@ -300,7 +305,7 @@ try {
 
   await page.locator('#message .verse[data-verse-number="1"]').click();
   const offlineActions = page.locator("#zurielVerseActions");
-  await offlineActions.locator(".zuriel-action-group").filter({hasText:"Study & Understanding"}).locator("summary").click();
+  await ensureOpen(offlineActions.locator(".zuriel-action-group").filter({hasText:"Study & Understanding"}));
   await offlineActions.locator(".zuriel-verse-action").filter({hasText:"Commentary & theology"}).click();
   await page.waitForFunction(() =>
     (document.getElementById("zurielPassageCommentaryResults")?.textContent || "").includes("Creation")
@@ -308,7 +313,7 @@ try {
 
   // The same historical commentary chapter must still load from the device cache while offline.
   const offlineHistoricalSection = page.locator("#zurielHistoricalCommentarySection");
-  await offlineHistoricalSection.locator("summary").click();
+  await ensureOpen(offlineHistoricalSection);
   await page.waitForFunction(() => {
     const select = document.getElementById("zurielHistoricalCommentarySource");
     return select && !select.disabled && Array.from(select.options).some(option => option.value === "john-gill");
