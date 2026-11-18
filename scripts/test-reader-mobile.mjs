@@ -92,7 +92,7 @@ try {
             abbreviation:"BSB",
             title:"Berean Standard Bible",
             publisher_name:"Test Bible Publisher",
-            publisher_url:"https://publisher.example"
+            publisher_url:"https://publisher.example/"
           },
           passage:{
             id:"GEN.1.1",
