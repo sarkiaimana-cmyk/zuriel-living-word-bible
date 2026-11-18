@@ -30,6 +30,8 @@ requireText(client, 'id = "zurielTranslationCompare"', "Collapsible translation 
 requireText(client, "zuriel:chapter-opened", "Reader chapter event integration");
 requireText(client, "window.ZurielVerseOverlay.openExternal(panel)", "YouVersion comparison opens in selected-verse overlay");
 requireText(client, '"/api/youversion/bibles"', "Licensed English version list request");
+requireText(client, '"/api/api-bible/bibles"', "API.Bible English version list request");
+requireText(client, '["api-bible", "API.Bible"]', "API.Bible provider selection option");
 requireText(client, "next_page_token", "YouVersion catalogue pagination");
 requireText(client, "encodeURIComponent(nextPageToken)", "Safe pagination token encoding");
 requireText(client, "pageCount < 10", "Bounded catalogue pagination");
@@ -41,6 +43,8 @@ requireText(client, 'credentials: "omit"', "Credential isolation");
 requireText(client, 'referrerPolicy: "no-referrer"', "Referrer privacy");
 requireText(client, "item.copyright", "Publisher copyright handling");
 requireText(client, "item.promotional_content", "Publisher promotional attribution handling");
+requireText(client, "/chapters/", "API.Bible chapter retrieval path");
+requireText(client, "loadedProvider === selectedProvider", "Provider-specific catalogue state");
 requireText(client, "Publisher attribution was not supplied", "Fail-closed attribution requirement");
 requireText(client, "Online text is not stored for offline use.", "No-offline-storage notice");
 requireText(client, "window.ZURIEL_TRANSLATION_API_BASE", "Explicit deployment endpoint configuration");
@@ -52,10 +56,11 @@ requireText(client, "window.ZurielTranslations", "Translation reader public read
 requireText(client, "activeController.abort()", "Cancellation of stale or closed-panel passage requests");
 forbidText(client, /localStorage|sessionStorage|caches\.|indexedDB/i, "Persistent storage of licensed online Bible text");
 forbidText(client, /innerHTML|outerHTML/i, "Unsafe HTML insertion for publisher passage text");
-forbidText(client, /ZITE_YVP_APP_KEY|X-YVP-App-Key|api\.youversion\.com/i, "Provider credentials or direct upstream API access in client code");
+forbidText(client, /ZITE_YVP_APP_KEY|X-YVP-App-Key|API_BIBLE_KEY|api-key|api\.youversion\.com|rest\.api\.bible/i, "Provider credentials or direct upstream API access in client code");
 
 requireText(worker, 'from "./index.js"', "Shared tested server-side YouVersion handler");
 requireText(worker, "bibles(?:", "Translation-only route allowlist");
+requireText(worker, "api-bible", "API.Bible route allowlist");
 requireText(worker, "handleRequest(request, env, dependencies)", "Shared server-side origin, rate-limit and licence handling");
 requireText(config, '"name": "zuriel-bible-translations"', "Separate translation Worker name");
 requireText(config, '"TRANSLATION_RATE_LIMIT"', "Translation rate-limit binding");
@@ -64,6 +69,8 @@ forbidText(config, /"ai"\s*:|"TURNSTILE_SECRET"/, "AI binding or AI-only Turnsti
 requireText(deployment, "workflow_dispatch:", "Manual-only translation deployment");
 requireText(deployment, "inputs.confirm_deployment == true", "Explicit deployment confirmation");
 requireText(deployment, "secrets.ZITE_YVP_APP_KEY", "Server-side YouVersion secret injection");
+requireText(deployment, "secrets.API_BIBLE_KEY", "Optional server-side API.Bible secret injection");
+requireText(deployment, "secret put API_BIBLE_KEY", "Optional API.Bible Worker secret installation");
 requireText(deployment, "wrangler deploy --config wrangler.translations.jsonc", "Dedicated translation Worker deployment");
 forbidText(aiDeployment, /ZITE_YVP_APP_KEY/, "YouVersion app key in the AI-only deployment workflow");
 requireText(packaging, '"zuriel-translations.js"', "Android web packaging entry");
@@ -92,9 +99,9 @@ assert.ok(serviceWorker.includes('const CACHE_NAME = "zuriel-bible-offline-v'),
   "The service worker must use an explicitly versioned offline cache.");
 
 if (failures.length) {
-  console.error("YouVersion translation reader checks failed:");
+  console.error("Online translation reader checks failed:");
   failures.forEach(item => console.error(" - " + item));
   process.exitCode = 1;
 } else {
-  console.log("YouVersion translation reader checks passed: separate translation-only Worker, server-only key, manual deployment, origin/rate-limit enforcement, no offline storage, publisher attribution, and Android/offline packaging.");
+  console.log("Online translation reader checks passed: YouVersion and API.Bible provider selection, separate translation-only Worker, server-only credentials, manual deployment, origin/rate-limit enforcement, no offline storage, publisher attribution, and Android/offline packaging.");
 }

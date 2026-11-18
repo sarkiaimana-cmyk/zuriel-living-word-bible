@@ -71,7 +71,7 @@ jobs:
         run: node scripts/check-translations-reader.mjs
 
       - name: Test translation-only Worker route isolation
-        run: node --test ai-worker/test/translation-worker.test.mjs
+        run: node --test ai-worker/test/translation-worker.test.mjs ai-worker/test/api-bible.test.mjs
 
       - name: Syntax-check application JavaScript
         run: for file in *.js; do node --check "$file"; done

@@ -341,17 +341,168 @@ async function handleYouVersionRequest(request, env, dependencies, cors) {
   }, 200, cors);
 }
 
+
+const API_BIBLE_BASE = "https://rest.api.bible/v1";
+
+function apiBibleErrorStatus(status) {
+  if (status === 401) return 502;
+  if (status === 403) return 403;
+  if (status === 404) return 404;
+  if (status === 429) return 429;
+  return 502;
+}
+
+async function handleApiBibleRequest(request, env, dependencies, cors) {
+  if (request.method !== "GET") {
+    return json({ error: "Use GET to request API.Bible versions or chapters." }, 405, cors);
+  }
+  if (!env.API_BIBLE_KEY) {
+    return json({ error: "API.Bible access is not configured. The offline KJV and other connected sources remain available." }, 503, cors);
+  }
+  if (!env.TRANSLATION_RATE_LIMIT) {
+    return json({ error: "The translation service is not safely rate-limited yet." }, 503, cors);
+  }
+
+  const clientKey = request.headers.get("CF-Connecting-IP") || "unknown-client";
+  try {
+    const limit = await env.TRANSLATION_RATE_LIMIT.limit({ key: clientKey });
+    if (!limit || !limit.success) {
+      return json({ error: "The translation service is receiving too many requests. Please wait and try again." }, 429, cors);
+    }
+  } catch {
+    return json({ error: "The translation service is temporarily unavailable." }, 503, cors);
+  }
+
+  const url = new URL(request.url);
+  let upstreamUrl;
+  let kind;
+  let selectedBibleId = "";
+  let selectedChapterId = "";
+  if (url.pathname === "/api/api-bible/bibles") {
+    if (url.search) {
+      return json({ error: "The API.Bible catalogue does not accept custom query parameters." }, 400, cors);
+    }
+    upstreamUrl = new URL(API_BIBLE_BASE + "/bibles");
+    upstreamUrl.searchParams.set("language", "eng");
+    upstreamUrl.searchParams.set("include-full-details", "true");
+    kind = "bibles";
+  } else {
+    const match = url.pathname.match(/^\/api\/api-bible\/bibles\/([a-f0-9]{16}-\d{2})\/chapters\/([A-Z0-9]{3}\.\d{1,3})$/i);
+    if (!match) return json({ error: "The requested API.Bible chapter was not recognised." }, 404, cors);
+    if (url.search) {
+      return json({ error: "Chapter display options are controlled by Zuriel." }, 400, cors);
+    }
+    selectedBibleId = match[1].toLowerCase();
+    selectedChapterId = match[2].toUpperCase();
+    upstreamUrl = new URL(API_BIBLE_BASE + "/bibles/" + selectedBibleId + "/chapters/" + encodeURIComponent(selectedChapterId));
+    upstreamUrl.searchParams.set("content-type", "text");
+    upstreamUrl.searchParams.set("include-notes", "false");
+    upstreamUrl.searchParams.set("include-titles", "false");
+    upstreamUrl.searchParams.set("include-chapter-numbers", "false");
+    upstreamUrl.searchParams.set("include-verse-numbers", "true");
+    kind = "chapter";
+  }
+
+  let response;
+  try {
+    const fetchImpl = dependencies.fetch || globalThis.fetch;
+    response = await fetchImpl(upstreamUrl.toString(), {
+      method: "GET",
+      headers: {
+        "api-key": env.API_BIBLE_KEY,
+        "Accept": "application/json"
+      },
+      signal: AbortSignal.timeout(10000)
+    });
+  } catch {
+    return json({ error: "API.Bible could not be reached. Your offline KJV is unchanged." }, 502, cors);
+  }
+
+  if (!response.ok) {
+    const status = apiBibleErrorStatus(response.status);
+    const message = response.status === 403
+      ? "API.Bible has not licensed this Bible to the configured key. Check the version access in your API.Bible account."
+      : response.status === 404
+        ? "The requested chapter was not found in this Bible version."
+        : response.status === 429
+          ? "API.Bible rate limit reached. Please wait before trying again."
+          : response.status === 401
+            ? "API.Bible rejected the server-side key. Check the configured secret."
+            : "API.Bible is temporarily unavailable.";
+    const retryAfter = response.headers && response.headers.get("Retry-After");
+    return json({ error: message }, status, retryAfter ? { ...cors, "retry-after": retryAfter } : cors);
+  }
+
+  let payload;
+  try {
+    payload = await response.json();
+  } catch {
+    return json({ error: "API.Bible returned an unreadable response." }, 502, cors);
+  }
+  if (!payload || typeof payload !== "object" || Array.isArray(payload)) {
+    return json({ error: "API.Bible returned an unexpected response." }, 502, cors);
+  }
+
+  if (kind === "bibles") {
+    if (!Array.isArray(payload.data)) {
+      return json({ error: "API.Bible did not return a Bible version list." }, 502, cors);
+    }
+    const data = payload.data.filter(item => item &&
+      typeof item.id === "string" && /^[a-f0-9]{16}-\d{2}$/i.test(item.id) &&
+      typeof item.name === "string" &&
+      item.language && (item.language.id === "eng" || String(item.language.name || "").toLowerCase() === "english"))
+      .map(item => ({
+        id: item.id.toLowerCase(),
+        title: typeof item.nameLocal === "string" && item.nameLocal ? item.nameLocal : item.name,
+        abbreviation: typeof item.abbreviationLocal === "string" && item.abbreviationLocal
+          ? item.abbreviationLocal
+          : (typeof item.abbreviation === "string" ? item.abbreviation : ""),
+        copyright: typeof item.copyright === "string" ? item.copyright : "",
+        language: "English"
+      }))
+      .filter(item => item.abbreviation);
+    return json({
+      data,
+      source: "API.Bible",
+      notice: "Only English Bibles returned for the configured API.Bible key are listed. Availability and use remain subject to your plan and each Bible's licence."
+    }, 200, cors);
+  }
+
+  const item = payload.data && typeof payload.data === "object" ? payload.data : null;
+  if (!item || typeof item.content !== "string" || !item.content.trim()) {
+    return json({ error: "API.Bible returned no chapter text for this request." }, 502, cors);
+  }
+  const copyright = typeof item.copyright === "string" ? item.copyright.trim() : "";
+  if (!copyright) {
+    return json({ error: "Publisher attribution was not supplied. Zuriel has withheld this chapter until its attribution can be verified." }, 502, cors);
+  }
+  return json({
+    source: "API.Bible",
+    version: { id: selectedBibleId, title: "", abbreviation: "" },
+    passage: {
+      id: typeof item.id === "string" ? item.id : selectedChapterId,
+      reference: typeof item.reference === "string" ? item.reference : selectedChapterId.replace(".", " "),
+      content: item.content,
+      copyright
+    },
+    format: "text",
+    notice: "Display the publisher's copyright with this Scripture. Online API text is not stored for offline use."
+  }, 200, cors);
+}
+
 export async function handleRequest(request, env, dependencies = {}) {
   const url = new URL(request.url);
   const assistantRoute = url.pathname === "/api/assistant" || url.pathname === "/api/assistant/config";
   const youVersionRoute = url.pathname === "/api/youversion/bibles" || url.pathname.startsWith("/api/youversion/bibles/");
-  if (!assistantRoute && !youVersionRoute) return json({ error: "Not found." }, 404);
+  const apiBibleRoute = url.pathname === "/api/api-bible/bibles" || url.pathname.startsWith("/api/api-bible/bibles/");
+  if (!assistantRoute && !youVersionRoute && !apiBibleRoute) return json({ error: "Not found." }, 404);
   const cors = corsFor(request, env);
   if (!cors) return json({ error: "This app origin is not authorised for the pilot." }, 403);
   if (request.method === "OPTIONS") {
     return new Response(null, { status: 204, headers: cors });
   }
   if (youVersionRoute) return handleYouVersionRequest(request, env, dependencies, cors);
+  if (apiBibleRoute) return handleApiBibleRequest(request, env, dependencies, cors);
   if (url.pathname === "/api/assistant/config" && request.method === "GET") {
     return json({
       enabled: Boolean(env.TURNSTILE_SITE_KEY),

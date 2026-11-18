@@ -10,9 +10,13 @@ assert.match(workflow, /confirm_deployment == true/, "deployment requires explic
 for (const secret of ["CLOUDFLARE_API_TOKEN", "CLOUDFLARE_ACCOUNT_ID", "ZITE_YVP_APP_KEY"]) {
   assert.ok(workflow.includes("secrets." + secret), "deployment requires the " + secret + " repository secret");
 }
+assert.ok(workflow.includes("secrets.API_BIBLE_KEY"), "deployment accepts the optional API.Bible repository secret");
+assert.match(workflow, /secret put API_BIBLE_KEY/, "deployment installs the optional API.Bible key only as a Worker secret");
+assert.match(workflow, /test\/api-bible\.test\.mjs/, "deployment runs API.Bible provider security tests");
 assert.match(workflow, /workers\/subdomain/, "deployment discovers the account workers.dev subdomain");
 assert.match(workflow, /workers\/scripts\/zuriel-bible-translations\/subdomain/, "deployment verifies the Worker route is enabled");
 assert.match(workflow, /\/api\/youversion\/bibles/, "deployment smoke-tests the same version-list route used by the app");
+assert.match(workflow, /\/api\/api-bible\/bibles/, "deployment smoke-tests API.Bible when its optional key is configured");
 assert.match(workflow, /access-control-allow-origin: https:\/\/sarkiaimana-cmyk\.github\.io/i, "deployment checks GitHub Pages CORS");
 assert.match(workflow, /Worker URL: \$WORKER_URL/, "deployment reports the exact URL to configure in the app");
 assert.match(workflow, /contents: write/, "deployment may save the verified public endpoint to release metadata");
@@ -24,10 +28,11 @@ assert.match(workflow, /Authorised Bible versions returned:/, "deployment report
 assert.match(workflow, /VERSION_COUNT.*-lt 1/, "deployment refuses to activate when no English versions are authorised");
 assert.ok(!/echo[^\n]*\$CLOUDFLARE_API_TOKEN/i.test(workflow), "workflow must never print the Cloudflare API token");
 assert.ok(!/echo[^\n]*\$ZITE_YVP_APP_KEY/i.test(workflow), "workflow must never print the YouVersion app key");
+assert.ok(!/echo[^\n]*\$API_BIBLE_KEY/i.test(workflow), "workflow must never print the API.Bible key");
 
 assert.equal(config.name, "zuriel-bible-translations", "Worker name matches the discovered URL");
 assert.ok(config.vars.ALLOWED_ORIGINS.includes("https://sarkiaimana-cmyk.github.io"), "GitHub Pages is an allowed CORS origin");
 assert.ok(config.ratelimits.some(item => item.name === "TRANSLATION_RATE_LIMIT"), "Worker retains its rate-limit binding");
-assert.match(worker, /api\\\/youversion\\\/bibles/, "Worker exposes only the YouVersion translation route");
+assert.ok(worker.includes("(?:youversion|api-bible)"), "Worker allows only the YouVersion and API.Bible translation routes");
 
-console.log("Translation deployment checks passed: manual confirmation, secret safety, workers.dev URL discovery, route/CORS smoke test and rate-limit configuration.");
+console.log("Translation deployment checks passed: manual confirmation, YouVersion and optional API.Bible secret safety, workers.dev URL discovery, route/CORS smoke test and rate-limit configuration.");
