@@ -31,7 +31,7 @@ assert.ok(setup.includes("stored only as Cloudflare Worker secrets"), "Provider 
 assert.ok(setup.includes("Never paste either provider key into a chat, source file, issue, commit, or screenshot."));
 assert.ok(translations.includes('available:true'), "Only the verified bundled KJV corpus may be enabled offline.");
 assert.ok(translations.includes("offline text not installed"), "Unlicensed or missing editions must be clearly marked unavailable.");
-assert.ok(!/fetch\\s*\\(/i.test(translations), "The offline reader must not fetch online translation text.");
+assert.ok(!/fetch\s*\(/i.test(translations), "The offline reader must not fetch online translation text.");
 assert.ok(!/localStorage|sessionStorage|indexedDB|caches\\./i.test(translations), "The offline reader must not cache provider text without licence permission.");
 assert.ok(translations.includes("KJV is installed and available offline."), "The bundled offline KJV must remain independent of provider keys and network availability.");
 assert.ok(!version.translationApiBase || new URL(version.translationApiBase).hostname.startsWith("zuriel-bible-translations."), "The app may use only the verified translation Worker URL, never a guessed endpoint.");
