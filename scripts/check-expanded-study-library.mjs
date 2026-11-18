@@ -7,7 +7,7 @@ async function json(path) {
 }
 const [
   geography, dictionary, books, trail1, trail2, deep, names, words,
-  commentary, topical, worship, theology, loader, index, worker
+  commentary, topical, worship, theology, loader, index, worker, bookDataSource, kjv
 ] = await Promise.all([
   json("data/zuriel-bible-geography-atlas.json"),
   json("data/zuriel-biblical-dictionary-expansion.json"),
@@ -23,8 +23,53 @@ const [
   json("data/zuriel-theological-comparisons.json"),
   readFile(new URL("../zuriel-study-library-data.js", import.meta.url), "utf8"),
   readFile(new URL("../index.html", import.meta.url), "utf8"),
-  readFile(new URL("../sw.js", import.meta.url), "utf8")
+  readFile(new URL("../sw.js", import.meta.url), "utf8"),
+  readFile(new URL("../bible-data.js", import.meta.url), "utf8"),
+  json("kjv.72bec70fcd.json")
 ]);
+
+
+const readerMapMatch = index.match(/const bookCodes = (\\{[\\s\\S]*?\\n\\};)/);
+assert.ok(readerMapMatch,"Reader book-code map must be present.");
+const readerMap = JSON.parse(readerMapMatch[1].replace(/;\\s*$/, ""));
+const bookEntries = [...bookDataSource.matchAll(/\\{\\s*name:\\s*"([^"]+)",\\s*chapters:\\s*(\\d+)\\s*\\}/g)]
+  .map(match => ({ name: match[1], chapters: Number(match[2]) }));
+assert.equal(bookEntries.length,66,"Offline Bible index must contain all 66 books.");
+const bookLookup = new Map(bookEntries.map(book => [book.name.toLowerCase(),book]));
+bookLookup.set("psalm",bookLookup.get("psalms"));
+let checkedPassages=0;
+function checkReference(reference,label) {
+  const match=String(reference||"").trim().match(/^(.+?)\\s+(\\d+):(\\d+)/);
+  if(!match) return; // Some book pathways intentionally use chapter-relative references.
+  const book=bookLookup.get(match[1].toLowerCase().replace(/\\s+/g," ").trim());
+  assert.ok(book,label+" has an unknown Bible book in "+reference);
+  const chapter=Number(match[2]), verse=Number(match[3]);
+  assert.ok(chapter>=1 && chapter<=book.chapters,label+" has an invalid chapter in "+reference);
+  const code=readerMap[book.name], chapters=code && kjv[code];
+  assert.ok(Array.isArray(chapters),label+" has no bundled KJV mapping for "+book.name);
+  const verses=chapters[chapter-1];
+  assert.ok(Array.isArray(verses) && verse>=1 && verse<=verses.length,label+" has a missing KJV verse in "+reference);
+  const range=String(reference).match(/:(\\d+)\\s*[-–—]\\s*(\\d+)$/);
+  if(range) assert.ok(Number(range[2])<=verses.length,label+" has an out-of-range KJV reference in "+reference);
+  checkedPassages++;
+}
+function walkReferences(value,label) {
+  if(Array.isArray(value)) { value.forEach(item=>walkReferences(item,label)); return; }
+  if(typeof value==="string") { checkReference(value,label); return; }
+  if(value && typeof value==="object") {
+    if(typeof value.reference==="string") checkReference(value.reference,label);
+    if(typeof value.label==="string") checkReference(value.label,label);
+    for(const [key,item] of Object.entries(value)) {
+      if(key==="reference"||key==="label") continue;
+      if(["references","scriptureReferences","keyPassages","pathway","passages","journeys","places","entries","trails","guides","bookIntroductions","bookStudyPathways","journeyReferences"].includes(key) || Array.isArray(item)) walkReferences(item,label);
+    }
+  }
+}
+for(const [label,data] of [
+  ["geography",geography],["dictionary",dictionary],["book guides",books],["connected trails batch 1",trail1],
+  ["connected trails batch 2",trail2],["deep guides",deep],["Names of God",names],["word studies",words],
+  ["commentary",commentary],["topical studies",topical],["worship",worship],["theology",theology]
+]) walkReferences(data,label);
 
 const expected = [
   [geography.places,25,"biblical places"], [geography.journeys,8,"biblical journeys"],
@@ -79,4 +124,4 @@ for (const path of [
 ]) assert.ok(worker.includes("./data/"+path),"Offline cache must include "+path);
 assert.ok(loader.includes("window.ZurielStudyLibrary"),"Study library API must be exposed");
 assert.ok(loader.includes("openReference"),"Study references must open through the Bible reader");
-console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 12 offline datasets; searchable reader-linked UI and service-worker precache.");
+console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 12 offline datasets; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
