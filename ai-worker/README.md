@@ -24,7 +24,7 @@ The shared server-side handler includes a YouVersion Platform proxy for the futu
 - `GET /api/youversion/bibles/{versionId}/passages/{USFM}` retrieves a single passage or chapter. The `format` query may be `html` or `text`.
 - The app key is read only from the Worker secret `ZITE_YVP_APP_KEY`; it is never accepted from the client or returned in a response.
 - Requests are origin-checked, rate-limited, time-bounded and returned with `no-store` headers.
-- Publisher copyright and promotional attribution are returned with passage content. Do not save licensed passages for offline use unless the exact publisher licence expressly permits it.
+- The proxy fetches publisher copyright and promotional attribution from the Bible-version resource (`/v1/bibles/{versionId}`) separately from the passage text endpoint, then attaches that verified metadata to the passage response. Do not display licensed passage text if attribution is missing, and do not save licensed passages for offline use unless the exact publisher licence expressly permits it.
 - The dedicated translation Worker exposes no AI route and does not require the AI pilot's Turnstile configuration or AI binding.
 - The client-side reader offers an explicit online comparison panel. It requests passage text only after the user chooses a version and presses Load; it does not persist online text. The bundled KJV remains available offline.
 
