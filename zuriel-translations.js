@@ -7,6 +7,7 @@
   if (!reader || document.getElementById("zurielTranslationCompare")) return;
 
   let currentChapter = null;
+  let selectedVerse = null;
   let versionsLoaded = false;
   let selectedVersionId = "";
   let requestSequence = 0;
@@ -133,6 +134,8 @@
     if (!detail || typeof detail.book !== "string" ||
         !Number.isInteger(Number(detail.chapter)) || Number(detail.chapter) < 1) return;
     currentChapter = { book: detail.book, chapter: Number(detail.chapter) };
+    selectedVerse = null;
+    loadButton.textContent = "Load this chapter";
     requestSequence++;
     if (activeController) activeController.abort();
     passage.hidden = true;
@@ -170,10 +173,16 @@
     loadButton.disabled = true;
     passage.hidden = true;
     attribution.hidden = true;
-    status("Loading the selected online translation…");
+    const verseNumber = selectedVerse && selectedVerse.book === currentChapter.book &&
+      Number(selectedVerse.chapter) === currentChapter.chapter
+      ? Number(selectedVerse.verse) : null;
+    status(verseNumber
+      ? "Loading the selected verse in the online translation…"
+      : "Loading the selected online chapter…");
 
     try {
-      const reference = bookCode + "." + currentChapter.chapter;
+      const reference = bookCode + "." + currentChapter.chapter +
+        (Number.isInteger(verseNumber) && verseNumber > 0 ? "." + verseNumber : "");
       const payload = await requestJson(
         "/api/youversion/bibles/" + versionId + "/passages/" + reference + "?format=text",
         activeController
@@ -250,6 +259,15 @@
   window.addEventListener("zuriel:compare-verse", function (event) {
     const detail = event && event.detail ? event.detail : {};
     if (!detail.reference) return;
+    const verseNumber = Number(detail.verse);
+    const chapterNumber = Number(detail.chapter);
+    if (typeof detail.book === "string" && Number.isInteger(chapterNumber) && chapterNumber > 0) {
+      currentChapter = { book: detail.book, chapter: chapterNumber };
+      selectedVerse = Number.isInteger(verseNumber) && verseNumber > 0
+        ? { book: detail.book, chapter: chapterNumber, verse: verseNumber, reference: detail.reference }
+        : null;
+      loadButton.textContent = selectedVerse ? "Load selected verse" : "Load this chapter";
+    }
     panel.open = true;
     const shownInVerseOverlay = window.ZurielVerseOverlay &&
       typeof window.ZurielVerseOverlay.openExternal === "function" &&
