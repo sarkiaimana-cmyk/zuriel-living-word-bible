@@ -316,10 +316,22 @@
       throw new Error("Study resource is temporarily unavailable.");
     }
 
-    const data = await response.json();
+    // Clone the response before reading its body. Response.clone() throws
+    // after json() consumes the stream, which would silently prevent offline
+    // persistence of every newly downloaded study resource.
+    let cacheCopy = null;
     if (studyCache) {
       try {
-        await studyCache.put(url, response.clone());
+        cacheCopy = response.clone();
+      } catch (cacheError) {
+        cacheCopy = null;
+      }
+    }
+
+    const data = await response.json();
+    if (studyCache && cacheCopy) {
+      try {
+        await studyCache.put(url, cacheCopy);
       } catch (cacheError) {
         // Some browsers restrict cross-origin cache writes; online study
         // remains available and the app continues without persistent cache.
