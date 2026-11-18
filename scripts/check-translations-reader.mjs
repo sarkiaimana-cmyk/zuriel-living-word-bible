@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
-const [index, client, worker, config, deployment, aiDeployment, packaging, serviceWorker, version, updates] = await Promise.all([
+const [index, client, worker, config, deployment, aiDeployment, packaging, serviceWorker, version, updates, doc] = await Promise.all([
   readFile("index.html", "utf8"),
   readFile("zuriel-translations.js", "utf8"),
   readFile("ai-worker/src/translation-worker.js", "utf8"),
@@ -11,7 +11,8 @@ const [index, client, worker, config, deployment, aiDeployment, packaging, servi
   readFile("scripts/prepare-web.mjs", "utf8"),
   readFile("sw.js", "utf8"),
   readFile("version.json", "utf8"),
-  readFile("zuriel-updates.js", "utf8")
+  readFile("zuriel-updates.js", "utf8"),
+  readFile("docs/YOUVERSION-SETUP.md", "utf8")
 ]);
 
 const failures = [];
