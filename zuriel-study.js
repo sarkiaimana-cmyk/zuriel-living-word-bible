@@ -1653,6 +1653,24 @@
     ].join("");
     document.head.appendChild(verseMenuStyle);
 
+    const cleanStudyStyle = document.createElement("style");
+    cleanStudyStyle.id = "zurielCleanStudyPresentation";
+    cleanStudyStyle.textContent = [
+      "#zurielStudyPanel{background:#fff!important;color:#17212b!important;border:1px solid #d8dee5!important;box-shadow:none!important}",
+      "#zurielStudyPanel h2,#zurielStudyPanel h3,#zurielStudyPanel p,#zurielStudyPanel label,#zurielStudyPanel summary,#zurielStudyPanel .study-small,#zurielStudyPanel .study-source,#zurielStudyPanel .word-selection-label{color:#17212b!important}",
+      "#zurielStudyPanel .study-verse,#zurielStudyPanel .lexicon-entry,#zurielStudyPanel .highlight-tools,#zurielStudyPanel #zurielInlineWordStudy,#zurielStudyPanel #zurielLexiconDetails{background:#f7f8fa!important;color:#17212b!important;border:1px solid #dce1e6!important;box-shadow:none!important}",
+      "#zurielStudyPanel .original-script,#zurielStudyPanel .original-gloss,#zurielStudyPanel .word-meta{color:#17212b!important}",
+      "#zurielStudyPanel .study-action,#zurielStudyPanel .study-secondary,#zurielStudyPanel .study-action-button,#zurielStudyPanel button.study-link{background:#fff!important;color:#17212b!important;border:1px solid #cfd6de!important;box-shadow:none!important}",
+      "#zurielStudyPanel input,#zurielStudyPanel textarea,#zurielStudyPanel select{background:#fff!important;color:#17212b!important;border:1px solid #aeb8c2!important}",
+      "#zurielStudyPanel details{background:#fff!important;border:0!important;border-bottom:1px solid #e1e5e9!important;border-radius:0!important;box-shadow:none!important}",
+      "#zurielStudyPanel #zurielFaithResponse,#zurielStudyPanel #zurielFaithResponse p,#zurielStudyPanel #zurielCommentaryResults,#zurielStudyPanel #zurielCommentaryResults p{color:#17212b!important}",
+      "#zurielInlineWordStudy,#zurielInlineWordStudy .inline-word-result{background:#fff!important;color:#17212b!important;border:1px solid #dce1e6!important;box-shadow:none!important}",
+      "#zurielInlineWordStudy h3,#zurielInlineWordStudy .inline-word-original,#zurielInlineWordStudy .inline-word-gloss,#zurielInlineWordStudy .inline-word-meta{color:#17212b!important}",
+      "#zurielStudyPanel[data-mode=verse-menu],#zurielStudyPanel[data-mode=verse-detail]{background:#fff!important;color:#17212b!important;border:1px solid #d8dee5!important;box-shadow:0 8px 24px rgba(15,23,42,.14)!important}",
+      "#zurielVerseActionMenu button{background:#fff!important;color:#17212b!important;border:1px solid #cfd6de!important}"
+    ].join("");
+    document.head.appendChild(cleanStudyStyle);
+
     const panel = document.createElement("section");
     panel.id = "zurielStudyPanel";
 
