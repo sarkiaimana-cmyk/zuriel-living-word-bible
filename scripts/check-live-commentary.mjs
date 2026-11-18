@@ -25,7 +25,7 @@ assert.ok(source.includes('".simple.json"'));
 assert.ok(source.includes('Number(entry.number) === Number(ref.verse)'));
 assert.ok(source.includes('Source: " + (source.name || source.englishName || commentaryId)'));
 assert.ok(source.includes('fetchStudyJson(COMMENTARY_API + commentaryId'));
-assert.equal((source.match(/resetCommentaryForSelection\\(\\);/g) || []).length, 2, "Changing the selected verse must cancel stale commentary requests and re-enable the load control.");
+assert.equal((source.match(/resetCommentaryForSelection\(\);/g) || []).length, 2, "Changing the selected verse must cancel stale commentary requests and re-enable the load control.");
 assert.ok(source.includes('This commentary has no verse-specific note'));
 
 console.log("Published commentary reader checks passed: safe text rendering, English/licence filtering, exact verse selection, source attribution and cached chapter retrieval.");
