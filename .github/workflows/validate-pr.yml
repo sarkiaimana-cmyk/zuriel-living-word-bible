@@ -111,6 +111,9 @@ jobs:
       - name: Test reading plan progress and references
         run: node scripts/test-reading-plans.mjs
 
+      - name: Validate opt-in offline local reminders
+        run: node scripts/check-local-notifications.mjs
+
       - name: Validate Personal Study Space chapter history integration
         run: node scripts/check-personal-space-history.mjs
 
