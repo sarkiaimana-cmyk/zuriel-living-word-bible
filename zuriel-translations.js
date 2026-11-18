@@ -67,7 +67,7 @@
   const attribution = node("p", "ztc-attribution", "");
   attribution.hidden = true;
 
-  controls.append(select, loadButton, statusNode);
+  controls.append(select, loadButton);
   kjvColumn.append(kjvHeading, kjvPassage);
   onlineColumn.append(passageHeading, passage);
   comparison.append(kjvColumn, onlineColumn);
