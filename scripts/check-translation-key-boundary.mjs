@@ -2,14 +2,15 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
 const read = path => readFile(new URL(path, import.meta.url), "utf8");
-const [index, translations, home, study, serviceWorker, worker, setup] = await Promise.all([
+const [index, translations, home, study, serviceWorker, worker, setup, version] = await Promise.all([
   read("../index.html"),
   read("../zuriel-translations.js"),
   read("../zuriel-home.js"),
   read("../zuriel-study.js"),
   read("../sw.js"),
   read("../ai-worker/src/index.js"),
-  read("../docs/YOUVERSION-SETUP.md")
+  read("../docs/YOUVERSION-SETUP.md"),
+  read("../version.json")
 ]);
 
 const clientFiles = [
@@ -29,6 +30,6 @@ assert.ok(worker.includes("env.API_BIBLE_KEY"), "API.Bible credentials must be r
 assert.ok(setup.includes("stored only as Cloudflare Worker secrets"), "Provider credentials must be documented as server-only secrets.");
 assert.ok(setup.includes("Never paste either provider key into a chat, source file, issue, commit, or screenshot."));
 assert.ok(translations.includes("Online text is not stored for offline use."), "Copyright-restricted provider text must not be cached offline by default.");
-assert.ok(translations.includes("The King James Version remains available offline."), "The bundled offline Bible must remain independent of provider keys and network availability.");
+assert.ok(translations.includes("The King James Version remains available offline."), "The bundled offline Bible must remain independent of provider keys and network availability.");\nassert.ok(translations.includes("The Cloudflare Worker must be deployed and its verified URL published in version.json"), "Missing translation Worker configuration must be explained clearly.");\nassert.ok(!version.translationApiBase || /^https:\\/\\/zuriel-bible-translations\\.[a-z0-9-]+\\.workers\\.dev$/.test(version.translationApiBase), "The app may use only the verified translation Worker URL, never a guessed endpoint.");
 
 console.log("Translation key boundary checks passed: provider credentials remain server-side, no key/header is shipped to the client, and online translation text is not cached without licence permission.");
