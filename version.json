@@ -1,4 +1,4 @@
 {
-  "version": "1.4.69",
-  "releaseNotes": "Adds saved-translation discovery and offline selection after restart, keeps downloaded chapters available without an internet connection, and improves the secure translation download and recovery flow."
+  "version": "1.4.70",
+  "releaseNotes": "Improves resumable 66-book translation downloads, restores saved translations for offline selection after app restart, and reuses the local database connection for more reliable offline reading. Keeps the verified KJV and premium open-book faith card intact."
 }
