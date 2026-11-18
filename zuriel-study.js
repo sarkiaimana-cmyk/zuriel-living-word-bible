@@ -521,6 +521,16 @@
     return "";
   }
 
+  function resetCommentaryForSelection() {
+    ++commentaryRequest;
+    const button = document.getElementById("zurielLoadCommentary");
+    const results = document.getElementById("zurielCommentaryResults");
+    if (button) button.disabled = false;
+    if (results) results.textContent = selectedReference
+      ? "Selected " + selectedReference.book + " " + selectedReference.chapter + ":" + selectedReference.verse + ". Load a commentary source to read its note."
+      : "Select a verse, choose a commentary source and load its notes.";
+  }
+
   async function initialiseCommentaryLibrary() {
     const sourceSelect = document.getElementById("zurielCommentarySource");
     const loadButton = document.getElementById("zurielLoadCommentary");
@@ -2909,6 +2919,7 @@
           verse: verse,
           text: verseText
         };
+        resetCommentaryForSelection();
         selectedEnglishWord = englishWord || "";
         selectedEnglishWordIndex = Number.isInteger(wordIndex) ? wordIndex : -1;
 
@@ -2975,6 +2986,7 @@
           verse: verse,
           text: verseText
         };
+        resetCommentaryForSelection();
         selectedEnglishWord = englishWord || "";
         selectedEnglishWordIndex = Number.isInteger(wordIndex) ? wordIndex : -1;
         if (!selectedEnglishWord) return false;
