@@ -15,6 +15,8 @@ assert.match(source, /complete text is not currently bundled/);
 assert.match(source, /Zuriel's Offline Study Tools/);
 assert.match(source, /Open Offline Biblical Dictionary/);
 assert.match(source, /Open KJV Concordance/);
+assert.match(source, /Open Passage Commentary/);
+assert.match(source, /window\.ZurielStudy\.openSection\("Passage Commentary"\)/);
 assert.match(source, /window\.ZurielStudy\.openSection\("Biblical Dictionary"\)/);
 assert.match(source, /window\.ZurielStudy\.openSection\("Bible Concordance"\)/);
 assert.match(source, /No resources match that search/);
