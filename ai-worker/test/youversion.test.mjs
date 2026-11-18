@@ -44,6 +44,7 @@ test("lists only English Bible versions licensed to the registered YouVersion ap
       assert.equal(parsed.searchParams.has("all_available"), false,
         "The proxy must never request unlicensed catalogue entries.");
       assert.equal(options.headers["X-YVP-App-Key"], secret);
+      assert.equal(options.redirect, "error");
       assert.equal(options.headers.Accept, "application/json");
       return Response.json({
         data: [
