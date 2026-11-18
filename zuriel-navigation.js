@@ -190,7 +190,11 @@
     <div class="nav-current" id="zurielNavCurrent" aria-live="polite">Ready to explore God's Word.</div>
     <p class="nav-status" id="zurielNavStatus">All 66 Bible books are ready.</p>
   `;
-  root.insertBefore(navigation, message);
+  if (message && message.parentNode) {
+    message.parentNode.insertBefore(navigation, message);
+  } else {
+    root.appendChild(navigation);
+  }
 
   const referenceInput = navigation.querySelector("#zurielNavReference");
   const referenceGo = navigation.querySelector("#zurielNavReferenceGo");
