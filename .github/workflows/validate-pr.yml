@@ -97,6 +97,8 @@ jobs:
         run: node scripts/check-study-reference-navigation.mjs
       - name: Validate Advanced Bible Study topical index
         run: node scripts/check-topical-study-index.mjs
+      - name: Validate expanded offline study library integration
+        run: node scripts/check-expanded-study-library.mjs
       - name: Test Android version metadata
         run: node scripts/test-android-version.mjs
 

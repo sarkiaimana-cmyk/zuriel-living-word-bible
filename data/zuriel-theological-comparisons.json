@@ -1,0 +1,364 @@
+{
+  "schemaVersion": 1,
+  "title": "Zuriel Theological Comparisons — Christian Interpretations in Context",
+  "description": "A balanced introductory guide to selected doctrinal questions, representative Christian interpretations, biblical passages and historical context. It is not a substitute for Scripture, a local church's confessional documents or specialist theological study.",
+  "editorialPolicy": [
+    "Present traditions fairly and distinguish shared convictions from genuine disagreements.",
+    "Traditions are internally diverse; the summaries describe broad tendencies, not every church or believer.",
+    "Scripture references are starting points and must be read in their literary and historical contexts.",
+    "Do not imply that every view has equal historical prevalence or that a short summary settles a debate.",
+    "Distinguish explicit biblical statements, theological inference, church tradition and later terminology.",
+    "Use respectful language; do not mock, caricature or label whole Christian communities by a disputed position."
+  ],
+  "entries": [
+    {
+      "id": "doctrine-001",
+      "title": "Salvation, grace and justification",
+      "question": "How are grace, faith, justification, transformation and good works related?",
+      "sharedGround": "Historic Christian traditions affirm that salvation depends on God's grace and the saving work of Jesus Christ, not on human boasting. They also affirm that genuine faith is meant to shape a transformed life.",
+      "scriptureReferences": [
+        "Ephesians 2:1-10",
+        "Romans 3:21-28",
+        "Romans 5:1-11",
+        "James 2:14-26",
+        "Titus 3:3-8"
+      ],
+      "positions": [
+        {
+          "view": "Reformation Protestant accounts",
+          "summary": "Many Lutheran and Reformed traditions describe justification as God's gracious declaration received through faith, while insisting that good works follow as the fruit of living faith. Wesleyan traditions emphasise prevenient grace and a faith that works through love.",
+          "traditions": "Lutheran, Reformed, Anglican, Baptist, Methodist and other Protestant traditions; formulations differ."
+        },
+        {
+          "view": "Roman Catholic account",
+          "summary": "Catholic teaching describes justification as originating in God's grace, involving forgiveness and inner renewal, received through faith and baptism and lived out in hope and love. Good works are responses enabled by grace, not independent self-salvation.",
+          "traditions": "Roman Catholic Church; consult its catechism and official teaching for the full formulation."
+        },
+        {
+          "view": "Eastern Orthodox approaches",
+          "summary": "Orthodox theology often frames salvation through participation in God's life (theosis), healing and transformation. It emphasises grace, faith, sacramental life and cooperation with divine grace, while resisting a narrow separation between legal status and renewal.",
+          "traditions": "Eastern Orthodox churches; emphases and explanations vary among theologians."
+        }
+      ],
+      "historicalContext": "The Reformation-era debates sharpened disagreements about justification, merit, assurance and the relation of faith to works. Earlier Christian writers used several overlapping biblical images for salvation, including forgiveness, adoption, healing, victory and participation in Christ.",
+      "areasOfDisagreement": "The traditions differ over the precise meaning of justification, the role of sacraments, imputed and imparted righteousness, assurance and how to describe cooperation with grace. Avoid reducing the disagreement to 'grace versus works'.",
+      "readingCaution": "Read Ephesians 2:8-10 as a whole: salvation is by grace, and the saved are created for good works. Compare Romans and James in their distinct arguments."
+    },
+    {
+      "id": "doctrine-002",
+      "title": "Baptism: infants, believers and its meaning",
+      "question": "Who should be baptised, and what does baptism signify or accomplish?",
+      "sharedGround": "Most historic Christian communities regard baptism as a command of Christ and a public, ecclesial act closely connected with discipleship, repentance, faith and entry into the Christian community.",
+      "scriptureReferences": [
+        "Matthew 28:18-20",
+        "Acts 2:37-41",
+        "Acts 8:26-39",
+        "Romans 6:1-11",
+        "Colossians 2:11-14"
+      ],
+      "positions": [
+        {
+          "view": "Believer's baptism",
+          "summary": "Baptist and many evangelical churches baptise those who personally profess faith, commonly by immersion, viewing baptism as a sign of union with Christ and public confession.",
+          "traditions": "Baptist, many Pentecostal and independent evangelical churches."
+        },
+        {
+          "view": "Infant baptism within covenant traditions",
+          "summary": "Reformed and some other Protestant churches baptise infants of believing households, understanding baptism in relation to God's covenant promises and the visible church; personal faith is expected as the child matures.",
+          "traditions": "Presbyterian and some Reformed, Anglican, Lutheran and Methodist communities, with different sacramental understandings."
+        },
+        {
+          "view": "Sacramental accounts",
+          "summary": "Catholic, Orthodox and some Protestant traditions teach that baptism is a means through which God gives grace and incorporates a person into Christ and the Church. Infant baptism is ordinarily practised, with later formation in faith.",
+          "traditions": "Roman Catholic, Eastern Orthodox, Lutheran, Anglican and Methodist traditions, though their sacramental theology differs."
+        }
+      ],
+      "historicalContext": "Infant baptism is attested early in Christian history, while believer's baptism is prominent in the New Testament narratives and became a central issue in the Radical Reformation and later Baptist movements. The meaning of household baptisms is debated.",
+      "areasOfDisagreement": "Disagreements include the proper recipients, mode, timing, relation to regeneration, covenant continuity and whether baptism is primarily sign, sacrament or both.",
+      "readingCaution": "Do not use a single household narrative as if it answered every question. Compare narrative accounts with apostolic teaching and the whole biblical context."
+    },
+    {
+      "id": "doctrine-003",
+      "title": "The Lord's Supper / Communion",
+      "question": "How is Christ present in Communion, and what does the meal communicate?",
+      "sharedGround": "Christians broadly agree that the Supper was instituted by Jesus, proclaims His death, calls the church to remembrance and thanksgiving, and expresses communion among believers.",
+      "scriptureReferences": [
+        "Matthew 26:26-29",
+        "Luke 22:14-20",
+        "1 Corinthians 10:16-17",
+        "1 Corinthians 11:23-29"
+      ],
+      "positions": [
+        {
+          "view": "Catholic transubstantiation",
+          "summary": "Catholic teaching holds that the substance of bread and wine becomes Christ's Body and Blood while the appearances remain. The Eucharist is understood as sacrificial memorial and real participation in Christ.",
+          "traditions": "Roman Catholic Church."
+        },
+        {
+          "view": "Lutheran sacramental union",
+          "summary": "Lutheran teaching confesses that Christ's true Body and Blood are genuinely present and received with the bread and wine, without adopting the Roman explanation of transubstantiation.",
+          "traditions": "Lutheran churches."
+        },
+        {
+          "view": "Reformed spiritual presence",
+          "summary": "Many Reformed traditions teach that believers truly commune with Christ spiritually by the Holy Spirit through faith, while the bread and cup remain bread and wine.",
+          "traditions": "Reformed and Presbyterian traditions; accounts vary."
+        },
+        {
+          "view": "Memorial and ordinance accounts",
+          "summary": "Many Baptist, Pentecostal and other free-church communities emphasise remembrance, proclamation and obedient participation, while some also speak of spiritual nourishment and communion with Christ.",
+          "traditions": "Many Baptist, Pentecostal and independent evangelical churches."
+        }
+      ],
+      "historicalContext": "The early church treated the Eucharist as central worship. Medieval Western theology developed the term transubstantiation; the sixteenth-century Reformation produced several distinct accounts of Christ's presence and the Supper's function.",
+      "areasOfDisagreement": "Christ's mode of presence, the relation of the Supper to sacrifice, the role of ordained ministry, frequency and who may participate are debated.",
+      "readingCaution": "Read 1 Corinthians 10-11 in its setting of church unity, idolatry, self-examination and care for poorer members; do not reduce the passage to a debate over elements alone."
+    },
+    {
+      "id": "doctrine-004",
+      "title": "Spiritual gifts: continuation and cessation",
+      "question": "Do miraculous and revelatory gifts continue in the church today?",
+      "sharedGround": "Christian traditions affirm the Holy Spirit's active work, the need for discernment, the centrality of love and the authority of Scripture.",
+      "scriptureReferences": [
+        "1 Corinthians 12:1-31",
+        "1 Corinthians 13:8-13",
+        "1 Corinthians 14:1-40",
+        "Romans 12:3-8",
+        "Ephesians 4:7-16"
+      ],
+      "positions": [
+        {
+          "view": "Continuationist",
+          "summary": "Continuationists believe the gifts described in the New Testament, including prophecy, healing and tongues, remain available to the church, subject to biblical testing, order and love.",
+          "traditions": "Pentecostal, charismatic and many evangelical communities."
+        },
+        {
+          "view": "Cessationist",
+          "summary": "Cessationists generally hold that certain sign or revelatory gifts served a foundational apostolic role and are not normative in the same way today, while affirming the Spirit's ongoing work and providence.",
+          "traditions": "Some Reformed, evangelical and Baptist communities; positions vary in scope."
+        },
+        {
+          "view": "Open but cautious / nuanced accounts",
+          "summary": "Some Christians remain open to extraordinary gifts while stressing careful testing, or distinguish between the continuation of gifts and claims to new authoritative doctrine.",
+          "traditions": "Various Anglican, Methodist, evangelical and non-denominational communities."
+        }
+      ],
+      "historicalContext": "The question has been discussed throughout church history, but modern Pentecostal and charismatic movements brought it into renewed prominence from the twentieth century onward. Different traditions interpret 1 Corinthians 13 and the apostolic foundation texts differently.",
+      "areasOfDisagreement": "Disagreement concerns the purpose and duration of particular gifts, the meaning of 'the perfect', how prophecy should be evaluated, and how to distinguish genuine gifts from error or manipulation.",
+      "readingCaution": "No claimed gift should override Scripture, coerce people, demand money or prevent medical care. Read Paul's instructions on order, testing and love alongside any discussion of gifts."
+    },
+    {
+      "id": "doctrine-005",
+      "title": "Predestination, election and human response",
+      "question": "How does God's initiative relate to human freedom and responsibility?",
+      "sharedGround": "Historic Christian traditions affirm God's sovereignty, the priority of grace, the reality of human responsibility and the call to repent and believe.",
+      "scriptureReferences": [
+        "Deuteronomy 30:15-20",
+        "John 6:35-45",
+        "Romans 8:28-30",
+        "Romans 9:1-24",
+        "Ephesians 1:3-14",
+        "2 Peter 3:9"
+      ],
+      "positions": [
+        {
+          "view": "Reformed / Augustinian emphases",
+          "summary": "These accounts stress God's gracious initiative and election, often teaching that saving faith is itself the result of God's effective grace. Reformed theologians differ in how they explain the relation of election, human willing and the scope of atonement.",
+          "traditions": "Reformed and some Augustinian Protestant traditions."
+        },
+        {
+          "view": "Arminian / Wesleyan emphases",
+          "summary": "These accounts stress prevenient grace, by which God enables a genuine human response, and understand election in relation to God's foreknowledge of faith or participation in Christ, depending on the tradition.",
+          "traditions": "Wesleyan, Methodist, many Pentecostal and Arminian evangelical communities."
+        },
+        {
+          "view": "Catholic and Orthodox emphases",
+          "summary": "Catholic and Orthodox approaches affirm that grace always comes first and that human response matters. They generally resist accounts that make God the author of evil or erase meaningful human cooperation, while differing internally on technical explanations.",
+          "traditions": "Roman Catholic and Eastern Orthodox traditions; neither is a single simplified theory."
+        }
+      ],
+      "historicalContext": "The debate reaches back to Augustine and later intensified through medieval theology, the Reformation, the Remonstrant controversy and Wesleyan revival movements. Christian thinkers have used different philosophical terms to describe freedom and providence.",
+      "areasOfDisagreement": "Key differences concern unconditional election, prevenient or resistible grace, the meaning of foreknowledge, perseverance, and how to read Romans 9 alongside universal invitations and warnings.",
+      "readingCaution": "Do not isolate Romans 9 from Romans 10-11. Read election texts alongside passages that call people to respond, and avoid claiming to know the eternal state of particular individuals."
+    },
+    {
+      "id": "doctrine-006",
+      "title": "Church leadership and governance",
+      "question": "How should authority and oversight be organised in the church?",
+      "sharedGround": "Christian traditions affirm qualified leadership, pastoral care, accountability, service, sound teaching and the shared responsibility of the whole body.",
+      "scriptureReferences": [
+        "Acts 14:21-23",
+        "Acts 15:1-29",
+        "1 Timothy 3:1-13",
+        "Titus 1:5-9",
+        "1 Peter 5:1-5"
+      ],
+      "positions": [
+        {
+          "view": "Episcopal governance",
+          "summary": "Bishops exercise oversight across congregations, usually alongside presbyters and deacons. Supporters point to early patterns of regional oversight and continuity in teaching and ministry.",
+          "traditions": "Roman Catholic, Eastern Orthodox, Anglican, Methodist and other episcopal churches, with significant differences."
+        },
+        {
+          "view": "Presbyterian governance",
+          "summary": "Elders share oversight through local sessions and wider councils or presbyteries. Authority is exercised collegially rather than concentrated in a single diocesan bishop.",
+          "traditions": "Presbyterian and some Reformed churches."
+        },
+        {
+          "view": "Congregational governance",
+          "summary": "The local congregation has substantial authority in membership, discipline, calling leaders and major decisions, often with elders or pastors serving within congregational accountability.",
+          "traditions": "Many Baptist, Congregationalist and independent churches."
+        }
+      ],
+      "historicalContext": "The New Testament uses several leadership terms, including elder, overseer and deacon. The historical development of episcopacy, presbyteries and congregational autonomy occurred over centuries and in varied regional settings.",
+      "areasOfDisagreement": "Disputes concern apostolic succession, the authority of bishops, ordination, local autonomy, the role of councils and how discipline should be exercised.",
+      "readingCaution": "No governance model permits spiritual abuse or unaccountable control. Read leadership texts with Jesus' teaching that authority is exercised through service."
+    },
+    {
+      "id": "doctrine-007",
+      "title": "The millennium and Christ's return",
+      "question": "How should Revelation 20 and other end-time passages be understood?",
+      "sharedGround": "Historic Christian traditions confess Christ's return, final judgement, resurrection and the renewal of creation. They disagree about the sequence and symbolism of particular prophetic passages.",
+      "scriptureReferences": [
+        "Matthew 24:1-44",
+        "1 Corinthians 15:20-28",
+        "1 Thessalonians 4:13-18",
+        "2 Peter 3:8-13",
+        "Revelation 19:11-21",
+        "Revelation 20:1-10",
+        "Revelation 21:1-5"
+      ],
+      "positions": [
+        {
+          "view": "Premillennial",
+          "summary": "Christ returns before the millennium described in Revelation 20. Historic premillennial and dispensational premillennial accounts differ on Israel, the church and the timing of tribulation events.",
+          "traditions": "Found in various evangelical, Baptist, Pentecostal and other communities."
+        },
+        {
+          "view": "Amillennial",
+          "summary": "The millennium is read symbolically as the present reign of Christ with His saints, with the final return, resurrection and judgement bringing history to its consummation.",
+          "traditions": "Common in Augustinian, Catholic, Orthodox, Lutheran and many Reformed interpretations, though not universally held within them."
+        },
+        {
+          "view": "Postmillennial",
+          "summary": "Christ returns after an extended era in which the gospel's influence brings widespread flourishing or righteousness, while interpretations differ over how literally to understand the millennium.",
+          "traditions": "Held by some Reformed and other Protestant theologians, historically and today."
+        }
+      ],
+      "historicalContext": "Early Christian writers held more than one expectation about the millennium. Augustine's influential symbolic interpretation shaped much Western theology, while premillennial and postmillennial readings continued in various movements.",
+      "areasOfDisagreement": "The debate concerns the literary genre of Revelation, the relation of Israel and the church, the binding of Satan, tribulation, resurrection chronology and the nature of the millennium.",
+      "readingCaution": "Avoid date-setting and fear-based predictions. Apocalyptic imagery should be read in its literary context and alongside the clear call to faithfulness, hope and endurance."
+    },
+    {
+      "id": "doctrine-008",
+      "title": "Women, ministry and church leadership",
+      "question": "How should biblical teaching about women and men in ministry be interpreted?",
+      "sharedGround": "Christian traditions affirm the equal dignity of women and men before God and recognise women's significant participation in biblical ministry, discipleship, witness and service.",
+      "scriptureReferences": [
+        "Genesis 1:26-28",
+        "Judges 4:4-10",
+        "Luke 8:1-3",
+        "Acts 2:17-18",
+        "Acts 18:24-26",
+        "Romans 16:1-7",
+        "1 Corinthians 11:2-16",
+        "1 Timothy 2:8-15"
+      ],
+      "positions": [
+        {
+          "view": "Complementarian interpretations",
+          "summary": "These interpretations affirm equal worth while holding that certain governing or teaching offices in the gathered church are reserved for qualified men. They differ over which roles are restricted and how relevant passages apply today.",
+          "traditions": "Many conservative evangelical, Baptist, Reformed and other churches."
+        },
+        {
+          "view": "Egalitarian interpretations",
+          "summary": "These interpretations hold that leadership and teaching gifts should be recognised without restriction based on sex, reading restrictive passages in their local historical setting and alongside women who lead, teach or serve in Scripture.",
+          "traditions": "Many Methodist, Anglican, Pentecostal, Baptist and other Protestant churches."
+        },
+        {
+          "view": "Traditions with male priesthood and broad women's ministries",
+          "summary": "Catholic and Orthodox churches reserve priestly ordination to men while recognising extensive forms of women's theological, charitable, educational and spiritual leadership; their rationales and practices differ.",
+          "traditions": "Roman Catholic and Eastern Orthodox churches."
+        }
+      ],
+      "historicalContext": "Christian communities have interpreted Paul's instructions, the ministries of women in the New Testament and the development of church offices in different ways. Modern debates are shaped by historical study, ecclesiology and changing social contexts.",
+      "areasOfDisagreement": "Differences concern the scope of apostolic restrictions, the meaning of headship and authority, the examples of women leaders, ordination and the distinction between spiritual gifts and church office.",
+      "readingCaution": "Do not use this topic to justify abuse, silence victims or deny anyone's dignity. Read disputed passages in their immediate context and alongside the whole biblical witness."
+    },
+    {
+      "id": "doctrine-009",
+      "title": "Sabbath, Sunday and Christian rest",
+      "question": "How do Christians understand the seventh-day Sabbath and the Lord's Day?",
+      "sharedGround": "Christian traditions affirm the importance of worship, rest, gathered fellowship and trust in God rather than endless work or self-reliance.",
+      "scriptureReferences": [
+        "Exodus 20:8-11",
+        "Deuteronomy 5:12-15",
+        "Mark 2:23-28",
+        "Acts 20:7",
+        "Romans 14:5-6",
+        "Colossians 2:16-17",
+        "Hebrews 4:1-11"
+      ],
+      "positions": [
+        {
+          "view": "Seventh-day Sabbath observance",
+          "summary": "Seventh-day Sabbatarians maintain that the seventh day remains the biblical Sabbath and should be kept as a day of rest and worship, while differing in their wider theological explanations.",
+          "traditions": "Seventh-day Adventist and other Sabbatarian communities."
+        },
+        {
+          "view": "Sunday as the Christian Lord's Day",
+          "summary": "Many Christians regard Sunday, the day associated with Jesus' resurrection and early Christian gathering, as the principal weekly day for worship and rest, sometimes understanding it as the Christian Sabbath.",
+          "traditions": "Many Reformed, Anglican, Baptist, Methodist and other churches, with different levels of Sabbath obligation."
+        },
+        {
+          "view": "Christian liberty and gathered worship",
+          "summary": "Other Christians emphasise that no particular day should be imposed as a universal covenant requirement for believers, while affirming regular worship and rhythms of rest.",
+          "traditions": "Various Catholic, Orthodox, Lutheran, evangelical and free-church interpretations."
+        }
+      ],
+      "historicalContext": "The earliest Christians were largely Jewish and lived amid Sabbath practice, while New Testament writings also describe first-day gatherings. The relationship between Sabbath commandment, resurrection worship and Christian liberty developed differently across traditions.",
+      "areasOfDisagreement": "Disagreements include whether the fourth commandment transfers to Sunday, the binding force of Mosaic covenant law, the role of tradition and how Romans 14 and Colossians 2 apply.",
+      "readingCaution": "Do not treat another believer's day of worship as proof of their spiritual standing. Read the Sabbath command in its creation, exodus and covenant settings."
+    },
+    {
+      "id": "doctrine-010",
+      "title": "The meaning of the atonement",
+      "question": "How do biblical images explain what Christ accomplished through His death and resurrection?",
+      "sharedGround": "Christian traditions affirm that Jesus' death and resurrection reconcile humanity to God, defeat sin and death, reveal divine love and are central to salvation.",
+      "scriptureReferences": [
+        "Mark 10:45",
+        "Romans 3:21-26",
+        "Romans 5:6-11",
+        "2 Corinthians 5:14-21",
+        "Colossians 2:13-15",
+        "Hebrews 9:11-28",
+        "1 Peter 2:21-25"
+      ],
+      "positions": [
+        {
+          "view": "Penal substitution",
+          "summary": "This account emphasises that Christ bears sin's judgement on behalf of sinners, satisfying divine justice and bringing forgiveness and reconciliation. Christian theologians explain its relation to other atonement images in different ways.",
+          "traditions": "Prominent in many Reformed and evangelical Protestant traditions."
+        },
+        {
+          "view": "Christus Victor",
+          "summary": "This account emphasises Christ's victory over sin, death and the powers of evil through His incarnation, cross and resurrection. It is often presented as a major biblical theme alongside other explanations.",
+          "traditions": "Prominent in patristic, Orthodox and many contemporary Protestant accounts."
+        },
+        {
+          "view": "Healing, participation and moral transformation",
+          "summary": "These approaches stress that Christ enters human suffering, heals human nature, restores communion with God and transforms believers through participation in His life and self-giving love.",
+          "traditions": "Important in Eastern Orthodox, Catholic and a range of Protestant theologians."
+        },
+        {
+          "view": "Moral influence and exemplary love",
+          "summary": "This account highlights how the cross reveals God's love and moves people toward repentance, reconciliation and self-giving discipleship. Many theologians treat this as one biblical dimension rather than the only explanation.",
+          "traditions": "Found in several historical and contemporary Christian traditions."
+        }
+      ],
+      "historicalContext": "The New Testament uses several images for Christ's saving work: sacrifice, ransom, reconciliation, justification, victory, cleansing, adoption and example. Early, medieval and Reformation theologians developed different accounts that often overlap rather than exclude one another.",
+      "areasOfDisagreement": "Debates concern the meaning of divine justice, substitution, sacrifice, victory, the role of human transformation and whether one model should be treated as the controlling explanation.",
+      "readingCaution": "Avoid forcing every biblical image into one formula. Read each passage on its own terms and consider how the different images together describe Christ's saving work."
+    }
+  ]
+}
