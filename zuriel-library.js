@@ -1061,7 +1061,19 @@
             const safeReference = reference.replace(/[^a-z0-9]+/gi,"-").replace(/^-|-$/g,"").toLowerCase();
             const fileName = "Zuriel-Glory-Verse-" + (safeReference || "card") + ".png";
             const file = new File([blob],fileName,{type:"image/png"});
-            if (exportButton.id === "zgsShareImage" && navigator.canShare && navigator.canShare({files:[file]}) && navigator.share) {
+            if (exportButton.id === "zgsSaveImage" &&
+                window.ZurielMedia &&
+                typeof window.ZurielMedia.isAvailable === "function" &&
+                window.ZurielMedia.isAvailable()) {
+              const dataUrl = await new Promise((resolve,reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(String(reader.result || ""));
+                reader.onerror = () => reject(reader.error || new Error("The PNG could not be prepared for your Gallery."));
+                reader.readAsDataURL(blob);
+              });
+              const saved = await window.ZurielMedia.saveImage({dataUrl:dataUrl,fileName:fileName});
+              status.textContent = "Saved to your phone's Gallery in the \"" + saved.albumName + "\" album.";
+            } else if (exportButton.id === "zgsShareImage" && navigator.canShare && navigator.canShare({files:[file]}) && navigator.share) {
               await navigator.share({files:[file],title:"Glory Verse Affirmation"});
               status.textContent = "Your open-book image has been shared.";
             } else {
