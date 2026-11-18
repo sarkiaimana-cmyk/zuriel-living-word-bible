@@ -86,7 +86,7 @@ if (!home.includes('window.ZurielLibrary.open("saved")')) failures.push("The Lib
 if (!home.includes("zurielHomeVerseIndex") || !home.includes("zurielIdentityScriptureIndex")) failures.push("Home Scripture choices must be remembered on this device.");
 if (home.includes("setInterval(")) failures.push("Home Scripture must never advance automatically.");
 if (home.includes("<details open>")) failures.push("Open Book prayer and faith sections must start collapsed for a cleaner reading view.");
-if (!home.includes("Clean Open Book: readable pages")) failures.push("The Open Book needs the clean high-contrast presentation.");
+if (!home.includes("#zurielHomeDashboard .zob-landscape{background:#f7f8fa!important")) failures.push("The Open Book needs the clean high-contrast presentation.");
 if (!study.includes("zurielCleanStudyPresentation")) failures.push("The study panel must apply the clean high-contrast palette after its legacy styles.");
 if (!study.includes("#zurielStudyPanel[data-mode=verse-menu]")) failures.push("The selected-verse overlay must use the readable neutral surface.");
 
