@@ -33,5 +33,5 @@ if (failures.length) {
   failures.forEach(item => console.error(" - " + item));
   process.exitCode = 1;
 } else {
-  console.log("Android version tests passed (5 cases).");
+  console.log("Android version tests passed (6 cases).");
 }
