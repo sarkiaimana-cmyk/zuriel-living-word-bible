@@ -23,7 +23,7 @@ const kjv = JSON.parse(kjvText);
 function validReference(reference) {
   const references = String(reference || "").split(/\\s*;\\s*/).filter(Boolean);
   return references.length > 0 && references.every(value => {
-    const match = value.trim().match(/^(.+?)\\s+(\\d+):(\\d+)(?:[-–](\\d+))?$/);
+    const match = value.trim().match(/^(.+?)\s+(\d+):(\d+)(?:[-–](\d+))?$/);
     if (!match) return false;
     const name = match[1].toLowerCase() === "psalm" ? "Psalms" : match[1];
     const book = books.find(item => item.name.toLowerCase() === name.toLowerCase());
