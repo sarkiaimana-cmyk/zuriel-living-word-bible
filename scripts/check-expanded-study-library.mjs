@@ -45,7 +45,8 @@ for (const collection of [books.bookIntroductions,books.bookStudyPathways]) {
 const trails=[...trail1.trails,...trail2.trails];
 assert.equal(new Set(trails.map(item=>item.id)).size,74,"Connected Scripture trail IDs must be unique");
 for (const trail of trails) {
-  assert.equal(trail.references.length,5,"Each Scripture trail has five ordered references");
+  assert.equal(trail.pathway.length,5,"Each Scripture trail has five ordered passage steps");
+  assert.ok(trail.pathway.every(step => step.reference && step.connectionNote),"Each trail step needs a reference and explanation");
   assert.ok(trail.overview && trail.contextCaution && trail.lifeApplication,"Each trail has contextual safeguards and application");
 }
 for (const [label,items] of [
