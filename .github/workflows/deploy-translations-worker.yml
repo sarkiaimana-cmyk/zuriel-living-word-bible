@@ -27,6 +27,7 @@ jobs:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       ZITE_YVP_APP_KEY: ${{ secrets.ZITE_YVP_APP_KEY }}
+      API_BIBLE_KEY: ${{ secrets.API_BIBLE_KEY }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -70,6 +71,19 @@ jobs:
           if ! printf '%s' "$ZITE_YVP_APP_KEY" | npx wrangler secret put ZITE_YVP_APP_KEY --config wrangler.translations.jsonc; then
             echo "::error::Cloudflare rejected the Worker secret operation. Check the token's account scope and grant Workers Scripts Write (or Workers Editor for this Worker). Do not create another YouVersion key for this permission error."
             exit 1
+          fi
+
+      - name: Install optional API.Bible key as a Worker secret
+        run: |
+          set -euo pipefail
+          if [ -n "$API_BIBLE_KEY" ]; then
+            if ! printf '%s' "$API_BIBLE_KEY" | npx wrangler secret put API_BIBLE_KEY --config wrangler.translations.jsonc; then
+              echo "::error::Cloudflare rejected the optional API.Bible secret. Check the Worker secret permissions; the key is never printed."
+              exit 1
+            fi
+            echo "API.Bible server-side key installed."
+          else
+            echo "::notice::API.Bible key not configured; its provider will remain unavailable while YouVersion can still operate."
           fi
 
       - name: Deploy the protected translation Worker
