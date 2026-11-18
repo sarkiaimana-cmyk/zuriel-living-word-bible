@@ -69,6 +69,12 @@ forbidText(config, /"ai"\s*:|"TURNSTILE_SECRET"/, "AI binding or AI-only Turnsti
 requireText(deployment, "workflow_dispatch:", "Manual-only translation deployment");
 requireText(deployment, "inputs.confirm_deployment == true", "Explicit deployment confirmation");
 requireText(deployment, "secrets.ZITE_YVP_APP_KEY", "Server-side YouVersion secret injection");
+requireText(doc, "## Add the three required and one optional GitHub Actions secret", "Accurate translation deployment secret count");
+requireText(doc, "`CLOUDFLARE_API_TOKEN`", "Cloudflare API token setup instruction");
+requireText(doc, "`CLOUDFLARE_ACCOUNT_ID`", "Cloudflare account ID setup instruction");
+requireText(doc, "`ZITE_YVP_APP_KEY`", "Required YouVersion app key setup instruction");
+requireText(doc, "`API_BIBLE_KEY` (optional)", "Optional API.Bible key setup instruction");
+requireText(doc, "only writes the verified endpoint to `version.json` when it is run from the repository's `main` branch", "Main-branch deployment requirement documentation");
 requireText(deployment, "secrets.API_BIBLE_KEY", "Optional server-side API.Bible secret injection");
 requireText(deployment, "secret put API_BIBLE_KEY", "Optional API.Bible Worker secret installation");
 requireText(deployment, "wrangler deploy --config wrangler.translations.jsonc", "Dedicated translation Worker deployment");
