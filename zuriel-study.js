@@ -9,7 +9,16 @@
 
   const NOTES_KEY = "zuriel-verse-study-notes-v1";
   const HIGHLIGHTS_KEY = "zuriel-word-highlights-v1";
+  const COMMENTARY_CATALOG_API = "https://bible.helloao.org/api/available_commentaries.json";
+  const COMMENTARY_API = "https://bible.helloao.org/api/c/";
+  const PUBLIC_DOMAIN_MARK = "https://creativecommons.org/publicdomain/mark/1.0";
+  const APPROVED_HISTORICAL_COMMENTARIES = new Set([
+    "john-gill", "matthew-henry", "jamieson-fausset-brown", "john-calvin", "keil-delitzsch"
+  ]);
   let selectedReference = null;
+  let historicalCommentarySources = [];
+  let historicalCommentaryCatalogPromise = null;
+  let historicalCommentaryRequest = 0;
   let selectedEnglishWord = "";
   let selectedEnglishWordIndex = -1;
   let passageCommentaryEntries = null;
