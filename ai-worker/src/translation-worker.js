@@ -1,6 +1,6 @@
 import { handleRequest } from "./index.js";
 
-// This deployment exposes only the licensed YouVersion translation proxy.
+// This deployment exposes only the licensed YouVersion and optional API.Bible translation proxies.
 // The AI assistant route is intentionally unavailable on this Worker.
 export async function handleTranslationRequest(request, env, dependencies = {}) {
   const url = new URL(request.url);
