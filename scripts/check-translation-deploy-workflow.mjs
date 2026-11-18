@@ -17,6 +17,7 @@ assert.match(workflow, /access-control-allow-origin: https:\/\/sarkiaimana-cmyk\
 assert.match(workflow, /Worker URL: \$WORKER_URL/, "deployment reports the exact URL to configure in the app");
 assert.match(workflow, /contents: write/, "deployment may save the verified public endpoint to release metadata");
 assert.match(workflow, /translationApiBase=process\.env\.WORKER_URL/, "deployment writes the verified Worker URL into version.json");
+assert.ok(workflow.includes('JSON.stringify(data,null,2)+"\\n"'), "deployment writes a valid JSON newline when saving version.json");
 assert.match(workflow, /git push origin HEAD:main/, "deployment commits the endpoint configuration automatically");
 assert.match(workflow, /REMOTE_CONFIG/, "deployment verifies the public release metadata after saving");
 assert.match(workflow, /Authorised Bible versions returned:/, "deployment reports the number of publisher-authorised versions");
