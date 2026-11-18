@@ -1,11 +1,12 @@
 import { readFile } from "node:fs/promises";
 
-const [library, worker, packaging, index, home, prWorkflow, androidWorkflow] = await Promise.all([
+const [library, worker, packaging, index, home, study, prWorkflow, androidWorkflow] = await Promise.all([
   readFile(new URL("../zuriel-library.js", import.meta.url), "utf8"),
   readFile(new URL("../sw.js", import.meta.url), "utf8"),
   readFile(new URL("./prepare-web.mjs", import.meta.url), "utf8"),
   readFile(new URL("../index.html", import.meta.url), "utf8"),
   readFile(new URL("../zuriel-home.js", import.meta.url), "utf8"),
+  readFile(new URL("../zuriel-study.js", import.meta.url), "utf8"),
   readFile(new URL("../.github/workflows/validate-pr.yml", import.meta.url), "utf8"),
   readFile(new URL("../.github/workflows/android-apk.yml", import.meta.url), "utf8")
 ]);
@@ -82,6 +83,13 @@ if (!navBlock || (navBlock[1].match(/\["(?:home|read|study|library|kingdom|perso
   failures.push("The main bottom navigation should contain exactly six primary destinations.");
 }
 if (!home.includes('window.ZurielLibrary.open("saved")')) failures.push("The Library destination does not open the personal saved library.");
+if (!home.includes("zurielHomeVerseIndex") || !home.includes("zurielIdentityScriptureIndex")) failures.push("Home Scripture choices must be remembered on this device.");
+if (home.includes("setInterval(")) failures.push("Home Scripture must never advance automatically.");
+if (home.includes("<details open>")) failures.push("Open Book prayer and faith sections must start collapsed for a cleaner reading view.");
+if (!home.includes("Clean Open Book: readable pages")) failures.push("The Open Book needs the clean high-contrast presentation.");
+if (!study.includes("zurielCleanStudyPresentation")) failures.push("The study panel must apply the clean high-contrast palette after its legacy styles.");
+if (!study.includes("#zurielStudyPanel[data-mode=verse-menu]")) failures.push("The selected-verse overlay must use the readable neutral surface.");
+
 if (!worker.includes('"./zuriel-library.js"')) failures.push("Service worker does not precache the studio module.");
 if (!packaging.includes('"zuriel-library.js"')) failures.push("Android web packaging omits the studio module.");
 if (!index.includes("zuriel-library.js")) failures.push("App entry point does not load the studio module.");
