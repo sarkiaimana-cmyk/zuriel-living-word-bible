@@ -1,4 +1,4 @@
 {
-  "version": "1.4.72",
-  "releaseNotes": "Adds a clean white Scripture reading page by default, six offline-safe reading font choices, and persistent font and text-size controls. Preserves the complete offline KJV, reading navigation, selected-verse study actions, WHO HE IS open-book cards, and the separate daily Scripture cards."
+  "version": "1.4.73",
+  "releaseNotes": "Adds the searchable offline Study Centre with passage commentary, theological comparisons, topical studies, dictionary and original-language word-study aids, Names of God, 74 connected Scripture trails, all 66 book introductions and study pathways, geography and worship studies. Adds Scripture-guided Life Application and 20 additional verse-specific faith responses. Open Book Scripture cards can be saved to the Zuriel Gallery album and shared through Android's system share sheet. Preserves the complete offline KJV, reading preferences, personal study records and existing navigation."
 }
