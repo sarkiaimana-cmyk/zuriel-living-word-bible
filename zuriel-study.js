@@ -2726,7 +2726,7 @@
         historicalCommentaryCatalogPromise = fetchStudyJson(COMMENTARY_CATALOG_API).then(function (payload) {
           const all = Array.isArray(payload && payload.commentaries) ? payload.commentaries : [];
           return all.filter(function (source) {
-            const license = String(source && source.licenseUrl || "").replace(/\\/+$/, "");
+            const license = String(source && source.licenseUrl || "").replace(/\/+$/, "");
             return source && APPROVED_HISTORICAL_COMMENTARIES.has(source.id) &&
               source.language === "eng" &&
               Array.isArray(source.availableFormats) && source.availableFormats.includes("json") &&
