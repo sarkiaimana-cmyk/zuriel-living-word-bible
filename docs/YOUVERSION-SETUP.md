@@ -51,8 +51,12 @@ Do not add the key to repository Variables. Do not commit it to any file. GitHub
 
 The workflow tests the translation Worker, deploys it, stores the YouVersion app key as a Cloudflare secret, and makes a live request to the authorised English Bible catalogue. It must receive HTTP 200 and the expected GitHub Pages CORS header before it reports success.
 
-## Important activation boundary
+## Automatic app connection after a successful deployment
 
-A successful Worker deployment does not by itself mean the Android app is connected. The workflow reports the exact `workers.dev` endpoint. The app's `window.ZURIEL_TRANSLATION_API_BASE` remains empty until that endpoint is configured in the app release. Do not assume a YouVersion version is available merely because it appears in a requested list: the app shows only versions actually returned for the registered key, and passage access remains subject to each publisher's licence.
+A successful live smoke test now saves the verified public `workers.dev` endpoint into the `translationApiBase` field in the repository's public `version.json`. The deployment workflow verifies that saved value before it reports success. The YouVersion app key is never written to this file.
+
+Install Zuriel **1.4.61 or newer** before running the deployment if you want the app to discover the endpoint automatically. The comparison panel reads the public endpoint configuration when opened; no API key or manual source-code edit is needed. If the workflow cannot commit or verify the endpoint, it reports failure and the app safely remains on the offline KJV.
+
+Do not assume a YouVersion version is available merely because it appears in a requested list: the app shows only versions actually returned for the registered key, and passage access remains subject to each publisher's licence.
 
 The offline KJV is not replaced, and licensed online text is not cached for offline use.
