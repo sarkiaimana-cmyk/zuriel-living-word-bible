@@ -1223,9 +1223,15 @@ async function openChapter(book, chapter) {
   closeActions.className = "zuriel-verse-action zuriel-action-close";
   closeActions.textContent = "✕ Close";
   closeActions.addEventListener("click", function () {
+    if (studyPanelHome) restoreStudyPanelToReader();
+    if (externalPanelCurrent) restoreExternalVersePanel();
     verseActions.hidden = true;
+    verseActions.classList.remove("has-study-content");
     document.querySelectorAll("#message .verse.zuriel-selected-verse")
-      .forEach(function (node) { node.classList.remove("zuriel-selected-verse"); });
+      .forEach(function (node) {
+        node.classList.remove("zuriel-selected-verse");
+        node.setAttribute("aria-expanded", "false");
+      });
   });
   verseActions.appendChild(closeActions);
   message.appendChild(verseActions);
@@ -1234,6 +1240,35 @@ async function openChapter(book, chapter) {
     if (!verseActions.hidden &&
         (event.target === document || event.target === document.documentElement ||
          event.target === document.body)) positionVerseOverlay();
+  }, true);
+
+  // Keep the contextual study surface easy to dismiss without losing its home panel.
+  document.addEventListener("keydown", function (event) {
+    if (event.key !== "Escape" || verseActions.hidden) return;
+    event.preventDefault();
+    if (studyPanelHome) restoreStudyPanelToReader();
+    if (externalPanelCurrent) restoreExternalVersePanel();
+    verseActions.hidden = true;
+    verseActions.classList.remove("has-study-content");
+    document.querySelectorAll("#message .verse.zuriel-selected-verse")
+      .forEach(function (node) {
+        node.classList.remove("zuriel-selected-verse");
+        node.setAttribute("aria-expanded", "false");
+      });
+  });
+
+  document.addEventListener("pointerdown", function (event) {
+    if (verseActions.hidden || verseActions.contains(event.target)) return;
+    if (event.target.closest && event.target.closest("#message .verse")) return;
+    if (studyPanelHome) restoreStudyPanelToReader();
+    if (externalPanelCurrent) restoreExternalVersePanel();
+    verseActions.hidden = true;
+    verseActions.classList.remove("has-study-content");
+    document.querySelectorAll("#message .verse.zuriel-selected-verse")
+      .forEach(function (node) {
+        node.classList.remove("zuriel-selected-verse");
+        node.setAttribute("aria-expanded", "false");
+      });
   }, true);
 
   function selectVerseForGloryCard(verseNumber, verseText) {
@@ -1249,7 +1284,10 @@ async function openChapter(book, chapter) {
     );
     if (studyPanelHome) restoreStudyPanelToReader();
     if (externalPanelCurrent) restoreExternalVersePanel();
-    if (selectedVerseElement) selectedVerseElement.classList.add("zuriel-selected-verse");
+    if (selectedVerseElement) {
+      selectedVerseElement.classList.add("zuriel-selected-verse");
+      selectedVerseElement.setAttribute("aria-expanded", "true");
+    }
     verseActions.classList.remove("has-study-content");
     verseActions.hidden = false;
     positionVerseOverlay();
@@ -1279,6 +1317,8 @@ async function openChapter(book, chapter) {
     paragraph.className = paragraphStart ? "verse verse-paragraph-start" : "verse";
     paragraph.dataset.verseNumber = String(index + 1);
     paragraph.setAttribute("aria-label", "Verse " + (index + 1));
+    paragraph.setAttribute("aria-controls", "zurielVerseActions");
+    paragraph.setAttribute("aria-expanded", "false");
 
     const number = document.createElement("strong");
     number.textContent = (index + 1) + ".";
