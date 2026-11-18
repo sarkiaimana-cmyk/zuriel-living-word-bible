@@ -75,4 +75,4 @@ Official API.Bible references:
 
 The deployment workflow installs `API_BIBLE_KEY` only when that optional GitHub secret exists. You do not need to create another Cloudflare Worker or replace the YouVersion key.
 
-The offline KJV is not replaced. When the reader explicitly downloads an approved translation, Zuriel stores its attributed chapters in the device's IndexedDB for offline reading and restores the saved translation choice after restart. API.Bible cached copies are treated as refresh-required after 29 days. The app lists only versions returned for the configured provider account.
+The offline KJV is not replaced. When the reader explicitly downloads an approved translation, Zuriel stores its attributed chapters in the device's IndexedDB for offline reading and restores the list of downloaded translations for offline selection after restart. API.Bible cached copies are treated as refresh-required after 29 days. The app lists only versions returned for the configured provider account.
