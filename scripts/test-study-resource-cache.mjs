@@ -9,10 +9,16 @@ assert.ok(start >= 0 && end > start, "The study-resource cache function must rem
 const functionSource = source.slice(start, end) + "\nwindow.__fetchStudyJson = fetchStudyJson;";
 
 function response(value, invalidJson = false) {
+  let bodyConsumed = false;
   return {
     ok: true,
-    clone() { return response(value, invalidJson); },
+    clone() {
+      if (bodyConsumed) throw new Error("Response body has already been consumed");
+      return response(value, invalidJson);
+    },
     async json() {
+      if (bodyConsumed) throw new Error("Response body has already been consumed");
+      bodyConsumed = true;
       if (invalidJson) throw new Error("Corrupt cached JSON");
       return JSON.parse(JSON.stringify(value));
     }
