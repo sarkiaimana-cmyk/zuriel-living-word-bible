@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import vm from "node:vm";
 
 const packageJson = JSON.parse(fs.readFileSync("package.json", "utf8"));
 const dependencies = packageJson.dependencies || {};
@@ -31,5 +32,56 @@ const prepare = fs.readFileSync("scripts/prepare-web.mjs", "utf8");
 assert.match(prepare, /"zuriel-media\.js"/, "Android web bundle includes the Gallery bridge");
 const serviceWorker = fs.readFileSync("sw.js", "utf8");
 assert.match(serviceWorker, /"\.\/zuriel-media\.js"/, "offline cache precaches the Gallery bridge");
+
+
+const calls = [];
+let albums = [];
+const nativePlugin = {
+  async getAlbums() {
+    calls.push("getAlbums");
+    return { albums: albums.slice() };
+  },
+  async createAlbum(options) {
+    calls.push({ method: "createAlbum", options: options });
+    albums.push({ identifier: "zuriel-album-1", name: options.name });
+  },
+  async savePhoto(options) {
+    calls.push({ method: "savePhoto", options: options });
+    return { filePath: "content://media/external/images/media/1" };
+  }
+};
+const nativeWindow = {
+  Capacitor: {
+    registerPlugin(name) { assert.equal(name, "Media"); return nativePlugin; },
+    isNativePlatform() { return true; },
+    isPluginAvailable(name) { return name === "Media"; }
+  }
+};
+vm.runInNewContext(bridge, { window: nativeWindow });
+assert.equal(nativeWindow.ZurielMedia.isAvailable(), true);
+const saved = await nativeWindow.ZurielMedia.saveImage({
+  dataUrl: "data:image/png;base64,AAAA",
+  fileName: "My Card.png"
+});
+assert.equal(saved.albumName, "Zuriel Living Word Bible");
+assert.ok(calls.some(call => call && call.method === "createAlbum"), "native save creates its app album once");
+const saveCall = calls.find(call => call && call.method === "savePhoto");
+assert.ok(saveCall, "native save calls Media.savePhoto");
+assert.equal(saveCall.options.albumIdentifier, "zuriel-album-1");
+assert.equal(saveCall.options.fileName, "My-Card");
+
+const webWindow = {
+  Capacitor: {
+    registerPlugin() { return nativePlugin; },
+    isNativePlatform() { return false; },
+    isPluginAvailable() { return false; }
+  }
+};
+vm.runInNewContext(bridge, { window: webWindow });
+assert.equal(webWindow.ZurielMedia.isAvailable(), false);
+await assert.rejects(
+  webWindow.ZurielMedia.saveImage({ dataUrl: "data:image/png;base64,AAAA", fileName: "x.png" }),
+  /installed Android app/
+);
 
 console.log("Gallery export checks passed: native Android album save, app-scoped permissions, system sharing and browser Downloads fallback.");
