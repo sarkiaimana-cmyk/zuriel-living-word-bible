@@ -252,6 +252,9 @@
   const KJV_API = "https://bible.helloao.org/api/eng_kjv/";
   const LEXICON_API = "https://bible.helloao.org/api/d/stepbible-lexicon/lexicon/";
   const CROSS_REFERENCE_API = "https://bible.helloao.org/api/d/open-cross-ref/";
+  const COMMENTARY_API = "https://bible.helloao.org/api/c/";
+  const COMMENTARY_CATALOG_API = "https://bible.helloao.org/api/available_commentaries.json";
+  let commentaryRequest = 0;
   const API_BOOK_CODES = [
     "GEN","EXO","LEV","NUM","DEU","JOS","JDG","RUT","1SA","2SA",
     "1KI","2KI","1CH","2CH","EZR","NEH","EST","JOB","PSA","PRO",
@@ -502,6 +505,125 @@
       });
       target.appendChild(retry);
     }
+  }
+
+  const COMMENTARY_LICENSE_ALLOWLIST = new Set([
+    "https://creativecommons.org/publicdomain/mark/1.0/",
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+  ]);
+
+  function commentaryText(value) {
+    if (typeof value === "string") return value.trim();
+    if (Array.isArray(value)) return value.map(commentaryText).filter(Boolean).join("\\n\\n");
+    if (value && typeof value === "object") {
+      return commentaryText(value.text || value.content || value.value || "");
+    }
+    return "";
+  }
+
+  async function initialiseCommentaryLibrary() {
+    const sourceSelect = document.getElementById("zurielCommentarySource");
+    const loadButton = document.getElementById("zurielLoadCommentary");
+    const results = document.getElementById("zurielCommentaryResults");
+    if (!sourceSelect || !loadButton || !results) return;
+
+    try {
+      const catalog = await fetchStudyJson(COMMENTARY_CATALOG_API);
+      const sources = Array.isArray(catalog.commentaries) ? catalog.commentaries : [];
+      const approved = sources.filter(function (source) {
+        return source && source.language === "eng" &&
+          COMMENTARY_LICENSE_ALLOWLIST.has(String(source.licenseUrl || ""));
+      }).sort(function (a, b) {
+        return String(a.name || a.id).localeCompare(String(b.name || b.id));
+      });
+      if (!approved.length) throw new Error("No English commentary with a recognised public-domain or CC BY-SA licence was returned.");
+
+      sourceSelect.replaceChildren();
+      approved.forEach(function (source) {
+        const option = document.createElement("option");
+        option.value = source.id;
+        option.textContent = source.name || source.englishName || source.id;
+        sourceSelect.appendChild(option);
+      });
+      if (approved.some(source => source.id === "matthew-henry")) {
+        sourceSelect.value = "matthew-henry";
+      }
+      results.textContent = approved.length + " English commentary sources are available. Choose one and load notes for the selected verse. Only sources with recognised public-domain or CC BY-SA licence URLs are listed.";
+    } catch (error) {
+      results.textContent = "The commentary catalogue could not be loaded. Connect to the internet once and try again. Existing Bible reading and offline dictionary functions remain available.";
+    }
+
+    loadButton.addEventListener("click", async function () {
+      const requestId = ++commentaryRequest;
+      const ref = selectedReference;
+      const commentaryId = sourceSelect.value;
+      if (!ref) {
+        results.textContent = "Select a Bible verse first, then load its commentary.";
+        return;
+      }
+      const code = apiBookCode(ref.book);
+      if (!code || !commentaryId) {
+        results.textContent = "The selected book or commentary source is not available.";
+        return;
+      }
+
+      loadButton.disabled = true;
+      results.textContent = "Loading published commentary for " + ref.book + " " + ref.chapter + ":" + ref.verse + "…";
+      try {
+        const data = await fetchStudyJson(COMMENTARY_API + commentaryId + "/" + code + "/" + ref.chapter + ".simple.json");
+        if (requestId !== commentaryRequest) return;
+        const source = data.commentary || {};
+        if (source.language && source.language !== "eng") {
+          throw new Error("This commentary is not in English.");
+        }
+        if (!COMMENTARY_LICENSE_ALLOWLIST.has(String(source.licenseUrl || ""))) {
+          throw new Error("The source licence could not be verified against Zuriel's approved licence list.");
+        }
+        const chapter = data.chapter || {};
+        const entries = Array.isArray(chapter.content) ? chapter.content : [];
+        const verseEntry = entries.find(function (entry) {
+          return entry && Number(entry.number) === Number(ref.verse) &&
+            (!entry.type || entry.type === "verse");
+        });
+        const note = verseEntry ? commentaryText(verseEntry.content) : "";
+        results.replaceChildren();
+
+        const heading = document.createElement("h3");
+        heading.textContent = (source.name || source.englishName || commentaryId) + " — " + ref.book + " " + ref.chapter + ":" + ref.verse;
+        results.appendChild(heading);
+        if (note) {
+          note.split(/\\n{2,}/).map(part => part.trim()).filter(Boolean).forEach(function (paragraphText) {
+            const paragraph = document.createElement("p");
+            paragraph.textContent = paragraphText;
+            results.appendChild(paragraph);
+          });
+        } else {
+          const missing = document.createElement("p");
+          missing.textContent = "This commentary has no verse-specific note for " + ref.book + " " + ref.chapter + ":" + ref.verse + ". This is a source-coverage gap, not a missing Bible verse.";
+          results.appendChild(missing);
+        }
+
+        const credit = document.createElement("p");
+        credit.className = "study-small";
+        credit.textContent = "Source: " + (source.name || source.englishName || commentaryId) + ". Licence: " + source.licenseUrl + (source.licenseNotes ? " " + source.licenseNotes : "") + " Commentary is a historical study resource and should be compared with Scripture in context; it is not Scripture itself.";
+        results.appendChild(credit);
+        if (source.website) {
+          const link = document.createElement("a");
+          link.href = source.website;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.textContent = "View source information";
+          results.appendChild(link);
+        }
+      } catch (error) {
+        if (requestId !== commentaryRequest) return;
+        results.textContent = !navigator.onLine
+          ? "This commentary chapter has not been saved on this device yet. Connect once to download it; Zuriel will then keep the chapter in its study-resource cache for offline use."
+          : (error.message || "The selected commentary could not be loaded. Try another source or verse.");
+      } finally {
+        if (requestId === commentaryRequest) loadButton.disabled = false;
+      }
+    });
   }
 
   function normalizeStrongs(value) {
@@ -1576,6 +1698,21 @@
           </div>
         </details>
 
+        <details id="zurielCommentaryLibrary">
+          <summary>📚 Published Bible Commentaries</summary>
+          <div class="study-body">
+            <p>Read source-attributed commentary for the selected verse. Commentary availability varies by book and chapter. Once downloaded, a chapter is saved for later offline study on this device.</p>
+            <label for="zurielCommentarySource">Commentary source</label>
+            <select id="zurielCommentarySource" aria-label="Choose a Bible commentary">
+              <option value="matthew-henry">Matthew Henry Bible Commentary</option>
+            </select>
+            <button type="button" class="study-action-button" id="zurielLoadCommentary">Load commentary for selected verse</button>
+            <div id="zurielCommentaryResults" aria-live="polite">
+              <p>Select a verse, choose a commentary source and load its notes.</p>
+            </div>
+          </div>
+        </details>
+
         <details>
           <summary>🙏 3. The Light — Prayer, Declaration and Faith</summary>
           <div class="study-body" id="zurielFaithResponse" aria-live="polite">
@@ -1814,6 +1951,8 @@
       layout.appendChild(message);
       layout.appendChild(panel);
     }
+
+    initialiseCommentaryLibrary();
 
     // Searchable offline biblical dictionary.
     const dictionarySearch = panel.querySelector("#zurielDictionarySearch");
