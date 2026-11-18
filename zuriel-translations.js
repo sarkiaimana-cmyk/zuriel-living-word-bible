@@ -250,6 +250,7 @@
         select.appendChild(option);
       });
       selectedVersionId = "";
+      selectedVersionLabel = "";
       versionsLoaded = true;
       loadedProvider = providerAtRequest;
       select.disabled = false;
@@ -537,7 +538,7 @@
       ? String(select.options[select.selectedIndex].textContent || "").split("—").slice(1).join("—").trim()
       : "";
     passageHeading.textContent = (item.reference || (currentChapter.book + " " + currentChapter.chapter)) +
-      " — " + ((payload.version && (payload.version.abbreviation || payload.version.title)) || selectedLabel || selectedVersionLabel || "Selected translation") +
+      " — " + ((payload.version && (payload.version.abbreviation || payload.version.title)) || selectedVersionLabel || selectedLabel || "Selected translation") +
       " (" + providerName + ")";
     passage.textContent = item.content;
     passage.hidden = false;
@@ -633,6 +634,7 @@
     versionsLoaded = false;
     loadedProvider = "";
     selectedVersionId = "";
+    selectedVersionLabel = "";
     select.replaceChildren(node("option", "", "Choose an available translation"));
     select.disabled = true;
     loadButton.disabled = true;
