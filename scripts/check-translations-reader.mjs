@@ -49,6 +49,9 @@ requireText(client, "window.ZURIEL_TRANSLATION_API_BASE", "Explicit deployment e
 requireText(client, "window.ZurielTranslations", "Translation reader public readiness API");
 requireText(client, "activeController.abort()", "Cancellation of stale or closed-panel passage requests");
 requireText(client, "let selectedVerse = null", "Selected verse comparison state");
+requireText(client, "function currentKJVText()", "Offline KJV comparison column");
+requireText(client, '"ztc-comparison"', "Responsive parallel translation comparison layout");
+requireText(client, '"King James Version — offline"', "KJV source label beside online translation");
 requireText(client, '"Load selected verse"', "Selected-verse comparison action label");
 requireText(client, 'verseNumber > 0 ? "." + verseNumber', "Exact selected-verse USFM request rather than an entire chapter");
 forbidText(client, /localStorage|sessionStorage|caches\.|indexedDB/i, "Persistent storage of licensed online Bible text");
