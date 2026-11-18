@@ -48,10 +48,16 @@ requireText(client, "loadedProvider === selectedProvider", "Provider-specific ca
 requireText(client, "Publisher attribution was not supplied", "Fail-closed attribution requirement");
 requireText(client, "API.Bible chapters you open are saved on this device for offline reading", "API.Bible offline-cache notice");
 requireText(client, '"./version.json"', "Offline-capable local release metadata discovery");
-requireText(client, "indexedDB.open(TRANSLATION_CACHE_DB, 1)", "IndexedDB translation cache");
+requireText(client, "indexedDB.open(TRANSLATION_CACHE_DB, 2)", "IndexedDB translation cache");
 requireText(client, "API_BIBLE_CACHE_MAX_AGE = 29 * 24 * 60 * 60 * 1000", "API.Bible 29-day refresh limit");
 requireText(client, "saveApiBibleChapter", "API.Bible chapter cache write");
 requireText(client, "readCachedApiBibleChapter", "API.Bible offline chapter fallback");
+requireText(client, "downloadSelectedTranslation", "Full translation offline download manager");
+requireText(client, "hasFreshCachedChapter", "Resume by skipping chapters already saved");
+requireText(client, "4000", "Rate-limited sequential chapter downloads");
+requireText(client, "downloadProgress", "Visible offline download progress");
+requireText(client, "Paused:", "Pause and resume support");
+requireText(client, "saveCachedChapter(selectedProvider", "Both approved providers use the offline chapter cache");
 requireText(client, '"api-bible"', "Provider-scoped offline cache");
 
 requireText(client, "window.ZURIEL_TRANSLATION_API_BASE", "Explicit deployment endpoint configuration");
