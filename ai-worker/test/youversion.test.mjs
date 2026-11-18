@@ -40,7 +40,7 @@ test("lists only English Bible versions licensed to the registered YouVersion ap
       assert.equal(parsed.origin, "https://api.youversion.com");
       assert.equal(parsed.pathname, "/v1/bibles");
       assert.equal(parsed.searchParams.get("language_ranges[]"), "en");
-      assert.equal(parsed.searchParams.get("page_size"), "100");
+      assert.equal(parsed.searchParams.get("page_size"), "99");
       assert.equal(parsed.searchParams.has("all_available"), false,
         "The proxy must never request unlicensed catalogue entries.");
       assert.equal(options.headers["X-YVP-App-Key"], secret);
@@ -82,7 +82,7 @@ test("passes a validated pagination token to the licensed English Bible list", a
   const response = await send(request("/api/youversion/bibles?next_page_token=next%2Bpage%3D%3D"), makeEnv(),
     async url => {
       const parsed = new URL(url);
-      assert.equal(parsed.searchParams.get("next_page_token"), "next+page==");
+      assert.equal(parsed.searchParams.get("page_token"), "next+page==");
       return Response.json({ data: [], next_page_token: null });
     });
   assert.equal(response.status, 200);
