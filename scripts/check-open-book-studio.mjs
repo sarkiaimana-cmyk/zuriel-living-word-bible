@@ -88,7 +88,8 @@ if (home.includes("setInterval(")) failures.push("Home Scripture must never adva
 if (home.includes("<details open>")) failures.push("Open Book prayer and faith sections must start collapsed for a cleaner reading view.");
 if (!home.includes("#zurielHomeDashboard .zob-landscape{background:#f7f8fa!important")) failures.push("The Open Book needs the clean high-contrast presentation.");
 if (!study.includes("zurielCleanStudyPresentation")) failures.push("The study panel must apply the clean high-contrast palette after its legacy styles.");
-if (!study.includes("#zurielStudyPanel[data-mode=verse-menu]")) failures.push("The selected-verse overlay must use the readable neutral surface.");\nif (study.includes("background:#fff4d6") || study.includes("border-left:4px solid #d9bd79")) failures.push("Prayer, declaration, affirmation and confession must not use decorative colored callout boxes.");
+if (!study.includes("#zurielStudyPanel[data-mode=verse-menu]")) failures.push("The selected-verse overlay must use the readable neutral surface.");
+if (study.includes("background:#fff4d6") || study.includes("border-left:4px solid #d9bd79")) failures.push("Prayer, declaration, affirmation and confession must not use decorative colored callout boxes.");
 
 if (!worker.includes('"./zuriel-library.js"')) failures.push("Service worker does not precache the studio module.");
 if (!packaging.includes('"zuriel-library.js"')) failures.push("Android web packaging omits the studio module.");
