@@ -85,11 +85,11 @@ export default {
     const allowed = allowedOrigins(env);
 
     if (origin && !allowed.has(origin)) {
-      return jsonResponse({ error: "This app origin is not allowed to use the translation service." }, 403, "", env);
+      return jsonResponse({ error: "This app origin is not allowed to use the translation service." }, 403, origin, env);
     }
     if (request.method === "OPTIONS") {
       if (origin && !allowed.has(origin)) {
-        return jsonResponse({ error: "Origin not allowed." }, 403, "", env);
+        return jsonResponse({ error: "Origin not allowed." }, 403, origin, env);
       }
       return jsonResponse({}, 204, origin, env);
     }
