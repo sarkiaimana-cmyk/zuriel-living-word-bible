@@ -91,6 +91,16 @@ if (!packaging.includes('"zuriel-library.js"')) failures.push("Android web packa
 if (!index.includes("zuriel-library.js")) failures.push("App entry point does not load the studio module.");
 if (!prWorkflow.includes("node scripts/check-open-book-studio.mjs")) failures.push("PR validation does not run the studio checker.");
 if (!androidWorkflow.includes("node scripts/check-open-book-studio.mjs")) failures.push("Android validation does not run the studio checker.");
+// Home-card integration: WHO HE IS revelations must retain their identity
+// title when opened in the shared card studio; daily cards remain present.
+if (!home.includes('id="zurielIdentityShare"')) failures.push("WHO HE IS share action is missing.");
+if (!home.includes('const revelationResponse = Object.assign({}, response || {});')) failures.push("WHO HE IS response is not safely copied before card preparation.");
+if (!home.includes('"HE IS " + identityTitle.toUpperCase()')) failures.push("WHO HE IS title is not carried into the shareable declaration.");
+if (!home.includes('window.ZurielLibrary.openGloryVerse(\n          item.reference, exactText, "KJV", revelationResponse')) failures.push("WHO HE IS card does not pass its exact KJV passage and title to the card studio.");
+if (!home.includes('id="zurielOpenBookFaithCard"')) failures.push("The daily open-book faith card was removed.");
+for (const reference of ["Psalm 23:1", "Isaiah 41:10", "Philippians 4:13"]) {
+  if (!home.includes('data-reference="' + reference + '"')) failures.push("The daily Scripture card for " + reference + " was removed.");
+}
 if (failures.length) {
   console.error("Open Book Card Studio checks failed:");
   failures.forEach(item => console.error(" - " + item));
