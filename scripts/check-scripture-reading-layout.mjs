@@ -29,6 +29,9 @@ console.log("Full-width Scripture layout checks passed.");
 
 const settings = fs.readFileSync("zuriel-settings.js", "utf8");
 assert.ok(settings.includes('paper: "white"'), "White paper must be the default reader background.");
+assert.ok(settings.includes('zurielReaderWhitePageDefaultV172') &&
+  settings.includes('saved.paper === "ivory"'),
+  "Existing installations must migrate the former default ivory page to white once.");
 assert.ok(settings.includes('#message[data-zuriel-paper="white"]'), "A true white Scripture page must be available.");
 assert.ok(settings.includes('id: "georgia"') && settings.includes('id: "times"') &&
   settings.includes('id: "arial"') && settings.includes('id: "verdana"') &&
