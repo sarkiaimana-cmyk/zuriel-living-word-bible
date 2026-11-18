@@ -2738,6 +2738,39 @@
         // The reader owns the selected-verse overlay; do not scroll away from Scripture.
       },
 
+      // Open a built-in reference tool from the Library without inventing or
+      // copying entries. Dictionary and concordance continue using the same
+      // offline KJV-backed data as the verse study centre.
+      openSection: function (sectionTitle, searchText) {
+        const sectionsRoot = panel.querySelector("#zurielStudySections");
+        if (!sectionsRoot) return false;
+        const wanted = String(sectionTitle || "").trim().toLowerCase();
+        if (!wanted) return false;
+        const section = Array.from(sectionsRoot.querySelectorAll("details")).find(function (item) {
+          const summary = item.querySelector("summary");
+          return summary && summary.textContent.toLowerCase().includes(wanted);
+        });
+        if (!section) return false;
+        panel.style.display = "block";
+        section.open = true;
+        if (wanted.includes("dictionary") && typeof searchText === "string") {
+          const search = panel.querySelector("#zurielDictionarySearch");
+          if (search) {
+            search.value = searchText;
+            search.dispatchEvent(new Event("input", { bubbles: true }));
+          }
+        }
+        if (wanted.includes("concordance") && typeof searchText === "string") {
+          const search = panel.querySelector("#zurielConcordanceQuery");
+          if (search) {
+            search.value = searchText;
+            search.focus();
+          }
+        }
+        panel.scrollIntoView({ behavior: "smooth", block: "start" });
+        return true;
+      },
+
       /* A word tap opens a compact contextual panel beside the passage.
          It never inserts content between verses or scrolls the reader away. */
       openWordInContext: async function (book, chapter, verse, verseText, englishWord, wordIndex) {
