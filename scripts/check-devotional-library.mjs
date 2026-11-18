@@ -2,10 +2,9 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import vm from "node:vm";
 
-const [source,index,bookSource,kjvText] = await Promise.all([
+const [source,index,kjvText] = await Promise.all([
   readFile("zuriel-library.js","utf8"),
   readFile("index.html","utf8"),
-  readFile("bible-data.js","utf8"),
   readFile("kjv.72bec70fcd.json","utf8")
 ]);
 const devotionalBlock = source.match(/devotionals:\s*\[([\s\S]*?)\n\s*\],\s*worshipSongs:/);
@@ -17,19 +16,18 @@ const songs = vm.runInNewContext("([" + worshipBlock[1] + "])");
 const mapping = index.match(/const bookCodes = (\{[\s\S]*?\n\};)/);
 assert.ok(mapping, "The reader Bible book-code map exists.");
 const bookCodes = JSON.parse(mapping[1].replace(/;\s*$/, ""));
-const books = [...bookSource.matchAll(/\{\s*name:\s*"([^"]+)",\s*chapters:\s*(\d+)\s*\}/g)]
-  .map(match => ({name:match[1],chapters:Number(match[2])}));
 const kjv = JSON.parse(kjvText);
 function validReference(reference) {
   const references = String(reference || "").split(/\s*;\s*/).filter(Boolean);
   return references.length > 0 && references.every(value => {
     const match = value.trim().match(/^(.+?)\s+(\d+):(\d+)(?:[-–](\d+))?$/);
     if (!match) return false;
-    const name = match[1].toLowerCase() === "psalm" ? "Psalms" : match[1];
-    const book = books.find(item => item.name.toLowerCase() === name.toLowerCase());
-    if (!book) return false;
+    const name = match[1].trim().toLowerCase() === "psalm" ? "Psalms" : match[1].trim();
+    const mappedName = Object.keys(bookCodes).find(bookName => bookName.toLowerCase() === name.toLowerCase());
+    if (!mappedName) return false;
     const chapter = Number(match[2]), first = Number(match[3]), last = Number(match[4] || match[3]);
-    const verses = kjv[bookCodes[book.name]]?.[chapter-1];
+    const chapters = kjv[bookCodes[mappedName]];
+    const verses = Array.isArray(chapters) && chapter >= 1 ? chapters[chapter - 1] : null;
     return Array.isArray(verses) && first >= 1 && last >= first && last <= verses.length;
   });
 }
