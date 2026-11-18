@@ -26,8 +26,8 @@ assert.ok(bridge.includes("data:image") && bridge.includes("base64"), "native sa
 const library = fs.readFileSync("zuriel-library.js", "utf8");
 assert.match(library, /exportButton\.id === "zgsSaveImage"[\s\S]*?ZurielMedia\.saveImage/, "Save PNG button calls the native Gallery bridge");
 assert.match(library, /new FileReader\(\)[\s\S]*?readAsDataURL\(blob\)/, "canvas PNG blob is converted to a native-compatible data URL");
-assert.match(library, /zgsShareImage[\\s\\S]*?ZurielMedia\\.shareImage/, "Share Image uses the native Android share bridge when available");
-assert.match(library, /zgsShareImage[\\s\\S]*?navigator\\.share/, "Share Image retains the browser system share sheet fallback");
+assert.match(library, /zgsShareImage[\s\S]*?ZurielMedia\.shareImage/, "Share Image uses the native Android share bridge when available");
+assert.match(library, /zgsShareImage[\s\S]*?navigator\.share/, "Share Image retains the browser system share sheet fallback");
 assert.match(library, /Android sharing options opened/, "native share status does not claim delivery by the receiving app");
 assert.match(library, /saved to your Downloads folder/i, "browser/PWA keeps a Downloads fallback");
 
