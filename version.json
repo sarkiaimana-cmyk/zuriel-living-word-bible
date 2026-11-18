@@ -1,4 +1,4 @@
 {
-  "version": "1.4.64",
-  "releaseNotes": "Adds API.Bible as an optional second online translation provider alongside YouVersion. Both provider keys remain server-side; only English versions returned for each authorised key are listed. Chapter text requires publisher attribution, uses the translation rate limiter, and is not stored for offline reading. The complete offline KJV remains unchanged."
+  "version": "1.4.65",
+  "releaseNotes": "Adds 16 contextual studies to the offline Bible dictionary: Altar, Ark of the Covenant, Bema, Boaz, Cherubim, Circumcision, Clean and unclean, Confession, Covenant mediator, Day of Atonement, Deacon, Elder, Firstfruits, Fellowship, Firstborn and Gentleness. Expands the study set from 123 to 139 across 205 terms, with interpretive cautions and KJV-validated references. Retains the optional YouVersion and API.Bible provider selector."
 }
