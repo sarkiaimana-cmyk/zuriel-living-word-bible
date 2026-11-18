@@ -108,4 +108,18 @@ assert.ok(index.includes('"Commentary & theology":["meaning and exposition","the
 assert.ok(library.includes("Open Passage Commentary"), "The reference shelf links to the working commentary collection.");
 assert.ok(packaging.includes('"zuriel-passage-commentary-expansion.json"'), "Capacitor build packages the commentary file.");
 assert.ok(serviceWorker.includes('"./zuriel-passage-commentary-expansion.json"'), "Offline service worker precaches the commentary file.");
+assert.ok(study.includes('id="zurielHistoricalCommentarySection"'), "Historical commentary is nested inside the selected-verse commentary box.");
+assert.ok(study.includes("COMMENTARY_CATALOG_API"), "Historical commentary catalogue endpoint is configured.");
+assert.ok(study.includes("PUBLIC_DOMAIN_MARK"), "Only explicitly identified public-domain sources are eligible.");
+assert.ok(study.includes("APPROVED_HISTORICAL_COMMENTARIES"), "Historical commentary source IDs are restricted to reviewed sources.");
+assert.ok(study.includes("async function loadHistoricalCommentaryCatalog()"), "Historical commentary catalogue loads on demand.");
+assert.ok(study.includes("async function loadHistoricalCommentaryForSelectedVerse()"), "Historical commentary loads for the selected verse.");
+assert.ok(study.includes('COMMENTARY_API + source.id + "/" + bookCode + "/" + requestedReference.chapter + ".simple.json"'),
+  "Historical commentary uses the documented chapter endpoint.");
+assert.ok(study.includes('source.language === "eng"') && study.includes('license === PUBLIC_DOMAIN_MARK'),
+  "Historical commentary source language and licence metadata are verified.");
+assert.ok(study.includes('parsed.protocol !== "https:"'), "External source links require HTTPS.");
+assert.ok(study.includes("Not every verse has a commentary note."), "Uneven commentary coverage is disclosed.");
+assert.ok(study.includes("fetchStudyJson(COMMENTARY_CATALOG_API)"), "Commentary catalogue uses the existing on-device study cache.");
+assert.ok(study.includes("++historicalCommentaryRequest"), "Stale historical commentary requests are cancelled when verse selection changes.");
 console.log("Passage commentary checks passed: 103 unique original notes, validated KJV passage endpoints, contextual fields and cautions, selected-verse matching, search, library navigation, Capacitor packaging and offline precache.");
