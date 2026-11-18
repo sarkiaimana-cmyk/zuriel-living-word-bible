@@ -89,6 +89,7 @@ if (!home.includes('window.ZurielLibrary.open("saved")')) failures.push("The Lib
 if (!worker.includes('"./zuriel-library.js"')) failures.push("Service worker does not precache the studio module.");
 if (!packaging.includes('"zuriel-library.js"')) failures.push("Android web packaging omits the studio module.");
 if (!index.includes("zuriel-library.js")) failures.push("App entry point does not load the studio module.");
+if (!/openGloryVerse: function[\s\S]*?ZurielHomeNavigate\("library"\)[\s\S]*?openPage\("affirmation"\)/.test(library)) failures.push("Reader-launched Glory Verse Studio must reveal the Library section before opening the studio.");
 if (!prWorkflow.includes("node scripts/check-open-book-studio.mjs")) failures.push("PR validation does not run the studio checker.");
 if (!androidWorkflow.includes("node scripts/check-open-book-studio.mjs")) failures.push("Android validation does not run the studio checker.");
 // Home-card integration: WHO HE IS revelations must retain their identity
