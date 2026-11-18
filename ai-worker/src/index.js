@@ -322,19 +322,66 @@ async function handleYouVersionRequest(request, env, dependencies, cors) {
   if (!item || typeof item.content !== "string" || !item.content.trim()) {
     return json({ error: "YouVersion returned no passage text for this request." }, 502, cors);
   }
+
+  // The current YouVersion passage response supplies the text and reference,
+  // while publisher copyright metadata belongs to the Bible resource itself.
+  // Fetch both separately so the reader never mistakes missing passage fields
+  // for missing publisher attribution.
+  let bibleMetadata;
+  try {
+    const metadataResponse = await fetchImpl(YVP_BASE + "/bibles/" + selectedVersionId, {
+      method: "GET",
+      headers: {
+        "X-YVP-App-Key": env.ZITE_YVP_APP_KEY,
+        "Accept": "application/json"
+      },
+      signal: AbortSignal.timeout(10000)
+    });
+    if (!metadataResponse.ok) {
+      const status = yvpErrorStatus(metadataResponse.status);
+      const message = metadataResponse.status === 403
+        ? "YouVersion did not grant metadata access for this Bible version."
+        : metadataResponse.status === 404
+          ? "The selected Bible version could not be found."
+          : metadataResponse.status === 429
+            ? "YouVersion rate limit reached while checking publisher attribution. Please wait and try again."
+            : "Publisher attribution could not be verified with YouVersion.";
+      const retryAfter = metadataResponse.headers && metadataResponse.headers.get("Retry-After");
+      return json({ error: message }, status,
+        retryAfter ? { ...cors, "retry-after": retryAfter } : cors);
+    }
+    bibleMetadata = await metadataResponse.json();
+  } catch {
+    return json({ error: "Publisher attribution could not be verified. Zuriel has withheld this passage." }, 502, cors);
+  }
+
+  if (!bibleMetadata || typeof bibleMetadata !== "object" || Array.isArray(bibleMetadata)) {
+    return json({ error: "YouVersion returned invalid Bible publisher metadata." }, 502, cors);
+  }
+  const copyright = typeof bibleMetadata.copyright === "string" ? bibleMetadata.copyright : "";
+  const promotionalContent = typeof bibleMetadata.promotional_content === "string"
+    ? bibleMetadata.promotional_content : "";
+  if (!copyright.trim() && !promotionalContent.trim()) {
+    return json({ error: "YouVersion did not supply publisher attribution for this Bible version. Zuriel has withheld this passage." }, 502, cors);
+  }
+
   return json({
     source: "YouVersion Platform",
     version: {
       id: selectedVersionId,
-      abbreviation: typeof item.version_abbreviation === "string" ? item.version_abbreviation : "",
-      title: typeof item.version_title === "string" ? item.version_title : ""
+      abbreviation: typeof bibleMetadata.abbreviation === "string"
+        ? bibleMetadata.abbreviation
+        : (typeof bibleMetadata.localized_abbreviation === "string" ? bibleMetadata.localized_abbreviation : ""),
+      title: typeof bibleMetadata.title === "string"
+        ? bibleMetadata.title
+        : (typeof bibleMetadata.localized_title === "string" ? bibleMetadata.localized_title : "")
     },
     passage: {
       id: typeof item.id === "string" ? item.id : "",
       reference: typeof item.reference === "string" ? item.reference : "",
       content: item.content,
-      copyright: typeof item.copyright === "string" ? item.copyright : "",
-      promotional_content: typeof item.promotional_content === "string" ? item.promotional_content : ""
+      copyright: copyright,
+      promotional_content: promotionalContent
     },
     format: url.searchParams.get("format") || "html",
     notice: "Display the publisher's copyright and attribution with this Scripture. Online API text is not stored for offline use unless the relevant licence expressly permits it."
