@@ -1,6 +1,11 @@
+import { readFile } from "node:fs/promises";
 import { applyAndroidVersion, deriveAndroidVersionCode } from "./set-android-version.mjs";
 
+const release = JSON.parse(await readFile(new URL("../version.json", import.meta.url), "utf8"));
+const packageInfo = JSON.parse(await readFile(new URL("../package.json", import.meta.url), "utf8"));
+
 const failures = [];
+check("npm package version matches published release metadata", packageInfo.version === release.version);
 function check(label, condition) {
   if (!condition) failures.push(label);
 }
