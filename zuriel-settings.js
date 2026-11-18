@@ -41,7 +41,16 @@
   function loadSettings() {
     try {
       const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
-      return Object.assign({}, DEFAULTS, saved);
+      const loaded = Object.assign({}, DEFAULTS, saved);
+      // Existing installs previously inherited ivory as the default. Move that
+      // legacy default to the newly requested clean white page once, while
+      // preserving any other paper choice the reader deliberately selected.
+      const migrationKey = "zurielReaderWhitePageDefaultV172";
+      if (!localStorage.getItem(migrationKey)) {
+        if (!saved.paper || saved.paper === "ivory") loaded.paper = "white";
+        localStorage.setItem(migrationKey, "1");
+      }
+      return loaded;
     } catch (error) {
       return Object.assign({}, DEFAULTS);
     }
