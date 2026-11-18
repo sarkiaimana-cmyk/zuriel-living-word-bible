@@ -1282,6 +1282,13 @@ async function openChapter(book, chapter) {
     const selectedVerseElement = message.querySelector(
       '.verse[data-verse-number="' + verseNumber + '"]'
     );
+    // All selection paths (verse tap, word tap, search result and bookmark)
+    // share one state update so only one verse is ever marked as selected.
+    document.querySelectorAll("#message .verse.zuriel-selected-verse")
+      .forEach(function (node) {
+        node.classList.remove("zuriel-selected-verse");
+        node.setAttribute("aria-expanded", "false");
+      });
     if (studyPanelHome) restoreStudyPanelToReader();
     if (externalPanelCurrent) restoreExternalVersePanel();
     if (selectedVerseElement) {
