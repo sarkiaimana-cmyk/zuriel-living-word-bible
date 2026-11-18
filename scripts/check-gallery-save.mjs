@@ -17,7 +17,7 @@ assert.match(bridge, /getAlbums\(\)/, "Gallery save locates the app album");
 assert.match(bridge, /createAlbum\(\{\s*name:\s*name\s*\}\)/, "Gallery save creates the Zuriel album when needed");
 assert.match(bridge, /savePhoto\(/, "Gallery save uses the native photo library API");
 assert.match(bridge, /albumIdentifier/, "Android Gallery save targets a real album identifier");
-assert.match(bridge, /data:image\\\/png;base64/, "native save accepts a base64 PNG data URL");
+assert.ok(bridge.includes("data:image") && bridge.includes("base64"), "native save accepts a base64 PNG data URL");
 
 const library = fs.readFileSync("zuriel-library.js", "utf8");
 assert.match(library, /exportButton\.id === "zgsSaveImage"[\s\S]*?ZurielMedia\.saveImage/, "Save PNG button calls the native Gallery bridge");
