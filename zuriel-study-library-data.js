@@ -34,7 +34,8 @@
   }
   function refsFor(item) {
     const values = item.references || item.scriptureReferences || item.keyPassages ||
-      item.passages || item.passageReferences || item.relatedReferences || [];
+      item.passages || item.passageReferences || item.relatedReferences ||
+      (Array.isArray(item.pathway) ? item.pathway.map(step => step.reference) : []);
     const refs = Array.isArray(values) ? values : [values];
     const output = refs.map(value => {
       if (typeof value === "string") return value;
@@ -116,6 +117,7 @@
       ["Passage meaning", ["contextAndMeaning", "overview", "definition", "meaning", "explanation", "significance", "focus"]],
       ["Study observation", ["studyObservation", "observation", "interpretation", "studyNote"]],
       ["Connected passage explanation", ["connectionNotes", "connections", "relationship", "whyItConnects"]],
+      ["Passage-by-passage pathway", ["pathway"]],
       ["Study questions", ["studyQuestions", "questions", "reflectionPrompt"]],
       ["Practical application", ["lifeApplication", "practicalApplication", "application"]],
       ["Interpretive caution", ["interpretiveCaution", "contextCaution", "studyCaution", "caution"]],
