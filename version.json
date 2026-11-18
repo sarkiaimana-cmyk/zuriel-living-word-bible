@@ -1,4 +1,4 @@
 {
-  "version": "1.4.65",
-  "releaseNotes": "Adds 16 contextual studies to the offline Bible dictionary: Altar, Ark of the Covenant, Bema, Boaz, Cherubim, Circumcision, Clean and unclean, Confession, Covenant mediator, Day of Atonement, Deacon, Elder, Firstfruits, Fellowship, Firstborn and Gentleness. Expands the study set from 123 to 139 across 205 terms, with interpretive cautions and KJV-validated references. Retains the optional YouVersion and API.Bible provider selector."
+  "version": "1.4.66",
+  "releaseNotes": "Adds 16 contextual Bible dictionary studies: High priest, Inheritance, Intertestamental period, Kingdom of heaven, Kinsman-redeemer, Leprosy, Laying on of hands, Mediation, Mercy seat, New birth, Offering, Ordination, Passover lamb, Pentateuch, Priesthood and Redemption of creation. Expands the study set from 139 to 155 across 205 terms, with interpretive cautions and KJV-validated references. Retains the YouVersion and optional API.Bible provider selector."
 }
