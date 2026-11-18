@@ -203,7 +203,7 @@
       ]},
       { category: "Spiritual Growth", items: [
         { text: "I continue to grow in the grace and knowledge of Jesus Christ.", reference: "2 Peter 3:18" },
-        { text: "I abide in Christ, and my life bears fruit that honours God.", reference: "John 15:5, 8" }
+        { text: "I abide in Christ, and my life bears fruit that honours God.", reference: "John 15:5; John 15:8" }
       ]}
     ],
 
