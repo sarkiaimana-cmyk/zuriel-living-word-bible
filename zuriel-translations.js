@@ -168,6 +168,7 @@
     }
     select.hidden = false;
     loadButton.hidden = false;
+    downloadButton.hidden = false;
     select.disabled = true;
     loadButton.disabled = true;
     status("Checking the English Bible versions authorised for " +
@@ -314,7 +315,8 @@
             (!saved || !Number.isFinite(saved.savedAt) || Date.now() - saved.savedAt > API_BIBLE_CACHE_MAX_AGE);
           if (!saved || expired || !saved.payload || !saved.payload.passage ||
               typeof saved.payload.passage.content !== "string" || !saved.payload.passage.content.trim() ||
-              typeof saved.payload.passage.copyright !== "string" || !saved.payload.passage.copyright.trim()) {
+              ((typeof saved.payload.passage.copyright !== "string" || !saved.payload.passage.copyright.trim()) &&
+               (typeof saved.payload.passage.promotional_content !== "string" || !saved.payload.passage.promotional_content.trim()))) {
             resolve(null); return;
           }
           resolve(saved.payload);
@@ -326,8 +328,8 @@
 
   async function saveCachedChapter(provider, versionId, reference, payload) {
     if (!payload || !payload.passage || typeof payload.passage.content !== "string" ||
-        !payload.passage.content.trim() || typeof payload.passage.copyright !== "string" ||
-        !payload.passage.copyright.trim()) return false;
+        !payload.passage.content.trim() || (typeof payload.passage.copyright !== "string" || !payload.passage.copyright.trim()) &&
+        (typeof payload.passage.promotional_content !== "string" || !payload.passage.promotional_content.trim())) return false;
     const db = await openTranslationCache();
     if (!db) return false;
     return new Promise(resolve => {
@@ -401,7 +403,8 @@
             const payload = await requestJson(path);
             const item = payload && payload.passage;
             if (!item || typeof item.content !== "string" || !item.content.trim() ||
-                typeof item.copyright !== "string" || !item.copyright.trim()) {
+                ((typeof item.copyright !== "string" || !item.copyright.trim()) &&
+                (typeof item.promotional_content !== "string" || !item.promotional_content.trim()))) {
               throw new Error("Publisher text or copyright attribution was missing.");
             }
             if (!await saveCachedChapter(provider, versionId, job.reference, payload)) {
@@ -490,12 +493,10 @@
 
     const reference = bookCode + "." + currentChapter.chapter;
     if (!apiReady) {
-      {
-        const saved = await readCachedChapter(selectedProvider, selectedVersionId, reference);
-        if (saved) {
-          try { renderPassage(saved, true); return; }
-          catch (_) {}
-        }
+      const saved = await readCachedChapter(selectedProvider, selectedVersionId, reference);
+      if (saved) {
+        try { renderPassage(saved, true); return; }
+        catch (_) {}
       }
       status("Secure online translation access is not connected. No permitted saved copy is available; your offline KJV remains unchanged.");
       return;
