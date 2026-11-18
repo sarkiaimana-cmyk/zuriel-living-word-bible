@@ -386,6 +386,12 @@ try {
   failures.push(["curated cross-reference integrity", error.message]);
 }
 
+const cacheCloneIndex = study.indexOf("cacheCopy = response.clone()");
+const cacheReadIndex = study.indexOf("const data = await response.json()", cacheCloneIndex);
+if (cacheCloneIndex < 0 || cacheReadIndex <= cacheCloneIndex) {
+  failures.push(["offline study cache ordering", "clone the response before consuming its JSON body"]);
+}
+
 if (failures.length) {
   console.error("Original-language study integrity checks failed:");
   for (const [label, detail] of failures) console.error(" - " + label + ": " + detail);
