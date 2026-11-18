@@ -10,6 +10,9 @@ assert.match(source, /activeCategory === "All Resources" \|\| item\.kind === act
 for (const title of ["Easton's Bible Dictionary","Smith's Bible Dictionary","Strong's Exhaustive Concordance","Matthew Henry's Commentary","Treasury of Scripture Knowledge","John Gill's Exposition of the Bible"])
  assert.ok(source.includes(title), "Missing catalogue record: " + title);
 assert.match(source, /Source and rights notes/);
+assert.match(source, /Open Zuriel's offline Bible dictionary/);
+assert.match(source, /window\\.ZurielHomeNavigate\\("study"\\)/);
+assert.match(source, /zurielDictionarySearch/);
 assert.match(source, /Catalogue record only/);
 assert.match(source, /complete text is not currently bundled/);
 assert.match(source, /No resources match that search/);
