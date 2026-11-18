@@ -49,6 +49,9 @@ try {
 
 const checks = [
     ["study panel does not scroll the reader away from Scripture", "do not scroll away from Scripture"],
+  ["reference shelf can open the built-in dictionary and concordance", "openSection: function (sectionTitle, searchText)"],
+  ["reference shelf opens the requested dictionary section", 'includes(wanted)'],
+  ["dictionary search can be prefilled from the reference shelf", 'search.dispatchEvent(new Event("input", { bubbles: true }))'],
   ["dictionary search normalizes Unicode accents", '.normalize("NFD")'],
   ["dictionary exact-title matches rank first", "title === term) score = 100"],
   ["dictionary title-prefix matches rank highly", "title.startsWith(term)"],
