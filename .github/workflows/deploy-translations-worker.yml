@@ -79,3 +79,46 @@ jobs:
             echo "::error::The final Worker deployment failed after secret installation. Review the Cloudflare account and Worker permissions; the YouVersion key is not printed by this workflow."
             exit 1
           fi
+
+      - name: Discover Worker URL and smoke-test YouVersion access
+        run: |
+          set -euo pipefail
+          trap 'rm -f .translation-smoke.json .translation-smoke.headers' EXIT
+
+          SUBDOMAIN_JSON="$(curl -fsS --retry 4 --retry-delay 2 --retry-all-errors \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/subdomain")"
+          WORKERS_SUBDOMAIN="$(printf '%s' "$SUBDOMAIN_JSON" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);if(!j.success||!j.result?.subdomain)process.exit(1);process.stdout.write(j.result.subdomain);});')"
+          if [ -z "$WORKERS_SUBDOMAIN" ]; then
+            echo "::error::Cloudflare did not return a workers.dev subdomain. Enable the account workers.dev subdomain and rerun deployment."
+            exit 1
+          fi
+
+          SCRIPT_SUBDOMAIN_JSON="$(curl -fsS --retry 4 --retry-delay 2 --retry-all-errors \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts/zuriel-bible-translations/subdomain")"
+          SCRIPT_ENABLED="$(printf '%s' "$SCRIPT_SUBDOMAIN_JSON" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);process.stdout.write(String(Boolean(j.result?.enabled)));});')"
+          if [ "$SCRIPT_ENABLED" != "true" ]; then
+            echo "::error::The Worker workers.dev route is not enabled. Enable it for zuriel-bible-translations in Cloudflare and rerun this workflow."
+            exit 1
+          fi
+
+          WORKER_URL="https://zuriel-bible-translations.$WORKERS_SUBDOMAIN.workers.dev"
+          HTTP_STATUS="$(curl -sS --retry 5 --retry-delay 3 --retry-all-errors \
+            -o .translation-smoke.json -D .translation-smoke.headers -w '%{http_code}' \
+            -H "Origin: https://sarkiaimana-cmyk.github.io" \
+            "$WORKER_URL/api/youversion/bibles")"
+          if [ "$HTTP_STATUS" != "200" ]; then
+            echo "::error::The deployed YouVersion endpoint returned HTTP $HTTP_STATUS. Check the YouVersion app key, publisher access and Worker logs."
+            exit 1
+          fi
+          if ! grep -qi 'access-control-allow-origin: https://sarkiaimana-cmyk.github.io' .translation-smoke.headers; then
+            echo "::error::The translation Worker did not return the expected GitHub Pages CORS origin."
+            exit 1
+          fi
+
+          VERSION_COUNT="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".translation-smoke.json","utf8"));if(!Array.isArray(j.data))process.exit(1);process.stdout.write(String(j.data.length));')"
+          echo "::notice title=YouVersion proxy deployed::$WORKER_URL"
+          echo "Worker URL: $WORKER_URL"
+          echo "Authorised Bible versions returned: $VERSION_COUNT"
+          echo "App endpoint to configure: window.ZURIEL_TRANSLATION_API_BASE = \"$WORKER_URL\";"
