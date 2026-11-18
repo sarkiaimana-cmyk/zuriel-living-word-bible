@@ -25,10 +25,10 @@
     apiBasePromise = (async function () {
       try {
         const response = await fetch(
-          "https://raw.githubusercontent.com/sarkiaimana-cmyk/zuriel-living-word-bible/main/version.json",
+          "./version.json",
           {
             method: "GET",
-            cache: "no-store",
+            cache: "no-cache",
             credentials: "omit",
             referrerPolicy: "no-referrer",
             headers: { "Accept": "application/json" }
@@ -267,11 +267,120 @@
     }
   }
 
-  async function loadPassage() {
-    if (!await resolveApiBase()) {
-      status("Secure online translation access has not been connected yet. Your offline KJV is unchanged.");
-      return;
+  const TRANSLATION_CACHE_DB = "zuriel-translation-cache-v1";
+  const API_BIBLE_CACHE_MAX_AGE = 29 * 24 * 60 * 60 * 1000;
+
+  function openTranslationCache() {
+    return new Promise(resolve => {
+      if (!("indexedDB" in window)) { resolve(null); return; }
+      let request;
+      try { request = window.indexedDB.open(TRANSLATION_CACHE_DB, 1); }
+      catch (_) { resolve(null); return; }
+      request.onupgradeneeded = function () {
+        const db = request.result;
+        if (!db.objectStoreNames.contains("chapters")) {
+          db.createObjectStore("chapters", { keyPath: "key" });
+        }
+      };
+      request.onsuccess = function () { resolve(request.result); };
+      request.onerror = function () { resolve(null); };
+      request.onblocked = function () { resolve(null); };
+    });
+  }
+
+  function translationCacheKey(provider, versionId, reference) {
+    return [provider, String(versionId), String(reference)].join("|");
+  }
+
+  async function readCachedApiBibleChapter(versionId, reference) {
+    const db = await openTranslationCache();
+    if (!db) return null;
+    return new Promise(resolve => {
+      try {
+        const transaction = db.transaction("chapters", "readonly");
+        const request = transaction.objectStore("chapters").get(
+          translationCacheKey("api-bible", versionId, reference)
+        );
+        request.onsuccess = function () {
+          const saved = request.result;
+          if (!saved || !Number.isFinite(saved.savedAt) ||
+              Date.now() - saved.savedAt > API_BIBLE_CACHE_MAX_AGE ||
+              !saved.payload || !saved.payload.passage ||
+              typeof saved.payload.passage.content !== "string" ||
+              !saved.payload.passage.content.trim() ||
+              typeof saved.payload.passage.copyright !== "string" ||
+              !saved.payload.passage.copyright.trim()) {
+            resolve(null);
+            return;
+          }
+          resolve(saved.payload);
+        };
+        request.onerror = function () { resolve(null); };
+        transaction.onabort = function () { resolve(null); };
+      } catch (_) { resolve(null); }
+    });
+  }
+
+  async function saveApiBibleChapter(versionId, reference, payload) {
+    if (selectedProvider !== "api-bible" || !payload || !payload.passage ||
+        typeof payload.passage.content !== "string" ||
+        !payload.passage.content.trim() ||
+        typeof payload.passage.copyright !== "string" ||
+        !payload.passage.copyright.trim()) return false;
+    const db = await openTranslationCache();
+    if (!db) return false;
+    return new Promise(resolve => {
+      try {
+        const transaction = db.transaction("chapters", "readwrite");
+        transaction.objectStore("chapters").put({
+          key: translationCacheKey("api-bible", versionId, reference),
+          savedAt: Date.now(),
+          payload: payload
+        });
+        transaction.oncomplete = function () { resolve(true); };
+        transaction.onerror = function () { resolve(false); };
+        transaction.onabort = function () { resolve(false); };
+      } catch (_) { resolve(false); }
+    });
+  }
+
+  function renderPassage(payload, offline) {
+    const item = payload && payload.passage;
+    if (!item || typeof item.content !== "string" || !item.content.trim()) {
+      throw new Error("No passage text was returned for this chapter.");
     }
+    const copyright = typeof item.copyright === "string" ? item.copyright.trim() : "";
+    const promotional = typeof item.promotional_content === "string" ? item.promotional_content.trim() : "";
+    if (!copyright && !promotional) {
+      throw new Error("Publisher attribution was not supplied. Zuriel has withheld this passage until its attribution can be verified.");
+    }
+    const providerName = selectedProvider === "youversion" ? "YouVersion" : "API.Bible";
+    const selectedLabel = select.options[select.selectedIndex]
+      ? String(select.options[select.selectedIndex].textContent || "").split("—").slice(1).join("—").trim()
+      : "";
+    passageHeading.textContent = (item.reference || (currentChapter.book + " " + currentChapter.chapter)) +
+      " — " + ((payload.version && (payload.version.abbreviation || payload.version.title)) || selectedLabel || "Selected translation") +
+      " (" + providerName + ")";
+    passage.textContent = item.content;
+    passage.hidden = false;
+    attribution.textContent = [
+      copyright,
+      promotional,
+      offline
+        ? "Offline copy saved on this device. API.Bible content is refreshed online within 29 days."
+        : (selectedProvider === "api-bible"
+          ? "This chapter is saved on this device for offline reading; it must be refreshed online within 29 days."
+          : "Online text is not saved for offline use unless its publisher licence permits it.")
+    ].filter(Boolean).join(" ");
+    attribution.hidden = false;
+    status(offline
+      ? "Showing your saved API.Bible chapter offline. It remains available until its 29-day refresh window expires."
+      : "Online passage loaded successfully." +
+        (selectedProvider === "api-bible" ? " A compliant offline copy has been saved on this device." : ""));
+  }
+
+  async function loadPassage() {
+    const apiReady = await resolveApiBase();
     if (!currentChapter) {
       status("Open a Bible chapter first, then choose an online translation.");
       return;
@@ -280,10 +389,23 @@
       ? window.ZurielBibleBookCode(currentChapter.book)
       : null;
     const validVersionId = selectedProvider === "youversion"
-      ? /^\d+$/.test(selectedVersionId)
-      : /^[a-f0-9]{16}-\d{2}$/i.test(selectedVersionId);
+      ? /^\\d+$/.test(selectedVersionId)
+      : /^[a-f0-9]{16}-\\d{2}$/i.test(selectedVersionId);
     if (!bookCode || !validVersionId) {
       status("Choose a valid authorised translation.");
+      return;
+    }
+
+    const reference = bookCode + "." + currentChapter.chapter;
+    if (!apiReady) {
+      if (selectedProvider === "api-bible") {
+        const saved = await readCachedApiBibleChapter(selectedVersionId, reference);
+        if (saved) {
+          try { renderPassage(saved, true); return; }
+          catch (_) {}
+        }
+      }
+      status("Secure online translation access is not connected. No permitted saved copy is available; your offline KJV remains unchanged.");
       return;
     }
 
@@ -296,7 +418,6 @@
     status("Loading the selected online translation…");
 
     try {
-      const reference = bookCode + "." + currentChapter.chapter;
       const path = selectedProvider === "youversion"
         ? "/api/youversion/bibles/" + encodeURIComponent(selectedVersionId) +
           "/passages/" + reference + "?format=text"
@@ -304,27 +425,21 @@
           "/chapters/" + encodeURIComponent(reference);
       const payload = await requestJson(path, activeController);
       if (requestId !== requestSequence) return;
-      const item = payload && payload.passage;
-      if (!item || typeof item.content !== "string" || !item.content.trim()) {
-        throw new Error("No passage text was returned for this chapter.");
+      renderPassage(payload, false);
+      if (selectedProvider === "api-bible") {
+        await saveApiBibleChapter(selectedVersionId, reference, payload);
       }
-      const copyright = typeof item.copyright === "string" ? item.copyright.trim() : "";
-      const promotional = typeof item.promotional_content === "string" ? item.promotional_content.trim() : "";
-      if (!copyright && !promotional) {
-        throw new Error("Publisher attribution was not supplied. Zuriel has withheld this passage until its attribution can be verified.");
-      }
-      const providerName = selectedProvider === "youversion" ? "YouVersion" : "API.Bible";
-      passageHeading.textContent = (item.reference || (currentChapter.book + " " + currentChapter.chapter)) +
-        " — " + ((payload.version && (payload.version.abbreviation || payload.version.title)) || "Selected translation") +
-        " (" + providerName + ")";
-      passage.textContent = item.content;
-      passage.hidden = false;
-      attribution.textContent = [copyright, promotional, "Online text is not stored for offline use."].filter(Boolean).join(" ");
-      attribution.hidden = false;
-      status("Online passage loaded. The KJV remains your offline Bible text.");
     } catch (error) {
       if (error && error.name === "AbortError") return;
-      if (requestId === requestSequence) {
+      if (requestId === requestSequence && selectedProvider === "api-bible") {
+        const saved = await readCachedApiBibleChapter(selectedVersionId, reference);
+        if (saved) {
+          try { renderPassage(saved, true); }
+          catch (_) { status(error.message || "The online passage could not be loaded."); }
+        } else {
+          status(error.message || "The online passage could not be loaded. Your offline KJV is unchanged.");
+        }
+      } else if (requestId === requestSequence) {
         status(error.message || "The online passage could not be loaded. Your offline KJV is unchanged.");
       }
     } finally {
