@@ -46,7 +46,7 @@ requireText(client, "item.promotional_content", "Publisher promotional attributi
 requireText(client, "/chapters/", "API.Bible chapter retrieval path");
 requireText(client, "loadedProvider === selectedProvider", "Provider-specific catalogue state");
 requireText(client, "Publisher attribution was not supplied", "Fail-closed attribution requirement");
-requireText(client, "API.Bible chapters you open are saved on this device for offline reading", "API.Bible offline-cache notice");
+requireText(client, "Select an authorised translation and download all 66 books to this device", "Full Bible offline download guidance");
 requireText(client, '"./version.json"', "Offline-capable local release metadata discovery");
 requireText(client, "indexedDB.open(TRANSLATION_CACHE_DB, 2)", "IndexedDB translation cache");
 requireText(client, "API_BIBLE_CACHE_MAX_AGE = 29 * 24 * 60 * 60 * 1000", "API.Bible 29-day refresh limit");
