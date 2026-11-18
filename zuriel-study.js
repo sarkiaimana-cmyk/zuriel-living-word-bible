@@ -1648,7 +1648,7 @@
               <option value="phrase">Exact phrase</option>
             </select>
             <button type="button" class="study-action" id="zurielConcordanceSearch">Search Concordance</button>
-            <p class="study-small">Results are from the complete offline KJV text. The concordance counts all matching verses and displays up to 200 results per search. It searches English words and phrases; it does not yet claim Hebrew or Greek lemma concordance coverage.</p>
+            <p class="study-small">Results are from the complete offline KJV text. The concordance counts every matching occurrence, reports how many verses contain the word or phrase, and displays up to 200 verse references per search. It searches English words and phrases; it does not yet claim Hebrew or Greek lemma concordance coverage.</p>
             <div id="zurielConcordanceResults" aria-live="polite">
               <p>Enter at least three characters to search the KJV concordance.</p>
             </div>
@@ -1992,16 +1992,20 @@
         summary.className = "study-small";
         const totalMatches = Number.isInteger(matches.totalMatches)
           ? matches.totalMatches : matches.length;
-        summary.textContent = "Found " + totalMatches +
-          " matching KJV verses; showing " + matches.length +
-          (totalMatches > matches.length ? " (display limit reached)" : "") +
+        const totalOccurrences = Number.isInteger(matches.totalOccurrences)
+          ? matches.totalOccurrences : totalMatches;
+        summary.textContent = "Found " + totalOccurrences +
+          (totalOccurrences === 1 ? " occurrence" : " occurrences") + " across " +
+          totalMatches + " matching KJV verses; showing " + matches.length +
+          " verse references" + (totalMatches > matches.length ? " (display limit reached)" : "") +
           ". Tap a result to open that verse.";
         concordanceResults.appendChild(summary);
         matches.forEach(function (item) {
           const result = document.createElement("button");
           result.type = "button";
           result.className = "study-link";
-          result.textContent = item.book + " " + item.chapter + ":" + item.verse + " — " + item.text;
+          result.textContent = item.book + " " + item.chapter + ":" + item.verse + " · " +
+            item.occurrences + (item.occurrences === 1 ? " occurrence" : " occurrences") + " — " + item.text;
           result.addEventListener("click", async function () {
             try {
               await window.openChapter(item.book, item.chapter);
