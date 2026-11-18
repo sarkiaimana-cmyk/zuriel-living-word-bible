@@ -2,12 +2,57 @@
 (function () {
   "use strict";
 
-  const API_BASE = String(window.ZURIEL_TRANSLATION_API_BASE || "").trim().replace(/\/+$/, "");
+  let API_BASE = String(window.ZURIEL_TRANSLATION_API_BASE || "").trim().replace(/\/+$/, "");
+  let apiBasePromise = null;
   const reader = document.getElementById("bibleReader");
+
+  function validWorkerEndpoint(value) {
+    try {
+      const parsed = new URL(String(value || "").trim());
+      return parsed.protocol === "https:" &&
+        parsed.hostname.startsWith("zuriel-bible-translations.") &&
+        parsed.hostname.endsWith(".workers.dev") &&
+        parsed.pathname === "/" &&
+        !parsed.search && !parsed.hash;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  async function resolveApiBase() {
+    if (validWorkerEndpoint(API_BASE)) return API_BASE;
+    if (apiBasePromise) return apiBasePromise;
+    apiBasePromise = (async function () {
+      try {
+        const response = await fetch(
+          "https://raw.githubusercontent.com/sarkiaimana-cmyk/zuriel-living-word-bible/main/version.json",
+          {
+            method: "GET",
+            cache: "no-store",
+            credentials: "omit",
+            referrerPolicy: "no-referrer",
+            headers: { "Accept": "application/json" }
+          }
+        );
+        if (!response.ok) return "";
+        const metadata = await response.json();
+        const candidate = String(metadata && metadata.translationApiBase || "").trim().replace(/\/+$/, "");
+        if (!validWorkerEndpoint(candidate)) return "";
+        API_BASE = candidate;
+        return API_BASE;
+      } catch (_) {
+        return "";
+      }
+    })();
+    const resolved = await apiBasePromise;
+    if (!resolved) apiBasePromise = null;
+    return resolved;
+  }
   if (!reader || document.getElementById("zurielTranslationCompare")) return;
 
   let currentChapter = null;
   let versionsLoaded = false;
+  let versionsLoading = false;
   let selectedVersionId = "";
   let requestSequence = 0;
   let activeController = null;
@@ -90,25 +135,55 @@
   }
 
   async function loadVersions() {
-    if (versionsLoaded) return;
-    if (!API_BASE) {
+    if (versionsLoaded || versionsLoading) return;
+    versionsLoading = true;
+    if (!await resolveApiBase()) {
       status("Secure online translation access has not been connected yet. Your offline KJV is unchanged.");
+      versionsLoading = false;
       return;
     }
+    select.hidden = false;
+    loadButton.hidden = false;
     select.disabled = true;
     loadButton.disabled = true;
     status("Checking the English Bible versions authorised for Zuriel…");
     try {
-      const payload = await requestJson("/api/youversion/bibles");
-      if (!payload || !Array.isArray(payload.data)) {
-        throw new Error("The authorised Bible version list could not be verified.");
-      }
-      const available = payload.data.filter(item =>
-        item && Number.isInteger(Number(item.id)) &&
-        typeof item.title === "string" &&
-        typeof item.abbreviation === "string" &&
-        (!item.language || !item.language.iso_639_1 || item.language.iso_639_1 === "en")
-      );
+      const catalogue = [];
+      const seenTokens = new Set();
+      let nextPageToken = "";
+      let pageCount = 0;
+      do {
+        const pagePath = "/api/youversion/bibles" +
+          (nextPageToken ? "?next_page_token=" + encodeURIComponent(nextPageToken) : "");
+        const payload = await requestJson(pagePath);
+        if (!payload || !Array.isArray(payload.data)) {
+          throw new Error("The authorised Bible version list could not be verified.");
+        }
+        catalogue.push(...payload.data);
+        const token = typeof payload.next_page_token === "string"
+          ? payload.next_page_token.trim()
+          : "";
+        if (!token) {
+          nextPageToken = "";
+          break;
+        }
+        if (seenTokens.has(token)) {
+          throw new Error("YouVersion repeated a catalogue page token. Please retry the version list.");
+        }
+        seenTokens.add(token);
+        nextPageToken = token;
+        pageCount++;
+      } while (nextPageToken && pageCount < 10);
+
+      const uniqueVersions = new Map();
+      catalogue.forEach(item => {
+        if (!item || !Number.isInteger(Number(item.id)) ||
+            typeof item.title !== "string" ||
+            typeof item.abbreviation !== "string" ||
+            (item.language && item.language.iso_639_1 && item.language.iso_639_1 !== "en")) return;
+        uniqueVersions.set(String(item.id), item);
+      });
+      const available = Array.from(uniqueVersions.values());
       select.replaceChildren(node("option", "", "Choose an available translation"));
       available.forEach(item => {
         const option = node("option", "", item.abbreviation + " — " + item.title);
@@ -119,12 +194,16 @@
       select.disabled = false;
       loadButton.disabled = true;
       status(available.length
-        ? available.length + " English version(s) are authorised for this app key. Choose one to compare."
+        ? available.length + " English version(s) are authorised for this app key. " +
+          (nextPageToken ? "The catalogue is large; the first 1,000 results are shown. " : "") +
+          "Choose one to compare."
         : "No English Bible versions are currently authorised for Zuriel. The offline KJV remains available.");
     } catch (error) {
       select.disabled = true;
       loadButton.disabled = true;
       status(error.message || "Online translation access is temporarily unavailable.");
+    } finally {
+      versionsLoading = false;
     }
   }
 
@@ -146,7 +225,7 @@
   }
 
   async function loadPassage() {
-    if (!API_BASE) {
+    if (!await resolveApiBase()) {
       status("Secure online translation access has not been connected yet. Your offline KJV is unchanged.");
       return;
     }
@@ -230,14 +309,10 @@
       return;
     }
     if (panel.open) {
-      if (!API_BASE) {
-        status("Secure online translation access has not been connected yet. Your offline KJV is unchanged.");
-      } else {
-        loadVersions();
-        if (currentChapter) {
-          loadButton.disabled = !selectedVersionId;
-          if (versionsLoaded) status("Ready to compare " + currentChapter.book + " " + currentChapter.chapter + ".");
-        }
+      loadVersions();
+      if (currentChapter && versionsLoaded) {
+        loadButton.disabled = !selectedVersionId;
+        status("Ready to compare " + currentChapter.book + " " + currentChapter.chapter + ".");
       }
     }
   });
@@ -254,19 +329,20 @@
       typeof window.ZurielVerseOverlay.openExternal === "function" &&
       window.ZurielVerseOverlay.openExternal(panel);
     if (!shownInVerseOverlay) panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    if (!API_BASE) {
-      status("Online translation comparison is not connected yet. Your selected verse and offline KJV remain available.");
-      return;
-    }
-    status("Choose an authorised translation below. The comparison panel is ready for " +
-      detail.reference + ". Load the chapter to compare its wording.");
-    loadVersions();
+    status("Checking whether online translation comparison is connected. Your offline KJV remains available.");
+    loadVersions().then(function () {
+      if (versionsLoaded) {
+        status("Choose an authorised translation below. The comparison panel is ready for " +
+          detail.reference + ". Load the chapter to compare its wording.");
+      }
+    });
   });
 
   window.ZurielTranslations = {
-    configured: Boolean(API_BASE),
+    get configured() { return Boolean(API_BASE); },
     refreshVersions: function () {
       versionsLoaded = false;
+      apiBasePromise = null;
       return loadVersions();
     }
   };
