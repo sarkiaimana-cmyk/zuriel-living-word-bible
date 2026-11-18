@@ -1568,7 +1568,7 @@
         </details>
 
         <details>
-          <summary>🔤 4. Hebrew and Greek Word Study</summary>
+          <summary>🔤 5. Hebrew and Greek Word Study</summary>
           <div class="study-body" id="zurielOriginalWords">
             <p>Original-language words for your selected verse. Tap any word to open its Strong's lexicon entry.</p>
             <div id="zurielOriginalWordResults" aria-live="polite">
@@ -1580,7 +1580,7 @@
         </details>
 
         <details>
-          <summary>📖 Biblical Dictionary — Search Key Terms</summary>
+          <summary>📖 6. Biblical Dictionary — Search Key Terms</summary>
           <div class="study-body">
             <p>Search concise explanations of important biblical words and themes. These are introductory study summaries, not exhaustive lexical definitions; always read the linked passages in context.</p>
             <label for="zurielDictionarySearch">Search dictionary</label>
@@ -1592,7 +1592,7 @@
         </details>
 
         <details>
-          <summary>🔗 6. Connected Scriptures</summary>
+          <summary>🔗 7. Connected Scriptures</summary>
           <div class="study-body">
             <p>Related Scriptures for the selected verse. Tap a reference to open it and compare the full passage.</p>
             <p class="study-small">A connection may be a quotation, shared theme, parallel account, prophecy or fulfilment, or another textual link. The source does not classify every link. Zuriel labels a relationship only when the source supplies that information; otherwise it is shown as an unclassified related Scripture. Read both passages in context.</p>
@@ -1603,7 +1603,7 @@
         </details>
 
         <details>
-          <summary>📚 7. Bible Concordance — Find Words and Phrases</summary>
+          <summary>📚 8. Bible Concordance — Find Words and Phrases</summary>
           <div class="study-body">
             <p>Search the offline King James Version for an exact English word or a phrase. Word searches match whole words, not partial spellings. Phrase searches find the exact phrase within a verse.</p>
             <label for="zurielConcordanceQuery">Word or phrase</label>
@@ -1622,7 +1622,7 @@
         </details>
 
         <details>
-          <summary>📚 8. Theology and Deeper Study</summary>
+          <summary>📚 9. Theology and Deeper Study</summary>
           <div class="study-body" id="zurielDeeperStudy">
             <p>Explore biblical themes, teachings and connections.
             Distinguish the meaning of Scripture from personal interpretation.</p>
@@ -1630,14 +1630,14 @@
         </details>
 
         <details>
-          <summary>🧭 9. Topical Scripture Connections</summary>
+          <summary>🧭 10. Topical Scripture Connections</summary>
           <div class="study-body" id="zurielTopicalConnections" aria-live="polite">
             <p>Select a verse to discover its mapped biblical themes and related passages.</p>
           </div>
         </details>
 
         <details>
-          <summary>📝 10. My Personal Study Journal</summary>
+          <summary>📝 11. My Personal Study Journal</summary>
           <div class="study-body">
             <p>Your notes are saved separately for each verse on this device.</p>
 
