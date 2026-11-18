@@ -1761,6 +1761,9 @@
       },
 
       openGloryVerse: function (reference, scriptureText, translation, faithResponse) {
+        // The reader can launch this studio while another primary section is active.
+        // Reveal the Library destination first, then render the requested studio page.
+        if (window.ZurielHomeNavigate) window.ZurielHomeNavigate("library");
         openPage("affirmation");
         const studio = document.getElementById("zurielGloryStudio");
         if (!studio) return false;
