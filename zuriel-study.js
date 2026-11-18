@@ -2716,6 +2716,198 @@
       }
     }
 
+    async function loadHistoricalCommentaryCatalog() {
+      const select = document.getElementById("zurielHistoricalCommentarySource");
+      const loadButton = document.getElementById("zurielLoadHistoricalCommentary");
+      const status = document.getElementById("zurielHistoricalCommentaryStatus");
+      if (!select || !loadButton || !status) return [];
+
+      if (!historicalCommentaryCatalogPromise) {
+        historicalCommentaryCatalogPromise = fetchStudyJson(COMMENTARY_CATALOG_API).then(function (payload) {
+          const all = Array.isArray(payload && payload.commentaries) ? payload.commentaries : [];
+          return all.filter(function (source) {
+            const license = String(source && source.licenseUrl || "").replace(/\\/+$/, "");
+            return source && APPROVED_HISTORICAL_COMMENTARIES.has(source.id) &&
+              source.language === "eng" &&
+              Array.isArray(source.availableFormats) && source.availableFormats.includes("json") &&
+              license === PUBLIC_DOMAIN_MARK;
+          }).sort((a, b) => Number(b.totalNumberOfVerses || 0) - Number(a.totalNumberOfVerses || 0));
+        });
+      }
+
+      try {
+        historicalCommentarySources = await historicalCommentaryCatalogPromise;
+        if (!historicalCommentarySources.length) {
+          throw new Error("No approved English public-domain commentary sources were returned.");
+        }
+        select.replaceChildren();
+        const placeholder = document.createElement("option");
+        placeholder.value = "";
+        placeholder.textContent = "Choose a historical commentary";
+        select.appendChild(placeholder);
+        historicalCommentarySources.forEach(function (source) {
+          const option = document.createElement("option");
+          option.value = source.id;
+          option.textContent = (source.englishName || source.name) + " — " +
+            Number(source.totalNumberOfVerses || 0).toLocaleString() + " verse entries";
+          select.appendChild(option);
+        });
+        select.disabled = false;
+        loadButton.disabled = !selectedReference || !select.value;
+        status.textContent = historicalCommentarySources.length +
+          " English sources passed the Public Domain Mark check. Coverage differs by source; choose one to load a note for the selected verse.";
+        return historicalCommentarySources;
+      } catch (error) {
+        historicalCommentaryCatalogPromise = null;
+        select.disabled = true;
+        loadButton.disabled = true;
+        status.textContent = error && error.message
+          ? error.message : "The historical commentary catalogue is not available online or in the device cache.";
+        return [];
+      }
+    }
+
+    function appendCommentaryLink(parent, label, url) {
+      if (typeof url !== "string" || !url.trim()) return;
+      try {
+        const parsed = new URL(url);
+        if (parsed.protocol !== "https:") return;
+        const link = document.createElement("a");
+        link.href = parsed.href;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = label;
+        parent.appendChild(document.createTextNode(" "));
+        parent.appendChild(link);
+      } catch (error) {
+        // Omit invalid source links; the source text and licence label remain.
+      }
+    }
+
+    async function loadHistoricalCommentaryForSelectedVerse() {
+      const select = document.getElementById("zurielHistoricalCommentarySource");
+      const loadButton = document.getElementById("zurielLoadHistoricalCommentary");
+      const status = document.getElementById("zurielHistoricalCommentaryStatus");
+      const results = document.getElementById("zurielHistoricalCommentaryResults");
+      const reference = selectedReference;
+      if (!select || !loadButton || !status || !results) return;
+      if (!reference) {
+        status.textContent = "Select a Bible verse before loading historical commentary.";
+        return;
+      }
+      const source = historicalCommentarySources.find(item => item.id === select.value);
+      if (!source) {
+        status.textContent = "Choose one of the verified public-domain commentary sources.";
+        return;
+      }
+      const bookCode = apiBookCode(reference.book);
+      if (!bookCode) {
+        status.textContent = "This Bible book is not mapped for historical commentary.";
+        return;
+      }
+
+      const requestId = ++historicalCommentaryRequest;
+      const requestedReference = {
+        book: reference.book,
+        chapter: Number(reference.chapter),
+        verse: Number(reference.verse)
+      };
+      results.replaceChildren();
+      status.textContent = "Loading " + (source.englishName || source.name) +
+        " for " + reference.book + " " + reference.chapter + ":" + reference.verse + "…";
+      loadButton.disabled = true;
+
+      try {
+        const data = await fetchStudyJson(
+          COMMENTARY_API + source.id + "/" + bookCode + "/" + requestedReference.chapter + ".simple.json"
+        );
+        if (requestId !== historicalCommentaryRequest) return;
+        const content = data && data.chapter && Array.isArray(data.chapter.content)
+          ? data.chapter.content : [];
+        const verseEntry = content.find(item =>
+          item && item.type === "verse" && Number(item.number) === requestedReference.verse
+        );
+        const commentaryText = verseEntry && typeof verseEntry.text === "string"
+          ? verseEntry.text.trim()
+          : verseEntry && Array.isArray(verseEntry.content)
+            ? verseEntry.content.map(part => typeof part === "string" ? part :
+              part && typeof part.text === "string" ? part.text : "").join("").trim()
+            : "";
+
+        if (!commentaryText) {
+          status.textContent = (source.englishName || source.name) +
+            " has no note for " + reference.book + " " + reference.chapter + ":" + reference.verse +
+            ". This source has partial verse coverage; try another source.";
+          return;
+        }
+
+        const article = document.createElement("article");
+        article.className = "study-word zuriel-commentary-entry";
+        const heading = document.createElement("h3");
+        heading.textContent = (source.englishName || source.name) + " — " +
+          reference.book + " " + reference.chapter + ":" + reference.verse;
+        const body = document.createElement("p");
+        body.textContent = commentaryText;
+        const attribution = document.createElement("p");
+        attribution.className = "study-small";
+        attribution.textContent = "Source: " + (source.englishName || source.name) +
+          ". Catalogue licence: Public Domain Mark 1.0.";
+        const coverage = document.createElement("p");
+        coverage.className = "study-small";
+        coverage.textContent = "Source coverage: " +
+          Number(source.totalNumberOfVerses || 0).toLocaleString() + " verse entries across " +
+          Number(source.numberOfBooks || 0).toLocaleString() +
+          " books. Not every verse has a commentary note.";
+        article.append(heading, body, attribution, coverage);
+        appendCommentaryLink(attribution, "Source information", source.website);
+        appendCommentaryLink(attribution, "Licence details", source.licenseUrl);
+        if (typeof source.licenseNotes === "string" && source.licenseNotes.trim()) {
+          const licenseNote = document.createElement("p");
+          licenseNote.className = "study-small";
+          licenseNote.textContent = source.licenseNotes;
+          article.appendChild(licenseNote);
+        }
+        results.appendChild(article);
+        status.textContent = "Loaded the source's note for " + reference.book + " " +
+          reference.chapter + ":" + reference.verse + ". The original Scripture remains the primary text.";
+      } catch (error) {
+        if (requestId !== historicalCommentaryRequest) return;
+        status.textContent = error && error.message
+          ? error.message : "The selected historical commentary could not be loaded.";
+      } finally {
+        if (requestId === historicalCommentaryRequest) {
+          loadButton.disabled = !selectedReference || !select.value;
+        }
+      }
+    }
+
+    const historicalSection = document.getElementById("zurielHistoricalCommentarySection");
+    const historicalSelect = document.getElementById("zurielHistoricalCommentarySource");
+    const historicalLoadButton = document.getElementById("zurielLoadHistoricalCommentary");
+    if (historicalSection) {
+      historicalSection.addEventListener("toggle", function () {
+        if (historicalSection.open) loadHistoricalCommentaryCatalog();
+      });
+    }
+    if (historicalSelect) {
+      historicalSelect.addEventListener("change", function () {
+        const status = document.getElementById("zurielHistoricalCommentaryStatus");
+        const results = document.getElementById("zurielHistoricalCommentaryResults");
+        if (results) results.replaceChildren();
+        if (historicalLoadButton) {
+          historicalLoadButton.disabled = !selectedReference || !historicalSelect.value;
+        }
+        if (status) {
+          status.textContent = historicalSelect.value
+            ? "Source selected. Load the note for the currently selected verse."
+            : "Choose a historical commentary source.";
+        }
+      });
+    }
+    if (historicalLoadButton) {
+      historicalLoadButton.addEventListener("click", loadHistoricalCommentaryForSelectedVerse);
+    }
+
     function loadSavedNote() {
       if (!selectedReference) return;
       const record = readNotes()[noteKey(selectedReference)];
