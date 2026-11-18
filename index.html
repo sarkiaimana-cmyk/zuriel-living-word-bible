@@ -1544,9 +1544,9 @@ window.ZurielBibleSearch = {
   search: async function (query, limit, mode) {
     const normalizeSearchText = value => String(value || "")
       .normalize("NFD")
-      .replace(/[\\u0300-\\u036f]/g, "")
+      .replace(/[\u0300-\u036f]/g, "")
       .replace(/[’‘]/g, "'")
-      .replace(/\\s+/g, " ")
+      .replace(/\s+/g, " ")
       .trim()
       .toLowerCase();
     const term = normalizeSearchText(query);
