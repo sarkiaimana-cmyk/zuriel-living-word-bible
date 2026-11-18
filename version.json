@@ -1,4 +1,4 @@
 {
-  "version": "1.4.67",
-  "releaseNotes": "Adds compliant API.Bible offline chapter caching with a 29-day refresh window and improves translation endpoint discovery; preserves offline KJV and existing study resources."
+  "version": "1.4.68",
+  "releaseNotes": "Adds resumable, rate-limited 66-book offline downloads for selected approved YouVersion and API.Bible translations, shared chapter caching, and preserves the premium Zuriel open-book faith card."
 }
