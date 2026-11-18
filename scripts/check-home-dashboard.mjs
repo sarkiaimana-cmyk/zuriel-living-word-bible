@@ -41,7 +41,11 @@ requireText(home, 'window.getBibleVerseText(reference)', "Exact offline KJV text
 requireText(home, 'data-home-read-reference', "Direct navigation from each Home Scripture card");
 
 requireText(home, "faithCardRenderToken", "Protection against out-of-order Scripture loads");
-forbidText(home, "setInterval(", "Automatic Home Scripture rotation");
+requireText(home, "const HOME_VERSE_ROTATION_MS = 15000;", "Zite-matched 15-second home Scripture rotation");
+requireText(home, 'document.visibilityState !== "visible" || currentSection !== "home"', "Pause Scripture rotation when the app is backgrounded or another section is open");
+requireText(home, "renderOpenBookFaithCard();", "Synchronise the Open Book with each rotating home Scripture");
+requireText(home, "window.setInterval(function ()", "Automatic home Scripture rotation timer");
+
 requireText(home, 'identityNext.addEventListener("click"', "Manual identity revelation selection");
 requireText(home, 'zurielNextVerse', "Manual daily Scripture selection");
 requireText(home, 'id="zurielOpenBookCreateCard"', "Visible Open Book share-card action");
