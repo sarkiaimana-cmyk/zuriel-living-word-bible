@@ -9,6 +9,7 @@ const CORE_FILES = [
   "./index.html",
   "./bible-data.js",
   "./zuriel-library.js",
+  "./zuriel-media.js",
   "./zuriel-home.js",
   "./zuriel-history.js",
   "./zuriel-word-linking.js",
