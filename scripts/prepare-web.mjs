@@ -3,6 +3,7 @@ import { build } from "esbuild";
 
 const files = [
   "index.html",
+  "zuriel-reading-refinement.css",
   "bible-data.js",
   "zuriel-library.js",
   "zuriel-home.js",
