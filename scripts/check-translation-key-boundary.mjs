@@ -21,7 +21,7 @@ const clientFiles = [
 ];
 for (const [label, source] of clientFiles) {
   assert.ok(!/ZITE_YVP_APP_KEY|API_BIBLE_KEY/.test(source), label + " must never contain provider API secret names.");
-  assert.ok(!/X-YVP-App-Key|api-key\\s*[:=]/i.test(source), label + " must never construct provider authentication headers.");
+  assert.ok(!/X-YVP-App-Key|api-key\s*[:=]/i.test(source), label + " must never construct provider authentication headers.");
 }
 
 assert.ok(worker.includes("env.ZITE_YVP_APP_KEY"), "YouVersion credentials must be read from the server-side Worker secret.");
