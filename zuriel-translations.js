@@ -54,6 +54,7 @@
   let versionsLoaded = false;
   let loadedProvider = "";
   let versionsLoading = false;
+  let catalogueSequence = 0;
   let selectedProvider = "youversion";
   let selectedVersionId = "";
   let requestSequence = 0;
@@ -150,6 +151,8 @@
     if (versionsLoaded && loadedProvider === selectedProvider) return;
     if (versionsLoading) return;
     versionsLoading = true;
+    const catalogueRequestId = ++catalogueSequence;
+    const providerAtRequest = selectedProvider;
     if (!await resolveApiBase()) {
       status("Secure online translation access has not been connected yet. Your offline KJV is unchanged.");
       versionsLoading = false;
@@ -160,11 +163,11 @@
     select.disabled = true;
     loadButton.disabled = true;
     status("Checking the English Bible versions authorised for " +
-      (selectedProvider === "youversion" ? "YouVersion" : "API.Bible") + "…");
+      (providerAtRequest === "youversion" ? "YouVersion" : "API.Bible") + "…");
     try {
       let available = [];
       let nextPageToken = "";
-      if (selectedProvider === "youversion") {
+      if (providerAtRequest === "youversion") {
         const catalogue = [];
         const seenTokens = new Set();
         let pageCount = 0;
@@ -222,12 +225,13 @@
         option.value = String(item.id);
         select.appendChild(option);
       });
+      if (catalogueRequestId !== catalogueSequence) return;
       selectedVersionId = "";
       versionsLoaded = true;
-      loadedProvider = selectedProvider;
+      loadedProvider = providerAtRequest;
       select.disabled = false;
       loadButton.disabled = true;
-      const providerName = selectedProvider === "youversion" ? "YouVersion" : "API.Bible";
+      const providerName = providerAtRequest === "youversion" ? "YouVersion" : "API.Bible";
       status(available.length
         ? available.length + " English version(s) are authorised for this " + providerName + " key. " +
           (nextPageToken ? "The catalogue is large; the first 1,000 results are shown. " : "") +
@@ -238,7 +242,7 @@
       loadButton.disabled = true;
       status(error.message || "Online translation access is temporarily unavailable.");
     } finally {
-      versionsLoading = false;
+      if (catalogueRequestId === catalogueSequence) versionsLoading = false;
     }
   }
 
@@ -332,6 +336,8 @@
     if (activeController) activeController.abort();
     activeController = null;
     selectedProvider = providerSelect.value === "api-bible" ? "api-bible" : "youversion";
+    catalogueSequence++;
+    versionsLoading = false;
     versionsLoaded = false;
     loadedProvider = "";
     selectedVersionId = "";
