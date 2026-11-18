@@ -25,14 +25,14 @@ Official references:
 - https://developers.cloudflare.com/workers/authorization/workers/
 - https://developers.cloudflare.com/api/resources/workers/subresources/subdomains/methods/get/
 
-## Add the three GitHub Actions secrets
+## Add the three required and one optional GitHub Actions secret
 
 On the repository page:
 
 1. Open **Settings**.
 2. Open **Secrets and variables** → **Actions**.
 3. Under **Repository secrets**, choose **New repository secret**.
-4. Add these three names exactly, one at a time:
+4. Add the three required names and, if needed, the optional fourth name:
 
 | Secret name | Value |
 |---|---|
