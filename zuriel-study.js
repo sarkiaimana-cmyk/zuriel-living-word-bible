@@ -1477,6 +1477,18 @@
       }
     `;
     document.head.appendChild(style);
+    const verseMenuStyle=document.createElement("style");
+    verseMenuStyle.id="zurielSelectedVerseMenuStyles";
+    verseMenuStyle.textContent=[
+      "#zurielStudyPanel[data-mode=verse-menu] #zurielStudySections,#zurielStudyPanel[data-mode=verse-menu] .highlight-tools,#zurielStudyPanel[data-mode=verse-menu] #zurielSaveVerseBookmark,#zurielStudyPanel[data-mode=verse-menu] #zurielBookmarkStatus{display:none!important}",
+      "#zurielStudyPanel[data-mode=verse-detail] .highlight-tools,#zurielStudyPanel[data-mode=verse-detail] #zurielSaveVerseBookmark,#zurielStudyPanel[data-mode=verse-detail] #zurielBookmarkStatus{display:none!important}",
+      "#zurielVerseActionMenu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0}",
+      "#zurielVerseActionMenu button{min-width:0;min-height:44px;margin:0;padding:10px;border:1px solid #c6ad70;border-radius:10px;background:#fff;color:#18304d;font:600 13px/1.35 Arial,sans-serif;text-align:left;white-space:normal}",
+      "#zurielStudyPanel[data-mode=verse-detail] #zurielStudySections>details:not([data-zuriel-active=true]){display:none!important}",
+      "@media(max-width:640px){#zurielStudyPanel[data-mode=verse-menu],#zurielStudyPanel[data-mode=verse-detail]{position:fixed;left:10px;right:10px;bottom:calc(72px + env(safe-area-inset-bottom));top:auto;z-index:1200;width:auto;max-width:none;max-height:min(62dvh,560px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;margin:0;padding:12px;border:1px solid #b99b58;border-radius:18px;background:#10213d;box-shadow:0 12px 32px #0006}}",
+      "@media(max-width:360px){#zurielVerseActionMenu{grid-template-columns:minmax(0,1fr)}}"
+    ].join("");
+    document.head.appendChild(verseMenuStyle);
 
     const panel = document.createElement("section");
     panel.id = "zurielStudyPanel";
@@ -1745,6 +1757,14 @@
       </p>
     `;
 
+    const verseActionMenu=document.createElement("nav");
+    verseActionMenu.id="zurielVerseActionMenu";
+    verseActionMenu.setAttribute("aria-label","Selected verse study actions");
+    const verseActions=[["Prayer and faith",2],["Meaning and commentary",1],["Hebrew and Greek words",3],["Biblical dictionary",4],["Connected Scriptures",5],["Concordance",6],["Theology and topics",7],["Personal study notes",9]];
+    verseActions.forEach(function(action){const button=document.createElement("button");button.type="button";button.textContent=action[0];button.addEventListener("click",function(){const sections=Array.from(panel.querySelectorAll("#zurielStudySections > details"));const selected=sections[action[1]];if(!selected)return;sections.forEach(function(section){section.open=section===selected;section.removeAttribute("data-zuriel-active");});selected.setAttribute("data-zuriel-active","true");panel.dataset.mode="verse-detail";selected.scrollIntoView({behavior:"smooth",block:"nearest"});});verseActionMenu.appendChild(button);});
+    const fullStudyAction=document.createElement("button");fullStudyAction.type="button";fullStudyAction.textContent="Open Full Study Centre";fullStudyAction.addEventListener("click",function(){panel.dataset.mode="verse";panel.querySelectorAll("#zurielStudySections > details").forEach(function(section){section.removeAttribute("data-zuriel-active");});panel.querySelector("#zurielStudySections").scrollIntoView({behavior:"smooth",block:"start"});});verseActionMenu.appendChild(fullStudyAction);
+    const actionBack=document.createElement("button");actionBack.type="button";actionBack.id="zurielVerseActionBack";actionBack.textContent="Back to verse actions";actionBack.addEventListener("click",function(){panel.dataset.mode="verse-menu";panel.querySelectorAll("#zurielStudySections > details").forEach(function(section){section.open=false;section.removeAttribute("data-zuriel-active");});panel.scrollTop=0;});verseActionMenu.appendChild(actionBack);
+    const studySectionsHost=panel.querySelector("#zurielStudySections");if(studySectionsHost)panel.insertBefore(verseActionMenu,studySectionsHost);
     const main = document.querySelector("main");
     const reader = document.getElementById("bibleReader");
     const studySections = panel.querySelectorAll("#zurielStudySections details");
@@ -2726,7 +2746,8 @@
         } else {
           if (originalWordsDetails) originalWordsDetails.open = false;
           if (crossReferenceDetails) crossReferenceDetails.open = false;
-          panel.dataset.mode = "verse";
+          panel.dataset.mode = "verse-menu";
+          panel.querySelectorAll("#zurielStudySections > details").forEach(function(section){section.open=false;section.removeAttribute("data-zuriel-active");});
           const results = document.getElementById("zurielOriginalWordResults");
           const lexicon = document.getElementById("zurielLexiconDetails");
           if (results) results.textContent = "Tap a word in the selected verse to study that word here.";
