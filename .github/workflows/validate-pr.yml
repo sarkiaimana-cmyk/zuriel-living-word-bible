@@ -28,6 +28,12 @@ jobs:
       - name: Prepare offline web app
         run: npm run build:web
 
+      - name: Install Chromium for mobile browser checks
+        run: npx playwright install --with-deps chromium
+
+      - name: Test mobile reader and offline study experience
+        run: npm run test:mobile
+
       - name: Verify offline core assets and local script precache
         run: node scripts/check-offline-core-assets.mjs
 
