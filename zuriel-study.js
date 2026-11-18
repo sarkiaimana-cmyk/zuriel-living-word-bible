@@ -1940,7 +1940,7 @@
       concordanceButton.disabled = true;
       concordanceResults.textContent = "Searching the complete offline KJV...";
       try {
-        const matches = await window.ZurielBibleSearch.search(query, 100, mode);
+        const matches = await window.ZurielBibleSearch.search(query, 200, mode);
         if (requestId !== concordanceRequest) return;
         concordanceResults.replaceChildren();
         if (!matches.length) {
