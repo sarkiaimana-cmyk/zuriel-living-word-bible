@@ -1,4 +1,4 @@
 {
-  "version": "1.4.71",
-  "releaseNotes": "Carries WHO HE IS revelation titles into shareable open-book cards while preserving the exact offline KJV passage, matching verse-specific faith response, daily Scripture cards, and existing Gallery/share features."
+  "version": "1.4.72",
+  "releaseNotes": "Adds a clean white Scripture reading page by default, six offline-safe reading font choices, and persistent font and text-size controls. Preserves the complete offline KJV, reading navigation, selected-verse study actions, WHO HE IS open-book cards, and the separate daily Scripture cards."
 }
