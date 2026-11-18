@@ -26,6 +26,7 @@ const CORE_FILES = [
   "./zuriel-growth-pathways.js",
   "./zuriel-reading-plans.js",
   "./zuriel-audio.js",
+  "./zuriel-config.js",
   "./zuriel-translations.js",
   "./zuriel-personal-space.js",
   "./zuriel-backup.js",
