@@ -16,6 +16,7 @@ assert.match(workflow, /test\/api-bible\.test\.mjs/, "deployment runs API.Bible 
 assert.match(workflow, /workers\/subdomain/, "deployment discovers the account workers.dev subdomain");
 assert.match(workflow, /workers\/scripts\/zuriel-bible-translations\/subdomain/, "deployment verifies the Worker route is enabled");
 assert.match(workflow, /\/api\/youversion\/bibles/, "deployment smoke-tests the same version-list route used by the app");
+assert.match(workflow, /\/api\/api-bible\/bibles/, "deployment smoke-tests API.Bible when its optional key is configured");
 assert.match(workflow, /access-control-allow-origin: https:\/\/sarkiaimana-cmyk\.github\.io/i, "deployment checks GitHub Pages CORS");
 assert.match(workflow, /Worker URL: \$WORKER_URL/, "deployment reports the exact URL to configure in the app");
 assert.match(workflow, /contents: write/, "deployment may save the verified public endpoint to release metadata");
