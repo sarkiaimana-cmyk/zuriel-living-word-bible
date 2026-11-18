@@ -30,6 +30,11 @@ requireText(client, 'id = "zurielTranslationCompare"', "Collapsible translation 
 requireText(client, "zuriel:chapter-opened", "Reader chapter event integration");
 requireText(client, "window.ZurielVerseOverlay.openExternal(panel)", "YouVersion comparison opens in selected-verse overlay");
 requireText(client, '"/api/youversion/bibles"', "Licensed English version list request");
+requireText(client, "next_page_token", "YouVersion catalogue pagination");
+requireText(client, "encodeURIComponent(nextPageToken)", "Safe pagination token encoding");
+requireText(client, "pageCount < 10", "Bounded catalogue pagination");
+requireText(client, "new Map()", "Deduplication of paginated Bible version results");
+requireText(client, "seenTokens.has(token)", "Repeated pagination token protection");
 requireText(client, "?format=text", "Plain-text passage request");
 requireText(client, 'cache: "no-store"', "No-store request policy");
 requireText(client, 'credentials: "omit"', "Credential isolation");
