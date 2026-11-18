@@ -20,7 +20,9 @@ requireText('title: "The Glorious King", reference: "Psalm 24:10"', "The gloriou
 requireText('window.getBibleVerseText(item.reference)', "Exact offline KJV text retrieval");
 requireText('dashboard.style.setProperty("--zuriel-home-wallpaper"', "Synchronized verse and wallpaper changes");
 requireText('homeWallpaperSet[item.wallpaper]', "A distinct wallpaper assignment for each identity");
-if (home.includes("setInterval(") || home.includes("}, 15000)")) failures.push("Identity revelations must not change automatically on a timer.");
+const homeVerseTimer = home.match(/window\.setInterval\(function \(\) \{([\s\S]*?)\}, HOME_VERSE_ROTATION_MS\);/);
+if (!homeVerseTimer) failures.push("The separate homepage Scripture rotation timer is missing.");
+else if (homeVerseTimer[1].includes("identityIndex") || homeVerseTimer[1].includes("renderIdentityScripture")) failures.push("Identity revelations must remain manual and must not be changed by the homepage verse timer.");
 requireText('identityNext.addEventListener("click"', "Manual identity revelation selection");
 requireText('@media(prefers-reduced-motion:reduce)', "Reduced-motion accessibility support");
 requireText('identityNext.addEventListener("click"', "Manual rotation control");
