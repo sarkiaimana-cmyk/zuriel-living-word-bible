@@ -1559,9 +1559,10 @@ window.ZurielBibleSearch = {
       ? Math.min(limit, mode ? 200 : 50) : 30;
     const escaped = term.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
     const exactWordPattern = mode === "word"
-      ? new RegExp("(^|[^a-z0-9])" + escaped + "([^a-z0-9]|$)", "i")
+      ? new RegExp("(^|[^a-z0-9])" + escaped + "(?=$|[^a-z0-9])", "gi")
       : null;
     const matches = [];
+    let totalOccurrences = 0;
     for (const book of bibleBooks) {
       const code = bookCodes[book.name];
       const chapters = data[code];
@@ -1573,14 +1574,24 @@ window.ZurielBibleSearch = {
           const verseText = verses[verseIndex];
           const verseOriginal = typeof verseText === "string" ? verseText : "";
           const searchable = normalizeSearchText(verseOriginal);
-          const found = mode === "word"
-            ? exactWordPattern.test(searchable)
-            : searchable.includes(term);
-          if (found) {
+          let occurrenceCount = 0;
+          if (mode === "word") {
+            const occurrences = searchable.match(exactWordPattern) || [];
+            occurrenceCount = occurrences.length;
+          } else {
+            let position = 0;
+            while ((position = searchable.indexOf(term, position)) !== -1) {
+              occurrenceCount++;
+              position += Math.max(1, term.length);
+            }
+          }
+          if (occurrenceCount > 0) {
+            totalOccurrences += occurrenceCount;
             matches.push({
               book: book.name,
               chapter: chapterIndex + 1,
               verse: verseIndex + 1,
+              occurrences: occurrenceCount,
               text: verseOriginal.replace(/^¶\s*/, "")
             });
           }
@@ -1589,6 +1600,7 @@ window.ZurielBibleSearch = {
     }
     const visible = matches.slice(0, maximum);
     visible.totalMatches = matches.length;
+    visible.totalOccurrences = totalOccurrences;
     return visible;
   }
 };
