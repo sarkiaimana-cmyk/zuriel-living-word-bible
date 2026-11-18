@@ -130,7 +130,7 @@ jobs:
           # The endpoint is public configuration, not a credential. The YouVersion
           # app key remains a Cloudflare secret and is never written to GitHub.
           export WORKER_URL
-          node -e 'const fs=require("node:fs");const path="../version.json";const data=JSON.parse(fs.readFileSync(path,"utf8"));data.translationApiBase=process.env.WORKER_URL;fs.writeFileSync(path,JSON.stringify(data,null,2)+"\\n");'
+          node -e 'const fs=require("node:fs");const path="../version.json";const data=JSON.parse(fs.readFileSync(path,"utf8"));data.translationApiBase=process.env.WORKER_URL;fs.writeFileSync(path,JSON.stringify(data,null,2)+"\n");'
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add ../version.json
