@@ -2551,7 +2551,7 @@
     }
 
     function parseCommentaryRange(value) {
-      const match = String(value || "").trim().match(/^(.+?)\\s+(\\d+):(\\d+)\\s*[-–]\\s*(?:(\\d+):)?(\\d+)$/);
+      const match = String(value || "").trim().match(/^(.+?)\s+(\d+):(\d+)\s*[-–]\s*(?:(\d+):)?(\d+)$/);
       if (!match) return null;
       const book = match[1].trim().toLowerCase() === "psalm" ? "psalms" : match[1].trim().toLowerCase();
       const startChapter = Number(match[2]);
