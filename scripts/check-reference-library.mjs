@@ -17,7 +17,7 @@ assert.match(source, /Open Offline Biblical Dictionary/);
 assert.match(source, /Open KJV Concordance/);
 assert.match(source, /Open Passage Commentary/);
 assert.match(source, /window\.ZurielStudy\.openSection\("Passage Commentary"\)/);
-assert.match(source, /window\.ZurielStudy\.openSection\("Biblical Dictionary"\)/);
+assert.match(source, /window\.ZurielStudy\.openSection\("Dictionary"\)/);
 assert.match(source, /window\.ZurielStudy\.openSection\("Bible Concordance"\)/);
 assert.match(source, /No resources match that search/);
 assert.match(source, /aria-label",\s*"Search dictionaries and commentaries"/);
