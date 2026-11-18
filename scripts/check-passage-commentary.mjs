@@ -81,7 +81,7 @@ assert.ok(study.includes("function parseCommentaryRange(value)"), "Passage range
 const parserStart = study.indexOf("function parseCommentaryRange(value)");
 const parserEnd = study.indexOf("async function loadPassageCommentary", parserStart);
 assert.ok(parserStart >= 0 && parserEnd > parserStart, "Passage parser can be isolated for runtime checks.");
-const parserSource = study.slice(parserStart, parserEnd) + "\nwindow.__parseCommentaryRange = parseCommentaryRange;";
+const parserSource = study.slice(parserStart, parserEnd) + String.fromCharCode(10) + "window.__parseCommentaryRange = parseCommentaryRange;";
 const parserSandbox = { window: {}, String, Number, Math };
 vm.runInNewContext(parserSource, parserSandbox, { timeout: 1000 });
 const parseRange = parserSandbox.window.__parseCommentaryRange;
