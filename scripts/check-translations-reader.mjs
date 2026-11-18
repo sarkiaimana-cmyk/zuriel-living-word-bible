@@ -49,6 +49,9 @@ requireText(client, "Publisher attribution was not supplied", "Fail-closed attri
 requireText(client, "Select an authorised translation and download all 66 books to this device", "Full Bible offline download guidance");
 requireText(client, '"./version.json"', "Offline-capable local release metadata discovery");
 requireText(client, "indexedDB.open(TRANSLATION_CACHE_DB, 2)", "IndexedDB translation cache");
+requireText(client, "let translationDbPromise = null", "Shared IndexedDB connection promise");
+requireText(client, "if (translationDb) return Promise.resolve(translationDb)", "Reuse one open offline database connection");
+requireText(client, "db.onversionchange", "Close and reopen offline database safely during schema upgrades");
 requireText(client, "API_BIBLE_CACHE_MAX_AGE = 29 * 24 * 60 * 60 * 1000", "API.Bible 29-day refresh limit");
 requireText(client, "saveApiBibleChapter", "API.Bible chapter cache write");
 requireText(client, "readCachedApiBibleChapter", "API.Bible offline chapter fallback");
