@@ -1901,7 +1901,11 @@
 
   renderBook("Genesis");
   if (anchor && anchor.parentNode === reader) {
-    reader.insertBefore(panel, anchor);
+    if (anchor && anchor.parentNode) {
+    anchor.parentNode.insertBefore(panel, anchor);
+  } else {
+    reader.appendChild(panel);
+  }
   } else {
     reader.appendChild(panel);
   }
