@@ -154,8 +154,10 @@
     const catalogueRequestId = ++catalogueSequence;
     const providerAtRequest = selectedProvider;
     if (!await resolveApiBase()) {
-      status("Secure online translation access has not been connected yet. Your offline KJV is unchanged.");
-      versionsLoading = false;
+      if (catalogueRequestId === catalogueSequence) {
+        status("Secure online translation access has not been connected yet. Your offline KJV is unchanged.");
+        versionsLoading = false;
+      }
       return;
     }
     select.hidden = false;
@@ -219,13 +221,13 @@
         available = Array.from(uniqueVersions.values());
       }
 
+      if (catalogueRequestId !== catalogueSequence) return;
       select.replaceChildren(node("option", "", "Choose an available translation"));
       available.forEach(item => {
         const option = node("option", "", item.abbreviation + " — " + item.title);
         option.value = String(item.id);
         select.appendChild(option);
       });
-      if (catalogueRequestId !== catalogueSequence) return;
       selectedVersionId = "";
       versionsLoaded = true;
       loadedProvider = providerAtRequest;
@@ -238,9 +240,11 @@
           "Choose one to compare."
         : "No English Bible versions are currently authorised for " + providerName + ". The offline KJV remains available.");
     } catch (error) {
-      select.disabled = true;
-      loadButton.disabled = true;
-      status(error.message || "Online translation access is temporarily unavailable.");
+      if (catalogueRequestId === catalogueSequence) {
+        select.disabled = true;
+        loadButton.disabled = true;
+        status(error.message || "Online translation access is temporarily unavailable.");
+      }
     } finally {
       if (catalogueRequestId === catalogueSequence) versionsLoading = false;
     }
