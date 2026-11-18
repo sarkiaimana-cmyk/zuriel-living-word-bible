@@ -1390,7 +1390,14 @@
       renderIdentityScripture(identityIndex + 1);
     });
     renderIdentityScripture(identityIndex);
-    // Revelation changes only when the reader taps "Next Revelation".
+    // Rotate the WHO HE IS revelation and exact Scripture together, separately
+    // from the daily verse and the photographic Open Book sharing card.
+    const IDENTITY_ROTATION_MS = 20000;
+    window.setInterval(function () {
+      if (document.visibilityState === "visible" && currentSection === "home") {
+        renderIdentityScripture(identityIndex + 1);
+      }
+    }, IDENTITY_ROTATION_MS);
 
     /* CHANGING HOME SCRIPTURE */
 
