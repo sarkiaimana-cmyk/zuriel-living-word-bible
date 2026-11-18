@@ -191,6 +191,7 @@ try {
 
   // Public-domain historical commentary: source, exact verse, attribution and cached response.
   await firstVerse.click();
+  await ensureOpen(actions.locator(".zuriel-action-group").filter({hasText:"Reading Tools"}));
   await actions.locator(".zuriel-verse-action").filter({hasText:"Full Study Centre"}).click();
   const historicalSection = page.locator("#zurielHistoricalCommentarySection");
   await ensureOpen(historicalSection);
