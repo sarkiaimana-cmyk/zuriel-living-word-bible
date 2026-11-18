@@ -15,8 +15,8 @@ const required = [
   "Personal study notes",
   "Open Full Study Centre",
   "Back to verse actions",
-  "data-mode=\"verse-menu\"",
-  "data-mode=\"verse-detail\"",
+  'panel.dataset.mode = "verse-menu"',
+  'panel.dataset.mode = "verse-detail"',
   "safe-area-inset-bottom"
 ];
 const missing = required.filter(value => !source.includes(value));
