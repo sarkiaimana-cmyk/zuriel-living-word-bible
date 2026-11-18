@@ -88,7 +88,7 @@
   panel.id = "zurielTranslationCompare";
   const summary = node("summary", "", "🌐 Compare another Bible translation (online)");
   const note = node("p", "ztc-note",
-    "The King James Version remains available offline. API.Bible chapters you open are saved on this device for offline reading and refreshed online within 29 days. YouVersion chapters are cached only when their publisher licence permits it.");
+    "The King James Version remains available offline. Select an authorised translation and download all 66 books to this device. Downloads resume from saved chapters; API.Bible copies are refreshed within 29 days.");
   const controls = node("div");
   const providerSelect = node("select");
   providerSelect.setAttribute("aria-label", "Choose online Bible translation provider");
@@ -460,10 +460,10 @@
       copyright,
       promotional,
       offline
-        ? "Offline copy saved on this device. API.Bible content is refreshed online within 29 days."
+        ? "Offline copy saved on this device. API.Bible content must be refreshed online within 29 days."
         : (selectedProvider === "api-bible"
           ? "This chapter is saved on this device for offline reading; it must be refreshed online within 29 days."
-          : "Online text is not saved for offline use unless its publisher licence permits it.")
+          : "This chapter is saved on this device for offline reading under the approved translation access.")
     ].filter(Boolean).join(" ");
     attribution.hidden = false;
     status(offline
