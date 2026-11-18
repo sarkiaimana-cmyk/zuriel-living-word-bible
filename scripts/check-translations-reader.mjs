@@ -51,6 +51,12 @@ forbidText(client, /ZITE_YVP_APP_KEY|X-YVP-App-Key|api\.youversion\.com/i, "Prov
 requireText(worker, 'from "./index.js"', "Shared tested server-side YouVersion handler");
 requireText(worker, "bibles(?:", "Translation-only route allowlist");
 requireText(worker, "handleRequest(request, env, dependencies)", "Shared server-side origin, rate-limit and licence handling");
+requireText(worker, 'upstreamUrl.searchParams.set("page_size", "99")', "YouVersion maximum catalogue page size");
+requireText(worker, 'upstreamUrl.searchParams.set("page_token", token)', "Documented YouVersion pagination parameter");
+requireText(worker, "item.language_tag", "Current YouVersion language-tag mapping");
+requireText(worker, 'YVP_BASE + "/bibles/" + selectedVersionId', "Separate Bible metadata request for publisher attribution");
+requireText(worker, "bibleMetadata.copyright", "Bible-level publisher copyright verification");
+requireText(worker, "bibleMetadata.promotional_content", "Bible-level publisher attribution fallback");
 requireText(config, '"name": "zuriel-bible-translations"', "Separate translation Worker name");
 requireText(config, '"TRANSLATION_RATE_LIMIT"', "Translation rate-limit binding");
 requireText(config, '"ZITE_YVP_APP_KEY"', "Server-only YouVersion secret requirement");
