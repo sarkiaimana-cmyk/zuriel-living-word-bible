@@ -51,4 +51,4 @@ window.ZURIEL_TRANSLATION_API_BASE = "https://zuriel-bible-translations.YOUR-SUB
 
 The actual URL must come from the successful deployment output. Do not replace `YOUR-SUBDOMAIN` with a guess.
 
-A new app release is required after the endpoint is configured. The offline KJV remains the default and is never replaced by an online response. Online translation text is requested only when the reader asks for it, with publisher attribution required and no licensed passage text stored for offline use.
+A new app release is required after the endpoint is configured. The offline KJV remains the default and is never replaced by an online response. Online translation text is requested only when the reader asks for it, and publisher attribution is required. A translation the reader explicitly downloads is stored in the device's IndexedDB for offline reading; the saved selection remains available after restart. API.Bible copies are treated as refresh-required after 29 days. Download only versions and copies covered by the user's existing publisher-approved access.
