@@ -40,7 +40,7 @@ function checkChapter(bookName, chapter) {
   return Boolean(book && Number.isInteger(chapter) && chapter >= 1 && chapter <= book.chapters);
 }
 function validatePassage(reference) {
-  const split = reference.match(/^(.+)\s+(\d.*)$/);
+  const split = reference.match(/^(.+?)\s+(\d.*)$/);
   if (!split) return false;
   const book = split[1].trim();
   const rest = split[2].replace(/\s/g, "");
