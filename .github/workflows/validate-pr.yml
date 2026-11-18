@@ -38,7 +38,7 @@ jobs:
         run: node scripts/check-translations-reader.mjs
 
       - name: Test translation-only Worker route isolation
-        run: node --test ai-worker/test/translation-worker.test.mjs
+        run: node --test ai-worker/test/translation-worker.test.mjs ai-worker/test/api-bible.test.mjs
 
       - name: Validate manual YouVersion deployment workflow
         run: node scripts/check-translation-deploy-workflow.mjs
