@@ -1390,7 +1390,14 @@
       renderIdentityScripture(identityIndex + 1);
     });
     renderIdentityScripture(identityIndex);
-    // Revelation changes only when the reader taps "Next Revelation".
+    // The WHO HE IS revelation card rotates independently of the Open Book card.
+    const IDENTITY_ROTATION_MS = 15000;
+    window.setInterval(function () {
+      if (document.visibilityState === "visible" && currentSection === "home") {
+        renderIdentityScripture(identityIndex + 1);
+      }
+    }, IDENTITY_ROTATION_MS);
+
     /* CHANGING HOME SCRIPTURE */
 
     const verseText = document.getElementById("zurielHomeVerse");
