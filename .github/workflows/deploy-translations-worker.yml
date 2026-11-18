@@ -61,7 +61,7 @@ jobs:
           trap 'rm -f .wrangler.translations.bootstrap.jsonc' EXIT
           node -e 'const fs=require("node:fs"); const c=JSON.parse(fs.readFileSync("wrangler.translations.jsonc","utf8")); delete c.secrets; fs.writeFileSync(".wrangler.translations.bootstrap.jsonc", JSON.stringify(c,null,2)+"\n", {mode:0o600, flag:"wx"});'
           if ! npx wrangler deploy --config .wrangler.translations.bootstrap.jsonc; then
-            echo "::error::Cloudflare rejected the initial Worker deployment. Check that CLOUDFLARE_ACCOUNT_ID belongs to the account included in the API token and that the token can create Workers at the Workers product scope."
+            echo "::error::Cloudflare rejected initial Worker creation or secret metadata access. For a new Worker, grant this account token Workers Admin at the Workers product scope; for an existing Worker, grant Workers Editor scoped to zuriel-bible-translations. Confirm the token and account ID refer to the same account."
             exit 1
           fi
 
@@ -69,7 +69,7 @@ jobs:
         run: |
           set -euo pipefail
           if ! printf '%s' "$ZITE_YVP_APP_KEY" | npx wrangler secret put ZITE_YVP_APP_KEY --config wrangler.translations.jsonc; then
-            echo "::error::Cloudflare rejected the Worker secret operation. Check the token's account scope and grant Workers Scripts Write (or Workers Editor for this Worker). Do not create another YouVersion key for this permission error."
+            echo "::error::Cloudflare rejected the Worker secret operation. Grant Workers Editor scoped to zuriel-bible-translations (or Workers Admin at the Workers product scope). Do not create another YouVersion key for this permission error."
             exit 1
           fi
 
