@@ -50,6 +50,7 @@
 
   let currentChapter = null;
   let versionsLoaded = false;
+  let versionsLoading = false;
   let selectedVersionId = "";
   let requestSequence = 0;
   let activeController = null;
@@ -132,9 +133,11 @@
   }
 
   async function loadVersions() {
-    if (versionsLoaded) return;
+    if (versionsLoaded || versionsLoading) return;
+    versionsLoading = true;
     if (!await resolveApiBase()) {
       status("Secure online translation access has not been connected yet. Your offline KJV is unchanged.");
+      versionsLoading = false;
       return;
     }
     select.hidden = false;
@@ -197,6 +200,8 @@
       select.disabled = true;
       loadButton.disabled = true;
       status(error.message || "Online translation access is temporarily unavailable.");
+    } finally {
+      versionsLoading = false;
     }
   }
 
