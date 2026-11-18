@@ -1,4 +1,4 @@
 {
-  "version": "1.4.70",
-  "releaseNotes": "Improves resumable 66-book translation downloads, restores saved translations for offline selection after app restart, and reuses the local database connection for more reliable offline reading. Keeps the verified KJV and premium open-book faith card intact."
+  "version": "1.4.71",
+  "releaseNotes": "Carries WHO HE IS revelation titles into shareable open-book cards while preserving the exact offline KJV passage, matching verse-specific faith response, daily Scripture cards, and existing Gallery/share features."
 }
