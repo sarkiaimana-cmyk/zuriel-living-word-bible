@@ -109,6 +109,9 @@ jobs:
       - name: Test reading plan progress and references
         run: node scripts/test-reading-plans.mjs
 
+      - name: Validate opt-in offline local reminders
+        run: node scripts/check-local-notifications.mjs
+
       - name: Validate personal backup and restore
         run: node scripts/check-personal-backup.mjs
 
