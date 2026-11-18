@@ -2,13 +2,14 @@
 
 "use strict";
 
-const CACHE_NAME = "zuriel-bible-offline-v172";
+const CACHE_NAME = "zuriel-bible-offline-v173";
 
 const CORE_FILES = [
   "./",
   "./index.html",
   "./bible-data.js",
   "./zuriel-library.js",
+  "./zuriel-study-library-data.js",
   "./zuriel-media.js",
   "./zuriel-home.js",
   "./zuriel-history.js",
@@ -32,6 +33,17 @@ const CORE_FILES = [
   "./zuriel-updates.js",
   "./version.json",
   "./kjv.72bec70fcd.json",
+  "./data/zuriel-bible-geography-atlas.json",
+  "./data/zuriel-biblical-dictionary-expansion.json",
+  "./data/zuriel-book-introductions-and-study-pathways.json",
+  "./data/zuriel-connected-scripture-trails-batch-1.json",
+  "./data/zuriel-connected-scripture-trails-batch-2.json",
+  "./data/zuriel-deep-study-guides.json",
+  "./data/zuriel-names-and-titles-of-god-library.json",
+  "./data/zuriel-original-language-word-studies-batch-1.json",
+  "./data/zuriel-passage-commentary-expansion.json",
+  "./data/zuriel-topical-bible-study-library-batch-2.json",
+  "./data/zuriel-worship-study-pathways.json",
   "./images/books/0fc10dde-c515-45e8-916b-5a27f61b0841.jpg",
   "./images/books/738dfb2c-b2e8-49d6-bc1c-d6766be38adf.jpg",
   "./images/books/d14a5cec-132e-4432-9604-9cb82cd8cf71.jpg",
