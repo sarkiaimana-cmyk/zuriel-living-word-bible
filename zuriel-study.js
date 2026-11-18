@@ -1815,7 +1815,14 @@
         const definition = normalize(entry[1]);
         const aliases = Array.isArray(entry[2]) ? entry[2].map(normalize) : [];
         const aliasText = aliases.join(" ");
-        const combined = title + " " + definition + " " + aliasText;
+        const advanced = entry[3] && typeof entry[3] === "object" ? entry[3] : {};
+        const advancedText = Object.keys(advanced).map(key => {
+          const value = advanced[key];
+          return Array.isArray(value) ? value.join(" ") : String(value || "");
+        }).join(" ");
+        // Search the language notes, theological explanation, cautions and
+        // Scripture links as well as the short dictionary definition.
+        const combined = title + " " + definition + " " + aliasText + " " + normalize(advancedText);
         const allTokensMatch = tokens.every(token => combined.includes(token));
         const aliasMatch = aliases.some(alias => alias === term || alias.includes(term) ||
           (tokens.length && tokens.every(token => alias.includes(token))));
