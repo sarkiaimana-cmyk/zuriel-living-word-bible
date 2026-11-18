@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import vm from "node:vm";
 
 const [dataText, index, bookSource, kjvText, study, library, packaging, serviceWorker] = await Promise.all([
   readFile("zuriel-passage-commentary-expansion.json", "utf8"),
@@ -76,6 +77,23 @@ for (const entry of data.entries) {
 assert.ok(study.includes('id="zurielPassageCommentarySection"'), "Commentary section is present in the Study Centre.");
 assert.ok(study.includes("function renderPassageCommentary(ref)"), "Selected-verse commentary renderer is connected.");
 assert.ok(study.includes("function parseCommentaryRange(value)"), "Passage range matching is implemented.");
+const parserStart = study.indexOf("function parseCommentaryRange(value)");
+const parserEnd = study.indexOf("async function loadPassageCommentary", parserStart);
+assert.ok(parserStart >= 0 && parserEnd > parserStart, "Passage parser can be isolated for runtime checks.");
+const parserSource = study.slice(parserStart, parserEnd) + "\\nwindow.__parseCommentaryRange = parseCommentaryRange;";
+const parserSandbox = { window: {}, String, Number, Math };
+vm.runInNewContext(parserSource, parserSandbox, { timeout: 1000 });
+const parseRange = parserSandbox.window.__parseCommentaryRange;
+assert.deepEqual(JSON.parse(JSON.stringify(parseRange("Genesis 1:1–2:3"))),
+  { book:"genesis", startChapter:1, startVerse:1, endChapter:2, endVerse:3 });
+assert.deepEqual(JSON.parse(JSON.stringify(parseRange("Psalm 23"))),
+  { book:"psalms", startChapter:23, startVerse:1, endChapter:23, endVerse:Number.MAX_SAFE_INTEGER });
+assert.deepEqual(JSON.parse(JSON.stringify(parseRange("Job 1–2"))),
+  { book:"job", startChapter:1, startVerse:1, endChapter:2, endVerse:Number.MAX_SAFE_INTEGER });
+assert.deepEqual(JSON.parse(JSON.stringify(parseRange("Philemon 8-21"))),
+  { book:"philemon", startChapter:1, startVerse:8, endChapter:1, endVerse:21 });
+assert.deepEqual(JSON.parse(JSON.stringify(parseRange("Jude 3-4, 17-25"))),
+  { book:"jude", startChapter:1, startVerse:3, endChapter:1, endVerse:25 });
 assert.ok(study.includes("ORIGINAL ZURIEL PASSAGE COMMENTARY"), "Original Zuriel commentary is distinguished from published works.");
 assert.ok(study.includes("interpretiveCaution"), "Interpretive cautions are displayed.");
 assert.ok(study.includes('fetch("zuriel-passage-commentary-expansion.json"'), "Commentary data loads from its local packaged file.");
