@@ -46,9 +46,16 @@ requireText(client, "item.promotional_content", "Publisher promotional attributi
 requireText(client, "/chapters/", "API.Bible chapter retrieval path");
 requireText(client, "loadedProvider === selectedProvider", "Provider-specific catalogue state");
 requireText(client, "Publisher attribution was not supplied", "Fail-closed attribution requirement");
-requireText(client, "Online text is not stored for offline use.", "No-offline-storage notice");
+requireText(client, "API.Bible chapters you open are saved on this device for offline reading", "API.Bible offline-cache notice");
+requireText(client, '"./version.json"', "Offline-capable local release metadata discovery");
+requireText(client, "indexedDB.open(TRANSLATION_CACHE_DB, 1)", "IndexedDB translation cache");
+requireText(client, "API_BIBLE_CACHE_MAX_AGE = 29 * 24 * 60 * 60 * 1000", "API.Bible 29-day refresh limit");
+requireText(client, "saveApiBibleChapter", "API.Bible chapter cache write");
+requireText(client, "readCachedApiBibleChapter", "API.Bible offline chapter fallback");
+requireText(client, '"api-bible"', "Provider-scoped offline cache");
+
 requireText(client, "window.ZURIEL_TRANSLATION_API_BASE", "Explicit deployment endpoint configuration");
-requireText(client, "raw.githubusercontent.com/sarkiaimana-cmyk/zuriel-living-word-bible/main/version.json", "Public release metadata endpoint discovery");
+requireText(client, 'cache: "no-cache"', "Offline-capable version metadata fetch policy");
 requireText(client, "metadata.translationApiBase", "Automatic YouVersion endpoint discovery");
 requireText(client, "validWorkerEndpoint", "Trusted Cloudflare Worker endpoint validation");
 requireText(client, "zuriel-bible-translations.", "Expected dedicated translation Worker hostname");
@@ -103,5 +110,5 @@ if (failures.length) {
   failures.forEach(item => console.error(" - " + item));
   process.exitCode = 1;
 } else {
-  console.log("Online translation reader checks passed: YouVersion and API.Bible provider selection, separate translation-only Worker, server-only credentials, manual deployment, origin/rate-limit enforcement, no offline storage, publisher attribution, and Android/offline packaging.");
+  console.log("Online translation reader checks passed: YouVersion and API.Bible provider selection, separate translation-only Worker, server-only credentials, manual deployment, origin/rate-limit enforcement, 29-day API.Bible offline cache, publisher attribution, and Android/offline packaging.");
 }
