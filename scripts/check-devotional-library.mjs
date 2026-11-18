@@ -21,7 +21,7 @@ const books = [...bookSource.matchAll(/\{\s*name:\s*"([^"]+)",\s*chapters:\s*(\d
   .map(match => ({name:match[1],chapters:Number(match[2])}));
 const kjv = JSON.parse(kjvText);
 function validReference(reference) {
-  const references = String(reference || "").split(/\\s*;\\s*/).filter(Boolean);
+  const references = String(reference || "").split(/\s*;\s*/).filter(Boolean);
   return references.length > 0 && references.every(value => {
     const match = value.trim().match(/^(.+?)\s+(\d+):(\d+)(?:[-–](\d+))?$/);
     if (!match) return false;
