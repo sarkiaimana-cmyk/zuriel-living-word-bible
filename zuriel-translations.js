@@ -155,7 +155,7 @@
     const providerAtRequest = selectedProvider;
     if (!await resolveApiBase()) {
       if (catalogueRequestId === catalogueSequence) {
-        status("The app has no verified translation-service address yet. The Cloudflare Worker must be deployed and its verified URL published in version.json before YouVersion or API.Bible keys can work. Your offline KJV is unchanged.");
+        status("Online translation comparison is not connected yet. Provider keys must remain protected as server-side Cloudflare secrets; they are never stored in the app or on your device. Online comparison needs an internet connection. Your bundled KJV remains available offline.");
         versionsLoading = false;
       }
       return;
@@ -269,7 +269,7 @@
 
   async function loadPassage() {
     if (!await resolveApiBase()) {
-      status("The app has no verified translation-service address yet. The Cloudflare Worker must be deployed and its verified URL published in version.json before YouVersion or API.Bible keys can work. Your offline KJV is unchanged.");
+      status("Online translation comparison is not connected yet. Provider keys must remain protected as server-side Cloudflare secrets; they are never stored in the app or on your device. Online comparison needs an internet connection. Your bundled KJV remains available offline.");
       return;
     }
     if (!currentChapter) {
@@ -422,6 +422,6 @@
   if (!API_BASE) {
     select.hidden = true;
     loadButton.hidden = true;
-    status("The app has no verified translation-service address yet. The Cloudflare Worker must be deployed and its verified URL published in version.json before YouVersion or API.Bible keys can work. Your offline KJV is unchanged.");
+    status("Online translation comparison is not connected yet. Provider keys must remain protected as server-side Cloudflare secrets; they are never stored in the app or on your device. Online comparison needs an internet connection. Your bundled KJV remains available offline.");
   }
 })();
