@@ -59,8 +59,14 @@ jobs:
         with:
           packages: "platform-tools platforms;android-36 build-tools;36.0.0"
 
-      - name: Install Capacitor
+      - name: Install Capacitor and Playwright dependencies
         run: npm install
+
+      - name: Install Chromium for Pixel 7 mobile browser tests
+        run: npx playwright install --with-deps chromium
+
+      - name: Test reading, verse actions, concordance, YouVersion and offline commentary on mobile
+        run: npm run test:mobile
 
       - name: Prepare offline web app
         run: npm run build:web
