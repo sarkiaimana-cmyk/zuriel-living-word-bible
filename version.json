@@ -1,4 +1,4 @@
 {
-  "version": "1.4.60",
-  "releaseNotes": "Expands the offline biblical dictionary with 16 more contextual theology studies, bringing the expanded study set to 75 entries across 205 terms. Adds related Scripture passages, interpretive cautions and clear distinctions between biblical wording and later theological labels; refreshes the offline cache."
+  "version": "1.4.62",
+  "releaseNotes": "Expands the offline Bible dictionary with 32 additional contextual studies, bringing the expanded study set to 107 across 205 terms. Includes language notes, related passages and interpretive cautions, with KJV reference integrity checks. Retains the YouVersion 1.4.61 endpoint-discovery and secure deployment architecture."
 }
