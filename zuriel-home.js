@@ -777,7 +777,7 @@
       }
     `;
     document.head.appendChild(style);
-    style.textContent += "#zurielHomeDashboard .home-growth-highlight{background:#fff!important;border:1px solid #d8dee5!important;box-shadow:none!important} #zurielHomeDashboard .home-growth-highlight>details{background:#fff!important;border:0!important;border-bottom:1px solid #e1e5e9!important;border-radius:0!important;box-shadow:none!important;padding:8px 2px} #zurielHomeDashboard .home-growth-highlight>details summary,#zurielHomeDashboard .home-growth-highlight>details p{color:#17212b!important;text-shadow:none!important} #zurielHomeDashboard .zob-landscape{background:#f7f8fa!important;border:1px solid #d8dee5!important;border-radius:12px!important;box-shadow:none!important} #zurielHomeDashboard .zob-brandline{background:transparent!important;color:#17212b!important;border:0!important;box-shadow:none!important;text-shadow:none!important;font-size:clamp(17px,4.5vw,23px)!important} #zurielHomeDashboard .zob-book{background:#fff!important;border:1px solid #cfd6de!important;border-radius:8px!important;box-shadow:none!important;transform:none!important} #zurielHomeDashboard .zob-book:after{width:1px!important;background:#d8dee5!important} #zurielHomeDashboard .zob-page{background:#fff!important;color:#17212b!important;min-height:170px!important;text-align:left!important} #zurielHomeDashboard .zob-page p,#zurielHomeDashboard .zob-scripture-copy,#zurielHomeDashboard .zob-declaration-copy,#zurielHomeDashboard .zob-affirmation-copy{color:#17212b!important;text-shadow:none!important;font-style:normal!important;font-weight:500!important;line-height:1.55!important} #zurielHomeDashboard .zob-ribbon,#zurielHomeDashboard .zob-affirmation-label{display:block!important;background:transparent!important;color:#34465a!important;border:0!important;border-radius:0!important;box-shadow:none!important;text-align:left!important;font:700 11px/1.4 Arial,sans-serif!important;letter-spacing:.35px!important;padding:0!important} #zurielHomeDashboard .zob-footer{background:transparent!important;color:#34465a!important;border:0!important;box-shadow:none!important;text-shadow:none!important;font:600 12px/1.4 Arial,sans-serif!important} #zurielHomeDashboard .home-growth-highlight .zob-faith-actions{display:flex!important;flex-wrap:wrap!important} #zurielHomeDashboard .home-growth-highlight .zob-faith-actions .home-button{flex:1 1 145px;background:#243b53!important;color:#fff!important;border:1px solid #243b53!important;box-shadow:none!important} @media(max-width:380px){#zurielHomeDashboard .zob-page{padding:12px 8px!important}#zurielHomeDashboard .zob-scripture-copy{font-size:15px!important}#zurielHomeDashboard .zob-declaration-copy,#zurielHomeDashboard .zob-affirmation-copy{font-size:13px!important}}";
+    /* Preserve the photographic Open Book artwork and original two-page design. */
     document.head.appendChild(identityHeroStyle);
 
     /* TOP RETURN BAR */
@@ -1461,6 +1461,19 @@
     verseText.setAttribute("aria-live", "polite");
     verseReference.setAttribute("aria-live", "polite");
 
+    // Match the Zite reference behaviour: rotate the homepage verse every 15 seconds.
+    // Pause while the app is backgrounded or another app section is open.
+    const HOME_VERSE_ROTATION_MS = 15000;
+    window.setInterval(function () {
+      if (document.visibilityState !== "visible" || currentSection !== "home") return;
+      displayVerse(verseIndex + 1);
+      renderOpenBookFaithCard();
+    }, HOME_VERSE_ROTATION_MS);
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState === "visible" && currentSection === "home") {
+        renderOpenBookFaithCard();
+      }
+    });
     // Scripture for Today remains stable until the reader chooses another verse.
     /* SCRIPTURE-LINKED OPEN BOOK: use the curated faith response for the
        exact reference. Never manufacture a prayer or declaration when no
@@ -1558,7 +1571,7 @@
         try {
           const passage = await window.getBibleVerseText(verse.reference);
           const scriptureText = String(passage && passage.text || "")
-            .replace(/^\\d+\\.\\s*/, "").trim();
+            .replace(/^\d+\.\s*/, "").trim();
           if (!scriptureText) throw new Error("The exact KJV verse text could not be loaded.");
           if (!window.ZurielLibrary ||
               typeof window.ZurielLibrary.openGloryVerse !== "function") {
