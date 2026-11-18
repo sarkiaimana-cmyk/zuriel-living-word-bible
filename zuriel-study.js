@@ -3058,6 +3058,10 @@
 
     window.ZurielStudy = {
       openForReference: function (book, chapter, verse, verseText, englishWord, wordIndex) {
+        ++historicalCommentaryRequest;
+        const historicalSourceSelect = document.getElementById("zurielHistoricalCommentarySource");
+        const historicalLoadButton = document.getElementById("zurielLoadHistoricalCommentary");
+        if (historicalLoadButton) historicalLoadButton.disabled = !historicalSourceSelect || !historicalSourceSelect.value;
         selectedReference = {
           book: book,
           chapter: chapter,
@@ -3164,6 +3168,7 @@
          It never inserts content between verses or scrolls the reader away. */
       openWordInContext: async function (book, chapter, verse, verseText, englishWord, wordIndex) {
         const contextRequestId = ++wordContextRequest;
+        ++historicalCommentaryRequest;
         if (activeWordContextCleanup) activeWordContextCleanup();
         selectedReference = {
           book: book,
