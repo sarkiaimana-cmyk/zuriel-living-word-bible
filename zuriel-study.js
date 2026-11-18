@@ -1890,7 +1890,7 @@
           });
           const sourceNote = document.createElement("p");
           sourceNote.className = "study-small";
-          sourceNote.textContent = "Study note: concise biblical-language guidance, not a substitute for a full lexicon. Strong's numbers are lookup indexes, not complete definitions; verify the word's sense in its verse and literary context.";
+          sourceNote.textContent = "Study note: this is a concise contextual study, not a substitute for a full lexicon. A topic heading does not establish a Hebrew or Greek lemma; verify word-level claims against the selected verse and its source-linked records.";
           details.appendChild(sourceNote);
           item.appendChild(details);
         }
