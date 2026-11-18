@@ -2903,6 +2903,7 @@
     }
     if (historicalSelect) {
       historicalSelect.addEventListener("change", function () {
+        ++historicalCommentaryRequest;
         const status = document.getElementById("zurielHistoricalCommentaryStatus");
         const results = document.getElementById("zurielHistoricalCommentaryResults");
         if (results) results.replaceChildren();
