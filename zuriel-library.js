@@ -203,7 +203,7 @@
       ]},
       { category: "Spiritual Growth", items: [
         { text: "I continue to grow in the grace and knowledge of Jesus Christ.", reference: "2 Peter 3:18" },
-        { text: "I abide in Christ, and my life bears fruit that honours God.", reference: "John 15:5, 8" }
+        { text: "I abide in Christ, and my life bears fruit that honours God.", reference: "John 15:5; John 15:8" }
       ]}
     ],
 
@@ -508,6 +508,41 @@
         intro.appendChild(element("p", "Resource records identify historic works and their provenance. Full texts are not represented as installed unless a verified, rights-cleared edition is actually supplied."));
         panel.appendChild(intro);
 
+        // Put the working Zuriel reference tools ahead of the historical
+        // catalogue so readers can use the installed dictionary and concordance.
+        const liveTools = element("section", undefined, "zrl-live-tools");
+        liveTools.appendChild(element("h3", "Zuriel's Offline Study Tools"));
+        liveTools.appendChild(element("p", "These tools use the bundled KJV and Zuriel's searchable study entries. Historical books listed below remain catalogue records until a verified complete edition is supplied."));
+        const liveToolStatus = element("p", "", "zrl-live-tool-status");
+        liveToolStatus.setAttribute("role", "status");
+        liveToolStatus.setAttribute("aria-live", "polite");
+        const openDictionary = button("Open Offline Biblical Dictionary", () => {
+          const opened = window.ZurielStudy &&
+            typeof window.ZurielStudy.openSection === "function" &&
+            window.ZurielStudy.openSection("Dictionary");
+          liveToolStatus.textContent = opened
+            ? "The offline dictionary is open below. Search a term or browse the entries."
+            : "The offline dictionary could not be opened. Open a Bible chapter and try again.";
+        });
+        const openConcordance = button("Open KJV Concordance", () => {
+          const opened = window.ZurielStudy &&
+            typeof window.ZurielStudy.openSection === "function" &&
+            window.ZurielStudy.openSection("Bible Concordance");
+          liveToolStatus.textContent = opened
+            ? "The KJV concordance is open below. Enter a word or phrase to search."
+            : "The KJV concordance could not be opened. Open a Bible chapter and try again.";
+        });
+        const openCommentary = button("Open Passage Commentary", () => {
+          const opened = window.ZurielStudy &&
+            typeof window.ZurielStudy.openSection === "function" &&
+            window.ZurielStudy.openSection("Passage Commentary");
+          liveToolStatus.textContent = opened
+            ? "The passage commentary collection is open. Select a verse for a matching note or search by theme."
+            : "The passage commentary collection could not be opened. Open a Bible chapter and try again.";
+        });
+        liveTools.append(openDictionary, openConcordance, openCommentary, liveToolStatus);
+        panel.appendChild(liveTools);
+
         const search = element("input");
         search.type = "search";
         search.id = "zrlSearch";
@@ -600,7 +635,7 @@
       if (page === "devotional") {
         content.appendChild(card(
           "The Light Glory Devotional",
-          "A collection of 30 Scripture-led reflections, each with a short message and prayer."
+          "A monthly collection of 30 Scripture-led reflections, each with a short message and prayer. No daily numbering is used."
         ));
 
         originalLibrary.devotionals.forEach(item => {
@@ -965,8 +1000,8 @@
             function wrap(text, maxWidth, fontSize) {
               ctx.font = fontSize + "px " + typeface + ", serif";
               const lines = [];
-              String(text || "").split(/\\n/).forEach(paragraph => {
-                const words = paragraph.split(/\\s+/).filter(Boolean);
+              String(text || "").split(/\n/).forEach(paragraph => {
+                const words = paragraph.split(/\s+/).filter(Boolean);
                 if (!words.length) { lines.push(""); return; }
                 let line = "";
                 words.forEach(word => {
@@ -1060,19 +1095,37 @@
             const blob = await new Promise((resolve,reject) => canvas.toBlob(value => value ? resolve(value) : reject(new Error("The image could not be created.")),"image/png"));
             const safeReference = reference.replace(/[^a-z0-9]+/gi,"-").replace(/^-|-$/g,"").toLowerCase();
             const fileName = "Zuriel-Glory-Verse-" + (safeReference || "card") + ".png";
-            const file = new File([blob],fileName,{type:"image/png"});
-            if (exportButton.id === "zgsShareImage" && navigator.canShare && navigator.canShare({files:[file]}) && navigator.share) {
-              await navigator.share({files:[file],title:"Glory Verse Affirmation"});
-              status.textContent = "Your open-book image has been shared.";
+            if (window.ZurielGallery) {
+              if (exportButton.id === "zgsShareImage") {
+                const result = await window.ZurielGallery.shareImage(
+                  blob, fileName, "Glory Verse Affirmation", "His Words.. My life.. My Victory"
+                );
+                status.textContent = result.cancelled
+                  ? "Sharing was cancelled. Your image is unchanged."
+                  : result.destination === "shared"
+                    ? "Your open-book image has been shared."
+                    : "Image sharing is not available in this browser, so the PNG was saved to Downloads.";
+              } else {
+                const result = await window.ZurielGallery.saveImage(blob, fileName);
+                status.textContent = result.destination === "gallery"
+                  ? "Your PNG was saved to Pictures/Zuriel Living Word Bible in your Gallery."
+                  : "Your PNG image was saved to your Downloads folder.";
+              }
             } else {
-              const url = URL.createObjectURL(blob);
-              const link = document.createElement("a");
-              link.href = url; link.download = fileName; link.style.display = "none";
-              document.body.appendChild(link); link.click(); link.remove();
-              setTimeout(() => URL.revokeObjectURL(url),30000);
-              status.textContent = exportButton.id === "zgsShareImage"
-                ? "Direct image sharing is not supported here, so the PNG was saved to your Downloads folder."
-                : "Your PNG image was saved to your Downloads folder. You can open it from your device files.";
+              const file = new File([blob],fileName,{type:"image/png"});
+              if (exportButton.id === "zgsShareImage" && navigator.canShare && navigator.canShare({files:[file]}) && navigator.share) {
+                await navigator.share({files:[file],title:"Glory Verse Affirmation"});
+                status.textContent = "Your open-book image has been shared.";
+              } else {
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement("a");
+                link.href = url; link.download = fileName; link.style.display = "none";
+                document.body.appendChild(link); link.click(); link.remove();
+                setTimeout(() => URL.revokeObjectURL(url),30000);
+                status.textContent = exportButton.id === "zgsShareImage"
+                  ? "Direct image sharing is not supported here, so the PNG was saved to your Downloads folder."
+                  : "Your PNG image was saved to your Downloads folder. You can open it from your device files.";
+              }
             }
           } catch (error) {
             if (error.name !== "AbortError") status.textContent = error.message || "Image export could not be completed on this device.";

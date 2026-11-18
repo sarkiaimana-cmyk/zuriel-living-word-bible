@@ -15,6 +15,38 @@ const [study, home, faith, linking, reader, navigator, bookIndex, kjvSource] = a
 
 const failures = [];
 
+const concordanceStart = reader.indexOf("window.ZurielBibleSearch = {");
+const concordanceEnd = reader.indexOf("\n};\n\nasync function runZurielBibleSearch", concordanceStart);
+assert.ok(concordanceStart >= 0 && concordanceEnd > concordanceStart,
+  "The offline concordance search function can be isolated for occurrence tests.");
+const concordanceSource = reader.slice(concordanceStart, concordanceEnd + 3) +
+  String.fromCharCode(10) + "window.__ZurielBibleSearch = window.ZurielBibleSearch;";
+const concordanceSandbox = {
+  window: {},
+  bibleBooks: [{ name: "Genesis" }],
+  bookCodes: { Genesis: "GEN" },
+  loadKJV: async () => ({ GEN: [
+    ["I am I.", "Faith, faith, FAITH.", "faithfulness faith.", "faith faith faith."]
+  ] })
+};
+vm.runInNewContext(concordanceSource, concordanceSandbox, { timeout: 1000 });
+const wordConcordance = await concordanceSandbox.window.__ZurielBibleSearch.search("faith", 1, "word");
+assert.equal(wordConcordance.totalMatches, 3, "Exact word search counts the matching verses.");
+console.log("Concordance fixture counts:", wordConcordance.map(item => ({ text: item.text, occurrences: item.occurrences })));
+assert.equal(wordConcordance.totalOccurrences, 7, "Exact word search counts every whole-word occurrence.");
+assert.equal(wordConcordance.length, 1, "Concordance result limits affect visible verses only.");
+assert.equal(wordConcordance[0].occurrences, 3, "Each verse reports its own occurrence count.");
+const phraseConcordance = await concordanceSandbox.window.__ZurielBibleSearch.search("faith faith", 200, "phrase");
+assert.equal(phraseConcordance.totalMatches, 1, "Phrase search counts verses containing the exact phrase.");
+assert.equal(phraseConcordance.totalOccurrences, 1, "Phrase search counts non-overlapping phrase occurrences.");
+const shortWordConcordance = await concordanceSandbox.window.__ZurielBibleSearch.search("I", 200, "word");
+assert.equal(shortWordConcordance.totalOccurrences, 2, "One-letter exact words remain searchable.");
+await assert.rejects(
+  concordanceSandbox.window.__ZurielBibleSearch.search("faith faith", 200, "word"),
+  /one word/,
+  "Multiword input must use phrase mode."
+);
+
 // Validate the actual KJV data against the reader's book-code map. A single
 // mismatched code blocks loadKJV() for the entire Bible, not just that book.
 let bibleBooks = [];
@@ -49,6 +81,9 @@ try {
 
 const checks = [
     ["study panel does not scroll the reader away from Scripture", "do not scroll away from Scripture"],
+  ["reference shelf can open the built-in dictionary and concordance", "openSection: function (sectionTitle, searchText)"],
+  ["reference shelf opens the requested dictionary section", 'includes(wanted)'],
+  ["dictionary search can be prefilled from the reference shelf", 'search.dispatchEvent(new Event("input", { bubbles: true }))'],
   ["dictionary search normalizes Unicode accents", '.normalize("NFD")'],
   ["dictionary exact-title matches rank first", "title === term) score = 100"],
   ["dictionary title-prefix matches rank highly", "title.startsWith(term)"],
@@ -58,6 +93,7 @@ const checks = [
   ["dictionary browse is alphabetical", "!term ? a.entry[0].localeCompare(b.entry[0])"],
   ["dictionary result count is reported", '+ " matching entries."'],
   ["dictionary searches curated aliases", "const aliases = Array.isArray(entry[2]) ? entry[2].map(normalize) : []"],
+  ["dictionary searches advanced theological and language notes", "normalize(advancedText)"],
   ["dictionary displays alternate index terms", '"Also searchable as: " + entry[2].join(" • ")'],
   ["dictionary exposes expanded language and theology notes", "const advanced = entry[3]"],
   ["dictionary distinguishes theological significance from lexical note", '["Theological significance", advanced.theology]'],
@@ -66,6 +102,8 @@ const checks = [
   ["concordance results open the selected verse", "window.selectBibleVerse(item.verse)"],
   ["cross-reference relationships are not invented", "relationship not classified by source."],
   ["original-language notes distinguish Strong's index from definition", "A Strong's number is an index, not a complete definition."],
+  ["study response is cloned before JSON is consumed", "cacheCopy = response.clone()"],
+  ["study resources are saved to the on-device cache", "studyCache.put(url, cacheCopy)"],
   ["highlight storage rejects malformed top-level data", "!Array.isArray(saved)"],
   ["word highlights retain selected token identity", "record.wordTokens = record.wordTokens || {}"],
   ["word highlights compare saved token text", "savedToken.normalize(\"NFC\").toLowerCase()"],
@@ -99,10 +137,14 @@ const readerChecks = [
   ["verse action box is a fixed overlay, not an in-flow section", "position:fixed !important"],
   ["verse study content is mounted inside the selected-verse overlay", "verseActions.appendChild(panel)"],
   ["verse overlay includes dictionary and commentary options", "Commentary & theology"],
-  ["concordance supports exact whole-word searches", 'new RegExp("(^|[^a-z0-9])" + escaped + "([^a-z0-9]|$)", "i")'],
-  ["concordance supports exact phrase searches", "searchable.includes(term)"],
+  ["verse rows are keyboard focusable", 'paragraph.setAttribute("tabindex", "0")'],
+  ["Enter and Space open verse actions", 'event.key === "Enter" || event.key === " "'],
+  ["previous selected verse resets its expanded state", 'node.setAttribute("aria-expanded", "false")'],
+  ["concordance supports exact whole-word searches", 'new RegExp("(^|[^a-z0-9])" + escaped + "(?=$|[^a-z0-9])", "gi")'],
+  ["concordance supports exact phrase searches", "searchable.indexOf(term, position)"],
   ["concordance normalizes Unicode and diacritics", '.normalize("NFD")'],
-  ["concordance reports total occurrence count", "visible.totalMatches = matches.length"],
+  ["concordance reports matching verse count", "visible.totalMatches = matches.length"],
+  ["concordance reports total word and phrase occurrences", "visible.totalOccurrences = totalOccurrences"],
   ["concordance preserves original KJV verse wording", "text: verseOriginal.replace"],
   ["concordance supports up to 200 matches", "Math.min(limit, mode ? 200 : 50)"],
   ["concordance scans all verses before applying the display limit", "const visible = matches.slice(0, maximum)"]
@@ -375,6 +417,12 @@ try {
     " source passages and " + checkedTargets + " valid offline KJV targets.");
 } catch (error) {
   failures.push(["curated cross-reference integrity", error.message]);
+}
+
+const cacheCloneIndex = study.indexOf("cacheCopy = response.clone()");
+const cacheReadIndex = study.indexOf("const data = await response.json()", cacheCloneIndex);
+if (cacheCloneIndex < 0 || cacheReadIndex <= cacheCloneIndex) {
+  failures.push(["offline study cache ordering", "clone the response before consuming its JSON body"]);
 }
 
 if (failures.length) {

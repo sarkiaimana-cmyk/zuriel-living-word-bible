@@ -1,10 +1,12 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
-const [index, client, worker, config, deployment, aiDeployment, packaging, serviceWorker, version, updates] = await Promise.all([
+const [index, client, publicConfig, worker, handler, config, deployment, aiDeployment, packaging, serviceWorker, version, updates] = await Promise.all([
   readFile("index.html", "utf8"),
   readFile("zuriel-translations.js", "utf8"),
+  readFile("zuriel-config.js", "utf8"),
   readFile("ai-worker/src/translation-worker.js", "utf8"),
+  readFile("ai-worker/src/index.js", "utf8"),
   readFile("ai-worker/wrangler.translations.jsonc", "utf8"),
   readFile(".github/workflows/deploy-translations-worker.yml", "utf8"),
   readFile(".github/workflows/deploy-ai-worker.yml", "utf8"),
@@ -25,7 +27,9 @@ function forbidText(source, pattern, label) {
 requireText(index, 'src="zuriel-translations.js"', "Translation reader entry point");
 requireText(index, "window.ZurielBibleBookCode = function", "Reader USFM book-code bridge");
 requireText(index, "window.ZurielVerseOverlay", "Selected-verse overlay host for external study panels");
-requireText(index, 'window.ZURIEL_TRANSLATION_API_BASE = "";', "Explicit empty translation endpoint until the proxy is deployed");
+requireText(index, 'src="zuriel-config.js"', "Public translation endpoint configuration is loaded before the translation reader");
+requireText(publicConfig, "window.ZURIEL_TRANSLATION_API_BASE", "Public translation endpoint setting");
+forbidText(publicConfig, /ZITE_YVP_APP_KEY|X-YVP-App-Key/, "YouVersion credentials in public client configuration");
 requireText(client, 'id = "zurielTranslationCompare"', "Collapsible translation comparison panel");
 requireText(client, "zuriel:chapter-opened", "Reader chapter event integration");
 requireText(client, "window.ZurielVerseOverlay.openExternal(panel)", "YouVersion comparison opens in selected-verse overlay");
@@ -36,11 +40,20 @@ requireText(client, 'credentials: "omit"', "Credential isolation");
 requireText(client, 'referrerPolicy: "no-referrer"', "Referrer privacy");
 requireText(client, "item.copyright", "Publisher copyright handling");
 requireText(client, "item.promotional_content", "Publisher promotional attribution handling");
+requireText(client, "payload.version.publisher_name", "Publisher identity display");
+requireText(client, "payload.version.publisher_url", "Publisher website metadata");
+requireText(client, 'publisherUrl.protocol === "https:"', "HTTPS-only publisher link validation");
 requireText(client, "Publisher attribution was not supplied", "Fail-closed attribution requirement");
 requireText(client, "Online text is not stored for offline use.", "No-offline-storage notice");
 requireText(client, "window.ZURIEL_TRANSLATION_API_BASE", "Explicit deployment endpoint configuration");
 requireText(client, "window.ZurielTranslations", "Translation reader public readiness API");
 requireText(client, "activeController.abort()", "Cancellation of stale or closed-panel passage requests");
+requireText(client, "let selectedVerse = null", "Selected verse comparison state");
+requireText(client, "function currentKJVText()", "Offline KJV comparison column");
+requireText(client, '"ztc-comparison"', "Responsive parallel translation comparison layout");
+requireText(client, '"King James Version — offline"', "KJV source label beside online translation");
+requireText(client, '"Load selected verse"', "Selected-verse comparison action label");
+requireText(client, 'verseNumber > 0 ? "." + verseNumber', "Exact selected-verse USFM request rather than an entire chapter");
 forbidText(client, /localStorage|sessionStorage|caches\.|indexedDB/i, "Persistent storage of licensed online Bible text");
 forbidText(client, /innerHTML|outerHTML/i, "Unsafe HTML insertion for publisher passage text");
 forbidText(client, /ZITE_YVP_APP_KEY|X-YVP-App-Key|api\.youversion\.com/i, "Provider credentials or direct upstream API access in client code");
@@ -48,6 +61,15 @@ forbidText(client, /ZITE_YVP_APP_KEY|X-YVP-App-Key|api\.youversion\.com/i, "Prov
 requireText(worker, 'from "./index.js"', "Shared tested server-side YouVersion handler");
 requireText(worker, "bibles(?:", "Translation-only route allowlist");
 requireText(worker, "handleRequest(request, env, dependencies)", "Shared server-side origin, rate-limit and licence handling");
+requireText(handler, 'upstreamUrl.searchParams.set("page_size", "99")', "YouVersion maximum catalogue page size");
+requireText(handler, 'upstreamUrl.searchParams.set("page_token", token)', "Documented YouVersion pagination parameter");
+requireText(handler, "item.language_tag", "Current YouVersion language-tag mapping");
+requireText(handler, 'YVP_BASE + "/bibles/" + selectedVersionId', "Separate Bible metadata request for publisher attribution");
+requireText(handler, "bibleMetadata.copyright", "Bible-level publisher copyright verification");
+requireText(handler, "bibleMetadata.promotional_content", "Bible-level publisher attribution fallback");
+requireText(handler, "bibleMetadata.publisher_name", "Publisher name from Bible metadata");
+requireText(handler, "bibleMetadata.publisher_url", "Publisher website from Bible metadata");
+requireText(handler, 'redirect: "error"', "Prevent App Key forwarding across redirects");
 requireText(config, '"name": "zuriel-bible-translations"', "Separate translation Worker name");
 requireText(config, '"TRANSLATION_RATE_LIMIT"', "Translation rate-limit binding");
 requireText(config, '"ZITE_YVP_APP_KEY"', "Server-only YouVersion secret requirement");
@@ -58,6 +80,10 @@ requireText(deployment, "secrets.ZITE_YVP_APP_KEY", "Server-side YouVersion secr
 requireText(deployment, "wrangler deploy --config wrangler.translations.jsonc", "Dedicated translation Worker deployment");
 forbidText(aiDeployment, /ZITE_YVP_APP_KEY/, "YouVersion app key in the AI-only deployment workflow");
 requireText(packaging, '"zuriel-translations.js"', "Android web packaging entry");
+requireText(packaging, '"zuriel-config.js"', "Android public translation configuration packaging");
+requireText(serviceWorker, '"./zuriel-config.js"', "Offline public translation configuration cache");
+assert.ok(index.indexOf('src="zuriel-config.js"') < index.indexOf('src="zuriel-translations.js"'),
+  "Public translation endpoint setting must load before the comparison reader.");
 requireText(serviceWorker, '"./zuriel-translations.js"', "Offline shell precache entry");
 
 const translationConfig = JSON.parse(config);

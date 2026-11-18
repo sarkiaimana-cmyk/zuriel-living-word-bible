@@ -1,0 +1,178 @@
+/* Zuriel Reading Experience refinement — mobile-first, verse-first.
+   This stylesheet intentionally overrides the accumulated reader rules in index.html. */
+:root {
+  --zuriel-ink: #142b46;
+  --zuriel-navy: #10213d;
+  --zuriel-green: #24634a;
+  --zuriel-paper: #fbfaf5;
+  --zuriel-line: #e4e0d5;
+  --zuriel-gold: #b99b58;
+}
+#bibleReader, #message { min-width:0; }
+#message {
+  overflow-wrap:anywhere;
+  word-break:normal;
+  font-size:clamp(16px, 4.2vw, 18px);
+  line-height:1.85;
+}
+#message .verse {
+  display:block;
+  width:100%;
+  min-width:0;
+  margin:0;
+  padding:14px 10px;
+  border:0;
+  border-bottom:1px solid var(--zuriel-line);
+  border-left:3px solid transparent;
+  border-radius:8px;
+  background:transparent;
+  color:#26342e;
+  line-height:1.9;
+  text-align:left;
+  overflow-wrap:anywhere;
+  -webkit-tap-highlight-color:transparent;
+  transition:background-color .16s ease,border-color .16s ease;
+}
+#message .verse:focus-visible {
+  outline:2px solid var(--zuriel-green);
+  outline-offset:2px;
+}
+#message .verse.zuriel-selected-verse {
+  border-left-color:var(--zuriel-gold);
+  background:#f7f0dd;
+  padding-left:12px;
+}
+#message .verse strong { color:var(--zuriel-green); font-size:.82em; }
+#message .verse-word { border-radius:3px; }
+#zurielVerseActions[hidden],
+#zurielVerseActions .zuriel-verse-action[hidden],
+#zurielVerseActions .zuriel-action-group[hidden] { display:none !important; }
+#zurielVerseActions {
+  position:fixed !important;
+  z-index:12000 !important;
+  inset: max(10px, env(safe-area-inset-top)) 10px auto 10px !important;
+  width:auto !important;
+  max-width:680px;
+  max-height:min(78dvh,680px);
+  margin-inline:auto !important;
+  padding:14px;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  align-content:start;
+  gap:8px;
+  overflow-x:hidden;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+  border:1px solid #b99b58;
+  border-radius:18px;
+  background:var(--zuriel-navy);
+  color:#fff8e8;
+  box-shadow:0 18px 55px #07132355,0 0 0 100vmax #07132366;
+}
+#zurielVerseActions > p {
+  grid-column:1/-1;
+  margin:0 0 4px;
+  color:#f4e6c5;
+  font:600 13px/1.5 system-ui,sans-serif;
+}
+#zurielVerseActions .zuriel-verse-action {
+  width:100%;
+  min-width:0;
+  min-height:46px;
+  margin:0;
+  padding:10px 8px;
+  border:1px solid #526681;
+  border-radius:11px;
+  background:#1c3657;
+  color:#fff8e8;
+  font:600 13px/1.35 system-ui,sans-serif;
+  overflow-wrap:anywhere;
+  touch-action:manipulation;
+}
+#zurielVerseActions .zuriel-verse-action:focus-visible,
+#zurielVerseActions summary:focus-visible {
+  outline:2px solid #f4d98c;
+  outline-offset:2px;
+}
+#zurielVerseActions .zuriel-verse-action:active { background:#2b4b70; }
+#zurielVerseActions .zuriel-action-group {
+  grid-column:1/-1;
+  min-width:0;
+  margin:0;
+  padding:0 9px;
+  border:1px solid #536984;
+  border-radius:11px;
+  background:#172e4a;
+}
+#zurielVerseActions .zuriel-action-group summary {
+  display:flex;
+  align-items:center;
+  min-height:46px;
+  cursor:pointer;
+  color:#f4e6c5;
+  font:700 13px/1.4 system-ui,sans-serif;
+}
+#zurielVerseActions .zuriel-action-group-items {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:7px;
+  padding:0 0 9px;
+}
+#zurielVerseActions .zuriel-overlay-back,
+#zurielVerseActions .zuriel-action-close { grid-column:1/-1; }
+#zurielVerseActions.has-study-content {
+  display:block;
+  padding:12px;
+}
+#zurielVerseActions.has-study-content > p,
+#zurielVerseActions.has-study-content > .zuriel-verse-action:not(.zuriel-overlay-back) {
+  display:none !important;
+}
+#zurielVerseActions #zurielStudyPanel {
+  display:block !important;
+  position:static !important;
+  width:100% !important;
+  max-width:none !important;
+  max-height:none !important;
+  overflow:visible !important;
+  margin:0 !important;
+  padding:12px !important;
+  border:0 !important;
+  border-radius:12px !important;
+  box-shadow:none !important;
+  background:#10213d !important;
+  color:#fff8e8;
+}
+#zurielVerseActions #zurielStudyPanel h2,
+#zurielVerseActions #zurielStudyPanel h3,
+#zurielVerseActions #zurielStudyPanel h4 { color:#f4e6c5; }
+#zurielVerseActions #zurielTranslationCompare {
+  width:100%;
+  min-width:0;
+  margin:10px 0;
+  padding:10px;
+  box-sizing:border-box;
+}
+#zurielInlineWordStudy {
+  margin:12px 0;
+  padding:13px;
+  border:1px solid #b99b58;
+  border-radius:14px;
+  background:#fffdf7;
+  color:#203a31;
+  overflow-wrap:anywhere;
+}
+#zurielInlineWordStudy h3 { margin:0 0 8px; color:var(--zuriel-ink); }
+#zurielInlineWordStudy button {
+  min-height:44px;
+  max-width:100%;
+  overflow-wrap:anywhere;
+}
+@media(max-width:380px) {
+  #zurielVerseActions { grid-template-columns:1fr; padding:11px; }
+  #zurielVerseActions .zuriel-action-group-items { grid-template-columns:1fr; }
+}
+@media(prefers-reduced-motion:reduce) {
+  #message .verse { transition:none; }
+}

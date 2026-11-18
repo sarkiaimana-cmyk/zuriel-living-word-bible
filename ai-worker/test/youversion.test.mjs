@@ -40,10 +40,11 @@ test("lists only English Bible versions licensed to the registered YouVersion ap
       assert.equal(parsed.origin, "https://api.youversion.com");
       assert.equal(parsed.pathname, "/v1/bibles");
       assert.equal(parsed.searchParams.get("language_ranges[]"), "en");
-      assert.equal(parsed.searchParams.get("page_size"), "100");
+      assert.equal(parsed.searchParams.get("page_size"), "99");
       assert.equal(parsed.searchParams.has("all_available"), false,
         "The proxy must never request unlicensed catalogue entries.");
       assert.equal(options.headers["X-YVP-App-Key"], secret);
+      assert.equal(options.redirect, "error");
       assert.equal(options.headers.Accept, "application/json");
       return Response.json({
         data: [
@@ -52,7 +53,7 @@ test("lists only English Bible versions licensed to the registered YouVersion ap
             abbreviation: "BSB",
             title: "Berean Standard Bible",
             copyright: "Berean Standard Bible",
-            language: { iso_639_1: "en", name: "English" },
+            language_tag: "en",
             youversion_deep_link: "https://www.bible.com/versions/3034"
           },
           {
@@ -74,6 +75,7 @@ test("lists only English Bible versions licensed to the registered YouVersion ap
   assert.equal(data.data.length, 2);
   assert.equal(data.data[0].id, 3034);
   assert.equal(data.data[0].abbreviation, "BSB");
+  assert.equal(data.data[0].language.iso_639_1, "en");
   assert.equal(data.next_page_token, "next-page");
   assert.doesNotMatch(JSON.stringify(data), new RegExp(secret));
 });
@@ -82,7 +84,7 @@ test("passes a validated pagination token to the licensed English Bible list", a
   const response = await send(request("/api/youversion/bibles?next_page_token=next%2Bpage%3D%3D"), makeEnv(),
     async url => {
       const parsed = new URL(url);
-      assert.equal(parsed.searchParams.get("next_page_token"), "next+page==");
+      assert.equal(parsed.searchParams.get("page_token"), "next+page==");
       return Response.json({ data: [], next_page_token: null });
     });
   assert.equal(response.status, 200);
@@ -96,7 +98,7 @@ test("rejects malformed pagination tokens before contacting YouVersion", async (
   assert.equal(called, false);
 });
 
-test("fetches an authorised Bible passage through the server-side app key", async () => {
+test("fetches publisher attribution from Bible metadata for an authorised passage", async () => {
   const response = await send(
     request("/api/youversion/bibles/3034/passages/JHN.3.16-18?format=html", {
       headers: { "CF-Connecting-IP": "203.0.113.10" }
@@ -105,46 +107,85 @@ test("fetches an authorised Bible passage through the server-side app key", asyn
     async (url, options) => {
       const parsed = new URL(url);
       assert.equal(parsed.origin, "https://api.youversion.com");
-      assert.equal(parsed.pathname, "/v1/bibles/3034/passages/JHN.3.16-18");
-      assert.equal(parsed.searchParams.get("format"), "html");
       assert.equal(options.headers["X-YVP-App-Key"], secret);
-      return Response.json({
-        data: {
-          id: "JHN.3.16-18",
-          reference: "John 3:16-18",
-          content: "<p><span class='v'>16</span> For God so loved the world.</p>",
+      if (parsed.pathname === "/v1/bibles/3034/passages/JHN.3.16-18") {
+        assert.equal(parsed.searchParams.get("format"), "html");
+        return Response.json({
+          data: {
+            id: "JHN.3.16-18",
+            reference: "John 3:16-18",
+            content: "<p><span class='v'>16</span> For God so loved the world.</p>"
+          }
+        });
+      }
+      if (parsed.pathname === "/v1/bibles/3034") {
+        return Response.json({
+          id: 3034,
+          abbreviation: "BSB",
+          title: "Berean Standard Bible",
           copyright: "Publisher copyright",
-          promotional_content: "Publisher attribution"
-        }
-      });
+          promotional_content: "Publisher attribution",
+          publisher_name: "Example Bible Publisher",
+          publisher_url: "https://publisher.example",
+          youversion_deep_link: "https://www.bible.com/versions/3034"
+        });
+      }
+      throw new Error("Unexpected YouVersion endpoint: " + parsed.pathname);
     }
   );
   assert.equal(response.status, 200);
   const data = await response.json();
   assert.equal(data.version.id, 3034);
+  assert.equal(data.version.abbreviation, "BSB");
+  assert.equal(data.version.title, "Berean Standard Bible");
   assert.equal(data.passage.reference, "John 3:16-18");
   assert.match(data.passage.content, /For God so loved the world/);
   assert.equal(data.passage.copyright, "Publisher copyright");
   assert.equal(data.passage.promotional_content, "Publisher attribution");
+  assert.equal(data.version.publisher_name, "Example Bible Publisher");
+  assert.equal(data.version.publisher_url, "https://publisher.example");
   assert.equal(data.format, "html");
   assert.match(data.notice, /not stored for offline use/);
   assert.doesNotMatch(JSON.stringify(data), new RegExp(secret));
 });
 
-test("supports plain-text passage responses without accepting arbitrary query parameters", async () => {
+test("supports plain-text passage responses with separately verified Bible attribution", async () => {
   const response = await send(request("/api/youversion/bibles/3034/passages/JHN.3?format=text"),
     makeEnv(), async url => {
-      assert.equal(new URL(url).searchParams.get("format"), "text");
-      return Response.json({ id: "JHN.3", reference: "John 3", content: "For God so loved the world." });
+      const parsed = new URL(url);
+      if (parsed.pathname.endsWith("/passages/JHN.3")) {
+        assert.equal(parsed.searchParams.get("format"), "text");
+        return Response.json({ id: "JHN.3", reference: "John 3", content: "For God so loved the world." });
+      }
+      if (parsed.pathname === "/v1/bibles/3034") {
+        return Response.json({ id: 3034, abbreviation: "BSB", title: "Berean Standard Bible", copyright: "Publisher copyright" });
+      }
+      throw new Error("Unexpected YouVersion endpoint: " + parsed.pathname);
     });
   assert.equal(response.status, 200);
   const data = await response.json();
   assert.equal(data.format, "text");
   assert.equal(data.passage.content, "For God so loved the world.");
+  assert.equal(data.passage.copyright, "Publisher copyright");
   const bad = await send(request("/api/youversion/bibles/3034/passages/JHN.3?format=text&all_available=true"));
   assert.equal(bad.status, 400);
 });
 
+test("withholds passage text if publisher attribution cannot be verified", async () => {
+  const response = await send(request("/api/youversion/bibles/3034/passages/JHN.3.16"),
+    makeEnv(), async url => {
+      const parsed = new URL(url);
+      if (parsed.pathname.endsWith("/passages/JHN.3.16")) {
+        return Response.json({ id: "JHN.3.16", reference: "John 3:16", content: "Passage text" });
+      }
+      if (parsed.pathname === "/v1/bibles/3034") {
+        return Response.json({ id: 3034, abbreviation: "BSB", title: "Berean Standard Bible" });
+      }
+      throw new Error("Unexpected YouVersion endpoint: " + parsed.pathname);
+    });
+  assert.equal(response.status, 502);
+  assert.match((await response.json()).error, /Publisher attribution|publisher attribution/);
+});
 test("rejects invalid passage identifiers before contacting YouVersion", async () => {
   let called = false;
   const response = await send(request("/api/youversion/bibles/3034/passages/JHN.3.16-EXO.1.1"),

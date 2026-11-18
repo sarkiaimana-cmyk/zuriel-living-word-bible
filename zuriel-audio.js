@@ -1,4 +1,67 @@
-import { TextToSpeech } from "@capacitor-community/text-to-speech";
+/* Capacitor-native speech with a browser speechSynthesis fallback.
+   Use the Capacitor bridge directly so the GitHub Pages web app does not need
+   a bare npm import at runtime. */
+const TextToSpeech = (function () {
+  "use strict";
+  let nativePlugin = null;
+  function getNativePlugin() {
+    const capacitor = window.Capacitor;
+    if (!capacitor || typeof capacitor.isNativePlatform !== "function" ||
+        !capacitor.isNativePlatform()) return null;
+    if (nativePlugin) return nativePlugin;
+    nativePlugin = capacitor.Plugins && capacitor.Plugins.TextToSpeech
+      ? capacitor.Plugins.TextToSpeech
+      : (typeof capacitor.registerPlugin === "function"
+        ? capacitor.registerPlugin("TextToSpeech")
+        : null);
+    return nativePlugin;
+  }
+  function browserVoices() {
+    if (!window.speechSynthesis || typeof window.speechSynthesis.getVoices !== "function") return [];
+    return window.speechSynthesis.getVoices();
+  }
+  return {
+    async getSupportedVoices() {
+      const native = getNativePlugin();
+      if (native && typeof native.getSupportedVoices === "function") return native.getSupportedVoices();
+      if (!window.speechSynthesis) return { voices: [] };
+      let voices = browserVoices();
+      if (!voices.length) {
+        await Promise.race([
+          new Promise(resolve => window.speechSynthesis.addEventListener("voiceschanged", resolve, { once:true })),
+          new Promise(resolve => window.setTimeout(resolve, 700))
+        ]);
+        voices = browserVoices();
+      }
+      return { voices: voices };
+    },
+    async speak(options) {
+      const native = getNativePlugin();
+      if (native && typeof native.speak === "function") return native.speak(options);
+      if (!window.speechSynthesis || typeof SpeechSynthesisUtterance === "undefined") {
+        throw new Error("Speech synthesis is not available in this browser.");
+      }
+      return new Promise(function (resolve, reject) {
+        const utterance = new SpeechSynthesisUtterance(String(options.text || ""));
+        utterance.lang = options.lang || "en-US";
+        utterance.rate = Number(options.rate) || 1;
+        utterance.pitch = Number(options.pitch) || 1;
+        utterance.volume = options.volume === undefined ? 1 : Number(options.volume);
+        const voices = browserVoices();
+        if (Number.isInteger(options.voice) && voices[options.voice]) utterance.voice = voices[options.voice];
+        utterance.onend = resolve;
+        utterance.onerror = event => reject(new Error(event.error || "Speech synthesis failed."));
+        window.speechSynthesis.speak(utterance);
+      });
+    },
+    async stop() {
+      const native = getNativePlugin();
+      if (native && typeof native.stop === "function") return native.stop();
+      if (window.speechSynthesis) window.speechSynthesis.cancel();
+      return undefined;
+    }
+  };
+})();
 
 (function () {
   "use strict";

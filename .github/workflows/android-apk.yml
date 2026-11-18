@@ -6,10 +6,13 @@ on:
     branches: [main]
     paths:
       - "index.html"
+      - "zuriel-reading-refinement.css"
+      - "zuriel-config.js"
       - "bible-data.js"
       - "zuriel-*.js"
       - "sw.js"
       - "kjv.72bec70fcd.json"
+      - "zuriel-passage-commentary-expansion.json"
       - "images/**"
       - "package.json"
       - "capacitor.config.ts"
@@ -23,6 +26,7 @@ on:
       - "zuriel-*.js"
       - "sw.js"
       - "kjv.72bec70fcd.json"
+      - "zuriel-passage-commentary-expansion.json"
       - "images/**"
       - "package.json"
       - "capacitor.config.ts"
@@ -55,8 +59,14 @@ jobs:
         with:
           packages: "platform-tools platforms;android-36 build-tools;36.0.0"
 
-      - name: Install Capacitor
+      - name: Install Capacitor and Playwright dependencies
         run: npm install
+
+      - name: Install Chromium for Pixel 7 mobile browser tests
+        run: npx playwright install --with-deps chromium
+
+      - name: Test reading, verse actions, concordance, YouVersion and offline commentary on mobile
+        run: npm run test:mobile
 
       - name: Prepare offline web app
         run: npm run build:web
@@ -64,20 +74,29 @@ jobs:
       - name: Verify offline core assets and local script precache
         run: node scripts/check-offline-core-assets.mjs
 
+      - name: Validate mobile verse-first reading refinement
+        run: node scripts/check-reading-refinement.mjs
+
       - name: Verify complete offline KJV corpus counts
         run: node scripts/check-kjv-corpus-counts.mjs
 
       - name: Validate secure online translation reader
         run: node scripts/check-translations-reader.mjs
 
-      - name: Test translation-only Worker route isolation
-        run: node --test ai-worker/test/translation-worker.test.mjs
+      - name: Test translation-only Worker and YouVersion API safeguards
+        run: node --test ai-worker/test/translation-worker.test.mjs ai-worker/test/youversion.test.mjs
 
       - name: Syntax-check application JavaScript
         run: for file in *.js; do node --check "$file"; done
 
       - name: Validate study and open-book safeguards
         run: node scripts/check-study-integrity.mjs
+
+      - name: Validate searchable passage commentary and KJV references
+        run: node scripts/check-passage-commentary.mjs
+
+      - name: Validate monthly devotional and worship library
+        run: node scripts/check-devotional-library.mjs
 
       - name: Audit verse-specific faith response coverage
         run: npm run study:faith-coverage

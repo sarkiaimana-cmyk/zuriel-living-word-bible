@@ -1451,11 +1451,14 @@
   };
 
   const reader = document.getElementById("bibleReader");
-  const anchor =
-    document.getElementById("zurielNavigation") ||
-    document.getElementById("message");
+  const navigationAnchor = document.getElementById("zurielNavigation");
+  const readerLayoutAnchor = document.getElementById("zurielReaderStudyLayout");
+  const anchor = navigationAnchor && navigationAnchor.parentNode === reader
+    ? navigationAnchor
+    : readerLayoutAnchor && readerLayoutAnchor.parentNode === reader
+      ? readerLayoutAnchor : null;
 
-  if (!reader || !anchor) {
+  if (!reader) {
     console.error("Zuriel Introductions: Bible reader not found.");
     return;
   }
@@ -1897,7 +1900,15 @@
   });
 
   renderBook("Genesis");
-  reader.insertBefore(panel, anchor);
+  if (anchor && anchor.parentNode === reader) {
+    if (anchor && anchor.parentNode) {
+    anchor.parentNode.insertBefore(panel, anchor);
+  } else {
+    reader.appendChild(panel);
+  }
+  } else {
+    reader.appendChild(panel);
+  }
 
   console.log(
     "Zuriel Book Introduction Centre loaded: " +

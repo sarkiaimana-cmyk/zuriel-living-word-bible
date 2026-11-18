@@ -9,9 +9,20 @@
 
   const NOTES_KEY = "zuriel-verse-study-notes-v1";
   const HIGHLIGHTS_KEY = "zuriel-word-highlights-v1";
+  const COMMENTARY_CATALOG_API = "https://bible.helloao.org/api/available_commentaries.json";
+  const COMMENTARY_API = "https://bible.helloao.org/api/c/";
+  const PUBLIC_DOMAIN_MARK = "https://creativecommons.org/publicdomain/mark/1.0";
+  const APPROVED_HISTORICAL_COMMENTARIES = new Set([
+    "john-gill", "matthew-henry", "jamieson-fausset-brown", "john-calvin", "keil-delitzsch"
+  ]);
   let selectedReference = null;
+  let historicalCommentarySources = [];
+  let historicalCommentaryCatalogPromise = null;
+  let historicalCommentaryRequest = 0;
   let selectedEnglishWord = "";
   let selectedEnglishWordIndex = -1;
+  let passageCommentaryEntries = null;
+  let passageCommentaryLoad = null;
   let activeHighlightColor = "#f5d76e";
 
   const crossReferences = [
@@ -313,10 +324,22 @@
       throw new Error("Study resource is temporarily unavailable.");
     }
 
-    const data = await response.json();
+    // Clone the response before reading its body. Once response.json()
+    // consumes the stream, response.clone() is no longer permitted and
+    // previously prevented original-language and study resources from
+    // being saved for offline use.
+    let cacheCopy = null;
     if (studyCache) {
       try {
-        await studyCache.put(url, response.clone());
+        cacheCopy = response.clone();
+      } catch (cacheError) {
+        cacheCopy = null;
+      }
+    }
+    const data = await response.json();
+    if (studyCache && cacheCopy) {
+      try {
+        await studyCache.put(url, cacheCopy);
       } catch (cacheError) {
         // Some browsers restrict cross-origin cache writes; online study
         // remains available and the app continues without persistent cache.
@@ -1545,15 +1568,41 @@
           </div>
         </details>
 
+        <details id="zurielPassageCommentarySection">
+          <summary>📚 3. Zuriel Passage Commentary — Context and Interpretation</summary>
+          <div class="study-body">
+            <p>Search original Zuriel commentary notes for selected passages. Each note separates context and meaning, observation prompts and interpretive cautions. These are original study aids, not quotations from a published commentary.</p>
+            <label for="zurielCommentarySearch">Search passage, theme or commentary</label>
+            <input id="zurielCommentarySearch" type="search" placeholder="Try creation, covenant, kingdom, resurrection…" autocomplete="off">
+            <p id="zurielCommentaryCount" class="study-small" aria-live="polite">Open a verse to find a matching passage note, or search the collection.</p>
+            <div id="zurielPassageCommentaryResults" aria-live="polite">
+              <p>Select a verse or search the commentary collection.</p>
+            </div>
+            <details id="zurielHistoricalCommentarySection">
+              <summary>📚 Historical Commentaries — Public-Domain Sources</summary>
+              <div class="study-body">
+                <p>Read historical commentary for the selected verse from sources whose catalogue metadata identifies them with the Public Domain Mark. Coverage differs by source; a missing note does not mean the Bible verse is missing.</p>
+                <label for="zurielHistoricalCommentarySource">Choose a commentary</label>
+                <select id="zurielHistoricalCommentarySource" disabled>
+                  <option value="">Checking available sources…</option>
+                </select>
+                <button type="button" class="study-action" id="zurielLoadHistoricalCommentary" disabled>Load selected verse commentary</button>
+                <p id="zurielHistoricalCommentaryStatus" class="study-small" aria-live="polite">Open a verse, choose a source and load its note when needed.</p>
+                <div id="zurielHistoricalCommentaryResults" aria-live="polite"></div>
+              </div>
+            </details>
+          </div>
+        </details>
+
         <details>
-          <summary>🙏 3. The Light — Prayer, Declaration and Faith</summary>
+          <summary>🙏 4. The Light — Prayer, Declaration and Faith</summary>
           <div class="study-body" id="zurielFaithResponse" aria-live="polite">
             <p>Select a verse to see a connected prayer, declaration, affirmation, confession and inspiration where a curated entry is available.</p>
           </div>
         </details>
 
         <details>
-          <summary>🔤 4. Hebrew and Greek Word Study</summary>
+          <summary>🔤 5. Hebrew and Greek Word Study</summary>
           <div class="study-body" id="zurielOriginalWords">
             <p>Original-language words for your selected verse. Tap any word to open its Strong's lexicon entry.</p>
             <div id="zurielOriginalWordResults" aria-live="polite">
@@ -1565,9 +1614,9 @@
         </details>
 
         <details>
-          <summary>📖 Biblical Dictionary — Search Key Terms</summary>
+          <summary>📖 6. Biblical &amp; Theological Dictionary — Search Key Terms</summary>
           <div class="study-body">
-            <p>Search concise explanations of important biblical words and themes. These are introductory study summaries, not exhaustive lexical definitions; always read the linked passages in context.</p>
+            <p>Search concise explanations of biblical words and themes. Expanded entries also include original-language context, theological significance, interpretive cautions and related passages where curated. These summaries are not exhaustive lexical definitions; read the linked Scriptures in context.</p>
             <label for="zurielDictionarySearch">Search dictionary</label>
             <input id="zurielDictionarySearch" type="search" placeholder="Try grace, covenant, faith, holiness…" autocomplete="off">
             <div id="zurielDictionaryResults" aria-live="polite">
@@ -1577,7 +1626,7 @@
         </details>
 
         <details>
-          <summary>🔗 6. Connected Scriptures</summary>
+          <summary>🔗 7. Connected Scriptures</summary>
           <div class="study-body">
             <p>Related Scriptures for the selected verse. Tap a reference to open it and compare the full passage.</p>
             <p class="study-small">A connection may be a quotation, shared theme, parallel account, prophecy or fulfilment, or another textual link. The source does not classify every link. Zuriel labels a relationship only when the source supplies that information; otherwise it is shown as an unclassified related Scripture. Read both passages in context.</p>
@@ -1588,18 +1637,18 @@
         </details>
 
         <details>
-          <summary>📚 7. Bible Concordance — Find Words and Phrases</summary>
+          <summary>📚 8. Bible Concordance — Find Words and Phrases</summary>
           <div class="study-body">
             <p>Search the offline King James Version for an exact English word or a phrase. Word searches match whole words, not partial spellings. Phrase searches find the exact phrase within a verse.</p>
             <label for="zurielConcordanceQuery">Word or phrase</label>
-            <input id="zurielConcordanceQuery" type="search" minlength="3" placeholder="For example: grace, covenant, in the beginning" autocomplete="off">
+            <input id="zurielConcordanceQuery" type="search" minlength="1" placeholder="For example: grace, covenant, in the beginning" autocomplete="off">
             <label for="zurielConcordanceMode">Search type</label>
             <select id="zurielConcordanceMode">
               <option value="word">Exact word</option>
               <option value="phrase">Exact phrase</option>
             </select>
             <button type="button" class="study-action" id="zurielConcordanceSearch">Search Concordance</button>
-            <p class="study-small">Results are from the complete offline KJV text. The concordance counts all matching verses and displays up to 200 results per search. It searches English words and phrases; it does not yet claim Hebrew or Greek lemma concordance coverage.</p>
+            <p class="study-small">Results are from the complete offline KJV text. The concordance counts every matching occurrence, reports how many verses contain the word or phrase, and displays up to 200 verse references per search. It searches English words and phrases; it does not yet claim Hebrew or Greek lemma concordance coverage.</p>
             <div id="zurielConcordanceResults" aria-live="polite">
               <p>Enter at least three characters to search the KJV concordance.</p>
             </div>
@@ -1607,7 +1656,7 @@
         </details>
 
         <details>
-          <summary>📚 8. Theology and Deeper Study</summary>
+          <summary>📚 9. Theology and Deeper Study</summary>
           <div class="study-body" id="zurielDeeperStudy">
             <p>Explore biblical themes, teachings and connections.
             Distinguish the meaning of Scripture from personal interpretation.</p>
@@ -1615,14 +1664,14 @@
         </details>
 
         <details>
-          <summary>🧭 9. Topical Scripture Connections</summary>
+          <summary>🧭 10. Topical Scripture Connections</summary>
           <div class="study-body" id="zurielTopicalConnections" aria-live="polite">
             <p>Select a verse to discover its mapped biblical themes and related passages.</p>
           </div>
         </details>
 
         <details>
-          <summary>📝 10. My Personal Study Journal</summary>
+          <summary>📝 11. My Personal Study Journal</summary>
           <div class="study-body">
             <p>Your notes are saved separately for each verse on this device.</p>
 
@@ -1771,7 +1820,12 @@
     if (reader && message && !document.getElementById("zurielReaderStudyLayout")) {
       const layout = document.createElement("div");
       layout.id = "zurielReaderStudyLayout";
-      reader.insertBefore(layout, message);
+      const messageParent = message.parentNode;
+      if (messageParent) {
+        messageParent.insertBefore(layout, message);
+      } else {
+        reader.appendChild(layout);
+      }
       layout.appendChild(message);
       layout.appendChild(panel);
     }
@@ -1800,7 +1854,14 @@
         const definition = normalize(entry[1]);
         const aliases = Array.isArray(entry[2]) ? entry[2].map(normalize) : [];
         const aliasText = aliases.join(" ");
-        const combined = title + " " + definition + " " + aliasText;
+        const advanced = entry[3] && typeof entry[3] === "object" ? entry[3] : {};
+        const advancedText = Object.keys(advanced).map(key => {
+          const value = advanced[key];
+          return Array.isArray(value) ? value.join(" ") : String(value || "");
+        }).join(" ");
+        // Search the language notes, theological explanation, cautions and
+        // Scripture links as well as the short dictionary definition.
+        const combined = title + " " + definition + " " + aliasText + " " + normalize(advancedText);
         const allTokensMatch = tokens.every(token => combined.includes(token));
         const aliasMatch = aliases.some(alias => alias === term || alias.includes(term) ||
           (tokens.length && tokens.every(token => alias.includes(token))));
@@ -1894,6 +1955,12 @@
       });
       renderDictionary("");
     }
+    const commentarySearch = panel.querySelector("#zurielCommentarySearch");
+    if (commentarySearch) {
+      commentarySearch.addEventListener("input", function () {
+        renderPassageCommentary(selectedReference);
+      });
+    }
 
     // Offline KJV concordance: whole-word and exact-phrase search use the
     // same validated 66-book Bible data as the reader.
@@ -1908,8 +1975,15 @@
       const mode = concordanceMode.value;
       const requestId = ++concordanceRequest;
       concordanceResults.replaceChildren();
-      if (query.length < 3) {
-        concordanceResults.textContent = "Please enter at least three characters.";
+      const minimumLength = mode === "word" ? 1 : 2;
+      if (query.length < minimumLength) {
+        concordanceResults.textContent = mode === "word"
+          ? "Enter one whole word to search the concordance."
+          : "Enter a phrase of at least two characters.";
+        return;
+      }
+      if (mode === "word" && /\s/.test(query)) {
+        concordanceResults.textContent = "Exact word search accepts one word. Choose exact phrase for multiple words.";
         return;
       }
       if (!window.ZurielBibleSearch || typeof window.ZurielBibleSearch.search !== "function") {
@@ -1919,7 +1993,7 @@
       concordanceButton.disabled = true;
       concordanceResults.textContent = "Searching the complete offline KJV...";
       try {
-        const matches = await window.ZurielBibleSearch.search(query, 100, mode);
+        const matches = await window.ZurielBibleSearch.search(query, 200, mode);
         if (requestId !== concordanceRequest) return;
         concordanceResults.replaceChildren();
         if (!matches.length) {
@@ -1930,16 +2004,20 @@
         summary.className = "study-small";
         const totalMatches = Number.isInteger(matches.totalMatches)
           ? matches.totalMatches : matches.length;
-        summary.textContent = "Found " + totalMatches +
-          " matching KJV verses; showing " + matches.length +
-          (totalMatches > matches.length ? " (display limit reached)" : "") +
+        const totalOccurrences = Number.isInteger(matches.totalOccurrences)
+          ? matches.totalOccurrences : totalMatches;
+        summary.textContent = "Found " + totalOccurrences +
+          (totalOccurrences === 1 ? " occurrence" : " occurrences") + " across " +
+          totalMatches + " matching KJV verses; showing " + matches.length +
+          " verse references" + (totalMatches > matches.length ? " (display limit reached)" : "") +
           ". Tap a result to open that verse.";
         concordanceResults.appendChild(summary);
         matches.forEach(function (item) {
           const result = document.createElement("button");
           result.type = "button";
           result.className = "study-link";
-          result.textContent = item.book + " " + item.chapter + ":" + item.verse + " — " + item.text;
+          result.textContent = item.book + " " + item.chapter + ":" + item.verse + " · " +
+            item.occurrences + (item.occurrences === 1 ? " occurrence" : " occurrences") + " — " + item.text;
           result.addEventListener("click", async function () {
             try {
               await window.openChapter(item.book, item.chapter);
@@ -2515,7 +2593,7 @@
       addLine(meaning, "4. Apply it faithfully",
         "Ask what the passage reveals about God, what response it calls for, and how that response fits the whole teaching of Scripture.");
       addLine(meaning, "Commentary and source transparency",
-        "This section is a context-led study framework built from the selected KJV chapter and the book's literary setting. It is not a quotation from a published commentary, and it does not yet provide a complete source-attributed verse-by-verse commentary library. Zuriel will distinguish its own study guidance from commentary material whose source and permissions have been verified.");
+        "This section is a context-led study framework built from the selected KJV chapter and the book's literary setting. It is not a quotation from a published commentary. For additional original Zuriel notes on selected passages, open the Passage Commentary section below; coverage is selective, not a complete verse-by-verse commentary across all 66 books. Zuriel will distinguish its own study guidance from commentary material whose source and permissions have been verified.");
 
       renderTopicalConnections(ref);
 
@@ -2526,6 +2604,343 @@
         "Notice the original audience, historical setting, literary form and the paragraph's main idea. Separate what the passage states from what you conclude from it.");
       addLine(deeper, "Personal reflection",
         "What truth should shape your thinking? Is there an instruction to obey, a promise to trust, an example to follow or a warning to heed? Record the reason from the text.");
+      renderPassageCommentary(ref);
+    }
+
+    function parseCommentaryRange(value) {
+      const split = String(value || "").trim().match(/^(.+?)\s+(\d.*)$/);
+      if (!split) return null;
+      const book = split[1].trim().toLowerCase() === "psalm" ? "psalms" : split[1].trim().toLowerCase();
+      const reference = split[2].replace(/\s/g, "");
+      let match = reference.match(/^(\d+):(\d+)(?:[-–](?:(\d+):)?(\d+))?$/);
+      if (match) {
+        const startChapter = Number(match[1]);
+        const startVerse = Number(match[2]);
+        const endChapter = match[3] ? Number(match[3]) : startChapter;
+        const endVerse = match[4] ? Number(match[4]) : startVerse;
+        if (![startChapter,startVerse,endChapter,endVerse].every(Number.isInteger) ||
+            startChapter < 1 || startVerse < 1 || endChapter < startChapter || endVerse < 1) return null;
+        return { book: book, startChapter: startChapter, startVerse: startVerse,
+          endChapter: endChapter, endVerse: endVerse };
+      }
+      if (book === "philemon" || book === "jude") {
+        const groups = reference.split(",");
+        const ranges = groups.map(function (part) {
+          const verses = part.match(/^(\d+)(?:[-–](\d+))?$/);
+          if (!verses) return null;
+          return { start: Number(verses[1]), end: Number(verses[2] || verses[1]) };
+        });
+        if (!ranges.length || ranges.some(range => !range || range.end < range.start)) return null;
+        return { book: book, startChapter: 1, startVerse: Math.min(...ranges.map(range => range.start)),
+          endChapter: 1, endVerse: Math.max(...ranges.map(range => range.end)) };
+      }
+      match = reference.match(/^(\d+)(?:[-–](\d+))?$/);
+      if (!match) return null;
+      const startChapter = Number(match[1]);
+      const endChapter = Number(match[2] || match[1]);
+      if (startChapter < 1 || endChapter < startChapter) return null;
+      return { book: book, startChapter: startChapter, startVerse: 1,
+        endChapter: endChapter, endVerse: Number.MAX_SAFE_INTEGER };
+    }
+
+    async function loadPassageCommentary() {
+      if (Array.isArray(passageCommentaryEntries)) return passageCommentaryEntries;
+      if (!passageCommentaryLoad) {
+        passageCommentaryLoad = fetch("zuriel-passage-commentary-expansion.json", {
+          method: "GET", cache: "no-store", credentials: "omit"
+        }).then(function (response) {
+          if (!response.ok) throw new Error("The passage commentary file is not available on this device.");
+          return response.json();
+        }).then(function (payload) {
+          if (!payload || !Array.isArray(payload.entries) || !payload.entries.length) {
+            throw new Error("The passage commentary collection could not be verified.");
+          }
+          const required = ["id","passage","theme","contextAndMeaning","studyObservation","interpretiveCaution"];
+          if (payload.entries.some(function (entry) {
+            return !entry || required.some(function (key) {
+              return typeof entry[key] !== "string" || !entry[key].trim();
+            });
+          })) throw new Error("A commentary entry is incomplete; the collection has been withheld.");
+          passageCommentaryEntries = payload.entries.slice();
+          return passageCommentaryEntries;
+        }).catch(function (error) {
+          passageCommentaryLoad = null;
+          throw error;
+        });
+      }
+      return passageCommentaryLoad;
+    }
+
+    async function renderPassageCommentary(ref) {
+      const results = document.getElementById("zurielPassageCommentaryResults");
+      const count = document.getElementById("zurielCommentaryCount");
+      const search = document.getElementById("zurielCommentarySearch");
+      if (!results || !count) return;
+      const query = String(search && search.value || "").trim().toLowerCase();
+      results.replaceChildren();
+      count.textContent = "Loading the curated passage commentary…";
+      try {
+        const entries = await loadPassageCommentary();
+        const filtered = entries.filter(function (entry) {
+          if (query) {
+            return [entry.passage,entry.theme,entry.contextAndMeaning,
+              entry.studyObservation,entry.interpretiveCaution].join(" ").toLowerCase().includes(query);
+          }
+          if (!ref) return true;
+          const range = parseCommentaryRange(entry.passage);
+          if (!range || range.book !== String(ref.book || "").toLowerCase() ||
+              Number(ref.chapter) < range.startChapter || Number(ref.chapter) > range.endChapter) return false;
+          if (Number(ref.chapter) === range.startChapter && Number(ref.verse) < range.startVerse) return false;
+          if (Number(ref.chapter) === range.endChapter && Number(ref.verse) > range.endVerse) return false;
+          return true;
+        });
+        const visible = filtered.slice(0, query || ref ? 20 : 10);
+        count.textContent = query
+          ? "Showing " + visible.length + " of " + filtered.length + " matching commentary notes."
+          : ref
+            ? (filtered.length ? filtered.length + " commentary note(s) cover " + ref.book + " " + ref.chapter + ":" + ref.verse + "." :
+              "No curated commentary note covers this exact verse yet. Search the collection or use the context-led exposition above.")
+            : "Browse " + entries.length + " original Zuriel passage commentary notes.";
+        if (!visible.length) {
+          const empty = document.createElement("p");
+          empty.textContent = "No commentary notes match this verse or search. Try a different passage or theme.";
+          results.appendChild(empty);
+          return;
+        }
+        visible.forEach(function (entry) {
+          const article = document.createElement("article");
+          article.className = "study-word zuriel-commentary-entry";
+          const source = document.createElement("p");
+          source.className = "study-small";
+          source.textContent = "ORIGINAL ZURIEL PASSAGE COMMENTARY";
+          const heading = document.createElement("h3");
+          heading.textContent = entry.passage + " — " + entry.theme;
+          const fields = [
+            ["Context and meaning",entry.contextAndMeaning],
+            ["Study observation",entry.studyObservation],
+            ["Interpretive caution",entry.interpretiveCaution]
+          ];
+          article.append(source,heading);
+          fields.forEach(function (field) {
+            const subheading = document.createElement("h4");
+            subheading.textContent = field[0];
+            const paragraph = document.createElement("p");
+            paragraph.textContent = field[1];
+            article.append(subheading,paragraph);
+          });
+          results.appendChild(article);
+        });
+        if (filtered.length > visible.length) {
+          const more = document.createElement("p");
+          more.className = "study-small";
+          more.textContent = "Refine your search to narrow the remaining " + (filtered.length - visible.length) + " notes.";
+          results.appendChild(more);
+        }
+      } catch (error) {
+        count.textContent = "Commentary could not be loaded.";
+        const message = document.createElement("p");
+        message.textContent = error.message || "The commentary collection is not available offline yet.";
+        results.appendChild(message);
+      }
+    }
+
+    async function loadHistoricalCommentaryCatalog() {
+      const select = document.getElementById("zurielHistoricalCommentarySource");
+      const loadButton = document.getElementById("zurielLoadHistoricalCommentary");
+      const status = document.getElementById("zurielHistoricalCommentaryStatus");
+      if (!select || !loadButton || !status) return [];
+
+      if (!historicalCommentaryCatalogPromise) {
+        historicalCommentaryCatalogPromise = fetchStudyJson(COMMENTARY_CATALOG_API).then(function (payload) {
+          const all = Array.isArray(payload && payload.commentaries) ? payload.commentaries : [];
+          return all.filter(function (source) {
+            const license = String(source && source.licenseUrl || "").replace(/\/+$/, "");
+            return source && APPROVED_HISTORICAL_COMMENTARIES.has(source.id) &&
+              source.language === "eng" &&
+              Array.isArray(source.availableFormats) && source.availableFormats.includes("json") &&
+              license === PUBLIC_DOMAIN_MARK;
+          }).sort((a, b) => Number(b.totalNumberOfVerses || 0) - Number(a.totalNumberOfVerses || 0));
+        });
+      }
+
+      try {
+        historicalCommentarySources = await historicalCommentaryCatalogPromise;
+        if (!historicalCommentarySources.length) {
+          throw new Error("No approved English public-domain commentary sources were returned.");
+        }
+        select.replaceChildren();
+        const placeholder = document.createElement("option");
+        placeholder.value = "";
+        placeholder.textContent = "Choose a historical commentary";
+        select.appendChild(placeholder);
+        historicalCommentarySources.forEach(function (source) {
+          const option = document.createElement("option");
+          option.value = source.id;
+          option.textContent = (source.englishName || source.name) + " — " +
+            Number(source.totalNumberOfVerses || 0).toLocaleString() + " verse entries";
+          select.appendChild(option);
+        });
+        select.disabled = false;
+        loadButton.disabled = !selectedReference || !select.value;
+        status.textContent = historicalCommentarySources.length +
+          " English sources passed the Public Domain Mark check. Coverage differs by source; choose one to load a note for the selected verse.";
+        return historicalCommentarySources;
+      } catch (error) {
+        historicalCommentaryCatalogPromise = null;
+        select.disabled = true;
+        loadButton.disabled = true;
+        status.textContent = error && error.message
+          ? error.message : "The historical commentary catalogue is not available online or in the device cache.";
+        return [];
+      }
+    }
+
+    function appendCommentaryLink(parent, label, url) {
+      if (typeof url !== "string" || !url.trim()) return;
+      try {
+        const parsed = new URL(url);
+        if (parsed.protocol !== "https:") return;
+        const link = document.createElement("a");
+        link.href = parsed.href;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = label;
+        parent.appendChild(document.createTextNode(" "));
+        parent.appendChild(link);
+      } catch (error) {
+        // Omit invalid source links; the source text and licence label remain.
+      }
+    }
+
+    async function loadHistoricalCommentaryForSelectedVerse() {
+      const select = document.getElementById("zurielHistoricalCommentarySource");
+      const loadButton = document.getElementById("zurielLoadHistoricalCommentary");
+      const status = document.getElementById("zurielHistoricalCommentaryStatus");
+      const results = document.getElementById("zurielHistoricalCommentaryResults");
+      const reference = selectedReference;
+      if (!select || !loadButton || !status || !results) return;
+      if (!reference) {
+        status.textContent = "Select a Bible verse before loading historical commentary.";
+        return;
+      }
+      const source = historicalCommentarySources.find(item => item.id === select.value);
+      if (!source) {
+        status.textContent = "Choose one of the verified public-domain commentary sources.";
+        return;
+      }
+      const bookCode = apiBookCode(reference.book);
+      if (!bookCode) {
+        status.textContent = "This Bible book is not mapped for historical commentary.";
+        return;
+      }
+
+      const requestId = ++historicalCommentaryRequest;
+      const requestedReference = {
+        book: reference.book,
+        chapter: Number(reference.chapter),
+        verse: Number(reference.verse)
+      };
+      results.replaceChildren();
+      status.textContent = "Loading " + (source.englishName || source.name) +
+        " for " + reference.book + " " + reference.chapter + ":" + reference.verse + "…";
+      loadButton.disabled = true;
+
+      try {
+        const data = await fetchStudyJson(
+          COMMENTARY_API + source.id + "/" + bookCode + "/" + requestedReference.chapter + ".simple.json"
+        );
+        if (requestId !== historicalCommentaryRequest) return;
+        const content = data && data.chapter && Array.isArray(data.chapter.content)
+          ? data.chapter.content : [];
+        const verseEntry = content.find(item =>
+          item && item.type === "verse" && Number(item.number) === requestedReference.verse
+        );
+        const commentaryText = verseEntry && typeof verseEntry.text === "string"
+          ? verseEntry.text.trim()
+          : verseEntry && Array.isArray(verseEntry.content)
+            ? verseEntry.content.map(part => typeof part === "string" ? part :
+              part && typeof part.text === "string" ? part.text : "").join("").trim()
+            : "";
+        const chapterIntroduction = data && data.chapter &&
+          typeof data.chapter.introduction === "string" ? data.chapter.introduction.trim() : "";
+        const displayText = commentaryText || chapterIntroduction;
+
+        if (!displayText) {
+          status.textContent = (source.englishName || source.name) +
+            " has no verse note or chapter introduction for " + reference.book + " " +
+            reference.chapter + ". This source has partial coverage; try another source.";
+          return;
+        }
+
+        const article = document.createElement("article");
+        article.className = "study-word zuriel-commentary-entry";
+        const heading = document.createElement("h3");
+        heading.textContent = (source.englishName || source.name) + " — " +
+          (commentaryText
+            ? reference.book + " " + reference.chapter + ":" + reference.verse
+            : reference.book + " " + reference.chapter + " — Chapter introduction (not verse-specific)");
+        const body = document.createElement("p");
+        body.textContent = displayText;
+        const attribution = document.createElement("p");
+        attribution.className = "study-small";
+        attribution.textContent = "Source: " + (source.englishName || source.name) +
+          ". Catalogue status: Public Domain Mark 1.0.";
+        const coverage = document.createElement("p");
+        coverage.className = "study-small";
+        coverage.textContent = "Source coverage: " +
+          Number(source.totalNumberOfVerses || 0).toLocaleString() + " verse entries across " +
+          Number(source.numberOfBooks || 0).toLocaleString() +
+          " books. Not every verse has a commentary note.";
+        article.append(heading, body, attribution, coverage);
+        appendCommentaryLink(attribution, "Source information", source.website);
+        appendCommentaryLink(attribution, "Public Domain Mark details", source.licenseUrl);
+        if (typeof source.licenseNotes === "string" && source.licenseNotes.trim()) {
+          const licenseNote = document.createElement("p");
+          licenseNote.className = "study-small";
+          licenseNote.textContent = source.licenseNotes;
+          article.appendChild(licenseNote);
+        }
+        results.appendChild(article);
+        status.textContent = commentaryText
+          ? "Loaded the source's verse note for " + reference.book + " " + reference.chapter + ":" + reference.verse + ". The original Scripture remains the primary text."
+          : "No verse-specific note was available; showing the source's chapter introduction instead.";
+      } catch (error) {
+        if (requestId !== historicalCommentaryRequest) return;
+        status.textContent = error && error.message
+          ? error.message : "The selected historical commentary could not be loaded.";
+      } finally {
+        if (requestId === historicalCommentaryRequest) {
+          loadButton.disabled = !selectedReference || !select.value;
+        }
+      }
+    }
+
+    const historicalSection = document.getElementById("zurielHistoricalCommentarySection");
+    const historicalSelect = document.getElementById("zurielHistoricalCommentarySource");
+    const historicalLoadButton = document.getElementById("zurielLoadHistoricalCommentary");
+    if (historicalSection) {
+      historicalSection.addEventListener("toggle", function () {
+        if (historicalSection.open) loadHistoricalCommentaryCatalog();
+      });
+    }
+    if (historicalSelect) {
+      historicalSelect.addEventListener("change", function () {
+        ++historicalCommentaryRequest;
+        const status = document.getElementById("zurielHistoricalCommentaryStatus");
+        const results = document.getElementById("zurielHistoricalCommentaryResults");
+        if (results) results.replaceChildren();
+        if (historicalLoadButton) {
+          historicalLoadButton.disabled = !selectedReference || !historicalSelect.value;
+        }
+        if (status) {
+          status.textContent = historicalSelect.value
+            ? "Source selected. Load the note for the currently selected verse."
+            : "Choose a historical commentary source.";
+        }
+      });
+    }
+    if (historicalLoadButton) {
+      historicalLoadButton.addEventListener("click", loadHistoricalCommentaryForSelectedVerse);
     }
 
     function loadSavedNote() {
@@ -2678,6 +3093,10 @@
 
     window.ZurielStudy = {
       openForReference: function (book, chapter, verse, verseText, englishWord, wordIndex) {
+        ++historicalCommentaryRequest;
+        const historicalSourceSelect = document.getElementById("zurielHistoricalCommentarySource");
+        const historicalLoadButton = document.getElementById("zurielLoadHistoricalCommentary");
+        if (historicalLoadButton) historicalLoadButton.disabled = !historicalSourceSelect || !historicalSourceSelect.value;
         selectedReference = {
           book: book,
           chapter: chapter,
@@ -2738,10 +3157,53 @@
         // The reader owns the selected-verse overlay; do not scroll away from Scripture.
       },
 
+      // Open a built-in reference tool from the Library without inventing or
+      // copying entries. Dictionary and concordance continue using the same
+      // offline KJV-backed data as the verse study centre.
+      openSection: function (sectionTitle, searchText) {
+        const sectionsRoot = panel.querySelector("#zurielStudySections");
+        if (!sectionsRoot) return false;
+        const wanted = String(sectionTitle || "").trim().toLowerCase();
+        if (!wanted) return false;
+        const section = Array.from(sectionsRoot.querySelectorAll("details")).find(function (item) {
+          const summary = item.querySelector("summary");
+          return summary && summary.textContent.toLowerCase().includes(wanted);
+        });
+        if (!section) return false;
+        panel.style.display = "block";
+        section.open = true;
+        if (wanted.includes("dictionary") && typeof searchText === "string") {
+          const search = panel.querySelector("#zurielDictionarySearch");
+          if (search) {
+            search.value = searchText;
+            search.dispatchEvent(new Event("input", { bubbles: true }));
+          }
+        }
+        if (wanted.includes("concordance") && typeof searchText === "string") {
+          const search = panel.querySelector("#zurielConcordanceQuery");
+          if (search) {
+            search.value = searchText;
+            search.focus();
+          }
+        }
+        if (wanted.includes("passage commentary")) {
+          renderPassageCommentary(selectedReference);
+          const search = panel.querySelector("#zurielCommentarySearch");
+          if (search && typeof searchText === "string") {
+            search.value = searchText;
+            renderPassageCommentary(selectedReference);
+            search.focus();
+          }
+        }
+        panel.scrollIntoView({ behavior: "smooth", block: "start" });
+        return true;
+      },
+
       /* A word tap opens a compact contextual panel beside the passage.
          It never inserts content between verses or scrolls the reader away. */
       openWordInContext: async function (book, chapter, verse, verseText, englishWord, wordIndex) {
         const contextRequestId = ++wordContextRequest;
+        ++historicalCommentaryRequest;
         if (activeWordContextCleanup) activeWordContextCleanup();
         selectedReference = {
           book: book,

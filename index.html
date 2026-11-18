@@ -7,6 +7,7 @@
 <meta name="theme-color" content="#102b24">
 <meta name="description" content="Zuriel Living Word Bible — offline-first Bible reading and study.">
 <title>Zuriel Living Word Bible</title>
+<link rel="stylesheet" href="zuriel-reading-refinement.css">
 
 <style>
 * { box-sizing: border-box; }
@@ -1154,8 +1155,8 @@ async function openChapter(book, chapter) {
       "Affirmation":["the light"],
       "Faith":["the light"],
       "Inspiration":["meaning and exposition"],
-      "Commentary & theology":["meaning and exposition","theology and deeper study"],
-      "Dictionary":["biblical dictionary"],
+      "Commentary & theology":["meaning and exposition","theology and deeper study","passage commentary"],
+      "Dictionary":["dictionary"],
       "Original-language words":["hebrew and greek word study"],
       "Word meanings":["hebrew and greek word study"],
       "Cross-references":["connected scriptures"],
@@ -1222,9 +1223,15 @@ async function openChapter(book, chapter) {
   closeActions.className = "zuriel-verse-action zuriel-action-close";
   closeActions.textContent = "✕ Close";
   closeActions.addEventListener("click", function () {
+    if (studyPanelHome) restoreStudyPanelToReader();
+    if (externalPanelCurrent) restoreExternalVersePanel();
     verseActions.hidden = true;
+    verseActions.classList.remove("has-study-content");
     document.querySelectorAll("#message .verse.zuriel-selected-verse")
-      .forEach(function (node) { node.classList.remove("zuriel-selected-verse"); });
+      .forEach(function (node) {
+        node.classList.remove("zuriel-selected-verse");
+        node.setAttribute("aria-expanded", "false");
+      });
   });
   verseActions.appendChild(closeActions);
   message.appendChild(verseActions);
@@ -1233,6 +1240,35 @@ async function openChapter(book, chapter) {
     if (!verseActions.hidden &&
         (event.target === document || event.target === document.documentElement ||
          event.target === document.body)) positionVerseOverlay();
+  }, true);
+
+  // Keep the contextual study surface easy to dismiss without losing its home panel.
+  document.addEventListener("keydown", function (event) {
+    if (event.key !== "Escape" || verseActions.hidden) return;
+    event.preventDefault();
+    if (studyPanelHome) restoreStudyPanelToReader();
+    if (externalPanelCurrent) restoreExternalVersePanel();
+    verseActions.hidden = true;
+    verseActions.classList.remove("has-study-content");
+    document.querySelectorAll("#message .verse.zuriel-selected-verse")
+      .forEach(function (node) {
+        node.classList.remove("zuriel-selected-verse");
+        node.setAttribute("aria-expanded", "false");
+      });
+  });
+
+  document.addEventListener("pointerdown", function (event) {
+    if (verseActions.hidden || verseActions.contains(event.target)) return;
+    if (event.target.closest && event.target.closest("#message .verse")) return;
+    if (studyPanelHome) restoreStudyPanelToReader();
+    if (externalPanelCurrent) restoreExternalVersePanel();
+    verseActions.hidden = true;
+    verseActions.classList.remove("has-study-content");
+    document.querySelectorAll("#message .verse.zuriel-selected-verse")
+      .forEach(function (node) {
+        node.classList.remove("zuriel-selected-verse");
+        node.setAttribute("aria-expanded", "false");
+      });
   }, true);
 
   function selectVerseForGloryCard(verseNumber, verseText) {
@@ -1246,9 +1282,19 @@ async function openChapter(book, chapter) {
     const selectedVerseElement = message.querySelector(
       '.verse[data-verse-number="' + verseNumber + '"]'
     );
+    // All selection paths (verse tap, word tap, search result and bookmark)
+    // share one state update so only one verse is ever marked as selected.
+    document.querySelectorAll("#message .verse.zuriel-selected-verse")
+      .forEach(function (node) {
+        node.classList.remove("zuriel-selected-verse");
+        node.setAttribute("aria-expanded", "false");
+      });
     if (studyPanelHome) restoreStudyPanelToReader();
     if (externalPanelCurrent) restoreExternalVersePanel();
-    if (selectedVerseElement) selectedVerseElement.classList.add("zuriel-selected-verse");
+    if (selectedVerseElement) {
+      selectedVerseElement.classList.add("zuriel-selected-verse");
+      selectedVerseElement.setAttribute("aria-expanded", "true");
+    }
     verseActions.classList.remove("has-study-content");
     verseActions.hidden = false;
     positionVerseOverlay();
@@ -1277,7 +1323,10 @@ async function openChapter(book, chapter) {
     const paragraph = document.createElement("p");
     paragraph.className = paragraphStart ? "verse verse-paragraph-start" : "verse";
     paragraph.dataset.verseNumber = String(index + 1);
-    paragraph.setAttribute("aria-label", "Verse " + (index + 1));
+    paragraph.setAttribute("aria-label", "Verse " + (index + 1) + ". Activate to open verse actions.");
+    paragraph.setAttribute("aria-controls", "zurielVerseActions");
+    paragraph.setAttribute("aria-expanded", "false");
+    paragraph.setAttribute("tabindex", "0");
 
     const number = document.createElement("strong");
     number.textContent = (index + 1) + ".";
@@ -1330,9 +1379,21 @@ async function openChapter(book, chapter) {
     paragraph.addEventListener("click", function () {
       saveReadingPosition(book, chapter, index + 1);
       document.querySelectorAll("#message .verse.zuriel-selected-verse")
-        .forEach(function (node) { node.classList.remove("zuriel-selected-verse"); });
+        .forEach(function (node) {
+          node.classList.remove("zuriel-selected-verse");
+          node.setAttribute("aria-expanded", "false");
+        });
       paragraph.classList.add("zuriel-selected-verse");
       selectVerseForGloryCard(index + 1, displayVerseText);
+    });
+    paragraph.addEventListener("keydown", function (event) {
+      // Word spans are independently keyboard-operable; do not activate the
+      // parent verse when a reader presses Enter or Space on an individual word.
+      if (event.target !== paragraph) return;
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        paragraph.click();
+      }
     });
 
     message.appendChild(paragraph);
@@ -1483,13 +1544,23 @@ window.ZurielBibleSearch = {
   search: async function (query, limit, mode) {
     const normalizeSearchText = value => String(value || "")
       .normalize("NFD")
-      .replace(/[\\u0300-\\u036f]/g, "")
+      .replace(/[\u0300-\u036f]/g, "")
       .replace(/[’‘]/g, "'")
-      .replace(/\\s+/g, " ")
+      .replace(/\s+/g, " ")
       .trim()
       .toLowerCase();
     const term = normalizeSearchText(query);
-    if (term.length < 3) throw new Error("Please enter at least 3 characters.");
+    const minimumLength = mode === "word" ? 1 : mode === "phrase" ? 2 : 3;
+    if (term.length < minimumLength) {
+      throw new Error(mode === "word"
+        ? "Enter one whole word to search the concordance."
+        : mode === "phrase"
+          ? "Enter a phrase of at least two characters."
+          : "Please enter at least 3 characters.");
+    }
+    if (mode === "word" && /\s/.test(term)) {
+      throw new Error("Exact word search accepts one word. Choose exact phrase for multiple words.");
+    }
     if (mode && mode !== "word" && mode !== "phrase") {
       throw new Error("Choose an exact word or phrase search.");
     }
@@ -1498,9 +1569,10 @@ window.ZurielBibleSearch = {
       ? Math.min(limit, mode ? 200 : 50) : 30;
     const escaped = term.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
     const exactWordPattern = mode === "word"
-      ? new RegExp("(^|[^a-z0-9])" + escaped + "([^a-z0-9]|$)", "i")
+      ? new RegExp("(^|[^a-z0-9])" + escaped + "(?=$|[^a-z0-9])", "gi")
       : null;
     const matches = [];
+    let totalOccurrences = 0;
     for (const book of bibleBooks) {
       const code = bookCodes[book.name];
       const chapters = data[code];
@@ -1512,14 +1584,24 @@ window.ZurielBibleSearch = {
           const verseText = verses[verseIndex];
           const verseOriginal = typeof verseText === "string" ? verseText : "";
           const searchable = normalizeSearchText(verseOriginal);
-          const found = mode === "word"
-            ? exactWordPattern.test(searchable)
-            : searchable.includes(term);
-          if (found) {
+          let occurrenceCount = 0;
+          if (mode === "word") {
+            const occurrences = searchable.match(exactWordPattern) || [];
+            occurrenceCount = occurrences.length;
+          } else {
+            let position = 0;
+            while ((position = searchable.indexOf(term, position)) !== -1) {
+              occurrenceCount++;
+              position += Math.max(1, term.length);
+            }
+          }
+          if (occurrenceCount > 0) {
+            totalOccurrences += occurrenceCount;
             matches.push({
               book: book.name,
               chapter: chapterIndex + 1,
               verse: verseIndex + 1,
+              occurrences: occurrenceCount,
               text: verseOriginal.replace(/^¶\s*/, "")
             });
           }
@@ -1528,6 +1610,7 @@ window.ZurielBibleSearch = {
     }
     const visible = matches.slice(0, maximum);
     visible.totalMatches = matches.length;
+    visible.totalOccurrences = totalOccurrences;
     return visible;
   }
 };
@@ -1644,6 +1727,7 @@ loadBibleBooks();
 
   
 <script src="zuriel-library.js"></script>
+<script src="zuriel-gallery.js"></script>
 <script src="zuriel-faith-content.js"></script>
 <script src="zuriel-topical-index.js"></script>
 <script src="zuriel-kingdom-life.js"></script>
@@ -1662,7 +1746,7 @@ loadBibleBooks();
   <script src="zuriel-settings.js"></script>
   <script src="zuriel-updates.js"></script>
   <script src="zuriel-audio.js" defer></script>
-  <script>window.ZURIEL_TRANSLATION_API_BASE = "";</script>
+  <script src="zuriel-config.js"></script>
   <script src="zuriel-translations.js"></script>
   
 

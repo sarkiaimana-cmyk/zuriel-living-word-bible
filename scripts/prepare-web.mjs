@@ -3,8 +3,10 @@ import { build } from "esbuild";
 
 const files = [
   "index.html",
+  "zuriel-reading-refinement.css",
   "bible-data.js",
   "zuriel-library.js",
+  "zuriel-gallery.js",
   "zuriel-home.js",
   "zuriel-word-linking.js",
   "zuriel-study.js",
@@ -22,10 +24,12 @@ const files = [
   "zuriel-backup.js",
   "zuriel-settings.js",
   "zuriel-updates.js",
+  "zuriel-config.js",
   "zuriel-translations.js",
   "version.json",
   "sw.js",
-  "kjv.72bec70fcd.json"
+  "kjv.72bec70fcd.json",
+  "zuriel-passage-commentary-expansion.json"
 ];
 
 await rm("www", { recursive: true, force: true });

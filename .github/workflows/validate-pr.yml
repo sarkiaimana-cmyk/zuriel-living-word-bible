@@ -28,8 +28,17 @@ jobs:
       - name: Prepare offline web app
         run: npm run build:web
 
+      - name: Install Chromium for mobile browser checks
+        run: npx playwright install --with-deps chromium
+
+      - name: Test mobile reader and offline study experience
+        run: npm run test:mobile
+
       - name: Verify offline core assets and local script precache
         run: node scripts/check-offline-core-assets.mjs
+
+      - name: Validate mobile verse-first reading refinement
+        run: node scripts/check-reading-refinement.mjs
 
       - name: Verify complete offline KJV corpus counts
         run: node scripts/check-kjv-corpus-counts.mjs
@@ -37,8 +46,8 @@ jobs:
       - name: Validate secure online translation reader
         run: node scripts/check-translations-reader.mjs
 
-      - name: Test translation-only Worker route isolation
-        run: node --test ai-worker/test/translation-worker.test.mjs
+      - name: Test translation-only Worker and YouVersion API safeguards
+        run: node --test ai-worker/test/translation-worker.test.mjs ai-worker/test/youversion.test.mjs
 
       - name: Syntax-check application JavaScript
         run: for file in *.js; do node --check "$file"; done
@@ -129,6 +138,12 @@ jobs:
 
       - name: Validate Dictionary and Commentary reference library
         run: node scripts/check-reference-library.mjs
+
+      - name: Validate searchable passage commentary and KJV references
+        run: node scripts/check-passage-commentary.mjs
+
+      - name: Validate monthly devotional and worship library
+        run: node scripts/check-devotional-library.mjs
 
       - name: Validate worship audio rights gate
         run: node scripts/check-worship-rights.mjs

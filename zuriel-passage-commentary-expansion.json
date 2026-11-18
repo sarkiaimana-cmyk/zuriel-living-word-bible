@@ -1,0 +1,940 @@
+{
+  "schemaVersion": 1,
+  "title": "Zuriel Passage Commentary — Context and Interpretation Expansion",
+  "description": "Original concise commentary notes for major biblical passages, with observation prompts and interpretive safeguards.",
+  "editorialPolicy": [
+    "Read the complete passage and its book context before applying the note.",
+    "Commentary summaries are interpretive aids, not replacement Scripture text.",
+    "Historical, literary and theological claims should remain proportionate to the passage.",
+    "Pastoral application must never excuse abuse, coercion, discrimination or neglect of appropriate care."
+  ],
+  "entries": [
+    {
+      "id": "commentary-001",
+      "passage": "Genesis 1:1–2:3",
+      "theme": "Creation",
+      "contextAndMeaning": "The passage presents God as sovereign Creator and the ordered world as good. Humanity receives dignity and responsibility within creation.",
+      "studyObservation": "Read the repeated structure and the seventh-day climax. Ask what the text teaches about God and human vocation.",
+      "interpretiveCaution": "Do not force the passage to answer modern scientific questions it does not directly address.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-002",
+      "passage": "Genesis 3:1-24",
+      "theme": "Human rebellion",
+      "contextAndMeaning": "The narrative portrays distrust of God's word, disobedience, shame, fractured relationships and exile from the garden.",
+      "studyObservation": "Trace the dialogue, the choices and the consequences for the humans and the ground.",
+      "interpretiveCaution": "Avoid blaming one sex or treating the narrative as permission for domination.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-003",
+      "passage": "Genesis 12:1-9",
+      "theme": "Call of Abram",
+      "contextAndMeaning": "God calls Abram and makes promises that place one family within a purpose of blessing for all families of the earth.",
+      "studyObservation": "Notice the commands, promises, movement and worship response.",
+      "interpretiveCaution": "Do not turn this promise into a universal guarantee of personal wealth.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-004",
+      "passage": "Genesis 22:1-19",
+      "theme": "The test of Abraham",
+      "contextAndMeaning": "The narrative tests Abraham's trust and ends with God providing a substitute; later Scripture reflects on this event in varied ways.",
+      "studyObservation": "Read the whole episode, including the intervention and provision.",
+      "interpretiveCaution": "Do not use the passage to justify harm to children or dangerous tests of faith.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-005",
+      "passage": "Exodus 3:1-15",
+      "theme": "The divine name and calling",
+      "contextAndMeaning": "God hears the oppressed, commissions Moses and identifies Himself as the God of the ancestors.",
+      "studyObservation": "Notice God's initiative before Moses' objections and the promise of presence.",
+      "interpretiveCaution": "Avoid treating the divine name as a formula for controlling God.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-006",
+      "passage": "Exodus 12:1-14",
+      "theme": "Passover",
+      "contextAndMeaning": "The meal marks Israel's deliverance from Egypt and becomes a memorial of God's saving action.",
+      "studyObservation": "Identify the instructions, the household setting and the memorial purpose.",
+      "interpretiveCaution": "Preserve the passage's Israelite historical setting when tracing Christian connections.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-007",
+      "passage": "Exodus 19:1-8",
+      "theme": "Covenant at Sinai",
+      "contextAndMeaning": "The rescued people are called to covenant identity and obedience; the narrative places grace before command.",
+      "studyObservation": "Notice the language of rescue, treasured possession and priestly vocation.",
+      "interpretiveCaution": "Do not imply Israel earned deliverance by keeping the law.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-008",
+      "passage": "Exodus 20:1-17",
+      "theme": "Ten commandments",
+      "contextAndMeaning": "The commandments order worship and neighbourly life for the covenant community.",
+      "studyObservation": "Group commands by relationship to God and neighbour; compare Deuteronomy 5.",
+      "interpretiveCaution": "Discuss the commands in their covenant context rather than as isolated slogans.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-009",
+      "passage": "Leviticus 16",
+      "theme": "Day of Atonement",
+      "contextAndMeaning": "The ritual addresses impurity and sin within Israel's sanctuary worship and includes distinct actions involving the two goats.",
+      "studyObservation": "Follow the sequence and distinguish the roles of the sacrifices.",
+      "interpretiveCaution": "Avoid claiming that every ritual detail has one uncontested later interpretation.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-010",
+      "passage": "Numbers 13–14",
+      "theme": "The spies and the people's response",
+      "contextAndMeaning": "The report exposes fear and distrust despite the evidence of the land; the people reject the call to enter.",
+      "studyObservation": "Compare the report, the people's reaction and the minority response.",
+      "interpretiveCaution": "Do not use the story to shame people facing genuine danger or uncertainty.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-011",
+      "passage": "Deuteronomy 6:4-9",
+      "theme": "Love the Lord",
+      "contextAndMeaning": "Israel is called to wholehearted loyalty, with God's words shaping household and daily life.",
+      "studyObservation": "Observe the repeated language of heart, soul, strength and teaching.",
+      "interpretiveCaution": "Do not reduce the passage to a decorative slogan detached from practice.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-012",
+      "passage": "Joshua 1:1-9",
+      "theme": "Courage and obedience",
+      "contextAndMeaning": "Joshua's courage is grounded in God's presence and the call to attend carefully to the instruction given to Moses.",
+      "studyObservation": "Notice the relationship between promise, courage and obedience.",
+      "interpretiveCaution": "Do not use the passage as a blanket promise of success in every personal ambition.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-013",
+      "passage": "Judges 2:6-23",
+      "theme": "The cycle of unfaithfulness",
+      "contextAndMeaning": "The narrator explains recurring disloyalty and oppression as a pattern in Israel's life after Joshua.",
+      "studyObservation": "Trace the generations and repeated actions.",
+      "interpretiveCaution": "The cycle describes a national story; do not force it into a rigid formula for every individual's hardship.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-014",
+      "passage": "Ruth 1:1-18",
+      "theme": "Loyalty in loss",
+      "contextAndMeaning": "Ruth's commitment to Naomi unfolds amid bereavement, migration and uncertainty.",
+      "studyObservation": "Attend to the repeated language of return, loyalty and belonging.",
+      "interpretiveCaution": "Do not romanticise grief or imply that every loss is quickly repaired.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-015",
+      "passage": "1 Samuel 8:1-22",
+      "theme": "Israel asks for a king",
+      "contextAndMeaning": "The request raises questions about leadership, trust and the desire to be like surrounding nations.",
+      "studyObservation": "Read both the people's request and Samuel's warning.",
+      "interpretiveCaution": "The passage critiques motives and consequences; it is not a simple rejection of every form of government.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-016",
+      "passage": "1 Samuel 16:1-13",
+      "theme": "David is anointed",
+      "contextAndMeaning": "God directs Samuel beyond outward appearance and chooses David, the youngest son, for a future role.",
+      "studyObservation": "Notice the repeated contrast between appearance and the heart.",
+      "interpretiveCaution": "Do not claim this means outward character, skill or preparation never matter.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-017",
+      "passage": "2 Samuel 7:1-17",
+      "theme": "Promise to David",
+      "contextAndMeaning": "God promises to establish David's house, creating a royal hope developed in later biblical writings.",
+      "studyObservation": "Distinguish David's desire to build a house from God's promise about David's house.",
+      "interpretiveCaution": "Read the immediate royal setting before applying messianic interpretations.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-018",
+      "passage": "2 Samuel 11–12",
+      "theme": "David's wrongdoing",
+      "contextAndMeaning": "The account exposes abuse of power, deception, death and prophetic confrontation; forgiveness does not erase consequences.",
+      "studyObservation": "Track the power imbalance and Nathan's parable.",
+      "interpretiveCaution": "Never use David's story to minimise abuse or silence those harmed.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-019",
+      "passage": "1 Kings 8:22-61",
+      "theme": "Solomon's temple prayer",
+      "contextAndMeaning": "Solomon acknowledges God's greatness and asks that the temple become a place associated with prayer, justice and mercy.",
+      "studyObservation": "Notice the prayer's repeated requests and concern for foreigners.",
+      "interpretiveCaution": "The temple is not portrayed as containing or controlling God.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-020",
+      "passage": "1 Kings 18:20-39",
+      "theme": "Elijah at Carmel",
+      "contextAndMeaning": "The contest exposes the impotence of Baal and calls Israel back to the Lord.",
+      "studyObservation": "Read the people's silence, Elijah's prayer and the response.",
+      "interpretiveCaution": "Do not turn this prophetic sign into a model for reckless public stunts.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-021",
+      "passage": "2 Kings 5:1-19",
+      "theme": "Naaman is healed",
+      "contextAndMeaning": "Naaman's healing challenges pride and reveals God's grace beyond Israel's boundaries.",
+      "studyObservation": "Notice the servants' role, the simple instruction and Naaman's changed response.",
+      "interpretiveCaution": "Avoid treating healing as proof that every illness results from pride or disobedience.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-022",
+      "passage": "Ezra 7:6-10",
+      "theme": "Ezra's commitment to Scripture",
+      "contextAndMeaning": "Ezra devotes himself to study, practice and teaching of the law in the restored community.",
+      "studyObservation": "Notice the order: study, do and teach.",
+      "interpretiveCaution": "Do not separate teaching authority from personal integrity.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-023",
+      "passage": "Nehemiah 8:1-12",
+      "theme": "The law is read publicly",
+      "contextAndMeaning": "The community hears Scripture explained and responds with grief, understanding and joy.",
+      "studyObservation": "Observe the public reading, explanation and communal response.",
+      "interpretiveCaution": "The text does not support using Scripture reading to manipulate emotion.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-024",
+      "passage": "Esther 4:12-17",
+      "theme": "Courage and responsibility",
+      "contextAndMeaning": "Mordecai challenges Esther to recognise the responsibility of her position in a moment of danger.",
+      "studyObservation": "Follow the dialogue and Esther's decision to seek communal support.",
+      "interpretiveCaution": "Avoid claiming certainty about divine hiddenness beyond what the narrative states.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-025",
+      "passage": "Job 1–2",
+      "theme": "Job's suffering",
+      "contextAndMeaning": "The opening frames Job as upright while showing a heavenly scene inaccessible to Job himself.",
+      "studyObservation": "Separate the narrator's information from what Job's friends later assume.",
+      "interpretiveCaution": "Do not use the heavenly scene to claim knowledge of the cause of a person's suffering.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-026",
+      "passage": "Job 38–42",
+      "theme": "God answers Job",
+      "contextAndMeaning": "God's speeches widen Job's view of creation and divine wisdom without giving a simple causal explanation for his pain.",
+      "studyObservation": "Notice the questions about creation and the final correction of the friends.",
+      "interpretiveCaution": "Do not treat the answer as permission to dismiss lament or questions.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-027",
+      "passage": "Psalm 1",
+      "theme": "Two ways",
+      "contextAndMeaning": "The psalm contrasts the life shaped by God's instruction with the instability of wickedness.",
+      "studyObservation": "Observe the tree image and the contrast in outcomes.",
+      "interpretiveCaution": "Wisdom poetry describes a moral pattern, not an immediate guarantee of prosperity.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-028",
+      "passage": "Psalm 23",
+      "theme": "The Lord as shepherd",
+      "contextAndMeaning": "The psalm expresses trust in God's guidance, provision and presence through danger.",
+      "studyObservation": "Follow the movement from pasture and water to the valley and the table.",
+      "interpretiveCaution": "Do not promise that faithful people will never experience danger or grief.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-029",
+      "passage": "Psalm 51",
+      "theme": "Confession and renewal",
+      "contextAndMeaning": "David's prayer seeks mercy, cleansing and a renewed heart after serious wrongdoing.",
+      "studyObservation": "Notice confession, appeal to God's character and desire for restored faithfulness.",
+      "interpretiveCaution": "Do not use confession language to bypass restitution or accountability.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-030",
+      "passage": "Psalm 73",
+      "theme": "Faith amid apparent injustice",
+      "contextAndMeaning": "The psalmist struggles with the prosperity of the wicked and gains perspective through worship and God's presence.",
+      "studyObservation": "Trace the shift from envy to renewed understanding.",
+      "interpretiveCaution": "Do not suggest that worship instantly removes every question.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-031",
+      "passage": "Psalm 103",
+      "theme": "Remembering God's mercy",
+      "contextAndMeaning": "The psalm calls the worshipper to remember God's benefits and compassionate character.",
+      "studyObservation": "Notice the images of forgiveness, healing, compassion and human frailty.",
+      "interpretiveCaution": "Avoid reading the healing language as a guarantee that illness never remains.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-032",
+      "passage": "Proverbs 3:1-12",
+      "theme": "Trust and instruction",
+      "contextAndMeaning": "The sayings connect trust in the Lord with humility, generosity and receptiveness to correction.",
+      "studyObservation": "Observe the paired instructions and promised outcomes.",
+      "interpretiveCaution": "Proverbs gives wisdom patterns, not an automatic formula for outcomes.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-033",
+      "passage": "Proverbs 8:1-21",
+      "theme": "Wisdom's public invitation",
+      "contextAndMeaning": "Wisdom is personified as calling openly and valuing truth above wealth.",
+      "studyObservation": "Read the poetic personification and its ethical claims.",
+      "interpretiveCaution": "Do not collapse poetic personification into a direct identification without considering context.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-034",
+      "passage": "Ecclesiastes 3:1-15",
+      "theme": "Times and human limits",
+      "contextAndMeaning": "The poem recognises seasons of human experience and the limits of human control within God's ordering.",
+      "studyObservation": "Notice the paired times and the reflection on eternity and limitation.",
+      "interpretiveCaution": "Do not use the poem to justify passivity or fatalism.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-035",
+      "passage": "Isaiah 6:1-8",
+      "theme": "The holy God and the prophet",
+      "contextAndMeaning": "Isaiah's vision moves from divine holiness to confession, cleansing and commissioning.",
+      "studyObservation": "Follow the sequence of vision, confession, cleansing and response.",
+      "interpretiveCaution": "Do not detach the commissioning from the difficult message that follows.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-036",
+      "passage": "Isaiah 40:1-11",
+      "theme": "Comfort for God's people",
+      "contextAndMeaning": "The prophet announces comfort and God's coming rule to a people in need of restoration.",
+      "studyObservation": "Notice the contrast between human frailty and God's enduring word.",
+      "interpretiveCaution": "Read the comfort within the larger exile and restoration context.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-037",
+      "passage": "Isaiah 52:13–53:12",
+      "theme": "The servant's suffering",
+      "contextAndMeaning": "The servant poem describes suffering, rejection and vindication; the New Testament applies this text to Jesus.",
+      "studyObservation": "Observe the movement from suffering to exaltation and the repeated language of bearing.",
+      "interpretiveCaution": "Acknowledge the passage's place in Isaiah and the range of Jewish and Christian interpretation.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-038",
+      "passage": "Jeremiah 1:4-10",
+      "theme": "The prophet's calling",
+      "contextAndMeaning": "Jeremiah's commission rests on God's initiative and presence despite the prophet's sense of inadequacy.",
+      "studyObservation": "Notice the divine words, touch and assignment.",
+      "interpretiveCaution": "Do not claim every believer has the same prophetic office as Jeremiah.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-039",
+      "passage": "Jeremiah 31:31-34",
+      "theme": "The new covenant promise",
+      "contextAndMeaning": "God promises a covenant marked by internalised instruction, forgiveness and knowledge of Him.",
+      "studyObservation": "Compare what is new with the earlier covenant relationship.",
+      "interpretiveCaution": "Read the promise in Jeremiah's restoration setting and its New Testament reception.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-040",
+      "passage": "Ezekiel 36:22-32",
+      "theme": "A renewed heart",
+      "contextAndMeaning": "God promises cleansing and a new heart by His Spirit, acting for the honour of His name.",
+      "studyObservation": "Notice that divine initiative precedes the people's renewed obedience.",
+      "interpretiveCaution": "Do not use the passage to claim believers never struggle after conversion.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-041",
+      "passage": "Ezekiel 37:1-14",
+      "theme": "The valley of dry bones",
+      "contextAndMeaning": "The vision portrays restoration for a people who feel cut off, using resurrection-like imagery.",
+      "studyObservation": "Follow the word, breath and assembly of the bones.",
+      "interpretiveCaution": "The vision first addresses Israel's communal hope; later theological uses should preserve that setting.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-042",
+      "passage": "Daniel 3",
+      "theme": "The fiery furnace",
+      "contextAndMeaning": "The story portrays courageous fidelity to God under coercive imperial power.",
+      "studyObservation": "Notice the refusal to worship the image and the servants' trust regardless of outcome.",
+      "interpretiveCaution": "Do not promise that faithful people are always rescued from physical harm.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-043",
+      "passage": "Daniel 7:9-14",
+      "theme": "The human-like figure and kingdom",
+      "contextAndMeaning": "The vision contrasts beastly empires with the everlasting dominion given to one like a son of man.",
+      "studyObservation": "Read the symbolic sequence and interpretive explanation in the chapter.",
+      "interpretiveCaution": "Avoid speculative identifications detached from the vision's own explanation.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-044",
+      "passage": "Hosea 11:1-11",
+      "theme": "God's compassionate love",
+      "contextAndMeaning": "The poem portrays God's parental compassion amid Israel's unfaithfulness and the tension of judgment and mercy.",
+      "studyObservation": "Notice the emotional language and God's decision to show compassion.",
+      "interpretiveCaution": "Do not flatten the passage into a promise that consequences disappear.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-045",
+      "passage": "Amos 5:21-24",
+      "theme": "Justice and worship",
+      "contextAndMeaning": "God rejects worship divorced from justice and calls for righteousness to flow through communal life.",
+      "studyObservation": "Read the surrounding critique of exploitation and courts.",
+      "interpretiveCaution": "Do not reduce justice to a vague feeling; the book names concrete social wrongs.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-046",
+      "passage": "Jonah 3–4",
+      "theme": "Mercy for Nineveh",
+      "contextAndMeaning": "Nineveh's response and God's compassion expose Jonah's resentment toward mercy for enemies.",
+      "studyObservation": "Compare the city's response with Jonah's response.",
+      "interpretiveCaution": "Do not use the story to erase the seriousness of violence or injustice.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-047",
+      "passage": "Micah 6:6-8",
+      "theme": "What the Lord requires",
+      "contextAndMeaning": "The prophet rejects attempts to substitute extravagant offerings for justice, mercy and humble faithfulness.",
+      "studyObservation": "Read the questions about offerings before the summary in verse 8.",
+      "interpretiveCaution": "Do not present the three phrases as detached from Micah's covenant lawsuit.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-048",
+      "passage": "Habakkuk 2:1-4",
+      "theme": "The righteous live by faithfulness",
+      "contextAndMeaning": "The prophet is told to wait for God's appointed answer; the proud and the faithful are contrasted.",
+      "studyObservation": "Notice waiting, vision and the contrast in character.",
+      "interpretiveCaution": "Interpret the line in Habakkuk's immediate crisis before tracing New Testament quotations.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-049",
+      "passage": "Matthew 5:1-12",
+      "theme": "The Beatitudes",
+      "contextAndMeaning": "Jesus describes the blessed character and hope of kingdom people, overturning common status expectations.",
+      "studyObservation": "Observe who is called blessed and the promises attached.",
+      "interpretiveCaution": "Do not treat the Beatitudes as a checklist for earning God's favour.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-050",
+      "passage": "Matthew 6:5-15",
+      "theme": "Prayer and forgiveness",
+      "contextAndMeaning": "Jesus teaches sincere prayer, dependence on the Father and the seriousness of forgiving others.",
+      "studyObservation": "Notice the contrast between public performance and private devotion.",
+      "interpretiveCaution": "The Lord's Prayer is a model for prayer, not a charm or mechanical formula.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-051",
+      "passage": "Matthew 13:1-23",
+      "theme": "The sower",
+      "contextAndMeaning": "The parable explains differing responses to the message of the kingdom through the image of soils.",
+      "studyObservation": "Read Jesus' explanation as well as the story.",
+      "interpretiveCaution": "Do not use the soils to label other people without self-examination.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-052",
+      "passage": "Matthew 18:15-20",
+      "theme": "Addressing wrongdoing",
+      "contextAndMeaning": "Jesus outlines a process for confronting sin and seeking restoration within the community.",
+      "studyObservation": "Notice the steps, witnesses and communal responsibility.",
+      "interpretiveCaution": "Do not weaponise this passage to force victims into private confrontation with abusers.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-053",
+      "passage": "Mark 2:1-12",
+      "theme": "Jesus forgives and heals",
+      "contextAndMeaning": "The healing demonstrates Jesus' authority to forgive sins as well as restore bodily function.",
+      "studyObservation": "Observe the friends' faith, the challenge and Jesus' response.",
+      "interpretiveCaution": "Do not infer that disability or illness is caused by personal sin.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-054",
+      "passage": "Mark 8:27-38",
+      "theme": "Messiah and the way of the cross",
+      "contextAndMeaning": "Peter confesses Jesus as Messiah, but Jesus redefines messianic mission through suffering and self-giving.",
+      "studyObservation": "Trace Peter's confession, rebuke and Jesus' call to discipleship.",
+      "interpretiveCaution": "Do not glorify suffering inflicted by abusive people as though it were always discipleship.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-055",
+      "passage": "Mark 10:35-45",
+      "theme": "Greatness through service",
+      "contextAndMeaning": "Jesus contrasts domination with servant leadership and presents His own life as a ransom for many.",
+      "studyObservation": "Notice the contrast between rulers and the community Jesus forms.",
+      "interpretiveCaution": "Do not use servant language to excuse exploitation of leaders or workers.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-056",
+      "passage": "Luke 4:16-30",
+      "theme": "Jesus announces his mission",
+      "contextAndMeaning": "Jesus reads Isaiah and announces good news, provoking a divided response in Nazareth.",
+      "studyObservation": "Read the Isaiah quotation and the examples Jesus gives.",
+      "interpretiveCaution": "Avoid reducing the mission to only one social or spiritual dimension.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-057",
+      "passage": "Luke 10:25-37",
+      "theme": "The Good Samaritan",
+      "contextAndMeaning": "Jesus answers a question about neighbour-love with a story that challenges boundaries and centres costly mercy.",
+      "studyObservation": "Notice who acts as neighbour and who receives help.",
+      "interpretiveCaution": "Do not limit the story to a generic lesson about kindness; its social reversal matters.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-058",
+      "passage": "Luke 15:11-32",
+      "theme": "The two sons",
+      "contextAndMeaning": "The parable reveals the father's generous welcome and exposes both rebellion and resentful self-righteousness.",
+      "studyObservation": "Read the older son's response as carefully as the younger son's return.",
+      "interpretiveCaution": "Do not make the story only about one son; both need the father's invitation.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-059",
+      "passage": "Luke 18:9-14",
+      "theme": "The Pharisee and the tax collector",
+      "contextAndMeaning": "Jesus contrasts self-justifying prayer with humble appeal for mercy.",
+      "studyObservation": "Notice how each man describes himself and God.",
+      "interpretiveCaution": "Do not use the parable to stereotype all Pharisees or any modern group.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-060",
+      "passage": "John 1:1-18",
+      "theme": "The Word became flesh",
+      "contextAndMeaning": "John identifies the Word as divine, active in creation and made flesh in Jesus, revealing God's grace and truth.",
+      "studyObservation": "Trace the prologue's claims about life, light, witness and incarnation.",
+      "interpretiveCaution": "Do not detach the opening from John's Gospel-wide presentation of Jesus.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-061",
+      "passage": "John 3:1-21",
+      "theme": "New birth",
+      "contextAndMeaning": "Jesus tells Nicodemus that entry into God's kingdom requires birth from above by the Spirit.",
+      "studyObservation": "Follow Nicodemus' misunderstanding and Jesus' explanation.",
+      "interpretiveCaution": "Do not reduce new birth to a slogan or a single emotional experience.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-062",
+      "passage": "John 4:1-42",
+      "theme": "Jesus and the Samaritan woman",
+      "contextAndMeaning": "Jesus crosses social boundaries, reveals knowledge of the woman's life and offers living water; the encounter leads to witness.",
+      "studyObservation": "Notice the progression from request to revelation to testimony.",
+      "interpretiveCaution": "Do not make assumptions about the woman's moral history beyond what the text says.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-063",
+      "passage": "John 10:1-18",
+      "theme": "The good shepherd",
+      "contextAndMeaning": "Jesus contrasts the shepherd's care and self-giving with thieves and hired hands.",
+      "studyObservation": "Read the imagery alongside Ezekiel 34.",
+      "interpretiveCaution": "Do not use shepherd language to demand unquestioning loyalty to human leaders.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-064",
+      "passage": "John 15:1-17",
+      "theme": "The vine and branches",
+      "contextAndMeaning": "Jesus calls His disciples to remain in Him, receive His words and bear fruit in love.",
+      "studyObservation": "Notice the connection between abiding, pruning, prayer and commandment.",
+      "interpretiveCaution": "Do not treat fruitfulness as a measure of popularity or material success.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-065",
+      "passage": "John 20:24-31",
+      "theme": "Thomas and the purpose of the Gospel",
+      "contextAndMeaning": "Thomas' confession and the narrator's purpose statement invite readers to believe Jesus is the Christ and Son of God.",
+      "studyObservation": "Read the encounter and the stated purpose together.",
+      "interpretiveCaution": "Do not shame honest questions; the narrative moves toward confession.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-066",
+      "passage": "Acts 2:1-21",
+      "theme": "Pentecost",
+      "contextAndMeaning": "The Spirit empowers witness and the gathered crowd hears God's mighty works across languages.",
+      "studyObservation": "Observe the signs, the crowd's response and Peter's use of Joel.",
+      "interpretiveCaution": "Do not confuse the sign of many languages with incoherent speech.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-067",
+      "passage": "Acts 10:1-48",
+      "theme": "The gospel reaches Cornelius",
+      "contextAndMeaning": "Peter's vision and the Spirit's action lead the church to recognise Gentiles as recipients of God's welcome.",
+      "studyObservation": "Trace the parallel experiences of Cornelius and Peter.",
+      "interpretiveCaution": "Do not use the vision to erase the passage's specific question about people and purity.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-068",
+      "passage": "Acts 15:1-35",
+      "theme": "The Jerusalem council",
+      "contextAndMeaning": "The apostles and elders deliberate about Gentile inclusion and the requirements placed on new believers.",
+      "studyObservation": "Notice testimony, Scripture reasoning and the letter's practical instructions.",
+      "interpretiveCaution": "Do not claim every later church dispute is identical to this council.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-069",
+      "passage": "Romans 3:21-26",
+      "theme": "Righteousness through faith",
+      "contextAndMeaning": "Paul explains God's righteousness and the gift of justification through the redemption in Christ.",
+      "studyObservation": "Follow the movement from universal sin to God's gracious action.",
+      "interpretiveCaution": "Avoid isolating a phrase from Paul's argument about sin, grace and faith.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-070",
+      "passage": "Romans 8:18-39",
+      "theme": "Hope and assurance",
+      "contextAndMeaning": "Paul sets present suffering within the hope of creation's renewal and God's sustaining love in Christ.",
+      "studyObservation": "Notice groaning, the Spirit's help and the sequence of assurance.",
+      "interpretiveCaution": "This passage does not promise freedom from suffering in the present age.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-071",
+      "passage": "Romans 12:1-21",
+      "theme": "A transformed community",
+      "contextAndMeaning": "Paul describes worship expressed through renewed minds, humble service, sincere love and peaceable conduct.",
+      "studyObservation": "Group the instructions and notice how they address community relationships.",
+      "interpretiveCaution": "Do not interpret peaceable conduct as a requirement to tolerate abuse.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-072",
+      "passage": "1 Corinthians 11:17-34",
+      "theme": "The Lord's Supper and community",
+      "contextAndMeaning": "Paul corrects a meal that humiliates poorer members and calls the church to discern the body.",
+      "studyObservation": "Read the social divisions in the preceding context.",
+      "interpretiveCaution": "Do not reduce the passage to private ritual correctness while ignoring injustice at the table.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-073",
+      "passage": "1 Corinthians 12:4-27",
+      "theme": "One body, many gifts",
+      "contextAndMeaning": "The Spirit gives diverse gifts for the common good and every member belongs to the body.",
+      "studyObservation": "Notice the repeated emphasis on diversity, mutual need and honour.",
+      "interpretiveCaution": "Do not rank gifts or members by visibility.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-074",
+      "passage": "1 Corinthians 13",
+      "theme": "The way of love",
+      "contextAndMeaning": "Paul places love at the centre of spiritual gifts and Christian maturity.",
+      "studyObservation": "Read the chapter between Paul's discussions of gifts and orderly worship.",
+      "interpretiveCaution": "Do not use the chapter only as romantic poetry; its setting is church conflict.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-075",
+      "passage": "1 Corinthians 15:12-28",
+      "theme": "The resurrection of Christ",
+      "contextAndMeaning": "Paul argues that Christian faith depends on Christ's resurrection and the future defeat of death.",
+      "studyObservation": "Follow the logic from Christ's resurrection to the resurrection of those who belong to Him.",
+      "interpretiveCaution": "Do not reduce resurrection to metaphor alone.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-076",
+      "passage": "2 Corinthians 4:7-18",
+      "theme": "Treasure in fragile vessels",
+      "contextAndMeaning": "Paul describes ministry marked by weakness while God's power sustains the message and future hope.",
+      "studyObservation": "Notice the contrasts between outward decay and inward renewal.",
+      "interpretiveCaution": "Do not romanticise preventable harm or deny the need for care.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-077",
+      "passage": "2 Corinthians 5:14-21",
+      "theme": "Reconciliation in Christ",
+      "contextAndMeaning": "Christ's death and resurrection reshape how believers see one another and announce God's reconciling work.",
+      "studyObservation": "Trace the new creation and ambassador imagery.",
+      "interpretiveCaution": "Do not use reconciliation language to pressure people into unsafe relationships.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-078",
+      "passage": "Galatians 5:13-26",
+      "theme": "Freedom and the Spirit",
+      "contextAndMeaning": "Christian freedom is expressed through love and a life directed by the Spirit rather than destructive desire.",
+      "studyObservation": "Compare the works of the flesh with the fruit of the Spirit.",
+      "interpretiveCaution": "Do not treat the fruit list as a way to shame people rather than invite Spirit-shaped growth.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-079",
+      "passage": "Ephesians 2:1-10",
+      "theme": "Saved by grace",
+      "contextAndMeaning": "Paul describes salvation as God's gift, not human achievement, and connects grace with a life of good works prepared by God.",
+      "studyObservation": "Notice the contrast between former condition and new life.",
+      "interpretiveCaution": "Do not separate verses 8–9 from verse 10's purpose of good works.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-080",
+      "passage": "Ephesians 4:1-16",
+      "theme": "Unity and maturity",
+      "contextAndMeaning": "The church is called to preserve unity and grow toward maturity through diverse gifts and truthful love.",
+      "studyObservation": "Notice the repeated language of one and the body-building image.",
+      "interpretiveCaution": "Unity does not require silence about harmful conduct or false teaching.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-081",
+      "passage": "Ephesians 6:10-20",
+      "theme": "The armour of God",
+      "contextAndMeaning": "Paul uses armour imagery to describe standing firm through God's resources in spiritual struggle.",
+      "studyObservation": "Identify each piece and the role of prayer.",
+      "interpretiveCaution": "Do not interpret the metaphor as physical protection from every danger.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-082",
+      "passage": "Philippians 2:1-11",
+      "theme": "The humility of Christ",
+      "contextAndMeaning": "Paul calls the community to unity and humility by pointing to Christ's self-emptying and exaltation.",
+      "studyObservation": "Observe the movement from shared attitude to Christ's obedience and exaltation.",
+      "interpretiveCaution": "Do not use Christ's humility to demand submission to abusive authority.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-083",
+      "passage": "Philippians 4:4-9",
+      "theme": "Prayer, peace and disciplined thought",
+      "contextAndMeaning": "Paul urges rejoicing, gentleness, prayer and attention to what is true and worthy.",
+      "studyObservation": "Notice the practical sequence and the promise of God's peace.",
+      "interpretiveCaution": "Do not imply anxiety is always a spiritual failure or that prayer replaces medical care.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-084",
+      "passage": "Colossians 1:15-20",
+      "theme": "The supremacy of Christ",
+      "contextAndMeaning": "The passage presents Christ as central to creation, reconciliation and the church.",
+      "studyObservation": "Trace the repeated all-things language and the movement from creation to reconciliation.",
+      "interpretiveCaution": "Avoid using the poetic passage to settle questions it does not address directly.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-085",
+      "passage": "1 Thessalonians 4:13-18",
+      "theme": "Hope concerning the dead",
+      "contextAndMeaning": "Paul comforts grieving believers with the promise that the dead in Christ will share in His coming.",
+      "studyObservation": "Read the passage as pastoral encouragement to a grieving community.",
+      "interpretiveCaution": "Do not turn the imagery into a detailed timetable beyond the text.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-086",
+      "passage": "2 Thessalonians 3:6-13",
+      "theme": "Responsible work",
+      "contextAndMeaning": "Paul addresses disorder and idleness while encouraging believers not to grow weary in doing good.",
+      "studyObservation": "Read the local community problem and Paul's own example.",
+      "interpretiveCaution": "Do not weaponise this passage against people unable to work because of illness, disability or lack of opportunity.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-087",
+      "passage": "1 Timothy 3:1-13",
+      "theme": "Character in church leadership",
+      "contextAndMeaning": "The letter emphasises tested character, self-control, household responsibility and reputation for those entrusted with leadership and service.",
+      "studyObservation": "List the qualities and distinguish character from status.",
+      "interpretiveCaution": "Do not treat leadership as a privilege detached from accountability.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-088",
+      "passage": "2 Timothy 3:14-17",
+      "theme": "Scripture and formation",
+      "contextAndMeaning": "Paul describes Scripture as able to make people wise for salvation and equip them for faithful work.",
+      "studyObservation": "Read the statement within Paul's encouragement to Timothy to continue in what he learned.",
+      "interpretiveCaution": "Do not use the passage to claim every modern interpretation is automatically correct.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-089",
+      "passage": "Titus 2:11-14",
+      "theme": "Grace that trains",
+      "contextAndMeaning": "God's grace brings salvation and trains believers to reject ungodliness and live with self-control and hope.",
+      "studyObservation": "Notice that grace both saves and forms conduct.",
+      "interpretiveCaution": "Do not separate grace from the ethical transformation described.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-090",
+      "passage": "Philemon 8-21",
+      "theme": "Receiving Onesimus",
+      "contextAndMeaning": "Paul appeals for Onesimus to be welcomed as a beloved brother, reframing a relationship within the community of faith.",
+      "studyObservation": "Notice Paul's appeal rather than coercion and the language of partnership.",
+      "interpretiveCaution": "Do not minimise the realities of slavery in the ancient world or claim the letter alone settles every modern policy question.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-091",
+      "passage": "Hebrews 4:14-16",
+      "theme": "Jesus the high priest",
+      "contextAndMeaning": "Jesus' priesthood gives believers confidence to approach God for mercy and timely help.",
+      "studyObservation": "Notice both Jesus' sympathy and His sinlessness.",
+      "interpretiveCaution": "Do not interpret confidence as entitlement or irreverence.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-092",
+      "passage": "Hebrews 11:1-16",
+      "theme": "Faith and pilgrimage",
+      "contextAndMeaning": "The examples portray faith as trust in God's promise that shapes action and endurance without always seeing fulfilment.",
+      "studyObservation": "Notice the repeated pattern of promise, response and longing.",
+      "interpretiveCaution": "Do not portray faith as certainty that every desired earthly outcome will occur.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-093",
+      "passage": "James 1:19-27",
+      "theme": "Hearing and doing",
+      "contextAndMeaning": "James insists that receiving the word must lead to practical obedience, controlled speech and care for vulnerable people.",
+      "studyObservation": "Notice the mirror image and the concrete examples.",
+      "interpretiveCaution": "Do not reduce religion to external activity while ignoring inner integrity.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-094",
+      "passage": "James 2:14-26",
+      "theme": "Faith and works",
+      "contextAndMeaning": "James challenges claims of faith that produce no action, using examples of practical care and Abraham and Rahab.",
+      "studyObservation": "Read the examples and compare Paul's different question in Romans.",
+      "interpretiveCaution": "Do not pit James and Paul against each other without considering the problems each addresses.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-095",
+      "passage": "1 Peter 2:9-12",
+      "theme": "A people for God's purposes",
+      "contextAndMeaning": "Peter describes believers with Israel's covenant language and calls them to public conduct that honours God.",
+      "studyObservation": "Trace the identity statements and their ethical purpose.",
+      "interpretiveCaution": "Do not use chosen-people language to justify superiority over others.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-096",
+      "passage": "1 Peter 3:8-17",
+      "theme": "Gentleness under pressure",
+      "contextAndMeaning": "Peter calls believers to compassion, peace and a reasoned hope expressed with gentleness and respect.",
+      "studyObservation": "Notice the link between conscience, conduct and speech.",
+      "interpretiveCaution": "Do not use submission language to excuse violence or coercion.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-097",
+      "passage": "2 Peter 1:3-11",
+      "theme": "Growth in godliness",
+      "contextAndMeaning": "The letter urges believers to cultivate qualities that make their calling and knowledge of Christ fruitful.",
+      "studyObservation": "Observe the progression of qualities and the emphasis on growth.",
+      "interpretiveCaution": "Do not turn the list into a means of earning salvation.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-098",
+      "passage": "1 John 1:5-2:2",
+      "theme": "Walking in the light",
+      "contextAndMeaning": "John connects fellowship with God to truthfulness about sin, cleansing and Christ's advocacy.",
+      "studyObservation": "Notice the contrast between denial and confession.",
+      "interpretiveCaution": "Do not use confession to demand public disclosure of private trauma or to remove accountability.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-099",
+      "passage": "1 John 4:7-21",
+      "theme": "God is love",
+      "contextAndMeaning": "John grounds Christian love in God's prior love revealed through the sending of His Son.",
+      "studyObservation": "Trace the movement from God's action to mutual love.",
+      "interpretiveCaution": "Do not use love language to silence truth, boundaries or justice.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-100",
+      "passage": "Jude 3-4, 17-25",
+      "theme": "Contending with mercy",
+      "contextAndMeaning": "Jude calls the community to guard the faith while showing wise mercy and relying on God's keeping power.",
+      "studyObservation": "Notice both warning and the closing assurance.",
+      "interpretiveCaution": "Do not confuse contending for faith with hostility toward people.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-101",
+      "passage": "Revelation 1:9-20",
+      "theme": "The risen Christ among the churches",
+      "contextAndMeaning": "John's vision presents Jesus as the exalted Lord who knows and addresses His churches.",
+      "studyObservation": "Notice the imagery and the interpretation given within the vision.",
+      "interpretiveCaution": "Do not treat every symbol as a literal physical description.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-102",
+      "passage": "Revelation 5",
+      "theme": "The Lamb and the scroll",
+      "contextAndMeaning": "The slain Lamb is worthy to open the scroll, and heaven's worship centres on His redeeming work.",
+      "studyObservation": "Trace the shift from the lion announcement to the Lamb seen.",
+      "interpretiveCaution": "Do not separate victory from the Lamb's sacrificial identity.",
+      "resourceType": "passage-commentary"
+    },
+    {
+      "id": "commentary-103",
+      "passage": "Revelation 21:1-8",
+      "theme": "New heaven and new earth",
+      "contextAndMeaning": "The vision promises God's dwelling with His people and the end of death, mourning and pain.",
+      "studyObservation": "Notice the repeated making-new language and the covenant formula.",
+      "interpretiveCaution": "Do not turn the vision into speculative geography or a timetable.",
+      "resourceType": "passage-commentary"
+    }
+  ]
+}
