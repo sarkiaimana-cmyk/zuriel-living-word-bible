@@ -44,6 +44,10 @@ requireText(client, "item.promotional_content", "Publisher promotional attributi
 requireText(client, "Publisher attribution was not supplied", "Fail-closed attribution requirement");
 requireText(client, "Online text is not stored for offline use.", "No-offline-storage notice");
 requireText(client, "window.ZURIEL_TRANSLATION_API_BASE", "Explicit deployment endpoint configuration");
+requireText(client, "raw.githubusercontent.com/sarkiaimana-cmyk/zuriel-living-word-bible/main/version.json", "Public release metadata endpoint discovery");
+requireText(client, "metadata.translationApiBase", "Automatic YouVersion endpoint discovery");
+requireText(client, "validWorkerEndpoint", "Trusted Cloudflare Worker endpoint validation");
+requireText(client, "zuriel-bible-translations.", "Expected dedicated translation Worker hostname");
 requireText(client, "window.ZurielTranslations", "Translation reader public readiness API");
 requireText(client, "activeController.abort()", "Cancellation of stale or closed-panel passage requests");
 forbidText(client, /localStorage|sessionStorage|caches\.|indexedDB/i, "Persistent storage of licensed online Bible text");
