@@ -156,3 +156,25 @@ test("rejects arbitrary catalogue and chapter query parameters", async () => {
   assert.equal(chapter.status, 400);
   assert.equal(called, false);
 });
+
+test("maps API.Bible publisher licence denial without leaking upstream details", async () => {
+  const response = await handleTranslationRequest(
+    request("/api/api-bible/bibles/" + bibleId + "/chapters/JHN.3"),
+    env(),
+    { fetch: async () => new Response("private API.Bible response", { status: 403 }) }
+  );
+  assert.equal(response.status, 403);
+  const data = await response.json();
+  assert.match(data.error, /has not licensed this Bible/);
+  assert.doesNotMatch(JSON.stringify(data), /private API.Bible response/);
+});
+
+test("preserves API.Bible retry-after information on rate limiting", async () => {
+  const response = await handleTranslationRequest(
+    request("/api/api-bible/bibles"),
+    env(),
+    { fetch: async () => new Response("rate limited", { status: 429, headers: { "Retry-After": "45" } }) }
+  );
+  assert.equal(response.status, 429);
+  assert.equal(response.headers.get("retry-after"), "45");
+});
