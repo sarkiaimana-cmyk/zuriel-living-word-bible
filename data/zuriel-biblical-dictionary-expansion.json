@@ -1,0 +1,1026 @@
+{
+  "schemaVersion": 1,
+  "title": "Zuriel Biblical Dictionary and Language Glossary — Expansion",
+  "description": "Concise contextual definitions for biblical concepts, ministry terms and selected Hebrew, Aramaic and Greek expressions. Each entry includes Scripture trails and a caution against common oversimplification.",
+  "editorialPolicy": [
+    "Definitions are contextual study aids, not substitutes for lexicons or full passage reading.",
+    "Original-language glosses are approximate and context-dependent; no Strong's number or morphology is invented.",
+    "Later theological terminology is clearly identified as later terminology where relevant.",
+    "The same English word may translate different source-language terms, and one source-language term may have several English renderings."
+  ],
+  "entries": [
+    {
+      "id": "glossary-001",
+      "term": "Covenant",
+      "definition": "A solemn relationship established by God with commitments and promises; its terms differ across biblical covenants.",
+      "scriptureReferences": [
+        "Genesis 15:1-21",
+        "Exodus 19:3-8",
+        "Jeremiah 31:31-34",
+        "Hebrews 8:6-13"
+      ],
+      "editorialCaution": "Do not assume every covenant has identical terms or that covenant language always means a private contract.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-002",
+      "term": "Atonement",
+      "definition": "The biblical theme of dealing with sin and restoring fellowship with God, expressed through sacrifice and ultimately interpreted through Christ.",
+      "scriptureReferences": [
+        "Leviticus 16",
+        "Romans 3:21-26",
+        "Hebrews 9:11-14"
+      ],
+      "editorialCaution": "Explain the specific passage's imagery rather than flattening all atonement metaphors into one.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-003",
+      "term": "Redemption",
+      "definition": "Rescue or release, often with the image of a price or deliverance from bondage.",
+      "scriptureReferences": [
+        "Exodus 6:6-8",
+        "Ruth 4:1-10",
+        "Ephesians 1:7",
+        "1 Peter 1:18-19"
+      ],
+      "editorialCaution": "The metaphor does not mean God is indebted to an outside power.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-004",
+      "term": "Justification",
+      "definition": "God's act of declaring a person righteous, central to Paul's explanation of grace and faith.",
+      "scriptureReferences": [
+        "Romans 3:21-28",
+        "Galatians 2:15-21"
+      ],
+      "editorialCaution": "Distinguish justification from the ongoing transformation of life, while recognising their relationship.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-005",
+      "term": "Sanctification",
+      "definition": "Being set apart for God and growing in holiness through the Spirit and faithful obedience.",
+      "scriptureReferences": [
+        "John 17:17-19",
+        "1 Thessalonians 4:1-8",
+        "Hebrews 10:10-14"
+      ],
+      "editorialCaution": "Some passages emphasise a decisive setting apart; others describe continuing growth.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-006",
+      "term": "Grace",
+      "definition": "God's generous favour and action toward people who cannot claim it as earned reward.",
+      "scriptureReferences": [
+        "Exodus 34:6-7",
+        "Ephesians 2:4-10",
+        "Titus 2:11-14"
+      ],
+      "editorialCaution": "Grace is not permission to persist in harm; the New Testament connects grace with transformed living.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-007",
+      "term": "Mercy",
+      "definition": "Compassion shown toward those in distress or guilt, often joined with forgiveness and practical help.",
+      "scriptureReferences": [
+        "Psalm 103:8-14",
+        "Luke 10:25-37",
+        "Ephesians 2:4-5"
+      ],
+      "editorialCaution": "Mercy should not be confused with denying justice or ignoring victims.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-008",
+      "term": "Faith",
+      "definition": "Trust and allegiance directed toward God, expressed through reliance and faithful response.",
+      "scriptureReferences": [
+        "Genesis 15:6",
+        "Mark 11:22-24",
+        "Romans 4",
+        "Hebrews 11"
+      ],
+      "editorialCaution": "Faith is not a technique for controlling outcomes.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-009",
+      "term": "Repentance",
+      "definition": "A turning of mind and direction away from sin and toward God.",
+      "scriptureReferences": [
+        "Isaiah 55:6-7",
+        "Mark 1:14-15",
+        "Acts 2:37-ประ38"
+      ],
+      "editorialCaution": "Repentance includes more than regret; look for the changed direction described in context.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-010",
+      "term": "Righteousness",
+      "definition": "Right standing or conduct in relation to God's character, covenant and justice.",
+      "scriptureReferences": [
+        "Psalm  righteousness 1",
+        "Matthew 5:6",
+        "Romans 1:16-17"
+      ],
+      "editorialCaution": "The word's emphasis varies by context; avoid assuming every occurrence has the same technical sense.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-011",
+      "term": "Holiness",
+      "definition": "God's unique purity and majesty, and the calling for God's people to be set apart for Him.",
+      "scriptureReferences": [
+        "Leviticus 19:1-2",
+        "Isaiah 6:1-7",
+        "1 Peter 1:14-16"
+      ],
+      "editorialCaution": "Holiness includes ethical conduct and worship, not merely ritual separation.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-012",
+      "term": "Glory",
+      "definition": "The weight, splendour and revealed honour of God; sometimes the visible manifestation of divine presence.",
+      "scriptureReferences": [
+        "Exodus 33:18-23",
+        "John 1:14",
+        "2 Corinthians 3:18"
+      ],
+      "editorialCaution": "Do not reduce glory to wealth, spectacle or personal success.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-013",
+      "term": "Kingdom of God",
+      "definition": "God's reign and saving rule, announced and embodied in Jesus' ministry and awaiting consummation.",
+      "scriptureReferences": [
+        "Mark 1:14-15",
+        "Matthew 6:9-10",
+        "Luke 17:20-21",
+        "Revelation 11:15"
+      ],
+      "editorialCaution": "The kingdom is not simply a geographical nation or a synonym for heaven after death.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-014",
+      "term": "Messiah",
+      "definition": "The anointed one; in the New Testament, Jesus is confessed as God's promised Christ and king.",
+      "scriptureReferences": [
+        "Psalm 2",
+        "Isaiah 9:1-7",
+        "Mark 8:27-30",
+        "John 1:41"
+      ],
+      "editorialCaution": "Read each Old Testament expectation in its own setting before tracing its New Testament use.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-015",
+      "term": "Son of Man",
+      "definition": "A title used frequently by Jesus, drawing on human-vulnerability language and Danielic authority imagery.",
+      "scriptureReferences": [
+        "Daniel 7:13-14",
+        "Mark 8:31"
+      ],
+      "editorialCaution": "Its meaning is shaped by each Gospel context; do not assume one explanation covers every saying.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-016",
+      "term": "Son of God",
+      "definition": "A title expressing Jesus' unique identity and relationship with the Father, with royal and messianic backgrounds.",
+      "scriptureReferences": [
+        "Psalm 2:7",
+        "Mark 1:1",
+        "John 20:31",
+        "Hebrews 1:1-5"
+      ],
+      "editorialCaution": "The title's significance develops across biblical contexts; avoid importing later assumptions without explanation.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-017",
+      "term": "Logos / Word",
+      "definition": "In John 1, the eternal Word is identified with God and with the revelation of God in Jesus Christ.",
+      "scriptureReferences": [
+        "John 1:1-18",
+        "1 John 1:1-3"
+      ],
+      "editorialCaution": "Do not treat the Greek term as a complete doctrine by itself; read John's full prologue.",
+      "entryType": "language-and-theology"
+    },
+    {
+      "id": "glossary-018",
+      "term": "Parakletos / Advocate",
+      "definition": "A Greek term for helper, advocate or one called alongside; John uses it for the promised Spirit.",
+      "scriptureReferences": [
+        "John 14:16-17, 26",
+        "1 John 2:1"
+      ],
+      "editorialCaution": "The term has related but context-specific uses; distinguish the Spirit's role from Christ as advocate.",
+      "entryType": "language-and-theology"
+    },
+    {
+      "id": "glossary-019",
+      "term": "Pneuma / Spirit",
+      "definition": "Greek term meaning spirit, breath or wind; context determines whether human spirit, spiritual beings or God's Spirit is meant.",
+      "scriptureReferences": [
+        "Genesis 1:2",
+        "John 3:5-8",
+        "Acts 2:1-4",
+        "Galatians 5:16-25"
+      ],
+      "editorialCaution": "Do not assign a single gloss to every occurrence.",
+      "entryType": "language-and-theology"
+    },
+    {
+      "id": "glossary-020",
+      "term": "Agape / Love",
+      "definition": "A Greek word used for love, especially prominent in New Testament descriptions of God's love and Christian action.",
+      "scriptureReferences": [
+        "John 13:34-35",
+        "1 Corinthians 13",
+        "1 John 4:7-12"
+      ],
+      "editorialCaution": "Avoid the simplistic claim that agape always means a uniquely selfless kind of love in every Greek text.",
+      "entryType": "language-and-theology"
+    },
+    {
+      "id": "glossary-021",
+      "term": "Dikaiosyne / Righteousness",
+      "definition": "Greek term for righteousness or justice, with meaning shaped by Paul's and other authors' arguments.",
+      "scriptureReferences": [
+        "Matthew 5:6",
+        "Romans 3:21-26",
+        "Philippians 3:9"
+      ],
+      "editorialCaution": "Lexical gloss alone cannot settle debates about the phrase's theological meaning.",
+      "entryType": "language-and-theology"
+    },
+    {
+      "id": "glossary-022",
+      "term": "Ekklesia / Assembly",
+      "definition": "Greek term for an assembly; in the New Testament it commonly refers to a local congregation or the church.",
+      "scriptureReferences": [
+        "Matthew 16:18",
+        "Acts 2:42-47",
+        "1 Corinthians 12:27"
+      ],
+      "editorialCaution": "It does not simply mean a building or a modern denomination.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-023",
+      "term": "Metanoia / Repentance",
+      "definition": "Greek term associated with a changed mind and turning; New Testament use includes a changed response to God.",
+      "scriptureReferences": [
+        "Mark 1:15",
+        "Acts 3:19",
+        "2 Corinthians 7:9-10"
+      ],
+      "editorialCaution": "Do not reduce repentance to intellectual change alone.",
+      "entryType": "language-and-theology"
+    },
+    {
+      "id": "glossary-024",
+      "term": "Diakonia / Service",
+      "definition": "Service or ministry, including practical care and the work of serving the community.",
+      "scriptureReferences": [
+        "Mark 10:42-45",
+        "Acts 6:1-4",
+        "2 Corinthians 8:4"
+      ],
+      "editorialCaution": "Not every occurrence refers to a formal church office.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-025",
+      "term": "Charis / Grace",
+      "definition": "Greek term for grace, favour or a gracious gift; central to Paul's account of God's saving action.",
+      "scriptureReferences": [
+        "Romans 5:1-2",
+        "Ephesians 2:8-10",
+        "2 Corinthians 12:9"
+      ],
+      "editorialCaution": "Read the surrounding argument to distinguish favour, gift and gratitude.",
+      "entryType": "language-and-theology"
+    },
+    {
+      "id": "glossary-026",
+      "term": "Shalom / Peace",
+      "definition": "Hebrew term for peace, wholeness, welfare and well-being, depending on context.",
+      "scriptureReferences": [
+        "Numbers 6:24-26",
+        "Psalm 122:6-9",
+        "Isaiah 9:6-7"
+      ],
+      "editorialCaution": "It is richer than absence of conflict but should not be made to mean every desired outcome.",
+      "entryType": "language-and-theology"
+    },
+    {
+      "id": "glossary-027",
+      "term": "Hesed / Steadfast Love",
+      "definition": "Hebrew term often rendered steadfast love, lovingkindness or covenant loyalty.",
+      "scriptureReferences": [
+        "Exodus 34:6",
+        "Psalm 136",
+        "Ruth 1:8"
+      ],
+      "editorialCaution": "No single English word captures every use; context and relationship matter.",
+      "entryType": "language-and-theology"
+    },
+    {
+      "id": "glossary-028",
+      "term": "Emunah / Faithfulness",
+      "definition": "Hebrew term associated with firmness, reliability and faithfulness; related to trust depending on context.",
+      "scriptureReferences": [
+        "Habakkuk 2:4",
+        "Psalm 36:5",
+        "Deuteronomy 32:4"
+      ],
+      "editorialCaution": "Do not force a single English gloss into every occurrence.",
+      "entryType": "language-and-theology"
+    },
+    {
+      "id": "glossary-029",
+      "term": "Ruach / Breath, Wind, Spirit",
+      "definition": "Hebrew term whose range includes wind, breath and spirit.",
+      "scriptureReferences": [
+        "Genesis 1:2",
+        "Ezekiel 37:1-14"
+      ],
+      "editorialCaution": "The immediate context determines the intended sense.",
+      "entryType": "language-and-theology"
+    },
+    {
+      "id": "glossary-030",
+      "term": "Nephesh / Living Being",
+      "definition": "Hebrew term often translated soul, life or person; frequently refers to the whole living being.",
+      "scriptureReferences": [
+        "Genesis 2:7",
+        "Leviticus 17:11",
+        "Psalm 42:1-2"
+      ],
+      "editorialCaution": "Avoid assuming it always means an immaterial part separable from the body.",
+      "entryType": "language-and-theology"
+    },
+    {
+      "id": "glossary-031",
+      "term": "Torah / Instruction",
+      "definition": "Hebrew term for instruction or teaching, often referring to the law given through Moses.",
+      "scriptureReferences": [
+        "Psalm 1:1-2",
+        "Matthew 5:17-20"
+      ],
+      "editorialCaution": "Torah is broader than a list of legal rules and can refer to instruction.",
+      "entryType": "language-and-theology"
+    },
+    {
+      "id": "glossary-032",
+      "term": "Qadosh / Holy",
+      "definition": "Hebrew adjective meaning holy or set apart, used of God, places, times and people.",
+      "scriptureReferences": [
+        "Leviticus 19:2",
+        "Isaiah 6:3"
+      ],
+      "editorialCaution": "Being set apart is not a licence for superiority or exclusionary pride.",
+      "entryType": "language-and-theology"
+    },
+    {
+      "id": "glossary-033",
+      "term": "Berith / Covenant",
+      "definition": "Hebrew term for covenant, a committed relationship established through promise and obligation.",
+      "scriptureReferences": [
+        "Genesis 9:8-17",
+        "Exodus 24:3-8"
+      ],
+      "editorialCaution": "Identify the parties, promises and signs in each covenant passage.",
+      "entryType": "language-and-theology"
+    },
+    {
+      "id": "glossary-034",
+      "term": "Shekinah",
+      "definition": "A later Jewish term for divine dwelling or presence; it is not a Hebrew Bible word in that exact form.",
+      "scriptureReferences": [
+        "Exodus 40:34-38",
+        "1 Kings 8:10-13"
+      ],
+      "editorialCaution": "Label it as later terminology rather than claiming it appears verbatim in Scripture.",
+      "entryType": "language-and-theology"
+    },
+    {
+      "id": "glossary-035",
+      "term": "Apostle",
+      "definition": "A sent representative or messenger; in the New Testament especially those commissioned for witness and ministry.",
+      "scriptureReferences": [
+        "Luke 6:12-16",
+        "Acts 1:21-26",
+        "1 Corinthians 9:1-2"
+      ],
+      "editorialCaution": "Not every modern use of the title carries the same authority or role as the original witnesses.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-036",
+      "term": "Disciple",
+      "definition": "A learner and follower who attaches to a teacher and learns a way of life.",
+      "scriptureReferences": [
+        "Mark 3:13-19",
+        "Luke 9:23-26",
+        "John 8:31"
+      ],
+      "editorialCaution": "Discipleship involves practice and allegiance, not information alone.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-037",
+      "term": "Elder",
+      "definition": "A recognised leader in a community; New Testament texts describe qualifications and pastoral responsibilities.",
+      "scriptureReferences": [
+        "Acts 14:23",
+        "1 Timothy 3:1-7",
+        "Titus 1:5-9"
+      ],
+      "editorialCaution": "Church traditions differ in how they organise the office; begin with each passage's criteria.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-038",
+      "term": "Deacon",
+      "definition": "A servant or minister; the New Testament describes recognised service and character qualifications.",
+      "scriptureReferences": [
+        "Philippians 1:1",
+        "1 Timothy 3:8-13",
+        "Acts 6:1-6"
+      ],
+      "editorialCaution": "Acts 6 does not explicitly use the later office title in the narrative; explain the connection carefully.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-039",
+      "term": "Prophecy",
+      "definition": "A message spoken under prophetic inspiration, including warning, encouragement, disclosure or calling to faithfulness.",
+      "scriptureReferences": [
+        "Deuteronomy 18:18-22",
+        "1 Corinthians 14:1-5",
+        "1 Thessalonians 5:19-22"
+      ],
+      "editorialCaution": "Test claims and read them within the biblical teaching; do not equate every strong impression with prophecy.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-040",
+      "term": "Wisdom",
+      "definition": "Skill in living rightly before God, including discernment, humility and practical judgement.",
+      "scriptureReferences": [
+        "Proverbs 1:1-7",
+        "James 1:5"
+      ],
+      "editorialCaution": "Biblical wisdom is not merely cleverness or guaranteed material success.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-041",
+      "term": "Fear of the Lord",
+      "definition": "Reverent awe, loyalty and obedient regard for God.",
+      "scriptureReferences": [
+        "Proverbs 1:7",
+        "Ecclesiastes 12:13"
+      ],
+      "editorialCaution": "It includes reverence and moral seriousness, not only terror.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-042",
+      "term": "Sabbath",
+      "definition": "A day of rest rooted in creation and Israel's covenant, later discussed in Jesus' teaching and apostolic debates.",
+      "scriptureReferences": [
+        "Genesis 2:1-3",
+        "Exodus 20:8-11",
+        "Mark 2:23-28",
+        "Colossians 2:16-17"
+      ],
+      "editorialCaution": "Christian traditions differ on Sabbath observance; present the texts and their contexts fairly.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-043",
+      "term": "Passover",
+      "definition": "Israel's memorial feast recalling deliverance from Egypt; the New Testament connects Jesus' death with Passover imagery.",
+      "scriptureReferences": [
+        "Exodus 12",
+        "Luke 22:7-20",
+        "1 Corinthians 5:7-8"
+      ],
+      "editorialCaution": "Preserve the feast's Jewish historical meaning when exploring Christian fulfilment.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-044",
+      "term": "Firstfruits",
+      "definition": "The first portion of harvest offered to God, also used as an image of resurrection and future hope.",
+      "scriptureReferences": [
+        "Leviticus 23:9-14",
+        "1 Corinthians 15:20-23"
+      ],
+      "editorialCaution": "Distinguish agricultural offering instructions from later metaphorical uses.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-045",
+      "term": "Tithe",
+      "definition": "A tenth, given in various biblical settings for worship, support and care.",
+      "scriptureReferences": [
+        "Leviticus 27:30-33",
+        "Numbers 18:21-24",
+        "Deuteronomy 14:22-29",
+        "Matthew 23:23"
+      ],
+      "editorialCaution": "Do not assume every Old Testament tithe law transfers unchanged to every church context.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-046",
+      "term": "Anointing",
+      "definition": "Applying oil in ritual settings to designate or consecrate people and objects; also a metaphor for divine commissioning.",
+      "scriptureReferences": [
+        "Exodus 30:22-33",
+        "1 Samuel 16:13",
+        "Luke 4:18",
+        "James 5:14"
+      ],
+      "editorialCaution": "Not every mention of oil is a symbolic anointing, and the metaphor should not be used to guarantee status.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-047",
+      "term": "Baptism",
+      "definition": "A water rite associated with repentance, identification with Jesus and entry into the Christian community.",
+      "scriptureReferences": [
+        "Matthew 28:18-20",
+        "Acts 2:38-41",
+        "Romans 6:1-4"
+      ],
+      "editorialCaution": "Christian traditions differ on mode and sacramental theology; represent those differences accurately.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-048",
+      "term": "Communion / Lord's Supper",
+      "definition": "The meal Jesus gave His followers as remembrance and proclamation of His death, with rich theological interpretations.",
+      "scriptureReferences": [
+        "Luke 22:14-20",
+        "1 Corinthians 10:16-17"
+      ],
+      "editorialCaution": "Avoid reducing the meal to a bare symbol or asserting one tradition's explanation as universal.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-049",
+      "term": "Resurrection",
+      "definition": "God's raising of the dead; central to Christian confession about Jesus and future hope for believers.",
+      "scriptureReferences": [
+        "Luke 24",
+        "1 Corinthians 15",
+        "1 Thessalonians 4:13-18"
+      ],
+      "editorialCaution": "Biblical resurrection hope concerns embodied life, not merely the survival of a disembodied soul.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-050",
+      "term": "New creation",
+      "definition": "The promised renewal of creation and life under God's restored rule.",
+      "scriptureReferences": [
+        "Isaiah 65:17-25",
+        "Romans 8:18-25",
+        "Revelation 21–22"
+      ],
+      "editorialCaution": "Do not treat the imagery as a detailed timetable or map of the afterlife.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-051",
+      "term": "Adoption",
+      "definition": "The gracious status of being received into God's family, especially in Paul's descriptions of life in Christ.",
+      "scriptureReferences": [
+        "Romans 8:14-17",
+        "Galatians 4:4-7",
+        "Ephesians 1:5"
+      ],
+      "editorialCaution": "The metaphor draws on ancient family and inheritance practices; explain its force in context.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-052",
+      "term": "Inheritance",
+      "definition": "A gift or share received, often linked with land, family promise or the future hope of God's people.",
+      "scriptureReferences": [
+        "Genesis 15:7-8",
+        "Galatians 3:18",
+        "1 Peter 1:3-5"
+      ],
+      "editorialCaution": "Distinguish earthly land inheritance from New Testament uses for salvation and future hope.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-053",
+      "term": "Reconciliation",
+      "definition": "Restoration of relationship after hostility, centrally describing God's work through Christ.",
+      "scriptureReferences": [
+        "Romans 5:1-11",
+        "2 Corinthians 5:17-21",
+        "Colossians 1:19-22"
+      ],
+      "editorialCaution": "Reconciliation with God should not be used to pressure victims into unsafe human relationships.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-054",
+      "term": "Intercession",
+      "definition": "Prayer or appeal made on behalf of another person or group.",
+      "scriptureReferences": [
+        "Exodus 32:11-14",
+        "Romans 8:26-27, 34",
+        "1 Timothy 2:1-4"
+      ],
+      "editorialCaution": "Distinguish human prayer from Christ's unique intercessory role.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-055",
+      "term": "Lament",
+      "definition": "Faithful prayer that voices grief, protest and questions before God.",
+      "scriptureReferences": [
+        "Psalms 13",
+        "Lamentations 3"
+      ],
+      "editorialCaution": "Lament is not unbelief; do not silence grief with forced positivity.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-056",
+      "term": "Blessing",
+      "definition": "A spoken or enacted expression of God's favour, provision or commissioning.",
+      "scriptureReferences": [
+        "Genesis 12:1-3",
+        "Numbers 6:22-27",
+        "Ephesians 1:3"
+      ],
+      "editorialCaution": "A blessing passage should not be turned into a guaranteed formula for wealth or ease.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-057",
+      "term": "Cursing",
+      "definition": "A pronouncement of judgment or covenant consequence; also language for the destructive effects of wrongdoing.",
+      "scriptureReferences": [
+        "Deuteronomy 28",
+        "Galatians 3:10-14",
+        "James 3:9-10"
+      ],
+      "editorialCaution": "Distinguish divine covenant judgment from casual human insults or manipulative threats.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-058",
+      "term": "Temptation",
+      "definition": "Testing or enticement toward unfaithfulness; context distinguishes a proving test from an invitation to sin.",
+      "scriptureReferences": [
+        "Genesis 22:1",
+        "Matthew 4:1-11",
+        "James 1:13-15"
+      ],
+      "editorialCaution": "James denies that God entices people to evil; do not confuse testing with moral enticement.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-059",
+      "term": "Perseverance",
+      "definition": "Continuing in faith and faithful practice through opposition, delay or suffering.",
+      "scriptureReferences": [
+        "Romans 5:1-5",
+        "Hebrews 10:32-39",
+        "James 1:2-4"
+      ],
+      "editorialCaution": "Perseverance is not a command to remain in abuse or refuse necessary help.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-060",
+      "term": "Fellowship",
+      "definition": "Shared participation, partnership and mutual life among believers.",
+      "scriptureReferences": [
+        "Acts 2:42-47",
+        "1 Corinthians 10:16-17",
+        "1 John 1:3-7"
+      ],
+      "editorialCaution": "Fellowship is deeper than social attendance and includes truth and mutual care.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-061",
+      "term": "Stewardship",
+      "definition": "Responsible care of what is entrusted, including resources, gifts and responsibilities.",
+      "scriptureReferences": [
+        "Genesis 2:15",
+        "Luke 16:1-13",
+        "1 Peter 4:10"
+      ],
+      "editorialCaution": "Do not reduce stewardship to fundraising; it includes time, creation, relationships and gifts.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-062",
+      "term": "Spiritual gifts",
+      "definition": "Capacities or services given by the Spirit for the common good of the community.",
+      "scriptureReferences": [
+        "Romans 12:3-8",
+        "1 Corinthians 12–14",
+        "Ephesians 4:7-16"
+      ],
+      "editorialCaution": "Gifts are for service and building up others, not ranking believers by spiritual worth.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-063",
+      "term": "Fruit of the Spirit",
+      "definition": "The character qualities Paul describes as the fruit of life directed by the Spirit.",
+      "scriptureReferences": [
+        "Galatians 5:16-26"
+      ],
+      "editorialCaution": "The list describes Spirit-shaped character, not a self-improvement checklist detached from dependence on God.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-064",
+      "term": "Armour of God",
+      "definition": "Paul's metaphor for standing firm through truth, righteousness, faith, salvation, God's word and prayer.",
+      "scriptureReferences": [
+        "Ephesians 6:10-20"
+      ],
+      "editorialCaution": "The imagery is spiritual and ethical; do not turn it into a promise of physical invulnerability.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-065",
+      "term": "New birth",
+      "definition": "Jesus' image for the work of God's Spirit that brings new life and entry into God's kingdom.",
+      "scriptureReferences": [
+        "John 3:1-8",
+        "1 Peter 1:3, 23"
+      ],
+      "editorialCaution": "Nicodemus' misunderstanding is part of the narrative; read Jesus' explanation in full.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-066",
+      "term": "Abide",
+      "definition": "To remain or dwell; in John 15 it describes continuing dependence and relationship with Jesus.",
+      "scriptureReferences": [
+        "John 15:1-11",
+        "1 John 2:24-28"
+      ],
+      "editorialCaution": "Abiding is relational and fruitful, not a formula for avoiding every hardship.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-067",
+      "term": "Discernment",
+      "definition": "The capacity to distinguish what is true, good and faithful from what is misleading or harmful.",
+      "scriptureReferences": [
+        "Philippians 1:9-11",
+        "Hebrews 5:14",
+        "1 John 4:1"
+      ],
+      "editorialCaution": "Discernment requires humility, Scripture and community; it is not suspicion of everyone.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-068",
+      "term": "Hospitality",
+      "definition": "Welcoming and caring for others, including strangers and fellow workers in the faith.",
+      "scriptureReferences": [
+        "Genesis 18:1-8",
+        "Romans 12:13",
+        "Hebrews 13:1-2"
+      ],
+      "editorialCaution": "Hospitality should be practised with wisdom and appropriate safety boundaries.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-069",
+      "term": "Justice",
+      "definition": "Right judgement and fair treatment, especially protection of the vulnerable and correction of oppression.",
+      "scriptureReferences": [
+        "Deuteronomy 10:17-19",
+        "Isaiah 1:16-17",
+        "Micah 6:8",
+        "James 2:1-9"
+      ],
+      "editorialCaution": "Biblical justice is not reducible to private revenge or partisan slogans.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-070",
+      "term": "Forgiveness",
+      "definition": "Releasing a claim for vengeance and extending mercy; Scripture also calls for repentance and truthful accountability.",
+      "scriptureReferences": [
+        "Matthew 6:12-15",
+        "Ephesians 4:31-32"
+      ],
+      "editorialCaution": "Forgiveness does not automatically restore trust, remove consequences or require unsafe reconciliation.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-071",
+      "term": "Hope",
+      "definition": "Confident expectation grounded in God's character and promises, especially resurrection and new creation.",
+      "scriptureReferences": [
+        "Romans 5:1-5",
+        "1 Peter 1:3-9"
+      ],
+      "editorialCaution": "Christian hope is not wishful thinking or certainty about every preferred outcome.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-072",
+      "term": "Glorification",
+      "definition": "The final transformation and sharing in the glory God promises to those who belong to Christ.",
+      "scriptureReferences": [
+        "Romans 8:28-30",
+        "1 Corinthians 15:42-57",
+        "Philippians 3:20-21"
+      ],
+      "editorialCaution": "It refers to future completion, not a claim that believers are already beyond suffering.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-073",
+      "term": "Imago Dei / Image of God",
+      "definition": "The biblical description of humanity as created in God's image, grounding human dignity and vocation.",
+      "scriptureReferences": [
+        "Genesis 1:26-28",
+        "James 3:9"
+      ],
+      "editorialCaution": "Avoid using the doctrine to rank human worth or justify domination.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-074",
+      "term": "Exile",
+      "definition": "Forced removal from homeland and life under foreign rule; a major historical and theological theme in Israel's story.",
+      "scriptureReferences": [
+        "2 Kings 17",
+        "Psalm 137",
+        "Daniel 1"
+      ],
+      "editorialCaution": "The biblical exiles occurred in distinct periods; do not collapse them into one event.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-075",
+      "term": "Remnant",
+      "definition": "A surviving group through whom God preserves a people and continues His purposes.",
+      "scriptureReferences": [
+        "Isaiah 10:20-23",
+        "Romans 9:27-29"
+      ],
+      "editorialCaution": "Remnant language should not become a self-congratulatory label for a modern faction.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-076",
+      "term": "Zion",
+      "definition": "A name associated with Jerusalem and, in poetry and prophecy, the place of God's presence and hope.",
+      "scriptureReferences": [
+        "2 Samuel 5:7",
+        "Psalm 48",
+        "Isaiah 2:1-4",
+        "Hebrews 12:22"
+      ],
+      "editorialCaution": "The term has historical, poetic and theological uses that should not be conflated.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-077",
+      "term": "Sheol",
+      "definition": "The Hebrew Bible's term for the realm or state of the dead, with meaning varying across texts.",
+      "scriptureReferences": [
+        "Job 7:9",
+        "Psalm 6:5",
+        "Ecclesiastes 9:10"
+      ],
+      "editorialCaution": "Do not automatically equate every occurrence with the later developed concepts of hell.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-078",
+      "term": "Gehenna",
+      "definition": "A Greek term derived from the Valley of Hinnom, used in Jesus' teaching as an image of judgment.",
+      "scriptureReferences": [
+        "Matthew 5:22, 29-30",
+        "Mark 9:43-48"
+      ],
+      "editorialCaution": "Interpret the imagery carefully; avoid sensational speculation about geography or afterlife mechanics.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-079",
+      "term": "Hades",
+      "definition": "A Greek term for the realm of the dead, used in several New Testament passages.",
+      "scriptureReferences": [
+        "Luke 16:23",
+        "Acts 2:27, 31",
+        "Revelation 20:13-14"
+      ],
+      "editorialCaution": "Do not assume Hades and Gehenna are interchangeable in every passage.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-080",
+      "term": "Amen",
+      "definition": "A Hebrew-derived affirmation meaning truly, certainly or so be it.",
+      "scriptureReferences": [
+        "Numbers 5:22",
+        "Deuteronomy 27:15-26",
+        "2 Corinthians 1:20"
+      ],
+      "editorialCaution": "Its function may affirm a prayer, oath, praise or statement; note who is speaking.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-081",
+      "term": "Hallelujah",
+      "definition": "A Hebrew praise expression meaning praise the Lord.",
+      "scriptureReferences": [
+        "Psalms 104–106",
+        "Revelation 19:1-6"
+      ],
+      "editorialCaution": "Retain its worship setting rather than treating it as a magical phrase.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-082",
+      "term": "Hosanna",
+      "definition": "An expression from a Hebrew plea for salvation that became a cry of praise and acclamation.",
+      "scriptureReferences": [
+        "Psalm 118:25-26",
+        "Matthew 21:9"
+      ],
+      "editorialCaution": "Its original plea and Gospel acclamation both matter to interpretation.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-083",
+      "term": "Maranatha",
+      "definition": "An Aramaic expression commonly understood as 'Our Lord, come' or 'Our Lord has come', depending on parsing.",
+      "scriptureReferences": [
+        "1 Corinthians 16:22",
+        "Revelation 22:20"
+      ],
+      "editorialCaution": "The phrase's segmentation is debated; state the likely reading rather than presenting only one as certain.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-084",
+      "term": "Abba",
+      "definition": "An Aramaic family address meaning Father, used in New Testament prayer to God.",
+      "scriptureReferences": [
+        "Mark 14:36",
+        "Romans 8:15",
+        "Galatians 4:6"
+      ],
+      "editorialCaution": "Avoid the popular claim that it literally means 'Daddy'; the term conveys intimacy and respect.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-085",
+      "term": "Mammon",
+      "definition": "An Aramaic-derived term for wealth or possessions personified as a rival master.",
+      "scriptureReferences": [
+        "Matthew 6:24",
+        "Luke 16:9-13"
+      ],
+      "editorialCaution": "The warning concerns allegiance and the power of wealth, not the mere possession of money.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-086",
+      "term": "Selah",
+      "definition": "A recurring term in Psalms, probably a musical or liturgical direction; its precise meaning is uncertain.",
+      "scriptureReferences": [
+        "Psalm 3"
+      ],
+      "editorialCaution": "Do not state a definitive translation where the evidence remains uncertain.",
+      "entryType": "biblical-concept"
+    }
+  ]
+}

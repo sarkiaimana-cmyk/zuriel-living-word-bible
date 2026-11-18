@@ -1,0 +1,1654 @@
+{
+  "schemaVersion": 1,
+  "title": "Zuriel Connected Scripture Trails — Batch 1",
+  "description": "Curated thematic pathways linking passages across the biblical canon. Each trail includes ordered references, connection prompts, study questions, and an editorial caution against proof-texting.",
+  "editorialPrinciples": [
+    "References are study directions, not substitutes for reading each passage in context.",
+    "Connections may be thematic, typological, prophetic, or explicitly quoted; they do not all have the same strength.",
+    "Read surrounding chapters and compare translations where available.",
+    "Do not assume connected passages have identical audiences, covenants, or historical settings."
+  ],
+  "count": 41,
+  "trails": [
+    {
+      "id": "connected-scripture-trail-001",
+      "title": "Creation to New Creation",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Genesis 1:1–2:3",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Genesis 3:1–24",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Romans 5:12–21",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "2 Corinthians 5:17",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "Revelation 21:1–5",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Trace creation, human rebellion, renewal in Christ, and the promised renewal of all things.",
+      "contextCaution": "Keep the original creation narrative and the final apocalyptic vision in their own literary settings.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-002",
+      "title": "Abraham's Promise to the Nations",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Genesis 12:1–3",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Genesis 15:1–6",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Genesis 17:1–8",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Galatians 3:6–9",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "Galatians 3:26–29",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Follow the promise of blessing to the nations and Paul's explanation of faith and belonging in Christ.",
+      "contextCaution": "Read Paul's argument in Galatians 3 as a whole; observe how promise, faith, and Christ relate.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-003",
+      "title": "Covenant and Exodus",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Exodus 2:23–25",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Exodus 6:2–8",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Exodus 12:21–28",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Exodus 19:3–6",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "Deuteronomy 7:6–9",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "See deliverance grounded in God's covenant faithfulness and leading into a people set apart for him.",
+      "contextCaution": "The exodus is a historical deliverance; later biblical writers draw patterns from it without erasing its setting.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-004",
+      "title": "Passover and Christ",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Exodus 12:1–14",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Exodus 12:21–27",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "John 1:29",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "1 Corinthians 5:7–8",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "1 Peter 1:18–19",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Study the Passover's deliverance setting and the New Testament's use of lamb imagery for Jesus.",
+      "contextCaution": "Keep the original Passover instructions and later Christian interpretation distinct while observing their connection.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-005",
+      "title": "God Dwelling with His People",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Exodus 25:1–9",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Exodus 40:34–38",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "1 Kings 8:10–13",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "John 1:14",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "Revelation 21:3",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Trace God's dwelling presence from tabernacle and temple to Christ and the renewed creation.",
+      "contextCaution": "These settings belong to different stages of the biblical story; do not treat them as identical institutions.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-006",
+      "title": "Love God and Neighbour",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Deuteronomy 6:4–9",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Leviticus 19:17–18",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Matthew 22:34–40",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Romans 13:8–10",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "Galatians 5:13–14",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Connect Israel's call to love God and neighbour with Jesus' summary and apostolic ethical teaching.",
+      "contextCaution": "Read each command in its covenant setting and consider how Jesus and the apostles apply its moral direction.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-007",
+      "title": "The Promised Davidic King",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "2 Samuel 7:8–16",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Psalm 89:19–37",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Isaiah 9:6–7",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Luke 1:30–33",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "Acts 13:22–23",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Follow the promise of an enduring Davidic house into prophetic hope and the New Testament proclamation of Jesus.",
+      "contextCaution": "The historical monarchy and the New Testament's messianic fulfilment are related but not interchangeable.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-008",
+      "title": "The Righteous Sufferer",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Psalm 22:1–18",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Isaiah 50:5–9",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Isaiah 52:13–53:12",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Mark 15:22–39",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "1 Peter 2:21–25",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Compare suffering and vindication in Psalms and Prophets with the Gospel account and apostolic reflection.",
+      "contextCaution": "Study the original literary settings before tracing New Testament connections.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-009",
+      "title": "The New Covenant",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Jeremiah 31:31–34",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Ezekiel 36:24–28",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Luke 22:19–20",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Hebrews 8:6–13",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "Hebrews 10:15–18",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Explore promises of forgiveness, inward renewal, and God's law written on the heart.",
+      "contextCaution": "Hebrews quotes Jeremiah directly; read its surrounding argument about Jesus' priesthood.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-010",
+      "title": "The Servant and the Nations",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Isaiah 42:1–9",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Isaiah 49:1–7",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Isaiah 52:13–53:12",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Matthew 12:15–21",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "Acts 8:26–35",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Follow the servant's mission, suffering, and role in bringing God's salvation to the nations.",
+      "contextCaution": "Isaiah's servant passages have rich literary context; note where the New Testament explicitly applies them.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-011",
+      "title": "Wisdom Begins with Reverence",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Proverbs 1:1–7",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Job 28:20–28",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Psalm 111:10",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Ecclesiastes 12:9–14",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "James 3:13–18",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Compare wisdom literature's account of reverence for God with the practical character of wisdom.",
+      "contextCaution": "Wisdom books use different literary voices; not every proverb is an unconditional promise.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-012",
+      "title": "The Word as Light",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Psalm 19:7–11",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Psalm 119:9–16",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Proverbs 6:20–23",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "John 1:1–5",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "2 Timothy 3:14–17",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Trace Scripture's language of light, guidance, and life alongside John's title for Jesus as the Word.",
+      "contextCaution": "John's title 'the Word' has a distinct theological meaning; do not reduce it to written Scripture.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-013",
+      "title": "The Good Shepherd",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Psalm 23:1–6",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Ezekiel 34:11–16",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "John 10:1–18",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Hebrews 13:20–21",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "1 Peter 5:1–4",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Study God's shepherd care, the rebuke of failed leaders, and Jesus' self-giving shepherd ministry.",
+      "contextCaution": "Ezekiel 34 addresses Israel's leaders and God's promise to shepherd his people; preserve that setting.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-014",
+      "title": "The Kingdom of God",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Daniel 2:31–45",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Daniel 7:13–14",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Mark 1:14–15",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Luke 4:16–21",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "Revelation 11:15",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Follow kingdom imagery from Daniel's visions to Jesus' announcement and the Bible's final vision of God's reign.",
+      "contextCaution": "Interpret apocalyptic imagery with attention to genre and historical setting; avoid confident date-setting.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-015",
+      "title": "Justice, Mercy, and Worship",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Isaiah 1:10–17",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Amos 5:21–24",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Micah 6:6–8",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Matthew 23:23",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "James 1:26–27",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "See how prophets and Jesus challenge worship disconnected from justice, mercy, and faithful living.",
+      "contextCaution": "These passages confront hypocrisy and injustice; they do not reject sincere worship.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-016",
+      "title": "Prayer and Dependence",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Psalm 5:1–8",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Daniel 9:3–19",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Matthew 6:5–13",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Luke 11:1–13",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "Philippians 4:6–7",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Compare lament, confession, Jesus' model prayer, persistence, and apostolic encouragement.",
+      "contextCaution": "These passages describe varied situations; do not turn every example into a formula guaranteeing an outcome.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-017",
+      "title": "The Holy Spirit Promised",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Joel 2:28–32",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Ezekiel 36:26–27",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "John 14:16–17, 26",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Acts 2:1–21",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "Titus 3:4–7",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Trace prophetic promises of God's Spirit into Jesus' teaching, Pentecost, and the Spirit's renewing work.",
+      "contextCaution": "Read Acts 2 within Peter's explanation and the wider story of Acts.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-018",
+      "title": "Life in the Spirit",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Romans 8:1–17",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Galatians 5:16–26",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "1 Corinthians 12:4–13",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Ephesians 5:15–21",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "Jude 20–21",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Explore the Spirit's work in assurance, holy character, gifts, worship, and perseverance.",
+      "contextCaution": "The passages address different aspects of the Spirit's work; gifts and fruit should not be confused.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-019",
+      "title": "Faith and Trust",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Genesis 15:1–6",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Habakkuk 2:1–4",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Romans 4:1–25",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Hebrews 11:1–16",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "James 2:14–26",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Compare trust in God's promise, Paul's argument about justification, and James's insistence that living faith acts.",
+      "contextCaution": "Romans 4 and James 2 address different errors; read each argument in its own context.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-020",
+      "title": "Grace and Salvation",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Isaiah 55:1–7",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Luke 15:11–32",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Ephesians 2:1–10",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Titus 2:11–14",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "Titus 3:3–7",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Trace God's gracious invitation, Jesus' parable of welcome, and apostolic teaching on salvation and transformed living.",
+      "contextCaution": "Ephesians 2 joins salvation by grace with a life of good works prepared by God.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-021",
+      "title": "Forgiveness and Reconciliation",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Genesis 50:15–21",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Psalm 32:1–7",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Matthew 18:21–35",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "2 Corinthians 5:17–21",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "Colossians 3:12–15",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Study forgiveness received from God and the call to pursue truthful, humble reconciliation.",
+      "contextCaution": "Forgiveness does not require denying harm or removing wise safeguards where abuse or danger exists.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-022",
+      "title": "Love as the Mark of Discipleship",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Leviticus 19:17–18",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "John 13:1–17, 34–35",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "1 Corinthians 13:1–13",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "1 John 3:16–18",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "1 John 4:7–12",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Follow neighbour-love into Jesus' example and the practical tests of love in the letters.",
+      "contextCaution": "First Corinthians 13 belongs within Paul's teaching about the church and spiritual gifts.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-023",
+      "title": "The Great Commission",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Isaiah 49:5–6",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Matthew 28:16–20",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Luke 24:44–49",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Acts 1:6–8",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "Acts 13:46–49",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Trace the widening mission of God's salvation and the church's call to make disciples among the nations.",
+      "contextCaution": "Mission includes teaching and faithful witness, not merely counting conversions or activity.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-024",
+      "title": "Unity Without Erasing Difference",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Psalm 133:1–3",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "John 17:20–23",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "1 Corinthians 12:12–27",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Ephesians 2:11–22",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "Ephesians 4:1–6",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Study unity as God's gift in Christ that calls diverse people into mutual care and peace.",
+      "contextCaution": "Biblical unity is not uniformity or silence about truth, harm, or accountability.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-025",
+      "title": "The Resurrection Hope",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Daniel 12:1–3",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "John 11:17–27",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "1 Corinthians 15:12–28",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "1 Corinthians 15:35–58",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "1 Thessalonians 4:13–18",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Follow resurrection hope from prophetic expectation to Jesus' promise and Paul's teaching about bodily resurrection.",
+      "contextCaution": "Paul's argument concerns resurrection, not merely the survival of the soul.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-026",
+      "title": "The Ascension and Christ's Reign",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Psalm 110:1–4",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Daniel 7:13–14",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Acts 1:6–11",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Acts 2:32–36",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "Hebrews 7:23–28",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Connect royal and priestly imagery with the New Testament's teaching about the risen and reigning Christ.",
+      "contextCaution": "Psalm 110 is interpreted in several New Testament settings; compare each use in context.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-027",
+      "title": "Jesus the High Priest",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Leviticus 16:1–22",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Psalm 110:1–4",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Hebrews 4:14–16",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Hebrews 7:23–28",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "Hebrews 9:11–14",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Compare the Day of Atonement with Hebrews' explanation of Jesus' priestly work.",
+      "contextCaution": "Leviticus describes Israel's sanctuary ritual; Hebrews develops its significance around Christ.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-028",
+      "title": "Armour of God and Spiritual Resistance",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Isaiah 59:15–17",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Matthew 4:1–11",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Ephesians 6:10–18",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "James 4:7–10",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "1 Peter 5:8–10",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Study spiritual resistance through truth, righteousness, faith, prayer, submission to God, and steadfastness.",
+      "contextCaution": "Ephesians calls believers to spiritual faithfulness, not to identify human enemies as targets.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-029",
+      "title": "Overcoming Fear with Trust",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Psalm 27:1–6",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Isaiah 41:8–13",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Matthew 6:25–34",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "John 14:1–3, 27",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "2 Timothy 1:6–7",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Compare biblical encouragement to trust God amid threats, uncertainty, and anxious concern.",
+      "contextCaution": "These are invitations to trust, not promises that believers will never feel fear or face hardship.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-030",
+      "title": "Suffering, Comfort, and Perseverance",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Psalm 34:15–19",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Isaiah 40:27–31",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Romans 5:1–5",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "2 Corinthians 1:3–7",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "1 Peter 5:8–10",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Trace God's nearness and sustaining grace through suffering and the community's ministry of comfort.",
+      "contextCaution": "Do not trivialise pain or tell sufferers that every hardship has an immediately visible explanation.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-031",
+      "title": "Contentment and Generosity",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Proverbs 30:7–9",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Matthew 6:19–24",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Luke 12:13–21",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Philippians 4:10–13",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "2 Corinthians 9:6–11",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Explore freedom from greed, trust in God's provision, contentment, and generous giving.",
+      "contextCaution": "Philippians 4:13 concerns contentment in changing circumstances, not unlimited achievement.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-032",
+      "title": "Work, Calling, and Integrity",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Genesis 2:15",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Proverbs 11:1",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Colossians 3:22–24",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "2 Thessalonians 3:6–13",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "Ephesians 4:28",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Connect work as stewardship with honesty, diligence, fair conduct, and generosity.",
+      "contextCaution": "Read household instructions in historical setting and alongside the New Testament's wider teaching on mutual care.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-033",
+      "title": "Family, Care, and Honour",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Deuteronomy 6:4–9",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Psalm 127:1–5",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Ephesians 5:21–6:4",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Colossians 3:18–21",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "1 Timothy 5:3–8",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Study faith formation, family responsibility, mutual honour, and care for vulnerable relatives.",
+      "contextCaution": "These passages must never excuse abuse or coercion; read them with the Bible's calls to love and justice.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-034",
+      "title": "The Church as One Body",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Acts 2:42–47",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Romans 12:3–8",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "1 Corinthians 12:12–27",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Ephesians 4:11–16",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "Hebrews 10:23–25",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Trace shared worship, varied gifts, mutual service, growth, and encouragement.",
+      "contextCaution": "The body metaphor values every member; gifts and leadership are for building up the whole community.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-035",
+      "title": "Christ's Return and Watchfulness",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Matthew 24:36–44",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Mark 13:32–37",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "1 Thessalonians 5:1–11",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "2 Peter 3:8–14",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "Revelation 22:12–20",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Compare Jesus' call to watchfulness with apostolic encouragement to holy, hopeful living.",
+      "contextCaution": "These texts warn against claiming to know the day or hour; focus on readiness and faithfulness.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-036",
+      "title": "The New Heavens and New Earth",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Isaiah 65:17–25",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Romans 8:18–25",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "2 Peter 3:10–13",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Revelation 21:1–5",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "Revelation 22:1–5",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Follow the hope of renewed creation, freedom from decay, God's dwelling, and the healing of the nations.",
+      "contextCaution": "Read prophetic imagery in context alongside the New Testament's creation-wide hope.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-037",
+      "title": "The Names and Character of God",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Exodus 34:5–7",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Psalm 103:1–14",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Isaiah 40:25–31",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "John 17:6–11, 25–26",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "1 John 4:7–10",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Compare God's self-revelation, covenant mercy, compassion, power, and the revelation of the Father through the Son.",
+      "contextCaution": "A divine name or title is not a magic formula; observe how Scripture reveals God's character in context.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-038",
+      "title": "The Wisdom of Listening",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "1 Samuel 3:1–10",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Proverbs 18:13",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "James 1:19–25",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "John 10:27–30",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "Revelation 2:7",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Explore attentive listening to God and others, careful speech, and obedience to what is heard.",
+      "contextCaution": "The call to hear must be tested by Scripture and wise discernment, not used to silence questions.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-039",
+      "title": "Hospitality to the Stranger",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Leviticus 19:33–34",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Deuteronomy 10:17–19",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Luke 10:25–37",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Romans 12:9–13",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "Hebrews 13:1–2",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Trace Israel's command to love the foreigner into Jesus' neighbour teaching and the church's practice of hospitality.",
+      "contextCaution": "Hospitality is generous welcome with wisdom and safeguarding, not pressure to ignore legitimate safety concerns.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-040",
+      "title": "Repentance and Renewal",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Psalm 51:1–17",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Isaiah 55:6–9",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Luke 19:1–10",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "Acts 3:19–21",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "1 John 1:5–9",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Study repentance as turning toward God, receiving mercy, and demonstrating changed life.",
+      "contextCaution": "Repentance is more than regret; restitution shows concrete fruit without becoming the price of grace.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    },
+    {
+      "id": "connected-scripture-trail-041",
+      "title": "Hope in God's Promises",
+      "pathway": [
+        {
+          "step": 1,
+          "reference": "Lamentations 3:19–26",
+          "connectionNote": "Establish the passage in its immediate literary and historical context."
+        },
+        {
+          "step": 2,
+          "reference": "Romans 8:18–39",
+          "connectionNote": "Observe the theme developing or being recalled; note what is shared and what differs."
+        },
+        {
+          "step": 3,
+          "reference": "Hebrews 6:13–20",
+          "connectionNote": "Compare this passage's own argument and audience before drawing a link."
+        },
+        {
+          "step": 4,
+          "reference": "1 Peter 1:3–9",
+          "connectionNote": "Notice how the theme is applied, fulfilled, or developed in this setting."
+        },
+        {
+          "step": 5,
+          "reference": "Revelation 21:1–7",
+          "connectionNote": "Summarise the trail without isolating a verse from its context."
+        }
+      ],
+      "overview": "Connect hope rooted in God's character with endurance in present suffering and the promised future.",
+      "contextCaution": "Biblical hope is confident trust in God, not denial of grief or certainty about every desired outcome.",
+      "studyQuestions": [
+        "What does each passage say in its own context?",
+        "What words, images, promises, or themes connect these passages?",
+        "What develops or changes as the biblical story progresses?",
+        "How does this trail deepen understanding of God, Christ, or faithful living?"
+      ],
+      "lifeApplication": "Record one context-aware insight, one response of faith, and one practical action arising from the full set of passages."
+    }
+  ]
+}
