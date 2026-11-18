@@ -31,6 +31,9 @@ jobs:
       - name: Verify offline core assets and local script precache
         run: node scripts/check-offline-core-assets.mjs
 
+      - name: Validate mobile verse-first reading refinement
+        run: node scripts/check-reading-refinement.mjs
+
       - name: Verify complete offline KJV corpus counts
         run: node scripts/check-kjv-corpus-counts.mjs
 
