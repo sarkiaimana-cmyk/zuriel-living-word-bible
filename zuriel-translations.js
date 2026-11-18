@@ -266,15 +266,15 @@
         select.disabled = true;
         loadButton.disabled = true;
         const offline = await refreshOfflineDownloadOptions();
-      if (offline.length) {
-        select.hidden = true;
-        loadButton.hidden = false;
-        loadButton.disabled = !selectedVersionId || !currentChapter;
-        downloadButton.hidden = true;
-      }
-      status(error.message || (offline.length
-        ? "Online translation access is unavailable. You can still open a saved offline translation."
-        : "Online translation access is temporarily unavailable."));
+        if (offline.length) {
+          select.hidden = true;
+          loadButton.hidden = false;
+          loadButton.disabled = !selectedVersionId || !currentChapter;
+          downloadButton.hidden = true;
+        }
+        status(error.message || (offline.length
+          ? "Online translation access is unavailable. You can still open a saved offline translation."
+          : "Online translation access is temporarily unavailable."));
       }
     } finally {
       if (catalogueRequestId === catalogueSequence) versionsLoading = false;
