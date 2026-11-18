@@ -302,7 +302,12 @@ assert.ok(dictionaryTitles.length >= 200, "dictionary contains at least 200 cura
 assert.equal(new Set(dictionaryTitles).size, dictionaryTitles.length, "dictionary entry titles are unique");
 const aliasEntries = dictionaryData.filter(entry => Array.isArray(entry[2]) && entry[2].length);
 const advancedEntries = dictionaryData.filter(entry => entry[3] && entry[3].languageNote && entry[3].theology && entry[3].caution && entry[3].passages);
-assert.ok(advancedEntries.length >= 25, "dictionary contains at least 25 expanded language and theology entries");
+assert.ok(advancedEntries.length >= 40, "dictionary contains at least 40 expanded contextual language and theology entries");
+for (const title of ["Disciple", "Forgiveness", "Sanctification", "Stewardship", "Wisdom", "Adoption", "Anointing", "Apostle", "Blessing", "Discernment", "Justice", "Lament", "Sabbath", "Tabernacle", "Testimony", "Zion"]) {
+  const entry = dictionaryData.find(item => item[0] === title);
+  assert.ok(entry && entry[3] && entry[3].languageNote && entry[3].theology && entry[3].caution && entry[3].passages,
+    "dictionary contains a complete contextual study for " + title);
+}
 assert.ok(aliasEntries.length >= 25, "dictionary has at least 25 entries with curated alternate terms");
 for (const [term, expectedTitle] of [
   ["berith", "Covenant"], ["charis", "Grace"], ["metanoia", "Repentance"],
