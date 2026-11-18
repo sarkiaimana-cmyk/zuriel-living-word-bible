@@ -83,10 +83,10 @@ if (!navBlock || (navBlock[1].match(/\["(?:home|read|study|library|kingdom|perso
   failures.push("The main bottom navigation should contain exactly six primary destinations.");
 }
 if (!home.includes('window.ZurielLibrary.open("saved")')) failures.push("The Library destination does not open the personal saved library.");
-if (!home.includes("zurielHomeVerseIndex") || !home.includes("zurielIdentityScriptureIndex")) failures.push("Home Scripture choices must be remembered on this device.");
-if (home.includes("setInterval(")) failures.push("Home Scripture must never advance automatically.");
+if (!home.includes("zurielHomeVerseIndex") || !home.includes("zurielIdentityScriptureIndex")) failures.push("Home Scripture choices must be remembered on this device.");\nif (!home.includes(".replace(/^\\\\d+\\\\.\\\\s*/, \"\").trim();")) failures.push("Open Book share-card handoff must correctly strip verse numbering from KJV text.");
+if (!home.includes("const HOME_VERSE_ROTATION_MS = 15000;")) failures.push("Home Scripture must rotate automatically every 15 seconds.");
 if (home.includes("<details open>")) failures.push("Open Book prayer and faith sections must start collapsed for a cleaner reading view.");
-if (!home.includes("#zurielHomeDashboard .zob-landscape{background:#f7f8fa!important")) failures.push("The Open Book needs the clean high-contrast presentation.");
+if (!home.includes("OPEN-BOOK FAITH CARD — inspired by the supplied Zuriel artwork") || !home.includes("background-size: cover;") || !home.includes("zob-book:after")) failures.push("The original photographic Open Book artwork and two-page layout must be preserved.");
 if (!study.includes("zurielCleanStudyPresentation")) failures.push("The study panel must apply the clean high-contrast palette after its legacy styles.");
 if (!study.includes("#zurielStudyPanel[data-mode=verse-menu]")) failures.push("The selected-verse overlay must use the readable neutral surface.");
 if (study.includes("background:#fff4d6") || study.includes("border-left:4px solid #d9bd79")) failures.push("Prayer, declaration, affirmation and confession must not use decorative colored callout boxes.");
