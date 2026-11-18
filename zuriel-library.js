@@ -508,6 +508,28 @@
         intro.appendChild(element("p", "Resource records identify historic works and their provenance. Full texts are not represented as installed unless a verified, rights-cleared edition is actually supplied."));
         panel.appendChild(intro);
 
+        // Connect the reference shelf to the real offline dictionary already
+        // bundled in the Study Centre. Historic catalogue records remain
+        // clearly separate from the dictionary entries actually available.
+        const openOfflineDictionary = button("Open Zuriel's offline Bible dictionary", function () {
+          if (window.ZurielHomeNavigate) window.ZurielHomeNavigate("study");
+          const studyPanel = document.getElementById("zurielStudyPanel");
+          if (!studyPanel) return;
+          const dictionarySection = Array.from(studyPanel.querySelectorAll("details")).find(function (section) {
+            const summary = section.querySelector("summary");
+            return summary && summary.textContent.toLowerCase().includes("biblical dictionary");
+          });
+          if (dictionarySection) {
+            dictionarySection.open = true;
+            dictionarySection.scrollIntoView({ behavior: "smooth", block: "start" });
+            const dictionaryInput = dictionarySection.querySelector("#zurielDictionarySearch");
+            if (dictionaryInput) dictionaryInput.focus({ preventScroll: true });
+          }
+        });
+        openOfflineDictionary.className = "zrl-open";
+        openOfflineDictionary.setAttribute("aria-label", "Open Zuriel's offline Bible dictionary in the Study Centre");
+        panel.appendChild(openOfflineDictionary);
+
         const search = element("input");
         search.type = "search";
         search.id = "zrlSearch";
