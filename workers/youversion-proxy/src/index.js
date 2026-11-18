@@ -29,7 +29,7 @@ function jsonResponse(payload, status, origin, env) {
     headers.set("Access-Control-Allow-Methods", "GET, OPTIONS");
     headers.set("Access-Control-Allow-Headers", "Accept, Content-Type");
   }
-  return new Response(JSON.stringify(payload), { status, headers });
+  return new Response(status === 204 ? null : JSON.stringify(payload), { status, headers });
 }
 
 async function youVersionRequest(path, appKey) {
