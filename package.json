@@ -12,7 +12,8 @@
   "dependencies": {
     "@capacitor/android": "8.6.0",
     "@capacitor/core": "8.6.0",
-    "@capacitor-community/text-to-speech": "8.0.2"
+    "@capacitor-community/text-to-speech": "8.0.2",
+    "@capgo/capacitor-file-sharer": "8.1.18"
   },
   "devDependencies": {
     "@capacitor/cli": "8.6.0",
