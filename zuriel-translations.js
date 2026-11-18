@@ -301,10 +301,16 @@
   const TRANSLATION_CACHE_DB = "zuriel-translation-cache-v1";
   const API_BIBLE_CACHE_MAX_AGE = 29 * 24 * 60 * 60 * 1000;
 
+  let translationDb = null;
+  let translationDbPromise = null;
+
   function openTranslationCache() {
-    return new Promise(resolve => {
+    if (translationDb) return Promise.resolve(translationDb);
+    if (translationDbPromise) return translationDbPromise;
+    const pending = new Promise(resolve => {
       if (!("indexedDB" in window)) { resolve(null); return; }
       let request;
+      let settled = false;
       try { request = window.indexedDB.open(TRANSLATION_CACHE_DB, 2); }
       catch (_) { resolve(null); return; }
       request.onupgradeneeded = function () {
@@ -316,10 +322,34 @@
           db.createObjectStore("downloads", { keyPath: "key" });
         }
       };
-      request.onsuccess = function () { resolve(request.result); };
-      request.onerror = function () { resolve(null); };
-      request.onblocked = function () { resolve(null); };
+      request.onsuccess = function () {
+        if (settled) { request.result.close(); return; }
+        settled = true;
+        resolve(request.result);
+      };
+      request.onerror = function () {
+        if (settled) return;
+        settled = true;
+        resolve(null);
+      };
+      request.onblocked = function () {
+        if (settled) return;
+        settled = true;
+        resolve(null);
+      };
     });
+    translationDbPromise = pending;
+    pending.then(db => {
+      translationDbPromise = null;
+      if (db) {
+        translationDb = db;
+        db.onversionchange = function () {
+          db.close();
+          if (translationDb === db) translationDb = null;
+        };
+      }
+    });
+    return pending;
   }
 
   function translationCacheKey(provider, versionId, reference) {
