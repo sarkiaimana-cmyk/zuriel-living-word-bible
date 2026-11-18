@@ -26,7 +26,7 @@ assert.match(library, /zgsShareImage[\s\S]*?navigator\.share/, "Share Image keep
 assert.match(library, /saved to your Downloads folder/i, "browser/PWA keeps a Downloads fallback");
 
 const index = fs.readFileSync("index.html", "utf8");
-assert.match(index, /<script src="zuriel-media\.js"><\\/script>[\s\S]*?<script src="zuriel-library\.js"><\\/script>/, "Gallery bridge loads before Open Book Studio");
+assert.ok(index.indexOf('<script src="zuriel-media.js"></script>') >= 0 && index.indexOf('<script src="zuriel-media.js"></script>') < index.indexOf('<script src="zuriel-library.js"></script>'), "Gallery bridge loads before Open Book Studio");
 const prepare = fs.readFileSync("scripts/prepare-web.mjs", "utf8");
 assert.match(prepare, /"zuriel-media\.js"/, "Android web bundle includes the Gallery bridge");
 const serviceWorker = fs.readFileSync("sw.js", "utf8");
