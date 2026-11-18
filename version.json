@@ -1,4 +1,4 @@
 {
-  "version": "1.4.61",
-  "releaseNotes": "Adds complete bounded pagination for publisher-authorised YouVersion English Bible versions and automatic discovery of the verified translation Worker endpoint. The protected deployment workflow saves the public endpoint only after a live smoke test; the YouVersion key remains server-side. Offline KJV remains available and licensed online text is not cached."
+  "version": "1.4.62",
+  "releaseNotes": "Expands the offline Bible dictionary with 32 additional contextual studies, bringing the expanded study set to 107 across 205 terms. Includes language notes, related passages and interpretive cautions, with KJV reference integrity checks. Retains the YouVersion 1.4.61 endpoint-discovery and secure deployment architecture."
 }
