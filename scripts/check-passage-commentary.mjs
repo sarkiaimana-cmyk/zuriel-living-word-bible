@@ -120,6 +120,8 @@ assert.ok(study.includes('source.language === "eng"') && study.includes('license
   "Historical commentary source language and licence metadata are verified.");
 assert.ok(study.includes('parsed.protocol !== "https:"'), "External source links require HTTPS.");
 assert.ok(study.includes("Not every verse has a commentary note."), "Uneven commentary coverage is disclosed.");
+assert.ok(study.includes("data.chapter.introduction"), "Chapter introductions are available when a source has no verse note.");
+assert.ok(study.includes("Chapter introduction (not verse-specific)"), "Chapter context is clearly distinguished from a verse-specific comment.");
 assert.ok(study.includes("fetchStudyJson(COMMENTARY_CATALOG_API)"), "Commentary catalogue uses the existing on-device study cache.");
 assert.ok(study.includes("++historicalCommentaryRequest"), "Stale historical commentary requests are cancelled when verse selection changes.");
 console.log("Passage commentary checks passed: 103 unique original notes, validated KJV passage endpoints, contextual fields and cautions, selected-verse matching, search, library navigation, Capacitor packaging and offline precache.");
