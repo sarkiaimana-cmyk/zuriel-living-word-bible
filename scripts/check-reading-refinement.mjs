@@ -10,6 +10,17 @@ const [index, styles, serviceWorker, packaging] = await Promise.all([
 
 assert.ok(index.includes('<link rel="stylesheet" href="zuriel-reading-refinement.css">'),
   "The reader must load its dedicated refinement stylesheet.");
+assert.ok(index.includes('paragraph.setAttribute("aria-controls", "zurielVerseActions")') &&
+  index.includes('paragraph.setAttribute("aria-expanded", "false")'),
+  "Each verse must expose its selected-verse action relationship to assistive technology.");
+assert.ok(index.includes('if (event.key !== "Escape" || verseActions.hidden) return;'),
+  "Escape must dismiss the selected-verse overlay.");
+assert.ok(index.includes('document.addEventListener("pointerdown"') &&
+  index.includes('event.target.closest("#message .verse")'),
+  "Tapping outside the overlay must dismiss it without interrupting selection of another verse.");
+assert.ok(index.includes("if (studyPanelHome) restoreStudyPanelToReader();") &&
+  index.includes("if (externalPanelCurrent) restoreExternalVersePanel();"),
+  "Dismissing the overlay must return moved study panels to their original reader location.");
 assert.ok(styles.includes("#message .verse {") && styles.includes("display:block"),
   "Every verse must remain a full-width, readable block.");
 assert.ok(styles.includes("#zurielVerseActions[hidden]") && styles.includes("display:none !important"),
