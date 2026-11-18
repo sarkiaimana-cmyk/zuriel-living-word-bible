@@ -53,7 +53,9 @@ for(const song of songs){
   for(const field of ["title","collection","theme","reference","note"])
     assert.ok(typeof song[field]==="string" && song[field].trim().length>=5,
       song.title+" has a meaningful "+field+".");
-  assert.ok(validReference(song.reference),song.title+" points to a valid bundled KJV reference.");
+  const songReferences = song.reference.split(/\s*;\s*/).filter(Boolean);
+  assert.ok(songReferences.length > 0 && songReferences.every(validReference),
+    song.title + " points only to valid bundled KJV references.");
   assert.ok(!Object.prototype.hasOwnProperty.call(song,"lyrics"),
     "The worship catalogue must not bundle unlicensed lyrics.");
 }
