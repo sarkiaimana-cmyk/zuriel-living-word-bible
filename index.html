@@ -1558,7 +1558,7 @@ window.ZurielBibleSearch = {
           ? "Enter a phrase of at least two characters."
           : "Please enter at least 3 characters.");
     }
-    if (mode === "word" && /\\s/.test(term)) {
+    if (mode === "word" && /\s/.test(term)) {
       throw new Error("Exact word search accepts one word. Choose exact phrase for multiple words.");
     }
     if (mode && mode !== "word" && mode !== "phrase") {
