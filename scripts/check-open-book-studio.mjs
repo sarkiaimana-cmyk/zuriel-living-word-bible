@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 
-const [library, worker, packaging, index, home, prWorkflow, androidWorkflow, gallery, packageSource] = await Promise.all([
+const [library, worker, packaging, index, home, gallery, packageSource, prWorkflow, androidWorkflow] = await Promise.all([
   readFile(new URL("../zuriel-library.js", import.meta.url), "utf8"),
   readFile(new URL("../sw.js", import.meta.url), "utf8"),
   readFile(new URL("./prepare-web.mjs", import.meta.url), "utf8"),
