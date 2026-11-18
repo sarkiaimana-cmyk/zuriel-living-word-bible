@@ -81,7 +81,7 @@
   function parseReference(value) {
     const match = String(value || "").trim().match(/^(.+?)\s+(\d+):(\d+)/);
     if (!match) return null;
-    const book = match[1].trim().replace(/^Psalm$/i, "Psalms");
+    const book = match[1].trim().replace(/^Psalm$/i, "Psalms").replace(/^Song of Songs$/i, "Song of Solomon");
     return { book: book, chapter: Number(match[2]), verse: Number(match[3]) };
   }
 
