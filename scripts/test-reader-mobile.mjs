@@ -136,7 +136,7 @@ try {
       })
     })
   );
-  page.on("pageerror", error => pageErrors.push("online: " + error.message));
+  page.on("pageerror", error => pageErrors.push("online: " + (error.stack || error.message)));
   await page.goto(baseUrl,{waitUntil:"domcontentloaded"});
   await page.locator('#zurielBottomNavigation button[data-section="read"]').click();
   const readNavigationState = await page.evaluate(() => {
