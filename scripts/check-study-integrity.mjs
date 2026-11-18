@@ -43,7 +43,7 @@ const shortWordConcordance = await concordanceSandbox.window.__ZurielBibleSearch
 assert.equal(shortWordConcordance.totalOccurrences, 2, "One-letter exact words remain searchable.");
 await assert.rejects(
   concordanceSandbox.window.__ZurielBibleSearch.search("faith faith", 200, "word"),
-  /one whole word/,
+  /one word/,
   "Multiword input must use phrase mode."
 );
 
