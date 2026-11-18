@@ -1,4 +1,4 @@
 {
-  "version": "1.4.73",
-  "releaseNotes": "Adds the searchable offline Study Centre with passage commentary, theological comparisons, topical studies, dictionary and original-language word-study aids, Names of God, 74 connected Scripture trails, all 66 book introductions and study pathways, geography and worship studies. Adds Scripture-guided Life Application and 20 additional verse-specific faith responses. Open Book Scripture cards can be saved to the Zuriel Gallery album and shared through Android's system share sheet. Preserves the complete offline KJV, reading preferences, personal study records and existing navigation."
+  "version": "1.4.74",
+  "releaseNotes": "Adds optional on-device reminders for daily Scripture, reading plans, prayer, The Light Glory Devotional, personal study and app updates. Choose days and times, set quiet hours, and control each reminder separately. Notifications are scheduled locally and work offline; Android permission is requested only when you save an enabled schedule. Also adds a direct Bible Reading Plans destination in the Study Centre. Includes the searchable offline study library, theological comparisons, 74 connected Scripture trails, all 66 book introductions and pathways, 20 additional verse-specific faith responses, and native Open Book card sharing from version 1.4.73."
 }
