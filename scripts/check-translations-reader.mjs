@@ -46,7 +46,7 @@ requireText(client, "window.ZurielTranslations", "Translation reader public read
 requireText(client, "activeController.abort()", "Cancellation of stale or closed-panel passage requests");
 requireText(client, "let selectedVerse = null", "Selected verse comparison state");
 requireText(client, '"Load selected verse"', "Selected-verse comparison action label");
-requireText(client, 'Number(verseNumber) > 0 ? "." + verseNumber', "Exact selected-verse USFM request rather than an entire chapter");
+requireText(client, 'verseNumber > 0 ? "." + verseNumber', "Exact selected-verse USFM request rather than an entire chapter");
 forbidText(client, /localStorage|sessionStorage|caches\.|indexedDB/i, "Persistent storage of licensed online Bible text");
 forbidText(client, /innerHTML|outerHTML/i, "Unsafe HTML insertion for publisher passage text");
 forbidText(client, /ZITE_YVP_APP_KEY|X-YVP-App-Key|api\.youversion\.com/i, "Provider credentials or direct upstream API access in client code");
