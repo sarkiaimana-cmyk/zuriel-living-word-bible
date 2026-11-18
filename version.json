@@ -1,4 +1,4 @@
 {
-  "version": "1.4.66",
-  "releaseNotes": "Improves the Zuriel open-book sharing experience and Android update compatibility; retains offline KJV reading and existing study resources."
+  "version": "1.4.67",
+  "releaseNotes": "Adds compliant API.Bible offline chapter caching with a 29-day refresh window and improves translation endpoint discovery; preserves offline KJV and existing study resources."
 }
