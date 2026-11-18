@@ -1,11 +1,12 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
-const [index, client, publicConfig, worker, config, deployment, aiDeployment, packaging, serviceWorker, version, updates] = await Promise.all([
+const [index, client, publicConfig, worker, handler, config, deployment, aiDeployment, packaging, serviceWorker, version, updates] = await Promise.all([
   readFile("index.html", "utf8"),
   readFile("zuriel-translations.js", "utf8"),
   readFile("zuriel-config.js", "utf8"),
   readFile("ai-worker/src/translation-worker.js", "utf8"),
+  readFile("ai-worker/src/index.js", "utf8"),
   readFile("ai-worker/wrangler.translations.jsonc", "utf8"),
   readFile(".github/workflows/deploy-translations-worker.yml", "utf8"),
   readFile(".github/workflows/deploy-ai-worker.yml", "utf8"),
@@ -54,12 +55,12 @@ forbidText(client, /ZITE_YVP_APP_KEY|X-YVP-App-Key|api\.youversion\.com/i, "Prov
 requireText(worker, 'from "./index.js"', "Shared tested server-side YouVersion handler");
 requireText(worker, "bibles(?:", "Translation-only route allowlist");
 requireText(worker, "handleRequest(request, env, dependencies)", "Shared server-side origin, rate-limit and licence handling");
-requireText(worker, 'upstreamUrl.searchParams.set("page_size", "99")', "YouVersion maximum catalogue page size");
-requireText(worker, 'upstreamUrl.searchParams.set("page_token", token)', "Documented YouVersion pagination parameter");
-requireText(worker, "item.language_tag", "Current YouVersion language-tag mapping");
-requireText(worker, 'YVP_BASE + "/bibles/" + selectedVersionId', "Separate Bible metadata request for publisher attribution");
-requireText(worker, "bibleMetadata.copyright", "Bible-level publisher copyright verification");
-requireText(worker, "bibleMetadata.promotional_content", "Bible-level publisher attribution fallback");
+requireText(handler, 'upstreamUrl.searchParams.set("page_size", "99")', "YouVersion maximum catalogue page size");
+requireText(handler, 'upstreamUrl.searchParams.set("page_token", token)', "Documented YouVersion pagination parameter");
+requireText(handler, "item.language_tag", "Current YouVersion language-tag mapping");
+requireText(handler, 'YVP_BASE + "/bibles/" + selectedVersionId', "Separate Bible metadata request for publisher attribution");
+requireText(handler, "bibleMetadata.copyright", "Bible-level publisher copyright verification");
+requireText(handler, "bibleMetadata.promotional_content", "Bible-level publisher attribution fallback");
 requireText(config, '"name": "zuriel-bible-translations"', "Separate translation Worker name");
 requireText(config, '"TRANSLATION_RATE_LIMIT"', "Translation rate-limit binding");
 requireText(config, '"ZITE_YVP_APP_KEY"', "Server-only YouVersion secret requirement");
