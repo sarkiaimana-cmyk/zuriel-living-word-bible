@@ -20,6 +20,7 @@ assert.match(workflow, /translationApiBase=process\.env\.WORKER_URL/, "deploymen
 assert.match(workflow, /git push origin HEAD:main/, "deployment commits the endpoint configuration automatically");
 assert.match(workflow, /REMOTE_CONFIG/, "deployment verifies the public release metadata after saving");
 assert.match(workflow, /Authorised Bible versions returned:/, "deployment reports the number of publisher-authorised versions");
+assert.match(workflow, /VERSION_COUNT.*-lt 1/, "deployment refuses to activate when no English versions are authorised");
 assert.ok(!/echo[^\n]*\$CLOUDFLARE_API_TOKEN/i.test(workflow), "workflow must never print the Cloudflare API token");
 assert.ok(!/echo[^\n]*\$ZITE_YVP_APP_KEY/i.test(workflow), "workflow must never print the YouVersion app key");
 
