@@ -1095,19 +1095,37 @@
             const blob = await new Promise((resolve,reject) => canvas.toBlob(value => value ? resolve(value) : reject(new Error("The image could not be created.")),"image/png"));
             const safeReference = reference.replace(/[^a-z0-9]+/gi,"-").replace(/^-|-$/g,"").toLowerCase();
             const fileName = "Zuriel-Glory-Verse-" + (safeReference || "card") + ".png";
-            const file = new File([blob],fileName,{type:"image/png"});
-            if (exportButton.id === "zgsShareImage" && navigator.canShare && navigator.canShare({files:[file]}) && navigator.share) {
-              await navigator.share({files:[file],title:"Glory Verse Affirmation"});
-              status.textContent = "Your open-book image has been shared.";
+            if (window.ZurielGallery) {
+              if (exportButton.id === "zgsShareImage") {
+                const result = await window.ZurielGallery.shareImage(
+                  blob, fileName, "Glory Verse Affirmation", "His Words.. My life.. My Victory"
+                );
+                status.textContent = result.cancelled
+                  ? "Sharing was cancelled. Your image is unchanged."
+                  : result.destination === "shared"
+                    ? "Your open-book image has been shared."
+                    : "Image sharing is not available in this browser, so the PNG was saved to Downloads.";
+              } else {
+                const result = await window.ZurielGallery.saveImage(blob, fileName);
+                status.textContent = result.destination === "gallery"
+                  ? "Your PNG was saved to Pictures/Zuriel Living Word Bible in your Gallery."
+                  : "Your PNG image was saved to your Downloads folder.";
+              }
             } else {
-              const url = URL.createObjectURL(blob);
-              const link = document.createElement("a");
-              link.href = url; link.download = fileName; link.style.display = "none";
-              document.body.appendChild(link); link.click(); link.remove();
-              setTimeout(() => URL.revokeObjectURL(url),30000);
-              status.textContent = exportButton.id === "zgsShareImage"
-                ? "Direct image sharing is not supported here, so the PNG was saved to your Downloads folder."
-                : "Your PNG image was saved to your Downloads folder. You can open it from your device files.";
+              const file = new File([blob],fileName,{type:"image/png"});
+              if (exportButton.id === "zgsShareImage" && navigator.canShare && navigator.canShare({files:[file]}) && navigator.share) {
+                await navigator.share({files:[file],title:"Glory Verse Affirmation"});
+                status.textContent = "Your open-book image has been shared.";
+              } else {
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement("a");
+                link.href = url; link.download = fileName; link.style.display = "none";
+                document.body.appendChild(link); link.click(); link.remove();
+                setTimeout(() => URL.revokeObjectURL(url),30000);
+                status.textContent = exportButton.id === "zgsShareImage"
+                  ? "Direct image sharing is not supported here, so the PNG was saved to your Downloads folder."
+                  : "Your PNG image was saved to your Downloads folder. You can open it from your device files.";
+              }
             }
           } catch (error) {
             if (error.name !== "AbortError") status.textContent = error.message || "Image export could not be completed on this device.";
