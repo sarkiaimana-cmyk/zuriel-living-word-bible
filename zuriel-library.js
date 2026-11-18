@@ -508,6 +508,33 @@
         intro.appendChild(element("p", "Resource records identify historic works and their provenance. Full texts are not represented as installed unless a verified, rights-cleared edition is actually supplied."));
         panel.appendChild(intro);
 
+        // Put the working Zuriel reference tools ahead of the historical
+        // catalogue so readers can use the installed dictionary and concordance.
+        const liveTools = element("section", undefined, "zrl-live-tools");
+        liveTools.appendChild(element("h3", "Zuriel's Offline Study Tools"));
+        liveTools.appendChild(element("p", "These tools use the bundled KJV and Zuriel's searchable study entries. Historical books listed below remain catalogue records until a verified complete edition is supplied."));
+        const liveToolStatus = element("p", "", "zrl-live-tool-status");
+        liveToolStatus.setAttribute("role", "status");
+        liveToolStatus.setAttribute("aria-live", "polite");
+        const openDictionary = button("Open Offline Biblical Dictionary", () => {
+          const opened = window.ZurielStudy &&
+            typeof window.ZurielStudy.openSection === "function" &&
+            window.ZurielStudy.openSection("Biblical Dictionary");
+          liveToolStatus.textContent = opened
+            ? "The offline dictionary is open below. Search a term or browse the entries."
+            : "The offline dictionary could not be opened. Open a Bible chapter and try again.";
+        });
+        const openConcordance = button("Open KJV Concordance", () => {
+          const opened = window.ZurielStudy &&
+            typeof window.ZurielStudy.openSection === "function" &&
+            window.ZurielStudy.openSection("Bible Concordance");
+          liveToolStatus.textContent = opened
+            ? "The KJV concordance is open below. Enter a word or phrase to search."
+            : "The KJV concordance could not be opened. Open a Bible chapter and try again.";
+        });
+        liveTools.append(openDictionary, openConcordance, liveToolStatus);
+        panel.appendChild(liveTools);
+
         const search = element("input");
         search.type = "search";
         search.id = "zrlSearch";
