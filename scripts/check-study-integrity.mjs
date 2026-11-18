@@ -206,7 +206,7 @@ if (!study.includes("let activeWordContextCleanup = null;") ||
 if (home.includes('document.getElementById("zurielHomeOpenBible")')) {
   failures.push(["retired Home control binding", "the removed zurielHomeOpenBible element must not be bound"]);
 }
-const homeRotationTimer = home.match(/window\.setInterval\(function \(\) \{([\s\S]*?)\}, HOME_VERSE_ROTATION_MS\);/);
+const homeRotationTimer = home.match(/const HOME_VERSE_ROTATION_MS = 15000;\s*window\.setInterval\(function \(\) \{([\s\S]*?)\}, HOME_VERSE_ROTATION_MS\);/);
 if (!homeRotationTimer) {
   failures.push(["Zite-style Home Scripture rotation", "the homepage Scripture must rotate every 15 seconds"]);
 } else if (!homeRotationTimer[1].includes("displayVerse(verseIndex + 1)") ||
