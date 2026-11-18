@@ -3,6 +3,7 @@
   "use strict";
 
   const SOURCES = [
+    ["Theological Comparisons", "./data/zuriel-theological-comparisons.json", "entries", "theology"],
     ["Commentary & Exegesis", "./data/zuriel-passage-commentary-expansion.json", "entries", "commentary"],
     ["Topical Studies", "./data/zuriel-topical-bible-study-library-batch-2.json", "entries", "topic"],
     ["Bible Dictionary", "./data/zuriel-biblical-dictionary-expansion.json", "entries", "dictionary"],
@@ -30,7 +31,7 @@
   function summaryFor(item) {
     return text(item.contextAndMeaning || item.overview || item.definition ||
       item.significance || item.focus || item.summary || item.description ||
-      item.meaning || item.context || item.theme || item.subtitle);
+      item.meaning || item.context || item.theme || item.subtitle || item.question || item.sharedGround);
   }
   function refsFor(item) {
     const values = item.references || item.scriptureReferences || item.keyPassages ||
@@ -113,6 +114,8 @@
     target.appendChild(make("h3", "zsl-detail-title", item.title));
     target.appendChild(make("p", "zsl-detail-summary", item.summary || "Open the linked passages and study the source notes."));
     const fields = [
+      ["Question being compared", ["question"]],
+      ["Shared Christian ground", ["sharedGround"]],
       ["Historical and literary context", ["historicalSetting", "historicalContext", "background", "literaryContext", "context"]],
       ["Passage meaning", ["contextAndMeaning", "overview", "definition", "meaning", "explanation", "significance", "focus"]],
       ["Study observation", ["studyObservation", "observation", "interpretation", "studyNote"]],
@@ -121,6 +124,8 @@
       ["Study questions", ["studyQuestions", "questions", "reflectionPrompt"]],
       ["Practical application", ["lifeApplication", "practicalApplication", "application"]],
       ["Interpretive caution", ["interpretiveCaution", "contextCaution", "studyCaution", "caution"]],
+      ["Areas of disagreement", ["areasOfDisagreement"]],
+      ["Reading caution", ["readingCaution"]],
       ["Source and reading note", ["sourceNote", "readingNote", "editorialNote", "provenance"]]
     ];
     fields.forEach(([label, keys]) => {
@@ -131,6 +136,18 @@
       section.appendChild(make("p", "", text(value)));
       target.appendChild(section);
     });
+    if (Array.isArray(item.source.positions)) {
+      const section = make("section", "zsl-detail-section");
+      section.appendChild(make("h4", "", "Representative Christian interpretations"));
+      item.source.positions.forEach(position => {
+        const block = make("div", "zsl-position");
+        block.appendChild(make("h4", "", text(position.view)));
+        block.appendChild(make("p", "", text(position.summary)));
+        if (position.traditions) block.appendChild(make("p", "", "Often associated with: " + text(position.traditions)));
+        section.appendChild(block);
+      });
+      target.appendChild(section);
+    }
     const refs = item.references.length ? item.references : refsFor(item.source);
     if (refs.length) {
       const section = make("section", "zsl-detail-section");
@@ -168,7 +185,7 @@
       #zurielExpandedStudyLibrary .zsl-detail-section{padding-top:9px;margin-top:9px;border-top:1px solid #ece7dc}
       #zurielExpandedStudyLibrary .zsl-detail-section h4{margin:0 0 5px;color:#24445b;font-size:14px}
       #zurielExpandedStudyLibrary .zsl-detail-section p{margin:0;line-height:1.6;font-size:13px;white-space:pre-wrap}
-      #zurielExpandedStudyLibrary .zsl-reference{display:inline-block;margin:6px 6px 0 0;padding:8px 10px;min-height:38px;border:1px solid #b9c8d0;border-radius:8px;background:#f4f7f8;color:#183653;font-weight:700}
+      #zurielExpandedStudyLibrary .zsl-position{padding:8px 0;border-top:1px solid #eee7d9}\n      #zurielExpandedStudyLibrary .zsl-reference{display:inline-block;margin:6px 6px 0 0;padding:8px 10px;min-height:38px;border:1px solid #b9c8d0;border-radius:8px;background:#f4f7f8;color:#183653;font-weight:700}
       #zurielExpandedStudyLibrary .zsl-status{min-height:22px;margin:8px 0;color:#42634f;font-size:12px}
       @media(min-width:620px){#zurielExpandedStudyLibrary .zsl-controls{grid-template-columns:1fr 220px}}
     `;
