@@ -52,7 +52,7 @@ try {
   const page = await context.newPage();
   page.on("pageerror", error => pageErrors.push(error.message));
   await page.goto("http://127.0.0.1:4173/", { waitUntil:"domcontentloaded" });
-  await page.locator("#zurielBottomNavigation button[data-section="read"]").click();
+  await page.locator('#zurielBottomNavigation button[data-section="read"]').click();
   await page.locator("#zurielGridLaunch").waitFor({ state:"visible", timeout:20000 });
   assert.equal(await page.title(),"Zuriel Living Word Bible");
 
@@ -138,7 +138,7 @@ try {
   assert.deepEqual(cachedAssets,{cache:true,kjv:true,commentary:true,gallery:true});
   await context.setOffline(true);
   await page.reload({waitUntil:"domcontentloaded"});
-  await page.locator("#zurielBottomNavigation button[data-section="read"]").click();
+  await page.locator('#zurielBottomNavigation button[data-section="read"]').click();
   await page.locator("#zurielGridLaunch").waitFor({state:"visible",timeout:20000});
   await page.locator("#zurielGridLaunch").click();
   await page.locator("#zgnReferenceInput").fill("Genesis 1");
