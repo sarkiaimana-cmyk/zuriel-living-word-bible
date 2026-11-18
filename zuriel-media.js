@@ -70,8 +70,9 @@
       throw new Error("The open-book image was not a valid PNG. Please create it again.");
     }
 
-    const safeName = fileName
-      .replace(/\\.[^.]+$/, "")
+    const extension = fileName.lastIndexOf(".");
+    const baseName = extension > 0 ? fileName.slice(0, extension) : fileName;
+    const safeName = baseName
       .replace(/[^a-z0-9_-]+/gi, "-")
       .replace(/^-+|-+$/g, "") || "Zuriel-Glory-Verse";
     const saved = await filesystemPlugin.writeFile({
