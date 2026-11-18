@@ -99,16 +99,42 @@
     loadButton.disabled = true;
     status("Checking the English Bible versions authorised for Zuriel…");
     try {
-      const payload = await requestJson("/api/youversion/bibles");
-      if (!payload || !Array.isArray(payload.data)) {
-        throw new Error("The authorised Bible version list could not be verified.");
-      }
-      const available = payload.data.filter(item =>
-        item && Number.isInteger(Number(item.id)) &&
-        typeof item.title === "string" &&
-        typeof item.abbreviation === "string" &&
-        (!item.language || !item.language.iso_639_1 || item.language.iso_639_1 === "en")
-      );
+      const catalogue = [];
+      const seenTokens = new Set();
+      let nextPageToken = "";
+      let pageCount = 0;
+      do {
+        const pagePath = "/api/youversion/bibles" +
+          (nextPageToken ? "?next_page_token=" + encodeURIComponent(nextPageToken) : "");
+        const payload = await requestJson(pagePath);
+        if (!payload || !Array.isArray(payload.data)) {
+          throw new Error("The authorised Bible version list could not be verified.");
+        }
+        catalogue.push(...payload.data);
+        const token = typeof payload.next_page_token === "string"
+          ? payload.next_page_token.trim()
+          : "";
+        if (!token) {
+          nextPageToken = "";
+          break;
+        }
+        if (seenTokens.has(token)) {
+          throw new Error("YouVersion repeated a catalogue page token. Please retry the version list.");
+        }
+        seenTokens.add(token);
+        nextPageToken = token;
+        pageCount++;
+      } while (nextPageToken && pageCount < 10);
+
+      const uniqueVersions = new Map();
+      catalogue.forEach(item => {
+        if (!item || !Number.isInteger(Number(item.id)) ||
+            typeof item.title !== "string" ||
+            typeof item.abbreviation !== "string" ||
+            (item.language && item.language.iso_639_1 && item.language.iso_639_1 !== "en")) return;
+        uniqueVersions.set(String(item.id), item);
+      });
+      const available = Array.from(uniqueVersions.values());
       select.replaceChildren(node("option", "", "Choose an available translation"));
       available.forEach(item => {
         const option = node("option", "", item.abbreviation + " — " + item.title);
@@ -119,7 +145,9 @@
       select.disabled = false;
       loadButton.disabled = true;
       status(available.length
-        ? available.length + " English version(s) are authorised for this app key. Choose one to compare."
+        ? available.length + " English version(s) are authorised for this app key. " +
+          (nextPageToken ? "The catalogue is large; the first 1,000 results are shown. " : "") +
+          "Choose one to compare."
         : "No English Bible versions are currently authorised for Zuriel. The offline KJV remains available.");
     } catch (error) {
       select.disabled = true;
