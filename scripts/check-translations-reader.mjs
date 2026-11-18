@@ -40,6 +40,9 @@ requireText(client, 'credentials: "omit"', "Credential isolation");
 requireText(client, 'referrerPolicy: "no-referrer"', "Referrer privacy");
 requireText(client, "item.copyright", "Publisher copyright handling");
 requireText(client, "item.promotional_content", "Publisher promotional attribution handling");
+requireText(client, "payload.version.publisher_name", "Publisher identity display");
+requireText(client, "payload.version.publisher_url", "Publisher website metadata");
+requireText(client, 'publisherUrl.protocol === "https:"', "HTTPS-only publisher link validation");
 requireText(client, "Publisher attribution was not supplied", "Fail-closed attribution requirement");
 requireText(client, "Online text is not stored for offline use.", "No-offline-storage notice");
 requireText(client, "window.ZURIEL_TRANSLATION_API_BASE", "Explicit deployment endpoint configuration");
@@ -61,6 +64,8 @@ requireText(handler, "item.language_tag", "Current YouVersion language-tag mappi
 requireText(handler, 'YVP_BASE + "/bibles/" + selectedVersionId', "Separate Bible metadata request for publisher attribution");
 requireText(handler, "bibleMetadata.copyright", "Bible-level publisher copyright verification");
 requireText(handler, "bibleMetadata.promotional_content", "Bible-level publisher attribution fallback");
+requireText(handler, "bibleMetadata.publisher_name", "Publisher name from Bible metadata");
+requireText(handler, "bibleMetadata.publisher_url", "Publisher website from Bible metadata");
 requireText(config, '"name": "zuriel-bible-translations"', "Separate translation Worker name");
 requireText(config, '"TRANSLATION_RATE_LIMIT"', "Translation rate-limit binding");
 requireText(config, '"ZITE_YVP_APP_KEY"', "Server-only YouVersion secret requirement");
