@@ -123,7 +123,10 @@ test("fetches publisher attribution from Bible metadata for an authorised passag
           abbreviation: "BSB",
           title: "Berean Standard Bible",
           copyright: "Publisher copyright",
-          promotional_content: "Publisher attribution"
+          promotional_content: "Publisher attribution",
+          publisher_name: "Example Bible Publisher",
+          publisher_url: "https://publisher.example",
+          youversion_deep_link: "https://www.bible.com/versions/3034"
         });
       }
       throw new Error("Unexpected YouVersion endpoint: " + parsed.pathname);
@@ -138,6 +141,8 @@ test("fetches publisher attribution from Bible metadata for an authorised passag
   assert.match(data.passage.content, /For God so loved the world/);
   assert.equal(data.passage.copyright, "Publisher copyright");
   assert.equal(data.passage.promotional_content, "Publisher attribution");
+  assert.equal(data.version.publisher_name, "Example Bible Publisher");
+  assert.equal(data.version.publisher_url, "https://publisher.example");
   assert.equal(data.format, "html");
   assert.match(data.notice, /not stored for offline use/);
   assert.doesNotMatch(JSON.stringify(data), new RegExp(secret));
