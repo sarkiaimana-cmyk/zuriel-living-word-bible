@@ -635,7 +635,7 @@
       if (page === "devotional") {
         content.appendChild(card(
           "The Light Glory Devotional",
-          "A collection of 30 Scripture-led reflections, each with a short message and prayer."
+          "A monthly collection of 30 Scripture-led reflections, each with a short message and prayer. No daily numbering is used."
         ));
 
         originalLibrary.devotionals.forEach(item => {
