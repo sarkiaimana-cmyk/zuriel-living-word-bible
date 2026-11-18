@@ -94,7 +94,8 @@ assert.equal(writes[0].directory, "CACHE");
 assert.equal(writes[0].data, "AAAA");
 assert.equal(writes[0].path, "zuriel-share/My-Card.png");
 assert.equal(shared.length, 1);
-assert.deepEqual(shared[0].files, ["file:///cache/zuriel-share/card.png"]);
+assert.equal(shared[0].files.length, 1);
+assert.equal(shared[0].files[0], "file:///cache/zuriel-share/card.png");
 assert.equal(shared[0].title, "Glory Verse Affirmation");
 
 const webWindow = {
