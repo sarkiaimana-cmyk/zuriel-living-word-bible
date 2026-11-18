@@ -74,6 +74,7 @@ test("lists only English Bible versions licensed to the registered YouVersion ap
   assert.equal(data.data.length, 2);
   assert.equal(data.data[0].id, 3034);
   assert.equal(data.data[0].abbreviation, "BSB");
+  assert.equal(data.data[0].language.iso_639_1, "en");
   assert.equal(data.next_page_token, "next-page");
   assert.doesNotMatch(JSON.stringify(data), new RegExp(secret));
 });
