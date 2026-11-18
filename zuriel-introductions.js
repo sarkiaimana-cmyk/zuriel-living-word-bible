@@ -1897,7 +1897,11 @@
   });
 
   renderBook("Genesis");
-  reader.insertBefore(panel, anchor);
+  if (anchor.parentNode) {
+    anchor.parentNode.insertBefore(panel, anchor);
+  } else {
+    reader.appendChild(panel);
+  }
 
   console.log(
     "Zuriel Book Introduction Centre loaded: " +
