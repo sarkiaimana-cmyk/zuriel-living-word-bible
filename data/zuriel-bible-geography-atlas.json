@@ -1,0 +1,423 @@
+{
+  "schemaVersion": 1,
+  "title": "Zuriel Bible Geography Atlas — Study Foundation",
+  "description": "Original geography study metadata for biblical places and journeys. Coordinates and route polylines are intentionally omitted until independently verified; modern borders are not ancient borders.",
+  "editorialPolicy": [
+    "References identify passages to read; they are not substitutes for the full text.",
+    "Ancient place identifications can be debated. Uncertain identifications are labelled rather than presented as settled facts.",
+    "Modern country labels are present-day orientation only and must not be projected onto biblical political boundaries.",
+    "No generated coordinates, archaeological claims, copyrighted map tiles or Bible text are included."
+  ],
+  "places": [
+    {
+      "id": "place-01",
+      "name": "Jerusalem",
+      "region": "Judea / central hill country",
+      "modernOrientation": "Israel",
+      "significance": "The city associated with David's kingship, the temple, Jesus' final week, crucifixion and resurrection proclamation.",
+      "references": [
+        "2 Samuel 5:6-10",
+        "1 Kings 8:1-11",
+        "Luke 19:28-48",
+        "Luke 23:33-49",
+        "Acts 2:1-11"
+      ],
+      "studyCaution": "Distinguish the historical city, its temple precincts and later theological uses of Zion."
+    },
+    {
+      "id": "place-02",
+      "name": "Bethlehem",
+      "region": "Judea",
+      "modernOrientation": "Israel",
+      "significance": "David's town and the birthplace of Jesus in Matthew and Luke.",
+      "references": [
+        "1 Samuel 16:1-13",
+        "Micah 5:2",
+        "Matthew 2:1-6",
+        "Luke 2:1-20"
+      ],
+      "studyCaution": "Micah's prophecy and Gospel fulfilment should be read in their literary contexts."
+    },
+    {
+      "id": "place-03",
+      "name": "Nazareth",
+      "region": "Lower Galilee",
+      "modernOrientation": "Israel",
+      "significance": "The town where Jesus grew up and where Luke records his synagogue reading.",
+      "references": [
+        "Matthew 2:19-23",
+        "Luke 1:26-38",
+        "Luke 4:16-30"
+      ],
+      "studyCaution": "Do not confuse Jesus' upbringing in Nazareth with the location of his birth."
+    },
+    {
+      "id": "place-04",
+      "name": "Capernaum",
+      "region": "Northwest shore of Sea of Galilee",
+      "modernOrientation": "Israel",
+      "significance": "A major setting for Jesus' Galilean ministry, teaching and healings.",
+      "references": [
+        "Matthew 4:13",
+        "Mark 1:21-34",
+        "Mark 2:1-12",
+        "John 6:24-59"
+      ],
+      "studyCaution": "Gospel accounts describe multiple events in this town; avoid assuming every Galilee event occurred here."
+    },
+    {
+      "id": "place-05",
+      "name": "Sea of Galilee",
+      "region": "Galilee",
+      "modernOrientation": "Israel",
+      "significance": "Freshwater lake central to Jesus' calling of disciples, teaching, crossings and signs.",
+      "references": [
+        "Matthew 4:18-22",
+        "Mark 4:35-41",
+        "John 6:1-21"
+      ],
+      "studyCaution": "Also called the Sea of Tiberias or Lake of Gennesaret in the New Testament."
+    },
+    {
+      "id": "place-06",
+      "name": "Jordan River",
+      "region": "Rift Valley / eastern boundary region",
+      "modernOrientation": "Israel / Jordan / Palestinian territories",
+      "significance": "A major river in Israel's story, including crossing narratives and John's baptism ministry.",
+      "references": [
+        "Joshua 3:1-17",
+        "2 Kings 2:6-14",
+        "Matthew 3:13-17"
+      ],
+      "studyCaution": "Several biblical events occur at different stretches; do not assign an exact modern baptism site without evidence."
+    },
+    {
+      "id": "place-07",
+      "name": "Jericho",
+      "region": "Jordan Valley",
+      "modernOrientation": "Palestinian territories",
+      "significance": "An ancient city in the conquest narrative and the setting of Jesus' encounter with Zacchaeus.",
+      "references": [
+        "Joshua 6:1-27",
+        "Luke 18:35-43",
+        "Luke 19:1-10"
+      ],
+      "studyCaution": "Joshua's account and the Gospel-era city belong to different historical periods."
+    },
+    {
+      "id": "place-08",
+      "name": "Bethany",
+      "region": "East of Jerusalem, near Mount of Olives",
+      "modernOrientation": "Palestinian territories",
+      "significance": "Associated with Mary, Martha and Lazarus, and with events near Jesus' final days.",
+      "references": [
+        "Luke 10:38-42",
+        "John 11:1-44",
+        "John 12:1-8"
+      ],
+      "studyCaution": "Keep Bethany distinct from Bethabara/Bethany beyond the Jordan in John 1:28 textual traditions."
+    },
+    {
+      "id": "place-09",
+      "name": "Mount of Olives",
+      "region": "East of Jerusalem",
+      "modernOrientation": "Palestinian territories",
+      "significance": "A ridge linked with Jesus' teaching, prayer and departure/return imagery.",
+      "references": [
+        "2 Samuel 15:30",
+        "Zechariah 14:4",
+        "Matthew 24:3",
+        "Luke 22:39-46",
+        "Acts 1:9-12"
+      ],
+      "studyCaution": "Prophetic texts use the mountain symbolically as well as geographically."
+    },
+    {
+      "id": "place-10",
+      "name": "Gethsemane",
+      "region": "Mount of Olives area",
+      "modernOrientation": "Jerusalem",
+      "significance": "The garden or olive grove where Jesus prayed before his arrest.",
+      "references": [
+        "Matthew 26:36-56",
+        "Mark 14:32-52"
+      ],
+      "studyCaution": "The Gospels identify the place by name; exact archaeological boundaries are not certain."
+    },
+    {
+      "id": "place-11",
+      "name": "Samaria",
+      "region": "Central hill country",
+      "modernOrientation": "Israel / Palestinian territories",
+      "significance": "A region with a complex history of Israelite and Samaritan communities; Jesus' ministry crosses its boundaries.",
+      "references": [
+        "1 Kings 16:24",
+        "2 Kings 17:24-41",
+        "John 4:1-42",
+        "Acts 8:4-25"
+      ],
+      "studyCaution": "Avoid treating all Samaritans as identical or reducing the region to a single town."
+    },
+    {
+      "id": "place-12",
+      "name": "Sychar",
+      "region": "Samaria",
+      "modernOrientation": "Palestinian territories",
+      "significance": "The setting near Jacob's well where Jesus speaks with a Samaritan woman.",
+      "references": [
+        "John 4:5-42"
+      ],
+      "studyCaution": "The precise identification of Sychar remains debated; distinguish it from Shechem."
+    },
+    {
+      "id": "place-13",
+      "name": "Caesarea Maritima",
+      "region": "Mediterranean coast",
+      "modernOrientation": "Israel",
+      "significance": "A Roman administrative centre associated with Philip, Peter, Paul and Roman governors.",
+      "references": [
+        "Acts 8:40",
+        "Acts 10:1-48",
+        "Acts 23:23-35",
+        "Acts 25:1-13"
+      ],
+      "studyCaution": "Do not confuse Caesarea Maritima with Caesarea Philippi."
+    },
+    {
+      "id": "place-14",
+      "name": "Caesarea Philippi",
+      "region": "Northern region near Mount Hermon",
+      "modernOrientation": "Israel",
+      "significance": "The setting of Peter's confession in the Synoptic Gospel tradition.",
+      "references": [
+        "Matthew 16:13-20",
+        "Mark 8:27-30"
+      ],
+      "studyCaution": "A different city from Caesarea Maritima on the coast."
+    },
+    {
+      "id": "place-15",
+      "name": "Tyre and Sidon",
+      "region": "Phoenician coast",
+      "modernOrientation": "Lebanon",
+      "significance": "Coastal cities appearing in prophetic texts and in accounts of Jesus' ministry beyond Galilee.",
+      "references": [
+        "Isaiah 23:1-18",
+        "Matthew 15:21-28",
+        "Mark 7:24-31",
+        "Acts 21:3-7"
+      ],
+      "studyCaution": "Ancient city names cover long-lived settlements; modern borders differ from ancient political geography."
+    },
+    {
+      "id": "place-16",
+      "name": "Damascus",
+      "region": "Aram / Syria",
+      "modernOrientation": "Syria",
+      "significance": "A major ancient city and the setting of Saul's encounter with the risen Jesus.",
+      "references": [
+        "Genesis 14:15",
+        "2 Kings 8:7-15",
+        "Acts 9:1-25",
+        "Acts 22:6-16"
+      ],
+      "studyCaution": "The conversion narrative is recounted in Acts more than once with differing narrative emphases."
+    },
+    {
+      "id": "place-17",
+      "name": "Antioch (Syria)",
+      "region": "Orontes River region",
+      "modernOrientation": "Turkey",
+      "significance": "A key early Christian centre where disciples were first called Christians and from which missions were sent.",
+      "references": [
+        "Acts 11:19-30",
+        "Acts 13:1-3",
+        "Acts 14:26-28",
+        "Galatians 2:11-14"
+      ],
+      "studyCaution": "Distinguish Syrian Antioch from Pisidian Antioch in Acts 13."
+    },
+    {
+      "id": "place-18",
+      "name": "Pisidian Antioch",
+      "region": "Central Anatolia",
+      "modernOrientation": "Turkey",
+      "significance": "A city visited by Paul and Barnabas during the first missionary journey.",
+      "references": [
+        "Acts 13:13-52",
+        "Acts 14:19-21",
+        "2 Timothy 3:11"
+      ],
+      "studyCaution": "Not the same place as Antioch on the Orontes."
+    },
+    {
+      "id": "place-19",
+      "name": "Ephesus",
+      "region": "Western Asia Minor",
+      "modernOrientation": "Turkey",
+      "significance": "A major setting for Paul's teaching, the Ephesian church and the ministry of the word in Acts.",
+      "references": [
+        "Acts 18:19-21",
+        "Acts 19:1-41",
+        "Ephesians 1:1",
+        "Revelation 2:1-7"
+      ],
+      "studyCaution": "The letter to the Ephesians is addressed to a Christian audience; debates about its destination should be noted in advanced study."
+    },
+    {
+      "id": "place-20",
+      "name": "Philippi",
+      "region": "Macedonia",
+      "modernOrientation": "Greece",
+      "significance": "The setting of Lydia's conversion, the jailer's household and Paul's early European mission.",
+      "references": [
+        "Acts 16:11-40",
+        "Philippians 1:1-11",
+        "4:15-18"
+      ],
+      "studyCaution": "Acts' travel narrative places Philippi within Paul's Macedonian mission."
+    },
+    {
+      "id": "place-21",
+      "name": "Thessalonica",
+      "region": "Macedonia",
+      "modernOrientation": "Greece",
+      "significance": "A city where Paul preached and a church received letters addressing faith, hope and endurance.",
+      "references": [
+        "Acts 17:1-9",
+        "1 Thessalonians 1:1-10",
+        "2 Thessalonians 1:3-12"
+      ],
+      "studyCaution": "Separate the city's history from later church tradition."
+    },
+    {
+      "id": "place-22",
+      "name": "Athens",
+      "region": "Attica",
+      "modernOrientation": "Greece",
+      "significance": "The setting of Paul's address at the Areopagus, engaging local religious and philosophical ideas.",
+      "references": [
+        "Acts 17:16-34"
+      ],
+      "studyCaution": "Acts presents Paul's speech as contextual proclamation, not endorsement of every Athenian belief."
+    },
+    {
+      "id": "place-23",
+      "name": "Corinth",
+      "region": "Achaia",
+      "modernOrientation": "Greece",
+      "significance": "A major port city where Paul ministered and wrote to address church unity, holiness and resurrection hope.",
+      "references": [
+        "Acts 18:1-18",
+        "1 Corinthians 1:10-17",
+        "2 Corinthians 1:1"
+      ],
+      "studyCaution": "The two New Testament letters address distinct situations and should not be flattened into one occasion."
+    },
+    {
+      "id": "place-24",
+      "name": "Rome",
+      "region": "Italy",
+      "modernOrientation": "Italy",
+      "significance": "The imperial capital and destination of Paul's journey in Acts; the setting for the letter to the Romans.",
+      "references": [
+        "Acts 28:11-31",
+        "Romans 1:7-15"
+      ],
+      "studyCaution": "Acts ends with Paul under house arrest; it does not narrate his later death."
+    },
+    {
+      "id": "place-25",
+      "name": "Patmos",
+      "region": "Aegean Sea",
+      "modernOrientation": "Greece",
+      "significance": "The island where John says he received the Revelation while in exile or confinement because of God's word and testimony.",
+      "references": [
+        "Revelation 1:9-11"
+      ],
+      "studyCaution": "The text identifies the island but does not provide a detailed itinerary of John's life."
+    }
+  ],
+  "journeys": [
+    {
+      "id": "journey-01",
+      "name": "Abraham's migration",
+      "sequence": "Ur → Haran → Canaan",
+      "references": [
+        "Genesis 11:31-32",
+        "12:1-9"
+      ],
+      "studyCaution": "A broad migration sequence; the exact route and identification of Ur are discussed by historians."
+    },
+    {
+      "id": "journey-02",
+      "name": "Exodus and wilderness journey",
+      "sequence": "Egypt → Sea crossing → Sinai → wilderness → plains of Moab",
+      "references": [
+        "Exodus 12–19",
+        "Numbers 20–22",
+        "Deuteronomy 34"
+      ],
+      "studyCaution": "The biblical itinerary names stages, but some modern site identifications remain disputed."
+    },
+    {
+      "id": "journey-03",
+      "name": "Conquest crossing",
+      "sequence": "Shittim → Jordan River → Jericho",
+      "references": [
+        "Joshua 2–6"
+      ],
+      "studyCaution": "Read the narrative's theological framing alongside archaeological and historical discussions."
+    },
+    {
+      "id": "journey-04",
+      "name": "Jesus' Galilean ministry",
+      "sequence": "Nazareth ↔ Capernaum ↔ towns around the Sea of Galilee",
+      "references": [
+        "Matthew 4:12-25",
+        "Mark 1:14-39",
+        "Luke 4:14-44"
+      ],
+      "studyCaution": "A regional ministry overview, not a precise day-by-day travel map."
+    },
+    {
+      "id": "journey-05",
+      "name": "Journey to Jerusalem",
+      "sequence": "Galilee/Samaria → Jericho → Jerusalem",
+      "references": [
+        "Luke 9:51",
+        "17:11",
+        "18:35–19:10",
+        "19:28"
+      ],
+      "studyCaution": "Luke's travel section is a literary journey narrative as well as a geographical movement."
+    },
+    {
+      "id": "journey-06",
+      "name": "Paul's first missionary journey",
+      "sequence": "Antioch (Syria) → Cyprus → Pisidian Antioch → Iconium → Lystra → Derbe → return",
+      "references": [
+        "Acts 13–14"
+      ],
+      "studyCaution": "The sequence follows Acts; route lines should be illustrative rather than precise road reconstructions."
+    },
+    {
+      "id": "journey-07",
+      "name": "Paul's second missionary journey",
+      "sequence": "Antioch (Syria) → Asia Minor → Troas → Philippi → Thessalonica → Athens → Corinth",
+      "references": [
+        "Acts 15:36–18:22"
+      ],
+      "studyCaution": "Acts records changes in plans and Spirit-led direction; not every leg has a securely identified road."
+    },
+    {
+      "id": "journey-08",
+      "name": "Paul's journey to Rome",
+      "sequence": "Caesarea → sea voyage → Malta → Syracuse → Rhegium → Puteoli → Rome",
+      "references": [
+        "Acts 27–28"
+      ],
+      "studyCaution": "The storm and shipwreck account gives named stages; exact ship track is not fully recoverable."
+    }
+  ]
+}

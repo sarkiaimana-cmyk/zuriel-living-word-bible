@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "title": "Zuriel SS&S — Worship and Song Study Pathways",
+  "description": "Original worship-study pathways to accompany songs, hymns and congregational praise. These are not song lyrics or audio recordings.",
+  "rightsPolicy": "This file contains original study prompts and Bible references only. It does not grant rights to reproduce, distribute, stream or record third-party lyrics or music. Audio remains disabled unless both composition and recording permissions are documented.",
+  "pathways": [
+    {
+      "id": "worship-path-01",
+      "title": "Adoration",
+      "focus": "Honouring God for who He is, before asking for what we need.",
+      "references": [
+        "Psalm 29:1-2",
+        "Psalm 95:1-7",
+        "Revelation 4:8-11"
+      ],
+      "reflectionPrompt": "Name three attributes of God shown in the passages. How does each shape worship?",
+      "contextNote": "Keep praise rooted in what Scripture reveals about God."
+    },
+    {
+      "id": "worship-path-02",
+      "title": "Thanksgiving",
+      "focus": "Remembering God's gifts and responding with gratitude.",
+      "references": [
+        "List specific gifts, including mercy, provision, community and endurance."
+      ],
+      "reflectionPrompt": "Thanksgiving does not require denying grief or hardship."
+    },
+    {
+      "id": "worship-path-03",
+      "title": "Confession",
+      "focus": "Bringing sin honestly before God and receiving His promised forgiveness.",
+      "references": [
+        "What does confession name? What does it ask God to renew?"
+      ],
+      "reflectionPrompt": "Confession is not self-condemnation; it turns toward God's truth and mercy."
+    },
+    {
+      "id": "worship-path-04",
+      "title": "Lament",
+      "focus": "Praying honestly through sorrow, fear and unanswered questions.",
+      "references": [
+        "Notice the movement between complaint, remembrance and hope."
+      ],
+      "reflectionPrompt": "Do not force a quick happy ending onto a lament."
+    },
+    {
+      "id": "worship-path-05",
+      "title": "Reverence",
+      "focus": "Approaching God with awe, humility and attentive obedience.",
+      "references": [
+        "What does God's holiness reveal, and how does the worshipper respond?"
+      ],
+      "reflectionPrompt": "Reverence is compatible with confident access through Christ."
+    },
+    {
+      "id": "worship-path-06",
+      "title": "God's Faithfulness",
+      "focus": "Praising God's steadfast character across generations and circumstances.",
+      "references": [
+        "Trace repeated words describing God's steadfast love and faithfulness."
+      ],
+      "reflectionPrompt": "Do not turn faithfulness into a promise that believers never suffer."
+    },
+    {
+      "id": "worship-path-07",
+      "title": "The Lordship of Jesus",
+      "focus": "Confessing Jesus as Lord and ordering life around His teaching.",
+      "references": [
+        "What do these texts say about Jesus' identity and authority?"
+      ],
+      "reflectionPrompt": "Worship of Jesus leads to discipleship, not only emotion."
+    },
+    {
+      "id": "worship-path-08",
+      "title": "The Cross",
+      "focus": "Remembering Christ's self-giving death and the reconciliation it accomplishes.",
+      "references": [
+        "Identify what the texts say Christ bears, gives and reconciles."
+      ],
+      "reflectionPrompt": "Avoid reducing the cross to a generic symbol of perseverance."
+    },
+    {
+      "id": "worship-path-09",
+      "title": "Resurrection Hope",
+      "focus": "Celebrating that Jesus is risen and that death does not have the final word.",
+      "references": [
+        "How does resurrection change Christian hope and present conduct?"
+      ],
+      "reflectionPrompt": "Christian hope is grounded in Christ's resurrection, not wishful thinking."
+    },
+    {
+      "id": "worship-path-10",
+      "title": "The Holy Spirit",
+      "focus": "Worshipping God for the Spirit's presence, guidance and empowering work.",
+      "references": [
+        "What does the Spirit do in each passage?"
+      ],
+      "reflectionPrompt": "Keep the Spirit's work connected to Christ, truth and holy living."
+    },
+    {
+      "id": "worship-path-11",
+      "title": "Unity in Worship",
+      "focus": "Joining as one body while honouring different gifts and backgrounds.",
+      "references": [
+        "What attitudes protect unity without erasing truth or difference?"
+      ],
+      "reflectionPrompt": "Unity is not uniformity or avoidance of necessary correction."
+    },
+    {
+      "id": "worship-path-12",
+      "title": "Worship in Daily Life",
+      "focus": "Offering ordinary work, choices and relationships to God.",
+      "references": [
+        "Choose one ordinary activity to offer to God with integrity."
+      ],
+      "reflectionPrompt": "Worship includes embodied obedience and care for others."
+    },
+    {
+      "id": "worship-path-13",
+      "title": "Psalms as Prayer",
+      "focus": "Learning the language of praise, trust, confession and lament from Israel's songbook.",
+      "references": [
+        "Which kind of prayer does each psalm teach?"
+      ],
+      "reflectionPrompt": "Read each psalm in its own voice and historical/literary setting."
+    },
+    {
+      "id": "worship-path-14",
+      "title": "Singing with Understanding",
+      "focus": "Joining heart and understanding in songs shaped by truth.",
+      "references": [
+        "What truths should the congregation understand and remember?"
+      ],
+      "reflectionPrompt": "Music supports worship; it does not replace Scripture or loving action."
+    },
+    {
+      "id": "worship-path-15",
+      "title": "Worship and Justice",
+      "focus": "Rejecting worship that is separated from righteousness and care for neighbours.",
+      "references": [
+        "What practices does God call His people to change?"
+      ],
+      "reflectionPrompt": "The prophets challenge injustice, not sincere worship itself."
+    },
+    {
+      "id": "worship-path-16",
+      "title": "Silence and Listening",
+      "focus": "Making space for attentive prayer and obedience before God.",
+      "references": [
+        "What helps the listener become attentive and ready to respond?"
+      ],
+      "reflectionPrompt": "Silence is a practice, not a technique for controlling God's voice."
+    },
+    {
+      "id": "worship-path-17",
+      "title": "Pilgrimage and Procession",
+      "focus": "Remembering journeys of worship and God's presence among His people.",
+      "references": [
+        "What do journey songs teach about trust, community and hope?"
+      ],
+      "reflectionPrompt": "Ancient pilgrimage practices should not be copied without understanding their covenant setting."
+    },
+    {
+      "id": "worship-path-18",
+      "title": "Creation Praise",
+      "focus": "Praising the Creator through the witness of the heavens, earth and living creatures.",
+      "references": [
+        "What aspects of creation prompt praise and humility?"
+      ],
+      "reflectionPrompt": "Creation points to the Creator; it is not itself the object of worship."
+    },
+    {
+      "id": "worship-path-19",
+      "title": "Hope of God's New Creation",
+      "focus": "Looking toward God's promised renewal and dwelling with His people.",
+      "references": [
+        "What is made new, and what suffering is ended?"
+      ],
+      "reflectionPrompt": "Read prophetic imagery carefully; distinguish hope from speculative timetables."
+    },
+    {
+      "id": "worship-path-20",
+      "title": "Family and Generational Praise",
+      "focus": "Passing on the remembrance of God's works to children and future generations.",
+      "references": [
+        "What story of God's faithfulness can be shared with the next generation?"
+      ],
+      "reflectionPrompt": "Encourage age-appropriate teaching, not pressure or performance."
+    }
+  ]
+}
