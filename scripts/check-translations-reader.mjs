@@ -76,6 +76,7 @@ requireText(doc, "`CLOUDFLARE_ACCOUNT_ID`", "Cloudflare account ID setup instruc
 requireText(doc, "`ZITE_YVP_APP_KEY`", "Required YouVersion app key setup instruction");
 requireText(doc, "`API_BIBLE_KEY` (optional)", "Optional API.Bible key setup instruction");
 requireText(doc, "only writes the verified endpoint to `version.json` when it is run from the repository's `main` branch", "Main-branch deployment requirement documentation");
+requireText(doc, "feature branch must first be reviewed and merged into `main`", "Feature-branch deployment caution");
 requireText(deployment, "secrets.API_BIBLE_KEY", "Optional server-side API.Bible secret injection");
 requireText(deployment, "secret put API_BIBLE_KEY", "Optional API.Bible Worker secret installation");
 requireText(deployment, "wrangler deploy --config wrangler.translations.jsonc", "Dedicated translation Worker deployment");
