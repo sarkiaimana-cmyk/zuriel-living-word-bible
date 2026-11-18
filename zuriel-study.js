@@ -2851,7 +2851,7 @@
         const attribution = document.createElement("p");
         attribution.className = "study-small";
         attribution.textContent = "Source: " + (source.englishName || source.name) +
-          ". Catalogue licence: Public Domain Mark 1.0.";
+          ". Catalogue status: Public Domain Mark 1.0.";
         const coverage = document.createElement("p");
         coverage.className = "study-small";
         coverage.textContent = "Source coverage: " +
@@ -2860,7 +2860,7 @@
           " books. Not every verse has a commentary note.";
         article.append(heading, body, attribution, coverage);
         appendCommentaryLink(attribution, "Source information", source.website);
-        appendCommentaryLink(attribution, "Licence details", source.licenseUrl);
+        appendCommentaryLink(attribution, "Public Domain Mark details", source.licenseUrl);
         if (typeof source.licenseNotes === "string" && source.licenseNotes.trim()) {
           const licenseNote = document.createElement("p");
           licenseNote.className = "study-small";
