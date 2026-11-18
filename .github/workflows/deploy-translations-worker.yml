@@ -48,7 +48,7 @@ jobs:
         run: npm install --no-audit --no-fund
 
       - name: Test translation proxy safeguards
-        run: node --test test/youversion.test.mjs test/translation-worker.test.mjs
+        run: node --test test/youversion.test.mjs test/translation-worker.test.mjs test/api-bible.test.mjs
 
       - name: Confirm the Cloudflare token account
         run: npx wrangler whoami
