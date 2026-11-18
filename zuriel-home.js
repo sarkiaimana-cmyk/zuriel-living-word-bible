@@ -848,7 +848,7 @@
               <p class="zob-scripture-copy" id="zurielOpenBookScripture">Your Scripture for today.</p>
             </div>
             <div class="zob-page zob-response-page">
-              <span class="zob-ribbon">MY DECLARATION</span>
+              <span class="zob-ribbon">MY FAITH RESPONSE</span>
               <p class="zob-declaration-copy" id="zurielOpenBookDeclaration">Let God's Word shape your response.</p>
               <span class="zob-affirmation-label">Glory Verse Affirmation</span>
               <p class="zob-affirmation-copy" id="zurielOpenBookAffirmation"></p>
