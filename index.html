@@ -1316,9 +1316,10 @@ async function openChapter(book, chapter) {
     const paragraph = document.createElement("p");
     paragraph.className = paragraphStart ? "verse verse-paragraph-start" : "verse";
     paragraph.dataset.verseNumber = String(index + 1);
-    paragraph.setAttribute("aria-label", "Verse " + (index + 1));
+    paragraph.setAttribute("aria-label", "Verse " + (index + 1) + ". Activate to open verse actions.");
     paragraph.setAttribute("aria-controls", "zurielVerseActions");
     paragraph.setAttribute("aria-expanded", "false");
+    paragraph.setAttribute("tabindex", "0");
 
     const number = document.createElement("strong");
     number.textContent = (index + 1) + ".";
@@ -1371,9 +1372,21 @@ async function openChapter(book, chapter) {
     paragraph.addEventListener("click", function () {
       saveReadingPosition(book, chapter, index + 1);
       document.querySelectorAll("#message .verse.zuriel-selected-verse")
-        .forEach(function (node) { node.classList.remove("zuriel-selected-verse"); });
+        .forEach(function (node) {
+          node.classList.remove("zuriel-selected-verse");
+          node.setAttribute("aria-expanded", "false");
+        });
       paragraph.classList.add("zuriel-selected-verse");
       selectVerseForGloryCard(index + 1, displayVerseText);
+    });
+    paragraph.addEventListener("keydown", function (event) {
+      // Word spans are independently keyboard-operable; do not activate the
+      // parent verse when a reader presses Enter or Space on an individual word.
+      if (event.target !== paragraph) return;
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        paragraph.click();
+      }
     });
 
     message.appendChild(paragraph);
