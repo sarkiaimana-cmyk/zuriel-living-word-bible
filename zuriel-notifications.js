@@ -345,8 +345,9 @@
     disable.addEventListener("click", async () => {
       masterInput.checked = false;
       root.querySelectorAll("[data-category]").forEach(input => { input.checked = false; });
-      const preferences = collect();
+      const preferences = readPreferences();
       preferences.enabled = false;
+      CATEGORIES.forEach(category => { preferences.categories[category.id].enabled = false; });
       try { localStorage.setItem(STORAGE_KEY, JSON.stringify(preferences)); } catch (error) {}
       if (!pluginAvailable()) {
         status.textContent = "Reminders are turned off in saved preferences.";
@@ -374,7 +375,8 @@
       const days = Array.from(root.querySelectorAll("[data-day]:checked")).map(input => Number(input.value));
       const quietStart = root.querySelector("#zrnQuietStart").value;
       const quietEnd = root.querySelector("#zrnQuietEnd").value;
-      if (Object.values(categories).some(item => !validTime(item.time)) || !validTime(quietStart) || !validTime(quietEnd) || !days.length) return null;
+      if (Object.values(categories).some(item => !validTime(item.time)) || !validTime(quietStart) || !validTime(quietEnd)) return null;
+      if (masterInput.checked && Object.values(categories).some(item => item.enabled) && !days.length) return null;
       return { enabled: masterInput.checked, days: days, quietStart: quietStart, quietEnd: quietEnd, categories: categories };
     }
   }
