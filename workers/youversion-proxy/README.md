@@ -8,7 +8,7 @@ This Worker keeps the YouVersion App Key on the server. Never place the key in
 1. Sign in to Cloudflare and open **Workers & Pages**.
 2. Create a Worker named **zuriel-youversion-proxy** and deploy the starter Worker.
 3. Open **Edit code**. Replace the starter code with the complete contents of
-   `workers/youversion-proxy/src/index.js` in this repository, then deploy.
+   `workers/youversion-proxy/src/index.mjs` in this repository, then deploy.
 4. Open the Worker **Settings → Variables and Secrets**.
 5. Add a **Secret** named `YVP_APP_KEY`. Paste the App Key from the Zuriel app
    in the YouVersion Platform portal. Do not paste the key into GitHub or this chat.
