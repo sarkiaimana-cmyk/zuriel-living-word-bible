@@ -1,4 +1,4 @@
 {
-  "version": "1.4.68",
-  "releaseNotes": "Adds resumable, rate-limited 66-book offline downloads for selected approved YouVersion and API.Bible translations, shared chapter caching, and preserves the premium Zuriel open-book faith card."
+  "version": "1.4.69",
+  "releaseNotes": "Adds saved-translation discovery and offline selection after restart, keeps downloaded chapters available without an internet connection, and improves the secure translation download and recovery flow."
 }
