@@ -259,6 +259,7 @@ async function handleYouVersionRequest(request, env, dependencies, cors) {
         "X-YVP-App-Key": env.ZITE_YVP_APP_KEY,
         "Accept": "application/json"
       },
+      redirect: "error",
       signal: AbortSignal.timeout(10000)
     });
   } catch {
@@ -340,6 +341,7 @@ async function handleYouVersionRequest(request, env, dependencies, cors) {
         "X-YVP-App-Key": env.ZITE_YVP_APP_KEY,
         "Accept": "application/json"
       },
+      redirect: "error",
       signal: AbortSignal.timeout(10000)
     });
     if (!metadataResponse.ok) {
