@@ -92,7 +92,7 @@ try {
             abbreviation:"BSB",
             title:"Berean Standard Bible",
             publisher_name:"Test Bible Publisher",
-            publisher_url:"https://publisher.example/"
+            publisher_url:"https://publisher.example"
           },
           passage:{
             id:"GEN.1.1",
@@ -279,7 +279,7 @@ try {
   );
   assert.ok((await translationPanel.locator(".ztc-column:first-child .ztc-passage").textContent()).includes("In the beginning"));
   assert.ok((await translationPanel.locator(".ztc-attribution").textContent()).includes("Test Bible Publisher"));
-  assert.equal(await translationPanel.locator(".ztc-attribution a").getAttribute("href"),"https://publisher.example");
+  assert.equal(await translationPanel.locator(".ztc-attribution a").getAttribute("href"),"https://publisher.example/");
   assert.ok(translationRequests.some(path => path === "/api/youversion/bibles/3034/passages/GEN.1.1?format=text"),
     "A verse comparison must request GEN.1.1, not the whole GEN.1 chapter.");
   await onlineContext.close();
