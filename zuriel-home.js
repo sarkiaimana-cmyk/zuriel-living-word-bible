@@ -805,9 +805,11 @@
         <p class="identity-reference" id="zurielIdentityReference">Psalm 103:3</p>
         <div class="identity-actions">
           <button class="home-button" id="zurielIdentityRead" type="button">📖 Read This Scripture</button>
+          <button class="home-button" id="zurielIdentityShare" type="button">🖼️ Create & Share This Revelation</button>
           <button class="home-button identity-next" id="zurielIdentityNext" type="button" aria-label="Show the next name and Scripture">Next Revelation →</button>
         </div>
         <p class="home-tagline">His Words.. My life.. My Victory</p>
+        <p id="zurielIdentityShareStatus" class="home-subtitle" aria-live="polite"></p>
         <span class="identity-progress" id="zurielIdentityProgress" aria-hidden="true"></span>
       </section>
 
@@ -1383,6 +1385,31 @@
     }
 
     identityRead.addEventListener("click", openIdentityReference);
+    const identityShare = document.getElementById("zurielIdentityShare");
+    if (identityShare) identityShare.addEventListener("click", async function () {
+      const item = identityScriptures[identityIndex];
+      const status = document.getElementById("zurielIdentityShareStatus");
+      identityShare.disabled = true;
+      try {
+        if (typeof window.getBibleVerseText !== "function" || !window.ZurielLibrary ||
+            typeof window.ZurielLibrary.openGloryVerse !== "function") {
+          throw new Error("The Scripture share-card studio is not ready yet.");
+        }
+        const passage = await window.getBibleVerseText(item.reference);
+        const exactText = String(passage && passage.text || "").replace(/^\\d+\\.\\s*/, "").trim();
+        if (!exactText) throw new Error("The exact KJV Scripture could not be loaded.");
+        const response = window.ZurielFaithContent &&
+          typeof window.ZurielFaithContent.find === "function"
+          ? window.ZurielFaithContent.find(item.reference) : {};
+        navigate("library");
+        const opened = window.ZurielLibrary.openGloryVerse(item.reference, exactText, "KJV", response || {});
+        if (!opened) throw new Error("The share-card studio could not be opened.");
+      } catch (error) {
+        if (status) status.textContent = error.message || "Unable to prepare this revelation.";
+      } finally {
+        identityShare.disabled = false;
+      }
+    });
     identityNext.addEventListener("click", function () {
       renderIdentityScripture(identityIndex + 1);
     });
