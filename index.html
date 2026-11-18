@@ -1231,12 +1231,7 @@ async function openChapter(book, chapter) {
       return;
     }
     if (action === "Compare translations") {
-      window.dispatchEvent(new CustomEvent("zuriel:compare-verse", {
-        detail: { book: book, chapter: chapter, verse: selectedVerseInfo.verse,
-          reference: selectedVerseInfo.reference, text: selectedVerseInfo.text }
-      }));
-      status.textContent = "Selected " + selectedVerseInfo.reference +
-        ". The secure YouVersion comparison panel will open when its service is configured.";
+      status.textContent = "Only the King James Version is currently installed for offline reading. Other editions will appear here when their verified, licensed offline texts are included.";
       return;
     }
     if (!window.ZurielStudy || typeof window.ZurielStudy.openForReference !== "function") {
@@ -1771,7 +1766,6 @@ loadBibleBooks();
   <script src="zuriel-settings.js"></script>
   <script src="zuriel-updates.js"></script>
   <script src="zuriel-audio.js" defer></script>
-  <script>window.ZURIEL_TRANSLATION_API_BASE = "";</script>
   <script src="zuriel-translations.js"></script>
   
 
