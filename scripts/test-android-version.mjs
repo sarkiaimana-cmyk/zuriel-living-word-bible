@@ -5,10 +5,10 @@ const release = JSON.parse(await readFile(new URL("../version.json", import.meta
 const packageInfo = JSON.parse(await readFile(new URL("../package.json", import.meta.url), "utf8"));
 
 const failures = [];
-check("npm package version matches published release metadata", packageInfo.version === release.version);
 function check(label, condition) {
   if (!condition) failures.push(label);
 }
+check("npm package version matches published release metadata", packageInfo.version === release.version);
 const template = [
   "android {",
   "  defaultConfig {",
