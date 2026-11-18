@@ -50,6 +50,10 @@ for (const trail of trails) {
   assert.ok(trail.pathway.every(step => step.reference && step.connectionNote),"Each trail step needs a reference and explanation");
   assert.ok(trail.overview && trail.contextCaution && trail.lifeApplication,"Each trail has contextual safeguards and application");
 }
+for (const entry of theology.entries) {
+  assert.ok(entry.positions.length >= 2,"Each theological comparison needs multiple interpretations");
+  assert.ok(entry.sharedGround && entry.historicalContext && entry.areasOfDisagreement && entry.readingCaution,"Each theological comparison needs balance and context");
+}
 for (const [label,items] of [
   ["commentary",commentary.entries],["topical",topical.entries],["dictionary",dictionary.entries],
   ["word study",words.entries],["names",names.entries],["worship",worship.pathways]
@@ -64,7 +68,7 @@ for (const path of [
   "zuriel-deep-study-guides.json","zuriel-bible-geography-atlas.json","zuriel-worship-study-pathways.json","zuriel-theological-comparisons.json"
 ]) assert.ok(loader.includes(path),"Study loader must include "+path);
 assert.ok(index.includes('src="zuriel-study-library-data.js"'),"Study library integration script must load");
-assert.ok(worker.includes('zuriel-bible-offline-v174'),"Offline cache must be version 173");
+assert.ok(worker.includes('zuriel-bible-offline-v174'),"Offline cache must be version 174");
 assert.ok(worker.includes("./zuriel-study-library-data.js"),"Study loader must be precached");
 for (const path of [
   "zuriel-passage-commentary-expansion.json","zuriel-topical-bible-study-library-batch-2.json",
@@ -75,4 +79,4 @@ for (const path of [
 ]) assert.ok(worker.includes("./data/"+path),"Offline cache must include "+path);
 assert.ok(loader.includes("window.ZurielStudyLibrary"),"Study library API must be exposed");
 assert.ok(loader.includes("openReference"),"Study references must open through the Bible reader");
-console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 11 offline datasets; searchable reader-linked UI and service-worker precache.");
+console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 12 offline datasets; searchable reader-linked UI and service-worker precache.");
