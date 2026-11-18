@@ -47,12 +47,12 @@
 
     const dataUrl = String(options && options.dataUrl || "");
     const fileName = String(options && options.fileName || "Zuriel-Glory-Verse.png");
-    if (!/^data:image\\/png;base64,/i.test(dataUrl)) {
+    if (!/^data:image\/png;base64,/i.test(dataUrl)) {
       throw new Error("The open-book image was not a valid PNG. Please create it again.");
     }
 
     const safeName = fileName
-      .replace(/\\.[^.]+$/, "")
+      .replace(/\.[^.]+$/, "")
       .replace(/[^a-z0-9_-]+/gi, "-")
       .replace(/^-+|-+$/g, "") || "Zuriel-Glory-Verse";
     const albumName = "Zuriel Living Word Bible";
