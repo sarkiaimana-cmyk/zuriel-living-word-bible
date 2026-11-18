@@ -1,4 +1,4 @@
 {
-  "version": "1.4.59",
-  "releaseNotes": "Adds direct Android Gallery saving for Glory Verse Affirmation open-book PNG cards in a dedicated Zuriel Living Word Bible album. Keeps system image sharing and browser Downloads fallback, with no broad photo-library permissions required for the app-owned album."
+  "version": "1.4.60",
+  "releaseNotes": "Expands the offline biblical dictionary with 16 more contextual theology studies, bringing the expanded study set to 75 entries across 205 terms. Adds related Scripture passages, interpretive cautions and clear distinctions between biblical wording and later theological labels; refreshes the offline cache."
 }
