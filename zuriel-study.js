@@ -2416,7 +2416,7 @@
         ["Prayer", entry.prayer],
         ["Declaration", entry.declaration],
         ["Affirmation", entry.affirmation],
-        ["Faith confession", entry.confession],
+        ["My Faith Response", entry.confession],
         ["Inspiration", entry.inspiration]
       ].forEach(function(section) {
         if (!section[1]) return;
@@ -2436,7 +2436,7 @@
           "Prayer: " + (entry.prayer || ""),
           "Declaration: " + (entry.declaration || ""),
           "Affirmation: " + (entry.affirmation || ""),
-          "Faith confession: " + (entry.confession || ""),
+          "My Faith Response: " + (entry.confession || ""),
           "Inspiration: " + (entry.inspiration || "")
         ].filter(function(line) { return !line.endsWith(": "); }).join("\n\n");
         const library = window.ZurielLibrary;
