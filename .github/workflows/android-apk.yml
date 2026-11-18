@@ -89,6 +89,9 @@ jobs:
       - name: Validate searchable passage commentary and KJV references
         run: node scripts/check-passage-commentary.mjs
 
+      - name: Validate monthly devotional and worship library
+        run: node scripts/check-devotional-library.mjs
+
       - name: Audit verse-specific faith response coverage
         run: npm run study:faith-coverage
 
