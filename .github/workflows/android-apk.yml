@@ -237,7 +237,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Zuriel-Living-Word-Bible-APK
+          name: Zuriel-Living-Word-Bible-Debug-Only
           path: android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 30
@@ -258,11 +258,11 @@ jobs:
           {
             echo "## Zuriel Android build"
             echo ""
-            echo "- Debug APK: built and uploaded when the standalone debug build succeeds."
+            echo "- Debug APK: separate debug-signed test package; it is not an update for the signed release app."
             if [[ "${{ steps.signing_check.outputs.available }}" != "true" ]]; then
               echo "- Signed release APK: not attempted because signing secrets are incomplete."
             elif [[ "${{ steps.signed_release.outcome }}" == "success" ]]; then
-              echo "- Signed release APK: successfully prepared and uploaded."
+              echo "- Signed release APK: successfully prepared and uploaded; this is the only artifact intended to update the installed release app (package com.zuriel.livingwordbible.release). Version and signing identity must match the installed release."
             else
               echo "- Signed release APK: signing validation/build failed. The debug APK remains available; correct the keystore secret before publishing a signed release."
             fi
