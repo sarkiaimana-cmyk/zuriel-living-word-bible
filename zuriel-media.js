@@ -3,11 +3,15 @@
 
   const capacitor = window.Capacitor || null;
   let mediaPlugin = null;
+  let sharePlugin = null;
+  let filesystemPlugin = null;
 
   // Capacitor exposes the registered native plugin bridge at runtime.
   // Keep this file framework-free so the same app continues to work on GitHub Pages.
   if (capacitor && typeof capacitor.registerPlugin === "function") {
     mediaPlugin = capacitor.registerPlugin("Media");
+    sharePlugin = capacitor.registerPlugin("Share");
+    filesystemPlugin = capacitor.registerPlugin("Filesystem");
   }
 
   function isAvailable() {
@@ -38,6 +42,55 @@
     }
 
     return album.identifier;
+  }
+
+
+  function canShareImage() {
+    return !!(
+      capacitor &&
+      typeof capacitor.isNativePlatform === "function" &&
+      capacitor.isNativePlatform() &&
+      typeof capacitor.isPluginAvailable === "function" &&
+      capacitor.isPluginAvailable("Share") &&
+      capacitor.isPluginAvailable("Filesystem") &&
+      sharePlugin &&
+      filesystemPlugin
+    );
+  }
+
+  async function shareImage(options) {
+    if (!canShareImage()) {
+      throw new Error("Direct image sharing is available in the installed Android app. Use the browser's sharing or download option.");
+    }
+
+    const dataUrl = String(options && options.dataUrl || "");
+    const fileName = String(options && options.fileName || "Zuriel-Glory-Verse.png");
+    const prefix = "data:image/png;base64,";
+    if (!dataUrl.startsWith(prefix) || !/^[A-Za-z0-9+/=]+$/.test(dataUrl.slice(prefix.length))) {
+      throw new Error("The open-book image was not a valid PNG. Please create it again.");
+    }
+
+    const safeName = fileName
+      .replace(/\\.[^.]+$/, "")
+      .replace(/[^a-z0-9_-]+/gi, "-")
+      .replace(/^-+|-+$/g, "") || "Zuriel-Glory-Verse";
+    const saved = await filesystemPlugin.writeFile({
+      path: "zuriel-share/" + safeName + ".png",
+      data: dataUrl.slice(prefix.length),
+      directory: "CACHE",
+      recursive: true
+    });
+    if (!saved || !saved.uri) {
+      throw new Error("The temporary card image could not be prepared for sharing.");
+    }
+
+    await sharePlugin.share({
+      title: "Glory Verse Affirmation",
+      text: "His Words.. My life.. My Victory",
+      files: [saved.uri],
+      dialogTitle: "Share your Zuriel Scripture card"
+    });
+    return { shared: true };
   }
 
   async function saveImage(options) {
@@ -72,6 +125,8 @@
 
   window.ZurielMedia = {
     isAvailable: isAvailable,
+    canShareImage: canShareImage,
+    shareImage: shareImage,
     saveImage: saveImage
   };
 })();
