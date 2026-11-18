@@ -56,6 +56,12 @@ requireText(client, "downloadSelectedTranslation", "Full translation offline dow
 requireText(client, "hasFreshCachedChapter", "Resume by skipping chapters already saved");
 requireText(client, "4000", "Rate-limited sequential chapter downloads");
 requireText(client, "downloadProgress", "Visible offline download progress");
+requireText(client, "Choose a translation saved on this device", "Offline selector for previously downloaded translations");
+requireText(client, 'objectStore("downloads").put', "Persistent offline translation manifest");
+requireText(client, 'objectStore("downloads").getAll', "Discovery of saved offline translations after app restart");
+requireText(client, 'offlineSelect.addEventListener("change"', "Selection of an offline translation without network access");
+requireText(client, "selectedVersionLabel", "Readable translation label restored from offline manifest");
+requireText(client, "Internet translation access is unavailable. Choose a translation already saved on this device", "Offline translation guidance when service is unreachable");
 requireText(client, "Paused:", "Pause and resume support");
 requireText(client, "saveCachedChapter(selectedProvider", "Both approved providers use the offline chapter cache");
 requireText(client, '"api-bible"', "Provider-scoped offline cache");
