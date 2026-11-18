@@ -23,7 +23,7 @@ requireText('homeWallpaperSet[item.wallpaper]', "A distinct wallpaper assignment
 const homeVerseTimer = home.match(/window\.setInterval\(function \(\) \{([\s\S]*?)\}, HOME_VERSE_ROTATION_MS\);/);
 if (!homeVerseTimer) failures.push("The separate homepage Scripture rotation timer is missing.");
 else if (homeVerseTimer[1].includes("identityIndex") || homeVerseTimer[1].includes("renderIdentityScripture")) failures.push("The daily Scripture timer must not control the identity hero.");
-const identityTimer = home.match(/const IDENTITY_ROTATION_MS = 20000;\\s*window\\.setInterval\\(function \\(\\) \\{([\\s\\S]*?)\\}, IDENTITY_ROTATION_MS\\);/);
+const identityTimer = home.match(/const IDENTITY_ROTATION_MS = 20000;\s*window\.setInterval\(function \(\) \{([\s\S]*?)\}, IDENTITY_ROTATION_MS\););/);
 if (!identityTimer) failures.push("The WHO HE IS revelation and Scripture must rotate automatically on the home screen.");
 else if (!identityTimer[1].includes("renderIdentityScripture(identityIndex + 1)")) failures.push("Automatic identity rotation must advance the revelation and its Scripture together.");
 else if (!identityTimer[1].includes('currentSection === "home"')) failures.push("Identity rotation must pause when the user leaves Home.");
