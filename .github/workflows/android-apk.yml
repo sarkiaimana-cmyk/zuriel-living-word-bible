@@ -7,6 +7,8 @@ on:
     paths:
       - "index.html"
       - "zuriel-reading-refinement.css"
+      - "zuriel-config.js"
+      - "workers/**"
       - "bible-data.js"
       - "zuriel-*.js"
       - "sw.js"
@@ -78,6 +80,10 @@ jobs:
 
       - name: Test translation-only Worker route isolation
         run: node --test ai-worker/test/translation-worker.test.mjs
+      - name: Syntax-check secure YouVersion proxy
+        run: node --check workers/youversion-proxy/src/index.mjs
+      - name: Test YouVersion proxy security and passage attribution
+        run: node --test workers/youversion-proxy/test/*.test.mjs
 
       - name: Syntax-check application JavaScript
         run: for file in *.js; do node --check "$file"; done
