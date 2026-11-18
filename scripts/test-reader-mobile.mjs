@@ -302,6 +302,20 @@ try {
   await page.waitForFunction(() =>
     (document.getElementById("zurielPassageCommentaryResults")?.textContent || "").includes("Creation")
   , { timeout:20000 });
+
+  // The same historical commentary chapter must still load from the device cache while offline.
+  const offlineHistoricalSection = page.locator("#zurielHistoricalCommentarySection");
+  await offlineHistoricalSection.locator("summary").click();
+  await page.waitForFunction(() => {
+    const select = document.getElementById("zurielHistoricalCommentarySource");
+    return select && !select.disabled && Array.from(select.options).some(option => option.value === "john-gill");
+  }, { timeout:20000 });
+  await page.locator("#zurielHistoricalCommentarySource").selectOption("john-gill");
+  await page.locator("#zurielLoadHistoricalCommentary").click();
+  await page.waitForFunction(() =>
+    (document.getElementById("zurielHistoricalCommentaryResults")?.textContent || "")
+      .includes("Historical commentary test note for Genesis 1:1.")
+  , { timeout:20000 });
   assert.equal(pageErrors.length,0,"No uncaught JavaScript errors: " + pageErrors.join(" | "));
   await context.setOffline(false);
   await context.close();
