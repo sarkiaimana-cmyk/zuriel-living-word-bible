@@ -1664,6 +1664,7 @@
       "#zurielStudyPanel input,#zurielStudyPanel textarea,#zurielStudyPanel select{background:#fff!important;color:#17212b!important;border:1px solid #aeb8c2!important}",
       "#zurielStudyPanel details{background:#fff!important;border:0!important;border-bottom:1px solid #e1e5e9!important;border-radius:0!important;box-shadow:none!important}",
       "#zurielStudyPanel #zurielFaithResponse,#zurielStudyPanel #zurielFaithResponse p,#zurielStudyPanel #zurielCommentaryResults,#zurielStudyPanel #zurielCommentaryResults p{color:#17212b!important}",
+      "#zurielStudyPanel #zurielFaithResponse *{background:transparent!important;color:#17212b!important;border-color:#e1e5e9!important;border-radius:0!important;box-shadow:none!important;text-shadow:none!important}",
       "#zurielInlineWordStudy,#zurielInlineWordStudy .inline-word-result{background:#fff!important;color:#17212b!important;border:1px solid #dce1e6!important;box-shadow:none!important}",
       "#zurielInlineWordStudy h3,#zurielInlineWordStudy .inline-word-original,#zurielInlineWordStudy .inline-word-gloss,#zurielInlineWordStudy .inline-word-meta{color:#17212b!important}",
       "#zurielStudyPanel[data-mode=verse-menu],#zurielStudyPanel[data-mode=verse-detail]{background:#fff!important;color:#17212b!important;border:1px solid #d8dee5!important;box-shadow:0 8px 24px rgba(15,23,42,.14)!important}",
@@ -2587,7 +2588,7 @@
 
       const intro = document.createElement("p");
       intro.className = "study-small zuriel-faith-disclaimer";
-      intro.style.cssText = "display:block;margin:0 0 14px;padding:11px 12px;border-left:4px solid #d9bd79;border-radius:7px;background:#fff4d6;color:#26384d;font-size:13px;font-weight:700;line-height:1.55;opacity:1";
+      intro.style.cssText = "display:block;margin:0 0 14px;font-size:13px;font-weight:600;line-height:1.55;opacity:1";
       intro.textContent = "A Scripture-connected devotional response for " + entry.reference + ". These are original study reflections, not quotations from the Bible.";
       target.appendChild(intro);
 
