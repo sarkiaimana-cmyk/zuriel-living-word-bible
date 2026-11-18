@@ -490,8 +490,8 @@
 
     const reference = bookCode + "." + currentChapter.chapter;
     if (!apiReady) {
-      if (selectedProvider === "api-bible") {
-        const saved = await readCachedApiBibleChapter(selectedVersionId, reference);
+      {
+        const saved = await readCachedChapter(selectedProvider, selectedVersionId, reference);
         if (saved) {
           try { renderPassage(saved, true); return; }
           catch (_) {}
@@ -505,7 +505,6 @@
     if (activeController) activeController.abort();
     activeController = new AbortController();
     loadButton.disabled = true;
-    downloadButton.disabled = true;
     downloadButton.disabled = true;
     passage.hidden = true;
     attribution.hidden = true;
@@ -531,8 +530,6 @@
         } else {
           status(error.message || "The online passage could not be loaded. Your offline KJV is unchanged.");
         }
-      } else if (requestId === requestSequence) {
-        status(error.message || "The online passage could not be loaded. Your offline KJV is unchanged.");
       }
     } finally {
       if (requestId === requestSequence) {
@@ -556,6 +553,7 @@
     select.replaceChildren(node("option", "", "Choose an available translation"));
     select.disabled = true;
     loadButton.disabled = true;
+    downloadButton.disabled = true;
     passage.hidden = true;
     attribution.hidden = true;
     passage.textContent = "";
@@ -592,6 +590,7 @@
       loadVersions();
       if (currentChapter && versionsLoaded && loadedProvider === selectedProvider) {
         loadButton.disabled = !selectedVersionId;
+        downloadButton.disabled = !selectedVersionId;
         status("Ready to compare " + currentChapter.book + " " + currentChapter.chapter + ".");
       }
     }
@@ -631,7 +630,7 @@
       const options = Array.from(select.options);
       const match = options.find(option => String(option.textContent || "").split("—")[0].trim().toUpperCase() === requested) || (requested === "LB/LT" ? options.find(option => /^(LB|LT|LIVING|LIFE)/i.test(String(option.textContent || "").trim())) : null);
       if (!match || !match.value) { status(requested + " is not currently listed among the English versions authorised by YouVersion. The offline KJV remains available."); panel.scrollIntoView({behavior:"smooth",block:"nearest"}); return false; }
-      select.value = match.value; selectedVersionId = match.value; loadButton.disabled = !currentChapter;
+      select.value = match.value; selectedVersionId = match.value; loadButton.disabled = !currentChapter; downloadButton.disabled = false;
       status(requested + " selected. " + (currentChapter ? "Loading this chapter…" : "Open a Bible chapter to display this translation."));
       if (currentChapter) await loadPassage();
       panel.scrollIntoView({behavior:"smooth",block:"nearest"}); return true;
