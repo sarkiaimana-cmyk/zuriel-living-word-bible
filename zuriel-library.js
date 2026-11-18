@@ -388,6 +388,7 @@
 
     const pages = [
       ["study", "📖 Deep Bible Study"],
+      ["plans", "🗓️ Bible Reading Plans"],
       ["references", "📚 Dictionaries & Commentaries"],
       ["devotional", "🕊️ Devotionals"],
       ["worship", "🎶 SS&S • Hymns & Worship"],
@@ -404,11 +405,34 @@
     function openPage(page) {
       content.replaceChildren();
 
+      if (page === "plans") {
+        content.appendChild(card(
+          "Bible Reading Plans",
+          "Choose a guided Scripture journey. Your progress stays on this device and works offline."
+        ));
+        const planStatus = element("p", "Your reading plans are loading…", "zrp-status");
+        const planContainer = element("div");
+        planContainer.id = "zurielReadingPlans";
+        content.append(planStatus, planContainer);
+        if (window.ZurielReadingPlans && typeof window.ZurielReadingPlans.render === "function") {
+          window.ZurielReadingPlans.render(planContainer, message => { planStatus.textContent = message; });
+        } else {
+          planStatus.textContent = "Reading plans are not available yet. Your saved progress has not been changed.";
+        }
+        return;
+      }
+
       if (page === "study") {
         content.appendChild(card(
           "Deep Bible Study",
           "Explore Scripture through reliable study resources."
         ));
+
+        const openPlans = element("button");
+        openPlans.type = "button";
+        openPlans.textContent = "Open Bible Reading Plans";
+        openPlans.addEventListener("click", () => openPage("plans"));
+        content.appendChild(openPlans);
 
         const openReferenceLibrary = element("button");
         openReferenceLibrary.type = "button";
