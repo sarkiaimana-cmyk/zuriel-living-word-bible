@@ -16,13 +16,13 @@ Open the GitHub repository:
 
 | Secret name | What belongs there |
 |---|---|
-| `CLOUDFLARE_API_TOKEN` | A Cloudflare API token scoped to the account, with Workers Scripts Write permission |
+| `CLOUDFLARE_API_TOKEN` | An account-owned token for the same account as the account ID. For first creation, grant Workers Admin at the Workers product scope; after the Worker exists, Workers Editor scoped to `zuriel-bible-translations` is sufficient. |
 | `CLOUDFLARE_ACCOUNT_ID` | The Cloudflare account ID |
 | `ZITE_YVP_APP_KEY` | The YouVersion Platform app key |
 
 Never paste these values into a chat, issue, source file or commit. Do not put the YouVersion key in `index.html` or the mobile app.
 
-The Cloudflare token must belong to the same account as the account ID. The workflow checks this with `wrangler whoami` and reports permission errors without printing the key.
+The Cloudflare token must belong to the same account as the account ID. Cloudflare requires Workers Admin at product scope to create a new Worker; after creation, Workers Editor scoped to this Worker is sufficient for deployments and secret updates. The workflow checks the account with `wrangler whoami` and reports permission errors without printing any key.
 
 ## Run the deployment
 
