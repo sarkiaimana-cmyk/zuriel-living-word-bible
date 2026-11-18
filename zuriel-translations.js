@@ -412,11 +412,12 @@
     get configured() { return Boolean(API_BASE); },
     selectVersion: async function (abbreviation) {
       const requested = String(abbreviation || "").trim().toUpperCase();
-      panel.open = true;
+      panel.hidden = false;
       if (!await resolveApiBase()) { status("Secure online translation access has not been connected yet. Your offline KJV is unchanged."); return false; }
       if (selectedProvider !== "youversion") { selectedProvider = "youversion"; providerSelect.value = "youversion"; versionsLoaded = false; loadedProvider = ""; selectedVersionId = ""; }
       await loadVersions();
       if (!versionsLoaded || loadedProvider !== selectedProvider) return false;
+      panel.open = true;
       const options = Array.from(select.options);
       const match = options.find(option => String(option.textContent || "").split("—")[0].trim().toUpperCase() === requested) || (requested === "LB/LT" ? options.find(option => /^(LB|LT|LIVING|LIFE)/i.test(String(option.textContent || "").trim())) : null);
       if (!match || !match.value) { status(requested + " is not currently listed among the English versions authorised by YouVersion. The offline KJV remains available."); panel.scrollIntoView({behavior:"smooth",block:"nearest"}); return false; }
