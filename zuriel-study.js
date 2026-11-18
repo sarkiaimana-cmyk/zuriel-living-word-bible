@@ -1820,7 +1820,12 @@
     if (reader && message && !document.getElementById("zurielReaderStudyLayout")) {
       const layout = document.createElement("div");
       layout.id = "zurielReaderStudyLayout";
-      reader.insertBefore(layout, message);
+      const messageParent = message.parentNode;
+      if (messageParent) {
+        messageParent.insertBefore(layout, message);
+      } else {
+        reader.appendChild(layout);
+      }
       layout.appendChild(message);
       layout.appendChild(panel);
     }
