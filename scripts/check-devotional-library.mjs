@@ -35,6 +35,7 @@ assert.equal(new Set(devotionals.map(item=>item.title)).size,devotionals.length,
 assert.ok(devotionals.some(item=>item.title==="Hope in God"));
 assert.ok(devotionals.some(item=>item.title==="Power of the Holy Spirit"));
 for(const item of devotionals){
+  // Short titles such as "Hope in God" are intentional; message and prayer carry the longer content.
   for(const field of ["title","verse","message","prayer"]) {
     const minimumLength = field === "title" ? 3 : field === "verse" ? 6 : 12;
     assert.ok(typeof item[field]==="string" && item[field].trim().length>=minimumLength,item.title+" has a complete "+field+".");
