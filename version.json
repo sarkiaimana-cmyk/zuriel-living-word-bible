@@ -1,4 +1,4 @@
 {
-  "version": "1.4.56",
-  "releaseNotes": "Introduces a focused selected-verse action menu so readers can open prayer and faith, meaning and commentary, Hebrew/Greek word study, dictionary, connected Scriptures, concordance, theology, topical connections, or personal notes one section at a time. Preserves separate word-study mode and refreshes the offline cache."
+  "version": "1.4.57",
+  "releaseNotes": "Expands the offline biblical dictionary with 16 contextual theology studies, related Scripture passages and interpretive safeguards. Clarifies when original-language claims require verse-level source links and refreshes the offline cache."
 }
