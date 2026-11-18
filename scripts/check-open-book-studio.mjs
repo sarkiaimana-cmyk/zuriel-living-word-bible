@@ -11,6 +11,7 @@ const [library, worker, packaging, index, home, gallery, packageSource, prWorkfl
   readFile(new URL("../.github/workflows/validate-pr.yml", import.meta.url), "utf8"),
   readFile(new URL("../.github/workflows/android-apk.yml", import.meta.url), "utf8")
 ]);
+const packageJson = JSON.parse(packageSource);
 const failures = [];
 const checks = [
   ["exact Scripture reference and text inputs", "zgsScripture"],
@@ -83,7 +84,7 @@ if (!gallery.includes('capacitor.registerPlugin("FileSharer")')) failures.push("
 if (!gallery.includes('saveDirectory: "pictures"') || !gallery.includes('relativePath: ALBUM_PATH')) failures.push("Android Pictures/Zuriel album destination is missing.");
 if (!gallery.includes('plugin.share({')) failures.push("Native share-sheet action is missing.");
 if (!gallery.includes('downloadBlob(blob, fileName)')) failures.push("Browser download fallback is missing.");
-if (packageSource.dependencies?.["@capgo/capacitor-file-sharer"] !== "8.1.18") failures.push("Capacitor 8 file-sharing dependency is missing or mismatched.");
+if (packageJson.dependencies?.["@capgo/capacitor-file-sharer"] !== "8.1.18") failures.push("Capacitor 8 file-sharing dependency is missing or mismatched.");
 if (!packaging.includes('"zuriel-gallery.js"')) failures.push("Capacitor web packaging omits the gallery bridge.");
 if (!worker.includes('"./zuriel-gallery.js"')) failures.push("Offline shell does not precache the gallery bridge.");
 if (!/const CACHE_NAME = "zuriel-bible-offline-v\d+";/.test(worker)) failures.push("Offline cache version is missing for the Studio/navigation integration.");
