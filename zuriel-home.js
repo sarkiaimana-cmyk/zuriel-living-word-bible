@@ -1332,7 +1332,7 @@
     const identityNext = document.getElementById("zurielIdentityNext");
     const identityProgress = document.getElementById("zurielIdentityProgress");
     let identityIndex = Math.floor(Date.now() / 86400000) % identityScriptures.length;
-    try { const saved = Number(localStorage.getItem("zurielIdentityScriptureIndex")); if (Number.isInteger(saved) && saved >= 0 && saved < identityScriptures.length) identityIndex = saved; } catch (error) {}
+    try { const rawSaved = localStorage.getItem("zurielIdentityScriptureIndex"); const saved = rawSaved === null ? NaN : Number(rawSaved); if (Number.isInteger(saved) && saved >= 0 && saved < identityScriptures.length) identityIndex = saved; } catch (error) {}
     let identityRenderToken = 0;
 
     async function renderIdentityScripture(nextIndex) {
@@ -1456,7 +1456,7 @@
     }
 
     let initialVerseIndex = getDailyVerseIndex();
-    try { const saved = Number(localStorage.getItem("zurielHomeVerseIndex")); if (Number.isInteger(saved) && saved >= 0 && saved < verses.length) initialVerseIndex = saved; } catch (error) {}
+    try { const rawSaved = localStorage.getItem("zurielHomeVerseIndex"); const saved = rawSaved === null ? NaN : Number(rawSaved); if (Number.isInteger(saved) && saved >= 0 && saved < verses.length) initialVerseIndex = saved; } catch (error) {}
     displayVerse(initialVerseIndex);
     verseText.setAttribute("aria-live", "polite");
     verseReference.setAttribute("aria-live", "polite");
