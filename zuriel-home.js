@@ -1004,6 +1004,72 @@
 
     document.body.appendChild(nav);
 
+    /* MOBILE NAVIGATION SAFEGUARDS
+       Keep every destination visible above Android's system navigation area.
+       The Settings module adds the seventh destination after this module loads. */
+    if (!document.getElementById("zurielMobileNavigationSafeguards")) {
+      const navigationSafetyStyle = document.createElement("style");
+      navigationSafetyStyle.id = "zurielMobileNavigationSafeguards";
+      navigationSafetyStyle.textContent = `
+        :root { --zuriel-bottom-navigation-space: 96px; }
+        body {
+          padding-bottom: calc(var(--zuriel-bottom-navigation-space) + env(safe-area-inset-bottom, 0px)) !important;
+        }
+        main {
+          padding-bottom: calc(18px + var(--zuriel-bottom-navigation-space) + env(safe-area-inset-bottom, 0px));
+        }
+        #zurielBottomNavigation {
+          box-sizing: border-box;
+          grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
+          min-height: calc(70px + env(safe-area-inset-bottom, 0px));
+          padding: 6px max(5px, env(safe-area-inset-left, 0px))
+            calc(7px + env(safe-area-inset-bottom, 0px))
+            max(5px, env(safe-area-inset-right, 0px));
+        }
+        #zurielBottomNavigation button {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 3px;
+          box-sizing: border-box;
+          width: 100%;
+          min-width: 0;
+          min-height: 54px;
+          padding: 5px 1px;
+          font-size: clamp(8px, 2.35vw, 10px) !important;
+          line-height: 1.12;
+          white-space: normal;
+          overflow-wrap: anywhere;
+          text-align: center;
+        }
+        #zurielBottomNavigation button span {
+          flex: 0 0 auto;
+          margin: 0;
+          line-height: 1;
+          font-size: clamp(17px, 4.7vw, 20px);
+        }
+        #zurielTopReturnBar {
+          top: env(safe-area-inset-top, 0px);
+          scroll-margin-top: env(safe-area-inset-top, 0px);
+        }
+        #zurielHomeDashboard,
+        #bibleReader,
+        #zurielLibrary,
+        #zurielStudyPanel,
+        #zurielKingdomLife,
+        #zurielPersonalSpace {
+          scroll-margin-bottom: calc(var(--zuriel-bottom-navigation-space) + env(safe-area-inset-bottom, 0px));
+        }
+        @media (max-width: 360px) {
+          #zurielBottomNavigation { gap: 0; }
+          #zurielBottomNavigation button { font-size: 8px !important; padding-left: 0; padding-right: 0; }
+          #zurielBottomNavigation button span { font-size: 16px; }
+        }
+      `;
+      document.head.appendChild(navigationSafetyStyle);
+    }
+
     function setActiveNavigation(section) {
       nav.querySelectorAll("button").forEach(function (button) {
         button.classList.toggle(
