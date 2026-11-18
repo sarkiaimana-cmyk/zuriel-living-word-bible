@@ -37,6 +37,7 @@ const bookEntries = [...bookDataSource.matchAll(/\{\s*name:\s*"([^"]+)",\s*chapt
 assert.equal(bookEntries.length,66,"Offline Bible index must contain all 66 books.");
 const bookLookup = new Map(bookEntries.map(book => [book.name.toLowerCase(),book]));
 bookLookup.set("psalm",bookLookup.get("psalms"));
+bookLookup.set("song of songs",bookLookup.get("song of solomon"));
 let checkedPassages=0;
 function checkReference(reference,label) {
   const match=String(reference||"").trim().match(/^(.+?)\s+(\d+):(\d+)/);
