@@ -1,4 +1,4 @@
-# Connecting YouVersion to Zuriel
+# Connecting online Bible translation providers to Zuriel
 
 This is a one-time deployment setup. The Bible reader keeps its bundled offline KJV if the online service is not configured or unavailable.
 
@@ -66,6 +66,12 @@ Do not assume a YouVersion version is available merely because it appears in a r
 If you add the repository secret `API_BIBLE_KEY`, the same protected translation Worker also exposes API.Bible's English catalogue and chapter endpoints. The app's provider selector then lets the reader choose YouVersion Platform or API.Bible. Each provider lists only the English Bible versions returned for its own server-side key; a requested translation is not assumed to be licensed.
 
 API.Bible uses the `api-key` request header and returns structured Bible metadata and chapter text with publisher copyright information. Zuriel sends that key only from the Worker, requires publisher attribution before displaying a chapter, applies the shared translation rate limiter, and does not save online text for offline reading. API.Bible plan limits and Bible access depend on the account's current agreement; check the account dashboard before relying on a particular version.
+
+Official API.Bible references:
+- Authentication: https://docs.api.bible/quick-start/authentication/
+- Available Bible catalogue and licensing: https://docs.api.bible/guides/bibles/
+- Chapter retrieval and attribution fields: https://docs.api.bible/guides/chapters/
+- Current plans and licensing: https://api.bible/
 
 The deployment workflow installs `API_BIBLE_KEY` only when that optional GitHub secret exists. You do not need to create another Cloudflare Worker or replace the YouVersion key.
 
