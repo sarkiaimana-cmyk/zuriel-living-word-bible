@@ -2,8 +2,50 @@
 (function () {
   "use strict";
 
-  const API_BASE = String(window.ZURIEL_TRANSLATION_API_BASE || "").trim().replace(/\/+$/, "");
+  let API_BASE = String(window.ZURIEL_TRANSLATION_API_BASE || "").trim().replace(/\/+$/, "");
+  let apiBasePromise = null;
   const reader = document.getElementById("bibleReader");
+
+  function validWorkerEndpoint(value) {
+    try {
+      const parsed = new URL(String(value || "").trim());
+      return parsed.protocol === "https:" &&
+        parsed.hostname.startsWith("zuriel-bible-translations.") &&
+        parsed.hostname.endsWith(".workers.dev") &&
+        parsed.pathname === "/" &&
+        !parsed.search && !parsed.hash;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  async function resolveApiBase() {
+    if (validWorkerEndpoint(API_BASE)) return API_BASE;
+    if (apiBasePromise) return apiBasePromise;
+    apiBasePromise = (async function () {
+      try {
+        const response = await fetch(
+          "https://raw.githubusercontent.com/sarkiaimana-cmyk/zuriel-living-word-bible/main/version.json",
+          {
+            method: "GET",
+            cache: "no-store",
+            credentials: "omit",
+            referrerPolicy: "no-referrer",
+            headers: { "Accept": "application/json" }
+          }
+        );
+        if (!response.ok) return "";
+        const metadata = await response.json();
+        const candidate = String(metadata && metadata.translationApiBase || "").trim().replace(/\/+$/, "");
+        if (!validWorkerEndpoint(candidate)) return "";
+        API_BASE = candidate;
+        return API_BASE;
+      } catch (_) {
+        return "";
+      }
+    })();
+    return apiBasePromise;
+  }
   if (!reader || document.getElementById("zurielTranslationCompare")) return;
 
   let currentChapter = null;
@@ -91,7 +133,7 @@
 
   async function loadVersions() {
     if (versionsLoaded) return;
-    if (!API_BASE) {
+    if (!await resolveApiBase()) {
       status("Secure online translation access has not been connected yet. Your offline KJV is unchanged.");
       return;
     }
@@ -174,7 +216,7 @@
   }
 
   async function loadPassage() {
-    if (!API_BASE) {
+    if (!await resolveApiBase()) {
       status("Secure online translation access has not been connected yet. Your offline KJV is unchanged.");
       return;
     }
