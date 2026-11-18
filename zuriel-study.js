@@ -12,6 +12,8 @@
   let selectedReference = null;
   let selectedEnglishWord = "";
   let selectedEnglishWordIndex = -1;
+  let passageCommentaryEntries = null;
+  let passageCommentaryLoad = null;
   let activeHighlightColor = "#f5d76e";
 
   const crossReferences = [
@@ -1545,8 +1547,21 @@
           </div>
         </details>
 
+        <details id="zurielPassageCommentarySection">
+          <summary>📚 3. Zuriel Passage Commentary — Context and Interpretation</summary>
+          <div class="study-body">
+            <p>Search original Zuriel commentary notes for selected passages. Each note separates context and meaning, observation prompts and interpretive cautions. These are original study aids, not quotations from a published commentary.</p>
+            <label for="zurielCommentarySearch">Search passage, theme or commentary</label>
+            <input id="zurielCommentarySearch" type="search" placeholder="Try creation, covenant, kingdom, resurrection…" autocomplete="off">
+            <p id="zurielCommentaryCount" class="study-small" aria-live="polite">Open a verse to find a matching passage note, or search the collection.</p>
+            <div id="zurielPassageCommentaryResults" aria-live="polite">
+              <p>Select a verse or search the commentary collection.</p>
+            </div>
+          </div>
+        </details>
+
         <details>
-          <summary>🙏 3. The Light — Prayer, Declaration and Faith</summary>
+          <summary>🙏 4. The Light — Prayer, Declaration and Faith</summary>
           <div class="study-body" id="zurielFaithResponse" aria-live="polite">
             <p>Select a verse to see a connected prayer, declaration, affirmation, confession and inspiration where a curated entry is available.</p>
           </div>
@@ -1893,6 +1908,12 @@
         renderDictionary(dictionarySearch.value);
       });
       renderDictionary("");
+    }
+    const commentarySearch = panel.querySelector("#zurielCommentarySearch");
+    if (commentarySearch) {
+      commentarySearch.addEventListener("input", function () {
+        renderPassageCommentary(selectedReference);
+      });
     }
 
     // Offline KJV concordance: whole-word and exact-phrase search use the
@@ -2526,6 +2547,122 @@
         "Notice the original audience, historical setting, literary form and the paragraph's main idea. Separate what the passage states from what you conclude from it.");
       addLine(deeper, "Personal reflection",
         "What truth should shape your thinking? Is there an instruction to obey, a promise to trust, an example to follow or a warning to heed? Record the reason from the text.");
+      renderPassageCommentary(ref);
+    }
+
+    function parseCommentaryRange(value) {
+      const match = String(value || "").trim().match(/^(.+?)\\s+(\\d+):(\\d+)\\s*[-–]\\s*(?:(\\d+):)?(\\d+)$/);
+      if (!match) return null;
+      const book = match[1].trim().toLowerCase() === "psalm" ? "psalms" : match[1].trim().toLowerCase();
+      const startChapter = Number(match[2]);
+      const startVerse = Number(match[3]);
+      const endChapter = match[4] ? Number(match[4]) : startChapter;
+      const endVerse = Number(match[5]);
+      if (![startChapter,startVerse,endChapter,endVerse].every(Number.isInteger) ||
+          startChapter < 1 || startVerse < 1 || endChapter < startChapter || endVerse < 1) return null;
+      return { book: book, startChapter: startChapter, startVerse: startVerse,
+        endChapter: endChapter, endVerse: endVerse };
+    }
+
+    async function loadPassageCommentary() {
+      if (Array.isArray(passageCommentaryEntries)) return passageCommentaryEntries;
+      if (!passageCommentaryLoad) {
+        passageCommentaryLoad = fetch("zuriel-passage-commentary-expansion.json", {
+          method: "GET", cache: "no-store", credentials: "omit"
+        }).then(function (response) {
+          if (!response.ok) throw new Error("The passage commentary file is not available on this device.");
+          return response.json();
+        }).then(function (payload) {
+          if (!payload || !Array.isArray(payload.entries) || !payload.entries.length) {
+            throw new Error("The passage commentary collection could not be verified.");
+          }
+          const required = ["id","passage","theme","contextAndMeaning","studyObservation","interpretiveCaution"];
+          if (payload.entries.some(function (entry) {
+            return !entry || required.some(function (key) {
+              return typeof entry[key] !== "string" || !entry[key].trim();
+            });
+          })) throw new Error("A commentary entry is incomplete; the collection has been withheld.");
+          passageCommentaryEntries = payload.entries.slice();
+          return passageCommentaryEntries;
+        }).catch(function (error) {
+          passageCommentaryLoad = null;
+          throw error;
+        });
+      }
+      return passageCommentaryLoad;
+    }
+
+    async function renderPassageCommentary(ref) {
+      const results = document.getElementById("zurielPassageCommentaryResults");
+      const count = document.getElementById("zurielCommentaryCount");
+      const search = document.getElementById("zurielCommentarySearch");
+      if (!results || !count) return;
+      const query = String(search && search.value || "").trim().toLowerCase();
+      results.replaceChildren();
+      count.textContent = "Loading the curated passage commentary…";
+      try {
+        const entries = await loadPassageCommentary();
+        const filtered = entries.filter(function (entry) {
+          if (query) {
+            return [entry.passage,entry.theme,entry.contextAndMeaning,
+              entry.studyObservation,entry.interpretiveCaution].join(" ").toLowerCase().includes(query);
+          }
+          if (!ref) return true;
+          const range = parseCommentaryRange(entry.passage);
+          if (!range || range.book !== String(ref.book || "").toLowerCase() ||
+              Number(ref.chapter) < range.startChapter || Number(ref.chapter) > range.endChapter) return false;
+          if (Number(ref.chapter) === range.startChapter && Number(ref.verse) < range.startVerse) return false;
+          if (Number(ref.chapter) === range.endChapter && Number(ref.verse) > range.endVerse) return false;
+          return true;
+        });
+        const visible = filtered.slice(0, query || ref ? 20 : 10);
+        count.textContent = query
+          ? "Showing " + visible.length + " of " + filtered.length + " matching commentary notes."
+          : ref
+            ? (filtered.length ? filtered.length + " commentary note(s) cover " + ref.book + " " + ref.chapter + ":" + ref.verse + "." :
+              "No curated commentary note covers this exact verse yet. Search the collection or use the context-led exposition above.")
+            : "Browse " + entries.length + " original Zuriel passage commentary notes.";
+        if (!visible.length) {
+          const empty = document.createElement("p");
+          empty.textContent = "No commentary notes match this verse or search. Try a different passage or theme.";
+          results.appendChild(empty);
+          return;
+        }
+        visible.forEach(function (entry) {
+          const article = document.createElement("article");
+          article.className = "study-word zuriel-commentary-entry";
+          const source = document.createElement("p");
+          source.className = "study-small";
+          source.textContent = "ORIGINAL ZURIEL PASSAGE COMMENTARY";
+          const heading = document.createElement("h3");
+          heading.textContent = entry.passage + " — " + entry.theme;
+          const fields = [
+            ["Context and meaning",entry.contextAndMeaning],
+            ["Study observation",entry.studyObservation],
+            ["Interpretive caution",entry.interpretiveCaution]
+          ];
+          article.append(source,heading);
+          fields.forEach(function (field) {
+            const subheading = document.createElement("h4");
+            subheading.textContent = field[0];
+            const paragraph = document.createElement("p");
+            paragraph.textContent = field[1];
+            article.append(subheading,paragraph);
+          });
+          results.appendChild(article);
+        });
+        if (filtered.length > visible.length) {
+          const more = document.createElement("p");
+          more.className = "study-small";
+          more.textContent = "Refine your search to narrow the remaining " + (filtered.length - visible.length) + " notes.";
+          results.appendChild(more);
+        }
+      } catch (error) {
+        count.textContent = "Commentary could not be loaded.";
+        const message = document.createElement("p");
+        message.textContent = error.message || "The commentary collection is not available offline yet.";
+        results.appendChild(message);
+      }
     }
 
     function loadSavedNote() {
@@ -2764,6 +2901,15 @@
           const search = panel.querySelector("#zurielConcordanceQuery");
           if (search) {
             search.value = searchText;
+            search.focus();
+          }
+        }
+        if (wanted.includes("passage commentary")) {
+          renderPassageCommentary(selectedReference);
+          const search = panel.querySelector("#zurielCommentarySearch");
+          if (search && typeof searchText === "string") {
+            search.value = searchText;
+            renderPassageCommentary(selectedReference);
             search.focus();
           }
         }
