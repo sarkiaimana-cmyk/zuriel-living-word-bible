@@ -32,6 +32,7 @@ const concordanceSandbox = {
 vm.runInNewContext(concordanceSource, concordanceSandbox, { timeout: 1000 });
 const wordConcordance = await concordanceSandbox.window.__ZurielBibleSearch.search("faith", 1, "word");
 assert.equal(wordConcordance.totalMatches, 3, "Exact word search counts the matching verses.");
+console.log("Concordance fixture counts:", wordConcordance.map(item => ({ text: item.text, occurrences: item.occurrences })));
 assert.equal(wordConcordance.totalOccurrences, 7, "Exact word search counts every whole-word occurrence.");
 assert.equal(wordConcordance.length, 1, "Concordance result limits affect visible verses only.");
 assert.equal(wordConcordance[0].occurrences, 3, "Each verse reports its own occurrence count.");
