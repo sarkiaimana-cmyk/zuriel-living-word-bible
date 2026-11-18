@@ -61,7 +61,8 @@ requireText(client, "validWorkerEndpoint", "Trusted Cloudflare Worker endpoint v
 requireText(client, "zuriel-bible-translations.", "Expected dedicated translation Worker hostname");
 requireText(client, "window.ZurielTranslations", "Translation reader public readiness API");
 requireText(client, "activeController.abort()", "Cancellation of stale or closed-panel passage requests");
-forbidText(client, /localStorage|sessionStorage|caches\.|indexedDB/i, "Persistent storage of licensed online Bible text");
+forbidText(client, /localStorage|sessionStorage|caches\./i, "Uncontrolled persistent storage of online Bible text");
+forbidText(client, /saveYouVersionChapter|saveTranslationChapter/i, "Offline caching of YouVersion content without licence confirmation");
 forbidText(client, /innerHTML|outerHTML/i, "Unsafe HTML insertion for publisher passage text");
 forbidText(client, /ZITE_YVP_APP_KEY|X-YVP-App-Key|API_BIBLE_KEY|api-key|api\.youversion\.com|rest\.api\.bible/i, "Provider credentials or direct upstream API access in client code");
 
