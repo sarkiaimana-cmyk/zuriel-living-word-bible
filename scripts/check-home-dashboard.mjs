@@ -25,6 +25,11 @@ requireText(home, "--zuriel-home-wallpaper", "Rotating photographic home hero ba
 requireText(home, "home-scripture-card", "The photographic Scripture card");
 requireText(home, "background-image: linear-gradient(180deg,rgba(6,20,35,.20)", "The realistic photographic Open Book landscape");
 requireText(home, "grid-template-columns: repeat(6,minmax(0,1fr))", "The six-destination compact mobile navigation");
+requireText(home, "zurielMobileNavigationSafeguards", "Mobile navigation safe-area safeguards");
+requireText(home, "grid-template-columns: repeat(7, minmax(0, 1fr)) !important", "Seven-destination mobile navigation layout");
+requireText(home, "env(safe-area-inset-bottom, 0px)", "Android bottom safe-area support");
+requireText(home, "--zuriel-bottom-navigation-space", "Bottom navigation content clearance");
+requireText(index, "viewport-fit=cover", "Safe-area viewport configuration");
 requireText(home, "linear-gradient(180deg,#f5f2e9 0%,#edf3f8 48%,#e8eff7 100%)", "The bright ivory and blue home background");
 requireText(home, "His Words.. My life.. My Victory", "The approved Open Book card headline");
 requireText(home, "window.getBibleVerseText(verse.reference)", "Open Book exact offline KJV passage retrieval");
