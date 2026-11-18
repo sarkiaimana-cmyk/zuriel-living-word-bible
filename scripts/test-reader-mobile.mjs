@@ -50,6 +50,91 @@ try {
     serviceWorkers:"allow"
   });
   const page = await context.newPage();
+  const translationRequests = [];
+  await page.addInitScript(() => {
+    window.ZURIEL_TRANSLATION_API_BASE = "https://zuriel-test-worker.example";
+  });
+  await page.route("https://zuriel-test-worker.example/**", async route => {
+    const url = new URL(route.request().url());
+    translationRequests.push(url.pathname + url.search);
+    const headers = {
+      "content-type": "application/json",
+      "access-control-allow-origin": "*",
+      "cache-control": "no-store"
+    };
+    if (url.pathname === "/api/youversion/bibles") {
+      return route.fulfill({
+        status: 200, headers,
+        body: JSON.stringify({
+          data: [{
+            id: 3034,
+            abbreviation: "BSB",
+            title: "Berean Standard Bible",
+            language: { iso_639_1: "en", name: "English" }
+          }]
+        })
+      });
+    }
+    if (url.pathname === "/api/youversion/bibles/3034/passages/GEN.1.1") {
+      return route.fulfill({
+        status: 200, headers,
+        body: JSON.stringify({
+          source: "YouVersion Platform",
+          version: {
+            id: 3034,
+            abbreviation: "BSB",
+            title: "Berean Standard Bible",
+            publisher_name: "Test Bible Publisher",
+            publisher_url: "https://publisher.example"
+          },
+          passage: {
+            id: "GEN.1.1",
+            reference: "Genesis 1:1",
+            content: "In the beginning God created the heavens and the earth.",
+            copyright: "Test publisher copyright",
+            promotional_content: "Test publisher attribution"
+          },
+          format: "text",
+          notice: "Online text is not stored for offline use."
+        })
+      });
+    }
+    return route.fulfill({ status: 404, headers, body: JSON.stringify({ error: "Not found" }) });
+  });
+  await page.route("https://bible.helloao.org/api/available_commentaries.json", route =>
+    route.fulfill({
+      status: 200,
+      headers: { "content-type": "application/json", "access-control-allow-origin": "*" },
+      body: JSON.stringify({
+        commentaries: [{
+          id: "john-gill",
+          name: "John Gill",
+          englishName: "John Gill",
+          language: "eng",
+          licenseUrl: "https://creativecommons.org/publicdomain/mark/1.0/",
+          availableFormats: ["json"],
+          totalNumberOfVerses: 29707,
+          numberOfBooks: 66,
+          website: "https://en.wikipedia.org/wiki/John_Gill_(theologian)"
+        }]
+      })
+    })
+  );
+  await page.route("https://bible.helloao.org/api/c/john-gill/GEN/1.simple.json", route =>
+    route.fulfill({
+      status: 200,
+      headers: { "content-type": "application/json", "access-control-allow-origin": "*" },
+      body: JSON.stringify({
+        chapter: {
+          content: [{
+            type: "verse",
+            number: 1,
+            text: "Historical commentary test note for Genesis 1:1."
+          }]
+        }
+      })
+    })
+  );
   page.on("pageerror", error => pageErrors.push(error.message));
   await page.goto("http://127.0.0.1:4173/", { waitUntil:"domcontentloaded" });
   await page.locator('#zurielBottomNavigation button[data-section="read"]').click();
