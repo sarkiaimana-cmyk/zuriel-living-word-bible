@@ -1,4 +1,4 @@
 {
-  "version": "1.4.63",
-  "releaseNotes": "Adds 16 more contextual Bible dictionary studies covering exile, incense, martyrdom, Passover, the Beatitudes, diaspora, epistles, fasting, biblical interpretation, Hosanna, liturgy, messianic hope, exegesis, Paraclete, typology and new creation. Expands the study set from 107 to 123 across 205 terms, with contextual cautions and references checked against the offline KJV."
+  "version": "1.4.64",
+  "releaseNotes": "Adds API.Bible as an optional second online translation provider alongside YouVersion. Both provider keys remain server-side; only English versions returned for each authorised key are listed. Chapter text requires publisher attribution, uses the translation rate limiter, and is not stored for offline reading. The complete offline KJV remains unchanged."
 }
