@@ -136,5 +136,8 @@ jobs:
       - name: Validate searchable passage commentary and KJV references
         run: node scripts/check-passage-commentary.mjs
 
+      - name: Validate monthly devotional and worship library
+        run: node scripts/check-devotional-library.mjs
+
       - name: Validate worship audio rights gate
         run: node scripts/check-worship-rights.mjs
