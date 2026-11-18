@@ -97,7 +97,7 @@ jobs:
       - name: Discover Worker URL and smoke-test YouVersion access
         run: |
           set -euo pipefail
-          trap 'rm -f .translation-smoke.json .translation-smoke.headers' EXIT
+          trap 'rm -f .translation-smoke.json .translation-smoke.headers .api-bible-smoke.json .api-bible-smoke.headers' EXIT
 
           SUBDOMAIN_JSON="$(curl -fsS --retry 4 --retry-delay 2 --retry-all-errors \
             -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
@@ -135,6 +135,28 @@ jobs:
           if [ "$VERSION_COUNT" -lt 1 ]; then
             echo "::error::The YouVersion app key returned no publisher-authorised English Bible versions. Check the app registration and publisher access before activating the app endpoint."
             exit 1
+          fi
+
+          if [ -n "$API_BIBLE_KEY" ]; then
+            API_BIBLE_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
+              -o .api-bible-smoke.json -D .api-bible-smoke.headers -w '%{http_code}' \
+              -H "Origin: https://sarkiaimana-cmyk.github.io" \
+              "$WORKER_URL/api/api-bible/bibles")"
+            if [ "$API_BIBLE_STATUS" != "200" ]; then
+              echo "::error::The optional API.Bible provider returned HTTP $API_BIBLE_STATUS. Check the API_BIBLE_KEY secret and its account access."
+              exit 1
+            fi
+            if ! grep -qi 'access-control-allow-origin: https://sarkiaimana-cmyk.github.io' .api-bible-smoke.headers; then
+              echo "::error::The API.Bible provider did not return the expected GitHub Pages CORS origin."
+              exit 1
+            fi
+            API_BIBLE_COUNT="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-smoke.json","utf8"));if(!Array.isArray(j.data))process.exit(1);process.stdout.write(String(j.data.length));')"
+            if [ "$API_BIBLE_COUNT" -lt 1 ]; then
+              echo "::warning::API.Bible key is valid but currently returns no English Bible versions. YouVersion remains available."
+            fi
+            echo "API.Bible English versions returned: $API_BIBLE_COUNT"
+          else
+            echo "API.Bible is optional and was not configured; YouVersion remains the active provider."
           fi
           if [ "$GITHUB_REF" != "refs/heads/main" ]; then
             echo "::error::Run this deployment from the main branch so the verified endpoint can be saved to the app configuration."
