@@ -1020,6 +1020,46 @@
                 studio.dataset.finish === "parchment" ? "#f0dfbd" : "#f8f0dc";
               ctx.fillRect(0,0,canvas.width,canvas.height);
             }
+            // Render real facing paper pages into the exported PNG, not only a
+            // centre divider. This keeps the downloaded/shared image faithful
+            // to the open-book preview in the Studio.
+            const pageFill = studio.dataset.finish === "navy" ? "#203b60" :
+              studio.dataset.finish === "forest" ? "#f7fbf4" :
+              studio.dataset.finish === "parchment" ? "#fff0d4" : "#fffaf0";
+            function roundedPanel(x, y, panelWidth, panelHeight, radius) {
+              const r = Math.min(radius, panelWidth / 2, panelHeight / 2);
+              ctx.beginPath();
+              ctx.moveTo(x + r, y);
+              ctx.lineTo(x + panelWidth - r, y);
+              ctx.quadraticCurveTo(x + panelWidth, y, x + panelWidth, y + r);
+              ctx.lineTo(x + panelWidth, y + panelHeight - r);
+              ctx.quadraticCurveTo(x + panelWidth, y + panelHeight, x + panelWidth - r, y + panelHeight);
+              ctx.lineTo(x + r, y + panelHeight);
+              ctx.quadraticCurveTo(x, y + panelHeight, x, y + panelHeight - r);
+              ctx.lineTo(x, y + r);
+              ctx.quadraticCurveTo(x, y, x + r, y);
+              ctx.closePath();
+              ctx.fillStyle = pageFill;
+              ctx.fill();
+              ctx.strokeStyle = colors[2];
+              ctx.lineWidth = 2;
+              ctx.stroke();
+            }
+            ctx.save();
+            ctx.shadowColor = "rgba(0,0,0,.24)";
+            ctx.shadowBlur = 22;
+            ctx.shadowOffsetY = 9;
+            if (stacked) {
+              const firstHeight = referenceHeadingHeight + leftLines.length * lineHeight(scriptureSize) + 44;
+              const secondY = top + firstHeight + sectionGap - 55;
+              const secondHeight = faithHeadingHeight + rightLines.length * lineHeight(faithSize) + 44;
+              roundedPanel(exportMargin - 28, top - 55, exportColumnWidth + 56, firstHeight, 22);
+              roundedPanel(exportMargin - 28, secondY, exportColumnWidth + 56, secondHeight, 22);
+            } else {
+              roundedPanel(margin - 28, top - 55, columnWidth + 56, contentHeight + 88, 22);
+              roundedPanel(margin + columnWidth + gap - 28, top - 55, columnWidth + 56, contentHeight + 88, 22);
+            }
+            ctx.restore();
             ctx.strokeStyle = colors[2]; ctx.lineWidth = 5;
             ctx.strokeRect(35,35,width-70,canvas.height-70);
             ctx.textAlign = "center"; ctx.fillStyle = colors[2];
