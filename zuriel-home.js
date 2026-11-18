@@ -1401,8 +1401,19 @@
         const response = window.ZurielFaithContent &&
           typeof window.ZurielFaithContent.find === "function"
           ? window.ZurielFaithContent.find(item.reference) : {};
+        // Carry the approved WHO HE IS revelation title into the shareable
+        // declaration itself, so it remains visible in preview, PNG and saves.
+        const revelationResponse = Object.assign({}, response || {});
+        const identityTitle = String(item.title || "").trim();
+        if (identityTitle) {
+          revelationResponse.declaration =
+            "HE IS " + identityTitle.toUpperCase() + ".\n\n" +
+            String(revelationResponse.declaration || "").trim();
+        }
         navigate("library");
-        const opened = window.ZurielLibrary.openGloryVerse(item.reference, exactText, "KJV", response || {});
+        const opened = window.ZurielLibrary.openGloryVerse(
+          item.reference, exactText, "KJV", revelationResponse
+        );
         if (!opened) throw new Error("The share-card studio could not be opened.");
       } catch (error) {
         if (status) status.textContent = error.message || "Unable to prepare this revelation.";
