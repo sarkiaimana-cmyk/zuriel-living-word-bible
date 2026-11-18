@@ -305,9 +305,14 @@ async function handleYouVersionRequest(request, env, dependencies, cors) {
         abbreviation: item.abbreviation,
         copyright: typeof item.copyright === "string" ? item.copyright : "",
         promotional_content: typeof item.promotional_content === "string" ? item.promotional_content : "",
-        language: item.language && typeof item.language === "object"
-          ? { iso_639_1: item.language.iso_639_1 || "", name: item.language.name || "" }
-          : null,
+        language: {
+          iso_639_1: item.language && typeof item.language === "object"
+            ? (item.language.iso_639_1 || item.language_tag || "")
+            : (item.language_tag || ""),
+          name: item.language && typeof item.language === "object"
+            ? (item.language.name || "")
+            : ""
+        },
         youversion_deep_link: typeof item.youversion_deep_link === "string" ? item.youversion_deep_link : ""
       }));
     return json({
