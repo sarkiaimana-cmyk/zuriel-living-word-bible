@@ -315,7 +315,7 @@ for (const title of expandedDictionaryTerms) {
   assert.ok(entry && entry[3] && entry[3].languageNote && entry[3].theology && entry[3].caution && entry[3].passages,
     "dictionary contains a complete contextual study for " + title);
   for (const reference of entry[3].passages.split(";").map(value => value.trim()).filter(Boolean)) {
-    const match = reference.match(/^(.+?)\\s+(\\d+)(?:[–-](\\d+))?(?::(\\d+)(?:[–-](\\d+))?)?$/);
+    const match = reference.match(/^(.+?)\s+(\d+)(?:[–-](\d+))?(?::(\d+)(?:[–-](\d+))?)?$/);
     assert.ok(match, "expanded dictionary passage has a supported reference format: " + title + " / " + reference);
     const bookName = match[1] === "Psalm" ? "Psalms" : match[1];
     const book = bibleBooks.find(item => item.name === bookName);
