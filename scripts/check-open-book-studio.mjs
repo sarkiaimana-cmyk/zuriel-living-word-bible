@@ -1,11 +1,13 @@
 import { readFile } from "node:fs/promises";
 
-const [library, worker, packaging, index, home, prWorkflow, androidWorkflow] = await Promise.all([
+const [library, worker, packaging, index, home, prWorkflow, androidWorkflow, gallery, packageSource] = await Promise.all([
   readFile(new URL("../zuriel-library.js", import.meta.url), "utf8"),
   readFile(new URL("../sw.js", import.meta.url), "utf8"),
   readFile(new URL("./prepare-web.mjs", import.meta.url), "utf8"),
   readFile(new URL("../index.html", import.meta.url), "utf8"),
   readFile(new URL("../zuriel-home.js", import.meta.url), "utf8"),
+  readFile(new URL("../zuriel-gallery.js", import.meta.url), "utf8"),
+  readFile(new URL("../package.json", import.meta.url), "utf8"),
   readFile(new URL("../.github/workflows/validate-pr.yml", import.meta.url), "utf8"),
   readFile(new URL("../.github/workflows/android-apk.yml", import.meta.url), "utf8")
 ]);
@@ -74,6 +76,16 @@ for (const [label, fragment] of checks) {
   if (!library.includes(fragment)) failures.push(label + " is missing.");
 }
 if (!index.includes("window.getBibleVerseText = async function (reference)")) failures.push("Offline KJV passage retrieval is missing.");
+if (!index.includes('<script src="zuriel-gallery.js"></script>')) failures.push("Native gallery bridge script is not loaded by the app.");
+if (!library.includes("window.ZurielGallery.saveImage(blob, fileName)")) failures.push("Save image action is not connected to the native gallery bridge.");
+if (!library.includes("window.ZurielGallery.shareImage(")) failures.push("Share image action is not connected to the native file share bridge.");
+if (!gallery.includes('capacitor.registerPlugin("FileSharer")')) failures.push("Capacitor FileSharer native plugin registration is missing.");
+if (!gallery.includes('saveDirectory: "pictures"') || !gallery.includes('relativePath: ALBUM_PATH')) failures.push("Android Pictures/Zuriel album destination is missing.");
+if (!gallery.includes('plugin.share({')) failures.push("Native share-sheet action is missing.");
+if (!gallery.includes('downloadBlob(blob, fileName)')) failures.push("Browser download fallback is missing.");
+if (packageSource.dependencies?.["@capgo/capacitor-file-sharer"] !== "8.1.18") failures.push("Capacitor 8 file-sharing dependency is missing or mismatched.");
+if (!packaging.includes('"zuriel-gallery.js"')) failures.push("Capacitor web packaging omits the gallery bridge.");
+if (!worker.includes('"./zuriel-gallery.js"')) failures.push("Offline shell does not precache the gallery bridge.");
 if (!/const CACHE_NAME = "zuriel-bible-offline-v\d+";/.test(worker)) failures.push("Offline cache version is missing for the Studio/navigation integration.");
 if (!worker.includes('url.origin === "https://images.unsplash.com"')) failures.push("Service worker does not cache selected Unsplash wallpapers.");
 if (home.includes("Your Bible Journey")) failures.push("The duplicate home shortcut-button grid is still present.");
