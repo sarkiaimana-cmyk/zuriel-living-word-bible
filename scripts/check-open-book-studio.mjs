@@ -84,7 +84,8 @@ if (!navBlock || (navBlock[1].match(/\["(?:home|read|study|library|kingdom|perso
 }
 if (!home.includes('window.ZurielLibrary.open("saved")')) failures.push("The Library destination does not open the personal saved library.");
 if (!home.includes("zurielHomeVerseIndex") || !home.includes("zurielIdentityScriptureIndex")) failures.push("Home Scripture choices must be remembered on this device.");
-if (!home.includes(String.rawif (!home.includes("const HOME_VERSE_ROTATION_MS = 15000;")) failures.push("Home Scripture must rotate automatically every 15 seconds.");
+if (!home.includes(String.raw`.replace(/^\d+\.\s*/, "").trim();`)) failures.push("Open Book share-card handoff must correctly strip verse numbering from KJV text.");
+if (!home.includes("const HOME_VERSE_ROTATION_MS = 15000;")) failures.push("Home Scripture must rotate automatically every 15 seconds.");
 if (home.includes("<details open>")) failures.push("Open Book prayer and faith sections must start collapsed for a cleaner reading view.");
 if (!home.includes("OPEN-BOOK FAITH CARD — inspired by the supplied Zuriel artwork") || !home.includes("background-size: cover;") || !home.includes("zob-book:after")) failures.push("The original photographic Open Book artwork and two-page layout must be preserved.");
 if (!study.includes("zurielCleanStudyPresentation")) failures.push("The study panel must apply the clean high-contrast palette after its legacy styles.");
