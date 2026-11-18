@@ -7,8 +7,9 @@ This is a one-time deployment setup. The Bible reader keeps its bundled offline 
 1. A YouVersion Platform app key for the registered Zuriel app. The key must have publisher-approved access to the Bible versions you want to display. An API.Bible key is a different provider credential and cannot be used as the YouVersion app key.
 2. A Cloudflare account with Workers available.
 3. Access to the GitHub repository settings for `sarkiaimana-cmyk/zuriel-living-word-bible`.
+4. (Optional) An API.Bible key with access to the English versions you want to use.
 
-Never paste either provider key into a chat, source file, issue, commit, or screenshot. The YouVersion key is stored only as a Cloudflare Worker secret.
+Never paste either provider key into a chat, source file, issue, commit, or screenshot. Both keys are stored only as Cloudflare Worker secrets.
 
 ## Cloudflare deployment token
 
@@ -38,8 +39,9 @@ On the repository page:
 | `CLOUDFLARE_API_TOKEN` | The Cloudflare API token described above |
 | `CLOUDFLARE_ACCOUNT_ID` | The Cloudflare account ID for the same account |
 | `ZITE_YVP_APP_KEY` | The YouVersion Platform app key for Zuriel |
+| `API_BIBLE_KEY` (optional) | Your API.Bible key, if you want the second provider enabled |
 
-Do not add the key to repository Variables. Do not commit it to any file. GitHub masks Actions secrets in logs, and the workflow checks that the key is never printed.
+Do not add either key to repository Variables. Do not commit them to any file. GitHub masks Actions secrets in logs, and the workflow does not print the keys. If `API_BIBLE_KEY` is omitted, YouVersion can still operate; the API.Bible option will report that it is not configured.
 
 ## Run the protected deployment
 
@@ -58,5 +60,13 @@ A successful live smoke test now saves the verified public `workers.dev` endpoin
 Install Zuriel **1.4.61 or newer** before running the deployment if you want the app to discover the endpoint automatically. The comparison panel reads the public endpoint configuration when opened; no API key or manual source-code edit is needed. If the workflow cannot commit or verify the endpoint, it reports failure and the app safely remains on the offline KJV.
 
 Do not assume a YouVersion version is available merely because it appears in a requested list: the app shows only versions actually returned for the registered key, and passage access remains subject to each publisher's licence.
+
+## Optional API.Bible provider
+
+If you add the repository secret `API_BIBLE_KEY`, the same protected translation Worker also exposes API.Bible's English catalogue and chapter endpoints. The app's provider selector then lets the reader choose YouVersion Platform or API.Bible. Each provider lists only the English Bible versions returned for its own server-side key; a requested translation is not assumed to be licensed.
+
+API.Bible uses the `api-key` request header and returns structured Bible metadata and chapter text with publisher copyright information. Zuriel sends that key only from the Worker, requires publisher attribution before displaying a chapter, applies the shared translation rate limiter, and does not save online text for offline reading. API.Bible plan limits and Bible access depend on the account's current agreement; check the account dashboard before relying on a particular version.
+
+The deployment workflow installs `API_BIBLE_KEY` only when that optional GitHub secret exists. You do not need to create another Cloudflare Worker or replace the YouVersion key.
 
 The offline KJV is not replaced, and licensed online text is not cached for offline use.
