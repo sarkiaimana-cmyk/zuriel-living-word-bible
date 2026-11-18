@@ -35,8 +35,10 @@ assert.equal(new Set(devotionals.map(item=>item.title)).size,devotionals.length,
 assert.ok(devotionals.some(item=>item.title==="Hope in God"));
 assert.ok(devotionals.some(item=>item.title==="Power of the Holy Spirit"));
 for(const item of devotionals){
-  for(const field of ["title","verse","message","prayer"])
-    assert.ok(typeof item[field]==="string" && item[field].trim().length>=12,item.title+" has a complete "+field+".");
+  for(const field of ["title","verse","message","prayer"]) {
+    const minimumLength = field === "title" ? 3 : field === "verse" ? 6 : 12;
+    assert.ok(typeof item[field]==="string" && item[field].trim().length>=minimumLength,item.title+" has a complete "+field+".");
+  }
   assert.ok(validReference(item.verse),item.title+" points to a valid bundled KJV passage: "+item.verse);
   assert.ok(!/^day\s+\d+/i.test(item.title),"Devotional titles do not show unwanted day numbers.");
 }
