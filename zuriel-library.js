@@ -1000,8 +1000,8 @@
             function wrap(text, maxWidth, fontSize) {
               ctx.font = fontSize + "px " + typeface + ", serif";
               const lines = [];
-              String(text || "").split(/\\n/).forEach(paragraph => {
-                const words = paragraph.split(/\\s+/).filter(Boolean);
+              String(text || "").split(/\n/).forEach(paragraph => {
+                const words = paragraph.split(/\s+/).filter(Boolean);
                 if (!words.length) { lines.push(""); return; }
                 let line = "";
                 words.forEach(word => {
