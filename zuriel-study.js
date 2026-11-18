@@ -514,7 +514,7 @@
 
   function commentaryText(value) {
     if (typeof value === "string") return value.trim();
-    if (Array.isArray(value)) return value.map(commentaryText).filter(Boolean).join("\\n\\n");
+    if (Array.isArray(value)) return value.map(commentaryText).filter(Boolean).join("\n\n");
     if (value && typeof value === "object") {
       return commentaryText(value.text || value.content || value.value || "");
     }
@@ -592,7 +592,7 @@
         heading.textContent = (source.name || source.englishName || commentaryId) + " — " + ref.book + " " + ref.chapter + ":" + ref.verse;
         results.appendChild(heading);
         if (note) {
-          note.split(/\\n{2,}/).map(part => part.trim()).filter(Boolean).forEach(function (paragraphText) {
+          note.split(/\n{2,}/).map(part => part.trim()).filter(Boolean).forEach(function (paragraphText) {
             const paragraph = document.createElement("p");
             paragraph.textContent = paragraphText;
             results.appendChild(paragraph);
