@@ -137,6 +137,8 @@
       status("Secure online translation access has not been connected yet. Your offline KJV is unchanged.");
       return;
     }
+    select.hidden = false;
+    loadButton.hidden = false;
     select.disabled = true;
     loadButton.disabled = true;
     status("Checking the English Bible versions authorised for Zuriel…");
@@ -300,14 +302,10 @@
       return;
     }
     if (panel.open) {
-      if (!API_BASE) {
-        status("Secure online translation access has not been connected yet. Your offline KJV is unchanged.");
-      } else {
-        loadVersions();
-        if (currentChapter) {
-          loadButton.disabled = !selectedVersionId;
-          if (versionsLoaded) status("Ready to compare " + currentChapter.book + " " + currentChapter.chapter + ".");
-        }
+      loadVersions();
+      if (currentChapter && versionsLoaded) {
+        loadButton.disabled = !selectedVersionId;
+        status("Ready to compare " + currentChapter.book + " " + currentChapter.chapter + ".");
       }
     }
   });
@@ -324,19 +322,20 @@
       typeof window.ZurielVerseOverlay.openExternal === "function" &&
       window.ZurielVerseOverlay.openExternal(panel);
     if (!shownInVerseOverlay) panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    if (!API_BASE) {
-      status("Online translation comparison is not connected yet. Your selected verse and offline KJV remain available.");
-      return;
-    }
-    status("Choose an authorised translation below. The comparison panel is ready for " +
-      detail.reference + ". Load the chapter to compare its wording.");
-    loadVersions();
+    status("Checking whether online translation comparison is connected. Your offline KJV remains available.");
+    loadVersions().then(function () {
+      if (versionsLoaded) {
+        status("Choose an authorised translation below. The comparison panel is ready for " +
+          detail.reference + ". Load the chapter to compare its wording.");
+      }
+    });
   });
 
   window.ZurielTranslations = {
-    configured: Boolean(API_BASE),
+    get configured() { return Boolean(API_BASE); },
     refreshVersions: function () {
       versionsLoaded = false;
+      apiBasePromise = null;
       return loadVersions();
     }
   };
