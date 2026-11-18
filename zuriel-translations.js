@@ -155,7 +155,7 @@
     const providerAtRequest = selectedProvider;
     if (!await resolveApiBase()) {
       if (catalogueRequestId === catalogueSequence) {
-        status("Secure online translation access has not been connected yet. Your offline KJV is unchanged.");
+        status("The app has no verified translation-service address yet. The Cloudflare Worker must be deployed and its verified URL published in version.json before YouVersion or API.Bible keys can work. Your offline KJV is unchanged.");
         versionsLoading = false;
       }
       return;
@@ -269,7 +269,7 @@
 
   async function loadPassage() {
     if (!await resolveApiBase()) {
-      status("Secure online translation access has not been connected yet. Your offline KJV is unchanged.");
+      status("The app has no verified translation-service address yet. The Cloudflare Worker must be deployed and its verified URL published in version.json before YouVersion or API.Bible keys can work. Your offline KJV is unchanged.");
       return;
     }
     if (!currentChapter) {
@@ -422,6 +422,6 @@
   if (!API_BASE) {
     select.hidden = true;
     loadButton.hidden = true;
-    status("Secure online translation access has not been connected yet. Your offline KJV is unchanged.");
+    status("The app has no verified translation-service address yet. The Cloudflare Worker must be deployed and its verified URL published in version.json before YouVersion or API.Bible keys can work. Your offline KJV is unchanged.");
   }
 })();
