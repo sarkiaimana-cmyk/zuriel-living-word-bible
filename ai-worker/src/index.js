@@ -379,7 +379,11 @@ async function handleYouVersionRequest(request, env, dependencies, cors) {
         : (typeof bibleMetadata.localized_abbreviation === "string" ? bibleMetadata.localized_abbreviation : ""),
       title: typeof bibleMetadata.title === "string"
         ? bibleMetadata.title
-        : (typeof bibleMetadata.localized_title === "string" ? bibleMetadata.localized_title : "")
+        : (typeof bibleMetadata.localized_title === "string" ? bibleMetadata.localized_title : ""),
+      publisher_name: typeof bibleMetadata.publisher_name === "string" ? bibleMetadata.publisher_name : "",
+      publisher_url: typeof bibleMetadata.publisher_url === "string" ? bibleMetadata.publisher_url : "",
+      youversion_deep_link: typeof bibleMetadata.youversion_deep_link === "string"
+        ? bibleMetadata.youversion_deep_link : ""
     },
     passage: {
       id: typeof item.id === "string" ? item.id : "",
