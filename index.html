@@ -1113,8 +1113,12 @@ async function openChapter(book, chapter) {
     if (!selectedVerseInfo) return;
     if (action === "Share card") {
       if (window.ZurielLibrary && typeof window.ZurielLibrary.openGloryVerse === "function") {
+        const faithResponse = window.ZurielFaithContent &&
+          typeof window.ZurielFaithContent.find === "function"
+          ? window.ZurielFaithContent.find(selectedVerseInfo.reference) : null;
         const opened = window.ZurielLibrary.openGloryVerse(
-          selectedVerseInfo.reference, selectedVerseInfo.text, "King James Version"
+          selectedVerseInfo.reference, selectedVerseInfo.text, "King James Version",
+          faithResponse || {}
         );
         if (!opened) status.textContent = "The Glory Verse Studio could not be opened.";
       } else {
