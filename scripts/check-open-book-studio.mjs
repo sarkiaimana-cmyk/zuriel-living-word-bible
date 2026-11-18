@@ -1,11 +1,12 @@
 import { readFile } from "node:fs/promises";
 
-const [library, worker, packaging, index, home, prWorkflow, androidWorkflow] = await Promise.all([
+const [library, worker, packaging, index, home, study, prWorkflow, androidWorkflow] = await Promise.all([
   readFile(new URL("../zuriel-library.js", import.meta.url), "utf8"),
   readFile(new URL("../sw.js", import.meta.url), "utf8"),
   readFile(new URL("./prepare-web.mjs", import.meta.url), "utf8"),
   readFile(new URL("../index.html", import.meta.url), "utf8"),
   readFile(new URL("../zuriel-home.js", import.meta.url), "utf8"),
+  readFile(new URL("../zuriel-study.js", import.meta.url), "utf8"),
   readFile(new URL("../.github/workflows/validate-pr.yml", import.meta.url), "utf8"),
   readFile(new URL("../.github/workflows/android-apk.yml", import.meta.url), "utf8")
 ]);
@@ -39,6 +40,10 @@ const checks = [
   ["native file sharing where supported", "navigator.canShare({files:[file]})"],
   ["download fallback", "link.download = fileName"],
   ["saved card metadata", "zuriel_glory_verse_cards_v1"],
+  ["share-sheet cancellation preserves the draft", 'Sharing was cancelled. Your card is unchanged.'],
+  ["Android WebView share-sheet failure falls back to copying", "A WebView share-sheet failure should not block the copy fallback."],
+  ["clipboard permission failure falls back to the legacy copy command", 'document.execCommand("copy")'],
+  ["text-share fallback reports a real copy result", 'const copied = await copyCardText();'],
   ["visible saved-card library", 'id="zgsSavedCards"'],
   ["saved-card library heading", "MY SAVED GLORY VERSE CARDS"],
   ["saved cards can be reopened", 'load.textContent = "Open card"'],
@@ -82,6 +87,22 @@ if (!navBlock || (navBlock[1].match(/\["(?:home|read|study|library|kingdom|perso
   failures.push("The main bottom navigation should contain exactly six primary destinations.");
 }
 if (!home.includes('window.ZurielLibrary.open("saved")')) failures.push("The Library destination does not open the personal saved library.");
+if (!home.includes("zurielHomeVerseIndex") || !home.includes("zurielIdentityScriptureIndex")) failures.push("Home Scripture choices must be remembered on this device.");
+if (!home.includes(String.raw`.replace(/^\d+\.\s*/, "").trim();`)) failures.push("Open Book share-card handoff must correctly strip verse numbering from KJV text.");
+if (!home.includes("const HOME_VERSE_ROTATION_MS = 15000;")) failures.push("Home Scripture must rotate automatically every 15 seconds.");
+if (!home.includes('document.getElementById("zurielNextVerse")') || !home.includes('displayVerse(verseIndex + 1);')) failures.push("The home Scripture Next button must advance the selected verse.");
+if (!home.includes('document.getElementById("zurielOpenBookNext")') || !home.includes('nextFaithWord.addEventListener("click"')) failures.push("The Open Book Next button must advance the same Scripture selection.");
+if (!home.includes('readFaithWord.addEventListener("click"') || !home.includes('window.openChapter(bookName, Number(match[2]))')) failures.push("The Open Book Read This Passage button must open its selected chapter.");
+if (!home.includes('createShareCardButton.addEventListener("click"') || !home.includes('window.ZurielLibrary.openGloryVerse(') || !home.includes('verse.reference, scriptureText, "KJV", faithResponse || {}')) failures.push("Create & Share Card must hand the exact selected KJV passage and matching faith response to the real studio.");
+if (!home.includes('if (document.visibilityState !== "visible" || currentSection !== "home") return;') || !home.includes('renderOpenBookFaithCard();')) failures.push("Automatic rotation must pause off-screen and keep the Open Book faith response synchronized.");
+if (!home.includes('window.getBibleVerseText(verse.reference)')) failures.push("The Open Book must load exact Scripture from the bundled offline KJV.");
+
+if (home.includes("<details open>")) failures.push("Open Book prayer and faith sections must start collapsed for a cleaner reading view.");
+if (!home.includes("OPEN-BOOK FAITH CARD — inspired by the supplied Zuriel artwork") || !home.includes("background-size: cover;") || !home.includes("zob-book:after")) failures.push("The original photographic Open Book artwork and two-page layout must be preserved.");
+if (!study.includes("zurielCleanStudyPresentation")) failures.push("The study panel must apply the clean high-contrast palette after its legacy styles.");
+if (!study.includes("#zurielStudyPanel[data-mode=verse-menu]")) failures.push("The selected-verse overlay must use the readable neutral surface.");
+if (study.includes("background:#fff4d6") || study.includes("border-left:4px solid #d9bd79")) failures.push("Prayer, declaration, affirmation and confession must not use decorative colored callout boxes.");
+
 if (!worker.includes('"./zuriel-library.js"')) failures.push("Service worker does not precache the studio module.");
 if (!packaging.includes('"zuriel-library.js"')) failures.push("Android web packaging omits the studio module.");
 if (!index.includes("zuriel-library.js")) failures.push("App entry point does not load the studio module.");

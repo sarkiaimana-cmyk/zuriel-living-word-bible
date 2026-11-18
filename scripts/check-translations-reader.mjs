@@ -1,107 +1,24 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-
-const [index, client, worker, config, deployment, aiDeployment, packaging, serviceWorker, version, updates] = await Promise.all([
-  readFile("index.html", "utf8"),
-  readFile("zuriel-translations.js", "utf8"),
-  readFile("ai-worker/src/translation-worker.js", "utf8"),
-  readFile("ai-worker/wrangler.translations.jsonc", "utf8"),
-  readFile(".github/workflows/deploy-translations-worker.yml", "utf8"),
-  readFile(".github/workflows/deploy-ai-worker.yml", "utf8"),
-  readFile("scripts/prepare-web.mjs", "utf8"),
-  readFile("sw.js", "utf8"),
-  readFile("version.json", "utf8"),
-  readFile("zuriel-updates.js", "utf8")
-]);
-
-const failures = [];
-function requireText(source, fragment, label) {
-  if (!source.includes(fragment)) failures.push(label + " is missing.");
-}
-function forbidText(source, pattern, label) {
-  if (pattern.test(source)) failures.push(label + " must not be present.");
-}
-
-requireText(index, 'src="zuriel-translations.js"', "Translation reader entry point");
-requireText(index, "window.ZurielBibleBookCode = function", "Reader USFM book-code bridge");
-requireText(index, "window.ZurielVerseOverlay", "Selected-verse overlay host for external study panels");
-requireText(index, 'window.ZURIEL_TRANSLATION_API_BASE = "";', "Explicit empty translation endpoint until the proxy is deployed");
-requireText(client, 'id = "zurielTranslationCompare"', "Collapsible translation comparison panel");
-requireText(client, "zuriel:chapter-opened", "Reader chapter event integration");
-requireText(client, "window.ZurielVerseOverlay.openExternal(panel)", "YouVersion comparison opens in selected-verse overlay");
-requireText(client, '"/api/youversion/bibles"', "Licensed English version list request");
-requireText(client, '"/api/api-bible/bibles"', "API.Bible English version list request");
-requireText(client, '["api-bible", "API.Bible"]', "API.Bible provider selection option");
-requireText(client, "next_page_token", "YouVersion catalogue pagination");
-requireText(client, "encodeURIComponent(nextPageToken)", "Safe pagination token encoding");
-requireText(client, "pageCount < 10", "Bounded catalogue pagination");
-requireText(client, "new Map()", "Deduplication of paginated Bible version results");
-requireText(client, "seenTokens.has(token)", "Repeated pagination token protection");
-requireText(client, "?format=text", "Plain-text passage request");
-requireText(client, 'cache: "no-store"', "No-store request policy");
-requireText(client, 'credentials: "omit"', "Credential isolation");
-requireText(client, 'referrerPolicy: "no-referrer"', "Referrer privacy");
-requireText(client, "item.copyright", "Publisher copyright handling");
-requireText(client, "item.promotional_content", "Publisher promotional attribution handling");
-requireText(client, "/chapters/", "API.Bible chapter retrieval path");
-requireText(client, "loadedProvider === selectedProvider", "Provider-specific catalogue state");
-requireText(client, "Publisher attribution was not supplied", "Fail-closed attribution requirement");
-requireText(client, "Online text is not stored for offline use.", "No-offline-storage notice");
-requireText(client, "window.ZURIEL_TRANSLATION_API_BASE", "Explicit deployment endpoint configuration");
-requireText(client, "raw.githubusercontent.com/sarkiaimana-cmyk/zuriel-living-word-bible/main/version.json", "Public release metadata endpoint discovery");
-requireText(client, "metadata.translationApiBase", "Automatic YouVersion endpoint discovery");
-requireText(client, "validWorkerEndpoint", "Trusted Cloudflare Worker endpoint validation");
-requireText(client, "zuriel-bible-translations.", "Expected dedicated translation Worker hostname");
-requireText(client, "window.ZurielTranslations", "Translation reader public readiness API");
-requireText(client, "activeController.abort()", "Cancellation of stale or closed-panel passage requests");
-forbidText(client, /localStorage|sessionStorage|caches\.|indexedDB/i, "Persistent storage of licensed online Bible text");
-forbidText(client, /innerHTML|outerHTML/i, "Unsafe HTML insertion for publisher passage text");
-forbidText(client, /ZITE_YVP_APP_KEY|X-YVP-App-Key|API_BIBLE_KEY|api-key|api\.youversion\.com|rest\.api\.bible/i, "Provider credentials or direct upstream API access in client code");
-
-requireText(worker, 'from "./index.js"', "Shared tested server-side YouVersion handler");
-requireText(worker, "bibles(?:", "Translation-only route allowlist");
-requireText(worker, "api-bible", "API.Bible route allowlist");
-requireText(worker, "handleRequest(request, env, dependencies)", "Shared server-side origin, rate-limit and licence handling");
-requireText(config, '"name": "zuriel-bible-translations"', "Separate translation Worker name");
-requireText(config, '"TRANSLATION_RATE_LIMIT"', "Translation rate-limit binding");
-requireText(config, '"ZITE_YVP_APP_KEY"', "Server-only YouVersion secret requirement");
-forbidText(config, /"ai"\s*:|"TURNSTILE_SECRET"/, "AI binding or AI-only Turnstile requirement in the translation-only Worker");
-requireText(deployment, "workflow_dispatch:", "Manual-only translation deployment");
-requireText(deployment, "inputs.confirm_deployment == true", "Explicit deployment confirmation");
-requireText(deployment, "secrets.ZITE_YVP_APP_KEY", "Server-side YouVersion secret injection");
-requireText(deployment, "secrets.API_BIBLE_KEY", "Optional server-side API.Bible secret injection");
-requireText(deployment, "secret put API_BIBLE_KEY", "Optional API.Bible Worker secret installation");
-requireText(deployment, "wrangler deploy --config wrangler.translations.jsonc", "Dedicated translation Worker deployment");
-forbidText(aiDeployment, /ZITE_YVP_APP_KEY/, "YouVersion app key in the AI-only deployment workflow");
-requireText(packaging, '"zuriel-translations.js"', "Android web packaging entry");
-requireText(serviceWorker, '"./zuriel-translations.js"', "Offline shell precache entry");
-
-const translationConfig = JSON.parse(config);
-assert.equal(translationConfig.name, "zuriel-bible-translations");
-assert.equal(translationConfig.main, "src/translation-worker.js");
-assert.ok(translationConfig.ratelimits.some(binding =>
-  binding.name === "TRANSLATION_RATE_LIMIT" && binding.simple.limit === 20 && binding.simple.period === 60
-));
-assert.deepEqual(translationConfig.secrets.required, ["ZITE_YVP_APP_KEY"]);
-assert.equal(translationConfig.vars.ALLOWED_ORIGINS, "https://sarkiaimana-cmyk.github.io,https://localhost");
-assert.equal(Boolean(translationConfig.ai), false, "Translation-only Worker must not bind an AI provider.");
-assert.equal(Boolean(translationConfig.vars.TURNSTILE_SITE_KEY), false, "Translation-only Worker must not depend on AI Turnstile.");
-
-const release = JSON.parse(version);
-const installed = updates.match(/const APP_VERSION = "([^"]+)";/);
-assert.ok(installed, "In-app update centre must declare its installed version.");
-assert.equal(installed[1], release.version, "In-app update version must match version.json.");
-const releaseParts = release.version.split(".");
-assert.equal(releaseParts.length, 3, "Release metadata must use MAJOR.MINOR.PATCH numbering.");
-assert.ok(releaseParts.every(part => part.length > 0 && Number.isInteger(Number(part)) && String(Number(part)) === part),
-  "Release version components must be non-negative integers without leading zeroes.");
-assert.ok(serviceWorker.includes('const CACHE_NAME = "zuriel-bible-offline-v'),
-  "The service worker must use an explicitly versioned offline cache.");
-
-if (failures.length) {
-  console.error("Online translation reader checks failed:");
-  failures.forEach(item => console.error(" - " + item));
-  process.exitCode = 1;
-} else {
-  console.log("Online translation reader checks passed: YouVersion and API.Bible provider selection, separate translation-only Worker, server-only credentials, manual deployment, origin/rate-limit enforcement, no offline storage, publisher attribution, and Android/offline packaging.");
-}
+const paths=["zuriel-translations.js","zuriel-home.js","index.html","sw.js","scripts/prepare-web.mjs"];
+const entries=await Promise.all(paths.map(async path=>[path,await readFile(path,"utf8")]));
+const files=Object.fromEntries(entries);
+const reader=files["zuriel-translations.js"],home=files["zuriel-home.js"];
+const labels=["KJV","GNT","AMP","LB/LT","TPT","NLT","NET","NIV","ESV","NASB","CSB","NKJV"];
+for(const label of labels)assert.ok(reader.includes('label:"'+label+'"'),"Missing version "+label);
+assert.ok(reader.includes('bar.id="zurielOfflineVersions"'));
+assert.ok(reader.includes("reader.insertBefore(bar,reader.firstChild)"),"Version row must appear at the top of reader");
+assert.ok(reader.includes("if(!edition.available){status.textContent="),"Unavailable edition labels must remain tappable and explain why text cannot switch.");
+assert.ok(reader.includes("button.dataset.available=edition.available?\"true\":\"false\""),"Each edition must expose its real offline availability state.");
+assert.ok(reader.includes('available:true'),"Bundled KJV must be enabled");
+assert.ok(!/fetch\s*\(|localStorage|sessionStorage|indexedDB|caches\./i.test(reader),"Translation selector must not fetch or store unlicensed text");
+assert.ok(home.includes('id="zurielIdentityHero"'),"WHO HE IS hero must remain");
+assert.ok(home.includes('id="zurielOpenBookScripture"'),"Open Book card must remain");
+assert.ok(home.includes('id="zurielOpenBookPrayer"'),"Open Book prayer must remain");
+assert.ok(files["index.html"].includes('src="zuriel-translations.js"'),"Offline selector script must load");
+assert.ok(!files["index.html"].includes("ZURIEL_TRANSLATION_API_BASE"),"Reader must not require an online translation endpoint.");
+assert.ok(!files["index.html"].includes("secure YouVersion comparison panel"),"Reader must not advertise online comparison as its offline translation feature.");
+assert.ok(files["index.html"].includes("Only the King James Version is currently installed for offline reading."),"Unavailable translation choices must be explained honestly.");
+assert.ok(files["sw.js"].includes('"./zuriel-translations.js"'),"Offline selector must be cached");
+assert.ok(files["scripts/prepare-web.mjs"].includes('"zuriel-translations.js"'),"Offline selector must be packaged");
+console.log("Offline translation selector checks passed: all 12 labels are present, KJV alone is enabled until licensed corpora are bundled, online fetching is absent, and both Home cards remain.");

@@ -474,6 +474,108 @@ footer {
   #zurielVerseActions .zuriel-verse-action { font-size:12px; min-height:42px; }
 }
 
+
+/* Clean, high-contrast Bible and study presentation */
+#zurielVerseActions {
+  background:#ffffff !important;
+  color:#17212b !important;
+  border:1px solid #d7dde3 !important;
+  border-radius:12px !important;
+  box-shadow:0 8px 24px rgba(15,23,42,.14) !important;
+}
+#zurielVerseActions p { color:#263442 !important; }
+#zurielVerseActions .zuriel-action-group {
+  background:#f7f8fa !important;
+  border:1px solid #d8dee5 !important;
+}
+#zurielVerseActions .zuriel-action-group summary { color:#17212b !important; }
+#zurielVerseActions .zuriel-verse-action {
+  background:#ffffff !important;
+  color:#17212b !important;
+  border:1px solid #cfd6de !important;
+  border-radius:8px !important;
+  font-weight:600 !important;
+}
+#zurielVerseActions .zuriel-action-close {
+  background:#243b53 !important;
+  color:#ffffff !important;
+  border-color:#243b53 !important;
+}
+#zurielVerseActions #zurielStudyPanel {
+  background:#ffffff !important;
+  color:#17212b !important;
+}
+#zurielVerseActions #zurielStudyPanel > h2,
+#zurielVerseActions #zurielStudyPanel > p,
+#zurielVerseActions #zurielStudyPanel .study-body,
+#zurielVerseActions #zurielStudyPanel .study-body p,
+#zurielVerseActions #zurielStudyPanel .study-small,
+#zurielVerseActions #zurielStudyPanel .study-source,
+#zurielVerseActions #zurielStudyPanel label,
+#zurielVerseActions #zurielStudyPanel summary {
+  color:#17212b !important;
+}
+#zurielVerseActions #zurielStudyPanel details {
+  background:#ffffff !important;
+  border:0 !important;
+  border-bottom:1px solid #e1e5e9 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+}
+#zurielVerseActions #zurielStudyPanel .study-verse,
+#zurielVerseActions #zurielStudyPanel .lexicon-entry,
+#zurielVerseActions #zurielStudyPanel .highlight-tools,
+#zurielVerseActions #zurielStudyPanel #zurielInlineWordStudy,
+#zurielVerseActions #zurielStudyPanel #zurielLexiconDetails {
+  background:#f7f8fa !important;
+  color:#17212b !important;
+  border:1px solid #dce1e6 !important;
+  box-shadow:none !important;
+}
+#zurielVerseActions #zurielStudyPanel .original-script,
+#zurielVerseActions #zurielStudyPanel .original-gloss,
+#zurielVerseActions #zurielStudyPanel .word-meta,
+#zurielVerseActions #zurielStudyPanel .word-selection-label,
+#zurielVerseActions #zurielStudyPanel .study-source {
+  color:#263442 !important;
+}
+#zurielVerseActions #zurielStudyPanel .study-action,
+#zurielVerseActions #zurielStudyPanel .study-secondary,
+#zurielVerseActions #zurielStudyPanel .study-action-button,
+#zurielVerseActions #zurielStudyPanel button.study-link {
+  background:#ffffff !important;
+  color:#17212b !important;
+  border:1px solid #cfd6de !important;
+  box-shadow:none !important;
+}
+#zurielVerseActions #zurielStudyPanel input,
+#zurielVerseActions #zurielStudyPanel textarea,
+#zurielVerseActions #zurielStudyPanel select {
+  background:#ffffff !important;
+  color:#17212b !important;
+  border:1px solid #aeb8c2 !important;
+}
+#zurielInlineWordStudy,
+#zurielInlineWordStudy .inline-word-result {
+  background:#ffffff !important;
+  color:#17212b !important;
+  border:1px solid #dce1e6 !important;
+  box-shadow:none !important;
+}
+#zurielInlineWordStudy h3,
+#zurielInlineWordStudy .inline-word-original,
+#zurielInlineWordStudy .inline-word-gloss,
+#zurielInlineWordStudy .inline-word-meta { color:#17212b !important; }
+#zurielStudyPanel #zurielFaithResponse,
+#zurielStudyPanel #zurielFaithResponse p,
+#zurielStudyPanel #zurielCommentaryResults,
+#zurielStudyPanel #zurielCommentaryResults p { color:#17212b !important; }
+#message .verse.zuriel-selected-verse {
+  background:#f1f4f7 !important;
+  border-left:3px solid #526579 !important;
+  outline:0 !important;
+}
+
 </style>
 </head>
 
@@ -1113,8 +1215,14 @@ async function openChapter(book, chapter) {
     if (!selectedVerseInfo) return;
     if (action === "Share card") {
       if (window.ZurielLibrary && typeof window.ZurielLibrary.openGloryVerse === "function") {
+        // Reveal the Library destination before opening its nested Studio page.
+        const libraryNavigation = document.querySelector('#zurielBottomNavigation [data-section="library"]');
+        if (libraryNavigation) libraryNavigation.click();
+        const faithResponse = window.ZurielFaithContent &&
+          typeof window.ZurielFaithContent.find === "function"
+          ? window.ZurielFaithContent.find(selectedVerseInfo.reference) : null;
         const opened = window.ZurielLibrary.openGloryVerse(
-          selectedVerseInfo.reference, selectedVerseInfo.text, "King James Version"
+          selectedVerseInfo.reference, selectedVerseInfo.text, "King James Version", faithResponse || {}
         );
         if (!opened) status.textContent = "The Glory Verse Studio could not be opened.";
       } else {
@@ -1123,12 +1231,7 @@ async function openChapter(book, chapter) {
       return;
     }
     if (action === "Compare translations") {
-      window.dispatchEvent(new CustomEvent("zuriel:compare-verse", {
-        detail: { book: book, chapter: chapter, verse: selectedVerseInfo.verse,
-          reference: selectedVerseInfo.reference, text: selectedVerseInfo.text }
-      }));
-      status.textContent = "Selected " + selectedVerseInfo.reference +
-        ". The secure YouVersion comparison panel will open when its service is configured.";
+      status.textContent = "Only the King James Version is currently installed for offline reading. Other editions will appear here when their verified, licensed offline texts are included.";
       return;
     }
     if (!window.ZurielStudy || typeof window.ZurielStudy.openForReference !== "function") {
@@ -1663,7 +1766,6 @@ loadBibleBooks();
   <script src="zuriel-settings.js"></script>
   <script src="zuriel-updates.js"></script>
   <script src="zuriel-audio.js" defer></script>
-  <script>window.ZURIEL_TRANSLATION_API_BASE = "";</script>
   <script src="zuriel-translations.js"></script>
   
 

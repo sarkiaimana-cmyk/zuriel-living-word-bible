@@ -777,6 +777,7 @@
       }
     `;
     document.head.appendChild(style);
+    /* Preserve the photographic Open Book artwork and original two-page design. */
     document.head.appendChild(identityHeroStyle);
 
     /* TOP RETURN BAR */
@@ -862,19 +863,19 @@
           <button type="button" class="home-button" id="zurielOpenBookCreateCard">🖼️ Create & Share Card</button>
         </div>
         <p id="zurielOpenBookCardStatus" class="home-subtitle" aria-live="polite"></p>
-        <details open>
+        <details>
           <summary>🙏 Prayer</summary>
           <p id="zurielOpenBookPrayer"></p>
         </details>
-        <details open>
+        <details>
           <summary>🕊️ Faith Confession</summary>
           <p id="zurielOpenBookConfession"></p>
         </details>
-        <details open>
+        <details>
           <summary>🌿 Inspiration</summary>
           <p id="zurielOpenBookInspiration"></p>
         </details>
-        <details open>
+        <details>
           <summary>🕯️ Light</summary>
           <p id="zurielOpenBookLight">Thy word is a lamp unto my feet, and a light unto my path. — Psalm 119:105</p>
         </details>
@@ -1331,10 +1332,12 @@
     const identityNext = document.getElementById("zurielIdentityNext");
     const identityProgress = document.getElementById("zurielIdentityProgress");
     let identityIndex = Math.floor(Date.now() / 86400000) % identityScriptures.length;
+    try { const rawSaved = localStorage.getItem("zurielIdentityScriptureIndex"); const saved = rawSaved === null ? NaN : Number(rawSaved); if (Number.isInteger(saved) && saved >= 0 && saved < identityScriptures.length) identityIndex = saved; } catch (error) {}
     let identityRenderToken = 0;
 
     async function renderIdentityScripture(nextIndex) {
       identityIndex = (nextIndex + identityScriptures.length) % identityScriptures.length;
+      try { localStorage.setItem("zurielIdentityScriptureIndex", String(identityIndex)); } catch (error) {}
       const item = identityScriptures[identityIndex];
       const token = ++identityRenderToken;
       identityHero.style.opacity = "0.82";
@@ -1387,7 +1390,15 @@
       renderIdentityScripture(identityIndex + 1);
     });
     renderIdentityScripture(identityIndex);
-    // Revelation changes only when the reader taps "Next Revelation".
+    // Rotate the WHO HE IS revelation and exact Scripture together, separately
+    // from the daily verse and the photographic Open Book sharing card.
+    const IDENTITY_ROTATION_MS = 20000;
+    window.setInterval(function () {
+      if (document.visibilityState === "visible" && currentSection === "home") {
+        renderIdentityScripture(identityIndex + 1);
+      }
+    }, IDENTITY_ROTATION_MS);
+
     /* CHANGING HOME SCRIPTURE */
 
     const verseText = document.getElementById("zurielHomeVerse");
@@ -1395,6 +1406,7 @@
 
     function displayVerse(index) {
       verseIndex = (index + verses.length) % verses.length;
+      try { localStorage.setItem("zurielHomeVerseIndex", String(verseIndex)); } catch (error) {}
       verseText.style.opacity = "0";
 
       window.setTimeout(function () {
@@ -1451,10 +1463,25 @@
       return dayNumber % verses.length;
     }
 
-    displayVerse(getDailyVerseIndex());
+    let initialVerseIndex = getDailyVerseIndex();
+    try { const rawSaved = localStorage.getItem("zurielHomeVerseIndex"); const saved = rawSaved === null ? NaN : Number(rawSaved); if (Number.isInteger(saved) && saved >= 0 && saved < verses.length) initialVerseIndex = saved; } catch (error) {}
+    displayVerse(initialVerseIndex);
     verseText.setAttribute("aria-live", "polite");
     verseReference.setAttribute("aria-live", "polite");
 
+    // Match the Zite reference behaviour: rotate the homepage verse every 15 seconds.
+    // Pause while the app is backgrounded or another app section is open.
+    const HOME_VERSE_ROTATION_MS = 15000;
+    window.setInterval(function () {
+      if (document.visibilityState !== "visible" || currentSection !== "home") return;
+      displayVerse(verseIndex + 1);
+      renderOpenBookFaithCard();
+    }, HOME_VERSE_ROTATION_MS);
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState === "visible" && currentSection === "home") {
+        renderOpenBookFaithCard();
+      }
+    });
     // Scripture for Today remains stable until the reader chooses another verse.
     /* SCRIPTURE-LINKED OPEN BOOK: use the curated faith response for the
        exact reference. Never manufacture a prayer or declaration when no
@@ -1552,7 +1579,7 @@
         try {
           const passage = await window.getBibleVerseText(verse.reference);
           const scriptureText = String(passage && passage.text || "")
-            .replace(/^\\d+\\.\\s*/, "").trim();
+            .replace(/^\d+\.\s*/, "").trim();
           if (!scriptureText) throw new Error("The exact KJV verse text could not be loaded.");
           if (!window.ZurielLibrary ||
               typeof window.ZurielLibrary.openGloryVerse !== "function") {

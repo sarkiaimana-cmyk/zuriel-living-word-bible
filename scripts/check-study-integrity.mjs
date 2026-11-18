@@ -206,8 +206,14 @@ if (!study.includes("let activeWordContextCleanup = null;") ||
 if (home.includes('document.getElementById("zurielHomeOpenBible")')) {
   failures.push(["retired Home control binding", "the removed zurielHomeOpenBible element must not be bound"]);
 }
-if (home.includes("setInterval(")) {
-  failures.push(["stable Home Scripture display", "Home revelations and daily Scripture must not rotate automatically"]);
+const homeRotationTimer = home.match(/const HOME_VERSE_ROTATION_MS = 15000;\s*window\.setInterval\(function \(\) \{([\s\S]*?)\}, HOME_VERSE_ROTATION_MS\);/);
+if (!homeRotationTimer) {
+  failures.push(["Zite-style Home Scripture rotation", "the homepage Scripture must rotate every 15 seconds"]);
+} else if (!homeRotationTimer[1].includes("displayVerse(verseIndex + 1)") ||
+           !homeRotationTimer[1].includes("renderOpenBookFaithCard()") ||
+           homeRotationTimer[1].includes("identityIndex") ||
+           homeRotationTimer[1].includes("renderIdentityScripture")) {
+  failures.push(["synchronised Home Scripture rotation", "only the selected homepage verse and its Open Book response may rotate; identity revelations stay manual"]);
 }
 for (const id of ["zurielIdentityTitle","zurielIdentityVerse","zurielNextVerse","zurielHomeVerse","zurielOpenBookScripture","zurielOpenBookPrayer","zurielOpenBookConfession","zurielOpenBookInspiration"]) {
   if (!home.includes('id="' + id + '"')) failures.push(["Home dashboard control: " + id, "missing from Home dashboard markup"]);

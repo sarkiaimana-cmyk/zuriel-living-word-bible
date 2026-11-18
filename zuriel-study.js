@@ -252,6 +252,9 @@
   const KJV_API = "https://bible.helloao.org/api/eng_kjv/";
   const LEXICON_API = "https://bible.helloao.org/api/d/stepbible-lexicon/lexicon/";
   const CROSS_REFERENCE_API = "https://bible.helloao.org/api/d/open-cross-ref/";
+  const COMMENTARY_API = "https://bible.helloao.org/api/c/";
+  const COMMENTARY_CATALOG_API = "https://bible.helloao.org/api/available_commentaries.json";
+  let commentaryRequest = 0;
   const API_BOOK_CODES = [
     "GEN","EXO","LEV","NUM","DEU","JOS","JDG","RUT","1SA","2SA",
     "1KI","2KI","1CH","2CH","EZR","NEH","EST","JOB","PSA","PRO",
@@ -313,10 +316,22 @@
       throw new Error("Study resource is temporarily unavailable.");
     }
 
-    const data = await response.json();
+    // Clone the response before reading its body. Response.clone() throws
+    // after json() consumes the stream, which would silently prevent offline
+    // persistence of every newly downloaded study resource.
+    let cacheCopy = null;
     if (studyCache) {
       try {
-        await studyCache.put(url, response.clone());
+        cacheCopy = response.clone();
+      } catch (cacheError) {
+        cacheCopy = null;
+      }
+    }
+
+    const data = await response.json();
+    if (studyCache && cacheCopy) {
+      try {
+        await studyCache.put(url, cacheCopy);
       } catch (cacheError) {
         // Some browsers restrict cross-origin cache writes; online study
         // remains available and the app continues without persistent cache.
@@ -502,6 +517,135 @@
       });
       target.appendChild(retry);
     }
+  }
+
+  const COMMENTARY_LICENSE_ALLOWLIST = new Set([
+    "https://creativecommons.org/publicdomain/mark/1.0/",
+    "https://creativecommons.org/licenses/by-sa/4.0/"
+  ]);
+
+  function commentaryText(value) {
+    if (typeof value === "string") return value.trim();
+    if (Array.isArray(value)) return value.map(commentaryText).filter(Boolean).join("\n\n");
+    if (value && typeof value === "object") {
+      return commentaryText(value.text || value.content || value.value || "");
+    }
+    return "";
+  }
+
+  function resetCommentaryForSelection() {
+    ++commentaryRequest;
+    const button = document.getElementById("zurielLoadCommentary");
+    const results = document.getElementById("zurielCommentaryResults");
+    if (button) button.disabled = false;
+    if (results) results.textContent = selectedReference
+      ? "Selected " + selectedReference.book + " " + selectedReference.chapter + ":" + selectedReference.verse + ". Load a commentary source to read its note."
+      : "Select a verse, choose a commentary source and load its notes.";
+  }
+
+  async function initialiseCommentaryLibrary() {
+    const sourceSelect = document.getElementById("zurielCommentarySource");
+    const loadButton = document.getElementById("zurielLoadCommentary");
+    const results = document.getElementById("zurielCommentaryResults");
+    if (!sourceSelect || !loadButton || !results) return;
+
+    try {
+      const catalog = await fetchStudyJson(COMMENTARY_CATALOG_API);
+      const sources = Array.isArray(catalog.commentaries) ? catalog.commentaries : [];
+      const approved = sources.filter(function (source) {
+        return source && source.language === "eng" &&
+          COMMENTARY_LICENSE_ALLOWLIST.has(String(source.licenseUrl || ""));
+      }).sort(function (a, b) {
+        return String(a.name || a.id).localeCompare(String(b.name || b.id));
+      });
+      if (!approved.length) throw new Error("No English commentary with a recognised public-domain or CC BY-SA licence was returned.");
+
+      sourceSelect.replaceChildren();
+      approved.forEach(function (source) {
+        const option = document.createElement("option");
+        option.value = source.id;
+        option.textContent = source.name || source.englishName || source.id;
+        sourceSelect.appendChild(option);
+      });
+      if (approved.some(source => source.id === "matthew-henry")) {
+        sourceSelect.value = "matthew-henry";
+      }
+      results.textContent = approved.length + " English commentary sources are available. Choose one and load notes for the selected verse. Only sources with recognised public-domain or CC BY-SA licence URLs are listed.";
+    } catch (error) {
+      results.textContent = "The commentary catalogue could not be loaded. Connect to the internet once and try again. Existing Bible reading and offline dictionary functions remain available.";
+    }
+
+    loadButton.addEventListener("click", async function () {
+      const requestId = ++commentaryRequest;
+      const ref = selectedReference;
+      const commentaryId = sourceSelect.value;
+      if (!ref) {
+        results.textContent = "Select a Bible verse first, then load its commentary.";
+        return;
+      }
+      const code = apiBookCode(ref.book);
+      if (!code || !commentaryId) {
+        results.textContent = "The selected book or commentary source is not available.";
+        return;
+      }
+
+      loadButton.disabled = true;
+      results.textContent = "Loading published commentary for " + ref.book + " " + ref.chapter + ":" + ref.verse + "…";
+      try {
+        const data = await fetchStudyJson(COMMENTARY_API + commentaryId + "/" + code + "/" + ref.chapter + ".simple.json");
+        if (requestId !== commentaryRequest) return;
+        const source = data.commentary || {};
+        if (source.language && source.language !== "eng") {
+          throw new Error("This commentary is not in English.");
+        }
+        if (!COMMENTARY_LICENSE_ALLOWLIST.has(String(source.licenseUrl || ""))) {
+          throw new Error("The source licence could not be verified against Zuriel's approved licence list.");
+        }
+        const chapter = data.chapter || {};
+        const entries = Array.isArray(chapter.content) ? chapter.content : [];
+        const verseEntry = entries.find(function (entry) {
+          return entry && Number(entry.number) === Number(ref.verse) &&
+            (!entry.type || entry.type === "verse");
+        });
+        const note = verseEntry ? commentaryText(verseEntry.content) : "";
+        results.replaceChildren();
+
+        const heading = document.createElement("h3");
+        heading.textContent = (source.name || source.englishName || commentaryId) + " — " + ref.book + " " + ref.chapter + ":" + ref.verse;
+        results.appendChild(heading);
+        if (note) {
+          note.split(/\n{2,}/).map(part => part.trim()).filter(Boolean).forEach(function (paragraphText) {
+            const paragraph = document.createElement("p");
+            paragraph.textContent = paragraphText;
+            results.appendChild(paragraph);
+          });
+        } else {
+          const missing = document.createElement("p");
+          missing.textContent = "This commentary has no verse-specific note for " + ref.book + " " + ref.chapter + ":" + ref.verse + ". This is a source-coverage gap, not a missing Bible verse.";
+          results.appendChild(missing);
+        }
+
+        const credit = document.createElement("p");
+        credit.className = "study-small";
+        credit.textContent = "Source: " + (source.name || source.englishName || commentaryId) + ". Licence: " + source.licenseUrl + (source.licenseNotes ? " " + source.licenseNotes : "") + " Commentary is a historical study resource and should be compared with Scripture in context; it is not Scripture itself.";
+        results.appendChild(credit);
+        if (source.website) {
+          const link = document.createElement("a");
+          link.href = source.website;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.textContent = "View source information";
+          results.appendChild(link);
+        }
+      } catch (error) {
+        if (requestId !== commentaryRequest) return;
+        results.textContent = !navigator.onLine
+          ? "This commentary chapter has not been saved on this device yet. Connect once to download it; Zuriel will then keep the chapter in its study-resource cache for offline use."
+          : (error.message || "The selected commentary could not be loaded. Try another source or verse.");
+      } finally {
+        if (requestId === commentaryRequest) loadButton.disabled = false;
+      }
+    });
   }
 
   function normalizeStrongs(value) {
@@ -1509,6 +1653,25 @@
     ].join("");
     document.head.appendChild(verseMenuStyle);
 
+    const cleanStudyStyle = document.createElement("style");
+    cleanStudyStyle.id = "zurielCleanStudyPresentation";
+    cleanStudyStyle.textContent = [
+      "#zurielStudyPanel{background:#fff!important;color:#17212b!important;border:1px solid #d8dee5!important;box-shadow:none!important}",
+      "#zurielStudyPanel h2,#zurielStudyPanel h3,#zurielStudyPanel p,#zurielStudyPanel label,#zurielStudyPanel summary,#zurielStudyPanel .study-small,#zurielStudyPanel .study-source,#zurielStudyPanel .word-selection-label{color:#17212b!important}",
+      "#zurielStudyPanel .study-verse,#zurielStudyPanel .lexicon-entry,#zurielStudyPanel .highlight-tools,#zurielStudyPanel #zurielInlineWordStudy,#zurielStudyPanel #zurielLexiconDetails{background:#f7f8fa!important;color:#17212b!important;border:1px solid #dce1e6!important;box-shadow:none!important}",
+      "#zurielStudyPanel .original-script,#zurielStudyPanel .original-gloss,#zurielStudyPanel .word-meta{color:#17212b!important}",
+      "#zurielStudyPanel .study-action,#zurielStudyPanel .study-secondary,#zurielStudyPanel .study-action-button,#zurielStudyPanel button.study-link{background:#fff!important;color:#17212b!important;border:1px solid #cfd6de!important;box-shadow:none!important}",
+      "#zurielStudyPanel input,#zurielStudyPanel textarea,#zurielStudyPanel select{background:#fff!important;color:#17212b!important;border:1px solid #aeb8c2!important}",
+      "#zurielStudyPanel details{background:#fff!important;border:0!important;border-bottom:1px solid #e1e5e9!important;border-radius:0!important;box-shadow:none!important}",
+      "#zurielStudyPanel #zurielFaithResponse,#zurielStudyPanel #zurielFaithResponse p,#zurielStudyPanel #zurielCommentaryResults,#zurielStudyPanel #zurielCommentaryResults p{color:#17212b!important}",
+      "#zurielStudyPanel #zurielFaithResponse *{background:transparent!important;color:#17212b!important;border-color:#e1e5e9!important;border-radius:0!important;box-shadow:none!important;text-shadow:none!important}",
+      "#zurielInlineWordStudy,#zurielInlineWordStudy .inline-word-result{background:#fff!important;color:#17212b!important;border:1px solid #dce1e6!important;box-shadow:none!important}",
+      "#zurielInlineWordStudy h3,#zurielInlineWordStudy .inline-word-original,#zurielInlineWordStudy .inline-word-gloss,#zurielInlineWordStudy .inline-word-meta{color:#17212b!important}",
+      "#zurielStudyPanel[data-mode=verse-menu],#zurielStudyPanel[data-mode=verse-detail]{background:#fff!important;color:#17212b!important;border:1px solid #d8dee5!important;box-shadow:0 8px 24px rgba(15,23,42,.14)!important}",
+      "#zurielVerseActionMenu button{background:#fff!important;color:#17212b!important;border:1px solid #cfd6de!important}"
+    ].join("");
+    document.head.appendChild(cleanStudyStyle);
+
     const panel = document.createElement("section");
     panel.id = "zurielStudyPanel";
 
@@ -1573,6 +1736,21 @@
             biblical context. Compare Scripture with Scripture.</p>
             <p>Detailed explanations will be developed passage by passage
             using checked study resources.</p>
+          </div>
+        </details>
+
+        <details id="zurielCommentaryLibrary">
+          <summary>📚 Published Bible Commentaries</summary>
+          <div class="study-body">
+            <p>Read source-attributed commentary for the selected verse. Commentary availability varies by book and chapter. Once downloaded, a chapter is saved for later offline study on this device.</p>
+            <label for="zurielCommentarySource">Commentary source</label>
+            <select id="zurielCommentarySource" aria-label="Choose a Bible commentary">
+              <option value="matthew-henry">Matthew Henry Bible Commentary</option>
+            </select>
+            <button type="button" class="study-action-button" id="zurielLoadCommentary">Load commentary for selected verse</button>
+            <div id="zurielCommentaryResults" aria-live="polite">
+              <p>Select a verse, choose a commentary source and load its notes.</p>
+            </div>
           </div>
         </details>
 
@@ -1779,7 +1957,7 @@
     const verseActionMenu=document.createElement("nav");
     verseActionMenu.id="zurielVerseActionMenu";
     verseActionMenu.setAttribute("aria-label","Selected verse study actions");
-    const verseActions=[["Prayer and faith",2],["Meaning and commentary",1],["Hebrew and Greek words",3],["Biblical dictionary",4],["Connected Scriptures",5],["Concordance",6],["Theology and deeper study",7],["Topical Scripture connections",8],["Personal study notes",9]];
+    const verseActions=[["Prayer and faith",3],["Meaning and commentary",1],["Published commentaries",2],["Hebrew and Greek words",4],["Biblical dictionary",5],["Connected Scriptures",6],["Concordance",7],["Theology and deeper study",8],["Topical Scripture connections",9],["Personal study notes",10]];
     verseActions.forEach(function(action){const button=document.createElement("button");button.type="button";button.textContent=action[0];button.addEventListener("click",function(){const sections=Array.from(panel.querySelectorAll("#zurielStudySections > details"));const selected=sections[action[1]];if(!selected)return;sections.forEach(function(section){section.open=section===selected;section.removeAttribute("data-zuriel-active");});selected.setAttribute("data-zuriel-active","true");panel.dataset.mode="verse-detail";selected.scrollIntoView({behavior:"smooth",block:"nearest"});});verseActionMenu.appendChild(button);});
     const fullStudyAction=document.createElement("button");fullStudyAction.type="button";fullStudyAction.textContent="Open Full Study Centre";fullStudyAction.addEventListener("click",function(){panel.dataset.mode="verse";panel.querySelectorAll("#zurielStudySections > details").forEach(function(section){section.removeAttribute("data-zuriel-active");});panel.querySelector("#zurielStudySections").scrollIntoView({behavior:"smooth",block:"start"});});verseActionMenu.appendChild(fullStudyAction);
     const actionBack=document.createElement("button");actionBack.type="button";actionBack.id="zurielVerseActionBack";actionBack.textContent="Back to verse actions";actionBack.addEventListener("click",function(){panel.dataset.mode="verse-menu";panel.querySelectorAll("#zurielStudySections > details").forEach(function(section){section.open=false;section.removeAttribute("data-zuriel-active");});panel.scrollTop=0;});verseActionMenu.appendChild(actionBack);
@@ -1814,6 +1992,8 @@
       layout.appendChild(message);
       layout.appendChild(panel);
     }
+
+    initialiseCommentaryLibrary();
 
     // Searchable offline biblical dictionary.
     const dictionarySearch = panel.querySelector("#zurielDictionarySearch");
@@ -2408,7 +2588,7 @@
 
       const intro = document.createElement("p");
       intro.className = "study-small zuriel-faith-disclaimer";
-      intro.style.cssText = "display:block;margin:0 0 14px;padding:11px 12px;border-left:4px solid #d9bd79;border-radius:7px;background:#fff4d6;color:#26384d;font-size:13px;font-weight:700;line-height:1.55;opacity:1";
+      intro.style.cssText = "display:block;margin:0 0 14px;font-size:13px;font-weight:600;line-height:1.55;opacity:1";
       intro.textContent = "A Scripture-connected devotional response for " + entry.reference + ". These are original study reflections, not quotations from the Bible.";
       target.appendChild(intro);
 
@@ -2770,6 +2950,7 @@
           verse: verse,
           text: verseText
         };
+        resetCommentaryForSelection();
         selectedEnglishWord = englishWord || "";
         selectedEnglishWordIndex = Number.isInteger(wordIndex) ? wordIndex : -1;
 
@@ -2836,6 +3017,7 @@
           verse: verse,
           text: verseText
         };
+        resetCommentaryForSelection();
         selectedEnglishWord = englishWord || "";
         selectedEnglishWordIndex = Number.isInteger(wordIndex) ? wordIndex : -1;
         if (!selectedEnglishWord) return false;

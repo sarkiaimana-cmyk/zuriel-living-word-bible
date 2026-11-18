@@ -20,7 +20,13 @@ requireText('title: "The Glorious King", reference: "Psalm 24:10"', "The gloriou
 requireText('window.getBibleVerseText(item.reference)', "Exact offline KJV text retrieval");
 requireText('dashboard.style.setProperty("--zuriel-home-wallpaper"', "Synchronized verse and wallpaper changes");
 requireText('homeWallpaperSet[item.wallpaper]', "A distinct wallpaper assignment for each identity");
-if (home.includes("setInterval(") || home.includes("}, 15000)")) failures.push("Identity revelations must not change automatically on a timer.");
+const homeVerseTimer = home.match(/const HOME_VERSE_ROTATION_MS = 15000;\s*window\.setInterval\(function \(\) \{([\s\S]*?)\}, HOME_VERSE_ROTATION_MS\);/);
+if (!homeVerseTimer) failures.push("The separate homepage Scripture rotation timer is missing.");
+else if (homeVerseTimer[1].includes("identityIndex") || homeVerseTimer[1].includes("renderIdentityScripture")) failures.push("The daily Scripture timer must not control the identity hero.");
+const identityTimer = home.match(/const IDENTITY_ROTATION_MS = 20000;\s*window\.setInterval\(function \(\) \{([\s\S]*?)\}, IDENTITY_ROTATION_MS\);/);
+if (!identityTimer) failures.push("The WHO HE IS revelation and Scripture must rotate automatically on the home screen.");
+else if (!identityTimer[1].includes("renderIdentityScripture(identityIndex + 1)")) failures.push("Automatic identity rotation must advance the revelation and its Scripture together.");
+else if (!identityTimer[1].includes('currentSection === "home"')) failures.push("Identity rotation must pause when the user leaves Home.");
 requireText('identityNext.addEventListener("click"', "Manual identity revelation selection");
 requireText('@media(prefers-reduced-motion:reduce)', "Reduced-motion accessibility support");
 requireText('identityNext.addEventListener("click"', "Manual rotation control");

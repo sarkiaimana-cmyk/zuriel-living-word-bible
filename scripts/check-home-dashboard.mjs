@@ -1,12 +1,13 @@
 import { readFile } from "node:fs/promises";
 
-const [home, library, index, worker, version, updates] = await Promise.all([
+const [home, library, index, worker, version, updates, faith] = await Promise.all([
   readFile(new URL("../zuriel-home.js", import.meta.url), "utf8"),
   readFile(new URL("../zuriel-library.js", import.meta.url), "utf8"),
   readFile(new URL("../index.html", import.meta.url), "utf8"),
   readFile(new URL("../sw.js", import.meta.url), "utf8"),
   readFile(new URL("../version.json", import.meta.url), "utf8"),
-  readFile(new URL("../zuriel-updates.js", import.meta.url), "utf8")
+  readFile(new URL("../zuriel-updates.js", import.meta.url), "utf8"),
+  readFile(new URL("../zuriel-faith-content.js", import.meta.url), "utf8")
 ]);
 const failures = [];
 function requireText(source, fragment, label) {
@@ -33,6 +34,13 @@ requireText(index, "viewport-fit=cover", "Safe-area viewport configuration");
 requireText(home, "linear-gradient(180deg,#f5f2e9 0%,#edf3f8 48%,#e8eff7 100%)", "The bright ivory and blue home background");
 requireText(home, "His Words.. My life.. My Victory", "The approved Open Book card headline");
 requireText(home, "window.getBibleVerseText(verse.reference)", "Open Book exact offline KJV passage retrieval");
+const homeVerseBlock = home.match(/const verses = \[([\s\S]*?)\];/);
+const homeVerseReferences = homeVerseBlock ? Array.from(homeVerseBlock[1].matchAll(/reference: "([^"]+)"/g), match => match[1].toLowerCase()) : [];
+const faithReferences = new Set(Array.from(faith.matchAll(/["\']?reference["\']?\s*:\s*"([^"]+)"/g), match => match[1].toLowerCase()));
+const missingFaithResponses = homeVerseReferences.filter(reference => !faithReferences.has(reference));
+if (missingFaithResponses.length) failures.push("Every rotating home verse needs its own prayer, declaration, affirmation, confession and inspiration: " + missingFaithResponses.join(", "));
+for (const id of ["zurielOpenBookPrayer","zurielOpenBookConfession","zurielOpenBookInspiration"]) requireText(home, id, "Working Open Book faith response panel " + id);
+
 requireText(home, 'id="zurielHomeVerseCollection"', "Three simultaneously visible Home Scriptures");
 requireText(home, 'data-reference="Psalm 23:1"', "First offline Home Scripture");
 requireText(home, 'data-reference="Isaiah 41:10"', "Second offline Home Scripture");
@@ -41,7 +49,11 @@ requireText(home, 'window.getBibleVerseText(reference)', "Exact offline KJV text
 requireText(home, 'data-home-read-reference', "Direct navigation from each Home Scripture card");
 
 requireText(home, "faithCardRenderToken", "Protection against out-of-order Scripture loads");
-forbidText(home, "setInterval(", "Automatic Home Scripture rotation");
+requireText(home, "const HOME_VERSE_ROTATION_MS = 15000;", "Zite-matched 15-second home Scripture rotation");
+requireText(home, 'document.visibilityState !== "visible" || currentSection !== "home"', "Pause Scripture rotation when the app is backgrounded or another section is open");
+requireText(home, "renderOpenBookFaithCard();", "Synchronise the Open Book with each rotating home Scripture");
+requireText(home, "window.setInterval(function ()", "Automatic home Scripture rotation timer");
+
 requireText(home, 'identityNext.addEventListener("click"', "Manual identity revelation selection");
 requireText(home, 'zurielNextVerse', "Manual daily Scripture selection");
 requireText(home, 'id="zurielOpenBookCreateCard"', "Visible Open Book share-card action");

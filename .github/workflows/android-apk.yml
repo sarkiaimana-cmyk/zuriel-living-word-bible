@@ -67,8 +67,11 @@ jobs:
       - name: Verify complete offline KJV corpus counts
         run: node scripts/check-kjv-corpus-counts.mjs
 
-      - name: Validate secure online translation reader
+      - name: Validate offline translation selector and edition availability
         run: node scripts/check-translations-reader.mjs
+
+      - name: Validate translation provider key boundary and offline-only policy
+        run: node scripts/check-translation-key-boundary.mjs
 
       - name: Test translation-only Worker route isolation
         run: node --test ai-worker/test/translation-worker.test.mjs ai-worker/test/api-bible.test.mjs
@@ -90,6 +93,10 @@ jobs:
 
       - name: Exercise original-language resource cache
         run: node scripts/test-study-resource-cache.mjs
+      - name: Verify translation API key security and offline fallback
+        run: node scripts/check-translation-key-boundary.mjs
+      - name: Validate published commentary reader
+        run: node scripts/check-live-commentary.mjs
       - name: Test exact KJV original-word linking
         run: node scripts/test-original-word-linking.mjs
       - name: Validate responsive contextual word-study panel
