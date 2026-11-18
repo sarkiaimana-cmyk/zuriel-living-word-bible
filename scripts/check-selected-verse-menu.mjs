@@ -29,7 +29,7 @@ const wordSelection = source.indexOf('panel.dataset.mode = "word";');
 if (verseSelection < 0 || wordSelection < 0 || verseSelection === wordSelection) {
   throw new Error("Verse selection and word selection must retain separate contextual modes.");
 }
-const actionMap = source.match(/const verseActions=\\[(.*?)\\];/);
+const actionMap = source.match(/const verseActions=\[(.*?)\];/);
 if (!actionMap || !actionMap[1].includes('["Published commentaries",2]') || !actionMap[1].includes('["Hebrew and Greek words",4]') || !actionMap[1].includes('["Personal study notes",10]')) {
   throw new Error("Selected-verse actions must point to their correct sections after adding the commentary library.");
 }
