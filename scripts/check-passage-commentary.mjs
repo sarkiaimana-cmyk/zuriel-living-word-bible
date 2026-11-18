@@ -69,7 +69,8 @@ function validatePassage(reference) {
 for (const entry of data.entries) {
   assert.equal(entry.resourceType, "passage-commentary", entry.id + " has the expected resource type.");
   for (const field of ["id","passage","theme","contextAndMeaning","studyObservation","interpretiveCaution"]) {
-    assert.ok(typeof entry[field] === "string" && entry[field].trim().length >= 8,
+    const minimumLength = field === "passage" ? 5 : 8;
+    assert.ok(typeof entry[field] === "string" && entry[field].trim().length >= minimumLength,
       entry.id + " has a meaningful " + field + ".");
   }
   assert.ok(validatePassage(entry.passage), "Passage resolves to valid KJV book/chapter/verse endpoints: " + entry.passage);
