@@ -16,10 +16,19 @@
     { id: "rose", label: "Rose", color: "#f19ab5", ink: "#4a1528" },
     { id: "tangerine", label: "Tangerine", color: "#f5a45d", ink: "#492006" }
   ];
+  const FONT_FAMILIES = [
+    { id: "georgia", label: "Georgia", stack: 'Georgia, "Times New Roman", serif' },
+    { id: "times", label: "Times New Roman", stack: '"Times New Roman", Times, serif' },
+    { id: "arial", label: "Arial", stack: 'Arial, Helvetica, sans-serif' },
+    { id: "verdana", label: "Verdana", stack: 'Verdana, Geneva, sans-serif' },
+    { id: "trebuchet", label: "Trebuchet MS", stack: '"Trebuchet MS", Arial, sans-serif' },
+    { id: "system", label: "System Sans", stack: 'system-ui, -apple-system, "Segoe UI", sans-serif' }
+  ];
   const DEFAULTS = {
     theme: "navy",
-    paper: "ivory",
+    paper: "white",
     fontSize: 18,
+    fontFamily: "georgia",
     highlight: "amber",
     cardFinish: "ivory",
     reducedMotion: false
@@ -51,22 +60,30 @@
     return COLORS.find(item => item.id === id) || COLORS[0];
   }
 
+  function fontFor(id) {
+    return FONT_FAMILIES.find(item => item.id === id) || FONT_FAMILIES[0];
+  }
+
   function applySettings() {
     const main = document.querySelector("main");
     const message = document.getElementById("message");
     const root = document.documentElement;
     const highlight = colorFor(settings.highlight);
+    const readerFont = fontFor(settings.fontFamily);
 
     root.dataset.zurielTheme = settings.theme;
     root.dataset.zurielPaper = settings.paper;
     root.style.setProperty("--zuriel-highlight", highlight.color);
     root.style.setProperty("--zuriel-highlight-ink", highlight.ink);
     root.style.setProperty("--zuriel-reader-font-size", settings.fontSize + "px");
+    root.style.setProperty("--zuriel-reader-font-family", readerFont.stack);
     root.style.setProperty("--zuriel-card-finish", settings.cardFinish);
 
     if (message) {
       message.style.setProperty("--zuriel-reading-font-size", settings.fontSize + "px");
+      message.style.fontFamily = readerFont.stack;
       message.dataset.zurielPaper = settings.paper;
+      message.dataset.zurielFont = readerFont.id;
     }
     if (main) main.dataset.zurielTheme = settings.theme;
 
@@ -91,6 +108,13 @@
       html[data-zuriel-theme="forest"] #zurielSettingsPanel { background:linear-gradient(155deg,#16483b,#0d2c27); }
       html[data-zuriel-theme="warm"] #zurielSettingsPanel { background:linear-gradient(155deg,#6d5634,#3e3325); }
       html[data-zuriel-theme="night"] #zurielSettingsPanel { background:linear-gradient(155deg,#111d31,#080f1b); }
+      #message[data-zuriel-paper="white"] {
+        background: #ffffff;
+        color: #202b3a;
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        padding: 12px;
+      }
       #message[data-zuriel-paper="ivory"] {
         background: #fbf8ef;
         color: #24334a;
@@ -121,6 +145,7 @@
         padding: 12px;
       }
       #message[data-zuriel-paper="night"] .verse { border-bottom-color:#34445b; }
+      #message .verse { font-family:var(--zuriel-reader-font-family,Georgia,serif); }
       #message .verse.zuriel-nav-highlight,
       #message .verse.zuriel-selected-verse,
       #message .verse.zuriel-search-highlight {
@@ -210,6 +235,7 @@
         </div>
         <label for="zurielPaperChoice">Reading page / paper texture</label>
         <select id="zurielPaperChoice">
+          <option value="white">Clean white page</option>
           <option value="ivory">Classic ivory paper</option>
           <option value="parchment">Soft parchment</option>
           <option value="linen">Linen paper</option>
@@ -219,6 +245,15 @@
 
       <div class="settings-group">
         <h3>Scripture typography</h3>
+        <label for="zurielFontFamily">Reading font</label>
+        <select id="zurielFontFamily">
+          <option value="georgia">Georgia — classic book style</option>
+          <option value="times">Times New Roman — traditional</option>
+          <option value="arial">Arial — clean and simple</option>
+          <option value="verdana">Verdana — open and spacious</option>
+          <option value="trebuchet">Trebuchet MS — soft modern</option>
+          <option value="system">System Sans — device default</option>
+        </select>
         <label for="zurielFontRange">Reading text size <span class="settings-value" id="zurielFontValue"></span></label>
         <input id="zurielFontRange" type="range" min="16" max="28" step="1">
         <p class="settings-footnote">Adjusts the Bible text without reducing the size of navigation controls.</p>
@@ -257,6 +292,7 @@
       button.setAttribute("aria-pressed", String(button.dataset.theme === settings.theme));
     });
     panel.querySelector("#zurielPaperChoice").value = settings.paper;
+    panel.querySelector("#zurielFontFamily").value = fontFor(settings.fontFamily).id;
     panel.querySelector("#zurielFontRange").value = String(settings.fontSize);
     panel.querySelector("#zurielFontValue").textContent = settings.fontSize + " px";
     panel.querySelector("#zurielCardFinish").value = settings.cardFinish;
@@ -334,6 +370,12 @@
     const paper = panel.querySelector("#zurielPaperChoice");
     paper.addEventListener("change", function () {
       settings.paper = paper.value;
+      saveSettings();
+    });
+
+    const fontFamily = panel.querySelector("#zurielFontFamily");
+    fontFamily.addEventListener("change", function () {
+      settings.fontFamily = fontFor(fontFamily.value).id;
       saveSettings();
     });
 
