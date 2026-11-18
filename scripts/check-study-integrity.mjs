@@ -26,7 +26,7 @@ const concordanceSandbox = {
   bibleBooks: [{ name: "Genesis" }],
   bookCodes: { Genesis: "GEN" },
   loadKJV: async () => ({ GEN: [
-    ["Faith, faith, FAITH.", "faithfulness faith.", "faith faith faith."]
+    ["I am I.", "Faith, faith, FAITH.", "faithfulness faith.", "faith faith faith."]
   ] })
 };
 vm.runInNewContext(concordanceSource, concordanceSandbox, { timeout: 1000 });
@@ -38,6 +38,13 @@ assert.equal(wordConcordance[0].occurrences, 3, "Each verse reports its own occu
 const phraseConcordance = await concordanceSandbox.window.__ZurielBibleSearch.search("faith faith", 200, "phrase");
 assert.equal(phraseConcordance.totalMatches, 1, "Phrase search counts verses containing the exact phrase.");
 assert.equal(phraseConcordance.totalOccurrences, 1, "Phrase search counts non-overlapping phrase occurrences.");
+const shortWordConcordance = await concordanceSandbox.window.__ZurielBibleSearch.search("I", 200, "word");
+assert.equal(shortWordConcordance.totalOccurrences, 2, "One-letter exact words remain searchable.");
+await assert.rejects(
+  concordanceSandbox.window.__ZurielBibleSearch.search("faith faith", 200, "word"),
+  /one whole word/,
+  "Multiword input must use phrase mode."
+);
 
 // Validate the actual KJV data against the reader's book-code map. A single
 // mismatched code blocks loadKJV() for the entire Bible, not just that book.
@@ -132,10 +139,11 @@ const readerChecks = [
   ["verse rows are keyboard focusable", 'paragraph.setAttribute("tabindex", "0")'],
   ["Enter and Space open verse actions", 'event.key === "Enter" || event.key === " "'],
   ["previous selected verse resets its expanded state", 'node.setAttribute("aria-expanded", "false")'],
-  ["concordance supports exact whole-word searches", 'new RegExp("(^|[^a-z0-9])" + escaped + "([^a-z0-9]|$)", "i")'],
-  ["concordance supports exact phrase searches", "searchable.includes(term)"],
+  ["concordance supports exact whole-word searches", 'new RegExp("(^|[^a-z0-9])" + escaped + "(?=$|[^a-z0-9])", "gi")'],
+  ["concordance supports exact phrase searches", "searchable.indexOf(term, position)"],
   ["concordance normalizes Unicode and diacritics", '.normalize("NFD")'],
-  ["concordance reports total occurrence count", "visible.totalMatches = matches.length"],
+  ["concordance reports matching verse count", "visible.totalMatches = matches.length"],
+  ["concordance reports total word and phrase occurrences", "visible.totalOccurrences = totalOccurrences"],
   ["concordance preserves original KJV verse wording", "text: verseOriginal.replace"],
   ["concordance supports up to 200 matches", "Math.min(limit, mode ? 200 : 50)"],
   ["concordance scans all verses before applying the display limit", "const visible = matches.slice(0, maximum)"]
