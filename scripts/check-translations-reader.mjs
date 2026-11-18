@@ -61,6 +61,10 @@ requireText(deployment, "secrets.ZITE_YVP_APP_KEY", "Server-side YouVersion secr
 requireText(deployment, "wrangler deploy --config wrangler.translations.jsonc", "Dedicated translation Worker deployment");
 forbidText(aiDeployment, /ZITE_YVP_APP_KEY/, "YouVersion app key in the AI-only deployment workflow");
 requireText(packaging, '"zuriel-translations.js"', "Android web packaging entry");
+requireText(packaging, '"zuriel-config.js"', "Android public translation configuration packaging");
+requireText(serviceWorker, '"./zuriel-config.js"', "Offline public translation configuration cache");
+assert.ok(index.indexOf('src="zuriel-config.js"') < index.indexOf('src="zuriel-translations.js"'),
+  "Public translation endpoint setting must load before the comparison reader.");
 requireText(serviceWorker, '"./zuriel-translations.js"', "Offline shell precache entry");
 
 const translationConfig = JSON.parse(config);
