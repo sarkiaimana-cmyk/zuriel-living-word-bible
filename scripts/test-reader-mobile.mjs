@@ -190,16 +190,79 @@ try {
   await page.waitForFunction(() =>
     (document.getElementById("zurielPassageCommentaryResults")?.textContent || "").includes("Creation")
   );
+
+  // Historical commentary is source-filtered, verse-specific and cached for later offline reading.
+  const historicalSection = page.locator("#zurielHistoricalCommentarySection");
+  await historicalSection.locator("summary").click();
+  const historicalSelect = page.locator("#zurielHistoricalCommentarySource");
+  await page.waitForFunction(() => {
+    const select = document.getElementById("zurielHistoricalCommentarySource");
+    return select && !select.disabled && Array.from(select.options).some(option => option.value === "john-gill");
+  }, { timeout:20000 });
+  await historicalSelect.selectOption("john-gill");
+  await page.locator("#zurielLoadHistoricalCommentary").click();
+  await page.waitForFunction(() =>
+    (document.getElementById("zurielHistoricalCommentaryResults")?.textContent || "")
+      .includes("Historical commentary test note for Genesis 1:1.")
+  );
+  const historicalCache = await page.evaluate(async () => {
+    const cache = await caches.open("zuriel-study-resources-v1");
+    return {
+      catalogue: Boolean(await cache.match("https://bible.helloao.org/api/available_commentaries.json")),
+      chapter: Boolean(await cache.match("https://bible.helloao.org/api/c/john-gill/GEN/1.simple.json"))
+    };
+  });
+  assert.deepEqual(historicalCache,{catalogue:true,chapter:true});
+  assert.ok((await page.locator("#zurielHistoricalCommentaryResults").textContent()).includes("Public Domain Mark 1.0"));
   await page.keyboard.press("Escape");
 
-  // The comparison panel fails safely until the licensed proxy is deployed.
+  // Concordance counts every occurrence and supports short whole words.
+  await firstVerse.click();
+  const concordanceTools = actions.locator(".zuriel-action-group").filter({hasText:"Reading Tools"});
+  await concordanceTools.locator("summary").click();
+  await actions.locator(".zuriel-verse-action").filter({hasText:"Full Study Centre"}).click();
+  await page.locator("#zurielConcordanceQuery").waitFor({state:"visible"});
+  await page.locator("#zurielConcordanceMode").selectOption("word");
+  await page.locator("#zurielConcordanceQuery").fill("faith");
+  await page.locator("#zurielConcordanceSearch").click();
+  await page.waitForFunction(() =>
+    /Found \d+ occurrences across \d+ matching KJV verses/.test(
+      document.getElementById("zurielConcordanceResults")?.textContent || ""
+    )
+  );
+  assert.match(await page.locator("#zurielConcordanceResults").textContent(),/occurrences across/);
+  await page.locator("#zurielConcordanceQuery").fill("I");
+  await page.locator("#zurielConcordanceSearch").click();
+  await page.waitForFunction(() =>
+    /Found \d+ occurrences across \d+ matching KJV verses/.test(
+      document.getElementById("zurielConcordanceResults")?.textContent || ""
+    )
+  );
+  await page.keyboard.press("Escape");
+
+  // The secure YouVersion client compares the exact selected verse beside offline KJV.
   await firstVerse.click();
   const toolsGroup = actions.locator(".zuriel-action-group").filter({hasText:"Reading Tools"});
   await toolsGroup.locator("summary").click();
   await actions.locator(".zuriel-verse-action").filter({hasText:"Compare translations"}).click();
-  await page.locator("#zurielTranslationCompare").waitFor({state:"visible"});
-  const translationStatus = await page.locator("#zurielTranslationCompare .ztc-status").textContent();
-  assert.match(translationStatus,/not connected yet|not been connected yet/i);
+  const translationPanel = page.locator("#zurielTranslationCompare");
+  await translationPanel.waitFor({state:"visible"});
+  const translationSelect = translationPanel.locator("select");
+  await page.waitForFunction(() =>
+    Array.from(document.querySelector("#zurielTranslationCompare select")?.options || [])
+      .some(option => option.value === "3034")
+  , { timeout:20000 });
+  await translationSelect.selectOption("3034");
+  await translationPanel.locator("button").click();
+  await page.waitForFunction(() =>
+    (document.querySelector("#zurielTranslationCompare .ztc-column:nth-child(2) .ztc-passage")?.textContent || "")
+      .includes("In the beginning God created the heavens and the earth.")
+  );
+  assert.ok((await translationPanel.locator(".ztc-column:first-child .ztc-passage").textContent()).includes("In the beginning"));
+  assert.ok((await translationPanel.locator(".ztc-attribution").textContent()).includes("Test Bible Publisher"));
+  assert.equal(await translationPanel.locator(".ztc-attribution a").getAttribute("href"),"https://publisher.example");
+  assert.ok(translationRequests.some(path => path === "/api/youversion/bibles/3034/passages/GEN.1.1?format=text"),
+    "A verse comparison must request GEN.1.1, not the whole GEN.1 chapter.");
   await page.keyboard.press("Escape");
 
   // Confirm the offline shell has the Bible and commentary assets, then read them with network disabled.
