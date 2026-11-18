@@ -60,6 +60,9 @@ const checks = [
   ["dictionary searches curated aliases", "const aliases = Array.isArray(entry[2]) ? entry[2].map(normalize) : []"],
   ["dictionary displays alternate index terms", '"Also searchable as: " + entry[2].join(" • ")'],
   ["dictionary exposes expanded language and theology notes", "const advanced = entry[3]"],
+  ["dictionary Scripture references render as navigable buttons", "dictionary-reference-links"],
+  ["dictionary references open the correct chapter", "await window.openChapter(bookName, chapter)"],
+  ["dictionary references activate the first cited verse", "window.selectBibleVerse(verse)"],
   ["dictionary distinguishes theological significance from lexical note", '["Theological significance", advanced.theology]'],
   ["dictionary includes interpretive cautions", '["Interpretive caution", advanced.caution]'],
   ["concordance interface is part of the Study Centre", 'id="zurielConcordanceQuery"'],
@@ -302,14 +305,14 @@ assert.ok(dictionaryTitles.length >= 200, "dictionary contains at least 200 cura
 assert.equal(new Set(dictionaryTitles).size, dictionaryTitles.length, "dictionary entry titles are unique");
 const aliasEntries = dictionaryData.filter(entry => Array.isArray(entry[2]) && entry[2].length);
 const advancedEntries = dictionaryData.filter(entry => entry[3] && entry[3].languageNote && entry[3].theology && entry[3].caution && entry[3].passages);
-assert.ok(advancedEntries.length >= 55, "dictionary contains at least 55 expanded contextual language and theology entries");
+assert.ok(advancedEntries.length >= 70, "dictionary contains at least 70 expanded contextual language and theology entries");
 for (const title of ["Disciple", "Forgiveness", "Sanctification", "Stewardship", "Wisdom", "Adoption", "Anointing", "Apostle", "Blessing", "Discernment", "Justice", "Lament", "Sabbath", "Tabernacle", "Testimony", "Zion"]) {
   const entry = dictionaryData.find(item => item[0] === title);
   assert.ok(entry && entry[3] && entry[3].languageNote && entry[3].theology && entry[3].caution && entry[3].passages,
     "dictionary contains a complete contextual study for " + title);
 }
 assert.ok(aliasEntries.length >= 25, "dictionary has at least 25 entries with curated alternate terms");
-const expandedDictionaryTerms = ["Disciple", "Forgiveness", "Sanctification", "Stewardship", "Wisdom", "Adoption", "Anointing", "Apostle", "Blessing", "Discernment", "Justice", "Lament", "Sabbath", "Tabernacle", "Testimony", "Zion", "Angel", "Amen", "Baptism", "Blasphemy", "Conscience", "Doxology", "Election", "Flesh", "Glory", "Messiah", "Parable", "Pentecost", "Perseverance", "Prophecy", "Propitiation", "Sacrifice"];
+const expandedDictionaryTerms = ["Disciple", "Forgiveness", "Sanctification", "Stewardship", "Wisdom", "Adoption", "Anointing", "Apostle", "Blessing", "Discernment", "Justice", "Lament", "Sabbath", "Tabernacle", "Testimony", "Zion", "Angel", "Amen", "Baptism", "Blasphemy", "Conscience", "Doxology", "Election", "Flesh", "Glory", "Messiah", "Parable", "Pentecost", "Perseverance", "Prophecy", "Propitiation", "Sacrifice", "Trinity", "Holy Spirit", "Justification by faith", "Providence", "Omniscience", "Reconciliation", "Ascension", "Transfiguration", "Parousia", "Koinonia", "Imputation", "Atoning sacrifice", "Theophany", "Eschatology", "Epiphany", "Covenant faithfulness"];
 for (const title of expandedDictionaryTerms) {
   const entry = dictionaryData.find(item => item[0] === title);
   assert.ok(entry && entry[3] && entry[3].languageNote && entry[3].theology && entry[3].caution && entry[3].passages,
