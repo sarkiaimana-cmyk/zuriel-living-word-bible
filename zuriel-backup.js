@@ -443,6 +443,9 @@
         exportedAt: new Date().toISOString(),
         data: collect()
       };
+      // Validate the complete export before encryption. This prevents a backup
+      // from being created that the restore path would later reject.
+      validateBackup(payload);
       const envelope = await encryptBackup(payload, password);
       const blob = new Blob([JSON.stringify(envelope, null, 2)], { type: "application/json" });
       if (blob.size > MAX_FILE) throw new Error("This backup is larger than the 8 MB restore limit. Reduce stored records before exporting.");
