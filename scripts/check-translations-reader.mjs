@@ -66,6 +66,7 @@ requireText(handler, "bibleMetadata.copyright", "Bible-level publisher copyright
 requireText(handler, "bibleMetadata.promotional_content", "Bible-level publisher attribution fallback");
 requireText(handler, "bibleMetadata.publisher_name", "Publisher name from Bible metadata");
 requireText(handler, "bibleMetadata.publisher_url", "Publisher website from Bible metadata");
+requireText(handler, 'redirect: "error"', "Prevent App Key forwarding across redirects");
 requireText(config, '"name": "zuriel-bible-translations"', "Separate translation Worker name");
 requireText(config, '"TRANSLATION_RATE_LIMIT"', "Translation rate-limit binding");
 requireText(config, '"ZITE_YVP_APP_KEY"', "Server-only YouVersion secret requirement");
