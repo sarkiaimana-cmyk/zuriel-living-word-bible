@@ -2845,11 +2845,14 @@
             ? verseEntry.content.map(part => typeof part === "string" ? part :
               part && typeof part.text === "string" ? part.text : "").join("").trim()
             : "";
+        const chapterIntroduction = data && data.chapter &&
+          typeof data.chapter.introduction === "string" ? data.chapter.introduction.trim() : "";
+        const displayText = commentaryText || chapterIntroduction;
 
-        if (!commentaryText) {
+        if (!displayText) {
           status.textContent = (source.englishName || source.name) +
-            " has no note for " + reference.book + " " + reference.chapter + ":" + reference.verse +
-            ". This source has partial verse coverage; try another source.";
+            " has no verse note or chapter introduction for " + reference.book + " " +
+            reference.chapter + ". This source has partial coverage; try another source.";
           return;
         }
 
@@ -2857,9 +2860,11 @@
         article.className = "study-word zuriel-commentary-entry";
         const heading = document.createElement("h3");
         heading.textContent = (source.englishName || source.name) + " — " +
-          reference.book + " " + reference.chapter + ":" + reference.verse;
+          (commentaryText
+            ? reference.book + " " + reference.chapter + ":" + reference.verse
+            : reference.book + " " + reference.chapter + " — Chapter introduction (not verse-specific)");
         const body = document.createElement("p");
-        body.textContent = commentaryText;
+        body.textContent = displayText;
         const attribution = document.createElement("p");
         attribution.className = "study-small";
         attribution.textContent = "Source: " + (source.englishName || source.name) +
@@ -2880,8 +2885,9 @@
           article.appendChild(licenseNote);
         }
         results.appendChild(article);
-        status.textContent = "Loaded the source's note for " + reference.book + " " +
-          reference.chapter + ":" + reference.verse + ". The original Scripture remains the primary text.";
+        status.textContent = commentaryText
+          ? "Loaded the source's verse note for " + reference.book + " " + reference.chapter + ":" + reference.verse + ". The original Scripture remains the primary text."
+          : "No verse-specific note was available; showing the source's chapter introduction instead.";
       } catch (error) {
         if (requestId !== historicalCommentaryRequest) return;
         status.textContent = error && error.message
