@@ -1,4 +1,4 @@
 {
-  "version": "1.4.55",
-  "releaseNotes": "Improved mobile home navigation so all seven destinations remain visible and tappable, added Android safe-area and bottom-content clearance, and refreshed the offline cache to deliver the navigation repair. Preserved the existing dashboard, reading and study modules. YouVersion remains prepared but will not be marked live until its secure Worker is deployed with the required owner-managed credentials and the app endpoint is configured."
+  "version": "1.4.56",
+  "releaseNotes": "Introduces a focused selected-verse action menu so readers can open prayer and faith, meaning and commentary, Hebrew/Greek word study, dictionary, connected Scriptures, concordance, theology, topical connections, or personal notes one section at a time. Preserves separate word-study mode and refreshes the offline cache."
 }
