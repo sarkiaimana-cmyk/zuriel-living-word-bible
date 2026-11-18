@@ -26,7 +26,8 @@ const files = [
   "zuriel-translations.js",
   "version.json",
   "sw.js",
-  "kjv.72bec70fcd.json"
+  "kjv.72bec70fcd.json",
+  "zuriel-passage-commentary-expansion.json"
 ];
 
 await rm("www", { recursive: true, force: true });
