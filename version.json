@@ -1,4 +1,4 @@
 {
-  "version": "1.4.59",
-  "releaseNotes": "Adds direct Android Gallery saving for Glory Verse Affirmation open-book PNG cards in a dedicated Zuriel Living Word Bible album. Keeps system image sharing and browser Downloads fallback, with no broad photo-library permissions required for the app-owned album."
+  "version": "1.4.61",
+  "releaseNotes": "Adds complete bounded pagination for publisher-authorised YouVersion English Bible versions and automatic discovery of the verified translation Worker endpoint. The protected deployment workflow saves the public endpoint only after a live smoke test; the YouVersion key remains server-side. Offline KJV remains available and licensed online text is not cached."
 }
