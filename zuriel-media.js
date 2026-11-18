@@ -42,7 +42,7 @@
 
   async function saveImage(options) {
     if (!isAvailable()) {
-      throw new Error("Direct Gallery saving is available in the installed Zuriel Android app. Use Download PNG in your browser.");
+      throw new Error("Direct Gallery saving is available in the installed Android app. Use Download PNG in your browser.");
     }
 
     const dataUrl = String(options && options.dataUrl || "");
