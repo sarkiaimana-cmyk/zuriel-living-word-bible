@@ -201,7 +201,31 @@
         " — " + ((payload.version && (payload.version.abbreviation || payload.version.title)) || "Selected translation");
       passage.textContent = item.content;
       passage.hidden = false;
-      attribution.textContent = [copyright, promotional, "Online text is not stored for offline use."].filter(Boolean).join(" ");
+      const publisherName = payload.version && typeof payload.version.publisher_name === "string"
+        ? payload.version.publisher_name.trim() : "";
+      attribution.textContent = [
+        publisherName ? "Publisher: " + publisherName : "",
+        copyright,
+        promotional,
+        "Online text is not stored for offline use."
+      ].filter(Boolean).join(" ");
+      const publisherUrlText = payload.version && typeof payload.version.publisher_url === "string"
+        ? payload.version.publisher_url.trim() : "";
+      if (publisherUrlText) {
+        try {
+          const publisherUrl = new URL(publisherUrlText);
+          if (publisherUrl.protocol === "https:") {
+            const separator = document.createTextNode(" ");
+            const publisherLink = node("a", "", "Publisher website");
+            publisherLink.href = publisherUrl.href;
+            publisherLink.target = "_blank";
+            publisherLink.rel = "noopener noreferrer";
+            attribution.append(separator, publisherLink);
+          }
+        } catch (error) {
+          // An invalid publisher URL is omitted; copyright text remains visible.
+        }
+      }
       attribution.hidden = false;
       status("Online passage loaded. The KJV remains your offline Bible text.");
     } catch (error) {
