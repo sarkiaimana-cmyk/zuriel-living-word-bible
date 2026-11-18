@@ -280,10 +280,13 @@ try {
       cache:true,
       kjv:Boolean(await cache.match("./kjv.72bec70fcd.json")),
       commentary:Boolean(await cache.match("./zuriel-passage-commentary-expansion.json")),
+      study:Boolean(await cache.match("./zuriel-study.js")),
+      translations:Boolean(await cache.match("./zuriel-translations.js")),
+      config:Boolean(await cache.match("./zuriel-config.js")),
       gallery:Boolean(await cache.match("./zuriel-gallery.js"))
     };
   });
-  assert.deepEqual(cachedAssets,{cache:true,kjv:true,commentary:true,gallery:true});
+  assert.deepEqual(cachedAssets,{cache:true,kjv:true,commentary:true,study:true,translations:true,config:true,gallery:true});
   await context.setOffline(true);
   await page.reload({waitUntil:"domcontentloaded"});
   await page.locator('#zurielBottomNavigation button[data-section="read"]').click();
@@ -319,7 +322,7 @@ try {
   assert.equal(pageErrors.length,0,"No uncaught JavaScript errors: " + pageErrors.join(" | "));
   await context.setOffline(false);
   await context.close();
-  console.log("Mobile browser checks passed: Pixel 7 viewport, full KJV chapter, verse actions, dictionary search, passage commentary, translation-not-configured fallback, service-worker asset cache and offline KJV/commentary reading.");
+  console.log("Mobile browser checks passed: Pixel 7 viewport, full KJV chapter, contextual verse actions, dictionary and occurrence-aware concordance, public-domain historical commentary, cached study resources, exact-verse YouVersion comparison beside offline KJV, and offline reading.");
 } finally {
   if (browser) await browser.close();
   await new Promise(resolveClose => server.close(resolveClose));
