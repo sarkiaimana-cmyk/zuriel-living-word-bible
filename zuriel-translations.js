@@ -389,8 +389,8 @@
       ? window.ZurielBibleBookCode(currentChapter.book)
       : null;
     const validVersionId = selectedProvider === "youversion"
-      ? /^\\d+$/.test(selectedVersionId)
-      : /^[a-f0-9]{16}-\\d{2}$/i.test(selectedVersionId);
+      ? /^\d+$/.test(selectedVersionId)
+      : /^[a-f0-9]{16}-\d{2}$/i.test(selectedVersionId);
     if (!bookCode || !validVersionId) {
       status("Choose a valid authorised translation.");
       return;
