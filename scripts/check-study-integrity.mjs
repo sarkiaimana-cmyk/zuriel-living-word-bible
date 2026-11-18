@@ -413,6 +413,24 @@ try {
   failures.push(["curated cross-reference integrity", error.message]);
 }
 
+const lifeApplicationChecks = [
+  ["guided Life Application panel", 'id="zurielLifeApplication"'],
+  ["Life Application is rendered for the selected verse", "renderLifeApplication(selectedReference)"],
+  ["Life Application displays the selected reference", 'heading.textContent = "Apply " + ref.book + " " + ref.chapter + ":" + ref.verse'],
+  ["Life Application retains the selected Scripture text", "selectedText.textContent = ref.text ||"],
+  ["Life Application prompts observation", '["Observe", "What does this verse actually say?'],
+  ["Life Application prompts historical understanding", '["Understand", "What did these words mean to the original audience?'],
+  ["Life Application prompts a response to God", '["Respond to God",'],
+  ["Life Application prompts practical obedience", '["Practise the truth",'],
+  ["Life Application includes love and responsibility", '["Love and responsibility",'],
+  ["Life Application reviews the surrounding context", "Read the surrounding paragraph before applying this verse."],
+  ["Life Application preserves existing personal notes", "field.value = field.value.trim()"],
+  ["Life Application saves into the existing personal study field", 'getElementById("zurielStudyApplication")']
+];
+for (const [label, fragment] of lifeApplicationChecks) {
+  if (!study.includes(fragment)) failures.push([label, "missing from zuriel-study.js"]);
+}
+
 if (failures.length) {
   console.error("Original-language study integrity checks failed:");
   for (const [label, detail] of failures) console.error(" - " + label + ": " + detail);
