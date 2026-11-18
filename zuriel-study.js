@@ -1061,6 +1061,24 @@
         font-size:13px;
         line-height:1.6;
       }
+      #zurielStudyPanel .dictionary-reference-links {
+        display:flex;
+        flex-wrap:wrap;
+        gap:7px;
+        margin:7px 0 10px;
+      }
+      #zurielStudyPanel .dictionary-reference-link {
+        min-height:38px;
+        margin:0;
+        padding:7px 10px;
+        border:1px solid #a9bacb;
+        border-radius:8px;
+        background:#fff;
+        color:#174c78;
+        font:600 12px/1.35 Arial,sans-serif;
+        text-align:left;
+      }
+      #zurielStudyPanel .dictionary-reference-link:disabled { opacity:.55; }
       #zurielStudyPanel {
         position:sticky;
         top:14px;
@@ -1884,9 +1902,56 @@
             if (!field[1]) return;
             const subheading = document.createElement("h4");
             subheading.textContent = field[0];
-            const paragraph = document.createElement("p");
-            paragraph.textContent = field[1];
-            details.append(subheading, paragraph);
+            details.appendChild(subheading);
+            if (field[0] === "Related Scripture passages") {
+              const links = document.createElement("div");
+              links.className = "dictionary-reference-links";
+              const status = document.createElement("p");
+              status.className = "study-small";
+              status.setAttribute("role", "status");
+              status.setAttribute("aria-live", "polite");
+              String(field[1]).split(";").map(value => value.trim()).filter(Boolean).forEach(function (reference) {
+                const match = reference.match(/^(.+?)\s+(\d+)(?:[–-]\d+)?(?::(\d+)(?:[–-]\d+)?(?:,\s*\d+(?:[–-]\d+)?)*)?$/);
+                if (!match) {
+                  const label = document.createElement("span");
+                  label.textContent = reference;
+                  links.appendChild(label);
+                  return;
+                }
+                const bookName = match[1].trim() === "Psalm" ? "Psalms" : match[1].trim();
+                const chapter = Number(match[2]);
+                const verse = match[3] ? Number(match[3]) : null;
+                const button = document.createElement("button");
+                button.type = "button";
+                button.className = "dictionary-reference-link";
+                button.textContent = reference;
+                button.addEventListener("click", async function () {
+                  button.disabled = true;
+                  status.textContent = "Opening " + reference + "…";
+                  try {
+                    if (typeof window.openChapter !== "function") {
+                      throw new Error("The Bible reader is not ready. Open the Read section and try again.");
+                    }
+                    await window.openChapter(bookName, chapter);
+                    if (verse && (typeof window.selectBibleVerse !== "function" ||
+                        !window.selectBibleVerse(verse))) {
+                      throw new Error("The requested verse could not be activated.");
+                    }
+                    status.textContent = "Opened " + (verse ? bookName + " " + chapter + ":" + verse : bookName + " " + chapter) + " in the Bible reader.";
+                  } catch (error) {
+                    status.textContent = error.message || "This Scripture reference could not be opened.";
+                  } finally {
+                    button.disabled = false;
+                  }
+                });
+                links.appendChild(button);
+              });
+              details.append(links, status);
+            } else {
+              const paragraph = document.createElement("p");
+              paragraph.textContent = field[1];
+              details.appendChild(paragraph);
+            }
           });
           const sourceNote = document.createElement("p");
           sourceNote.className = "study-small";
