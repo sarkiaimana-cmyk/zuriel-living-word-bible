@@ -12,6 +12,11 @@ for (const title of ["Easton's Bible Dictionary","Smith's Bible Dictionary","Str
 assert.match(source, /Source and rights notes/);
 assert.match(source, /Catalogue record only/);
 assert.match(source, /complete text is not currently bundled/);
+assert.match(source, /Zuriel's Offline Study Tools/);
+assert.match(source, /Open Offline Biblical Dictionary/);
+assert.match(source, /Open KJV Concordance/);
+assert.match(source, /window\.ZurielStudy\.openSection\("Biblical Dictionary"\)/);
+assert.match(source, /window\.ZurielStudy\.openSection\("Bible Concordance"\)/);
 assert.match(source, /No resources match that search/);
 assert.match(source, /aria-label",\s*"Search dictionaries and commentaries"/);
 assert.match(source, /@media\(max-width:520px\)/);
