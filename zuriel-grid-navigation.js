@@ -136,8 +136,19 @@
     const version = button.dataset.version;
     translationBar.querySelectorAll(".zrt-tab").forEach(item => { const active = item === button; item.classList.toggle("is-active", active); item.setAttribute("aria-pressed", String(active)); });
     if (version === "KJV") { const onlinePanel = document.getElementById("zurielTranslationCompare"); if (onlinePanel) onlinePanel.hidden = true; const message = document.getElementById("readerStatus"); if (message) message.textContent = "King James Version selected. Your offline Bible is ready."; return; }
-    if (window.ZurielTranslations && typeof window.ZurielTranslations.selectVersion === "function") await window.ZurielTranslations.selectVersion(version);
-    else { const message = document.getElementById("readerStatus"); if (message) message.textContent = "Online translation selection is loading. The offline KJV remains available."; }
+    if (window.ZurielTranslations && typeof window.ZurielTranslations.selectVersion === "function") {
+      const selected = await window.ZurielTranslations.selectVersion(version);
+      if (!selected) {
+        translationBar.querySelectorAll(".zrt-tab").forEach(item => {
+          const active = item.dataset.version === "KJV";
+          item.classList.toggle("is-active", active);
+          item.setAttribute("aria-pressed", String(active));
+        });
+      }
+    } else {
+      const message = document.getElementById("readerStatus");
+      if (message) message.textContent = "Online translation selection is loading. The offline KJV remains available.";
+    }
   });
 
   const launch = document.createElement("button");
