@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       confirm_deployment:
-        description: Confirm Cloudflare Workers Free plan and YouVersion publisher access have been checked
+        description: Confirm Cloudflare Workers plan and all configured Bible-provider licences have been checked
         required: true
         type: boolean
         default: false
