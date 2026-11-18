@@ -282,6 +282,18 @@ try {
   assert.equal(await translationPanel.locator(".ztc-attribution a").getAttribute("href"),"https://publisher.example/");
   assert.ok(translationRequests.some(path => path === "/api/youversion/bibles/3034/passages/GEN.1.1?format=text"),
     "A verse comparison must request GEN.1.1, not the whole GEN.1 chapter.");
+  await page.keyboard.press("Escape");
+
+  // The web fallback must export a real PNG when native gallery APIs are unavailable.
+  await firstVerse.click();
+  await ensureOpen(actions.locator(".zuriel-action-group").filter({hasText:"Reading Tools"}));
+  await actions.locator(".zuriel-verse-action").filter({hasText:"Share card"}).click();
+  await page.locator("#zgsSaveImage").waitFor({state:"visible",timeout:20000});
+  const [cardDownload] = await Promise.all([
+    page.waitForEvent("download"),
+    page.locator("#zgsSaveImage").click()
+  ]);
+  assert.match(cardDownload.suggestedFilename(),/\\.png$/i);
   await onlineContext.close();
 
   // A fresh context tests actual service-worker installation and offline KJV/commentary access.
