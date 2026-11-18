@@ -61,6 +61,9 @@ jobs:
       - name: Validate study safeguards
         run: node scripts/check-study-integrity.mjs
 
+      - name: Validate compact selected-verse action menu
+        run: node scripts/check-selected-verse-menu.mjs
+
       - name: Validate offline Scripture read-aloud and selected-verse resume
         run: node scripts/check-audio-reader.mjs
 
