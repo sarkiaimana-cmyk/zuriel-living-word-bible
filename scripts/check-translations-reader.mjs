@@ -1,9 +1,10 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
-const [index, client, worker, config, deployment, aiDeployment, packaging, serviceWorker, version, updates] = await Promise.all([
+const [index, client, publicConfig, worker, config, deployment, aiDeployment, packaging, serviceWorker, version, updates] = await Promise.all([
   readFile("index.html", "utf8"),
   readFile("zuriel-translations.js", "utf8"),
+  readFile("zuriel-config.js", "utf8"),
   readFile("ai-worker/src/translation-worker.js", "utf8"),
   readFile("ai-worker/wrangler.translations.jsonc", "utf8"),
   readFile(".github/workflows/deploy-translations-worker.yml", "utf8"),
@@ -25,7 +26,9 @@ function forbidText(source, pattern, label) {
 requireText(index, 'src="zuriel-translations.js"', "Translation reader entry point");
 requireText(index, "window.ZurielBibleBookCode = function", "Reader USFM book-code bridge");
 requireText(index, "window.ZurielVerseOverlay", "Selected-verse overlay host for external study panels");
-requireText(index, 'window.ZURIEL_TRANSLATION_API_BASE = "";', "Explicit empty translation endpoint until the proxy is deployed");
+requireText(index, 'src="zuriel-config.js"', "Public translation endpoint configuration is loaded before the translation reader");
+requireText(publicConfig, "window.ZURIEL_TRANSLATION_API_BASE", "Public translation endpoint setting");
+forbidText(publicConfig, /ZITE_YVP_APP_KEY|X-YVP-App-Key/, "YouVersion credentials in public client configuration");
 requireText(client, 'id = "zurielTranslationCompare"', "Collapsible translation comparison panel");
 requireText(client, "zuriel:chapter-opened", "Reader chapter event integration");
 requireText(client, "window.ZurielVerseOverlay.openExternal(panel)", "YouVersion comparison opens in selected-verse overlay");
