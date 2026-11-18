@@ -107,6 +107,7 @@
         item && Number.isInteger(Number(item.id)) &&
         typeof item.title === "string" &&
         typeof item.abbreviation === "string" &&
+        (!item.language_tag || String(item.language_tag).toLowerCase().startsWith("en")) &&
         (!item.language || !item.language.iso_639_1 || item.language.iso_639_1 === "en")
       );
       select.replaceChildren(node("option", "", "Choose an available translation"));
