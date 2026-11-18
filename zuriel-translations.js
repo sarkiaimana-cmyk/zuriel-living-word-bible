@@ -44,7 +44,9 @@
         return "";
       }
     })();
-    return apiBasePromise;
+    const resolved = await apiBasePromise;
+    if (!resolved) apiBasePromise = null;
+    return resolved;
   }
   if (!reader || document.getElementById("zurielTranslationCompare")) return;
 
