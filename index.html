@@ -1550,7 +1550,17 @@ window.ZurielBibleSearch = {
       .trim()
       .toLowerCase();
     const term = normalizeSearchText(query);
-    if (term.length < 3) throw new Error("Please enter at least 3 characters.");
+    const minimumLength = mode === "word" ? 1 : mode === "phrase" ? 2 : 3;
+    if (term.length < minimumLength) {
+      throw new Error(mode === "word"
+        ? "Enter one whole word to search the concordance."
+        : mode === "phrase"
+          ? "Enter a phrase of at least two characters."
+          : "Please enter at least 3 characters.");
+    }
+    if (mode === "word" && /\\s/.test(term)) {
+      throw new Error("Exact word search accepts one word. Choose exact phrase for multiple words.");
+    }
     if (mode && mode !== "word" && mode !== "phrase") {
       throw new Error("Choose an exact word or phrase search.");
     }
