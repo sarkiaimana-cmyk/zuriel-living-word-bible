@@ -145,9 +145,13 @@
   launch.id = "zurielGridLaunch";
   launch.textContent = "📖  Choose Passage  ·  KJV";
   launch.setAttribute("aria-label", "Choose a Bible book, chapter and verse. Current translation: King James Version.");
-  const readerHeading = root.querySelector("h2");
-  if (readerHeading) readerHeading.insertAdjacentElement("afterend", launch);
-  else root.insertBefore(launch, root.firstChild);
+  if (translationBar && translationBar.parentNode === root) {
+    translationBar.insertAdjacentElement("afterend", launch);
+  } else {
+    const readerHeading = root.querySelector("h2");
+    if (readerHeading) readerHeading.insertAdjacentElement("afterend", launch);
+    else root.insertBefore(launch, root.firstChild);
+  }
 
   const modal = document.createElement("section");
   modal.id = "zurielGridNavigator";
