@@ -90,8 +90,8 @@ jobs:
 
       - name: Exercise original-language resource cache
         run: node scripts/test-study-resource-cache.mjs
-      - name: Verify offline commentary cache and translation API key boundaries
-        run: node scripts/test-study-resource-cache.mjs && node scripts/check-translation-key-boundary.mjs
+      - name: Verify translation API key security and offline fallback
+        run: node scripts/check-translation-key-boundary.mjs
       - name: Validate published commentary reader
         run: node scripts/check-live-commentary.mjs
       - name: Test exact KJV original-word linking
