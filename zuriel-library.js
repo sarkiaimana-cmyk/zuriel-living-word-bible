@@ -640,15 +640,18 @@
               background:linear-gradient(90deg,#e8dcc2 0%,var(--zgs-paper) 8%,#fffaf0 48%,#e8dcc2 50%,#fffaf0 54%,var(--zgs-paper) 92%,#e8dcc2 100%);
               border:1px solid #c5b48d;box-shadow:0 8px 22px #101d3025;
             }
-            #zurielGloryStudio[data-finish="navy"] #zurielGloryPreview {--zgs-paper:#172b49;--zgs-ink:#f6f0df;--zgs-accent:#e7c77d;background:linear-gradient(90deg,#0c1a30,#1b3151 48%,#0d1d35 50%,#1b3151);}
-            #zurielGloryStudio[data-finish="forest"] #zurielGloryPreview {--zgs-paper:#e9f0e5;--zgs-ink:#183a30;--zgs-accent:#39765b;background:linear-gradient(90deg,#d4e1d5,#f2f6ec 48%,#d7e3d8 50%,#f2f6ec);}
-            #zurielGloryStudio[data-finish="parchment"] #zurielGloryPreview {--zgs-paper:#f0dfbd;--zgs-ink:#4a3520;--zgs-accent:#9a682b;background:repeating-linear-gradient(0deg,#f2e5ca,#f2e5ca 3px,#eddfc2 4px);}
+            #zurielGloryStudio[data-finish="navy"] #zurielGloryPreview {--zgs-paper:#172b49;--zgs-ink:#f6f0df;--zgs-accent:#e7c77d;--zgs-page-bg:linear-gradient(145deg,#203a60,#122541);--zgs-page-border:#d7b96d88;background:linear-gradient(90deg,#0c1a30,#1b3151 48%,#0d1d35 50%,#1b3151);}
+            #zurielGloryStudio[data-finish="ivory"] #zurielGloryPreview {--zgs-page-bg:linear-gradient(145deg,#fffdf5,#eee3ca);--zgs-page-border:#b79a5b99;}
+            #zurielGloryStudio[data-finish="forest"] #zurielGloryPreview {--zgs-paper:#e9f0e5;--zgs-ink:#183a30;--zgs-accent:#39765b;--zgs-page-bg:linear-gradient(145deg,#f8fff5,#dce9da);--zgs-page-border:#6f947b;background:linear-gradient(90deg,#d4e1d5,#f2f6ec 48%,#d7e3d8 50%,#f2f6ec);}
+            #zurielGloryStudio[data-finish="parchment"] #zurielGloryPreview {--zgs-paper:#f0dfbd;--zgs-ink:#4a3520;--zgs-accent:#9a682b;--zgs-page-bg:repeating-linear-gradient(0deg,#f7e9cb,#f7e9cb 3px,#eddfc2 4px);--zgs-page-border:#b28a4e;background:repeating-linear-gradient(0deg,#f2e5ca,#f2e5ca 3px,#eddfc2 4px);}
             #zurielGloryPreview {background-image:linear-gradient(180deg,#10243a35,#10243a55),var(--zgs-wallpaper-image,none);background-size:cover;background-position:center;background-repeat:no-repeat;}
             #zurielGloryPreview:after {content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:#9a835333;box-shadow:0 0 15px #5b472333;pointer-events:none;}
             #zurielGloryPreview .zgs-brand {font-size:15px;letter-spacing:1px;text-align:center;color:var(--zgs-accent);font-weight:800;font-family:Georgia,serif;position:relative;z-index:1;}
             #zurielGloryPreview h3 {text-align:center;color:var(--zgs-ink);font-family:Georgia,serif;font-size:20px;margin:9px 0 15px;position:relative;z-index:1;}
             #zurielGloryPreview .zgs-book-spread {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;position:relative;z-index:1;}
-            #zurielGloryPreview .zgs-page {min-width:0;padding:8px 5px;}
+            #zurielGloryPreview .zgs-page {position:relative;min-width:0;min-height:260px;padding:18px 15px;background:var(--zgs-page-bg,linear-gradient(145deg,#fffdf5,#eee3ca));border:1px solid var(--zgs-page-border,#b79a5b99);border-radius:7px 15px 15px 7px;box-shadow:0 12px 26px #08142655,inset 0 0 18px #ffffff24;overflow:hidden;}
+            #zurielGloryPreview .zgs-left-page {border-radius:15px 7px 7px 15px;box-shadow:0 12px 26px #08142655,inset -8px 0 14px #0a183018;}
+            #zurielGloryPreview .zgs-right-page {box-shadow:0 12px 26px #08142655,inset 8px 0 14px #0a183018;}
             #zurielGloryPreview .zgs-page-title {font:700 10px/1.4 Arial,sans-serif;letter-spacing:1px;text-align:center;color:var(--zgs-accent);margin:3px 0 12px;}
             #zurielGloryPreview .zgs-ref {text-align:center;font-weight:800;color:var(--zgs-accent);font-size:13px;}
             #zurielGloryPreview .zgs-copy {white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.48;margin:9px 0;font-family:Georgia,serif;font-size:14px;}
@@ -682,7 +685,7 @@
 
         const studio = element("section", undefined, "card");
         studio.id = "zurielGloryStudio";
-        studio.dataset.finish = "ivory";
+        studio.dataset.finish = "navy";
         studio.dataset.wallpaper = "forest";
         studio.innerHTML = `
           <div class="zgs-field"><label for="zgsReference">SCRIPTURE REFERENCE</label><input id="zgsReference" placeholder="e.g. Romans 8:1"></div>
