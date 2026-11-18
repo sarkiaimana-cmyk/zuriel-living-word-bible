@@ -1,4 +1,4 @@
 {
-  "version": "1.4.65",
-  "releaseNotes": "Adds 16 contextual studies to the offline Bible dictionary: Altar, Ark of the Covenant, Bema, Boaz, Cherubim, Circumcision, Clean and unclean, Confession, Covenant mediator, Day of Atonement, Deacon, Elder, Firstfruits, Fellowship, Firstborn and Gentleness. Expands the study set from 123 to 139 across 205 terms, with interpretive cautions and KJV-validated references. Retains the optional YouVersion and API.Bible provider selector."
+  "version": "1.4.66",
+  "releaseNotes": "Improves the Zuriel open-book sharing experience and Android update compatibility; retains offline KJV reading and existing study resources."
 }
