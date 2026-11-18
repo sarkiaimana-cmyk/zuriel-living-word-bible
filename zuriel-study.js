@@ -1557,6 +1557,19 @@
             <div id="zurielPassageCommentaryResults" aria-live="polite">
               <p>Select a verse or search the commentary collection.</p>
             </div>
+            <details id="zurielHistoricalCommentarySection">
+              <summary>📚 Historical Commentaries — Public-Domain Sources</summary>
+              <div class="study-body">
+                <p>Read historical commentary for the selected verse from sources whose catalogue metadata identifies them with the Public Domain Mark. Coverage differs by source; a missing note does not mean the Bible verse is missing.</p>
+                <label for="zurielHistoricalCommentarySource">Choose a commentary</label>
+                <select id="zurielHistoricalCommentarySource" disabled>
+                  <option value="">Checking available sources…</option>
+                </select>
+                <button type="button" class="study-action" id="zurielLoadHistoricalCommentary" disabled>Load selected verse commentary</button>
+                <p id="zurielHistoricalCommentaryStatus" class="study-small" aria-live="polite">Open a verse, choose a source and load its note when needed.</p>
+                <div id="zurielHistoricalCommentaryResults" aria-live="polite"></div>
+              </div>
+            </details>
           </div>
         </details>
 
