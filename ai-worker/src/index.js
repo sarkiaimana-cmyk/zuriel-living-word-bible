@@ -251,8 +251,8 @@ async function handleYouVersionRequest(request, env, dependencies, cors) {
   }
 
   let response;
+  const fetchImpl = dependencies.fetch || globalThis.fetch;
   try {
-    const fetchImpl = dependencies.fetch || globalThis.fetch;
     response = await fetchImpl(upstreamUrl.toString(), {
       method: "GET",
       headers: {
