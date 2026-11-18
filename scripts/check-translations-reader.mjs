@@ -15,6 +15,9 @@ assert.ok(home.includes('id="zurielIdentityHero"'),"WHO HE IS hero must remain")
 assert.ok(home.includes('id="zurielOpenBookScripture"'),"Open Book card must remain");
 assert.ok(home.includes('id="zurielOpenBookPrayer"'),"Open Book prayer must remain");
 assert.ok(files["index.html"].includes('src="zuriel-translations.js"'),"Offline selector script must load");
+assert.ok(!files["index.html"].includes("ZURIEL_TRANSLATION_API_BASE"),"Reader must not require an online translation endpoint.");
+assert.ok(!files["index.html"].includes("secure YouVersion comparison panel"),"Reader must not advertise online comparison as its offline translation feature.");
+assert.ok(files["index.html"].includes("Only the King James Version is currently installed for offline reading."),"Unavailable translation choices must be explained honestly.");
 assert.ok(files["sw.js"].includes('"./zuriel-translations.js"'),"Offline selector must be cached");
 assert.ok(files["scripts/prepare-web.mjs"].includes('"zuriel-translations.js"'),"Offline selector must be packaged");
 console.log("Offline translation selector checks passed: all 12 labels are present, KJV alone is enabled until licensed corpora are bundled, online fetching is absent, and both Home cards remain.");
