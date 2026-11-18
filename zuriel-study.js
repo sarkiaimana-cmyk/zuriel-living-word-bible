@@ -1977,7 +1977,7 @@
           : "Enter a phrase of at least two characters.";
         return;
       }
-      if (mode === "word" && /\\s/.test(query)) {
+      if (mode === "word" && /\s/.test(query)) {
         concordanceResults.textContent = "Exact word search accepts one word. Choose exact phrase for multiple words.";
         return;
       }
