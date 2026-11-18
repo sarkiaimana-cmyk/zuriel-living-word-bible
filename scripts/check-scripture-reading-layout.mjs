@@ -25,3 +25,16 @@ assert.ok(panelStart >= 0 && panelEnd > panelStart);
 const panelRule = css.slice(panelStart, panelEnd);
 assert.ok(panelRule.includes("max-height:none") && panelRule.includes("overflow:visible"));
 console.log("Full-width Scripture layout checks passed.");
+
+
+const settings = fs.readFileSync("zuriel-settings.js", "utf8");
+assert.ok(settings.includes('paper: "white"'), "White paper must be the default reader background.");
+assert.ok(settings.includes('#message[data-zuriel-paper="white"]'), "A true white Scripture page must be available.");
+assert.ok(settings.includes('id: "georgia"') && settings.includes('id: "times"') &&
+  settings.includes('id: "arial"') && settings.includes('id: "verdana"') &&
+  settings.includes('id: "trebuchet"') && settings.includes('id: "system"'),
+  "The reader must offer multiple built-in, offline-safe font choices.");
+assert.ok(settings.includes('id="zurielFontFamily"') &&
+  settings.includes('message.style.fontFamily = readerFont.stack'),
+  "The selected font must apply to the Scripture text.");
+console.log("White reader page and multiple-font preferences passed.");
