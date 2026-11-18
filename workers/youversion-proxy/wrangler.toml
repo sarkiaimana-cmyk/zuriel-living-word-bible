@@ -1,0 +1,7 @@
+name = "zuriel-youversion-proxy"
+main = "src/index.js"
+compatibility_date = "2026-11-18"
+workers_dev = true
+
+[vars]
+ALLOWED_ORIGINS = "https://sarkiaimana-cmyk.github.io,https://localhost,capacitor://localhost,http://localhost"
