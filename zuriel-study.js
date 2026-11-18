@@ -1604,7 +1604,7 @@
         <details>
           <summary>📖 6. Biblical Dictionary — Search Key Terms</summary>
           <div class="study-body">
-            <p>Search concise explanations of important biblical words and themes. These are introductory study summaries, not exhaustive lexical definitions; always read the linked passages in context.</p>
+            <p>Search concise explanations of biblical words and themes. Expanded entries also include original-language context, theological significance, interpretive cautions and related passages where curated. These summaries are not exhaustive lexical definitions; read the linked Scriptures in context.</p>
             <label for="zurielDictionarySearch">Search dictionary</label>
             <input id="zurielDictionarySearch" type="search" placeholder="Try grace, covenant, faith, holiness…" autocomplete="off">
             <div id="zurielDictionaryResults" aria-live="polite">
