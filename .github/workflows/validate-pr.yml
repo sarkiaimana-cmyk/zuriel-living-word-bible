@@ -34,7 +34,7 @@ jobs:
       - name: Verify complete offline KJV corpus counts
         run: node scripts/check-kjv-corpus-counts.mjs
 
-      - name: Validate secure online translation reader
+      - name: Validate offline translation selector and edition availability
         run: node scripts/check-translations-reader.mjs
 
       - name: Test translation-only Worker route isolation
