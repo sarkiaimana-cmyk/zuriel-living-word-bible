@@ -1115,32 +1115,53 @@
           }
         }));
         studio.querySelector("#zgsShare").addEventListener("click",async function(){
-          const textValue=["The Light 🕯️","His Words.. My life.. My Victory",studio.querySelector("#zgsReference").value,studio.querySelector("#zgsScripture").value,...["Prayer","Declaration","Affirmation","Confession","Inspiration"].map(name=>name.toUpperCase()+": "+studio.querySelector("#zgs"+name).value),"Zuriel Living Word Bible"].filter(Boolean).join("\n\n");
-          if(!studio.querySelector("#zgsReference").value.trim()||!studio.querySelector("#zgsScripture").value.trim()){studio.querySelector("#zgsStatus").textContent="Add the Scripture reference and text before sharing.";return;}
-          try {
-            if (navigator.share) {
+          const status = studio.querySelector("#zgsStatus");
+          const reference = studio.querySelector("#zgsReference").value.trim();
+          const scripture = studio.querySelector("#zgsScripture").value.trim();
+          const textValue=["The Light 🕯️","His Words.. My life.. My Victory",reference,scripture,...["Prayer","Declaration","Affirmation","Confession","Inspiration"].map(name=>name.toUpperCase()+": "+studio.querySelector("#zgs"+name).value),"Zuriel Living Word Bible"].filter(Boolean).join("\n\n");
+          if(!reference || !scripture){status.textContent="Add the Scripture reference and text before sharing.";return;}
+
+          async function copyCardText() {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              try {
+                await navigator.clipboard.writeText(textValue);
+                return true;
+              } catch (_) {
+                // Older Android WebViews may expose Clipboard API without permission.
+              }
+            }
+            const fallback = document.createElement("textarea");
+            fallback.value = textValue;
+            fallback.setAttribute("readonly", "");
+            fallback.style.cssText = "position:fixed;left:-9999px;top:0";
+            document.body.appendChild(fallback);
+            fallback.select();
+            let copied = false;
+            try { copied = document.execCommand("copy"); } catch (_) {}
+            fallback.remove();
+            return copied;
+          }
+
+          if (navigator.share) {
+            try {
               await navigator.share({title:"Glory Verse Affirmation",text:textValue});
-              studio.querySelector("#zgsStatus").textContent = "Your Scripture card text has been shared.";
-            } else if (navigator.clipboard && navigator.clipboard.writeText) {
-              await navigator.clipboard.writeText(textValue);
-              studio.querySelector("#zgsStatus").textContent = "Card text copied. Paste it into your preferred sharing app.";
-            } else {
-              const fallback = document.createElement("textarea");
-              fallback.value = textValue;
-              fallback.setAttribute("readonly", "");
-              fallback.style.cssText = "position:fixed;left:-9999px;top:0";
-              document.body.appendChild(fallback);
-              fallback.select();
-              const copied = document.execCommand("copy");
-              fallback.remove();
-              studio.querySelector("#zgsStatus").textContent = copied
-                ? "Card text copied. Paste it into your preferred sharing app."
-                : "Please select the card text in the preview and copy it manually.";
+              status.textContent = "Your Scripture card text has been shared.";
+              return;
+            } catch (error) {
+              if (error && error.name === "AbortError") {
+                status.textContent = "Sharing was cancelled. Your card is unchanged.";
+                return;
+              }
+              // A WebView share-sheet failure should not block the copy fallback.
             }
-          } catch(error) {
-            if (error.name !== "AbortError") {
-              studio.querySelector("#zgsStatus").textContent = "Sharing could not be completed. You can still use Save image or copy the preview text.";
-            }
+          }
+          try {
+            const copied = await copyCardText();
+            status.textContent = copied
+              ? "Card text copied. Paste it into your preferred sharing app."
+              : "Sharing is unavailable here. Please select the card text in the preview and copy it manually.";
+          } catch (_) {
+            status.textContent = "Sharing is unavailable here. You can still select and copy the card text in the preview.";
           }
         });
         updatePreview();
