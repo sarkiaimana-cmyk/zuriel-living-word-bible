@@ -309,6 +309,34 @@ for (const title of ["Disciple", "Forgiveness", "Sanctification", "Stewardship",
     "dictionary contains a complete contextual study for " + title);
 }
 assert.ok(aliasEntries.length >= 25, "dictionary has at least 25 entries with curated alternate terms");
+const expandedDictionaryTerms = ["Disciple", "Forgiveness", "Sanctification", "Stewardship", "Wisdom", "Adoption", "Anointing", "Apostle", "Blessing", "Discernment", "Justice", "Lament", "Sabbath", "Tabernacle", "Testimony", "Zion"];
+for (const title of expandedDictionaryTerms) {
+  const entry = dictionaryData.find(item => item[0] === title);
+  assert.ok(entry && entry[3] && entry[3].languageNote && entry[3].theology && entry[3].caution && entry[3].passages,
+    "dictionary contains a complete contextual study for " + title);
+  for (const reference of entry[3].passages.split(";").map(value => value.trim()).filter(Boolean)) {
+    const match = reference.match(/^(.+?)\\s+(\\d+)(?:[–-](\\d+))?(?::(\\d+)(?:[–-](\\d+))?)?$/);
+    assert.ok(match, "expanded dictionary passage has a supported reference format: " + title + " / " + reference);
+    const bookName = match[1] === "Psalm" ? "Psalms" : match[1];
+    const book = bibleBooks.find(item => item.name === bookName);
+    assert.ok(book, "expanded dictionary passage book exists: " + reference);
+    const firstChapter = Number(match[2]);
+    const lastChapter = match[3] && !match[4] ? Number(match[3]) : firstChapter;
+    assert.ok(firstChapter >= 1 && lastChapter <= book.chapters && lastChapter >= firstChapter,
+      "expanded dictionary passage chapter range is valid: " + reference);
+    for (let chapter = firstChapter; chapter <= lastChapter; chapter++) {
+      const verses = kjv[bookCodes[book.name]]?.[chapter - 1];
+      assert.ok(Array.isArray(verses) && verses.length, "expanded dictionary passage chapter exists: " + reference);
+      if (match[4]) {
+        const firstVerse = Number(match[4]);
+        const lastVerse = Number(match[5] || match[4]);
+        assert.ok(firstVerse >= 1 && lastVerse >= firstVerse && lastVerse <= verses.length,
+          "expanded dictionary passage verse range is valid: " + reference);
+      }
+    }
+  }
+}
+
 for (const [term, expectedTitle] of [
   ["berith", "Covenant"], ["charis", "Grace"], ["metanoia", "Repentance"],
   ["dikaiosyne", "Righteousness"], ["soteria", "Salvation"],
