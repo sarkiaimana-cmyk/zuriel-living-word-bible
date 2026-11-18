@@ -52,7 +52,9 @@
 
   let currentChapter = null;
   let versionsLoaded = false;
+  let loadedProvider = "";
   let versionsLoading = false;
+  let selectedProvider = "youversion";
   let selectedVersionId = "";
   let requestSequence = 0;
   let activeController = null;
@@ -87,6 +89,16 @@
   const note = node("p", "ztc-note",
     "The King James Version remains available offline. Online translations are fetched only when you request them and are not saved for offline use.");
   const controls = node("div");
+  const providerSelect = node("select");
+  providerSelect.setAttribute("aria-label", "Choose online Bible translation provider");
+  [
+    ["youversion", "YouVersion Platform"],
+    ["api-bible", "API.Bible"]
+  ].forEach(([value, label]) => {
+    const option = node("option", "", label);
+    option.value = value;
+    providerSelect.appendChild(option);
+  });
   const statusNode = node("p", "ztc-status", "");
   statusNode.setAttribute("role", "status");
   statusNode.setAttribute("aria-live", "polite");
@@ -102,7 +114,7 @@
   const attribution = node("p", "ztc-attribution", "");
   attribution.hidden = true;
 
-  controls.append(select, loadButton, statusNode);
+  controls.append(providerSelect, select, loadButton, statusNode);
   output.append(passageHeading, passage, attribution);
   panel.append(summary, note, controls, output);
   reader.appendChild(panel);
@@ -135,7 +147,8 @@
   }
 
   async function loadVersions() {
-    if (versionsLoaded || versionsLoading) return;
+    if (versionsLoaded && loadedProvider === selectedProvider) return;
+    if (versionsLoading) return;
     versionsLoading = true;
     if (!await resolveApiBase()) {
       status("Secure online translation access has not been connected yet. Your offline KJV is unchanged.");
@@ -146,58 +159,80 @@
     loadButton.hidden = false;
     select.disabled = true;
     loadButton.disabled = true;
-    status("Checking the English Bible versions authorised for Zuriel…");
+    status("Checking the English Bible versions authorised for " +
+      (selectedProvider === "youversion" ? "YouVersion" : "API.Bible") + "…");
     try {
-      const catalogue = [];
-      const seenTokens = new Set();
+      let available = [];
       let nextPageToken = "";
-      let pageCount = 0;
-      do {
-        const pagePath = "/api/youversion/bibles" +
-          (nextPageToken ? "?next_page_token=" + encodeURIComponent(nextPageToken) : "");
-        const payload = await requestJson(pagePath);
-        if (!payload || !Array.isArray(payload.data)) {
-          throw new Error("The authorised Bible version list could not be verified.");
-        }
-        catalogue.push(...payload.data);
-        const token = typeof payload.next_page_token === "string"
-          ? payload.next_page_token.trim()
-          : "";
-        if (!token) {
-          nextPageToken = "";
-          break;
-        }
-        if (seenTokens.has(token)) {
-          throw new Error("YouVersion repeated a catalogue page token. Please retry the version list.");
-        }
-        seenTokens.add(token);
-        nextPageToken = token;
-        pageCount++;
-      } while (nextPageToken && pageCount < 10);
+      if (selectedProvider === "youversion") {
+        const catalogue = [];
+        const seenTokens = new Set();
+        let pageCount = 0;
+        do {
+          const pagePath = "/api/youversion/bibles" +
+            (nextPageToken ? "?next_page_token=" + encodeURIComponent(nextPageToken) : "");
+          const payload = await requestJson(pagePath);
+          if (!payload || !Array.isArray(payload.data)) {
+            throw new Error("The YouVersion authorised Bible version list could not be verified.");
+          }
+          catalogue.push(...payload.data);
+          const token = typeof payload.next_page_token === "string"
+            ? payload.next_page_token.trim()
+            : "";
+          if (!token) {
+            nextPageToken = "";
+            break;
+          }
+          if (seenTokens.has(token)) {
+            throw new Error("YouVersion repeated a catalogue page token. Please retry the version list.");
+          }
+          seenTokens.add(token);
+          nextPageToken = token;
+          pageCount++;
+        } while (nextPageToken && pageCount < 10);
 
-      const uniqueVersions = new Map();
-      catalogue.forEach(item => {
-        if (!item || !Number.isInteger(Number(item.id)) ||
-            typeof item.title !== "string" ||
-            typeof item.abbreviation !== "string" ||
-            (item.language && item.language.iso_639_1 && item.language.iso_639_1 !== "en")) return;
-        uniqueVersions.set(String(item.id), item);
-      });
-      const available = Array.from(uniqueVersions.values());
+        const uniqueVersions = new Map();
+        catalogue.forEach(item => {
+          if (!item || !Number.isInteger(Number(item.id)) ||
+              typeof item.title !== "string" ||
+              typeof item.abbreviation !== "string" ||
+              (item.language && item.language.iso_639_1 && item.language.iso_639_1 !== "en")) return;
+          uniqueVersions.set(String(item.id), item);
+        });
+        available = Array.from(uniqueVersions.values());
+      } else {
+        const payload = await requestJson("/api/api-bible/bibles");
+        if (!payload || !Array.isArray(payload.data)) {
+          throw new Error("The API.Bible authorised Bible version list could not be verified.");
+        }
+        const uniqueVersions = new Map();
+        payload.data.forEach(item => {
+          if (!item || typeof item.id !== "string" ||
+              !/^[a-f0-9]{16}-\d{2}$/i.test(item.id) ||
+              typeof item.title !== "string" ||
+              typeof item.abbreviation !== "string") return;
+          uniqueVersions.set(item.id, item);
+        });
+        available = Array.from(uniqueVersions.values());
+      }
+
       select.replaceChildren(node("option", "", "Choose an available translation"));
       available.forEach(item => {
         const option = node("option", "", item.abbreviation + " — " + item.title);
         option.value = String(item.id);
         select.appendChild(option);
       });
+      selectedVersionId = "";
       versionsLoaded = true;
+      loadedProvider = selectedProvider;
       select.disabled = false;
       loadButton.disabled = true;
+      const providerName = selectedProvider === "youversion" ? "YouVersion" : "API.Bible";
       status(available.length
-        ? available.length + " English version(s) are authorised for this app key. " +
+        ? available.length + " English version(s) are authorised for this " + providerName + " key. " +
           (nextPageToken ? "The catalogue is large; the first 1,000 results are shown. " : "") +
           "Choose one to compare."
-        : "No English Bible versions are currently authorised for Zuriel. The offline KJV remains available.");
+        : "No English Bible versions are currently authorised for " + providerName + ". The offline KJV remains available.");
     } catch (error) {
       select.disabled = true;
       loadButton.disabled = true;
@@ -236,8 +271,10 @@
     const bookCode = typeof window.ZurielBibleBookCode === "function"
       ? window.ZurielBibleBookCode(currentChapter.book)
       : null;
-    const versionId = Number(selectedVersionId);
-    if (!bookCode || !Number.isInteger(versionId) || versionId < 1) {
+    const validVersionId = selectedProvider === "youversion"
+      ? /^\d+$/.test(selectedVersionId)
+      : /^[a-f0-9]{16}-\d{2}$/i.test(selectedVersionId);
+    if (!bookCode || !validVersionId) {
       status("Choose a valid authorised translation.");
       return;
     }
@@ -252,10 +289,12 @@
 
     try {
       const reference = bookCode + "." + currentChapter.chapter;
-      const payload = await requestJson(
-        "/api/youversion/bibles/" + versionId + "/passages/" + reference + "?format=text",
-        activeController
-      );
+      const path = selectedProvider === "youversion"
+        ? "/api/youversion/bibles/" + encodeURIComponent(selectedVersionId) +
+          "/passages/" + reference + "?format=text"
+        : "/api/api-bible/bibles/" + encodeURIComponent(selectedVersionId) +
+          "/chapters/" + encodeURIComponent(reference);
+      const payload = await requestJson(path, activeController);
       if (requestId !== requestSequence) return;
       const item = payload && payload.passage;
       if (!item || typeof item.content !== "string" || !item.content.trim()) {
@@ -266,8 +305,10 @@
       if (!copyright && !promotional) {
         throw new Error("Publisher attribution was not supplied. Zuriel has withheld this passage until its attribution can be verified.");
       }
+      const providerName = selectedProvider === "youversion" ? "YouVersion" : "API.Bible";
       passageHeading.textContent = (item.reference || (currentChapter.book + " " + currentChapter.chapter)) +
-        " — " + ((payload.version && (payload.version.abbreviation || payload.version.title)) || "Selected translation");
+        " — " + ((payload.version && (payload.version.abbreviation || payload.version.title)) || "Selected translation") +
+        " (" + providerName + ")";
       passage.textContent = item.content;
       passage.hidden = false;
       attribution.textContent = [copyright, promotional, "Online text is not stored for offline use."].filter(Boolean).join(" ");
@@ -280,11 +321,30 @@
       }
     } finally {
       if (requestId === requestSequence) {
-        loadButton.disabled = !selectedVersionId;
+        loadButton.disabled = !selectedVersionId || !currentChapter;
         activeController = null;
       }
     }
   }
+
+  providerSelect.addEventListener("change", function () {
+    requestSequence++;
+    if (activeController) activeController.abort();
+    activeController = null;
+    selectedProvider = providerSelect.value === "api-bible" ? "api-bible" : "youversion";
+    versionsLoaded = false;
+    loadedProvider = "";
+    selectedVersionId = "";
+    select.replaceChildren(node("option", "", "Choose an available translation"));
+    select.disabled = true;
+    loadButton.disabled = true;
+    passage.hidden = true;
+    attribution.hidden = true;
+    passage.textContent = "";
+    status("Checking " + (selectedProvider === "youversion" ? "YouVersion" : "API.Bible") +
+      " when you open the comparison list. The offline KJV remains available.");
+    if (panel.open) loadVersions();
+  });
 
   select.addEventListener("change", function () {
     requestSequence++;
@@ -310,7 +370,7 @@
     }
     if (panel.open) {
       loadVersions();
-      if (currentChapter && versionsLoaded) {
+      if (currentChapter && versionsLoaded && loadedProvider === selectedProvider) {
         loadButton.disabled = !selectedVersionId;
         status("Ready to compare " + currentChapter.book + " " + currentChapter.chapter + ".");
       }
@@ -342,6 +402,8 @@
     get configured() { return Boolean(API_BASE); },
     refreshVersions: function () {
       versionsLoaded = false;
+      loadedProvider = "";
+      selectedVersionId = "";
       apiBasePromise = null;
       return loadVersions();
     }
