@@ -139,6 +139,24 @@ try {
   page.on("pageerror", error => pageErrors.push("online: " + error.message));
   await page.goto(baseUrl,{waitUntil:"domcontentloaded"});
   await page.locator('#zurielBottomNavigation button[data-section="read"]').click();
+  const readNavigationState = await page.evaluate(() => {
+    const reader = document.getElementById("bibleReader");
+    const launch = document.getElementById("zurielGridLaunch");
+    const chain = [];
+    for (let node = launch; node && chain.length < 6; node = node.parentElement) {
+      const style = getComputedStyle(node);
+      chain.push({tag:node.tagName,id:node.id,hidden:node.hidden,display:style.display,visibility:style.visibility});
+    }
+    return {
+      readerHidden:reader ? reader.hidden : null,
+      readerDisplay:reader ? getComputedStyle(reader).display : null,
+      launchExists:Boolean(launch),
+      launchHidden:launch ? launch.hidden : null,
+      chain,
+      activeRead:Boolean(document.querySelector('#zurielBottomNavigation button[data-section="read"].active'))
+    };
+  });
+  console.log("Mobile read navigation state:", JSON.stringify(readNavigationState), "page errors:", pageErrors);
   await page.locator("#zurielGridLaunch").waitFor({state:"visible",timeout:20000});
   assert.equal(await page.title(),"Zuriel Living Word Bible");
 
