@@ -15,6 +15,30 @@ const [study, home, faith, linking, reader, navigator, bookIndex, kjvSource] = a
 
 const failures = [];
 
+const concordanceStart = reader.indexOf("window.ZurielBibleSearch = {");
+const concordanceEnd = reader.indexOf("\n};\n\nasync function runZurielBibleSearch", concordanceStart);
+assert.ok(concordanceStart >= 0 && concordanceEnd > concordanceStart,
+  "The offline concordance search function can be isolated for occurrence tests.");
+const concordanceSource = reader.slice(concordanceStart, concordanceEnd + 3) +
+  String.fromCharCode(10) + "window.__ZurielBibleSearch = window.ZurielBibleSearch;";
+const concordanceSandbox = {
+  window: {},
+  bibleBooks: [{ name: "Genesis" }],
+  bookCodes: { Genesis: "GEN" },
+  loadKJV: async () => ({ GEN: [
+    ["Faith, faith, FAITH.", "faithfulness faith.", "faith faith faith."]
+  ] })
+};
+vm.runInNewContext(concordanceSource, concordanceSandbox, { timeout: 1000 });
+const wordConcordance = await concordanceSandbox.window.__ZurielBibleSearch.search("faith", 1, "word");
+assert.equal(wordConcordance.totalMatches, 3, "Exact word search counts the matching verses.");
+assert.equal(wordConcordance.totalOccurrences, 7, "Exact word search counts every whole-word occurrence.");
+assert.equal(wordConcordance.length, 1, "Concordance result limits affect visible verses only.");
+assert.equal(wordConcordance[0].occurrences, 3, "Each verse reports its own occurrence count.");
+const phraseConcordance = await concordanceSandbox.window.__ZurielBibleSearch.search("faith faith", 200, "phrase");
+assert.equal(phraseConcordance.totalMatches, 1, "Phrase search counts verses containing the exact phrase.");
+assert.equal(phraseConcordance.totalOccurrences, 1, "Phrase search counts non-overlapping phrase occurrences.");
+
 // Validate the actual KJV data against the reader's book-code map. A single
 // mismatched code blocks loadKJV() for the entire Bible, not just that book.
 let bibleBooks = [];
