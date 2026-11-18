@@ -33,7 +33,11 @@
     "#zurielTranslationCompare button{background:#193e32;color:#fff;font-weight:700}" +
     "#zurielTranslationCompare button:disabled{opacity:.5}" +
     "#zurielTranslationCompare .ztc-status{min-height:22px;font:600 13px/1.5 Arial,sans-serif;color:#315b48}" +
-    "#zurielTranslationCompare .ztc-passage{white-space:pre-wrap;overflow-wrap:anywhere;padding:12px;margin:10px 0;background:#fff;border:1px solid #d9e1dc;border-radius:9px;font:16px/1.75 Georgia,serif;color:#203a31}" +
+    "#zurielTranslationCompare .ztc-comparison{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:10px 0}" +
+    "#zurielTranslationCompare .ztc-column{min-width:0}" +
+    "#zurielTranslationCompare .ztc-column h3{font:700 13px/1.4 Arial,sans-serif;color:#315b48;margin:8px 0}" +
+    "#zurielTranslationCompare .ztc-passage{white-space:pre-wrap;overflow-wrap:anywhere;padding:12px;margin:0;background:#fff;border:1px solid #d9e1dc;border-radius:9px;font:16px/1.75 Georgia,serif;color:#203a31}" +
+    "@media(max-width:560px){#zurielTranslationCompare .ztc-comparison{grid-template-columns:1fr}}" +
     "#zurielTranslationCompare .ztc-attribution{font:12px/1.55 Arial,sans-serif;color:#58675f;border-top:1px solid #d8e1da;padding-top:9px}";
   document.head.appendChild(style);
 
@@ -47,6 +51,11 @@
   statusNode.setAttribute("role", "status");
   statusNode.setAttribute("aria-live", "polite");
   const output = node("div");
+  const comparison = node("div", "ztc-comparison");
+  const kjvColumn = node("section", "ztc-column");
+  const kjvHeading = node("h3", "", "King James Version — offline");
+  const kjvPassage = node("pre", "ztc-passage", "Open a KJV chapter to compare its wording here.");
+  const onlineColumn = node("section", "ztc-column");
   const select = node("select");
   select.setAttribute("aria-label", "Choose an authorised English Bible translation");
   const loadButton = node("button", "", "Load this chapter");
@@ -59,12 +68,36 @@
   attribution.hidden = true;
 
   controls.append(select, loadButton, statusNode);
-  output.append(passageHeading, passage, attribution);
-  panel.append(summary, note, controls, output);
+  kjvColumn.append(kjvHeading, kjvPassage);
+  onlineColumn.append(passageHeading, passage);
+  comparison.append(kjvColumn, onlineColumn);
+  output.append(comparison, attribution);
+  panel.append(summary, note, controls, statusNode, output);
   reader.appendChild(panel);
 
   function apiUrl(path) {
     return API_BASE + path;
+  }
+
+  function currentKJVText() {
+    if (selectedVerse && selectedVerse.book === currentChapter?.book &&
+        Number(selectedVerse.chapter) === Number(currentChapter?.chapter) &&
+        typeof selectedVerse.text === "string" && selectedVerse.text.trim()) {
+      return selectedVerse.text.trim();
+    }
+    return Array.from(document.querySelectorAll("#message .verse"))
+      .map(element => element.textContent.trim())
+      .filter(Boolean)
+      .join("\n");
+  }
+
+  function updateKJVComparison() {
+    const text = currentKJVText();
+    kjvPassage.textContent = text || "Open a KJV chapter to compare its wording here.";
+    kjvHeading.textContent = selectedVerse && selectedVerse.reference
+      ? "King James Version — offline · " + selectedVerse.reference
+      : "King James Version — offline · " + (currentChapter
+        ? currentChapter.book + " " + currentChapter.chapter : "current passage");
   }
 
   async function requestJson(path, controller) {
@@ -136,6 +169,7 @@
     currentChapter = { book: detail.book, chapter: Number(detail.chapter) };
     selectedVerse = null;
     loadButton.textContent = "Load this chapter";
+    updateKJVComparison();
     requestSequence++;
     if (activeController) activeController.abort();
     passage.hidden = true;
@@ -173,6 +207,7 @@
     loadButton.disabled = true;
     passage.hidden = true;
     attribution.hidden = true;
+    updateKJVComparison();
     const verseNumber = selectedVerse && selectedVerse.book === currentChapter.book &&
       Number(selectedVerse.chapter) === currentChapter.chapter
       ? Number(selectedVerse.verse) : null;
@@ -288,9 +323,11 @@
     if (typeof detail.book === "string" && Number.isInteger(chapterNumber) && chapterNumber > 0) {
       currentChapter = { book: detail.book, chapter: chapterNumber };
       selectedVerse = Number.isInteger(verseNumber) && verseNumber > 0
-        ? { book: detail.book, chapter: chapterNumber, verse: verseNumber, reference: detail.reference }
+        ? { book: detail.book, chapter: chapterNumber, verse: verseNumber,
+            reference: detail.reference, text: typeof detail.text === "string" ? detail.text : "" }
         : null;
       loadButton.textContent = selectedVerse ? "Load selected verse" : "Load this chapter";
+      updateKJVComparison();
     }
     panel.open = true;
     const shownInVerseOverlay = window.ZurielVerseOverlay &&
