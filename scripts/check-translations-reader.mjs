@@ -8,7 +8,8 @@ const labels=["KJV","GNT","AMP","LB/LT","TPT","NLT","NET","NIV","ESV","NASB","CS
 for(const label of labels)assert.ok(reader.includes('label:"'+label+'"'),"Missing version "+label);
 assert.ok(reader.includes('bar.id="zurielOfflineVersions"'));
 assert.ok(reader.includes("reader.insertBefore(bar,reader.firstChild)"),"Version row must appear at the top of reader");
-assert.ok(reader.includes("button.disabled=!edition.available"),"Unavailable editions must not offer fabricated Scripture");
+assert.ok(reader.includes("if(!edition.available){status.textContent="),"Unavailable edition labels must remain tappable and explain why text cannot switch.");
+assert.ok(reader.includes("button.dataset.available=edition.available?\"true\":\"false\""),"Each edition must expose its real offline availability state.");
 assert.ok(reader.includes('available:true'),"Bundled KJV must be enabled");
 assert.ok(!/fetch\s*\(|localStorage|sessionStorage|indexedDB|caches\./i.test(reader),"Translation selector must not fetch or store unlicensed text");
 assert.ok(home.includes('id="zurielIdentityHero"'),"WHO HE IS hero must remain");
