@@ -532,7 +532,15 @@
             ? "The KJV concordance is open below. Enter a word or phrase to search."
             : "The KJV concordance could not be opened. Open a Bible chapter and try again.";
         });
-        liveTools.append(openDictionary, openConcordance, liveToolStatus);
+        const openCommentary = button("Open Passage Commentary", () => {
+          const opened = window.ZurielStudy &&
+            typeof window.ZurielStudy.openSection === "function" &&
+            window.ZurielStudy.openSection("Passage Commentary");
+          liveToolStatus.textContent = opened
+            ? "The passage commentary collection is open. Select a verse for a matching note or search by theme."
+            : "The passage commentary collection could not be opened. Open a Bible chapter and try again.";
+        });
+        liveTools.append(openDictionary, openConcordance, openCommentary, liveToolStatus);
         panel.appendChild(liveTools);
 
         const search = element("input");
