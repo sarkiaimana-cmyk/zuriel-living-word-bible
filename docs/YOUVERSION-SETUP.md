@@ -51,6 +51,8 @@ Do not add either key to repository Variables. Do not commit them to any file. G
 4. Tick the confirmation that the Cloudflare Workers plan and YouVersion publisher access have been checked.
 5. Start the workflow and wait for its result.
 
+**Important:** The deployment workflow only writes the verified endpoint to `version.json` when it is run from the repository's `main` branch. The feature branch must first be reviewed and merged into `main`; a draft feature branch cannot complete the final app-configuration step.
+
 The workflow tests the translation Worker, deploys it, stores the YouVersion app key as a Cloudflare secret, and makes a live request to the authorised YouVersion English Bible catalogue. If the optional API.Bible secret is present, it also installs that key as a Worker secret and smoke-tests the API.Bible English catalogue. Each configured provider must return HTTP 200 and the expected GitHub Pages CORS header before deployment reports success.
 
 ## Automatic app connection after a successful deployment
