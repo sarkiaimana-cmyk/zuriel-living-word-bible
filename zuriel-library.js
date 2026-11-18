@@ -519,7 +519,7 @@
         const openDictionary = button("Open Offline Biblical Dictionary", () => {
           const opened = window.ZurielStudy &&
             typeof window.ZurielStudy.openSection === "function" &&
-            window.ZurielStudy.openSection("Biblical Dictionary");
+            window.ZurielStudy.openSection("Dictionary");
           liveToolStatus.textContent = opened
             ? "The offline dictionary is open below. Search a term or browse the entries."
             : "The offline dictionary could not be opened. Open a Bible chapter and try again.";
