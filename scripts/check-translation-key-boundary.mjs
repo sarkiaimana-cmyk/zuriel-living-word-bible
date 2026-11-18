@@ -31,7 +31,8 @@ assert.ok(setup.includes("stored only as Cloudflare Worker secrets"), "Provider 
 assert.ok(setup.includes("Never paste either provider key into a chat, source file, issue, commit, or screenshot."));
 assert.ok(translations.includes("Online text is not stored for offline use."), "Copyright-restricted provider text must not be cached offline by default.");
 assert.ok(translations.includes("The King James Version remains available offline."), "The bundled offline Bible must remain independent of provider keys and network availability.");
-assert.ok(translations.includes("The Cloudflare Worker must be deployed and its verified URL published in version.json"), "Missing translation Worker configuration must be explained clearly.");
+assert.ok(translations.includes("Online translation comparison is not connected yet."), "Missing translation Worker configuration must be explained clearly.");
+assert.ok(translations.includes("Provider keys must remain protected as server-side Cloudflare secrets"), "The UI must clearly state that provider keys stay server-side and are never stored on the device.");
 assert.ok(!version.translationApiBase || new URL(version.translationApiBase).hostname.startsWith("zuriel-bible-translations."), "The app may use only the verified translation Worker URL, never a guessed endpoint.");
 
 console.log("Translation key boundary checks passed: provider credentials remain server-side, no key/header is shipped to the client, and online translation text is not cached without licence permission.");
