@@ -86,6 +86,10 @@ vm.runInNewContext(parserSource, parserSandbox, { timeout: 1000 });
 const parseRange = parserSandbox.window.__parseCommentaryRange;
 assert.deepEqual(JSON.parse(JSON.stringify(parseRange("Genesis 1:1–2:3"))),
   { book:"genesis", startChapter:1, startVerse:1, endChapter:2, endVerse:3 });
+assert.deepEqual(JSON.parse(JSON.stringify(parseRange("1 Samuel 8:1-22"))),
+  { book:"1 samuel", startChapter:8, startVerse:1, endChapter:8, endVerse:22 });
+assert.deepEqual(JSON.parse(JSON.stringify(parseRange("2 Corinthians 5:14-21"))),
+  { book:"2 corinthians", startChapter:5, startVerse:14, endChapter:5, endVerse:21 });
 assert.deepEqual(JSON.parse(JSON.stringify(parseRange("Psalm 23"))),
   { book:"psalms", startChapter:23, startVerse:1, endChapter:23, endVerse:Number.MAX_SAFE_INTEGER });
 assert.deepEqual(JSON.parse(JSON.stringify(parseRange("Job 1–2"))),
