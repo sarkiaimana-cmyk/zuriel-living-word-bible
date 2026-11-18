@@ -2551,17 +2551,39 @@
     }
 
     function parseCommentaryRange(value) {
-      const match = String(value || "").trim().match(/^(.+?)\s+(\d+):(\d+)\s*[-–]\s*(?:(\d+):)?(\d+)$/);
+      const split = String(value || "").trim().match(/^(.+?)\s+(.+)$/);
+      if (!split) return null;
+      const book = split[1].trim().toLowerCase() === "psalm" ? "psalms" : split[1].trim().toLowerCase();
+      const reference = split[2].replace(/\s/g, "");
+      let match = reference.match(/^(\d+):(\d+)(?:[-–](?:(\d+):)?(\d+))?$/);
+      if (match) {
+        const startChapter = Number(match[1]);
+        const startVerse = Number(match[2]);
+        const endChapter = match[3] ? Number(match[3]) : startChapter;
+        const endVerse = match[4] ? Number(match[4]) : startVerse;
+        if (![startChapter,startVerse,endChapter,endVerse].every(Number.isInteger) ||
+            startChapter < 1 || startVerse < 1 || endChapter < startChapter || endVerse < 1) return null;
+        return { book: book, startChapter: startChapter, startVerse: startVerse,
+          endChapter: endChapter, endVerse: endVerse };
+      }
+      if (book === "philemon" || book === "jude") {
+        const groups = reference.split(",");
+        const ranges = groups.map(function (part) {
+          const verses = part.match(/^(\d+)(?:[-–](\d+))?$/);
+          if (!verses) return null;
+          return { start: Number(verses[1]), end: Number(verses[2] || verses[1]) };
+        });
+        if (!ranges.length || ranges.some(range => !range || range.end < range.start)) return null;
+        return { book: book, startChapter: 1, startVerse: Math.min(...ranges.map(range => range.start)),
+          endChapter: 1, endVerse: Math.max(...ranges.map(range => range.end)) };
+      }
+      match = reference.match(/^(\d+)(?:[-–](\d+))?$/);
       if (!match) return null;
-      const book = match[1].trim().toLowerCase() === "psalm" ? "psalms" : match[1].trim().toLowerCase();
-      const startChapter = Number(match[2]);
-      const startVerse = Number(match[3]);
-      const endChapter = match[4] ? Number(match[4]) : startChapter;
-      const endVerse = Number(match[5]);
-      if (![startChapter,startVerse,endChapter,endVerse].every(Number.isInteger) ||
-          startChapter < 1 || startVerse < 1 || endChapter < startChapter || endVerse < 1) return null;
-      return { book: book, startChapter: startChapter, startVerse: startVerse,
-        endChapter: endChapter, endVerse: endVerse };
+      const startChapter = Number(match[1]);
+      const endChapter = Number(match[2] || match[1]);
+      if (startChapter < 1 || endChapter < startChapter) return null;
+      return { book: book, startChapter: startChapter, startVerse: 1,
+        endChapter: endChapter, endVerse: Number.MAX_SAFE_INTEGER };
     }
 
     async function loadPassageCommentary() {
