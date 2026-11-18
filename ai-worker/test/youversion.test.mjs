@@ -177,7 +177,7 @@ test("withholds passage text if publisher attribution cannot be verified", async
       throw new Error("Unexpected YouVersion endpoint: " + parsed.pathname);
     });
   assert.equal(response.status, 502);
-  assert.match((await response.json()).error, /publisher attribution/);
+  assert.match((await response.json()).error, /Publisher attribution|publisher attribution/);
 });
 test("rejects invalid passage identifiers before contacting YouVersion", async () => {
   let called = false;
