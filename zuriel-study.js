@@ -1614,7 +1614,7 @@
         </details>
 
         <details>
-          <summary>📖 6. Biblical Dictionary — Search Key Terms</summary>
+          <summary>📖 6. Biblical &amp; Theological Dictionary — Search Key Terms</summary>
           <div class="study-body">
             <p>Search concise explanations of biblical words and themes. Expanded entries also include original-language context, theological significance, interpretive cautions and related passages where curated. These summaries are not exhaustive lexical definitions; read the linked Scriptures in context.</p>
             <label for="zurielDictionarySearch">Search dictionary</label>
