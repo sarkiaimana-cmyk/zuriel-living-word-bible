@@ -1641,7 +1641,7 @@
           <div class="study-body">
             <p>Search the offline King James Version for an exact English word or a phrase. Word searches match whole words, not partial spellings. Phrase searches find the exact phrase within a verse.</p>
             <label for="zurielConcordanceQuery">Word or phrase</label>
-            <input id="zurielConcordanceQuery" type="search" minlength="3" placeholder="For example: grace, covenant, in the beginning" autocomplete="off">
+            <input id="zurielConcordanceQuery" type="search" minlength="1" placeholder="For example: grace, covenant, in the beginning" autocomplete="off">
             <label for="zurielConcordanceMode">Search type</label>
             <select id="zurielConcordanceMode">
               <option value="word">Exact word</option>
@@ -1970,8 +1970,15 @@
       const mode = concordanceMode.value;
       const requestId = ++concordanceRequest;
       concordanceResults.replaceChildren();
-      if (query.length < 3) {
-        concordanceResults.textContent = "Please enter at least three characters.";
+      const minimumLength = mode === "word" ? 1 : 2;
+      if (query.length < minimumLength) {
+        concordanceResults.textContent = mode === "word"
+          ? "Enter one whole word to search the concordance."
+          : "Enter a phrase of at least two characters.";
+        return;
+      }
+      if (mode === "word" && /\\s/.test(query)) {
+        concordanceResults.textContent = "Exact word search accepts one word. Choose exact phrase for multiple words.";
         return;
       }
       if (!window.ZurielBibleSearch || typeof window.ZurielBibleSearch.search !== "function") {
