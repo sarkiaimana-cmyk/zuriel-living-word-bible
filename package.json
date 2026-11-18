@@ -1,6 +1,6 @@
 {
   "name": "zuriel-living-word-bible",
-  "version": "1.4.73",
+  "version": "1.4.74",
   "private": true,
   "description": "Standalone Android app and offline-first Bible reader.",
   "scripts": {
@@ -15,7 +15,8 @@
     "@capacitor-community/text-to-speech": "8.0.2",
     "@capacitor-community/media": "9.1.0",
     "@capacitor/filesystem": "8.1.5",
-    "@capacitor/share": "8.0.3"
+    "@capacitor/share": "8.0.3",
+    "@capacitor/local-notifications": "8.3.1"
   },
   "devDependencies": {
     "@capacitor/cli": "8.6.0",
