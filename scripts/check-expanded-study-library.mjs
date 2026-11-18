@@ -29,19 +29,19 @@ const [
 ]);
 
 
-const readerMapMatch = index.match(/const bookCodes = (\\{[\\s\\S]*?\\n\\};)/);
+const readerMapMatch = index.match(/const bookCodes = (\{[\s\S]*?\n\};)/);
 assert.ok(readerMapMatch,"Reader book-code map must be present.");
-const readerMap = JSON.parse(readerMapMatch[1].replace(/;\\s*$/, ""));
-const bookEntries = [...bookDataSource.matchAll(/\\{\\s*name:\\s*"([^"]+)",\\s*chapters:\\s*(\\d+)\\s*\\}/g)]
+const readerMap = JSON.parse(readerMapMatch[1].replace(/;\s*$/, ""));
+const bookEntries = [...bookDataSource.matchAll(/\{\s*name:\s*"([^"]+)",\s*chapters:\s*(\d+)\s*\}/g)]
   .map(match => ({ name: match[1], chapters: Number(match[2]) }));
 assert.equal(bookEntries.length,66,"Offline Bible index must contain all 66 books.");
 const bookLookup = new Map(bookEntries.map(book => [book.name.toLowerCase(),book]));
 bookLookup.set("psalm",bookLookup.get("psalms"));
 let checkedPassages=0;
 function checkReference(reference,label) {
-  const match=String(reference||"").trim().match(/^(.+?)\\s+(\\d+):(\\d+)/);
+  const match=String(reference||"").trim().match(/^(.+?)\s+(\d+):(\d+)/);
   if(!match) return; // Some book pathways intentionally use chapter-relative references.
-  const book=bookLookup.get(match[1].toLowerCase().replace(/\\s+/g," ").trim());
+  const book=bookLookup.get(match[1].toLowerCase().replace(/\s+/g," ").trim());
   assert.ok(book,label+" has an unknown Bible book in "+reference);
   const chapter=Number(match[2]), verse=Number(match[3]);
   assert.ok(chapter>=1 && chapter<=book.chapters,label+" has an invalid chapter in "+reference);
@@ -49,7 +49,7 @@ function checkReference(reference,label) {
   assert.ok(Array.isArray(chapters),label+" has no bundled KJV mapping for "+book.name);
   const verses=chapters[chapter-1];
   assert.ok(Array.isArray(verses) && verse>=1 && verse<=verses.length,label+" has a missing KJV verse in "+reference);
-  const range=String(reference).match(/:(\\d+)\\s*[-–—]\\s*(\\d+)$/);
+  const range=String(reference).match(/:(\d+)\s*[-–—]\s*(\d+)$/);
   if(range) assert.ok(Number(range[2])<=verses.length,label+" has an out-of-range KJV reference in "+reference);
   checkedPassages++;
 }
