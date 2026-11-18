@@ -410,13 +410,22 @@
 
   window.ZurielTranslations = {
     get configured() { return Boolean(API_BASE); },
-    refreshVersions: function () {
-      versionsLoaded = false;
-      loadedProvider = "";
-      selectedVersionId = "";
-      apiBasePromise = null;
-      return loadVersions();
-    }
+    selectVersion: async function (abbreviation) {
+      const requested = String(abbreviation || "").trim().toUpperCase();
+      panel.open = true;
+      if (!await resolveApiBase()) { status("Secure online translation access has not been connected yet. Your offline KJV is unchanged."); return false; }
+      if (selectedProvider !== "youversion") { selectedProvider = "youversion"; providerSelect.value = "youversion"; versionsLoaded = false; loadedProvider = ""; selectedVersionId = ""; }
+      await loadVersions();
+      if (!versionsLoaded || loadedProvider !== selectedProvider) return false;
+      const options = Array.from(select.options);
+      const match = options.find(option => String(option.textContent || "").split("—")[0].trim().toUpperCase() === requested) || (requested === "LB/LT" ? options.find(option => /^(LB|LT|LIVING|LIFE)/i.test(String(option.textContent || "").trim())) : null);
+      if (!match || !match.value) { status(requested + " is not currently listed among the English versions authorised by YouVersion. The offline KJV remains available."); panel.scrollIntoView({behavior:"smooth",block:"nearest"}); return false; }
+      select.value = match.value; selectedVersionId = match.value; loadButton.disabled = !currentChapter;
+      status(requested + " selected. " + (currentChapter ? "Loading this chapter…" : "Open a Bible chapter to display this translation."));
+      if (currentChapter) await loadPassage();
+      panel.scrollIntoView({behavior:"smooth",block:"nearest"}); return true;
+    },
+    refreshVersions: function () { versionsLoaded = false; loadedProvider = ""; selectedVersionId = ""; apiBasePromise = null; return loadVersions(); }
   };
 
   if (!API_BASE) {
