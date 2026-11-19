@@ -43,6 +43,10 @@ const [packagingScript, packagedLoader] = await Promise.all([
 assert.ok(packagingScript.includes('"zuriel-study-library-data.js"'), "Android packaging must include the study-library loader");
 assert.ok(packagingScript.includes('await cp("data", "www/data", { recursive: true });'), "Android packaging must copy the offline study data directory");
 assert.equal(packagedLoader, loader, "Packaged study-library loader must match the source loader");
+const libraryScriptPosition = index.indexOf('<script src="zuriel-study-library-data.js"></script>');
+const studyScriptPosition = index.indexOf('<script src="zuriel-study.js"></script>');
+assert.ok(libraryScriptPosition >= 0, "Reader page must load the offline study-library loader");
+assert.ok(studyScriptPosition > libraryScriptPosition, "Offline study data must load before the study interaction module");
 for (const path of studyDatasetPaths) {
   const [sourceData, packagedData] = await Promise.all([json("data/" + path), json("www/data/" + path)]);
   assert.deepEqual(packagedData, sourceData, "Android package must include an exact copy of " + path);
