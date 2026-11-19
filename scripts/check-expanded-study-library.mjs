@@ -213,6 +213,31 @@ for (const entry of theology.entries) {
   theologyIds.add(entry.id);
   theologyTitles.add(entry.title.trim().toLocaleLowerCase("en"));
 }
+const topicalIds = new Set();
+const topicalTitles = new Set();
+const topicalApplications = new Set();
+for (const entry of topical.entries) {
+  assert.ok(typeof entry.id === "string" && entry.id.trim(), "Every topical guide needs a stable ID");
+  assert.ok(!topicalIds.has(entry.id), "Topical guide IDs must be unique: " + entry.id);
+  assert.ok(typeof entry.title === "string" && entry.title.trim().length >= 8, "Every topical guide needs a meaningful title");
+  const titleKey = entry.title.trim().toLocaleLowerCase("en");
+  assert.ok(!topicalTitles.has(titleKey), "Topical guide titles must be unique: " + entry.title);
+  assert.ok(typeof entry.overview === "string" && entry.overview.trim().length >= 40, "Topical guide needs a contextual overview: " + entry.title);
+  assert.ok(typeof entry.studyQuestions === "string" && entry.studyQuestions.trim().length >= 30, "Topical guide needs a useful study question: " + entry.title);
+  assert.ok(typeof entry.lifeApplication === "string" && entry.lifeApplication.trim().length >= 40, "Topical guide needs a practical life application: " + entry.title);
+  const applicationKey = entry.lifeApplication.trim().toLocaleLowerCase("en");
+  assert.ok(!topicalApplications.has(applicationKey), "Topical life applications must be distinct: " + entry.title);
+  topicalApplications.add(applicationKey);
+  if (entry.readingCaution !== undefined) assert.ok(typeof entry.readingCaution === "string" && entry.readingCaution.trim().length >= 30, "Topical reading cautions must be substantive: " + entry.title);
+  assert.ok(Array.isArray(entry.scriptureReferences) && entry.scriptureReferences.length >= 2, "Topical guide needs multiple Scripture references: " + entry.title);
+  for (const reference of entry.scriptureReferences) {
+    assert.ok(/^.+?\\s+\\d+:\\d+/.test(reference), "Topical references must specify book, chapter and verse: " + entry.title + " — " + reference);
+    checkReference(reference, "topical guide " + entry.title);
+  }
+  topicalIds.add(entry.id);
+  topicalTitles.add(titleKey);
+}
+
 for (const [label,items] of [
   ["commentary",commentary.entries],["topical",topical.entries],["dictionary",dictionary.entries],
   ["word study",words.entries],["names",names.entries],["worship",worship.pathways]
@@ -255,7 +280,7 @@ for (const path of [
   "zuriel-deep-study-guides.json","zuriel-bible-geography-atlas.json","zuriel-worship-study-pathways.json","zuriel-theological-comparisons.json"
 ]) assert.ok(loader.includes(path),"Study loader must include "+path);
 assert.ok(index.includes('src="zuriel-study-library-data.js"'),"Study library integration script must load");
-assert.ok(worker.includes('zuriel-bible-offline-v209'),"Offline cache must be version 205");
+assert.ok(worker.includes('zuriel-bible-offline-v210'),"Offline cache must be version 205");
 assert.ok(worker.includes("./zuriel-study-library-data.js"),"Study loader must be precached");
 for (const path of [
   "zuriel-passage-commentary-expansion.json","zuriel-topical-bible-study-library-batch-2.json",
