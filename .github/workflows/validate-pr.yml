@@ -58,6 +58,9 @@ jobs:
       - name: Validate streamlined home dashboard and distinct sections
         run: node scripts/check-home-dashboard.mjs
 
+      - name: Validate top interactive Bible translations
+        run: node scripts/check-home-translations.mjs
+
       - name: Validate continuous identity Scripture hero
         run: node scripts/check-identity-scripture-hero.mjs
 
