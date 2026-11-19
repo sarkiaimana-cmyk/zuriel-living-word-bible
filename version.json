@@ -1,4 +1,4 @@
 {
-  "version": "1.4.91",
-  "releaseNotes": "Adds ten more distinct, verse-specific faith-response records, each with its own prayer, declaration, affirmation, confession and context-aware inspiration. New passages address God's help on the journey, grief, weariness, daily trust, servant leadership, Christ's peace, renewed thinking, patient love, prayer and perseverance. The coverage gate now requires 160 unique visible references and validates all five response fields against the offline KJV. Refreshes offline cache."
+  "version": "1.4.92",
+  "releaseNotes": "Improves the offline study reader so Hebrew and Greek entries visibly display their original script, language, morphology status and contextual word-use notes alongside their passage-linked meanings. Adds explicit validation for these reader fields, preserving the 90 curated original-language studies and 152 commentaries across all 66 books. Refreshes offline cache."
 }

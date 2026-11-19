@@ -144,7 +144,7 @@ for (const path of [
   "zuriel-deep-study-guides.json","zuriel-bible-geography-atlas.json","zuriel-worship-study-pathways.json","zuriel-theological-comparisons.json"
 ]) assert.ok(loader.includes(path),"Study loader must include "+path);
 assert.ok(index.includes('src="zuriel-study-library-data.js"'),"Study library integration script must load");
-assert.ok(worker.includes('zuriel-bible-offline-v193'),"Offline cache must be version 193");
+assert.ok(worker.includes('zuriel-bible-offline-v194'),"Offline cache must be version 194");
 assert.ok(worker.includes("./zuriel-study-library-data.js"),"Study loader must be precached");
 for (const path of [
   "zuriel-passage-commentary-expansion.json","zuriel-topical-bible-study-library-batch-2.json",
@@ -155,4 +155,5 @@ for (const path of [
 ]) assert.ok(worker.includes("./data/"+path),"Offline cache must include "+path);
 assert.ok(loader.includes("window.ZurielStudyLibrary"),"Study library API must be exposed");
 assert.ok(loader.includes("openReference"),"Study references must open through the Bible reader");
+assert.ok(loader.includes("Original-language form") && loader.includes("Morphology note") && loader.includes("Contextual word use"),"Word-study detail must expose original script, language, morphology status and contextual usage.");
 console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 12 offline datasets; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
