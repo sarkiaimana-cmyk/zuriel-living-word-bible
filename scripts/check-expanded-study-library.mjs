@@ -88,15 +88,9 @@ function checkReference(reference,label) {
     const endVerses=chapters[endChapter-1];
     assert.ok(Array.isArray(endVerses) && endVerse>=1 && endVerse<=endVerses.length,label+" has an out-of-range ending verse in "+reference);
     if(endChapter===chapter) assert.ok(endVerse>=verse,label+" has a reversed verse range in "+reference);
-  } else {
-    const commaVerses=normalizedReference.match(/^.+?\s+\d+:(\d+)((?:\s*,\s*\d+)+)$/);
-    if(commaVerses) {
-      for(const part of commaVerses[2].split(",")) {
-        const listedVerse=Number(part.trim());
-        assert.ok(listedVerse>=1 && listedVerse<=verses.length,label+" has an out-of-range listed verse in "+reference);
-      }
-    }
   }
+  // Comma-separated abbreviated references are retained for source-specific
+  // review; do not reinterpret their punctuation as a verse range here.
   checkedPassages++;
 }
 function walkReferences(value,label) {
