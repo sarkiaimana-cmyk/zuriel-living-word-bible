@@ -1,6 +1,9 @@
 import { readFile } from "node:fs/promises";
 
-const source = await readFile(new URL("../zuriel-study.js", import.meta.url), "utf8");
+const [source, reader] = await Promise.all([
+  readFile(new URL("../zuriel-study.js", import.meta.url), "utf8"),
+  readFile(new URL("../index.html", import.meta.url), "utf8")
+]);
 const required = [
   "zurielVerseActionMenu",
   "Selected verse study actions",
@@ -31,4 +34,26 @@ if (verseSelection < 0 || wordSelection < 0 || verseSelection === wordSelection)
 if (!source.includes('selected.setAttribute("data-zuriel-active","true")')) {
   throw new Error("A chosen action must reveal only its selected study section.");
 }
-console.log("Selected-verse action menu safeguards passed.");
+const readerRequirements = [
+  'Tap a verse to open its study panel.',
+  'id = "zurielVerseActions"',
+  'verseActions.hidden = false',
+  'function selectVerseForGloryCard',
+  'paragraph.addEventListener("click"',
+  'selectVerseForGloryCard(index + 1, displayVerseText)',
+  'positionVerseOverlay()',
+  'items:[["Prayer","🙏"],["Declaration","📣"],["Affirmation","✨"],["Faith","🛡️"],["Inspiration","💡"]]',
+  'items:[["Compare translations","⇄"],["Share card","🖼️"],["Highlight","🖍️"],',
+  '✕ Close'
+];
+const missingReader = readerRequirements.filter(value => !reader.includes(value));
+if (missingReader.length) {
+  throw new Error("Reader's selected-verse overlay is missing required behaviour: " + missingReader.join(", "));
+}
+const verseClickStart = reader.indexOf('paragraph.addEventListener("click"');
+const verseClickEnd = reader.indexOf('message.appendChild(paragraph)', verseClickStart);
+const verseClickHandler = reader.slice(verseClickStart, verseClickEnd);
+if (!verseClickHandler.includes("selectVerseForGloryCard(")) {
+  throw new Error("Tapping a Scripture verse must open its contextual action menu.");
+}
+console.log("Selected-verse action menu safeguards passed: tap-to-open overlay, grouped actions, one-action-at-a-time study details, word-study separation and dismissal.");
