@@ -1,4 +1,4 @@
 {
-  "version": "1.4.79",
-  "releaseNotes": "Expands the original-language word-study library from 65 to 85 contextual Hebrew, Greek and Aramaic entries, with Scripture references and interpretive cautions checked against the bundled KJV. Retains 60 Words of Jesus themes, 20 theological comparisons, the twelve translation shortcuts at the top of the home screen and all existing offline study content. Refreshes the offline cache."
+  "version": "1.4.80",
+  "releaseNotes": "Expands contextual passage commentary from 103 to 122 original study notes, including lament, prayer, mission, leadership, suffering, hope and the Gospels. Expands original-language word studies to 85 contextual Hebrew, Greek and Aramaic entries. Every commentary and word-study reference is checked against the bundled KJV. Retains all existing study resources and refreshes the offline cache."
 }
