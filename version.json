@@ -1,4 +1,4 @@
 {
-  "version": "1.4.105",
-  "releaseNotes": "Strengthens the 173-passage commentary library and refines 108 unique Hebrew, Greek and Aramaic lexeme studies. Audits all 100 expanded biblical dictionary entries, corrects malformed and abbreviated Scripture links, and validates each dictionary reference against the bundled KJV. The offline study drawer now displays dictionary editorial cautions. Offline cache v207."
+  "version": "1.4.106",
+  "releaseNotes": "Strengthens commentary and original-language study quality, audits all 100 expanded dictionary entries with KJV-checked explicit references, and improves dictionary caution display. Reviews 35 theological comparisons with 107 distinct, scoped interpretive perspectives and adds validation for perspective clarity and Scripture references. Offline cache v208."
 }
