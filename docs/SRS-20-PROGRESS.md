@@ -283,3 +283,14 @@ The following user requirements are part of the product acceptance criteria, not
 - Preserved the distinction between lexeme-level glosses and verse-specific morphology: no parsing is claimed unless separately verified.
 - Updated app metadata to 1.4.104 and offline cache to v206 so revised study data can refresh offline after an update.
 - Candidate status only: CI and Android package checks must pass; physical Android installation and reader interaction still require device testing.
+
+
+## 1.4.105 biblical dictionary quality milestone — candidate
+
+- Audited all 100 expanded biblical dictionary entries for unique IDs, unique display terms, required definitions, editorial cautions and Scripture references.
+- Corrected malformed reference text in the Repentance and Righteousness entries and replaced chapter-only references with focused, explicit chapter-and-verse passages.
+- Expanded comma-separated references into individually named passages so every dictionary link can be checked and opened unambiguously.
+- Added dictionary-specific KJV reference validation and explicit-reference requirements to the study-library validator.
+- Updated the offline study drawer to display each dictionary entry's editorial caution rather than silently omitting it.
+- App/package and update metadata advanced to 1.4.105; offline cache advanced to v207.
+- Candidate only until validation and Android package workflows pass; device installation and visual reader checks remain separate.
