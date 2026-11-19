@@ -752,7 +752,7 @@
           </div>
           <article id="zurielGloryPreview" aria-label="Live open-book Glory Verse Affirmation preview">
             <div class="zgs-brand">The Light 🕯️</div>
-            <h3 id="zgsPreviewTitle">His Word.. My Life.. My Victory.</h3>
+            <h3 id="zgsPreviewTitle">His Words.. My life.. My Victory</h3>
             <div class="zgs-book-spread">
               <section class="zgs-page zgs-left-page" aria-label="Glory Verse Affirmation">
                 <div class="zgs-page-title">GLORY VERSE AFFIRMATION</div>
@@ -765,7 +765,7 @@
                 <p class="zgs-copy" id="zgsPreviewScripture">Your Scripture will appear here.</p>
               </section>
             </div>
-            <div class="zgs-footer">Zuriel Living Word</div>
+            <div class="zgs-footer">Zuriel Living Word Bible</div>
           </article>
           <div class="zgs-actions">
             <button type="button" id="zgsSave">Save to My Library</button>
@@ -1028,9 +1028,9 @@
             const contentHeight = stacked
               ? faithHeadingHeight + leftLines.length * lineHeight(faithSize) +
                 sectionGap + referenceHeadingHeight + rightLines.length * lineHeight(scriptureSize)
-              : referenceHeadingHeight + Math.max(
-                leftLines.length * lineHeight(scriptureSize),
-                rightLines.length * lineHeight(faithSize)
+              : Math.max(
+                faithHeadingHeight + leftLines.length * lineHeight(faithSize),
+                referenceHeadingHeight + rightLines.length * lineHeight(scriptureSize)
               );
             canvas.width = width;
             canvas.height = Math.max(1100, top + contentHeight + bottom);
@@ -1099,9 +1099,9 @@
             ctx.strokeStyle = colors[2]; ctx.lineWidth = 5;
             ctx.strokeRect(35,35,width-70,canvas.height-70);
             ctx.textAlign = "center"; ctx.fillStyle = colors[2];
-            ctx.font = "bold 30px Georgia, serif"; ctx.fillText("THE LIGHT 🕯️",width/2,105);
+            ctx.font = "bold 30px Georgia, serif"; ctx.fillText("The Light 🕯️",width/2,105);
             ctx.fillStyle = colors[1]; ctx.font = "bold 48px Georgia, serif";
-            ctx.fillText("His Word.. My Life.. My Victory.",width/2,185);
+            ctx.fillText("His Words.. My life.. My Victory",width/2,185);
             ctx.strokeStyle = colors[2]; ctx.lineWidth = 2;
             if (!stacked) {
               ctx.beginPath(); ctx.moveTo(width/2,235); ctx.lineTo(width/2,canvas.height-110); ctx.stroke();
@@ -1109,12 +1109,12 @@
             function drawSection(title, referenceText, lines, x, y, maxWidth, size) {
               ctx.textAlign = "center"; ctx.fillStyle = colors[2];
               ctx.font = "bold 24px Arial, sans-serif";
+              ctx.fillText(title,x+maxWidth/2,y);
+              y += 58;
               if (referenceText) {
                 ctx.fillText(referenceText,x+maxWidth/2,y);
                 y += 48;
               }
-              ctx.fillText(title,x+maxWidth/2,y);
-              y += 58;
               ctx.textAlign = "left"; ctx.fillStyle = colors[1];
               ctx.font = "bold " + size + "px " + typeface + ", serif";
               lines.forEach(line => { ctx.fillText(line,x,y); y += lineHeight(size); });
@@ -1132,7 +1132,7 @@
             }
             ctx.textAlign = "center"; ctx.fillStyle = colors[2];
             ctx.font = "bold 24px Georgia, serif";
-            ctx.fillText("Zuriel Living Word",width/2,canvas.height-95);
+            ctx.fillText("Zuriel Living Word Bible",width/2,canvas.height-95);
             const blob = await new Promise((resolve,reject) => canvas.toBlob(value => value ? resolve(value) : reject(new Error("The image could not be created.")),"image/png"));
             const safeReference = reference.replace(/[^a-z0-9]+/gi,"-").replace(/^-|-$/g,"").toLowerCase();
             const fileName = "Zuriel-Glory-Verse-" + (safeReference || "card") + ".png";
