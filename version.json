@@ -1,4 +1,4 @@
 {
-  "version": "1.4.81",
-  "releaseNotes": "Adds fourteen distinct Scripture-specific prayer, declaration, affirmation, confession and inspiration entries, raising unique faith-response references to 125. The coverage gate now requires at least 120 unique references. Also includes 85 contextual original-language word studies and 122 passage-commentary notes, all checked against the bundled KJV. Refreshes the offline cache."
+  "version": "1.4.82",
+  "releaseNotes": "Improves offline word study: when exact verse-level Hebrew/Greek interlinear data is unavailable, the reader now searches the precached 85-entry curated word-study library and displays related entries with original script, contextual gloss, references and interpretive cautions. It clearly distinguishes related studies from verified verse-level matches. Includes 122 contextual commentary entries and 125 unique faith-response references. Refreshes the offline cache."
 }
