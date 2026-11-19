@@ -12,7 +12,7 @@ const [index, loader, worker, html, pkg, release] = await Promise.all([
 assert.equal(index.entries.length, 32, "Expected the curated 32-entry Hebrew/Greek index.");
 const ids = new Set();
 for (const entry of index.entries) {
-  assert.ok(entry.id && /^(H|G)\\d+$/.test(entry.id), "Every index entry needs a Hebrew/Greek Strong's identifier.");
+  assert.ok(entry.id && /^(H|G)\d+$/.test(entry.id), "Every index entry needs a Hebrew/Greek Strong's identifier.");
   assert.ok(!ids.has(entry.id), "Lexicon IDs must be unique: " + entry.id);
   assert.ok(entry.lemma && entry.transliteration && entry.studyLabel, "Lexicon entry needs lemma, transliteration and study label.");
   assert.ok(Array.isArray(entry.keyReferences) && entry.keyReferences.length, "Lexicon entry needs contextual references.");
@@ -20,13 +20,13 @@ for (const entry of index.entries) {
   ids.add(entry.id);
 }
 assert.match(index.usageNote, /do not assign a lemma to an English word/i);
-assert.match(loader, /window\\.ZurielLexiconStudyIndex/);
+assert.ok(loader.includes("window.ZurielLexiconStudyIndex"));
 assert.match(loader, /findById/);
 assert.match(loader, /Duplicate lexicon index ID/);
-assert.match(html, /zuriel-lexicon-index\\.js/);
+assert.ok(html.includes("zuriel-lexicon-index.js"));
 assert.match(worker, /zuriel-bible-offline-v206/);
-assert.match(worker, /zuriel-lexicon-index\\.js/);
-assert.match(worker, /data\\/zuriel-lexicon-study-index\\.json/);
+assert.ok(worker.includes("zuriel-lexicon-index.js"));
+assert.ok(worker.includes("data/zuriel-lexicon-study-index.json"));
 assert.equal(pkg.version, "1.4.104");
 assert.equal(release.version, pkg.version);
 console.log("Lexicon index checks passed: 32 unique Hebrew/Greek IDs, contextual safeguards, loader, offline precache and matching release metadata.");
