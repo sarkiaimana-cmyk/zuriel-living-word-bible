@@ -6,6 +6,8 @@ const index = await readFile(new URL("../index.html", import.meta.url), "utf8");
 const start = index.indexOf("window.ZurielBibleSearch = {");
 const end = index.indexOf("\n};", start);
 assert.ok(start >= 0 && end > start, "The offline Bible search API must be present.");
+assert.ok(index.includes('id="bibleSearchMode"'), "The reader must expose an accessible exact-word/phrase selector.");
+assert.ok(index.includes("search(query, 30, mode)"), "The selected search mode must reach the offline search engine.");
 const source = index.slice(start, end + 3);
 const bibleBooks = [{ name: "Genesis" }, { name: "John" }];
 const bookCodes = { Genesis: "GEN", John: "JHN" };
@@ -30,8 +32,13 @@ assert.equal(phrase[0].chapter, 1);
 assert.equal(phrase[0].verse, 1);
 
 const exact = await search.search("love", 30, "word");
-assert.equal(exact.length, 1, "Exact-word search must exclude inflected and longer words.");
+assert.equal(exact.length, 2, "Exact-word search must match standalone occurrences and exclude inflected or longer words.");
 assert.ok(exact.every(item => item.text.toLowerCase().includes("love")));
+
+const god = await search.search("God", 30);
+assert.equal(god.length, 2, "Search normalization must not strip ordinary ASCII letters.");
+const normalizedPhrase = await search.search("  GOD   so   loved  ", 30);
+assert.equal(normalizedPhrase.length, 1, "Search must normalize case and repeated whitespace.");
 
 const contains = await search.search("love", 30, "phrase");
 assert.equal(contains.length, 3, "Contains/phrase search should also find inflected and longer words.");
