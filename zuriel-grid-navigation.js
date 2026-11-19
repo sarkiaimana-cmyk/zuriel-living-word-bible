@@ -178,17 +178,44 @@
     }
   });
 
+  const inlineControls = document.createElement("section");
+  inlineControls.id = "zgnInlinePassageControls";
+  inlineControls.setAttribute("aria-label","Select a Bible passage");
+  inlineControls.innerHTML = `
+    <label>BOOK<select id="zgnInlineBook" aria-label="Select Bible book"></select></label>
+    <label>CHAPTER<select id="zgnInlineChapter" aria-label="Select Bible chapter"></select></label>
+    <label>VERSE<select id="zgnInlineVerse" aria-label="Select Bible verse"></select></label>
+    <button id="zgnInlineDisplayVerse" type="button">DISPLAY CHAPTER</button>
+  `;
+  books.forEach(book => {
+    const option = document.createElement("option");
+    option.value = book.name;
+    option.textContent = book.name;
+    inlineControls.querySelector("#zgnInlineBook").appendChild(option);
+  });
+  const inlineStyle = document.createElement("style");
+  inlineStyle.textContent = `
+    #zgnInlinePassageControls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:8px 0 10px;padding:0 0 12px;border-bottom:1px dashed #c9b77e}
+    #zgnInlinePassageControls label{display:grid;gap:5px;min-width:0;color:#526174;font:800 10px Arial,sans-serif;letter-spacing:.06em}
+    #zgnInlinePassageControls select{width:100%;min-width:0;min-height:44px;padding:8px 6px;border:1px solid #d2c6aa;border-radius:9px;background:#fffdf7;color:#173452;font:600 13px Arial,sans-serif}
+    #zgnInlineDisplayVerse{grid-column:1/-1;min-height:48px;border:1px solid #d9bd78;border-radius:11px;background:linear-gradient(135deg,#e8cf91,#f5e5b8);color:#10213d;font:800 14px Arial,sans-serif;letter-spacing:.05em}
+    #zurielGridLaunch{display:block;width:100%;min-height:40px;margin:4px 0 12px;border:1px solid #c8d0d9;border-radius:9px;background:#f5f7fa;color:#29435e;font:600 12px Arial,sans-serif}
+    @media(max-width:360px){#zgnInlinePassageControls{gap:5px}#zgnInlinePassageControls select{font-size:11px;padding:7px 3px}}
+  `;
+  document.head.appendChild(inlineStyle);
   const launch = document.createElement("button");
   launch.type = "button";
   launch.id = "zurielGridLaunch";
-  launch.textContent = "📖  Choose Passage  ·  KJV";
-  launch.setAttribute("aria-label", "Choose a Bible book, chapter and verse. Current translation: King James Version.");
+  launch.textContent = "Browse Bible";
+  launch.setAttribute("aria-label", "Open the full Bible browser to browse books, chapters and verses.");
   if (translationBar && translationBar.parentNode === root) {
-    translationBar.insertAdjacentElement("afterend", launch);
+    translationReadiness.insertAdjacentElement("afterend", inlineControls);
+    inlineControls.insertAdjacentElement("afterend", launch);
   } else {
     const readerHeading = root.querySelector("h2");
-    if (readerHeading) readerHeading.insertAdjacentElement("afterend", launch);
-    else root.insertBefore(launch, root.firstChild);
+    if (readerHeading) readerHeading.insertAdjacentElement("afterend", inlineControls);
+    else root.insertBefore(inlineControls, root.firstChild);
+    inlineControls.insertAdjacentElement("afterend", launch);
   }
 
   const modal = document.createElement("section");
