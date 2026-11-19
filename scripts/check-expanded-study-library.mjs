@@ -218,6 +218,9 @@ for (const entry of words.entries) {
   wordStudyOriginalForms.add(originalFormKey);
   assert.ok(typeof entry.contextualGloss === "string" && entry.contextualGloss.trim().length >= 30, "Word study needs a substantive contextual gloss: " + entry.term);
   assert.ok(Array.isArray(entry.scriptureReferences) && entry.scriptureReferences.length >= 1, "Word study needs Scripture references: " + entry.term);
+  for (const reference of entry.scriptureReferences) {
+    assert.ok(/^.+?\\s+\\d+:\\d+/.test(reference), "Word-study references must spell out the Bible book and chapter:verse: " + entry.term + " — " + reference);
+  }
   assert.ok(typeof entry.interpretiveCaution === "string" && entry.interpretiveCaution.trim().length >= 25, "Word study needs an interpretive caution: " + entry.term);
   assert.ok(typeof entry.morphologyStatus === "string" && entry.morphologyStatus.trim(), "Word study must state whether morphology is verified: " + entry.term);
   wordStudyIds.add(entry.id);
