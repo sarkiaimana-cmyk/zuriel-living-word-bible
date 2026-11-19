@@ -1,4 +1,4 @@
 {
-  "version": "1.4.74",
-  "releaseNotes": "Adds optional on-device reminders for daily Scripture, reading plans, prayer, The Light Glory Devotional, personal study and app updates. Choose days and times, set quiet hours, and control each reminder separately. Notifications are scheduled locally and work offline; Android permission is requested only when you save an enabled schedule. Also adds a direct Bible Reading Plans destination in the Study Centre. Includes the searchable offline study library, theological comparisons, 74 connected Scripture trails, all 66 book introductions and pathways, 20 additional verse-specific faith responses, and native Open Book card sharing from version 1.4.73."
+  "version": "1.4.75",
+  "releaseNotes": "Moves Bible Translations to the very top of the home dashboard, ahead of the previous hero section. Adds a clear twelve-version catalogue and places the translation provider, chapter comparison and offline-download controls directly in that top section. Preserves provider permission checks and KJV offline reading."
 }
