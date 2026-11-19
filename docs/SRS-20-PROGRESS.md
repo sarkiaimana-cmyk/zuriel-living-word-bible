@@ -335,3 +335,12 @@ The following user requirements are part of the product acceptance criteria, not
 - Fixed the expanded Study Library renderer so the `senseAndContext` field is shown as the meaning for Names and Titles of God instead of a generic empty summary.
 - App/package and in-app update version advanced to 1.4.109; offline cache advanced to v211.
 - Candidate status pending validation and Android package checks; pronunciation and transliteration remain editorial study aids, not a claim that every historical vocalisation is certain.
+
+
+## 1.4.110 deep-study guide quality milestone — candidate
+
+- Audited all 20 deep-study guides for unique IDs/titles, primary passages, cross-references, contextual summaries, observation prompts, interpretation prompts, applications and reading cautions.
+- Expanded inherited and abbreviated references into 105 explicit primary/cross-reference links, each checked against the bundled KJV.
+- Fixed Study Library field mapping so the deep guides display their context summaries, primary passages, cross-references, observation and interpretation prompts, life applications and interpretive cautions rather than losing those fields or showing generic empty summaries.
+- App/package and in-app update version advanced to 1.4.110; offline cache advanced to v212.
+- Candidate status pending CI and Android packaging; phone layout and navigation still require physical-device testing.
