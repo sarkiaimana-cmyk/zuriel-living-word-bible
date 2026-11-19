@@ -54,11 +54,11 @@ const [pathwaysSource, bookDataSource, kjvSource, readerSource] = await Promise.
   readFile(new URL("../index.html", import.meta.url), "utf8")
 ]);
 const pathwayLibrary = JSON.parse(pathwaysSource);
-const bibleBooks = [...bookDataSource.matchAll(/\\{\\s*name:\\s*"([^"]+)",\\s*chapters:\\s*(\\d+)\\s*\\}/g)]
+const bibleBooks = [...bookDataSource.matchAll(/\{\s*name:\s*"([^"]+)",\s*chapters:\s*(\d+)\s*\}/g)]
   .map(match => ({ name: match[1], chapters: Number(match[2]) }));
-const readerMapMatch = readerSource.match(/const bookCodes = (\\{[\\s\\S]*?\\n\\};)/);
+const readerMapMatch = readerSource.match(/const bookCodes = (\{[\s\S]*?\n\};)/);
 assert.ok(readerMapMatch, "Reader book-code map must be available for worship reference verification.");
-const bookCodes = JSON.parse(readerMapMatch[1].replace(/;\\s*$/, ""));
+const bookCodes = JSON.parse(readerMapMatch[1].replace(/;\s*$/, ""));
 const kjv = JSON.parse(kjvSource);
 assert.equal(bibleBooks.length, 66, "Worship references must resolve against the full 66-book Bible.");
 assert.equal(Object.keys(kjv).length, 66, "Worship reference verification requires all 66 KJV books.");
@@ -81,7 +81,7 @@ for (const pathway of pathwayLibrary.pathways) {
   assert.ok(Array.isArray(pathway.references) && pathway.references.length >= 2,
     pathway.title + " needs multiple Scripture foundations.");
   for (const reference of pathway.references) {
-    const match = String(reference).match(/^(.+?)\\s+(\\d+)(?::(\\d+)(?:-(\\d+))?)?$/);
+    const match = String(reference).match(/^(.+?)\s+(\d+)(?::(\d+)(?:-(\d+))?)?$/);
     assert.ok(match, pathway.title + " has a malformed Scripture reference: " + reference);
     const bookName = match[1].toLowerCase() === "psalm" ? "psalms" : match[1].toLowerCase();
     const book = bookByName.get(bookName);
@@ -99,5 +99,4 @@ for (const pathway of pathwayLibrary.pathways) {
     verifiedReferences++;
   }
 }
-
 console.log("Worship library checks passed: accessible search and filtering, separate composition and recording rights, streaming permission, HTTPS source, explicit unavailable state and no media preloading.");
