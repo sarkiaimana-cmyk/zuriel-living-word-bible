@@ -141,7 +141,7 @@ const expected = [
   [books.bookIntroductions,66,"book introductions"], [books.bookStudyPathways,66,"book study pathways"],
   [trail1.trails,41,"connected Scripture trails batch 1"], [trail2.trails,33,"connected Scripture trails batch 2"],
   [deep.guides,20,"deep study guides"], [names.entries,52,"Names and Titles of God"],
-  [words.entries,110,"original-language word studies"], [commentary.entries,173,"passage commentary"],
+  [words.entries,108,"unique original-language word studies"], [commentary.entries,173,"passage commentary"],
   [topical.entries,100,"topical study guides"], [worship.pathways,30,"worship study pathways"], [theology.entries,35,"theological comparisons"]
 ];
 for (const [items,count,label] of expected) {
@@ -202,6 +202,7 @@ for (const [label,items] of [
 
 const wordStudyIds = new Set();
 const wordStudyTerms = new Set();
+const wordStudyOriginalForms = new Set();
 for (const entry of words.entries) {
   assert.ok(typeof entry.id === "string" && entry.id.trim(), "Every original-language study needs a stable ID");
   assert.ok(!wordStudyIds.has(entry.id), "Original-language study IDs must be unique: " + entry.id);
@@ -212,6 +213,9 @@ for (const entry of words.entries) {
   assert.ok(typeof entry.originalForm === "string" && entry.originalForm.trim(), "Original-language study needs its original script form: " + entry.term);
   const scriptPattern = entry.language === "Greek" ? /[\u0370-\u03FF\u1F00-\u1FFF]/ : /[\u0590-\u05FF]/;
   assert.ok(scriptPattern.test(entry.originalForm), "Original form does not match the declared script/language: " + entry.term);
+  const originalFormKey = entry.language + "|" + entry.originalForm.normalize("NFC");
+  assert.ok(!wordStudyOriginalForms.has(originalFormKey), "Original-language lexemes must not be duplicated under alternate transliterations: " + entry.term);
+  wordStudyOriginalForms.add(originalFormKey);
   assert.ok(typeof entry.contextualGloss === "string" && entry.contextualGloss.trim().length >= 30, "Word study needs a substantive contextual gloss: " + entry.term);
   assert.ok(Array.isArray(entry.scriptureReferences) && entry.scriptureReferences.length >= 1, "Word study needs Scripture references: " + entry.term);
   assert.ok(typeof entry.interpretiveCaution === "string" && entry.interpretiveCaution.trim().length >= 25, "Word study needs an interpretive caution: " + entry.term);
@@ -227,7 +231,7 @@ for (const path of [
   "zuriel-deep-study-guides.json","zuriel-bible-geography-atlas.json","zuriel-worship-study-pathways.json","zuriel-theological-comparisons.json"
 ]) assert.ok(loader.includes(path),"Study loader must include "+path);
 assert.ok(index.includes('src="zuriel-study-library-data.js"'),"Study library integration script must load");
-assert.ok(worker.includes('zuriel-bible-offline-v205'),"Offline cache must be version 205");
+assert.ok(worker.includes('zuriel-bible-offline-v206'),"Offline cache must be version 205");
 assert.ok(worker.includes("./zuriel-study-library-data.js"),"Study loader must be precached");
 for (const path of [
   "zuriel-passage-commentary-expansion.json","zuriel-topical-bible-study-library-batch-2.json",
