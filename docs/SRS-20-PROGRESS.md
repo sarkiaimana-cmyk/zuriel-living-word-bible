@@ -273,3 +273,13 @@ The following user requirements are part of the product acceptance criteria, not
 - Expanded-study validation now checks every commentary `passage` field against the bundled KJV, checks cross-chapter range endings, and requires unique IDs/passages plus substantive context, observation and interpretive-caution fields. Related Scripture references are checked when supplied.
 - App/package metadata advances to **1.4.103** and offline cache **v205** so the revised commentary dataset is included in web and Android packages.
 - Validation and signed Android packaging must pass before merge. This candidate is not an installed phone update; real-device offline and reading checks remain outstanding.
+
+
+## 1.4.104 original-language quality milestone — candidate
+
+- Consolidated the duplicate Hebrew lexeme records for חֶסֶד (Hesed/Chesed) and נֶפֶשׁ (Nephesh/Nefesh) into single entries, retaining the fuller contextual explanations and merging their relevant Scripture references.
+- The collection now contains 108 unique language-and-original-script lexemes rather than counting alternate transliterations as separate studies.
+- Added a validator assertion to prevent the same language/original-script lexeme from being entered again under a different transliteration.
+- Preserved the distinction between lexeme-level glosses and verse-specific morphology: no parsing is claimed unless separately verified.
+- Updated app metadata to 1.4.104 and offline cache to v206 so revised study data can refresh offline after an update.
+- Candidate status only: CI and Android package checks must pass; physical Android installation and reader interaction still require device testing.
