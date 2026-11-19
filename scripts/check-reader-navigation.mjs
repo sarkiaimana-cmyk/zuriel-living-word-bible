@@ -88,4 +88,12 @@ if (home.includes("setupHomePassageSelector") || home.includes("zurielHomePassag
   throw new Error("The retired duplicate home passage selector must not return.");
 }
 
-console.log("Reader navigation checks passed: errors propagate, responsive reading width is enforced, and search, navigator, Continue Reading, Geography, Advanced Study, Kingdom Life, Words of Jesus, bookmarks, home Scripture cards and verse navigation all use the shared verse activation path.");
+requireMatch(navigator, /id="zgnDisplayVerse"[^>]*>DISPLAY VERSE/, "The passage selector must present an explicit DISPLAY VERSE action.");
+requireMatch(navigator, /displayVerseButton\.addEventListener\("click", openPassage\)/, "The DISPLAY VERSE action must open the selected passage.");
+requireMatch(navigator, /selectedVerse = n;[\s\S]*?displayVerseButton\.disabled = false;[\s\S]*?Tap DISPLAY VERSE to open the passage\./, "Selecting a verse must prepare the confirmation action without opening the passage automatically.");
+if (/selectedVerse = n;[\s\S]*?openPassage\(\);/.test(navigator)) {
+  throw new Error("Selecting a verse must not bypass the explicit DISPLAY VERSE confirmation.");
+}
+requireMatch(navigator, /button\.disabled = !ready[\s\S]*?secure translation service is not configured/, "Non-KJV shortcuts must not pretend to work before the secure translation service is configured.");
+requireMatch(reader, /#message\s*\{[\s\S]*?border-bottom:\s*1px dashed #c9b77e/, "The reading page must use the requested dashed horizontal separator.");
+console.log("Reader navigation checks passed: errors propagate, responsive reading width is enforced, explicit DISPLAY VERSE confirmation is required, translation availability is honest, and all verse links use shared activation.");
