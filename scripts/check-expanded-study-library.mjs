@@ -220,7 +220,7 @@ for (const entry of words.entries) {
   if (entry.contextualWordUse !== undefined) assert.ok(typeof entry.contextualWordUse === "string" && entry.contextualWordUse.trim().length >= 80, "Contextual word-use notes must be substantive: " + entry.term);
   assert.ok(Array.isArray(entry.scriptureReferences) && entry.scriptureReferences.length >= 1, "Word study needs Scripture references: " + entry.term);
   for (const reference of entry.scriptureReferences) {
-    assert.ok(/^.+?\\s+\\d+:\\d+/.test(reference), "Word-study references must spell out the Bible book and chapter:verse: " + entry.term + " — " + reference);
+    assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Word-study references must spell out the Bible book and chapter:verse: " + entry.term + " — " + reference);
   }
   assert.ok(typeof entry.interpretiveCaution === "string" && entry.interpretiveCaution.trim().length >= 25, "Word study needs an interpretive caution: " + entry.term);
   assert.ok(typeof entry.morphologyStatus === "string" && entry.morphologyStatus.trim(), "Word study must state whether morphology is verified: " + entry.term);
