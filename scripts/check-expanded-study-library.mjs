@@ -169,7 +169,7 @@ for (const entry of dictionary.entries) {
   assert.ok(Array.isArray(entry.scriptureReferences) && entry.scriptureReferences.length >= 1,
     "Every dictionary entry needs at least one Scripture reference: " + entry.term);
   for (const reference of entry.scriptureReferences) {
-    assert.ok(/^.+?\\s+\\d+:\\d+/.test(reference), "Dictionary references must specify book, chapter and verse: " + entry.term + " — " + reference);
+    assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Dictionary references must specify book, chapter and verse: " + entry.term + " — " + reference);
     checkReference(reference, "dictionary entry " + entry.term);
   }
   assert.ok(typeof entry.editorialCaution === "string" && entry.editorialCaution.trim().length >= 25,
