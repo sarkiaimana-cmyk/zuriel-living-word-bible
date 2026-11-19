@@ -189,9 +189,17 @@ for (const entry of theology.entries) {
   assert.ok(!theologyTitles.has(entry.title.trim().toLocaleLowerCase("en")), "Theological comparison titles must be unique: " + entry.title);
   assert.ok(typeof entry.question === "string" && entry.question.length >= 25, "Each comparison needs a guiding question: " + entry.title);
   assert.ok(Array.isArray(entry.scriptureReferences) && entry.scriptureReferences.length >= 4, "Each comparison needs multiple Scripture references: " + entry.title);
-  assert.ok(Array.isArray(entry.positions) && entry.positions.length >= 2, "Each theological comparison needs multiple interpretations");
+  assert.ok(Array.isArray(entry.positions) && entry.positions.length >= 2 && entry.positions.length <= 4, "Each theological comparison needs two to four substantive interpretations: " + entry.title);
+  const positionViews = new Set();
   for (const position of entry.positions) {
-    assert.ok(position.view && position.summary && position.summary.length >= 100 && position.traditions, "Each position needs a fair, substantive description: " + entry.title);
+    assert.ok(position.view && position.summary && position.summary.length >= 100 && position.traditions && position.traditions.length >= 15, "Each position needs a fair, substantive description and tradition scope: " + entry.title);
+    const viewKey = position.view.trim().toLocaleLowerCase("en");
+    assert.ok(!positionViews.has(viewKey), "A comparison must not repeat a perspective label: " + entry.title + " — " + position.view);
+    positionViews.add(viewKey);
+  }
+  for (const reference of entry.scriptureReferences) {
+    assert.ok(/^.+?\\s+\\d+:\\d+/.test(reference), "Theological comparison references must specify book, chapter and verse: " + entry.title + " — " + reference);
+    checkReference(reference, "theological comparison " + entry.title);
   }
   assert.ok(entry.sharedGround && entry.sharedGround.length >= 80 && entry.historicalContext && entry.historicalContext.length >= 80 && entry.areasOfDisagreement && entry.areasOfDisagreement.length >= 80 && entry.readingCaution && entry.readingCaution.length >= 80, "Each theological comparison needs balance and context: " + entry.title);
   theologyIds.add(entry.id);
@@ -239,7 +247,7 @@ for (const path of [
   "zuriel-deep-study-guides.json","zuriel-bible-geography-atlas.json","zuriel-worship-study-pathways.json","zuriel-theological-comparisons.json"
 ]) assert.ok(loader.includes(path),"Study loader must include "+path);
 assert.ok(index.includes('src="zuriel-study-library-data.js"'),"Study library integration script must load");
-assert.ok(worker.includes('zuriel-bible-offline-v207'),"Offline cache must be version 205");
+assert.ok(worker.includes('zuriel-bible-offline-v208'),"Offline cache must be version 205");
 assert.ok(worker.includes("./zuriel-study-library-data.js"),"Study loader must be precached");
 for (const path of [
   "zuriel-passage-commentary-expansion.json","zuriel-topical-bible-study-library-batch-2.json",
