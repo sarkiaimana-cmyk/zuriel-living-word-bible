@@ -50,6 +50,16 @@ const required = [
   ["reference opening progress feedback", 'count.textContent = "Opening " + reference'],
   ["successful reference opening feedback", 'count.textContent = "Opened " + reference'],
   ["visible reference opening failure feedback", 'count.textContent = "Could not open " + reference'],
+  ["love for enemies teaching", "Love your enemies"],
+  ["giving without display", "Give in secret"],
+  ["warning against greed", "The rich fool"],
+  ["wholehearted discipleship challenge", "The rich young ruler"],
+  ["Good Shepherd teaching", "The Good Shepherd"],
+  ["Father's compassion in the lost son", "The lost son"],
+  ["Kingdom growth parable", "The mustard seed"],
+  ["Kingdom treasure parable", "The pearl of great price"],
+  ["watchfulness parable", "The wise and foolish virgins"],
+  ["faithful stewardship parable", "The talents entrusted"],
   ["unavailable reader feedback", "The Bible reader is not ready yet. Please try again."]
 ];
 for (const [label, fragment] of required) {
@@ -64,7 +74,7 @@ const sectionEnd = library.indexOf('if (page === "saved")', sectionStart);
 const section = sectionStart >= 0 && sectionEnd > sectionStart ? library.slice(sectionStart, sectionEnd) : "";
 const topicCount = (section.match(/category:/g) || []).length;
 const referenceCount = (section.match(/refs:\[/g) || []).length;
-if (topicCount < 40) failures.push("Expected at least 40 curated Jesus teaching themes; found " + topicCount + ".");
+if (topicCount < 60) failures.push("Expected at least 60 curated Jesus teaching themes; found " + topicCount + ".");
 if (referenceCount < 20) failures.push("Expected Scripture reference collections for the teaching themes.");
 
 // Resolve every curated Words of Jesus reference against the actual bundled KJV.
