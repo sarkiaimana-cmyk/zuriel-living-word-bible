@@ -808,16 +808,23 @@
           try {
             let response = null;
             let fromOfflineCache = false;
+            let savedForOffline = false;
             const cacheName = "zuriel-studio-wallpapers-v1";
             if ("caches" in window) {
               try {
                 const cache = await caches.open(cacheName);
                 response = await cache.match(choice.url);
                 fromOfflineCache = !!response;
+                savedForOffline = fromOfflineCache;
                 if (!response) {
                   response = await fetch(choice.url, { mode: "cors", credentials: "omit" });
                   if (!response.ok || !response.type.includes("basic") && response.type !== "cors") throw new Error("Wallpaper download failed");
-                  await cache.put(choice.url, response.clone());
+                  try {
+                    await cache.put(choice.url, response.clone());
+                    savedForOffline = true;
+                  } catch (storageError) {
+                    savedForOffline = false;
+                  }
                 }
               } catch (cacheError) {
                 if (!navigator.onLine) throw cacheError;
@@ -844,7 +851,11 @@
               studio.querySelectorAll("[data-wallpaper]").forEach(button => {
                 button.setAttribute("aria-pressed", String(button.dataset.wallpaper === key));
               });
-              status.textContent = choice.label + (fromOfflineCache ? " loaded from this device's offline wallpaper cache." : " saved to this device's offline wallpaper cache.");
+              status.textContent = fromOfflineCache
+                ? choice.label + " loaded from this device's offline wallpaper cache."
+                : savedForOffline
+                  ? choice.label + " saved to this device's offline wallpaper cache."
+                  : choice.label + " loaded, but this browser could not save it for offline use.";
             };
             image.onerror = function () {
               URL.revokeObjectURL(objectUrl);
