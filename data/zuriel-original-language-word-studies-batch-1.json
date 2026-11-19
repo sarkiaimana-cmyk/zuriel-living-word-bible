@@ -42,7 +42,7 @@
       "term": "Eirene",
       "language": "Greek",
       "originalForm": "εἰρήνη",
-      "contextualGloss": "peace, well-being or harmony",
+      "contextualGloss": "Peace, well-being or harmony; the New Testament uses it for peace with God, communal reconciliation and the peace Christ gives.",
       "scriptureReferences": [
         "John 14:27",
         "Romans 5:1",
@@ -56,7 +56,7 @@
       "term": "Elpis",
       "language": "Greek",
       "originalForm": "ἐλπίς",
-      "contextualGloss": "hope or confident expectation",
+      "contextualGloss": "Hope or confident expectation; in Christian texts it rests on God's promise rather than optimism or certainty about preferred outcomes.",
       "scriptureReferences": [
         "Romans 5:2-5",
         "1 Peter 1:3",
@@ -126,7 +126,7 @@
       "term": "Hagios",
       "language": "Greek",
       "originalForm": "ἅγιος",
-      "contextualGloss": "holy; set apart for God",
+      "contextualGloss": "Holy or set apart for God; context may describe God's character, a person, a people or something dedicated to sacred use.",
       "scriptureReferences": [
         "Mark 1:24",
         "Romans 1:7",
@@ -140,7 +140,7 @@
       "term": "Hagiasmos",
       "language": "Greek",
       "originalForm": "ἁγιασμός",
-      "contextualGloss": "sanctification or holiness",
+      "contextualGloss": "Holiness or sanctification; describes being set apart for God and the resulting pattern of a life shaped by that belonging.",
       "scriptureReferences": [
         "Romans 6:19,22",
         "1 Thessalonians 4:3-4",
@@ -154,7 +154,7 @@
       "term": "Charisma",
       "language": "Greek",
       "originalForm": "χάρισμα",
-      "contextualGloss": "gracious gift",
+      "contextualGloss": "A gracious gift given by God; Paul connects such gifts with service and the strengthening of the Christian community.",
       "scriptureReferences": [
         "Romans 12:6",
         "1 Corinthians 12:4,9",
@@ -210,7 +210,7 @@
       "term": "Doulos",
       "language": "Greek",
       "originalForm": "δοῦλος",
-      "contextualGloss": "slave or bondservant",
+      "contextualGloss": "A slave or servant; New Testament writers use the image for belonging to and serving Christ, while the historical reality of slavery must not be romanticised.",
       "scriptureReferences": [
         "Matthew 6:24",
         "Romans 1:1",
@@ -238,7 +238,7 @@
       "term": "Soter",
       "language": "Greek",
       "originalForm": "σωτήρ",
-      "contextualGloss": "saviour or deliverer",
+      "contextualGloss": "Saviour or deliverer; a title used for God and Jesus, with the passage identifying the danger or need from which rescue comes.",
       "scriptureReferences": [
         "Luke 2:11",
         "John 4:42",
@@ -252,7 +252,7 @@
       "term": "Apolytrosis",
       "language": "Greek",
       "originalForm": "ἀπολύτρωσις",
-      "contextualGloss": "redemption or release",
+      "contextualGloss": "Redemption or release; New Testament passages use it for liberation associated with Christ, forgiveness and the hope of final restoration.",
       "scriptureReferences": [
         "Romans 3:24",
         "Ephesians 1:7",
@@ -293,7 +293,7 @@
       "term": "Makrothymia",
       "language": "Greek",
       "originalForm": "μακροθυμία",
-      "contextualGloss": "patience or long-suffering",
+      "contextualGloss": "Patience or long-suffering; the capacity to bear with others and restrain anger rather than retaliate quickly.",
       "scriptureReferences": [
         "Romans 2:4",
         "Galatians 5:22",
@@ -307,7 +307,7 @@
       "term": "Prautes",
       "language": "Greek",
       "originalForm": "πραΰτης",
-      "contextualGloss": "gentleness or meekness",
+      "contextualGloss": "Gentleness or meekness; strength expressed without harshness, especially in relationships and correction.",
       "scriptureReferences": [
         "Matthew 5:5",
         "Galatians 5:23",
@@ -445,7 +445,7 @@
       "term": "Dynamis",
       "language": "Greek",
       "originalForm": "δύναμις",
-      "contextualGloss": "power, ability or mighty work",
+      "contextualGloss": "Power, might or ability; depending on context it can describe God's power, miraculous works or a person's capacity.",
       "scriptureReferences": [
         "Luke 4:14",
         "Acts 1:8",
@@ -459,7 +459,7 @@
       "term": "Semeion",
       "language": "Greek",
       "originalForm": "σημεῖον",
-      "contextualGloss": "sign or identifying mark",
+      "contextualGloss": "A sign or identifying mark; in the Gospels a sign can point beyond the event to Jesus' identity and mission.",
       "scriptureReferences": [
         "John 2:11",
         "20:30-31",
@@ -529,7 +529,7 @@
       "term": "Chanan",
       "language": "Hebrew",
       "originalForm": "חָנַן",
-      "contextualGloss": "to show favour or be gracious",
+      "contextualGloss": "To show favour or be gracious; often describes compassionate favour given to someone who is dependent or in need.",
       "scriptureReferences": [
         "Exodus 33:19",
         "Psalm 102:13",
@@ -543,7 +543,7 @@
       "term": "Racham",
       "language": "Hebrew",
       "originalForm": "רָחַם",
-      "contextualGloss": "to show compassion or mercy",
+      "contextualGloss": "To show compassion or mercy; it expresses tender concern, while the surrounding passage clarifies how that care is shown.",
       "scriptureReferences": [
         "Exodus 33:19",
         "Isaiah 49:15",
@@ -557,7 +557,7 @@
       "term": "Shama",
       "language": "Hebrew",
       "originalForm": "שָׁמַע",
-      "contextualGloss": "to hear, listen or heed",
+      "contextualGloss": "To hear, listen or heed; in covenant settings hearing often includes taking God's words seriously and responding in obedience.",
       "scriptureReferences": [
         "Deuteronomy 6:4",
         "1 Samuel 15:22",
@@ -571,7 +571,7 @@
       "term": "Barak",
       "language": "Hebrew",
       "originalForm": "בָּרַךְ",
-      "contextualGloss": "to bless, kneel or bless God",
+      "contextualGloss": "To bless or kneel; context distinguishes speaking blessing, receiving blessing and the physical posture associated with kneeling.",
       "scriptureReferences": [
         "Genesis 12:2-3",
         "Numbers 6:24-26",
@@ -585,7 +585,7 @@
       "term": "Qavah",
       "language": "Hebrew",
       "originalForm": "קָוָה",
-      "contextualGloss": "to wait, hope or look eagerly",
+      "contextualGloss": "To wait, hope or look eagerly; it conveys expectant dependence on God rather than passive inactivity or control of timing.",
       "scriptureReferences": [
         "Psalm 27:14",
         "40:1",
@@ -613,7 +613,7 @@
       "term": "Shuv",
       "language": "Hebrew",
       "originalForm": "שׁוּב",
-      "contextualGloss": "to turn, return or restore",
+      "contextualGloss": "To turn or return; it can describe physical return, restoration or repentance, so the passage must determine the sense.",
       "scriptureReferences": [
         "Deuteronomy 30:2",
         "Psalm 51:13",
@@ -669,7 +669,7 @@
       "term": "Yirah",
       "language": "Hebrew",
       "originalForm": "יִרְאָה",
-      "contextualGloss": "fear, awe or reverence",
+      "contextualGloss": "Fear, awe or reverence; context determines whether the word describes terror, respect or worshipful regard for God.",
       "scriptureReferences": [
         "Proverbs 1:7",
         "9:10",
@@ -711,13 +711,14 @@
       "term": "Ruach",
       "language": "Hebrew",
       "originalForm": "רוּחַ",
-      "contextualGloss": "wind, breath or spirit",
+      "contextualGloss": "Wind, breath or spirit. In Genesis 1:2 the term describes the divine presence moving over the waters, with translation discussions about 'Spirit of God' or 'wind from God'. In Ezekiel 37:1-14 the vision deliberately moves through wind, breath and spirit imagery as the bones receive life; the passage interprets the vision as Israel's restoration. Psalm 51:10-12 asks for inner renewal and the sustaining presence of God's Holy Spirit.",
       "scriptureReferences": [
         "Genesis 1:2",
         "Genesis 6:17",
-        "Ezekiel 37:1-14"
+        "Ezekiel 37:1-14",
+        "Psalm 51:10-12"
       ],
-      "interpretiveCaution": "The same word has several senses; use grammar and context to identify the intended one.",
+      "interpretiveCaution": "The word can denote wind, breath or spirit. Do not assume every occurrence names the Holy Spirit; grammar, collocation and literary context determine the sense.",
       "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
     },
     {
@@ -725,7 +726,7 @@
       "term": "Kavod",
       "language": "Hebrew",
       "originalForm": "כָּבוֹד",
-      "contextualGloss": "glory, honour or weight",
+      "contextualGloss": "Glory, honour or weight; it can describe God's revealed majesty or the honour and significance accorded to people.",
       "scriptureReferences": [
         "Exodus 24:16-17",
         "33:18",
@@ -739,7 +740,7 @@
       "term": "Qadosh",
       "language": "Hebrew",
       "originalForm": "קָדוֹשׁ",
-      "contextualGloss": "holy or set apart",
+      "contextualGloss": "Holy or set apart; the word highlights God's uniqueness and the consecrated status of people, places or things.",
       "scriptureReferences": [
         "Leviticus 19:2",
         "Isaiah 6:3",
@@ -753,7 +754,7 @@
       "term": "Mishkan",
       "language": "Hebrew",
       "originalForm": "מִשְׁכָּן",
-      "contextualGloss": "dwelling place or tabernacle",
+      "contextualGloss": "Dwelling place or tabernacle; in Exodus it names the sanctuary associated with God's presence among Israel.",
       "scriptureReferences": [
         "Exodus 25:8-9",
         "40:34-38"
@@ -766,7 +767,7 @@
       "term": "Adon",
       "language": "Hebrew",
       "originalForm": "אָדוֹן",
-      "contextualGloss": "lord, master or owner",
+      "contextualGloss": "Lord, master or owner; it expresses authority or respectful address, with the relationship clarified by context.",
       "scriptureReferences": [
         "Genesis 18:12",
         "Exodus 21:5",
@@ -822,7 +823,7 @@
       "term": "Elohim Tsevaot",
       "language": "Hebrew",
       "originalForm": "אֱלֹהִים צְבָאוֹת",
-      "contextualGloss": "God of hosts or armies",
+      "contextualGloss": "God of hosts or armies; this title emphasizes the Lord's sovereignty over the heavenly hosts and all powers.",
       "scriptureReferences": [
         "1 Samuel 1:3",
         "Psalm 46:7",
@@ -862,7 +863,7 @@
       "term": "Talitha koum",
       "language": "Aramaic",
       "originalForm": "טַלִיתָא קוּם",
-      "contextualGloss": "'Little girl, arise'",
+      "contextualGloss": "Little girl, arise; these Aramaic words are spoken by Jesus in the healing and raising of Jairus's daughter.",
       "scriptureReferences": [
         "Mark 5:41"
       ],
@@ -874,7 +875,7 @@
       "term": "Ephphatha",
       "language": "Aramaic",
       "originalForm": "אֶפְפָתָא",
-      "contextualGloss": "'Be opened'",
+      "contextualGloss": "'Be opened'; Jesus speaks this Aramaic command in the healing account of a man who is deaf and has difficulty speaking.",
       "scriptureReferences": [
         "Mark 7:34"
       ],
@@ -925,13 +926,14 @@
       "term": "Logos",
       "language": "Greek",
       "originalForm": "λόγος",
-      "contextualGloss": "word, message, account or reason; in John 1 it is used in a profound Christological claim",
+      "contextualGloss": "Word, message, statement, account or reason. In John 1:1-18 the Logos is present in the beginning, related to God, involved in creation and identified with Jesus' embodied life in verse 14. Hebrews 4:12 uses 'word of God' in a different context for the living, active word that exposes the heart; do not transfer every detail of John's title into every occurrence.",
       "scriptureReferences": [
         "John 1:1",
         "John 1:14",
+        "John 1:1-18",
         "Hebrews 4:12"
       ],
-      "interpretiveCaution": "Do not reduce Logos to a single English gloss; John 1's use must be read within the whole prologue and Gospel.",
+      "interpretiveCaution": "Logos has a broad Greek range. John 1 gives it a distinctive theological role, but not every New Testament occurrence means the personal title 'the Word'.",
       "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
     },
     {
@@ -953,13 +955,16 @@
       "term": "Metanoia",
       "language": "Greek",
       "originalForm": "μετάνοια",
-      "contextualGloss": "repentance; a changed mind and reorientation expressed in turning",
+      "contextualGloss": "Repentance: a changed mind and reorientation expressed in turning. Mark 1:14-15 places the call to repent within Jesus' announcement of God's kingdom. Acts 2:37-38 connects repentance to the hearers' response to Jesus. 2 Corinthians 7:9-10 distinguishes godly grief that produces repentance from worldly grief; sorrow alone is not the same as changed direction.",
       "scriptureReferences": [
         "Acts 2:38",
         "Romans 2:4",
-        "2 Peter 3:9"
+        "2 Peter 3:9",
+        "Mark 1:14-15",
+        "Acts 2:37-38",
+        "2 Corinthians 7:9-10"
       ],
-      "interpretiveCaution": "Avoid defining repentance as a mere emotion or as a word-origin formula; examine the passage's call and response.",
+      "interpretiveCaution": "Do not reduce repentance to feeling guilty or to a word-origin formula. Read the response and its fruits in each passage; never use repentance language to pressure victims to remain in harm.",
       "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
     },
     {
@@ -1023,7 +1028,7 @@
       "term": "Basileia",
       "language": "Greek",
       "originalForm": "βασιλεία",
-      "contextualGloss": "kingdom, reign or royal rule",
+      "contextualGloss": "Kingdom, reign or royal rule; in Jesus' teaching it often refers to God's reign and the life shaped by its arrival.",
       "scriptureReferences": [
         "Matthew 6:33",
         "Mark 1:15",
@@ -1107,7 +1112,7 @@
       "term": "Torah",
       "language": "Hebrew",
       "originalForm": "תּוֹרָה",
-      "contextualGloss": "instruction, teaching or law",
+      "contextualGloss": "Instruction or law; it can refer broadly to teaching and especially to Israel's covenant instruction given through Moses.",
       "scriptureReferences": [
         "Deuteronomy 6:6-7",
         "Psalm 1:2",
@@ -1135,7 +1140,7 @@
       "term": "Chayim",
       "language": "Hebrew",
       "originalForm": "חַיִּים",
-      "contextualGloss": "life or living",
+      "contextualGloss": "Life or living; the Hebrew plural form can express life as a whole, lived vitality and the flourishing set before God's people.",
       "scriptureReferences": [
         "Deuteronomy 30:19",
         "Psalm 16:11",
@@ -1202,17 +1207,17 @@
     },
     {
       "id": "word-study-087",
-      "term": "Ruach",
-      "language": "Hebrew",
-      "originalForm": "רוּחַ",
-      "contextualGloss": "Wind, breath or spirit; context determines the sense. Genesis 1:2 describes God's ruach over the waters, with translation discussions around Spirit or wind from God. Ezekiel 37:1-14 deliberately moves among wind, breath and spirit imagery as the bones receive life, then interprets the vision as Israel's restoration. Psalm 51:10-12 asks for inner renewal and the sustaining presence of God's Holy Spirit.",
+      "term": "Agathosyne",
+      "language": "Greek",
+      "originalForm": "ἀγαθωσύνη",
+      "contextualGloss": "Goodness, uprightness or moral excellence. In Galatians 5:22-23 it appears among the fruit of the Spirit; Romans 15:14 describes believers as filled with goodness and knowledge; Ephesians 5:9 links goodness with the fruit of light.",
       "scriptureReferences": [
-        "Genesis 1:2",
-        "Ezekiel 37:1-14",
-        "Psalm 51:10-12"
+        "Galatians 5:22-23",
+        "Romans 15:14",
+        "Ephesians 5:9"
       ],
-      "interpretiveCaution": "Do not assume ruach always means the Holy Spirit; it can mean wind or breath. Let grammar, imagery and passage context guide the reading.",
-      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+      "interpretiveCaution": "Do not treat goodness as mere niceness or as a way to earn salvation; these passages describe Spirit-shaped character expressed in life.",
+      "morphologyStatus": "Not asserted; consult the specific Greek form, syntax and a critical lexicon before assigning morphology."
     },
     {
       "id": "word-study-088",
@@ -1230,31 +1235,31 @@
     },
     {
       "id": "word-study-089",
-      "term": "Logos",
-      "language": "Greek",
-      "originalForm": "λόγος",
-      "contextualGloss": "Word, message, statement, account or reason. In John 1:1-18 the Logos exists in the beginning, is related to God, is described as divine, and is associated with creation and life. John 1:14 identifies the Word with Jesus' embodied human life. Hebrews 4:12 uses 'word of God' for the living, active word that exposes the heart; do not automatically transfer every Johannine title detail into that use.",
+      "term": "Tov",
+      "language": "Hebrew",
+      "originalForm": "טוֹב",
+      "contextualGloss": "Good, beneficial, pleasing or well-being. Genesis 1 uses the term in the repeated evaluation of creation; Psalm 34:8 invites people to taste and see the Lord's goodness; Micah 6:8 describes what is good in a call to justice, mercy and humility.",
       "scriptureReferences": [
-        "John 1:1-18",
-        "John 1:14",
-        "Hebrews 4:12"
+        "Genesis 1:4",
+        "Psalm 34:8",
+        "Micah 6:8"
       ],
-      "interpretiveCaution": "Logos has a broad Greek range. John 1 gives it a distinctive theological role, but not every New Testament occurrence means the personal title 'the Word'.",
-      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+      "interpretiveCaution": "The adjective's sense depends on its subject and setting; do not make every occurrence mean moral perfection or a guaranteed pleasant outcome.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew form, syntax and a critical lexicon before assigning morphology."
     },
     {
       "id": "word-study-090",
-      "term": "Metanoia",
+      "term": "Kerygma",
       "language": "Greek",
-      "originalForm": "μετάνοια",
-      "contextualGloss": "Repentance: a changed mind and reorientation expressed in turning. In Mark 1:14-15 Jesus calls hearers to repent and believe in response to the announcement of God's kingdom. Acts 2:37-38 ties repentance to the hearers' response to the crucified and risen Jesus. In 2 Corinthians 7:9-10 Paul distinguishes godly grief that produces repentance from worldly grief; sorrow alone is not the same as changed direction.",
+      "originalForm": "κήρυγμα",
+      "contextualGloss": "Proclamation or announced message. 1 Corinthians 1:21 contrasts the proclamation with worldly expectations of wisdom; Romans 16:25 speaks of the proclamation of Jesus Christ; 2 Timothy 4:17 describes Paul being enabled to fully proclaim the message.",
       "scriptureReferences": [
-        "Mark 1:14-15",
-        "Acts 2:37-38",
-        "2 Corinthians 7:9-10"
+        "1 Corinthians 1:21",
+        "Romans 16:25",
+        "2 Timothy 4:17"
       ],
-      "interpretiveCaution": "Do not reduce repentance to feeling guilty or a bare change of opinion. Read the response and its fruits in each passage; do not use repentance language to pressure victims to remain in harm.",
-      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+      "interpretiveCaution": "The noun refers to proclamation or the message proclaimed; it does not automatically encode every element of a complete theology of the Gospel in every context.",
+      "morphologyStatus": "Not asserted; consult the specific Greek form, syntax and a critical lexicon before assigning morphology."
     }
   ]
 }

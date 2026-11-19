@@ -1,4 +1,4 @@
 {
-  "version": "1.4.94",
-  "releaseNotes": "Expands original offline passage commentary from 153 to 163 contextual studies with ten additional Old Testament studies. Every passage and cross-reference is checked against the bundled 66-book KJV; the library continues to cover all 66 books. Refreshes the offline cache."
+  "version": "1.4.95",
+  "releaseNotes": "Strengthens the offline original-language word-study library: consolidates duplicate lexical entries into 90 unique terms, expands the contextual studies of Ruach, Logos and Metanoia, adds Agathosyne, Tov and Kerygma, and validates declared language against the original script. Expands verse-specific faith responses to 206 unique references across all 66 Bible books, consolidates 22 duplicate records, and blocks duplicate references in CI. The collection includes 169 exact single-verse responses (0.543% of the KJV corpus); multi-verse ranges are tracked separately. Scripture references are checked against the bundled KJV. Morphology remains explicitly unasserted unless verified for the exact verse."
 }
