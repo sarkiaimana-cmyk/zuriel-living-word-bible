@@ -234,6 +234,8 @@ const bookPathIds = new Set();
 const bookPathBooks = new Set();
 const bookPathApplications = new Set();
 const bookPathPrayers = new Set();
+const bookPathObservations = new Set();
+const bookPathInterpretations = new Set();
 for (const entry of books.bookStudyPathways) {
   assert.ok(typeof entry.id === "string" && entry.id.trim() && !bookPathIds.has(entry.id), "Book pathway IDs must be present and unique");
   assert.ok(typeof entry.book === "string" && entry.book.trim() && !bookPathBooks.has(entry.book), "Each book needs one study pathway");
@@ -242,17 +244,24 @@ for (const entry of books.bookStudyPathways) {
     assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Book starting passages must specify book, chapter and verse: " + entry.book + " — " + reference);
     checkReference(reference, "book study pathway " + entry.book);
   }
-  assert.ok(Array.isArray(entry.crossReferenceTrail) && entry.crossReferenceTrail.length >= 2, "Book pathway needs cross-reference steps: " + entry.book);
+  assert.ok(Array.isArray(entry.crossReferenceTrail) && entry.crossReferenceTrail.length >= 2, "Book pathway needs multiple cross-reference steps: " + entry.book);
+  const pathReferences = new Set();
   for (const reference of entry.crossReferenceTrail) {
+    assert.ok(!["Psalm 105:1-11","Luke 24:25-27"].includes(reference), "Book pathway must not use generic repeated placeholder references: " + entry.book);
+    assert.ok(!pathReferences.has(reference), "Book pathway cross-references must be unique within the trail: " + entry.book + " — " + reference);
     assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Book pathway references must specify book, chapter and verse: " + entry.book + " — " + reference);
     checkReference(reference, "book pathway cross-reference " + entry.book);
+    pathReferences.add(reference);
   }
   for (const [field,minLength] of [["observationPrompt",50],["interpretationPrompt",50],["lifeApplicationPrompt",50],["prayerPrompt",50],["interpretiveGuardrail",50]]) {
     assert.ok(typeof entry[field] === "string" && entry[field].trim().length >= minLength, "Book pathway needs substantive " + field + ": " + entry.book);
   }
+  assert.ok(entry.observationPrompt.includes(entry.startingPassage.split(";")[0].trim()), "Book observation prompt must name its exact starting passage: " + entry.book);
+  assert.ok(!bookPathObservations.has(entry.observationPrompt), "Book observation prompts must be tailored: " + entry.book);
+  assert.ok(!bookPathInterpretations.has(entry.interpretationPrompt), "Book interpretation prompts must be tailored: " + entry.book);
   assert.ok(!bookPathApplications.has(entry.lifeApplicationPrompt), "Book pathway applications must be tailored: " + entry.book);
   assert.ok(!bookPathPrayers.has(entry.prayerPrompt), "Book pathway prayers must be tailored: " + entry.book);
-  bookPathIds.add(entry.id); bookPathBooks.add(entry.book); bookPathApplications.add(entry.lifeApplicationPrompt); bookPathPrayers.add(entry.prayerPrompt);
+  bookPathIds.add(entry.id); bookPathBooks.add(entry.book); bookPathObservations.add(entry.observationPrompt); bookPathInterpretations.add(entry.interpretationPrompt); bookPathApplications.add(entry.lifeApplicationPrompt); bookPathPrayers.add(entry.prayerPrompt);
 }
 assert.equal(bookIntroIds.size,66,"All 66 book introductions need unique IDs");
 assert.equal(bookPathIds.size,66,"All 66 book pathways need unique IDs");
@@ -409,7 +418,7 @@ for (const path of [
   "zuriel-deep-study-guides.json","zuriel-bible-geography-atlas.json","zuriel-worship-study-pathways.json","zuriel-theological-comparisons.json"
 ]) assert.ok(loader.includes(path),"Study loader must include "+path);
 assert.ok(index.includes('src="zuriel-study-library-data.js"'),"Study library integration script must load");
-assert.ok(worker.includes('zuriel-bible-offline-v214'),"Offline cache must be version 205");
+assert.ok(worker.includes('zuriel-bible-offline-v215'),"Offline cache must be version 205");
 assert.ok(worker.includes("./zuriel-study-library-data.js"),"Study loader must be precached");
 for (const path of [
   "zuriel-passage-commentary-expansion.json","zuriel-topical-bible-study-library-batch-2.json",
