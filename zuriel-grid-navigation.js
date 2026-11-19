@@ -260,6 +260,7 @@
     selectedChapter = 0;
     selectedVerse = 0;
     displayVerseButton.disabled = true;
+    displayVerseButton.textContent = "DISPLAY CHAPTER";
     updateCurrent();
     updateReference();
     status.textContent = name + " selected. Now choose a chapter.";
@@ -488,6 +489,8 @@
       selectedBook = match.name;
       selectedChapter = 0;
       selectedVerse = 0;
+      displayVerseButton.disabled = true;
+      displayVerseButton.textContent = "DISPLAY CHAPTER";
       openModal();
       setTab("chapter");
       updateCurrent();
