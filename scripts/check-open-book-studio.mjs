@@ -59,6 +59,7 @@ const checks = [
   ["left page Scripture reference banner", 'class="zgs-ref zgs-reference-banner" id="zgsPreviewRef"'],
   ["right page faith panel", "zgs-right-page"],
   ["faith tabs are labelled for the right page", 'aria-label="Choose the right-page faith content"'],
+  ["faith confession tab is explicit", 'data-zgs-view="Confession" aria-pressed="false">Faith Confession</button>'],
   ["right page active faith heading", 'id="zgsPreviewActiveTitle">MY DECLARATION</div>'],
   ["right page Glory Verse banner", '<div class="zgs-glory-banner">GLORY VERSE AFFIRMATION</div>'],
   ["warm ivory is the default Studio finish", 'studio.dataset.finish = "ivory"'],
