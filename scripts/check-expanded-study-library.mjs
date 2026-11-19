@@ -79,7 +79,7 @@ const expected = [
   [trail1.trails,41,"connected Scripture trails batch 1"], [trail2.trails,33,"connected Scripture trails batch 2"],
   [deep.guides,20,"deep study guides"], [names.entries,52,"Names and Titles of God"],
   [words.entries,85,"original-language word studies"], [commentary.entries,132,"passage commentary"],
-  [topical.entries,100,"topical study guides"], [worship.pathways,30,"worship study pathways"], [theology.entries,20,"theological comparisons"]
+  [topical.entries,100,"topical study guides"], [worship.pathways,30,"worship study pathways"], [theology.entries,25,"theological comparisons"]
 ];
 for (const [items,count,label] of expected) {
   assert.ok(Array.isArray(items), label + " must be an array");
@@ -113,9 +113,22 @@ for (const entry of dictionary.entries) {
   dictionaryTerms.add(normalizedTerm);
   dictionaryIds.add(entry.id);
 }
+const theologyIds = new Set();
+const theologyTitles = new Set();
 for (const entry of theology.entries) {
-  assert.ok(entry.positions.length >= 2,"Each theological comparison needs multiple interpretations");
-  assert.ok(entry.sharedGround && entry.historicalContext && entry.areasOfDisagreement && entry.readingCaution,"Each theological comparison needs balance and context");
+  assert.ok(typeof entry.id === "string" && /^doctrine-\\d{3}$/.test(entry.id), "Each theological comparison needs a stable doctrine ID");
+  assert.ok(!theologyIds.has(entry.id), "Theological comparison IDs must be unique: " + entry.id);
+  assert.ok(typeof entry.title === "string" && entry.title.trim().length >= 12, "Each theological comparison needs a meaningful title");
+  assert.ok(!theologyTitles.has(entry.title.trim().toLocaleLowerCase("en")), "Theological comparison titles must be unique: " + entry.title);
+  assert.ok(typeof entry.question === "string" && entry.question.length >= 25, "Each comparison needs a guiding question: " + entry.title);
+  assert.ok(Array.isArray(entry.scriptureReferences) && entry.scriptureReferences.length >= 4, "Each comparison needs multiple Scripture references: " + entry.title);
+  assert.ok(Array.isArray(entry.positions) && entry.positions.length >= 2, "Each theological comparison needs multiple interpretations");
+  for (const position of entry.positions) {
+    assert.ok(position.view && position.summary && position.summary.length >= 100 && position.traditions, "Each position needs a fair, substantive description: " + entry.title);
+  }
+  assert.ok(entry.sharedGround && entry.sharedGround.length >= 80 && entry.historicalContext && entry.historicalContext.length >= 80 && entry.areasOfDisagreement && entry.areasOfDisagreement.length >= 80 && entry.readingCaution && entry.readingCaution.length >= 80, "Each theological comparison needs balance and context: " + entry.title);
+  theologyIds.add(entry.id);
+  theologyTitles.add(entry.title.trim().toLocaleLowerCase("en"));
 }
 for (const [label,items] of [
   ["commentary",commentary.entries],["topical",topical.entries],["dictionary",dictionary.entries],

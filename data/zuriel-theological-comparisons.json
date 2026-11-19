@@ -712,6 +712,180 @@
       "historicalContext": "The kingdom was central to Jesus' preaching and has been interpreted in relation to Israel's hope, the church, the Holy Spirit, social ethics and eschatology. Different eras have emphasised its spiritual, institutional, social or future dimensions.",
       "areasOfDisagreement": "Debates concern the relation of kingdom and church, the extent of present fulfilment, political power, social transformation and the timing and character of final consummation.",
       "readingCaution": "Do not equate God's kingdom with any political party, nation or human institution. Hold present discipleship and future hope together, and read Jesus' kingdom teaching in its Gospel context."
+    },
+    {
+      "id": "doctrine-021",
+      "title": "Original sin, ancestral sin and human brokenness",
+      "question": "How do Christians understand humanity's inherited condition after the fall?",
+      "sharedGround": "Christian traditions affirm that sin has profoundly damaged human life and that every person needs God's grace and redemption in Christ. They agree that death, disordered desire and moral failure are universal realities, while differing in how the consequences of Adam's sin are transmitted and described.",
+      "scriptureReferences": [
+        "Genesis 3:1-24",
+        "Psalm 51:5",
+        "Ezekiel 18:1-20",
+        "Romans 3:9-26",
+        "Romans 5:12-21",
+        "1 Corinthians 15:21-22"
+      ],
+      "positions": [
+        {
+          "view": "Augustinian and many Western accounts",
+          "summary": "Many Western traditions describe original sin as an inherited condition involving a loss of original righteousness and a deep disorder of human nature. Some traditions, especially in parts of the Reformed stream, also speak of inherited guilt; others distinguish inherited corruption from personal culpability.",
+          "traditions": "Roman Catholic, Lutheran, Reformed and other Western traditions, with important differences between them."
+        },
+        {
+          "view": "Eastern Orthodox ancestral-sin emphasis",
+          "summary": "Orthodox theologians commonly speak of ancestral sin: humanity inherits mortality, corruption and a damaged environment of sin through Adam, but personal guilt is not ordinarily treated as inherited in the same way as Adam's own act. Each person becomes responsible for their own sins.",
+          "traditions": "Eastern Orthodox theology, while individual theologians explain the inheritance of sin in varied ways."
+        },
+        {
+          "view": "Wesleyan and other evangelical accounts",
+          "summary": "Many Wesleyan and evangelical accounts affirm that all people are born into a fallen condition and cannot heal themselves apart from grace. They often emphasise prevenient grace and distinguish inherited sinfulness from the guilt of deliberate personal sin.",
+          "traditions": "Wesleyan, Methodist, Baptist, Pentecostal and other Protestant communities; formulations vary."
+        }
+      ],
+      "historicalContext": "Christian reflection on Adam, sin and grace developed through biblical interpretation and debates involving Irenaeus, Augustine, the Eastern Fathers, the Reformation and later Wesleyan theology. The phrase original sin has therefore carried different meanings across traditions.",
+      "areasOfDisagreement": "Disagreement concerns inherited guilt, inherited corruption, mortality, infant baptism, the freedom of the will and how Romans 5 should be read alongside Ezekiel 18. Traditions also differ over the relation between Adam's act and each person's own responsibility.",
+      "readingCaution": "Read Romans 5:12-21 in its full argument about Adam and Christ, and read Ezekiel 18 alongside it. Do not use inherited-sin teaching to shame children, excuse personal wrongdoing or claim that people are beyond God's grace."
+    },
+    {
+      "id": "doctrine-022",
+      "title": "Sanctification, holiness and Christian maturity",
+      "question": "How does a believer grow in holiness, and is complete holiness possible in this life?",
+      "sharedGround": "Christian traditions affirm that salvation leads to a transformed life shaped by the Holy Spirit. They call believers to holiness, love, obedience, repentance and ongoing growth, while recognising the need for grace and the reality of human weakness.",
+      "scriptureReferences": [
+        "John 17:17-19",
+        "Romans 6:1-14",
+        "Romans 8:1-17",
+        "1 Corinthians 6:9-20",
+        "Galatians 5:16-26",
+        "1 Thessalonians 4:1-8",
+        "Hebrews 12:1-14"
+      ],
+      "positions": [
+        {
+          "view": "Progressive sanctification emphasis",
+          "summary": "Many Reformed and evangelical traditions describe sanctification as the Spirit's continuing work through the Word, prayer, the church, repentance and daily obedience. Growth is real but remains incomplete in this life, with final perfection at glorification.",
+          "traditions": "Reformed, Baptist, many Anglican and evangelical churches."
+        },
+        {
+          "view": "Entire sanctification / perfect love emphasis",
+          "summary": "Wesleyan-Holiness traditions teach that God can bring believers into a deeper work of grace in which the heart is cleansed from inward sin and filled with perfect love. This is not usually understood as freedom from ignorance, mistakes, temptation or the need for continued growth.",
+          "traditions": "Wesleyan, Methodist-Holiness and Church of the Nazarene traditions, with differing definitions."
+        },
+        {
+          "view": "Synergy and theosis emphasis",
+          "summary": "Eastern Orthodox theology often describes growth in holiness as synergy: human response made possible by divine grace, through prayer, repentance, sacramental life and participation in God's life. The goal is transformation and communion with God rather than self-achieved moral perfection.",
+          "traditions": "Eastern Orthodox churches and related theological streams."
+        }
+      ],
+      "historicalContext": "The New Testament uses several images for holiness, including being set apart, growing in virtue, putting off the old self and sharing in God's life. Later debates shaped distinct Protestant accounts of sanctification, especially in Reformed and Wesleyan traditions.",
+      "areasOfDisagreement": "Differences concern whether entire sanctification is possible before death, how to define perfection, the relation of justification and sanctification, the role of sacraments and spiritual disciplines, and how divine grace and human cooperation relate.",
+      "readingCaution": "Do not equate holiness with flawless performance, emotional intensity or outward rule-keeping. Read commands to holiness alongside the New Testament's teaching on grace, confession, restoration and the fruit of the Spirit."
+    },
+    {
+      "id": "doctrine-023",
+      "title": "Divorce, remarriage and pastoral care",
+      "question": "How should churches interpret Jesus' teaching on marriage, divorce and remarriage while caring for people in painful or unsafe situations?",
+      "sharedGround": "Christian traditions affirm the seriousness of marriage, the call to faithfulness, the dignity and safety of every person, and the church's responsibility to offer truthful, compassionate pastoral care. They agree that abuse, coercion and abandonment must not be excused or concealed.",
+      "scriptureReferences": [
+        "Genesis 2:18-25",
+        "Deuteronomy 24:1-4",
+        "Matthew 5:31-32",
+        "Matthew 19:3-9",
+        "Mark 10:2-12",
+        "1 Corinthians 7:10-16",
+        "Ephesians 5:21-33"
+      ],
+      "positions": [
+        {
+          "view": "Restrictive accounts of divorce and remarriage",
+          "summary": "Some traditions interpret Jesus' teaching as permitting separation or divorce only in narrowly defined circumstances and may restrict remarriage while a former spouse is living. Pastoral practice and the recognition of annulment or separation differ among churches.",
+          "traditions": "Roman Catholic teaching on the indissolubility of a valid sacramental marriage; some conservative Protestant communities hold similarly restrictive positions."
+        },
+        {
+          "view": "Exception-clause and covenant-faithfulness accounts",
+          "summary": "Many Protestant interpreters understand Matthew's exception clause and Paul's teaching about abandonment as allowing divorce, and sometimes remarriage, in specified circumstances such as sexual immorality or desertion. Churches differ over whether abuse falls within these or other grounds.",
+          "traditions": "Many Anglican, Baptist, Reformed, Methodist, Pentecostal and evangelical churches, with substantial internal diversity."
+        },
+        {
+          "view": "Pastoral and restorative approaches",
+          "summary": "Some churches emphasise careful discernment, protection from harm, repentance where possible, legal safeguards, counselling and restoration when safe. They may recognise that a marriage covenant has been gravely violated and that pastoral decisions require attention to the whole biblical witness and the person's circumstances.",
+          "traditions": "Found across several Protestant, Catholic and independent pastoral settings; policies vary."
+        }
+      ],
+      "historicalContext": "Christian teaching on marriage developed through Jesus' Gospel sayings, Paul's pastoral counsel and centuries of church discipline and civil law. Different traditions distinguish civil divorce, ecclesial recognition, annulment, separation and permission to remarry in different ways.",
+      "areasOfDisagreement": "Disagreement concerns the meaning of the exception in Matthew, Paul's instruction about an unbelieving spouse, whether abuse constitutes covenant-breaking grounds, the status of remarriage and how church discipline should be applied.",
+      "readingCaution": "No one should be told to remain in immediate danger or to submit to violence. Prioritise safety, safeguarding, medical and legal support where needed. Do not pressure someone to reconcile with an abuser, and do not make a quick ruling without listening carefully and protecting children."
+    },
+    {
+      "id": "doctrine-024",
+      "title": "Scripture, tradition and church authority",
+      "question": "How do the Bible, historic tradition, church teaching and the work of the Holy Spirit relate as sources of Christian authority?",
+      "sharedGround": "Historic Christian traditions affirm the unique importance of the apostolic witness, the centrality of Scripture, the need for faithful interpretation and the Holy Spirit's guidance of the church. They reject private claims that contradict the gospel and recognise the value of learning from earlier generations.",
+      "scriptureReferences": [
+        "2 Timothy 3:14-17",
+        "Acts 17:10-12",
+        "1 Corinthians 11:2",
+        "2 Thessalonians 2:13-15",
+        "2 Peter 1:16-21",
+        "John 16:12-15",
+        "Jude 1:3"
+      ],
+      "positions": [
+        {
+          "view": "Sola Scriptura",
+          "summary": "Many Protestant traditions teach that Scripture is the only infallible rule of faith and practice. Creeds, teachers and church traditions can carry real authority but remain subject to testing by Scripture.",
+          "traditions": "Lutheran, Reformed, Baptist, evangelical and many Anglican traditions, interpreted in different ways."
+        },
+        {
+          "view": "Scripture and sacred tradition",
+          "summary": "Roman Catholic teaching holds that Scripture and apostolic Tradition form one sacred deposit of God's Word, authentically interpreted by the church's teaching office. The Magisterium serves this deposit rather than standing above it.",
+          "traditions": "Roman Catholic Church; official teaching distinguishes Scripture, Tradition and Magisterium."
+        },
+        {
+          "view": "Holy Tradition and conciliar interpretation",
+          "summary": "Eastern Orthodox theology understands Scripture within the living Holy Tradition of the church, including worship, the Fathers, ecumenical councils and the church's continuing life in the Spirit. Scripture remains central within this integrated tradition.",
+          "traditions": "Eastern Orthodox churches, with varied emphases among theologians."
+        }
+      ],
+      "historicalContext": "The early church received apostolic writings, preserved teaching through worship and episcopal oversight, and used councils to address disputes. The Reformation sharpened debates about the final norm of doctrine, while Catholic and Orthodox traditions articulated their accounts of Scripture and Tradition in distinct ways.",
+      "areasOfDisagreement": "Differences concern the canon, the authority and infallibility of councils, the role of bishops and the pope, doctrinal development, the sufficiency of Scripture and how the church recognises authentic apostolic Tradition.",
+      "readingCaution": "Do not use 'tradition' as a synonym for error or 'the Bible alone' as permission to ignore context, language, history and the wider church. Test teachings carefully, distinguish official doctrine from local custom, and avoid claims of private revelation that override Scripture."
+    },
+    {
+      "id": "doctrine-025",
+      "title": "Christian faith, government and public life",
+      "question": "How should Christians relate to civil authority, political power, justice and public responsibility?",
+      "sharedGround": "Christian traditions affirm that civil authorities have a role in public order, that rulers are accountable to God, that Christians should seek the good of their neighbours, and that allegiance to God must not be surrendered to unjust human power.",
+      "scriptureReferences": [
+        "Jeremiah 29:4-7",
+        "Matthew 5:13-16",
+        "Matthew 22:15-22",
+        "Romans 13:1-7",
+        "Acts 5:27-32",
+        "1 Timothy 2:1-4",
+        "Revelation 13:1-10"
+      ],
+      "positions": [
+        {
+          "view": "Two-kingdoms and limited-government emphases",
+          "summary": "Some Protestant traditions distinguish the church's spiritual mission from the civil authority's task of maintaining public order. Christians may serve in public life while resisting the confusion of the gospel with state power.",
+          "traditions": "Lutheran and Reformed political theology, though the formulations differ substantially."
+        },
+        {
+          "view": "Christian public engagement and social witness",
+          "summary": "Other traditions emphasise active participation in civic life to protect human dignity, pursue justice, care for the poor, defend the vulnerable and promote peace. Political action is viewed as one form of neighbour-love, not the fulfilment of God's kingdom.",
+          "traditions": "Catholic social teaching, many Protestant social-ethics traditions, Anabaptist and evangelical movements, with different methods."
+        },
+        {
+          "view": "Pacifist and nonviolent witness",
+          "summary": "Some Christians understand Jesus' teaching on enemy-love and the New Testament's call to peace as requiring nonviolence, conscientious objection or refusal to participate in war and coercive state violence.",
+          "traditions": "Historic peace churches such as Mennonite, Brethren and Quaker communities, alongside other Christian pacifists."
+        }
+      ],
+      "historicalContext": "Christians have lived under empires, monarchies, democracies and authoritarian governments. The church's approaches have ranged from withdrawal and nonviolence to public office, political advocacy and resistance to unjust laws.",
+      "areasOfDisagreement": "Debates include the limits of obedience to rulers, Christian participation in military service, political advocacy, church-state relations, civil disobedience and how to pursue justice without making a political movement identical with the gospel.",
+      "readingCaution": "Do not equate any nation, party, leader or policy with the kingdom of God. Romans 13 must be read alongside Acts 5:29 and the prophetic critique of unjust rulers. Reject political coercion, hatred and dehumanisation; protect conscience and the dignity of neighbours."
     }
   ]
 }
