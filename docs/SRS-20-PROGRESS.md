@@ -271,3 +271,11 @@ The following user requirements are part of the product acceptance criteria, not
 - Expands the offline biblical dictionary from 100 to 110 contextual entries.
 - Adds Incarnation, Hypostatic Union, Theosis, Kenosis, Septuagint, Biblical Typology, Apocalyptic Literature, Day of the Lord, Kinsman-Redeemer and Expiation.
 - Each entry has a concise definition, multiple KJV references where appropriate and an editorial caution distinguishing biblical wording, historical context and later theological terminology. The automated dictionary count gate advances to 110 and offline cache to v205.
+
+
+## Lexicon index integration — 2026-11-19
+
+- Added a 32-entry Hebrew/Greek study index as a separately cached offline data file.
+- Added a guarded loader exposing `window.ZurielLexiconStudyIndex` with ID lookup and text search; it validates required fields and duplicate IDs before publishing entries.
+- The index is explicitly a study/navigation aid, not a verse-to-lemma concordance. It must only be joined to verse-level records through verified source identifiers.
+- Offline cache advanced to v206; app version advanced to 1.4.104. Automated and Android build checks are required before merge; physical-device verification remains outstanding.
