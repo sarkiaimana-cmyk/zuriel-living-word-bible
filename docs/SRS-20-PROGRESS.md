@@ -4,6 +4,18 @@
 **Mission:** An independent, free, offline-first Bible reading and study app.  
 **Guiding principle:** Build against the approved 20-part specification. Do not silently omit, duplicate, or downgrade requirements.
 
+## Latest repair candidate — 2026-11-19
+
+- **Current main baseline:** app version 1.4.102, offline cache v204.
+- **Repair candidate:** [PR #192](https://github.com/sarkiaimana-cmyk/zuriel-living-word-bible/pull/192), version 1.4.103, offline cache v205. It remains a draft and is not merged.
+- **Reader:** compact BOOK / CHAPTER / VERSE selectors are now on the reader page, with explicit DISPLAY CHAPTER and DISPLAY VERSE actions; the full Browse Bible grid remains available. KJV stays the offline default. Non-KJV shortcuts are visibly unavailable until a secure server-side translation endpoint is configured.
+- **Studio:** the uploaded reference is the acceptance target: Scripture/reference on the left cream page; selected faith response on the right; blue Scripture banner, green response heading, centre spine and Glory Verse Affirmation banner. PNG export follows the same order. The original reference has been located and inspected.
+- **Studio wallpaper blocker:** scenic wallpaper choices still use remote images. They are not yet genuine bundled assets for first-use offline availability.
+- **Automated QA:** latest PR-head validation run `44580518872` passed, including reader and Studio acceptance checks. Android build run `44580518839` is still running at the time of this update.
+- **Android device verification:** not performed. No candidate APK is approved for installation or upgrade; preserve the existing installation and all personal data.
+- **Translation API:** remains deferred until KJV reader acceptance and secure server-side configuration are complete.
+
+All 20 specification areas below remain in force. A successful automated check or APK build is not physical-device acceptance.
 ## How status is recorded
 
 - **Established** — requirement and direction are documented; this is not a software feature.
