@@ -1185,6 +1185,76 @@
       ],
       "interpretiveCaution": "The legal and family role in Torah and Ruth should not be collapsed into every later theological use of redemption.",
       "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+    },
+    {
+      "id": "word-study-086",
+      "term": "Hesed",
+      "language": "Hebrew",
+      "originalForm": "חֶסֶד",
+      "contextualGloss": "Steadfast love, covenant loyalty or faithful kindness. In Exodus 34:6 it appears with compassion, grace, patience and faithfulness in God's self-description. Psalm 136 repeats the enduring-love refrain while recalling creation and deliverance. Hosea 6:6 contrasts steadfast love and knowledge of God with empty ritual.",
+      "scriptureReferences": [
+        "Exodus 34:6",
+        "Psalm 136:1",
+        "Hosea 6:6"
+      ],
+      "interpretiveCaution": "No single English word captures every occurrence. Do not reduce hesed to sentiment or assume every use describes a formal covenant formula.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+    },
+    {
+      "id": "word-study-087",
+      "term": "Ruach",
+      "language": "Hebrew",
+      "originalForm": "רוּחַ",
+      "contextualGloss": "Wind, breath or spirit; context determines the sense. Genesis 1:2 describes God's ruach over the waters, with translation discussions around Spirit or wind from God. Ezekiel 37:1-14 deliberately moves among wind, breath and spirit imagery as the bones receive life, then interprets the vision as Israel's restoration. Psalm 51:10-12 asks for inner renewal and the sustaining presence of God's Holy Spirit.",
+      "scriptureReferences": [
+        "Genesis 1:2",
+        "Ezekiel 37:1-14",
+        "Psalm 51:10-12"
+      ],
+      "interpretiveCaution": "Do not assume ruach always means the Holy Spirit; it can mean wind or breath. Let grammar, imagery and passage context guide the reading.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+    },
+    {
+      "id": "word-study-088",
+      "term": "Nephesh",
+      "language": "Hebrew",
+      "originalForm": "נֶפֶשׁ",
+      "contextualGloss": "Living being, life, person, self or desire according to context. Genesis 2:7 calls the formed human a living nephesh; it describes the whole living person rather than plainly teaching that a detachable soul was inserted into a body. Leviticus 17:11 closely associates nephesh with life and blood. Psalm 42:1-2 uses it for the worshipper's own self, which thirsts for God.",
+      "scriptureReferences": [
+        "Genesis 2:7",
+        "Leviticus 17:11",
+        "Psalm 42:1-2"
+      ],
+      "interpretiveCaution": "Avoid importing a later philosophical definition of soul into every occurrence. Hebrew usage includes the person, life and appetite, depending on context.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+    },
+    {
+      "id": "word-study-089",
+      "term": "Logos",
+      "language": "Greek",
+      "originalForm": "λόγος",
+      "contextualGloss": "Word, message, statement, account or reason. In John 1:1-18 the Logos exists in the beginning, is related to God, is described as divine, and is associated with creation and life. John 1:14 identifies the Word with Jesus' embodied human life. Hebrews 4:12 uses 'word of God' for the living, active word that exposes the heart; do not automatically transfer every Johannine title detail into that use.",
+      "scriptureReferences": [
+        "John 1:1-18",
+        "John 1:14",
+        "Hebrews 4:12"
+      ],
+      "interpretiveCaution": "Logos has a broad Greek range. John 1 gives it a distinctive theological role, but not every New Testament occurrence means the personal title 'the Word'.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+    },
+    {
+      "id": "word-study-090",
+      "term": "Metanoia",
+      "language": "Greek",
+      "originalForm": "μετάνοια",
+      "contextualGloss": "Repentance: a changed mind and reorientation expressed in turning. In Mark 1:14-15 Jesus calls hearers to repent and believe in response to the announcement of God's kingdom. Acts 2:37-38 ties repentance to the hearers' response to the crucified and risen Jesus. In 2 Corinthians 7:9-10 Paul distinguishes godly grief that produces repentance from worldly grief; sorrow alone is not the same as changed direction.",
+      "scriptureReferences": [
+        "Mark 1:14-15",
+        "Acts 2:37-38",
+        "2 Corinthians 7:9-10"
+      ],
+      "interpretiveCaution": "Do not reduce repentance to feeling guilty or a bare change of opinion. Read the response and its fruits in each passage; do not use repentance language to pressure victims to remain in harm.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
     }
   ]
 }

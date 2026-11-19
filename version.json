@@ -1,4 +1,4 @@
 {
-  "version": "1.4.88",
-  "releaseNotes": "Expands the curated verse-specific faith-response library from 139 to 150 unique Scripture references. Eleven new single-verse entries add distinct prayers, declarations, affirmations, confessions and contextual inspirations for deliverance, burdens, gratitude, God's presence in adversity, peacemaking, repentance, resurrection hope, assurance in Christ, freedom, gracious speech and patient listening. The coverage audit now requires at least 150 unique references and validates each reference and all five response fields against the offline KJV. Refreshes the offline cache."
+  "version": "1.4.89",
+  "releaseNotes": "Adds five contextual Hebrew and Greek word studies (hesed, ruach, nephesh, logos and metanoia), each with passage-specific contextual explanations and interpretive cautions. Adds five original passage commentaries across Leviticus, 1 Samuel, Psalms, Micah and John, with context, observation and safeguards. Refreshes the offline study cache and validates the expanded library against the bundled KJV."
 }
