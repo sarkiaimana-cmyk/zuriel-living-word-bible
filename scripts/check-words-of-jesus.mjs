@@ -76,15 +76,6 @@ const topicCount = (section.match(/category:/g) || []).length;
 const referenceCount = (section.match(/refs:\[/g) || []).length;
 if (topicCount < 60) failures.push("Expected at least 60 curated Jesus teaching themes; found " + topicCount + ".");
 if (referenceCount < 20) failures.push("Expected Scripture reference collections for the teaching themes.");
-const enrichedThemes = teachings.filter(item =>
-  typeof item.context === "string" && item.context.length >= 80 &&
-  typeof item.reflection === "string" && item.reflection.length >= 50 &&
-  typeof item.caution === "string" && item.caution.length >= 50
-);
-if (enrichedThemes.length < 12) failures.push("At least 12 core Jesus teachings must include distinct historical context, a study question and an interpretive caution.");
-if (!section.includes("item.context") || !section.includes("item.reflection") || !section.includes("item.caution")) {
-  failures.push("The Words of Jesus reader must display contextual notes, reflection questions and interpretive cautions.");
-}
 
 
 // Resolve every curated Words of Jesus reference against the actual bundled KJV.
@@ -106,6 +97,15 @@ try {
   const arrayStart = section.indexOf("[", teachingsStart);
   const teachings = vm.runInNewContext("(" + section.slice(arrayStart, teachingsEnd + 10).replace(/;?$/, "") + ")", {}, { timeout: 1000 });
   if (!Array.isArray(teachings) || teachings.length < 20) throw new Error("Curated teaching data did not load.");
+  const enrichedThemes = teachings.filter(item =>
+    typeof item.context === "string" && item.context.length >= 80 &&
+    typeof item.reflection === "string" && item.reflection.length >= 50 &&
+    typeof item.caution === "string" && item.caution.length >= 50
+  );
+  if (enrichedThemes.length < 12) throw new Error("At least 12 core Jesus teachings must include distinct historical context, a study question and an interpretive caution.");
+  if (!section.includes("item.context") || !section.includes("item.reflection") || !section.includes("item.caution")) {
+    throw new Error("The Words of Jesus reader must display contextual notes, reflection questions and interpretive cautions.");
+  }
   const gospelCoverage = new Set();
   for (const teaching of teachings) {
     if (!Array.isArray(teaching.refs) || teaching.refs.length === 0) {
