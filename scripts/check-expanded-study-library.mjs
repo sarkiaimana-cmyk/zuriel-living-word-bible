@@ -248,8 +248,8 @@ for (const entry of names.entries) {
   assert.ok(!divineNames.has(nameKey), "Divine names and titles must be unique: " + entry.name);
   assert.ok(["Hebrew","Greek","Aramaic","Hebrew and Greek"].includes(entry.language), "Divine name needs an explicit source-language label: " + entry.name);
   assert.ok(typeof entry.originalForm === "string" && entry.originalForm.trim(), "Divine name needs its original-script form: " + entry.name);
-  const hasHebrew = /[\\u0590-\\u05FF]/.test(entry.originalForm);
-  const hasGreek = /[\\u0370-\\u03FF\\u1F00-\\u1FFF]/.test(entry.originalForm);
+  const hasHebrew = /[\u0590-\u05FF]/.test(entry.originalForm);
+  const hasGreek = /[\u0370-\u03FF\u1F00-\u1FFF]/.test(entry.originalForm);
   if (entry.language === "Hebrew" || entry.language === "Aramaic") assert.ok(hasHebrew, "Divine name original form does not match Hebrew/Aramaic: " + entry.name);
   if (entry.language === "Greek") assert.ok(hasGreek, "Divine name original form does not match Greek: " + entry.name);
   if (entry.language === "Hebrew and Greek") assert.ok(hasHebrew && hasGreek, "Combined divine title needs both original scripts: " + entry.name);
@@ -257,7 +257,7 @@ for (const entry of names.entries) {
   assert.ok(typeof entry.studyNote === "string" && entry.studyNote.trim().length >= 30, "Divine name needs a contextual study note: " + entry.name);
   assert.ok(Array.isArray(entry.scriptureReferences) && entry.scriptureReferences.length >= 1, "Divine name needs Scripture references: " + entry.name);
   for (const reference of entry.scriptureReferences) {
-    assert.ok(/^.+?\\s+\\d+:\\d+/.test(reference), "Divine name references must specify book, chapter and verse: " + entry.name + " — " + reference);
+    assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Divine name references must specify book, chapter and verse: " + entry.name + " — " + reference);
     checkReference(reference, "divine name " + entry.name);
   }
   divineNameIds.add(entry.id);
