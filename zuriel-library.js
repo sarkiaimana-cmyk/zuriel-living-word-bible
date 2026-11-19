@@ -668,12 +668,13 @@
             #zurielGloryStudio[data-finish="ivory"] #zurielGloryPreview {--zgs-page-bg:linear-gradient(145deg,#fffdf5,#eee3ca);--zgs-page-border:#b79a5b99;}
             #zurielGloryStudio[data-finish="forest"] #zurielGloryPreview {--zgs-paper:#e9f0e5;--zgs-ink:#183a30;--zgs-accent:#39765b;--zgs-page-bg:linear-gradient(145deg,#f8fff5,#dce9da);--zgs-page-border:#6f947b;background:linear-gradient(90deg,#d4e1d5,#f2f6ec 48%,#d7e3d8 50%,#f2f6ec);}
             #zurielGloryStudio[data-finish="parchment"] #zurielGloryPreview {--zgs-paper:#f0dfbd;--zgs-ink:#4a3520;--zgs-accent:#9a682b;--zgs-page-bg:repeating-linear-gradient(0deg,#f7e9cb,#f7e9cb 3px,#eddfc2 4px);--zgs-page-border:#b28a4e;background:repeating-linear-gradient(0deg,#f2e5ca,#f2e5ca 3px,#eddfc2 4px);}
-            #zurielGloryPreview {background-image:linear-gradient(180deg,#10243a35,#10243a55),var(--zgs-wallpaper-image,none);background-size:cover;background-position:center;background-repeat:no-repeat;}
-            #zurielGloryPreview:after {content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:#9a835333;box-shadow:0 0 15px #5b472333;pointer-events:none;}
+            #zurielGloryPreview {background-image:linear-gradient(180deg,#10243a08,#10243a22),var(--zgs-wallpaper-image,none);background-size:cover;background-position:center;background-repeat:no-repeat;}
+            #zurielGloryPreview:after {content:"";position:absolute;top:7%;bottom:7%;left:50%;width:12px;margin-left:-6px;background:linear-gradient(90deg,#70533222,#fff9e8aa,#70533244);border-radius:6px;box-shadow:0 0 15px #5b472333;pointer-events:none;z-index:4;}
             #zurielGloryPreview .zgs-brand {font-size:15px;letter-spacing:1px;text-align:center;color:var(--zgs-accent);font-weight:800;font-family:Georgia,serif;position:relative;z-index:1;}
             #zurielGloryPreview h3 {text-align:center;color:var(--zgs-ink);font-family:Georgia,serif;font-size:20px;margin:9px 0 15px;position:relative;z-index:1;}
             #zurielGloryPreview .zgs-book-spread {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;position:relative;z-index:1;perspective:900px;}
-            #zurielGloryPreview .zgs-page {position:relative;min-width:0;min-height:300px;padding:20px 16px;background:linear-gradient(100deg,#fffef9 0%,#f7f0df 82%,#e9ddc8 100%);border:1px solid #d3c4a6;border-radius:8px 2px 2px 8px;box-shadow:0 15px 28px #07172a55,inset 0 0 18px #ffffff9c;overflow:hidden;color:#183b68;}
+            #zurielGloryPreview .zgs-page {position:relative;min-width:0;min-height:300px;padding:20px 16px;background:linear-gradient(100deg,#fffef9 0%,#f7f0df 82%,#e9ddc8 100%);border:1px solid #d3c4a6;border-radius:8px 2px 2px 8px;box-shadow:0 15px 28px #07172a55,inset 0 0 18px #ffffff9c;overflow:visible;color:#183b68;}
+            #zurielGloryPreview .zgs-page:before {content:"";position:absolute;left:4px;right:4px;bottom:3px;height:7px;background:repeating-linear-gradient(180deg,#d4c4a6 0,#fffaf0 1px,#d4c4a6 2px);opacity:.5;pointer-events:none;}
             #zurielGloryPreview .zgs-left-page {border-right:0;border-radius:15px 2px 2px 15px;box-shadow:0 15px 28px #07172a55,inset -12px 0 18px #172b4920;}
             #zurielGloryPreview .zgs-right-page {border-left:0;border-radius:2px 15px 15px 2px;background:linear-gradient(260deg,#fffef9 0%,#f7f0df 82%,#e9ddc8 100%);box-shadow:0 15px 28px #07172a55,inset 12px 0 18px #172b4920;}
             #zurielGloryPreview .zgs-page-title {font:800 12px/1.35 Arial,sans-serif;letter-spacing:.6px;text-align:center;color:#fff;margin:0 0 14px;padding:9px 6px;border-radius:5px;background:#1b4b82;}
@@ -720,7 +721,7 @@
             #zurielGloryStudio .zgs-saved-actions {display:flex;gap:8px;flex-wrap:wrap;}
             #zurielGloryStudio .zgs-saved-actions button {min-height:38px;padding:7px 12px;border:1px solid #b99b58;border-radius:8px;background:#19324f;color:#fff7e6;font:inherit;}
             @media(max-width:520px){#zurielGloryStudio .zgs-typography-controls{grid-template-columns:1fr 1fr}#zurielGloryStudio .zgs-typography-controls label:last-child{grid-column:1/-1}}
-            @media(max-width:420px){#zurielGloryPreview{padding:16px 10px}#zurielGloryPreview h3{font-size:16px}#zurielGloryPreview .zgs-book-spread{gap:12px}#zurielGloryPreview .zgs-page{padding:6px 2px}#zurielGloryPreview .zgs-copy{font-size:12px}#zurielGloryPreview .zgs-page-title{font-size:9px}#zurielGloryStudio .zgs-tabs button{font-size:10px;min-height:42px}}
+            @media(max-width:420px){#zurielGloryPreview{padding:16px 8px}#zurielGloryPreview h3{font-size:15px}#zurielGloryPreview .zgs-book-spread{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0}#zurielGloryPreview .zgs-page{padding:9px 5px;min-height:245px}#zurielGloryPreview .zgs-copy{font-size:10px;line-height:1.38}#zurielGloryPreview .zgs-page-title{font-size:8px}#zurielGloryStudio .zgs-tabs button{font-size:10px;min-height:42px}}
           `;
           root.appendChild(studioStyle);
         }
@@ -739,7 +740,7 @@
           <div class="zgs-field"><label for="zgsInspiration">INSPIRATION / FAITH WORD</label><textarea id="zgsInspiration" placeholder="A short encouragement drawn from this passage"></textarea></div>
           <div class="zgs-field"><label>REALISTIC WALLPAPERS</label><div class="zgs-actions" id="zgsWallpapers" aria-label="Choose a photographic card wallpaper"><button type="button" data-wallpaper="forest">Forest river</button><button type="button" data-wallpaper="falls">Waterfall light</button><button type="button" data-wallpaper="stream">Forest stream</button><button type="button" data-wallpaper="valley">Mountain valley</button></div><small>Choose a background for your card. Selected wallpapers are cached on this device after loading for later offline use.</small></div>
           <div class="zgs-field"><label>OPEN-BOOK FINISH</label><div class="zgs-actions" id="zgsFinishes">
-            <button type="button" data-finish="ivory">Warm ivory</button><button type="button" data-finish="navy">Kingdom navy</button><button type="button" data-finish="forest">Living forest</button><button type="button" data-finish="parchment">Parchment</button>
+            <button type="button" data-finish="ivory" aria-pressed="true">Warm ivory</button><button type="button" data-finish="navy" aria-pressed="false">Kingdom navy</button><button type="button" data-finish="forest" aria-pressed="false">Living forest</button><button type="button" data-finish="parchment" aria-pressed="false">Parchment</button>
           </div></div>
           <div class="zgs-tabs" id="zgsContentTabs" role="group" aria-label="Choose the right-page faith content">
             <button type="button" data-zgs-view="Prayer" aria-pressed="false">Prayer</button>
