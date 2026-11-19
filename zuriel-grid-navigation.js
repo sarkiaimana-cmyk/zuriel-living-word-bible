@@ -100,9 +100,16 @@
       min-height:62px;border-radius:13px;font-size:13px;padding:7px 4px;
     }
     #zurielGridNavigator .zgn-choice:disabled { opacity:.35; }
+    #zurielGridNavigator .zgn-display {
+      flex:0 0 auto;width:100%;min-height:52px;margin:10px 0 0;padding:12px;
+      border:1px solid #d9bd78;border-radius:12px;
+      background:linear-gradient(135deg,#e8cf91,#f5e5b8);
+      color:#10213d;font:800 15px Arial,sans-serif;letter-spacing:.04em;
+    }
+    #zurielGridNavigator .zgn-display:disabled { opacity:.42; }
     #zurielGridNavigator .zgn-footer {
-      padding:10px 2px 0;color:#aebbc3;font-size:12px;line-height:1.5;
-      text-align:center;
+      padding:10px 2px 0;border-top:1px dashed #66727a;
+      color:#aebbc3;font-size:12px;line-height:1.5;text-align:center;
     }
     #zurielGridNavigator .zgn-empty {
       grid-column:1/-1;padding:24px 10px;text-align:center;color:#cbd5dc;
@@ -125,8 +132,28 @@
   translationBar.setAttribute("aria-label", "Choose Bible translation");
   translationBar.innerHTML = '<button type="button" class="zrt-tab is-active" data-version="KJV" aria-pressed="true">KJV</button><button type="button" class="zrt-tab" data-version="NIV" aria-pressed="false">NIV</button><button type="button" class="zrt-tab" data-version="ESV" aria-pressed="false">ESV</button><button type="button" class="zrt-tab" data-version="NKJV" aria-pressed="false">NKJV</button><button type="button" class="zrt-tab" data-version="NLT" aria-pressed="false">NLT</button><button type="button" class="zrt-tab" data-version="AMP" aria-pressed="false">AMP</button><button type="button" class="zrt-tab" data-version="TPT" aria-pressed="false">TPT</button><button type="button" class="zrt-tab" data-version="GNT" aria-pressed="false">GNT</button><button type="button" class="zrt-tab" data-version="NET" aria-pressed="false">NET</button><button type="button" class="zrt-tab" data-version="CSB" aria-pressed="false">CSB</button><button type="button" class="zrt-tab" data-version="NASB" aria-pressed="false">NASB</button><button type="button" class="zrt-tab" data-version="LB/LT" aria-pressed="false">LB/LT</button>';
   const translationStyle = document.createElement("style");
-  translationStyle.textContent = "#zurielReaderTranslations{display:flex;gap:7px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;padding:9px 2px 12px;margin:5px 0 8px;white-space:nowrap;-webkit-overflow-scrolling:touch}#zurielReaderTranslations .zrt-tab{flex:0 0 auto;min-width:55px;min-height:42px;margin:0;padding:8px 12px;border:1px solid #b99b58;border-radius:22px;background:linear-gradient(145deg,#14294b,#203e68);color:#fff8e8;font:700 13px Arial,sans-serif}#zurielReaderTranslations .zrt-tab.is-active{background:linear-gradient(145deg,#f8d96b,#d9a92f);color:#10213d;border:2px solid #fff0b3;box-shadow:0 2px 8px #b99b5855}";
+  translationStyle.textContent = "#zurielReaderTranslations{display:flex;gap:7px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;padding:9px 2px 12px;margin:5px 0 3px;white-space:nowrap;-webkit-overflow-scrolling:touch}#zurielReaderTranslations .zrt-tab{flex:0 0 auto;min-width:55px;min-height:42px;margin:0;padding:8px 12px;border:1px solid #b99b58;border-radius:22px;background:linear-gradient(145deg,#14294b,#203e68);color:#fff8e8;font:700 13px Arial,sans-serif}#zurielReaderTranslations .zrt-tab.is-active{background:linear-gradient(145deg,#f8d96b,#d9a92f);color:#10213d;border:2px solid #fff0b3;box-shadow:0 2px 8px #b99b5855}#zurielReaderTranslations .zrt-tab:disabled{opacity:.42;filter:grayscale(1)}#zurielTranslationReadiness{margin:0 2px 10px;color:#526174;font:12px/1.5 Arial,sans-serif;border-bottom:1px dashed #c9b77e;padding:0 0 9px}";
   document.head.appendChild(translationStyle);
+  const translationReadiness = document.createElement("p");
+  translationReadiness.id = "zurielTranslationReadiness";
+  translationReadiness.setAttribute("role","status");
+  translationReadiness.textContent = "KJV is available offline. Other versions require the secure translation service.";
+  translationBar.insertAdjacentElement("afterend", translationReadiness);
+  window.addEventListener("load", async function () {
+    const service = window.ZurielTranslations;
+    if (service && typeof service.refreshVersions === "function") {
+      try { await service.refreshVersions(); } catch (_) { /* Keep KJV available if the service is offline. */ }
+    }
+    const ready = !!(window.ZurielTranslations && window.ZurielTranslations.configured);
+    translationBar.querySelectorAll('.zrt-tab[data-version]:not([data-version="KJV"])').forEach(function (button) {
+      button.disabled = !ready;
+      button.title = ready ? "Select this authorised online translation" : "Not available yet — secure translation service is not configured";
+      button.setAttribute("aria-disabled", String(!ready));
+    });
+    translationReadiness.textContent = ready
+      ? "KJV is available offline. Online versions will be listed only when authorised by the connected provider."
+      : "KJV is available offline. Other versions are temporarily unavailable until the secure translation service is configured.";
+  }, { once:true });
   const readerHeading = root.querySelector("h2");
   if (readerHeading) readerHeading.insertAdjacentElement("afterend", translationBar);
   else root.insertBefore(translationBar, root.firstChild);
@@ -151,17 +178,44 @@
     }
   });
 
+  const inlineControls = document.createElement("section");
+  inlineControls.id = "zgnInlinePassageControls";
+  inlineControls.setAttribute("aria-label","Select a Bible passage");
+  inlineControls.innerHTML = `
+    <label>BOOK<select id="zgnInlineBook" aria-label="Select Bible book"></select></label>
+    <label>CHAPTER<select id="zgnInlineChapter" aria-label="Select Bible chapter"></select></label>
+    <label>VERSE<select id="zgnInlineVerse" aria-label="Select Bible verse"></select></label>
+    <button id="zgnInlineDisplayVerse" type="button">DISPLAY CHAPTER</button>
+  `;
+  books.forEach(book => {
+    const option = document.createElement("option");
+    option.value = book.name;
+    option.textContent = book.name;
+    inlineControls.querySelector("#zgnInlineBook").appendChild(option);
+  });
+  const inlineStyle = document.createElement("style");
+  inlineStyle.textContent = `
+    #zgnInlinePassageControls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:8px 0 10px;padding:0 0 12px;border-bottom:1px dashed #c9b77e}
+    #zgnInlinePassageControls label{display:grid;gap:5px;min-width:0;color:#526174;font:800 10px Arial,sans-serif;letter-spacing:.06em}
+    #zgnInlinePassageControls select{width:100%;min-width:0;min-height:44px;padding:8px 6px;border:1px solid #d2c6aa;border-radius:9px;background:#fffdf7;color:#173452;font:600 13px Arial,sans-serif}
+    #zgnInlineDisplayVerse{grid-column:1/-1;min-height:48px;border:1px solid #d9bd78;border-radius:11px;background:linear-gradient(135deg,#e8cf91,#f5e5b8);color:#10213d;font:800 14px Arial,sans-serif;letter-spacing:.05em}
+    #zurielGridLaunch{display:block;width:100%;min-height:40px;margin:4px 0 12px;border:1px solid #c8d0d9;border-radius:9px;background:#f5f7fa;color:#29435e;font:600 12px Arial,sans-serif}
+    @media(max-width:360px){#zgnInlinePassageControls{gap:5px}#zgnInlinePassageControls select{font-size:11px;padding:7px 3px}}
+  `;
+  document.head.appendChild(inlineStyle);
   const launch = document.createElement("button");
   launch.type = "button";
   launch.id = "zurielGridLaunch";
-  launch.textContent = "📖  Choose Passage  ·  KJV";
-  launch.setAttribute("aria-label", "Choose a Bible book, chapter and verse. Current translation: King James Version.");
+  launch.textContent = "Browse Bible";
+  launch.setAttribute("aria-label", "Open the full Bible browser to browse books, chapters and verses.");
   if (translationBar && translationBar.parentNode === root) {
-    translationBar.insertAdjacentElement("afterend", launch);
+    translationReadiness.insertAdjacentElement("afterend", inlineControls);
+    inlineControls.insertAdjacentElement("afterend", launch);
   } else {
     const readerHeading = root.querySelector("h2");
-    if (readerHeading) readerHeading.insertAdjacentElement("afterend", launch);
-    else root.insertBefore(launch, root.firstChild);
+    if (readerHeading) readerHeading.insertAdjacentElement("afterend", inlineControls);
+    else root.insertBefore(inlineControls, root.firstChild);
+    inlineControls.insertAdjacentElement("afterend", launch);
   }
 
   const modal = document.createElement("section");
@@ -188,6 +242,7 @@
     <div class="zgn-current" id="zgnCurrent">Choose a Bible book</div>
     <input class="zgn-search" id="zgnSearch" type="search" placeholder="Search all 66 Bible books…" aria-label="Search Bible books">
     <div class="zgn-grid" id="zgnGrid" role="group" aria-label="Bible selections"></div>
+    <button class="zgn-display" id="zgnDisplayVerse" type="button" disabled>DISPLAY VERSE</button>
     <div class="zgn-footer" id="zgnStatus" aria-live="polite">66 books · 1,189 chapters · Scripture navigation</div>
   `;
   document.body.appendChild(modal);
@@ -197,6 +252,7 @@
   const status = modal.querySelector("#zgnStatus");
   const search = modal.querySelector("#zgnSearch");
   const referenceInput = modal.querySelector("#zgnReferenceInput");
+  const displayVerseButton = modal.querySelector("#zgnDisplayVerse");
   const tabs = Array.from(modal.querySelectorAll(".zgn-tab"));
   let selectedBook = "John";
   let selectedChapter = 1;
@@ -204,6 +260,103 @@
   let activeTab = "book";
   let lastFocus = null;
   let verseCountToken = 0;
+  let inlineVerseCountToken = 0;
+  const inlineBook = inlineControls.querySelector("#zgnInlineBook");
+  const inlineChapter = inlineControls.querySelector("#zgnInlineChapter");
+  const inlineVerse = inlineControls.querySelector("#zgnInlineVerse");
+  const inlineDisplayButton = inlineControls.querySelector("#zgnInlineDisplayVerse");
+
+  function updateInlineDisplayLabel() {
+    inlineDisplayButton.textContent = selectedVerse ? "DISPLAY VERSE" : "DISPLAY CHAPTER";
+    inlineDisplayButton.disabled = !selectedChapter;
+  }
+
+  function populateInlineChapters() {
+    const book = books.find(item => item.name === selectedBook);
+    inlineChapter.replaceChildren();
+    if (!book) return;
+    for (let n = 1; n <= book.chapters; n++) {
+      const option = document.createElement("option");
+      option.value = String(n);
+      option.textContent = String(n);
+      inlineChapter.appendChild(option);
+    }
+    inlineChapter.value = String(selectedChapter || 1);
+  }
+
+  async function populateInlineVerses() {
+    const token = ++inlineVerseCountToken;
+    inlineVerse.replaceChildren();
+    const whole = document.createElement("option");
+    whole.value = "0";
+    whole.textContent = "Whole chapter";
+    inlineVerse.appendChild(whole);
+    inlineVerse.disabled = true;
+    const count = await Promise.resolve(
+      typeof window.getChapterVerseCount === "function"
+        ? window.getChapterVerseCount(selectedBook, selectedChapter || 1)
+        : 0
+    ).catch(() => 0);
+    if (token !== inlineVerseCountToken) return;
+    if (count > 0) {
+      for (let n = 1; n <= count; n++) {
+        const option = document.createElement("option");
+        option.value = String(n);
+        option.textContent = String(n);
+        inlineVerse.appendChild(option);
+      }
+      inlineVerse.disabled = false;
+    }
+    inlineVerse.value = String(selectedVerse || 0);
+    updateInlineDisplayLabel();
+  }
+
+  function syncInlineControls() {
+    inlineBook.value = selectedBook;
+    populateInlineChapters();
+    populateInlineVerses();
+  }
+
+  inlineBook.addEventListener("change", function () {
+    selectedBook = inlineBook.value;
+    selectedChapter = 1;
+    selectedVerse = 0;
+    updateCurrent();
+    updateReference();
+    syncInlineControls();
+    status.textContent = selectedBook + " selected. Choose a chapter and verse, then display Scripture.";
+  });
+  inlineChapter.addEventListener("change", function () {
+    selectedChapter = Number(inlineChapter.value);
+    selectedVerse = 0;
+    updateCurrent();
+    updateReference();
+    populateInlineVerses();
+    status.textContent = selectedBook + " " + selectedChapter + " selected. Choose a verse or display the whole chapter.";
+  });
+  inlineVerse.addEventListener("change", function () {
+    selectedVerse = Number(inlineVerse.value);
+    updateCurrent();
+    updateReference();
+    updateInlineDisplayLabel();
+  });
+  inlineDisplayButton.addEventListener("click", async function () {
+    selectedBook = inlineBook.value;
+    selectedChapter = Number(inlineChapter.value);
+    selectedVerse = Number(inlineVerse.value);
+    updateCurrent();
+    updateReference();
+    displayVerseButton.disabled = !selectedChapter;
+    displayVerseButton.textContent = selectedVerse ? "DISPLAY VERSE" : "DISPLAY CHAPTER";
+    inlineDisplayButton.disabled = true;
+    inlineDisplayButton.textContent = "LOADING SCRIPTURE…";
+    try {
+      await openPassage();
+    } finally {
+      updateInlineDisplayLabel();
+    }
+  });
+  syncInlineControls();
 
   function setTab(tab) {
     activeTab = tab;
@@ -230,8 +383,11 @@
     selectedBook = name;
     selectedChapter = 0;
     selectedVerse = 0;
+    displayVerseButton.disabled = true;
+    displayVerseButton.textContent = "DISPLAY CHAPTER";
     updateCurrent();
     updateReference();
+    syncInlineControls();
     status.textContent = name + " selected. Now choose a chapter.";
     setTab("chapter");
   }
@@ -239,9 +395,12 @@
   function chooseChapter(number) {
     selectedChapter = number;
     selectedVerse = 0;
+    displayVerseButton.disabled = false;
+    displayVerseButton.textContent = "DISPLAY CHAPTER";
     updateCurrent();
     updateReference();
-    status.textContent = "Chapter " + number + " selected. You can open the chapter or choose a verse.";
+    syncInlineControls();
+    status.textContent = "Chapter " + number + " selected. Tap DISPLAY CHAPTER to read the full chapter, or choose a verse.";
     setTab("verse");
   }
 
@@ -319,9 +478,13 @@
         for (let n = 1; n <= count; n++) {
           grid.appendChild(buttonFor(String(n), n, selectedVerse === n, () => {
             selectedVerse = n;
+            displayVerseButton.disabled = false;
+            displayVerseButton.textContent = "DISPLAY VERSE";
             updateCurrent();
             updateReference();
-            openPassage();
+            syncInlineControls();
+            status.textContent = selectedBook + " " + selectedChapter + ":" + selectedVerse +
+              " selected. Tap DISPLAY VERSE to open the passage.";
           }));
         }
         status.textContent = count + " verses in " + selectedBook + " " + selectedChapter + ". Tap a verse to open it.";
@@ -343,7 +506,9 @@
     }
     const go = modal.querySelector("#zgnGo");
     go.disabled = true;
+    displayVerseButton.disabled = true;
     go.textContent = "…";
+    displayVerseButton.textContent = "LOADING SCRIPTURE…";
     status.textContent = "Opening " + selectedBook + " " + selectedChapter + (selectedVerse ? ":" + selectedVerse : "") + "…";
     try {
       await window.openChapter(selectedBook, selectedChapter);
@@ -374,6 +539,10 @@
       console.error("Zuriel grid navigator:", error);
     } finally {
       go.disabled = false;
+      displayVerseButton.disabled = !selectedChapter;
+      displayVerseButton.textContent = selectedVerse ? "DISPLAY VERSE" : "DISPLAY CHAPTER";
+      inlineDisplayButton.disabled = !selectedChapter;
+      inlineDisplayButton.textContent = selectedVerse ? "DISPLAY VERSE" : "DISPLAY CHAPTER";
       go.textContent = "GO";
     }
   }
@@ -412,8 +581,10 @@
     selectedBook = book.name;
     selectedChapter = chapter;
     selectedVerse = verse;
+    displayVerseButton.disabled = !verse;
     updateCurrent();
     updateReference();
+    syncInlineControls();
     if (verse) setTab("verse");
     else setTab("chapter");
     await openPassage();
@@ -425,6 +596,9 @@
     document.body.style.overflow = "hidden";
     search.value = "";
     selectedBook = selectedBook || "John";
+    syncInlineControls();
+    displayVerseButton.disabled = !selectedChapter;
+    displayVerseButton.textContent = selectedVerse ? "DISPLAY VERSE" : "DISPLAY CHAPTER";
     updateCurrent();
     updateReference();
     setTab("book");
@@ -446,6 +620,8 @@
       selectedBook = match.name;
       selectedChapter = 0;
       selectedVerse = 0;
+      displayVerseButton.disabled = true;
+      displayVerseButton.textContent = "DISPLAY CHAPTER";
       openModal();
       setTab("chapter");
       updateCurrent();
@@ -456,6 +632,7 @@
   };
 
   launch.addEventListener("click", openModal);
+  displayVerseButton.addEventListener("click", openPassage);
   modal.querySelector("#zgnClose").addEventListener("click", closeModal);
   modal.querySelector("#zgnGo").addEventListener("click", () => parseReference(referenceInput.value));
   referenceInput.addEventListener("keydown", event => {

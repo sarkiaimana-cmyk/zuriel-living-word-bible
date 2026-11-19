@@ -668,19 +668,38 @@
             #zurielGloryStudio[data-finish="ivory"] #zurielGloryPreview {--zgs-page-bg:linear-gradient(145deg,#fffdf5,#eee3ca);--zgs-page-border:#b79a5b99;}
             #zurielGloryStudio[data-finish="forest"] #zurielGloryPreview {--zgs-paper:#e9f0e5;--zgs-ink:#183a30;--zgs-accent:#39765b;--zgs-page-bg:linear-gradient(145deg,#f8fff5,#dce9da);--zgs-page-border:#6f947b;background:linear-gradient(90deg,#d4e1d5,#f2f6ec 48%,#d7e3d8 50%,#f2f6ec);}
             #zurielGloryStudio[data-finish="parchment"] #zurielGloryPreview {--zgs-paper:#f0dfbd;--zgs-ink:#4a3520;--zgs-accent:#9a682b;--zgs-page-bg:repeating-linear-gradient(0deg,#f7e9cb,#f7e9cb 3px,#eddfc2 4px);--zgs-page-border:#b28a4e;background:repeating-linear-gradient(0deg,#f2e5ca,#f2e5ca 3px,#eddfc2 4px);}
-            #zurielGloryPreview {background-image:linear-gradient(180deg,#10243a35,#10243a55),var(--zgs-wallpaper-image,none);background-size:cover;background-position:center;background-repeat:no-repeat;}
-            #zurielGloryPreview:after {content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:#9a835333;box-shadow:0 0 15px #5b472333;pointer-events:none;}
+            #zurielGloryPreview {background-image:linear-gradient(180deg,#10243a08,#10243a22),var(--zgs-wallpaper-image,none);background-size:cover;background-position:center;background-repeat:no-repeat;}
+            #zurielGloryPreview:after {content:"";position:absolute;top:7%;bottom:7%;left:50%;width:12px;margin-left:-6px;background:linear-gradient(90deg,#70533222,#fff9e8aa,#70533244);border-radius:6px;box-shadow:0 0 15px #5b472333;pointer-events:none;z-index:4;}
             #zurielGloryPreview .zgs-brand {font-size:15px;letter-spacing:1px;text-align:center;color:var(--zgs-accent);font-weight:800;font-family:Georgia,serif;position:relative;z-index:1;}
             #zurielGloryPreview h3 {text-align:center;color:var(--zgs-ink);font-family:Georgia,serif;font-size:20px;margin:9px 0 15px;position:relative;z-index:1;}
-            #zurielGloryPreview .zgs-book-spread {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;position:relative;z-index:1;}
-            #zurielGloryPreview .zgs-page {position:relative;min-width:0;min-height:260px;padding:18px 15px;background:var(--zgs-page-bg,linear-gradient(145deg,#fffdf5,#eee3ca));border:1px solid var(--zgs-page-border,#b79a5b99);border-radius:7px 15px 15px 7px;box-shadow:0 12px 26px #08142655,inset 0 0 18px #ffffff24;overflow:hidden;}
-            #zurielGloryPreview .zgs-left-page {border-radius:15px 7px 7px 15px;box-shadow:0 12px 26px #08142655,inset -8px 0 14px #0a183018;}
-            #zurielGloryPreview .zgs-right-page {box-shadow:0 12px 26px #08142655,inset 8px 0 14px #0a183018;}
-            #zurielGloryPreview .zgs-page-title {font:700 10px/1.4 Arial,sans-serif;letter-spacing:1px;text-align:center;color:var(--zgs-accent);margin:3px 0 12px;}
-            #zurielGloryPreview .zgs-ref {text-align:center;font-weight:800;color:var(--zgs-accent);font-size:13px;}
-            #zurielGloryPreview .zgs-copy {white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.48;margin:9px 0;font-family:Georgia,serif;font-size:14px;}
-            #zurielGloryPreview .zgs-active-copy {min-height:105px;font-weight:700;}
+            #zurielGloryPreview .zgs-book-spread {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;position:relative;z-index:1;perspective:900px;}
+            #zurielGloryPreview .zgs-page {position:relative;min-width:0;min-height:300px;padding:20px 16px;background:linear-gradient(100deg,#fffef9 0%,#f7f0df 82%,#e9ddc8 100%);border:1px solid #d3c4a6;border-radius:8px 2px 2px 8px;box-shadow:0 15px 28px #07172a55,inset 0 0 18px #ffffff9c;overflow:visible;color:#183b68;}
+            #zurielGloryPreview .zgs-page:before {content:"";position:absolute;left:4px;right:4px;bottom:3px;height:7px;background:repeating-linear-gradient(180deg,#d4c4a6 0,#fffaf0 1px,#d4c4a6 2px);opacity:.5;pointer-events:none;}
+            #zurielGloryPreview .zgs-left-page {border-right:0;border-radius:15px 2px 2px 15px;box-shadow:0 15px 28px #07172a55,inset -12px 0 18px #172b4920;}
+            #zurielGloryPreview .zgs-right-page {border-left:0;border-radius:2px 15px 15px 2px;background:linear-gradient(260deg,#fffef9 0%,#f7f0df 82%,#e9ddc8 100%);box-shadow:0 15px 28px #07172a55,inset 12px 0 18px #172b4920;}
+            #zurielGloryPreview .zgs-page-title {font:800 12px/1.35 Arial,sans-serif;letter-spacing:.6px;text-align:center;color:#fff;margin:0 0 14px;padding:9px 6px;border-radius:5px;background:#1b4b82;}
+            #zurielGloryPreview .zgs-right-page .zgs-page-title {background:#27734c;}
+            #zurielGloryPreview .zgs-ref {text-align:center;font-weight:800;color:#fff;font-size:13px;line-height:1.35;padding:9px 7px;margin:0 0 15px;border-radius:5px;background:#1b4b82;border-bottom:1px dashed #c9b77e;}
+            #zurielGloryPreview .zgs-copy {white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.52;margin:10px 0;font-family:Georgia,serif;font-size:15px;color:#1d3d68;}
+            #zurielGloryPreview .zgs-active-copy {min-height:105px;font-weight:700;color:#1d5d3e;}
+            #zurielGloryPreview .zgs-glory-banner {margin-top:16px;padding:10px 6px;border-radius:5px;background:#1b4b82;color:#f6d36e;text-align:center;font:800 12px/1.3 Georgia,serif;letter-spacing:.5px;}
             #zurielGloryPreview .zgs-footer {text-align:center;font-size:10px;letter-spacing:1px;margin-top:17px;color:var(--zgs-accent);font-weight:800;position:relative;z-index:1;}
+            #zurielGloryPreview .zgs-ref {border-bottom:1px dashed #9aabbd;}
+            #zurielGloryPreview .zgs-active-copy {margin-top:14px;white-space:pre-wrap;overflow-wrap:anywhere;}
+            @media(max-width:560px) {
+              #zurielGloryPreview .zgs-book-spread {grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;}
+              #zurielGloryPreview .zgs-page {min-height:260px;padding:12px 8px;}
+              #zurielGloryPreview .zgs-page-title {font-size:9px;letter-spacing:.2px;padding:7px 3px;}
+              #zurielGloryPreview .zgs-copy {font-size:11px;line-height:1.4;}
+              #zurielGloryPreview .zgs-ref {font-size:10px;padding:7px 3px;}
+              #zurielGloryPreview .zgs-glory-banner {font-size:9px;padding:7px 3px;}
+              #zurielGloryPreview:after {display:block;}
+            }
+            @media(max-width:370px) {
+              #zurielGloryPreview .zgs-page {padding:9px 5px;min-height:245px;}
+              #zurielGloryPreview .zgs-copy {font-size:10px;}
+              #zurielGloryPreview .zgs-page-title {font-size:8px;}
+            }
             #zurielGloryStudio .zgs-tabs {display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;}
             #zurielGloryStudio .zgs-tabs button {font-size:11px;line-height:1.25;padding:7px 3px;background:#19324f;color:#fff;}
             #zurielGloryStudio .zgs-tabs button[aria-pressed="true"] {background:#b28b45;color:#172b49;outline:2px solid #e5d2a6;}
@@ -702,14 +721,14 @@
             #zurielGloryStudio .zgs-saved-actions {display:flex;gap:8px;flex-wrap:wrap;}
             #zurielGloryStudio .zgs-saved-actions button {min-height:38px;padding:7px 12px;border:1px solid #b99b58;border-radius:8px;background:#19324f;color:#fff7e6;font:inherit;}
             @media(max-width:520px){#zurielGloryStudio .zgs-typography-controls{grid-template-columns:1fr 1fr}#zurielGloryStudio .zgs-typography-controls label:last-child{grid-column:1/-1}}
-            @media(max-width:420px){#zurielGloryPreview{padding:16px 10px}#zurielGloryPreview h3{font-size:16px}#zurielGloryPreview .zgs-book-spread{gap:12px}#zurielGloryPreview .zgs-page{padding:6px 2px}#zurielGloryPreview .zgs-copy{font-size:12px}#zurielGloryPreview .zgs-page-title{font-size:9px}#zurielGloryStudio .zgs-tabs button{font-size:10px;min-height:42px}}
+            @media(max-width:420px){#zurielGloryPreview{padding:16px 8px}#zurielGloryPreview h3{font-size:15px}#zurielGloryPreview .zgs-book-spread{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0}#zurielGloryPreview .zgs-page{padding:9px 5px;min-height:245px}#zurielGloryPreview .zgs-copy{font-size:10px;line-height:1.38}#zurielGloryPreview .zgs-page-title{font-size:8px}#zurielGloryStudio .zgs-tabs button{font-size:10px;min-height:42px}}
           `;
           root.appendChild(studioStyle);
         }
 
         const studio = element("section", undefined, "card");
         studio.id = "zurielGloryStudio";
-        studio.dataset.finish = "navy";
+        studio.dataset.finish = "ivory";
         studio.dataset.wallpaper = "forest";
         studio.innerHTML = `
           <div class="zgs-field"><label for="zgsReference">SCRIPTURE REFERENCE</label><input id="zgsReference" placeholder="e.g. Romans 8:1"></div>
@@ -721,13 +740,13 @@
           <div class="zgs-field"><label for="zgsInspiration">INSPIRATION / FAITH WORD</label><textarea id="zgsInspiration" placeholder="A short encouragement drawn from this passage"></textarea></div>
           <div class="zgs-field"><label>REALISTIC WALLPAPERS</label><div class="zgs-actions" id="zgsWallpapers" aria-label="Choose a photographic card wallpaper"><button type="button" data-wallpaper="forest">Forest river</button><button type="button" data-wallpaper="falls">Waterfall light</button><button type="button" data-wallpaper="stream">Forest stream</button><button type="button" data-wallpaper="valley">Mountain valley</button></div><small>Choose a background for your card. Selected wallpapers are cached on this device after loading for later offline use.</small></div>
           <div class="zgs-field"><label>OPEN-BOOK FINISH</label><div class="zgs-actions" id="zgsFinishes">
-            <button type="button" data-finish="ivory">Warm ivory</button><button type="button" data-finish="navy">Kingdom navy</button><button type="button" data-finish="forest">Living forest</button><button type="button" data-finish="parchment">Parchment</button>
+            <button type="button" data-finish="ivory" aria-pressed="true">Warm ivory</button><button type="button" data-finish="navy" aria-pressed="false">Kingdom navy</button><button type="button" data-finish="forest" aria-pressed="false">Living forest</button><button type="button" data-finish="parchment" aria-pressed="false">Parchment</button>
           </div></div>
           <div class="zgs-tabs" id="zgsContentTabs" role="group" aria-label="Choose the right-page faith content">
             <button type="button" data-zgs-view="Prayer" aria-pressed="false">Prayer</button>
             <button type="button" data-zgs-view="Declaration" aria-pressed="true">Declaration</button>
             <button type="button" data-zgs-view="Affirmation" aria-pressed="false">Affirmation</button>
-            <button type="button" data-zgs-view="Confession" aria-pressed="false">Faith</button>
+            <button type="button" data-zgs-view="Confession" aria-pressed="false">Faith Confession</button>
             <button type="button" data-zgs-view="Inspiration" aria-pressed="false">Inspiration</button>
           </div>
           <div class="zgs-typography-controls" aria-label="Card typography controls">
@@ -745,15 +764,14 @@
             <div class="zgs-brand">The Light 🕯️</div>
             <h3 id="zgsPreviewTitle">His Words.. My life.. My Victory</h3>
             <div class="zgs-book-spread">
-              <section class="zgs-page zgs-left-page">
-                <div class="zgs-page-title">THE WORD</div>
-                <div class="zgs-ref" id="zgsPreviewRef">Your Scripture reference</div>
+              <section class="zgs-page zgs-left-page" aria-label="Selected Bible Scripture">
+                <div class="zgs-ref zgs-reference-banner" id="zgsPreviewRef">Your Scripture reference</div>
                 <p class="zgs-copy" id="zgsPreviewScripture">Your Scripture will appear here.</p>
               </section>
-              <section class="zgs-page zgs-right-page">
-                <div class="zgs-page-title">GLORY VERSE AFFIRMATION</div>
-                <div class="zgs-page-title" id="zgsPreviewActiveTitle">DECLARATION</div>
+              <section class="zgs-page zgs-right-page" aria-label="Glory Verse Affirmation">
+                <div class="zgs-page-title" id="zgsPreviewActiveTitle">MY DECLARATION</div>
                 <p class="zgs-copy zgs-active-copy" id="zgsPreviewActiveContent">Your Scripture-led declaration will appear here.</p>
+                <div class="zgs-glory-banner">GLORY VERSE AFFIRMATION</div>
               </section>
             </div>
             <div class="zgs-footer">Zuriel Living Word Bible</div>
@@ -779,30 +797,75 @@
           valley: { label: "Mountain valley", url: "https://images.unsplash.com/photo-1768365423849-6f694d85cf33?auto=format&fit=crop&fm=jpg&q=82&w=1800" }
         };
         let activeWallpaperImage = null;
+        let activeWallpaperObjectUrl = null;
         let wallpaperRequestToken = 0;
-        function loadStudioWallpaper(key) {
+        async function loadStudioWallpaper(key) {
           const requestToken = ++wallpaperRequestToken;
-          activeWallpaperImage = null;
           const choice = wallpaperCatalog[key];
           if (!choice) return;
           const status = studio.querySelector("#zgsStatus");
-          const image = new Image();
-          image.crossOrigin = "anonymous";
-          image.onload = function () {
+          status.textContent = "Loading " + choice.label + " wallpaper…";
+          try {
+            let response = null;
+            let fromOfflineCache = false;
+            let savedForOffline = false;
+            const cacheName = "zuriel-studio-wallpapers-v1";
+            if ("caches" in window) {
+              try {
+                const cache = await caches.open(cacheName);
+                response = await cache.match(choice.url);
+                fromOfflineCache = !!response;
+                savedForOffline = fromOfflineCache;
+                if (!response) {
+                  response = await fetch(choice.url, { mode: "cors", credentials: "omit" });
+                  if (!response.ok || !response.type.includes("basic") && response.type !== "cors") throw new Error("Wallpaper download failed");
+                  try {
+                    await cache.put(choice.url, response.clone());
+                    savedForOffline = true;
+                  } catch (storageError) {
+                    savedForOffline = false;
+                  }
+                }
+              } catch (cacheError) {
+                if (!navigator.onLine) throw cacheError;
+                response = await fetch(choice.url, { mode: "cors", credentials: "omit" });
+              }
+            } else {
+              response = await fetch(choice.url, { mode: "cors", credentials: "omit" });
+            }
+            if (!response || !response.ok) throw new Error("Wallpaper is unavailable");
+            const blob = await response.blob();
+            if (!blob.type.startsWith("image/")) throw new Error("Wallpaper response was not an image");
+            const objectUrl = URL.createObjectURL(blob);
+            const image = new Image();
+            image.onload = function () {
+              if (requestToken !== wallpaperRequestToken) {
+                URL.revokeObjectURL(objectUrl);
+                return;
+              }
+              if (activeWallpaperObjectUrl) URL.revokeObjectURL(activeWallpaperObjectUrl);
+              activeWallpaperObjectUrl = objectUrl;
+              activeWallpaperImage = image;
+              studio.dataset.wallpaper = key;
+              studio.querySelector("#zurielGloryPreview").style.setProperty("--zgs-wallpaper-image", 'url("' + objectUrl + '")');
+              studio.querySelectorAll("[data-wallpaper]").forEach(button => {
+                button.setAttribute("aria-pressed", String(button.dataset.wallpaper === key));
+              });
+              status.textContent = fromOfflineCache
+                ? choice.label + " loaded from this device's offline wallpaper cache."
+                : savedForOffline
+                  ? choice.label + " saved to this device's offline wallpaper cache."
+                  : choice.label + " loaded, but this browser could not save it for offline use.";
+            };
+            image.onerror = function () {
+              URL.revokeObjectURL(objectUrl);
+              if (requestToken === wallpaperRequestToken) status.textContent = "This wallpaper could not be displayed. Your Scripture and saved cards are safe.";
+            };
+            image.src = objectUrl;
+          } catch (error) {
             if (requestToken !== wallpaperRequestToken) return;
-            activeWallpaperImage = image;
-            studio.dataset.wallpaper = key;
-            studio.querySelector("#zurielGloryPreview").style.setProperty("--zgs-wallpaper-image", 'url("' + choice.url + '")');
-            studio.querySelectorAll("[data-wallpaper]").forEach(button => {
-              button.setAttribute("aria-pressed", String(button.dataset.wallpaper === key));
-            });
-            status.textContent = choice.label + " wallpaper loaded. It will be available offline after this device caches it.";
-          };
-          image.onerror = function () {
-            if (requestToken !== wallpaperRequestToken) return;
-            status.textContent = "This wallpaper could not load. Connect to the internet once, then try again. Your other card content is safe.";
-          };
-          image.src = choice.url;
+            status.textContent = "This wallpaper is not cached yet. Connect once to load it; your Scripture and saved cards remain safe.";
+          }
         }
         studio.querySelectorAll("[data-wallpaper]").forEach(choice => choice.addEventListener("click", function () {
           loadStudioWallpaper(this.dataset.wallpaper);
@@ -842,7 +905,7 @@
           const activeText = studio.querySelector("#zgs"+activeFaithView).value.trim();
           studio.querySelector("#zgsPreviewRef").textContent = studio.querySelector("#zgsReference").value.trim() || "Your Scripture reference";
           studio.querySelector("#zgsPreviewScripture").textContent = scriptureText || "Your Scripture will appear here.";
-          studio.querySelector("#zgsPreviewActiveTitle").textContent = activeFaithView === "Confession" ? "FAITH CONFESSION" : activeFaithView.toUpperCase();
+          studio.querySelector("#zgsPreviewActiveTitle").textContent = activeFaithView === "Confession" ? "MY FAITH CONFESSION" : "MY " + activeFaithView.toUpperCase();
           studio.querySelector("#zgsPreviewActiveContent").textContent = activeText || "Add a Scripture-specific "+activeFaithView.toLowerCase()+" on the right page.";
           const stacked = scriptureText.length > 420 || activeText.length > 320;
           studio.dataset.layout = stacked ? "stacked" : "spread";
@@ -1007,7 +1070,7 @@
               });
               return lines;
             }
-            const leftTitle = activeFaithView === "Confession" ? "FAITH CONFESSION" : activeFaithView.toUpperCase();
+            const faithTitle = activeFaithView === "Confession" ? "MY FAITH CONFESSION" : "MY " + activeFaithView.toUpperCase();
             const stacked = scripture.length > 420 || faithText.length > 320;
             const exportMargin = stacked ? 140 : margin;
             const exportColumnWidth = stacked ? width - exportMargin * 2 : columnWidth;
@@ -1016,12 +1079,13 @@
             const top = 300, bottom = 150, sectionGap = stacked ? 95 : 0;
             const referenceHeadingHeight = 48 + 58;
             const faithHeadingHeight = 58;
+            const faithBannerHeight = 62;
             const contentHeight = stacked
               ? referenceHeadingHeight + leftLines.length * lineHeight(scriptureSize) +
-                sectionGap + faithHeadingHeight + rightLines.length * lineHeight(faithSize)
-              : referenceHeadingHeight + Math.max(
-                leftLines.length * lineHeight(scriptureSize),
-                rightLines.length * lineHeight(faithSize)
+                sectionGap + faithHeadingHeight + rightLines.length * lineHeight(faithSize) + faithBannerHeight
+              : Math.max(
+                referenceHeadingHeight + leftLines.length * lineHeight(scriptureSize),
+                faithHeadingHeight + rightLines.length * lineHeight(faithSize) + faithBannerHeight
               );
             canvas.width = width;
             canvas.height = Math.max(1100, top + contentHeight + bottom);
@@ -1079,7 +1143,7 @@
             if (stacked) {
               const firstHeight = referenceHeadingHeight + leftLines.length * lineHeight(scriptureSize) + 44;
               const secondY = top + firstHeight + sectionGap - 55;
-              const secondHeight = faithHeadingHeight + rightLines.length * lineHeight(faithSize) + 44;
+              const secondHeight = faithHeadingHeight + rightLines.length * lineHeight(faithSize) + faithBannerHeight + 44;
               roundedPanel(exportMargin - 28, top - 55, exportColumnWidth + 56, firstHeight, 22);
               roundedPanel(exportMargin - 28, secondY, exportColumnWidth + 56, secondHeight, 22);
             } else {
@@ -1090,36 +1154,47 @@
             ctx.strokeStyle = colors[2]; ctx.lineWidth = 5;
             ctx.strokeRect(35,35,width-70,canvas.height-70);
             ctx.textAlign = "center"; ctx.fillStyle = colors[2];
-            ctx.font = "bold 30px Georgia, serif"; ctx.fillText("THE LIGHT 🕯️",width/2,105);
+            ctx.font = "bold 30px Georgia, serif"; ctx.fillText("The Light 🕯️",width/2,105);
             ctx.fillStyle = colors[1]; ctx.font = "bold 48px Georgia, serif";
             ctx.fillText("His Words.. My life.. My Victory",width/2,185);
             ctx.strokeStyle = colors[2]; ctx.lineWidth = 2;
             if (!stacked) {
               ctx.beginPath(); ctx.moveTo(width/2,235); ctx.lineTo(width/2,canvas.height-110); ctx.stroke();
             }
-            function drawSection(title, referenceText, lines, x, y, maxWidth, size) {
-              ctx.textAlign = "center"; ctx.fillStyle = colors[2];
+            function drawSection(title, referenceText, lines, x, y, maxWidth, size, headingColor, textColor) {
+              ctx.textAlign = "center"; ctx.fillStyle = headingColor || "#1b4b82";
               ctx.font = "bold 24px Arial, sans-serif";
+              ctx.fillText(title,x+maxWidth/2,y);
+              y += 58;
               if (referenceText) {
                 ctx.fillText(referenceText,x+maxWidth/2,y);
                 y += 48;
               }
-              ctx.fillText(title,x+maxWidth/2,y);
-              y += 58;
-              ctx.textAlign = "left"; ctx.fillStyle = colors[1];
+              ctx.textAlign = "left"; ctx.fillStyle = textColor || colors[1];
               ctx.font = "bold " + size + "px " + typeface + ", serif";
               lines.forEach(line => { ctx.fillText(line,x,y); y += lineHeight(size); });
               return y;
             }
+            function drawGloryBanner(x,y,maxWidth) {
+              const bannerHeight = 52;
+              ctx.fillStyle = "#1b4b82";
+              ctx.fillRect(x+6,y+8,maxWidth-12,bannerHeight);
+              ctx.textAlign = "center";
+              ctx.fillStyle = "#f6d36e";
+              ctx.font = "bold 20px Georgia, serif";
+              ctx.fillText("GLORY VERSE AFFIRMATION",x+maxWidth/2,y+41);
+            }
             if (stacked) {
               let y = top;
-              y = drawSection("THE WORD",reference,leftLines,exportMargin,y,exportColumnWidth,scriptureSize);
+              y = drawSection("SCRIPTURE",reference,leftLines,exportMargin,y,exportColumnWidth,scriptureSize,"#1b4b82","#1d3d68");
               y += sectionGap;
-              drawSection("GLORY VERSE AFFIRMATION — " + leftTitle,"",rightLines,exportMargin,y,exportColumnWidth,faithSize);
+              const faithBottom = drawSection(faithTitle,"",rightLines,exportMargin,y,exportColumnWidth,faithSize,"#26734c","#1d5d3e");
+              drawGloryBanner(exportMargin,faithBottom,exportColumnWidth);
             } else {
               const leftX = margin, rightX = margin + columnWidth + gap;
-              drawSection("THE WORD",reference,leftLines,leftX,top,columnWidth,scriptureSize);
-              drawSection("GLORY VERSE AFFIRMATION — " + leftTitle,"",rightLines,rightX,top,columnWidth,faithSize);
+              drawSection("SCRIPTURE",reference,leftLines,leftX,top,columnWidth,scriptureSize,"#1b4b82","#1d3d68");
+              const faithBottom = drawSection(faithTitle,"",rightLines,rightX,top,columnWidth,faithSize,"#26734c","#1d5d3e");
+              drawGloryBanner(rightX,faithBottom,columnWidth);
             }
             ctx.textAlign = "center"; ctx.fillStyle = colors[2];
             ctx.font = "bold 24px Georgia, serif";
@@ -1494,29 +1569,29 @@
         ));
 
         const teachings = [
-          { category:"The Kingdom of God", title:"The good news of God's Kingdom", summary:"Jesus announces God's Kingdom and calls hearers to repent and believe the good news.", refs:["Mark 1:14","Matthew 4:17","Luke 4:43"] },
+          { category:"The Kingdom of God", title:"The good news of God's Kingdom", summary:"Jesus announces God's Kingdom and calls hearers to repent and believe the good news.", context:"Mark places this announcement after John the Baptist is handed over. Jesus proclaims that God's appointed time has arrived and calls hearers to repent and believe the good news.", reflection:"Read Mark 1:14-15 with the surrounding call of the first disciples. What does the arrival of God's Kingdom ask people to change, trust and follow?", caution:"The Kingdom is God's reign, not merely a political programme or a guarantee of immediate personal prosperity.", refs:["Mark 1:14","Matthew 4:17","Luke 4:43"] },
           { category:"Love and Relationships", title:"Love God and love your neighbour", summary:"Jesus places wholehearted love for God and practical love for neighbour at the centre of the commandments.", refs:["Matthew 22:37","Matthew 22:39","Mark 12:29"] },
           { category:"Love and Relationships", title:"Love one another", summary:"Jesus gives His disciples a new commandment to love one another in the pattern of His love.", refs:["John 13:34","John 15:12","John 15:17"] },
-          { category:"Prayer and Trust", title:"How to pray", summary:"Jesus teaches sincerity before the Father and gives His disciples a pattern for prayer.", refs:["Matthew 6:6","Matthew 6:9","Luke 11:2"] },
+          { category:"Prayer and Trust", title:"How to pray", summary:"Jesus teaches sincerity before the Father and gives His disciples a pattern for prayer.", context:"In the Sermon on the Mount Jesus contrasts sincere prayer with performance for human approval. He directs disciples toward the Father who already knows their needs.", reflection:"Compare Matthew 6:5-13 with Luke 11:1-4. Which parts of Jesus' pattern shape worship, dependence, forgiveness and daily priorities?", caution:"Do not turn the Lord's Prayer into a mechanical formula or use it to judge people whose prayer practices differ.", refs:["Matthew 6:6","Matthew 6:9","Luke 11:2"] },
           { category:"Prayer and Trust", title:"Ask, seek and knock", summary:"Jesus encourages persistent prayer and confidence in the Father's goodness.", refs:["Matthew 7:7","Luke 11:9","Luke 11:13"] },
-          { category:"Prayer and Trust", title:"Do not be anxious", summary:"Jesus directs attention to the Father's care and calls His followers to seek God's Kingdom first.", refs:["Matthew 6:25","Matthew 6:33","Luke 12:22"] },
-          { category:"Forgiveness and Mercy", title:"Forgive others", summary:"Jesus teaches His followers to forgive and warns against holding on to resentment.", refs:["Matthew 6:14","Matthew 18:21","Luke 6:37"] },
+          { category:"Prayer and Trust", title:"Do not be anxious", summary:"Jesus directs attention to the Father's care and calls His followers to seek God's Kingdom first.", context:"Jesus teaches trust in the Father's care through examples from birds and flowers, then directs disciples to seek God's Kingdom and righteousness first.", reflection:"Read Matthew 6:25-34 as part of the Sermon on the Mount. How does Jesus distinguish daily trust from being consumed by tomorrow's worries?", caution:"This teaching does not forbid responsible planning, nor does it shame people with persistent anxiety or discourage appropriate medical and pastoral support.", refs:["Matthew 6:25","Matthew 6:33","Luke 12:22"] },
+          { category:"Forgiveness and Mercy", title:"Forgive others", summary:"Jesus teaches His followers to forgive and warns against holding on to resentment.", context:"Jesus places forgiveness within the prayer He teaches and later explains it through the parable of the unforgiving servant. Forgiveness is a response to mercy received.", reflection:"Read Matthew 18:21-35 alongside Matthew 6:12-15. What does the parable reveal about the seriousness of receiving and extending mercy?", caution:"Forgiveness does not mean denying harm, removing wise boundaries, excusing abuse or requiring an unsafe reconciliation.", refs:["Matthew 6:14","Matthew 18:21","Luke 6:37"] },
           { category:"Forgiveness and Mercy", title:"Mercy and compassion", summary:"Jesus calls His hearers to show mercy and compassion as they have received mercy.", refs:["Matthew 5:7","Luke 6:36","Matthew 9:13"] },
-          { category:"Discipleship", title:"Count the cost of following Jesus", summary:"Jesus calls people to take up their cross, follow Him and value Him above every competing loyalty.", refs:["Luke 9:23","Luke 14:27","Matthew 16:24"] },
+          { category:"Discipleship", title:"Count the cost of following Jesus", summary:"Jesus calls people to take up their cross, follow Him and value Him above every competing loyalty.", context:"In Luke 14 Jesus addresses large crowds and uses the examples of building a tower and a king preparing for war. Discipleship requires considered allegiance rather than passing enthusiasm.", reflection:"Read Luke 14:25-33 in its full setting. What competing loyalties does Jesus name, and how does the cross shape the meaning of following Him?", caution:"The strong language about carrying the cross describes costly allegiance to Jesus; it must not be used to demand self-harm or submission to an abusive person.", refs:["Luke 9:23","Luke 14:27","Matthew 16:24"] },
           { category:"Discipleship", title:"Continue in His word", summary:"Jesus describes true discipleship as remaining in His word and living in the freedom of truth.", refs:["John 8:31","John 8:32","John 15:7"] },
-          { category:"Humility and Service", title:"The greatest becomes a servant", summary:"Jesus overturns worldly ideas of greatness and presents service as the pattern of His Kingdom.", refs:["Mark 10:43","Mark 10:45","Matthew 23:11"] },
+          { category:"Humility and Service", title:"The greatest becomes a servant", summary:"Jesus overturns worldly ideas of greatness and presents service as the pattern of His Kingdom.", context:"In Mark 10 the request for places of honour exposes the disciples' struggle over status. Jesus contrasts domineering rule with the servant pattern of His own mission.", reflection:"Compare Mark 10:35-45 with the surrounding healing and journey narrative. How does Jesus redefine greatness, authority and leadership?", caution:"Servant leadership is not permission for leaders to exploit others or avoid accountability. Jesus' self-giving example challenges domination.", refs:["Mark 10:43","Mark 10:45","Matthew 23:11"] },
           { category:"Humility and Service", title:"The example of washing feet", summary:"Jesus uses His act of service to teach His disciples humility and practical care for one another.", refs:["John 13:14","John 13:15","John 13:17"] },
           { category:"Faith and Courage", title:"Have faith in God", summary:"Jesus teaches His disciples to trust God and to pray with faith, humility and forgiveness.", refs:["Mark 11:22","Mark 11:24","Matthew 21:21"] },
           { category:"Faith and Courage", title:"Do not let your heart be troubled", summary:"Jesus comforts His disciples with a call to trust the Father and to trust Him.", refs:["John 14:1","John 14:2","John 14:27"] },
-          { category:"The Holy Spirit", title:"The promised Helper", summary:"Jesus promises the Holy Spirit, who will remain with His disciples and teach them.", refs:["John 14:16","John 14:26","John 15:26"] },
+          { category:"The Holy Spirit", title:"The promised Helper", summary:"Jesus promises the Holy Spirit, who will remain with His disciples and teach them.", context:"Jesus speaks of the Spirit in the farewell discourse as He prepares His disciples for His departure. The Spirit will remain with them, teach and remind them of Jesus' words.", reflection:"Read John 14:15-27 with John 15:26-27 and 16:7-15. What does Jesus say about the Spirit's relation to truth, witness and the mission of Christ?", caution:"Do not treat every inner impression as automatically the Spirit's voice. Test claims in light of Jesus' teaching, Scripture, wisdom and the fruit of the Spirit.", refs:["John 14:16","John 14:26","John 15:26"] },
           { category:"The Holy Spirit", title:"The Spirit of truth", summary:"Jesus explains the Spirit's work of guiding His followers into truth and glorifying Christ.", refs:["John 16:13","John 16:14","John 16:7"] },
-          { category:"The Sermon on the Mount", title:"The Beatitudes", summary:"Jesus describes the character and hope of those who belong to the Kingdom of Heaven.", refs:["Matthew 5:3","Matthew 5:6","Matthew 5:9"] },
+          { category:"The Sermon on the Mount", title:"The Beatitudes", summary:"Jesus describes the character and hope of those who belong to the Kingdom of Heaven.", context:"At the opening of the Sermon on the Mount Jesus describes those who are blessed in God's Kingdom, including the poor in spirit, the merciful and those persecuted for righteousness.", reflection:"Read Matthew 5:1-12 as one connected opening to the sermon. Which values are reversed, and what hope is promised to those who suffer for righteousness?", caution:"The Beatitudes do not call oppression good or tell vulnerable people to remain in danger. Their promises must be read within the whole sermon and the hope of God's Kingdom.", refs:["Matthew 5:3","Matthew 5:6","Matthew 5:9"] },
           { category:"The Sermon on the Mount", title:"Salt and light", summary:"Jesus calls His disciples to live visibly faithful lives that point others to the Father.", refs:["Matthew 5:13","Matthew 5:14","Matthew 5:16"] },
           { category:"The Sermon on the Mount", title:"Build on the rock", summary:"Jesus says that hearing His words must lead to putting them into practice.", refs:["Matthew 7:24","Matthew 7:25","Luke 6:47"] },
-          { category:"The Cross and Resurrection", title:"The bread and the cup", summary:"At the Last Supper Jesus interprets the bread and cup in relation to His coming sacrifice and the new covenant.", refs:["Luke 22:19","Luke 22:20","Matthew 26:26"] },
+          { category:"The Cross and Resurrection", title:"The bread and the cup", summary:"At the Last Supper Jesus interprets the bread and cup in relation to His coming sacrifice and the new covenant.", context:"At the Passover meal Jesus interprets the bread and cup in relation to His body, His coming death and the covenant. The meal becomes a lasting act of remembrance for His disciples.", reflection:"Read Luke 22:14-23 alongside Exodus 12 and 1 Corinthians 11:23-26. What connections do the texts make between deliverance, covenant, remembrance and the church?", caution:"Christian traditions differ on aspects of the Lord's Supper. Present those differences fairly rather than implying that one brief summary settles every sacramental question.", refs:["Luke 22:19","Luke 22:20","Matthew 26:26"] },
           { category:"The Cross and Resurrection", title:"Jesus is the resurrection and the life", summary:"Jesus speaks of resurrection hope and identifies Himself as the source of life.", refs:["John 11:25","John 11:26","John 5:24"] },
           { category:"The Cross and Resurrection", title:"The promise of His return", summary:"Jesus comforts His disciples with the promise that He will receive them to Himself.", refs:["John 14:2","John 14:3","Matthew 24:30"] },
-          { category:"Mission and Witness", title:"The Great Commission", summary:"The risen Jesus sends His disciples to make disciples among all nations and teach obedience to His commands.", refs:["Matthew 28:18","Matthew 28:19","Matthew 28:20"] },
+          { category:"Mission and Witness", title:"The Great Commission", summary:"The risen Jesus sends His disciples to make disciples among all nations and teach obedience to His commands.", context:"Matthew places the commission after the resurrection, when Jesus meets the disciples in Galilee. His authority grounds the sending to make disciples, baptise and teach obedience to all He commanded.", reflection:"Read Matthew 28:16-20 in the light of the resurrection and the Gospel's earlier teaching. What does making disciples involve beyond gaining an initial response?", caution:"The commission must never be used to justify coercion, cultural domination or contempt for other peoples. Jesus commands teaching that follows His own way.", refs:["Matthew 28:18","Matthew 28:19","Matthew 28:20"] },
           { category:"Mission and Witness", title:"You will be My witnesses", summary:"The risen Jesus commissions His followers to bear witness and promises the Father's power.", refs:["Luke 24:48","Luke 24:49","John 20:21"] },
           { category:"Prayer and Trust", title:"The Lord's Prayer", summary:"Jesus gives His disciples a pattern of prayer shaped by the Father's name, Kingdom, provision, forgiveness and deliverance.", refs:["Matthew 6:9","Matthew 6:11","Luke 11:2"] },
           { category:"Prayer and Trust", title:"The Father's good gifts", summary:"Jesus teaches that the Father gives good things to those who ask Him.", refs:["Matthew 7:11","Luke 11:13"] },
@@ -1541,13 +1616,13 @@
           { category:"The Kingdom of God", title:"The parable of the sower", summary:"Jesus explains how people receive the word of the Kingdom in different ways.", refs:["Matthew 13:3","Matthew 13:18","Luke 8:11"] },
           { category:"The Kingdom of God", title:"The treasure hidden in a field", summary:"Jesus compares the Kingdom of Heaven to treasure worth giving everything to obtain.", refs:["Matthew 13:44","Matthew 13:45"] },
           { category:"The Kingdom of God", title:"The lost sheep", summary:"Jesus reveals the Father's concern for those who have wandered and need to be found.", refs:["Matthew 18:12","Matthew 18:13","Luke 15:4"] },
-          { category:"The Kingdom of God", title:"The Good Samaritan", summary:"Jesus teaches neighbour-love through the compassion of a Samaritan toward a wounded man.", refs:["Luke 10:30","Luke 10:36","Luke 10:37"] },
+          { category:"The Kingdom of God", title:"The Good Samaritan", summary:"Jesus teaches neighbour-love through the compassion of a Samaritan toward a wounded man.", context:"Jesus tells this story after a question about inheriting eternal life and a follow-up question about who counts as a neighbour. The unexpected Samaritan becomes the example of costly mercy.", reflection:"Read Luke 10:25-37 with verses 25-29. How does the story challenge the listener's boundaries and turn the question toward becoming a neighbour?", caution:"Do not reduce the story to a slogan or ignore the social hostility in its setting. Practical mercy should be wise and should not require entering unsafe situations without support.", refs:["Luke 10:30","Luke 10:36","Luke 10:37"] },
           { category:"Mission and Witness", title:"Serve Christ by serving the least", summary:"Jesus identifies practical care for people in need with service rendered to Him.", refs:["Matthew 25:35","Matthew 25:40","Matthew 25:45"] },
           { category:"Mission and Witness", title:"Watch and be ready", summary:"Jesus calls His disciples to remain watchful and faithful as they await His return.", refs:["Matthew 24:42","Matthew 24:44","Mark 13:35"] },
           {category:"Love and Relationships",title:"Love your enemies",summary:"Jesus commands love for enemies, prayer for persecutors and generosity that reflects the Father's mercy.",refs:["Matthew 5:44","Luke 6:27","Luke 6:35"]},
           {category:"Prayer and Trust",title:"Give in secret",summary:"Jesus teaches that giving and prayer should be directed toward the Father rather than performed to win public praise.",refs:["Matthew 6:3","Matthew 6:4","Matthew 6:6"]},
           {category:"The Kingdom of God",title:"The rich fool",summary:"Jesus warns against storing up possessions while neglecting one's life before God.",refs:["Luke 12:16","Luke 12:20","Luke 12:21"]},
-          {category:"Discipleship",title:"The rich young ruler",summary:"Jesus exposes the hold of wealth on a sincere questioner and calls him to follow with wholehearted trust.",refs:["Mark 10:21","Matthew 19:21","Luke 18:22"]},
+          {category:"Discipleship",title:"The rich young ruler",summary:"Jesus exposes the hold of wealth on a sincere questioner and calls him to follow with wholehearted trust.",context:"In Mark 10 a man asks about eternal life. Jesus looks at him with love, exposes the hold of possessions and calls him to follow; the disciples then hear a wider warning about wealth and God's power to save.", reflection:"Read Mark 10:17-31 as a complete episode. Notice the man's question, Jesus' loving challenge, his grief and the disciples' surprise about wealth.", caution:"The passage does not teach that every wealthy person is automatically condemned or that giving money purchases salvation. It confronts whatever competes with allegiance to Jesus.", refs:["Mark 10:21","Matthew 19:21","Luke 18:22"]},
           {category:"The Kingdom of God",title:"The Good Shepherd",summary:"Jesus identifies Himself as the Good Shepherd who knows His sheep and lays down His life for them.",refs:["John 10:11","John 10:14","John 10:27"]},
           {category:"Forgiveness and Mercy",title:"The lost son",summary:"Jesus portrays the Father's compassion toward the returning son and challenges resentment through the elder brother's response.",refs:["Luke 15:20","Luke 15:24","Luke 15:32"]},
           {category:"The Kingdom of God",title:"The mustard seed",summary:"Jesus compares the Kingdom to a small seed that grows into something unexpectedly large, illustrating its surprising growth.",refs:["Matthew 13:31","Matthew 13:32","Luke 13:18"]},
@@ -1621,7 +1696,7 @@
           const selectedCategory = filter.value;
           const matches = teachings.filter(item =>
             (!selectedCategory || item.category === selectedCategory) &&
-            (!query || (item.category + " " + item.title + " " + item.summary + " " + item.refs.join(" ")).toLowerCase().includes(query))
+            (!query || (item.category + " " + item.title + " " + item.summary + " " + (item.context || "") + " " + (item.reflection || "") + " " + (item.caution || "") + " " + item.refs.join(" ")).toLowerCase().includes(query))
           );
           count.textContent = matches.length + " teaching themes • " + matches.reduce((sum, item) => sum + item.refs.length, 0) + " Gospel reference links";
           if (!matches.length) {
@@ -1636,6 +1711,9 @@
             summary.setAttribute("aria-label", "Expand teaching: " + item.title);
             details.appendChild(summary);
             details.appendChild(element("p", item.summary));
+            if (item.context) details.appendChild(element("p", "Context: " + item.context, "jesus-study-note"));
+            if (item.reflection) details.appendChild(element("p", "Study question: " + item.reflection, "jesus-study-note"));
+            if (item.caution) details.appendChild(element("p", "Read carefully: " + item.caution, "jesus-study-caution"));
             const refs = element("div", undefined, "library-nav");
             item.refs.forEach(function (reference) {
               const open = button("Open " + reference, function () { openJesusReference(reference, open); });

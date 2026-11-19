@@ -88,4 +88,22 @@ if (home.includes("setupHomePassageSelector") || home.includes("zurielHomePassag
   throw new Error("The retired duplicate home passage selector must not return.");
 }
 
-console.log("Reader navigation checks passed: errors propagate, responsive reading width is enforced, and search, navigator, Continue Reading, Geography, Advanced Study, Kingdom Life, Words of Jesus, bookmarks, home Scripture cards and verse navigation all use the shared verse activation path.");
+requireMatch(navigator, /id="zgnDisplayVerse"[^>]*>DISPLAY VERSE/, "The full Bible browser must present an explicit DISPLAY VERSE action.");
+requireMatch(navigator, /id="zgnInlineBook"/, "The reader page must show a compact BOOK selector.");
+requireMatch(navigator, /id="zgnInlineChapter"/, "The reader page must show a compact CHAPTER selector.");
+requireMatch(navigator, /id="zgnInlineVerse"/, "The reader page must show a compact VERSE selector.");
+requireMatch(navigator, /id="zgnInlineDisplayVerse"/, "The reader page must show a primary Display Chapter/Verse action.");
+requireMatch(navigator, /window\.getChapterVerseCount\(selectedBook, selectedChapter \|\| 1\)/, "Inline verse choices must be based on the selected chapter's real verse count.");
+requireMatch(navigator, /inlineDisplayButton\.addEventListener\("click",[\s\S]*?openPassage\(\)/, "The reader page Display action must use the shared passage loader.");
+requireMatch(navigator, /launch\.textContent = "Browse Bible"/, "The full grid browser must remain available as a secondary Browse action.");
+requireMatch(navigator, /function chooseChapter\(number\)[\s\S]*?displayVerseButton\.disabled = false;[\s\S]*?displayVerseButton\.textContent = "DISPLAY CHAPTER"/, "Choosing a chapter must enable a separate DISPLAY CHAPTER action.");
+requireMatch(navigator, /displayVerseButton\.addEventListener\("click", openPassage\)/, "The DISPLAY VERSE action must open the selected passage.");
+requireMatch(navigator, /inlineDisplayButton\.addEventListener\("click", async function[\s\S]*?await openPassage\(\)[\s\S]*?finally[\s\S]*?updateInlineDisplayLabel\(\)/, "The reader-page Display control must recover after passage loading succeeds or fails.");
+requireMatch(navigator, /selectedVerse = n;[\s\S]*?displayVerseButton\.disabled = false;[\s\S]*?Tap DISPLAY VERSE to open the passage\./, "Selecting a verse must prepare the confirmation action without opening the passage automatically.");
+const verseChoiceHandler = navigator.match(/grid\.appendChild\(buttonFor\(String\(n\), n, selectedVerse === n, \(\) => \{([\s\S]*?)\}\)\);/);
+if (!verseChoiceHandler || /openPassage\s*\(/.test(verseChoiceHandler[1])) {
+  throw new Error("Selecting a verse must not bypass the explicit DISPLAY VERSE confirmation.");
+}
+requireMatch(navigator, /button\.disabled = !ready[\s\S]*?secure translation service is not configured/, "Non-KJV shortcuts must not pretend to work before the secure translation service is configured.");
+requireMatch(reader, /#message > h2\s*\{[\s\S]*?border-bottom:\s*1px dashed #c9b77e/, "The reading page must use the requested dashed horizontal separator.");
+console.log("Reader navigation checks passed: errors propagate, responsive reading width is enforced, explicit DISPLAY VERSE confirmation is required, translation availability is honest, and all verse links use shared activation.");
