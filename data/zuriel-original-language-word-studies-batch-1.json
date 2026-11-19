@@ -905,6 +905,286 @@
       ],
       "interpretiveCaution": "The warning is about allegiance to wealth, not the claim that all possessions are evil.",
       "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+    },
+    {
+      "id": "word-study-066",
+      "term": "Agape",
+      "language": "Greek",
+      "originalForm": "ἀγάπη",
+      "contextualGloss": "love; committed goodwill and self-giving concern",
+      "scriptureReferences": [
+        "John 13:34-35",
+        "Romans 5:5",
+        "1 John 4:8"
+      ],
+      "interpretiveCaution": "The noun is related to agapao, but context—not an assumed word hierarchy—determines its force.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+    },
+    {
+      "id": "word-study-067",
+      "term": "Logos",
+      "language": "Greek",
+      "originalForm": "λόγος",
+      "contextualGloss": "word, message, account or reason; in John 1 it is used in a profound Christological claim",
+      "scriptureReferences": [
+        "John 1:1",
+        "John 1:14",
+        "Hebrews 4:12"
+      ],
+      "interpretiveCaution": "Do not reduce Logos to a single English gloss; John 1's use must be read within the whole prologue and Gospel.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+    },
+    {
+      "id": "word-study-068",
+      "term": "Charis",
+      "language": "Greek",
+      "originalForm": "χάρις",
+      "contextualGloss": "grace, favour or gracious gift",
+      "scriptureReferences": [
+        "Romans 3:24",
+        "Ephesians 2:8",
+        "2 Corinthians 12:9"
+      ],
+      "interpretiveCaution": "Grace has a range of uses; distinguish divine saving grace from ordinary favour by context.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+    },
+    {
+      "id": "word-study-069",
+      "term": "Metanoia",
+      "language": "Greek",
+      "originalForm": "μετάνοια",
+      "contextualGloss": "repentance; a changed mind and reorientation expressed in turning",
+      "scriptureReferences": [
+        "Acts 2:38",
+        "Romans 2:4",
+        "2 Peter 3:9"
+      ],
+      "interpretiveCaution": "Avoid defining repentance as a mere emotion or as a word-origin formula; examine the passage's call and response.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+    },
+    {
+      "id": "word-study-070",
+      "term": "Ekklesia",
+      "language": "Greek",
+      "originalForm": "ἐκκλησία",
+      "contextualGloss": "assembly or congregation; in Christian texts, the gathered community of believers",
+      "scriptureReferences": [
+        "Matthew 16:18",
+        "Acts 2:42",
+        "1 Corinthians 12:27"
+      ],
+      "interpretiveCaution": "The word does not by itself settle later debates about church polity or denominational structure.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+    },
+    {
+      "id": "word-study-071",
+      "term": "Diakonia",
+      "language": "Greek",
+      "originalForm": "διακονία",
+      "contextualGloss": "service, ministry or practical assistance",
+      "scriptureReferences": [
+        "Acts 6:1",
+        "2 Corinthians 8:4",
+        "2 Corinthians 9:12"
+      ],
+      "interpretiveCaution": "Do not restrict every occurrence to one church office; the context identifies the kind of service.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+    },
+    {
+      "id": "word-study-072",
+      "term": "Parakletos",
+      "language": "Greek",
+      "originalForm": "παράκλητος",
+      "contextualGloss": "helper, advocate or one called alongside to assist",
+      "scriptureReferences": [
+        "John 14:16",
+        "John 14:26",
+        "1 John 2:1"
+      ],
+      "interpretiveCaution": "The Gospel's references to the Spirit and John's letter's reference to Christ should be read in their distinct contexts.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+    },
+    {
+      "id": "word-study-073",
+      "term": "Euangelion",
+      "language": "Greek",
+      "originalForm": "εὐαγγέλιον",
+      "contextualGloss": "good news or gospel proclamation",
+      "scriptureReferences": [
+        "Mark 1:1",
+        "Romans 1:16",
+        "Galatians 1:11"
+      ],
+      "interpretiveCaution": "The term names a message; do not replace the content of the gospel with a slogan or a prosperity guarantee.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+    },
+    {
+      "id": "word-study-074",
+      "term": "Basileia",
+      "language": "Greek",
+      "originalForm": "βασιλεία",
+      "contextualGloss": "kingdom, reign or royal rule",
+      "scriptureReferences": [
+        "Matthew 6:33",
+        "Mark 1:15",
+        "Luke 17:20-21"
+      ],
+      "interpretiveCaution": "Depending on context it can stress reign or realm; avoid forcing every passage into only one sense.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+    },
+    {
+      "id": "word-study-075",
+      "term": "Hypomone",
+      "language": "Greek",
+      "originalForm": "ὑπομονή",
+      "contextualGloss": "steadfast endurance, perseverance or patient staying power",
+      "scriptureReferences": [
+        "Romans 5:3-4",
+        "James 1:3-4",
+        "Hebrews 12:1"
+      ],
+      "interpretiveCaution": "Biblical endurance is not a command to remain in danger or tolerate abuse; seek safety and help where needed.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+    },
+    {
+      "id": "word-study-076",
+      "term": "Shalom",
+      "language": "Hebrew",
+      "originalForm": "שָׁלוֹם",
+      "contextualGloss": "peace, well-being, wholeness or welfare",
+      "scriptureReferences": [
+        "Numbers 6:26",
+        "Isaiah 9:6",
+        "Isaiah 26:3"
+      ],
+      "interpretiveCaution": "Do not reduce shalom to the absence of conflict; the context may include welfare, security and restored relationships.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+    },
+    {
+      "id": "word-study-077",
+      "term": "Dabar",
+      "language": "Hebrew",
+      "originalForm": "דָּבָר",
+      "contextualGloss": "word, matter, thing or spoken message",
+      "scriptureReferences": [
+        "Deuteronomy 8:3",
+        "Psalm 119:105",
+        "Jeremiah 1:4"
+      ],
+      "interpretiveCaution": "The noun has a broad range; distinguish a spoken word, an event or a matter from context.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+    },
+    {
+      "id": "word-study-078",
+      "term": "Emunah",
+      "language": "Hebrew",
+      "originalForm": "אֱמוּנָה",
+      "contextualGloss": "faithfulness, firmness or trustworthiness",
+      "scriptureReferences": [
+        "Deuteronomy 32:4",
+        "Psalm 37:3",
+        "Habakkuk 2:4"
+      ],
+      "interpretiveCaution": "English translations vary by context; do not assume every occurrence means only inward belief.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+    },
+    {
+      "id": "word-study-079",
+      "term": "Berit",
+      "language": "Hebrew",
+      "originalForm": "בְּרִית",
+      "contextualGloss": "covenant, a solemnly established relationship or commitment",
+      "scriptureReferences": [
+        "Genesis 15:18",
+        "Exodus 24:7-8",
+        "Jeremiah 31:31"
+      ],
+      "interpretiveCaution": "Covenant forms and obligations differ across biblical contexts; avoid flattening every covenant into an identical arrangement.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+    },
+    {
+      "id": "word-study-080",
+      "term": "Torah",
+      "language": "Hebrew",
+      "originalForm": "תּוֹרָה",
+      "contextualGloss": "instruction, teaching or law",
+      "scriptureReferences": [
+        "Deuteronomy 6:6-7",
+        "Psalm 1:2",
+        "Psalm 19:7"
+      ],
+      "interpretiveCaution": "Torah can refer broadly to instruction or specifically to the Mosaic law; identify the scope in each passage.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+    },
+    {
+      "id": "word-study-081",
+      "term": "Or",
+      "language": "Hebrew",
+      "originalForm": "אוֹר",
+      "contextualGloss": "light, brightness or illumination",
+      "scriptureReferences": [
+        "Genesis 1:3",
+        "Psalm 27:1",
+        "Isaiah 9:2"
+      ],
+      "interpretiveCaution": "Light can be literal or figurative; interpret imagery within the literary setting.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+    },
+    {
+      "id": "word-study-082",
+      "term": "Chayim",
+      "language": "Hebrew",
+      "originalForm": "חַיִּים",
+      "contextualGloss": "life or living",
+      "scriptureReferences": [
+        "Deuteronomy 30:19",
+        "Psalm 16:11",
+        "Proverbs 3:18"
+      ],
+      "interpretiveCaution": "The plural form commonly expresses life; do not infer a separate doctrine from grammatical number alone.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+    },
+    {
+      "id": "word-study-083",
+      "term": "Mishpachah",
+      "language": "Hebrew",
+      "originalForm": "מִשְׁפָּחָה",
+      "contextualGloss": "clan, family group or kinship household",
+      "scriptureReferences": [
+        "Genesis 12:3",
+        "Joshua 7:14",
+        "Ruth 4:18"
+      ],
+      "interpretiveCaution": "The social unit may extend beyond a modern nuclear family; read the historical kinship setting carefully.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+    },
+    {
+      "id": "word-study-084",
+      "term": "Avodah",
+      "language": "Hebrew",
+      "originalForm": "עֲבוֹדָה",
+      "contextualGloss": "work, labour or service; in some contexts service rendered in worship",
+      "scriptureReferences": [
+        "Genesis 2:15",
+        "Exodus 3:12",
+        "Deuteronomy 10:12"
+      ],
+      "interpretiveCaution": "The same word family covers different kinds of service; context determines whether ordinary labour or worship is in view.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+    },
+    {
+      "id": "word-study-085",
+      "term": "Goel",
+      "language": "Hebrew",
+      "originalForm": "גֹּאֵל",
+      "contextualGloss": "kinsman-redeemer or one who acts as a family redeemer or advocate",
+      "scriptureReferences": [
+        "Leviticus 25:25",
+        "Ruth 4:4",
+        "Isaiah 41:14"
+      ],
+      "interpretiveCaution": "The legal and family role in Torah and Ruth should not be collapsed into every later theological use of redemption.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
     }
   ]
 }
