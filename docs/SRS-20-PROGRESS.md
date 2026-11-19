@@ -365,3 +365,14 @@ The following user requirements are part of the product acceptance criteria, not
 - Fixed Study Library rendering so place regions, modern orientation, journey sequences and worship context notes are displayed.
 - App/package and in-app update version advanced to 1.4.112; offline cache advanced to v214.
 - Candidate status pending CI and Android package checks; geographical map/route interpretation and physical-device usability still need review.
+
+
+## 1.4.113 book-specific study pathway quality milestone — candidate
+
+- Completed a deeper audit of all 66 book introductions and pathways after finding two generic cross-reference placeholders repeated across 65 books.
+- Replaced the repeated Psalm 105:1–11 and Luke 24:25–27 placeholders with relevant book-specific canonical connections; every book pathway now has at least two distinct cross-reference steps.
+- Added key passages for six shorter books (Joel, Obadiah, Zephaniah, Philemon, 2 John and 3 John) so every introduction has at least two focused passages.
+- Rewrote book-specific observation prompts to name the exact starting reference and restored proper capitalization in interpretation, application, prayer and reading notes.
+- Expanded the validation rules to reject generic placeholders, duplicate cross-references within a pathway and repeated book prompts, and to verify each linked passage against the offline KJV.
+- App/package and in-app update version advanced to 1.4.113; offline cache advanced to v215.
+- Candidate status pending CI and Android packaging; physical-device reading and navigation tests remain outstanding.
