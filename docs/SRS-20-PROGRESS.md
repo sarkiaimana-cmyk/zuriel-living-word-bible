@@ -344,3 +344,14 @@ The following user requirements are part of the product acceptance criteria, not
 - Fixed Study Library field mapping so the deep guides display their context summaries, primary passages, cross-references, observation and interpretation prompts, life applications and interpretive cautions rather than losing those fields or showing generic empty summaries.
 - App/package and in-app update version advanced to 1.4.110; offline cache advanced to v212.
 - Candidate status pending CI and Android packaging; phone layout and navigation still require physical-device testing.
+
+
+## 1.4.111 book introduction and study pathway quality milestone — candidate
+
+- Audited the 66 book introductions and 66 book-specific study pathways, preserving one entry for each canonical book.
+- Expanded abbreviated and chapter-only key passages, starting passages and cross-reference trails into 452 explicit, directly navigable references checked against the bundled KJV.
+- Replaced repeated generic reading notes across all 66 introductions with book-specific context guidance. Tailored all 66 pathway application and prayer prompts to each book's focus.
+- Fixed Study Library field mapping so book guides show key passages, pathway starting passages and cross-reference trails, major themes, context, observation and interpretation prompts, practical applications, prayer prompts and interpretive guardrails.
+- Added validator rules for unique book entries, substantive book-specific prompts, explicit references and KJV validation of every passage link.
+- App/package and in-app update version advanced to 1.4.111; offline cache advanced to v213.
+- Candidate status pending CI and Android packaging; real-device navigation and accessibility checks remain outstanding.
