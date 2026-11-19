@@ -260,6 +260,99 @@
   let activeTab = "book";
   let lastFocus = null;
   let verseCountToken = 0;
+  let inlineVerseCountToken = 0;
+  const inlineBook = inlineControls.querySelector("#zgnInlineBook");
+  const inlineChapter = inlineControls.querySelector("#zgnInlineChapter");
+  const inlineVerse = inlineControls.querySelector("#zgnInlineVerse");
+  const inlineDisplayButton = inlineControls.querySelector("#zgnInlineDisplayVerse");
+
+  function updateInlineDisplayLabel() {
+    inlineDisplayButton.textContent = selectedVerse ? "DISPLAY VERSE" : "DISPLAY CHAPTER";
+    inlineDisplayButton.disabled = !selectedChapter;
+  }
+
+  function populateInlineChapters() {
+    const book = books.find(item => item.name === selectedBook);
+    inlineChapter.replaceChildren();
+    if (!book) return;
+    for (let n = 1; n <= book.chapters; n++) {
+      const option = document.createElement("option");
+      option.value = String(n);
+      option.textContent = String(n);
+      inlineChapter.appendChild(option);
+    }
+    inlineChapter.value = String(selectedChapter || 1);
+  }
+
+  async function populateInlineVerses() {
+    const token = ++inlineVerseCountToken;
+    inlineVerse.replaceChildren();
+    const whole = document.createElement("option");
+    whole.value = "0";
+    whole.textContent = "Whole chapter";
+    inlineVerse.appendChild(whole);
+    inlineVerse.disabled = true;
+    const count = await Promise.resolve(
+      typeof window.getChapterVerseCount === "function"
+        ? window.getChapterVerseCount(selectedBook, selectedChapter || 1)
+        : 0
+    ).catch(() => 0);
+    if (token !== inlineVerseCountToken) return;
+    if (count > 0) {
+      for (let n = 1; n <= count; n++) {
+        const option = document.createElement("option");
+        option.value = String(n);
+        option.textContent = String(n);
+        inlineVerse.appendChild(option);
+      }
+      inlineVerse.disabled = false;
+    }
+    inlineVerse.value = String(selectedVerse || 0);
+    updateInlineDisplayLabel();
+  }
+
+  function syncInlineControls() {
+    inlineBook.value = selectedBook;
+    populateInlineChapters();
+    populateInlineVerses();
+  }
+
+  inlineBook.addEventListener("change", function () {
+    selectedBook = inlineBook.value;
+    selectedChapter = 1;
+    selectedVerse = 0;
+    updateCurrent();
+    updateReference();
+    syncInlineControls();
+    status.textContent = selectedBook + " selected. Choose a chapter and verse, then display Scripture.";
+  });
+  inlineChapter.addEventListener("change", function () {
+    selectedChapter = Number(inlineChapter.value);
+    selectedVerse = 0;
+    updateCurrent();
+    updateReference();
+    populateInlineVerses();
+    status.textContent = selectedBook + " " + selectedChapter + " selected. Choose a verse or display the whole chapter.";
+  });
+  inlineVerse.addEventListener("change", function () {
+    selectedVerse = Number(inlineVerse.value);
+    updateCurrent();
+    updateReference();
+    updateInlineDisplayLabel();
+  });
+  inlineDisplayButton.addEventListener("click", function () {
+    selectedBook = inlineBook.value;
+    selectedChapter = Number(inlineChapter.value);
+    selectedVerse = Number(inlineVerse.value);
+    updateCurrent();
+    updateReference();
+    displayVerseButton.disabled = !selectedChapter;
+    displayVerseButton.textContent = selectedVerse ? "DISPLAY VERSE" : "DISPLAY CHAPTER";
+    inlineDisplayButton.disabled = true;
+    inlineDisplayButton.textContent = "LOADING SCRIPTURE…";
+    openPassage();
+  });
+  syncInlineControls();
 
   function setTab(tab) {
     activeTab = tab;
