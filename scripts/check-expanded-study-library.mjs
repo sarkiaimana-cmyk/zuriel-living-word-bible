@@ -159,7 +159,7 @@ for (const trail of trails) {
   assert.equal(trail.pathway.length,5,"Each Scripture trail has five ordered passage steps");
   assert.deepEqual(trail.pathway.map(step=>step.step),[1,2,3,4,5],"Each trail must retain its five ordered steps: "+trail.title);
   for (const step of trail.pathway) {
-    assert.ok(step.reference && /^.+?\\s+\\d+:\\d+/.test(step.reference),"Each trail step needs an explicit book, chapter and verse: "+trail.title);
+    assert.ok(step.reference && /^.+?\s+\d+:\d+/.test(step.reference),"Each trail step needs an explicit book, chapter and verse: "+trail.title);
     assert.ok(typeof step.connectionNote==="string" && step.connectionNote.trim().length>=80,"Each trail step needs a substantive passage-specific explanation: "+trail.title+" — "+step.reference);
     const noteKey=step.connectionNote.trim().toLocaleLowerCase("en");
     assert.ok(!trailConnectionNotes.has(noteKey),"Scripture trail connection notes must be individually written, not generic repeats: "+trail.title+" — "+step.reference);
