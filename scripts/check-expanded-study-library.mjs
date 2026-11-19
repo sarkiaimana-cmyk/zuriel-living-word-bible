@@ -142,6 +142,26 @@ for (const [label,items] of [
 ]) {
   for (const item of items) assert.ok(item.id,label+" entries need stable IDs");
 }
+
+const wordStudyIds = new Set();
+const wordStudyTerms = new Set();
+for (const entry of words.entries) {
+  assert.ok(typeof entry.id === "string" && entry.id.trim(), "Every original-language study needs a stable ID");
+  assert.ok(!wordStudyIds.has(entry.id), "Original-language study IDs must be unique: " + entry.id);
+  assert.ok(typeof entry.term === "string" && entry.term.trim(), "Every original-language study needs a display term: " + entry.id);
+  const normalizedTerm = entry.term.trim().toLocaleLowerCase("en");
+  assert.ok(!wordStudyTerms.has(normalizedTerm), "Original-language study terms must be unique: " + entry.term);
+  assert.ok(["Greek","Hebrew","Aramaic","Aramaic-derived"].includes(entry.language), "Original-language study needs an explicit language label: " + entry.term);
+  assert.ok(typeof entry.originalForm === "string" && entry.originalForm.trim(), "Original-language study needs its original script form: " + entry.term);
+  const scriptPattern = entry.language === "Greek" ? /[\\u0370-\\u03FF\\u1F00-\\u1FFF]/ : /[\\u0590-\\u05FF]/;
+  assert.ok(scriptPattern.test(entry.originalForm), "Original form does not match the declared script/language: " + entry.term);
+  assert.ok(typeof entry.contextualGloss === "string" && entry.contextualGloss.trim().length >= 30, "Word study needs a substantive contextual gloss: " + entry.term);
+  assert.ok(Array.isArray(entry.scriptureReferences) && entry.scriptureReferences.length >= 1, "Word study needs Scripture references: " + entry.term);
+  assert.ok(typeof entry.interpretiveCaution === "string" && entry.interpretiveCaution.trim().length >= 25, "Word study needs an interpretive caution: " + entry.term);
+  assert.ok(typeof entry.morphologyStatus === "string" && entry.morphologyStatus.trim(), "Word study must state whether morphology is verified: " + entry.term);
+  wordStudyIds.add(entry.id);
+  wordStudyTerms.add(normalizedTerm);
+}
 for (const path of [
   "zuriel-passage-commentary-expansion.json","zuriel-topical-bible-study-library-batch-2.json",
   "zuriel-biblical-dictionary-expansion.json","zuriel-original-language-word-studies-batch-1.json",
