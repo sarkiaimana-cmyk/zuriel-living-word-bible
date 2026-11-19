@@ -1406,6 +1406,158 @@
       ],
       "interpretiveCaution": "Wisdom literature uses the term across practical and theological settings; do not reduce it to intelligence or a promise of effortless success.",
       "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-101",
+      "term": "Eleos",
+      "language": "Greek",
+      "originalForm": "ἔλεος",
+      "contextualGloss": "Mercy, compassion or active kindness toward someone in need. In biblical contexts it can describe God's merciful action and the mercy people are called to show.",
+      "scriptureReferences": [
+        "Matthew 9:13",
+        "Luke 10:37",
+        "Romans 9:23",
+        "Ephesians 2:4",
+        "James 2:13"
+      ],
+      "interpretiveCaution": "Do not reduce mercy to a feeling alone or assume every occurrence carries the same covenantal or emotional nuance. Read the speaker, recipient and surrounding argument.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-102",
+      "term": "Oiktirmos",
+      "language": "Greek",
+      "originalForm": "οἰκτιρμός",
+      "contextualGloss": "Compassion, tender mercy or heartfelt pity. In the New Testament it often describes God's merciful character as the ground for a transformed life and compassionate conduct.",
+      "scriptureReferences": [
+        "Romans 12:1",
+        "2 Corinthians 1:3",
+        "Philippians 2:1",
+        "Colossians 3:12"
+      ],
+      "interpretiveCaution": "Distinguish this noun from related words for mercy by context; do not imply compassion removes the need for justice, boundaries or wise action.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-103",
+      "term": "Eusebeia",
+      "language": "Greek",
+      "originalForm": "εὐσέβεια",
+      "contextualGloss": "Godliness, reverent devotion or piety expressed in life. In the Pastoral Epistles it concerns a life oriented toward God rather than mere religious appearance.",
+      "scriptureReferences": [
+        "1 Timothy 4:7-8",
+        "1 Timothy 6:6",
+        "2 Timothy 3:5",
+        "2 Peter 1:3-7",
+        "2 Peter 3:11"
+      ],
+      "interpretiveCaution": "Do not treat godliness as outward performance, social status or a guarantee of material prosperity. Read the term alongside faith, love, endurance and self-control.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-104",
+      "term": "Katallage",
+      "language": "Greek",
+      "originalForm": "καταλλαγή",
+      "contextualGloss": "Reconciliation or the restoration of a relationship. Paul uses it for the peace with God made possible through Christ and for the ministry of reconciliation entrusted to believers.",
+      "scriptureReferences": [
+        "Romans 5:11",
+        "Romans 11:15",
+        "2 Corinthians 5:18-19"
+      ],
+      "interpretiveCaution": "Reconciliation with God and reconciliation between people are related but not identical applications. Do not use the term to pressure victims to resume unsafe relationships without truth, repentance and protection.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-105",
+      "term": "Hilasmos",
+      "language": "Greek",
+      "originalForm": "ἱλασμός",
+      "contextualGloss": "Atoning sacrifice or propitiation. In 1 John it describes Christ in relation to sins and grounds assurance in God's love and the saving work of Jesus.",
+      "scriptureReferences": [
+        "1 John 2:1-2",
+        "1 John 4:9-10"
+      ],
+      "interpretiveCaution": "Christian translations and traditions differ in how they express the atonement nuance of propitiation and expiation. Explain the biblical context and do not reduce the term to a picture of a reluctant Father being persuaded to love.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-106",
+      "term": "Nacham",
+      "language": "Hebrew",
+      "originalForm": "נָחַם",
+      "contextualGloss": "A Hebrew root with a range that includes comfort or consolation and, in other stems and contexts, relenting or changing course. The sense must be established from the form and literary setting.",
+      "scriptureReferences": [
+        "Genesis 6:6",
+        "Exodus 32:14",
+        "Isaiah 40:1",
+        "Isaiah 49:13",
+        "Jeremiah 31:13"
+      ],
+      "interpretiveCaution": "Do not assume one English gloss fits every occurrence. The root appears in different stems and contexts; avoid making simplistic claims about God changing or not changing without examining the passage.",
+      "morphologyStatus": "Root-level study only; individual stems and verse forms must be parsed before assigning a specific grammatical sense."
+    },
+    {
+      "id": "word-study-107",
+      "term": "Shabbat",
+      "language": "Hebrew",
+      "originalForm": "שַׁבָּת",
+      "contextualGloss": "Sabbath, the appointed day of cessation and rest. The noun is related to the Hebrew verb shavat, 'to cease'; biblical uses connect Sabbath with creation, covenant identity, worship and release from ordinary labour.",
+      "scriptureReferences": [
+        "Genesis 2:2-3",
+        "Exodus 20:8-11",
+        "Deuteronomy 5:12-15",
+        "Exodus 31:15-17"
+      ],
+      "interpretiveCaution": "The Sabbath command belongs to Israel's covenant and is interpreted differently among Christian traditions. Do not flatten the creation pattern, Exodus rationale and New Testament debates into one unqualified rule.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-108",
+      "term": "Zakar",
+      "language": "Hebrew",
+      "originalForm": "זָכַר",
+      "contextualGloss": "To remember, call to mind or bring to remembrance. In many biblical contexts remembering is more than mental recall; it is shown through faithful action in response to a person or covenant.",
+      "scriptureReferences": [
+        "Genesis 8:1",
+        "Exodus 2:24",
+        "Deuteronomy 8:2",
+        "Psalm 105:8",
+        "Nehemiah 5:19"
+      ],
+      "interpretiveCaution": "Do not assume every occurrence means the same kind of action. Observe who remembers whom, what is remembered and what response follows in the narrative or poem.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-109",
+      "term": "Shakan",
+      "language": "Hebrew",
+      "originalForm": "שָׁכַן",
+      "contextualGloss": "To dwell, settle or reside. It appears in tabernacle and presence contexts, describing God's dwelling among His people and ordinary habitation.",
+      "scriptureReferences": [
+        "Exodus 25:8",
+        "Exodus 29:45-46",
+        "Numbers 35:34",
+        "Psalm 68:16"
+      ],
+      "interpretiveCaution": "The later Jewish term 'Shekinah' is related to this root but is not itself the Hebrew Bible's standard noun for God's presence. Keep the biblical verb and later theological vocabulary distinct.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-110",
+      "term": "Magen",
+      "language": "Hebrew",
+      "originalForm": "מָגֵן",
+      "contextualGloss": "Shield. It is used literally and metaphorically for protection, often describing God as the defender and refuge of His people.",
+      "scriptureReferences": [
+        "Genesis 15:1",
+        "Deuteronomy 33:29",
+        "Psalm 3:3",
+        "Psalm 18:2",
+        "Proverbs 30:5"
+      ],
+      "interpretiveCaution": "The shield metaphor expresses trust in God's protection but is not a promise that believers will never experience physical harm. Read each poetic or covenant context carefully.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
     }
   ]
 }
