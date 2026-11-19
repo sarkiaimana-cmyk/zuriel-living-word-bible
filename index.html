@@ -1168,10 +1168,12 @@ async function openChapter(book, chapter) {
       "Full Study Centre":[]
     };
     if (sectionsRoot) {
-      Array.from(sectionsRoot.querySelectorAll("details")).forEach(function (section) {
+      const studyDrawer = sectionsRoot.closest("#zurielStudyLibraryDrawer");
+      if (studyDrawer) studyDrawer.open = true;
+      Array.from(sectionsRoot.querySelectorAll(":scope > details")).forEach(function (section) {
         const summary = section.querySelector("summary");
         const label = summary ? summary.textContent.toLowerCase() : "";
-        section.open = action === "Full Study Centre" ||
+        section.open = action !== "Full Study Centre" &&
           (targets[action] || []).some(function (term) { return label.includes(term); });
       });
     }
