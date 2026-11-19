@@ -257,6 +257,40 @@ for (const entry of books.bookStudyPathways) {
 assert.equal(bookIntroIds.size,66,"All 66 book introductions need unique IDs");
 assert.equal(bookPathIds.size,66,"All 66 book pathways need unique IDs");
 
+const geographyPlaceIds = new Set();
+const geographyPlaceNames = new Set();
+for (const place of geography.places) {
+  assert.ok(place.id && !geographyPlaceIds.has(place.id), "Geography place IDs must be unique");
+  assert.ok(place.name && !geographyPlaceNames.has(place.name.toLocaleLowerCase("en")), "Geography place names must be unique: " + place.name);
+  for (const [field,minLength] of [["region",3],["modernOrientation",2],["significance",50],["studyCaution",35]]) assert.ok(typeof place[field] === "string" && place[field].trim().length >= minLength, "Geography place needs " + field + ": " + place.name);
+  assert.ok(Array.isArray(place.references) && place.references.length >= 1, "Geography place needs Scripture references: " + place.name);
+  for (const reference of place.references) { assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Geography place reference must be explicit: " + place.name + " — " + reference); checkReference(reference, "geography place " + place.name); }
+  geographyPlaceIds.add(place.id); geographyPlaceNames.add(place.name.toLocaleLowerCase("en"));
+}
+const geographyJourneyIds = new Set();
+const geographyJourneyNames = new Set();
+for (const journey of geography.journeys) {
+  assert.ok(journey.id && !geographyJourneyIds.has(journey.id), "Geography journey IDs must be unique");
+  assert.ok(journey.name && !geographyJourneyNames.has(journey.name.toLocaleLowerCase("en")), "Geography journey names must be unique: " + journey.name);
+  assert.ok(typeof journey.sequence === "string" && journey.sequence.trim().length >= 15, "Geography journey needs a route sequence: " + journey.name);
+  assert.ok(typeof journey.studyCaution === "string" && journey.studyCaution.trim().length >= 40, "Geography journey needs a historical/route caution: " + journey.name);
+  assert.ok(Array.isArray(journey.references) && journey.references.length >= 2, "Geography journey needs multiple Scripture references: " + journey.name);
+  for (const reference of journey.references) { assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Geography journey reference must be explicit: " + journey.name + " — " + reference); checkReference(reference, "geography journey " + journey.name); }
+  geographyJourneyIds.add(journey.id); geographyJourneyNames.add(journey.name.toLocaleLowerCase("en"));
+}
+const worshipIds = new Set();
+const worshipTitles = new Set();
+const worshipPrompts = new Set();
+for (const pathway of worship.pathways) {
+  assert.ok(pathway.id && !worshipIds.has(pathway.id), "Worship pathway IDs must be unique");
+  assert.ok(pathway.title && !worshipTitles.has(pathway.title.toLocaleLowerCase("en")), "Worship pathway titles must be unique: " + pathway.title);
+  for (const [field,minLength] of [["focus",35],["reflectionPrompt",50],["contextNote",35]]) assert.ok(typeof pathway[field] === "string" && pathway[field].trim().length >= minLength, "Worship pathway needs " + field + ": " + pathway.title);
+  assert.ok(Array.isArray(pathway.references) && pathway.references.length >= 3, "Worship pathway needs at least three Scripture links: " + pathway.title);
+  for (const reference of pathway.references) { assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Worship reference must be explicit: " + pathway.title + " — " + reference); checkReference(reference, "worship pathway " + pathway.title); }
+  assert.ok(!worshipPrompts.has(pathway.reflectionPrompt), "Worship reflection prompts must be distinct: " + pathway.title);
+  worshipIds.add(pathway.id); worshipTitles.add(pathway.title.toLocaleLowerCase("en")); worshipPrompts.add(pathway.reflectionPrompt);
+}
+
 const deepStudyIds = new Set();
 const deepStudyTitles = new Set();
 for (const guide of deep.guides) {
@@ -375,7 +409,7 @@ for (const path of [
   "zuriel-deep-study-guides.json","zuriel-bible-geography-atlas.json","zuriel-worship-study-pathways.json","zuriel-theological-comparisons.json"
 ]) assert.ok(loader.includes(path),"Study loader must include "+path);
 assert.ok(index.includes('src="zuriel-study-library-data.js"'),"Study library integration script must load");
-assert.ok(worker.includes('zuriel-bible-offline-v213'),"Offline cache must be version 205");
+assert.ok(worker.includes('zuriel-bible-offline-v214'),"Offline cache must be version 205");
 assert.ok(worker.includes("./zuriel-study-library-data.js"),"Study loader must be precached");
 for (const path of [
   "zuriel-passage-commentary-expansion.json","zuriel-topical-bible-study-library-batch-2.json",
