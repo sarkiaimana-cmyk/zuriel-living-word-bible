@@ -355,3 +355,13 @@ The following user requirements are part of the product acceptance criteria, not
 - Added validator rules for unique book entries, substantive book-specific prompts, explicit references and KJV validation of every passage link.
 - App/package and in-app update version advanced to 1.4.111; offline cache advanced to v213.
 - Candidate status pending CI and Android packaging; real-device navigation and accessibility checks remain outstanding.
+
+
+## 1.4.112 Geography and worship-study quality milestone — candidate
+
+- Audited all 25 biblical geography places and 8 journey routes for unique IDs/names, regional context, modern orientation, significance, historical cautions, route sequences and Scripture references.
+- Expanded abbreviated and chapter-only geography/journey references into 103 explicit passage links and added KJV validation for every place and route reference.
+- Reviewed all 30 worship-study pathways: each has a distinct title, focus, reflection question, context note and at least three Scripture links (90 links total), all checked against the bundled KJV.
+- Fixed Study Library rendering so place regions, modern orientation, journey sequences and worship context notes are displayed.
+- App/package and in-app update version advanced to 1.4.112; offline cache advanced to v214.
+- Candidate status pending CI and Android package checks; geographical map/route interpretation and physical-device usability still need review.
