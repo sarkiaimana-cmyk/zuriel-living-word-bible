@@ -1,4 +1,4 @@
 {
   "version": "1.4.104",
-  "releaseNotes": "Strengthens the offline commentary library with 173 unique primary passages and KJV-checked references. Refines the Hebrew and Greek study collection to 108 unique original-script lexemes by consolidating duplicate Hesed/Chesed and Nephesh/Nefesh transliterations, preserving their contextual notes and Scripture links. Adds a validation rule against duplicate language/script entries."
+  "releaseNotes": "Strengthens the offline commentary library with 173 unique primary passages and KJV-checked references. Refines the Hebrew, Greek and Aramaic collection to 108 unique original-script lexemes by consolidating duplicate Hesed/Chesed and Nephesh/Nefesh transliterations. Adds explicit Scripture links and contextual word-use notes for 51 entries, with validation against duplicate lexemes and abbreviated references."
 }
