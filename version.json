@@ -1,4 +1,4 @@
 {
-  "version": "1.4.77",
-  "releaseNotes": "Expands the offline theological comparison library to twenty balanced topics and adds ten distinct Scripture-specific faith responses. Retains the twelve tappable translation shortcuts at the top of the home screen, with KJV offline reading and clear unavailable status until the live translation service is connected. Refreshes the offline cache."
+  "version": "1.4.78",
+  "releaseNotes": "Expands the Words of Jesus study centre to sixty curated teachings with verified Scripture links. Also includes twenty balanced theological comparisons and ten additional verse-specific faith responses. Keeps the twelve translation shortcuts at the top of the home screen and refreshes the offline cache. KJV remains available offline; other online versions await the protected translation service connection."
 }
