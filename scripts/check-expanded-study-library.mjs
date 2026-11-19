@@ -154,9 +154,17 @@ for (const collection of [books.bookIntroductions,books.bookStudyPathways]) {
 }
 const trails=[...trail1.trails,...trail2.trails];
 assert.equal(new Set(trails.map(item=>item.id)).size,74,"Connected Scripture trail IDs must be unique");
+const trailConnectionNotes = new Set();
 for (const trail of trails) {
   assert.equal(trail.pathway.length,5,"Each Scripture trail has five ordered passage steps");
-  assert.ok(trail.pathway.every(step => step.reference && step.connectionNote),"Each trail step needs a reference and explanation");
+  assert.deepEqual(trail.pathway.map(step=>step.step),[1,2,3,4,5],"Each trail must retain its five ordered steps: "+trail.title);
+  for (const step of trail.pathway) {
+    assert.ok(step.reference && /^.+?\\s+\\d+:\\d+/.test(step.reference),"Each trail step needs an explicit book, chapter and verse: "+trail.title);
+    assert.ok(typeof step.connectionNote==="string" && step.connectionNote.trim().length>=80,"Each trail step needs a substantive passage-specific explanation: "+trail.title+" — "+step.reference);
+    const noteKey=step.connectionNote.trim().toLocaleLowerCase("en");
+    assert.ok(!trailConnectionNotes.has(noteKey),"Scripture trail connection notes must be individually written, not generic repeats: "+trail.title+" — "+step.reference);
+    trailConnectionNotes.add(noteKey);
+  }
   assert.ok(trail.overview && trail.contextCaution && trail.lifeApplication,"Each trail has contextual safeguards and application");
 }
 const dictionaryIds = new Set();
@@ -247,7 +255,7 @@ for (const path of [
   "zuriel-deep-study-guides.json","zuriel-bible-geography-atlas.json","zuriel-worship-study-pathways.json","zuriel-theological-comparisons.json"
 ]) assert.ok(loader.includes(path),"Study loader must include "+path);
 assert.ok(index.includes('src="zuriel-study-library-data.js"'),"Study library integration script must load");
-assert.ok(worker.includes('zuriel-bible-offline-v208'),"Offline cache must be version 205");
+assert.ok(worker.includes('zuriel-bible-offline-v209'),"Offline cache must be version 205");
 assert.ok(worker.includes("./zuriel-study-library-data.js"),"Study loader must be precached");
 for (const path of [
   "zuriel-passage-commentary-expansion.json","zuriel-topical-bible-study-library-batch-2.json",
