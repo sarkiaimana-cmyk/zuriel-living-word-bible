@@ -138,6 +138,15 @@
     homeTranslationSlot.appendChild(panel);
   } else {
     reader.appendChild(panel);
+    /* The home dashboard is mounted on DOMContentLoaded by zuriel-home.js. */
+    document.addEventListener("DOMContentLoaded", function () {
+      const readyHomeSlot = document.getElementById("zurielHomeTranslations");
+      if (readyHomeSlot && panel.parentNode !== readyHomeSlot) {
+        summary.textContent = "Choose a translation, compare versions or manage offline downloads";
+        panel.open = true;
+        readyHomeSlot.appendChild(panel);
+      }
+    }, { once: true });
   }
 
   function apiUrl(path) {
