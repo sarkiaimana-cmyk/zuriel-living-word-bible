@@ -294,3 +294,13 @@ The following user requirements are part of the product acceptance criteria, not
 - Updated the offline study drawer to display each dictionary entry's editorial caution rather than silently omitting it.
 - App/package and update metadata advanced to 1.4.105; offline cache advanced to v207.
 - Candidate only until validation and Android package workflows pass; device installation and visual reader checks remain separate.
+
+
+## 1.4.106 theological comparison quality milestone — candidate
+
+- Reviewed all 35 theological comparison topics and all 107 individual interpretive positions.
+- Confirmed that each topic presents at least two distinct positions, with 31 topics presenting three and three topics presenting four; one topic deliberately retains two clearly distinct positions rather than inventing a third view.
+- Confirmed unique perspective labels within each topic, substantive summaries, named tradition scopes, distinct shared-ground/context/disagreement/reading-caution sections, and no repeated position summaries or duplicate references within a topic.
+- Added validator rules for two-to-four distinct perspectives, adequate tradition descriptions, explicit book/chapter/verse references and KJV reference checks.
+- App/package and in-app update version advanced to 1.4.106; offline cache advanced to v208.
+- Candidate status pending CI and Android package checks; installation and physical device testing remain outstanding.
