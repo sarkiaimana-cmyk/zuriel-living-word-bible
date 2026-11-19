@@ -238,6 +238,28 @@ jobs:
             echo '### Signed APK identity'
             echo "$BADGING" | grep -E '^(package:|sdkVersion:|targetSdkVersion:)'
           } >> "$GITHUB_STEP_SUMMARY"
+      - name: Audit APK manifest for high-risk sideloading permissions
+        if: steps.signing_check.outputs.available == 'true' && steps.signed_release.outcome == 'success'
+        shell: bash
+        run: |
+          set -euo pipefail
+          APK="android/app/build/outputs/apk/release/Zuriel-Living-Word-Bible-release.apk"
+          BUILD_TOOLS="$ANDROID_HOME/build-tools/36.0.0"
+          "$BUILD_TOOLS/aapt" dump permissions "$APK" > "$RUNNER_TEMP/zuriel-permissions.txt"
+          "$BUILD_TOOLS/aapt" dump xmltree "$APK" AndroidManifest.xml > "$RUNNER_TEMP/zuriel-manifest-tree.txt"
+          {
+            echo "### Android permission audit"
+            echo 'Declared permissions:'
+            echo '\x60\x60\x60text'
+            cat "$RUNNER_TEMP/zuriel-permissions.txt"
+            echo '\x60\x60\x60'
+          } >> "$GITHUB_STEP_SUMMARY"
+          if grep -Eiq 'android\.permission\.(READ_SMS|RECEIVE_SMS|BIND_NOTIFICATION_LISTENER_SERVICE|BIND_ACCESSIBILITY_SERVICE)' "$RUNNER_TEMP/zuriel-permissions.txt" "$RUNNER_TEMP/zuriel-manifest-tree.txt"; then
+            echo "::error::The release manifest declares a high-risk SMS, notification-listener, or accessibility permission. Review and remove any permission not essential to Zuriel before distribution."
+            exit 1
+          fi
+          echo "No high-risk SMS, notification-listener, or accessibility permissions found in the release manifest."
+
       - name: Build and sign Google Play Android App Bundle
         if: steps.signing_check.outputs.available == 'true' && steps.signed_release.outcome == 'success'
         working-directory: android
