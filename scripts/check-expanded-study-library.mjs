@@ -223,12 +223,12 @@ for (const guide of deep.guides) {
   assert.ok(!deepStudyTitles.has(titleKey), "Deep study guide titles must be unique: " + guide.title);
   assert.ok(typeof guide.primaryPassage === "string" && guide.primaryPassage.trim(), "Deep study guide needs primary passages: " + guide.title);
   for (const reference of guide.primaryPassage.split(";").map(value=>value.trim()).filter(Boolean)) {
-    assert.ok(/^.+?\\s+\\d+:\\d+/.test(reference), "Deep-study primary passages must specify book, chapter and verse: " + guide.title + " — " + reference);
+    assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Deep-study primary passages must specify book, chapter and verse: " + guide.title + " — " + reference);
     checkReference(reference, "deep study primary passage " + guide.title);
   }
   assert.ok(Array.isArray(guide.crossReferences) && guide.crossReferences.length >= 2, "Deep study guide needs multiple cross-references: " + guide.title);
   for (const reference of guide.crossReferences) {
-    assert.ok(/^.+?\\s+\\d+:\\d+/.test(reference), "Deep-study cross-references must specify book, chapter and verse: " + guide.title + " — " + reference);
+    assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Deep-study cross-references must specify book, chapter and verse: " + guide.title + " — " + reference);
     checkReference(reference, "deep study cross-reference " + guide.title);
   }
   for (const [field,minLength] of [["contextSummary",60],["observationPrompt",60],["interpretationPrompt",50],["lifeApplicationPrompt",50],["interpretiveCaution",50]]) {
