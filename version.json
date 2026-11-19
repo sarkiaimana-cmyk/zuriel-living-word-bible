@@ -1,4 +1,4 @@
 {
-  "version": "1.4.93",
-  "releaseNotes": "Completes passage commentary coverage with a new Philemon study, bringing the collection to 153 entries across all 66 canonical Bible books. Adds an automated all-66-books coverage assertion so future commentary expansions cannot silently leave a book out. Includes contextual interpretation, observation, pastoral caution and linked cross-references; refreshes the offline cache."
+  "version": "1.4.94",
+  "releaseNotes": "Expands original offline passage commentary from 153 to 163 contextual studies with ten additional Old Testament studies. Every passage and cross-reference is checked against the bundled 66-book KJV; the library continues to cover all 66 books. Refreshes the offline cache."
 }
