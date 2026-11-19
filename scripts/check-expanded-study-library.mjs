@@ -116,7 +116,7 @@ for (const entry of dictionary.entries) {
 const theologyIds = new Set();
 const theologyTitles = new Set();
 for (const entry of theology.entries) {
-  assert.ok(typeof entry.id === "string" && /^doctrine-\\d{3}$/.test(entry.id), "Each theological comparison needs a stable doctrine ID");
+  assert.ok(typeof entry.id === "string" && /^doctrine-\d{3}$/.test(entry.id), "Each theological comparison needs a stable doctrine ID");
   assert.ok(!theologyIds.has(entry.id), "Theological comparison IDs must be unique: " + entry.id);
   assert.ok(typeof entry.title === "string" && entry.title.trim().length >= 12, "Each theological comparison needs a meaningful title");
   assert.ok(!theologyTitles.has(entry.title.trim().toLocaleLowerCase("en")), "Theological comparison titles must be unique: " + entry.title);
