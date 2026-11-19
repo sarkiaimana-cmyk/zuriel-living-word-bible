@@ -29,7 +29,7 @@
       item.theme || item.id || kind);
   }
   function summaryFor(item) {
-    return text(item.contextAndMeaning || item.overview || item.definition ||
+    return text(item.contextAndMeaning || item.senseAndContext || item.overview || item.definition ||
       item.significance || item.focus || item.summary || item.description ||
       item.meaning || item.context || item.theme || item.subtitle || item.question || item.sharedGround);
   }
@@ -117,7 +117,7 @@
       ["Question being compared", ["question"]],
       ["Shared Christian ground", ["sharedGround"]],
       ["Historical and literary context", ["historicalSetting", "historicalContext", "background", "literaryContext", "context"]],
-      ["Passage meaning", ["contextAndMeaning", "overview", "definition", "meaning", "explanation", "significance", "focus"]],
+      ["Passage meaning", ["contextAndMeaning", "senseAndContext", "overview", "definition", "meaning", "explanation", "significance", "focus"]],
       ["Original-language form", ["originalForm"]],
       ["Language", ["language"]],
       ["Morphology note", ["morphologyStatus"]],
