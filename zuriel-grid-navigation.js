@@ -100,9 +100,16 @@
       min-height:62px;border-radius:13px;font-size:13px;padding:7px 4px;
     }
     #zurielGridNavigator .zgn-choice:disabled { opacity:.35; }
+    #zurielGridNavigator .zgn-display {
+      flex:0 0 auto;width:100%;min-height:52px;margin:10px 0 0;padding:12px;
+      border:1px solid #d9bd78;border-radius:12px;
+      background:linear-gradient(135deg,#e8cf91,#f5e5b8);
+      color:#10213d;font:800 15px Arial,sans-serif;letter-spacing:.04em;
+    }
+    #zurielGridNavigator .zgn-display:disabled { opacity:.42; }
     #zurielGridNavigator .zgn-footer {
-      padding:10px 2px 0;color:#aebbc3;font-size:12px;line-height:1.5;
-      text-align:center;
+      padding:10px 2px 0;border-top:1px dashed #66727a;
+      color:#aebbc3;font-size:12px;line-height:1.5;text-align:center;
     }
     #zurielGridNavigator .zgn-empty {
       grid-column:1/-1;padding:24px 10px;text-align:center;color:#cbd5dc;
@@ -188,6 +195,7 @@
     <div class="zgn-current" id="zgnCurrent">Choose a Bible book</div>
     <input class="zgn-search" id="zgnSearch" type="search" placeholder="Search all 66 Bible books…" aria-label="Search Bible books">
     <div class="zgn-grid" id="zgnGrid" role="group" aria-label="Bible selections"></div>
+    <button class="zgn-display" id="zgnDisplayVerse" type="button" disabled>DISPLAY VERSE</button>
     <div class="zgn-footer" id="zgnStatus" aria-live="polite">66 books · 1,189 chapters · Scripture navigation</div>
   `;
   document.body.appendChild(modal);
@@ -197,6 +205,7 @@
   const status = modal.querySelector("#zgnStatus");
   const search = modal.querySelector("#zgnSearch");
   const referenceInput = modal.querySelector("#zgnReferenceInput");
+  const displayVerseButton = modal.querySelector("#zgnDisplayVerse");
   const tabs = Array.from(modal.querySelectorAll(".zgn-tab"));
   let selectedBook = "John";
   let selectedChapter = 1;
@@ -230,6 +239,7 @@
     selectedBook = name;
     selectedChapter = 0;
     selectedVerse = 0;
+    displayVerseButton.disabled = true;
     updateCurrent();
     updateReference();
     status.textContent = name + " selected. Now choose a chapter.";
@@ -239,6 +249,7 @@
   function chooseChapter(number) {
     selectedChapter = number;
     selectedVerse = 0;
+    displayVerseButton.disabled = true;
     updateCurrent();
     updateReference();
     status.textContent = "Chapter " + number + " selected. You can open the chapter or choose a verse.";
@@ -319,9 +330,11 @@
         for (let n = 1; n <= count; n++) {
           grid.appendChild(buttonFor(String(n), n, selectedVerse === n, () => {
             selectedVerse = n;
+            displayVerseButton.disabled = false;
             updateCurrent();
             updateReference();
-            openPassage();
+            status.textContent = selectedBook + " " + selectedChapter + ":" + selectedVerse +
+              " selected. Tap DISPLAY VERSE to open the passage.";
           }));
         }
         status.textContent = count + " verses in " + selectedBook + " " + selectedChapter + ". Tap a verse to open it.";
@@ -343,7 +356,9 @@
     }
     const go = modal.querySelector("#zgnGo");
     go.disabled = true;
+    displayVerseButton.disabled = true;
     go.textContent = "…";
+    displayVerseButton.textContent = "LOADING SCRIPTURE…";
     status.textContent = "Opening " + selectedBook + " " + selectedChapter + (selectedVerse ? ":" + selectedVerse : "") + "…";
     try {
       await window.openChapter(selectedBook, selectedChapter);
@@ -374,6 +389,8 @@
       console.error("Zuriel grid navigator:", error);
     } finally {
       go.disabled = false;
+      displayVerseButton.disabled = !selectedVerse;
+      displayVerseButton.textContent = "DISPLAY VERSE";
       go.textContent = "GO";
     }
   }
@@ -412,6 +429,7 @@
     selectedBook = book.name;
     selectedChapter = chapter;
     selectedVerse = verse;
+    displayVerseButton.disabled = !verse;
     updateCurrent();
     updateReference();
     if (verse) setTab("verse");
@@ -456,6 +474,7 @@
   };
 
   launch.addEventListener("click", openModal);
+  displayVerseButton.addEventListener("click", openPassage);
   modal.querySelector("#zgnClose").addEventListener("click", closeModal);
   modal.querySelector("#zgnGo").addEventListener("click", () => parseReference(referenceInput.value));
   referenceInput.addEventListener("keydown", event => {
