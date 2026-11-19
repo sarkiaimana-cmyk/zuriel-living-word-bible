@@ -1,4 +1,4 @@
 {
-  "version": "1.4.100",
-  "releaseNotes": "Expands the offline theological comparison library from 25 to 35 balanced studies. New topics cover the biblical canon, Christology, Israel and the Church, the Mosaic Law, the intermediate state, spiritual warfare and pastoral discernment, Christian approaches to war and peace, prayer for the departed and purgatory, the scope of salvation, and Christian unity. Each comparison includes shared ground, representative positions, historical context, disagreements, reading cautions and KJV references."
+  "version": "1.4.101",
+  "releaseNotes": "Adds twenty distinct, single-verse faith-response records, bringing the offline library to 226 unique Scripture references across all 66 books. Each new reference has its own prayer, declaration, affirmation, confession and inspiration. The coverage validator now requires 226 records and fails on repeated exact wording; all references are checked against the bundled KJV."
 }
