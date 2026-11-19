@@ -1,4 +1,4 @@
 {
-  "version": "1.4.85",
-  "releaseNotes": "Expands the offline biblical dictionary from 86 to 100 contextual entries, adding apostasy, canon of Scripture, Christology, crucifixion, diaspora, epistles, fasting, Immanuel, Jubilee, martyrdom, New Jerusalem, divine omnipotence, Christ's parousia and sanctuary. Every new entry includes Scripture references and interpretive cautions, validated against the bundled KJV. Retains 85 word studies, 122 commentary notes, 30 worship pathways and 139 faith-response references. Refreshes the offline cache."
+  "version": "1.4.86",
+  "releaseNotes": "Expands contextual Bible commentary from 122 to 132 passages, adding studies on Jacob wrestling, manna in the wilderness, the priestly blessing, choosing life, Psalm 121, true fasting and justice, Jeremiah's letter to the exiles, Jesus calming the storm, Zacchaeus and Paul and Silas in Philippi. Every entry includes context, a study observation and an interpretive caution, with references checked against the offline KJV. Retains 100 dictionary entries, 85 word studies, 30 worship pathways and 139 faith-response references. Refreshes the offline cache."
 }
