@@ -81,6 +81,7 @@ const checks = [
   ["wallpaper loader stores first successful download", "await cache.put(choice.url, response.clone())"],
   ["wallpaper preview and PNG export use the same cached image blob", "URL.createObjectURL(blob)"],
   ["wallpaper loader has an honest offline-missing fallback", "This wallpaper is not cached yet. Connect once to load it; your Scripture and saved cards remain safe."],
+  ["wallpaper loader confirms offline storage only after a successful cache write", /savedForOffline = true[\s\S]*?catch \(storageError\)[\s\S]*?savedForOffline = false[\s\S]*?could not save it for offline use/],
   ["service-worker upgrades preserve the dedicated Studio wallpaper cache", /cacheName\.startsWith\("zuriel-bible-offline-"\)[\s\S]*?cacheName !== CACHE_NAME/],
   ["service-worker caches remote Studio wallpaper requests for later reuse", /url\.origin === "https:\/\/images\.unsplash\.com"[\s\S]*?cache\.match\(request\)[\s\S]*?cache\.put\(request, response\.clone\(\)\)/],
   ["wallpaper appears in live preview", "--zgs-wallpaper-image"],
@@ -90,7 +91,7 @@ const checks = [
   ["selected wallpaper is saved with card", "wallpaper:studio.dataset.wallpaper"],
 ];
 for (const [label, fragment] of checks) {
-  const source = fragment instanceof RegExp ? worker : library;
+  const source = fragment instanceof RegExp ? (label.includes("service-worker") ? worker : library) : library;
   if (fragment instanceof RegExp ? !fragment.test(source) : !source.includes(fragment)) {
     failures.push(label + " is missing.");
   }
