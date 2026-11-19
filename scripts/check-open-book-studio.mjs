@@ -1,13 +1,14 @@
 import { readFile } from "node:fs/promises";
 
-const [library, worker, packaging, index, home, prWorkflow, androidWorkflow] = await Promise.all([
+const [library, worker, packaging, index, home, prWorkflow, androidWorkflow, wallpaper] = await Promise.all([
   readFile(new URL("../zuriel-library.js", import.meta.url), "utf8"),
   readFile(new URL("../sw.js", import.meta.url), "utf8"),
   readFile(new URL("./prepare-web.mjs", import.meta.url), "utf8"),
   readFile(new URL("../index.html", import.meta.url), "utf8"),
   readFile(new URL("../zuriel-home.js", import.meta.url), "utf8"),
   readFile(new URL("../.github/workflows/validate-pr.yml", import.meta.url), "utf8"),
-  readFile(new URL("../.github/workflows/android-apk.yml", import.meta.url), "utf8")
+  readFile(new URL("../.github/workflows/android-apk.yml", import.meta.url), "utf8"),
+  readFile(new URL("../images/wallpapers/zuriel-landscape-collection.webp", import.meta.url))
 ]);
 const failures = [];
 const checks = [
@@ -79,7 +80,9 @@ for (const [label, fragment] of checks) {
 }
 if (!index.includes("window.getBibleVerseText = async function (reference)")) failures.push("Offline KJV passage retrieval is missing.");
 if (!/const CACHE_NAME = "zuriel-bible-offline-v\d+";/.test(worker)) failures.push("Offline cache version is missing for the Studio/navigation integration.");
-if (!worker.includes('url.origin === "https://images.unsplash.com"')) failures.push("Service worker does not cache selected Unsplash wallpapers.");
+if (!worker.includes('"./images/wallpapers/zuriel-landscape-collection.webp"')) failures.push("Service worker does not precache the bundled Studio wallpaper.");
+if (library.includes("images.unsplash.com")) failures.push("Studio still depends on remote-only wallpaper images.");
+if (wallpaper.subarray(0,4).toString("ascii") !== "RIFF" || wallpaper.subarray(8,12).toString("ascii") !== "WEBP") failures.push("Bundled Studio wallpaper is not a valid WebP image.");
 if (home.includes("Your Bible Journey")) failures.push("The duplicate home shortcut-button grid is still present.");
 const navBlock = home.match(/const navItems = \[([\s\S]*?)\];/);
 if (!navBlock || (navBlock[1].match(/\["(?:home|read|study|library|kingdom|personal)"/g) || []).length !== 6) {
