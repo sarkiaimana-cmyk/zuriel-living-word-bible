@@ -154,6 +154,32 @@
         line-height: 1.6;
       }
 
+      #zurielHomeDashboard .home-translations-card {
+        position:relative; margin-top:0; margin-bottom:14px; padding:18px 15px;
+        background:linear-gradient(145deg,#10213d,#1b385b);
+        border:1px solid #c8ad70; box-shadow:0 8px 22px #10213d20;
+      }
+      #zurielHomeDashboard .home-translations-card h2 { margin-bottom:7px; }
+      #zurielHomeDashboard .translation-shortcuts {
+        display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:7px; margin:12px 0;
+      }
+      #zurielHomeDashboard .translation-shortcuts span {
+        display:flex; align-items:center; justify-content:center; min-height:39px;
+        border:1px solid #c8ad70; border-radius:9px; background:#f7f3e8;
+        color:#19324f; font:700 12px Arial,sans-serif;
+      }
+      #zurielHomeDashboard .translation-access-note {
+        margin:8px 0 12px; color:#dce5f1; font:12px/1.55 Arial,sans-serif;
+      }
+      #zurielHomeTranslations #zurielTranslationCompare {
+        margin:0; padding:12px; border-color:#c8ad70; background:#f7f3e8;
+      }
+      #zurielHomeTranslations #zurielTranslationCompare summary { color:#19324f; }
+      #zurielHomeTranslations #zurielTranslationCompare .ztc-note { color:#526174; }
+      @media(max-width:360px) {
+        #zurielHomeDashboard .translation-shortcuts { grid-template-columns:repeat(3,minmax(0,1fr)); }
+      }
+
       #zurielHomeDashboard .home-card {
         background: linear-gradient(145deg,#10213d,#203e68);
         border: 1px solid #b99b58;
@@ -797,6 +823,17 @@
     dashboard.id = "zurielHomeDashboard";
 
     dashboard.innerHTML = `
+      <section class="home-card home-translations-card" id="zurielHomeTranslationsSection" aria-label="Bible translations">
+        <h2>🌐 Bible Translations</h2>
+        <p class="home-section-note">Choose a Bible version for reading, comparison and offline study.</p>
+        <div class="translation-shortcuts" aria-label="Supported translation catalogue">
+          <span>KJV</span><span>GNT</span><span>AMP</span><span>LB/LT</span><span>TPT</span><span>NLT</span>
+          <span>NET</span><span>NIV</span><span>ESV</span><span>NASB</span><span>CSB</span><span>NKJV</span>
+        </div>
+        <p class="translation-access-note">Select a translation below. Downloaded translations can be read offline; online access and downloads depend on each provider’s available catalogue and permissions.</p>
+        <div id="zurielHomeTranslations"></div>
+      </section>
+
       <section class="home-hero home-identity-hero" id="zurielIdentityHero" aria-label="Who God is — rotating Scripture">
         <p class="home-eyebrow">✦ WHO HE IS • THE LIVING WORD</p>
         <p class="identity-kicker">HE IS...</p>
