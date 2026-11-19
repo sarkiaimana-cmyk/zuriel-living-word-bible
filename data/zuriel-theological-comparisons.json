@@ -359,6 +359,359 @@
       "historicalContext": "The New Testament uses several images for Christ's saving work: sacrifice, ransom, reconciliation, justification, victory, cleansing, adoption and example. Early, medieval and Reformation theologians developed different accounts that often overlap rather than exclude one another.",
       "areasOfDisagreement": "Debates concern the meaning of divine justice, substitution, sacrifice, victory, the role of human transformation and whether one model should be treated as the controlling explanation.",
       "readingCaution": "Avoid forcing every biblical image into one formula. Read each passage on its own terms and consider how the different images together describe Christ's saving work."
+    },
+    {
+      "id": "doctrine-011",
+      "title": "The Trinity and the identity of God",
+      "question": "How do Christians understand the Father, Son and Holy Spirit in relation to the one God?",
+      "sharedGround": "Historic Nicene Christianity confesses one God and identifies the Father, Son and Holy Spirit as divine. Christians who use different formulations must be described accurately rather than treated as though all positions are the same.",
+      "scriptureReferences": [
+        "Deuteronomy 6:4-5",
+        "Matthew 3:13-17",
+        "Matthew 28:18-20",
+        "John 1:1-18",
+        "John 14:15-26",
+        "2 Corinthians 13:14"
+      ],
+      "positions": [
+        {
+          "view": "Nicene Trinitarian confession",
+          "summary": "One God exists eternally as three distinct, co-equal and co-eternal Persons: Father, Son and Holy Spirit. The Persons are not three gods, nor are they merely three temporary roles or appearances.",
+          "traditions": "Roman Catholic, Eastern Orthodox, Oriental Orthodox and most Protestant churches."
+        },
+        {
+          "view": "Oneness Pentecostal interpretation",
+          "summary": "Emphasises the absolute oneness of God and understands Father, Son and Spirit through God's self-revelation and saving work in Jesus Christ, rather than three eternal divine Persons.",
+          "traditions": "Oneness Pentecostal denominations and fellowships."
+        },
+        {
+          "view": "Nontrinitarian interpretations",
+          "summary": "Some groups understand Jesus as distinct from and subordinate to the one God, or understand the Holy Spirit as God's power or presence rather than a distinct divine Person. These positions differ substantially from one another.",
+          "traditions": "Various nontrinitarian movements; their teachings should be described individually."
+        }
+      ],
+      "historicalContext": "The early church debated how to speak faithfully about Jesus' divinity and the Spirit while maintaining biblical monotheism. The Nicene Creed and later pro-Nicene theology established the Trinitarian language used by most historic Christian traditions.",
+      "areasOfDisagreement": "Disagreement concerns the meaning of person and being, the eternal relation of the Son to the Father, the deity and personhood of the Spirit, and how biblical language should be synthesised.",
+      "readingCaution": "Do not use analogies such as water, ice and steam as complete explanations; they can imply that God merely changes modes. Read passages about the Father, Son and Spirit together, while distinguishing biblical wording from later theological terminology."
+    },
+    {
+      "id": "doctrine-012",
+      "title": "Baptism in the Holy Spirit",
+      "question": "Is baptism in the Holy Spirit distinct from conversion, and how is it evidenced?",
+      "sharedGround": "Christian traditions affirm that the Holy Spirit gives new life, unites believers to Christ, empowers witness and produces holy character. All should test spiritual claims by Scripture and their fruit.",
+      "scriptureReferences": [
+        "Matthew 3:11-12",
+        "John 1:29-34",
+        "Acts 1:4-8",
+        "Acts 2:1-21",
+        "Acts 8:14-17",
+        "Acts 10:44-48",
+        "1 Corinthians 12:12-13"
+      ],
+      "positions": [
+        {
+          "view": "Pentecostal subsequent-empowerment view",
+          "summary": "Many classical Pentecostals teach a distinct experience of baptism in the Holy Spirit, ordinarily subsequent to conversion, empowering witness and commonly associated with speaking in tongues as initial physical evidence.",
+          "traditions": "Classical Pentecostal denominations; details differ among them."
+        },
+        {
+          "view": "Charismatic and continuationist views",
+          "summary": "Many charismatics affirm ongoing Spirit baptism or fresh fillings and empowerments, but differ on whether it is a distinct post-conversion experience and whether tongues are a necessary initial sign.",
+          "traditions": "Charismatic Catholics, Anglicans, evangelicals and independent churches."
+        },
+        {
+          "view": "Conversion-initiation and ongoing-filling views",
+          "summary": "Many Reformed, Lutheran, Baptist and other Christians understand Spirit baptism primarily as the Spirit's once-for-all incorporation of believers into Christ at conversion, while affirming repeated fillings and empowerment.",
+          "traditions": "Many non-Pentecostal Protestant traditions."
+        }
+      ],
+      "historicalContext": "The modern Pentecostal movement brought renewed attention to Acts' accounts of Spirit empowerment in the early twentieth century. Later charismatic renewal spread spiritual-gifts discussion across many church traditions.",
+      "areasOfDisagreement": "Key questions include whether Acts describes a repeatable pattern or unique stages in the church's beginning, how 1 Corinthians 12:13 relates to Acts, and whether tongues are universal evidence or one gift among many.",
+      "readingCaution": "Do not judge a believer's salvation or worth by whether they speak in tongues. Distinguish the Spirit's indwelling, filling, gifts and fruit, and read narrative passages alongside the letters."
+    },
+    {
+      "id": "doctrine-013",
+      "title": "Divine healing, suffering and prayer",
+      "question": "How should Christians understand healing prayer alongside illness, suffering and medical care?",
+      "sharedGround": "Christians affirm that God hears prayer, cares for those who suffer, and will finally bring resurrection and the restoration of creation. Compassion, practical care and hope belong together.",
+      "scriptureReferences": [
+        "Psalm 103:1-5",
+        "Isaiah 53:4-5",
+        "Matthew 8:14-17",
+        "Mark 1:29-34",
+        "James 5:13-16",
+        "2 Corinthians 12:7-10",
+        "Revelation 21:1-5"
+      ],
+      "positions": [
+        {
+          "view": "Pentecostal and charismatic healing emphasis",
+          "summary": "Affirms that God may heal today through prayer, gifts of healing and providential means, and encourages believers to pray expectantly while recognising that not every prayer results in immediate healing.",
+          "traditions": "Pentecostal and charismatic communities, with varied teaching and practice."
+        },
+        {
+          "view": "Sacramental and pastoral healing",
+          "summary": "Emphasises prayer, anointing, sacraments, pastoral presence and the church's ministry to the sick. Healing may include spiritual, emotional and bodily care, without assuming that physical recovery is guaranteed.",
+          "traditions": "Catholic, Orthodox, Anglican, Lutheran and other sacramental traditions."
+        },
+        {
+          "view": "Providence, lament and ordinary means",
+          "summary": "Stresses God's sustaining presence through suffering, lament, community and medical treatment, while remaining open to extraordinary answers to prayer. Some traditions are more cautious about claims of miraculous healing.",
+          "traditions": "Reformed, evangelical and other Protestant communities; approaches vary."
+        }
+      ],
+      "historicalContext": "Healing prayer appears throughout Scripture and Christian history. Churches have developed different practices of anointing, intercession, pilgrimage, pastoral care and medical service.",
+      "areasOfDisagreement": "Disputes concern the interpretation of Isaiah 53, the scope of healing in the atonement, the role of spiritual gifts, and how to understand unanswered prayer and suffering.",
+      "readingCaution": "Never tell sick or disabled people that their condition proves weak faith, hidden sin or failure to claim a promise. Prayer must not replace appropriate medical care or be used to sell guaranteed cures."
+    },
+    {
+      "id": "doctrine-014",
+      "title": "Assurance, perseverance and falling away",
+      "question": "Can a believer know they are secure in Christ, and can a believer finally fall away?",
+      "sharedGround": "Christian traditions call believers to trust God's grace, continue in faith, heed biblical warnings and pursue a life shaped by Christ. Assurance should lead to hope and faithful living, not presumption or despair.",
+      "scriptureReferences": [
+        "John 10:27-30",
+        "Romans 8:28-39",
+        "1 Corinthians 10:1-13",
+        "Philippians 1:3-6",
+        "Hebrews 6:4-12",
+        "Hebrews 10:19-39",
+        "1 John 5:11-13"
+      ],
+      "positions": [
+        {
+          "view": "Eternal security / perseverance of the saints",
+          "summary": "Many Reformed and some evangelical traditions teach that those truly regenerated by God will be preserved in faith to the end. Warnings are real means God uses to keep believers persevering, though traditions explain apparent apostasy differently.",
+          "traditions": "Reformed and some Baptist evangelical traditions."
+        },
+        {
+          "view": "Conditional security",
+          "summary": "Arminian and Wesleyan traditions commonly teach that believers are genuinely secure as they remain in Christ, while warning that persistent, deliberate rejection of faith can lead to falling away.",
+          "traditions": "Wesleyan, Methodist, Arminian and many Pentecostal traditions."
+        },
+        {
+          "view": "Sacramental and pastoral approaches",
+          "summary": "Catholic and Orthodox traditions emphasise grace, ongoing repentance, participation in the life of the Church and the seriousness of freely turning away from God. Assurance is grounded in God's mercy without claiming certainty about every future choice.",
+          "traditions": "Roman Catholic and Eastern Orthodox churches, with distinct theological frameworks."
+        }
+      ],
+      "historicalContext": "The relationship between grace, freedom, apostasy and perseverance was debated by early theologians and later during the Reformation and revival movements. Different readings of warning and assurance passages shaped confessional traditions.",
+      "areasOfDisagreement": "Debates concern the meaning of genuine faith, the identity of those addressed in warning passages, whether grace can finally be resisted, and the relationship between assurance and perseverance.",
+      "readingCaution": "Do not use warning passages to crush tender consciences or assurance passages to excuse ongoing harm. Read promises and warnings together, and direct struggling people toward Christ, repentance and pastoral support."
+    },
+    {
+      "id": "doctrine-015",
+      "title": "Mary, the saints and intercession",
+      "question": "What place do Mary and departed saints have in Christian devotion and prayer?",
+      "sharedGround": "Christians affirm that worship belongs to God alone, that Jesus Christ is the one mediator of salvation, and that the church is called to honour faithful witnesses and imitate their faith.",
+      "scriptureReferences": [
+        "Luke 1:26-55",
+        "John 2:1-11",
+        "Acts 1:12-14",
+        "Romans 8:34",
+        "1 Timothy 2:1-6",
+        "Hebrews 12:1-2",
+        "Revelation 5:8"
+      ],
+      "positions": [
+        {
+          "view": "Catholic teaching",
+          "summary": "Catholic teaching honours Mary as the Mother of God and asks for the intercession of Mary and the saints, while distinguishing veneration from the worship due to God alone. Christ remains the unique mediator in the saving sense.",
+          "traditions": "Roman Catholic Church."
+        },
+        {
+          "view": "Eastern Orthodox practice",
+          "summary": "Orthodox Christians venerate Mary as Theotokos and honour saints, asking for their prayers as members of the living communion in Christ. Veneration is distinguished from worship, which belongs to the Triune God.",
+          "traditions": "Eastern Orthodox churches."
+        },
+        {
+          "view": "Most Protestant approaches",
+          "summary": "Many Protestant traditions honour Mary and biblical saints as examples of faith but direct prayer to God through Christ and do not invoke departed saints, often citing the sufficiency of Christ's mediation and concerns about biblical warrant.",
+          "traditions": "Many Baptist, Reformed, evangelical, Pentecostal and other Protestant churches."
+        }
+      ],
+      "historicalContext": "Honour for martyrs and remembrance of Mary developed in early Christian worship. Later debates about images, invocation, mediation and devotional practice became major points of division during the Reformation.",
+      "areasOfDisagreement": "Differences concern the communion of saints, the legitimacy of asking departed believers for prayer, the development of Marian doctrines, and the distinction between veneration and worship in practice.",
+      "readingCaution": "Represent Catholic and Orthodox teaching in its own terms rather than saying they teach that Mary replaces Jesus. Equally, do not pressure Protestants to adopt devotional practices their conscience and tradition reject."
+    },
+    {
+      "id": "doctrine-016",
+      "title": "Final judgment, hell and the destiny of the lost",
+      "question": "How do Christians interpret biblical teaching about final judgment and the fate of those who reject God?",
+      "sharedGround": "Historic Christian traditions affirm God's justice, the reality of final judgment, the seriousness of evil and the hope that God will set creation right through Christ.",
+      "scriptureReferences": [
+        "Matthew 25:31-46",
+        "Mark 9:42-48",
+        "John 5:24-29",
+        "Romans 2:5-11",
+        "2 Thessalonians 1:5-10",
+        "Revelation 20:11-15",
+        "Revelation 21:1-8"
+      ],
+      "positions": [
+        {
+          "view": "Eternal conscious punishment",
+          "summary": "This historic view understands final punishment as everlasting conscious separation from God and judgment. Its defenders stress the gravity of sin and the language of eternal punishment in Scripture.",
+          "traditions": "Held in many Catholic, Orthodox and Protestant traditions, though explanations differ."
+        },
+        {
+          "view": "Conditional immortality / annihilationism",
+          "summary": "This view holds that immortality is God's gift to the redeemed and that the finally unrepentant are ultimately destroyed rather than kept alive forever in conscious torment. Advocates emphasise biblical language of death and destruction.",
+          "traditions": "Some evangelical, Anglican and Adventist theologians and communities."
+        },
+        {
+          "view": "Universal reconciliation as a debated hope",
+          "summary": "Some Christian theologians hope or argue that God's saving purpose may finally reconcile all people through Christ. This remains disputed and is not the official teaching of many historic churches; proponents differ on how they read judgment texts.",
+          "traditions": "A minority position among some ancient and modern theologians; not one uniform denomination-wide doctrine."
+        }
+      ],
+      "historicalContext": "Early Christian writers discussed judgment, punishment and restoration in different ways. Creeds affirm Christ's return and judgment but do not resolve every later debate about the duration and nature of punishment.",
+      "areasOfDisagreement": "Debates concern the meaning of eternal language, destruction imagery, freedom, justice, the scope of Christ's victory and whether post-mortem repentance is possible.",
+      "readingCaution": "Do not claim certainty about the final destiny of named individuals or use hell teaching to terrorise vulnerable people. Present the range of interpretations accurately while taking biblical warnings and the call to repentance seriously."
+    },
+    {
+      "id": "doctrine-017",
+      "title": "Creation, Genesis and the natural sciences",
+      "question": "How should Christians read Genesis in relation to the age of the earth and scientific accounts of origins?",
+      "sharedGround": "Christian traditions affirm that God is Creator, creation is meaningful and dependent on God, human beings bear God's image, and the natural world is worthy of care.",
+      "scriptureReferences": [
+        "Genesis 1:1-31",
+        "Genesis 2:4-25",
+        "Psalm 19:1-6",
+        "Psalm 104:1-35",
+        "John 1:1-5",
+        "Romans 1:18-25",
+        "Colossians 1:15-20"
+      ],
+      "positions": [
+        {
+          "view": "Young-earth creationist readings",
+          "summary": "Understand the creation days as ordinary days and generally interpret biblical genealogies and chronology as indicating a relatively recent creation. They often reject common ancestry and aspects of mainstream evolutionary theory.",
+          "traditions": "Some conservative evangelical, Baptist and independent Christian communities."
+        },
+        {
+          "view": "Old-earth creationist readings",
+          "summary": "Accept an ancient universe and earth while maintaining that God directly created life or intervened in distinct ways. Interpretations of the days in Genesis vary.",
+          "traditions": "Some evangelical and other Christian communities."
+        },
+        {
+          "view": "Evolutionary creation / theistic evolution",
+          "summary": "Accepts the broad scientific account of cosmic and biological evolution while affirming that God is Creator and sustainer. Genesis is read with attention to its theological, literary and ancient context.",
+          "traditions": "Found among Catholic, Orthodox, Anglican, Protestant and evangelical scholars and believers."
+        },
+        {
+          "view": "Literary-framework and other non-literal-day readings",
+          "summary": "Focus on the theological structure and purpose of Genesis 1, seeing its ordered days as a literary framework rather than a scientific chronology. This approach may coexist with several views of biological origins.",
+          "traditions": "Various biblical scholars and Christian traditions."
+        }
+      ],
+      "historicalContext": "Christians have interpreted Genesis through different historical and literary approaches. Modern geology, astronomy and biology intensified discussion, while Christian scholars continue to debate how scientific models and biblical interpretation relate.",
+      "areasOfDisagreement": "Disputes include the genre and chronology of Genesis, death before the fall, Adam and Eve's historical role, common ancestry and how theological claims should relate to scientific evidence.",
+      "readingCaution": "Do not equate a person's salvation with one particular creation model. Distinguish what a biblical text explicitly teaches from scientific claims and interpretive conclusions; avoid presenting contested scientific assertions as settled facts."
+    },
+    {
+      "id": "doctrine-018",
+      "title": "Icons, images and sacred art",
+      "question": "May Christians use images in worship and devotion, and how should the second commandment be understood?",
+      "sharedGround": "Christian traditions reject idolatry and affirm that worship belongs to God alone. Many also use art to teach Scripture, remember biblical events and beautify worship spaces.",
+      "scriptureReferences": [
+        "Exodus 20:1-6",
+        "Numbers 21:4-9",
+        "John 1:14-18",
+        "Romans 1:18-25",
+        "Colossians 1:15-20",
+        "Hebrews 1:1-4"
+      ],
+      "positions": [
+        {
+          "view": "Eastern Orthodox icon veneration",
+          "summary": "Orthodox theology distinguishes veneration shown to icons from worship due to God. Icons are understood as witnesses to the incarnation and as aids to prayer, with honour directed to the person depicted rather than the material object.",
+          "traditions": "Eastern Orthodox churches."
+        },
+        {
+          "view": "Catholic sacred images",
+          "summary": "Catholic teaching permits sacred images and distinguishes the honour given to them from adoration due to God alone. Images are intended to direct the faithful toward Christ, Mary and the saints, not to be treated as independent powers.",
+          "traditions": "Roman Catholic Church."
+        },
+        {
+          "view": "Reformed and iconoclastic cautions",
+          "summary": "Some Protestant traditions restrict or avoid religious images in worship, arguing that images can violate the commandment or encourage false devotion. Others permit teaching art while rejecting devotional veneration.",
+          "traditions": "Some Reformed, Puritan, Anabaptist and evangelical communities."
+        }
+      ],
+      "historicalContext": "The early church debated images, culminating in the Byzantine iconoclast controversies. The Second Council of Nicaea (787) defended the veneration of icons, while the Reformation revived disagreements about images in worship.",
+      "areasOfDisagreement": "Debates concern the difference between worship and veneration, the implications of the incarnation, the authority of church tradition and whether devotional use of images risks idolatry.",
+      "readingCaution": "Do not portray every image as an idol or assume that every user of an icon worships wood or paint. Equally, do not dismiss sincere concerns about idolatry; explain the theology and practice being discussed."
+    },
+    {
+      "id": "doctrine-019",
+      "title": "Wealth, poverty, giving and prosperity teaching",
+      "question": "What does Scripture teach about material blessing, generosity, poverty and Christian contentment?",
+      "sharedGround": "Christian traditions affirm that God provides, wealth carries responsibility, generosity is commanded, exploitation is condemned and material possessions must never replace love of God and neighbour.",
+      "scriptureReferences": [
+        "Deuteronomy 8:10-18",
+        "Proverbs 30:7-9",
+        "Matthew 6:19-34",
+        "Luke 12:13-34",
+        "2 Corinthians 8:1-15",
+        "1 Timothy 6:3-19",
+        "James 5:1-6"
+      ],
+      "positions": [
+        {
+          "view": "Prosperity-oriented teaching",
+          "summary": "Some teachers emphasise biblical promises of provision, generosity and blessing, and may expect faith and prayer to be accompanied by material increase. This broad movement contains diverse teachings, some of which make guarantees that other Christians regard as unsupported or harmful.",
+          "traditions": "Certain independent charismatic and Word of Faith ministries; not representative of all Pentecostal or charismatic churches."
+        },
+        {
+          "view": "Stewardship and generosity emphasis",
+          "summary": "Many churches teach that possessions are entrusted by God and should be managed with gratitude, justice, generosity and care for the poor. Material success is not treated as a reliable measure of faith or divine favour.",
+          "traditions": "Broadly shared across Catholic, Orthodox and Protestant traditions."
+        },
+        {
+          "view": "Simplicity and voluntary poverty emphasis",
+          "summary": "Some Christian traditions stress simplicity, detachment from wealth, communal sharing and solidarity with the poor as important disciplines of discipleship.",
+          "traditions": "Monastic, Anabaptist, Franciscan and other Christian movements, with varied practice."
+        }
+      ],
+      "historicalContext": "The church has long debated wealth and poverty, from early Christian sharing and monastic movements to modern debates about prosperity preaching, economic justice and stewardship.",
+      "areasOfDisagreement": "Differences concern how covenant blessings apply today, the meaning of prosperity texts, the role of giving, economic justice and whether material wealth should be expected as a result of faith.",
+      "readingCaution": "Never promise that a donation guarantees healing, wealth or a miracle. Do not blame poor people for their circumstances or use Scripture to pressure vulnerable believers into giving beyond their means."
+    },
+    {
+      "id": "doctrine-020",
+      "title": "The kingdom of God: present reality and future hope",
+      "question": "Is the kingdom of God present now, future, or both?",
+      "sharedGround": "Christians affirm that Jesus announced God's kingdom, that His reign calls people to repentance and faithful living, and that God's purposes will be fully revealed when Christ returns.",
+      "scriptureReferences": [
+        "Daniel 7:13-14",
+        "Matthew 4:12-17",
+        "Luke 4:16-21",
+        "Luke 17:20-21",
+        "Romans 14:17-19",
+        "1 Corinthians 15:20-28",
+        "Revelation 11:15"
+      ],
+      "positions": [
+        {
+          "view": "Already-and-not-yet emphasis",
+          "summary": "Many theologians teach that God's kingdom has been inaugurated through Jesus' ministry, death and resurrection, is experienced by the Spirit and church now, and awaits its full public completion at Christ's return.",
+          "traditions": "Widely held across Catholic, Orthodox and Protestant theology, with differing emphases."
+        },
+        {
+          "view": "Future consummation emphasis",
+          "summary": "Some readings stress the coming visible reign of God and warn against identifying present political or ecclesial success with the kingdom's fullness. The kingdom's final victory remains God's future act.",
+          "traditions": "Found in many evangelical and eschatological traditions."
+        },
+        {
+          "view": "Present transformation and mission emphasis",
+          "summary": "Other approaches stress the kingdom's present ethical and social implications, including justice, mercy, reconciliation and witness, while differing over how directly these should be identified with God's reign.",
+          "traditions": "Various liberation, evangelical, Catholic social teaching, Anabaptist and missional traditions."
+        }
+      ],
+      "historicalContext": "The kingdom was central to Jesus' preaching and has been interpreted in relation to Israel's hope, the church, the Holy Spirit, social ethics and eschatology. Different eras have emphasised its spiritual, institutional, social or future dimensions.",
+      "areasOfDisagreement": "Debates concern the relation of kingdom and church, the extent of present fulfilment, political power, social transformation and the timing and character of final consummation.",
+      "readingCaution": "Do not equate God's kingdom with any political party, nation or human institution. Hold present discipleship and future hope together, and read Jesus' kingdom teaching in its Gospel context."
     }
   ]
 }
