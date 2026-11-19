@@ -58,7 +58,7 @@ if (!backup.includes("previous[key]") || !backup.includes("attempted to return y
 if (/fetch\s*\(|XMLHttpRequest|sendBeacon/.test(backup)) failures.push("Backup module must not send personal records over a network.");
 if (!backup.includes("safeReadingPlanProgress") || !backup.includes("mergeReadingPlans")) failures.push("Encrypted backup does not validate and merge reading-plan progress.");
 if (!personal.includes('["plans","🗓️ Reading Plans"]') || !personal.includes("window.ZurielReadingPlans.render(panel,status)")) failures.push("My Study Space does not expose the reading plans section.");
-if (!personal.includes('#message .verse[data-verse-number="'+position.verse+'"]')) failures.push("Continue reading must restore the exact saved verse by its visible verse-number attribute, not array position.");
+if (!personal.includes("#message .verse[data-verse-number=\"'+position.verse+'\"]")) failures.push("Continue reading must restore the exact saved verse by its visible verse-number attribute, not array position.");
 if (!index.includes('src="zuriel-reading-plans.js"')) failures.push("Web entry point does not load reading plans.");
 if (!serviceWorker.includes('"./zuriel-reading-plans.js"')) failures.push("Offline cache does not include reading plans.");
 if (!packaging.includes('"zuriel-reading-plans.js"')) failures.push("Android package preparation does not include reading plans.");
