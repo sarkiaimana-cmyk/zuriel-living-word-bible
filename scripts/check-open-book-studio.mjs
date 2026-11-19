@@ -64,7 +64,7 @@ const checks = [
   ["right page Glory Verse banner", '<div class="zgs-glory-banner">GLORY VERSE AFFIRMATION</div>'],
   ["warm ivory is the default Studio finish", 'studio.dataset.finish = "ivory"'],
   ["mobile preview keeps the two facing pages", 'grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0'],
-  ["right page uses green heading treatment", '.zgs-right-page .zgs-page-title {background:#27734c}'],
+  ["right page uses green heading treatment", '#zurielGloryPreview .zgs-right-page .zgs-page-title {background:#27734c}'],
   ["bold faith response", ".zgs-active-copy {min-height:105px;font-weight:700;color:#1d5d3e;}"],
   ["declaration is the default card response", 'let activeFaithView = "Declaration";'],
   ["declaration tab is visibly selected by default", 'data-zgs-view="Declaration" aria-pressed="true"'],
