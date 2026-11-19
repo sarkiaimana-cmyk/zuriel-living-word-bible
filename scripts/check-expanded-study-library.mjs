@@ -198,7 +198,7 @@ for (const entry of theology.entries) {
     positionViews.add(viewKey);
   }
   for (const reference of entry.scriptureReferences) {
-    assert.ok(/^.+?\\s+\\d+:\\d+/.test(reference), "Theological comparison references must specify book, chapter and verse: " + entry.title + " — " + reference);
+    assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Theological comparison references must specify book, chapter and verse: " + entry.title + " — " + reference);
     checkReference(reference, "theological comparison " + entry.title);
   }
   assert.ok(entry.sharedGround && entry.sharedGround.length >= 80 && entry.historicalContext && entry.historicalContext.length >= 80 && entry.areasOfDisagreement && entry.areasOfDisagreement.length >= 80 && entry.readingCaution && entry.readingCaution.length >= 80, "Each theological comparison needs balance and context: " + entry.title);
