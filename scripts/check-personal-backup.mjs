@@ -1,13 +1,14 @@
 import { readFile } from "node:fs/promises";
 
-const [backup, personal, index, serviceWorker, packaging, version, updates] = await Promise.all([
+const [backup, personal, index, serviceWorker, packaging, version, updates, library] = await Promise.all([
   readFile(new URL("../zuriel-backup.js", import.meta.url), "utf8"),
   readFile(new URL("../zuriel-personal-space.js", import.meta.url), "utf8"),
   readFile(new URL("../index.html", import.meta.url), "utf8"),
   readFile(new URL("../sw.js", import.meta.url), "utf8"),
   readFile(new URL("./prepare-web.mjs", import.meta.url), "utf8"),
   readFile(new URL("../version.json", import.meta.url), "utf8"),
-  readFile(new URL("../zuriel-updates.js", import.meta.url), "utf8")
+  readFile(new URL("../zuriel-updates.js", import.meta.url), "utf8"),
+  readFile(new URL("../zuriel-library.js", import.meta.url), "utf8")
 ]);
 const failures = [];
 for (const key of [
@@ -65,6 +66,14 @@ if (!personal.includes("Zuriel could not read saved personal data") || !personal
 if (!personal.includes("catch(error){status(error.message);return false;}")) failures.push("Saving a new personal entry must not overwrite unreadable existing records.");
 if (!personal.includes("Your entry was not deleted.")) failures.push("Deleting a personal entry must report storage failures without claiming success.");
 if (!personal.includes("window.ZurielBackup.mount(root)")) failures.push("My Study Space does not mount backup controls.");
+const savedPageStart = library.indexOf('if (page === "saved")');
+const savedPageEnd = library.indexOf('content.scrollIntoView(', savedPageStart);
+const savedPage = savedPageStart >= 0 && savedPageEnd > savedPageStart ? library.slice(savedPageStart, savedPageEnd) : "";
+if (!savedPage.includes("Search saved Scriptures, notes, highlights and prayers")) failures.push("My Saved Library needs a unified search field.");
+if (!savedPage.includes("Search all saved library records") || !savedPage.includes("box.dataset.savedSearch")) failures.push("Saved library search must be accessible and filter every record category.");
+if (!savedPage.includes("Remove saved item") || !savedPage.includes("saved.bookmarks.splice(savedIndex, 1)")) failures.push("Users must be able to remove an individual saved bookmark.");
+if (!savedPage.includes("The item has not been removed from device storage.")) failures.push("Bookmark removal must report storage failure without losing the stored item.");
+
 if (!index.includes('src="zuriel-backup.js"')) failures.push("Web entry point does not load backup module.");
 if (!serviceWorker.includes('"./zuriel-backup.js"')) failures.push("Offline cache does not include backup module.");
 if (!packaging.includes('"zuriel-backup.js"')) failures.push("Android package preparation does not include backup module.");
