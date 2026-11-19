@@ -1,4 +1,4 @@
 {
-  "version": "1.4.98",
-  "releaseNotes": "Introduces a compact Study Library drawer with responsive topic tiles. Open the Study Centre, expand the drawer, then choose a single study topic; verse-selected actions open the relevant topic directly. Scripture remains uncluttered and study content expands only when selected."
+  "version": "1.4.99",
+  "releaseNotes": "Expands the offline passage-commentary library from 163 to 173 contextual studies, adding carefully qualified exposition on Judges, Esther, Ecclesiastes, Daniel, Hosea, Amos, Habakkuk, Galatians, Colossians and 1 Thessalonians. Each entry includes historical or literary context, study observations, interpretive cautions and cross-references checked against the bundled KJV."
 }
