@@ -1,4 +1,4 @@
 {
-  "version": "1.4.108",
-  "releaseNotes": "Strengthens commentary, original-language, dictionary, theological comparison and connected Scripture pathway libraries with KJV-checked references. Audits all 100 topical guides, makes all 316 study links explicit, separates 52 reading cautions from practical applications, and validates each topic link against the offline KJV. Offline cache v210."
+  "version": "1.4.109",
+  "releaseNotes": "Strengthens the offline study library with KJV-checked commentary, original-language, dictionary, theological comparison, connected Scripture, and topical references. Audits all 52 Names and Titles of God entries, makes all 132 Scripture links explicit, validates source-language script forms and references, and fixes the Study Library so Hebrew/Greek divine-name meanings are displayed. Offline cache v211."
 }
