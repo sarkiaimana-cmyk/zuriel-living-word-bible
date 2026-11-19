@@ -9,6 +9,7 @@ const files = [
   "zuriel-home.js",
   "zuriel-word-linking.js",
   "zuriel-study.js",
+  "zuriel-study-library-data.js",
   "zuriel-geography-data.js",
   "zuriel-geography.js",
   "zuriel-navigation.js",
@@ -37,6 +38,8 @@ for (const file of files) {
   await cp(file, "www/" + file);
 }
 
+await cp("data", "www/data", { recursive: true });
+
 await cp("images", "www/images", { recursive: true });
 
 await build({
@@ -50,4 +53,4 @@ await build({
   sourcemap: false
 });
 
-console.log("Zuriel web app and offline Scripture audio controls prepared for Android packaging.");
+console.log("Zuriel web app, offline Scripture, study-library loader, 12 study datasets and audio controls prepared for Android packaging.");
