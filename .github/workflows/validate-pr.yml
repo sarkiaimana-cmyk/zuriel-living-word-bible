@@ -72,6 +72,8 @@ jobs:
 
       - name: Validate offline Scripture read-aloud and selected-verse resume
         run: node scripts/check-audio-reader.mjs
+      - name: Validate offline Bible search
+        run: node scripts/check-bible-search.mjs
 
       - name: Audit verse-specific faith response coverage
         run: npm run study:faith-coverage
