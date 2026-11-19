@@ -60,7 +60,10 @@ const required = [
   ["Kingdom treasure parable", "The pearl of great price"],
   ["watchfulness parable", "The wise and foolish virgins"],
   ["faithful stewardship parable", "The talents entrusted"],
-  ["unavailable reader feedback", "The Bible reader is not ready yet. Please try again."]
+  ["unavailable reader feedback", "The Bible reader is not ready yet. Please try again."],
+  ["Sabbath and mercy teaching", "The Sabbath is made for humanity"],
+  ["Jesus' teaching on inner perception", "The eye is the lamp of the body"],
+  ["Jesus as the way, truth and life", "I am the way, the truth and the life"]
 ];
 for (const [label, fragment] of required) {
   if (!library.includes(fragment)) failures.push(label + " is missing.");
