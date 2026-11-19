@@ -39,8 +39,8 @@ const bookLookup = new Map(bookEntries.map(book => [book.name.toLowerCase(),book
 bookLookup.set("psalm",bookLookup.get("psalms"));
 bookLookup.set("song of songs",bookLookup.get("song of solomon"));
 const commentaryBookCoverage = new Set(commentary.entries.map(entry => {
-  const match = String(entry.passage || "").match(/^(.+?)\\s+\\d+:/);
-  const book = match && bookLookup.get(match[1].toLowerCase().replace(/\\s+/g," ").trim());
+  const match = String(entry.passage || "").match(/^(.+?)\s+\d+:/);
+  const book = match && bookLookup.get(match[1].toLowerCase().replace(/\s+/g," ").trim());
   return book && book.name;
 }).filter(Boolean));
 assert.equal(commentaryBookCoverage.size,66,"Passage commentary must cover every canonical Bible book");
