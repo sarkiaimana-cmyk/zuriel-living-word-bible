@@ -1,4 +1,4 @@
 {
-  "version": "1.4.102",
-  "releaseNotes": "Expands the offline original-language word-study library from 100 to 110 contextual lexemes, adding Greek studies of mercy, compassion, godliness, reconciliation and atonement, and Hebrew studies of comfort/relenting, Sabbath, remembrance, dwelling and shield imagery. Each entry includes original script, contextual glosses, verified KJV references and explicit limits on unverified verse-level parsing."
+  "version": "1.4.103",
+  "releaseNotes": "Strengthens the offline passage-commentary library with 173 distinct primary passages, replacing three duplicate short notes with contextual studies on Josiah's rediscovery of Scripture, Psalm 90 and Jesus' teaching on care for vulnerable people. Adds KJV validation for every commentary primary passage and related reference, including cross-chapter range boundaries. Retains the 110-term Hebrew, Greek and Aramaic word-study library."
 }
