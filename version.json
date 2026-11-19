@@ -1,4 +1,4 @@
 {
-  "version": "1.4.90",
-  "releaseNotes": "Expands passage commentary from 137 to 152 entries and closes the remaining canonical-book gaps so the commentary library covers all 66 Bible books. New entries add context, observation, interpretive safeguards and linked cross-references for Psalms, Job, Chronicles, Song of Solomon, Lamentations, Obadiah, Jonah, Nahum, Zephaniah, Haggai, Malachi, 2 John, 3 John and Jude. Refreshes offline cache and verifies references against the bundled KJV."
+  "version": "1.4.91",
+  "releaseNotes": "Adds ten more distinct, verse-specific faith-response records, each with its own prayer, declaration, affirmation, confession and context-aware inspiration. New passages address God's help on the journey, grief, weariness, daily trust, servant leadership, Christ's peace, renewed thinking, patient love, prayer and perseverance. The coverage gate now requires 160 unique visible references and validates all five response fields against the offline KJV. Refreshes offline cache."
 }
