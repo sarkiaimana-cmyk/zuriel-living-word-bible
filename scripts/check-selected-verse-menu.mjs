@@ -1,8 +1,9 @@
 import { readFile } from "node:fs/promises";
 
-const [source, reader] = await Promise.all([
+const [source, reader, home] = await Promise.all([
   readFile(new URL("../zuriel-study.js", import.meta.url), "utf8"),
-  readFile(new URL("../index.html", import.meta.url), "utf8")
+  readFile(new URL("../index.html", import.meta.url), "utf8"),
+  readFile(new URL("../zuriel-home.js", import.meta.url), "utf8")
 ]);
 const required = [
   "zurielVerseActionMenu",
@@ -65,6 +66,10 @@ if (!source.includes("grid-template-columns:repeat(2,minmax(0,1fr))") || !source
 }
 if (!source.includes('section.addEventListener("toggle"') || !source.includes('if(other!==section)other.open=false')) {
   throw new Error("Only one Study Library topic may remain expanded at a time.");
+}
+const studyRoute = home.slice(home.indexOf('if (section === "study")'), home.indexOf('if (section === "kingdom")'));
+if (!studyRoute.includes('panel.dataset.mode = "verse"')) {
+  throw new Error("Opening Study navigation must restore the full Study Centre after verse or word context.");
 }
 if (!reader.includes("studyDrawer.open = true")) {
   throw new Error("Verse-selected study actions must open the Study Library drawer.");
