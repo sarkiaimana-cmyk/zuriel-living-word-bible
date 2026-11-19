@@ -128,6 +128,8 @@ jobs:
 
       - name: Validate offline Scripture read-aloud
         run: node scripts/check-audio-reader.mjs
+      - name: Validate offline Bible search
+        run: node scripts/check-bible-search.mjs
 
       - name: Check whether release signing is configured
         id: signing_check
