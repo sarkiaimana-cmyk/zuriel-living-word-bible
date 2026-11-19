@@ -1817,7 +1817,12 @@
             saved = loadSaved();
             if (savedIndex < 0 || savedIndex >= saved.bookmarks.length) return;
             saved.bookmarks.splice(savedIndex, 1);
-            if (persist()) openPage("saved");
+            if (persist()) {
+              openPage("saved");
+            } else {
+              saved = loadSaved();
+              alert("Zuriel could not update your saved library. The item has not been removed from device storage.");
+            }
           }));
           content.appendChild(box);
         });
