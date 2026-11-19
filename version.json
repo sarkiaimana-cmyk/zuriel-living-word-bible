@@ -1,4 +1,4 @@
 {
-  "version": "1.4.101",
-  "releaseNotes": "Adds twenty distinct, single-verse faith-response records, bringing the offline library to 226 unique Scripture references across all 66 books. Each new reference has its own prayer, declaration, affirmation, confession and inspiration. The coverage validator now requires 226 records and fails on repeated exact wording; all references are checked against the bundled KJV."
+  "version": "1.4.102",
+  "releaseNotes": "Expands the offline original-language word-study library from 100 to 110 contextual lexemes, adding Greek studies of mercy, compassion, godliness, reconciliation and atonement, and Hebrew studies of comfort/relenting, Sabbath, remembrance, dwelling and shield imagery. Each entry includes original script, contextual glosses, verified KJV references and explicit limits on unverified verse-level parsing."
 }
