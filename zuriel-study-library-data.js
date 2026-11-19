@@ -35,7 +35,7 @@
   }
   function refsFor(item) {
     const values = item.references || item.scriptureReferences || item.keyPassages ||
-      item.passages || item.passageReferences || item.relatedReferences || item.crossReferences ||
+      item.passages || item.passageReferences || item.relatedReferences || item.crossReferences || item.crossReferenceTrail ||
       (Array.isArray(item.pathway) ? item.pathway.map(step => step.reference) : []);
     const refs = Array.isArray(values) ? values : [values];
     const output = refs.map(value => {
@@ -44,6 +44,7 @@
       return "";
     }).filter(Boolean);
     if (item.primaryPassage) output.unshift(...String(item.primaryPassage).split(";").map(value => value.trim()).filter(Boolean));
+    if (item.startingPassage) output.unshift(...String(item.startingPassage).split(";").map(value => value.trim()).filter(Boolean));
     if (item.passage) output.unshift(text(item.passage));
     return Array.from(new Set(output));
   }
@@ -118,7 +119,9 @@
       ["Question being compared", ["question"]],
       ["Shared Christian ground", ["sharedGround"]],
       ["Historical and literary context", ["historicalSetting", "historicalContext", "background", "literaryContext", "contextSummary", "context"]],
-      ["Passage meaning", ["contextAndMeaning", "senseAndContext", "overview", "definition", "meaning", "explanation", "significance", "focus"]],
+      ["Major themes", ["majorThemes", "focus"]],
+      ["Testament and genre", ["testament", "genre"]],
+      ["Passage meaning", ["contextAndMeaning", "senseAndContext", "contextSummary", "overview", "definition", "meaning", "explanation", "significance"]],
       ["Original-language form", ["originalForm"]],
       ["Language", ["language"]],
       ["Morphology note", ["morphologyStatus"]],
@@ -129,7 +132,8 @@
       ["Interpretation prompt", ["interpretationPrompt"]],
       ["Study questions", ["studyQuestions", "questions", "reflectionPrompt"]],
       ["Practical application", ["lifeApplication", "lifeApplicationPrompt", "practicalApplication", "application"]],
-      ["Interpretive caution", ["interpretiveCaution", "editorialCaution", "contextCaution", "studyCaution", "caution"]],
+      ["Prayer prompt", ["prayerPrompt"]],
+      ["Interpretive caution", ["interpretiveCaution", "interpretiveGuardrail", "editorialCaution", "contextCaution", "studyCaution", "caution"]],
       ["Areas of disagreement", ["areasOfDisagreement"]],
       ["Reading caution", ["readingCaution"]],
       ["Source and reading note", ["sourceNote", "readingNote", "editorialNote", "provenance"]]
