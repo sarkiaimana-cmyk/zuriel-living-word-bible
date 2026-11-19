@@ -746,7 +746,7 @@
             <button type="button" data-zgs-view="Prayer" aria-pressed="false">Prayer</button>
             <button type="button" data-zgs-view="Declaration" aria-pressed="true">Declaration</button>
             <button type="button" data-zgs-view="Affirmation" aria-pressed="false">Affirmation</button>
-            <button type="button" data-zgs-view="Confession" aria-pressed="false">Faith</button>
+            <button type="button" data-zgs-view="Confession" aria-pressed="false">Faith Confession</button>
             <button type="button" data-zgs-view="Inspiration" aria-pressed="false">Inspiration</button>
           </div>
           <div class="zgs-typography-controls" aria-label="Card typography controls">
