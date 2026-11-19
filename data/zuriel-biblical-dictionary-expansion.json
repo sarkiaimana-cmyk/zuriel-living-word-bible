@@ -1021,6 +1021,176 @@
       ],
       "editorialCaution": "Do not state a definitive translation where the evidence remains uncertain.",
       "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-087",
+      "term": "Apostasy",
+      "definition": "A turning away from a previously professed faith or allegiance; biblical writers discuss it in relation to perseverance, covenant faithfulness and the dangers of deception.",
+      "scriptureReferences": [
+        "Hebrews 3:12-14",
+        "2 Thessalonians 2:3-4",
+        "1 Timothy 4:1"
+      ],
+      "editorialCaution": "Do not label every doubt, question or season of spiritual struggle as apostasy; attend to the passage's specific warning and audience.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-088",
+      "term": "Canon of Scripture",
+      "definition": "The recognised collection of writings received as authoritative Scripture by a faith community; Christian traditions share the central biblical collection while differing on the Old Testament deuterocanonical books.",
+      "scriptureReferences": [
+        "Luke 24:44",
+        "2 Timothy 3:14-17",
+        "2 Peter 3:15-16"
+      ],
+      "editorialCaution": "These passages witness to Scripture's authority but do not, by themselves, settle every historical question about the formation of the canon.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-089",
+      "term": "Christology",
+      "definition": "The theological study of who Jesus Christ is and the meaning of His person and work, drawing together Gospel testimony and the wider New Testament witness.",
+      "scriptureReferences": [
+        "John 1:1-18",
+        "Philippians 2:5-11",
+        "Colossians 1:15-20"
+      ],
+      "editorialCaution": "Read each passage in its literary and historical setting; do not force later technical vocabulary into every individual text.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-090",
+      "term": "Crucifixion",
+      "definition": "The Roman execution by which Jesus suffered and died; the New Testament interprets His death through several connected images, including sacrifice, reconciliation, victory and self-giving love.",
+      "scriptureReferences": [
+        "Mark 15:21-39",
+        "Romans 5:6-11",
+        "1 Corinthians 1:18-25"
+      ],
+      "editorialCaution": "Do not reduce the cross to one metaphor or use it to justify violence, abuse or victim-blaming.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-091",
+      "term": "Diaspora",
+      "definition": "The scattering or dispersed life of a people away from an ancestral homeland; Jewish diaspora communities form an important setting for biblical history and New Testament mission.",
+      "scriptureReferences": [
+        "Deuteronomy 28:64",
+        "Esther 3:8",
+        "James 1:1",
+        "1 Peter 1:1"
+      ],
+      "editorialCaution": "Distinguish different historical dispersions and communities rather than treating all diaspora experiences as one event.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-092",
+      "term": "Epistle",
+      "definition": "A letter, especially a New Testament letter written to a particular church or person, addressing teaching, relationships, worship and practical life.",
+      "scriptureReferences": [
+        "Romans 1:1-7",
+        "1 Corinthians 1:1-3",
+        "Philemon 1:1-7"
+      ],
+      "editorialCaution": "Interpret a letter by identifying its sender, recipients, occasion, argument and situation; isolated sentences can mislead.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-093",
+      "term": "Fasting",
+      "definition": "A voluntary abstaining from food for a spiritual purpose such as prayer, repentance or seeking God; Scripture also insists that worship be joined to justice and compassion.",
+      "scriptureReferences": [
+        "Isaiah 58:3-10",
+        "Matthew 6:16-18",
+        "Acts 13:1-3"
+      ],
+      "editorialCaution": "Fasting is not a way to manipulate God or prove spiritual superiority; it should never endanger health or be imposed coercively.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-094",
+      "term": "Immanuel",
+      "definition": "A Hebrew name meaning 'God with us', used in Isaiah's sign and applied in Matthew's account of Jesus.",
+      "scriptureReferences": [
+        "Isaiah 7:14",
+        "Isaiah 8:8-10",
+        "Matthew 1:22-23"
+      ],
+      "editorialCaution": "Read Isaiah's original historical setting as well as Matthew's fulfilment reading; note that the Hebrew term is rendered in more than one way.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-095",
+      "term": "Jubilee",
+      "definition": "The Levitical vision of a fiftieth-year release involving liberty, return of ancestral land and rest, expressing limits on permanent dispossession and debt-based oppression.",
+      "scriptureReferences": [
+        "Leviticus 25:8-17",
+        "Leviticus 25:35-43",
+        "Luke 4:16-21"
+      ],
+      "editorialCaution": "Distinguish the Torah's specific Jubilee provisions from later theological applications; do not claim every modern policy is a direct equivalent.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-096",
+      "term": "Martyr",
+      "definition": "A witness who suffers or dies because of fidelity to faith; the New Testament presents faithful witness without glorifying violence or seeking suffering.",
+      "scriptureReferences": [
+        "Acts 7:54-60",
+        "Revelation 2:10",
+        "Revelation 6:9-11"
+      ],
+      "editorialCaution": "Martyrdom is not a command to seek death or remain in preventable danger; protect life and seek safety.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-097",
+      "term": "New Jerusalem",
+      "definition": "The symbolic city of God's renewed dwelling with humanity in Revelation's vision of new creation, where death, mourning and pain are overcome.",
+      "scriptureReferences": [
+        "Isaiah 65:17-25",
+        "Galatians 4:26",
+        "Revelation 21:1-27"
+      ],
+      "editorialCaution": "Read the imagery as apocalyptic and theological vision; avoid turning symbolic details into speculative geographic predictions.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-098",
+      "term": "Omnipotence",
+      "definition": "A theological term describing God's unlimited power, understood in Christian theology alongside God's goodness, faithfulness and character.",
+      "scriptureReferences": [
+        "Genesis 18:14",
+        "Jeremiah 32:17",
+        "Luke 1:37"
+      ],
+      "editorialCaution": "Do not use the term to claim that God will perform any humanly requested outcome or that suffering proves a person's lack of faith.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-099",
+      "term": "Parousia",
+      "definition": "A Greek term meaning presence or arrival, used in the New Testament for the expected coming of Christ.",
+      "scriptureReferences": [
+        "Matthew 24:3",
+        "1 Thessalonians 4:15-18",
+        "2 Peter 3:8-13"
+      ],
+      "editorialCaution": "The New Testament joins expectation with watchfulness and faithful living; avoid date-setting and sensational predictions.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-100",
+      "term": "Sanctuary",
+      "definition": "A sacred place associated with God's presence and worship, including the tabernacle and temple; the New Testament also develops temple imagery for Christ and the community.",
+      "scriptureReferences": [
+        "Exodus 25:8-9",
+        "Psalm 27:4",
+        "Hebrews 9:1-12",
+        "1 Corinthians 3:16-17"
+      ],
+      "editorialCaution": "Do not collapse the tabernacle, Jerusalem temple, heavenly sanctuary imagery and later church buildings into a single institution.",
+      "entryType": "biblical-concept"
     }
   ]
 }
