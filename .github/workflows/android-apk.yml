@@ -238,6 +238,56 @@ jobs:
             echo '### Signed APK identity'
             echo "$BADGING" | grep -E '^(package:|sdkVersion:|targetSdkVersion:)'
           } >> "$GITHUB_STEP_SUMMARY"
+      - name: Build and sign Google Play Android App Bundle
+        if: steps.signing_check.outputs.available == 'true' && steps.signed_release.outcome == 'success'
+        working-directory: android
+        env:
+          ZURIEL_KEYSTORE_BASE64: ${{ secrets.ZURIEL_KEYSTORE_BASE64 }}
+          ZURIEL_KEYSTORE_PASSWORD: ${{ secrets.ZURIEL_KEYSTORE_PASSWORD }}
+          ZURIEL_KEY_ALIAS: ${{ secrets.ZURIEL_KEY_ALIAS }}
+          ZURIEL_KEY_PASSWORD: ${{ secrets.ZURIEL_KEY_PASSWORD }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          KEYSTORE="$RUNNER_TEMP/zuriel-upload-key.p12"
+          python3 - <<'PY'
+          import base64, os
+          alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+          raw = os.environ["ZURIEL_KEYSTORE_BASE64"]
+          clean = "".join(ch for ch in raw if ch in alphabet).rstrip("=")
+          clean += "=" * ((-len(clean)) % 4)
+          data = base64.b64decode(clean, validate=True)
+          if len(data) < 1024:
+              raise SystemExit("Release keystore is incomplete.")
+          with open(os.path.join(os.environ["RUNNER_TEMP"], "zuriel-upload-key.p12"), "wb") as f:
+              f.write(data)
+          PY
+          ./gradlew bundleRelease
+          AAB="app/build/outputs/bundle/release/app-release.aab"
+          test -s "$AAB"
+          jarsigner -keystore "$KEYSTORE" -storetype PKCS12 \
+            -storepass "$ZURIEL_KEYSTORE_PASSWORD" \
+            -keypass "$ZURIEL_KEY_PASSWORD" \
+            "$AAB" "$ZURIEL_KEY_ALIAS"
+          jarsigner -verify -verbose -certs "$AAB" > "$RUNNER_TEMP/zuriel-aab-signature-check.txt"
+          grep -q "jar verified" "$RUNNER_TEMP/zuriel-aab-signature-check.txt"
+          echo "Signed Android App Bundle verified using the configured Zuriel release key."
+          rm -f "$KEYSTORE"
+          {
+            echo "### Google Play App Bundle"
+            echo "- Signed AAB created and verified with the configured Zuriel release certificate."
+            echo "- Package identity: com.zuriel.livingwordbible.release"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload signed Zuriel Google Play App Bundle
+        if: steps.signing_check.outputs.available == 'true' && steps.signed_release.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: Zuriel-Google-Play-Internal-Testing-AAB
+          path: android/app/build/outputs/bundle/release/app-release.aab
+          if-no-files-found: error
+          retention-days: 30
+
       - name: Upload Zuriel debug APK
         if: always()
         uses: actions/upload-artifact@v4
