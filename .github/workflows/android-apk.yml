@@ -130,6 +130,8 @@ jobs:
         run: node scripts/check-audio-reader.mjs
       - name: Validate offline Bible search
         run: node scripts/check-bible-search.mjs
+      - name: Validate offline Hebrew and Greek lexicon index
+        run: node scripts/check-lexicon-study-index.mjs
 
       - name: Check whether release signing is configured
         id: signing_check

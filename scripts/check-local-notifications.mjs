@@ -18,7 +18,7 @@ assert.equal(release.version, pkg.version, "in-app release metadata must match p
 assert.equal(pkg.dependencies["@capacitor/local-notifications"], "8.3.1", "Capacitor 8 local notifications plugin must be pinned");
 assert.ok(index.includes('src="zuriel-notifications.js"'), "reminder manager must load in the app");
 assert.ok(prepare.includes('"zuriel-notifications.js"'), "reminder manager must be copied into the Android web bundle");
-assert.ok(worker.includes('zuriel-bible-offline-v205'), "offline cache must advance to v205");
+assert.ok(worker.includes('zuriel-bible-offline-v206'), "offline cache must advance to v206");
 assert.ok(worker.includes('"./zuriel-notifications.js"'), "reminder manager must be precached offline");
 assert.ok(updates.includes('const APP_VERSION = "' + release.version + '"'), "update centre must report the published version");
 assert.ok(library.includes('["plans", "🗓️ Bible Reading Plans"]'), "reading plans must have a library destination");
