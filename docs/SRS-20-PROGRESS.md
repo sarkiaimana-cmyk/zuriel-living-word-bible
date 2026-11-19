@@ -325,3 +325,13 @@ The following user requirements are part of the product acceptance criteria, not
 - Added validator checks for topic identity, content fields, unique practical applications, separate reading cautions and KJV validation of every explicit topical reference.
 - App/package and in-app update version advanced to 1.4.108; offline cache advanced to v210.
 - Candidate status pending CI and Android packaging; physical-device navigation and readability testing remain outstanding.
+
+
+## 1.4.109 Names and Titles of God quality milestone — candidate
+
+- Audited all 52 divine names and titles for unique IDs, unique display names, explicit source-language labels, original-script forms, contextual meanings, study notes and Scripture references.
+- Expanded abbreviated references into 132 individually named book/chapter/verse links so each can be validated and opened directly.
+- Added checks that Hebrew, Greek and Aramaic labels match the script actually supplied; combined Hebrew/Greek titles must contain both scripts.
+- Fixed the expanded Study Library renderer so the `senseAndContext` field is shown as the meaning for Names and Titles of God instead of a generic empty summary.
+- App/package and in-app update version advanced to 1.4.109; offline cache advanced to v211.
+- Candidate status pending validation and Android package checks; pronunciation and transliteration remain editorial study aids, not a claim that every historical vocalisation is certain.
