@@ -1,4 +1,4 @@
 {
-  "version": "1.4.102",
-  "releaseNotes": "Expands the offline original-language word-study library from 100 to 110 contextual lexemes, adding Greek studies of mercy, compassion, godliness, reconciliation and atonement, and Hebrew studies of comfort/relenting, Sabbath, remembrance, dwelling and shield imagery. Each entry includes original script, contextual glosses, verified KJV references and explicit limits on unverified verse-level parsing."
+  "version": "1.4.103",
+  "releaseNotes": "Restores the approved Glory Verse Affirmation facing-page layout, adds an explicit Display Verse step to Bible passage selection, improves Scripture separators, and clearly marks online translations unavailable until secure server configuration is ready."
 }

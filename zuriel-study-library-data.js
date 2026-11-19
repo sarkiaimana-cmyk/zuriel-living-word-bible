@@ -29,13 +29,13 @@
       item.theme || item.id || kind);
   }
   function summaryFor(item) {
-    return text(item.contextAndMeaning || item.overview || item.definition ||
+    return text(item.contextAndMeaning || item.senseAndContext || item.contextSummary || item.overview || item.definition ||
       item.significance || item.focus || item.summary || item.description ||
       item.meaning || item.context || item.theme || item.subtitle || item.question || item.sharedGround);
   }
   function refsFor(item) {
     const values = item.references || item.scriptureReferences || item.keyPassages ||
-      item.passages || item.passageReferences || item.relatedReferences ||
+      item.passages || item.passageReferences || item.relatedReferences || item.crossReferences || item.crossReferenceTrail ||
       (Array.isArray(item.pathway) ? item.pathway.map(step => step.reference) : []);
     const refs = Array.isArray(values) ? values : [values];
     const output = refs.map(value => {
@@ -43,6 +43,8 @@
       if (value && typeof value === "object") return text(value.label || value.reference || value.passage);
       return "";
     }).filter(Boolean);
+    if (item.primaryPassage) output.unshift(...String(item.primaryPassage).split(";").map(value => value.trim()).filter(Boolean));
+    if (item.startingPassage) output.unshift(...String(item.startingPassage).split(";").map(value => value.trim()).filter(Boolean));
     if (item.passage) output.unshift(text(item.passage));
     return Array.from(new Set(output));
   }
@@ -116,15 +118,21 @@
     const fields = [
       ["Question being compared", ["question"]],
       ["Shared Christian ground", ["sharedGround"]],
-      ["Historical and literary context", ["historicalSetting", "historicalContext", "background", "literaryContext", "context"]],
-      ["Passage meaning", ["contextAndMeaning", "overview", "definition", "meaning", "explanation", "significance", "focus"]],
+      ["Geographical setting", ["region"]],
+      ["Modern geographical orientation", ["modernOrientation"]],
+      ["Journey route", ["sequence"]],
+      ["Historical and literary context", ["historicalSetting", "historicalContext", "background", "literaryContext", "contextSummary", "context"]],
+      ["Passage meaning", ["contextAndMeaning", "senseAndContext", "contextSummary", "overview", "definition", "meaning", "explanation", "significance", "focus"]],
       ["Original-language form", ["originalForm"]],
       ["Language", ["language"]],
       ["Morphology note", ["morphologyStatus"]],
       ["Contextual word use", ["contextualWordUse", "contextualNotes", "wordUsage"]],
-      ["Study observation", ["studyObservation", "observation", "interpretation", "studyNote"]],
+      ["Major themes", ["majorThemes", "focus"]],
+      ["Testament and genre", ["testament", "genre"]],
+      ["Study observation", ["studyObservation", "observation", "observationPrompt", "interpretation", "studyNote"]],
       ["Connected passage explanation", ["connectionNotes", "connections", "relationship", "whyItConnects"]],
       ["Passage-by-passage pathway", ["pathway"]],
+      ["Interpretation prompt", ["interpretationPrompt"]],
       ["Study questions", ["studyQuestions", "questions", "reflectionPrompt"]],
       ["Practical application", ["lifeApplication", "practicalApplication", "application"]],
       ["Interpretive caution", ["interpretiveCaution", "contextCaution", "studyCaution", "caution"]],

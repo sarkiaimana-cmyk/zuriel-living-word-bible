@@ -20,11 +20,14 @@ const checks = [
   ["adaptive long-content layout", "studio.dataset.layout = stacked ? \"stacked\" : \"spread\""],
   ["adaptive PNG export threshold", "const stacked = scripture.length > 420 || faithText.length > 320;"],
   ["stacked PNG uses full content width", "const exportColumnWidth = stacked ? width - exportMargin * 2 : columnWidth;"],
-  ["stacked PNG includes reference and section headings in canvas height", "referenceHeadingHeight + leftLines.length * lineHeight(scriptureSize)"],
-  ["spread PNG includes reference and section headings in canvas height", "referenceHeadingHeight + Math.max("],
+  ["stacked PNG includes reference and faith headings in canvas height", "referenceHeadingHeight + leftLines.length * lineHeight(scriptureSize)"],
+  ["spread PNG height accounts for both facing pages", ": Math.max("],
+  ["export uses a blue Scripture heading", 'drawSection("SCRIPTURE",reference,leftLines'],
+  ["export uses the active faith heading on the right", 'drawSection(faithTitle,"",rightLines'],
+  ["export adds the Glory Verse banner", "drawGloryBanner(rightX,faithBottom,columnWidth)"],
   ["stacked PNG draws separate full-width sections", "if (stacked) {\n              let y = top;"],
   ["spread PNG retains two-column layout", "const leftX = margin, rightX = margin + columnWidth + gap;"],
-  ["adaptive PNG layout draws Glory Verse heading", 'drawSection("GLORY VERSE AFFIRMATION — " + leftTitle'],
+  ["adaptive PNG layout draws the selected faith heading", 'drawSection(faithTitle,"",rightLines'],
   ["stacked long-content CSS", 'data-layout="stacked"'],
   ["image export action", "zgsSaveImage"],
   ["plain-language save action", 'id="zgsSaveImage">Save image</button>'],
@@ -48,26 +51,39 @@ const checks = [
   ["the Light identity", "The Light 🕯️"],
   ["Studio passage-loading control", 'id="zgsLoadScripture"'],
   ["Studio passage retrieval integration", "window.getBibleVerseText(referenceField.value)"],
-  ["premium navy is the default open-book finish", 'studio.dataset.finish = "navy"'],
-  ["distinct facing page panels in the live preview", "#zurielGloryPreview .zgs-page {position:relative;min-width:0;min-height:260px;padding:18px 15px;background:var(--zgs-page-bg"],
-  ["left page has a shaped inner book gutter", "#zurielGloryPreview .zgs-left-page {border-radius:15px 7px 7px 15px"],
-  ["right page has a shaped inner book gutter", "#zurielGloryPreview .zgs-right-page {box-shadow:0 12px 26px"],
+  ["warm ivory is the default open-book finish", 'studio.dataset.finish = "ivory"'],
+  ["distinct cream facing page panels in the live preview", "#zurielGloryPreview .zgs-page {position:relative;min-width:0;min-height:300px;padding:20px 16px;background:linear-gradient"],
+  ["left page has a shaped inner book gutter", "#zurielGloryPreview .zgs-left-page {border-right:0;border-radius:15px 2px 2px 15px"],
+  ["right page has a shaped inner book gutter", "#zurielGloryPreview .zgs-right-page {border-left:0;border-radius:2px 15px 15px 2px"],
   ["left page Scripture panel", "zgs-left-page"],
-  ["left page Scripture heading", '<div class="zgs-page-title">THE WORD</div>'],
+  ["left page Scripture reference banner", 'class="zgs-ref zgs-reference-banner" id="zgsPreviewRef"'],
   ["right page faith panel", "zgs-right-page"],
   ["faith tabs are labelled for the right page", 'aria-label="Choose the right-page faith content"'],
-  ["right page Glory Verse heading", '<div class="zgs-page-title">GLORY VERSE AFFIRMATION</div>'],
-  ["bold faith response", ".zgs-active-copy {min-height:105px;font-weight:700;}"],
+  ["faith confession tab is explicit", 'data-zgs-view="Confession" aria-pressed="false">Faith Confession</button>'],
+  ["right page active faith heading", 'id="zgsPreviewActiveTitle">MY DECLARATION</div>'],
+  ["right page Glory Verse banner", '<div class="zgs-glory-banner">GLORY VERSE AFFIRMATION</div>'],
+  ["warm ivory is the default Studio finish", 'studio.dataset.finish = "ivory"'],
+  ["mobile preview keeps the two facing pages", 'grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0'],
+  ["right page uses green heading treatment", '#zurielGloryPreview .zgs-right-page .zgs-page-title {background:#27734c;}'],
+  ["bold faith response", ".zgs-active-copy {min-height:105px;font-weight:700;color:#1d5d3e;}"],
   ["declaration is the default card response", 'let activeFaithView = "Declaration";'],
   ["declaration tab is visibly selected by default", 'data-zgs-view="Declaration" aria-pressed="true"'],
   ["exact approved card headline", "His Words.. My life.. My Victory"],
   ["complete app footer", "Zuriel Living Word Bible"],
-  ["export calculates Scripture line height", "leftLines.length * lineHeight(scriptureSize)"],
-  ["export calculates faith line height", "rightLines.length * lineHeight(faithSize)"],
+  ["export calculates Scripture line height on the left page", "leftLines.length * lineHeight(scriptureSize)"],
+  ["export calculates faith response line height on the right page", "rightLines.length * lineHeight(faithSize)"],
   ["shared card includes complete app name", '"Zuriel Living Word Bible"' ],
   ["photographic wallpaper picker", 'id="zgsWallpapers"'],
   ["four curated realistic wallpaper choices", 'data-wallpaper="valley"'],
-  ["wallpaper selection loads image", "function loadStudioWallpaper(key)"],
+  ["wallpaper selection loads image", "async function loadStudioWallpaper(key)"],
+  ["wallpapers persist in a dedicated offline cache", 'const cacheName = "zuriel-studio-wallpapers-v1"'],
+  ["wallpaper loader checks the local cache before network access", "response = await cache.match(choice.url)"],
+  ["wallpaper loader stores first successful download", "await cache.put(choice.url, response.clone())"],
+  ["wallpaper preview and PNG export use the same cached image blob", "URL.createObjectURL(blob)"],
+  ["wallpaper loader has an honest offline-missing fallback", "This wallpaper is not cached yet. Connect once to load it; your Scripture and saved cards remain safe."],
+  ["wallpaper loader confirms offline storage only after a successful cache write", /savedForOffline = true[\s\S]*?catch \(storageError\)[\s\S]*?savedForOffline = false[\s\S]*?could not save it for offline use/],
+  ["service-worker upgrades preserve the dedicated Studio wallpaper cache", /cacheName\.startsWith\("zuriel-bible-offline-"\)[\s\S]*?cacheName !== CACHE_NAME/],
+  ["service-worker caches remote Studio wallpaper requests for later reuse", /url\.origin === "https:\/\/images\.unsplash\.com"[\s\S]*?cache\.match\(request\)[\s\S]*?cache\.put\(request, response\.clone\(\)\)/],
   ["wallpaper appears in live preview", "--zgs-wallpaper-image"],
   ["wallpaper is painted into PNG export", "ctx.drawImage(image"],
   ["separate image sharing action", 'id="zgsShareImage"'],
@@ -75,11 +91,14 @@ const checks = [
   ["selected wallpaper is saved with card", "wallpaper:studio.dataset.wallpaper"],
 ];
 for (const [label, fragment] of checks) {
-  if (!library.includes(fragment)) failures.push(label + " is missing.");
+  const source = fragment instanceof RegExp ? (label.includes("service-worker") ? worker : library) : library;
+  if (fragment instanceof RegExp ? !fragment.test(source) : !source.includes(fragment)) {
+    failures.push(label + " is missing.");
+  }
 }
 if (!index.includes("window.getBibleVerseText = async function (reference)")) failures.push("Offline KJV passage retrieval is missing.");
 if (!/const CACHE_NAME = "zuriel-bible-offline-v\d+";/.test(worker)) failures.push("Offline cache version is missing for the Studio/navigation integration.");
-if (!worker.includes('url.origin === "https://images.unsplash.com"')) failures.push("Service worker does not cache selected Unsplash wallpapers.");
+if (!worker.includes('url.origin === "https://images.unsplash.com"')) failures.push("Service worker does not cache selected wallpaper images.");
 if (home.includes("Your Bible Journey")) failures.push("The duplicate home shortcut-button grid is still present.");
 const navBlock = home.match(/const navItems = \[([\s\S]*?)\];/);
 if (!navBlock || (navBlock[1].match(/\["(?:home|read|study|library|kingdom|personal)"/g) || []).length !== 6) {
