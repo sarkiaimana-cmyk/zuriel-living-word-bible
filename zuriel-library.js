@@ -672,23 +672,32 @@
             #zurielGloryPreview:after {content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:#9a835333;box-shadow:0 0 15px #5b472333;pointer-events:none;}
             #zurielGloryPreview .zgs-brand {font-size:15px;letter-spacing:1px;text-align:center;color:var(--zgs-accent);font-weight:800;font-family:Georgia,serif;position:relative;z-index:1;}
             #zurielGloryPreview h3 {text-align:center;color:var(--zgs-ink);font-family:Georgia,serif;font-size:20px;margin:9px 0 15px;position:relative;z-index:1;}
-            #zurielGloryPreview .zgs-book-spread {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;position:relative;z-index:1;}
-            #zurielGloryPreview .zgs-page {position:relative;min-width:0;min-height:260px;padding:18px 15px;background:var(--zgs-page-bg,linear-gradient(145deg,#fffdf5,#eee3ca));border:1px solid var(--zgs-page-border,#b79a5b99);border-radius:7px 15px 15px 7px;box-shadow:0 12px 26px #08142655,inset 0 0 18px #ffffff24;overflow:hidden;}
-            #zurielGloryPreview .zgs-left-page {border-radius:15px 7px 7px 15px;box-shadow:0 12px 26px #08142655,inset -8px 0 14px #0a183018;}
-            #zurielGloryPreview .zgs-right-page {box-shadow:0 12px 26px #08142655,inset 8px 0 14px #0a183018;}
-            #zurielGloryPreview .zgs-page-title {font:700 10px/1.4 Arial,sans-serif;letter-spacing:1px;text-align:center;color:var(--zgs-accent);margin:3px 0 12px;}
-            #zurielGloryPreview .zgs-ref {text-align:center;font-weight:800;color:var(--zgs-accent);font-size:13px;}
-            #zurielGloryPreview .zgs-copy {white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.48;margin:9px 0;font-family:Georgia,serif;font-size:14px;}
-            #zurielGloryPreview .zgs-active-copy {min-height:105px;font-weight:700;}
+            #zurielGloryPreview .zgs-book-spread {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;position:relative;z-index:1;perspective:900px;}
+            #zurielGloryPreview .zgs-page {position:relative;min-width:0;min-height:300px;padding:20px 16px;background:linear-gradient(100deg,#fffef9 0%,#f7f0df 82%,#e9ddc8 100%);border:1px solid #d3c4a6;border-radius:8px 2px 2px 8px;box-shadow:0 15px 28px #07172a55,inset 0 0 18px #ffffff9c;overflow:hidden;color:#183b68;}
+            #zurielGloryPreview .zgs-left-page {border-right:0;border-radius:15px 2px 2px 15px;box-shadow:0 15px 28px #07172a55,inset -12px 0 18px #172b4920;}
+            #zurielGloryPreview .zgs-right-page {border-left:0;border-radius:2px 15px 15px 2px;background:linear-gradient(260deg,#fffef9 0%,#f7f0df 82%,#e9ddc8 100%);box-shadow:0 15px 28px #07172a55,inset 12px 0 18px #172b4920;}
+            #zurielGloryPreview .zgs-page-title {font:800 12px/1.35 Arial,sans-serif;letter-spacing:.6px;text-align:center;color:#fff;margin:0 0 14px;padding:9px 6px;border-radius:5px;background:#1b4b82;}
+            #zurielGloryPreview .zgs-right-page .zgs-page-title {background:#27734c;}
+            #zurielGloryPreview .zgs-ref {text-align:center;font-weight:800;color:#fff;font-size:13px;line-height:1.35;padding:9px 7px;margin:0 0 15px;border-radius:5px;background:#1b4b82;border-bottom:1px dashed #c9b77e;}
+            #zurielGloryPreview .zgs-copy {white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.52;margin:10px 0;font-family:Georgia,serif;font-size:15px;color:#1d3d68;}
+            #zurielGloryPreview .zgs-active-copy {min-height:105px;font-weight:700;color:#1d5d3e;}
+            #zurielGloryPreview .zgs-glory-banner {margin-top:16px;padding:10px 6px;border-radius:5px;background:#1b4b82;color:#f6d36e;text-align:center;font:800 12px/1.3 Georgia,serif;letter-spacing:.5px;}
             #zurielGloryPreview .zgs-footer {text-align:center;font-size:10px;letter-spacing:1px;margin-top:17px;color:var(--zgs-accent);font-weight:800;position:relative;z-index:1;}
-            #zurielGloryPreview .zgs-left-page .zgs-page-title:first-child {padding-bottom:10px;border-bottom:1px dashed var(--zgs-accent);font-size:12px;letter-spacing:1.2px;}
-            #zurielGloryPreview .zgs-right-page .zgs-page-title:first-child {padding-bottom:10px;border-bottom:1px dashed var(--zgs-accent);font-size:12px;letter-spacing:1.2px;}
-            #zurielGloryPreview .zgs-ref {padding-bottom:9px;border-bottom:1px dashed var(--zgs-accent);}
+            #zurielGloryPreview .zgs-ref {border-bottom:1px dashed #9aabbd;}
             #zurielGloryPreview .zgs-active-copy {margin-top:14px;white-space:pre-wrap;overflow-wrap:anywhere;}
             @media(max-width:560px) {
-              #zurielGloryPreview .zgs-book-spread {grid-template-columns:1fr;gap:10px;}
-              #zurielGloryPreview .zgs-page {min-height:180px;padding:15px 13px;}
-              #zurielGloryPreview:after {display:none;}
+              #zurielGloryPreview .zgs-book-spread {grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;}
+              #zurielGloryPreview .zgs-page {min-height:260px;padding:12px 8px;}
+              #zurielGloryPreview .zgs-page-title {font-size:9px;letter-spacing:.2px;padding:7px 3px;}
+              #zurielGloryPreview .zgs-copy {font-size:11px;line-height:1.4;}
+              #zurielGloryPreview .zgs-ref {font-size:10px;padding:7px 3px;}
+              #zurielGloryPreview .zgs-glory-banner {font-size:9px;padding:7px 3px;}
+              #zurielGloryPreview:after {display:block;}
+            }
+            @media(max-width:370px) {
+              #zurielGloryPreview .zgs-page {padding:9px 5px;min-height:245px;}
+              #zurielGloryPreview .zgs-copy {font-size:10px;}
+              #zurielGloryPreview .zgs-page-title {font-size:8px;}
             }
             #zurielGloryStudio .zgs-tabs {display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;}
             #zurielGloryStudio .zgs-tabs button {font-size:11px;line-height:1.25;padding:7px 3px;background:#19324f;color:#fff;}
@@ -755,14 +764,13 @@
             <h3 id="zgsPreviewTitle">His Words.. My life.. My Victory</h3>
             <div class="zgs-book-spread">
               <section class="zgs-page zgs-left-page" aria-label="Selected Bible Scripture">
-                <div class="zgs-page-title">THE WORD</div>
-                <div class="zgs-ref" id="zgsPreviewRef">Your Scripture reference</div>
+                <div class="zgs-ref zgs-reference-banner" id="zgsPreviewRef">Your Scripture reference</div>
                 <p class="zgs-copy" id="zgsPreviewScripture">Your Scripture will appear here.</p>
               </section>
               <section class="zgs-page zgs-right-page" aria-label="Glory Verse Affirmation">
-                <div class="zgs-page-title">GLORY VERSE AFFIRMATION</div>
-                <div class="zgs-page-title" id="zgsPreviewActiveTitle">DECLARATION</div>
+                <div class="zgs-page-title" id="zgsPreviewActiveTitle">MY DECLARATION</div>
                 <p class="zgs-copy zgs-active-copy" id="zgsPreviewActiveContent">Your Scripture-led declaration will appear here.</p>
+                <div class="zgs-glory-banner">GLORY VERSE AFFIRMATION</div>
               </section>
             </div>
             <div class="zgs-footer">Zuriel Living Word Bible</div>
