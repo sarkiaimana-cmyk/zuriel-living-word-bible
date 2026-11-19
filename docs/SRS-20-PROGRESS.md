@@ -315,3 +315,13 @@ The following user requirements are part of the product acceptance criteria, not
 - Added validator checks for five ordered steps, explicit passage references, substantive unique connection notes, and each trail's overview, caution and application.
 - App/package and in-app update version advanced to 1.4.107; offline cache advanced to v209.
 - Candidate status pending validation and Android package checks; physical installation and reading-flow tests remain separate.
+
+
+## 1.4.108 topical study quality milestone — candidate
+
+- Audited all 100 expanded topical study guides for stable IDs, unique titles, useful questions, distinct practical applications and Scripture references.
+- Replaced abbreviated and inherited book/chapter references with explicit, directly navigable book, chapter and verse ranges; the collection now contains 316 explicit Scripture links.
+- Separated 52 reading/safeguarding cautions from the practical application field so the Study Library no longer presents warnings as the only action step. Both the application and caution remain visible in the entry detail.
+- Added validator checks for topic identity, content fields, unique practical applications, separate reading cautions and KJV validation of every explicit topical reference.
+- App/package and in-app update version advanced to 1.4.108; offline cache advanced to v210.
+- Candidate status pending CI and Android packaging; physical-device navigation and readability testing remain outstanding.
