@@ -90,7 +90,7 @@ const checks = [
   ["Strong's identifier normalization", 'padStart(4, "0")'],
   ["lexicon sense validation", "!entry || !Array.isArray(entry.senses)"],
   ["lexicon retry action", "Retry lexicon entry"],
-  ["offline-specific lexicon guidance", "not saved on this device yet"],
+  ["offline-related word-study fallback", "studyLibrary.search(selectedEnglishWord)"],
   ["same Strong's occurrence matching", "normalizeStrongs(word.strongs) === id"],
   ["contextual word-use caution", "an indexed word can carry different shades of meaning in different contexts."],
   ["KJV verse excerpt for related occurrences", "KJV context: "]
