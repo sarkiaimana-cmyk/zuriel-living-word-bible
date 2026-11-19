@@ -213,6 +213,31 @@ for (const entry of theology.entries) {
   theologyIds.add(entry.id);
   theologyTitles.add(entry.title.trim().toLocaleLowerCase("en"));
 }
+const deepStudyIds = new Set();
+const deepStudyTitles = new Set();
+for (const guide of deep.guides) {
+  assert.ok(typeof guide.id === "string" && guide.id.trim(), "Every deep study guide needs a stable ID");
+  assert.ok(!deepStudyIds.has(guide.id), "Deep study guide IDs must be unique: " + guide.id);
+  assert.ok(typeof guide.title === "string" && guide.title.trim().length >= 8, "Every deep study guide needs a title");
+  const titleKey = guide.title.trim().toLocaleLowerCase("en");
+  assert.ok(!deepStudyTitles.has(titleKey), "Deep study guide titles must be unique: " + guide.title);
+  assert.ok(typeof guide.primaryPassage === "string" && guide.primaryPassage.trim(), "Deep study guide needs primary passages: " + guide.title);
+  for (const reference of guide.primaryPassage.split(";").map(value=>value.trim()).filter(Boolean)) {
+    assert.ok(/^.+?\\s+\\d+:\\d+/.test(reference), "Deep-study primary passages must specify book, chapter and verse: " + guide.title + " — " + reference);
+    checkReference(reference, "deep study primary passage " + guide.title);
+  }
+  assert.ok(Array.isArray(guide.crossReferences) && guide.crossReferences.length >= 2, "Deep study guide needs multiple cross-references: " + guide.title);
+  for (const reference of guide.crossReferences) {
+    assert.ok(/^.+?\\s+\\d+:\\d+/.test(reference), "Deep-study cross-references must specify book, chapter and verse: " + guide.title + " — " + reference);
+    checkReference(reference, "deep study cross-reference " + guide.title);
+  }
+  for (const [field,minLength] of [["contextSummary",60],["observationPrompt",60],["interpretationPrompt",50],["lifeApplicationPrompt",50],["interpretiveCaution",50]]) {
+    assert.ok(typeof guide[field] === "string" && guide[field].trim().length >= minLength, "Deep study guide needs substantive " + field + ": " + guide.title);
+  }
+  deepStudyIds.add(guide.id);
+  deepStudyTitles.add(titleKey);
+}
+
 const topicalIds = new Set();
 const topicalTitles = new Set();
 const topicalApplications = new Set();
@@ -306,7 +331,7 @@ for (const path of [
   "zuriel-deep-study-guides.json","zuriel-bible-geography-atlas.json","zuriel-worship-study-pathways.json","zuriel-theological-comparisons.json"
 ]) assert.ok(loader.includes(path),"Study loader must include "+path);
 assert.ok(index.includes('src="zuriel-study-library-data.js"'),"Study library integration script must load");
-assert.ok(worker.includes('zuriel-bible-offline-v211'),"Offline cache must be version 205");
+assert.ok(worker.includes('zuriel-bible-offline-v212'),"Offline cache must be version 205");
 assert.ok(worker.includes("./zuriel-study-library-data.js"),"Study loader must be precached");
 for (const path of [
   "zuriel-passage-commentary-expansion.json","zuriel-topical-bible-study-library-batch-2.json",
