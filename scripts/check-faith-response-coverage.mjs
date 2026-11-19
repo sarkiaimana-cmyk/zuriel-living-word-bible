@@ -49,8 +49,8 @@ function parseReference(reference) {
 
 const requiredFields = ["prayer", "declaration", "affirmation", "confession", "inspiration"];
 const visibleRecords = library.list();
-if (visibleRecords.length < 226) {
-  throw new Error("Expected at least 226 unique curated verse-specific faith-response references.");
+if (visibleRecords.length < 248) {
+  throw new Error("Expected at least 248 unique curated verse-specific faith-response references.");
 }
 const records = typeof library.auditList === "function"
   ? library.auditList()
@@ -64,8 +64,10 @@ if (records.length !== visibleRecords.length) {
 if (new Set(records.map(item => String(item.reference || "").trim().toLowerCase())).size !== records.length) {
   throw new Error("The faith-response audit list must not contain duplicate Scripture references.");
 }
+const recordsPerBook = new Map();
 const bookCoverage = new Set(records.map(record => {
   const parsed = parseReference(record.reference);
+  if (parsed) recordsPerBook.set(parsed.book, (recordsPerBook.get(parsed.book) || 0) + 1);
   return parsed && parsed.book;
 }).filter(Boolean));
 if (bookCoverage.size !== canonicalBooks.size) {
@@ -77,6 +79,8 @@ const invalid = [];
 const duplicates = [];
 const rangeRecords = [];
 const fieldText = new Map();
+const underrepresentedBooks = books.filter(book => (recordsPerBook.get(book.name) || 0) < 2);
+if (underrepresentedBooks.length) throw new Error("Each Bible book needs at least two curated faith-response references. Underrepresented: " + underrepresentedBooks.map(book => book.name).join(", "));
 
 for (const record of records) {
   const parsed = parseReference(record.reference);
@@ -89,13 +93,6 @@ for (const record of records) {
       invalid.push(record.reference + " (missing " + field + ")");
     }
   }
-  if (parsed.firstVerse !== parsed.lastVerse) {
-    rangeRecords.push({ reference: record.reference, verses: parsed.lastVerse - parsed.firstVerse + 1 });
-    continue;
-  }
-  const key = parsed.book + "|" + parsed.chapter + "|" + parsed.firstVerse;
-  if (exact.has(key)) duplicates.push(record.reference);
-  else exact.set(key, record);
   for (const field of requiredFields) {
     const value = String(record[field] || "").trim().toLowerCase();
     if (!value) continue;
@@ -103,6 +100,13 @@ for (const record of records) {
     if (!fieldText.has(fieldKey)) fieldText.set(fieldKey, []);
     fieldText.get(fieldKey).push(record.reference);
   }
+  if (parsed.firstVerse !== parsed.lastVerse) {
+    rangeRecords.push({ reference: record.reference, verses: parsed.lastVerse - parsed.firstVerse + 1 });
+    continue;
+  }
+  const key = parsed.book + "|" + parsed.chapter + "|" + parsed.firstVerse;
+  if (exact.has(key)) duplicates.push(record.reference);
+  else exact.set(key, record);
 }
 
 const duplicateWording = [...fieldText.entries()]
