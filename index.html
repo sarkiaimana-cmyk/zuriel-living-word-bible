@@ -209,11 +209,26 @@ select {
 #chapterButtons button { min-width: 76px; }
 
 .verse {
-  padding: 13px 8px;
-  border-bottom: 1px solid #e8e5dc;
+  display:block;
+  width:100%;
+  padding: 16px 10px;
+  border-bottom: 1px dashed #c9b77e;
   line-height: 1.9;
   font-size: 17px;
   cursor: pointer;
+  overflow-wrap:anywhere;
+}
+#bibleReader {
+  background:#fff;
+  border:1px solid #e3e6e9;
+  box-shadow:0 5px 18px #10213d0d;
+}
+#message {
+  padding:4px 2px 18px;
+}
+#message > h2 {
+  padding-bottom:12px;
+  border-bottom:1px dashed #c9b77e;
 }
 
 .verse:active { background: #edf3ed; }
