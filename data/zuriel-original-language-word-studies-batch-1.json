@@ -21,7 +21,8 @@
         "1 John 4:10-11"
       ],
       "interpretiveCaution": "Meaning depends on context; do not claim the verb always carries a technical meaning unavailable to other Greek love words.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "In John 3:16 God's love is shown through giving the Son, and John 13:34 makes Jesus' self-giving love the pattern for disciples. The verb describes love in action, but it is not a technical word that always excludes other forms of love."
     },
     {
       "id": "word-study-002",
@@ -30,12 +31,14 @@
       "originalForm": "φιλέω",
       "contextualGloss": "to love, show affection or regard",
       "scriptureReferences": [
-        "John 11:3,36",
+        "John 11:3",
+        "John 11:36",
         "John 16:27",
         "Revelation 3:19"
       ],
       "interpretiveCaution": "Do not build a rigid hierarchy of love from this word alone.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "John 11:3,36 uses the verb for Jesus' affection toward Lazarus, while John 16:27 speaks of the Father's love for the disciples. It can express personal affection, but the New Testament does not maintain a rigid agapao-versus-phileo hierarchy."
     },
     {
       "id": "word-study-003",
@@ -77,7 +80,8 @@
         "Hebrews 11:1"
       ],
       "interpretiveCaution": "Debates about faith and faithfulness require attention to syntax and context.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "Romans 1:17 and Galatians 2:16 place faith within Paul's argument about God's righteousness, while Hebrews 11:1 introduces trust that shapes action. The noun can carry the sense of faith, faithfulness or reliability; syntax and argument determine the emphasis."
     },
     {
       "id": "word-study-006",
@@ -91,7 +95,8 @@
         "Acts 16:31"
       ],
       "interpretiveCaution": "In John it often describes personal trust, not mere agreement with a proposition.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "In John, believing often means receiving and entrusting oneself to Jesus, not merely agreeing that a statement is true. Acts 16:31 likewise places trust in the Lord Jesus at the centre of the response to the gospel."
     },
     {
       "id": "word-study-007",
@@ -105,7 +110,8 @@
         "1 Peter 3:18"
       ],
       "interpretiveCaution": "The ethical and forensic senses depend on the passage.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "The adjective can describe a person who acts justly, someone regarded as righteous, or what is right in a particular setting. Joseph is called righteous in Matthew 1:19; Romans 5:7 and 1 Peter 3:18 show that context shapes its ethical and theological force."
     },
     {
       "id": "word-study-008",
@@ -115,11 +121,12 @@
       "contextualGloss": "to justify, vindicate or declare righteous",
       "scriptureReferences": [
         "Romans 3:24",
-        "4:5",
+        "Romans 4:5",
         "James 2:21-25"
       ],
       "interpretiveCaution": "Compare each author's argument; Paul and James address different distortions.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "Romans 3:24 and 4:5 use the verb in Paul's argument about being put right with God, while James 2:21-25 speaks of faith being shown as genuine through action. Read each writer's argument before treating the passages as if they use the term in an identical way."
     },
     {
       "id": "word-study-009",
@@ -142,7 +149,8 @@
       "originalForm": "ἁγιασμός",
       "contextualGloss": "Holiness or sanctification; describes being set apart for God and the resulting pattern of a life shaped by that belonging.",
       "scriptureReferences": [
-        "Romans 6:19,22",
+        "Romans 6:19",
+        "Romans 6:22",
         "1 Thessalonians 4:3-4",
         "Hebrews 12:14"
       ],
@@ -157,7 +165,8 @@
       "contextualGloss": "A gracious gift given by God; Paul connects such gifts with service and the strengthening of the Christian community.",
       "scriptureReferences": [
         "Romans 12:6",
-        "1 Corinthians 12:4,9",
+        "1 Corinthians 12:4",
+        "1 Corinthians 12:9",
         "1 Peter 4:10"
       ],
       "interpretiveCaution": "Not every gift is a public platform or evidence of superior spiritual rank.",
@@ -175,7 +184,8 @@
         "Philippians 1:5"
       ],
       "interpretiveCaution": "Its meaning is active participation, not simply social contact.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "Acts 2:42 describes shared life in the early community; 1 Corinthians 10:16 uses the word for participation in the Lord's Supper; Philippians 1:5 speaks of partnership in the gospel. It involves participation and shared commitment, not only friendly conversation."
     },
     {
       "id": "word-study-013",
@@ -189,7 +199,8 @@
         "1 Timothy 1:4"
       ],
       "interpretiveCaution": "Do not assume every occurrence refers to a modern economic system.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "In Luke 16:2-4 the word describes a steward's management of an entrusted household, while Ephesians 1:10 uses it for God's ordering purpose in Christ. The common idea is administration or stewardship; the specific arrangement comes from each passage."
     },
     {
       "id": "word-study-014",
@@ -203,7 +214,8 @@
         "Philippians 1:1"
       ],
       "interpretiveCaution": "Context determines whether it is a general description or recognised ministry role.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "Mark 10:43 presents service as the pattern of greatness among Jesus' followers. Romans 16:1 applies the term to Phoebe, and Philippians 1:1 uses it for recognised servants of the church. It can be a general description or a ministry designation depending on context."
     },
     {
       "id": "word-study-015",
@@ -231,7 +243,8 @@
         "Ephesians 1:13"
       ],
       "interpretiveCaution": "The rescue may be present or future and should be defined by the passage.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "The word can describe rescue from danger, deliverance from sin and death, or the final completion of God's saving work. Acts 4:12 centres salvation in Jesus, while Luke 1:69 and Ephesians 1:13 place it within God's promised deliverance and the gospel response."
     },
     {
       "id": "word-study-017",
@@ -272,7 +285,8 @@
         "Hebrews 9:5"
       ],
       "interpretiveCaution": "The translation and theological implications are debated; present the main options.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "Hebrews 9:5 uses the term for the mercy seat above the ark; Romans 3:25 applies it to Christ in language whose translation is debated, often rendered with atonement or propitiation language. Present the mercy-seat background and the main translation options without pretending the debate is settled by the word alone."
     },
     {
       "id": "word-study-020",
@@ -286,7 +300,8 @@
         "1 John 5:14"
       ],
       "interpretiveCaution": "Biblical boldness is confidence before God and truthful witness, not arrogance.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "Acts 4:29 describes courageous public witness; Hebrews 4:16 speaks of confident access to God's throne; 1 John 5:14 applies confidence to prayer. The term is openness or boldness grounded in truth and relationship with God, not arrogance or presumption."
     },
     {
       "id": "word-study-021",
@@ -326,7 +341,8 @@
         "2 Timothy 1:7"
       ],
       "interpretiveCaution": "The verse contrasts fear with God's empowering gifts; avoid reducing it to a personality trait.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "In 2 Timothy 1:7 the word describes disciplined, sound judgement in contrast with fear, alongside power and love. It is not a promise that believers never feel anxiety; Paul is urging faithful courage and self-control in ministry."
     },
     {
       "id": "word-study-024",
@@ -340,7 +356,8 @@
         "Revelation 2:5"
       ],
       "interpretiveCaution": "Repentance in context includes a changed response and direction, not only feeling regret.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "Jesus' call in Matthew 4:17 and Peter's message in Acts 2:38 call hearers to turn toward God in response to the kingdom and gospel. In Revelation 2:5 the command addresses a church that must return to its first works; repentance is more than regret alone."
     },
     {
       "id": "word-study-025",
@@ -354,7 +371,8 @@
         "1 Thessalonians 5:11"
       ],
       "interpretiveCaution": "Translate according to the situation; it does not always mean comfort.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "Romans 12:1 uses the verb to urge or appeal; 2 Corinthians 1:4 describes comfort; 1 Thessalonians 5:11 describes encouragement. The speaker, recipient and situation determine whether the best sense is appeal, comfort, encouragement or exhortation."
     },
     {
       "id": "word-study-026",
@@ -364,11 +382,13 @@
       "contextualGloss": "building, edification or strengthening",
       "scriptureReferences": [
         "Romans 14:19",
-        "1 Corinthians 14:3,26",
+        "1 Corinthians 14:3",
+        "1 Corinthians 14:26",
         "Ephesians 4:12"
       ],
       "interpretiveCaution": "The image is communal strengthening, not self-promotion.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "Romans 14:19 calls believers to pursue what builds peace and mutual strengthening; 1 Corinthians 14 applies the idea to worship that builds up the gathered church. The image is constructive growth in community, not self-promotion or mere accumulation of knowledge."
     },
     {
       "id": "word-study-027",
@@ -382,7 +402,8 @@
         "Ephesians 4:25"
       ],
       "interpretiveCaution": "John's theological use is rich, but not every occurrence carries the full range.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "In John 8:32 truth is connected with Jesus' liberating word, and John 14:6 places truth within Jesus' identity. Ephesians 4:25 applies truthfulness to speech between believers. The word can mean truth, reality or honesty without every occurrence carrying the whole Johannine theology."
     },
     {
       "id": "word-study-028",
@@ -392,11 +413,12 @@
       "contextualGloss": "life; in John often life received through the Son",
       "scriptureReferences": [
         "John 1:4",
-        "10:10",
-        "17:3"
+        "John 10:10",
+        "John 17:3"
       ],
       "interpretiveCaution": "Do not reduce eternal life to duration only; John also stresses relationship with God.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "John 1:4 locates life in the Word, John 10:10 contrasts the life Jesus gives with destruction, and John 17:3 describes eternal life in knowing the Father and Jesus Christ. In John, life is relational and abundant as well as everlasting; it is not merely endless duration."
     },
     {
       "id": "word-study-029",
@@ -410,7 +432,8 @@
         "Galatians 5:16-24"
       ],
       "interpretiveCaution": "Paul's uses vary; the body itself is not inherently evil.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "John 1:14 uses the word for the real human existence the Word assumed. In Paul it can refer to bodily existence, human weakness or humanity oriented against God's Spirit. The body itself is not evil; the surrounding argument identifies the intended sense."
     },
     {
       "id": "word-study-030",
@@ -424,7 +447,8 @@
         "Ephesians 4:17"
       ],
       "interpretiveCaution": "Avoid treating the term as a technical map of separate human components.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "Romans 12:2 speaks of the mind being renewed for discernment, while 1 Corinthians 2:16 and Ephesians 4:17 place thought within spiritual understanding and conduct. The word refers broadly to mind or understanding, not a technical map of separate human parts."
     },
     {
       "id": "word-study-031",
@@ -438,7 +462,8 @@
         "Romans 13:1"
       ],
       "interpretiveCaution": "Identify who grants, exercises and limits authority in each passage.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "Matthew 28:18 presents Jesus' comprehensive authority; Luke 10:19 speaks of authority given to the disciples; Romans 13:1 addresses governing authorities under God's sovereignty. Ask who grants, exercises and limits authority in each passage rather than treating authority as unlimited personal power."
     },
     {
       "id": "word-study-032",
@@ -462,7 +487,7 @@
       "contextualGloss": "A sign or identifying mark; in the Gospels a sign can point beyond the event to Jesus' identity and mission.",
       "scriptureReferences": [
         "John 2:11",
-        "20:30-31",
+        "John 20:30-31",
         "Acts 2:22"
       ],
       "interpretiveCaution": "In John signs point beyond themselves to Jesus' identity and mission.",
@@ -480,7 +505,8 @@
         "Colossians 1:26-27"
       ],
       "interpretiveCaution": "Biblical mystery is revealed truth, not an invitation to unsupported secret codes.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "Paul uses the word for God's purpose once hidden and now disclosed through Christ, especially in Ephesians 3:3-6 and Colossians 1:26-27. It is not an esoteric secret reserved for an elite; the emphasis is God's revealed saving plan."
     },
     {
       "id": "word-study-035",
@@ -494,7 +520,8 @@
         "Hebrews 2:5"
       ],
       "interpretiveCaution": "The geographic scope varies; it does not always mean every location on the modern globe.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "The term can describe the inhabited world or the ordered world known to an ancient writer. Luke 2:1 uses it in the setting of Roman imperial administration, Acts 17:6 uses broad public language, and Hebrews 2:5 looks toward the world to come."
     },
     {
       "id": "word-study-036",
@@ -508,21 +535,23 @@
         "Psalm 1:6"
       ],
       "interpretiveCaution": "The verb has a broad range; relational knowledge is one contextual use, not the only meaning.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "The verb ranges from ordinary recognition to close relational knowledge. Genesis 4:1 uses it as a marital euphemism, Exodus 3:7 describes God's attentive knowledge of Israel's suffering, and Psalm 1:6 describes God's regard for the way of the righteous."
     },
     {
       "id": "word-study-037",
-      "term": "Chesed",
+      "term": "Hesed (Chesed)",
       "language": "Hebrew",
       "originalForm": "חֶסֶד",
-      "contextualGloss": "steadfast love, kindness or loyal love",
+      "contextualGloss": "Steadfast love, covenant loyalty, faithful kindness or loyal love. In Exodus 34:6 it appears alongside compassion, grace, patience and faithfulness in God's self-description. Psalm 136 repeats the enduring-love refrain while recalling creation and deliverance. Hosea 6:6 contrasts steadfast love and knowledge of God with empty ritual, while Micah 7:18-20 celebrates God's covenant faithfulness and mercy.",
       "scriptureReferences": [
         "Exodus 34:6",
-        "Psalm 136",
+        "Psalm 136:1",
+        "Hosea 6:6",
         "Micah 7:18-20"
       ],
-      "interpretiveCaution": "No single English equivalent captures every occurrence.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "interpretiveCaution": "No single English equivalent captures every occurrence. Do not reduce hesed to sentiment, assume every use is a formal covenant formula, or make the word carry a complete theology by itself; read the relationship and literary setting in each passage.",
+      "morphologyStatus": "Lexeme-level study only. No verse-specific inflection or parsing is asserted; consult the Hebrew form, syntax and a critical lexicon in each passage."
     },
     {
       "id": "word-study-038",
@@ -588,7 +617,7 @@
       "contextualGloss": "To wait, hope or look eagerly; it conveys expectant dependence on God rather than passive inactivity or control of timing.",
       "scriptureReferences": [
         "Psalm 27:14",
-        "40:1",
+        "Psalm 40:1",
         "Isaiah 40:31"
       ],
       "interpretiveCaution": "The image of waiting is not a promise of instant resolution.",
@@ -606,7 +635,8 @@
         "Isaiah 12:2"
       ],
       "interpretiveCaution": "Read whether the passage describes physical rescue, communal deliverance or broader salvation.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "The root describes saving or bringing into safety. Exodus 14:13 uses it for Israel's deliverance at the sea; the Psalms use it for God's protection, and Isaiah 12:2 celebrates God as salvation. The danger and form of rescue are supplied by each context."
     },
     {
       "id": "word-study-044",
@@ -634,7 +664,8 @@
         "Proverbs 21:3"
       ],
       "interpretiveCaution": "Its relational, legal and ethical dimensions should be considered in context.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "The noun can describe righteousness, justice or right conduct. Genesis 15:6 uses it in the account of Abraham's faith being reckoned as righteousness; Psalm 24:5 and Proverbs 21:3 place it in ethical and worship-related settings."
     },
     {
       "id": "word-study-046",
@@ -648,7 +679,8 @@
         "Isaiah 1:17"
       ],
       "interpretiveCaution": "It may refer to a court decision, a just order or the practice of justice.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "The word can refer to a legal decision, a just judgement, or the practice of justice. Deuteronomy 16:18-20 addresses fair courts, Psalm 89:14 celebrates justice as part of God's rule, and Isaiah 1:17 calls for justice toward the vulnerable."
     },
     {
       "id": "word-study-047",
@@ -662,7 +694,8 @@
         "Proverbs 3:3"
       ],
       "interpretiveCaution": "The term can emphasise reliability as well as factual truth.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "The term conveys firmness, reliability, truth or faithfulness. Exodus 34:6 places it within God's self-description as faithful; Psalm 25:5 links it with God's truth, and Proverbs 3:3 commends truth and faithfulness in human relationships."
     },
     {
       "id": "word-study-048",
@@ -672,7 +705,7 @@
       "contextualGloss": "Fear, awe or reverence; context determines whether the word describes terror, respect or worshipful regard for God.",
       "scriptureReferences": [
         "Proverbs 1:7",
-        "9:10",
+        "Proverbs 9:10",
         "Psalm 111:10"
       ],
       "interpretiveCaution": "The appropriate nuance depends on context; reverence is not always a complete translation.",
@@ -690,21 +723,22 @@
         "Proverbs 4:23"
       ],
       "interpretiveCaution": "Ancient Hebrew often locates thinking as well as feeling in the heart.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "Hebrew 'heart' commonly includes thought, intention, will, desire and feeling, not emotion alone. Deuteronomy 6:5 calls for whole-person love of God; 1 Samuel 16:7 contrasts outward appearance with the heart; Proverbs 4:23 urges guarding one's inner life."
     },
     {
       "id": "word-study-050",
-      "term": "Nefesh",
+      "term": "Nephesh (Nefesh)",
       "language": "Hebrew",
       "originalForm": "נֶפֶשׁ",
-      "contextualGloss": "living being, life, person or self",
+      "contextualGloss": "Living being, life, person, self or desire according to context. Genesis 2:7 calls the formed human a living nephesh; the verse describes the human as a living being rather than plainly teaching that a detachable soul was inserted into a body. Leviticus 17:11 closely associates nephesh with life and blood. Psalm 42:1-2 uses it for the worshipper's own self, which thirsts for God.",
       "scriptureReferences": [
         "Genesis 2:7",
         "Leviticus 17:11",
-        "Psalm 42:1"
+        "Psalm 42:1-2"
       ],
-      "interpretiveCaution": "Avoid assuming it always denotes an immortal immaterial entity distinct from the body.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "interpretiveCaution": "Avoid importing a later philosophical definition of soul into every occurrence. Hebrew usage includes the person, life and appetite according to context; do not force one English gloss onto every verse.",
+      "morphologyStatus": "Lexeme-level study only. No verse-specific inflection or parsing is asserted; consult the Hebrew form, syntax and a critical lexicon in each passage."
     },
     {
       "id": "word-study-051",
@@ -729,7 +763,7 @@
       "contextualGloss": "Glory, honour or weight; it can describe God's revealed majesty or the honour and significance accorded to people.",
       "scriptureReferences": [
         "Exodus 24:16-17",
-        "33:18",
+        "Exodus 33:18",
         "Isaiah 6:3"
       ],
       "interpretiveCaution": "The word's concrete and figurative uses should not be collapsed.",
@@ -757,7 +791,7 @@
       "contextualGloss": "Dwelling place or tabernacle; in Exodus it names the sanctuary associated with God's presence among Israel.",
       "scriptureReferences": [
         "Exodus 25:8-9",
-        "40:34-38"
+        "Exodus 40:34-38"
       ],
       "interpretiveCaution": "The tabernacle is a particular sanctuary structure, not a generic name for every worship building.",
       "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
@@ -788,7 +822,8 @@
         "Exodus 20:3"
       ],
       "interpretiveCaution": "Although grammatically plural in form, it commonly takes singular verbs when referring to Israel's God.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "The form can refer to Israel's God, other gods or divine beings depending on syntax and context. In Genesis 1:1 it refers to the Creator; Psalm 82:1 uses it in a different heavenly-court setting. The plural form alone does not prove a doctrine of the Trinity."
     },
     {
       "id": "word-study-057",
@@ -798,11 +833,12 @@
       "contextualGloss": "traditional divine title often rendered God Almighty",
       "scriptureReferences": [
         "Genesis 17:1",
-        "28:3",
+        "Genesis 28:3",
         "Exodus 6:3"
       ],
       "interpretiveCaution": "The precise etymology of Shaddai is debated; do not present one derivation as certain.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "This is a traditional divine title often translated 'God Almighty'. Genesis 17:1 places it in God's covenant promise to Abraham, and Genesis 28:3 in a blessing; Exodus 6:3 recalls the patriarchal revelation. The title's precise etymology remains debated."
     },
     {
       "id": "word-study-058",
@@ -812,11 +848,12 @@
       "contextualGloss": "the covenant name of Israel's God",
       "scriptureReferences": [
         "Exodus 3:14-15",
-        "6:2-8",
+        "Exodus 6:2-8",
         "Psalm 8:1"
       ],
       "interpretiveCaution": "Jewish reading traditions often avoid pronouncing the name; follow respectful conventions.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "This is the four-consonant covenant name of Israel's God. Exodus 3:14-15 and 6:2-8 connect its disclosure with God's identity and covenant faithfulness. Jewish reading traditions commonly use a substitute reading rather than pronouncing the name; the app should preserve that respectful convention."
     },
     {
       "id": "word-study-059",
@@ -844,7 +881,8 @@
         "Galatians 4:6"
       ],
       "interpretiveCaution": "It is not accurately reduced to the childish English word 'Daddy'.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "The Aramaic address appears on Jesus' lips in Mark 14:36 and in Paul's teaching on adoption in Romans 8:15 and Galatians 4:6. It expresses familial address to the Father with reverence and trust; it should not be reduced to a childish term or used to deny God's holiness."
     },
     {
       "id": "word-study-061",
@@ -856,7 +894,8 @@
         "1 Corinthians 16:22"
       ],
       "interpretiveCaution": "The phrase's segmentation is discussed; mark the usual interpretation without overstating certainty.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "In 1 Corinthians 16:22 this Aramaic expression is commonly understood as an invocation, 'Our Lord, come'. An alternative division of the words has also been discussed; present the common reading while noting the linguistic question rather than treating every detail as certain."
     },
     {
       "id": "word-study-062",
@@ -892,7 +931,8 @@
         "Matthew 5:22"
       ],
       "interpretiveCaution": "Its exact nuance is debated; focus on Jesus' warning against contemptuous speech.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "Matthew 5:22 uses this Aramaic insult in a warning against contemptuous speech. It is more than a neutral label; it expresses disdain for another person. Explain the warning in the passage's broader teaching about anger, reconciliation and the seriousness of demeaning others."
     },
     {
       "id": "word-study-065",
@@ -905,7 +945,8 @@
         "Luke 16:9-13"
       ],
       "interpretiveCaution": "The warning is about allegiance to wealth, not the claim that all possessions are evil.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing.",
+      "contextualWordUse": "Jesus personifies wealth as a rival master in Matthew 6:24 and Luke 16:9-13. The warning concerns divided allegiance and the power possessions can exercise; it does not mean that every possession or act of financial stewardship is inherently evil."
     },
     {
       "id": "word-study-066",
@@ -919,7 +960,8 @@
         "1 John 4:8"
       ],
       "interpretiveCaution": "The noun is related to agapao, but context—not an assumed word hierarchy—determines its force.",
-      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology.",
+      "contextualWordUse": "John 13:34-35 makes Jesus' love the pattern for the community, Romans 5:5 connects love with the Holy Spirit, and 1 John 4:8 grounds love in God's character. The noun describes love in varied settings; it is not a magic label that always means one exclusive kind of love."
     },
     {
       "id": "word-study-067",
@@ -948,7 +990,8 @@
         "2 Corinthians 12:9"
       ],
       "interpretiveCaution": "Grace has a range of uses; distinguish divine saving grace from ordinary favour by context.",
-      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology.",
+      "contextualWordUse": "Romans 3:24 uses the word for God's gracious gift in justification, Ephesians 2:8 for salvation by grace, and 2 Corinthians 12:9 for grace sufficient in weakness. The term can mean favour, grace or gift; the passage determines its emphasis."
     },
     {
       "id": "word-study-069",
@@ -979,7 +1022,8 @@
         "1 Corinthians 12:27"
       ],
       "interpretiveCaution": "The word does not by itself settle later debates about church polity or denominational structure.",
-      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology.",
+      "contextualWordUse": "The word means an assembly or congregation. Jesus speaks of building his church in Matthew 16:18; Acts 2:42 describes the gathered community, and 1 Corinthians 12:27 calls the believers Christ's body. Do not assume every use refers to a modern church building."
     },
     {
       "id": "word-study-071",
@@ -993,7 +1037,8 @@
         "2 Corinthians 9:12"
       ],
       "interpretiveCaution": "Do not restrict every occurrence to one church office; the context identifies the kind of service.",
-      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology.",
+      "contextualWordUse": "Acts 6:1 uses the term in the context of practical care, while 2 Corinthians 8:4 and 9:12 describe service to fellow believers through material assistance. Ministry here is expressed through concrete service, not only public teaching or office."
     },
     {
       "id": "word-study-072",
@@ -1007,7 +1052,8 @@
         "1 John 2:1"
       ],
       "interpretiveCaution": "The Gospel's references to the Spirit and John's letter's reference to Christ should be read in their distinct contexts.",
-      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology.",
+      "contextualWordUse": "In John 14:16,26 the term describes the Spirit as helper and advocate for Jesus' disciples; 1 John 2:1 applies it to Jesus as advocate with the Father. The shared image is one who comes alongside to help or represent, while each passage identifies the person and role."
     },
     {
       "id": "word-study-073",
@@ -1021,7 +1067,8 @@
         "Galatians 1:11"
       ],
       "interpretiveCaution": "The term names a message; do not replace the content of the gospel with a slogan or a prosperity guarantee.",
-      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology.",
+      "contextualWordUse": "Mark 1:1 introduces the good news about Jesus Christ; Romans 1:16 calls the gospel God's power for salvation; Galatians 1:11 defends the message Paul preached. The word names a public announcement, not merely private inspiration or a generic positive message."
     },
     {
       "id": "word-study-074",
@@ -1049,7 +1096,8 @@
         "Hebrews 12:1"
       ],
       "interpretiveCaution": "Biblical endurance is not a command to remain in danger or tolerate abuse; seek safety and help where needed.",
-      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology.",
+      "contextualWordUse": "Romans 5:3-4 connects endurance with tested character and hope; James 1:3-4 describes perseverance under trial; Hebrews 12:1 pictures sustained running. The word stresses steadfast endurance, not passive resignation or refusal to seek help."
     },
     {
       "id": "word-study-076",
@@ -1063,7 +1111,8 @@
         "Isaiah 26:3"
       ],
       "interpretiveCaution": "Do not reduce shalom to the absence of conflict; the context may include welfare, security and restored relationships.",
-      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology.",
+      "contextualWordUse": "The word can describe peace, welfare, wholeness or well-being. Numbers 6:26 places it in the priestly blessing, Isaiah 9:6 associates it with the promised ruler, and Isaiah 26:3 connects peace with trust in God. It is richer than the absence of conflict."
     },
     {
       "id": "word-study-077",
@@ -1077,7 +1126,8 @@
         "Jeremiah 1:4"
       ],
       "interpretiveCaution": "The noun has a broad range; distinguish a spoken word, an event or a matter from context.",
-      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology.",
+      "contextualWordUse": "The noun can mean a spoken word, a matter, an event or a thing. Deuteronomy 8:3 uses it for what proceeds from God's mouth, Psalm 119:105 pictures God's word as guidance, and Jeremiah 1:4 introduces a prophetic message."
     },
     {
       "id": "word-study-078",
@@ -1091,7 +1141,8 @@
         "Habakkuk 2:4"
       ],
       "interpretiveCaution": "English translations vary by context; do not assume every occurrence means only inward belief.",
-      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology.",
+      "contextualWordUse": "The term conveys firmness, reliability and faithfulness. Deuteronomy 32:4 describes God's faithfulness, Psalm 37:3 calls for faithful living, and Habakkuk 2:4 uses it in a context often discussed in relation to faith and faithfulness."
     },
     {
       "id": "word-study-079",
@@ -1105,7 +1156,8 @@
         "Jeremiah 31:31"
       ],
       "interpretiveCaution": "Covenant forms and obligations differ across biblical contexts; avoid flattening every covenant into an identical arrangement.",
-      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology.",
+      "contextualWordUse": "A covenant is a solemnly established relationship with commitments and obligations, not merely an informal promise. Genesis 15:18 narrates God's covenant with Abram, Exodus 24:7-8 describes Israel's covenant response, and Jeremiah 31:31 announces a new covenant."
     },
     {
       "id": "word-study-080",
@@ -1133,7 +1185,8 @@
         "Isaiah 9:2"
       ],
       "interpretiveCaution": "Light can be literal or figurative; interpret imagery within the literary setting.",
-      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology.",
+      "contextualWordUse": "The word means light or brightness in literal and figurative settings. Genesis 1:3 speaks of created light; Psalm 27:1 calls the Lord the worshipper's light, and Isaiah 9:2 uses light as an image of hope for people in darkness."
     },
     {
       "id": "word-study-082",
@@ -1161,7 +1214,8 @@
         "Ruth 4:18"
       ],
       "interpretiveCaution": "The social unit may extend beyond a modern nuclear family; read the historical kinship setting carefully.",
-      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology.",
+      "contextualWordUse": "The term can refer to an extended family, clan or kinship group, larger than a modern nuclear household. Genesis 12:3 speaks of families of the earth, Joshua 7:14 uses clan groupings, and Ruth 4:18 places family identity within a genealogy."
     },
     {
       "id": "word-study-084",
@@ -1175,7 +1229,8 @@
         "Deuteronomy 10:12"
       ],
       "interpretiveCaution": "The same word family covers different kinds of service; context determines whether ordinary labour or worship is in view.",
-      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology.",
+      "contextualWordUse": "The word covers work, labour and service, including service offered to God. Genesis 2:15 describes the human task in the garden; Exodus 3:12 speaks of Israel serving God, and Deuteronomy 10:12 connects service with reverence and obedience."
     },
     {
       "id": "word-study-085",
@@ -1189,21 +1244,8 @@
         "Isaiah 41:14"
       ],
       "interpretiveCaution": "The legal and family role in Torah and Ruth should not be collapsed into every later theological use of redemption.",
-      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
-    },
-    {
-      "id": "word-study-086",
-      "term": "Hesed",
-      "language": "Hebrew",
-      "originalForm": "חֶסֶד",
-      "contextualGloss": "Steadfast love, covenant loyalty or faithful kindness. In Exodus 34:6 it appears with compassion, grace, patience and faithfulness in God's self-description. Psalm 136 repeats the enduring-love refrain while recalling creation and deliverance. Hosea 6:6 contrasts steadfast love and knowledge of God with empty ritual.",
-      "scriptureReferences": [
-        "Exodus 34:6",
-        "Psalm 136:1",
-        "Hosea 6:6"
-      ],
-      "interpretiveCaution": "No single English word captures every occurrence. Do not reduce hesed to sentiment or assume every use describes a formal covenant formula.",
-      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology.",
+      "contextualWordUse": "The goel is a family redeemer who may protect kinship rights, reclaim property or act for a vulnerable relative under Israel's legal customs. Leviticus 25:25 and Ruth 4:4-10 show the social setting; Isaiah 41:14 applies redeemer language to God."
     },
     {
       "id": "word-study-087",
@@ -1218,20 +1260,6 @@
       ],
       "interpretiveCaution": "Do not treat goodness as mere niceness or as a way to earn salvation; these passages describe Spirit-shaped character expressed in life.",
       "morphologyStatus": "Not asserted; consult the specific Greek form, syntax and a critical lexicon before assigning morphology."
-    },
-    {
-      "id": "word-study-088",
-      "term": "Nephesh",
-      "language": "Hebrew",
-      "originalForm": "נֶפֶשׁ",
-      "contextualGloss": "Living being, life, person, self or desire according to context. Genesis 2:7 calls the formed human a living nephesh; it describes the whole living person rather than plainly teaching that a detachable soul was inserted into a body. Leviticus 17:11 closely associates nephesh with life and blood. Psalm 42:1-2 uses it for the worshipper's own self, which thirsts for God.",
-      "scriptureReferences": [
-        "Genesis 2:7",
-        "Leviticus 17:11",
-        "Psalm 42:1-2"
-      ],
-      "interpretiveCaution": "Avoid importing a later philosophical definition of soul into every occurrence. Hebrew usage includes the person, life and appetite, depending on context.",
-      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
     },
     {
       "id": "word-study-089",

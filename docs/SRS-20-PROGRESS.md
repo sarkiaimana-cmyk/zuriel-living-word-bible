@@ -21,16 +21,16 @@ A feature is not considered complete merely because code exists. Completion requ
 | 1 | Product Vision and Objectives | Established | Preserve the free, dependable, Scripture-centred mission and approved product requirements. |
 | 2 | Main Application Structure | Substantial implementation; core reader overlays and contextual navigation automated checks expanded; physical-device UX verification outstanding | The reader has grouped verse actions (Prayer, Declaration, Affirmation, Faith, Inspiration; study and reading tools), a compact selected-verse overlay, one-selected-detail-at-a-time study panel, separate word-study bottom sheet, and restore/back paths for nested study content. The 1.4.96 branch strengthens CI to check the actual reader tap handler and menu groups, not just the study-panel labels. Continue testing every destination, back behaviour, responsive layout, accessibility and navigation on a physical phone. |
 | 3 | Complete Bible Reading | Substantial implementation; whole-corpus KJV integrity CI-verified; top-of-home translation controls implemented | PR #115 verifies exactly 66 unique books, 1,189 chapters and 31,102 non-empty KJV verse records. Reader position restore and full-width verse rendering are integrated. PR #116 adds an optional online comparison panel and a separate translation-only Worker, but the service remains disabled until the owner configures secrets, deploys the Worker and verifies publisher licences. All twelve requested translation shortcuts (KJV, GNT, AMP, LB/LT, TPT, NLT, NET, NIV, ESV, NASB, CSB and NKJV) now appear as tappable controls in the top home section. KJV opens the offline reader. The other versions remain unavailable until the protected Cloudflare Worker is deployed and its verified endpoint is saved. Still verify actual offline chapter reading and navigation on Android. |
-| 4 | Advanced Bible Study | Partial; 100 contextual dictionary entries, 110 original-language studies with 110 unique terms, 173 passage-commentary notes and 35 theological comparisons; exact verse-level lemma/morphology coverage and scholarly review remain incomplete | PRs #6, #9, #10, #15, #16 and #46 are merged. Includes source-attributed original-language data, KJV word linking by Strong's number, contextual occurrence cards, 104 curated topical studies and 519 Scripture references. PR #46 normalizes Psalm/Psalms aliases and adds automated checks for topic fields, book names, verse ranges, reflection questions and search. The offline theological comparison library now contains 25 topics with multiple interpretations, shared-ground statements, historical context, areas of disagreement and reading cautions; the expanded-study CI validates every Scripture reference against the bundled KJV. Still required: broader verified morphology/lexicon coverage, cross-chapter word study, richer contextual commentary and scholarly review. |
-| 5 | Devotional and Daily Growth | Substantial implementation; 226 unique visible faith-response references across all 66 Bible books, with 189 exact single-verse records (0.608% of 31,102 KJV verses); verse-level coverage remains partial | Verify devotional depth, daily content, Glory Verse Affirmation, monthly Light Glory devotional, prayers, declarations, affirmations, and non-repetitive content. |
+| 4 | Advanced Bible Study | Substantial structured-library coverage; 1.4.108 candidate under CI; scholarly review, exact verse-level morphology and physical-device verification remain outstanding | The current candidate contains 173 unique primary-passage commentary entries; 108 unique Hebrew, Greek and Aramaic lexemes; 100 expanded dictionary entries with 293 explicit KJV-checked links; 35 theological comparisons with 107 distinct interpretive positions; and 74 connected Scripture trails with 370 unique, passage-specific step notes. All 66 Bible books remain represented in the commentary collection. The five collections have explicit-reference, content-quality and KJV validation safeguards. Exact lemma/morphology coverage at every verse and independent scholarly review remain future work; no unverified parsing is claimed. |
+| 5 | Devotional and Daily Growth | 248 unique verse-specific faith responses across all 66 books; every book now has at least two records; 211 exact single-verse records (0.679% of 31,102 KJV verses); full-verse coverage remains partial | The new 22 records target books that previously had only one response. All five response fields (prayer, declaration, affirmation, confession and inspiration) are checked for repeated wording, including multi-verse records. Continue expanding gradually with contextual, non-repetitive content; the monthly Light devotional and Glory Verse Affirmation remain separate features. |
 | 6 | Worship and Music | Expanded to 30 original offline worship-study pathways; audio and third-party songs remain separate, source-dependent features |
 | 7 | Words of Jesus | Core experience implemented and CI-verified; 60 themes and 171 Scripture links across all four Gospels | PR #11 adds 60 searchable/filterable Gospel teaching themes, verse links, contextual study navigation and saving to My Library. PR #47 corrects exact verse selection by visible verse label rather than array position. The checker now requires Matthew, Mark, Luke and John to be represented and validates every individual reference against the offline KJV. Continue expanding and reviewing the teaching index. |
-| 8 | Christian Topics | Substantial implementation | Audit all topic guides and Scripture links, accuracy, coverage, search, and links into the reader and study tools. |
+| 8 | Christian Topics | 104 curated topical-index topics plus 100 expanded topical study guides; 1.4.108 candidate under CI | The curated topical index has 519 Scripture links checked against the offline KJV. The expanded guide collection has 100 unique topics and 316 explicit references, with all references validated against the bundled KJV. Fifty-two reading/safeguarding cautions have been separated from practical application steps so each topic provides both a constructive response and a distinct caution. Continue checking topic overlap, search behaviour and reader navigation on a physical phone. |
 | 9 | Open Book Card Studio | Native Android Gallery save integrated; real-device verification outstanding | PRs #12, #24 and #48 provide separate Scripture/faith typography, adaptive preview and PNG export, native sharing/download fallback, and the approved branded layout. PR #155 adds the Capacitor 8 Media bridge to save PNG cards into the app-owned Zuriel Living Word Bible Gallery album; browser/PWA Downloads and native share-sheet paths remain available. PR #48 makes long-content PNG exports stack vertically while short cards retain the two-column spread. PR #50 also loads the home Open Book card from verified bundled offline KJV text. Automated checks pass; real Android rendering, gallery/download, long-content and share-cancellation checks remain outstanding. |
 | 10 | Personal Spiritual Library | Substantial implementation; encrypted backup/restore safeguards strengthened | Notes, insights, prayer journal, reading history/progress and password-encrypted backup/restore are integrated. PR #44 protects backups from malformed local records; PR #45 prevents Personal Study Space saves/deletes from silently overwriting unreadable records. Still verify browser download/import and Android file save/restore on real devices. |
 | 11 | Audio and Reading Plans | Four offline reading plans and local-device TTS read-aloud implemented; recorded-audio streaming/download remains unconnected | PR #25 provides three offline seven-day plans, sequential progress, passage navigation and encrypted backup compatibility. PR #49 makes progress reads/writes fail closed when local records are corrupt or use an unsupported schema. Audio playback, background play, downloads and offline storage remain blocked until provider entitlement and the specific audio IP Holder licence are confirmed. |
 | 12 | Smart Search | Substantial implementation | Validate search accuracy, verse-result opening, highlighting, filters, and performance across the full Bible corpus. |
-| 13 | Offline-First Architecture | Substantial implementation; Android study-resource packaging parity check added | The 1.4.96 hotfix packages the study loader and all 12 offline JSON datasets and verifies each packaged file matches its source. Still test cold-start offline, cache updates, missing-resource recovery, storage limits and full consistency on a physical Android device. |
+| 13 | Offline-First Architecture | Substantial implementation; 12 study datasets are packaged and parity-checked; candidate offline cache v210 | The study loader and all 12 offline JSON datasets are copied into the Android package and checked against their source files. The 1.4.108 candidate advances the offline cache to v210. Still test cold-start offline, cache updates, missing-resource recovery, storage limits and full consistency on a physical Android device. |
 | 14 | AI Assistant | Safety foundation and provider review documented; implementation gated | `docs/AI-ASSISTANT-SAFETY.md` defines Scripture-grounding, citation validation, privacy, prompt-injection, offline/failure, pastoral-safety and release-test requirements. Provider readiness was refreshed on 2026-11-17 against current Cloudflare documentation: Workers AI Free includes 10,000 Neurons/day and Gemma 4 remains a candidate with a zero-data-retention label. No provider, API key, backend deployment or live chat is connected. Keep Free-plan hard stops; do not upgrade without a separately approved budget. |
 | 15 | Design and User Experience | Study Centre drawer and responsive topic tiles implemented in 1.4.98; automated validation and signed Android build passed; physical-device usability/accessibility checks pending | The Study Centre opens with one collapsed Study Library drawer. Opening it reveals responsive topic tiles; selecting one expands only that topic. Verse-selected actions open the drawer and relevant topic directly, and the Study navigation restores the full Study Centre after contextual verse or word mode. Validation run `44511867087` passed; Android run `44511867082` built and verified signed 1.4.98. Phone touch, screen-reader, text scaling and real-device usability checks remain outstanding. |
 | 16 | Technical Architecture | Specification established; architecture implementation substantial | Keep web modules, offline cache, data contracts, and Capacitor Android packaging aligned; verify each release build. |
@@ -264,3 +264,124 @@ The following user requirements are part of the product acceptance criteria, not
 - Expands the contextual original-language library from 100 to 110 distinct lexemes with five Greek and five Hebrew entries.
 - New terms cover mercy, compassion, godliness, reconciliation, atonement, comfort/relenting, Sabbath, remembrance, dwelling and shield imagery. Each card includes original script, contextual gloss, KJV references, interpretive cautions and explicit limits on verse-specific parsing.
 - The automated count gate advances to 110 and offline cache to v204. The library remains lexeme-level where exact verse forms and morphology are not parsed; no unverified Strong's numbers or inflections are asserted.
+
+
+## 1.4.103 commentary quality milestone — candidate
+
+- Replaced three shallow duplicate primary-passage records with distinct contextual commentary on **2 Kings 22:8–20**, **Psalm 90:1–17**, and **Matthew 25:31–46**. The fuller existing treatments of 1 Samuel 8:1–22, Micah 6:6–8 and John 15:1–17 are retained.
+- The commentary collection remains at **173 entries**, now with **173 unique primary passages** and established representation across all 66 canonical books.
+- Expanded-study validation now checks every commentary `passage` field against the bundled KJV, checks cross-chapter range endings, and requires unique IDs/passages plus substantive context, observation and interpretive-caution fields. Related Scripture references are checked when supplied.
+- App/package metadata advances to **1.4.103** and offline cache **v205** so the revised commentary dataset is included in web and Android packages.
+- Validation and signed Android packaging must pass before merge. This candidate is not an installed phone update; real-device offline and reading checks remain outstanding.
+
+
+## 1.4.104 original-language quality milestone — candidate
+
+- Consolidated the duplicate Hebrew lexeme records for חֶסֶד (Hesed/Chesed) and נֶפֶשׁ (Nephesh/Nefesh) into single entries, retaining the fuller contextual explanations and merging their relevant Scripture references.
+- The collection now contains 108 unique language-and-original-script lexemes rather than counting alternate transliterations as separate studies.
+- Added a validator assertion to prevent the same language/original-script lexeme from being entered again under a different transliteration.
+- Preserved the distinction between lexeme-level glosses and verse-specific morphology: no parsing is claimed unless separately verified.
+- Updated app metadata to 1.4.104 and offline cache to v206 so revised study data can refresh offline after an update.
+- Candidate status only: CI and Android package checks must pass; physical Android installation and reader interaction still require device testing.
+
+
+## 1.4.105 biblical dictionary quality milestone — candidate
+
+- Audited all 100 expanded biblical dictionary entries for unique IDs, unique display terms, required definitions, editorial cautions and Scripture references.
+- Corrected malformed reference text in the Repentance and Righteousness entries and replaced chapter-only references with focused, explicit chapter-and-verse passages.
+- Expanded comma-separated references into individually named passages so every dictionary link can be checked and opened unambiguously.
+- Added dictionary-specific KJV reference validation and explicit-reference requirements to the study-library validator.
+- Updated the offline study drawer to display each dictionary entry's editorial caution rather than silently omitting it.
+- App/package and update metadata advanced to 1.4.105; offline cache advanced to v207.
+- Candidate only until validation and Android package workflows pass; device installation and visual reader checks remain separate.
+
+
+## 1.4.106 theological comparison quality milestone — candidate
+
+- Reviewed all 35 theological comparison topics and all 107 individual interpretive positions.
+- Confirmed that each topic presents at least two distinct positions, with 31 topics presenting three and three topics presenting four; one topic deliberately retains two clearly distinct positions rather than inventing a third view.
+- Confirmed unique perspective labels within each topic, substantive summaries, named tradition scopes, distinct shared-ground/context/disagreement/reading-caution sections, and no repeated position summaries or duplicate references within a topic.
+- Added validator rules for two-to-four distinct perspectives, adequate tradition descriptions, explicit book/chapter/verse references and KJV reference checks.
+- App/package and in-app update version advanced to 1.4.106; offline cache advanced to v208.
+- Candidate status pending CI and Android package checks; installation and physical device testing remain outstanding.
+
+
+## 1.4.107 connected Scripture pathway quality milestone — candidate
+
+- Reviewed all 74 Scripture trails and all 370 ordered passage steps.
+- Replaced repeated generic step prompts across the first 41 trails and the 24 generic trails in the second batch with individually written notes tied to each passage's content and place in the trail.
+- Preserved the nine already passage-specific trails in the second batch and strengthened three shorter notes in the Malachi trail.
+- Every one of the 370 connection notes is now unique and substantive; every step has an explicit book, chapter and verse reference.
+- Added validator checks for five ordered steps, explicit passage references, substantive unique connection notes, and each trail's overview, caution and application.
+- App/package and in-app update version advanced to 1.4.107; offline cache advanced to v209.
+- Candidate status pending validation and Android package checks; physical installation and reading-flow tests remain separate.
+
+
+## 1.4.108 topical study quality milestone — candidate
+
+- Audited all 100 expanded topical study guides for stable IDs, unique titles, useful questions, distinct practical applications and Scripture references.
+- Replaced abbreviated and inherited book/chapter references with explicit, directly navigable book, chapter and verse ranges; the collection now contains 316 explicit Scripture links.
+- Separated 52 reading/safeguarding cautions from the practical application field so the Study Library no longer presents warnings as the only action step. Both the application and caution remain visible in the entry detail.
+- Added validator checks for topic identity, content fields, unique practical applications, separate reading cautions and KJV validation of every explicit topical reference.
+- App/package and in-app update version advanced to 1.4.108; offline cache advanced to v210.
+- Candidate status pending CI and Android packaging; physical-device navigation and readability testing remain outstanding.
+
+
+## 1.4.109 Names and Titles of God quality milestone — candidate
+
+- Audited all 52 divine names and titles for unique IDs, unique display names, explicit source-language labels, original-script forms, contextual meanings, study notes and Scripture references.
+- Expanded abbreviated references into 132 individually named book/chapter/verse links so each can be validated and opened directly.
+- Added checks that Hebrew, Greek and Aramaic labels match the script actually supplied; combined Hebrew/Greek titles must contain both scripts.
+- Fixed the expanded Study Library renderer so the `senseAndContext` field is shown as the meaning for Names and Titles of God instead of a generic empty summary.
+- App/package and in-app update version advanced to 1.4.109; offline cache advanced to v211.
+- Candidate status pending validation and Android package checks; pronunciation and transliteration remain editorial study aids, not a claim that every historical vocalisation is certain.
+
+
+## 1.4.110 deep-study guide quality milestone — candidate
+
+- Audited all 20 deep-study guides for unique IDs/titles, primary passages, cross-references, contextual summaries, observation prompts, interpretation prompts, applications and reading cautions.
+- Expanded inherited and abbreviated references into 105 explicit primary/cross-reference links, each checked against the bundled KJV.
+- Fixed Study Library field mapping so the deep guides display their context summaries, primary passages, cross-references, observation and interpretation prompts, life applications and interpretive cautions rather than losing those fields or showing generic empty summaries.
+- App/package and in-app update version advanced to 1.4.110; offline cache advanced to v212.
+- Candidate status pending CI and Android packaging; phone layout and navigation still require physical-device testing.
+
+
+## 1.4.111 book introduction and study pathway quality milestone — candidate
+
+- Audited the 66 book introductions and 66 book-specific study pathways, preserving one entry for each canonical book.
+- Expanded abbreviated and chapter-only key passages, starting passages and cross-reference trails into 452 explicit, directly navigable references checked against the bundled KJV.
+- Replaced repeated generic reading notes across all 66 introductions with book-specific context guidance. Tailored all 66 pathway application and prayer prompts to each book's focus.
+- Fixed Study Library field mapping so book guides show key passages, pathway starting passages and cross-reference trails, major themes, context, observation and interpretation prompts, practical applications, prayer prompts and interpretive guardrails.
+- Added validator rules for unique book entries, substantive book-specific prompts, explicit references and KJV validation of every passage link.
+- App/package and in-app update version advanced to 1.4.111; offline cache advanced to v213.
+- Candidate status pending CI and Android packaging; real-device navigation and accessibility checks remain outstanding.
+
+
+## 1.4.112 Geography and worship-study quality milestone — candidate
+
+- Audited all 25 biblical geography places and 8 journey routes for unique IDs/names, regional context, modern orientation, significance, historical cautions, route sequences and Scripture references.
+- Expanded abbreviated and chapter-only geography/journey references into 103 explicit passage links and added KJV validation for every place and route reference.
+- Reviewed all 30 worship-study pathways: each has a distinct title, focus, reflection question, context note and at least three Scripture links (90 links total), all checked against the bundled KJV.
+- Fixed Study Library rendering so place regions, modern orientation, journey sequences and worship context notes are displayed.
+- App/package and in-app update version advanced to 1.4.112; offline cache advanced to v214.
+- Candidate status pending CI and Android package checks; geographical map/route interpretation and physical-device usability still need review.
+
+
+## 1.4.113 book-specific study pathway quality milestone — candidate
+
+- Completed a deeper audit of all 66 book introductions and pathways after finding two generic cross-reference placeholders repeated across 65 books.
+- Replaced the repeated Psalm 105:1–11 and Luke 24:25–27 placeholders with relevant book-specific canonical connections; every book pathway now has at least two distinct cross-reference steps.
+- Added key passages for six shorter books (Joel, Obadiah, Zephaniah, Philemon, 2 John and 3 John) so every introduction has at least two focused passages.
+- Rewrote book-specific observation prompts to name the exact starting reference and restored proper capitalization in interpretation, application, prayer and reading notes.
+- Expanded the validation rules to reject generic placeholders, duplicate cross-references within a pathway and repeated book prompts, and to verify each linked passage against the offline KJV.
+- App/package and in-app update version advanced to 1.4.113; offline cache advanced to v215.
+- Candidate status pending CI and Android packaging; physical-device reading and navigation tests remain outstanding.
+
+
+## 1.4.114 faith-response coverage milestone — candidate
+
+- Added 22 original, verse-specific faith-response records to books that previously had only one curated reference, bringing the total to 248 unique references across all 66 books.
+- Every Bible book now has at least two curated records; the collection includes 211 exact single-verse records and 37 multi-verse ranges. Range records are not counted as exact single-verse coverage.
+- Each record has its own prayer, declaration, affirmation, confession and inspiration. The audit now checks repeated wording across all records, including ranges, and enforces minimum per-book representation.
+- App/package and in-app update version advanced to 1.4.114; offline cache advanced to v216.
+- Candidate status pending CI and Android packaging; the 0.679% exact-verse coverage remains partial and should continue to grow in careful, book-balanced increments.

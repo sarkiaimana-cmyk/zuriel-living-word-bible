@@ -79,8 +79,18 @@ function checkReference(reference,label) {
   assert.ok(Array.isArray(chapters),label+" has no bundled KJV mapping for "+book.name);
   const verses=chapters[chapter-1];
   assert.ok(Array.isArray(verses) && verse>=1 && verse<=verses.length,label+" has a missing KJV verse in "+reference);
-  const range=String(reference).match(/:(\d+)\s*[-–—]\s*(\d+)$/);
-  if(range) assert.ok(Number(range[2])<=verses.length,label+" has an out-of-range KJV reference in "+reference);
+  const normalizedReference=String(reference).trim();
+  const range=normalizedReference.match(/^(.+?)\s+(\d+):(\d+)\s*[-–—]\s*(?:(\d+):)?(\d+)$/);
+  if(range) {
+    const endChapter=Number(range[4] || range[2]);
+    const endVerse=Number(range[5]);
+    assert.ok(endChapter>=1 && endChapter<=book.chapters,label+" has an invalid range-ending chapter in "+reference);
+    const endVerses=chapters[endChapter-1];
+    assert.ok(Array.isArray(endVerses) && endVerse>=1 && endVerse<=endVerses.length,label+" has an out-of-range ending verse in "+reference);
+    if(endChapter===chapter) assert.ok(endVerse>=verse,label+" has a reversed verse range in "+reference);
+  }
+  // Comma-separated abbreviated references are retained for source-specific
+  // review; do not reinterpret their punctuation as a verse range here.
   checkedPassages++;
 }
 function walkReferences(value,label) {
@@ -101,13 +111,37 @@ for(const [label,data] of [
   ["commentary",commentary],["topical studies",topical],["worship",worship],["theology",theology]
 ]) walkReferences(data,label);
 
+// Commentary passages are stored in the dedicated "passage" field rather than
+// a generic references array. Validate every one explicitly against the
+// bundled KJV, including the ending chapter/verse of cross-chapter ranges.
+const commentaryIds=new Set();
+const commentaryPassages=new Set();
+for(const entry of commentary.entries) {
+  assert.ok(typeof entry.id==="string" && entry.id.trim(),"Every commentary entry needs a stable ID");
+  assert.ok(!commentaryIds.has(entry.id),"Commentary IDs must be unique: "+entry.id);
+  assert.ok(typeof entry.passage==="string" && entry.passage.trim(),"Every commentary entry needs a primary passage: "+entry.id);
+  assert.ok(!commentaryPassages.has(entry.passage.trim().toLocaleLowerCase("en")),"Commentary primary passages must be unique: "+entry.passage);
+  assert.ok(typeof entry.theme==="string" && entry.theme.trim().length>=3,"Every commentary entry needs a meaningful theme: "+entry.id);
+  assert.ok(typeof entry.contextAndMeaning==="string" && entry.contextAndMeaning.trim().length>=60,"Every commentary entry needs substantive context and meaning: "+entry.id);
+  assert.ok(typeof entry.studyObservation==="string" && entry.studyObservation.trim().length>=35,"Every commentary entry needs a useful observation prompt: "+entry.id);
+  assert.ok(typeof entry.interpretiveCaution==="string" && entry.interpretiveCaution.trim().length>=35,"Every commentary entry needs an interpretive caution: "+entry.id);
+  checkReference(entry.passage,"commentary primary passage "+entry.id);
+  if(entry.scriptureReferences!==undefined) {
+    assert.ok(Array.isArray(entry.scriptureReferences),"Commentary related references must be an array: "+entry.id);
+    assert.ok(entry.scriptureReferences.length>=1,"Commentary related references cannot be empty when supplied: "+entry.id);
+    walkReferences(entry.scriptureReferences,"commentary related references "+entry.id);
+  }
+  commentaryIds.add(entry.id);
+  commentaryPassages.add(entry.passage.trim().toLocaleLowerCase("en"));
+}
+
 const expected = [
   [geography.places,25,"biblical places"], [geography.journeys,8,"biblical journeys"],
   [dictionary.entries,100,"dictionary entries"],
   [books.bookIntroductions,66,"book introductions"], [books.bookStudyPathways,66,"book study pathways"],
   [trail1.trails,41,"connected Scripture trails batch 1"], [trail2.trails,33,"connected Scripture trails batch 2"],
   [deep.guides,20,"deep study guides"], [names.entries,52,"Names and Titles of God"],
-  [words.entries,110,"original-language word studies"], [commentary.entries,173,"passage commentary"],
+  [words.entries,108,"unique original-language word studies"], [commentary.entries,173,"passage commentary"],
   [topical.entries,100,"topical study guides"], [worship.pathways,30,"worship study pathways"], [theology.entries,35,"theological comparisons"]
 ];
 for (const [items,count,label] of expected) {
@@ -120,9 +154,17 @@ for (const collection of [books.bookIntroductions,books.bookStudyPathways]) {
 }
 const trails=[...trail1.trails,...trail2.trails];
 assert.equal(new Set(trails.map(item=>item.id)).size,74,"Connected Scripture trail IDs must be unique");
+const trailConnectionNotes = new Set();
 for (const trail of trails) {
   assert.equal(trail.pathway.length,5,"Each Scripture trail has five ordered passage steps");
-  assert.ok(trail.pathway.every(step => step.reference && step.connectionNote),"Each trail step needs a reference and explanation");
+  assert.deepEqual(trail.pathway.map(step=>step.step),[1,2,3,4,5],"Each trail must retain its five ordered steps: "+trail.title);
+  for (const step of trail.pathway) {
+    assert.ok(step.reference && /^.+?\s+\d+:\d+/.test(step.reference),"Each trail step needs an explicit book, chapter and verse: "+trail.title);
+    assert.ok(typeof step.connectionNote==="string" && step.connectionNote.trim().length>=80,"Each trail step needs a substantive passage-specific explanation: "+trail.title+" — "+step.reference);
+    const noteKey=step.connectionNote.trim().toLocaleLowerCase("en");
+    assert.ok(!trailConnectionNotes.has(noteKey),"Scripture trail connection notes must be individually written, not generic repeats: "+trail.title+" — "+step.reference);
+    trailConnectionNotes.add(noteKey);
+  }
   assert.ok(trail.overview && trail.contextCaution && trail.lifeApplication,"Each trail has contextual safeguards and application");
 }
 const dictionaryIds = new Set();
@@ -134,6 +176,10 @@ for (const entry of dictionary.entries) {
     "Every dictionary entry needs a substantive definition: " + entry.term);
   assert.ok(Array.isArray(entry.scriptureReferences) && entry.scriptureReferences.length >= 1,
     "Every dictionary entry needs at least one Scripture reference: " + entry.term);
+  for (const reference of entry.scriptureReferences) {
+    assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Dictionary references must specify book, chapter and verse: " + entry.term + " — " + reference);
+    checkReference(reference, "dictionary entry " + entry.term);
+  }
   assert.ok(typeof entry.editorialCaution === "string" && entry.editorialCaution.trim().length >= 25,
     "Every dictionary entry needs an interpretive caution: " + entry.term);
   const normalizedTerm = entry.term.trim().toLocaleLowerCase("en");
@@ -151,14 +197,185 @@ for (const entry of theology.entries) {
   assert.ok(!theologyTitles.has(entry.title.trim().toLocaleLowerCase("en")), "Theological comparison titles must be unique: " + entry.title);
   assert.ok(typeof entry.question === "string" && entry.question.length >= 25, "Each comparison needs a guiding question: " + entry.title);
   assert.ok(Array.isArray(entry.scriptureReferences) && entry.scriptureReferences.length >= 4, "Each comparison needs multiple Scripture references: " + entry.title);
-  assert.ok(Array.isArray(entry.positions) && entry.positions.length >= 2, "Each theological comparison needs multiple interpretations");
+  assert.ok(Array.isArray(entry.positions) && entry.positions.length >= 2 && entry.positions.length <= 4, "Each theological comparison needs two to four substantive interpretations: " + entry.title);
+  const positionViews = new Set();
   for (const position of entry.positions) {
-    assert.ok(position.view && position.summary && position.summary.length >= 100 && position.traditions, "Each position needs a fair, substantive description: " + entry.title);
+    assert.ok(position.view && position.summary && position.summary.length >= 100 && position.traditions && position.traditions.length >= 15, "Each position needs a fair, substantive description and tradition scope: " + entry.title);
+    const viewKey = position.view.trim().toLocaleLowerCase("en");
+    assert.ok(!positionViews.has(viewKey), "A comparison must not repeat a perspective label: " + entry.title + " — " + position.view);
+    positionViews.add(viewKey);
+  }
+  for (const reference of entry.scriptureReferences) {
+    assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Theological comparison references must specify book, chapter and verse: " + entry.title + " — " + reference);
+    checkReference(reference, "theological comparison " + entry.title);
   }
   assert.ok(entry.sharedGround && entry.sharedGround.length >= 80 && entry.historicalContext && entry.historicalContext.length >= 80 && entry.areasOfDisagreement && entry.areasOfDisagreement.length >= 80 && entry.readingCaution && entry.readingCaution.length >= 80, "Each theological comparison needs balance and context: " + entry.title);
   theologyIds.add(entry.id);
   theologyTitles.add(entry.title.trim().toLocaleLowerCase("en"));
 }
+const bookIntroIds = new Set();
+const bookIntroNotes = new Set();
+for (const entry of books.bookIntroductions) {
+  assert.ok(typeof entry.id === "string" && entry.id.trim() && !bookIntroIds.has(entry.id), "Book introduction IDs must be present and unique");
+  assert.ok(typeof entry.book === "string" && entry.book.trim(), "Book introduction needs a canonical book name");
+  assert.ok(Array.isArray(entry.keyPassages) && entry.keyPassages.length >= 2, "Book introduction needs multiple key passages: " + entry.book);
+  assert.ok(typeof entry.overview === "string" && entry.overview.trim().length >= 70, "Book introduction needs a substantive overview: " + entry.book);
+  assert.ok(typeof entry.majorThemes === "string" && entry.majorThemes.trim().length >= 20, "Book introduction needs major themes: " + entry.book);
+  assert.ok(typeof entry.readingNote === "string" && entry.readingNote.trim().length >= 80, "Book introduction needs a contextual reading note: " + entry.book);
+  assert.ok(!bookIntroNotes.has(entry.readingNote), "Book reading notes must be tailored, not repeated: " + entry.book);
+  for (const reference of entry.keyPassages) {
+    assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Book key passages must specify book, chapter and verse: " + entry.book + " — " + reference);
+    checkReference(reference, "book introduction " + entry.book);
+  }
+  bookIntroIds.add(entry.id);
+  bookIntroNotes.add(entry.readingNote);
+}
+const bookPathIds = new Set();
+const bookPathBooks = new Set();
+const bookPathApplications = new Set();
+const bookPathPrayers = new Set();
+const bookPathObservations = new Set();
+const bookPathInterpretations = new Set();
+for (const entry of books.bookStudyPathways) {
+  assert.ok(typeof entry.id === "string" && entry.id.trim() && !bookPathIds.has(entry.id), "Book pathway IDs must be present and unique");
+  assert.ok(typeof entry.book === "string" && entry.book.trim() && !bookPathBooks.has(entry.book), "Each book needs one study pathway");
+  assert.ok(typeof entry.startingPassage === "string" && entry.startingPassage.trim(), "Book pathway needs a starting passage: " + entry.book);
+  for (const reference of entry.startingPassage.split(";").map(value=>value.trim()).filter(Boolean)) {
+    assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Book starting passages must specify book, chapter and verse: " + entry.book + " — " + reference);
+    checkReference(reference, "book study pathway " + entry.book);
+  }
+  assert.ok(Array.isArray(entry.crossReferenceTrail) && entry.crossReferenceTrail.length >= 2, "Book pathway needs multiple cross-reference steps: " + entry.book);
+  const pathReferences = new Set();
+  for (const reference of entry.crossReferenceTrail) {
+    assert.ok(!["Psalm 105:1-11","Luke 24:25-27"].includes(reference), "Book pathway must not use generic repeated placeholder references: " + entry.book);
+    assert.ok(!pathReferences.has(reference), "Book pathway cross-references must be unique within the trail: " + entry.book + " — " + reference);
+    assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Book pathway references must specify book, chapter and verse: " + entry.book + " — " + reference);
+    checkReference(reference, "book pathway cross-reference " + entry.book);
+    pathReferences.add(reference);
+  }
+  for (const [field,minLength] of [["observationPrompt",50],["interpretationPrompt",50],["lifeApplicationPrompt",50],["prayerPrompt",50],["interpretiveGuardrail",50]]) {
+    assert.ok(typeof entry[field] === "string" && entry[field].trim().length >= minLength, "Book pathway needs substantive " + field + ": " + entry.book);
+  }
+  assert.ok(entry.observationPrompt.includes(entry.startingPassage.split(";")[0].trim()), "Book observation prompt must name its exact starting passage: " + entry.book);
+  assert.ok(!bookPathObservations.has(entry.observationPrompt), "Book observation prompts must be tailored: " + entry.book);
+  assert.ok(!bookPathInterpretations.has(entry.interpretationPrompt), "Book interpretation prompts must be tailored: " + entry.book);
+  assert.ok(!bookPathApplications.has(entry.lifeApplicationPrompt), "Book pathway applications must be tailored: " + entry.book);
+  assert.ok(!bookPathPrayers.has(entry.prayerPrompt), "Book pathway prayers must be tailored: " + entry.book);
+  bookPathIds.add(entry.id); bookPathBooks.add(entry.book); bookPathObservations.add(entry.observationPrompt); bookPathInterpretations.add(entry.interpretationPrompt); bookPathApplications.add(entry.lifeApplicationPrompt); bookPathPrayers.add(entry.prayerPrompt);
+}
+assert.equal(bookIntroIds.size,66,"All 66 book introductions need unique IDs");
+assert.equal(bookPathIds.size,66,"All 66 book pathways need unique IDs");
+
+const geographyPlaceIds = new Set();
+const geographyPlaceNames = new Set();
+for (const place of geography.places) {
+  assert.ok(place.id && !geographyPlaceIds.has(place.id), "Geography place IDs must be unique");
+  assert.ok(place.name && !geographyPlaceNames.has(place.name.toLocaleLowerCase("en")), "Geography place names must be unique: " + place.name);
+  for (const [field,minLength] of [["region",3],["modernOrientation",2],["significance",50],["studyCaution",35]]) assert.ok(typeof place[field] === "string" && place[field].trim().length >= minLength, "Geography place needs " + field + ": " + place.name);
+  assert.ok(Array.isArray(place.references) && place.references.length >= 1, "Geography place needs Scripture references: " + place.name);
+  for (const reference of place.references) { assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Geography place reference must be explicit: " + place.name + " — " + reference); checkReference(reference, "geography place " + place.name); }
+  geographyPlaceIds.add(place.id); geographyPlaceNames.add(place.name.toLocaleLowerCase("en"));
+}
+const geographyJourneyIds = new Set();
+const geographyJourneyNames = new Set();
+for (const journey of geography.journeys) {
+  assert.ok(journey.id && !geographyJourneyIds.has(journey.id), "Geography journey IDs must be unique");
+  assert.ok(journey.name && !geographyJourneyNames.has(journey.name.toLocaleLowerCase("en")), "Geography journey names must be unique: " + journey.name);
+  assert.ok(typeof journey.sequence === "string" && journey.sequence.trim().length >= 15, "Geography journey needs a route sequence: " + journey.name);
+  assert.ok(typeof journey.studyCaution === "string" && journey.studyCaution.trim().length >= 40, "Geography journey needs a historical/route caution: " + journey.name);
+  assert.ok(Array.isArray(journey.references) && journey.references.length >= 2, "Geography journey needs multiple Scripture references: " + journey.name);
+  for (const reference of journey.references) { assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Geography journey reference must be explicit: " + journey.name + " — " + reference); checkReference(reference, "geography journey " + journey.name); }
+  geographyJourneyIds.add(journey.id); geographyJourneyNames.add(journey.name.toLocaleLowerCase("en"));
+}
+const worshipIds = new Set();
+const worshipTitles = new Set();
+const worshipPrompts = new Set();
+for (const pathway of worship.pathways) {
+  assert.ok(pathway.id && !worshipIds.has(pathway.id), "Worship pathway IDs must be unique");
+  assert.ok(pathway.title && !worshipTitles.has(pathway.title.toLocaleLowerCase("en")), "Worship pathway titles must be unique: " + pathway.title);
+  for (const [field,minLength] of [["focus",35],["reflectionPrompt",50],["contextNote",35]]) assert.ok(typeof pathway[field] === "string" && pathway[field].trim().length >= minLength, "Worship pathway needs " + field + ": " + pathway.title);
+  assert.ok(Array.isArray(pathway.references) && pathway.references.length >= 3, "Worship pathway needs at least three Scripture links: " + pathway.title);
+  for (const reference of pathway.references) { assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Worship reference must be explicit: " + pathway.title + " — " + reference); checkReference(reference, "worship pathway " + pathway.title); }
+  assert.ok(!worshipPrompts.has(pathway.reflectionPrompt), "Worship reflection prompts must be distinct: " + pathway.title);
+  worshipIds.add(pathway.id); worshipTitles.add(pathway.title.toLocaleLowerCase("en")); worshipPrompts.add(pathway.reflectionPrompt);
+}
+
+const deepStudyIds = new Set();
+const deepStudyTitles = new Set();
+for (const guide of deep.guides) {
+  assert.ok(typeof guide.id === "string" && guide.id.trim(), "Every deep study guide needs a stable ID");
+  assert.ok(!deepStudyIds.has(guide.id), "Deep study guide IDs must be unique: " + guide.id);
+  assert.ok(typeof guide.title === "string" && guide.title.trim().length >= 8, "Every deep study guide needs a title");
+  const titleKey = guide.title.trim().toLocaleLowerCase("en");
+  assert.ok(!deepStudyTitles.has(titleKey), "Deep study guide titles must be unique: " + guide.title);
+  assert.ok(typeof guide.primaryPassage === "string" && guide.primaryPassage.trim(), "Deep study guide needs primary passages: " + guide.title);
+  for (const reference of guide.primaryPassage.split(";").map(value=>value.trim()).filter(Boolean)) {
+    assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Deep-study primary passages must specify book, chapter and verse: " + guide.title + " — " + reference);
+    checkReference(reference, "deep study primary passage " + guide.title);
+  }
+  assert.ok(Array.isArray(guide.crossReferences) && guide.crossReferences.length >= 2, "Deep study guide needs multiple cross-references: " + guide.title);
+  for (const reference of guide.crossReferences) {
+    assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Deep-study cross-references must specify book, chapter and verse: " + guide.title + " — " + reference);
+    checkReference(reference, "deep study cross-reference " + guide.title);
+  }
+  for (const [field,minLength] of [["contextSummary",60],["observationPrompt",60],["interpretationPrompt",50],["lifeApplicationPrompt",50],["interpretiveCaution",50]]) {
+    assert.ok(typeof guide[field] === "string" && guide[field].trim().length >= minLength, "Deep study guide needs substantive " + field + ": " + guide.title);
+  }
+  deepStudyIds.add(guide.id);
+  deepStudyTitles.add(titleKey);
+}
+
+const topicalIds = new Set();
+const topicalTitles = new Set();
+const topicalApplications = new Set();
+for (const entry of topical.entries) {
+  assert.ok(typeof entry.id === "string" && entry.id.trim(), "Every topical guide needs a stable ID");
+  assert.ok(!topicalIds.has(entry.id), "Topical guide IDs must be unique: " + entry.id);
+  assert.ok(typeof entry.title === "string" && entry.title.trim().length >= 8, "Every topical guide needs a meaningful title");
+  const titleKey = entry.title.trim().toLocaleLowerCase("en");
+  assert.ok(!topicalTitles.has(titleKey), "Topical guide titles must be unique: " + entry.title);
+  assert.ok(typeof entry.overview === "string" && entry.overview.trim().length >= 40, "Topical guide needs a contextual overview: " + entry.title);
+  assert.ok(typeof entry.studyQuestions === "string" && entry.studyQuestions.trim().length >= 30, "Topical guide needs a useful study question: " + entry.title);
+  assert.ok(typeof entry.lifeApplication === "string" && entry.lifeApplication.trim().length >= 40, "Topical guide needs a practical life application: " + entry.title);
+  const applicationKey = entry.lifeApplication.trim().toLocaleLowerCase("en");
+  assert.ok(!topicalApplications.has(applicationKey), "Topical life applications must be distinct: " + entry.title);
+  topicalApplications.add(applicationKey);
+  if (entry.readingCaution !== undefined) assert.ok(typeof entry.readingCaution === "string" && entry.readingCaution.trim().length >= 30, "Topical reading cautions must be substantive: " + entry.title);
+  assert.ok(Array.isArray(entry.scriptureReferences) && entry.scriptureReferences.length >= 2, "Topical guide needs multiple Scripture references: " + entry.title);
+  for (const reference of entry.scriptureReferences) {
+    assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Topical references must specify book, chapter and verse: " + entry.title + " — " + reference);
+    checkReference(reference, "topical guide " + entry.title);
+  }
+  topicalIds.add(entry.id);
+  topicalTitles.add(titleKey);
+}
+
+const divineNameIds = new Set();
+const divineNames = new Set();
+for (const entry of names.entries) {
+  assert.ok(typeof entry.id === "string" && entry.id.trim(), "Each divine name entry needs a stable ID");
+  assert.ok(!divineNameIds.has(entry.id), "Divine name IDs must be unique: " + entry.id);
+  assert.ok(typeof entry.name === "string" && entry.name.trim().length >= 2, "Each divine name entry needs a display name");
+  const nameKey = entry.name.trim().toLocaleLowerCase("en");
+  assert.ok(!divineNames.has(nameKey), "Divine names and titles must be unique: " + entry.name);
+  assert.ok(["Hebrew","Greek","Aramaic","Hebrew and Greek"].includes(entry.language), "Divine name needs an explicit source-language label: " + entry.name);
+  assert.ok(typeof entry.originalForm === "string" && entry.originalForm.trim(), "Divine name needs its original-script form: " + entry.name);
+  const hasHebrew = /[\u0590-\u05FF]/.test(entry.originalForm);
+  const hasGreek = /[\u0370-\u03FF\u1F00-\u1FFF]/.test(entry.originalForm);
+  if (entry.language === "Hebrew" || entry.language === "Aramaic") assert.ok(hasHebrew, "Divine name original form does not match Hebrew/Aramaic: " + entry.name);
+  if (entry.language === "Greek") assert.ok(hasGreek, "Divine name original form does not match Greek: " + entry.name);
+  if (entry.language === "Hebrew and Greek") assert.ok(hasHebrew && hasGreek, "Combined divine title needs both original scripts: " + entry.name);
+  assert.ok(typeof entry.senseAndContext === "string" && entry.senseAndContext.trim().length >= 35, "Divine name needs a contextual meaning: " + entry.name);
+  assert.ok(typeof entry.studyNote === "string" && entry.studyNote.trim().length >= 30, "Divine name needs a contextual study note: " + entry.name);
+  assert.ok(Array.isArray(entry.scriptureReferences) && entry.scriptureReferences.length >= 1, "Divine name needs Scripture references: " + entry.name);
+  for (const reference of entry.scriptureReferences) {
+    assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Divine name references must specify book, chapter and verse: " + entry.name + " — " + reference);
+    checkReference(reference, "divine name " + entry.name);
+  }
+  divineNameIds.add(entry.id);
+  divineNames.add(nameKey);
+}
+
 for (const [label,items] of [
   ["commentary",commentary.entries],["topical",topical.entries],["dictionary",dictionary.entries],
   ["word study",words.entries],["names",names.entries],["worship",worship.pathways]
@@ -168,6 +385,7 @@ for (const [label,items] of [
 
 const wordStudyIds = new Set();
 const wordStudyTerms = new Set();
+const wordStudyOriginalForms = new Set();
 for (const entry of words.entries) {
   assert.ok(typeof entry.id === "string" && entry.id.trim(), "Every original-language study needs a stable ID");
   assert.ok(!wordStudyIds.has(entry.id), "Original-language study IDs must be unique: " + entry.id);
@@ -178,8 +396,15 @@ for (const entry of words.entries) {
   assert.ok(typeof entry.originalForm === "string" && entry.originalForm.trim(), "Original-language study needs its original script form: " + entry.term);
   const scriptPattern = entry.language === "Greek" ? /[\u0370-\u03FF\u1F00-\u1FFF]/ : /[\u0590-\u05FF]/;
   assert.ok(scriptPattern.test(entry.originalForm), "Original form does not match the declared script/language: " + entry.term);
+  const originalFormKey = entry.language + "|" + entry.originalForm.normalize("NFC");
+  assert.ok(!wordStudyOriginalForms.has(originalFormKey), "Original-language lexemes must not be duplicated under alternate transliterations: " + entry.term);
+  wordStudyOriginalForms.add(originalFormKey);
   assert.ok(typeof entry.contextualGloss === "string" && entry.contextualGloss.trim().length >= 30, "Word study needs a substantive contextual gloss: " + entry.term);
+  if (entry.contextualWordUse !== undefined) assert.ok(typeof entry.contextualWordUse === "string" && entry.contextualWordUse.trim().length >= 80, "Contextual word-use notes must be substantive: " + entry.term);
   assert.ok(Array.isArray(entry.scriptureReferences) && entry.scriptureReferences.length >= 1, "Word study needs Scripture references: " + entry.term);
+  for (const reference of entry.scriptureReferences) {
+    assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Word-study references must spell out the Bible book and chapter:verse: " + entry.term + " — " + reference);
+  }
   assert.ok(typeof entry.interpretiveCaution === "string" && entry.interpretiveCaution.trim().length >= 25, "Word study needs an interpretive caution: " + entry.term);
   assert.ok(typeof entry.morphologyStatus === "string" && entry.morphologyStatus.trim(), "Word study must state whether morphology is verified: " + entry.term);
   wordStudyIds.add(entry.id);
@@ -193,7 +418,7 @@ for (const path of [
   "zuriel-deep-study-guides.json","zuriel-bible-geography-atlas.json","zuriel-worship-study-pathways.json","zuriel-theological-comparisons.json"
 ]) assert.ok(loader.includes(path),"Study loader must include "+path);
 assert.ok(index.includes('src="zuriel-study-library-data.js"'),"Study library integration script must load");
-assert.ok(worker.includes('zuriel-bible-offline-v204'),"Offline cache must be version 204");
+assert.ok(worker.includes('zuriel-bible-offline-v216'),"Offline cache must be version 205");
 assert.ok(worker.includes("./zuriel-study-library-data.js"),"Study loader must be precached");
 for (const path of [
   "zuriel-passage-commentary-expansion.json","zuriel-topical-bible-study-library-batch-2.json",

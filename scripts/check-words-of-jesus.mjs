@@ -16,6 +16,9 @@ const required = [
   ["dedicated Words of Jesus page", 'if (page === "jesus")'],
   ["Kingdom teaching", "The good news of God's Kingdom"],
   ["love command", "Love God and love your neighbour"],
+  ["Sabbath teaching", "The Sabbath is made for humanity"],
+  ["Jesus as the way and truth", "I am the way, the truth and the life"],
+  ["the eye as the lamp", "The eye is the lamp of the body"],
   ["prayer teaching", "How to pray"],
   ["forgiveness teaching", "Forgive others"],
   ["discipleship teaching", "Count the cost of following Jesus"],
@@ -97,8 +100,14 @@ try {
   const teachings = vm.runInNewContext("(" + section.slice(arrayStart, teachingsEnd + 10).replace(/;?$/, "") + ")", {}, { timeout: 1000 });
   if (!Array.isArray(teachings) || teachings.length < 20) throw new Error("Curated teaching data did not load.");
   const gospelCoverage = new Set();
+  const teachingTitles = new Set();
+  const teachingSummaries = new Set();
   for (const teaching of teachings) {
-    if (!Array.isArray(teaching.refs) || teaching.refs.length === 0) {
+    if (!teaching.title || teachingTitles.has(teaching.title.trim().toLowerCase())) throw new Error("Teaching titles must be present and unique: " + teaching.title);
+    if (!teaching.summary || teachingSummaries.has(teaching.summary.trim().toLowerCase())) throw new Error("Teaching summaries must be substantive and distinct: " + teaching.title);
+    teachingTitles.add(teaching.title.trim().toLowerCase());
+    teachingSummaries.add(teaching.summary.trim().toLowerCase());
+    if (!Array.isArray(teaching.refs) || teaching.refs.length < 2 || new Set(teaching.refs).size !== teaching.refs.length) {
       throw new Error(teaching.title + " has no Scripture references.");
     }
     for (const reference of teaching.refs) {

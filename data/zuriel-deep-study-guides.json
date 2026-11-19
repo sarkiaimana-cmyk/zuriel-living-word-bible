@@ -18,8 +18,8 @@
       "interpretationPrompt": "What does the passage say about God's authority, human dignity and care for the created world?",
       "lifeApplicationPrompt": "How can I reflect God's image through responsible work, relationships and care for creation?",
       "crossReferences": [
-        "Psalm 8",
-        "Psalm 104",
+        "Psalm 8:1-9",
+        "Psalm 104:1-9",
         "John 1:1-5",
         "Colossians 1:15-17"
       ],
@@ -35,8 +35,8 @@
       "lifeApplicationPrompt": "Where is faithful obedience required before I can see the whole outcome?",
       "crossReferences": [
         "Genesis 15:1-6",
-        "17:1-8",
-        "22:15-18",
+        "Genesis 17:1-8",
+        "Genesis 22:15-18",
         "Galatians 3:6-14"
       ],
       "interpretiveCaution": "Do not turn the promise to Abram into an unconditional guarantee of wealth for every believer."
@@ -44,7 +44,7 @@
     {
       "id": "deep-study-03",
       "title": "The Exodus and deliverance",
-      "primaryPassage": "Exodus 3:1-15; 12:1-14; 14:10-31",
+      "primaryPassage": "Exodus 3:1-15; Exodus 12:1-14; Exodus 14:10-31",
       "contextSummary": "The Exodus portrays God hearing the oppressed, confronting Pharaoh's power and forming a people who belong to Him.",
       "observationPrompt": "Notice God's self-identification, the people's cries, the signs and the repeated language of remembering.",
       "interpretationPrompt": "What does deliverance reveal about God's character and the identity of the redeemed community?",
@@ -60,7 +60,7 @@
     {
       "id": "deep-study-04",
       "title": "Covenant and the law",
-      "primaryPassage": "Exodus 19:1-8; 20:1-17",
+      "primaryPassage": "Exodus 19:1-8; Exodus 20:1-17",
       "contextSummary": "The covenant presents Israel's calling as a people rescued by God and instructed in faithful communal life.",
       "observationPrompt": "Notice that deliverance precedes the covenant commands. Group the commandments by relationship to God and neighbour.",
       "interpretationPrompt": "How do grace, covenant identity and obedience relate in this passage?",
@@ -91,7 +91,7 @@
     {
       "id": "deep-study-06",
       "title": "Wisdom and the fear of the Lord",
-      "primaryPassage": "Proverbs 1:1-7; 3:1-12",
+      "primaryPassage": "Proverbs 1:1-7; Proverbs 3:1-12",
       "contextSummary": "Proverbs frames wisdom as skill for faithful living, beginning with reverence for the Lord.",
       "observationPrompt": "Identify the purpose statements, contrasts and parental instruction. Notice how wisdom touches speech, work and relationships.",
       "interpretationPrompt": "What does fear of the Lord mean in this context, and how does it differ from mere anxiety?",
@@ -107,14 +107,14 @@
     {
       "id": "deep-study-07",
       "title": "Suffering and honest faith",
-      "primaryPassage": "Job 1:1-22; 2:1-10; 38:1-7; 42:1-6",
+      "primaryPassage": "Job 1:1-22; Job 2:1-10; Job 38:1-7; Job 42:1-6",
       "contextSummary": "Job explores undeserved suffering, human limits and the danger of simplistic explanations for another person's pain.",
       "observationPrompt": "Track the narrator's description, the friends' claims, Job's protests and God's response from the whirlwind.",
       "interpretationPrompt": "Which explanations are challenged by the book, and what remains beyond human knowledge?",
       "lifeApplicationPrompt": "How can I accompany someone in pain without blaming them or pretending to know God's hidden reasons?",
       "crossReferences": [
-        "Psalm 13",
-        "Psalm 73",
+        "Psalm 13:1-6",
+        "Psalm 73:1-28",
         "John 9:1-3",
         "Romans 8:18-39"
       ],
@@ -123,7 +123,7 @@
     {
       "id": "deep-study-08",
       "title": "The shepherd king",
-      "primaryPassage": "Psalm 23",
+      "primaryPassage": "Psalm 23:1-6",
       "contextSummary": "The psalm portrays the Lord as shepherd and host, expressing trust through provision, guidance, protection and welcome.",
       "observationPrompt": "Follow the movement from pasture and path to the valley and the table. Notice the shift in address from 'He' to 'You'.",
       "interpretationPrompt": "How does the psalm express trust in God's presence even when danger remains?",
@@ -162,7 +162,7 @@
       "crossReferences": [
         "Luke 22:19-20",
         "Hebrews 8:6-13",
-        "10:15-18",
+        "Hebrews 10:15-18",
         "2 Corinthians 3:3-6"
       ],
       "interpretiveCaution": "Do not detach the promise from its original setting in Israel's restoration and the New Testament's covenant reading."
@@ -185,7 +185,7 @@
     {
       "id": "deep-study-12",
       "title": "The Sermon on the Mount",
-      "primaryPassage": "Matthew 5:1-16; 6:19-34; 7:24-29",
+      "primaryPassage": "Matthew 5:1-16; Matthew 6:19-34; Matthew 7:24-29",
       "contextSummary": "Jesus describes the character and practice of life under God's reign, including humility, mercy, integrity and trust.",
       "observationPrompt": "Identify the audience, repeated contrasts and images. Read each saying within the sermon rather than in isolation.",
       "interpretationPrompt": "What kind of righteousness does Jesus describe, and how does it differ from public performance?",
@@ -206,7 +206,8 @@
       "interpretationPrompt": "How does the story redefine the practical question of who acts as a neighbour?",
       "lifeApplicationPrompt": "Whose need can I respond to with mercy rather than excuse or distance?",
       "crossReferences": [
-        "Leviticus 19:18,33-34",
+        "Leviticus 19:18",
+        "Leviticus 19:33-34",
         "Luke 6:27-36",
         "James 2:14-17"
       ],
@@ -246,7 +247,7 @@
     {
       "id": "deep-study-16",
       "title": "The resurrection of Jesus",
-      "primaryPassage": "Luke 24:1-12; 1 Corinthians 15:1-8,12-26",
+      "primaryPassage": "Luke 24:1-12; 1 Corinthians 15:1-8; 1 Corinthians 15:12-26",
       "contextSummary": "The Gospel testimony and Paul's summary present Jesus' resurrection as central to apostolic proclamation and Christian hope.",
       "observationPrompt": "Notice the witnesses, the remembered words of Jesus and Paul's sequence of testimony and consequence.",
       "interpretationPrompt": "Why does Paul say faith is empty if Christ has not been raised? What follows if He has been raised?",
@@ -297,8 +298,8 @@
       "lifeApplicationPrompt": "What practices help me stand firm in truth, faith, prayer and peace today?",
       "crossReferences": [
         "Isaiah 11:5",
-        "52:7",
-        "59:17",
+        "Isaiah 52:7",
+        "Isaiah 59:17",
         "1 Thessalonians 5:8"
       ],
       "interpretiveCaution": "The passage does not authorise hostility toward people; it explicitly frames the struggle as not against flesh and blood."
@@ -306,14 +307,14 @@
     {
       "id": "deep-study-20",
       "title": "The new creation hope",
-      "primaryPassage": "Revelation 21:1-8; 22:1-5",
+      "primaryPassage": "Revelation 21:1-8; Revelation 22:1-5",
       "contextSummary": "Revelation closes with God's dwelling among His people, the end of death and the healing imagery of the river and tree of life.",
       "observationPrompt": "Notice what passes away, what God makes new and the repeated promise of God's presence.",
       "interpretationPrompt": "How does the vision answer the suffering and evil described earlier in Revelation?",
       "lifeApplicationPrompt": "How can future hope strengthen faithful witness, endurance and care now?",
       "crossReferences": [
         "Isaiah 25:6-9",
-        "65:17-25",
+        "Isaiah 65:17-25",
         "Romans 8:18-25",
         "2 Peter 3:13"
       ],

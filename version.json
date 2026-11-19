@@ -1,4 +1,4 @@
 {
-  "version": "1.4.102",
-  "releaseNotes": "Expands the offline original-language word-study library from 100 to 110 contextual lexemes, adding Greek studies of mercy, compassion, godliness, reconciliation and atonement, and Hebrew studies of comfort/relenting, Sabbath, remembrance, dwelling and shield imagery. Each entry includes original script, contextual glosses, verified KJV references and explicit limits on unverified verse-level parsing."
+  "version": "1.4.114",
+  "releaseNotes": "Strengthens offline study libraries and KJV-checked references across the 66-book Bible. Expands curated verse-specific faith responses to 248 unique references, with at least two in every book, 211 exact single-verse records and non-repetition checks across prayer, declaration, affirmation, confession and inspiration, including range records. Offline cache v216."
 }
