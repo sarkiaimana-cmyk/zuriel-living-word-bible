@@ -859,7 +859,7 @@
           const activeText = studio.querySelector("#zgs"+activeFaithView).value.trim();
           studio.querySelector("#zgsPreviewRef").textContent = studio.querySelector("#zgsReference").value.trim() || "Your Scripture reference";
           studio.querySelector("#zgsPreviewScripture").textContent = scriptureText || "Your Scripture will appear here.";
-          studio.querySelector("#zgsPreviewActiveTitle").textContent = activeFaithView === "Confession" ? "FAITH CONFESSION" : activeFaithView.toUpperCase();
+          studio.querySelector("#zgsPreviewActiveTitle").textContent = activeFaithView === "Confession" ? "MY FAITH CONFESSION" : "MY " + activeFaithView.toUpperCase();
           studio.querySelector("#zgsPreviewActiveContent").textContent = activeText || "Add a Scripture-specific "+activeFaithView.toLowerCase()+" on the right page.";
           const stacked = scriptureText.length > 420 || activeText.length > 320;
           studio.dataset.layout = stacked ? "stacked" : "spread";
@@ -1024,7 +1024,7 @@
               });
               return lines;
             }
-            const leftTitle = activeFaithView === "Confession" ? "FAITH CONFESSION" : activeFaithView.toUpperCase();
+            const faithTitle = activeFaithView === "Confession" ? "MY FAITH CONFESSION" : "MY " + activeFaithView.toUpperCase();
             const stacked = scripture.length > 420 || faithText.length > 320;
             const exportMargin = stacked ? 140 : margin;
             const exportColumnWidth = stacked ? width - exportMargin * 2 : columnWidth;
@@ -1033,12 +1033,13 @@
             const top = 300, bottom = 150, sectionGap = stacked ? 95 : 0;
             const referenceHeadingHeight = 48 + 58;
             const faithHeadingHeight = 58;
+            const faithBannerHeight = 62;
             const contentHeight = stacked
               ? referenceHeadingHeight + leftLines.length * lineHeight(scriptureSize) +
-                sectionGap + faithHeadingHeight + rightLines.length * lineHeight(faithSize)
+                sectionGap + faithHeadingHeight + rightLines.length * lineHeight(faithSize) + faithBannerHeight
               : Math.max(
                 referenceHeadingHeight + leftLines.length * lineHeight(scriptureSize),
-                faithHeadingHeight + rightLines.length * lineHeight(faithSize)
+                faithHeadingHeight + rightLines.length * lineHeight(faithSize) + faithBannerHeight
               );
             canvas.width = width;
             canvas.height = Math.max(1100, top + contentHeight + bottom);
@@ -1096,7 +1097,7 @@
             if (stacked) {
               const firstHeight = referenceHeadingHeight + leftLines.length * lineHeight(scriptureSize) + 44;
               const secondY = top + firstHeight + sectionGap - 55;
-              const secondHeight = faithHeadingHeight + rightLines.length * lineHeight(faithSize) + 44;
+              const secondHeight = faithHeadingHeight + rightLines.length * lineHeight(faithSize) + faithBannerHeight + 44;
               roundedPanel(exportMargin - 28, top - 55, exportColumnWidth + 56, firstHeight, 22);
               roundedPanel(exportMargin - 28, secondY, exportColumnWidth + 56, secondHeight, 22);
             } else {
@@ -1114,8 +1115,8 @@
             if (!stacked) {
               ctx.beginPath(); ctx.moveTo(width/2,235); ctx.lineTo(width/2,canvas.height-110); ctx.stroke();
             }
-            function drawSection(title, referenceText, lines, x, y, maxWidth, size) {
-              ctx.textAlign = "center"; ctx.fillStyle = colors[2];
+            function drawSection(title, referenceText, lines, x, y, maxWidth, size, headingColor) {
+              ctx.textAlign = "center"; ctx.fillStyle = headingColor || "#1b4b82";
               ctx.font = "bold 24px Arial, sans-serif";
               ctx.fillText(title,x+maxWidth/2,y);
               y += 58;
@@ -1128,15 +1129,26 @@
               lines.forEach(line => { ctx.fillText(line,x,y); y += lineHeight(size); });
               return y;
             }
+            function drawGloryBanner(x,y,maxWidth) {
+              const bannerHeight = 52;
+              ctx.fillStyle = "#1b4b82";
+              ctx.fillRect(x+6,y+8,maxWidth-12,bannerHeight);
+              ctx.textAlign = "center";
+              ctx.fillStyle = "#f6d36e";
+              ctx.font = "bold 20px Georgia, serif";
+              ctx.fillText("GLORY VERSE AFFIRMATION",x+maxWidth/2,y+41);
+            }
             if (stacked) {
               let y = top;
-              y = drawSection("THE WORD",reference,leftLines,exportMargin,y,exportColumnWidth,scriptureSize);
+              y = drawSection("SCRIPTURE",reference,leftLines,exportMargin,y,exportColumnWidth,scriptureSize,"#1b4b82");
               y += sectionGap;
-              drawSection("GLORY VERSE AFFIRMATION — " + leftTitle,"",rightLines,exportMargin,y,exportColumnWidth,faithSize);
+              const faithBottom = drawSection(faithTitle,"",rightLines,exportMargin,y,exportColumnWidth,faithSize,"#26734c");
+              drawGloryBanner(exportMargin,faithBottom,exportColumnWidth);
             } else {
               const leftX = margin, rightX = margin + columnWidth + gap;
-              drawSection("THE WORD",reference,leftLines,leftX,top,columnWidth,scriptureSize);
-              drawSection("GLORY VERSE AFFIRMATION — " + leftTitle,"",rightLines,rightX,top,columnWidth,faithSize);
+              drawSection("SCRIPTURE",reference,leftLines,leftX,top,columnWidth,scriptureSize,"#1b4b82");
+              const faithBottom = drawSection(faithTitle,"",rightLines,rightX,top,columnWidth,faithSize,"#26734c");
+              drawGloryBanner(rightX,faithBottom,columnWidth);
             }
             ctx.textAlign = "center"; ctx.fillStyle = colors[2];
             ctx.font = "bold 24px Georgia, serif";
