@@ -512,17 +512,18 @@
     },
     {
       "id": "word-study-037",
-      "term": "Chesed",
+      "term": "Hesed (Chesed)",
       "language": "Hebrew",
       "originalForm": "חֶסֶד",
-      "contextualGloss": "steadfast love, kindness or loyal love",
+      "contextualGloss": "Steadfast love, covenant loyalty, faithful kindness or loyal love. In Exodus 34:6 it appears alongside compassion, grace, patience and faithfulness in God's self-description. Psalm 136 repeats the enduring-love refrain while recalling creation and deliverance. Hosea 6:6 contrasts steadfast love and knowledge of God with empty ritual, while Micah 7:18-20 celebrates God's covenant faithfulness and mercy.",
       "scriptureReferences": [
         "Exodus 34:6",
-        "Psalm 136",
+        "Psalm 136:1",
+        "Hosea 6:6",
         "Micah 7:18-20"
       ],
-      "interpretiveCaution": "No single English equivalent captures every occurrence.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "interpretiveCaution": "No single English equivalent captures every occurrence. Do not reduce hesed to sentiment, assume every use is a formal covenant formula, or make the word carry a complete theology by itself; read the relationship and literary setting in each passage.",
+      "morphologyStatus": "Lexeme-level study only. No verse-specific inflection or parsing is asserted; consult the Hebrew form, syntax and a critical lexicon in each passage."
     },
     {
       "id": "word-study-038",
@@ -694,17 +695,17 @@
     },
     {
       "id": "word-study-050",
-      "term": "Nefesh",
+      "term": "Nephesh (Nefesh)",
       "language": "Hebrew",
       "originalForm": "נֶפֶשׁ",
-      "contextualGloss": "living being, life, person or self",
+      "contextualGloss": "Living being, life, person, self or desire according to context. Genesis 2:7 calls the formed human a living nephesh; the verse describes the human as a living being rather than plainly teaching that a detachable soul was inserted into a body. Leviticus 17:11 closely associates nephesh with life and blood. Psalm 42:1-2 uses it for the worshipper's own self, which thirsts for God.",
       "scriptureReferences": [
         "Genesis 2:7",
         "Leviticus 17:11",
-        "Psalm 42:1"
+        "Psalm 42:1-2"
       ],
-      "interpretiveCaution": "Avoid assuming it always denotes an immortal immaterial entity distinct from the body.",
-      "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
+      "interpretiveCaution": "Avoid importing a later philosophical definition of soul into every occurrence. Hebrew usage includes the person, life and appetite according to context; do not force one English gloss onto every verse.",
+      "morphologyStatus": "Lexeme-level study only. No verse-specific inflection or parsing is asserted; consult the Hebrew form, syntax and a critical lexicon in each passage."
     },
     {
       "id": "word-study-051",
@@ -1192,20 +1193,6 @@
       "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
     },
     {
-      "id": "word-study-086",
-      "term": "Hesed",
-      "language": "Hebrew",
-      "originalForm": "חֶסֶד",
-      "contextualGloss": "Steadfast love, covenant loyalty or faithful kindness. In Exodus 34:6 it appears with compassion, grace, patience and faithfulness in God's self-description. Psalm 136 repeats the enduring-love refrain while recalling creation and deliverance. Hosea 6:6 contrasts steadfast love and knowledge of God with empty ritual.",
-      "scriptureReferences": [
-        "Exodus 34:6",
-        "Psalm 136:1",
-        "Hosea 6:6"
-      ],
-      "interpretiveCaution": "No single English word captures every occurrence. Do not reduce hesed to sentiment or assume every use describes a formal covenant formula.",
-      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
-    },
-    {
       "id": "word-study-087",
       "term": "Agathosyne",
       "language": "Greek",
@@ -1218,20 +1205,6 @@
       ],
       "interpretiveCaution": "Do not treat goodness as mere niceness or as a way to earn salvation; these passages describe Spirit-shaped character expressed in life.",
       "morphologyStatus": "Not asserted; consult the specific Greek form, syntax and a critical lexicon before assigning morphology."
-    },
-    {
-      "id": "word-study-088",
-      "term": "Nephesh",
-      "language": "Hebrew",
-      "originalForm": "נֶפֶשׁ",
-      "contextualGloss": "Living being, life, person, self or desire according to context. Genesis 2:7 calls the formed human a living nephesh; it describes the whole living person rather than plainly teaching that a detachable soul was inserted into a body. Leviticus 17:11 closely associates nephesh with life and blood. Psalm 42:1-2 uses it for the worshipper's own self, which thirsts for God.",
-      "scriptureReferences": [
-        "Genesis 2:7",
-        "Leviticus 17:11",
-        "Psalm 42:1-2"
-      ],
-      "interpretiveCaution": "Avoid importing a later philosophical definition of soul into every occurrence. Hebrew usage includes the person, life and appetite, depending on context.",
-      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
     },
     {
       "id": "word-study-089",
