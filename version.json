@@ -1,4 +1,4 @@
 {
-  "version": "1.4.97",
-  "releaseNotes": "Expands the offline Greek and Hebrew word-study collection from 90 to 100 distinct terms, adding contextual studies for righteousness, worship, Spirit, Christ's coming, compassion, help, redemption and wisdom. Each entry includes original script, contextual glosses, verified KJV references and explicit limits: no verse-specific morphology is claimed without parsing evidence."
+  "version": "1.4.98",
+  "releaseNotes": "Introduces a compact Study Library drawer with responsive topic tiles. Open the Study Centre, expand the drawer, then choose a single study topic; verse-selected actions open the relevant topic directly. Scripture remains uncluttered and study content expands only when selected."
 }

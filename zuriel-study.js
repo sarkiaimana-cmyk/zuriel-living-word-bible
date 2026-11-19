@@ -1110,6 +1110,48 @@
 
     const style = document.createElement("style");
     style.textContent = `
+      /* Compact Study Library entry drawer and responsive topic tiles. */
+      #zurielStudyPanel #zurielStudyLibraryDrawer {
+        margin:14px 0 18px;padding:0;border:1px solid #b99b58;border-radius:15px;
+        overflow:hidden;background:linear-gradient(145deg,#193657,#10213d);
+        box-shadow:0 6px 18px #0003;
+      }
+      #zurielStudyPanel #zurielStudyLibraryDrawer > summary {
+        display:flex;align-items:center;gap:10px;min-height:64px;padding:15px 16px;
+        cursor:pointer;list-style:none;color:#f6e5b6;font:700 16px/1.35 Arial,sans-serif;
+      }
+      #zurielStudyPanel #zurielStudyLibraryDrawer > summary::-webkit-details-marker {display:none;}
+      #zurielStudyPanel #zurielStudyLibraryDrawer > summary::after {
+        content:"＋";margin-left:auto;flex:0 0 auto;color:#f0d99f;font-size:22px;
+      }
+      #zurielStudyPanel #zurielStudyLibraryDrawer[open] > summary::after {content:"−";}
+      #zurielStudyPanel .study-library-intro {
+        margin:0;padding:0 16px 13px;color:#d9e3ef;font:13px/1.5 Arial,sans-serif;
+      }
+      #zurielStudyPanel #zurielStudySections {
+        display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;
+        align-items:start;padding:0 10px 12px;
+      }
+      #zurielStudyPanel #zurielStudySections > details {
+        min-width:0;margin:0;border:1px solid #d4dfeb;border-radius:11px;
+        background:#f8fbff;color:#17314d;box-shadow:0 2px 8px #0002;
+      }
+      #zurielStudyPanel #zurielStudySections > details > summary {
+        display:flex;align-items:center;min-height:58px;padding:10px 11px;
+        color:#173b5e;font:700 12px/1.4 Arial,sans-serif;overflow-wrap:anywhere;
+      }
+      #zurielStudyPanel #zurielStudySections > details[open] {
+        grid-column:1/-1;border-color:#b99b58;
+      }
+      #zurielStudyPanel #zurielStudySections > details[open] > summary {
+        min-height:48px;background:#eaf1f8;border-bottom:1px solid #d3dfeb;
+      }
+      @media(min-width:900px) {
+        #zurielStudyPanel #zurielStudySections {grid-template-columns:repeat(3,minmax(0,1fr));}
+      }
+      @media(max-width:340px) {
+        #zurielStudyPanel #zurielStudySections {grid-template-columns:1fr;}
+      }
       #zurielReaderStudyLayout {
         display:grid;
         grid-template-columns:minmax(0,1fr);
@@ -1869,11 +1911,37 @@
     const verseActionMenu=document.createElement("nav");
     verseActionMenu.id="zurielVerseActionMenu";
     verseActionMenu.setAttribute("aria-label","Selected verse study actions");
+    let studyLibraryDrawer = null;
     const verseActions=[["Prayer and faith",2],["Meaning and commentary",1],["Hebrew and Greek words",3],["Biblical dictionary",4],["Connected Scriptures",5],["Concordance",6],["Theology and deeper study",7],["Topical Scripture connections",8],["Personal study notes",9]];
-    verseActions.forEach(function(action){const button=document.createElement("button");button.type="button";button.textContent=action[0];button.addEventListener("click",function(){const sections=Array.from(panel.querySelectorAll("#zurielStudySections > details"));const selected=sections[action[1]];if(!selected)return;sections.forEach(function(section){section.open=section===selected;section.removeAttribute("data-zuriel-active");});selected.setAttribute("data-zuriel-active","true");panel.dataset.mode="verse-detail";selected.scrollIntoView({behavior:"smooth",block:"nearest"});});verseActionMenu.appendChild(button);});
-    const fullStudyAction=document.createElement("button");fullStudyAction.type="button";fullStudyAction.textContent="Open Full Study Centre";fullStudyAction.addEventListener("click",function(){panel.dataset.mode="verse";panel.querySelectorAll("#zurielStudySections > details").forEach(function(section){section.removeAttribute("data-zuriel-active");});panel.querySelector("#zurielStudySections").scrollIntoView({behavior:"smooth",block:"start"});});verseActionMenu.appendChild(fullStudyAction);
-    const actionBack=document.createElement("button");actionBack.type="button";actionBack.id="zurielVerseActionBack";actionBack.textContent="Back to verse actions";actionBack.addEventListener("click",function(){panel.dataset.mode="verse-menu";panel.querySelectorAll("#zurielStudySections > details").forEach(function(section){section.open=false;section.removeAttribute("data-zuriel-active");});panel.scrollTop=0;});verseActionMenu.appendChild(actionBack);
-    const studySectionsHost=panel.querySelector("#zurielStudySections");if(studySectionsHost)panel.insertBefore(verseActionMenu,studySectionsHost);
+    verseActions.forEach(function(action){const button=document.createElement("button");button.type="button";button.textContent=action[0];button.addEventListener("click",function(){const sections=Array.from(panel.querySelectorAll("#zurielStudySections > details"));const selected=sections[action[1]];if(!selected)return;if(studyLibraryDrawer)studyLibraryDrawer.open=true;sections.forEach(function(section){section.open=section===selected;section.removeAttribute("data-zuriel-active");});selected.setAttribute("data-zuriel-active","true");panel.dataset.mode="verse-detail";selected.scrollIntoView({behavior:"smooth",block:"nearest"});});verseActionMenu.appendChild(button);});
+    const fullStudyAction=document.createElement("button");fullStudyAction.type="button";fullStudyAction.textContent="Open Full Study Centre";fullStudyAction.addEventListener("click",function(){panel.dataset.mode="verse";if(studyLibraryDrawer)studyLibraryDrawer.open=true;panel.querySelectorAll("#zurielStudySections > details").forEach(function(section){section.open=false;section.removeAttribute("data-zuriel-active");});panel.querySelector("#zurielStudySections").scrollIntoView({behavior:"smooth",block:"start"});});verseActionMenu.appendChild(fullStudyAction);
+    const actionBack=document.createElement("button");actionBack.type="button";actionBack.id="zurielVerseActionBack";actionBack.textContent="Back to verse actions";actionBack.addEventListener("click",function(){panel.dataset.mode="verse-menu";panel.querySelectorAll("#zurielStudySections > details").forEach(function(section){section.open=false;section.removeAttribute("data-zuriel-active");});if(studyLibraryDrawer)studyLibraryDrawer.open=false;panel.scrollTop=0;});verseActionMenu.appendChild(actionBack);
+    const studySectionsHost=panel.querySelector("#zurielStudySections");
+    if(studySectionsHost){
+      studyLibraryDrawer=document.createElement("details");
+      studyLibraryDrawer.id="zurielStudyLibraryDrawer";
+      studyLibraryDrawer.className="study-library-drawer";
+      const drawerSummary=document.createElement("summary");
+      drawerSummary.textContent="🗂️ Explore the Study Library";
+      const drawerIntro=document.createElement("p");
+      drawerIntro.className="study-library-intro";
+      drawerIntro.textContent="Choose a study topic below. Open one tile to read it; the full explanation expands only when selected.";
+      const drawerParent=studySectionsHost.parentNode;
+      drawerParent.insertBefore(studyLibraryDrawer,studySectionsHost);
+      studyLibraryDrawer.append(drawerSummary,drawerIntro,studySectionsHost);
+      studyLibraryDrawer.open=false;
+      studySectionsHost.querySelectorAll(":scope > details").forEach(function(section){
+        section.addEventListener("toggle",function(){
+          if(!section.open)return;
+          studySectionsHost.querySelectorAll(":scope > details").forEach(function(other){
+            if(other!==section)other.open=false;
+          });
+        });
+      });
+      panel.insertBefore(verseActionMenu,studyLibraryDrawer);
+    }else{
+      panel.insertBefore(verseActionMenu,panel.querySelector("#zurielStudySections"));
+    }
     const main = document.querySelector("main");
     const reader = document.getElementById("bibleReader");
     const studySections = panel.querySelectorAll("#zurielStudySections details");
@@ -2962,6 +3030,7 @@
           ? crossReferenceList.closest("details") : null;
 
         if (selectedEnglishWord) {
+          if (studyLibraryDrawer) studyLibraryDrawer.open = true;
           if (originalWordsDetails) originalWordsDetails.open = true;
           loadOriginalWords(selectedReference);
           panel.dataset.mode = "word";
@@ -2972,6 +3041,7 @@
           if (originalWordsDetails) originalWordsDetails.open = false;
           if (crossReferenceDetails) crossReferenceDetails.open = false;
           panel.dataset.mode = "verse-menu";
+          if (studyLibraryDrawer) studyLibraryDrawer.open = false;
           panel.querySelectorAll("#zurielStudySections > details").forEach(function(section){section.open=false;section.removeAttribute("data-zuriel-active");});
           const results = document.getElementById("zurielOriginalWordResults");
           const lexicon = document.getElementById("zurielLexiconDetails");

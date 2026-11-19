@@ -1,8 +1,9 @@
 import { readFile } from "node:fs/promises";
 
-const [source, reader] = await Promise.all([
+const [source, reader, home] = await Promise.all([
   readFile(new URL("../zuriel-study.js", import.meta.url), "utf8"),
-  readFile(new URL("../index.html", import.meta.url), "utf8")
+  readFile(new URL("../index.html", import.meta.url), "utf8"),
+  readFile(new URL("../zuriel-home.js", import.meta.url), "utf8")
 ]);
 const required = [
   "zurielVerseActionMenu",
@@ -20,7 +21,11 @@ const required = [
   "Back to verse actions",
   'panel.dataset.mode = "verse-menu"',
   'panel.dataset.mode="verse-detail"',
-  "safe-area-inset-bottom"
+  "safe-area-inset-bottom",
+  "zurielStudyLibraryDrawer",
+  "Explore the Study Library",
+  "study-library-intro",
+  "studyLibraryDrawer.open=true"
 ];
 const missing = required.filter(value => !source.includes(value));
 if (missing.length) {
@@ -56,4 +61,17 @@ const verseClickHandler = reader.slice(verseClickStart, verseClickEnd);
 if (!verseClickHandler.includes("selectVerseForGloryCard(")) {
   throw new Error("Tapping a Scripture verse must open its contextual action menu.");
 }
-console.log("Selected-verse action menu safeguards passed: tap-to-open overlay, grouped actions, one-action-at-a-time study details, word-study separation and dismissal.");
+if (!source.includes("grid-template-columns:repeat(2,minmax(0,1fr))") || !source.includes("details[open]")) {
+  throw new Error("Study Centre must provide responsive topic tiles that expand the selected topic.");
+}
+if (!source.includes('section.addEventListener("toggle"') || !source.includes('if(other!==section)other.open=false')) {
+  throw new Error("Only one Study Library topic may remain expanded at a time.");
+}
+const studyRoute = home.slice(home.indexOf('if (section === "study")'), home.indexOf('if (section === "kingdom")'));
+if (!studyRoute.includes('panel.dataset.mode = "verse"')) {
+  throw new Error("Opening Study navigation must restore the full Study Centre after verse or word context.");
+}
+if (!reader.includes("studyDrawer.open = true")) {
+  throw new Error("Verse-selected study actions must open the Study Library drawer.");
+}
+console.log("Selected-verse safeguards passed: compact Study Library drawer, responsive topic tiles, one-topic-at-a-time expansion, contextual verse actions and separate word study.");

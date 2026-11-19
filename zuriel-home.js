@@ -1185,6 +1185,7 @@
         const panel = document.getElementById("zurielStudyPanel");
 
         if (panel) {
+          panel.dataset.mode = "verse";
           panel.style.display = "block";
           panel.scrollIntoView({ behavior: "smooth", block: "start" });
         } else {

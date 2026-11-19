@@ -1158,20 +1158,22 @@ async function openChapter(book, chapter) {
       "Affirmation":["the light"],
       "Faith":["the light"],
       "Inspiration":["meaning and exposition"],
-      "Commentary & theology":["meaning and exposition","theology and deeper study"],
+      "Commentary & theology":["meaning and exposition"],
       "Dictionary":["biblical dictionary"],
       "Original-language words":["hebrew and greek word study"],
       "Word meanings":["hebrew and greek word study"],
       "Cross-references":["connected scriptures"],
       "Personal notes":["my personal study journal"],
-      "Study context":["scripture and historical context","historical and literary context"],
+      "Study context":["scripture and historical context"],
       "Full Study Centre":[]
     };
     if (sectionsRoot) {
-      Array.from(sectionsRoot.querySelectorAll("details")).forEach(function (section) {
+      const studyDrawer = sectionsRoot.closest("#zurielStudyLibraryDrawer");
+      if (studyDrawer) studyDrawer.open = true;
+      Array.from(sectionsRoot.querySelectorAll(":scope > details")).forEach(function (section) {
         const summary = section.querySelector("summary");
         const label = summary ? summary.textContent.toLowerCase() : "";
-        section.open = action === "Full Study Centre" ||
+        section.open = action !== "Full Study Centre" &&
           (targets[action] || []).some(function (term) { return label.includes(term); });
       });
     }
