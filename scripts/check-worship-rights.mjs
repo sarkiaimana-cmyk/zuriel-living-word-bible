@@ -105,4 +105,4 @@ for (const pathway of pathwayLibrary.pathways) {
     verifiedReferences++;
   }
 }
-console.log("Worship library checks passed: accessible search and filtering, separate composition and recording rights, streaming permission, HTTPS source, explicit unavailable state and no media preloading.");
+console.log("Worship library checks passed: " + pathwayLibrary.pathways.length + " unique study pathways, " + verifiedReferences + " Scripture references verified against the offline KJV, accessible search and filtering, composition/recording/streaming rights gates and no media preloading.");
