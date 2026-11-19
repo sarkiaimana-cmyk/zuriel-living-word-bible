@@ -49,8 +49,7 @@ const CORE_FILES = [
   "./images/books/0fc10dde-c515-45e8-916b-5a27f61b0841.jpg",
   "./images/books/738dfb2c-b2e8-49d6-bc1c-d6766be38adf.jpg",
   "./images/books/d14a5cec-132e-4432-9604-9cb82cd8cf71.jpg",
-  "./images/books/d9f06adf-07c3-45b7-bb53-385c15032679.jpg",
-  "./images/wallpapers/zuriel-landscape-collection.webp"
+  "./images/books/d9f06adf-07c3-45b7-bb53-385c15032679.jpg"
 ];
 
 self.addEventListener("install", function (event) {
@@ -94,6 +93,20 @@ self.addEventListener("fetch", function (event) {
   const url = new URL(request.url);
 
   if (url.origin !== self.location.origin) {
+    if (url.origin === "https://images.unsplash.com") {
+      event.respondWith(
+        caches.open(CACHE_NAME).then(async function (cache) {
+          const cached = await cache.match(request);
+          if (cached) return cached;
+          const response = await fetch(request);
+          if (response && response.ok && response.type !== "opaque") {
+            await cache.put(request, response.clone());
+          }
+          return response;
+        })
+      );
+      return;
+    }
     if (
       url.origin === "https://bible.helloao.org" &&
       url.pathname.startsWith("/api/d/")
