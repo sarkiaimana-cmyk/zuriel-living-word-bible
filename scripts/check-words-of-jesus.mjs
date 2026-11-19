@@ -96,6 +96,7 @@ try {
   const arrayStart = section.indexOf("[", teachingsStart);
   const teachings = vm.runInNewContext("(" + section.slice(arrayStart, teachingsEnd + 10).replace(/;?$/, "") + ")", {}, { timeout: 1000 });
   if (!Array.isArray(teachings) || teachings.length < 20) throw new Error("Curated teaching data did not load.");
+  const gospelCoverage = new Set();
   for (const teaching of teachings) {
     if (!Array.isArray(teaching.refs) || teaching.refs.length === 0) {
       throw new Error(teaching.title + " has no Scripture references.");
@@ -103,6 +104,7 @@ try {
     for (const reference of teaching.refs) {
       const match = String(reference).match(/^(.+?)\s+(\d+):(\d+)$/);
       if (!match) throw new Error(teaching.title + " has a malformed reference: " + reference);
+      if (["Matthew", "Mark", "Luke", "John"].includes(match[1])) gospelCoverage.add(match[1]);
       const book = bookLookup.get(match[1].toLowerCase().replace(/\s+/g, " ").trim());
       if (!book) throw new Error(teaching.title + " refers to an unknown Bible book: " + match[1]);
       const chapterNumber = Number(match[2]), verseNumber = Number(match[3]);
@@ -116,6 +118,7 @@ try {
       verifiedReferenceCount += 1;
     }
   }
+  if (gospelCoverage.size !== 4) throw new Error("Curated Words of Jesus teachings must cover all four Gospels.");
 } catch (error) {
   failures.push("Offline KJV reference verification failed: " + error.message);
 }
@@ -129,5 +132,5 @@ if (failures.length) {
   failures.forEach(item => console.error(" - " + item));
   process.exitCode = 1;
 } else {
-  console.log("Words of Jesus study-centre checks passed (" + topicCount + " themes, " + referenceCount + " reference collections, " + verifiedReferenceCount + " individual Scripture links verified against the bundled 66-book KJV, searchable and filterable, reader navigation, contextual study, personal saving, offline and Android packaging).");
+  console.log("Words of Jesus study-centre checks passed (" + topicCount + " themes, " + referenceCount + " reference collections, " + verifiedReferenceCount + " individual Scripture links across all four Gospels, verified against the bundled 66-book KJV, searchable and filterable, reader navigation, contextual study, personal saving, offline and Android packaging).");
 }
