@@ -22,6 +22,7 @@ const sandbox = {
 vm.runInNewContext(source, sandbox, { timeout: 1000 });
 const search = sandbox.window.ZurielBibleSearch;
 assert.ok(search && typeof search.search === "function", "Offline search API must expose search().");
+assert.ok(index.includes('.verse[data-verse-number="\'+item.verse+\'"]'), "Search-result navigation must locate the exact rendered verse number, not an array position.");
 
 const phrase = await search.search("God so loved", 30);
 assert.equal(phrase.length, 1, "Phrase search should find the complete phrase.");
