@@ -49,8 +49,8 @@ function parseReference(reference) {
 
 const requiredFields = ["prayer", "declaration", "affirmation", "confession", "inspiration"];
 const visibleRecords = library.list();
-if (visibleRecords.length < 135) {
-  throw new Error("Expected at least 135 unique curated verse-specific faith-response references.");
+if (visibleRecords.length < 150) {
+  throw new Error("Expected at least 150 unique curated verse-specific faith-response references.");
 }
 const records = typeof library.auditList === "function"
   ? library.auditList()
