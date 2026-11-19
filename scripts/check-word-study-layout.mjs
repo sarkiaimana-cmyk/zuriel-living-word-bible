@@ -35,6 +35,20 @@ check("mobile word study opens as a compact bottom sheet over the current reader
   study.includes("max-height:min(42vh,360px)") &&
   study.includes("bottom:calc(68px + env(safe-area-inset-bottom))"));
 
+check("offline word-study fallback searches the precached curated word library",
+  study.includes("window.ZurielStudyLibrary") &&
+  study.includes('item.kind === "word"') &&
+  study.includes("studyLibrary.search(selectedEnglishWord)"));
+check("offline related word studies are clearly distinguished from exact verse-level links",
+  study.includes("not a verified identification of the exact Hebrew or Greek form") &&
+  study.includes("Exact verse-level parsing is shown only when"));
+check("offline related word cards display original script, contextual gloss and reading cautions",
+  study.includes("source.originalForm") &&
+  study.includes("source.contextualGloss") &&
+  study.includes("source.interpretiveCaution"));
+check("offline related word-study references can open in the reader",
+  study.includes("studyLibrary.openReference(reference, referenceButton, status)"));
+
 if (failures.length) {
   console.error("Contextual word-study layout checks failed:");
   failures.forEach(item => console.error(" - " + item));
