@@ -224,7 +224,7 @@ for (const entry of books.bookIntroductions) {
   assert.ok(typeof entry.readingNote === "string" && entry.readingNote.trim().length >= 80, "Book introduction needs a contextual reading note: " + entry.book);
   assert.ok(!bookIntroNotes.has(entry.readingNote), "Book reading notes must be tailored, not repeated: " + entry.book);
   for (const reference of entry.keyPassages) {
-    assert.ok(/^.+?\\s+\\d+:\\d+/.test(reference), "Book key passages must specify book, chapter and verse: " + entry.book + " — " + reference);
+    assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Book key passages must specify book, chapter and verse: " + entry.book + " — " + reference);
     checkReference(reference, "book introduction " + entry.book);
   }
   bookIntroIds.add(entry.id);
@@ -239,12 +239,12 @@ for (const entry of books.bookStudyPathways) {
   assert.ok(typeof entry.book === "string" && entry.book.trim() && !bookPathBooks.has(entry.book), "Each book needs one study pathway");
   assert.ok(typeof entry.startingPassage === "string" && entry.startingPassage.trim(), "Book pathway needs a starting passage: " + entry.book);
   for (const reference of entry.startingPassage.split(";").map(value=>value.trim()).filter(Boolean)) {
-    assert.ok(/^.+?\\s+\\d+:\\d+/.test(reference), "Book starting passages must specify book, chapter and verse: " + entry.book + " — " + reference);
+    assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Book starting passages must specify book, chapter and verse: " + entry.book + " — " + reference);
     checkReference(reference, "book study pathway " + entry.book);
   }
   assert.ok(Array.isArray(entry.crossReferenceTrail) && entry.crossReferenceTrail.length >= 2, "Book pathway needs cross-reference steps: " + entry.book);
   for (const reference of entry.crossReferenceTrail) {
-    assert.ok(/^.+?\\s+\\d+:\\d+/.test(reference), "Book pathway references must specify book, chapter and verse: " + entry.book + " — " + reference);
+    assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Book pathway references must specify book, chapter and verse: " + entry.book + " — " + reference);
     checkReference(reference, "book pathway cross-reference " + entry.book);
   }
   for (const [field,minLength] of [["observationPrompt",50],["interpretationPrompt",50],["lifeApplicationPrompt",50],["prayerPrompt",50],["interpretiveGuardrail",50]]) {
