@@ -264,3 +264,12 @@ The following user requirements are part of the product acceptance criteria, not
 - Expands the contextual original-language library from 100 to 110 distinct lexemes with five Greek and five Hebrew entries.
 - New terms cover mercy, compassion, godliness, reconciliation, atonement, comfort/relenting, Sabbath, remembrance, dwelling and shield imagery. Each card includes original script, contextual gloss, KJV references, interpretive cautions and explicit limits on verse-specific parsing.
 - The automated count gate advances to 110 and offline cache to v204. The library remains lexeme-level where exact verse forms and morphology are not parsed; no unverified Strong's numbers or inflections are asserted.
+
+
+## 1.4.103 commentary quality milestone — candidate
+
+- Replaced three shallow duplicate primary-passage records with distinct contextual commentary on **2 Kings 22:8–20**, **Psalm 90:1–17**, and **Matthew 25:31–46**. The fuller existing treatments of 1 Samuel 8:1–22, Micah 6:6–8 and John 15:1–17 are retained.
+- The commentary collection remains at **173 entries**, now with **173 unique primary passages** and established representation across all 66 canonical books.
+- Expanded-study validation now checks every commentary `passage` field against the bundled KJV, checks cross-chapter range endings, and requires unique IDs/passages plus substantive context, observation and interpretive-caution fields. Related Scripture references are checked when supplied.
+- App/package metadata advances to **1.4.103** and offline cache **v205** so the revised commentary dataset is included in web and Android packages.
+- Validation and signed Android packaging must pass before merge. This candidate is not an installed phone update; real-device offline and reading checks remain outstanding.
