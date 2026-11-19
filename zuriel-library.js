@@ -1774,6 +1774,17 @@
           "library-status");
         content.appendChild(summary);
 
+        const librarySearch = document.createElement("input");
+        librarySearch.type = "search";
+        librarySearch.placeholder = "Search saved Scriptures, notes, highlights and prayers…";
+        librarySearch.setAttribute("aria-label", "Search all saved library records");
+        librarySearch.autocomplete = "off";
+        librarySearch.style.cssText = "display:block;width:100%;min-width:0;min-height:46px;margin:10px 0 16px;padding:11px;border:1px solid #c9d2d0;border-radius:10px;font:15px Arial,sans-serif";
+        content.appendChild(librarySearch);
+        function markSavedSearch(box, values) {
+          box.dataset.savedSearch = values.filter(Boolean).join(" ").toLocaleLowerCase();
+        }
+
         function openReference(reference) {
           const match = String(reference || "").match(/^(.+?)\s+(\d+):(\d+)$/);
           if (!match || typeof window.openChapter !== "function") return;
@@ -1793,12 +1804,21 @@
         }
         saved.bookmarks.slice().reverse().forEach(function (item) {
           const box = element("div", undefined, "library-entry");
+          markSavedSearch(box, [item.title, item.text, item.reference]);
           box.appendChild(element("h4", item.title || "Saved item"));
           if (item.reference) {
             box.appendChild(element("strong", item.reference));
             box.appendChild(button("Open Scripture", () => openReference(item.reference)));
           }
           box.appendChild(element("p", item.text || ""));
+          const savedIndex = saved.bookmarks.indexOf(item);
+          box.appendChild(button("Remove saved item", function () {
+            if (!confirm("Remove this saved item from My Saved Library?")) return;
+            saved = loadSaved();
+            if (savedIndex < 0 || savedIndex >= saved.bookmarks.length) return;
+            saved.bookmarks.splice(savedIndex, 1);
+            if (persist()) openPage("saved");
+          }));
           content.appendChild(box);
         });
 
@@ -1809,6 +1829,7 @@
           const parts = entry[0].split("|");
           const reference = parts[0] + " " + parts[1] + ":" + parts[2];
           const record = entry[1] || {};
+          markSavedSearch(box, [record.title, reference, record.note, record.application]);
           box.appendChild(element("h4", record.title || reference));
           box.appendChild(element("strong", reference));
           if (record.note) box.appendChild(element("p", record.note));
@@ -1824,6 +1845,7 @@
           const parts = entry[0].split("|");
           const reference = parts[0] + " " + parts[1] + ":" + parts[2];
           const record = entry[1] || {};
+          markSavedSearch(box, [reference, record.verseColor, Object.keys(record.words || {}).join(" ")]);
           const wordCount = Object.keys(record.words || {}).length;
           box.appendChild(element("h4", reference));
           box.appendChild(element("p", record.verseColor ? "Whole verse highlighted" : wordCount + " word(s) highlighted"));
@@ -1836,9 +1858,16 @@
         }
         saved.prayers.slice().reverse().forEach(function (item) {
           const box = element("div", undefined, "library-entry");
+          markSavedSearch(box, [item.title, item.date, item.text, item.reference]);
           box.appendChild(element("small", item.date || "Saved prayer"));
           box.appendChild(element("p", item.text || ""));
           content.appendChild(box);
+        });
+        librarySearch.addEventListener("input", function () {
+          const query = librarySearch.value.trim().toLocaleLowerCase();
+          content.querySelectorAll("[data-saved-search]").forEach(function (box) {
+            box.hidden = !!query && !box.dataset.savedSearch.includes(query);
+          });
         });
       }
 
