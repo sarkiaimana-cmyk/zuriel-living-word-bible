@@ -28,6 +28,29 @@ const [
   json("kjv.72bec70fcd.json")
 ]);
 
+const studyDatasetPaths = [
+  "zuriel-passage-commentary-expansion.json", "zuriel-topical-bible-study-library-batch-2.json",
+  "zuriel-biblical-dictionary-expansion.json", "zuriel-original-language-word-studies-batch-1.json",
+  "zuriel-names-and-titles-of-god-library.json", "zuriel-connected-scripture-trails-batch-1.json",
+  "zuriel-connected-scripture-trails-batch-2.json", "zuriel-book-introductions-and-study-pathways.json",
+  "zuriel-deep-study-guides.json", "zuriel-bible-geography-atlas.json",
+  "zuriel-worship-study-pathways.json", "zuriel-theological-comparisons.json"
+];
+const [packagingScript, packagedLoader] = await Promise.all([
+  readFile(new URL("../scripts/prepare-web.mjs", import.meta.url), "utf8"),
+  readFile(new URL("../www/zuriel-study-library-data.js", import.meta.url), "utf8")
+]);
+assert.ok(packagingScript.includes('"zuriel-study-library-data.js"'), "Android packaging must include the study-library loader");
+assert.ok(packagingScript.includes('await cp("data", "www/data", { recursive: true });'), "Android packaging must copy the offline study data directory");
+assert.equal(packagedLoader, loader, "Packaged study-library loader must match the source loader");
+const libraryScriptPosition = index.indexOf('<script src="zuriel-study-library-data.js"></script>');
+const studyScriptPosition = index.indexOf('<script src="zuriel-study.js"></script>');
+assert.ok(libraryScriptPosition >= 0, "Reader page must load the offline study-library loader");
+assert.ok(studyScriptPosition > libraryScriptPosition, "Offline study data must load before the study interaction module");
+for (const path of studyDatasetPaths) {
+  const [sourceData, packagedData] = await Promise.all([json("data/" + path), json("www/data/" + path)]);
+  assert.deepEqual(packagedData, sourceData, "Android package must include an exact copy of " + path);
+}
 
 const readerMapMatch = index.match(/const bookCodes = (\{[\s\S]*?\n\};)/);
 assert.ok(readerMapMatch,"Reader book-code map must be present.");
@@ -170,7 +193,7 @@ for (const path of [
   "zuriel-deep-study-guides.json","zuriel-bible-geography-atlas.json","zuriel-worship-study-pathways.json","zuriel-theological-comparisons.json"
 ]) assert.ok(loader.includes(path),"Study loader must include "+path);
 assert.ok(index.includes('src="zuriel-study-library-data.js"'),"Study library integration script must load");
-assert.ok(worker.includes('zuriel-bible-offline-v197'),"Offline cache must be version 197");
+assert.ok(worker.includes('zuriel-bible-offline-v198'),"Offline cache must be version 198");
 assert.ok(worker.includes("./zuriel-study-library-data.js"),"Study loader must be precached");
 for (const path of [
   "zuriel-passage-commentary-expansion.json","zuriel-topical-bible-study-library-batch-2.json",
@@ -182,4 +205,4 @@ for (const path of [
 assert.ok(loader.includes("window.ZurielStudyLibrary"),"Study library API must be exposed");
 assert.ok(loader.includes("openReference"),"Study references must open through the Bible reader");
 assert.ok(loader.includes("Original-language form") && loader.includes("Morphology note") && loader.includes("Contextual word use"),"Word-study detail must expose original script, language, morphology status and contextual usage.");
-console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 12 offline datasets; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
+console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 12 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");

@@ -1,4 +1,4 @@
 {
-  "version": "1.4.95",
-  "releaseNotes": "Strengthens the offline original-language word-study library: consolidates duplicate lexical entries into 90 unique terms, expands the contextual studies of Ruach, Logos and Metanoia, adds Agathosyne, Tov and Kerygma, and validates declared language against the original script. Expands verse-specific faith responses to 206 unique references across all 66 Bible books, consolidates 22 duplicate records, and blocks duplicate references in CI. The collection includes 169 exact single-verse responses (0.543% of the KJV corpus); multi-verse ranges are tracked separately. Scripture references are checked against the bundled KJV. Morphology remains explicitly unasserted unless verified for the exact verse."
+  "version": "1.4.96",
+  "releaseNotes": "Fixes Android offline packaging for the complete Bible study library. The web package now includes the study-library loader and all 12 JSON datasets, and CI compares every packaged dataset with its source to prevent missing offline resources. This corrects an omission discovered in the 1.4.95 Android package; the offline study library is now explicitly included in Android packaging checks."
 }
