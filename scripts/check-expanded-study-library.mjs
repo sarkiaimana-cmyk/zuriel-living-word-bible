@@ -231,7 +231,7 @@ for (const entry of topical.entries) {
   if (entry.readingCaution !== undefined) assert.ok(typeof entry.readingCaution === "string" && entry.readingCaution.trim().length >= 30, "Topical reading cautions must be substantive: " + entry.title);
   assert.ok(Array.isArray(entry.scriptureReferences) && entry.scriptureReferences.length >= 2, "Topical guide needs multiple Scripture references: " + entry.title);
   for (const reference of entry.scriptureReferences) {
-    assert.ok(/^.+?\\s+\\d+:\\d+/.test(reference), "Topical references must specify book, chapter and verse: " + entry.title + " — " + reference);
+    assert.ok(/^.+?\s+\d+:\d+/.test(reference), "Topical references must specify book, chapter and verse: " + entry.title + " — " + reference);
     checkReference(reference, "topical guide " + entry.title);
   }
   topicalIds.add(entry.id);
