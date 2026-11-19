@@ -98,6 +98,7 @@ requireMatch(navigator, /inlineDisplayButton\.addEventListener\("click",[\s\S]*?
 requireMatch(navigator, /launch\.textContent = "Browse Bible"/, "The full grid browser must remain available as a secondary Browse action.");
 requireMatch(navigator, /function chooseChapter\(number\)[\s\S]*?displayVerseButton\.disabled = false;[\s\S]*?displayVerseButton\.textContent = "DISPLAY CHAPTER"/, "Choosing a chapter must enable a separate DISPLAY CHAPTER action.");
 requireMatch(navigator, /displayVerseButton\.addEventListener\("click", openPassage\)/, "The DISPLAY VERSE action must open the selected passage.");
+requireMatch(navigator, /inlineDisplayButton\.addEventListener\("click", async function[\s\S]*?await openPassage\(\)[\s\S]*?finally[\s\S]*?updateInlineDisplayLabel\(\)/, "The reader-page Display control must recover after passage loading succeeds or fails.");
 requireMatch(navigator, /selectedVerse = n;[\s\S]*?displayVerseButton\.disabled = false;[\s\S]*?Tap DISPLAY VERSE to open the passage\./, "Selecting a verse must prepare the confirmation action without opening the passage automatically.");
 const verseChoiceHandler = navigator.match(/grid\.appendChild\(buttonFor\(String\(n\), n, selectedVerse === n, \(\) => \{([\s\S]*?)\}\)\);/);
 if (!verseChoiceHandler || /openPassage\s*\(/.test(verseChoiceHandler[1])) {
