@@ -88,7 +88,14 @@ if (home.includes("setupHomePassageSelector") || home.includes("zurielHomePassag
   throw new Error("The retired duplicate home passage selector must not return.");
 }
 
-requireMatch(navigator, /id="zgnDisplayVerse"[^>]*>DISPLAY VERSE/, "The passage selector must present an explicit DISPLAY VERSE action.");
+requireMatch(navigator, /id="zgnDisplayVerse"[^>]*>DISPLAY VERSE/, "The full Bible browser must present an explicit DISPLAY VERSE action.");
+requireMatch(navigator, /id="zgnInlineBook"/, "The reader page must show a compact BOOK selector.");
+requireMatch(navigator, /id="zgnInlineChapter"/, "The reader page must show a compact CHAPTER selector.");
+requireMatch(navigator, /id="zgnInlineVerse"/, "The reader page must show a compact VERSE selector.");
+requireMatch(navigator, /id="zgnInlineDisplayVerse"/, "The reader page must show a primary Display Chapter/Verse action.");
+requireMatch(navigator, /window\.getChapterVerseCount\(selectedBook, selectedChapter \|\| 1\)/, "Inline verse choices must be based on the selected chapter's real verse count.");
+requireMatch(navigator, /inlineDisplayButton\.addEventListener\("click",[\s\S]*?openPassage\(\)/, "The reader page Display action must use the shared passage loader.");
+requireMatch(navigator, /launch\.textContent = "Browse Bible"/, "The full grid browser must remain available as a secondary Browse action.");
 requireMatch(navigator, /function chooseChapter\(number\)[\s\S]*?displayVerseButton\.disabled = false;[\s\S]*?displayVerseButton\.textContent = "DISPLAY CHAPTER"/, "Choosing a chapter must enable a separate DISPLAY CHAPTER action.");
 requireMatch(navigator, /displayVerseButton\.addEventListener\("click", openPassage\)/, "The DISPLAY VERSE action must open the selected passage.");
 requireMatch(navigator, /selectedVerse = n;[\s\S]*?displayVerseButton\.disabled = false;[\s\S]*?Tap DISPLAY VERSE to open the passage\./, "Selecting a verse must prepare the confirmation action without opening the passage automatically.");
