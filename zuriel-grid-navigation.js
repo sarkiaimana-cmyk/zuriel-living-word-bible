@@ -132,8 +132,28 @@
   translationBar.setAttribute("aria-label", "Choose Bible translation");
   translationBar.innerHTML = '<button type="button" class="zrt-tab is-active" data-version="KJV" aria-pressed="true">KJV</button><button type="button" class="zrt-tab" data-version="NIV" aria-pressed="false">NIV</button><button type="button" class="zrt-tab" data-version="ESV" aria-pressed="false">ESV</button><button type="button" class="zrt-tab" data-version="NKJV" aria-pressed="false">NKJV</button><button type="button" class="zrt-tab" data-version="NLT" aria-pressed="false">NLT</button><button type="button" class="zrt-tab" data-version="AMP" aria-pressed="false">AMP</button><button type="button" class="zrt-tab" data-version="TPT" aria-pressed="false">TPT</button><button type="button" class="zrt-tab" data-version="GNT" aria-pressed="false">GNT</button><button type="button" class="zrt-tab" data-version="NET" aria-pressed="false">NET</button><button type="button" class="zrt-tab" data-version="CSB" aria-pressed="false">CSB</button><button type="button" class="zrt-tab" data-version="NASB" aria-pressed="false">NASB</button><button type="button" class="zrt-tab" data-version="LB/LT" aria-pressed="false">LB/LT</button>';
   const translationStyle = document.createElement("style");
-  translationStyle.textContent = "#zurielReaderTranslations{display:flex;gap:7px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;padding:9px 2px 12px;margin:5px 0 8px;white-space:nowrap;-webkit-overflow-scrolling:touch}#zurielReaderTranslations .zrt-tab{flex:0 0 auto;min-width:55px;min-height:42px;margin:0;padding:8px 12px;border:1px solid #b99b58;border-radius:22px;background:linear-gradient(145deg,#14294b,#203e68);color:#fff8e8;font:700 13px Arial,sans-serif}#zurielReaderTranslations .zrt-tab.is-active{background:linear-gradient(145deg,#f8d96b,#d9a92f);color:#10213d;border:2px solid #fff0b3;box-shadow:0 2px 8px #b99b5855}";
+  translationStyle.textContent = "#zurielReaderTranslations{display:flex;gap:7px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;padding:9px 2px 12px;margin:5px 0 3px;white-space:nowrap;-webkit-overflow-scrolling:touch}#zurielReaderTranslations .zrt-tab{flex:0 0 auto;min-width:55px;min-height:42px;margin:0;padding:8px 12px;border:1px solid #b99b58;border-radius:22px;background:linear-gradient(145deg,#14294b,#203e68);color:#fff8e8;font:700 13px Arial,sans-serif}#zurielReaderTranslations .zrt-tab.is-active{background:linear-gradient(145deg,#f8d96b,#d9a92f);color:#10213d;border:2px solid #fff0b3;box-shadow:0 2px 8px #b99b5855}#zurielReaderTranslations .zrt-tab:disabled{opacity:.42;filter:grayscale(1)}#zurielTranslationReadiness{margin:0 2px 10px;color:#526174;font:12px/1.5 Arial,sans-serif;border-bottom:1px dashed #c9b77e;padding:0 0 9px}";
   document.head.appendChild(translationStyle);
+  const translationReadiness = document.createElement("p");
+  translationReadiness.id = "zurielTranslationReadiness";
+  translationReadiness.setAttribute("role","status");
+  translationReadiness.textContent = "KJV is available offline. Other versions require the secure translation service.";
+  translationBar.insertAdjacentElement("afterend", translationReadiness);
+  window.addEventListener("load", async function () {
+    const service = window.ZurielTranslations;
+    if (service && typeof service.refreshVersions === "function") {
+      try { await service.refreshVersions(); } catch (_) { /* Keep KJV available if the service is offline. */ }
+    }
+    const ready = !!(window.ZurielTranslations && window.ZurielTranslations.configured);
+    translationBar.querySelectorAll('.zrt-tab[data-version]:not([data-version="KJV"])').forEach(function (button) {
+      button.disabled = !ready;
+      button.title = ready ? "Select this authorised online translation" : "Not available yet — secure translation service is not configured";
+      button.setAttribute("aria-disabled", String(!ready));
+    });
+    translationReadiness.textContent = ready
+      ? "KJV is available offline. Online versions will be listed only when authorised by the connected provider."
+      : "KJV is available offline. Other versions are temporarily unavailable until the secure translation service is configured.";
+  }, { once:true });
   const readerHeading = root.querySelector("h2");
   if (readerHeading) readerHeading.insertAdjacentElement("afterend", translationBar);
   else root.insertBefore(translationBar, root.firstChild);
