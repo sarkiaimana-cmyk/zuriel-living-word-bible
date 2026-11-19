@@ -486,10 +486,93 @@
       if (requestId !== originalWordsRequest) return;
       target.replaceChildren();
 
+      // The verse-level interlinear feed may be unavailable offline. Offer
+      // clearly-labelled curated word-study resources from the precached
+      // local library, without pretending they are the exact lemma in this verse.
+      const studyLibrary = window.ZurielStudyLibrary;
+      if (studyLibrary && typeof studyLibrary.search === "function") {
+        try {
+          const candidates = await studyLibrary.search(selectedEnglishWord);
+          if (requestId !== originalWordsRequest) return;
+          const related = candidates.filter(function (item) {
+            return item && item.kind === "word" && item.source &&
+              item.source.term && item.source.originalForm;
+          }).slice(0, 5);
+          if (related.length) {
+            const disclaimer = document.createElement("p");
+            disclaimer.className = "study-small";
+            disclaimer.textContent = "Offline related word studies — these are curated resources matching the English word, not a verified identification of the exact Hebrew or Greek form in " +
+              ref.book + " " + ref.chapter + ":" + ref.verse + ". Exact verse-level parsing is shown only when the source interlinear and KJV word alignment can be verified.";
+            target.appendChild(disclaimer);
+
+            related.forEach(function (item) {
+              const source = item.source;
+              const card = document.createElement("section");
+              card.className = "original-word-card";
+              const heading = document.createElement("strong");
+              heading.textContent = source.term + " (" + (source.language || "language not stated") + ")";
+              card.appendChild(heading);
+
+              const original = document.createElement("p");
+              original.className = "original-script";
+              original.dir = source.language === "Hebrew" || source.language === "Aramaic" ? "rtl" : "ltr";
+              original.textContent = source.originalForm;
+              card.appendChild(original);
+
+              const gloss = document.createElement("p");
+              gloss.className = "original-gloss";
+              gloss.textContent = source.contextualGloss || "No contextual gloss supplied.";
+              card.appendChild(gloss);
+
+              if (source.interpretiveCaution) {
+                const caution = document.createElement("p");
+                caution.className = "study-small";
+                caution.textContent = "Reading caution: " + source.interpretiveCaution;
+                card.appendChild(caution);
+              }
+
+              const references = Array.isArray(source.scriptureReferences)
+                ? source.scriptureReferences.slice(0, 3) : [];
+              if (references.length) {
+                const refsLabel = document.createElement("p");
+                refsLabel.className = "study-small";
+                refsLabel.textContent = "Study references:";
+                card.appendChild(refsLabel);
+                references.forEach(function (reference) {
+                  const referenceButton = document.createElement("button");
+                  referenceButton.type = "button";
+                  referenceButton.className = "study-link";
+                  referenceButton.textContent = reference;
+                  referenceButton.addEventListener("click", function () {
+                    const status = document.createElement("span");
+                    card.appendChild(status);
+                    studyLibrary.openReference(reference, referenceButton, status);
+                  });
+                  card.appendChild(referenceButton);
+                });
+              }
+              target.appendChild(card);
+            });
+
+            const retryExact = document.createElement("button");
+            retryExact.type = "button";
+            retryExact.className = "study-secondary";
+            retryExact.textContent = "Try exact verse word alignment again";
+            retryExact.addEventListener("click", function () {
+              loadOriginalWords(ref);
+            });
+            target.appendChild(retryExact);
+            return;
+          }
+        } catch (fallbackError) {
+          // Keep the explicit unavailable state below if local resources fail too.
+        }
+      }
+
       const message = document.createElement("p");
       message.className = "study-small";
       message.textContent = !navigator.onLine
-        ? "You are offline and this word-study resource is not saved on this device yet. Connect once to load it and make it available for later offline study."
+        ? "You are offline. No exact verse-level original-language match is available for this word yet, and no match will be guessed."
         : "The original-language resource could not be loaded right now. Your selected verse is safe; please try again in a moment.";
       target.appendChild(message);
 
