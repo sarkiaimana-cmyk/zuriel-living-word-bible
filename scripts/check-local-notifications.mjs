@@ -13,14 +13,14 @@ const [source, pkg, release, index, worker, prepare, library, updates] = await P
   readFile("zuriel-updates.js", "utf8")
 ]);
 
-assert.equal(pkg.version, "1.4.74", "package version must match reminder release");
+assert.match(pkg.version, /^\\d+\\.\\d+\\.\\d+$/, "package version must use semantic versioning");
 assert.equal(release.version, pkg.version, "in-app release metadata must match package version");
 assert.equal(pkg.dependencies["@capacitor/local-notifications"], "8.3.1", "Capacitor 8 local notifications plugin must be pinned");
 assert.ok(index.includes('src="zuriel-notifications.js"'), "reminder manager must load in the app");
 assert.ok(prepare.includes('"zuriel-notifications.js"'), "reminder manager must be copied into the Android web bundle");
-assert.ok(worker.includes('zuriel-bible-offline-v176'), "offline cache must advance to v176");
+assert.ok(worker.includes('zuriel-bible-offline-v177'), "offline cache must advance to v177");
 assert.ok(worker.includes('"./zuriel-notifications.js"'), "reminder manager must be precached offline");
-assert.ok(updates.includes('const APP_VERSION = "1.4.74"'), "update centre must report 1.4.74");
+assert.ok(updates.includes('const APP_VERSION = "' + release.version + '" '), "update centre must report the published version");
 assert.ok(library.includes('["plans", "🗓️ Bible Reading Plans"]'), "reading plans must have a library destination");
 assert.ok(library.includes("window.ZurielReadingPlans.render"), "reading plan destination must render the offline plans");
 assert.ok(source.includes('requestPermissions()'), "permission is requested only through an explicit schedule action");
