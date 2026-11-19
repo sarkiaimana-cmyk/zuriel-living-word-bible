@@ -681,6 +681,15 @@
             #zurielGloryPreview .zgs-copy {white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.48;margin:9px 0;font-family:Georgia,serif;font-size:14px;}
             #zurielGloryPreview .zgs-active-copy {min-height:105px;font-weight:700;}
             #zurielGloryPreview .zgs-footer {text-align:center;font-size:10px;letter-spacing:1px;margin-top:17px;color:var(--zgs-accent);font-weight:800;position:relative;z-index:1;}
+            #zurielGloryPreview .zgs-left-page .zgs-page-title:first-child {padding-bottom:10px;border-bottom:1px dashed var(--zgs-accent);font-size:12px;letter-spacing:1.2px;}
+            #zurielGloryPreview .zgs-right-page .zgs-page-title:first-child {padding-bottom:10px;border-bottom:1px dashed var(--zgs-accent);font-size:12px;letter-spacing:1.2px;}
+            #zurielGloryPreview .zgs-ref {padding-bottom:9px;border-bottom:1px dashed var(--zgs-accent);}
+            #zurielGloryPreview .zgs-active-copy {margin-top:14px;white-space:pre-wrap;overflow-wrap:anywhere;}
+            @media(max-width:560px) {
+              #zurielGloryPreview .zgs-book-spread {grid-template-columns:1fr;gap:10px;}
+              #zurielGloryPreview .zgs-page {min-height:180px;padding:15px 13px;}
+              #zurielGloryPreview:after {display:none;}
+            }
             #zurielGloryStudio .zgs-tabs {display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;}
             #zurielGloryStudio .zgs-tabs button {font-size:11px;line-height:1.25;padding:7px 3px;background:#19324f;color:#fff;}
             #zurielGloryStudio .zgs-tabs button[aria-pressed="true"] {background:#b28b45;color:#172b49;outline:2px solid #e5d2a6;}
@@ -723,7 +732,7 @@
           <div class="zgs-field"><label>OPEN-BOOK FINISH</label><div class="zgs-actions" id="zgsFinishes">
             <button type="button" data-finish="ivory">Warm ivory</button><button type="button" data-finish="navy">Kingdom navy</button><button type="button" data-finish="forest">Living forest</button><button type="button" data-finish="parchment">Parchment</button>
           </div></div>
-          <div class="zgs-tabs" id="zgsContentTabs" role="group" aria-label="Choose the right-page faith content">
+          <div class="zgs-tabs" id="zgsContentTabs" role="group" aria-label="Choose the left-page faith response">
             <button type="button" data-zgs-view="Prayer" aria-pressed="false">Prayer</button>
             <button type="button" data-zgs-view="Declaration" aria-pressed="true">Declaration</button>
             <button type="button" data-zgs-view="Affirmation" aria-pressed="false">Affirmation</button>
@@ -745,15 +754,15 @@
             <div class="zgs-brand">The Light 🕯️</div>
             <h3 id="zgsPreviewTitle">His Words.. My life.. My Victory</h3>
             <div class="zgs-book-spread">
-              <section class="zgs-page zgs-left-page">
-                <div class="zgs-page-title">THE WORD</div>
-                <div class="zgs-ref" id="zgsPreviewRef">Your Scripture reference</div>
-                <p class="zgs-copy" id="zgsPreviewScripture">Your Scripture will appear here.</p>
-              </section>
-              <section class="zgs-page zgs-right-page">
+              <section class="zgs-page zgs-left-page" aria-label="Glory Verse Affirmation">
                 <div class="zgs-page-title">GLORY VERSE AFFIRMATION</div>
                 <div class="zgs-page-title" id="zgsPreviewActiveTitle">DECLARATION</div>
                 <p class="zgs-copy zgs-active-copy" id="zgsPreviewActiveContent">Your Scripture-led declaration will appear here.</p>
+              </section>
+              <section class="zgs-page zgs-right-page" aria-label="Selected Bible Scripture">
+                <div class="zgs-page-title">SCRIPTURE</div>
+                <div class="zgs-ref" id="zgsPreviewRef">Your Scripture reference</div>
+                <p class="zgs-copy" id="zgsPreviewScripture">Your Scripture will appear here.</p>
               </section>
             </div>
             <div class="zgs-footer">Zuriel Living Word Bible</div>
