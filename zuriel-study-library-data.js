@@ -118,6 +118,9 @@
     const fields = [
       ["Question being compared", ["question"]],
       ["Shared Christian ground", ["sharedGround"]],
+      ["Geographical setting", ["region"]],
+      ["Modern geographical orientation", ["modernOrientation"]],
+      ["Journey route", ["sequence"]],
       ["Historical and literary context", ["historicalSetting", "historicalContext", "background", "literaryContext", "contextSummary", "context"]],
       ["Major themes", ["majorThemes", "focus"]],
       ["Testament and genre", ["testament", "genre"]],
@@ -135,7 +138,7 @@
       ["Prayer prompt", ["prayerPrompt"]],
       ["Interpretive caution", ["interpretiveCaution", "interpretiveGuardrail", "editorialCaution", "contextCaution", "studyCaution", "caution"]],
       ["Areas of disagreement", ["areasOfDisagreement"]],
-      ["Reading caution", ["readingCaution"]],
+      ["Reading caution", ["readingCaution", "contextNote"]],
       ["Source and reading note", ["sourceNote", "readingNote", "editorialNote", "provenance"]]
     ];
     fields.forEach(([label, keys]) => {
