@@ -1585,7 +1585,7 @@ async function runZurielBibleSearch() {
       resultButton.addEventListener("click", async function () {
         try {
           await window.openChapter(item.book, item.chapter);
-          const verseElement = message.querySelectorAll(".verse")[item.verse - 1];
+          const verseElement = message.querySelector('.verse[data-verse-number="'+item.verse+'"]');
 
           if (!verseElement || typeof window.selectBibleVerse !== "function" ||
               !window.selectBibleVerse(item.verse)) {
