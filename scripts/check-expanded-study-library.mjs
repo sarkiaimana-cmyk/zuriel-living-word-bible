@@ -114,6 +114,21 @@ for (const [items,count,label] of expected) {
   assert.ok(Array.isArray(items), label + " must be an array");
   assert.equal(items.length,count,label + " count");
 }
+const topicalIds = new Set();
+const topicalTitles = new Set();
+for (const entry of topical.entries) {
+  assert.ok(typeof entry.id === "string" && entry.id.trim(), "Every Christian topic needs a stable ID.");
+  assert.ok(!topicalIds.has(entry.id), "Christian topic IDs must be unique: " + entry.id);
+  assert.ok(typeof entry.title === "string" && entry.title.trim().length >= 8, "Every Christian topic needs a meaningful title.");
+  const title = entry.title.trim().toLocaleLowerCase("en");
+  assert.ok(!topicalTitles.has(title), "Christian topic titles must be unique: " + entry.title);
+  assert.ok(typeof entry.overview === "string" && entry.overview.trim().length >= 60, "Christian topic needs a substantive overview: " + entry.title);
+  assert.ok(typeof entry.studyQuestions === "string" && entry.studyQuestions.trim().length >= 35, "Christian topic needs a study question: " + entry.title);
+  assert.ok(typeof entry.lifeApplication === "string" && entry.lifeApplication.trim().length >= 30, "Christian topic needs a practical, contextual application: " + entry.title);
+  assert.ok(Array.isArray(entry.scriptureReferences) && entry.scriptureReferences.length >= 2, "Christian topic needs multiple Scripture foundations: " + entry.title);
+  topicalIds.add(entry.id);
+  topicalTitles.add(title);
+}
 for (const collection of [books.bookIntroductions,books.bookStudyPathways]) {
   const unique = new Set(collection.map(item => item.book));
   assert.equal(unique.size,66,"Every canonical book appears once in book guides");
