@@ -886,6 +886,343 @@
       "historicalContext": "Christians have lived under empires, monarchies, democracies and authoritarian governments. The church's approaches have ranged from withdrawal and nonviolence to public office, political advocacy and resistance to unjust laws.",
       "areasOfDisagreement": "Debates include the limits of obedience to rulers, Christian participation in military service, political advocacy, church-state relations, civil disobedience and how to pursue justice without making a political movement identical with the gospel.",
       "readingCaution": "Do not equate any nation, party, leader or policy with the kingdom of God. Romans 13 must be read alongside Acts 5:29 and the prophetic critique of unjust rulers. Reject political coercion, hatred and dehumanisation; protect conscience and the dignity of neighbours."
+    },
+    {
+      "id": "doctrine-026",
+      "title": "The biblical canon and deuterocanonical books",
+      "question": "Which writings belong to the Old Testament canon, and how did Christian communities receive and use these books?",
+      "sharedGround": "Christian traditions affirm that the Scriptures are authoritative for faith and life and that the canon was received through the worship, teaching and discernment of the people of God. Traditions broadly agree on the central witness of the biblical books while differing over the boundaries and status of several ancient Jewish writings.",
+      "scriptureReferences": [
+        "Deuteronomy 4:2",
+        "Luke 24:44",
+        "Romans 3:1-2",
+        "2 Timothy 3:16-17",
+        "2 Peter 3:15-16",
+        "Revelation 22:18-19"
+      ],
+      "positions": [
+        {
+          "view": "Protestant 66-book canon",
+          "summary": "Most Protestant traditions receive 39 Old Testament books and 27 New Testament books. The additional Jewish-Greek writings are often called Apocrypha and may be valued for historical or devotional reading, but they are not normally treated as canonical Scripture for establishing doctrine.",
+          "traditions": "Lutheran, Reformed, Anglican, Baptist, Methodist, Pentecostal and many other Protestant churches; Anglican and Lutheran histories include varied liturgical use of some Apocrypha."
+        },
+        {
+          "view": "Roman Catholic canon",
+          "summary": "The Roman Catholic Church receives the deuterocanonical books as part of the Old Testament canon, including Tobit, Judith, Wisdom, Sirach, Baruch, 1–2 Maccabees and additions to Esther and Daniel. Catholic teaching connects their reception with the Church's tradition and councils.",
+          "traditions": "Roman Catholic Church; see its official canon lists and teaching on Scripture and Tradition."
+        },
+        {
+          "view": "Eastern Orthodox and other ancient Eastern canons",
+          "summary": "Eastern Orthodox churches receive a broader Old Testament collection than the Protestant canon, but exact lists and liturgical status can differ among Greek, Slavic and other Orthodox traditions. Other ancient Eastern churches also have their own received canonical collections.",
+          "traditions": "Eastern Orthodox churches and other ancient Eastern Christian communities; avoid assuming a single identical list across all jurisdictions."
+        }
+      ],
+      "historicalContext": "The early church inherited Jewish Scriptures in Hebrew and Greek forms and used a range of writings in worship and instruction. Regional lists and usage developed over centuries; later councils and confessional statements clarified different communities' received canons. The history is more complex than a single late decision by one council.",
+      "areasOfDisagreement": "Christians differ over which ancient Jewish books are canonical, how the Septuagint relates to the Hebrew textual tradition, and how church reception and historical evidence should be weighed. Some traditions distinguish canonical, deuterocanonical and ecclesiastical books in different ways.",
+      "readingCaution": "Do not claim that every Christian community has always used exactly the same table of contents. Distinguish the status of a book within a tradition from its historical value, and do not use Revelation 22:18-19 as if it directly defined the boundaries of the entire Bible."
+    },
+    {
+      "id": "doctrine-027",
+      "title": "The person of Christ and the language of two natures",
+      "question": "How do Christian traditions describe the full divinity and full humanity of Jesus Christ in one person?",
+      "sharedGround": "Historic Trinitarian Christian traditions affirm that Jesus Christ is truly divine and truly human, the one Son of God incarnate. They reject dividing Christ into two persons or treating His humanity as an illusion, and they confess that His saving work depends on who He is.",
+      "scriptureReferences": [
+        "John 1:1-18",
+        "John 20:28",
+        "Philippians 2:5-11",
+        "Colossians 1:15-20",
+        "Hebrews 2:14-18",
+        "1 John 4:2-3"
+      ],
+      "positions": [
+        {
+          "view": "Chalcedonian two-natures formulation",
+          "summary": "Catholic, Eastern Orthodox and many Protestant churches receive the Definition of Chalcedon: Christ is one person in two natures, divine and human, without confusion, change, division or separation. The formula protects both His full humanity and full divinity.",
+          "traditions": "Roman Catholic, Eastern Orthodox, Lutheran, Reformed, Anglican and many other churches that receive Chalcedon."
+        },
+        {
+          "view": "Oriental Orthodox miaphysite formulation",
+          "summary": "Oriental Orthodox theology commonly speaks of the one united incarnate nature of the Word from two natures, fully divine and fully human. It rejects the confusion or absorption of Christ's humanity and does not intend to teach that Christ is less than fully human or divine.",
+          "traditions": "Coptic, Syriac, Armenian, Ethiopian, Eritrean and Malankara Orthodox churches; formulations vary among theologians."
+        },
+        {
+          "view": "Modern ecumenical Christological dialogue",
+          "summary": "Many modern dialogues have found substantial shared confession beneath historic terminology, while recognising that technical differences and church divisions remain significant. Careful explanation distinguishes the intended meaning of a formula from how opponents once described it.",
+          "traditions": "Bilateral dialogues among Chalcedonian and Oriental Orthodox churches and theologians; not a replacement for each church's official doctrine."
+        }
+      ],
+      "historicalContext": "The fourth- and fifth-century debates addressed how the eternal Son is united to the human nature assumed in the incarnation. The Council of Chalcedon in 451 produced a widely received definition, while Oriental Orthodox churches did not receive that council's formulation. Subsequent dialogue has clarified areas of agreement and remaining questions.",
+      "areasOfDisagreement": "Differences concern the preferred technical language for the union of divinity and humanity, the reception of particular councils and how to interpret earlier theologians. Avoid equating miaphysitism with Eutychianism or assuming every church uses identical terminology.",
+      "readingCaution": "Begin with the biblical witness to Jesus' identity and saving work. Do not reduce the debate to slogans such as 'two persons' versus 'one nature'; represent each tradition using its own careful self-description."
+    },
+    {
+      "id": "doctrine-028",
+      "title": "Israel, the Church and covenant fulfilment",
+      "question": "How do Christians understand the relationship between God's promises to Israel and the identity and mission of the Church?",
+      "sharedGround": "Christian traditions affirm God's faithfulness to His promises, the centrality of Jesus the Messiah and the inclusion of Gentiles in God's saving purpose. Romans 9–11 warns Gentile believers against arrogance and insists that God's gifts and calling are not treated casually.",
+      "scriptureReferences": [
+        "Genesis 12:1-3",
+        "Jeremiah 31:31-37",
+        "Acts 15:1-21",
+        "Romans 9:1-8",
+        "Romans 11:17-29",
+        "Galatians 3:26-29",
+        "Ephesians 2:11-22"
+      ],
+      "positions": [
+        {
+          "view": "Covenant theology",
+          "summary": "Many covenant theologians emphasise the continuity of God's one gracious purpose through successive covenants, fulfilled in Christ and shared by Jews and Gentiles in one people of God. They differ on how particular promises to ethnic Israel are fulfilled and whether any future national restoration is expected.",
+          "traditions": "Reformed, Presbyterian and some Anglican and Baptist theologians; there is internal diversity."
+        },
+        {
+          "view": "Dispensational approaches",
+          "summary": "Dispensational theologians commonly distinguish Israel and the Church within God's unfolding plan and expect particular Old Testament promises to Israel to have a future fulfilment for the Jewish people. Progressive forms also emphasise the inaugurated kingdom and fulfilment in Christ.",
+          "traditions": "Classical and progressive dispensational communities, especially in some evangelical churches; views vary."
+        },
+        {
+          "view": "Progressive covenantal and other mediating approaches",
+          "summary": "Some theologians stress the progressive fulfilment of the covenants in Christ while retaining a future significance for ethnic Israel or resisting a simple replacement model. They seek to read the whole canon without collapsing every promise into one undifferentiated category.",
+          "traditions": "Progressive covenantal, new covenant and other evangelical approaches; terminology is not uniform."
+        }
+      ],
+      "historicalContext": "The New Testament interprets Israel's Scriptures in light of Jesus and the inclusion of Gentiles. Early disputes about circumcision and Torah observance are addressed in Acts 15 and Galatians. Later Christian history includes both theological debates and serious anti-Jewish misuse of Scripture, which must be acknowledged.",
+      "areasOfDisagreement": "Traditions differ over covenant continuity, the meaning of Israel in Romans 9–11, land promises, the future of ethnic Israel and how prophetic texts relate to the Church. They also debate how to distinguish biblical theological claims from modern political positions.",
+      "readingCaution": "Do not use a theological position to justify antisemitism or to equate modern political policies automatically with biblical prophecy. Read Romans 11 in full and heed Paul's warning against boasting over the branches."
+    },
+    {
+      "id": "doctrine-029",
+      "title": "The Mosaic Law and Christian obedience",
+      "question": "How should Christians understand the continuing authority and application of the Law given to Israel?",
+      "sharedGround": "Christian traditions affirm that the Old Testament is Scripture and that Jesus fulfils God's purposes. They agree that believers are called to holiness, love of neighbour and obedience shaped by Christ, while differing on how the Mosaic covenant's commands apply to the Church.",
+      "scriptureReferences": [
+        "Matthew 5:17-20",
+        "Acts 15:1-21",
+        "Romans 7:1-12",
+        "Galatians 3:19-29",
+        "Galatians 5:13-18",
+        "Hebrews 8:6-13"
+      ],
+      "positions": [
+        {
+          "view": "Lutheran law-and-gospel distinction",
+          "summary": "Lutheran theology often distinguishes the Law, which exposes sin and guides civil life and Christian conduct, from the Gospel, which announces God's promise in Christ. The distinction is not simply Old Testament versus New Testament; both Law and Gospel can be found throughout Scripture.",
+          "traditions": "Lutheran churches and theologians; explanations of the Law's third use vary."
+        },
+        {
+          "view": "Reformed moral, civil and ceremonial distinctions",
+          "summary": "Many Reformed theologians distinguish moral commands, civil laws for Israel's historic polity and ceremonial laws fulfilled in Christ. The moral law continues to instruct Christian life, while civil and ceremonial provisions are not applied unchanged to modern states or churches.",
+          "traditions": "Reformed and Presbyterian traditions, with varied confessional formulations."
+        },
+        {
+          "view": "New Covenant and Wesleyan emphases",
+          "summary": "New Covenant theologians emphasise that believers are not under the Mosaic covenant as a covenant code but are called to the law of Christ. Wesleyan traditions stress grace-enabled holiness and love, reading Old Testament commands through Christ and the New Testament's moral teaching.",
+          "traditions": "New Covenant, Wesleyan and many evangelical traditions; internal differences remain."
+        }
+      ],
+      "historicalContext": "The question became especially urgent in the early Church when Gentile believers joined communities rooted in Israel's Scriptures. Acts 15, Galatians and Hebrews address circumcision, covenant identity, sacrifice and the fulfilment of promises in Christ. Later Protestant traditions developed different ways of describing continuity and discontinuity.",
+      "areasOfDisagreement": "Christians differ over the status of the Sabbath, food laws, tithing, civil legislation, the moral law and the meaning of 'fulfil' in Matthew 5. Some distinctions are theological frameworks rather than labels explicitly used by the biblical authors.",
+      "readingCaution": "Do not tell Christians that the Old Testament is irrelevant, nor impose Israel's covenant code unchanged on the Church. Read commands in their covenant, literary and historical settings and follow how the New Testament applies them."
+    },
+    {
+      "id": "doctrine-030",
+      "title": "The intermediate state and the hope of resurrection",
+      "question": "What happens between death and the final resurrection according to Christian interpretations of Scripture?",
+      "sharedGround": "Historic Christian traditions affirm that death does not defeat God's promise and that the final Christian hope includes resurrection and judgment. They differ over the condition of the dead before the resurrection, but the final resurrection remains central to the New Testament's hope.",
+      "scriptureReferences": [
+        "Luke 23:39-43",
+        "John 11:11-14",
+        "2 Corinthians 5:1-10",
+        "Philippians 1:20-26",
+        "1 Thessalonians 4:13-18",
+        "Revelation 6:9-11"
+      ],
+      "positions": [
+        {
+          "view": "Conscious intermediate state",
+          "summary": "Many Catholic, Orthodox and Protestant traditions understand believers who die as consciously with Christ while awaiting the resurrection of the body. They appeal to passages such as Philippians 1 and 2 Corinthians 5, while acknowledging that the intermediate state is not described in exhaustive detail.",
+          "traditions": "Roman Catholic, Eastern Orthodox, Anglican, Lutheran, Reformed, Methodist and many evangelical churches."
+        },
+        {
+          "view": "Conditional immortality and 'sleep' interpretations",
+          "summary": "Some Christians understand death as an unconscious state until the resurrection, often using the biblical metaphor of sleep and emphasising that immortality is God's gift rather than an inherent human possession. They read passages about being with Christ in light of the final resurrection hope.",
+          "traditions": "Some Adventist, conditionalist and other Protestant theologians; views vary within these communities."
+        }
+      ],
+      "historicalContext": "Early Christian teaching strongly emphasised bodily resurrection, while theologians also discussed the soul's condition after death. Later debates about immortality, resurrection and the meaning of 'sleep' developed within different philosophical and biblical frameworks.",
+      "areasOfDisagreement": "The main questions concern whether the dead are conscious before resurrection, how to interpret 'sleep' language, and the relation between body and soul. Traditions also differ on prayer for the departed and purification after death, treated in a separate comparison.",
+      "readingCaution": "Do not let debates about the intermediate state obscure the clear New Testament promise of resurrection. Read each passage in context and avoid claiming that one short text answers every question about the afterlife."
+    },
+    {
+      "id": "doctrine-031",
+      "title": "Spiritual warfare, deliverance and pastoral discernment",
+      "question": "How should Christians understand demonic oppression, prayer for deliverance and the limits of spiritual explanations?",
+      "sharedGround": "Christian traditions affirm that Scripture portrays spiritual evil as real and that Christ's authority is greater. They also affirm prayer, truth, pastoral care and the need to protect vulnerable people. The existence of spiritual conflict does not make every illness, trauma or hardship a demonic event.",
+      "scriptureReferences": [
+        "Mark 1:21-28",
+        "Luke 13:10-17",
+        "Ephesians 6:10-18",
+        "2 Corinthians 10:3-5",
+        "James 5:13-16",
+        "1 John 4:1-4"
+      ],
+      "positions": [
+        {
+          "view": "Pentecostal and charismatic deliverance emphases",
+          "summary": "Many Pentecostal and charismatic communities expect prayer for deliverance and spiritual gifts to remain active in the Church. They may use focused prayer, pastoral discernment and communal support, while responsible ministries insist on consent, accountability and referral for medical or mental-health needs.",
+          "traditions": "Pentecostal, charismatic and some renewal movements; practice varies widely."
+        },
+        {
+          "view": "Liturgical and cautious pastoral approaches",
+          "summary": "Some Catholic, Orthodox and Protestant communities maintain formal prayers or rites of exorcism under trained oversight, while warning against sensationalism and untrained intervention. They stress sacramental life, confession, prayer and careful assessment rather than assuming every problem has a demonic cause.",
+          "traditions": "Roman Catholic and Eastern Orthodox pastoral practice, and cautious evangelical traditions; policies differ."
+        },
+        {
+          "view": "Pastoral care with clinical collaboration",
+          "summary": "Many Christian counsellors and pastors emphasise that spiritual care and appropriate medical or psychological treatment need not compete. They resist diagnosing people from a distance and prioritise safety, informed consent, safeguarding and qualified clinical assessment when symptoms require it.",
+          "traditions": "Cross-denominational pastoral, chaplaincy and clinical approaches; not a separate creed."
+        }
+      ],
+      "historicalContext": "The Gospels describe Jesus confronting unclean spirits, while the New Testament also addresses suffering, illness, temptation and communal care in distinct ways. Christian communities developed different pastoral practices, from formal rites to spontaneous prayer, within changing cultural understandings of mental and physical illness.",
+      "areasOfDisagreement": "Christians differ over the frequency and forms of demonic activity, whether contemporary deliverance ministries should be expected, the role of formal rites and how spiritual discernment relates to medicine and psychology.",
+      "readingCaution": "Never tell someone to stop prescribed treatment, submit to frightening or coercive rituals, or interpret abuse, disability or mental illness as proof of demonic possession. Any ministry must respect consent, safety, safeguarding and professional care."
+    },
+    {
+      "id": "doctrine-032",
+      "title": "Christian pacifism, just war and peacebuilding",
+      "question": "When, if ever, may Christians participate in war or use force to protect others?",
+      "sharedGround": "Christian traditions affirm the value of human life, the call to love enemies, the pursuit of peace and the duty to protect neighbours from grave harm. They agree that violence is morally serious and must never be celebrated or used for selfish gain.",
+      "scriptureReferences": [
+        "Matthew 5:38-48",
+        "Romans 12:17-21",
+        "Romans 13:1-7",
+        "Acts 5:29",
+        "Isaiah 2:2-4",
+        "Micah 4:1-4"
+      ],
+      "positions": [
+        {
+          "view": "Christian pacifism and nonviolence",
+          "summary": "Pacifist traditions interpret Jesus' commands to love enemies and reject retaliation as a call for Christians to refuse participation in war and to practise nonviolent resistance, reconciliation and enemy-love even under threat.",
+          "traditions": "Anabaptist, Mennonite, Quaker and other Christian pacifist communities; pacifist convictions also appear within wider traditions."
+        },
+        {
+          "view": "Just war reasoning",
+          "summary": "Just war traditions hold that force may sometimes be morally permitted to defend the innocent or restrain grave aggression, but only under strict conditions such as just cause, legitimate authority, last resort, proportionality and protection of noncombatants.",
+          "traditions": "Roman Catholic, Anglican, Lutheran, Reformed and other traditions with varied applications and critiques."
+        },
+        {
+          "view": "Just peace and restraint approaches",
+          "summary": "Some theologians emphasise peacebuilding, prevention, restorative justice and nonviolent alternatives while recognising difficult questions about protecting people from immediate violence. They may critique both absolute pacifism and easy appeals to just war.",
+          "traditions": "Ecumenical peace movements and theologians across several traditions."
+        }
+      ],
+      "historicalContext": "The early Church included strong nonviolent witness, while later Christian societies developed theories of legitimate public force. The rise of Christian empires, modern nation-states and international law shaped later debates about war, conscience and protection of civilians.",
+      "areasOfDisagreement": "Disagreements concern whether force can ever be compatible with discipleship, how Romans 13 relates to enemy-love, who may authorise war and whether just-war criteria can be met in modern conflict.",
+      "readingCaution": "Do not use Romans 13 to excuse atrocities or Matthew 5 to dismiss the urgent protection of victims. Examine evidence, civilian harm, alternatives and the moral responsibility of every actor; never sanctify a nation or military campaign as automatically God's cause."
+    },
+    {
+      "id": "doctrine-033",
+      "title": "Prayer for the departed and purgatory",
+      "question": "Do Christians pray for the dead, and how do traditions understand purification after death?",
+      "sharedGround": "Christian traditions affirm God's justice and mercy, the final resurrection and the hope that the dead remain within God's care. They differ over whether prayer for the departed is appropriate and whether there is a post-death purification for those who die in God's grace.",
+      "scriptureReferences": [
+        "Matthew 12:32",
+        "Luke 16:19-31",
+        "1 Corinthians 3:10-15",
+        "Hebrews 9:27",
+        "1 Thessalonians 4:13-18",
+        "Revelation 21:27"
+      ],
+      "positions": [
+        {
+          "view": "Roman Catholic teaching on purgatory",
+          "summary": "Catholic teaching describes purgatory as the final purification of those who die in God's grace and friendship but remain imperfectly purified. It is not a second chance after death or an alternative to Christ's saving work; prayer for the departed is part of the communion of saints.",
+          "traditions": "Roman Catholic Church; consult official teaching for its precise definition."
+        },
+        {
+          "view": "Eastern Orthodox prayer for the departed",
+          "summary": "Orthodox churches pray for those who have died and entrust them to God's mercy, but do not define the intermediate state using the same detailed dogmatic account of purgatory as Roman Catholic teaching. Orthodox theologians differ in how they explain post-death purification.",
+          "traditions": "Eastern Orthodox churches; local liturgical and theological emphases vary."
+        },
+        {
+          "view": "Most Protestant objections",
+          "summary": "Many Protestant traditions reject purgatory as insufficiently grounded in their received biblical canon and emphasise Christ's completed work and the final judgment. Most do not practise prayer for the dead as a means of assisting their state, though some Anglican and Lutheran contexts have varied historical practices.",
+          "traditions": "Reformed, Baptist, evangelical and many other Protestant communities; practice and confessional language differ."
+        }
+      ],
+      "historicalContext": "Prayer for the departed appears in ancient Christian practice, while formal explanations of purification developed over time. The Reformation challenged purgatory, indulgences and related practices; Catholic teaching was clarified at the Council of Trent, while Orthodox traditions retained prayer for the departed without adopting the same definition.",
+      "areasOfDisagreement": "Debates include the interpretation of 1 Corinthians 3, the status of early Christian practice, the nature of purification, the authority of church tradition and whether prayers can benefit the departed.",
+      "readingCaution": "Do not claim that one cited passage directly states every later doctrine. Explain how each tradition interprets the texts and distinguish official teaching from popular descriptions or speculative imagery."
+    },
+    {
+      "id": "doctrine-034",
+      "title": "The scope of salvation: exclusivism, inclusivism and universalism",
+      "question": "How do Christians understand the possibility and scope of salvation through Jesus Christ?",
+      "sharedGround": "Historic Christian traditions confess that salvation is grounded in God's grace and the person and work of Jesus Christ. They also affirm the Church's call to proclaim the gospel, pray for all people and entrust final judgment to God's justice and mercy.",
+      "scriptureReferences": [
+        "John 14:6",
+        "Acts 4:12",
+        "Romans 10:9-17",
+        "1 Timothy 2:1-6",
+        "1 Corinthians 15:20-28",
+        "Colossians 1:19-20",
+        "Revelation 20:11-15"
+      ],
+      "positions": [
+        {
+          "view": "Exclusivist or particularist accounts",
+          "summary": "Many Christians hold that explicit faith in Jesus Christ is ordinarily necessary for salvation and stress the urgency of evangelism. Within this broad view, theologians differ on how God judges those who have never heard the gospel or are unable to respond in ordinary ways.",
+          "traditions": "Many evangelical, Reformed, Baptist and other Protestant traditions, alongside particularist voices in other churches."
+        },
+        {
+          "view": "Inclusivist accounts",
+          "summary": "Inclusivist theologians maintain that any salvation is entirely through Christ, while allowing that God's grace may reach people who do not possess explicit Christian knowledge or membership. They often appeal to God's universal desire to save and the limits of human knowledge about individual judgment.",
+          "traditions": "Some Catholic, Anglican and Protestant theologians; official formulations and boundaries differ."
+        },
+        {
+          "view": "Hopeful or dogmatic universalist accounts",
+          "summary": "Some Christians hope that God's reconciling purpose will finally embrace all people; a smaller number argue that all will certainly be saved. Others reject dogmatic universalism while praying and hoping for the widest possible mercy.",
+          "traditions": "A minority of theologians across historical traditions; hopeful universalism and dogmatic universalism should not be conflated."
+        }
+      ],
+      "historicalContext": "Christian reflection has held together biblical passages about the uniqueness of Christ, the universal scope of God's saving will, judgment and the hope of reconciliation. Different theologians weigh these texts and the authority of later church teaching in different ways.",
+      "areasOfDisagreement": "The debate concerns the necessity of explicit faith, the destiny of those who have not heard the gospel, the meaning of universal reconciliation texts and whether final judgment is everlasting, remedial or otherwise. Traditions also distinguish hope from a doctrine asserted with certainty.",
+      "readingCaution": "Do not declare specific individuals saved or condemned. Present the biblical texts in context, distinguish official teaching from theological speculation, and never use the debate to discourage evangelism, compassion or respect for people of other faiths."
+    },
+    {
+      "id": "doctrine-035",
+      "title": "Christian unity, ecumenism and denominational identity",
+      "question": "How should Christians pursue visible unity while remaining faithful to doctrinal convictions?",
+      "sharedGround": "Christian traditions affirm the unity of Christ's body and the call to love, humility and mutual service. They also recognise that serious disagreements about doctrine, sacraments, authority and ministry cannot be resolved by pretending they do not exist.",
+      "scriptureReferences": [
+        "John 17:20-23",
+        "1 Corinthians 1:10-13",
+        "Acts 15:1-21",
+        "Romans 14:1-12",
+        "Ephesians 4:1-6",
+        "Galatians 2:11-14"
+      ],
+      "positions": [
+        {
+          "view": "Ecumenical approaches",
+          "summary": "Ecumenical movements seek visible Christian unity through dialogue, shared prayer, cooperation and theological agreements. Many distinguish essential doctrines from matters that can be held with diversity, while recognising that sacramental and authority questions remain difficult.",
+          "traditions": "World Council of Churches member traditions, Catholic and Orthodox dialogues, Anglican and Protestant ecumenical bodies; participation varies."
+        },
+        {
+          "view": "Confessional and doctrinal-boundary approaches",
+          "summary": "Confessional traditions emphasise that unity must be grounded in truth and shared teaching, not only institutional cooperation. They may cooperate in service while maintaining separate church structures where disagreements about the gospel, sacraments or authority remain unresolved.",
+          "traditions": "Reformed, Lutheran, Baptist, evangelical, Catholic and Orthodox communities in differing ways; no tradition is internally uniform."
+        },
+        {
+          "view": "Local and congregational autonomy approaches",
+          "summary": "Some churches prioritise local congregational responsibility and voluntary networks, viewing unity as spiritual fellowship and shared mission without requiring one global governing structure. They may welcome cooperation while preserving local doctrinal accountability.",
+          "traditions": "Many Baptist, independent evangelical and congregational churches; arrangements differ."
+        }
+      ],
+      "historicalContext": "The New Testament addresses divisions in local churches and describes major disputes resolved through communal discernment, as in Acts 15. Later history includes schisms, councils, reform movements and modern ecumenical efforts seeking reconciliation while acknowledging unresolved differences.",
+      "areasOfDisagreement": "Christians differ over the nature of visible unity, the authority needed to settle disputes, sacramental recognition, ordained ministry and whether doctrinal agreement is a prerequisite for shared worship or communion.",
+      "readingCaution": "Do not treat every denominational difference as trivial, nor use disagreement as an excuse for contempt. Distinguish cooperation in service, theological dialogue, shared prayer and full ecclesial communion; each involves different commitments."
     }
   ]
 }
