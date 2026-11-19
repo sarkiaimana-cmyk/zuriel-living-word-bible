@@ -1,4 +1,4 @@
 {
-  "version": "1.4.80",
-  "releaseNotes": "Expands contextual passage commentary from 103 to 122 original study notes, including lament, prayer, mission, leadership, suffering, hope and the Gospels. Expands original-language word studies to 85 contextual Hebrew, Greek and Aramaic entries. Every commentary and word-study reference is checked against the bundled KJV. Retains all existing study resources and refreshes the offline cache."
+  "version": "1.4.81",
+  "releaseNotes": "Adds fourteen distinct Scripture-specific prayer, declaration, affirmation, confession and inspiration entries, raising unique faith-response references to 125. The coverage gate now requires at least 120 unique references. Also includes 85 contextual original-language word studies and 122 passage-commentary notes, all checked against the bundled KJV. Refreshes the offline cache."
 }
