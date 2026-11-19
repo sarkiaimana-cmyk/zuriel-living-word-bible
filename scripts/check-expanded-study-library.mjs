@@ -96,6 +96,23 @@ for (const trail of trails) {
   assert.ok(trail.pathway.every(step => step.reference && step.connectionNote),"Each trail step needs a reference and explanation");
   assert.ok(trail.overview && trail.contextCaution && trail.lifeApplication,"Each trail has contextual safeguards and application");
 }
+const dictionaryIds = new Set();
+const dictionaryTerms = new Set();
+for (const entry of dictionary.entries) {
+  assert.ok(typeof entry.term === "string" && entry.term.trim().length >= 2,
+    "Every dictionary entry needs a meaningful display term");
+  assert.ok(typeof entry.definition === "string" && entry.definition.trim().length >= 30,
+    "Every dictionary entry needs a substantive definition: " + entry.term);
+  assert.ok(Array.isArray(entry.scriptureReferences) && entry.scriptureReferences.length >= 1,
+    "Every dictionary entry needs at least one Scripture reference: " + entry.term);
+  assert.ok(typeof entry.editorialCaution === "string" && entry.editorialCaution.trim().length >= 25,
+    "Every dictionary entry needs an interpretive caution: " + entry.term);
+  const normalizedTerm = entry.term.trim().toLocaleLowerCase("en");
+  assert.ok(!dictionaryTerms.has(normalizedTerm), "Dictionary terms must be unique: " + entry.term);
+  assert.ok(!dictionaryIds.has(entry.id), "Dictionary IDs must be unique: " + entry.id);
+  dictionaryTerms.add(normalizedTerm);
+  dictionaryIds.add(entry.id);
+}
 for (const entry of theology.entries) {
   assert.ok(entry.positions.length >= 2,"Each theological comparison needs multiple interpretations");
   assert.ok(entry.sharedGround && entry.historicalContext && entry.areasOfDisagreement && entry.readingCaution,"Each theological comparison needs balance and context");
