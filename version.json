@@ -1,4 +1,4 @@
 {
-  "version": "1.4.93",
-  "releaseNotes": "Completes passage commentary coverage with a new Philemon study, bringing the collection to 153 entries across all 66 canonical Bible books. Adds an automated all-66-books coverage assertion so future commentary expansions cannot silently leave a book out. Includes contextual interpretation, observation, pastoral caution and linked cross-references; refreshes the offline cache."
+  "version": "1.4.95",
+  "releaseNotes": "Expands the offline verse-specific faith-response library with thirteen additional contextual entries. Each entry supplies an original prayer, declaration, affirmation, confession and inspiration with pastoral cautions; the automated coverage audit remains in place."
 }
