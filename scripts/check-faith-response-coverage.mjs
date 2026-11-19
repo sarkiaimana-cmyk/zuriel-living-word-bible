@@ -49,8 +49,8 @@ function parseReference(reference) {
 
 const requiredFields = ["prayer", "declaration", "affirmation", "confession", "inspiration"];
 const visibleRecords = library.list();
-if (visibleRecords.length < 200) {
-  throw new Error("Expected at least 200 unique curated verse-specific faith-response references.");
+if (visibleRecords.length < 226) {
+  throw new Error("Expected at least 226 unique curated verse-specific faith-response references.");
 }
 const records = typeof library.auditList === "function"
   ? library.auditList()
@@ -124,7 +124,9 @@ if (rangeRecords.length) {
   console.log("Range records: " + rangeRecords.map(item => item.reference + " (" + item.verses + " verses)").join("; "));
 }
 if (duplicateWording.length) {
-  console.log("Repeated wording to review: " + duplicateWording.length + " field/value groups.");
+  console.error("Repeated faith-response wording is not allowed:");
+  for (const item of duplicateWording) console.error(" - " + item.field + ": " + item.references.join(", "));
+  process.exitCode = 1;
 }
 if (invalid.length) {
   console.error("Invalid faith-response records:");
