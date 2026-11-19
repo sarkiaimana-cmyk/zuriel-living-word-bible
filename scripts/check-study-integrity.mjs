@@ -167,8 +167,9 @@ for (const [label, fragment] of homeChecks) {
 }
 const requiredFaithFields = ["prayer", "declaration", "affirmation", "confession", "inspiration"];
 for (const field of requiredFaithFields) {
-  const fieldPattern = new RegExp("[\\\"\']?" + field + "[\\\"\']?\\\\s*:");
-  if (!fieldPattern.test(faith)) failures.push(["faith content field: " + field, "missing from zuriel-faith-content.js"]);
+  if (!faith.includes('"' + field + '":') && !faith.includes(field + ":")) {
+    failures.push(["faith content field: " + field, "missing from zuriel-faith-content.js"]);
+  }
 }
 if (!home.includes('id="zurielOpenBookLight"')) failures.push(["Light panel", "missing from home card"]);
 if (!study.includes("Related Scripture references") ||
