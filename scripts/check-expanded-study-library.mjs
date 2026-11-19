@@ -79,8 +79,24 @@ function checkReference(reference,label) {
   assert.ok(Array.isArray(chapters),label+" has no bundled KJV mapping for "+book.name);
   const verses=chapters[chapter-1];
   assert.ok(Array.isArray(verses) && verse>=1 && verse<=verses.length,label+" has a missing KJV verse in "+reference);
-  const range=String(reference).match(/:(\d+)\s*[-–—]\s*(\d+)$/);
-  if(range) assert.ok(Number(range[2])<=verses.length,label+" has an out-of-range KJV reference in "+reference);
+  const normalizedReference=String(reference).trim();
+  const range=normalizedReference.match(/^(.+?)\s+(\d+):(\d+)\s*[-–—]\s*(?:(\d+):)?(\d+)$/);
+  if(range) {
+    const endChapter=Number(range[4] || range[2]);
+    const endVerse=Number(range[5]);
+    assert.ok(endChapter>=1 && endChapter<=book.chapters,label+" has an invalid range-ending chapter in "+reference);
+    const endVerses=chapters[endChapter-1];
+    assert.ok(Array.isArray(endVerses) && endVerse>=1 && endVerse<=endVerses.length,label+" has an out-of-range ending verse in "+reference);
+    if(endChapter===chapter) assert.ok(endVerse>=verse,label+" has a reversed verse range in "+reference);
+  } else {
+    const commaVerses=normalizedReference.match(/^.+?\s+\d+:(\d+)((?:\s*,\s*\d+)+)$/);
+    if(commaVerses) {
+      for(const part of commaVerses[2].split(",")) {
+        const listedVerse=Number(part.trim());
+        assert.ok(listedVerse>=1 && listedVerse<=verses.length,label+" has an out-of-range listed verse in "+reference);
+      }
+    }
+  }
   checkedPassages++;
 }
 function walkReferences(value,label) {
@@ -100,6 +116,30 @@ for(const [label,data] of [
   ["connected trails batch 2",trail2],["deep guides",deep],["Names of God",names],["word studies",words],
   ["commentary",commentary],["topical studies",topical],["worship",worship],["theology",theology]
 ]) walkReferences(data,label);
+
+// Commentary passages are stored in the dedicated "passage" field rather than
+// a generic references array. Validate every one explicitly against the
+// bundled KJV, including the ending chapter/verse of cross-chapter ranges.
+const commentaryIds=new Set();
+const commentaryPassages=new Set();
+for(const entry of commentary.entries) {
+  assert.ok(typeof entry.id==="string" && entry.id.trim(),"Every commentary entry needs a stable ID");
+  assert.ok(!commentaryIds.has(entry.id),"Commentary IDs must be unique: "+entry.id);
+  assert.ok(typeof entry.passage==="string" && entry.passage.trim(),"Every commentary entry needs a primary passage: "+entry.id);
+  assert.ok(!commentaryPassages.has(entry.passage.trim().toLocaleLowerCase("en")),"Commentary primary passages must be unique: "+entry.passage);
+  assert.ok(typeof entry.theme==="string" && entry.theme.trim().length>=3,"Every commentary entry needs a meaningful theme: "+entry.id);
+  assert.ok(typeof entry.contextAndMeaning==="string" && entry.contextAndMeaning.trim().length>=60,"Every commentary entry needs substantive context and meaning: "+entry.id);
+  assert.ok(typeof entry.studyObservation==="string" && entry.studyObservation.trim().length>=35,"Every commentary entry needs a useful observation prompt: "+entry.id);
+  assert.ok(typeof entry.interpretiveCaution==="string" && entry.interpretiveCaution.trim().length>=35,"Every commentary entry needs an interpretive caution: "+entry.id);
+  checkReference(entry.passage,"commentary primary passage "+entry.id);
+  if(entry.scriptureReferences!==undefined) {
+    assert.ok(Array.isArray(entry.scriptureReferences),"Commentary related references must be an array: "+entry.id);
+    assert.ok(entry.scriptureReferences.length>=1,"Commentary related references cannot be empty when supplied: "+entry.id);
+    walkReferences(entry.scriptureReferences,"commentary related references "+entry.id);
+  }
+  commentaryIds.add(entry.id);
+  commentaryPassages.add(entry.passage.trim().toLocaleLowerCase("en"));
+}
 
 const expected = [
   [geography.places,25,"biblical places"], [geography.journeys,8,"biblical journeys"],
