@@ -131,7 +131,14 @@
   controls.append(providerSelect, offlineSelect, select, loadButton, downloadButton, downloadProgress, statusNode);
   output.append(passageHeading, passage, attribution);
   panel.append(summary, note, controls, output);
-  reader.appendChild(panel);
+  const homeTranslationSlot = document.getElementById("zurielHomeTranslations");
+  if (homeTranslationSlot) {
+    summary.textContent = "Choose a translation, compare versions or manage offline downloads";
+    panel.open = true;
+    homeTranslationSlot.appendChild(panel);
+  } else {
+    reader.appendChild(panel);
+  }
 
   function apiUrl(path) {
     return API_BASE + path;
