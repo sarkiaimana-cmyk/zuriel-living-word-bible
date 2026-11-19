@@ -1191,6 +1191,139 @@
       ],
       "editorialCaution": "Do not collapse the tabernacle, Jerusalem temple, heavenly sanctuary imagery and later church buildings into a single institution.",
       "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-101",
+      "term": "Incarnation",
+      "definition": "The Christian confession that the eternal Son of God truly took human nature in Jesus Christ. The New Testament presents the Word as becoming flesh while remaining fully divine.",
+      "scriptureReferences": [
+        "John 1:1-18",
+        "Philippians 2:5-11",
+        "Hebrews 2:14-18",
+        "1 John 4:2-3"
+      ],
+      "editorialCaution": "Do not describe the incarnation as God merely appearing human or as the Son ceasing to be divine. Explain the biblical witness before introducing later doctrinal terminology.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-102",
+      "term": "Hypostatic Union",
+      "definition": "A later theological term for the union of Christ's full divine nature and full human nature in the one person of the Son. It was developed to protect the church's confession that Jesus is truly God and truly human.",
+      "scriptureReferences": [
+        "John 1:1-18",
+        "John 20:28",
+        "Colossians 2:9",
+        "Hebrews 4:14-16"
+      ],
+      "editorialCaution": "This is post-biblical technical vocabulary used to summarise biblical teaching. Distinguish Chalcedonian and Oriental Orthodox terminology fairly; do not imply that the term itself appears in Scripture.",
+      "entryType": "theological-term"
+    },
+    {
+      "id": "glossary-103",
+      "term": "Theosis / Deification",
+      "definition": "An Eastern Christian term for participation by grace in God's life, often described as healing, transformation and communion with God through Christ and the Holy Spirit. It does not mean a creature becomes God by nature or essence.",
+      "scriptureReferences": [
+        "John 17:20-23",
+        "Romans 8:28-30",
+        "2 Corinthians 3:18",
+        "2 Peter 1:3-4"
+      ],
+      "editorialCaution": "Explain the term as participation by grace, not equality with God's uncreated essence. Other Christian traditions may use different language for union with Christ and sanctification.",
+      "entryType": "theological-term"
+    },
+    {
+      "id": "glossary-104",
+      "term": "Kenosis / Self-emptying",
+      "definition": "A theological term drawn from Philippians 2:7, where Christ 'made himself of no reputation' or emptied himself. The passage describes the humility of the Son taking the form of a servant and becoming obedient unto death.",
+      "scriptureReferences": [
+        "Philippians 2:5-11",
+        "John 13:3-17",
+        "2 Corinthians 8:9",
+        "Hebrews 2:14-18"
+      ],
+      "editorialCaution": "Do not assume the text means the Son surrendered His divine nature. Christian theologians differ on how to describe the self-emptying; keep the passage's movement of humility and obedience central.",
+      "entryType": "theological-term"
+    },
+    {
+      "id": "glossary-105",
+      "term": "Septuagint",
+      "definition": "The ancient Greek translation of Jewish Scriptures, commonly abbreviated LXX. It was widely used in the Greek-speaking Jewish world and often provides the wording reflected in New Testament quotations of the Old Testament.",
+      "scriptureReferences": [
+        "Luke 4:16-21",
+        "Acts 15:15-18",
+        "Romans 3:10-18",
+        "Hebrews 10:5-7"
+      ],
+      "editorialCaution": "The Septuagint is a collection of ancient Greek translations with textual variation, not one perfectly uniform edition. Distinguish its textual evidence from later theological claims about every reading.",
+      "entryType": "biblical-reference"
+    },
+    {
+      "id": "glossary-106",
+      "term": "Biblical Typology",
+      "definition": "A way of reading Scripture in which earlier persons, events or institutions are understood as patterns that find a fuller correspondence or fulfilment later, especially in Christ. The New Testament itself identifies several such patterns.",
+      "scriptureReferences": [
+        "Romans 5:12-21",
+        "1 Corinthians 10:1-11",
+        "Colossians 2:16-17",
+        "Hebrews 8:1-6",
+        "1 Peter 3:18-22"
+      ],
+      "editorialCaution": "Ground typological readings in biblical links and canonical context. Avoid inventing symbolic meanings for every object or detail without textual support.",
+      "entryType": "biblical-interpretation"
+    },
+    {
+      "id": "glossary-107",
+      "term": "Apocalyptic Literature",
+      "definition": "A biblical literary form that uses visions, symbols, heavenly scenes and dramatic imagery to reveal God's perspective on history, judgment and hope. Daniel and Revelation are major examples, and parts of other prophetic books use apocalyptic features.",
+      "scriptureReferences": [
+        "Daniel 7:1-14",
+        "Daniel 12:1-3",
+        "Mark 13:24-27",
+        "Revelation 1:1-3",
+        "Revelation 12:1-12"
+      ],
+      "editorialCaution": "Do not treat every symbol as a literal news prediction or assume one interpretive scheme is universally accepted. Attend to the original audience, literary imagery and theological purpose.",
+      "entryType": "biblical-literature"
+    },
+    {
+      "id": "glossary-108",
+      "term": "Day of the Lord",
+      "definition": "A prophetic expression for a decisive time when God acts in judgment, deliverance or restoration. Its setting and horizon vary across the prophets and New Testament, so each occurrence must be read in context.",
+      "scriptureReferences": [
+        "Isaiah 13:6-13",
+        "Joel 2:1-11",
+        "Amos 5:18-24",
+        "1 Thessalonians 5:1-11",
+        "2 Peter 3:10-13"
+      ],
+      "editorialCaution": "The phrase does not always refer to one identical event or timetable. Distinguish near historical judgments from wider eschatological hope and avoid date-setting.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-109",
+      "term": "Kinsman-Redeemer / Goel",
+      "definition": "In Israel's family and land laws, a near relative who could act to protect family interests, redeem property or preserve a relative's name. The book of Ruth presents a narrative example within its social and legal setting.",
+      "scriptureReferences": [
+        "Leviticus 25:23-28",
+        "Ruth 2:19-20",
+        "Ruth 3:9-13",
+        "Ruth 4:1-10"
+      ],
+      "editorialCaution": "Explain the ancient kinship and land-redeeming institution before applying the image to Christ. Do not turn the legal role into a modern relationship rule or a guarantee of personal rescue.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-110",
+      "term": "Expiation",
+      "definition": "A term used in Christian theology for the removal or cleansing of sin and its defilement. It is one way of describing the atoning work of Christ alongside other biblical images such as sacrifice, reconciliation, redemption and victory.",
+      "scriptureReferences": [
+        "Leviticus 16:20-22",
+        "Isaiah 53:4-6",
+        "Romans 3:24-26",
+        "1 John 2:1-2"
+      ],
+      "editorialCaution": "Translations and traditions differ in how they relate expiation and propitiation. Do not reduce the full biblical teaching on atonement to one metaphor or assume every text uses the same mechanism.",
+      "entryType": "theological-term"
     }
   ]
 }
