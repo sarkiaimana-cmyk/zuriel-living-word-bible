@@ -38,6 +38,12 @@ assert.equal(bookEntries.length,66,"Offline Bible index must contain all 66 book
 const bookLookup = new Map(bookEntries.map(book => [book.name.toLowerCase(),book]));
 bookLookup.set("psalm",bookLookup.get("psalms"));
 bookLookup.set("song of songs",bookLookup.get("song of solomon"));
+const commentaryBookCoverage = new Set(commentary.entries.map(entry => {
+  const match = String(entry.passage || "").match(/^(.+?)\\s+\\d+:/);
+  const book = match && bookLookup.get(match[1].toLowerCase().replace(/\\s+/g," ").trim());
+  return book && book.name;
+}).filter(Boolean));
+assert.equal(commentaryBookCoverage.size,66,"Passage commentary must cover every canonical Bible book");
 let checkedPassages=0;
 function checkReference(reference,label) {
   const match=String(reference||"").trim().match(/^(.+?)\s+(\d+):(\d+)/);
@@ -78,7 +84,7 @@ const expected = [
   [books.bookIntroductions,66,"book introductions"], [books.bookStudyPathways,66,"book study pathways"],
   [trail1.trails,41,"connected Scripture trails batch 1"], [trail2.trails,33,"connected Scripture trails batch 2"],
   [deep.guides,20,"deep study guides"], [names.entries,52,"Names and Titles of God"],
-  [words.entries,90,"original-language word studies"], [commentary.entries,152,"passage commentary"],
+  [words.entries,90,"original-language word studies"], [commentary.entries,153,"passage commentary"],
   [topical.entries,100,"topical study guides"], [worship.pathways,30,"worship study pathways"], [theology.entries,25,"theological comparisons"]
 ];
 for (const [items,count,label] of expected) {
@@ -144,7 +150,7 @@ for (const path of [
   "zuriel-deep-study-guides.json","zuriel-bible-geography-atlas.json","zuriel-worship-study-pathways.json","zuriel-theological-comparisons.json"
 ]) assert.ok(loader.includes(path),"Study loader must include "+path);
 assert.ok(index.includes('src="zuriel-study-library-data.js"'),"Study library integration script must load");
-assert.ok(worker.includes('zuriel-bible-offline-v194'),"Offline cache must be version 194");
+assert.ok(worker.includes('zuriel-bible-offline-v195'),"Offline cache must be version 195");
 assert.ok(worker.includes("./zuriel-study-library-data.js"),"Study loader must be precached");
 for (const path of [
   "zuriel-passage-commentary-expansion.json","zuriel-topical-bible-study-library-batch-2.json",

@@ -1,4 +1,4 @@
 {
-  "version": "1.4.92",
-  "releaseNotes": "Improves the offline study reader so Hebrew and Greek entries visibly display their original script, language, morphology status and contextual word-use notes alongside their passage-linked meanings. Adds explicit validation for these reader fields, preserving the 90 curated original-language studies and 152 commentaries across all 66 books. Refreshes offline cache."
+  "version": "1.4.93",
+  "releaseNotes": "Completes passage commentary coverage with a new Philemon study, bringing the collection to 153 entries across all 66 canonical Bible books. Adds an automated all-66-books coverage assertion so future commentary expansions cannot silently leave a book out. Includes contextual interpretation, observation, pastoral caution and linked cross-references; refreshes the offline cache."
 }
