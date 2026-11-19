@@ -1696,7 +1696,7 @@
           const selectedCategory = filter.value;
           const matches = teachings.filter(item =>
             (!selectedCategory || item.category === selectedCategory) &&
-            (!query || (item.category + " " + item.title + " " + item.summary + " " + item.refs.join(" ")).toLowerCase().includes(query))
+            (!query || (item.category + " " + item.title + " " + item.summary + " " + (item.context || "") + " " + (item.reflection || "") + " " + (item.caution || "") + " " + item.refs.join(" ")).toLowerCase().includes(query))
           );
           count.textContent = matches.length + " teaching themes • " + matches.reduce((sum, item) => sum + item.refs.length, 0) + " Gospel reference links";
           if (!matches.length) {
@@ -1711,6 +1711,9 @@
             summary.setAttribute("aria-label", "Expand teaching: " + item.title);
             details.appendChild(summary);
             details.appendChild(element("p", item.summary));
+            if (item.context) details.appendChild(element("p", "Context: " + item.context, "jesus-study-note"));
+            if (item.reflection) details.appendChild(element("p", "Study question: " + item.reflection, "jesus-study-note"));
+            if (item.caution) details.appendChild(element("p", "Read carefully: " + item.caution, "jesus-study-caution"));
             const refs = element("div", undefined, "library-nav");
             item.refs.forEach(function (reference) {
               const open = button("Open " + reference, function () { openJesusReference(reference, open); });
