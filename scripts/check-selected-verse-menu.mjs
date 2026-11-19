@@ -63,6 +63,9 @@ if (!verseClickHandler.includes("selectVerseForGloryCard(")) {
 if (!source.includes("grid-template-columns:repeat(2,minmax(0,1fr))") || !source.includes("details[open]")) {
   throw new Error("Study Centre must provide responsive topic tiles that expand the selected topic.");
 }
+if (!source.includes('section.addEventListener("toggle"') || !source.includes('if(other!==section)other.open=false')) {
+  throw new Error("Only one Study Library topic may remain expanded at a time.");
+}
 if (!reader.includes("studyDrawer.open = true")) {
   throw new Error("Verse-selected study actions must open the Study Library drawer.");
 }
