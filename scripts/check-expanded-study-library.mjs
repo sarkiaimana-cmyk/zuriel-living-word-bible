@@ -217,6 +217,7 @@ for (const entry of words.entries) {
   assert.ok(!wordStudyOriginalForms.has(originalFormKey), "Original-language lexemes must not be duplicated under alternate transliterations: " + entry.term);
   wordStudyOriginalForms.add(originalFormKey);
   assert.ok(typeof entry.contextualGloss === "string" && entry.contextualGloss.trim().length >= 30, "Word study needs a substantive contextual gloss: " + entry.term);
+  if (entry.contextualWordUse !== undefined) assert.ok(typeof entry.contextualWordUse === "string" && entry.contextualWordUse.trim().length >= 80, "Contextual word-use notes must be substantive: " + entry.term);
   assert.ok(Array.isArray(entry.scriptureReferences) && entry.scriptureReferences.length >= 1, "Word study needs Scripture references: " + entry.term);
   for (const reference of entry.scriptureReferences) {
     assert.ok(/^.+?\\s+\\d+:\\d+/.test(reference), "Word-study references must spell out the Bible book and chapter:verse: " + entry.term + " — " + reference);
