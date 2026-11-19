@@ -163,10 +163,17 @@
       #zurielHomeDashboard .translation-shortcuts {
         display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:7px; margin:12px 0;
       }
-      #zurielHomeDashboard .translation-shortcuts span {
-        display:flex; align-items:center; justify-content:center; min-height:39px;
-        border:1px solid #c8ad70; border-radius:9px; background:#f7f3e8;
-        color:#19324f; font:700 12px Arial,sans-serif;
+      #zurielHomeDashboard .translation-shortcuts button {
+        display:flex; align-items:center; justify-content:center; min-height:42px;
+        width:100%; padding:8px 3px; border:1px solid #c8ad70; border-radius:9px;
+        background:#f7f3e8; color:#19324f; font:700 12px Arial,sans-serif;
+        cursor:pointer; touch-action:manipulation;
+      }
+      #zurielHomeDashboard .translation-shortcuts button:focus-visible {
+        outline:3px solid #e7c77e; outline-offset:2px;
+      }
+      #zurielHomeDashboard .translation-shortcuts button:active {
+        background:#e9dfc7; transform:translateY(1px);
       }
       #zurielHomeDashboard .translation-access-note {
         margin:8px 0 12px; color:#dce5f1; font:12px/1.55 Arial,sans-serif;
@@ -827,8 +834,18 @@
         <h2>🌐 Bible Translations</h2>
         <p class="home-section-note">Choose a Bible version for reading, comparison and offline study.</p>
         <div class="translation-shortcuts" aria-label="Supported translation catalogue">
-          <span>KJV</span><span>GNT</span><span>AMP</span><span>LB/LT</span><span>TPT</span><span>NLT</span>
-          <span>NET</span><span>NIV</span><span>ESV</span><span>NASB</span><span>CSB</span><span>NKJV</span>
+          <button type="button" data-zuriel-translation="KJV" aria-label="Open King James Version">KJV</button>
+          <button type="button" data-zuriel-translation="GNT" aria-label="Select Good News Translation">GNT</button>
+          <button type="button" data-zuriel-translation="AMP" aria-label="Select Amplified Bible">AMP</button>
+          <button type="button" data-zuriel-translation="LB/LT" aria-label="Select Living Bible or Living Translation">LB/LT</button>
+          <button type="button" data-zuriel-translation="TPT" aria-label="Select The Passion Translation">TPT</button>
+          <button type="button" data-zuriel-translation="NLT" aria-label="Select New Living Translation">NLT</button>
+          <button type="button" data-zuriel-translation="NET" aria-label="Select New English Translation">NET</button>
+          <button type="button" data-zuriel-translation="NIV" aria-label="Select New International Version">NIV</button>
+          <button type="button" data-zuriel-translation="ESV" aria-label="Select English Standard Version">ESV</button>
+          <button type="button" data-zuriel-translation="NASB" aria-label="Select New American Standard Bible">NASB</button>
+          <button type="button" data-zuriel-translation="CSB" aria-label="Select Christian Standard Bible">CSB</button>
+          <button type="button" data-zuriel-translation="NKJV" aria-label="Select New King James Version">NKJV</button>
         </div>
         <p class="translation-access-note">Select a translation below. Downloaded translations can be read offline; online access and downloads depend on each provider’s available catalogue and permissions.</p>
         <div id="zurielHomeTranslations"></div>
@@ -971,6 +988,23 @@
 
     main.prepend(dashboard);
     main.prepend(topBar);
+
+    dashboard.querySelectorAll("[data-zuriel-translation]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        const version = button.dataset.zurielTranslation;
+        if (version === "KJV") {
+          navigate("read");
+          return;
+        }
+        if (window.ZurielTranslations &&
+            typeof window.ZurielTranslations.selectVersion === "function") {
+          window.ZurielTranslations.selectVersion(version);
+        } else {
+          const slot = document.getElementById("zurielHomeTranslations");
+          if (slot) slot.textContent = "Translation controls are still loading. Please try again.";
+        }
+      });
+    });
 
     if (window.ZurielKingdomLife && typeof window.ZurielKingdomLife.mount === "function") {
       window.ZurielKingdomLife.mount(main);
