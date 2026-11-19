@@ -340,7 +340,7 @@
     updateReference();
     updateInlineDisplayLabel();
   });
-  inlineDisplayButton.addEventListener("click", function () {
+  inlineDisplayButton.addEventListener("click", async function () {
     selectedBook = inlineBook.value;
     selectedChapter = Number(inlineChapter.value);
     selectedVerse = Number(inlineVerse.value);
@@ -350,7 +350,11 @@
     displayVerseButton.textContent = selectedVerse ? "DISPLAY VERSE" : "DISPLAY CHAPTER";
     inlineDisplayButton.disabled = true;
     inlineDisplayButton.textContent = "LOADING SCRIPTURE…";
-    openPassage();
+    try {
+      await openPassage();
+    } finally {
+      updateInlineDisplayLabel();
+    }
   });
   syncInlineControls();
 
