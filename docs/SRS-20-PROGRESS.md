@@ -10,8 +10,8 @@
 - **Repair candidate:** [PR #192](https://github.com/sarkiaimana-cmyk/zuriel-living-word-bible/pull/192), version 1.4.103, offline cache v205. It remains a draft and is not merged.
 - **Reader:** compact BOOK / CHAPTER / VERSE selectors are now on the reader page, with explicit DISPLAY CHAPTER and DISPLAY VERSE actions; the full Browse Bible grid remains available. KJV stays the offline default. Non-KJV shortcuts are visibly unavailable until a secure server-side translation endpoint is configured.
 - **Studio:** the uploaded reference is the acceptance target: Scripture/reference on the left cream page; selected faith response on the right; blue Scripture banner, green response heading, centre spine and Glory Verse Affirmation banner. PNG export follows the same order. The original reference has been located and inspected.
-- **Studio wallpaper blocker:** scenic wallpaper choices still use remote images. They are not yet genuine bundled assets for first-use offline availability.
-- **Automated QA:** latest PR-head validation run `44580518872` passed, including reader and Studio acceptance checks. Android build run `44580518839` is still running at the time of this update.
+- **Studio wallpaper blocker:** scenic choices are still sourced remotely, not bundled in the APK. The repair candidate now saves successfully loaded wallpaper images in a dedicated persistent Cache Storage bucket and reuses them offline on that device; first-use offline availability still requires bundled assets.
+- **Automated QA:** validation run `44580518872` passed. Android build run `44580518839` completed successfully: debug APK built, signed release APK prepared, package/version metadata and signature verification passed, and both artifacts uploaded. This is CI evidence, not physical-device acceptance.
 - **Android device verification:** not performed. No candidate APK is approved for installation or upgrade; preserve the existing installation and all personal data.
 - **Translation API:** remains deferred until KJV reader acceptance and secure server-side configuration are complete.
 
