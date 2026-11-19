@@ -81,20 +81,26 @@ for (const pathway of pathwayLibrary.pathways) {
   assert.ok(Array.isArray(pathway.references) && pathway.references.length >= 2,
     pathway.title + " needs multiple Scripture foundations.");
   for (const reference of pathway.references) {
-    const match = String(reference).match(/^(.+?)\s+(\d+)(?::(\d+)(?:-(\d+))?)?$/);
+    const match = String(reference).match(/^(.+?)\s+(\d+)(?::(\d+)(?:-(?:(\d+):)?(\d+))?)?$/);
     assert.ok(match, pathway.title + " has a malformed Scripture reference: " + reference);
     const bookName = match[1].toLowerCase() === "psalm" ? "psalms" : match[1].toLowerCase();
     const book = bookByName.get(bookName);
     assert.ok(book, pathway.title + " refers to an unknown Bible book: " + match[1]);
-    const chapter = Number(match[2]);
-    const firstVerse = match[3] ? Number(match[3]) : 1;
-    const lastVerse = match[4] ? Number(match[4]) : firstVerse;
-    assert.ok(chapter >= 1 && chapter <= book.chapters, pathway.title + " has an invalid chapter: " + reference);
+    const startChapter = Number(match[2]);
+    const startVerse = match[3] ? Number(match[3]) : 1;
+    const endChapter = match[4] ? Number(match[4]) : startChapter;
+    const endVerse = match[5] ? Number(match[5]) : startVerse;
+    assert.ok(startChapter >= 1 && startChapter <= book.chapters &&
+      endChapter >= startChapter && endChapter <= book.chapters,
+      pathway.title + " has an invalid chapter range: " + reference);
     const chapters = kjv[bookCodes[book.name]];
-    assert.ok(Array.isArray(chapters) && Array.isArray(chapters[chapter - 1]),
+    const startVerses = chapters && chapters[startChapter - 1];
+    const endVerses = chapters && chapters[endChapter - 1];
+    assert.ok(Array.isArray(startVerses) && Array.isArray(endVerses),
       pathway.title + " has no offline KJV chapter for " + reference);
-    const verses = chapters[chapter - 1];
-    assert.ok(firstVerse >= 1 && lastVerse >= firstVerse && lastVerse <= verses.length,
+    assert.ok(startVerse >= 1 && startVerse <= startVerses.length &&
+      endVerse >= 1 && endVerse <= endVerses.length &&
+      (endChapter > startChapter || endVerse >= startVerse),
       pathway.title + " has an invalid offline KJV verse range: " + reference);
     verifiedReferences++;
   }
