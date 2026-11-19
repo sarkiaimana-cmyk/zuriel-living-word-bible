@@ -316,6 +316,14 @@ select {
   margin:0;
   white-space:nowrap;
 }
+#bibleSearch #bibleSearchMode {
+  flex:0 1 170px;
+  width:auto;
+  min-width:0;
+  min-height:46px;
+  margin:0;
+  padding:10px;
+}
 
 #bibleSearchResults {
   display:grid;
@@ -540,6 +548,10 @@ footer {
     <div class="search-row">
       <input id="bibleSearchInput" type="search" maxlength="80"
         placeholder="Search a word or phrase..." autocomplete="off">
+      <select id="bibleSearchMode" aria-label="Search matching mode">
+        <option value="phrase">Find word or phrase</option>
+        <option value="word">Exact word</option>
+      </select>
       <button type="button" id="bibleSearchButton">Search Bible</button>
     </div>
     <p class="study-hint">Search the complete KJV Bible, even when offline. Enter at least 3 characters.</p>
@@ -1504,9 +1516,9 @@ window.ZurielBibleSearch = {
   search: async function (query, limit, mode) {
     const normalizeSearchText = value => String(value || "")
       .normalize("NFD")
-      .replace(/[\\u0300-\\u036f]/g, "")
+      .replace(/[\u0300-\u036f]/g, "")
       .replace(/[’‘]/g, "'")
-      .replace(/\\s+/g, " ")
+      .replace(/\s+/g, " ")
       .trim()
       .toLowerCase();
     const term = normalizeSearchText(query);
@@ -1570,7 +1582,7 @@ async function runZurielBibleSearch() {
   resultsBox.textContent = "Searching all 66 books...";
 
   try {
-    const results = await window.ZurielBibleSearch.search(query, 30);
+    const results = await window.ZurielBibleSearch.search(query, 30, mode);
     resultsBox.replaceChildren();
 
     if (!results.length) {
@@ -1580,7 +1592,7 @@ async function runZurielBibleSearch() {
 
     const summary = document.createElement("p");
     summary.className = "study-hint";
-    summary.textContent = "Showing up to 30 matching verses. Select a result to open it.";
+    summary.textContent = "Showing " + results.length + " of " + (results.totalMatches || results.length) +\n      " matches (" + (mode === "word" ? "exact word" : "word or phrase") + "). Select a result to open it.";
     resultsBox.appendChild(summary);
 
     results.forEach(function (item) {
