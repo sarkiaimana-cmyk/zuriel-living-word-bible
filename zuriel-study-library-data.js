@@ -127,7 +127,7 @@
       ["Passage-by-passage pathway", ["pathway"]],
       ["Study questions", ["studyQuestions", "questions", "reflectionPrompt"]],
       ["Practical application", ["lifeApplication", "practicalApplication", "application"]],
-      ["Interpretive caution", ["interpretiveCaution", "contextCaution", "studyCaution", "caution"]],
+      ["Interpretive caution", ["interpretiveCaution", "editorialCaution", "contextCaution", "studyCaution", "caution"]],
       ["Areas of disagreement", ["areasOfDisagreement"]],
       ["Reading caution", ["readingCaution"]],
       ["Source and reading note", ["sourceNote", "readingNote", "editorialNote", "provenance"]]
