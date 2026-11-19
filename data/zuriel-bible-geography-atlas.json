@@ -273,7 +273,7 @@
       "references": [
         "Acts 16:11-40",
         "Philippians 1:1-11",
-        "4:15-18"
+        "Philippians 4:15-18"
       ],
       "studyCaution": "Acts' travel narrative places Philippi within Paul's Macedonian mission."
     },
@@ -345,7 +345,7 @@
       "sequence": "Ur → Haran → Canaan",
       "references": [
         "Genesis 11:31-32",
-        "12:1-9"
+        "Genesis 12:1-9"
       ],
       "studyCaution": "A broad migration sequence; the exact route and identification of Ur are discussed by historians."
     },
@@ -354,9 +354,13 @@
       "name": "Exodus and wilderness journey",
       "sequence": "Egypt → Sea crossing → Sinai → wilderness → plains of Moab",
       "references": [
-        "Exodus 12–19",
-        "Numbers 20–22",
-        "Deuteronomy 34"
+        "Exodus 12:1-14",
+        "Exodus 14:10-31",
+        "Exodus 19:1-8",
+        "Numbers 20:1-13",
+        "Numbers 21:4-9",
+        "Numbers 22:1-20",
+        "Deuteronomy 34:1-12"
       ],
       "studyCaution": "The biblical itinerary names stages, but some modern site identifications remain disputed."
     },
@@ -365,7 +369,9 @@
       "name": "Conquest crossing",
       "sequence": "Shittim → Jordan River → Jericho",
       "references": [
-        "Joshua 2–6"
+        "Joshua 2:1-24",
+        "Joshua 3:1-17",
+        "Joshua 6:1-27"
       ],
       "studyCaution": "Read the narrative's theological framing alongside archaeological and historical discussions."
     },
@@ -386,9 +392,10 @@
       "sequence": "Galilee/Samaria → Jericho → Jerusalem",
       "references": [
         "Luke 9:51",
-        "17:11",
-        "18:35–19:10",
-        "19:28"
+        "Luke 17:11-19",
+        "Luke 18:35-43",
+        "Luke 19:1-10",
+        "Luke 19:28-40"
       ],
       "studyCaution": "Luke's travel section is a literary journey narrative as well as a geographical movement."
     },
@@ -397,7 +404,8 @@
       "name": "Paul's first missionary journey",
       "sequence": "Antioch (Syria) → Cyprus → Pisidian Antioch → Iconium → Lystra → Derbe → return",
       "references": [
-        "Acts 13–14"
+        "Acts 13:1-52",
+        "Acts 14:1-28"
       ],
       "studyCaution": "The sequence follows Acts; route lines should be illustrative rather than precise road reconstructions."
     },
@@ -415,7 +423,8 @@
       "name": "Paul's journey to Rome",
       "sequence": "Caesarea → sea voyage → Malta → Syracuse → Rhegium → Puteoli → Rome",
       "references": [
-        "Acts 27–28"
+        "Acts 27:1-44",
+        "Acts 28:1-31"
       ],
       "studyCaution": "The storm and shipwreck account gives named stages; exact ship track is not fully recoverable."
     }
