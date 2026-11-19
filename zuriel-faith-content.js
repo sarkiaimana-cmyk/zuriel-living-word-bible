@@ -7,213 +7,1815 @@
 (function(){
   "use strict";
   const entries = [
-    {"reference":"John 3:16","prayer":"Father, thank You for loving the world and giving Your Son. Help me receive Your love with faith, treasure the life You give in Christ, and reflect that love to others.","declaration":"God's love is revealed in Jesus Christ. I place my trust in Him and receive the life God gives.","affirmation":"I am loved by God, and my hope is in Jesus Christ.","confession":"I believe in the Son of God. My life and hope are anchored in Him.","inspiration":"Let the love revealed at the cross shape how you receive grace and how generously you love others."},
-    {"reference":"Romans 8:1","prayer":"Father, thank You that condemnation is not the final word for those who are in Christ Jesus. Teach me to walk by the Spirit and live from the freedom Christ has secured.","declaration":"In Christ Jesus, condemnation does not define me. I belong to Him and follow the leading of the Spirit.","affirmation":"My identity is rooted in Christ, not in my past failures.","confession":"I am in Christ Jesus; I turn from sin and walk in the new life He gives.","inspiration":"Do not confuse conviction that leads you back to God with condemnation that tells you to hide from Him."},
-    {"reference":"Philippians 4:6-7","prayer":"God of peace, I bring my concerns to You with honest prayer and thanksgiving. Guard my heart and thoughts in Christ Jesus, and teach me to trust You one step at a time.","declaration":"I bring my requests to God with thanksgiving. His peace guards my heart and mind in Christ Jesus.","affirmation":"I can speak honestly to God and rest in His faithful care.","confession":"I choose prayer over anxious striving and entrust my concerns to God.","inspiration":"Peace is not pretending that trouble is absent; it is bringing the trouble into God's presence."},
-    {"reference":"Proverbs 3:5-6","prayer":"Father, guide my decisions. Keep me from relying only on my limited understanding, and teach me to acknowledge You in every part of my life.","declaration":"I trust the Lord with my whole heart and acknowledge Him in my ways.","affirmation":"I can seek God's wisdom before I make my decisions.","confession":"I submit my plans to the Lord and remain willing for Him to direct my path.","inspiration":"Trust becomes practical when you invite God into ordinary decisions, not only emergencies."},
-    {"reference":"Ephesians 2:8-10","prayer":"Father, thank You that salvation is Your gift of grace, received through faith. Keep me humble and make my life fruitful in the good works You have prepared.","declaration":"I am saved by grace through faith, not by boasting in my own works. I am called to walk in the good works God prepares.","affirmation":"Grace is God's gift; gratitude shapes the way I live.","confession":"I receive salvation as God's gift in Christ and seek to live out the good works He has prepared.","inspiration":"Grace removes boasting and creates gratitude-filled lives of service."},
-    {"reference":"Matthew 11:28","prayer":"Lord Jesus, I bring You my weariness and burdens. Teach me to receive Your invitation, learn from Your gentle heart, and walk in the rest You give.","declaration":"Jesus invites the weary and burdened to come to Him. I answer His invitation and learn from Him.","affirmation":"I do not have to carry every burden alone; I can come to Jesus.","confession":"I come to Christ, learn His way, and receive the rest He promises.","inspiration":"Rest in Jesus includes coming close to Him and learning His way, not merely escaping responsibilities."},
-    {"reference":"Hebrews 4:16","prayer":"Merciful Father, because of Jesus my great High Priest, help me approach You with confidence. Give me mercy in my need and grace to help me at the right time.","declaration":"Through Jesus, I may approach God's throne of grace to receive mercy and timely help.","affirmation":"I can bring my need honestly before God through Christ.","confession":"I draw near to God through Jesus and depend on His mercy and grace.","inspiration":"Confidence before God rests on Jesus' priestly work, not on a claim that we have earned access."},
-    {"reference":"Galatians 2:20","prayer":"Lord Jesus, shape my identity around Your life and love. Teach me to live by faith in You in ordinary decisions, relationships and responsibilities.","declaration":"My old life is no longer my master; I live by faith in the Son of God who loved me and gave Himself for me.","affirmation":"Christ's love gives my life its centre, and faith guides my daily walk.","confession":"I belong to Christ and choose to live by faith in Him.","inspiration":"Paul describes a life re-centred on Christ, not a claim that personal responsibility or daily obedience disappears."},
-    {"reference":"Colossians 3:12-14","prayer":"Father, clothe my attitudes with compassion, kindness, humility, gentleness and patience. Help me forgive as You have forgiven me, and let love hold my relationships together.","declaration":"I choose compassion, kindness, humility, gentleness and patience; above all, I put on love.","affirmation":"God is forming Christlike character in the way I treat people.","confession":"I bear with others, forgive, and pursue the love that binds virtues together.","inspiration":"This passage makes faith visible in relationships: the new life is expressed through patience, forgiveness and love."},
-    {"reference":"Psalm 121:1-2","prayer":"Maker of heaven and earth, lift my eyes beyond the limits of my own strength. Help me look to You for the help I need and walk with confidence in Your care.","declaration":"My help comes from the Lord, the Maker of heaven and earth.","affirmation":"I do not have to depend on my strength alone; I can seek the Lord's help.","confession":"The Lord is my helper, and I look to Him with trust.","inspiration":"The psalm redirects the traveller's gaze: lasting help comes from the Lord, not from the hills themselves."},
-    {"reference":"Romans 12:1-2","prayer":"Father, I offer my whole life to You in grateful worship. Renew my mind through Your truth and help me discern what pleases You in the choices I make.","declaration":"I present my life to God and seek a renewed mind that discerns His good will.","affirmation":"My worship includes the way I think, choose and live each day.","confession":"By God's mercy, I offer myself to Him and resist being shaped by the patterns of this age.","inspiration":"Worship is not confined to a song or gathering; Paul describes a whole life offered to God and transformed in mind."},
-    {"reference":"Ephesians 6:10-11","prayer":"Lord, strengthen me in Your mighty power. Teach me to stand firm in truth, righteousness, faith and the gospel, depending on You rather than my own strength.","declaration":"My strength is in the Lord. I stand firm in His provision and truth.","affirmation":"I face spiritual opposition by depending on God and putting on His armour.","confession":"I stand in the Lord's strength and remain grounded in His truth.","inspiration":"The armour belongs to God; this passage calls believers to dependence, steadfastness and faithful resistance."},
-    {"reference":"1 Corinthians 13:4-7","prayer":"Father, teach me the patient and kind love described in Your Word. Remove pride, resentment and selfishness from my responses, and help me seek what builds others up.","declaration":"I choose patient, kind and enduring love; I do not use others for my own advantage.","affirmation":"God's love can shape how I speak, respond and treat people today.","confession":"I pursue love that is patient, kind, truthful and steadfast.","inspiration":"Paul places love at the centre of Christian life; these qualities are a searching test of how we treat one another."},
-    {"reference":"1 Thessalonians 5:16-18","prayer":"Father, teach me to rejoice in You, remain prayerful and give thanks in every circumstance. Help me be honest about hardship while keeping my heart turned toward You.","declaration":"I cultivate joy in the Lord, continue in prayer and give thanks in every circumstance.","affirmation":"I can keep turning toward God with prayer and gratitude through changing seasons.","confession":"I rejoice, pray and give thanks as part of my life in Christ Jesus.","inspiration":"Giving thanks in every circumstance does not mean calling every circumstance good; it means remaining attentive to God in all of them."},
-    {"reference":"Psalm 119:105","prayer":"Father, let Your Word guide my choices today. Give me understanding to follow its light in the ordinary decisions before me.","declaration":"God's Word gives light for my path; I listen and walk in its truth.","affirmation":"I can take the next step with Scripture guiding my way.","confession":"I receive God's Word as a lamp for my feet and a light for my path.","inspiration":"A lamp often shows the next steps rather than the whole journey. Keep returning to God's Word as you walk."},
-    {"reference":"Proverbs 3:5","prayer":"Lord, teach me to trust You with my whole heart. Show me where I am leaning only on my own understanding and help me acknowledge You in my decisions.","declaration":"I trust the Lord wholeheartedly and seek His direction rather than rely only on myself.","affirmation":"I can bring my decisions to God and remain teachable.","confession":"I trust the Lord and acknowledge Him in the choices I make.","inspiration":"Trust is active dependence: bring plans, motives and decisions before God."},
-    {"reference":"Isaiah 40:31","prayer":"Lord, renew my strength as I wait for You. Give me endurance for the work before me and patience when progress seems slow.","declaration":"I wait for the Lord and depend on the strength He supplies.","affirmation":"I can keep going with God-given endurance, one faithful step at a time.","confession":"I place my hope in the Lord and ask Him to renew my strength.","inspiration":"Isaiah speaks comfort to a weary people; waiting on God is sustained hope amid real weakness, not instant escape."},
-    {"reference":"Philippians 4:13","prayer":"Lord Jesus, strengthen me to remain faithful in both abundance and need. Teach me contentment and help me meet each responsibility with dependence on You.","declaration":"Through Christ who strengthens me, I can endure the circumstances I am called to face.","affirmation":"Christ strengthens me to live faithfully in changing circumstances.","confession":"I depend on Christ for strength and learn contentment in every season.","inspiration":"Paul is speaking about learning contentment in plenty and in hunger. This verse is not a guarantee that every ambition will succeed."},
-    {"reference":"Genesis 1:1","prayer":"Creator God, thank You for being before all things. Help me honour You as Creator and steward the life and world You have made.","declaration":"God is Creator; my life belongs within His good creation and purpose.","affirmation":"I can begin today with reverence for the God who made all things.","confession":"I worship the Lord as Creator of heaven and earth.","inspiration":"The Bible opens by directing our attention to God as the source of creation."},
-    {"reference":"Deuteronomy 31:8","prayer":"Lord, go before me in the responsibilities and changes ahead. When I feel uncertain, help me act with courage, seek wise counsel and remember that You do not abandon Your people.","declaration":"The Lord goes before His people and remains with them; I will not give fear the final word.","affirmation":"I can meet change with courage while depending on God's presence.","confession":"I will trust the Lord's faithfulness and take the next obedient step.","inspiration":"Moses encouraged Israel as leadership was changing and the people faced a new chapter. The verse points to God's faithfulness, not to a promise that every transition will be easy."},
-    {"reference":"Psalm 34:8","prayer":"Lord, help me discover Your goodness through trust and obedience. Give me a heart that seeks You sincerely and recognises the blessing of taking refuge in You.","declaration":"The Lord is good, and His people are invited to take refuge in Him.","affirmation":"I can bring my questions to God and learn His goodness through trusting Him.","confession":"I seek the Lord and take refuge in His goodness.","inspiration":"The psalm grows from David's deliverance and calls others to join in praise. Tasting God's goodness is an invitation to trust Him, not a technique for controlling outcomes."},
-    {"reference":"Psalm 91:1","prayer":"Most High God, draw me into a life of abiding trust in You. Teach me to seek Your presence continually and to make my home in the shelter of Your care.","declaration":"The one who dwells in the shelter of the Most High finds rest under the shadow of the Almighty.","affirmation":"I can cultivate a steady life of trust in God's presence.","confession":"I choose to dwell in the presence of the Most High and depend on His care.","inspiration":"Psalm 91 is a song of trust in God. Its shelter imagery calls for enduring reliance on Him, not a formula that guarantees immunity from every danger."},
-    {"reference":"Proverbs 18:10","prayer":"Lord, remind me to run to You rather than to pride or panic. Let Your name shape my trust and my response to danger.","declaration":"The name of the Lord is my strong tower; I seek refuge in Him.","affirmation":"I can turn to God for refuge instead of being ruled by fear.","confession":"I trust the Lord as my strong tower and refuge.","inspiration":"The image of a strong tower calls us to seek safety in God's character and care."},
-    {"reference":"Matthew 5:16","prayer":"Father, let my actions reflect Your goodness. Keep me from seeking applause, and help my conduct point others toward Your character and give You honour.","declaration":"My good works should direct attention to the Father and bring Him glory.","affirmation":"Small acts of faithfulness can make God's goodness visible.","confession":"I let my light shine through actions that honour my Father in heaven.","inspiration":"Jesus places this instruction within the Sermon on the Mount. Visible goodness is meant to lead people to praise God, not to build our reputation."},
-    {"reference":"Matthew 6:33","prayer":"Father, reorder my priorities around Your kingdom and righteousness. Show me what faithful obedience looks like in today's responsibilities, and teach me to trust You with what I cannot control.","declaration":"I seek God's kingdom and righteousness first, trusting Him with my daily needs.","affirmation":"My priorities can be shaped by what matters to God.","confession":"I seek the reign and righteousness of God before the lesser things that compete for my attention.","inspiration":"Jesus speaks about anxiety over necessities. Seeking the kingdom first means trusting the Father while living faithfully, not neglecting practical responsibilities."},
-    {"reference":"John 1:1","prayer":"Lord Jesus, deepen my understanding of who You are. Help me receive Your words and worship You as the eternal Word.","declaration":"The Word was in the beginning with God; I honour Jesus Christ and trust His revealed truth.","affirmation":"I can build my faith on the truth revealed about Christ.","confession":"I confess Jesus Christ as the Word who was with God and is God.","inspiration":"John begins by directing readers to Christ's eternal identity before describing His coming into the world."},
-    {"reference":"John 14:27","prayer":"Jesus, give me the peace You promised Your disciples. Steady my heart in uncertainty and guide me toward truthful, wise action.","declaration":"Christ gives a peace that is not defined by the world's changing conditions.","affirmation":"I can receive Christ's peace while acknowledging real difficulties and seeking help.","confession":"I will trust Jesus and pursue peace without denying what needs to be faced.","inspiration":"Jesus speaks in the farewell discourse as He prepares His disciples for His departure. His peace is not a guarantee of trouble-free circumstances."},
-    {"reference":"Romans 12:2","prayer":"Father, renew my mind through Your truth. Help me discern what is good and pleasing to You, and give me courage to resist patterns that damage love and justice.","declaration":"God renews my mind so I can discern and practise His good will.","affirmation":"I can grow in discernment through Scripture, prayer, wise counsel and obedient action.","confession":"I will resist harmful patterns and allow God to reshape how I think and live.","inspiration":"Paul moves from God's mercy to the transformed life of the whole community. Renewal is not simply positive thinking or withdrawal from the world; it changes practical conduct."},
-    {"reference":"Hebrews 11:1","prayer":"God, strengthen my faith as I trust Your promises. Help me remain faithful even when I cannot yet see the outcome.","declaration":"Faith looks to what God has promised and gives substance to hope in Him.","affirmation":"I can keep trusting God while I wait for what I cannot yet see.","confession":"I live by faith and hold firmly to the hope set before me.","inspiration":"Hebrews 11 describes faith in relation to God's promises and the faithful lives of those who trusted Him."},
-    {"reference":"1 John 4:19","prayer":"Father, thank You for loving us first. Let the love I have received from You shape my response to You and my patience, honesty and care toward other people.","declaration":"I love because God first loved me.","affirmation":"God's initiating love gives me a foundation for loving others.","confession":"I will respond to God's love with trust and practical love for my neighbour.","inspiration":"John grounds Christian love in God's prior action. Love for others is the fruit of receiving God's love, not a way to earn it."},
-    {"reference":"Romans 8:28","prayer":"God, help me trust Your purpose when I cannot understand events around me. Form in me a love for You and a willingness to be shaped according to Your good purpose in Christ.","declaration":"God works for good in the lives of those who love Him and are called according to His purpose.","affirmation":"Even when I cannot see the outcome, I can remain faithful to God.","confession":"I trust God's purpose and seek to love Him through every season.","inspiration":"Paul writes about suffering, hope and the Spirit's help. This verse does not call evil good; it assures believers that suffering cannot defeat God's saving purpose."},
-    {"reference":"John 15:5","prayer":"Lord Jesus, keep me abiding in You. Teach me to draw life from Your words and presence, and let the fruit of my choices grow from dependence on You.","declaration":"Jesus is the vine and I am called to remain in Him; lasting fruit comes from dependence on Christ.","affirmation":"I do not have to manufacture spiritual fruit by myself; I can remain close to Jesus.","confession":"I abide in Christ and let His life shape my words, choices and service.","inspiration":"Jesus uses the vine and branches to teach dependence. Fruitfulness is not detached effort; it grows from continuing in Him."},
-    {"reference":"2 Corinthians 5:17","prayer":"Father, thank You for the new creation in Christ. Help me leave behind patterns that belong to my former life and live out the reconciliation and renewal You have begun.","declaration":"In Christ there is new creation; the old has passed away and the new has come.","affirmation":"My identity is being reshaped by belonging to Christ.","confession":"I am called to live as part of God's new creation in Christ.","inspiration":"Paul connects new creation with reconciliation through Christ. The verse describes a new reality and calling, not a claim that believers never struggle or need growth."},
-    {"reference":"Joshua 1:9","prayer":"Lord, strengthen my courage as I obey what You have called me to do. Remind me of Your presence and help me act with wisdom.","declaration":"I am strong and courageous because the Lord my God is with me wherever I go.","affirmation":"I can face today's responsibilities with courage rooted in God's presence.","confession":"I do not give myself to fear; I trust God and walk faithfully.","inspiration":"God's charge to Joshua is tied to the task of leading Israel and remaining faithful to God's instruction."},
-    {"reference":"Psalm 23:1","prayer":"Shepherd of Your people, teach me to trust Your care and follow Your leading. Shape my desires so that I recognise what I truly need and remain attentive to Your guidance.","declaration":"The Lord is the Shepherd of His people; I look to Him for care and direction.","affirmation":"I can follow God's leading one faithful step at a time.","confession":"The Lord is my Shepherd, and I learn to depend on His care.","inspiration":"David's shepherd image speaks of God's personal guidance and provision. It invites trust, not a promise that life will contain no hardship."},
-    {"reference":"Psalm 46:1","prayer":"God our refuge, meet me in the trouble I cannot solve by myself. Help me recognise Your presence and seek Your strength instead of facing fear alone.","declaration":"God is my refuge and strength, a present help in trouble. I turn to Him in my need.","affirmation":"I can seek God's help honestly when life feels overwhelming.","confession":"The Lord is my refuge; I depend on His help and remain near to Him.","inspiration":"The psalm does not promise a life without upheaval. It teaches God's people where to turn when the earth itself seems unsteady."},
-    {"reference":"Isaiah 41:10","prayer":"Faithful Lord, steady my heart when I feel afraid. Remind me of Your covenant presence and help me receive the strength and help You promise Your people.","declaration":"I do not let fear rule me; the Lord is with His people, strengthens them and upholds them.","affirmation":"I can take the next faithful step while depending on God's presence.","confession":"I look to the Lord for strength and help rather than trusting in my own power.","inspiration":"Isaiah speaks comfort to God's people in a setting of uncertainty. Let the promise draw you toward trust, not toward self-reliance."},
-    {"reference":"2 Timothy 1:7","prayer":"Father, form in me the courage, love and sound judgment that come from Your Spirit. Keep me from confusing boldness with harshness or fearlessness with recklessness.","declaration":"God calls His people to live with power, love and sound judgment rather than being ruled by fear.","affirmation":"I can act with courage that is guided by love and self-control.","confession":"I depend on God's Spirit for courageous, loving and disciplined service.","inspiration":"Paul encourages Timothy in his ministry. This verse is about faithful witness and service, not a promise that believers never experience fear."},
-    {"reference":"James 1:5","prayer":"God of wisdom, I need Your help to understand and respond faithfully. Give me wisdom for the decision before me, and make me willing to follow the truth You show me.","declaration":"I may ask God for wisdom, trusting His generous character and seeking to respond faithfully.","affirmation":"I can ask God for wisdom instead of rushing ahead in confusion.","confession":"I seek wisdom from God and remain teachable as I act.","inspiration":"James addresses believers facing trials. The wisdom requested is not merely information; it is the discernment to live faithfully under pressure."},
-    {"reference":"1 Peter 5:7","prayer":"Caring Father, I bring You the worries I have been carrying. Help me entrust them to You honestly and take the next wise step without pretending that the concerns are small.","declaration":"I can cast my anxieties on God because He cares for His people.","affirmation":"My concerns matter to God, and I can bring them to Him in prayer.","confession":"I entrust my worries to the Lord and seek His care with humility.","inspiration":"Peter places this invitation within a call to humility. Casting anxiety on God is an act of dependence, not a guarantee that every difficulty disappears immediately."},
-    {"reference":"Psalm 103:3","prayer":"Merciful Father, thank You for forgiving sin and caring for the whole person. I bring my needs before You; grant healing, strength, wise help and patience as I trust Your mercy.","declaration":"The Lord is compassionate and able to heal. I seek His help and trust His faithful care.","affirmation":"I can bring my whole life before God and receive His mercy and care.","confession":"The Lord is my healer; I depend on His mercy and seek the help I need.","inspiration":"Psalm 103 praises God's benefits, including forgiveness and healing, within a wider song of mercy and steadfast love."},
-    {"reference":"John 14:16","prayer":"Lord Jesus, thank You for promising another Comforter, the Holy Spirit, to be with Your people. Help me listen, follow Your truth and live in the comfort of Your presence.","declaration":"The Father gives the Comforter, the Holy Spirit, to remain with His people.","affirmation":"I am not left without help; the Holy Spirit is given to guide and comfort God's people.","confession":"I depend on the Holy Spirit and seek to follow His truth.","inspiration":"Jesus spoke this promise to His disciples as He prepared them for His departure; the Spirit's presence strengthens faithful witness."},
-    {"reference":"Genesis 22:14","prayer":"Faithful God, You saw Abraham's need and provided the sacrifice. Teach me to trust You with reverence, obey You faithfully and recognise Your provision without presuming on Your timing.","declaration":"The Lord sees and provides. I trust His wisdom and remain faithful in the path He gives me.","affirmation":"I can bring my needs to God and trust His wise and faithful care.","confession":"The Lord is my provider; I trust Him and walk in obedience.","inspiration":"The name Jehovah-jireh is remembered at the place where God provided a ram; the passage points to God's provision in a moment of testing."},
-    {"reference":"Isaiah 9:6","prayer":"Father, thank You for the promised Son and the reign of peace and justice described by Isaiah. Help me honour Jesus as the Messiah and follow His righteous rule.","declaration":"Jesus the Messiah is the promised Son; His kingdom is marked by righteous rule and peace.","affirmation":"My hope rests in Christ, the promised King whose reign is everlasting.","confession":"I honour Jesus as the promised Messiah and submit my life to His lordship.","inspiration":"Isaiah's prophecy points to the promised Davidic ruler; the titles proclaim the greatness and enduring character of His reign."},
-    {"reference":"Psalm 24:10","prayer":"Lord of hosts, You are the King of glory. Lift my eyes above fear and pride; teach me to worship You with clean hands, a pure heart and faithful obedience.","declaration":"The Lord of hosts is the King of glory; I honour Him above every earthly power.","affirmation":"My life belongs to the glorious King, and I can worship Him with reverence.","confession":"The Lord is King of glory; I seek Him and honour His name.","inspiration":"Psalm 24 celebrates the Lord's sovereignty and calls worshippers to welcome the King of glory."},
-    {"reference":"Psalm 27:1","prayer":"Lord, when uncertainty surrounds me, teach me to look to You as my light and salvation. Give me courage to take the next faithful step instead of allowing fear to decide for me.","declaration":"The Lord is my light and salvation; I seek His guidance and stand firm in Him.","affirmation":"I can face uncertainty with courage because my confidence is in the Lord.","confession":"The Lord is the stronghold of my life; I trust Him rather than surrender to fear.","inspiration":"David's confidence is rooted in who the Lord is, not in the absence of opposition."},
-    {"reference":"Psalm 37:5","prayer":"Lord, I commit my plans, work and decisions to You. Purify my motives, guide my choices and help me keep doing what is right while I wait for Your direction.","declaration":"I commit my way to the Lord, trust Him and continue in what is good.","affirmation":"I do not have to control every outcome; I can entrust my path to God.","confession":"I commit my way to the Lord and trust His faithful care.","inspiration":"The psalm contrasts the apparent success of wrongdoing with the lasting security of those who trust and do good."},
-    {"reference":"Psalm 51:10","prayer":"Create in me a clean heart, O God. Expose what needs to change, renew a steadfast spirit within me and lead me into honest repentance and restored fellowship with You.","declaration":"I come to God honestly and ask Him to renew my heart and make my spirit steadfast.","affirmation":"Failure need not lead me to hide; I can turn to God in repentance and seek renewal.","confession":"I confess my need for God's cleansing and depend on His mercy to renew me.","inspiration":"David's prayer teaches that genuine repentance seeks inward transformation, not merely relief from consequences."},
-    {"reference":"Micah 6:8","prayer":"Lord, shape my daily life with justice, mercy and humility. Show me where I must act fairly, extend compassion and walk humbly with You.","declaration":"I do justly, love mercy and walk humbly with my God.","affirmation":"My faith should be visible in fair choices, compassionate actions and humble conduct.","confession":"I honour God by practising justice, loving mercy and walking humbly.","inspiration":"Micah confronts empty religious performance and calls God's people to a life that reflects His character."},
-    {"reference":"Matthew 5:14","prayer":"Jesus, let Your light be seen in my conduct. Help me serve sincerely, speak truthfully and do good without seeking applause, so that others may glorify the Father.","declaration":"I let the light of Christ shape my actions so that my life points others to the Father.","affirmation":"Ordinary acts of goodness can bear witness to God's light.","confession":"I belong to Christ and will live openly and faithfully before others.","inspiration":"In the Sermon on the Mount, Jesus describes His disciples as light whose good works direct praise to the Father."},
-    {"reference":"Luke 1:37","prayer":"God of power, help me trust Your word while remaining humble about what I do not understand. Give me faith to obey the next step You have made clear.","declaration":"No word from God will fail; I trust His faithfulness and respond in obedience.","affirmation":"I can trust God's power without pretending to know every detail of His plans.","confession":"I believe God is faithful to His word, and I respond with obedient faith.","inspiration":"The angel's words to Mary concern God's specific promise about Jesus; the verse invites confidence in God's ability to fulfil what He has spoken."},
-    {"reference":"John 8:12","prayer":"Lord Jesus, lead me out of confusion and into the truth of Your way. Help me follow You consistently and reflect Your light in the choices I make.","declaration":"Jesus is the light of the world; I follow Him and walk in His light.","affirmation":"I do not need to walk by confusion; Christ calls me to follow Him.","confession":"I follow Jesus, the light of the world, and seek to live by His truth.","inspiration":"Jesus' claim appears during a dispute about His identity and witness; following Him means receiving His revelation and direction."},
-    {"reference":"Romans 5:8","prayer":"Father, thank You for demonstrating Your love in Christ while we were still sinners. Keep me grateful for grace and teach me to show costly, truthful love to others.","declaration":"God demonstrated His love for us through Christ's death; I live in gratitude for that grace.","affirmation":"God's love is not a reward I earn; it is revealed through Christ.","confession":"I trust the love God has shown in Jesus Christ and respond with grateful faith.","inspiration":"Paul points to Christ's death for sinners as the decisive demonstration of God's love."},
-    {"reference":"1 Corinthians 10:13","prayer":"Faithful God, help me recognise temptation clearly and choose the way of faithfulness You provide. Give me humility to seek support and courage to step away from what is wrong.","declaration":"God is faithful; I look for the way of escape and choose what is right when temptation comes.","affirmation":"I can seek God's help and take practical steps away from temptation.","confession":"I depend on God's faithfulness and will not treat temptation as an excuse to sin.","inspiration":"Paul addresses the church's need to learn from Israel's failures; the promise calls believers to alertness and faithful action, not overconfidence."},
-    {"reference":"2 Corinthians 12:9","prayer":"Lord Jesus, meet me in my weakness. Teach me to depend on Your grace, receive help without shame and let Your strength shape my response to difficulty.","declaration":"Christ's grace is sufficient for me; His power is made perfect in weakness.","affirmation":"My limitations do not prevent me from depending on Christ's strength.","confession":"I boast in the Lord's grace rather than pretend to be self-sufficient.","inspiration":"Paul speaks of a persistent weakness and learns that Christ's grace, not personal strength, sustains his calling."},
-    {"reference":"Colossians 3:23","prayer":"Father, make my work sincere and diligent. Help me serve with integrity even when people do not notice, remembering that my deepest service is offered to You.","declaration":"I work wholeheartedly and serve with integrity as one who belongs to the Lord.","affirmation":"My daily responsibilities can become faithful service when I do them with a sincere heart.","confession":"I work honestly and wholeheartedly before God, not merely for human approval.","inspiration":"Paul applies the new life in Christ to ordinary relationships and responsibilities, calling believers to integrity in their work."},
-    {"reference":"Hebrews 11:6","prayer":"God, strengthen my faith to seek You sincerely. Help me approach You with trust, persevere when answers take time and live in a way that honours Your character.","declaration":"I draw near to God in faith and diligently seek Him.","affirmation":"My faith invites me to seek God sincerely and keep trusting His goodness.","confession":"I believe God is, and I seek Him with a faithful heart.","inspiration":"Hebrews presents faith as essential to drawing near to God and places this conviction within a chapter of persevering examples."},
-    {"reference":"1 John 1:9","prayer":"Faithful and just Father, I confess my sins honestly. Cleanse me, restore me and teach me to walk in the light with truth rather than concealment.","declaration":"I confess my sins to God and trust His faithfulness to forgive and cleanse.","affirmation":"I can bring sin into the light and receive God's promised forgiveness in Christ.","confession":"I do not hide or excuse my sin; I confess it and depend on God's mercy.","inspiration":"John connects confession with walking in the light and the cleansing fellowship made possible through Jesus Christ."},
-    {"reference":"1 John 5:1","prayer":"Father, thank You for new birth through faith in Jesus Christ. Help me live as Your child, receive Your love and show genuine love to others who are born of You.","declaration":"I belong to God through faith in Jesus Christ, and His life shapes the way I live.","affirmation":"I am born of God; my identity rests in His grace and the new life He gives.","confession":"I believe that Jesus is the Christ, and I receive the new life God gives through Him.","inspiration":"John connects belief in Jesus with being born of God and loving God's children. Let your identity in Christ become visible in love."},
-    {"reference":"Ephesians 3:16","prayer":"Father, strengthen me inwardly through Your Spirit. When I feel weak or overwhelmed, deepen my trust in Christ and form steady faith within my heart.","declaration":"God strengthens me with might through His Spirit in my inner being.","affirmation":"The Holy Spirit works within me, strengthening my heart to remain faithful.","confession":"I depend on the Spirit of God for inward strength and Christlike character.","inspiration":"Paul prays for inward strength rooted in God's riches. Ask for a strengthened heart, not merely easier circumstances."},
-    {"reference":"1 Corinthians 1:30","prayer":"Lord Jesus, thank You that my standing before God is grounded in You. Keep me from boasting in myself, and teach me to live in the wisdom, righteousness and redemption You provide.","declaration":"Christ is my wisdom and the source of my righteousness, sanctification and redemption.","affirmation":"I do not need to manufacture my worth; I look to Christ and grow in the life He gives.","confession":"My confidence is in Jesus Christ, not in my own achievement or status.","inspiration":"Paul directs the church away from human pride and toward Christ as God's provision. Let every strength and success lead to gratitude."},
-    {"reference":"Ephesians 1:6","prayer":"Father, thank You for Your grace revealed in the Beloved Son. Help me live with gratitude for the welcome You give in Christ and extend grace to others.","declaration":"God's grace welcomes me in the Beloved, Jesus Christ.","affirmation":"I am accepted by God's grace in Christ; I do not have to earn His welcome.","confession":"I belong to Christ and praise God for the grace He freely gives.","inspiration":"Paul's praise centres on God's gracious action in Christ. Let assurance produce humility, worship and generous love."},
-    {"reference":"John 14:26","prayer":"Lord Jesus, thank You for the promised Comforter. Holy Spirit, teach me, remind me of Christ's words and help me discern truth with humility and obedience.","declaration":"The Holy Spirit teaches and reminds Christ's people of His words.","affirmation":"I can depend on the Spirit's help as I learn Scripture and follow Jesus.","confession":"I welcome the Holy Spirit's teaching and seek to remember and obey the words of Jesus.","inspiration":"Jesus promises the Spirit's help to His disciples. Test every impression by Scripture and let the Spirit direct attention to Christ."},
-    {"reference":"1 Corinthians 2:16","prayer":"Father, shape my thinking through the wisdom of Christ. Help me reject pride and worldly assumptions, and learn to see choices in the light of the gospel.","declaration":"In Christ, I am being taught to think according to the wisdom and purposes of God.","affirmation":"My mind can be renewed as I learn the ways of Christ and submit my thinking to Scripture.","confession":"I seek the mind of Christ and choose thoughts and actions that honour Him.","inspiration":"Paul contrasts human boasting with the wisdom revealed by the Spirit. Having the mind of Christ means learning His priorities, humility and obedience."},
-    {"reference":"2 Peter 1:5","prayer":"Lord, help me diligently add virtue to my faith and keep growing in knowledge, self-control, patience and love. Make my faith visible in daily character.","declaration":"I diligently grow in Christlike character, building on the faith God has given.","affirmation":"By God's help, I can keep growing in goodness and spiritual maturity one faithful choice at a time.","confession":"I do not remain careless in my walk; I pursue the character that honours Christ.","inspiration":"Peter describes growth as a deliberate response to God's promises. Spiritual maturity develops through faithful practice, not instant perfection."},
-    {"reference":"Romans 15:13","prayer":"God of hope, fill me with joy and peace as I trust You. By the power of the Holy Spirit, strengthen my hope even when circumstances remain unresolved.","declaration":"The God of hope is the source of joy, peace and overflowing hope through the Holy Spirit.","affirmation":"I can grow in hope as I trust God and depend on the Holy Spirit.","confession":"I place my hope in God and ask the Holy Spirit to strengthen me in faith.","inspiration":"Paul's prayer connects hope with trust, joy, peace and the Spirit. Christian hope is more than positive thinking; it rests in God's character."},
-    {"reference":"1 Peter 2:9","prayer":"Father, thank You for calling a people to belong to You and declare Your goodness. Help me live as one who has received mercy, showing Your light through faithful conduct.","declaration":"God calls His people to belong to Him and to proclaim His excellencies.","affirmation":"Having received mercy, I can reflect God's goodness in the way I live.","confession":"I belong to God's people and will make His goodness known through my life.","inspiration":"Peter addresses the identity and calling of the believing community. This is a shared vocation of witness, not a reason for personal pride."},
-    {"reference":"Philippians 1:6","prayer":"Faithful God, continue Your good work in me. Give me patience with the process of growth and help me participate willingly in the work You are doing until the day of Christ.","declaration":"God is faithful to continue His good work among His people and bring it to completion in Christ.","affirmation":"I can keep growing with patience because God's work is not finished.","confession":"I cooperate with God's transforming work and trust His faithfulness.","inspiration":"Paul expresses confidence about the Philippian believers as a community. The verse encourages perseverance grounded in God's faithfulness, not passive waiting."},
-    {"reference":"John 10:10","prayer":"Jesus, help me understand the abundant life You give in the context of Your teaching about the true Shepherd. Guard me from false promises and teach me to recognise Your voice.","declaration":"Jesus is the true Shepherd who gives life to His flock; I listen to Him and follow.","affirmation":"I can seek the life Jesus gives by remaining in His care and teaching.","confession":"I belong among the flock that listens to the voice of Christ the Shepherd.","inspiration":"Jesus contrasts His mission with the thief and the danger facing the sheep. Abundant life is rooted in relationship with Him, not simply material success."},
-    {"reference":"1 Corinthians 15:58","prayer":"Risen Lord, make me steadfast in the work You have given me. When service feels unseen or difficult, remind me that labour in the Lord is not empty or wasted.","declaration":"Because of the resurrection, faithful labour in the Lord is not in vain.","affirmation":"I can serve with perseverance because my hope rests in the risen Christ.","confession":"I remain steadfast and give myself fully to the Lord's work.","inspiration":"Paul concludes his teaching on resurrection by connecting future hope with present faithfulness. Christian service matters because Christ is risen."},
-    {"reference":"Ephesians 2:10","prayer":"Creator God, thank You for making me in Christ for a life of good works. Guide my choices today so that my actions reflect the purpose and grace You have prepared for Your people.","declaration":"God's people are His workmanship, created in Christ Jesus for good works.","affirmation":"I can approach today's responsibilities as opportunities to practise the good God calls me to.","confession":"I am called to walk in the good works God has prepared for His people.","inspiration":"Paul places good works after salvation by grace, not before it. Our service is the fruit of God's gracious work, never the price paid to earn it."},
-    {"reference":"Hebrews 10:23","prayer":"Faithful God, strengthen my grip on the hope I confess. When circumstances shake my confidence, remind me that Your promises are reliable and help me encourage others to persevere.","declaration":"I hold firmly to the hope I profess because the One who promised is faithful.","affirmation":"I can persevere by relying on God's faithfulness rather than my changing feelings.","confession":"I hold to Christian hope and encourage others to remain faithful.","inspiration":"Hebrews calls believers to endure together. Hope is sustained by the faithfulness of God and expressed through mutual encouragement."},
-    {"reference":"Psalm 16:8","prayer":"Lord, keep my attention fixed on You. Steady my heart with confidence in Your presence and care.","declaration":"I set the Lord before me and look to Him for steadfast direction.","affirmation":"God's presence is my anchor when life feels uncertain.","confession":"I keep the Lord before me and trust Him to sustain me.","inspiration":"The psalmist's confidence grows from a deliberate Godward focus, not from pretending life never changes."},
-    {"reference":"Psalm 19:14","prayer":"Lord, let my words and hidden thoughts be pleasing to You. Correct what is careless and shape my inner life by Your truth.","declaration":"I desire my words and heart's meditation to honour the Lord, my Rock and Redeemer.","affirmation":"God can shape both my speech and my hidden thoughts.","confession":"I bring my words and inner reflections before God and ask Him to make them pleasing.","inspiration":"Worship reaches beyond public words; this prayer asks God to shape the thoughts from which our words arise."},
-    {"reference":"Psalm 30:5","prayer":"Faithful Father, meet me in sorrow and help me wait for Your mercy. Keep me from believing a painful night is the whole story.","declaration":"Sorrow does not have the final word; I wait for the joy God gives in His time.","affirmation":"I may grieve honestly while still holding hope in God.","confession":"I bring my sorrow to the Lord and trust His compassion.","inspiration":"The psalm celebrates God's restoring mercy; it does not promise every hardship ends on our preferred timetable."},
-    {"reference":"Psalm 56:3","prayer":"God, when fear rises, help me turn toward You rather than let fear direct my choices. Teach me to trust Your care.","declaration":"When I am afraid, I put my trust in God.","affirmation":"Fear can prompt me to seek God instead of ruling my decisions.","confession":"I acknowledge my fear and entrust myself to the Lord.","inspiration":"Faith is not denial of fear; the psalm gives a faithful response by turning toward God."},
-    {"reference":"Isaiah 26:3","prayer":"God of peace, steady my thoughts as I depend on You. When worries compete for my attention, draw me back to Your faithfulness.","declaration":"I turn my mind toward the Lord and depend on Him for enduring peace.","affirmation":"My thoughts can be re-centred on God when anxiety distracts me.","confession":"I trust the Lord and return my attention to His faithful character.","inspiration":"The passage connects peace with a steadfast mind that trusts God, not with a life free from every difficulty."},
-    {"reference":"Matthew 4:4","prayer":"Father, nourish my life through Your Word. Help me distinguish what merely satisfies an appetite from what sustains faithful life before You.","declaration":"I need more than physical provision; I depend on every word that comes from God.","affirmation":"God's Word deserves a central place in my daily choices.","confession":"I receive God's Word as essential nourishment for faithful living.","inspiration":"Jesus answers temptation by trusting Scripture; this calls us to dependence on God, not neglect of bodily needs."},
-    {"reference":"John 1:12","prayer":"Father, thank You for the welcome You give through Jesus Christ. Help me receive Him in faith and live in the identity You graciously provide.","declaration":"I receive Christ and trust the right He gives to become a child of God.","affirmation":"My relationship with God rests on receiving Christ, not earning a place.","confession":"I believe in Jesus Christ and receive the grace of belonging to God's family.","inspiration":"John describes becoming God's child through receiving and believing in Christ; this identity is a gift, not a status to boast about."},
-    {"reference":"John 16:33","prayer":"Lord Jesus, when trouble comes, root my courage in Your victory. Help me face hardship truthfully without surrendering hope.","declaration":"I may face trouble in this world, but my courage rests in Jesus, who has overcome the world.","affirmation":"Hardship does not cancel the hope and victory of Christ.","confession":"I take heart in Jesus and remain faithful through trouble.","inspiration":"Jesus prepares His disciples for real distress and grounds their courage in His victory, not a trouble-free life."},
-    {"reference":"Acts 1:8","prayer":"Holy Spirit, empower me to bear faithful witness to Jesus. Give me courage, humility and love as I speak and serve.","declaration":"The Holy Spirit empowers Christ's people to be His witnesses.","affirmation":"I can depend on the Spirit for courage to represent Jesus faithfully.","confession":"I bear witness to Christ through truthful words and faithful conduct.","inspiration":"Jesus gives this promise to His disciples for mission; the Spirit's power serves witness to Christ, not personal display."},
-    {"reference":"Romans 12:12","prayer":"Lord, strengthen my hope, steady me in difficulty and keep me faithful in prayer. Teach me to endure without losing compassion.","declaration":"I rejoice in hope, endure in trouble and remain faithful in prayer.","affirmation":"I can practise patient endurance and keep bringing my life to God.","confession":"With God's help, I remain hopeful, patient and prayerful.","inspiration":"Paul places hope, endurance and prayer together as a pattern for Christian life within a community."},
-    {"reference":"Philippians 2:5","prayer":"Lord Jesus, shape my attitude after Your humility. Free me from competing for status and teach me to consider others in love.","declaration":"I seek the humble mindset displayed by Christ Jesus.","affirmation":"I can choose humility and look beyond my own interests.","confession":"I follow Christ's example of humble, self-giving love.","inspiration":"Paul introduces Christ's example to address relationships in the church; humility serves unity rather than self-promotion."},
-    {"reference":"1 John 4:18","prayer":"Father, deepen my understanding of Your love. Where fear distorts my view of You, help me receive Your truth and grow in mature love.","declaration":"God's love drives out the fear associated with punishment as His love reaches maturity in us.","affirmation":"I can grow in assurance as I understand and receive God's love.","confession":"I abide in God's love and let it shape my relationships.","inspiration":"John addresses fear of judgment in the context of God's love; this does not mean every form of caution or reverence disappears."},
-    {"reference":"Psalm 23:1-3","prayer":"Shepherd of my soul, lead me in Your care. Restore my strength, guide my choices in Your righteous ways, and teach me to trust Your presence through every season.","declaration":"The Lord is my Shepherd; I look to Him for guidance, provision and restoration.","affirmation":"I can follow the Lord one step at a time and receive His care.","confession":"I trust the Lord to lead me in paths that honour His name.","inspiration":"The psalm pictures God's care as the guidance of a shepherd. Its comfort is found in belonging to the Shepherd, not in a promise that life will contain no valleys."},
-    {"reference":"Psalm 46:10","prayer":"Father, quiet my restless thoughts before You. Teach me to stop striving, remember Your sovereignty, and respond to others with faith rather than fear.","declaration":"I will be still before God and remember that He is God.","affirmation":"I can pause, pray and place my concerns in God's hands.","confession":"I acknowledge God's rule and choose trust over frantic striving.","inspiration":"Stillness here is a call to recognise God's supremacy. It is not an instruction to ignore responsibilities or avoid wise action."},
-    {"reference":"Psalm 63:1","prayer":"God, awaken a deeper desire for You in me. Let my search for You shape my priorities and draw my heart toward Your presence.","declaration":"I seek the living God and desire to know Him more deeply.","affirmation":"My relationship with God is worth pursuing with my whole heart.","confession":"I will seek the Lord sincerely and make room for His Word and prayer.","inspiration":"David's thirst expresses longing for God in a dry and difficult setting. Spiritual desire can be brought honestly into prayer."},
-    {"reference":"Psalm 84:11","prayer":"Lord, guide me in integrity and teach me to receive Your good gifts with gratitude. Keep me from demanding what You have not promised and help me walk faithfully today.","declaration":"The Lord is my sun and shield; I will walk uprightly and trust His goodness.","affirmation":"God's guidance and care are more valuable than pursuing every desire.","confession":"I will seek the Lord's way and trust His wisdom concerning what is good.","inspiration":"The psalm celebrates God's favour and protection. It should not be turned into a guarantee that every preferred outcome will be granted."},
-    {"reference":"Psalm 90:12","prayer":"Eternal God, teach me to number my days wisely. Help me use today's time for what matters, love people well, and live with an eternal perspective.","declaration":"I will ask God for wisdom to use my days faithfully.","affirmation":"Today's choices matter, and God can teach me to live wisely.","confession":"I will not treat time carelessly; I will seek a heart of wisdom.","inspiration":"The prayer recognises human mortality and asks God for wisdom. It invites thoughtful living rather than fear about the future."},
-    {"reference":"Isaiah 40:29-31","prayer":"Faithful Lord, meet me in my weakness. Renew my strength as I wait on You, and help me keep walking without giving up.","declaration":"God gives strength to the weary; I will wait on Him and continue in faithful hope.","affirmation":"Weakness does not make me beyond God's help.","confession":"I depend on the Lord for strength and keep taking the next faithful step.","inspiration":"The promise is spoken to a weary people. Waiting on the Lord is active trust in His character, not a technique for controlling outcomes."},
-    {"reference":"Isaiah 43:1-2","prayer":"Redeeming God, remind me that I am not forgotten. Be with me through deep waters and difficult seasons, and guide me in the path of faithfulness.","declaration":"The Lord calls His people by name and promises His presence through the waters.","affirmation":"Hard seasons do not mean that God has abandoned His people.","confession":"I will remember God's faithfulness and seek Him through every trial.","inspiration":"The imagery promises God's presence through danger; it does not say that His people will never encounter danger."},
-    {"reference":"Lamentations 3:22-23","prayer":"Merciful Father, thank You for compassion that does not fail. Help me receive today's mercy, repent where needed, and meet this day with renewed trust.","declaration":"The Lord's steadfast love and mercies are new every morning; I will place my hope in Him.","affirmation":"I can begin again today by turning to God's mercy.","confession":"I will hope in the Lord, whose faithfulness is great.","inspiration":"These words arise amid grief after Jerusalem's devastation. Hope is not denial of sorrow; it is confidence in God's enduring character within sorrow."},
-    {"reference":"Matthew 7:7-8","prayer":"Father, teach me to ask with humility, seek with perseverance and knock with trust. Shape my desires by Your wisdom and help me recognise Your good gifts.","declaration":"I will keep asking, seeking and knocking as I depend on my Father's goodness.","affirmation":"I can bring my needs to God persistently and trust His wisdom.","confession":"I will pray with perseverance and remain open to God's answer.","inspiration":"Jesus describes the Father's generosity in the context of His teaching. Prayer is trusting relationship, not a formula for getting every requested outcome."},
-    {"reference":"Matthew 28:19-20","prayer":"Lord Jesus, make me a faithful learner and witness. Give me love for people, courage to share the good news, and humility to teach what You commanded.","declaration":"I belong to Jesus and take part in His call to make disciples.","affirmation":"I can bear witness to Christ through words, love and faithful living.","confession":"I will learn Christ's teaching and help others follow Him.","inspiration":"The commission joins making disciples with baptising and teaching obedience. Christian witness is more than a slogan; it is a life shaped by Jesus."},
-    {"reference":"Luke 10:27","prayer":"God of love, teach me to love You with my whole being and to treat my neighbour with practical compassion. Show me whose need I can respond to today.","declaration":"I will love God wholeheartedly and love my neighbour as myself.","affirmation":"Love for God should become visible in how I treat people.","confession":"I choose compassion, respect and practical care for my neighbour.","inspiration":"Jesus places love at the centre of the law. The surrounding story of the Good Samaritan challenges narrow definitions of who deserves our care."},
-    {"reference":"Romans 12:9-18","prayer":"Lord, make my love sincere. Help me honour others, persevere in prayer, share with those in need, practise hospitality and pursue peace as far as it depends on me.","declaration":"I will reject evil, hold to what is good, honour others and pursue peace.","affirmation":"God can shape my everyday relationships through sincere love.","confession":"I will respond to people with humility, patience, generosity and peace.","inspiration":"This passage turns worship into community life. Peace is pursued sincerely, while recognising that reconciliation is not always within one person's control."},
-    {"reference":"2 Corinthians 9:8","prayer":"Generous God, make me ready to do good with what You place in my hands. Teach me contentment, wise stewardship and generosity toward others.","declaration":"God is able to provide what is needed so that I may abound in good works.","affirmation":"I can practise generosity and wise stewardship without being ruled by fear.","confession":"I will use what God provides to do good and serve others.","inspiration":"Paul discusses generosity toward others in need. This verse is not a promise of personal wealth; its emphasis is provision for good works."},
-    {"reference":"Galatians 5:22-23","prayer":"Holy Spirit, grow Your fruit in my character. Form love, joy, peace, patience, kindness, goodness, faithfulness, gentleness and self-control in my daily choices.","declaration":"I desire the fruit of the Spirit to become visible in my character.","affirmation":"Christlike character can grow in me as I walk by the Spirit.","confession":"I will yield to the Spirit and practise love, patience and self-control.","inspiration":"Paul contrasts the works of the flesh with the fruit produced by the Spirit. These qualities describe a transformed life, not a checklist for boasting."},
-    {"reference":"Philippians 2:13","prayer":"Father, work in my desires and actions so that I may live in a way that pleases You. Give me willingness to obey and strength to serve with humility.","declaration":"God is at work in His people, shaping both willing and doing for His good purpose.","affirmation":"I can ask God to shape my motives as well as my actions.","confession":"I will respond to God's work with humble obedience.","inspiration":"The verse sits within a call to live out salvation with reverence and unity. God's work inspires active obedience rather than replacing it."},
-    {"reference":"Colossians 1:13-14","prayer":"Father, thank You for rescuing us from darkness and bringing us into the kingdom of Your beloved Son. Help me live in the freedom and forgiveness found in Christ.","declaration":"Through Christ I receive redemption and forgiveness; He is Lord of the kingdom to which I belong.","affirmation":"My deepest identity is found in Christ's redeeming work.","confession":"I belong to Jesus and will live in the light of His kingdom.","inspiration":"Paul grounds Christian identity in God's rescue through His Son. Forgiveness is a gift that calls us into a new allegiance."},
-    {"reference":"1 Thessalonians 5:23-24","prayer":"God of peace, sanctify me wholly. Keep my heart attentive to You, and help me trust the One who calls me and is faithful.","declaration":"The God who calls His people is faithful and will continue His sanctifying work.","affirmation":"I can depend on God's faithfulness as I grow in holiness.","confession":"I will pursue holiness while trusting the faithfulness of God.","inspiration":"Paul's prayer looks toward the completion of God's work. It encourages both confidence in God and a life set apart for Him."},
-    {"reference":"2 Peter 1:3-4","prayer":"Lord, help me grow in knowing Christ and living by Your promises. Shape my character away from corruption and toward godliness, love and faithfulness.","declaration":"God has given what is needed for a life of godliness through knowing Christ.","affirmation":"I can grow in godliness as I know Christ and rely on His promises.","confession":"I will pursue a life shaped by the knowledge of Jesus and His precious promises.","inspiration":"Peter connects God's provision with growth in virtue. The promises lead to participation in a transformed life, not escape from moral responsibility."},
-    {"reference":"Revelation 21:4","prayer":"God of all comfort, sustain those who grieve and strengthen my hope in Your promised renewal. Help me care tenderly for people who suffer while looking toward Your future restoration.","declaration":"God's promised future includes the end of death, mourning, crying and pain.","affirmation":"Christian hope looks toward God's final renewal and gives compassion for those who grieve now.","confession":"I will hold to God's promise of restoration and comfort others with tenderness.","inspiration":"This vision belongs to the promised new creation. It offers future hope without dismissing present grief or the need to comfort those who mourn."},
-    {"reference":"Psalm 34:18","prayer":"Lord, draw near to me in sorrow. Help me speak honestly about my pain, receive comfort and find safe support as I heal.","declaration":"The Lord is near to the brokenhearted and attentive to those crushed in spirit.","affirmation":"My grief does not make me distant from God's care; I may seek comfort and help.","confession":"I will bring my sorrow honestly before God and accept compassionate support.","inspiration":"David's song grows out of danger and deliverance. The verse does not promise instant removal of every hardship; it affirms God's nearness to the wounded."},
-    {"reference":"Psalm 139:14","prayer":"Creator God, teach me to receive my life with gratitude and humility. Help me honour the dignity of others and use the abilities You have given me for good.","declaration":"I praise God for His wonderful works, including the life He has formed.","affirmation":"My worth is not measured by comparison; I can live gratefully before God.","confession":"I will honour the Creator and treat myself and others with dignity.","inspiration":"The psalm celebrates God's intimate knowledge and creative care. It invites wonder and humility rather than pride or comparison."},
-    {"reference":"Matthew 6:34","prayer":"Father, help me meet today's responsibilities without being consumed by tomorrow's fears. Give me wisdom to plan faithfully and grace to take one day at a time.","declaration":"I will face today's responsibilities with trust rather than surrendering to tomorrow's anxiety.","affirmation":"I can plan wisely while bringing future concerns to God one day at a time.","confession":"I will act faithfully today and seek God's help for what lies ahead.","inspiration":"Jesus teaches trust in the Father's care in the Sermon on the Mount. The verse does not forbid responsible planning or professional help for persistent anxiety."},
-    {"reference":"Luke 12:32","prayer":"Father, thank You for Your care and for the kingdom You delight to give. Free me from fear-driven grasping and shape me into a generous, faithful disciple.","declaration":"The Father calls His little flock to live without fear and receive His kingdom.","affirmation":"I can trust the Father's care and live generously rather than fearfully.","confession":"I will seek God's kingdom and hold possessions with open hands.","inspiration":"Jesus connects the Father's generosity with freedom from anxious attachment to possessions. The surrounding passage calls disciples toward generosity and treasure that lasts."},
-    {"reference":"John 6:35","prayer":"Lord Jesus, deepen my trust in You as the bread of life. Keep me from treating You as a means to temporary gain; teach me to seek the life and truth You give.","declaration":"Jesus is the bread of life; I come to Him and trust His promise of lasting life.","affirmation":"My deepest need is met in relationship with Christ, not in temporary satisfaction.","confession":"I come to Jesus in faith and receive Him as the source of life.","inspiration":"Jesus speaks after feeding the crowd and redirects attention from perishable food to the life He gives. The passage invites faith in His person, not merely pursuit of miracles."},
-    {"reference":"Romans 6:11","prayer":"Father, help me understand my new identity in Christ. Teach me to turn away from sin's rule and present my choices to You in the life Christ gives.","declaration":"In Christ, I am to regard myself as dead to sin and alive to God.","affirmation":"My union with Christ gives me a new direction and a reason to resist sin.","confession":"I will live toward God and refuse to make peace with the patterns that enslave me.","inspiration":"Paul's words follow his teaching about union with Christ in His death and resurrection. This is a call to a changed life, not a claim that temptation has vanished."},
-    {"reference":"2 Corinthians 1:3-4","prayer":"God of all comfort, meet those who are suffering and make me attentive to their needs. As I receive Your comfort, teach me to offer patient and practical care to others.","declaration":"God is the Father of mercies and the God of all comfort, who meets us in affliction.","affirmation":"I can receive comfort from God and become a compassionate comfort to others.","confession":"I will not hide from suffering; I will seek God's comfort and share it with gentleness.","inspiration":"Paul connects the comfort God gives with the comfort believers extend to others. Comfort is not a denial of pain but God's sustaining care within it."},
-    {"reference":"Hebrews 13:5","prayer":"Faithful Lord, free my heart from the love of money and teach me contentment. Help me practise wise stewardship while trusting that Your presence is not measured by my possessions.","declaration":"God promises not to abandon His people; I will pursue contentment and faithful living.","affirmation":"My security is not defined by wealth or possessions.","confession":"I will live with contentment, generosity and trust in God's faithfulness.","inspiration":"The verse joins contentment with God's promise of presence. It does not guarantee material abundance; it calls believers to freedom from greed."},
-    {"reference":"Psalm 91:1-2","prayer":"Father, teach me to make my home in Your presence and to trust You as refuge. Give me wisdom to take practical steps toward safety while resting in Your faithful care.","declaration":"The Lord is my refuge and fortress; I will trust Him and seek shelter in His faithful care.","affirmation":"I can bring my fears to God and seek wise help when I need protection.","confession":"I choose to trust the Lord as my refuge and to act with wisdom rather than be ruled by fear.","inspiration":"The psalm is a song of trust in God's protection. Read its poetry honestly; it does not promise that believers will never face danger or suffering."},
-    {"reference":"Psalm 139:23-24","prayer":"Search my heart, Lord, and reveal what needs to change. Lead me in Your way, and give me humility to receive correction and make things right.","declaration":"I invite God to examine my heart and lead me in His everlasting way.","affirmation":"I can be honest before God because His knowledge of me is complete.","confession":"I welcome God's correction and will take responsible steps toward what is right.","inspiration":"The psalm's invitation is a prayer of openness, not a licence to claim infallibility about another person's motives."},
-    {"reference":"Isaiah 55:6-7","prayer":"Merciful God, draw me to seek You sincerely. Help me turn from harmful ways and receive Your abundant pardon.","declaration":"I will seek the Lord, turn from wrongdoing and trust His abundant mercy.","affirmation":"God's mercy invites sincere return and a changed direction.","confession":"I turn toward the Lord and receive His call to repentance and mercy.","inspiration":"The invitation belongs to Isaiah's prophetic message of restoration. Grace does not make repentance unnecessary; it makes return possible."},
-    {"reference":"Jeremiah 29:11-13","prayer":"Faithful God, help me seek You with my whole heart in seasons of waiting. Keep me from using this promise as a shortcut around hardship; sustain me in hope and obedience today.","declaration":"God calls His people to seek Him wholeheartedly and holds their future in His hands.","affirmation":"I can seek God faithfully even when my circumstances are difficult or uncertain.","confession":"I will seek the Lord with my whole heart and remain faithful in the season I am in.","inspiration":"Jeremiah addressed exiles in Babylon and spoke of a long communal horizon. This is not a guarantee of immediate personal success or a trouble-free future."},
-    {"reference":"Matthew 5:14-16","prayer":"Lord Jesus, let my actions reflect Your goodness. Make my service sincere, so that people see what is good and give glory to the Father rather than praise me.","declaration":"I am called to let my light shine through good works that point to the Father.","affirmation":"My choices can make God's goodness visible in ordinary life.","confession":"I will practise humble, visible goodness that directs attention to God.","inspiration":"Jesus speaks to His disciples as a community shaped by the Kingdom. Good works are witness, not a way to earn God's love."},
-    {"reference":"Matthew 11:28-30","prayer":"Jesus, I bring You my weariness and burdens. Teach me Your gentle way, and show me the next faithful step without pretending that every burden will disappear at once.","declaration":"Jesus invites the weary to come to Him and learn His gentle way.","affirmation":"I may bring my weariness honestly to Christ and receive His sustaining care.","confession":"I come to Jesus, learn from Him and seek the support I need.","inspiration":"The invitation concerns discipleship under Jesus' yoke. It should not be used to discourage medical care, practical support or rest."},
-    {"reference":"Matthew 22:37-39","prayer":"Father, shape my love for You and my neighbour. Show me where my actions need to become more truthful, patient and compassionate.","declaration":"I am called to love God wholeheartedly and to love my neighbour as myself.","affirmation":"Love for God and neighbour belongs together in faithful living.","confession":"I will seek to love God sincerely and treat others with dignity and care.","inspiration":"Jesus summarises the Law and Prophets; love is not vague approval but is shaped by the wider teaching of Scripture, including justice and truth."},
-    {"reference":"Mark 10:45","prayer":"Lord Jesus, shape my leadership after Your servant-hearted example. Help me use influence to serve, protect and strengthen others rather than control them.","declaration":"Jesus came not to be served but to serve and to give His life for many.","affirmation":"True greatness is expressed through humble service, not domination.","confession":"I will use my gifts and influence to serve others with humility and courage.","inspiration":"Jesus speaks these words while correcting the disciples' ambition for status. His self-giving mission must never be twisted into a demand that vulnerable people submit to exploitation."},
-    {"reference":"Luke 6:36","prayer":"Merciful Father, make me compassionate as You are compassionate. Help me respond to others with mercy while keeping wise boundaries and seeking justice where harm has occurred.","declaration":"I am called to reflect the Father's mercy in the way I treat others.","affirmation":"God's mercy shapes both my attitude and my actions toward people.","confession":"I will practise compassion without excusing wrongdoing or abandoning wise boundaries.","inspiration":"The surrounding passage addresses mercy, judgment and generosity. Compassion is not the same as enabling harm."},
-    {"reference":"2 Corinthians 4:16-18","prayer":"God of hope, renew me inwardly when visible circumstances are difficult. Help me keep an eternal perspective while still caring responsibly for the needs before me.","declaration":"I will not lose heart; God's renewing work is greater than what I can presently see.","affirmation":"My present hardship does not define the whole story of God's work in me.","confession":"I will keep faith and attend to today's responsibilities while holding hope beyond what is seen.","inspiration":"Paul writes amid real affliction. The passage does not trivialise suffering or tell people to ignore danger and practical needs."},
-    {"reference":"Galatians 6:9","prayer":"Lord, strengthen me to continue doing good with patience. Show me when to rest, when to ask for help and how to serve without seeking applause.","declaration":"I will not give up doing good; I will trust God's timing and remain faithful.","affirmation":"Small acts of faithfulness matter even when results are not immediate.","confession":"I will persevere in doing good with wisdom, patience and appropriate rest.","inspiration":"Paul's call to perseverance sits within a chapter about bearing burdens and doing good. It is not a command to exhaust oneself or tolerate exploitation."},
-    {"reference":"Ephesians 4:32","prayer":"Father, make me kind and tender-hearted. Help me forgive as I have been forgiven in Christ, while guiding me toward truth, accountability and safety in difficult relationships.","declaration":"I am called to kindness, compassion and forgiveness shaped by God's mercy in Christ.","affirmation":"I can practise kindness without denying truth or pretending that harm did not happen.","confession":"I will seek a forgiving heart while maintaining wise and safe boundaries.","inspiration":"Forgiveness does not automatically restore trust, remove consequences or require reconciliation where there is ongoing danger."},
-    {"reference":"James 4:7-8","prayer":"God, help me resist what draws me away from You and turn toward You sincerely. Cleanse my motives and teach me to seek You with humility.","declaration":"I submit myself to God, resist evil and draw near to Him.","affirmation":"I can turn toward God with honesty and ask Him to reshape my desires.","confession":"I will resist what is destructive and take practical steps toward what is good.","inspiration":"The passage confronts pride, conflict and divided loyalty. It is not a formula for controlling spiritual or physical outcomes."},
-    {"reference":"1 John 3:1","prayer":"Father, thank You for the love by which You call us Your children. Help me live from that gift with humility, confidence and love for others.","declaration":"God's love gives believers the dignity of being called His children.","affirmation":"My worth is grounded in God's love, not in public approval.","confession":"I receive God's love with gratitude and seek to reflect it in how I treat others.","inspiration":"John connects identity as God's children with the call to righteous living and love; it is not a reason for spiritual superiority."},
-    {"reference":"Psalm 119:11","prayer":"Lord, plant Your Word deeply in my heart. Help me remember it, understand it in context and obey it when temptation or pressure comes.","declaration":"I treasure God's Word in my heart so that it shapes my choices and guards me from sin.","affirmation":"Scripture can guide my decisions as I remember and practise it.","confession":"I will receive God's Word with attention and put it into practice.","inspiration":"The psalm celebrates sustained meditation on God's instruction; memorisation serves faithful living rather than becoming a way to judge others."},
-    {"reference":"Proverbs 4:23","prayer":"Father, help me guard the inner life from bitterness, deceit and destructive desires. Let truth, wisdom and love shape what flows from my heart.","declaration":"I will guard my heart with wisdom because my choices and words flow from the inner life.","affirmation":"My inner life matters, and I can invite God to shape it.","confession":"I will pay attention to my motives and choose what leads to life.","inspiration":"The proverb uses the heart as the centre of thought, desire and will; guarding it includes wise habits and relationships, not fear-driven isolation."},
-    {"reference":"Proverbs 16:3","prayer":"Lord, I commit my work and plans to You. Purify my motives, help me plan responsibly and make me willing to change course when wisdom requires it.","declaration":"I commit my work to the Lord and seek plans shaped by His wisdom.","affirmation":"I can bring my responsibilities and intentions before God.","confession":"I will work diligently while holding my plans humbly before the Lord.","inspiration":"This proverb expresses wisdom about entrusting plans to God; it is not a guarantee that every project will succeed exactly as imagined."},
-    {"reference":"Isaiah 43:18-19","prayer":"God of hope, help me recognise Your work without being trapped by the past. Give me discernment to follow the new path You open, one faithful step at a time.","declaration":"God is able to make a way in the wilderness; I will remain attentive to His work.","affirmation":"My past does not prevent me from seeking God's guidance today.","confession":"I will remember God's faithfulness and stay open to the direction He gives.","inspiration":"Isaiah speaks to Israel's restoration from exile. The promise should be read in that covenant setting, not used to claim every desired change is guaranteed."},
-    {"reference":"Isaiah 54:10","prayer":"Faithful Lord, steady my heart in seasons when circumstances shift. Help me trust Your covenant mercy and become a source of steadfast care to others.","declaration":"God's steadfast love and covenant of peace are more secure than the shifting mountains.","affirmation":"I can seek stability in God's faithful character when life changes.","confession":"I will trust God's mercy and practise dependable love toward others.","inspiration":"The verse belongs to a prophetic promise of restoration; it does not mean believers will never experience grief or upheaval."},
-    {"reference":"Jeremiah 17:7-8","prayer":"Lord, root my trust in You. Teach me to remain faithful through dry seasons and to keep bearing good fruit without depending on favourable circumstances alone.","declaration":"Blessed is the one who trusts the Lord and whose hope is in Him.","affirmation":"My roots can be strengthened by trust in God through changing seasons.","confession":"I will remain rooted in the Lord and seek to bear good fruit.","inspiration":"The tree image describes resilient trust, not immunity from hardship or a promise of constant material prosperity."},
-    {"reference":"Matthew 7:12","prayer":"Jesus, help me treat others with the fairness, kindness and dignity I desire for myself. Show me where I need to listen, repair harm or act generously.","declaration":"I will treat others with the care and fairness I would hope to receive.","affirmation":"Other people's dignity matters in the choices I make.","confession":"I will practise the Golden Rule through concrete acts of respect and justice.","inspiration":"Jesus places this teaching within His wider instruction about the Kingdom; it calls for active love, not a simplistic rule that ignores power or safety."},
-    {"reference":"Matthew 9:36","prayer":"Compassionate Lord, open my eyes to people who are tired, overlooked or distressed. Make my response practical, respectful and free from the desire to control them.","declaration":"Jesus sees the crowds with compassion; I ask to learn His concern for people.","affirmation":"I can notice the needs of others and respond with care.","confession":"I will approach people with compassion and offer help that respects their dignity.","inspiration":"The image of sheep without a shepherd introduces Jesus' concern and the mission of the disciples; it is not permission for leaders to dominate."},
-    {"reference":"Mark 1:15","prayer":"Lord Jesus, help me hear Your call to repent and believe the good news. Turn my priorities toward God's Kingdom and shape my daily decisions around Your message.","declaration":"God's Kingdom has drawn near; I turn toward the good news and trust Christ.","affirmation":"I can respond to Jesus with faith and a changed direction.","confession":"I will turn from what is wrong and live in the light of the gospel.","inspiration":"Repentance and faith are joined in Jesus' announcement; neither should be reduced to a slogan or detached from the Gospel's full message."},
-    {"reference":"Luke 9:23","prayer":"Jesus, teach me the daily faithfulness of following You. Give me courage to put aside selfish ambition while also receiving the rest, support and care I need.","declaration":"I am called to follow Jesus daily with self-denial and faithful commitment.","affirmation":"My discipleship is lived in daily choices, not only in words.","confession":"I will follow Christ with humility and perseverance.","inspiration":"Self-denial is not self-harm or submission to abuse; Jesus' call must be read with His teaching on love, dignity and care."},
-    {"reference":"Luke 11:9-10","prayer":"Father, teach me to pray persistently and trust Your goodness. Give me patience when answers are not immediate and wisdom to recognise how You provide.","declaration":"Jesus encourages His disciples to ask, seek and knock in trust toward the Father.","affirmation":"I can bring my requests honestly to God and continue seeking His wisdom.","confession":"I will pray with persistence and remain open to God's good response.","inspiration":"The surrounding passage points to the Father's generosity; it is not a guarantee that every request will be granted in the exact form or timing desired."},
-    {"reference":"John 13:34","prayer":"Lord Jesus, teach me to love others with the self-giving pattern You have shown. Help my care become visible in patience, truth, forgiveness and practical service.","declaration":"Jesus gives His disciples a new commandment to love one another as He has loved them.","affirmation":"Christ's love is the pattern for how I treat fellow believers and neighbours.","confession":"I will practise Christlike love through truthful and practical care.","inspiration":"The command is given in the context of Jesus' approaching death and the disciples' life together; love is not mere sentiment."},
-    {"reference":"Acts 20:35","prayer":"Generous God, free me from selfishness and help me notice opportunities to give, serve and strengthen others. Make my generosity thoughtful and sustainable.","declaration":"I seek the blessing of giving and supporting those in need.","affirmation":"I can share what I have in ways that help others flourish.","confession":"I will give and serve with willing generosity and wise stewardship.","inspiration":"Paul recalls Jesus' saying while speaking about labour and care for the weak; generosity should not be coerced or used to exploit the giver."},
-    {"reference":"1 Corinthians 6:19-20","prayer":"Father, help me honour You with my body. Guide me toward choices that respect my health, dignity and commitments, and keep me from using this truth to shame others.","declaration":"My body matters to God; I seek to honour Him in how I live.","affirmation":"I can treat my body and the bodies of others with dignity and care.","confession":"I will make choices that honour God and respect the dignity of people.","inspiration":"Paul addresses sexual conduct and communal holiness in a specific context; this passage must never be used to shame survivors or deny appropriate healthcare."},
-    {"reference":"Exodus 14:14","prayer":"Lord, quiet my heart when fear rises. Give me discernment to recognise the steps I must take and confidence to trust Your help without becoming passive or careless.","declaration":"The Lord is able to defend and deliver; I will trust Him and follow His wise direction.","affirmation":"I can face uncertainty without allowing fear to rule my decisions.","confession":"I will seek God's help, act wisely and refuse to let panic direct me.","inspiration":"Moses spoke these words at the sea as Israel faced danger. Read the surrounding verses too: God then told the people to move forward."},
-    {"reference":"Psalm 55:22","prayer":"Father, I bring You the burdens I have been carrying. Sustain me, and show me the people and practical support through whom I can receive help.","declaration":"I cast my burden on the Lord and trust His sustaining care.","affirmation":"I do not have to carry every burden alone; I can pray and seek trustworthy support.","confession":"I will entrust my concerns to God and take wise steps toward help.","inspiration":"The psalm is an honest lament amid betrayal and distress. Casting a burden on God is not a command to hide pain or refuse human help."},
-    {"reference":"Psalm 118:24","prayer":"Lord, thank You for the gift of this day. Help me meet its joys and difficulties with gratitude, honesty and faithful action.","declaration":"This is the day the Lord has made; I will respond with gratitude and trust.","affirmation":"I can receive today as a gift without pretending every circumstance is easy.","confession":"I will practise gratitude and faithfulness in the responsibilities before me today.","inspiration":"The verse belongs to a communal song celebrating God's steadfast deliverance. Rejoicing does not require denying grief or injustice."},
-    {"reference":"Isaiah 43:2","prayer":"Faithful God, be near to me in difficult passages of life. Give me courage, wise companions and practical help as I walk through what I cannot control.","declaration":"God's presence is my hope through deep waters and fiery trials.","affirmation":"Hardship does not mean I have been abandoned by God.","confession":"I will seek God's presence and accept wise support as I face adversity.","inspiration":"Isaiah speaks to God's people with promises of restoration. The imagery assures them of God's presence, not that they will never experience suffering."},
-    {"reference":"Matthew 5:9","prayer":"Father, make me a person who works for peace with truth and humility. Show me how to repair conflict without concealing harm or sacrificing what is right.","declaration":"I am called to make peace in ways that reflect the character of my heavenly Father.","affirmation":"I can pursue peace while honouring truth, justice and the dignity of others.","confession":"I will listen carefully, speak truthfully and take constructive steps toward reconciliation where it is safe.","inspiration":"Jesus blesses peacemakers in the Beatitudes. Biblical peace is more than avoiding disagreement; it seeks what is right and life-giving."},
-    {"reference":"Luke 15:7","prayer":"Merciful Father, thank You for welcoming those who turn back to You. Give me a heart that rejoices in repentance and never treats another person's return with contempt.","declaration":"God rejoices when the lost are found and a sinner turns back to Him.","affirmation":"God's mercy gives hope for a new beginning.","confession":"I will turn toward God and welcome genuine repentance with humility and joy.","inspiration":"Jesus tells this parable in response to criticism that He welcomes sinners. Its focus is God's joy over the lost being found, not a comparison that devalues those already in the community."},
-    {"reference":"John 11:25","prayer":"Lord Jesus, meet me in grief and strengthen my hope in You. Help me lament honestly, receive comfort and hold to the promise of resurrection.","declaration":"Jesus is the resurrection and the life; my hope rests in Him.","affirmation":"I can grieve honestly while holding hope in Christ.","confession":"I entrust life, death and my future to Jesus, the resurrection and the life.","inspiration":"Jesus speaks these words to Martha while she mourns Lazarus. The passage does not silence grief; Jesus Himself weeps before calling Lazarus from the tomb."},
-    {"reference":"Romans 8:39","prayer":"Father, steady me in the assurance that no created power can separate Your people from Your love in Christ. Help me hold this promise with courage through hardship.","declaration":"Nothing in all creation can separate me from the love of God in Christ Jesus our Lord.","affirmation":"My hope is anchored in God's faithful love, not in changing circumstances.","confession":"I will remain rooted in Christ's love through hardship and uncertainty.","inspiration":"Paul reaches this assurance after naming suffering, danger and hardship. It is not a promise that believers avoid trouble, but that trouble cannot sever them from God's love in Christ."},
-    {"reference":"Galatians 5:1","prayer":"Jesus, thank You for the freedom You give. Keep me from returning to what enslaves me, and teach me to use freedom in love rather than selfishness.","declaration":"Christ has set His people free; I will stand firm in His freedom.","affirmation":"I can live freely in Christ while choosing love and responsibility.","confession":"I will resist what enslaves and serve others through love.","inspiration":"Paul is addressing pressure to adopt circumcision as a requirement for belonging to God's people. Christian freedom is not permission to harm others or indulge destructive desires."},
-    {"reference":"Ephesians 4:29","prayer":"Lord, guide my words today. Help me speak what is truthful, timely and helpful, and give me humility to apologise when my speech has wounded someone.","declaration":"I will use words that build others up and give grace to those who hear.","affirmation":"My speech can bring encouragement, clarity and kindness.","confession":"I will speak with care, refuse destructive talk and choose words that serve others.","inspiration":"Paul places speech within the new life of the Christian community. Building others up includes honesty and correction offered with care, not flattery or silence about harm."},
-    {"reference":"James 1:19","prayer":"Father, make me quick to listen and slow to react. Give me patience to understand others, wisdom to speak at the right time and self-control when I feel provoked.","declaration":"I will listen carefully, speak thoughtfully and resist anger that does not produce God's righteousness.","affirmation":"I can pause, listen and choose a wise response.","confession":"I will practise patient listening and let God's Word shape my reactions.","inspiration":"James connects listening and speech with receiving God's Word and living it out. Patience does not mean remaining silent in the face of danger or injustice."},
-    {"reference":"Psalm 121:2","prayer":"Maker of heaven and earth, help me recognise the care You provide. Give me wisdom to take the next faithful step and humility to receive help from others.","declaration":"My help comes from the Lord, the Maker of heaven and earth.","affirmation":"I can seek God's help while making wise decisions in the responsibilities before me.","confession":"I will look to the Lord for help and walk forward with trust and discernment.","inspiration":"Psalm 121 is a song of trust for the journey. Its assurance is God's keeping presence, not a promise that the traveller will never face danger or difficulty."},
-    {"reference":"Isaiah 40:29","prayer":"Everlasting God, renew my strength when I feel depleted. Help me rest, ask for assistance and receive the strength needed for today's work.","declaration":"God gives strength to the weary and increases the power of those who have no might.","affirmation":"I can acknowledge my limits without shame and receive strength for the next step.","confession":"I will wait on the Lord, care for my needs and keep moving with renewed hope.","inspiration":"Isaiah speaks comfort to a weary people in exile. God's strengthening care is not a rebuke for tiredness or a command to ignore physical limits."},
-    {"reference":"1 Corinthians 13:4","prayer":"God of love, teach me patience and kindness in my relationships. Expose envy, pride and selfishness in me, and help me practise love with truth and healthy boundaries.","declaration":"Christian love is patient and kind; it does not envy or boast.","affirmation":"I can practise love through patient, humble and truthful actions.","confession":"I will seek the good of others without excusing harm or surrendering healthy boundaries.","inspiration":"Paul writes about love amid disputes over spiritual gifts and status in the church. This passage is not a command to endure abuse or silence necessary truth."},
-    {"reference":"Philippians 4:6","prayer":"Father, I bring You the concerns weighing on my mind. Help me name them honestly, give thanks for Your care and take practical steps with wisdom and support.","declaration":"I can bring every concern to God in prayer, petition and thanksgiving.","affirmation":"I may ask God for help and also use wise support and practical resources.","confession":"I will turn toward God in prayer and respond to my concerns with faith and wisdom.","inspiration":"Paul writes from imprisonment and later speaks of contentment. The verse invites prayer; it should not be used to shame people experiencing anxiety or discourage appropriate care."},
-    {"reference":"1 Peter 5:10","prayer":"God of all grace, sustain me through hardship. Strengthen my faith, surround me with wise support and help me remain hopeful without pretending suffering is easy.","declaration":"God's grace is able to restore, strengthen and establish His people after suffering.","affirmation":"Suffering is not the whole story; I can seek help and hold hope in God's grace.","confession":"I will endure with support, humility and trust in the God of all grace.","inspiration":"Peter addresses believers facing trials and encourages them to stand firm. The promise is not a timetable for recovery or a reason to remain in unsafe circumstances."},
-    {"reference":"Isaiah 55:8","prayer":"Lord, widen my understanding when Your ways challenge my assumptions. Help me seek You in Scripture, remain humble and trust Your mercy as I learn.","declaration":"God's wisdom and ways are higher than my limited perspective.","affirmation":"I can ask honest questions while remaining open to God's wisdom and correction.","confession":"I will seek the Lord, turn toward His mercy and let His Word reshape my thinking.","inspiration":"Isaiah invites the people to return to God, whose compassion exceeds human expectations. The verse is not a reason to stop thinking or to excuse injustice as beyond question."},
-    {"reference":"Matthew 7:7","prayer":"Father, teach me to ask with humility, seek with perseverance and knock with trust. Give me discernment to recognise Your good gifts and patience when the answer differs from my expectation.","declaration":"Jesus invites His disciples to ask, seek and knock in confidence toward the Father.","affirmation":"I can pray honestly and keep seeking God's wisdom without demanding a particular outcome.","confession":"I will bring my needs to God and remain attentive to His good direction.","inspiration":"Jesus develops this teaching in the Sermon on the Mount and points to the Father's goodness. Prayer is not a technique for controlling God or guaranteeing every requested result."},
-    {"reference":"Mark 9:24","prayer":"Lord Jesus, meet me where faith and uncertainty exist together. Help me be honest about my doubts and ask for the help I need.","declaration":"I can bring both my faith and my struggle honestly to Jesus.","affirmation":"Questions and weakness do not prevent me from asking Christ for help.","confession":"I will turn toward Jesus with honest trust and seek His mercy.","inspiration":"The father speaks while seeking help for his suffering child. Jesus responds to the desperate situation; this verse must never be used to blame families for illness or disability."},
-    {"reference":"Ephesians 3:20","prayer":"God of power and grace, work in and among us beyond what we can imagine. Shape our hopes around Your purposes and help us serve one another in love.","declaration":"God is able to work beyond what we ask or imagine by His power at work within us.","affirmation":"My hope rests in God's power and purposes, not in controlling outcomes.","confession":"I will trust God's work in the community of faith and participate in His purposes with humility.","inspiration":"Paul's words conclude a prayer for strength, love and the fullness of God in the church. They are not a guarantee that every personal wish will be fulfilled."},
-    {"reference":"Hebrews 12:2","prayer":"Jesus, help me keep my attention on You as I endure difficulty. Give me courage to lay aside what hinders faith and to continue with patient hope.","declaration":"Jesus is the pioneer and perfecter of faith; I look to Him as I persevere.","affirmation":"I can continue faithfully by looking to Christ rather than measuring my life by comparison.","confession":"I will lay aside what hinders and run with endurance the path set before me.","inspiration":"The verse follows the image of a race surrounded by witnesses and points to Jesus' endurance through suffering. It does not glorify abuse or demand that someone remain in danger."},
-    {"reference":"Exodus 16:4","prayer":"Father, teach me to receive today's provision with gratitude and share fairly. Keep me from hoarding through fear.","declaration":"God taught Israel daily dependence in the wilderness and called the people to gather what was needed.","affirmation":"I can take today's faithful steps without pretending to control tomorrow.","confession":"I will practise gratitude, responsible preparation and generosity.","inspiration":"The manna story forms a community in dependence and equitable provision; it is not a promise that hardship will disappear."},
-    {"reference":"Exodus 33:14","prayer":"Lord, guide me by Your presence. Give me patience to listen, courage to obey and rest rooted in You.","declaration":"God's presence is the heart of Israel's journey and the source of true rest.","affirmation":"I can seek God's presence while taking the next wise step.","confession":"I will seek the Lord's direction rather than confuse hurried activity with faithful progress.","inspiration":"These words come during a crisis after the golden calf. Read them within Moses' intercession and the covenant story."},
-    {"reference":"Leviticus 19:18","prayer":"Holy God, teach me to love my neighbour concretely. Expose resentment and help me pursue truth, justice and safe reconciliation.","declaration":"God commands His people to love their neighbour as themselves.","affirmation":"I can treat others with dignity while maintaining truthful and healthy boundaries.","confession":"I will refuse revenge and seek my neighbour's good with wisdom.","inspiration":"Jesus cites this command as central to the law. Love does not require tolerating abuse or concealing wrongdoing."},
-    {"reference":"Psalm 27:14","prayer":"Lord, steady my heart while I wait. Keep me from despair and from forcing outcomes; give me courage to act at the right time.","declaration":"The psalm calls worshippers to wait for the Lord with courage and renewed strength.","affirmation":"Waiting can include prayer, wise action and receiving support.","confession":"I will practise patient trust rather than panic or despair.","inspiration":"The psalm holds confidence and distress together. Waiting on God is persevering trust amid real uncertainty."},
-    {"reference":"Proverbs 15:1","prayer":"Lord, govern my words when emotions rise. Give me courage to speak truth gently, listen well and step away when unsafe.","declaration":"A gentle answer can turn away wrath, while harsh words stir up anger.","affirmation":"I can choose words that are truthful, calm and respectful.","confession":"I will seek peace in speech without surrendering honesty or safety.","inspiration":"Proverbs offers wisdom, not a guarantee that another person's anger can always be controlled."},
-    {"reference":"Isaiah 58:6-7","prayer":"Lord, make my worship sincere. Show me where I can loosen burdens, share food, protect dignity and stand with people facing injustice.","declaration":"God calls His people to worship expressed through justice, freedom and practical compassion.","affirmation":"My faith can become visible through fair and generous action.","confession":"I will not separate devotion from how I treat people in need.","inspiration":"Isaiah challenges fasting that ignores oppression. The passage calls for concrete justice, not performative charity."},
-    {"reference":"Zechariah 4:6","prayer":"Lord, remind me that Your work is not sustained by human force alone. Give me patience, integrity and dependence on Your Spirit.","declaration":"God's message to Zerubbabel emphasises the Spirit rather than military or human power.","affirmation":"I can work diligently without trusting in strength alone.","confession":"I will depend on God's Spirit and act faithfully within my responsibilities.","inspiration":"The oracle addresses the rebuilding community and Zerubbabel's task; it should not be detached from its historical setting."},
-    {"reference":"Malachi 4:2","prayer":"God of hope, bring healing and renewal in Your time. Help me walk faithfully in the light You give today.","declaration":"Malachi closes with an image of the sun of righteousness rising with healing.","affirmation":"I can hope in God's promised restoration without demanding instant results.","confession":"I will walk in reverence and hope as I await God's justice.","inspiration":"The image belongs to Malachi's closing promise and judgment. It is not a guarantee of immediate physical healing for every individual."},
-    {"reference":"Luke 4:18","prayer":"Spirit of the Lord, form in me compassion for the poor, freedom for the oppressed and good news for those in need.","declaration":"Jesus announces His mission using the language of Isaiah's good news and release.","affirmation":"I can join works of mercy and justice with humility and practical care.","confession":"I will not separate the gospel from compassion toward people who are burdened.","inspiration":"Jesus reads Isaiah in the synagogue and applies the prophetic mission to His ministry; read the full scene and its response."},
-    {"reference":"Acts 4:32","prayer":"Lord, make our fellowship generous and sincere. Teach us to share resources, honour each person's dignity and care for needs in our community.","declaration":"The early believers are described as united and generous in sharing possessions.","affirmation":"I can practise generosity while respecting wise stewardship and consent.","confession":"I will look for practical ways to serve and share with others.","inspiration":"Acts describes a particular community's response to the Spirit; it is not a warrant for coercive control of personal property."},
-    {"reference":"Philippians 2:3-4","prayer":"Jesus, free me from selfish ambition. Teach me to honour others and notice their needs without neglecting my own responsibilities.","declaration":"Paul calls believers away from rivalry toward humility and concern for one another.","affirmation":"I can value others without treating myself as worthless.","confession":"I will seek the good of others with humility and discernment.","inspiration":"The passage addresses a community and is not a command to accept manipulation or erase personal dignity."},
-    {"reference":"1 Thessalonians 5:11","prayer":"God, help me strengthen others with sincere words and practical encouragement. Make our community a place where people are built up rather than diminished.","declaration":"Paul urges believers to encourage one another and build one another up.","affirmation":"My words and actions can contribute to another person's courage.","confession":"I will encourage others with honesty, gentleness and practical support.","inspiration":"The verse belongs to teaching about hope and readiness; encouragement should be truthful, not false reassurance."},
-    {"reference":"Hebrews 10:24-25","prayer":"Lord, help me stir up love and good works and remain connected to trustworthy believers. Give me wisdom to seek healthy fellowship and mutual care.","declaration":"The writer urges the community to encourage love, good works and faithful gathering.","affirmation":"I can give and receive encouragement in a healthy Christian community.","confession":"I will seek fellowship that strengthens faith, love and responsibility.","inspiration":"The passage values mutual gathering, not attendance used to control people or prevent them from seeking safety."},
-    {"reference":"Numbers 14:8","prayer":"Lord, teach me to trust Your goodness while facing uncertainty. Give me courage to obey without pretending the obstacles are small.","declaration":"God's faithfulness is greater than my fear, and I will seek His direction with honest courage.","affirmation":"I can acknowledge real challenges and still choose faithful trust.","confession":"I will not let fear alone decide my response; I will seek God and act with wisdom.","inspiration":"Joshua and Caleb spoke in the face of the people's fear. The verse belongs to Israel's wilderness crisis, not a guarantee that every risk will end in immediate success."},
-    {"reference":"Judges 6:12","prayer":"Lord, meet me in my uncertainty and help me hear Your call without measuring my worth only by my fears.","declaration":"The Lord was with Gideon in his fearful moment; I can seek God's presence as I take the next faithful step.","affirmation":"My limitations do not prevent me from responding to God's call with humility.","confession":"I will bring my fears to God and obey with the strength He provides.","inspiration":"The greeting comes before Gideon's doubts are resolved; God's presence accompanies a calling that unfolds through questioning and obedience."},
-    {"reference":"Ruth 1:16","prayer":"God of covenant love, form in me loyal and compassionate care. Give me wisdom to love others freely and to honour safety and dignity.","declaration":"I choose faithful love that is sincere, freely given and respectful of another person's dignity.","affirmation":"I can practise loyalty without surrendering wisdom or personal safety.","confession":"I will love with integrity and seek relationships marked by mutual care.","inspiration":"Ruth speaks to Naomi amid bereavement and migration. Her loyalty is not a command for anyone to remain in an abusive or unsafe situation."},
-    {"reference":"1 Samuel 16:7","prayer":"Lord, shape my heart beyond outward appearance. Help me value integrity, humility and faithfulness in myself and others.","declaration":"God sees beyond outward appearance; I will seek a heart shaped by truth and obedience.","affirmation":"My worth is not measured only by appearance or public approval.","confession":"I will ask God to form my inner character and treat others with dignity.","inspiration":"God corrects Samuel's assumptions while choosing David. The verse does not say outward conduct is irrelevant; it redirects attention to the heart."},
-    {"reference":"2 Samuel 22:2","prayer":"Lord, be my refuge when danger and uncertainty surround me. Help me remember Your faithfulness and seek wise help.","declaration":"The Lord is my rock, fortress and deliverer; I look to Him for refuge.","affirmation":"I can bring fear and need to God and seek safe support.","confession":"I will depend on the Lord and act wisely in the circumstances before me.","inspiration":"David sings after deliverance from enemies. The image celebrates God's rescue without claiming that believers never face danger."},
-    {"reference":"1 Kings 8:57","prayer":"Faithful God, remain with Your people and guide us in Your ways. Teach me to seek Your presence and follow Your commands.","declaration":"The Lord's faithfulness is the ground of my hope as I seek to walk in His ways.","affirmation":"I can ask God for guidance and remain attentive to His Word.","confession":"I will seek God's presence and pursue faithful obedience.","inspiration":"Solomon prays at the temple dedication, asking God to remain with Israel as He was with their ancestors; it is a covenant prayer, not a guarantee of ease."},
-    {"reference":"2 Kings 6:16","prayer":"Lord, when I feel overwhelmed, steady my heart and help me see beyond immediate fear. Give me discernment and courage.","declaration":"I will not let fear be my only lens; I will look to God for help and wisdom.","affirmation":"I can face frightening circumstances with prayer and clear judgment.","confession":"I will seek God's help without denying the reality of danger.","inspiration":"Elisha reassures his servant during a military threat. The story reveals God's unseen protection in a specific crisis; it is not a reason to ignore practical safety."},
-    {"reference":"1 Chronicles 16:11","prayer":"Lord, draw my attention back to You. Help me seek Your strength and presence consistently, not only when trouble comes.","declaration":"I seek the Lord and His strength; I turn my heart toward Him continually.","affirmation":"I can make seeking God a steady practice in ordinary life.","confession":"I will return to the Lord in worship, trust and obedience.","inspiration":"The verse appears in a song celebrating the ark's arrival and God's covenant faithfulness; seeking God is worshipful dependence."},
-    {"reference":"2 Chronicles 20:12","prayer":"God, when I do not know what to do, help me bring the situation honestly before You. Give me wisdom to listen and act.","declaration":"When I lack answers, I can set my eyes on the Lord and seek His guidance.","affirmation":"Uncertainty does not prevent me from praying and taking wise next steps.","confession":"I will not pretend to have every answer; I will seek God and wise counsel.","inspiration":"Jehoshaphat prays during a national threat. The community's dependence on God includes seeking direction together, not abandoning responsible action."},
-    {"reference":"Ezra 7:10","prayer":"Lord, deepen my love for Scripture. Help me study carefully, live what I learn and teach with humility.","declaration":"I will seek to understand God's Word, practise it and share it faithfully.","affirmation":"Learning Scripture should shape my character and actions.","confession":"I will study with diligence and live with integrity before teaching others.","inspiration":"Ezra's pattern joins study, obedience and teaching; knowledge is not presented as a substitute for faithful living."},
-    {"reference":"Nehemiah 8:10","prayer":"God of restoration, renew my strength through Your joy. Help me share with others and care for those who have little.","declaration":"The joy of the Lord strengthens His people as they hear and respond to His Word.","affirmation":"God's joy can sustain me and move me toward generous care.","confession":"I will receive God's Word with gratitude and share what I have with others.","inspiration":"The community hears the law after return from exile. The verse sits beside instructions to eat, drink and share with those unprepared; it is not a demand to hide grief."},
-    {"reference":"Esther 4:14","prayer":"Lord, give me wisdom and courage to use my influence for what is right. Help me discern when and how to speak.","declaration":"I can act with courage and responsibility when others need me to speak.","affirmation":"My choices can serve others, even when the moment is difficult.","confession":"I will seek wise counsel and use my position with integrity.","inspiration":"Mordecai challenges Esther to consider her role in a specific threat to her people. The verse is not a formula that every personal ambition is divinely assigned."},
-    {"reference":"Job 19:25","prayer":"Redeemer, meet me in seasons when suffering makes answers feel distant. Keep hope alive without silencing my honest lament.","declaration":"Even in anguish, I can look to God as my living Redeemer.","affirmation":"I may lament honestly and still hold hope before God.","confession":"I will bring my questions and pain to the Lord and trust Him with what I cannot resolve.","inspiration":"Job speaks from profound suffering and dispute. His hope does not erase grief or make the book a simple formula for immediate vindication."},
-    {"reference":"Ecclesiastes 3:1","prayer":"God of wisdom, help me recognise the season I am in. Give me patience to act faithfully and discernment about what this moment requires.","declaration":"There are seasons in life; I will seek wisdom for the work and responsibilities of today.","affirmation":"I can respond faithfully to this season without demanding that every season feel the same.","confession":"I will ask God for discernment and receive life's changing rhythms with humility.","inspiration":"The poem reflects on life's appointed times and human limits; it does not excuse injustice or remove responsibility to act."},
-    {"reference":"Song of Solomon 8:7","prayer":"Lord, teach me a love that is faithful, enduring and respectful. Protect relationships from coercion, selfishness and harm.","declaration":"Genuine love cannot be bought or controlled; it calls for faithfulness and respect.","affirmation":"I can seek relationships where love is freely given and dignity is honoured.","confession":"I will value love as a gift and refuse to use it as a tool of control.","inspiration":"The poem celebrates love's strength. It should not be used to romanticise possessiveness, pressure or staying in unsafe relationships."},
-    {"reference":"Ezekiel 36:26","prayer":"God of restoration, renew my heart and shape my desires toward Your ways. Help me respond to Your grace with faithful living.","declaration":"God promises renewal for His people, giving a new heart and a new spirit.","affirmation":"I can seek inward renewal and live in response to God's grace.","confession":"I will turn toward God and ask Him to reshape my heart.","inspiration":"The promise addresses Israel's restoration after exile and the honour of God's name; it is more than a private self-improvement slogan."},
-    {"reference":"Daniel 2:20","prayer":"God of wisdom and might, guide my understanding and keep me humble when answers come. Teach me to give You the honour.","declaration":"Wisdom and might belong to God; I seek understanding with humility.","affirmation":"I can ask God for wisdom and remain grateful rather than boastful.","confession":"I will honour God as the source of wisdom and strength.","inspiration":"Daniel blesses God after the mystery of the king's dream is revealed; the passage directs credit to God, not to human brilliance."},
-    {"reference":"Hosea 6:6","prayer":"Lord, form steadfast love and knowledge of You in me. Keep my worship from becoming empty performance.","declaration":"God desires steadfast love and true knowledge of Him, not empty religious display.","affirmation":"My devotion should be seen in mercy, faithfulness and knowing God.","confession":"I will seek to live out the love I profess in worship.","inspiration":"Hosea confronts covenant unfaithfulness; the verse critiques ritual separated from loyal love, not sincere worship itself."},
-    {"reference":"Joel 2:13","prayer":"Merciful God, help me return to You with a sincere heart. Teach me to trust Your compassion and live in repentance.","declaration":"The Lord is gracious and compassionate, slow to anger and rich in steadfast love.","affirmation":"I can return to God honestly and depend on His mercy.","confession":"I will not hide from God; I will turn to Him with sincerity.","inspiration":"Joel calls the people to return amid a communal crisis. God's character is the ground of repentance, not permission to presume upon grace."},
-    {"reference":"Amos 5:24","prayer":"God of justice, expose the ways my worship and actions do not agree. Make me courageous in pursuing fairness and righteousness.","declaration":"God calls His people to let justice and righteousness flow continually.","affirmation":"My faith should shape how I treat neighbours and pursue what is right.","confession":"I will seek justice and practise righteousness, not settle for outward religion.","inspiration":"Amos confronts worship that coexists with oppression. The image demands public and practical justice, not merely private feelings."},
-    {"reference":"Obadiah 1:15","prayer":"Righteous God, help me trust Your justice and refuse revenge. Teach me to act with humility and leave judgment in Your hands.","declaration":"God sees the actions of nations and calls all people to account.","affirmation":"I can pursue what is right without taking vengeance into my own hands.","confession":"I will leave final judgment to God and choose integrity.","inspiration":"Obadiah addresses Edom's violence against Judah; the day of the Lord is a prophetic warning of accountability, not a licence for personal retaliation."},
-    {"reference":"Jonah 4:2","prayer":"Lord, widen my heart to reflect Your compassion. Challenge my resentment when mercy is shown to people I dislike.","declaration":"God is gracious and compassionate, slow to anger and abundant in steadfast love.","affirmation":"I can ask God to reshape my attitudes toward those beyond my circle.","confession":"I will not limit God's mercy to people I already approve of.","inspiration":"Jonah objects to God's mercy toward Nineveh; the book exposes narrow compassion and invites readers to examine their own hearts."},
-    {"reference":"Nahum 1:7","prayer":"Lord, be my refuge in trouble. Help me remember Your goodness and seek You when life feels unstable.","declaration":"The Lord is good, a stronghold in the day of trouble, and He knows those who take refuge in Him.","affirmation":"I can seek God's shelter and receive help in difficult seasons.","confession":"I will turn to the Lord for refuge and remain attentive to His care.","inspiration":"Nahum's oracle speaks amid judgment on violent Nineveh; God's goodness and justice belong together, not as a promise that trouble never comes."},
-    {"reference":"Habakkuk 3:18","prayer":"God, when visible resources fail, sustain my hope in You. Help me grieve honestly and still find reasons to trust.","declaration":"Even in loss, I can rejoice in the God of my salvation.","affirmation":"My hope in God can remain when circumstances are painful.","confession":"I will not pretend hardship is easy; I will keep turning my heart toward God.","inspiration":"Habakkuk describes the loss of crops and herds and still chooses trust. This is resilient faith, not forced positivity or denial of need."},
-    {"reference":"Zephaniah 3:17","prayer":"God, remind Your people of Your saving presence. Help me receive Your promise with humility and live in hope.","declaration":"The Lord is in the midst of His people, mighty to save and rejoicing over them.","affirmation":"I can take hope in God's promised presence and restoration.","confession":"I will trust God's faithfulness and seek to walk in His ways.","inspiration":"The promise speaks to the restored remnant of Judah; it should be read in its communal context rather than turned into a guarantee of a trouble-free life."},
-    {"reference":"Haggai 1:7","prayer":"Lord, help me examine my priorities honestly. Show me where my actions need to align with the responsibilities You have given.","declaration":"I will consider my ways and seek to order my life faithfully before God.","affirmation":"I can pause, reflect and make wise changes when my priorities drift.","confession":"I will examine my choices and act with renewed purpose.","inspiration":"Haggai addresses a returned community neglecting the temple rebuilding; the call is specific to their setting, not a blanket prosperity formula."},
-    {"reference":"2 Thessalonians 3:3","prayer":"Faithful Lord, strengthen my heart and guard me from evil. Help me remain steady and seek help when I face danger.","declaration":"The Lord is faithful; He strengthens His people and guards them from evil.","affirmation":"I can depend on God's faithfulness while taking wise steps for safety.","confession":"I will remain steadfast in the Lord and seek His protection.","inspiration":"Paul writes to a church facing opposition and disorder. God's faithfulness does not mean believers never suffer or need practical protection."},
-    {"reference":"1 Timothy 4:12","prayer":"Lord, shape my speech, conduct, love, faith and purity. Help me lead by example rather than demand respect.","declaration":"I can set an example in speech, conduct, love, faith and purity.","affirmation":"My character can encourage others regardless of my age or status.","confession":"I will practise the qualities I hope to see in others.","inspiration":"Paul encourages Timothy in ministry leadership; the verse calls for credible character, not perfection or control over others."},
-    {"reference":"Titus 2:11","prayer":"God of grace, thank You for bringing salvation in Christ. Teach me to receive grace and let it train my life toward godliness.","declaration":"God's saving grace has appeared and calls me into a transformed life.","affirmation":"Grace welcomes me and teaches me to live with self-control, justice and devotion.","confession":"I will receive God's grace and allow it to shape my choices.","inspiration":"The passage continues by describing how grace trains believers; grace is not a licence for harmful behaviour or indifference."},
-    {"reference":"Philemon 1:16","prayer":"Lord, teach me to see others as brothers and sisters with dignity. Help me pursue relationships marked by justice, freedom and mutual respect.","declaration":"In Christ, people are to be received as beloved siblings, not reduced to their social status.","affirmation":"I can honour the dignity of every person and challenge dehumanising treatment.","confession":"I will seek reconciliation that respects freedom and dignity.","inspiration":"Paul appeals to Philemon concerning Onesimus. The letter must be read against slavery and power imbalance; it should not be used to excuse coercion or erase the need for justice."},
-    {"reference":"2 John 1:6","prayer":"Father, help me walk in love through practical obedience. Make my care truthful, patient and consistent.","declaration":"Love is expressed by walking according to God's commandments.","affirmation":"I can make love visible through faithful choices and truthful care.","confession":"I will practise love rather than speak of it only.","inspiration":"The letter connects love with obedience to God's command; love is not mere sentiment or permission to ignore truth."},
-    {"reference":"3 John 1:4","prayer":"God, help me rejoice when others grow in truth and integrity. Give me a generous heart that encourages rather than controls.","declaration":"It is a joy to see others walking in truth.","affirmation":"I can encourage growth in others with humility and care.","confession":"I will support others as they grow in truth and faithfulness.","inspiration":"The elder celebrates the faithfulness of those he loves; encouragement should strengthen people, not become control over their choices."},
-    {"reference":"Jude 1:24","prayer":"God who keeps Your people, sustain my faith and guard me from stumbling. Teach me to remain humble and dependent on Your grace.","declaration":"God is able to keep His people and present them before His glory with joy.","affirmation":"I can depend on God's sustaining grace as I continue in faith.","confession":"I will keep seeking God and trust His power to sustain me.","inspiration":"Jude closes with a doxology after warning the community about false teaching; God's keeping grace encourages faithful vigilance, not careless living."}
-  ];
+  {
+    "reference": "John 3:16",
+    "prayer": "Father, thank You for loving the world and giving Your Son. Help me receive Your love with faith, treasure the life You give in Christ, and reflect that love to others.",
+    "declaration": "God's love is revealed in Jesus Christ. I place my trust in Him and receive the life God gives.",
+    "affirmation": "I am loved by God, and my hope is in Jesus Christ.",
+    "confession": "I believe in the Son of God. My life and hope are anchored in Him.",
+    "inspiration": "Let the love revealed at the cross shape how you receive grace and how generously you love others."
+  },
+  {
+    "reference": "Romans 8:1",
+    "prayer": "Father, thank You that condemnation is not the final word for those who are in Christ Jesus. Teach me to walk by the Spirit and live from the freedom Christ has secured.",
+    "declaration": "In Christ Jesus, condemnation does not define me. I belong to Him and follow the leading of the Spirit.",
+    "affirmation": "My identity is rooted in Christ, not in my past failures.",
+    "confession": "I am in Christ Jesus; I turn from sin and walk in the new life He gives.",
+    "inspiration": "Do not confuse conviction that leads you back to God with condemnation that tells you to hide from Him."
+  },
+  {
+    "reference": "Philippians 4:6-7",
+    "prayer": "God of peace, I bring my concerns to You with honest prayer and thanksgiving. Guard my heart and thoughts in Christ Jesus, and teach me to trust You one step at a time.",
+    "declaration": "I bring my requests to God with thanksgiving. His peace guards my heart and mind in Christ Jesus.",
+    "affirmation": "I can speak honestly to God and rest in His faithful care.",
+    "confession": "I choose prayer over anxious striving and entrust my concerns to God.",
+    "inspiration": "Peace is not pretending that trouble is absent; it is bringing the trouble into God's presence."
+  },
+  {
+    "reference": "Proverbs 3:5-6",
+    "prayer": "Father, guide my decisions. Keep me from relying only on my limited understanding, and teach me to acknowledge You in every part of my life.",
+    "declaration": "I trust the Lord with my whole heart and acknowledge Him in my ways.",
+    "affirmation": "I can seek God's wisdom before I make my decisions.",
+    "confession": "I submit my plans to the Lord and remain willing for Him to direct my path.",
+    "inspiration": "Trust becomes practical when you invite God into ordinary decisions, not only emergencies."
+  },
+  {
+    "reference": "Ephesians 2:8-10",
+    "prayer": "Father, thank You that salvation is Your gift of grace, received through faith. Keep me humble and make my life fruitful in the good works You have prepared.",
+    "declaration": "I am saved by grace through faith, not by boasting in my own works. I am called to walk in the good works God prepares.",
+    "affirmation": "Grace is God's gift; gratitude shapes the way I live.",
+    "confession": "I receive salvation as God's gift in Christ and seek to live out the good works He has prepared.",
+    "inspiration": "Grace removes boasting and creates gratitude-filled lives of service."
+  },
+  {
+    "reference": "Matthew 11:28",
+    "prayer": "Lord Jesus, I bring You my weariness and burdens. Teach me to receive Your invitation, learn from Your gentle heart, and walk in the rest You give.",
+    "declaration": "Jesus invites the weary and burdened to come to Him. I answer His invitation and learn from Him.",
+    "affirmation": "I do not have to carry every burden alone; I can come to Jesus.",
+    "confession": "I come to Christ, learn His way, and receive the rest He promises.",
+    "inspiration": "Rest in Jesus includes coming close to Him and learning His way, not merely escaping responsibilities."
+  },
+  {
+    "reference": "Hebrews 4:16",
+    "prayer": "Merciful Father, because of Jesus my great High Priest, help me approach You with confidence. Give me mercy in my need and grace to help me at the right time.",
+    "declaration": "Through Jesus, I may approach God's throne of grace to receive mercy and timely help.",
+    "affirmation": "I can bring my need honestly before God through Christ.",
+    "confession": "I draw near to God through Jesus and depend on His mercy and grace.",
+    "inspiration": "Confidence before God rests on Jesus' priestly work, not on a claim that we have earned access."
+  },
+  {
+    "reference": "Galatians 2:20",
+    "prayer": "Lord Jesus, shape my identity around Your life and love. Teach me to live by faith in You in ordinary decisions, relationships and responsibilities.",
+    "declaration": "My old life is no longer my master; I live by faith in the Son of God who loved me and gave Himself for me.",
+    "affirmation": "Christ's love gives my life its centre, and faith guides my daily walk.",
+    "confession": "I belong to Christ and choose to live by faith in Him.",
+    "inspiration": "Paul describes a life re-centred on Christ, not a claim that personal responsibility or daily obedience disappears."
+  },
+  {
+    "reference": "Colossians 3:12-14",
+    "prayer": "Father, clothe my attitudes with compassion, kindness, humility, gentleness and patience. Help me forgive as You have forgiven me, and let love hold my relationships together.",
+    "declaration": "I choose compassion, kindness, humility, gentleness and patience; above all, I put on love.",
+    "affirmation": "God is forming Christlike character in the way I treat people.",
+    "confession": "I bear with others, forgive, and pursue the love that binds virtues together.",
+    "inspiration": "This passage makes faith visible in relationships: the new life is expressed through patience, forgiveness and love."
+  },
+  {
+    "reference": "Psalm 121:1-2",
+    "prayer": "Maker of heaven and earth, lift my eyes beyond the limits of my own strength. Help me look to You for the help I need and walk with confidence in Your care.",
+    "declaration": "My help comes from the Lord, the Maker of heaven and earth.",
+    "affirmation": "I do not have to depend on my strength alone; I can seek the Lord's help.",
+    "confession": "The Lord is my helper, and I look to Him with trust.",
+    "inspiration": "The psalm redirects the traveller's gaze: lasting help comes from the Lord, not from the hills themselves."
+  },
+  {
+    "reference": "Romans 12:1-2",
+    "prayer": "Father, I offer my whole life to You in grateful worship. Renew my mind through Your truth and help me discern what pleases You in the choices I make.",
+    "declaration": "I present my life to God and seek a renewed mind that discerns His good will.",
+    "affirmation": "My worship includes the way I think, choose and live each day.",
+    "confession": "By God's mercy, I offer myself to Him and resist being shaped by the patterns of this age.",
+    "inspiration": "Worship is not confined to a song or gathering; Paul describes a whole life offered to God and transformed in mind."
+  },
+  {
+    "reference": "Ephesians 6:10-11",
+    "prayer": "Lord, strengthen me in Your mighty power. Teach me to stand firm in truth, righteousness, faith and the gospel, depending on You rather than my own strength.",
+    "declaration": "My strength is in the Lord. I stand firm in His provision and truth.",
+    "affirmation": "I face spiritual opposition by depending on God and putting on His armour.",
+    "confession": "I stand in the Lord's strength and remain grounded in His truth.",
+    "inspiration": "The armour belongs to God; this passage calls believers to dependence, steadfastness and faithful resistance."
+  },
+  {
+    "reference": "1 Corinthians 13:4-7",
+    "prayer": "Father, teach me the patient and kind love described in Your Word. Remove pride, resentment and selfishness from my responses, and help me seek what builds others up.",
+    "declaration": "I choose patient, kind and enduring love; I do not use others for my own advantage.",
+    "affirmation": "God's love can shape how I speak, respond and treat people today.",
+    "confession": "I pursue love that is patient, kind, truthful and steadfast.",
+    "inspiration": "Paul places love at the centre of Christian life; these qualities are a searching test of how we treat one another."
+  },
+  {
+    "reference": "1 Thessalonians 5:16-18",
+    "prayer": "Father, teach me to rejoice in You, remain prayerful and give thanks in every circumstance. Help me be honest about hardship while keeping my heart turned toward You.",
+    "declaration": "I cultivate joy in the Lord, continue in prayer and give thanks in every circumstance.",
+    "affirmation": "I can keep turning toward God with prayer and gratitude through changing seasons.",
+    "confession": "I rejoice, pray and give thanks as part of my life in Christ Jesus.",
+    "inspiration": "Giving thanks in every circumstance does not mean calling every circumstance good; it means remaining attentive to God in all of them."
+  },
+  {
+    "reference": "Psalm 119:105",
+    "prayer": "Father, let Your Word guide my choices today. Give me understanding to follow its light in the ordinary decisions before me.",
+    "declaration": "God's Word gives light for my path; I listen and walk in its truth.",
+    "affirmation": "I can take the next step with Scripture guiding my way.",
+    "confession": "I receive God's Word as a lamp for my feet and a light for my path.",
+    "inspiration": "A lamp often shows the next steps rather than the whole journey. Keep returning to God's Word as you walk."
+  },
+  {
+    "reference": "Proverbs 3:5",
+    "prayer": "Lord, teach me to trust You with my whole heart. Show me where I am leaning only on my own understanding and help me acknowledge You in my decisions.",
+    "declaration": "I trust the Lord wholeheartedly and seek His direction rather than rely only on myself.",
+    "affirmation": "I can bring my decisions to God and remain teachable.",
+    "confession": "I trust the Lord and acknowledge Him in the choices I make.",
+    "inspiration": "Trust is active dependence: bring plans, motives and decisions before God."
+  },
+  {
+    "reference": "Isaiah 40:31",
+    "prayer": "Lord, renew my strength as I wait for You. Give me endurance for the work before me and patience when progress seems slow.",
+    "declaration": "I wait for the Lord and depend on the strength He supplies.",
+    "affirmation": "I can keep going with God-given endurance, one faithful step at a time.",
+    "confession": "I place my hope in the Lord and ask Him to renew my strength.",
+    "inspiration": "Isaiah speaks comfort to a weary people; waiting on God is sustained hope amid real weakness, not instant escape."
+  },
+  {
+    "reference": "Philippians 4:13",
+    "prayer": "Lord Jesus, strengthen me to remain faithful in both abundance and need. Teach me contentment and help me meet each responsibility with dependence on You.",
+    "declaration": "Through Christ who strengthens me, I can endure the circumstances I am called to face.",
+    "affirmation": "Christ strengthens me to live faithfully in changing circumstances.",
+    "confession": "I depend on Christ for strength and learn contentment in every season.",
+    "inspiration": "Paul is speaking about learning contentment in plenty and in hunger. This verse is not a guarantee that every ambition will succeed."
+  },
+  {
+    "reference": "Genesis 1:1",
+    "prayer": "Creator God, thank You for being before all things. Help me honour You as Creator and steward the life and world You have made.",
+    "declaration": "God is Creator; my life belongs within His good creation and purpose.",
+    "affirmation": "I can begin today with reverence for the God who made all things.",
+    "confession": "I worship the Lord as Creator of heaven and earth.",
+    "inspiration": "The Bible opens by directing our attention to God as the source of creation."
+  },
+  {
+    "reference": "Deuteronomy 31:8",
+    "prayer": "Lord, go before me in the responsibilities and changes ahead. When I feel uncertain, help me act with courage, seek wise counsel and remember that You do not abandon Your people.",
+    "declaration": "The Lord goes before His people and remains with them; I will not give fear the final word.",
+    "affirmation": "I can meet change with courage while depending on God's presence.",
+    "confession": "I will trust the Lord's faithfulness and take the next obedient step.",
+    "inspiration": "Moses encouraged Israel as leadership was changing and the people faced a new chapter. The verse points to God's faithfulness, not to a promise that every transition will be easy."
+  },
+  {
+    "reference": "Psalm 34:8",
+    "prayer": "Lord, help me discover Your goodness through trust and obedience. Give me a heart that seeks You sincerely and recognises the blessing of taking refuge in You.",
+    "declaration": "The Lord is good, and His people are invited to take refuge in Him.",
+    "affirmation": "I can bring my questions to God and learn His goodness through trusting Him.",
+    "confession": "I seek the Lord and take refuge in His goodness.",
+    "inspiration": "The psalm grows from David's deliverance and calls others to join in praise. Tasting God's goodness is an invitation to trust Him, not a technique for controlling outcomes."
+  },
+  {
+    "reference": "Psalm 91:1",
+    "prayer": "Most High God, draw me into a life of abiding trust in You. Teach me to seek Your presence continually and to make my home in the shelter of Your care.",
+    "declaration": "The one who dwells in the shelter of the Most High finds rest under the shadow of the Almighty.",
+    "affirmation": "I can cultivate a steady life of trust in God's presence.",
+    "confession": "I choose to dwell in the presence of the Most High and depend on His care.",
+    "inspiration": "Psalm 91 is a song of trust in God. Its shelter imagery calls for enduring reliance on Him, not a formula that guarantees immunity from every danger."
+  },
+  {
+    "reference": "Proverbs 18:10",
+    "prayer": "Lord, remind me to run to You rather than to pride or panic. Let Your name shape my trust and my response to danger.",
+    "declaration": "The name of the Lord is my strong tower; I seek refuge in Him.",
+    "affirmation": "I can turn to God for refuge instead of being ruled by fear.",
+    "confession": "I trust the Lord as my strong tower and refuge.",
+    "inspiration": "The image of a strong tower calls us to seek safety in God's character and care."
+  },
+  {
+    "reference": "Matthew 5:16",
+    "prayer": "Father, let my actions reflect Your goodness. Keep me from seeking applause, and help my conduct point others toward Your character and give You honour.",
+    "declaration": "My good works should direct attention to the Father and bring Him glory.",
+    "affirmation": "Small acts of faithfulness can make God's goodness visible.",
+    "confession": "I let my light shine through actions that honour my Father in heaven.",
+    "inspiration": "Jesus places this instruction within the Sermon on the Mount. Visible goodness is meant to lead people to praise God, not to build our reputation."
+  },
+  {
+    "reference": "Matthew 6:33",
+    "prayer": "Father, reorder my priorities around Your kingdom and righteousness. Show me what faithful obedience looks like in today's responsibilities, and teach me to trust You with what I cannot control.",
+    "declaration": "I seek God's kingdom and righteousness first, trusting Him with my daily needs.",
+    "affirmation": "My priorities can be shaped by what matters to God.",
+    "confession": "I seek the reign and righteousness of God before the lesser things that compete for my attention.",
+    "inspiration": "Jesus speaks about anxiety over necessities. Seeking the kingdom first means trusting the Father while living faithfully, not neglecting practical responsibilities."
+  },
+  {
+    "reference": "John 1:1",
+    "prayer": "Lord Jesus, deepen my understanding of who You are. Help me receive Your words and worship You as the eternal Word.",
+    "declaration": "The Word was in the beginning with God; I honour Jesus Christ and trust His revealed truth.",
+    "affirmation": "I can build my faith on the truth revealed about Christ.",
+    "confession": "I confess Jesus Christ as the Word who was with God and is God.",
+    "inspiration": "John begins by directing readers to Christ's eternal identity before describing His coming into the world."
+  },
+  {
+    "reference": "John 14:27",
+    "prayer": "Jesus, give me the peace You promised Your disciples. Steady my heart in uncertainty and guide me toward truthful, wise action.",
+    "declaration": "Christ gives a peace that is not defined by the world's changing conditions.",
+    "affirmation": "I can receive Christ's peace while acknowledging real difficulties and seeking help.",
+    "confession": "I will trust Jesus and pursue peace without denying what needs to be faced.",
+    "inspiration": "Jesus speaks in the farewell discourse as He prepares His disciples for His departure. His peace is not a guarantee of trouble-free circumstances."
+  },
+  {
+    "reference": "Romans 12:2",
+    "prayer": "Father, renew my mind through Your truth. Help me discern what is good and pleasing to You, and give me courage to resist patterns that damage love and justice.",
+    "declaration": "God renews my mind so I can discern and practise His good will.",
+    "affirmation": "I can grow in discernment through Scripture, prayer, wise counsel and obedient action.",
+    "confession": "I will resist harmful patterns and allow God to reshape how I think and live.",
+    "inspiration": "Paul moves from God's mercy to the transformed life of the whole community. Renewal is not simply positive thinking or withdrawal from the world; it changes practical conduct."
+  },
+  {
+    "reference": "Hebrews 11:1",
+    "prayer": "God, strengthen my faith as I trust Your promises. Help me remain faithful even when I cannot yet see the outcome.",
+    "declaration": "Faith looks to what God has promised and gives substance to hope in Him.",
+    "affirmation": "I can keep trusting God while I wait for what I cannot yet see.",
+    "confession": "I live by faith and hold firmly to the hope set before me.",
+    "inspiration": "Hebrews 11 describes faith in relation to God's promises and the faithful lives of those who trusted Him."
+  },
+  {
+    "reference": "1 John 4:19",
+    "prayer": "Father, thank You for loving us first. Let the love I have received from You shape my response to You and my patience, honesty and care toward other people.",
+    "declaration": "I love because God first loved me.",
+    "affirmation": "God's initiating love gives me a foundation for loving others.",
+    "confession": "I will respond to God's love with trust and practical love for my neighbour.",
+    "inspiration": "John grounds Christian love in God's prior action. Love for others is the fruit of receiving God's love, not a way to earn it."
+  },
+  {
+    "reference": "Romans 8:28",
+    "prayer": "God, help me trust Your purpose when I cannot understand events around me. Form in me a love for You and a willingness to be shaped according to Your good purpose in Christ.",
+    "declaration": "God works for good in the lives of those who love Him and are called according to His purpose.",
+    "affirmation": "Even when I cannot see the outcome, I can remain faithful to God.",
+    "confession": "I trust God's purpose and seek to love Him through every season.",
+    "inspiration": "Paul writes about suffering, hope and the Spirit's help. This verse does not call evil good; it assures believers that suffering cannot defeat God's saving purpose."
+  },
+  {
+    "reference": "John 15:5",
+    "prayer": "Lord Jesus, keep me abiding in You. Teach me to draw life from Your words and presence, and let the fruit of my choices grow from dependence on You.",
+    "declaration": "Jesus is the vine and I am called to remain in Him; lasting fruit comes from dependence on Christ.",
+    "affirmation": "I do not have to manufacture spiritual fruit by myself; I can remain close to Jesus.",
+    "confession": "I abide in Christ and let His life shape my words, choices and service.",
+    "inspiration": "Jesus uses the vine and branches to teach dependence. Fruitfulness is not detached effort; it grows from continuing in Him."
+  },
+  {
+    "reference": "2 Corinthians 5:17",
+    "prayer": "Father, thank You for the new creation in Christ. Help me leave behind patterns that belong to my former life and live out the reconciliation and renewal You have begun.",
+    "declaration": "In Christ there is new creation; the old has passed away and the new has come.",
+    "affirmation": "My identity is being reshaped by belonging to Christ.",
+    "confession": "I am called to live as part of God's new creation in Christ.",
+    "inspiration": "Paul connects new creation with reconciliation through Christ. The verse describes a new reality and calling, not a claim that believers never struggle or need growth."
+  },
+  {
+    "reference": "Joshua 1:9",
+    "prayer": "Lord, strengthen my courage as I obey what You have called me to do. Remind me of Your presence and help me act with wisdom.",
+    "declaration": "I am strong and courageous because the Lord my God is with me wherever I go.",
+    "affirmation": "I can face today's responsibilities with courage rooted in God's presence.",
+    "confession": "I do not give myself to fear; I trust God and walk faithfully.",
+    "inspiration": "God's charge to Joshua is tied to the task of leading Israel and remaining faithful to God's instruction."
+  },
+  {
+    "reference": "Psalm 23:1",
+    "prayer": "Shepherd of Your people, teach me to trust Your care and follow Your leading. Shape my desires so that I recognise what I truly need and remain attentive to Your guidance.",
+    "declaration": "The Lord is the Shepherd of His people; I look to Him for care and direction.",
+    "affirmation": "I can follow God's leading one faithful step at a time.",
+    "confession": "The Lord is my Shepherd, and I learn to depend on His care.",
+    "inspiration": "David's shepherd image speaks of God's personal guidance and provision. It invites trust, not a promise that life will contain no hardship."
+  },
+  {
+    "reference": "Psalm 46:1",
+    "prayer": "God our refuge, meet me in the trouble I cannot solve by myself. Help me recognise Your presence and seek Your strength instead of facing fear alone.",
+    "declaration": "God is my refuge and strength, a present help in trouble. I turn to Him in my need.",
+    "affirmation": "I can seek God's help honestly when life feels overwhelming.",
+    "confession": "The Lord is my refuge; I depend on His help and remain near to Him.",
+    "inspiration": "The psalm does not promise a life without upheaval. It teaches God's people where to turn when the earth itself seems unsteady."
+  },
+  {
+    "reference": "Isaiah 41:10",
+    "prayer": "Faithful Lord, steady my heart when I feel afraid. Remind me of Your covenant presence and help me receive the strength and help You promise Your people.",
+    "declaration": "I do not let fear rule me; the Lord is with His people, strengthens them and upholds them.",
+    "affirmation": "I can take the next faithful step while depending on God's presence.",
+    "confession": "I look to the Lord for strength and help rather than trusting in my own power.",
+    "inspiration": "Isaiah speaks comfort to God's people in a setting of uncertainty. Let the promise draw you toward trust, not toward self-reliance."
+  },
+  {
+    "reference": "2 Timothy 1:7",
+    "prayer": "Father, form in me the courage, love and sound judgment that come from Your Spirit. Keep me from confusing boldness with harshness or fearlessness with recklessness.",
+    "declaration": "God calls His people to live with power, love and sound judgment rather than being ruled by fear.",
+    "affirmation": "I can act with courage that is guided by love and self-control.",
+    "confession": "I depend on God's Spirit for courageous, loving and disciplined service.",
+    "inspiration": "Paul encourages Timothy in his ministry. This verse is about faithful witness and service, not a promise that believers never experience fear."
+  },
+  {
+    "reference": "James 1:5",
+    "prayer": "God of wisdom, I need Your help to understand and respond faithfully. Give me wisdom for the decision before me, and make me willing to follow the truth You show me.",
+    "declaration": "I may ask God for wisdom, trusting His generous character and seeking to respond faithfully.",
+    "affirmation": "I can ask God for wisdom instead of rushing ahead in confusion.",
+    "confession": "I seek wisdom from God and remain teachable as I act.",
+    "inspiration": "James addresses believers facing trials. The wisdom requested is not merely information; it is the discernment to live faithfully under pressure."
+  },
+  {
+    "reference": "1 Peter 5:7",
+    "prayer": "Caring Father, I bring You the worries I have been carrying. Help me entrust them to You honestly and take the next wise step without pretending that the concerns are small.",
+    "declaration": "I can cast my anxieties on God because He cares for His people.",
+    "affirmation": "My concerns matter to God, and I can bring them to Him in prayer.",
+    "confession": "I entrust my worries to the Lord and seek His care with humility.",
+    "inspiration": "Peter places this invitation within a call to humility. Casting anxiety on God is an act of dependence, not a guarantee that every difficulty disappears immediately."
+  },
+  {
+    "reference": "Psalm 103:3",
+    "prayer": "Merciful Father, thank You for forgiving sin and caring for the whole person. I bring my needs before You; grant healing, strength, wise help and patience as I trust Your mercy.",
+    "declaration": "The Lord is compassionate and able to heal. I seek His help and trust His faithful care.",
+    "affirmation": "I can bring my whole life before God and receive His mercy and care.",
+    "confession": "The Lord is my healer; I depend on His mercy and seek the help I need.",
+    "inspiration": "Psalm 103 praises God's benefits, including forgiveness and healing, within a wider song of mercy and steadfast love."
+  },
+  {
+    "reference": "John 14:16",
+    "prayer": "Lord Jesus, thank You for promising another Comforter, the Holy Spirit, to be with Your people. Help me listen, follow Your truth and live in the comfort of Your presence.",
+    "declaration": "The Father gives the Comforter, the Holy Spirit, to remain with His people.",
+    "affirmation": "I am not left without help; the Holy Spirit is given to guide and comfort God's people.",
+    "confession": "I depend on the Holy Spirit and seek to follow His truth.",
+    "inspiration": "Jesus spoke this promise to His disciples as He prepared them for His departure; the Spirit's presence strengthens faithful witness."
+  },
+  {
+    "reference": "Genesis 22:14",
+    "prayer": "Faithful God, You saw Abraham's need and provided the sacrifice. Teach me to trust You with reverence, obey You faithfully and recognise Your provision without presuming on Your timing.",
+    "declaration": "The Lord sees and provides. I trust His wisdom and remain faithful in the path He gives me.",
+    "affirmation": "I can bring my needs to God and trust His wise and faithful care.",
+    "confession": "The Lord is my provider; I trust Him and walk in obedience.",
+    "inspiration": "The name Jehovah-jireh is remembered at the place where God provided a ram; the passage points to God's provision in a moment of testing."
+  },
+  {
+    "reference": "Isaiah 9:6",
+    "prayer": "Father, thank You for the promised Son and the reign of peace and justice described by Isaiah. Help me honour Jesus as the Messiah and follow His righteous rule.",
+    "declaration": "Jesus the Messiah is the promised Son; His kingdom is marked by righteous rule and peace.",
+    "affirmation": "My hope rests in Christ, the promised King whose reign is everlasting.",
+    "confession": "I honour Jesus as the promised Messiah and submit my life to His lordship.",
+    "inspiration": "Isaiah's prophecy points to the promised Davidic ruler; the titles proclaim the greatness and enduring character of His reign."
+  },
+  {
+    "reference": "Psalm 24:10",
+    "prayer": "Lord of hosts, You are the King of glory. Lift my eyes above fear and pride; teach me to worship You with clean hands, a pure heart and faithful obedience.",
+    "declaration": "The Lord of hosts is the King of glory; I honour Him above every earthly power.",
+    "affirmation": "My life belongs to the glorious King, and I can worship Him with reverence.",
+    "confession": "The Lord is King of glory; I seek Him and honour His name.",
+    "inspiration": "Psalm 24 celebrates the Lord's sovereignty and calls worshippers to welcome the King of glory."
+  },
+  {
+    "reference": "Psalm 27:1",
+    "prayer": "Lord, when uncertainty surrounds me, teach me to look to You as my light and salvation. Give me courage to take the next faithful step instead of allowing fear to decide for me.",
+    "declaration": "The Lord is my light and salvation; I seek His guidance and stand firm in Him.",
+    "affirmation": "I can face uncertainty with courage because my confidence is in the Lord.",
+    "confession": "The Lord is the stronghold of my life; I trust Him rather than surrender to fear.",
+    "inspiration": "David's confidence is rooted in who the Lord is, not in the absence of opposition."
+  },
+  {
+    "reference": "Psalm 37:5",
+    "prayer": "Lord, I commit my plans, work and decisions to You. Purify my motives, guide my choices and help me keep doing what is right while I wait for Your direction.",
+    "declaration": "I commit my way to the Lord, trust Him and continue in what is good.",
+    "affirmation": "I do not have to control every outcome; I can entrust my path to God.",
+    "confession": "I commit my way to the Lord and trust His faithful care.",
+    "inspiration": "The psalm contrasts the apparent success of wrongdoing with the lasting security of those who trust and do good."
+  },
+  {
+    "reference": "Psalm 51:10",
+    "prayer": "Create in me a clean heart, O God. Expose what needs to change, renew a steadfast spirit within me and lead me into honest repentance and restored fellowship with You.",
+    "declaration": "I come to God honestly and ask Him to renew my heart and make my spirit steadfast.",
+    "affirmation": "Failure need not lead me to hide; I can turn to God in repentance and seek renewal.",
+    "confession": "I confess my need for God's cleansing and depend on His mercy to renew me.",
+    "inspiration": "David's prayer teaches that genuine repentance seeks inward transformation, not merely relief from consequences."
+  },
+  {
+    "reference": "Micah 6:8",
+    "prayer": "Lord, shape my daily life with justice, mercy and humility. Show me where I must act fairly, extend compassion and walk humbly with You.",
+    "declaration": "I do justly, love mercy and walk humbly with my God.",
+    "affirmation": "My faith should be visible in fair choices, compassionate actions and humble conduct.",
+    "confession": "I honour God by practising justice, loving mercy and walking humbly.",
+    "inspiration": "Micah confronts empty religious performance and calls God's people to a life that reflects His character."
+  },
+  {
+    "reference": "Matthew 5:14",
+    "prayer": "Jesus, let Your light be seen in my conduct. Help me serve sincerely, speak truthfully and do good without seeking applause, so that others may glorify the Father.",
+    "declaration": "I let the light of Christ shape my actions so that my life points others to the Father.",
+    "affirmation": "Ordinary acts of goodness can bear witness to God's light.",
+    "confession": "I belong to Christ and will live openly and faithfully before others.",
+    "inspiration": "In the Sermon on the Mount, Jesus describes His disciples as light whose good works direct praise to the Father."
+  },
+  {
+    "reference": "Luke 1:37",
+    "prayer": "God of power, help me trust Your word while remaining humble about what I do not understand. Give me faith to obey the next step You have made clear.",
+    "declaration": "No word from God will fail; I trust His faithfulness and respond in obedience.",
+    "affirmation": "I can trust God's power without pretending to know every detail of His plans.",
+    "confession": "I believe God is faithful to His word, and I respond with obedient faith.",
+    "inspiration": "The angel's words to Mary concern God's specific promise about Jesus; the verse invites confidence in God's ability to fulfil what He has spoken."
+  },
+  {
+    "reference": "John 8:12",
+    "prayer": "Lord Jesus, lead me out of confusion and into the truth of Your way. Help me follow You consistently and reflect Your light in the choices I make.",
+    "declaration": "Jesus is the light of the world; I follow Him and walk in His light.",
+    "affirmation": "I do not need to walk by confusion; Christ calls me to follow Him.",
+    "confession": "I follow Jesus, the light of the world, and seek to live by His truth.",
+    "inspiration": "Jesus' claim appears during a dispute about His identity and witness; following Him means receiving His revelation and direction."
+  },
+  {
+    "reference": "Romans 5:8",
+    "prayer": "Father, thank You for demonstrating Your love in Christ while we were still sinners. Keep me grateful for grace and teach me to show costly, truthful love to others.",
+    "declaration": "God demonstrated His love for us through Christ's death; I live in gratitude for that grace.",
+    "affirmation": "God's love is not a reward I earn; it is revealed through Christ.",
+    "confession": "I trust the love God has shown in Jesus Christ and respond with grateful faith.",
+    "inspiration": "Paul points to Christ's death for sinners as the decisive demonstration of God's love."
+  },
+  {
+    "reference": "1 Corinthians 10:13",
+    "prayer": "Faithful God, help me recognise temptation clearly and choose the way of faithfulness You provide. Give me humility to seek support and courage to step away from what is wrong.",
+    "declaration": "God is faithful; I look for the way of escape and choose what is right when temptation comes.",
+    "affirmation": "I can seek God's help and take practical steps away from temptation.",
+    "confession": "I depend on God's faithfulness and will not treat temptation as an excuse to sin.",
+    "inspiration": "Paul addresses the church's need to learn from Israel's failures; the promise calls believers to alertness and faithful action, not overconfidence."
+  },
+  {
+    "reference": "2 Corinthians 12:9",
+    "prayer": "Lord Jesus, meet me in my weakness. Teach me to depend on Your grace, receive help without shame and let Your strength shape my response to difficulty.",
+    "declaration": "Christ's grace is sufficient for me; His power is made perfect in weakness.",
+    "affirmation": "My limitations do not prevent me from depending on Christ's strength.",
+    "confession": "I boast in the Lord's grace rather than pretend to be self-sufficient.",
+    "inspiration": "Paul speaks of a persistent weakness and learns that Christ's grace, not personal strength, sustains his calling."
+  },
+  {
+    "reference": "Colossians 3:23",
+    "prayer": "Father, make my work sincere and diligent. Help me serve with integrity even when people do not notice, remembering that my deepest service is offered to You.",
+    "declaration": "I work wholeheartedly and serve with integrity as one who belongs to the Lord.",
+    "affirmation": "My daily responsibilities can become faithful service when I do them with a sincere heart.",
+    "confession": "I work honestly and wholeheartedly before God, not merely for human approval.",
+    "inspiration": "Paul applies the new life in Christ to ordinary relationships and responsibilities, calling believers to integrity in their work."
+  },
+  {
+    "reference": "Hebrews 11:6",
+    "prayer": "God, strengthen my faith to seek You sincerely. Help me approach You with trust, persevere when answers take time and live in a way that honours Your character.",
+    "declaration": "I draw near to God in faith and diligently seek Him.",
+    "affirmation": "My faith invites me to seek God sincerely and keep trusting His goodness.",
+    "confession": "I believe God is, and I seek Him with a faithful heart.",
+    "inspiration": "Hebrews presents faith as essential to drawing near to God and places this conviction within a chapter of persevering examples."
+  },
+  {
+    "reference": "1 John 1:9",
+    "prayer": "Faithful and just Father, I confess my sins honestly. Cleanse me, restore me and teach me to walk in the light with truth rather than concealment.",
+    "declaration": "I confess my sins to God and trust His faithfulness to forgive and cleanse.",
+    "affirmation": "I can bring sin into the light and receive God's promised forgiveness in Christ.",
+    "confession": "I do not hide or excuse my sin; I confess it and depend on God's mercy.",
+    "inspiration": "John connects confession with walking in the light and the cleansing fellowship made possible through Jesus Christ."
+  },
+  {
+    "reference": "1 John 5:1",
+    "prayer": "Father, thank You for new birth through faith in Jesus Christ. Help me live as Your child, receive Your love and show genuine love to others who are born of You.",
+    "declaration": "I belong to God through faith in Jesus Christ, and His life shapes the way I live.",
+    "affirmation": "I am born of God; my identity rests in His grace and the new life He gives.",
+    "confession": "I believe that Jesus is the Christ, and I receive the new life God gives through Him.",
+    "inspiration": "John connects belief in Jesus with being born of God and loving God's children. Let your identity in Christ become visible in love."
+  },
+  {
+    "reference": "Ephesians 3:16",
+    "prayer": "Father, strengthen me inwardly through Your Spirit. When I feel weak or overwhelmed, deepen my trust in Christ and form steady faith within my heart.",
+    "declaration": "God strengthens me with might through His Spirit in my inner being.",
+    "affirmation": "The Holy Spirit works within me, strengthening my heart to remain faithful.",
+    "confession": "I depend on the Spirit of God for inward strength and Christlike character.",
+    "inspiration": "Paul prays for inward strength rooted in God's riches. Ask for a strengthened heart, not merely easier circumstances."
+  },
+  {
+    "reference": "1 Corinthians 1:30",
+    "prayer": "Lord Jesus, thank You that my standing before God is grounded in You. Keep me from boasting in myself, and teach me to live in the wisdom, righteousness and redemption You provide.",
+    "declaration": "Christ is my wisdom and the source of my righteousness, sanctification and redemption.",
+    "affirmation": "I do not need to manufacture my worth; I look to Christ and grow in the life He gives.",
+    "confession": "My confidence is in Jesus Christ, not in my own achievement or status.",
+    "inspiration": "Paul directs the church away from human pride and toward Christ as God's provision. Let every strength and success lead to gratitude."
+  },
+  {
+    "reference": "Ephesians 1:6",
+    "prayer": "Father, thank You for Your grace revealed in the Beloved Son. Help me live with gratitude for the welcome You give in Christ and extend grace to others.",
+    "declaration": "God's grace welcomes me in the Beloved, Jesus Christ.",
+    "affirmation": "I am accepted by God's grace in Christ; I do not have to earn His welcome.",
+    "confession": "I belong to Christ and praise God for the grace He freely gives.",
+    "inspiration": "Paul's praise centres on God's gracious action in Christ. Let assurance produce humility, worship and generous love."
+  },
+  {
+    "reference": "John 14:26",
+    "prayer": "Lord Jesus, thank You for the promised Comforter. Holy Spirit, teach me, remind me of Christ's words and help me discern truth with humility and obedience.",
+    "declaration": "The Holy Spirit teaches and reminds Christ's people of His words.",
+    "affirmation": "I can depend on the Spirit's help as I learn Scripture and follow Jesus.",
+    "confession": "I welcome the Holy Spirit's teaching and seek to remember and obey the words of Jesus.",
+    "inspiration": "Jesus promises the Spirit's help to His disciples. Test every impression by Scripture and let the Spirit direct attention to Christ."
+  },
+  {
+    "reference": "1 Corinthians 2:16",
+    "prayer": "Father, shape my thinking through the wisdom of Christ. Help me reject pride and worldly assumptions, and learn to see choices in the light of the gospel.",
+    "declaration": "In Christ, I am being taught to think according to the wisdom and purposes of God.",
+    "affirmation": "My mind can be renewed as I learn the ways of Christ and submit my thinking to Scripture.",
+    "confession": "I seek the mind of Christ and choose thoughts and actions that honour Him.",
+    "inspiration": "Paul contrasts human boasting with the wisdom revealed by the Spirit. Having the mind of Christ means learning His priorities, humility and obedience."
+  },
+  {
+    "reference": "2 Peter 1:5",
+    "prayer": "Lord, help me diligently add virtue to my faith and keep growing in knowledge, self-control, patience and love. Make my faith visible in daily character.",
+    "declaration": "I diligently grow in Christlike character, building on the faith God has given.",
+    "affirmation": "By God's help, I can keep growing in goodness and spiritual maturity one faithful choice at a time.",
+    "confession": "I do not remain careless in my walk; I pursue the character that honours Christ.",
+    "inspiration": "Peter describes growth as a deliberate response to God's promises. Spiritual maturity develops through faithful practice, not instant perfection."
+  },
+  {
+    "reference": "Romans 15:13",
+    "prayer": "God of hope, fill me with joy and peace as I trust You. By the power of the Holy Spirit, strengthen my hope even when circumstances remain unresolved.",
+    "declaration": "The God of hope is the source of joy, peace and overflowing hope through the Holy Spirit.",
+    "affirmation": "I can grow in hope as I trust God and depend on the Holy Spirit.",
+    "confession": "I place my hope in God and ask the Holy Spirit to strengthen me in faith.",
+    "inspiration": "Paul's prayer connects hope with trust, joy, peace and the Spirit. Christian hope is more than positive thinking; it rests in God's character."
+  },
+  {
+    "reference": "1 Peter 2:9",
+    "prayer": "Father, thank You for calling a people to belong to You and declare Your goodness. Help me live as one who has received mercy, showing Your light through faithful conduct.",
+    "declaration": "God calls His people to belong to Him and to proclaim His excellencies.",
+    "affirmation": "Having received mercy, I can reflect God's goodness in the way I live.",
+    "confession": "I belong to God's people and will make His goodness known through my life.",
+    "inspiration": "Peter addresses the identity and calling of the believing community. This is a shared vocation of witness, not a reason for personal pride."
+  },
+  {
+    "reference": "Philippians 1:6",
+    "prayer": "Faithful God, continue Your good work in me. Give me patience with the process of growth and help me participate willingly in the work You are doing until the day of Christ.",
+    "declaration": "God is faithful to continue His good work among His people and bring it to completion in Christ.",
+    "affirmation": "I can keep growing with patience because God's work is not finished.",
+    "confession": "I cooperate with God's transforming work and trust His faithfulness.",
+    "inspiration": "Paul expresses confidence about the Philippian believers as a community. The verse encourages perseverance grounded in God's faithfulness, not passive waiting."
+  },
+  {
+    "reference": "John 10:10",
+    "prayer": "Jesus, help me understand the abundant life You give in the context of Your teaching about the true Shepherd. Guard me from false promises and teach me to recognise Your voice.",
+    "declaration": "Jesus is the true Shepherd who gives life to His flock; I listen to Him and follow.",
+    "affirmation": "I can seek the life Jesus gives by remaining in His care and teaching.",
+    "confession": "I belong among the flock that listens to the voice of Christ the Shepherd.",
+    "inspiration": "Jesus contrasts His mission with the thief and the danger facing the sheep. Abundant life is rooted in relationship with Him, not simply material success."
+  },
+  {
+    "reference": "1 Corinthians 15:58",
+    "prayer": "Risen Lord, make me steadfast in the work You have given me. When service feels unseen or difficult, remind me that labour in the Lord is not empty or wasted.",
+    "declaration": "Because of the resurrection, faithful labour in the Lord is not in vain.",
+    "affirmation": "I can serve with perseverance because my hope rests in the risen Christ.",
+    "confession": "I remain steadfast and give myself fully to the Lord's work.",
+    "inspiration": "Paul concludes his teaching on resurrection by connecting future hope with present faithfulness. Christian service matters because Christ is risen."
+  },
+  {
+    "reference": "Ephesians 2:10",
+    "prayer": "Creator God, thank You for making me in Christ for a life of good works. Guide my choices today so that my actions reflect the purpose and grace You have prepared for Your people.",
+    "declaration": "God's people are His workmanship, created in Christ Jesus for good works.",
+    "affirmation": "I can approach today's responsibilities as opportunities to practise the good God calls me to.",
+    "confession": "I am called to walk in the good works God has prepared for His people.",
+    "inspiration": "Paul places good works after salvation by grace, not before it. Our service is the fruit of God's gracious work, never the price paid to earn it."
+  },
+  {
+    "reference": "Hebrews 10:23",
+    "prayer": "Faithful God, strengthen my grip on the hope I confess. When circumstances shake my confidence, remind me that Your promises are reliable and help me encourage others to persevere.",
+    "declaration": "I hold firmly to the hope I profess because the One who promised is faithful.",
+    "affirmation": "I can persevere by relying on God's faithfulness rather than my changing feelings.",
+    "confession": "I hold to Christian hope and encourage others to remain faithful.",
+    "inspiration": "Hebrews calls believers to endure together. Hope is sustained by the faithfulness of God and expressed through mutual encouragement."
+  },
+  {
+    "reference": "Psalm 16:8",
+    "prayer": "Lord, keep my attention fixed on You. Steady my heart with confidence in Your presence and care.",
+    "declaration": "I set the Lord before me and look to Him for steadfast direction.",
+    "affirmation": "God's presence is my anchor when life feels uncertain.",
+    "confession": "I keep the Lord before me and trust Him to sustain me.",
+    "inspiration": "The psalmist's confidence grows from a deliberate Godward focus, not from pretending life never changes."
+  },
+  {
+    "reference": "Psalm 19:14",
+    "prayer": "Lord, let my words and hidden thoughts be pleasing to You. Correct what is careless and shape my inner life by Your truth.",
+    "declaration": "I desire my words and heart's meditation to honour the Lord, my Rock and Redeemer.",
+    "affirmation": "God can shape both my speech and my hidden thoughts.",
+    "confession": "I bring my words and inner reflections before God and ask Him to make them pleasing.",
+    "inspiration": "Worship reaches beyond public words; this prayer asks God to shape the thoughts from which our words arise."
+  },
+  {
+    "reference": "Psalm 30:5",
+    "prayer": "Faithful Father, meet me in sorrow and help me wait for Your mercy. Keep me from believing a painful night is the whole story.",
+    "declaration": "Sorrow does not have the final word; I wait for the joy God gives in His time.",
+    "affirmation": "I may grieve honestly while still holding hope in God.",
+    "confession": "I bring my sorrow to the Lord and trust His compassion.",
+    "inspiration": "The psalm celebrates God's restoring mercy; it does not promise every hardship ends on our preferred timetable."
+  },
+  {
+    "reference": "Psalm 56:3",
+    "prayer": "God, when fear rises, help me turn toward You rather than let fear direct my choices. Teach me to trust Your care.",
+    "declaration": "When I am afraid, I put my trust in God.",
+    "affirmation": "Fear can prompt me to seek God instead of ruling my decisions.",
+    "confession": "I acknowledge my fear and entrust myself to the Lord.",
+    "inspiration": "Faith is not denial of fear; the psalm gives a faithful response by turning toward God."
+  },
+  {
+    "reference": "Isaiah 26:3",
+    "prayer": "God of peace, steady my thoughts as I depend on You. When worries compete for my attention, draw me back to Your faithfulness.",
+    "declaration": "I turn my mind toward the Lord and depend on Him for enduring peace.",
+    "affirmation": "My thoughts can be re-centred on God when anxiety distracts me.",
+    "confession": "I trust the Lord and return my attention to His faithful character.",
+    "inspiration": "The passage connects peace with a steadfast mind that trusts God, not with a life free from every difficulty."
+  },
+  {
+    "reference": "Matthew 4:4",
+    "prayer": "Father, nourish my life through Your Word. Help me distinguish what merely satisfies an appetite from what sustains faithful life before You.",
+    "declaration": "I need more than physical provision; I depend on every word that comes from God.",
+    "affirmation": "God's Word deserves a central place in my daily choices.",
+    "confession": "I receive God's Word as essential nourishment for faithful living.",
+    "inspiration": "Jesus answers temptation by trusting Scripture; this calls us to dependence on God, not neglect of bodily needs."
+  },
+  {
+    "reference": "John 1:12",
+    "prayer": "Father, thank You for the welcome You give through Jesus Christ. Help me receive Him in faith and live in the identity You graciously provide.",
+    "declaration": "I receive Christ and trust the right He gives to become a child of God.",
+    "affirmation": "My relationship with God rests on receiving Christ, not earning a place.",
+    "confession": "I believe in Jesus Christ and receive the grace of belonging to God's family.",
+    "inspiration": "John describes becoming God's child through receiving and believing in Christ; this identity is a gift, not a status to boast about."
+  },
+  {
+    "reference": "John 16:33",
+    "prayer": "Lord Jesus, when trouble comes, root my courage in Your victory. Help me face hardship truthfully without surrendering hope.",
+    "declaration": "I may face trouble in this world, but my courage rests in Jesus, who has overcome the world.",
+    "affirmation": "Hardship does not cancel the hope and victory of Christ.",
+    "confession": "I take heart in Jesus and remain faithful through trouble.",
+    "inspiration": "Jesus prepares His disciples for real distress and grounds their courage in His victory, not a trouble-free life."
+  },
+  {
+    "reference": "Acts 1:8",
+    "prayer": "Holy Spirit, empower me to bear faithful witness to Jesus. Give me courage, humility and love as I speak and serve.",
+    "declaration": "The Holy Spirit empowers Christ's people to be His witnesses.",
+    "affirmation": "I can depend on the Spirit for courage to represent Jesus faithfully.",
+    "confession": "I bear witness to Christ through truthful words and faithful conduct.",
+    "inspiration": "Jesus gives this promise to His disciples for mission; the Spirit's power serves witness to Christ, not personal display."
+  },
+  {
+    "reference": "Romans 12:12",
+    "prayer": "Lord, strengthen my hope, steady me in difficulty and keep me faithful in prayer. Teach me to endure without losing compassion.",
+    "declaration": "I rejoice in hope, endure in trouble and remain faithful in prayer.",
+    "affirmation": "I can practise patient endurance and keep bringing my life to God.",
+    "confession": "With God's help, I remain hopeful, patient and prayerful.",
+    "inspiration": "Paul places hope, endurance and prayer together as a pattern for Christian life within a community."
+  },
+  {
+    "reference": "Philippians 2:5",
+    "prayer": "Lord Jesus, shape my attitude after Your humility. Free me from competing for status and teach me to consider others in love.",
+    "declaration": "I seek the humble mindset displayed by Christ Jesus.",
+    "affirmation": "I can choose humility and look beyond my own interests.",
+    "confession": "I follow Christ's example of humble, self-giving love.",
+    "inspiration": "Paul introduces Christ's example to address relationships in the church; humility serves unity rather than self-promotion."
+  },
+  {
+    "reference": "1 John 4:18",
+    "prayer": "Father, deepen my understanding of Your love. Where fear distorts my view of You, help me receive Your truth and grow in mature love.",
+    "declaration": "God's love drives out the fear associated with punishment as His love reaches maturity in us.",
+    "affirmation": "I can grow in assurance as I understand and receive God's love.",
+    "confession": "I abide in God's love and let it shape my relationships.",
+    "inspiration": "John addresses fear of judgment in the context of God's love; this does not mean every form of caution or reverence disappears."
+  },
+  {
+    "reference": "Psalm 23:1-3",
+    "prayer": "Shepherd of my soul, lead me in Your care. Restore my strength, guide my choices in Your righteous ways, and teach me to trust Your presence through every season.",
+    "declaration": "The Lord is my Shepherd; I look to Him for guidance, provision and restoration.",
+    "affirmation": "I can follow the Lord one step at a time and receive His care.",
+    "confession": "I trust the Lord to lead me in paths that honour His name.",
+    "inspiration": "The psalm pictures God's care as the guidance of a shepherd. Its comfort is found in belonging to the Shepherd, not in a promise that life will contain no valleys."
+  },
+  {
+    "reference": "Psalm 46:10",
+    "prayer": "Father, quiet my restless thoughts before You. Teach me to stop striving, remember Your sovereignty, and respond to others with faith rather than fear.",
+    "declaration": "I will be still before God and remember that He is God.",
+    "affirmation": "I can pause, pray and place my concerns in God's hands.",
+    "confession": "I acknowledge God's rule and choose trust over frantic striving.",
+    "inspiration": "Stillness here is a call to recognise God's supremacy. It is not an instruction to ignore responsibilities or avoid wise action."
+  },
+  {
+    "reference": "Psalm 63:1",
+    "prayer": "God, awaken a deeper desire for You in me. Let my search for You shape my priorities and draw my heart toward Your presence.",
+    "declaration": "I seek the living God and desire to know Him more deeply.",
+    "affirmation": "My relationship with God is worth pursuing with my whole heart.",
+    "confession": "I will seek the Lord sincerely and make room for His Word and prayer.",
+    "inspiration": "David's thirst expresses longing for God in a dry and difficult setting. Spiritual desire can be brought honestly into prayer."
+  },
+  {
+    "reference": "Psalm 84:11",
+    "prayer": "Lord, guide me in integrity and teach me to receive Your good gifts with gratitude. Keep me from demanding what You have not promised and help me walk faithfully today.",
+    "declaration": "The Lord is my sun and shield; I will walk uprightly and trust His goodness.",
+    "affirmation": "God's guidance and care are more valuable than pursuing every desire.",
+    "confession": "I will seek the Lord's way and trust His wisdom concerning what is good.",
+    "inspiration": "The psalm celebrates God's favour and protection. It should not be turned into a guarantee that every preferred outcome will be granted."
+  },
+  {
+    "reference": "Psalm 90:12",
+    "prayer": "Eternal God, teach me to number my days wisely. Help me use today's time for what matters, love people well, and live with an eternal perspective.",
+    "declaration": "I will ask God for wisdom to use my days faithfully.",
+    "affirmation": "Today's choices matter, and God can teach me to live wisely.",
+    "confession": "I will not treat time carelessly; I will seek a heart of wisdom.",
+    "inspiration": "The prayer recognises human mortality and asks God for wisdom. It invites thoughtful living rather than fear about the future."
+  },
+  {
+    "reference": "Isaiah 40:29-31",
+    "prayer": "Faithful Lord, meet me in my weakness. Renew my strength as I wait on You, and help me keep walking without giving up.",
+    "declaration": "God gives strength to the weary; I will wait on Him and continue in faithful hope.",
+    "affirmation": "Weakness does not make me beyond God's help.",
+    "confession": "I depend on the Lord for strength and keep taking the next faithful step.",
+    "inspiration": "The promise is spoken to a weary people. Waiting on the Lord is active trust in His character, not a technique for controlling outcomes."
+  },
+  {
+    "reference": "Isaiah 43:1-2",
+    "prayer": "Redeeming God, remind me that I am not forgotten. Be with me through deep waters and difficult seasons, and guide me in the path of faithfulness.",
+    "declaration": "The Lord calls His people by name and promises His presence through the waters.",
+    "affirmation": "Hard seasons do not mean that God has abandoned His people.",
+    "confession": "I will remember God's faithfulness and seek Him through every trial.",
+    "inspiration": "The imagery promises God's presence through danger; it does not say that His people will never encounter danger."
+  },
+  {
+    "reference": "Lamentations 3:22-23",
+    "prayer": "Merciful Father, thank You for compassion that does not fail. Help me receive today's mercy, repent where needed, and meet this day with renewed trust.",
+    "declaration": "The Lord's steadfast love and mercies are new every morning; I will place my hope in Him.",
+    "affirmation": "I can begin again today by turning to God's mercy.",
+    "confession": "I will hope in the Lord, whose faithfulness is great.",
+    "inspiration": "These words arise amid grief after Jerusalem's devastation. Hope is not denial of sorrow; it is confidence in God's enduring character within sorrow."
+  },
+  {
+    "reference": "Matthew 7:7-8",
+    "prayer": "Father, teach me to ask with humility, seek with perseverance and knock with trust. Shape my desires by Your wisdom and help me recognise Your good gifts.",
+    "declaration": "I will keep asking, seeking and knocking as I depend on my Father's goodness.",
+    "affirmation": "I can bring my needs to God persistently and trust His wisdom.",
+    "confession": "I will pray with perseverance and remain open to God's answer.",
+    "inspiration": "Jesus describes the Father's generosity in the context of His teaching. Prayer is trusting relationship, not a formula for getting every requested outcome."
+  },
+  {
+    "reference": "Matthew 28:19-20",
+    "prayer": "Lord Jesus, make me a faithful learner and witness. Give me love for people, courage to share the good news, and humility to teach what You commanded.",
+    "declaration": "I belong to Jesus and take part in His call to make disciples.",
+    "affirmation": "I can bear witness to Christ through words, love and faithful living.",
+    "confession": "I will learn Christ's teaching and help others follow Him.",
+    "inspiration": "The commission joins making disciples with baptising and teaching obedience. Christian witness is more than a slogan; it is a life shaped by Jesus."
+  },
+  {
+    "reference": "Luke 10:27",
+    "prayer": "God of love, teach me to love You with my whole being and to treat my neighbour with practical compassion. Show me whose need I can respond to today.",
+    "declaration": "I will love God wholeheartedly and love my neighbour as myself.",
+    "affirmation": "Love for God should become visible in how I treat people.",
+    "confession": "I choose compassion, respect and practical care for my neighbour.",
+    "inspiration": "Jesus places love at the centre of the law. The surrounding story of the Good Samaritan challenges narrow definitions of who deserves our care."
+  },
+  {
+    "reference": "Romans 12:9-18",
+    "prayer": "Lord, make my love sincere. Help me honour others, persevere in prayer, share with those in need, practise hospitality and pursue peace as far as it depends on me.",
+    "declaration": "I will reject evil, hold to what is good, honour others and pursue peace.",
+    "affirmation": "God can shape my everyday relationships through sincere love.",
+    "confession": "I will respond to people with humility, patience, generosity and peace.",
+    "inspiration": "This passage turns worship into community life. Peace is pursued sincerely, while recognising that reconciliation is not always within one person's control."
+  },
+  {
+    "reference": "2 Corinthians 9:8",
+    "prayer": "Generous God, make me ready to do good with what You place in my hands. Teach me contentment, wise stewardship and generosity toward others.",
+    "declaration": "God is able to provide what is needed so that I may abound in good works.",
+    "affirmation": "I can practise generosity and wise stewardship without being ruled by fear.",
+    "confession": "I will use what God provides to do good and serve others.",
+    "inspiration": "Paul discusses generosity toward others in need. This verse is not a promise of personal wealth; its emphasis is provision for good works."
+  },
+  {
+    "reference": "Galatians 5:22-23",
+    "prayer": "Holy Spirit, grow Your fruit in my character. Form love, joy, peace, patience, kindness, goodness, faithfulness, gentleness and self-control in my daily choices.",
+    "declaration": "I desire the fruit of the Spirit to become visible in my character.",
+    "affirmation": "Christlike character can grow in me as I walk by the Spirit.",
+    "confession": "I will yield to the Spirit and practise love, patience and self-control.",
+    "inspiration": "Paul contrasts the works of the flesh with the fruit produced by the Spirit. These qualities describe a transformed life, not a checklist for boasting."
+  },
+  {
+    "reference": "Philippians 2:13",
+    "prayer": "Father, work in my desires and actions so that I may live in a way that pleases You. Give me willingness to obey and strength to serve with humility.",
+    "declaration": "God is at work in His people, shaping both willing and doing for His good purpose.",
+    "affirmation": "I can ask God to shape my motives as well as my actions.",
+    "confession": "I will respond to God's work with humble obedience.",
+    "inspiration": "The verse sits within a call to live out salvation with reverence and unity. God's work inspires active obedience rather than replacing it."
+  },
+  {
+    "reference": "Colossians 1:13-14",
+    "prayer": "Father, thank You for rescuing us from darkness and bringing us into the kingdom of Your beloved Son. Help me live in the freedom and forgiveness found in Christ.",
+    "declaration": "Through Christ I receive redemption and forgiveness; He is Lord of the kingdom to which I belong.",
+    "affirmation": "My deepest identity is found in Christ's redeeming work.",
+    "confession": "I belong to Jesus and will live in the light of His kingdom.",
+    "inspiration": "Paul grounds Christian identity in God's rescue through His Son. Forgiveness is a gift that calls us into a new allegiance."
+  },
+  {
+    "reference": "1 Thessalonians 5:23-24",
+    "prayer": "God of peace, sanctify me wholly. Keep my heart attentive to You, and help me trust the One who calls me and is faithful.",
+    "declaration": "The God who calls His people is faithful and will continue His sanctifying work.",
+    "affirmation": "I can depend on God's faithfulness as I grow in holiness.",
+    "confession": "I will pursue holiness while trusting the faithfulness of God.",
+    "inspiration": "Paul's prayer looks toward the completion of God's work. It encourages both confidence in God and a life set apart for Him."
+  },
+  {
+    "reference": "2 Peter 1:3-4",
+    "prayer": "Lord, help me grow in knowing Christ and living by Your promises. Shape my character away from corruption and toward godliness, love and faithfulness.",
+    "declaration": "God has given what is needed for a life of godliness through knowing Christ.",
+    "affirmation": "I can grow in godliness as I know Christ and rely on His promises.",
+    "confession": "I will pursue a life shaped by the knowledge of Jesus and His precious promises.",
+    "inspiration": "Peter connects God's provision with growth in virtue. The promises lead to participation in a transformed life, not escape from moral responsibility."
+  },
+  {
+    "reference": "Revelation 21:4",
+    "prayer": "God of all comfort, sustain those who grieve and strengthen my hope in Your promised renewal. Help me care tenderly for people who suffer while looking toward Your future restoration.",
+    "declaration": "God's promised future includes the end of death, mourning, crying and pain.",
+    "affirmation": "Christian hope looks toward God's final renewal and gives compassion for those who grieve now.",
+    "confession": "I will hold to God's promise of restoration and comfort others with tenderness.",
+    "inspiration": "This vision belongs to the promised new creation. It offers future hope without dismissing present grief or the need to comfort those who mourn."
+  },
+  {
+    "reference": "Psalm 34:18",
+    "prayer": "Lord, draw near to me in sorrow. Help me speak honestly about my pain, receive comfort and find safe support as I heal.",
+    "declaration": "The Lord is near to the brokenhearted and attentive to those crushed in spirit.",
+    "affirmation": "My grief does not make me distant from God's care; I may seek comfort and help.",
+    "confession": "I will bring my sorrow honestly before God and accept compassionate support.",
+    "inspiration": "David's song grows out of danger and deliverance. The verse does not promise instant removal of every hardship; it affirms God's nearness to the wounded."
+  },
+  {
+    "reference": "Psalm 139:14",
+    "prayer": "Creator God, teach me to receive my life with gratitude and humility. Help me honour the dignity of others and use the abilities You have given me for good.",
+    "declaration": "I praise God for His wonderful works, including the life He has formed.",
+    "affirmation": "My worth is not measured by comparison; I can live gratefully before God.",
+    "confession": "I will honour the Creator and treat myself and others with dignity.",
+    "inspiration": "The psalm celebrates God's intimate knowledge and creative care. It invites wonder and humility rather than pride or comparison."
+  },
+  {
+    "reference": "Matthew 6:34",
+    "prayer": "Father, help me meet today's responsibilities without being consumed by tomorrow's fears. Give me wisdom to plan faithfully and grace to take one day at a time.",
+    "declaration": "I will face today's responsibilities with trust rather than surrendering to tomorrow's anxiety.",
+    "affirmation": "I can plan wisely while bringing future concerns to God one day at a time.",
+    "confession": "I will act faithfully today and seek God's help for what lies ahead.",
+    "inspiration": "Jesus teaches trust in the Father's care in the Sermon on the Mount. The verse does not forbid responsible planning or professional help for persistent anxiety."
+  },
+  {
+    "reference": "Luke 12:32",
+    "prayer": "Father, thank You for Your care and for the kingdom You delight to give. Free me from fear-driven grasping and shape me into a generous, faithful disciple.",
+    "declaration": "The Father calls His little flock to live without fear and receive His kingdom.",
+    "affirmation": "I can trust the Father's care and live generously rather than fearfully.",
+    "confession": "I will seek God's kingdom and hold possessions with open hands.",
+    "inspiration": "Jesus connects the Father's generosity with freedom from anxious attachment to possessions. The surrounding passage calls disciples toward generosity and treasure that lasts."
+  },
+  {
+    "reference": "John 6:35",
+    "prayer": "Lord Jesus, deepen my trust in You as the bread of life. Keep me from treating You as a means to temporary gain; teach me to seek the life and truth You give.",
+    "declaration": "Jesus is the bread of life; I come to Him and trust His promise of lasting life.",
+    "affirmation": "My deepest need is met in relationship with Christ, not in temporary satisfaction.",
+    "confession": "I come to Jesus in faith and receive Him as the source of life.",
+    "inspiration": "Jesus speaks after feeding the crowd and redirects attention from perishable food to the life He gives. The passage invites faith in His person, not merely pursuit of miracles."
+  },
+  {
+    "reference": "Romans 6:11",
+    "prayer": "Father, help me understand my new identity in Christ. Teach me to turn away from sin's rule and present my choices to You in the life Christ gives.",
+    "declaration": "In Christ, I am to regard myself as dead to sin and alive to God.",
+    "affirmation": "My union with Christ gives me a new direction and a reason to resist sin.",
+    "confession": "I will live toward God and refuse to make peace with the patterns that enslave me.",
+    "inspiration": "Paul's words follow his teaching about union with Christ in His death and resurrection. This is a call to a changed life, not a claim that temptation has vanished."
+  },
+  {
+    "reference": "2 Corinthians 1:3-4",
+    "prayer": "God of all comfort, meet those who are suffering and make me attentive to their needs. As I receive Your comfort, teach me to offer patient and practical care to others.",
+    "declaration": "God is the Father of mercies and the God of all comfort, who meets us in affliction.",
+    "affirmation": "I can receive comfort from God and become a compassionate comfort to others.",
+    "confession": "I will not hide from suffering; I will seek God's comfort and share it with gentleness.",
+    "inspiration": "Paul connects the comfort God gives with the comfort believers extend to others. Comfort is not a denial of pain but God's sustaining care within it."
+  },
+  {
+    "reference": "Hebrews 13:5",
+    "prayer": "Faithful Lord, free my heart from the love of money and teach me contentment. Help me practise wise stewardship while trusting that Your presence is not measured by my possessions.",
+    "declaration": "God promises not to abandon His people; I will pursue contentment and faithful living.",
+    "affirmation": "My security is not defined by wealth or possessions.",
+    "confession": "I will live with contentment, generosity and trust in God's faithfulness.",
+    "inspiration": "The verse joins contentment with God's promise of presence. It does not guarantee material abundance; it calls believers to freedom from greed."
+  },
+  {
+    "reference": "Psalm 91:1-2",
+    "prayer": "Father, teach me to make my home in Your presence and to trust You as refuge. Give me wisdom to take practical steps toward safety while resting in Your faithful care.",
+    "declaration": "The Lord is my refuge and fortress; I will trust Him and seek shelter in His faithful care.",
+    "affirmation": "I can bring my fears to God and seek wise help when I need protection.",
+    "confession": "I choose to trust the Lord as my refuge and to act with wisdom rather than be ruled by fear.",
+    "inspiration": "The psalm is a song of trust in God's protection. Read its poetry honestly; it does not promise that believers will never face danger or suffering."
+  },
+  {
+    "reference": "Psalm 139:23-24",
+    "prayer": "Search my heart, Lord, and reveal what needs to change. Lead me in Your way, and give me humility to receive correction and make things right.",
+    "declaration": "I invite God to examine my heart and lead me in His everlasting way.",
+    "affirmation": "I can be honest before God because His knowledge of me is complete.",
+    "confession": "I welcome God's correction and will take responsible steps toward what is right.",
+    "inspiration": "The psalm's invitation is a prayer of openness, not a licence to claim infallibility about another person's motives."
+  },
+  {
+    "reference": "Isaiah 55:6-7",
+    "prayer": "Merciful God, draw me to seek You sincerely. Help me turn from harmful ways and receive Your abundant pardon.",
+    "declaration": "I will seek the Lord, turn from wrongdoing and trust His abundant mercy.",
+    "affirmation": "God's mercy invites sincere return and a changed direction.",
+    "confession": "I turn toward the Lord and receive His call to repentance and mercy.",
+    "inspiration": "The invitation belongs to Isaiah's prophetic message of restoration. Grace does not make repentance unnecessary; it makes return possible."
+  },
+  {
+    "reference": "Jeremiah 29:11-13",
+    "prayer": "Faithful God, help me seek You with my whole heart in seasons of waiting. Keep me from using this promise as a shortcut around hardship; sustain me in hope and obedience today.",
+    "declaration": "God calls His people to seek Him wholeheartedly and holds their future in His hands.",
+    "affirmation": "I can seek God faithfully even when my circumstances are difficult or uncertain.",
+    "confession": "I will seek the Lord with my whole heart and remain faithful in the season I am in.",
+    "inspiration": "Jeremiah addressed exiles in Babylon and spoke of a long communal horizon. This is not a guarantee of immediate personal success or a trouble-free future."
+  },
+  {
+    "reference": "Matthew 5:14-16",
+    "prayer": "Lord Jesus, let my actions reflect Your goodness. Make my service sincere, so that people see what is good and give glory to the Father rather than praise me.",
+    "declaration": "I am called to let my light shine through good works that point to the Father.",
+    "affirmation": "My choices can make God's goodness visible in ordinary life.",
+    "confession": "I will practise humble, visible goodness that directs attention to God.",
+    "inspiration": "Jesus speaks to His disciples as a community shaped by the Kingdom. Good works are witness, not a way to earn God's love."
+  },
+  {
+    "reference": "Matthew 11:28-30",
+    "prayer": "Jesus, I bring You my weariness and burdens. Teach me Your gentle way, and show me the next faithful step without pretending that every burden will disappear at once.",
+    "declaration": "Jesus invites the weary to come to Him and learn His gentle way.",
+    "affirmation": "I may bring my weariness honestly to Christ and receive His sustaining care.",
+    "confession": "I come to Jesus, learn from Him and seek the support I need.",
+    "inspiration": "The invitation concerns discipleship under Jesus' yoke. It should not be used to discourage medical care, practical support or rest."
+  },
+  {
+    "reference": "Matthew 22:37-39",
+    "prayer": "Father, shape my love for You and my neighbour. Show me where my actions need to become more truthful, patient and compassionate.",
+    "declaration": "I am called to love God wholeheartedly and to love my neighbour as myself.",
+    "affirmation": "Love for God and neighbour belongs together in faithful living.",
+    "confession": "I will seek to love God sincerely and treat others with dignity and care.",
+    "inspiration": "Jesus summarises the Law and Prophets; love is not vague approval but is shaped by the wider teaching of Scripture, including justice and truth."
+  },
+  {
+    "reference": "Mark 10:45",
+    "prayer": "Lord Jesus, shape my leadership after Your servant-hearted example. Help me use influence to serve, protect and strengthen others rather than control them.",
+    "declaration": "Jesus came not to be served but to serve and to give His life for many.",
+    "affirmation": "True greatness is expressed through humble service, not domination.",
+    "confession": "I will use my gifts and influence to serve others with humility and courage.",
+    "inspiration": "Jesus speaks these words while correcting the disciples' ambition for status. His self-giving mission must never be twisted into a demand that vulnerable people submit to exploitation."
+  },
+  {
+    "reference": "Luke 6:36",
+    "prayer": "Merciful Father, make me compassionate as You are compassionate. Help me respond to others with mercy while keeping wise boundaries and seeking justice where harm has occurred.",
+    "declaration": "I am called to reflect the Father's mercy in the way I treat others.",
+    "affirmation": "God's mercy shapes both my attitude and my actions toward people.",
+    "confession": "I will practise compassion without excusing wrongdoing or abandoning wise boundaries.",
+    "inspiration": "The surrounding passage addresses mercy, judgment and generosity. Compassion is not the same as enabling harm."
+  },
+  {
+    "reference": "2 Corinthians 4:16-18",
+    "prayer": "God of hope, renew me inwardly when visible circumstances are difficult. Help me keep an eternal perspective while still caring responsibly for the needs before me.",
+    "declaration": "I will not lose heart; God's renewing work is greater than what I can presently see.",
+    "affirmation": "My present hardship does not define the whole story of God's work in me.",
+    "confession": "I will keep faith and attend to today's responsibilities while holding hope beyond what is seen.",
+    "inspiration": "Paul writes amid real affliction. The passage does not trivialise suffering or tell people to ignore danger and practical needs."
+  },
+  {
+    "reference": "Galatians 6:9",
+    "prayer": "Lord, strengthen me to continue doing good with patience. Show me when to rest, when to ask for help and how to serve without seeking applause.",
+    "declaration": "I will not give up doing good; I will trust God's timing and remain faithful.",
+    "affirmation": "Small acts of faithfulness matter even when results are not immediate.",
+    "confession": "I will persevere in doing good with wisdom, patience and appropriate rest.",
+    "inspiration": "Paul's call to perseverance sits within a chapter about bearing burdens and doing good. It is not a command to exhaust oneself or tolerate exploitation."
+  },
+  {
+    "reference": "Ephesians 4:32",
+    "prayer": "Father, make me kind and tender-hearted. Help me forgive as I have been forgiven in Christ, while guiding me toward truth, accountability and safety in difficult relationships.",
+    "declaration": "I am called to kindness, compassion and forgiveness shaped by God's mercy in Christ.",
+    "affirmation": "I can practise kindness without denying truth or pretending that harm did not happen.",
+    "confession": "I will seek a forgiving heart while maintaining wise and safe boundaries.",
+    "inspiration": "Forgiveness does not automatically restore trust, remove consequences or require reconciliation where there is ongoing danger."
+  },
+  {
+    "reference": "James 4:7-8",
+    "prayer": "God, help me resist what draws me away from You and turn toward You sincerely. Cleanse my motives and teach me to seek You with humility.",
+    "declaration": "I submit myself to God, resist evil and draw near to Him.",
+    "affirmation": "I can turn toward God with honesty and ask Him to reshape my desires.",
+    "confession": "I will resist what is destructive and take practical steps toward what is good.",
+    "inspiration": "The passage confronts pride, conflict and divided loyalty. It is not a formula for controlling spiritual or physical outcomes."
+  },
+  {
+    "reference": "1 John 3:1",
+    "prayer": "Father, thank You for the love by which You call us Your children. Help me live from that gift with humility, confidence and love for others.",
+    "declaration": "God's love gives believers the dignity of being called His children.",
+    "affirmation": "My worth is grounded in God's love, not in public approval.",
+    "confession": "I receive God's love with gratitude and seek to reflect it in how I treat others.",
+    "inspiration": "John connects identity as God's children with the call to righteous living and love; it is not a reason for spiritual superiority."
+  },
+  {
+    "reference": "Psalm 119:11",
+    "prayer": "Lord, plant Your Word deeply in my heart. Help me remember it, understand it in context and obey it when temptation or pressure comes.",
+    "declaration": "I treasure God's Word in my heart so that it shapes my choices and guards me from sin.",
+    "affirmation": "Scripture can guide my decisions as I remember and practise it.",
+    "confession": "I will receive God's Word with attention and put it into practice.",
+    "inspiration": "The psalm celebrates sustained meditation on God's instruction; memorisation serves faithful living rather than becoming a way to judge others."
+  },
+  {
+    "reference": "Proverbs 4:23",
+    "prayer": "Father, help me guard the inner life from bitterness, deceit and destructive desires. Let truth, wisdom and love shape what flows from my heart.",
+    "declaration": "I will guard my heart with wisdom because my choices and words flow from the inner life.",
+    "affirmation": "My inner life matters, and I can invite God to shape it.",
+    "confession": "I will pay attention to my motives and choose what leads to life.",
+    "inspiration": "The proverb uses the heart as the centre of thought, desire and will; guarding it includes wise habits and relationships, not fear-driven isolation."
+  },
+  {
+    "reference": "Proverbs 16:3",
+    "prayer": "Lord, I commit my work and plans to You. Purify my motives, help me plan responsibly and make me willing to change course when wisdom requires it.",
+    "declaration": "I commit my work to the Lord and seek plans shaped by His wisdom.",
+    "affirmation": "I can bring my responsibilities and intentions before God.",
+    "confession": "I will work diligently while holding my plans humbly before the Lord.",
+    "inspiration": "This proverb expresses wisdom about entrusting plans to God; it is not a guarantee that every project will succeed exactly as imagined."
+  },
+  {
+    "reference": "Isaiah 43:18-19",
+    "prayer": "God of hope, help me recognise Your work without being trapped by the past. Give me discernment to follow the new path You open, one faithful step at a time.",
+    "declaration": "God is able to make a way in the wilderness; I will remain attentive to His work.",
+    "affirmation": "My past does not prevent me from seeking God's guidance today.",
+    "confession": "I will remember God's faithfulness and stay open to the direction He gives.",
+    "inspiration": "Isaiah speaks to Israel's restoration from exile. The promise should be read in that covenant setting, not used to claim every desired change is guaranteed."
+  },
+  {
+    "reference": "Isaiah 54:10",
+    "prayer": "Faithful Lord, steady my heart in seasons when circumstances shift. Help me trust Your covenant mercy and become a source of steadfast care to others.",
+    "declaration": "God's steadfast love and covenant of peace are more secure than the shifting mountains.",
+    "affirmation": "I can seek stability in God's faithful character when life changes.",
+    "confession": "I will trust God's mercy and practise dependable love toward others.",
+    "inspiration": "The verse belongs to a prophetic promise of restoration; it does not mean believers will never experience grief or upheaval."
+  },
+  {
+    "reference": "Jeremiah 17:7-8",
+    "prayer": "Lord, root my trust in You. Teach me to remain faithful through dry seasons and to keep bearing good fruit without depending on favourable circumstances alone.",
+    "declaration": "Blessed is the one who trusts the Lord and whose hope is in Him.",
+    "affirmation": "My roots can be strengthened by trust in God through changing seasons.",
+    "confession": "I will remain rooted in the Lord and seek to bear good fruit.",
+    "inspiration": "The tree image describes resilient trust, not immunity from hardship or a promise of constant material prosperity."
+  },
+  {
+    "reference": "Matthew 7:12",
+    "prayer": "Jesus, help me treat others with the fairness, kindness and dignity I desire for myself. Show me where I need to listen, repair harm or act generously.",
+    "declaration": "I will treat others with the care and fairness I would hope to receive.",
+    "affirmation": "Other people's dignity matters in the choices I make.",
+    "confession": "I will practise the Golden Rule through concrete acts of respect and justice.",
+    "inspiration": "Jesus places this teaching within His wider instruction about the Kingdom; it calls for active love, not a simplistic rule that ignores power or safety."
+  },
+  {
+    "reference": "Matthew 9:36",
+    "prayer": "Compassionate Lord, open my eyes to people who are tired, overlooked or distressed. Make my response practical, respectful and free from the desire to control them.",
+    "declaration": "Jesus sees the crowds with compassion; I ask to learn His concern for people.",
+    "affirmation": "I can notice the needs of others and respond with care.",
+    "confession": "I will approach people with compassion and offer help that respects their dignity.",
+    "inspiration": "The image of sheep without a shepherd introduces Jesus' concern and the mission of the disciples; it is not permission for leaders to dominate."
+  },
+  {
+    "reference": "Mark 1:15",
+    "prayer": "Lord Jesus, help me hear Your call to repent and believe the good news. Turn my priorities toward God's Kingdom and shape my daily decisions around Your message.",
+    "declaration": "God's Kingdom has drawn near; I turn toward the good news and trust Christ.",
+    "affirmation": "I can respond to Jesus with faith and a changed direction.",
+    "confession": "I will turn from what is wrong and live in the light of the gospel.",
+    "inspiration": "Repentance and faith are joined in Jesus' announcement; neither should be reduced to a slogan or detached from the Gospel's full message."
+  },
+  {
+    "reference": "Luke 9:23",
+    "prayer": "Jesus, teach me the daily faithfulness of following You. Give me courage to put aside selfish ambition while also receiving the rest, support and care I need.",
+    "declaration": "I am called to follow Jesus daily with self-denial and faithful commitment.",
+    "affirmation": "My discipleship is lived in daily choices, not only in words.",
+    "confession": "I will follow Christ with humility and perseverance.",
+    "inspiration": "Self-denial is not self-harm or submission to abuse; Jesus' call must be read with His teaching on love, dignity and care."
+  },
+  {
+    "reference": "Luke 11:9-10",
+    "prayer": "Father, teach me to pray persistently and trust Your goodness. Give me patience when answers are not immediate and wisdom to recognise how You provide.",
+    "declaration": "Jesus encourages His disciples to ask, seek and knock in trust toward the Father.",
+    "affirmation": "I can bring my requests honestly to God and continue seeking His wisdom.",
+    "confession": "I will pray with persistence and remain open to God's good response.",
+    "inspiration": "The surrounding passage points to the Father's generosity; it is not a guarantee that every request will be granted in the exact form or timing desired."
+  },
+  {
+    "reference": "John 13:34",
+    "prayer": "Lord Jesus, teach me to love others with the self-giving pattern You have shown. Help my care become visible in patience, truth, forgiveness and practical service.",
+    "declaration": "Jesus gives His disciples a new commandment to love one another as He has loved them.",
+    "affirmation": "Christ's love is the pattern for how I treat fellow believers and neighbours.",
+    "confession": "I will practise Christlike love through truthful and practical care.",
+    "inspiration": "The command is given in the context of Jesus' approaching death and the disciples' life together; love is not mere sentiment."
+  },
+  {
+    "reference": "Acts 20:35",
+    "prayer": "Generous God, free me from selfishness and help me notice opportunities to give, serve and strengthen others. Make my generosity thoughtful and sustainable.",
+    "declaration": "I seek the blessing of giving and supporting those in need.",
+    "affirmation": "I can share what I have in ways that help others flourish.",
+    "confession": "I will give and serve with willing generosity and wise stewardship.",
+    "inspiration": "Paul recalls Jesus' saying while speaking about labour and care for the weak; generosity should not be coerced or used to exploit the giver."
+  },
+  {
+    "reference": "1 Corinthians 6:19-20",
+    "prayer": "Father, help me honour You with my body. Guide me toward choices that respect my health, dignity and commitments, and keep me from using this truth to shame others.",
+    "declaration": "My body matters to God; I seek to honour Him in how I live.",
+    "affirmation": "I can treat my body and the bodies of others with dignity and care.",
+    "confession": "I will make choices that honour God and respect the dignity of people.",
+    "inspiration": "Paul addresses sexual conduct and communal holiness in a specific context; this passage must never be used to shame survivors or deny appropriate healthcare."
+  },
+  {
+    "reference": "Exodus 14:14",
+    "prayer": "Lord, quiet my heart when fear rises. Give me discernment to recognise the steps I must take and confidence to trust Your help without becoming passive or careless.",
+    "declaration": "The Lord is able to defend and deliver; I will trust Him and follow His wise direction.",
+    "affirmation": "I can face uncertainty without allowing fear to rule my decisions.",
+    "confession": "I will seek God's help, act wisely and refuse to let panic direct me.",
+    "inspiration": "Moses spoke these words at the sea as Israel faced danger. Read the surrounding verses too: God then told the people to move forward."
+  },
+  {
+    "reference": "Psalm 55:22",
+    "prayer": "Father, I bring You the burdens I have been carrying. Sustain me, and show me the people and practical support through whom I can receive help.",
+    "declaration": "I cast my burden on the Lord and trust His sustaining care.",
+    "affirmation": "I do not have to carry every burden alone; I can pray and seek trustworthy support.",
+    "confession": "I will entrust my concerns to God and take wise steps toward help.",
+    "inspiration": "The psalm is an honest lament amid betrayal and distress. Casting a burden on God is not a command to hide pain or refuse human help."
+  },
+  {
+    "reference": "Psalm 118:24",
+    "prayer": "Lord, thank You for the gift of this day. Help me meet its joys and difficulties with gratitude, honesty and faithful action.",
+    "declaration": "This is the day the Lord has made; I will respond with gratitude and trust.",
+    "affirmation": "I can receive today as a gift without pretending every circumstance is easy.",
+    "confession": "I will practise gratitude and faithfulness in the responsibilities before me today.",
+    "inspiration": "The verse belongs to a communal song celebrating God's steadfast deliverance. Rejoicing does not require denying grief or injustice."
+  },
+  {
+    "reference": "Isaiah 43:2",
+    "prayer": "Faithful God, be near to me in difficult passages of life. Give me courage, wise companions and practical help as I walk through what I cannot control.",
+    "declaration": "God's presence is my hope through deep waters and fiery trials.",
+    "affirmation": "Hardship does not mean I have been abandoned by God.",
+    "confession": "I will seek God's presence and accept wise support as I face adversity.",
+    "inspiration": "Isaiah speaks to God's people with promises of restoration. The imagery assures them of God's presence, not that they will never experience suffering."
+  },
+  {
+    "reference": "Matthew 5:9",
+    "prayer": "Father, make me a person who works for peace with truth and humility. Show me how to repair conflict without concealing harm or sacrificing what is right.",
+    "declaration": "I am called to make peace in ways that reflect the character of my heavenly Father.",
+    "affirmation": "I can pursue peace while honouring truth, justice and the dignity of others.",
+    "confession": "I will listen carefully, speak truthfully and take constructive steps toward reconciliation where it is safe.",
+    "inspiration": "Jesus blesses peacemakers in the Beatitudes. Biblical peace is more than avoiding disagreement; it seeks what is right and life-giving."
+  },
+  {
+    "reference": "Luke 15:7",
+    "prayer": "Merciful Father, thank You for welcoming those who turn back to You. Give me a heart that rejoices in repentance and never treats another person's return with contempt.",
+    "declaration": "God rejoices when the lost are found and a sinner turns back to Him.",
+    "affirmation": "God's mercy gives hope for a new beginning.",
+    "confession": "I will turn toward God and welcome genuine repentance with humility and joy.",
+    "inspiration": "Jesus tells this parable in response to criticism that He welcomes sinners. Its focus is God's joy over the lost being found, not a comparison that devalues those already in the community."
+  },
+  {
+    "reference": "John 11:25",
+    "prayer": "Lord Jesus, meet me in grief and strengthen my hope in You. Help me lament honestly, receive comfort and hold to the promise of resurrection.",
+    "declaration": "Jesus is the resurrection and the life; my hope rests in Him.",
+    "affirmation": "I can grieve honestly while holding hope in Christ.",
+    "confession": "I entrust life, death and my future to Jesus, the resurrection and the life.",
+    "inspiration": "Jesus speaks these words to Martha while she mourns Lazarus. The passage does not silence grief; Jesus Himself weeps before calling Lazarus from the tomb."
+  },
+  {
+    "reference": "Romans 8:39",
+    "prayer": "Father, steady me in the assurance that no created power can separate Your people from Your love in Christ. Help me hold this promise with courage through hardship.",
+    "declaration": "Nothing in all creation can separate me from the love of God in Christ Jesus our Lord.",
+    "affirmation": "My hope is anchored in God's faithful love, not in changing circumstances.",
+    "confession": "I will remain rooted in Christ's love through hardship and uncertainty.",
+    "inspiration": "Paul reaches this assurance after naming suffering, danger and hardship. It is not a promise that believers avoid trouble, but that trouble cannot sever them from God's love in Christ."
+  },
+  {
+    "reference": "Galatians 5:1",
+    "prayer": "Jesus, thank You for the freedom You give. Keep me from returning to what enslaves me, and teach me to use freedom in love rather than selfishness.",
+    "declaration": "Christ has set His people free; I will stand firm in His freedom.",
+    "affirmation": "I can live freely in Christ while choosing love and responsibility.",
+    "confession": "I will resist what enslaves and serve others through love.",
+    "inspiration": "Paul is addressing pressure to adopt circumcision as a requirement for belonging to God's people. Christian freedom is not permission to harm others or indulge destructive desires."
+  },
+  {
+    "reference": "Ephesians 4:29",
+    "prayer": "Lord, guide my words today. Help me speak what is truthful, timely and helpful, and give me humility to apologise when my speech has wounded someone.",
+    "declaration": "I will use words that build others up and give grace to those who hear.",
+    "affirmation": "My speech can bring encouragement, clarity and kindness.",
+    "confession": "I will speak with care, refuse destructive talk and choose words that serve others.",
+    "inspiration": "Paul places speech within the new life of the Christian community. Building others up includes honesty and correction offered with care, not flattery or silence about harm."
+  },
+  {
+    "reference": "James 1:19",
+    "prayer": "Father, make me quick to listen and slow to react. Give me patience to understand others, wisdom to speak at the right time and self-control when I feel provoked.",
+    "declaration": "I will listen carefully, speak thoughtfully and resist anger that does not produce God's righteousness.",
+    "affirmation": "I can pause, listen and choose a wise response.",
+    "confession": "I will practise patient listening and let God's Word shape my reactions.",
+    "inspiration": "James connects listening and speech with receiving God's Word and living it out. Patience does not mean remaining silent in the face of danger or injustice."
+  },
+  {
+    "reference": "Psalm 121:2",
+    "prayer": "Maker of heaven and earth, help me recognise the care You provide. Give me wisdom to take the next faithful step and humility to receive help from others.",
+    "declaration": "The Lord is my helper and keeper; my life is held in His faithful care.",
+    "affirmation": "I can seek God's help while making wise decisions in the responsibilities before me.",
+    "confession": "I will look to the Lord for help and walk forward with trust and discernment.",
+    "inspiration": "Psalm 121 is a song of trust for the journey. Its assurance is God's keeping presence, not a promise that the traveller will never face danger or difficulty."
+  },
+  {
+    "reference": "Isaiah 40:29",
+    "prayer": "Everlasting God, renew my strength when I feel depleted. Help me rest, ask for assistance and receive the strength needed for today's work.",
+    "declaration": "God gives strength to the weary and increases the power of those who have no might.",
+    "affirmation": "I can acknowledge my limits without shame and receive strength for the next step.",
+    "confession": "I will wait on the Lord, care for my needs and keep moving with renewed hope.",
+    "inspiration": "Isaiah speaks comfort to a weary people in exile. God's strengthening care is not a rebuke for tiredness or a command to ignore physical limits."
+  },
+  {
+    "reference": "1 Corinthians 13:4",
+    "prayer": "God of love, teach me patience and kindness in my relationships. Expose envy, pride and selfishness in me, and help me practise love with truth and healthy boundaries.",
+    "declaration": "Christian love is patient and kind; it does not envy or boast.",
+    "affirmation": "I can practise love through patient, humble and truthful actions.",
+    "confession": "I will seek the good of others without excusing harm or surrendering healthy boundaries.",
+    "inspiration": "Paul writes about love amid disputes over spiritual gifts and status in the church. This passage is not a command to endure abuse or silence necessary truth."
+  },
+  {
+    "reference": "Philippians 4:6",
+    "prayer": "Father, I bring You the concerns weighing on my mind. Help me name them honestly, give thanks for Your care and take practical steps with wisdom and support.",
+    "declaration": "I can bring every concern to God in prayer, petition and thanksgiving.",
+    "affirmation": "I may ask God for help and also use wise support and practical resources.",
+    "confession": "I will turn toward God in prayer and respond to my concerns with faith and wisdom.",
+    "inspiration": "Paul writes from imprisonment and later speaks of contentment. The verse invites prayer; it should not be used to shame people experiencing anxiety or discourage appropriate care."
+  },
+  {
+    "reference": "1 Peter 5:10",
+    "prayer": "God of all grace, sustain me through hardship. Strengthen my faith, surround me with wise support and help me remain hopeful without pretending suffering is easy.",
+    "declaration": "God's grace is able to restore, strengthen and establish His people after suffering.",
+    "affirmation": "Suffering is not the whole story; I can seek help and hold hope in God's grace.",
+    "confession": "I will endure with support, humility and trust in the God of all grace.",
+    "inspiration": "Peter addresses believers facing trials and encourages them to stand firm. The promise is not a timetable for recovery or a reason to remain in unsafe circumstances."
+  },
+  {
+    "reference": "Isaiah 55:8",
+    "prayer": "Lord, widen my understanding when Your ways challenge my assumptions. Help me seek You in Scripture, remain humble and trust Your mercy as I learn.",
+    "declaration": "God's wisdom and ways are higher than my limited perspective.",
+    "affirmation": "I can ask honest questions while remaining open to God's wisdom and correction.",
+    "confession": "I will seek the Lord, turn toward His mercy and let His Word reshape my thinking.",
+    "inspiration": "Isaiah invites the people to return to God, whose compassion exceeds human expectations. The verse is not a reason to stop thinking or to excuse injustice as beyond question."
+  },
+  {
+    "reference": "Matthew 7:7",
+    "prayer": "Father, teach me to ask with humility, seek with perseverance and knock with trust. Give me discernment to recognise Your good gifts and patience when the answer differs from my expectation.",
+    "declaration": "Jesus invites His disciples to ask, seek and knock in confidence toward the Father.",
+    "affirmation": "I can pray honestly and keep seeking God's wisdom without demanding a particular outcome.",
+    "confession": "I will bring my needs to God and remain attentive to His good direction.",
+    "inspiration": "Jesus develops this teaching in the Sermon on the Mount and points to the Father's goodness. Prayer is not a technique for controlling God or guaranteeing every requested result."
+  },
+  {
+    "reference": "Mark 9:24",
+    "prayer": "Lord Jesus, meet me where faith and uncertainty exist together. Help me be honest about my doubts and ask for the help I need.",
+    "declaration": "I can bring both my faith and my struggle honestly to Jesus.",
+    "affirmation": "Questions and weakness do not prevent me from asking Christ for help.",
+    "confession": "I will turn toward Jesus with honest trust and seek His mercy.",
+    "inspiration": "The father speaks while seeking help for his suffering child. Jesus responds to the desperate situation; this verse must never be used to blame families for illness or disability."
+  },
+  {
+    "reference": "Ephesians 3:20",
+    "prayer": "God of power and grace, work in and among us beyond what we can imagine. Shape our hopes around Your purposes and help us serve one another in love.",
+    "declaration": "God is able to work beyond what we ask or imagine by His power at work within us.",
+    "affirmation": "My hope rests in God's power and purposes, not in controlling outcomes.",
+    "confession": "I will trust God's work in the community of faith and participate in His purposes with humility.",
+    "inspiration": "Paul's words conclude a prayer for strength, love and the fullness of God in the church. They are not a guarantee that every personal wish will be fulfilled."
+  },
+  {
+    "reference": "Hebrews 12:2",
+    "prayer": "Jesus, help me keep my attention on You as I endure difficulty. Give me courage to lay aside what hinders faith and to continue with patient hope.",
+    "declaration": "Jesus is the pioneer and perfecter of faith; I look to Him as I persevere.",
+    "affirmation": "I can continue faithfully by looking to Christ rather than measuring my life by comparison.",
+    "confession": "I will lay aside what hinders and run with endurance the path set before me.",
+    "inspiration": "The verse follows the image of a race surrounded by witnesses and points to Jesus' endurance through suffering. It does not glorify abuse or demand that someone remain in danger."
+  },
+  {
+    "reference": "Exodus 16:4",
+    "prayer": "Father, teach me to receive today's provision with gratitude and share fairly. Keep me from hoarding through fear.",
+    "declaration": "God taught Israel daily dependence in the wilderness and called the people to gather what was needed.",
+    "affirmation": "I can take today's faithful steps without pretending to control tomorrow.",
+    "confession": "I will practise gratitude, responsible preparation and generosity.",
+    "inspiration": "The manna story forms a community in dependence and equitable provision; it is not a promise that hardship will disappear."
+  },
+  {
+    "reference": "Exodus 33:14",
+    "prayer": "Lord, guide me by Your presence. Give me patience to listen, courage to obey and rest rooted in You.",
+    "declaration": "God's presence is the heart of Israel's journey and the source of true rest.",
+    "affirmation": "I can seek God's presence while taking the next wise step.",
+    "confession": "I will seek the Lord's direction rather than confuse hurried activity with faithful progress.",
+    "inspiration": "These words come during a crisis after the golden calf. Read them within Moses' intercession and the covenant story."
+  },
+  {
+    "reference": "Leviticus 19:18",
+    "prayer": "Holy God, teach me to love my neighbour concretely. Expose resentment and help me pursue truth, justice and safe reconciliation.",
+    "declaration": "God commands His people to love their neighbour as themselves.",
+    "affirmation": "I can treat others with dignity while maintaining truthful and healthy boundaries.",
+    "confession": "I will refuse revenge and seek my neighbour's good with wisdom.",
+    "inspiration": "Jesus cites this command as central to the law. Love does not require tolerating abuse or concealing wrongdoing."
+  },
+  {
+    "reference": "Psalm 27:14",
+    "prayer": "Lord, steady my heart while I wait. Keep me from despair and from forcing outcomes; give me courage to act at the right time.",
+    "declaration": "The psalm calls worshippers to wait for the Lord with courage and renewed strength.",
+    "affirmation": "Waiting can include prayer, wise action and receiving support.",
+    "confession": "I will practise patient trust rather than panic or despair.",
+    "inspiration": "The psalm holds confidence and distress together. Waiting on God is persevering trust amid real uncertainty."
+  },
+  {
+    "reference": "Proverbs 15:1",
+    "prayer": "Lord, govern my words when emotions rise. Give me courage to speak truth gently, listen well and step away when unsafe.",
+    "declaration": "A gentle answer can turn away wrath, while harsh words stir up anger.",
+    "affirmation": "I can choose words that are truthful, calm and respectful.",
+    "confession": "I will seek peace in speech without surrendering honesty or safety.",
+    "inspiration": "Proverbs offers wisdom, not a guarantee that another person's anger can always be controlled."
+  },
+  {
+    "reference": "Isaiah 58:6-7",
+    "prayer": "Lord, make my worship sincere. Show me where I can loosen burdens, share food, protect dignity and stand with people facing injustice.",
+    "declaration": "God calls His people to worship expressed through justice, freedom and practical compassion.",
+    "affirmation": "My faith can become visible through fair and generous action.",
+    "confession": "I will not separate devotion from how I treat people in need.",
+    "inspiration": "Isaiah challenges fasting that ignores oppression. The passage calls for concrete justice, not performative charity."
+  },
+  {
+    "reference": "Zechariah 4:6",
+    "prayer": "Lord, remind me that Your work is not sustained by human force alone. Give me patience, integrity and dependence on Your Spirit.",
+    "declaration": "God's message to Zerubbabel emphasises the Spirit rather than military or human power.",
+    "affirmation": "I can work diligently without trusting in strength alone.",
+    "confession": "I will depend on God's Spirit and act faithfully within my responsibilities.",
+    "inspiration": "The oracle addresses the rebuilding community and Zerubbabel's task; it should not be detached from its historical setting."
+  },
+  {
+    "reference": "Malachi 4:2",
+    "prayer": "God of hope, bring healing and renewal in Your time. Help me walk faithfully in the light You give today.",
+    "declaration": "Malachi closes with an image of the sun of righteousness rising with healing.",
+    "affirmation": "I can hope in God's promised restoration without demanding instant results.",
+    "confession": "I will walk in reverence and hope as I await God's justice.",
+    "inspiration": "The image belongs to Malachi's closing promise and judgment. It is not a guarantee of immediate physical healing for every individual."
+  },
+  {
+    "reference": "Luke 4:18",
+    "prayer": "Spirit of the Lord, form in me compassion for the poor, freedom for the oppressed and good news for those in need.",
+    "declaration": "Jesus announces His mission using the language of Isaiah's good news and release.",
+    "affirmation": "I can join works of mercy and justice with humility and practical care.",
+    "confession": "I will not separate the gospel from compassion toward people who are burdened.",
+    "inspiration": "Jesus reads Isaiah in the synagogue and applies the prophetic mission to His ministry; read the full scene and its response."
+  },
+  {
+    "reference": "Acts 4:32",
+    "prayer": "Lord, make our fellowship generous and sincere. Teach us to share resources, honour each person's dignity and care for needs in our community.",
+    "declaration": "The early believers are described as united and generous in sharing possessions.",
+    "affirmation": "I can practise generosity while respecting wise stewardship and consent.",
+    "confession": "I will look for practical ways to serve and share with others.",
+    "inspiration": "Acts describes a particular community's response to the Spirit; it is not a warrant for coercive control of personal property."
+  },
+  {
+    "reference": "Philippians 2:3-4",
+    "prayer": "Jesus, free me from selfish ambition. Teach me to honour others and notice their needs without neglecting my own responsibilities.",
+    "declaration": "Paul calls believers away from rivalry toward humility and concern for one another.",
+    "affirmation": "I can value others without treating myself as worthless.",
+    "confession": "I will seek the good of others with humility and discernment.",
+    "inspiration": "The passage addresses a community and is not a command to accept manipulation or erase personal dignity."
+  },
+  {
+    "reference": "1 Thessalonians 5:11",
+    "prayer": "God, help me strengthen others with sincere words and practical encouragement. Make our community a place where people are built up rather than diminished.",
+    "declaration": "Paul urges believers to encourage one another and build one another up.",
+    "affirmation": "My words and actions can contribute to another person's courage.",
+    "confession": "I will encourage others with honesty, gentleness and practical support.",
+    "inspiration": "The verse belongs to teaching about hope and readiness; encouragement should be truthful, not false reassurance."
+  },
+  {
+    "reference": "Hebrews 10:24-25",
+    "prayer": "Lord, help me stir up love and good works and remain connected to trustworthy believers. Give me wisdom to seek healthy fellowship and mutual care.",
+    "declaration": "The writer urges the community to encourage love, good works and faithful gathering.",
+    "affirmation": "I can give and receive encouragement in a healthy Christian community.",
+    "confession": "I will seek fellowship that strengthens faith, love and responsibility.",
+    "inspiration": "The passage values mutual gathering, not attendance used to control people or prevent them from seeking safety."
+  },
+  {
+    "reference": "Numbers 14:8",
+    "prayer": "Lord, teach me to trust Your goodness while facing uncertainty. Give me courage to obey without pretending the obstacles are small.",
+    "declaration": "God's faithfulness is greater than my fear, and I will seek His direction with honest courage.",
+    "affirmation": "I can acknowledge real challenges and still choose faithful trust.",
+    "confession": "I will not let fear alone decide my response; I will seek God and act with wisdom.",
+    "inspiration": "Joshua and Caleb spoke in the face of the people's fear. The verse belongs to Israel's wilderness crisis, not a guarantee that every risk will end in immediate success."
+  },
+  {
+    "reference": "Judges 6:12",
+    "prayer": "Lord, meet me in my uncertainty and help me hear Your call without measuring my worth only by my fears.",
+    "declaration": "The Lord was with Gideon in his fearful moment; I can seek God's presence as I take the next faithful step.",
+    "affirmation": "My limitations do not prevent me from responding to God's call with humility.",
+    "confession": "I will bring my fears to God and obey with the strength He provides.",
+    "inspiration": "The greeting comes before Gideon's doubts are resolved; God's presence accompanies a calling that unfolds through questioning and obedience."
+  },
+  {
+    "reference": "Ruth 1:16",
+    "prayer": "God of covenant love, form in me loyal and compassionate care. Give me wisdom to love others freely and to honour safety and dignity.",
+    "declaration": "I choose faithful love that is sincere, freely given and respectful of another person's dignity.",
+    "affirmation": "I can practise loyalty without surrendering wisdom or personal safety.",
+    "confession": "I will love with integrity and seek relationships marked by mutual care.",
+    "inspiration": "Ruth speaks to Naomi amid bereavement and migration. Her loyalty is not a command for anyone to remain in an abusive or unsafe situation."
+  },
+  {
+    "reference": "1 Samuel 16:7",
+    "prayer": "Lord, shape my heart beyond outward appearance. Help me value integrity, humility and faithfulness in myself and others.",
+    "declaration": "God sees beyond outward appearance; I will seek a heart shaped by truth and obedience.",
+    "affirmation": "My worth is not measured only by appearance or public approval.",
+    "confession": "I will ask God to form my inner character and treat others with dignity.",
+    "inspiration": "God corrects Samuel's assumptions while choosing David. The verse does not say outward conduct is irrelevant; it redirects attention to the heart."
+  },
+  {
+    "reference": "2 Samuel 22:2",
+    "prayer": "Lord, be my refuge when danger and uncertainty surround me. Help me remember Your faithfulness and seek wise help.",
+    "declaration": "The Lord is my rock, fortress and deliverer; I look to Him for refuge.",
+    "affirmation": "I can bring fear and need to God and seek safe support.",
+    "confession": "I will depend on the Lord and act wisely in the circumstances before me.",
+    "inspiration": "David sings after deliverance from enemies. The image celebrates God's rescue without claiming that believers never face danger."
+  },
+  {
+    "reference": "1 Kings 8:57",
+    "prayer": "Faithful God, remain with Your people and guide us in Your ways. Teach me to seek Your presence and follow Your commands.",
+    "declaration": "The Lord's faithfulness is the ground of my hope as I seek to walk in His ways.",
+    "affirmation": "I can ask God for guidance and remain attentive to His Word.",
+    "confession": "I will seek God's presence and pursue faithful obedience.",
+    "inspiration": "Solomon prays at the temple dedication, asking God to remain with Israel as He was with their ancestors; it is a covenant prayer, not a guarantee of ease."
+  },
+  {
+    "reference": "2 Kings 6:16",
+    "prayer": "Lord, when I feel overwhelmed, steady my heart and help me see beyond immediate fear. Give me discernment and courage.",
+    "declaration": "I will not let fear be my only lens; I will look to God for help and wisdom.",
+    "affirmation": "I can face frightening circumstances with prayer and clear judgment.",
+    "confession": "I will seek God's help without denying the reality of danger.",
+    "inspiration": "Elisha reassures his servant during a military threat. The story reveals God's unseen protection in a specific crisis; it is not a reason to ignore practical safety."
+  },
+  {
+    "reference": "1 Chronicles 16:11",
+    "prayer": "Lord, draw my attention back to You. Help me seek Your strength and presence consistently, not only when trouble comes.",
+    "declaration": "I seek the Lord and His strength; I turn my heart toward Him continually.",
+    "affirmation": "I can make seeking God a steady practice in ordinary life.",
+    "confession": "I will return to the Lord in worship, trust and obedience.",
+    "inspiration": "The verse appears in a song celebrating the ark's arrival and God's covenant faithfulness; seeking God is worshipful dependence."
+  },
+  {
+    "reference": "2 Chronicles 20:12",
+    "prayer": "God, when I do not know what to do, help me bring the situation honestly before You. Give me wisdom to listen and act.",
+    "declaration": "When I lack answers, I can set my eyes on the Lord and seek His guidance.",
+    "affirmation": "Uncertainty does not prevent me from praying and taking wise next steps.",
+    "confession": "I will not pretend to have every answer; I will seek God and wise counsel.",
+    "inspiration": "Jehoshaphat prays during a national threat. The community's dependence on God includes seeking direction together, not abandoning responsible action."
+  },
+  {
+    "reference": "Ezra 7:10",
+    "prayer": "Lord, deepen my love for Scripture. Help me study carefully, live what I learn and teach with humility.",
+    "declaration": "I will seek to understand God's Word, practise it and share it faithfully.",
+    "affirmation": "Learning Scripture should shape my character and actions.",
+    "confession": "I will study with diligence and live with integrity before teaching others.",
+    "inspiration": "Ezra's pattern joins study, obedience and teaching; knowledge is not presented as a substitute for faithful living."
+  },
+  {
+    "reference": "Nehemiah 8:10",
+    "prayer": "God of restoration, renew my strength through Your joy. Help me share with others and care for those who have little.",
+    "declaration": "The joy of the Lord strengthens His people as they hear and respond to His Word.",
+    "affirmation": "God's joy can sustain me and move me toward generous care.",
+    "confession": "I will receive God's Word with gratitude and share what I have with others.",
+    "inspiration": "The community hears the law after return from exile. The verse sits beside instructions to eat, drink and share with those unprepared; it is not a demand to hide grief."
+  },
+  {
+    "reference": "Esther 4:14",
+    "prayer": "Lord, give me wisdom and courage to use my influence for what is right. Help me discern when and how to speak.",
+    "declaration": "I can act with courage and responsibility when others need me to speak.",
+    "affirmation": "My choices can serve others, even when the moment is difficult.",
+    "confession": "I will seek wise counsel and use my position with integrity.",
+    "inspiration": "Mordecai challenges Esther to consider her role in a specific threat to her people. The verse is not a formula that every personal ambition is divinely assigned."
+  },
+  {
+    "reference": "Job 19:25",
+    "prayer": "Redeemer, meet me in seasons when suffering makes answers feel distant. Keep hope alive without silencing my honest lament.",
+    "declaration": "Even in anguish, I can look to God as my living Redeemer.",
+    "affirmation": "I may lament honestly and still hold hope before God.",
+    "confession": "I will bring my questions and pain to the Lord and trust Him with what I cannot resolve.",
+    "inspiration": "Job speaks from profound suffering and dispute. His hope does not erase grief or make the book a simple formula for immediate vindication."
+  },
+  {
+    "reference": "Ecclesiastes 3:1",
+    "prayer": "God of wisdom, help me recognise the season I am in. Give me patience to act faithfully and discernment about what this moment requires.",
+    "declaration": "There are seasons in life; I will seek wisdom for the work and responsibilities of today.",
+    "affirmation": "I can respond faithfully to this season without demanding that every season feel the same.",
+    "confession": "I will ask God for discernment and receive life's changing rhythms with humility.",
+    "inspiration": "The poem reflects on life's appointed times and human limits; it does not excuse injustice or remove responsibility to act."
+  },
+  {
+    "reference": "Song of Solomon 8:7",
+    "prayer": "Lord, teach me a love that is faithful, enduring and respectful. Protect relationships from coercion, selfishness and harm.",
+    "declaration": "Genuine love cannot be bought or controlled; it calls for faithfulness and respect.",
+    "affirmation": "I can seek relationships where love is freely given and dignity is honoured.",
+    "confession": "I will value love as a gift and refuse to use it as a tool of control.",
+    "inspiration": "The poem celebrates love's strength. It should not be used to romanticise possessiveness, pressure or staying in unsafe relationships."
+  },
+  {
+    "reference": "Ezekiel 36:26",
+    "prayer": "God of restoration, renew my heart and shape my desires toward Your ways. Help me respond to Your grace with faithful living.",
+    "declaration": "God promises renewal for His people, giving a new heart and a new spirit.",
+    "affirmation": "I can seek inward renewal and live in response to God's grace.",
+    "confession": "I will turn toward God and ask Him to reshape my heart.",
+    "inspiration": "The promise addresses Israel's restoration after exile and the honour of God's name; it is more than a private self-improvement slogan."
+  },
+  {
+    "reference": "Daniel 2:20",
+    "prayer": "God of wisdom and might, guide my understanding and keep me humble when answers come. Teach me to give You the honour.",
+    "declaration": "Wisdom and might belong to God; I seek understanding with humility.",
+    "affirmation": "I can ask God for wisdom and remain grateful rather than boastful.",
+    "confession": "I will honour God as the source of wisdom and strength.",
+    "inspiration": "Daniel blesses God after the mystery of the king's dream is revealed; the passage directs credit to God, not to human brilliance."
+  },
+  {
+    "reference": "Hosea 6:6",
+    "prayer": "Lord, form steadfast love and knowledge of You in me. Keep my worship from becoming empty performance.",
+    "declaration": "God desires steadfast love and true knowledge of Him, not empty religious display.",
+    "affirmation": "My devotion should be seen in mercy, faithfulness and knowing God.",
+    "confession": "I will seek to live out the love I profess in worship.",
+    "inspiration": "Hosea confronts covenant unfaithfulness; the verse critiques ritual separated from loyal love, not sincere worship itself."
+  },
+  {
+    "reference": "Joel 2:13",
+    "prayer": "Merciful God, help me return to You with a sincere heart. Teach me to trust Your compassion and live in repentance.",
+    "declaration": "The Lord is gracious and compassionate, slow to anger and rich in steadfast love.",
+    "affirmation": "I can return to God honestly and depend on His mercy.",
+    "confession": "I will not hide from God; I will turn to Him with sincerity.",
+    "inspiration": "Joel calls the people to return amid a communal crisis. God's character is the ground of repentance, not permission to presume upon grace."
+  },
+  {
+    "reference": "Amos 5:24",
+    "prayer": "God of justice, expose the ways my worship and actions do not agree. Make me courageous in pursuing fairness and righteousness.",
+    "declaration": "God calls His people to let justice and righteousness flow continually.",
+    "affirmation": "My faith should shape how I treat neighbours and pursue what is right.",
+    "confession": "I will seek justice and practise righteousness, not settle for outward religion.",
+    "inspiration": "Amos confronts worship that coexists with oppression. The image demands public and practical justice, not merely private feelings."
+  },
+  {
+    "reference": "Obadiah 1:15",
+    "prayer": "Righteous God, help me trust Your justice and refuse revenge. Teach me to act with humility and leave judgment in Your hands.",
+    "declaration": "God sees the actions of nations and calls all people to account.",
+    "affirmation": "I can pursue what is right without taking vengeance into my own hands.",
+    "confession": "I will leave final judgment to God and choose integrity.",
+    "inspiration": "Obadiah addresses Edom's violence against Judah; the day of the Lord is a prophetic warning of accountability, not a licence for personal retaliation."
+  },
+  {
+    "reference": "Jonah 4:2",
+    "prayer": "Lord, widen my heart to reflect Your compassion. Challenge my resentment when mercy is shown to people I dislike.",
+    "declaration": "God is gracious and compassionate, slow to anger and abundant in steadfast love.",
+    "affirmation": "I can ask God to reshape my attitudes toward those beyond my circle.",
+    "confession": "I will not limit God's mercy to people I already approve of.",
+    "inspiration": "Jonah objects to God's mercy toward Nineveh; the book exposes narrow compassion and invites readers to examine their own hearts."
+  },
+  {
+    "reference": "Nahum 1:7",
+    "prayer": "Lord, be my refuge in trouble. Help me remember Your goodness and seek You when life feels unstable.",
+    "declaration": "The Lord is good, a stronghold in the day of trouble, and He knows those who take refuge in Him.",
+    "affirmation": "I can seek God's shelter and receive help in difficult seasons.",
+    "confession": "I will turn to the Lord for refuge and remain attentive to His care.",
+    "inspiration": "Nahum's oracle speaks amid judgment on violent Nineveh; God's goodness and justice belong together, not as a promise that trouble never comes."
+  },
+  {
+    "reference": "Habakkuk 3:18",
+    "prayer": "God, when visible resources fail, sustain my hope in You. Help me grieve honestly and still find reasons to trust.",
+    "declaration": "Even in loss, I can rejoice in the God of my salvation.",
+    "affirmation": "My hope in God can remain when circumstances are painful.",
+    "confession": "I will not pretend hardship is easy; I will keep turning my heart toward God.",
+    "inspiration": "Habakkuk describes the loss of crops and herds and still chooses trust. This is resilient faith, not forced positivity or denial of need."
+  },
+  {
+    "reference": "Zephaniah 3:17",
+    "prayer": "God, remind Your people of Your saving presence. Help me receive Your promise with humility and live in hope.",
+    "declaration": "The Lord is in the midst of His people, mighty to save and rejoicing over them.",
+    "affirmation": "I can take hope in God's promised presence and restoration.",
+    "confession": "I will trust God's faithfulness and seek to walk in His ways.",
+    "inspiration": "The promise speaks to the restored remnant of Judah; it should be read in its communal context rather than turned into a guarantee of a trouble-free life."
+  },
+  {
+    "reference": "Haggai 1:7",
+    "prayer": "Lord, help me examine my priorities honestly. Show me where my actions need to align with the responsibilities You have given.",
+    "declaration": "I will consider my ways and seek to order my life faithfully before God.",
+    "affirmation": "I can pause, reflect and make wise changes when my priorities drift.",
+    "confession": "I will examine my choices and act with renewed purpose.",
+    "inspiration": "Haggai addresses a returned community neglecting the temple rebuilding; the call is specific to their setting, not a blanket prosperity formula."
+  },
+  {
+    "reference": "2 Thessalonians 3:3",
+    "prayer": "Faithful Lord, strengthen my heart and guard me from evil. Help me remain steady and seek help when I face danger.",
+    "declaration": "The Lord is faithful; He strengthens His people and guards them from evil.",
+    "affirmation": "I can depend on God's faithfulness while taking wise steps for safety.",
+    "confession": "I will remain steadfast in the Lord and seek His protection.",
+    "inspiration": "Paul writes to a church facing opposition and disorder. God's faithfulness does not mean believers never suffer or need practical protection."
+  },
+  {
+    "reference": "1 Timothy 4:12",
+    "prayer": "Lord, shape my speech, conduct, love, faith and purity. Help me lead by example rather than demand respect.",
+    "declaration": "I can set an example in speech, conduct, love, faith and purity.",
+    "affirmation": "My character can encourage others regardless of my age or status.",
+    "confession": "I will practise the qualities I hope to see in others.",
+    "inspiration": "Paul encourages Timothy in ministry leadership; the verse calls for credible character, not perfection or control over others."
+  },
+  {
+    "reference": "Titus 2:11",
+    "prayer": "God of grace, thank You for bringing salvation in Christ. Teach me to receive grace and let it train my life toward godliness.",
+    "declaration": "God's saving grace has appeared and calls me into a transformed life.",
+    "affirmation": "Grace welcomes me and teaches me to live with self-control, justice and devotion.",
+    "confession": "I will receive God's grace and allow it to shape my choices.",
+    "inspiration": "The passage continues by describing how grace trains believers; grace is not a licence for harmful behaviour or indifference."
+  },
+  {
+    "reference": "Philemon 1:16",
+    "prayer": "Lord, teach me to see others as brothers and sisters with dignity. Help me pursue relationships marked by justice, freedom and mutual respect.",
+    "declaration": "In Christ, people are to be received as beloved siblings, not reduced to their social status.",
+    "affirmation": "I can honour the dignity of every person and challenge dehumanising treatment.",
+    "confession": "I will seek reconciliation that respects freedom and dignity.",
+    "inspiration": "Paul appeals to Philemon concerning Onesimus. The letter must be read against slavery and power imbalance; it should not be used to excuse coercion or erase the need for justice."
+  },
+  {
+    "reference": "2 John 1:6",
+    "prayer": "Father, help me walk in love through practical obedience. Make my care truthful, patient and consistent.",
+    "declaration": "Love is expressed by walking according to God's commandments.",
+    "affirmation": "I can make love visible through faithful choices and truthful care.",
+    "confession": "I will practise love rather than speak of it only.",
+    "inspiration": "The letter connects love with obedience to God's command; love is not mere sentiment or permission to ignore truth."
+  },
+  {
+    "reference": "3 John 1:4",
+    "prayer": "God, help me rejoice when others grow in truth and integrity. Give me a generous heart that encourages rather than controls.",
+    "declaration": "It is a joy to see others walking in truth.",
+    "affirmation": "I can encourage growth in others with humility and care.",
+    "confession": "I will support others as they grow in truth and faithfulness.",
+    "inspiration": "The elder celebrates the faithfulness of those he loves; encouragement should strengthen people, not become control over their choices."
+  },
+  {
+    "reference": "Jude 1:24",
+    "prayer": "God who keeps Your people, sustain my faith and guard me from stumbling. Teach me to remain humble and dependent on Your grace.",
+    "declaration": "God is able to keep His people and present them before His glory with joy.",
+    "affirmation": "I can depend on God's sustaining grace as I continue in faith.",
+    "confession": "I will keep seeking God and trust His power to sustain me.",
+    "inspiration": "Jude closes with a doxology after warning the community about false teaching; God's keeping grace encourages faithful vigilance, not careless living."
+  },
+  {
+    "reference": "Deuteronomy 10:12",
+    "prayer": "Lord, teach me to fear You with reverence, walk in Your ways, love You and serve You with my whole heart. Let obedience grow from gratitude rather than fear of people.",
+    "declaration": "I will walk in the Lord's ways, love Him and serve Him with a willing heart.",
+    "affirmation": "My faith is expressed in reverence, love and everyday obedience.",
+    "confession": "I choose to love the Lord and serve Him sincerely in the ordinary parts of my life.",
+    "inspiration": "The passage gathers worship and daily conduct together: love for God becomes visible in the way we live."
+  },
+  {
+    "reference": "Joshua 24:15",
+    "prayer": "Faithful God, help my household and me to serve You with sincerity. Give us wisdom to make choices that honour You, and help us respect the conscience and safety of every person in our home.",
+    "declaration": "As for me, I choose to serve the Lord with sincerity and faithfulness.",
+    "affirmation": "I can make a deliberate choice to honour God in my own life.",
+    "confession": "I will not use faith to control others; I will lead by example and serve the Lord with integrity.",
+    "inspiration": "Joshua spoke at a covenant-renewal moment. Let your commitment be sincere, lived out in love rather than imposed by pressure."
+  },
+  {
+    "reference": "2 Timothy 3:16",
+    "prayer": "Father, thank You for the gift of Scripture. Give me humility to receive its correction, wisdom to understand its teaching and courage to practise what is good.",
+    "declaration": "God's inspired Scripture teaches, corrects and trains me in righteousness.",
+    "affirmation": "I can grow in wisdom as I read Scripture carefully and faithfully.",
+    "confession": "I welcome God's Word as a guide for truth, correction and a life of service.",
+    "inspiration": "Let Scripture shape your character, not merely supply words for an argument."
+  },
+  {
+    "reference": "Lamentations 3:22",
+    "prayer": "Merciful Lord, thank You that Your compassions do not fail. Meet me honestly in grief and weariness, and help me receive Your mercy one day at a time.",
+    "declaration": "The Lord's mercies keep me; His compassion does not fail.",
+    "affirmation": "Even in sorrow, I may turn toward the mercy of God.",
+    "confession": "I will not measure God's faithfulness only by how easy today feels; I will remember His compassion.",
+    "inspiration": "These words rise from a book of lament. Hope does not deny pain; it remembers mercy within it."
+  },
+  {
+    "reference": "Malachi 3:6",
+    "prayer": "Unchanging Lord, thank You for Your faithfulness to Your covenant. Correct what is untrue in me and lead me into repentance and renewed obedience.",
+    "declaration": "The Lord remains faithful and does not change in His holy character.",
+    "affirmation": "I can rely on God's steadfast character while allowing Him to change my ways.",
+    "confession": "I turn back to the Lord, trusting His faithfulness and taking responsibility for my choices.",
+    "inspiration": "Malachi speaks to a people who have been unfaithful. God's constancy is a reason to return to Him, not an excuse to remain unchanged."
+  },
+  {
+    "reference": "Numbers 23:19",
+    "prayer": "God of truth, help me trust what You have actually promised. Keep me from shaping Your words around my wishes, and teach me to wait faithfully for Your purposes.",
+    "declaration": "God is truthful and faithful; His word is not shaped by human deception.",
+    "affirmation": "I can trust God's character without demanding that He fulfil every preference of mine.",
+    "confession": "I will test my expectations by Scripture and rest in the truthfulness of God.",
+    "inspiration": "Balaam's words occur in a specific oracle. Let the verse strengthen trust in God's truth, not turn personal wishes into guaranteed promises."
+  },
+  {
+    "reference": "Ruth 2:12",
+    "prayer": "Lord, be a refuge to those who have left familiar places and face uncertainty. Teach me to welcome newcomers with dignity, practical kindness and respect.",
+    "declaration": "The Lord is a refuge for those who seek shelter under His care.",
+    "affirmation": "I can seek God's shelter and offer practical kindness to others.",
+    "confession": "I will honour the vulnerable and make room for people who need welcome and support.",
+    "inspiration": "Ruth is a foreign widow gathering food in a vulnerable position. Boaz's blessing is joined to concrete generosity."
+  },
+  {
+    "reference": "2 Samuel 22:31",
+    "prayer": "Lord, help me trust Your way and examine my own path honestly. Refine my decisions through Your Word and keep me from confusing faith with recklessness.",
+    "declaration": "God's way is perfect and His Word proves true; I take refuge in Him.",
+    "affirmation": "I can seek God's wisdom and walk carefully in the path He teaches.",
+    "confession": "I will bring my plans under God's truth instead of insisting that my own way is right.",
+    "inspiration": "David sings after many deliverances. Read his song as testimony to God's faithfulness, not as a promise that every believer avoids hardship."
+  },
+  {
+    "reference": "1 Kings 19:12",
+    "prayer": "God of Elijah, meet me when exhaustion and fear have narrowed my vision. Give me rest, wise support and discernment to listen without forcing every thought or feeling to be Your voice.",
+    "declaration": "I will make room for quiet attentiveness to God and test what I hear by His truth.",
+    "affirmation": "I may rest, receive care and seek wise discernment when I feel overwhelmed.",
+    "confession": "I will not confuse every inner impression with God's direction; I will listen humbly and test it.",
+    "inspiration": "Elijah's encounter follows exhaustion and fear. God first provides care and rest; the passage is not a formula for decoding every sound or feeling."
+  },
+  {
+    "reference": "Ecclesiastes 12:13",
+    "prayer": "Creator, help me live with reverence and remember that my choices matter. Give me wisdom to honour You and treat others with justice and care.",
+    "declaration": "I will fear God with reverence and keep His commandments.",
+    "affirmation": "A meaningful life is shaped by reverence for God and faithful conduct.",
+    "confession": "I will not chase empty approval; I will seek to honour God in what I do.",
+    "inspiration": "Ecclesiastes closes by drawing its reflections toward reverence and responsibility. Let that conclusion guide practical choices."
+  },
+  {
+    "reference": "Song of Solomon 8:6",
+    "prayer": "God of love, teach me to honour love with faithfulness, tenderness and respect. Protect people from coercion and help relationships grow through mutual care.",
+    "declaration": "Faithful love is precious and must be treated with honour and care.",
+    "affirmation": "I deserve relationships marked by respect, mutuality and safety.",
+    "confession": "I will not use love as a tool of control; I will practise faithfulness and respect.",
+    "inspiration": "The Song celebrates human love in poetic language. Let its beauty honour mutual devotion without turning it into a promise that love removes every hardship."
+  },
+  {
+    "reference": "Daniel 6:10",
+    "prayer": "Lord, strengthen my devotion when pressure makes faithfulness difficult. Give me courage joined with wisdom, and help me act without seeking danger for its own sake.",
+    "declaration": "I will remain faithful in prayer and trust God when obedience is costly.",
+    "affirmation": "I can keep a steady life of prayer with humility and courage.",
+    "confession": "I will honour God consistently and seek wise ways to remain faithful under pressure.",
+    "inspiration": "Daniel's prayer was an established practice, not a stunt. Faithfulness can be steady and courageous without becoming reckless."
+  },
+  {
+    "reference": "Habakkuk 2:4",
+    "prayer": "Lord, make my heart steadfast and teach me to live by faith when proud voices promise certainty. Help me trust You while remaining honest about injustice and delay.",
+    "declaration": "I will live by faith and remain faithful to God.",
+    "affirmation": "I can keep trusting God without pretending every question has been answered.",
+    "confession": "I reject pride and choose a life of faithfulness before the Lord.",
+    "inspiration": "Habakkuk contrasts the proud with the righteous amid a crisis of injustice. Faith here is enduring trust, not a technique for obtaining whatever I desire."
+  },
+  {
+    "reference": "Haggai 2:4",
+    "prayer": "God who remains with Your people, strengthen me to do the work You have placed before me with courage and humility. Help me serve alongside others rather than seek attention.",
+    "declaration": "I will be strong, do the work faithfully and remember that God is with His people.",
+    "affirmation": "I can take the next faithful step with courage and humility.",
+    "confession": "I will not despise small beginnings; I will work faithfully with the strength God supplies.",
+    "inspiration": "Haggai addresses a community rebuilding after exile. The encouragement belongs first to that shared task; apply its principle without claiming every project is guaranteed to succeed."
+  },
+  {
+    "reference": "Micah 7:7",
+    "prayer": "Lord, when injustice and disappointment surround me, help me look to You with patience. Keep my hope active and guide me in the next truthful and loving step.",
+    "declaration": "I will look to the Lord and wait for the God of my salvation.",
+    "affirmation": "Waiting on God can coexist with honest lament and responsible action.",
+    "confession": "I will not surrender to despair; I will seek God while doing what is right.",
+    "inspiration": "Micah's confidence follows a lament over social corruption. Waiting is not passivity; it is hope that refuses to join injustice."
+  },
+  {
+    "reference": "Revelation 22:13",
+    "prayer": "Lord Jesus, Alpha and Omega, keep my hope fixed on Your final victory. Help me live faithfully in the present as I await the completion of Your purposes.",
+    "declaration": "Jesus is the Alpha and Omega, the beginning and the end.",
+    "affirmation": "My hope rests in Christ's faithful and final reign.",
+    "confession": "I will remain faithful to Jesus and not be ruled by fear of the future.",
+    "inspiration": "The title belongs to Revelation's closing vision of Christ's return and new creation. Let it direct worship and perseverance, not speculation about dates."
+  },
+  {
+    "reference": "Leviticus 20:26",
+    "prayer": "Holy God, shape my life for what is good and true. Teach me to belong to You through justice, compassion and faithful obedience, while reading Your covenant commands with care.",
+    "declaration": "I belong to the Lord and am called to live a life set apart for Him.",
+    "affirmation": "My devotion to God should be visible in holiness, mercy and integrity.",
+    "confession": "I will seek a holy life without using Scripture to despise or exclude others.",
+    "inspiration": "This command addresses Israel's covenant identity. Let its call to holiness lead to faithful conduct, while honouring the passage's historical setting."
+  },
+  {
+    "reference": "Zechariah 9:12",
+    "prayer": "God of hope, strengthen those who feel trapped by loss or injustice. Help me hold to Your promises with patience and take practical steps toward restoration.",
+    "declaration": "I am invited to hold fast to hope in God's promises.",
+    "affirmation": "Hope can sustain me while restoration is still unfolding.",
+    "confession": "I will not call delay proof that God has abandoned me; I will keep seeking what is faithful and good.",
+    "inspiration": "The prophet addresses a post-exilic people with words of restoration. 'Prisoners of hope' is not a timetable for instant change but an invitation to endure."
+  },
+  {
+    "reference": "Judges 5:31",
+    "prayer": "Lord, help me love what is right and remain faithful in the midst of conflict. Teach me to seek peace and justice rather than celebrate revenge or harm.",
+    "declaration": "I will love the Lord and seek the good that honours Him.",
+    "affirmation": "My courage should be guided by love, justice and restraint.",
+    "confession": "I will not turn a victory song into permission for hatred; I will pursue what is right.",
+    "inspiration": "Deborah's song celebrates deliverance from oppression in its historical setting. Its poetry should not be used to glorify violence in every conflict."
+  },
+  {
+    "reference": "1 Samuel 12:24",
+    "prayer": "Lord, help me remember Your faithfulness and serve You sincerely. Keep my heart from empty performance and teach me to honour You through truth and steady obedience.",
+    "declaration": "I will fear the Lord, serve Him faithfully and remember His great works.",
+    "affirmation": "Gratitude can strengthen a steady and sincere life of service.",
+    "confession": "I will remember God's goodness and choose integrity in my service.",
+    "inspiration": "Samuel speaks at a covenant transition and calls Israel to faithful service. Remembering God's works should produce gratitude, not manipulation or fear."
+  }
+];
   const map = new Map(entries.map(item=>[item.reference.toLowerCase(),item]));
   window.ZurielFaithContent = {
     find:function(reference){return map.get(String(reference||"").trim().toLowerCase())||null;},
