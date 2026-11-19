@@ -685,7 +685,6 @@
             #zurielGloryPreview .zgs-right-page .zgs-page-title:first-child {padding-bottom:10px;border-bottom:1px dashed var(--zgs-accent);font-size:12px;letter-spacing:1.2px;}
             #zurielGloryPreview .zgs-ref {padding-bottom:9px;border-bottom:1px dashed var(--zgs-accent);}
             #zurielGloryPreview .zgs-active-copy {margin-top:14px;white-space:pre-wrap;overflow-wrap:anywhere;}
-            #zurielGloryPreview {background-size:cover,200% 200%;background-position:center,var(--zgs-wallpaper-position,center);}
             @media(max-width:560px) {
               #zurielGloryPreview .zgs-book-spread {grid-template-columns:1fr;gap:10px;}
               #zurielGloryPreview .zgs-page {min-height:180px;padding:15px 13px;}
@@ -783,10 +782,10 @@
 
         content.appendChild(studio);
         const wallpaperCatalog = {
-          forest: { label: "Forest river", url: "./images/wallpapers/zuriel-landscape-collection.webp", x: 0, y: 0, position: "0% 0%" },
-          falls: { label: "Waterfall light", url: "./images/wallpapers/zuriel-landscape-collection.webp", x: 1, y: 0, position: "100% 0%" },
-          stream: { label: "Forest stream", url: "./images/wallpapers/zuriel-landscape-collection.webp", x: 0, y: 1, position: "0% 100%" },
-          valley: { label: "Mountain valley", url: "./images/wallpapers/zuriel-landscape-collection.webp", x: 1, y: 1, position: "100% 100%" }
+          forest: { label: "Forest river", url: "https://images.unsplash.com/photo-1759182391264-73c1be282907?auto=format&fit=crop&fm=jpg&q=82&w=1800" },
+          falls: { label: "Waterfall light", url: "https://images.unsplash.com/photo-1595132169434-097c5ae1a145?auto=format&fit=crop&fm=jpg&q=82&w=1800" },
+          stream: { label: "Forest stream", url: "https://images.unsplash.com/photo-1765758693002-120e6ab36b87?auto=format&fit=crop&fm=jpg&q=82&w=1800" },
+          valley: { label: "Mountain valley", url: "https://images.unsplash.com/photo-1768365423849-6f694d85cf33?auto=format&fit=crop&fm=jpg&q=82&w=1800" }
         };
         let activeWallpaperImage = null;
         let wallpaperRequestToken = 0;
@@ -802,13 +801,11 @@
             if (requestToken !== wallpaperRequestToken) return;
             activeWallpaperImage = image;
             studio.dataset.wallpaper = key;
-            const preview = studio.querySelector("#zurielGloryPreview");
-            preview.style.setProperty("--zgs-wallpaper-image", 'url("' + choice.url + '")');
-            preview.style.setProperty("--zgs-wallpaper-position", choice.position);
+            studio.querySelector("#zurielGloryPreview").style.setProperty("--zgs-wallpaper-image", 'url("' + choice.url + '")');
             studio.querySelectorAll("[data-wallpaper]").forEach(button => {
               button.setAttribute("aria-pressed", String(button.dataset.wallpaper === key));
             });
-            status.textContent = choice.label + " wallpaper loaded from Zuriel's bundled offline image collection.";
+            status.textContent = choice.label + " wallpaper loaded. It will be available offline after this device caches it.";
           };
           image.onerror = function () {
             if (requestToken !== wallpaperRequestToken) return;
@@ -1047,15 +1044,9 @@
             ctx.fillStyle = colors[0]; ctx.fillRect(0,0,canvas.width,canvas.height);
             if (activeWallpaperImage) {
               const image = activeWallpaperImage;
-              const crop = wallpaperCatalog[studio.dataset.wallpaper] || wallpaperCatalog.forest;
-              const sourceWidth = image.width / 2;
-              const sourceHeight = image.height / 2;
-              const sourceX = crop.x * sourceWidth;
-              const sourceY = crop.y * sourceHeight;
-              const scale = Math.max(canvas.width / sourceWidth, canvas.height / sourceHeight);
-              const drawWidth = sourceWidth * scale, drawHeight = sourceHeight * scale;
-              ctx.drawImage(image,sourceX,sourceY,sourceWidth,sourceHeight,
-                (canvas.width-drawWidth)/2,(canvas.height-drawHeight)/2,drawWidth,drawHeight);
+              const scale = Math.max(canvas.width / image.width, canvas.height / image.height);
+              const drawWidth = image.width * scale, drawHeight = image.height * scale;
+              ctx.drawImage(image,(canvas.width-drawWidth)/2,(canvas.height-drawHeight)/2,drawWidth,drawHeight);
               ctx.fillStyle = studio.dataset.finish === "navy" ? "rgba(10,24,43,.45)" : "rgba(248,244,232,.42)";
               ctx.fillRect(0,0,canvas.width,canvas.height);
             }
