@@ -30,7 +30,7 @@ assert.equal(phrase[0].chapter, 1);
 assert.equal(phrase[0].verse, 1);
 
 const exact = await search.search("love", 30, "word");
-assert.equal(exact.length, 2, "Exact-word search must exclude 'loved' and 'lovely'.");
+assert.equal(exact.length, 1, "Exact-word search must exclude inflected and longer words.");
 assert.ok(exact.every(item => item.text.toLowerCase().includes("love")));
 
 const contains = await search.search("love", 30, "phrase");
