@@ -1930,6 +1930,14 @@
       drawerParent.insertBefore(studyLibraryDrawer,studySectionsHost);
       studyLibraryDrawer.append(drawerSummary,drawerIntro,studySectionsHost);
       studyLibraryDrawer.open=false;
+      studySectionsHost.querySelectorAll(":scope > details").forEach(function(section){
+        section.addEventListener("toggle",function(){
+          if(!section.open)return;
+          studySectionsHost.querySelectorAll(":scope > details").forEach(function(other){
+            if(other!==section)other.open=false;
+          });
+        });
+      });
       panel.insertBefore(verseActionMenu,studyLibraryDrawer);
     }else{
       panel.insertBefore(verseActionMenu,panel.querySelector("#zurielStudySections"));
