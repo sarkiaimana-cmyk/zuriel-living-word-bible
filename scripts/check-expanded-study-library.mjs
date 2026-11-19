@@ -213,6 +213,50 @@ for (const entry of theology.entries) {
   theologyIds.add(entry.id);
   theologyTitles.add(entry.title.trim().toLocaleLowerCase("en"));
 }
+const bookIntroIds = new Set();
+const bookIntroNotes = new Set();
+for (const entry of books.bookIntroductions) {
+  assert.ok(typeof entry.id === "string" && entry.id.trim() && !bookIntroIds.has(entry.id), "Book introduction IDs must be present and unique");
+  assert.ok(typeof entry.book === "string" && entry.book.trim(), "Book introduction needs a canonical book name");
+  assert.ok(Array.isArray(entry.keyPassages) && entry.keyPassages.length >= 2, "Book introduction needs multiple key passages: " + entry.book);
+  assert.ok(typeof entry.overview === "string" && entry.overview.trim().length >= 70, "Book introduction needs a substantive overview: " + entry.book);
+  assert.ok(typeof entry.majorThemes === "string" && entry.majorThemes.trim().length >= 20, "Book introduction needs major themes: " + entry.book);
+  assert.ok(typeof entry.readingNote === "string" && entry.readingNote.trim().length >= 80, "Book introduction needs a contextual reading note: " + entry.book);
+  assert.ok(!bookIntroNotes.has(entry.readingNote), "Book reading notes must be tailored, not repeated: " + entry.book);
+  for (const reference of entry.keyPassages) {
+    assert.ok(/^.+?\\s+\\d+:\\d+/.test(reference), "Book key passages must specify book, chapter and verse: " + entry.book + " — " + reference);
+    checkReference(reference, "book introduction " + entry.book);
+  }
+  bookIntroIds.add(entry.id);
+  bookIntroNotes.add(entry.readingNote);
+}
+const bookPathIds = new Set();
+const bookPathBooks = new Set();
+const bookPathApplications = new Set();
+const bookPathPrayers = new Set();
+for (const entry of books.bookStudyPathways) {
+  assert.ok(typeof entry.id === "string" && entry.id.trim() && !bookPathIds.has(entry.id), "Book pathway IDs must be present and unique");
+  assert.ok(typeof entry.book === "string" && entry.book.trim() && !bookPathBooks.has(entry.book), "Each book needs one study pathway");
+  assert.ok(typeof entry.startingPassage === "string" && entry.startingPassage.trim(), "Book pathway needs a starting passage: " + entry.book);
+  for (const reference of entry.startingPassage.split(";").map(value=>value.trim()).filter(Boolean)) {
+    assert.ok(/^.+?\\s+\\d+:\\d+/.test(reference), "Book starting passages must specify book, chapter and verse: " + entry.book + " — " + reference);
+    checkReference(reference, "book study pathway " + entry.book);
+  }
+  assert.ok(Array.isArray(entry.crossReferenceTrail) && entry.crossReferenceTrail.length >= 2, "Book pathway needs cross-reference steps: " + entry.book);
+  for (const reference of entry.crossReferenceTrail) {
+    assert.ok(/^.+?\\s+\\d+:\\d+/.test(reference), "Book pathway references must specify book, chapter and verse: " + entry.book + " — " + reference);
+    checkReference(reference, "book pathway cross-reference " + entry.book);
+  }
+  for (const [field,minLength] of [["observationPrompt",50],["interpretationPrompt",50],["lifeApplicationPrompt",50],["prayerPrompt",50],["interpretiveGuardrail",50]]) {
+    assert.ok(typeof entry[field] === "string" && entry[field].trim().length >= minLength, "Book pathway needs substantive " + field + ": " + entry.book);
+  }
+  assert.ok(!bookPathApplications.has(entry.lifeApplicationPrompt), "Book pathway applications must be tailored: " + entry.book);
+  assert.ok(!bookPathPrayers.has(entry.prayerPrompt), "Book pathway prayers must be tailored: " + entry.book);
+  bookPathIds.add(entry.id); bookPathBooks.add(entry.book); bookPathApplications.add(entry.lifeApplicationPrompt); bookPathPrayers.add(entry.prayerPrompt);
+}
+assert.equal(bookIntroIds.size,66,"All 66 book introductions need unique IDs");
+assert.equal(bookPathIds.size,66,"All 66 book pathways need unique IDs");
+
 const deepStudyIds = new Set();
 const deepStudyTitles = new Set();
 for (const guide of deep.guides) {
@@ -331,7 +375,7 @@ for (const path of [
   "zuriel-deep-study-guides.json","zuriel-bible-geography-atlas.json","zuriel-worship-study-pathways.json","zuriel-theological-comparisons.json"
 ]) assert.ok(loader.includes(path),"Study loader must include "+path);
 assert.ok(index.includes('src="zuriel-study-library-data.js"'),"Study library integration script must load");
-assert.ok(worker.includes('zuriel-bible-offline-v212'),"Offline cache must be version 205");
+assert.ok(worker.includes('zuriel-bible-offline-v213'),"Offline cache must be version 205");
 assert.ok(worker.includes("./zuriel-study-library-data.js"),"Study loader must be precached");
 for (const path of [
   "zuriel-passage-commentary-expansion.json","zuriel-topical-bible-study-library-batch-2.json",
