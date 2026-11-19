@@ -243,6 +243,126 @@
       ],
       "reflectionPrompt": "How are God's works and instruction passed to the next generation, and what do these passages say about teaching children with care?",
       "contextNote": "Encourage age-appropriate teaching, not pressure or performance."
+    },
+    {
+      "id": "worship-path-21",
+      "title": "Praise in Adversity",
+      "focus": "Learning to praise God honestly while acknowledging hardship and lament.",
+      "references": [
+        "Habakkuk 3:17-19",
+        "Acts 16:22-34",
+        "Psalm 34:1-8"
+      ],
+      "reflectionPrompt": "How do these passages hold together honest hardship, trust and praise? What would truthful worship sound like in a difficult season?",
+      "contextNote": "Praise does not deny grief or require a person to pretend that suffering is pleasant."
+    },
+    {
+      "id": "worship-path-22",
+      "title": "The Names and Character of God",
+      "focus": "Worship shaped by God's revealed character rather than speculation or slogans.",
+      "references": [
+        "Exodus 34:5-8",
+        "Psalm 103:6-14",
+        "John 17:6-8"
+      ],
+      "reflectionPrompt": "Which attributes does each passage reveal about God, and how should those truths shape prayer and conduct?",
+      "contextNote": "Let Scripture define God's character; avoid treating a name or title as a technique for controlling outcomes."
+    },
+    {
+      "id": "worship-path-23",
+      "title": "The King and His Kingdom",
+      "focus": "Honouring God's reign and the lordship of Jesus in worship and daily allegiance.",
+      "references": [
+        "Psalm 24:1-10",
+        "Matthew 6:9-13",
+        "Revelation 11:15-17"
+      ],
+      "reflectionPrompt": "What does God's kingship mean for priorities, justice, humility and hope?",
+      "contextNote": "Kingdom language is not a mandate for human domination or political coercion."
+    },
+    {
+      "id": "worship-path-24",
+      "title": "Worship Through Service",
+      "focus": "Offering practical service as a response to God's mercy and love.",
+      "references": [
+        "Deuteronomy 10:12-19",
+        "Mark 10:42-45",
+        "Romans 12:9-13"
+      ],
+      "reflectionPrompt": "What concrete acts of service arise from these passages, and how do they protect the dignity of those served?",
+      "contextNote": "Service should be willing and compassionate, not forced labour or a cover for exploitation."
+    },
+    {
+      "id": "worship-path-25",
+      "title": "Prayer and Intercession",
+      "focus": "Bringing the needs of others before God with compassion and perseverance.",
+      "references": [
+        "1 Timothy 2:1-6",
+        "Ephesians 6:18-20",
+        "Colossians 4:2-4"
+      ],
+      "reflectionPrompt": "Who is included in the prayers, and how do the passages connect intercession with love and witness?",
+      "contextNote": "Prayer complements responsible action; it does not replace practical help, justice or safeguarding."
+    },
+    {
+      "id": "worship-path-26",
+      "title": "The Lord's Supper and Fellowship",
+      "focus": "Remembering Christ, proclaiming His death and discerning the unity and care of the gathered community.",
+      "references": [
+        "Luke 22:14-20",
+        "1 Corinthians 10:16-17",
+        "1 Corinthians 11:23-29"
+      ],
+      "reflectionPrompt": "How do remembrance, participation, self-examination and care for others shape the community's worship?",
+      "contextNote": "Christian traditions differ on the precise theology of the Supper; represent those differences fairly and read each text in context."
+    },
+    {
+      "id": "worship-path-27",
+      "title": "Worship and the Nations",
+      "focus": "Celebrating God's saving purpose for all peoples and the church's witness across cultures.",
+      "references": [
+        "Psalm 67:1-7",
+        "Isaiah 49:5-7",
+        "Revelation 7:9-12"
+      ],
+      "reflectionPrompt": "How do blessing, mission and the worship of many peoples relate in these passages?",
+      "contextNote": "Mission should respect human dignity and freedom; cultural diversity is not a defect to erase."
+    },
+    {
+      "id": "worship-path-28",
+      "title": "The Return of Christ",
+      "focus": "Worship shaped by watchful hope, faithful living and longing for Christ's appearing.",
+      "references": [
+        "Matthew 24:36-44",
+        "1 Thessalonians 4:13-18",
+        "Titus 2:11-14"
+      ],
+      "reflectionPrompt": "How does hope in Christ's return shape holiness, comfort, patience and care for others now?",
+      "contextNote": "Avoid date-setting, fear-driven speculation and claims that a current event proves a specific timetable."
+    },
+    {
+      "id": "worship-path-29",
+      "title": "Joy and Fellowship at the Table",
+      "focus": "Receiving shared meals and fellowship with gratitude, welcome and generosity.",
+      "references": [
+        "Acts 2:42-47",
+        "Luke 14:12-24",
+        "Hebrews 13:1-2"
+      ],
+      "reflectionPrompt": "Who is welcomed, what is shared and how does fellowship become a witness to God's generosity?",
+      "contextNote": "Hospitality should be safe and freely offered; no one should be pressured to enter unsafe settings."
+    },
+    {
+      "id": "worship-path-30",
+      "title": "Wholehearted Devotion",
+      "focus": "Responding to God's mercy with undivided love, integrity and obedience.",
+      "references": [
+        "Deuteronomy 10:12-13",
+        "Mark 12:28-34",
+        "Romans 12:1-2"
+      ],
+      "reflectionPrompt": "What does wholehearted love look like in thought, worship, relationships and ordinary responsibilities?",
+      "contextNote": "Devotion is expressed through love and justice, not merely outward performance or coercive demands."
     }
   ]
 }
