@@ -732,7 +732,7 @@
           <div class="zgs-field"><label>OPEN-BOOK FINISH</label><div class="zgs-actions" id="zgsFinishes">
             <button type="button" data-finish="ivory">Warm ivory</button><button type="button" data-finish="navy">Kingdom navy</button><button type="button" data-finish="forest">Living forest</button><button type="button" data-finish="parchment">Parchment</button>
           </div></div>
-          <div class="zgs-tabs" id="zgsContentTabs" role="group" aria-label="Choose the left-page faith response">
+          <div class="zgs-tabs" id="zgsContentTabs" role="group" aria-label="Choose the right-page faith content">
             <button type="button" data-zgs-view="Prayer" aria-pressed="false">Prayer</button>
             <button type="button" data-zgs-view="Declaration" aria-pressed="true">Declaration</button>
             <button type="button" data-zgs-view="Affirmation" aria-pressed="false">Affirmation</button>
@@ -754,15 +754,15 @@
             <div class="zgs-brand">The Light 🕯️</div>
             <h3 id="zgsPreviewTitle">His Words.. My life.. My Victory</h3>
             <div class="zgs-book-spread">
-              <section class="zgs-page zgs-left-page" aria-label="Glory Verse Affirmation">
+              <section class="zgs-page zgs-left-page" aria-label="Selected Bible Scripture">
+                <div class="zgs-page-title">THE WORD</div>
+                <div class="zgs-ref" id="zgsPreviewRef">Your Scripture reference</div>
+                <p class="zgs-copy" id="zgsPreviewScripture">Your Scripture will appear here.</p>
+              </section>
+              <section class="zgs-page zgs-right-page" aria-label="Glory Verse Affirmation">
                 <div class="zgs-page-title">GLORY VERSE AFFIRMATION</div>
                 <div class="zgs-page-title" id="zgsPreviewActiveTitle">DECLARATION</div>
                 <p class="zgs-copy zgs-active-copy" id="zgsPreviewActiveContent">Your Scripture-led declaration will appear here.</p>
-              </section>
-              <section class="zgs-page zgs-right-page" aria-label="Selected Bible Scripture">
-                <div class="zgs-page-title">SCRIPTURE</div>
-                <div class="zgs-ref" id="zgsPreviewRef">Your Scripture reference</div>
-                <p class="zgs-copy" id="zgsPreviewScripture">Your Scripture will appear here.</p>
               </section>
             </div>
             <div class="zgs-footer">Zuriel Living Word Bible</div>
@@ -852,7 +852,7 @@
           studio.querySelector("#zgsPreviewRef").textContent = studio.querySelector("#zgsReference").value.trim() || "Your Scripture reference";
           studio.querySelector("#zgsPreviewScripture").textContent = scriptureText || "Your Scripture will appear here.";
           studio.querySelector("#zgsPreviewActiveTitle").textContent = activeFaithView === "Confession" ? "FAITH CONFESSION" : activeFaithView.toUpperCase();
-          studio.querySelector("#zgsPreviewActiveContent").textContent = activeText || "Add a Scripture-specific "+activeFaithView.toLowerCase()+" on the left page.";
+          studio.querySelector("#zgsPreviewActiveContent").textContent = activeText || "Add a Scripture-specific "+activeFaithView.toLowerCase()+" on the right page.";
           const stacked = scriptureText.length > 420 || activeText.length > 320;
           studio.dataset.layout = stacked ? "stacked" : "spread";
           const preview = studio.querySelector("#zurielGloryPreview");
@@ -1020,17 +1020,17 @@
             const stacked = scripture.length > 420 || faithText.length > 320;
             const exportMargin = stacked ? 140 : margin;
             const exportColumnWidth = stacked ? width - exportMargin * 2 : columnWidth;
-            const leftLines = wrap(faithText || "Add a Scripture-specific " + activeFaithView.toLowerCase() + ".", exportColumnWidth, faithSize);
-            const rightLines = wrap(scripture, exportColumnWidth, scriptureSize);
+            const leftLines = wrap(scripture, exportColumnWidth, scriptureSize);
+            const rightLines = wrap(faithText || "Add a Scripture-specific " + activeFaithView.toLowerCase() + ".", exportColumnWidth, faithSize);
             const top = 300, bottom = 150, sectionGap = stacked ? 95 : 0;
             const referenceHeadingHeight = 48 + 58;
             const faithHeadingHeight = 58;
             const contentHeight = stacked
-              ? faithHeadingHeight + leftLines.length * lineHeight(faithSize) +
-                sectionGap + referenceHeadingHeight + rightLines.length * lineHeight(scriptureSize)
+              ? referenceHeadingHeight + leftLines.length * lineHeight(scriptureSize) +
+                sectionGap + faithHeadingHeight + rightLines.length * lineHeight(faithSize)
               : Math.max(
-                faithHeadingHeight + leftLines.length * lineHeight(faithSize),
-                referenceHeadingHeight + rightLines.length * lineHeight(scriptureSize)
+                referenceHeadingHeight + leftLines.length * lineHeight(scriptureSize),
+                faithHeadingHeight + rightLines.length * lineHeight(faithSize)
               );
             canvas.width = width;
             canvas.height = Math.max(1100, top + contentHeight + bottom);
@@ -1086,9 +1086,9 @@
             ctx.shadowBlur = 22;
             ctx.shadowOffsetY = 9;
             if (stacked) {
-              const firstHeight = faithHeadingHeight + leftLines.length * lineHeight(faithSize) + 44;
+              const firstHeight = referenceHeadingHeight + leftLines.length * lineHeight(scriptureSize) + 44;
               const secondY = top + firstHeight + sectionGap - 55;
-              const secondHeight = referenceHeadingHeight + rightLines.length * lineHeight(scriptureSize) + 44;
+              const secondHeight = faithHeadingHeight + rightLines.length * lineHeight(faithSize) + 44;
               roundedPanel(exportMargin - 28, top - 55, exportColumnWidth + 56, firstHeight, 22);
               roundedPanel(exportMargin - 28, secondY, exportColumnWidth + 56, secondHeight, 22);
             } else {
@@ -1122,13 +1122,13 @@
             }
             if (stacked) {
               let y = top;
-              y = drawSection("GLORY VERSE AFFIRMATION — " + leftTitle,"",leftLines,exportMargin,y,exportColumnWidth,faithSize);
+              y = drawSection("THE WORD",reference,leftLines,exportMargin,y,exportColumnWidth,scriptureSize);
               y += sectionGap;
-              drawSection("SCRIPTURE",reference,rightLines,exportMargin,y,exportColumnWidth,scriptureSize);
+              drawSection("GLORY VERSE AFFIRMATION — " + leftTitle,"",rightLines,exportMargin,y,exportColumnWidth,faithSize);
             } else {
               const leftX = margin, rightX = margin + columnWidth + gap;
-              drawSection("GLORY VERSE AFFIRMATION — " + leftTitle,"",leftLines,leftX,top,columnWidth,faithSize);
-              drawSection("SCRIPTURE",reference,rightLines,rightX,top,columnWidth,scriptureSize);
+              drawSection("THE WORD",reference,leftLines,leftX,top,columnWidth,scriptureSize);
+              drawSection("GLORY VERSE AFFIRMATION — " + leftTitle,"",rightLines,rightX,top,columnWidth,faithSize);
             }
             ctx.textAlign = "center"; ctx.fillStyle = colors[2];
             ctx.font = "bold 24px Georgia, serif";
