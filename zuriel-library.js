@@ -797,30 +797,64 @@
           valley: { label: "Mountain valley", url: "https://images.unsplash.com/photo-1768365423849-6f694d85cf33?auto=format&fit=crop&fm=jpg&q=82&w=1800" }
         };
         let activeWallpaperImage = null;
+        let activeWallpaperObjectUrl = null;
         let wallpaperRequestToken = 0;
-        function loadStudioWallpaper(key) {
+        async function loadStudioWallpaper(key) {
           const requestToken = ++wallpaperRequestToken;
-          activeWallpaperImage = null;
           const choice = wallpaperCatalog[key];
           if (!choice) return;
           const status = studio.querySelector("#zgsStatus");
-          const image = new Image();
-          image.crossOrigin = "anonymous";
-          image.onload = function () {
+          status.textContent = "Loading " + choice.label + " wallpaper…";
+          try {
+            let response = null;
+            let fromOfflineCache = false;
+            const cacheName = "zuriel-studio-wallpapers-v1";
+            if ("caches" in window) {
+              try {
+                const cache = await caches.open(cacheName);
+                response = await cache.match(choice.url);
+                fromOfflineCache = !!response;
+                if (!response) {
+                  response = await fetch(choice.url, { mode: "cors", credentials: "omit" });
+                  if (!response.ok || !response.type.includes("basic") && response.type !== "cors") throw new Error("Wallpaper download failed");
+                  await cache.put(choice.url, response.clone());
+                }
+              } catch (cacheError) {
+                if (!navigator.onLine) throw cacheError;
+                response = await fetch(choice.url, { mode: "cors", credentials: "omit" });
+              }
+            } else {
+              response = await fetch(choice.url, { mode: "cors", credentials: "omit" });
+            }
+            if (!response || !response.ok) throw new Error("Wallpaper is unavailable");
+            const blob = await response.blob();
+            if (!blob.type.startsWith("image/")) throw new Error("Wallpaper response was not an image");
+            const objectUrl = URL.createObjectURL(blob);
+            const image = new Image();
+            image.onload = function () {
+              if (requestToken !== wallpaperRequestToken) {
+                URL.revokeObjectURL(objectUrl);
+                return;
+              }
+              if (activeWallpaperObjectUrl) URL.revokeObjectURL(activeWallpaperObjectUrl);
+              activeWallpaperObjectUrl = objectUrl;
+              activeWallpaperImage = image;
+              studio.dataset.wallpaper = key;
+              studio.querySelector("#zurielGloryPreview").style.setProperty("--zgs-wallpaper-image", 'url("' + objectUrl + '")');
+              studio.querySelectorAll("[data-wallpaper]").forEach(button => {
+                button.setAttribute("aria-pressed", String(button.dataset.wallpaper === key));
+              });
+              status.textContent = choice.label + (fromOfflineCache ? " loaded from this device's offline wallpaper cache." : " saved to this device's offline wallpaper cache.");
+            };
+            image.onerror = function () {
+              URL.revokeObjectURL(objectUrl);
+              if (requestToken === wallpaperRequestToken) status.textContent = "This wallpaper could not be displayed. Your Scripture and saved cards are safe.";
+            };
+            image.src = objectUrl;
+          } catch (error) {
             if (requestToken !== wallpaperRequestToken) return;
-            activeWallpaperImage = image;
-            studio.dataset.wallpaper = key;
-            studio.querySelector("#zurielGloryPreview").style.setProperty("--zgs-wallpaper-image", 'url("' + choice.url + '")');
-            studio.querySelectorAll("[data-wallpaper]").forEach(button => {
-              button.setAttribute("aria-pressed", String(button.dataset.wallpaper === key));
-            });
-            status.textContent = choice.label + " wallpaper loaded. It will be available offline after this device caches it.";
-          };
-          image.onerror = function () {
-            if (requestToken !== wallpaperRequestToken) return;
-            status.textContent = "This wallpaper could not load. Connect to the internet once, then try again. Your other card content is safe.";
-          };
-          image.src = choice.url;
+            status.textContent = "This wallpaper is not cached yet. Connect once to load it; your Scripture and saved cards remain safe.";
+          }
         }
         studio.querySelectorAll("[data-wallpaper]").forEach(choice => choice.addEventListener("click", function () {
           loadStudioWallpaper(this.dataset.wallpaper);
