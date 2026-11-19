@@ -269,10 +269,11 @@
   function chooseChapter(number) {
     selectedChapter = number;
     selectedVerse = 0;
-    displayVerseButton.disabled = true;
+    displayVerseButton.disabled = false;
+    displayVerseButton.textContent = "DISPLAY CHAPTER";
     updateCurrent();
     updateReference();
-    status.textContent = "Chapter " + number + " selected. You can open the chapter or choose a verse.";
+    status.textContent = "Chapter " + number + " selected. Tap DISPLAY CHAPTER to read the full chapter, or choose a verse.";
     setTab("verse");
   }
 
@@ -351,6 +352,7 @@
           grid.appendChild(buttonFor(String(n), n, selectedVerse === n, () => {
             selectedVerse = n;
             displayVerseButton.disabled = false;
+            displayVerseButton.textContent = "DISPLAY VERSE";
             updateCurrent();
             updateReference();
             status.textContent = selectedBook + " " + selectedChapter + ":" + selectedVerse +
@@ -409,8 +411,8 @@
       console.error("Zuriel grid navigator:", error);
     } finally {
       go.disabled = false;
-      displayVerseButton.disabled = !selectedVerse;
-      displayVerseButton.textContent = "DISPLAY VERSE";
+      displayVerseButton.disabled = !selectedChapter;
+      displayVerseButton.textContent = selectedVerse ? "DISPLAY VERSE" : "DISPLAY CHAPTER";
       go.textContent = "GO";
     }
   }
@@ -463,6 +465,8 @@
     document.body.style.overflow = "hidden";
     search.value = "";
     selectedBook = selectedBook || "John";
+    displayVerseButton.disabled = !selectedChapter;
+    displayVerseButton.textContent = selectedVerse ? "DISPLAY VERSE" : "DISPLAY CHAPTER";
     updateCurrent();
     updateReference();
     setTab("book");
