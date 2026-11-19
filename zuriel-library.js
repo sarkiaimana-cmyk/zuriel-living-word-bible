@@ -727,7 +727,7 @@
 
         const studio = element("section", undefined, "card");
         studio.id = "zurielGloryStudio";
-        studio.dataset.finish = "navy";
+        studio.dataset.finish = "ivory";
         studio.dataset.wallpaper = "forest";
         studio.innerHTML = `
           <div class="zgs-field"><label for="zgsReference">SCRIPTURE REFERENCE</label><input id="zgsReference" placeholder="e.g. Romans 8:1"></div>
@@ -1115,7 +1115,7 @@
             if (!stacked) {
               ctx.beginPath(); ctx.moveTo(width/2,235); ctx.lineTo(width/2,canvas.height-110); ctx.stroke();
             }
-            function drawSection(title, referenceText, lines, x, y, maxWidth, size, headingColor) {
+            function drawSection(title, referenceText, lines, x, y, maxWidth, size, headingColor, textColor) {
               ctx.textAlign = "center"; ctx.fillStyle = headingColor || "#1b4b82";
               ctx.font = "bold 24px Arial, sans-serif";
               ctx.fillText(title,x+maxWidth/2,y);
@@ -1124,7 +1124,7 @@
                 ctx.fillText(referenceText,x+maxWidth/2,y);
                 y += 48;
               }
-              ctx.textAlign = "left"; ctx.fillStyle = colors[1];
+              ctx.textAlign = "left"; ctx.fillStyle = textColor || colors[1];
               ctx.font = "bold " + size + "px " + typeface + ", serif";
               lines.forEach(line => { ctx.fillText(line,x,y); y += lineHeight(size); });
               return y;
@@ -1140,14 +1140,14 @@
             }
             if (stacked) {
               let y = top;
-              y = drawSection("SCRIPTURE",reference,leftLines,exportMargin,y,exportColumnWidth,scriptureSize,"#1b4b82");
+              y = drawSection("SCRIPTURE",reference,leftLines,exportMargin,y,exportColumnWidth,scriptureSize,"#1b4b82","#1d3d68");
               y += sectionGap;
-              const faithBottom = drawSection(faithTitle,"",rightLines,exportMargin,y,exportColumnWidth,faithSize,"#26734c");
+              const faithBottom = drawSection(faithTitle,"",rightLines,exportMargin,y,exportColumnWidth,faithSize,"#26734c","#1d5d3e");
               drawGloryBanner(exportMargin,faithBottom,exportColumnWidth);
             } else {
               const leftX = margin, rightX = margin + columnWidth + gap;
-              drawSection("SCRIPTURE",reference,leftLines,leftX,top,columnWidth,scriptureSize,"#1b4b82");
-              const faithBottom = drawSection(faithTitle,"",rightLines,rightX,top,columnWidth,faithSize,"#26734c");
+              drawSection("SCRIPTURE",reference,leftLines,leftX,top,columnWidth,scriptureSize,"#1b4b82","#1d3d68");
+              const faithBottom = drawSection(faithTitle,"",rightLines,rightX,top,columnWidth,faithSize,"#26734c","#1d5d3e");
               drawGloryBanner(rightX,faithBottom,columnWidth);
             }
             ctx.textAlign = "center"; ctx.fillStyle = colors[2];
