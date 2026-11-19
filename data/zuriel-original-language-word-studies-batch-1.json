@@ -711,13 +711,14 @@
       "term": "Ruach",
       "language": "Hebrew",
       "originalForm": "רוּחַ",
-      "contextualGloss": "wind, breath or spirit",
+      "contextualGloss": "Wind, breath or spirit. In Genesis 1:2 the term describes the divine presence moving over the waters, with translation discussions about 'Spirit of God' or 'wind from God'. In Ezekiel 37:1-14 the vision deliberately moves through wind, breath and spirit imagery as the bones receive life; the passage interprets the vision as Israel's restoration. Psalm 51:10-12 asks for inner renewal and the sustaining presence of God's Holy Spirit.",
       "scriptureReferences": [
         "Genesis 1:2",
         "Genesis 6:17",
-        "Ezekiel 37:1-14"
+        "Ezekiel 37:1-14",
+        "Psalm 51:10-12"
       ],
-      "interpretiveCaution": "The same word has several senses; use grammar and context to identify the intended one.",
+      "interpretiveCaution": "The word can denote wind, breath or spirit. Do not assume every occurrence names the Holy Spirit; grammar, collocation and literary context determine the sense.",
       "morphologyStatus": "Not asserted; consult a critical lexicon and the specific verse for parsing."
     },
     {
@@ -925,13 +926,14 @@
       "term": "Logos",
       "language": "Greek",
       "originalForm": "λόγος",
-      "contextualGloss": "word, message, account or reason; in John 1 it is used in a profound Christological claim",
+      "contextualGloss": "Word, message, statement, account or reason. In John 1:1-18 the Logos is present in the beginning, related to God, involved in creation and identified with Jesus' embodied life in verse 14. Hebrews 4:12 uses 'word of God' in a different context for the living, active word that exposes the heart; do not transfer every detail of John's title into every occurrence.",
       "scriptureReferences": [
         "John 1:1",
         "John 1:14",
+        "John 1:1-18",
         "Hebrews 4:12"
       ],
-      "interpretiveCaution": "Do not reduce Logos to a single English gloss; John 1's use must be read within the whole prologue and Gospel.",
+      "interpretiveCaution": "Logos has a broad Greek range. John 1 gives it a distinctive theological role, but not every New Testament occurrence means the personal title 'the Word'.",
       "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
     },
     {
@@ -953,13 +955,16 @@
       "term": "Metanoia",
       "language": "Greek",
       "originalForm": "μετάνοια",
-      "contextualGloss": "repentance; a changed mind and reorientation expressed in turning",
+      "contextualGloss": "Repentance: a changed mind and reorientation expressed in turning. Mark 1:14-15 places the call to repent within Jesus' announcement of God's kingdom. Acts 2:37-38 connects repentance to the hearers' response to Jesus. 2 Corinthians 7:9-10 distinguishes godly grief that produces repentance from worldly grief; sorrow alone is not the same as changed direction.",
       "scriptureReferences": [
         "Acts 2:38",
         "Romans 2:4",
-        "2 Peter 3:9"
+        "2 Peter 3:9",
+        "Mark 1:14-15",
+        "Acts 2:37-38",
+        "2 Corinthians 7:9-10"
       ],
-      "interpretiveCaution": "Avoid defining repentance as a mere emotion or as a word-origin formula; examine the passage's call and response.",
+      "interpretiveCaution": "Do not reduce repentance to feeling guilty or to a word-origin formula. Read the response and its fruits in each passage; never use repentance language to pressure victims to remain in harm.",
       "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
     },
     {
@@ -1202,17 +1207,17 @@
     },
     {
       "id": "word-study-087",
-      "term": "Ruach",
-      "language": "Hebrew",
-      "originalForm": "רוּחַ",
-      "contextualGloss": "Wind, breath or spirit; context determines the sense. Genesis 1:2 describes God's ruach over the waters, with translation discussions around Spirit or wind from God. Ezekiel 37:1-14 deliberately moves among wind, breath and spirit imagery as the bones receive life, then interprets the vision as Israel's restoration. Psalm 51:10-12 asks for inner renewal and the sustaining presence of God's Holy Spirit.",
+      "term": "Agathosyne",
+      "language": "Greek",
+      "originalForm": "ἀγαθωσύνη",
+      "contextualGloss": "Goodness, uprightness or moral excellence. In Galatians 5:22-23 it appears among the fruit of the Spirit; Romans 15:14 describes believers as filled with goodness and knowledge; Ephesians 5:9 links goodness with the fruit of light.",
       "scriptureReferences": [
-        "Genesis 1:2",
-        "Ezekiel 37:1-14",
-        "Psalm 51:10-12"
+        "Galatians 5:22-23",
+        "Romans 15:14",
+        "Ephesians 5:9"
       ],
-      "interpretiveCaution": "Do not assume ruach always means the Holy Spirit; it can mean wind or breath. Let grammar, imagery and passage context guide the reading.",
-      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+      "interpretiveCaution": "Do not treat goodness as mere niceness or as a way to earn salvation; these passages describe Spirit-shaped character expressed in life.",
+      "morphologyStatus": "Not asserted; consult the specific Greek form, syntax and a critical lexicon before assigning morphology."
     },
     {
       "id": "word-study-088",
@@ -1230,31 +1235,31 @@
     },
     {
       "id": "word-study-089",
-      "term": "Logos",
-      "language": "Greek",
-      "originalForm": "λόγος",
-      "contextualGloss": "Word, message, statement, account or reason. In John 1:1-18 the Logos exists in the beginning, is related to God, is described as divine, and is associated with creation and life. John 1:14 identifies the Word with Jesus' embodied human life. Hebrews 4:12 uses 'word of God' for the living, active word that exposes the heart; do not automatically transfer every Johannine title detail into that use.",
+      "term": "Tov",
+      "language": "Hebrew",
+      "originalForm": "טוֹב",
+      "contextualGloss": "Good, beneficial, pleasing or well-being. Genesis 1 uses the term in the repeated evaluation of creation; Psalm 34:8 invites people to taste and see the Lord's goodness; Micah 6:8 describes what is good in a call to justice, mercy and humility.",
       "scriptureReferences": [
-        "John 1:1-18",
-        "John 1:14",
-        "Hebrews 4:12"
+        "Genesis 1:4",
+        "Psalm 34:8",
+        "Micah 6:8"
       ],
-      "interpretiveCaution": "Logos has a broad Greek range. John 1 gives it a distinctive theological role, but not every New Testament occurrence means the personal title 'the Word'.",
-      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+      "interpretiveCaution": "The adjective's sense depends on its subject and setting; do not make every occurrence mean moral perfection or a guaranteed pleasant outcome.",
+      "morphologyStatus": "Not asserted; consult the specific Hebrew form, syntax and a critical lexicon before assigning morphology."
     },
     {
       "id": "word-study-090",
-      "term": "Metanoia",
+      "term": "Kerygma",
       "language": "Greek",
-      "originalForm": "μετάνοια",
-      "contextualGloss": "Repentance: a changed mind and reorientation expressed in turning. In Mark 1:14-15 Jesus calls hearers to repent and believe in response to the announcement of God's kingdom. Acts 2:37-38 ties repentance to the hearers' response to the crucified and risen Jesus. In 2 Corinthians 7:9-10 Paul distinguishes godly grief that produces repentance from worldly grief; sorrow alone is not the same as changed direction.",
+      "originalForm": "κήρυγμα",
+      "contextualGloss": "Proclamation or announced message. 1 Corinthians 1:21 contrasts the proclamation with worldly expectations of wisdom; Romans 16:25 speaks of the proclamation of Jesus Christ; 2 Timothy 4:17 describes Paul being enabled to fully proclaim the message.",
       "scriptureReferences": [
-        "Mark 1:14-15",
-        "Acts 2:37-38",
-        "2 Corinthians 7:9-10"
+        "1 Corinthians 1:21",
+        "Romans 16:25",
+        "2 Timothy 4:17"
       ],
-      "interpretiveCaution": "Do not reduce repentance to feeling guilty or a bare change of opinion. Read the response and its fruits in each passage; do not use repentance language to pressure victims to remain in harm.",
-      "morphologyStatus": "Not asserted; consult the specific Hebrew or Greek form, syntax and a critical lexicon before assigning morphology."
+      "interpretiveCaution": "The noun refers to proclamation or the message proclaimed; it does not automatically encode every element of a complete theology of the Gospel in every context.",
+      "morphologyStatus": "Not asserted; consult the specific Greek form, syntax and a critical lexicon before assigning morphology."
     }
   ]
 }
