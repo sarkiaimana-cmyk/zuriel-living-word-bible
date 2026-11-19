@@ -14,6 +14,7 @@ import { TextToSpeech } from "@capacitor-community/text-to-speech";
   let rate = 1;
   let statusNode = null;
   let playButton = null;
+  let pauseButton = null;
   let stopButton = null;
   let voiceSelect = null;
   let rateSelect = null;
@@ -99,9 +100,10 @@ import { TextToSpeech } from "@capacitor-community/text-to-speech";
   function updateButtons() {
     if (playButton) {
       playButton.textContent = playing ? "Playing…" :
-        (nextVerse > 0 ? "▶ Read from verse " + (nextVerse + 1) : "▶ Read chapter aloud");
+        (nextVerse > 0 ? "▶ Continue from verse " + (nextVerse + 1) : "▶ Read chapter aloud");
       playButton.disabled = playing || !chapter || !voices.length || nextVerse >= chapter.verses.length;
     }
+    if (pauseButton) pauseButton.disabled = !playing;
     if (stopButton) stopButton.disabled = !playing;
   }
 
@@ -162,6 +164,17 @@ import { TextToSpeech } from "@capacitor-community/text-to-speech";
     }
   }
 
+  async function pausePlayback() {
+    if (!playing || !chapter) return;
+    const pausedAt = nextVerse + 1;
+    generation++;
+    playing = false;
+    await stopSpeech();
+    updateButtons();
+    setStatus("Paused at " + chapter.book + " " + chapter.chapter + ":" + pausedAt +
+      ". Choose Continue to resume from this verse.");
+  }
+
   async function stopPlayback() {
     generation++;
     playing = false;
@@ -212,6 +225,8 @@ import { TextToSpeech } from "@capacitor-community/text-to-speech";
     const controls = document.createElement("div");
     controls.className = "zra-controls";
     playButton = makeButton("▶ Read chapter aloud", playFromCurrentVerse);
+    pauseButton = makeButton("Pause", pausePlayback);
+    pauseButton.disabled = true;
     stopButton = makeButton("Stop", stopPlayback);
     stopButton.disabled = true;
     voiceSelect = document.createElement("select");
@@ -242,7 +257,7 @@ import { TextToSpeech } from "@capacitor-community/text-to-speech";
         setStatus("Device voice settings could not be opened. Install an offline English voice from Android Settings.");
       }
     });
-    controls.append(playButton, stopButton, voiceSelect, rateSelect, setupButton);
+    controls.append(playButton, pauseButton, stopButton, voiceSelect, rateSelect, setupButton);
     panel.append(heading, description, statusNode, controls);
     readingTools.insertAdjacentElement("afterend", panel);
 
