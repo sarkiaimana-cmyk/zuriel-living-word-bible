@@ -970,7 +970,17 @@
           <button type="button" data-section="devotional">
             <span aria-hidden="true">🕊️</span>
             <strong>Devotionals</strong>
-            <small>Grow through daily reflection</small>
+            <small>Scripture-led reflection and prayer</small>
+          </button>
+          <button type="button" data-library-page="worship">
+            <span aria-hidden="true">🎶</span>
+            <strong>SS&S — Songs & Worship</strong>
+            <small>Hymns, praise and Scripture-centred worship guides</small>
+          </button>
+          <button type="button" data-library-page="references">
+            <span aria-hidden="true">📚</span>
+            <strong>Dictionaries & Commentaries</strong>
+            <small>Open the biblical reference shelf</small>
           </button>
         </div>
       </section>
@@ -1334,6 +1344,18 @@
       .forEach(function (button) {
         button.addEventListener("click", function () {
           navigate(button.dataset.section);
+        });
+      });
+
+    dashboard.querySelectorAll("[data-library-page]")
+      .forEach(function (button) {
+        button.addEventListener("click", function () {
+          navigate("library");
+          if (window.ZurielLibrary) {
+            window.ZurielLibrary.open(button.dataset.libraryPage);
+          }
+          const library = document.getElementById("zurielLibrary");
+          if (library) library.scrollIntoView({ behavior: "smooth", block: "start" });
         });
       });
 
