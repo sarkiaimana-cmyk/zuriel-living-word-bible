@@ -168,6 +168,10 @@ for (const entry of dictionary.entries) {
     "Every dictionary entry needs a substantive definition: " + entry.term);
   assert.ok(Array.isArray(entry.scriptureReferences) && entry.scriptureReferences.length >= 1,
     "Every dictionary entry needs at least one Scripture reference: " + entry.term);
+  for (const reference of entry.scriptureReferences) {
+    assert.ok(/^.+?\\s+\\d+:\\d+/.test(reference), "Dictionary references must specify book, chapter and verse: " + entry.term + " — " + reference);
+    checkReference(reference, "dictionary entry " + entry.term);
+  }
   assert.ok(typeof entry.editorialCaution === "string" && entry.editorialCaution.trim().length >= 25,
     "Every dictionary entry needs an interpretive caution: " + entry.term);
   const normalizedTerm = entry.term.trim().toLocaleLowerCase("en");
@@ -235,7 +239,7 @@ for (const path of [
   "zuriel-deep-study-guides.json","zuriel-bible-geography-atlas.json","zuriel-worship-study-pathways.json","zuriel-theological-comparisons.json"
 ]) assert.ok(loader.includes(path),"Study loader must include "+path);
 assert.ok(index.includes('src="zuriel-study-library-data.js"'),"Study library integration script must load");
-assert.ok(worker.includes('zuriel-bible-offline-v206'),"Offline cache must be version 205");
+assert.ok(worker.includes('zuriel-bible-offline-v207'),"Offline cache must be version 205");
 assert.ok(worker.includes("./zuriel-study-library-data.js"),"Study loader must be precached");
 for (const path of [
   "zuriel-passage-commentary-expansion.json","zuriel-topical-bible-study-library-batch-2.json",
