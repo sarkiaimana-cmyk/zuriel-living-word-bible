@@ -46,4 +46,53 @@ assert.ok(source.includes('searchable.includes(query)'),
   "Worship search must match song title, collection, theme, Scripture reference and study notes.");
 assert.ok(source.includes('player.preload = "none"'),
   "Authorised recordings must not preload large media files on mobile.");
+
+const [pathwaysSource, bookDataSource, kjvSource] = await Promise.all([
+  readFile(new URL("../data/zuriel-worship-study-pathways.json", import.meta.url), "utf8"),
+  readFile(new URL("../bible-data.js", import.meta.url), "utf8"),
+  readFile(new URL("../kjv.72bec70fcd.json", import.meta.url), "utf8")
+]);
+const pathwayLibrary = JSON.parse(pathwaysSource);
+const bibleBooks = vm.runInNewContext(bookDataSource.replace(/if \(typeof module[\\s\\S]*$/, ""), {}, { timeout: 1000 });
+const kjv = JSON.parse(kjvSource);
+assert.equal(bibleBooks.length, 66, "Worship references must resolve against the full 66-book Bible.");
+assert.equal(Object.keys(kjv).length, 66, "Worship reference verification requires all 66 KJV books.");
+assert.ok(Array.isArray(pathwayLibrary.pathways) && pathwayLibrary.pathways.length >= 30,
+  "The worship study library must retain at least 30 original pathways.");
+assert.match(pathwayLibrary.description, /not song lyrics or audio recordings/i);
+assert.match(pathwayLibrary.rightsPolicy, /composition and recording permissions/i);
+const bookByName = new Map(bibleBooks.map(book => [book.name.toLowerCase(), book]));
+const ids = new Set(), titles = new Set();
+let verifiedReferences = 0;
+for (const pathway of pathwayLibrary.pathways) {
+  assert.ok(pathway.id && !ids.has(pathway.id), "Every worship pathway needs a unique ID.");
+  ids.add(pathway.id);
+  assert.ok(pathway.title && !titles.has(pathway.title.toLowerCase()), "Worship pathway titles must be unique.");
+  titles.add(pathway.title.toLowerCase());
+  for (const field of ["focus", "reflectionPrompt", "contextNote"]) {
+    assert.ok(typeof pathway[field] === "string" && pathway[field].trim().length >= 35,
+      pathway.title + " needs a substantive " + field + ".");
+  }
+  assert.ok(Array.isArray(pathway.references) && pathway.references.length >= 2,
+    pathway.title + " needs multiple Scripture foundations.");
+  for (const reference of pathway.references) {
+    const match = String(reference).match(/^(.+?)\\s+(\\d+)(?::(\\d+)(?:-(\\d+))?)?$/);
+    assert.ok(match, pathway.title + " has a malformed Scripture reference: " + reference);
+    const bookName = match[1].toLowerCase() === "psalm" ? "psalms" : match[1].toLowerCase();
+    const book = bookByName.get(bookName);
+    assert.ok(book, pathway.title + " refers to an unknown Bible book: " + match[1]);
+    const chapter = Number(match[2]);
+    const firstVerse = match[3] ? Number(match[3]) : 1;
+    const lastVerse = match[4] ? Number(match[4]) : firstVerse;
+    assert.ok(chapter >= 1 && chapter <= book.chapters, pathway.title + " has an invalid chapter: " + reference);
+    const chapters = kjv[book.name];
+    assert.ok(Array.isArray(chapters) && Array.isArray(chapters[chapter - 1]),
+      pathway.title + " has no offline KJV chapter for " + reference);
+    const verses = chapters[chapter - 1];
+    assert.ok(firstVerse >= 1 && lastVerse >= firstVerse && lastVerse <= verses.length,
+      pathway.title + " has an invalid offline KJV verse range: " + reference);
+    verifiedReferences++;
+  }
+}
+
 console.log("Worship library checks passed: accessible search and filtering, separate composition and recording rights, streaming permission, HTTPS source, explicit unavailable state and no media preloading.");
