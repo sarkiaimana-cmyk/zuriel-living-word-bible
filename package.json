@@ -1,6 +1,6 @@
 {
   "name": "zuriel-living-word-bible",
-  "version": "1.4.106",
+  "version": "1.4.107",
   "private": true,
   "description": "Standalone Android app and offline-first Bible reader.",
   "scripts": {
