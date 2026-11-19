@@ -36,9 +36,9 @@ assert.ok(exact.every(item => item.text.toLowerCase().includes("love")));
 const contains = await search.search("love", 30, "phrase");
 assert.equal(contains.length, 3, "Contains/phrase search should also find inflected and longer words.");
 
-const limited = await search.search("God", 1);
+const limited = await search.search("love", 1, "phrase");
 assert.equal(limited.length, 1);
-assert.equal(limited.totalMatches, 2, "Limited results must retain the full match count.");
+assert.equal(limited.totalMatches, 3, "Limited results must retain the full match count.");
 
 await assert.rejects(() => search.search("hi"), /at least 3 characters/);
 await assert.rejects(() => search.search("love", 10, "fuzzy"), /exact word or phrase/);
