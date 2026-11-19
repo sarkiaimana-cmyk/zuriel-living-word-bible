@@ -1,4 +1,4 @@
 {
-  "version": "1.4.96",
-  "releaseNotes": "Fixes Android offline packaging for the complete Bible study library. The web package now includes the study-library loader and all 12 JSON datasets, and CI compares every packaged dataset with its source to prevent missing offline resources. This corrects an omission discovered in the 1.4.95 Android package; the offline study library is now explicitly included in Android packaging checks."
+  "version": "1.4.97",
+  "releaseNotes": "Expands the offline Greek and Hebrew word-study collection from 90 to 100 distinct terms, adding contextual studies for righteousness, worship, Spirit, Christ's coming, compassion, help, redemption and wisdom. Each entry includes original script, contextual glosses, verified KJV references and explicit limits: no verse-specific morphology is claimed without parsing evidence."
 }
