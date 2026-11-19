@@ -47,13 +47,18 @@ assert.ok(source.includes('searchable.includes(query)'),
 assert.ok(source.includes('player.preload = "none"'),
   "Authorised recordings must not preload large media files on mobile.");
 
-const [pathwaysSource, bookDataSource, kjvSource] = await Promise.all([
+const [pathwaysSource, bookDataSource, kjvSource, readerSource] = await Promise.all([
   readFile(new URL("../data/zuriel-worship-study-pathways.json", import.meta.url), "utf8"),
   readFile(new URL("../bible-data.js", import.meta.url), "utf8"),
-  readFile(new URL("../kjv.72bec70fcd.json", import.meta.url), "utf8")
+  readFile(new URL("../kjv.72bec70fcd.json", import.meta.url), "utf8"),
+  readFile(new URL("../index.html", import.meta.url), "utf8")
 ]);
 const pathwayLibrary = JSON.parse(pathwaysSource);
-const bibleBooks = vm.runInNewContext(bookDataSource.replace(/if \(typeof module[\\s\\S]*$/, ""), {}, { timeout: 1000 });
+const bibleBooks = [...bookDataSource.matchAll(/\\{\\s*name:\\s*"([^"]+)",\\s*chapters:\\s*(\\d+)\\s*\\}/g)]
+  .map(match => ({ name: match[1], chapters: Number(match[2]) }));
+const readerMapMatch = readerSource.match(/const bookCodes = (\\{[\\s\\S]*?\\n\\};)/);
+assert.ok(readerMapMatch, "Reader book-code map must be available for worship reference verification.");
+const bookCodes = JSON.parse(readerMapMatch[1].replace(/;\\s*$/, ""));
 const kjv = JSON.parse(kjvSource);
 assert.equal(bibleBooks.length, 66, "Worship references must resolve against the full 66-book Bible.");
 assert.equal(Object.keys(kjv).length, 66, "Worship reference verification requires all 66 KJV books.");
@@ -85,7 +90,7 @@ for (const pathway of pathwayLibrary.pathways) {
     const firstVerse = match[3] ? Number(match[3]) : 1;
     const lastVerse = match[4] ? Number(match[4]) : firstVerse;
     assert.ok(chapter >= 1 && chapter <= book.chapters, pathway.title + " has an invalid chapter: " + reference);
-    const chapters = kjv[book.name];
+    const chapters = kjv[bookCodes[book.name]];
     assert.ok(Array.isArray(chapters) && Array.isArray(chapters[chapter - 1]),
       pathway.title + " has no offline KJV chapter for " + reference);
     const verses = chapters[chapter - 1];
