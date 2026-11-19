@@ -1,4 +1,4 @@
 {
-  "version": "1.4.104",
-  "releaseNotes": "Strengthens the offline commentary library with 173 unique primary passages and KJV-checked references. Refines the Hebrew, Greek and Aramaic collection to 108 unique original-script lexemes by consolidating duplicate Hesed/Chesed and Nephesh/Nefesh transliterations. Adds explicit Scripture links and contextual word-use notes for 51 entries, with validation against duplicate lexemes and abbreviated references."
+  "version": "1.4.105",
+  "releaseNotes": "Strengthens the 173-passage commentary library and refines 108 unique Hebrew, Greek and Aramaic lexeme studies. Audits all 100 expanded biblical dictionary entries, corrects malformed and abbreviated Scripture links, and validates each dictionary reference against the bundled KJV. The offline study drawer now displays dictionary editorial cautions. Offline cache v207."
 }
