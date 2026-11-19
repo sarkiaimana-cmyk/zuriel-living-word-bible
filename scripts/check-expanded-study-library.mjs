@@ -238,6 +238,32 @@ for (const entry of topical.entries) {
   topicalTitles.add(titleKey);
 }
 
+const divineNameIds = new Set();
+const divineNames = new Set();
+for (const entry of names.entries) {
+  assert.ok(typeof entry.id === "string" && entry.id.trim(), "Each divine name entry needs a stable ID");
+  assert.ok(!divineNameIds.has(entry.id), "Divine name IDs must be unique: " + entry.id);
+  assert.ok(typeof entry.name === "string" && entry.name.trim().length >= 2, "Each divine name entry needs a display name");
+  const nameKey = entry.name.trim().toLocaleLowerCase("en");
+  assert.ok(!divineNames.has(nameKey), "Divine names and titles must be unique: " + entry.name);
+  assert.ok(["Hebrew","Greek","Aramaic","Hebrew and Greek"].includes(entry.language), "Divine name needs an explicit source-language label: " + entry.name);
+  assert.ok(typeof entry.originalForm === "string" && entry.originalForm.trim(), "Divine name needs its original-script form: " + entry.name);
+  const hasHebrew = /[\\u0590-\\u05FF]/.test(entry.originalForm);
+  const hasGreek = /[\\u0370-\\u03FF\\u1F00-\\u1FFF]/.test(entry.originalForm);
+  if (entry.language === "Hebrew" || entry.language === "Aramaic") assert.ok(hasHebrew, "Divine name original form does not match Hebrew/Aramaic: " + entry.name);
+  if (entry.language === "Greek") assert.ok(hasGreek, "Divine name original form does not match Greek: " + entry.name);
+  if (entry.language === "Hebrew and Greek") assert.ok(hasHebrew && hasGreek, "Combined divine title needs both original scripts: " + entry.name);
+  assert.ok(typeof entry.senseAndContext === "string" && entry.senseAndContext.trim().length >= 35, "Divine name needs a contextual meaning: " + entry.name);
+  assert.ok(typeof entry.studyNote === "string" && entry.studyNote.trim().length >= 30, "Divine name needs a contextual study note: " + entry.name);
+  assert.ok(Array.isArray(entry.scriptureReferences) && entry.scriptureReferences.length >= 1, "Divine name needs Scripture references: " + entry.name);
+  for (const reference of entry.scriptureReferences) {
+    assert.ok(/^.+?\\s+\\d+:\\d+/.test(reference), "Divine name references must specify book, chapter and verse: " + entry.name + " — " + reference);
+    checkReference(reference, "divine name " + entry.name);
+  }
+  divineNameIds.add(entry.id);
+  divineNames.add(nameKey);
+}
+
 for (const [label,items] of [
   ["commentary",commentary.entries],["topical",topical.entries],["dictionary",dictionary.entries],
   ["word study",words.entries],["names",names.entries],["worship",worship.pathways]
@@ -280,7 +306,7 @@ for (const path of [
   "zuriel-deep-study-guides.json","zuriel-bible-geography-atlas.json","zuriel-worship-study-pathways.json","zuriel-theological-comparisons.json"
 ]) assert.ok(loader.includes(path),"Study loader must include "+path);
 assert.ok(index.includes('src="zuriel-study-library-data.js"'),"Study library integration script must load");
-assert.ok(worker.includes('zuriel-bible-offline-v210'),"Offline cache must be version 205");
+assert.ok(worker.includes('zuriel-bible-offline-v211'),"Offline cache must be version 205");
 assert.ok(worker.includes("./zuriel-study-library-data.js"),"Study loader must be precached");
 for (const path of [
   "zuriel-passage-commentary-expansion.json","zuriel-topical-bible-study-library-batch-2.json",
