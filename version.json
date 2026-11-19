@@ -1,4 +1,4 @@
 {
-  "version": "1.4.89",
-  "releaseNotes": "Adds five contextual Hebrew and Greek word studies (hesed, ruach, nephesh, logos and metanoia), each with passage-specific contextual explanations and interpretive cautions. Adds five original passage commentaries across Leviticus, 1 Samuel, Psalms, Micah and John, with context, observation and safeguards. Refreshes the offline study cache and validates the expanded library against the bundled KJV."
+  "version": "1.4.90",
+  "releaseNotes": "Expands passage commentary from 137 to 152 entries and closes the remaining canonical-book gaps so the commentary library covers all 66 Bible books. New entries add context, observation, interpretive safeguards and linked cross-references for Psalms, Job, Chronicles, Song of Solomon, Lamentations, Obadiah, Jonah, Nahum, Zephaniah, Haggai, Malachi, 2 John, 3 John and Jude. Refreshes offline cache and verifies references against the bundled KJV."
 }
