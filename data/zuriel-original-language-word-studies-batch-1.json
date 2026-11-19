@@ -1260,6 +1260,152 @@
       ],
       "interpretiveCaution": "The noun refers to proclamation or the message proclaimed; it does not automatically encode every element of a complete theology of the Gospel in every context.",
       "morphologyStatus": "Not asserted; consult the specific Greek form, syntax and a critical lexicon before assigning morphology."
+    },
+    {
+      "id": "word-study-091",
+      "term": "Dikaiosyne",
+      "language": "Greek",
+      "originalForm": "δικαιοσύνη",
+      "contextualGloss": "Righteousness or justice; depending on context it can describe God's saving faithfulness, a right standing before God, or conduct shaped by what is right.",
+      "scriptureReferences": [
+        "Matthew 5:6",
+        "Romans 3:21-22",
+        "Romans 6:13",
+        "Philippians 3:9"
+      ],
+      "interpretiveCaution": "Do not assume the term has only a forensic or only an ethical sense; follow the argument and its grammatical setting in each passage.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-092",
+      "term": "Proskuneo",
+      "language": "Greek",
+      "originalForm": "προσκυνέω",
+      "contextualGloss": "To bow down, do obeisance or worship; the action may express reverence toward God or homage toward a person, as the immediate context shows.",
+      "scriptureReferences": [
+        "Matthew 2:2",
+        "John 4:23-24",
+        "Revelation 5:14"
+      ],
+      "interpretiveCaution": "Do not reduce every occurrence to one physical posture or infer the full theology of worship from the verb alone.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-093",
+      "term": "Latreuo",
+      "language": "Greek",
+      "originalForm": "λατρεύω",
+      "contextualGloss": "To serve or render religious service; New Testament contexts connect the verb with service offered to God, worship and devoted allegiance.",
+      "scriptureReferences": [
+        "Matthew 4:10",
+        "Luke 2:37",
+        "Romans 1:9",
+        "Philippians 3:3"
+      ],
+      "interpretiveCaution": "Distinguish this term from broader words for service by reading the object and setting of each occurrence.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-094",
+      "term": "Pneuma",
+      "language": "Greek",
+      "originalForm": "πνεῦμα",
+      "contextualGloss": "Spirit, breath or wind; it may refer to the Holy Spirit, the human spirit or wind, and context must determine the referent.",
+      "scriptureReferences": [
+        "John 3:5-8",
+        "Romans 8:9-16",
+        "1 Corinthians 2:10-12"
+      ],
+      "interpretiveCaution": "The same Greek word has several referents; do not assume every occurrence means the Holy Spirit.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-095",
+      "term": "Parousia",
+      "language": "Greek",
+      "originalForm": "παρουσία",
+      "contextualGloss": "Presence, arrival or coming; in several New Testament passages it describes the awaited coming of Christ, while its basic sense is established by context.",
+      "scriptureReferences": [
+        "Matthew 24:3",
+        "1 Corinthians 15:23",
+        "1 Thessalonians 4:15-17",
+        "2 Peter 3:4"
+      ],
+      "interpretiveCaution": "Interpret each occurrence in its literary setting and avoid building detailed end-times chronology from the noun alone.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-096",
+      "term": "Anothen",
+      "language": "Greek",
+      "originalForm": "ἄνωθεν",
+      "contextualGloss": "From above, from the beginning or again; John's use in the conversation with Nicodemus carries a deliberate ambiguity that the dialogue develops.",
+      "scriptureReferences": [
+        "John 3:3-7",
+        "John 3:31",
+        "John 19:11"
+      ],
+      "interpretiveCaution": "In John 3, preserve the wordplay between 'from above' and 'again' rather than flattening the conversation to only one English gloss.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-097",
+      "term": "Splanchnizomai",
+      "language": "Greek",
+      "originalForm": "σπλαγχνίζομαι",
+      "contextualGloss": "To be moved with compassion; Gospel narratives use it for deep concern that issues in merciful action toward people in need.",
+      "scriptureReferences": [
+        "Matthew 9:36",
+        "Matthew 14:14",
+        "Mark 1:41",
+        "Luke 10:33"
+      ],
+      "interpretiveCaution": "Do not treat compassion as sentiment alone; observe the concrete response that follows in each narrative.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-098",
+      "term": "Ezer",
+      "language": "Hebrew",
+      "originalForm": "עֵזֶר",
+      "contextualGloss": "Help or helper; the word can describe assistance and is also used of God as the help of His people, so it does not inherently imply inferiority.",
+      "scriptureReferences": [
+        "Genesis 2:18",
+        "Exodus 18:4",
+        "Psalm 33:20",
+        "Psalm 121:1-2"
+      ],
+      "interpretiveCaution": "Do not derive a hierarchy of worth or authority from this noun alone; attend to its varied biblical uses and the whole creation narrative.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-099",
+      "term": "Gaal",
+      "language": "Hebrew",
+      "originalForm": "גָּאַל",
+      "contextualGloss": "To redeem, act as a kinsman-redeemer or reclaim; in legal and narrative settings it can describe restoring family land, freedom or a relative's standing.",
+      "scriptureReferences": [
+        "Leviticus 25:25",
+        "Ruth 4:4-10",
+        "Isaiah 43:1"
+      ],
+      "interpretiveCaution": "The kinsman-redeemer institution belongs to specific Israelite social and legal settings; explain those settings before applying the imagery to Christ.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-100",
+      "term": "Chokmah",
+      "language": "Hebrew",
+      "originalForm": "חָכְמָה",
+      "contextualGloss": "Wisdom or skill; biblical usage includes practical competence, moral discernment and reverent living shaped by God's instruction.",
+      "scriptureReferences": [
+        "Exodus 31:3",
+        "Proverbs 1:7",
+        "Proverbs 9:10",
+        "Ecclesiastes 7:11-12"
+      ],
+      "interpretiveCaution": "Wisdom literature uses the term across practical and theological settings; do not reduce it to intelligence or a promise of effortless success.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
     }
   ]
 }
