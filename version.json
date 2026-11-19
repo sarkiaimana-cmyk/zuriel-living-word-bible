@@ -1,4 +1,4 @@
 {
-  "version": "1.4.75",
-  "releaseNotes": "Moves Bible Translations to the very top of the home dashboard, ahead of the previous hero section. Adds a clear twelve-version catalogue and places the translation provider, chapter comparison and offline-download controls directly in that top section. Preserves provider permission checks and KJV offline reading."
+  "version": "1.4.76",
+  "releaseNotes": "Makes all twelve Bible translation shortcuts at the top of the home screen tappable. KJV opens the Bible reader; the other version shortcuts request that exact version from the authorised live catalogue and show a clear unavailable/offline message when the translation service is not connected. Translation comparison and offline-download controls remain in the top section. Refreshes the offline cache."
 }
