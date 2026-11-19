@@ -1,4 +1,4 @@
 {
-  "version": "1.4.112",
-  "releaseNotes": "Strengthens the offline study libraries with KJV-checked commentary, language, dictionary, theology, pathways, topical, divine-title and book-study references. Audits 25 biblical places and 8 journeys with 103 explicit Scripture links, and validates 30 worship-study pathways with 90 explicit Scripture links. The Study Library now displays geography, route and worship context notes. Offline cache v214."
+  "version": "1.4.113",
+  "releaseNotes": "Strengthens the offline study library with KJV-checked commentary, language, dictionary, theology, Scripture, topical, divine-title, deep-study, geography and worship resources. Refines all 66 book introductions and study pathways: 465 explicit Scripture links, book-specific prompts, and replaces 65 repeated generic cross-reference placeholders with relevant book-specific passages. Offline cache v215."
 }
