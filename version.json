@@ -1,4 +1,4 @@
 {
-  "version": "1.4.110",
-  "releaseNotes": "Strengthens the offline study library with KJV-checked commentary, language, dictionary, theology, pathways, topical and divine-title references. Audits all 20 deep-study guides, validates 105 explicit primary/cross-reference links, and fixes the Study Library to display each guide's context, observation, interpretation, application and passage links. Offline cache v212."
+  "version": "1.4.111",
+  "releaseNotes": "Strengthens the offline study library with KJV-checked references across commentary, original languages, dictionary, theology, Scripture pathways, topical guides, divine titles and deep studies. Audits all 66 book introductions and 66 study pathways, validates 452 explicit primary/key/cross-reference links, and tailors reading notes, applications and prayer prompts for each book. Study Library now displays book themes, passages, prayer prompts and interpretive guardrails. Offline cache v213."
 }
