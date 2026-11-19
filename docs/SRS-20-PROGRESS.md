@@ -304,3 +304,14 @@ The following user requirements are part of the product acceptance criteria, not
 - Added validator rules for two-to-four distinct perspectives, adequate tradition descriptions, explicit book/chapter/verse references and KJV reference checks.
 - App/package and in-app update version advanced to 1.4.106; offline cache advanced to v208.
 - Candidate status pending CI and Android package checks; installation and physical device testing remain outstanding.
+
+
+## 1.4.107 connected Scripture pathway quality milestone — candidate
+
+- Reviewed all 74 Scripture trails and all 370 ordered passage steps.
+- Replaced repeated generic step prompts across the first 41 trails and the 24 generic trails in the second batch with individually written notes tied to each passage's content and place in the trail.
+- Preserved the nine already passage-specific trails in the second batch and strengthened three shorter notes in the Malachi trail.
+- Every one of the 370 connection notes is now unique and substantive; every step has an explicit book, chapter and verse reference.
+- Added validator checks for five ordered steps, explicit passage references, substantive unique connection notes, and each trail's overview, caution and application.
+- App/package and in-app update version advanced to 1.4.107; offline cache advanced to v209.
+- Candidate status pending validation and Android package checks; physical installation and reading-flow tests remain separate.
