@@ -89,6 +89,7 @@ if (home.includes("setupHomePassageSelector") || home.includes("zurielHomePassag
 }
 
 requireMatch(navigator, /id="zgnDisplayVerse"[^>]*>DISPLAY VERSE/, "The passage selector must present an explicit DISPLAY VERSE action.");
+requireMatch(navigator, /function chooseChapter\(number\)[\s\S]*?displayVerseButton\.disabled = false;[\s\S]*?displayVerseButton\.textContent = "DISPLAY CHAPTER"/, "Choosing a chapter must enable a separate DISPLAY CHAPTER action.");
 requireMatch(navigator, /displayVerseButton\.addEventListener\("click", openPassage\)/, "The DISPLAY VERSE action must open the selected passage.");
 requireMatch(navigator, /selectedVerse = n;[\s\S]*?displayVerseButton\.disabled = false;[\s\S]*?Tap DISPLAY VERSE to open the passage\./, "Selecting a verse must prepare the confirmation action without opening the passage automatically.");
 const verseChoiceHandler = navigator.match(/grid\.appendChild\(buttonFor\(String\(n\), n, selectedVerse === n, \(\) => \{([\s\S]*?)\}\)\);/);
