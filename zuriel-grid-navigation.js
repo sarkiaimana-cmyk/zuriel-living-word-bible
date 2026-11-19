@@ -383,6 +383,7 @@
     displayVerseButton.textContent = "DISPLAY CHAPTER";
     updateCurrent();
     updateReference();
+    syncInlineControls();
     status.textContent = name + " selected. Now choose a chapter.";
     setTab("chapter");
   }
@@ -394,6 +395,7 @@
     displayVerseButton.textContent = "DISPLAY CHAPTER";
     updateCurrent();
     updateReference();
+    syncInlineControls();
     status.textContent = "Chapter " + number + " selected. Tap DISPLAY CHAPTER to read the full chapter, or choose a verse.";
     setTab("verse");
   }
@@ -476,6 +478,7 @@
             displayVerseButton.textContent = "DISPLAY VERSE";
             updateCurrent();
             updateReference();
+            syncInlineControls();
             status.textContent = selectedBook + " " + selectedChapter + ":" + selectedVerse +
               " selected. Tap DISPLAY VERSE to open the passage.";
           }));
@@ -534,6 +537,8 @@
       go.disabled = false;
       displayVerseButton.disabled = !selectedChapter;
       displayVerseButton.textContent = selectedVerse ? "DISPLAY VERSE" : "DISPLAY CHAPTER";
+      inlineDisplayButton.disabled = !selectedChapter;
+      inlineDisplayButton.textContent = selectedVerse ? "DISPLAY VERSE" : "DISPLAY CHAPTER";
       go.textContent = "GO";
     }
   }
@@ -575,6 +580,7 @@
     displayVerseButton.disabled = !verse;
     updateCurrent();
     updateReference();
+    syncInlineControls();
     if (verse) setTab("verse");
     else setTab("chapter");
     await openPassage();
@@ -586,6 +592,7 @@
     document.body.style.overflow = "hidden";
     search.value = "";
     selectedBook = selectedBook || "John";
+    syncInlineControls();
     displayVerseButton.disabled = !selectedChapter;
     displayVerseButton.textContent = selectedVerse ? "DISPLAY VERSE" : "DISPLAY CHAPTER";
     updateCurrent();
