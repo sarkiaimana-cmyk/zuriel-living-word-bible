@@ -58,8 +58,11 @@ const records = typeof library.auditList === "function"
 if (new Set(visibleRecords.map(item => String(item.reference || "").trim().toLowerCase())).size !== visibleRecords.length) {
   throw new Error("The visible faith-response list must contain unique verse references.");
 }
-if (records.length < visibleRecords.length) {
-  throw new Error("The faith-response audit list cannot contain fewer records than the visible list.");
+if (records.length !== visibleRecords.length) {
+  throw new Error("The faith-response audit list must contain exactly one record per visible Scripture reference.");
+}
+if (new Set(records.map(item => String(item.reference || "").trim().toLowerCase())).size !== records.length) {
+  throw new Error("The faith-response audit list must not contain duplicate Scripture references.");
 }
 const exact = new Map();
 const invalid = [];
@@ -120,7 +123,8 @@ if (invalid.length) {
   process.exitCode = 1;
 }
 if (duplicates.length) {
-  console.warn("Duplicate exact verse records to review (non-blocking; no source content is removed): " + duplicates.join(", "));
+  console.error("Duplicate exact verse records are not allowed: " + duplicates.join(", "));
+  process.exitCode = 1;
 }
 if (process.argv.includes("--require-complete") && missingExact > 0) {
   console.error("Strict coverage gate failed: every offline KJV verse needs its own curated response.");
