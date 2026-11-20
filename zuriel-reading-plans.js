@@ -86,6 +86,96 @@
         ["Luke 22:14-23", "Reflect on the Last Supper and Jesus' words about the new covenant."],
         ["John 20:1-18", "Read the resurrection account and Mary's encounter with the risen Jesus."]
       ]
+    },
+    {
+      id:"spiritual-warfare-7",
+      title:"Standing Firm: Spiritual Warfare",
+      duration:7,
+      description:"A balanced, Christ-centred week on truth, the armour of God, resisting temptation and the hope of Christ's victory.",
+      days:[
+        ["Ephesians 6:10-18","Study the whole armour of God and the repeated call to stand in the Lord's strength."],
+        ["James 4:1-10","Notice how humility, submission to God and resistance to evil belong together."],
+        ["1 Peter 5:6-11","Read the call to sober watchfulness, humility and confidence in God's care."],
+        ["Matthew 4:1-11","Observe how Jesus answers temptation with Scripture in its proper context."],
+        ["1 Corinthians 10:1-13","Consider warning, faithfulness and the way God provides endurance in temptation."],
+        ["Romans 8:31-39","Rest in the assurance that nothing can separate believers from God's love in Christ."],
+        ["Colossians 2:8-15","Reflect on the sufficiency of Christ and the triumph of the cross."]
+      ]
+    },
+    {
+      id:"new-life-in-christ-7",
+      title:"Your New Life in Christ",
+      duration:7,
+      description:"Explore grace, adoption, identity, renewal and the daily practice of following Jesus.",
+      days:[
+        ["2 Corinthians 5:14-21","Read about new creation and reconciliation through Christ."],
+        ["Romans 8:1-17","Study life in the Spirit, adoption and belonging to God."],
+        ["Ephesians 1:3-14","Trace the blessings and hope believers receive in Christ."],
+        ["Ephesians 2:1-10","Remember salvation by grace and the good works God prepares."],
+        ["Colossians 3:1-17","Consider the character and conduct of the new life."],
+        ["Galatians 2:15-21","Reflect on living by faith in the Son of God."],
+        ["1 Peter 2:1-10","Explore the identity and calling of God's people."]
+      ]
+    },
+    {
+      id:"praying-through-scripture-7",
+      title:"Learning to Pray through Scripture",
+      duration:7,
+      description:"A practical journey through the Lord's Prayer, thanksgiving, intercession, lament and perseverance.",
+      days:[
+        ["Matthew 6:5-15","Follow the pattern Jesus gives for prayer."],
+        ["Psalm 23:1-6","Turn the Shepherd's care into honest prayer and trust."],
+        ["Philippians 4:4-9","Bring requests to God with thanksgiving and practise what is true."],
+        ["Colossians 4:2-6","Consider watchful prayer, gratitude and gracious speech."],
+        ["1 Timothy 2:1-8","Study prayer for all people and those in authority."],
+        ["Psalm 13:1-6","Learn how lament can express pain and still turn toward trust."],
+        ["Luke 18:1-8","Reflect on persistence in prayer and confidence in God's justice."]
+      ]
+    },
+    {
+      id:"wisdom-for-daily-life-7",
+      title:"Wisdom for Everyday Decisions",
+      duration:7,
+      description:"Seek biblical wisdom for speech, relationships, work, choices and a life shaped by God's Word.",
+      days:[
+        ["Proverbs 3:1-12","Consider trust, humility and acknowledging God in every path."],
+        ["James 1:1-18","Study perseverance, asking for wisdom and resisting temptation."],
+        ["James 3:1-18","Reflect on the power of speech and the character of wisdom from above."],
+        ["Proverbs 15:1-17","Notice how gentle answers, listening and contentment shape daily life."],
+        ["Micah 6:6-8","Consider justice, mercy and walking humbly with God."],
+        ["Matthew 7:12-27","Read Jesus' teaching about the narrow way and putting His words into practice."],
+        ["Colossians 3:12-17","Practise compassion, forgiveness, love and gratitude."]
+      ]
+    },
+    {
+      id:"hope-in-hard-seasons-7",
+      title:"Hope in Difficult Seasons",
+      duration:7,
+      description:"Read honestly about suffering, comfort, endurance and the hope God gives in Christ.",
+      days:[
+        ["Psalm 34:1-18","Notice God's nearness to the brokenhearted."],
+        ["Isaiah 40:27-31","Reflect on the Creator who gives strength to the weary."],
+        ["2 Corinthians 1:3-11","Study God's comfort and the call to comfort others."],
+        ["Romans 5:1-11","Consider hope, endurance and God's love poured into believers' hearts."],
+        ["John 14:1-14","Hear Jesus comfort His disciples and direct them to the Father."],
+        ["1 Peter 1:3-9","Reflect on living hope through the resurrection of Jesus."],
+        ["Revelation 21:1-7","Look toward God's promised renewal and the end of death and sorrow."]
+      ]
+    },
+    {
+      id:"forgiveness-and-peace-7",
+      title:"Forgiveness, Peace and Healthy Relationships",
+      duration:7,
+      description:"Study forgiveness, reconciliation, boundaries, truthful speech and the peace that grows from Christ.",
+      days:[
+        ["Matthew 18:15-35","Read Jesus' teaching about addressing wrong and the seriousness of forgiveness."],
+        ["Ephesians 4:25-32","Practise truthfulness, constructive speech and kindness."],
+        ["Romans 12:9-21","Consider sincere love and refusing revenge."],
+        ["Colossians 3:12-17","Study compassion, patience, forgiveness and love."],
+        ["Matthew 5:21-26","Reflect on anger, reconciliation and making peace."],
+        ["Proverbs 15:1-4","Notice the effect of gentle speech and truthful words."],
+        ["Romans 14:13-19","Pursue what makes for peace and mutual strengthening."]
+      ]
     }
 
   ];
