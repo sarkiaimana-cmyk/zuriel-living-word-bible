@@ -13,6 +13,7 @@ on:
       - "images/**"
       - "package.json"
       - "capacitor.config.ts"
+      - "android-signing-fingerprint.txt"
       - "scripts/**"
       - ".github/workflows/android-apk.yml"
   push:
@@ -26,6 +27,7 @@ on:
       - "images/**"
       - "package.json"
       - "capacitor.config.ts"
+      - "android-signing-fingerprint.txt"
       - "scripts/**"
       - ".github/workflows/android-apk.yml"
 
