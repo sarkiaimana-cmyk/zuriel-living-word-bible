@@ -128,7 +128,7 @@ for (const trail of trails) {
 const topicalIds = new Set();
 const topicalTitles = new Set();
 for (const entry of topical.entries) {
-  assert.ok(typeof entry.id === "string" && /^topic-guide-\\d{3}$/.test(entry.id), "Each topical guide needs a stable topic-guide ID");
+  assert.ok(typeof entry.id === "string" && /^topic-guide-\d{3}$/.test(entry.id), "Each topical guide needs a stable topic-guide ID");
   assert.ok(!topicalIds.has(entry.id), "Topical guide IDs must be unique: " + entry.id);
   assert.ok(typeof entry.title === "string" && entry.title.trim().length >= 12, "Each topical guide needs a meaningful title");
   const normalizedTitle = entry.title.trim().toLocaleLowerCase("en");
