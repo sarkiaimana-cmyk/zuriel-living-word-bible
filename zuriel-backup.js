@@ -519,7 +519,7 @@
       [KEYS.wordHighlights]: next.wordHighlights,
       [KEYS.personalLibrary]: next.personalLibrary,
       [KEYS.gloryVerseCards]: next.gloryVerseCards,
-      [KEYS.faithCards]: next.faithCards
+      [KEYS.faithCards]: next.faithCards,
       [KEYS.readingPlans]: next.readingPlanProgress
     };
     const previous = {};
