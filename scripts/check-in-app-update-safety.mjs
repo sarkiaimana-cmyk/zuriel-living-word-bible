@@ -1,5 +1,5 @@
 import { readFile } from "node:fs/promises";
-const [updates, workflow, backup, version] = await Promise.all([
+const [updates, workflow, backup, version, fingerprint] = await Promise.all([
   readFile(new URL("../zuriel-updates.js", import.meta.url), "utf8"),
   readFile(new URL("../.github/workflows/android-apk.yml", import.meta.url), "utf8"),
   readFile(new URL("../zuriel-backup.js", import.meta.url), "utf8"),
@@ -22,8 +22,9 @@ if (!workflow.includes("com.zuriel.livingwordbible.release")) failures.push("The
 if (!workflow.includes("EXPECTED_CERT_SHA256") || !workflow.includes("ACTUAL_CERT_SHA256")) failures.push("Release build must verify the established signing certificate fingerprint.");
 if (fingerprint.trim() !== expectedFingerprint) failures.push("Pinned signing certificate fingerprint does not match the established release identity.");
 if (!workflow.includes("Verify signed APK package and version metadata")) failures.push("Signed APK identity/version verification is missing.");
-for (const key of ["zuriel_personal_notes_v1","zuriel_prayer_journal_v1","zurielReadingHistory_v1","zurielLastReadingPosition","zuriel-verse-study-notes-v1","zuriel-word-highlights-v1","zuriel_personal_library_v1","zuriel_reading_plan_progress_v1"]) {
+for (const key of ["zuriel_personal_notes_v1","zuriel_prayer_journal_v1","zurielReadingHistory_v1","zurielLastReadingPosition","zuriel-verse-study-notes-v1","zuriel-word-highlights-v1","zuriel_personal_library_v1","zuriel_reading_plan_progress_v1","zuriel-saved-faith-cards-v1"]) {
   if (!backup.includes(key)) failures.push("Encrypted backup does not include " + key + ".");
+if (!backup.includes("safeFaithCards") || !backup.includes("mergeFaithCards")) failures.push("Encrypted backup must validate and merge saved verse-specific faith cards.");
 }
 if (failures.length) {
   console.error("In-app update/data preservation checks failed:");
