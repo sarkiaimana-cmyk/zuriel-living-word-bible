@@ -6,6 +6,7 @@ const source = await readFile(new URL("../zuriel-library.js", import.meta.url), 
 const start = source.indexOf("  function emptySavedLibrary() {");
 const end = source.indexOf("  function element(tag, text, className) {", start);
 assert.ok(start >= 0 && end > start, "Personal library storage block has changed; review this test before updating it.");
+assert.match(source.slice(start, end), /function persist\(\)/, "Storage test fixture must include the persistence guard.");
 const block = source.slice(start, end) + "\nwindow.__test = { loadSaved, refreshSaved, persist, getSaved: () => saved, hasError: () => !!savedLoadError };";
 const store = new Map();
 let writes = 0;
