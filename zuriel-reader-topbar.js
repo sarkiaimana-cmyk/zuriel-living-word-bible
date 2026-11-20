@@ -42,7 +42,7 @@
         #zurielReaderTopControls .zuriel-reader-icon { font-size:16px; }
         #zurielReaderViewTabs button {font-size:10px;padding:4px 2px;min-height:32px;}
       }
-
+    `;
     document.head.appendChild(style);
 
     const controls = document.createElement("div");
