@@ -264,9 +264,13 @@ jobs:
         if: steps.signing_check.outputs.available == 'true' && steps.signed_release.outcome == 'success'
         uses: ReactiveCircus/android-emulator-runner@v2
         with:
-          api-level: 35
+          api-level: 30
+          target: default
           arch: x86_64
+          profile: pixel_2
           emulator-boot-timeout: 600
+          emulator-options: -no-window -no-audio -no-boot-anim -no-snapshot -wipe-data -gpu swiftshader_indirect
+          disable-animations: true
           script: |
             set -euo pipefail
             APK="android/app/build/outputs/apk/release/Zuriel-Living-Word-Bible-release.apk"
