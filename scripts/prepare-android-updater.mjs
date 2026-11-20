@@ -15,10 +15,10 @@ async function findFile(dir, pattern) {
   return null;
 }
 
-const activityPath = await findFile(join(androidRoot, "app/src/main/java"), /^MainActivity\\.(kt|java)$/);
+const activityPath = await findFile(join(androidRoot, "app/src/main/java"), /^MainActivity\.(kt|java)$/);
 if (!activityPath) throw new Error("Capacitor MainActivity was not found.");
 const activity = await readFile(activityPath, "utf8");
-const packageMatch = activity.match(/^package\\s+([A-Za-z0-9_.]+)/m);
+const packageMatch = activity.match(/^package\s+([A-Za-z0-9_.]+)/m);
 if (!packageMatch) throw new Error("Could not read the Android package name.");
 const packageName = packageMatch[1];
 const pluginPath = join(androidRoot, "app/src/main/java", ...packageName.split("."), "ZurielUpdaterPlugin.java");
@@ -119,16 +119,16 @@ const java = [
   "    } finally { if (connection != null) connection.disconnect(); }",
   "  }",
   "}"
-].join("\\n");
+].join("\n");
 await writeFile(pluginPath, java);
 
 let updatedActivity = activity;
 if (!updatedActivity.includes("ZurielUpdaterPlugin")) {
-  updatedActivity = updatedActivity.replace(/^(package\\s+[A-Za-z0-9_.]+)$/m, "$1\\n\\nimport " + packageName + ".ZurielUpdaterPlugin");
+  updatedActivity = updatedActivity.replace(/^(package\s+[A-Za-z0-9_.]+)$/m, "$1\n\nimport " + packageName + ".ZurielUpdaterPlugin");
   if (activityPath.endsWith(".kt")) {
-    updatedActivity = updatedActivity.replace(/class MainActivity([^\\{]*\\{)/, "class MainActivity$1\\n    override fun onCreate(savedInstanceState: android.os.Bundle?) {\\n        registerPlugin(ZurielUpdaterPlugin::class.java)\\n        super.onCreate(savedInstanceState)\\n    }\\n");
+    updatedActivity = updatedActivity.replace(/class MainActivity([^\{]*\{)/, "class MainActivity$1\n    override fun onCreate(savedInstanceState: android.os.Bundle?) {\n        registerPlugin(ZurielUpdaterPlugin::class.java)\n        super.onCreate(savedInstanceState)\n    }\n");
   } else {
-    updatedActivity = updatedActivity.replace(/public class MainActivity extends BridgeActivity \\{/, "public class MainActivity extends BridgeActivity {\\n    @Override\\n    public void onCreate(android.os.Bundle savedInstanceState) {\\n        registerPlugin(ZurielUpdaterPlugin.class);\\n        super.onCreate(savedInstanceState);\\n    }");
+    updatedActivity = updatedActivity.replace(/public class MainActivity extends BridgeActivity \{/, "public class MainActivity extends BridgeActivity {\n    @Override\n    public void onCreate(android.os.Bundle savedInstanceState) {\n        registerPlugin(ZurielUpdaterPlugin.class);\n        super.onCreate(savedInstanceState);\n    }");
   }
   if (updatedActivity === activity) throw new Error("Could not register ZurielUpdaterPlugin in MainActivity.");
   await writeFile(activityPath, updatedActivity);
@@ -136,7 +136,7 @@ if (!updatedActivity.includes("ZurielUpdaterPlugin")) {
 
 let manifest = await readFile(manifestPath, "utf8");
 if (!manifest.includes("android.permission.REQUEST_INSTALL_PACKAGES")) {
-  manifest = manifest.replace("<application", '<uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />\\n    <application');
+  manifest = manifest.replace("<application", '<uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />\n    <application');
 }
 if (!manifest.includes(".fileprovider")) {
   manifest = manifest.replace("</application>", [
@@ -150,10 +150,10 @@ if (!manifest.includes(".fileprovider")) {
     '                android:resource="@xml/zuriel_file_paths" />',
     "        </provider>",
     "    </application>"
-  ].join("\\n"));
+  ].join("\n"));
 }
 await writeFile(manifestPath, manifest);
 const xmlPath = join(androidRoot, "app/src/main/res/xml/zuriel_file_paths.xml");
 await mkdir(dirname(xmlPath), { recursive: true });
-await writeFile(xmlPath, '<?xml version="1.0" encoding="utf-8"?>\\n<paths xmlns:android="http://schemas.android.com/apk/res/android">\\n    <cache-path name="zuriel_updates" path="." />\\n</paths>\\n');
+await writeFile(xmlPath, '<?xml version="1.0" encoding="utf-8"?>\n<paths xmlns:android="http://schemas.android.com/apk/res/android">\n    <cache-path name="zuriel_updates" path="." />\n</paths>\n');
 console.log("Prepared the native checksum-verified Android update installer.");
