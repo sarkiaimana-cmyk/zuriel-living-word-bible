@@ -72,7 +72,7 @@
             }
             const apk = Array.isArray(release.assets)
               ? release.assets.find(asset =>
-                  /Zuriel-Living-Word-Bible-release\\.apk$/i.test(asset.name) &&
+                  /Zuriel-Living-Word-Bible-release\.apk$/i.test(asset.name) &&
                   Number(asset.size) > 0 &&
                   /^[a-f0-9]{64}$/i.test(String(asset.digest || "").replace(/^sha256:/i, ""))
                 )
