@@ -1,13 +1,14 @@
 import { readFile } from "node:fs/promises";
 
-const [library, worker, packaging, index, home, prWorkflow, androidWorkflow] = await Promise.all([
+const [library, worker, packaging, index, home, prWorkflow, androidWorkflow, faithCards] = await Promise.all([
   readFile(new URL("../zuriel-library.js", import.meta.url), "utf8"),
   readFile(new URL("../sw.js", import.meta.url), "utf8"),
   readFile(new URL("./prepare-web.mjs", import.meta.url), "utf8"),
   readFile(new URL("../index.html", import.meta.url), "utf8"),
   readFile(new URL("../zuriel-home.js", import.meta.url), "utf8"),
   readFile(new URL("../.github/workflows/validate-pr.yml", import.meta.url), "utf8"),
-  readFile(new URL("../.github/workflows/android-apk.yml", import.meta.url), "utf8")
+  readFile(new URL("../.github/workflows/android-apk.yml", import.meta.url), "utf8"),
+  readFile(new URL("../zuriel-faith-cards.js", import.meta.url), "utf8")
 ]);
 const failures = [];
 const checks = [
@@ -77,6 +78,10 @@ const checks = [
 for (const [label, fragment] of checks) {
   if (!library.includes(fragment)) failures.push(label + " is missing.");
 }
+if (!faithCards.includes("canvas.height = Math.max(1350, contentTop + lines.length * lineHeight + footerSpace)")) failures.push("Faith-card PNG export must expand for long prayers and declarations rather than truncating them.");
+if (!faithCards.includes("lines.forEach((item, index) => ctx.fillText(item, 540, startY + index * lineHeight, maxWidth))")) failures.push("Faith-card PNG export must draw every wrapped line.");
+if (!faithCards.includes("const finalGradient = ctx.createLinearGradient(0, 0, 1080, canvas.height)")) failures.push("Faith-card PNG export must repaint its background after resizing the canvas.");
+if (!faithCards.includes('ctx.fillText("Zuriel Living Word Bible", 540, canvas.height - 85)')) failures.push("Faith-card PNG export must retain the complete app footer.");
 if (!index.includes("window.getBibleVerseText = async function (reference)")) failures.push("Offline KJV passage retrieval is missing.");
 if (!/const CACHE_NAME = "zuriel-bible-offline-v\d+";/.test(worker)) failures.push("Offline cache version is missing for the Studio/navigation integration.");
 if (!worker.includes('url.origin === "https://images.unsplash.com"')) failures.push("Service worker does not cache selected Unsplash wallpapers.");
