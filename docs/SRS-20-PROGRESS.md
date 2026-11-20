@@ -282,7 +282,7 @@ The following user requirements are part of the product acceptance criteria, not
 
 ## Current 20-part specification snapshot — 2026-11-20 (version 1.4.115 candidate)
 
-This snapshot supersedes older release-status notes above where they conflict. It distinguishes implemented work, automated evidence, external dependencies and real-device checks. The latest main-branch validation run **44754591744** passed. Android run **44754591570** has built the candidate, prepared the signed APK and passed package/version/certificate verification; its emulator install-and-launch step is still running. The latest published GitHub release remains **v1.4.114** until the 1.4.115 workflow completes its emulator check and publishes the signed asset.
+This snapshot supersedes older release-status notes above where they conflict. It distinguishes implemented work, automated evidence, external dependencies and real-device checks. The latest main-branch validation run **44754591744** passed. Android run **44754591570** has built the candidate, prepared the signed APK and passed package/version/certificate verification; its emulator install-and-launch step is still running. The latest published GitHub release is now **v1.4.115**. Android workflow run **44754591570** completed successfully, including signed APK identity verification, emulator installation/launch, official release publication and artifact upload.
 
 | # | Specification part | Established / verified | Still outstanding |
 |---:|---|---|---|
@@ -304,7 +304,7 @@ This snapshot supersedes older release-status notes above where they conflict. I
 | 16 | Technical Architecture | Modular web app, offline data/cache, isolated translation Worker, guarded AI boundary and Capacitor Android packaging are established. | Continue regression checks across web, PWA and Android packaging for every new module. |
 | 17 | Quality Assurance and Testing | Latest main validation run **44754591744** passed, including KJV integrity, translation security, reader navigation, study references, backup/restore, search, faith-response coverage and card export safeguards. | Emulator installation/launch is still pending in the current Android run; real-phone upgrade, offline, storage, accessibility and performance QA remain. |
 | 18 | Development Priorities | Dependency-led delivery, conservative completion criteria and this 20-part scorecard are established. | Continue in priority order and update evidence rather than treating code presence as completion. |
-| 19 | Successful Release | Version **1.4.115** candidate has passed signed APK package/version and pinned-certificate verification in CI. In-app updater now requires exact release-tag/version agreement, a non-empty APK asset, SHA-256 digest and exact APK filename matching. | Emulator install/launch and official release publication for 1.4.115 are pending. User-phone in-place upgrade and saved-data preservation must still be verified. |
+| 19 | Successful Release | Version **1.4.115** is published. Signed APK package/version and pinned certificate passed CI; emulator install and app launch passed; the official release asset was uploaded. In-app updater checks exact release-tag/version agreement, APK filename, non-zero size and SHA-256 digest. | Verify in-place update and saved-data preservation on the user's actual phone; CI emulator success is not proof of the user's installation. |
 | 20 | Final Developer Instruction | Preserve existing work, follow all 20 requirements, avoid unverified claims and verify before recommending installation. | Ongoing release-by-release obligation. |
 
 ### 1.4.115 candidate work included in the latest validation
@@ -317,3 +317,15 @@ This snapshot supersedes older release-status notes above where they conflict. I
 
 **External setup still needed for live translations:** the translation deployment workflow requires the repository secrets `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` and `ZITE_YVP_APP_KEY`. `API_BIBLE_KEY` is optional. These credentials must never be pasted into chat or committed to source. The workflow is manual and requires explicit deployment confirmation; until it passes its live catalogue, text and CORS smoke tests, online translations remain unavailable and the offline KJV remains safe.
 
+
+
+### 1.4.115 signed Android release — 2026-11-20
+
+- **Published:** [Zuriel Living Word Bible v1.4.115](https://github.com/sarkiaimana-cmyk/zuriel-living-word-bible/releases/tag/v1.4.115).
+- **Android workflow:** run `44754591570` completed successfully on commit `1a911b51462d1af4e26f621d7b021ac1db475c29`.
+- **Package/version:** `com.zuriel.livingwordbible.release`, version `1.4.115`, version code `1004115`.
+- **Signing continuity:** APK passed alignment and signature verification; the pinned release certificate fingerprint matched the established certificate `902bac9ce36d81a418c3a76e0f5295c891b9b504fb842a0c036e6844ade3a351`.
+- **Emulator check:** Android emulator successfully installed the signed APK, launched `com.zuriel.livingwordbible.release/.MainActivity`, and confirmed the app activity was foregrounded.
+- **Official APK asset:** `Zuriel-Living-Word-Bible-release.apk`; size 6,315,953 bytes; SHA-256 `d529788bfbd1b5f1a5a4a5386edbe26fae996f24e7ab11f25a950386e2f3aa9d`.
+- **Release contents:** full-length faith-card PNG export; secure update asset matching and integrity checks; updated offline cache v215; existing KJV and personal-data safeguards retained.
+- **Still not phone-verified:** install over the user's current 1.4.110 installation, Android's actual in-place update behaviour, preserved personal records, offline cold start, Gallery export, accessibility and real-device performance. Do not claim these are verified until the user tests the update on their phone.
