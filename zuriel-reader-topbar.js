@@ -19,10 +19,10 @@
     style.textContent = `
       #bibleReader > h2,
       #bibleReader > h2 + p { display:none !important; }
-      #bibleReader { padding-top:8px !important; }
+      #bibleReader { padding-top:4px !important; margin-top:0 !important; }
       #zurielTopReturnBar {
         position:sticky;top:0;z-index:10000;
-        min-height:58px;padding:8px 12px;margin:0;
+        min-height:54px;padding:6px 12px;margin:0 0 2px;
         background:#8b2d1d;color:#fff;border:0;
         box-shadow:0 2px 9px #00000018;
       }
@@ -33,7 +33,7 @@
       #zurielTopSection { color:#fff;font-size:14px; }
       #zurielReaderTopControls {
         display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr) 48px 48px;
-        gap:8px;align-items:center;margin:0 0 8px;padding:4px 0 7px;
+        gap:7px;align-items:center;margin:0 0 3px;padding:3px 0 4px;
         background:#fff;
       }
       #zurielReaderTopControls button,
@@ -56,7 +56,7 @@
         display:flex;gap:7px;overflow-x:auto;overflow-y:hidden;
         overscroll-behavior-x:contain;white-space:nowrap;
         -webkit-overflow-scrolling:touch;scrollbar-width:thin;
-        margin:0 -2px 9px;padding:7px 2px 10px;
+        margin:0 -2px 3px;padding:5px 2px 6px;
         border-bottom:1px solid #e8e3e1;
       }
       #zurielReaderTranslations .zrt-tab {
@@ -68,7 +68,22 @@
         background:#a30d48;color:#fff;border-color:#a30d48;
         box-shadow:0 2px 7px #a30d4825;
       }
+      #zurielReaderViewTabs {
+        display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;
+        margin:0 -2px 8px;padding:0 0 7px;border-bottom:1px solid #e8e3e1;
+        background:#fff;
+      }
+      #zurielReaderViewTabs button {
+        min-width:0;min-height:43px;padding:8px 4px;margin:0;
+        border:1px solid #e2dcda;border-radius:22px;background:#fff;
+        color:#59494b;font:700 13px Arial,sans-serif;
+      }
+      #zurielReaderViewTabs button[aria-pressed="true"] {
+        background:#a30d48;border-color:#a30d48;color:#fff;
+      }
+      #bibleReader #readerStatus { margin:3px 0 7px !important; }
       @media(max-width:360px) {
+        #zurielReaderViewTabs button {font-size:11px;padding:7px 2px;min-height:40px;}
         #zurielReaderTopControls {
           grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr) 43px 43px;
           gap:5px;
@@ -115,6 +130,56 @@
     controls.append(launch, translationSelect, audioButton, settingsButton);
     translations.parentNode.insertBefore(controls, translations);
     controls.insertAdjacentElement("afterend", translations);
+    const viewTabs = document.createElement("nav");
+    viewTabs.id = "zurielReaderViewTabs";
+    viewTabs.setAttribute("aria-label", "Scripture study views");
+    viewTabs.innerHTML =
+      '<button type="button" data-view="scripture" aria-pressed="true">Scripture</button>' +
+      '<button type="button" data-view="meaning" aria-pressed="false">Meaning</button>' +
+      '<button type="button" data-view="original" aria-pressed="false">Original Words</button>';
+    translations.insertAdjacentElement("afterend", viewTabs);
+
+    function setActiveView(view) {
+      viewTabs.querySelectorAll("button").forEach(function (button) {
+        button.setAttribute("aria-pressed", String(button.dataset.view === view));
+      });
+    }
+    viewTabs.addEventListener("click", function (event) {
+      const button = event.target.closest("button[data-view]");
+      if (!button) return;
+      const view = button.dataset.view;
+      setActiveView(view);
+      const message = document.getElementById("message");
+      const studyPanel = document.getElementById("zurielStudyPanel");
+      const status = document.getElementById("readerStatus");
+      if (view === "scripture") {
+        if (message) message.scrollIntoView({ behavior:"smooth", block:"start" });
+        return;
+      }
+      const selectedRef = document.getElementById("zurielSelectedReference");
+      if (!studyPanel || studyPanel.style.display === "none" || !selectedRef ||
+          /Your selected Scripture will appear here/.test(selectedRef.textContent)) {
+        if (status) status.textContent = "Tap a verse first to open its verse-specific study and original-language tools.";
+        setActiveView("scripture");
+        if (message) message.scrollIntoView({ behavior:"smooth", block:"start" });
+        return;
+      }
+      studyPanel.style.display = "block";
+      if (view === "meaning") {
+        const meaningSection = Array.from(studyPanel.querySelectorAll("h2,h3,h4,summary"))
+          .find(function (node) { return /meaning|exposition|understanding/i.test(node.textContent); });
+        (meaningSection || studyPanel).scrollIntoView({ behavior:"smooth", block:"start" });
+      } else {
+        const originalWords = document.getElementById("zurielOriginalWords");
+        if (originalWords) {
+          const details = originalWords.closest("details");
+          if (details) details.open = true;
+          originalWords.scrollIntoView({ behavior:"smooth", block:"start" });
+        } else if (status) {
+          status.textContent = "Original-word details are not available for this selected verse yet. Zuriel will not guess missing Hebrew or Greek data.";
+        }
+      }
+    });
 
     function updatePassageLabel(detail) {
       const book = detail && detail.book;
