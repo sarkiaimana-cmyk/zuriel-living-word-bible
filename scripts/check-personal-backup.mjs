@@ -40,6 +40,11 @@ try {
 } catch (error) {
   failures.push("Verse-bookmark storage runtime regression tests failed.");
 }
+try {
+  execFileSync(process.execPath, ["scripts/test-study-storage-integrity.mjs"], { stdio: "inherit" });
+} catch (error) {
+  failures.push("Verse study notes/highlights storage integrity tests failed.");
+}
 for (const key of [
   "zuriel_personal_notes_v1",
   "zuriel_prayer_journal_v1",
