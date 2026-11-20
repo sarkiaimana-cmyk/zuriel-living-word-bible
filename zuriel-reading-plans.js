@@ -10,13 +10,13 @@
       duration: 7,
       description: "Walk through key moments in the life, words and resurrection of Jesus.",
       days: [
-        ["John 1:1-18", "See how John introduces Jesus as the living Word."],
-        ["Mark 1:14-20", "Notice Jesus' call to follow Him."],
-        ["Luke 5:1-11", "Reflect on trust and responding to Jesus."],
-        ["John 3:1-17", "Consider the new birth and God's love."],
-        ["John 4:1-26", "Listen to Jesus speak about living water."],
-        ["Mark 4:35-41", "Reflect on Jesus' authority in the storm."],
-        ["John 20:1-18", "Read the resurrection account and Mary's encounter."]
+        ["John 1:1-18", "See how John introduces Jesus as the living Word.", "What does John say about the identity of the Word, and how does the passage connect Jesus with creation and life?", "Lord Jesus, help me receive You as the living Word. Let Your light guide my understanding and shape the way I live today."],,
+        ["Mark 1:14-20", "Notice Jesus' call to follow Him.", "What did Jesus announce, and what did the first disciples leave behind to follow Him? What might faithful response look like in my circumstances?", "Jesus, give me a willing heart to follow You. Show me one practical way to put Your call ahead of distraction today."],,
+        ["Luke 5:1-11", "Reflect on trust and responding to Jesus.", "How does Peter respond after a disappointing night of fishing? Where might Jesus be inviting me to trust His word and act wisely?", "Lord, meet me in the ordinary work of my day. Teach me to trust Your word and respond with humility and courage."],,
+        ["John 3:1-17", "Consider the new birth and God's love.", "What does Jesus teach Nicodemus about new birth? How does verse 16 fit within Jesus' explanation rather than standing alone?", "Father, thank You for Your love shown in the giving of Your Son. Help me understand the new life Jesus offers and respond to Him in faith."],,
+        ["John 4:1-26", "Listen to Jesus speak about living water.", "How does Jesus move the conversation from ordinary thirst to worship and spiritual need? What does He teach about worship in spirit and truth?", "Jesus, meet me with the truth that gives life. Teach me to worship You sincerely and to bring my real questions into Your light."],,
+        ["Mark 4:35-41", "Reflect on Jesus' authority in the storm.", "What do the disciples fear, and what does Jesus reveal through His response? How can I bring fear honestly to Him without ignoring practical responsibility?", "Lord Jesus, be near when I feel overwhelmed. Give me courage, clear thinking and trust in Your authority as I take the next wise step."],,
+        ["John 20:1-18", "Read the resurrection account and Mary's encounter.", "What details help establish the movement from the empty tomb to Mary's encounter with the risen Jesus? How does her response change?", "Risen Lord, deepen my understanding of Your resurrection. Help me live with grounded hope and share what is true about You with love and humility."]],
       ]
     },
     {
@@ -298,7 +298,7 @@
     const nextIndex = active ? active.days.findIndex((day, index) => !completed.includes(index + 1)) : -1;
 
     const style = element("style", "");
-    style.textContent = ".zrp-intro{font:14px/1.6 Arial,sans-serif;color:#596879}.zrp-card{padding:13px;margin:12px 0;border:1px solid #dce1e2;border-radius:12px;background:#fff}.zrp-card h3{margin:0 0 6px;color:#1c405b;font:700 17px Georgia,serif}.zrp-card p{margin:5px 0;color:#5d6976;font:13px/1.55 Arial,sans-serif}.zrp-meta{font-weight:700;color:#8a7140!important}.zrp-progress{height:7px;overflow:hidden;border-radius:10px;background:#e7e8e5;margin:9px 0}.zrp-progress span{display:block;height:100%;background:#315b48}.zrp-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}.zrp-actions button{margin:0;flex:1 1 130px}.zrp-primary{background:#193e5a!important;color:#fff!important}.zrp-secondary{background:#f1f3f3!important;color:#24475e!important;border:1px solid #d5dfe3!important}.zrp-day{padding:10px 0;border-top:1px solid #edf0ed}.zrp-day strong{display:block;color:#27485e;font:700 14px Arial,sans-serif}.zrp-day p{margin:4px 0}.zrp-complete{color:#315b48!important;font-weight:700!important}.zrp-foot{font:12px/1.55 Arial,sans-serif;color:#687582;margin-top:14px}";
+    style.textContent = ".zrp-intro{font:14px/1.6 Arial,sans-serif;color:#596879}.zrp-card{padding:13px;margin:12px 0;border:1px solid #dce1e2;border-radius:12px;background:#fff}.zrp-card h3{margin:0 0 6px;color:#1c405b;font:700 17px Georgia,serif}.zrp-card p{margin:5px 0;color:#5d6976;font:13px/1.55 Arial,sans-serif}.zrp-meta{font-weight:700;color:#8a7140!important}.zrp-progress{height:7px;overflow:hidden;border-radius:10px;background:#e7e8e5;margin:9px 0}.zrp-progress span{display:block;height:100%;background:#315b48}.zrp-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}.zrp-actions button{margin:0;flex:1 1 130px}.zrp-primary{background:#193e5a!important;color:#fff!important}.zrp-secondary{background:#f1f3f3!important;color:#24475e!important;border:1px solid #d5dfe3!important}.zrp-day{padding:10px 0;border-top:1px solid #edf0ed}.zrp-day strong{display:block;color:#27485e;font:700 14px Arial,sans-serif}.zrp-day p{margin:4px 0}.zrp-reflection{color:#284b63!important}.zrp-prayer{color:#315b48!important;font-style:italic}.zrp-complete{color:#315b48!important;font-weight:700!important}.zrp-foot{font:12px/1.55 Arial,sans-serif;color:#687582;margin-top:14px}";
 
     const heading = element("h2", "zps-heading", "Bible Reading Plans");
     const intro = element("p", "zrp-intro", "Choose a guided journey and move through its passages at your own pace. Your progress is saved privately on this device and works offline.");
@@ -335,6 +335,8 @@
           element("h3", "", day[0]),
           element("p", "", day[1])
         );
+        if (day[2]) card.append(element("p", "zrp-reflection", "Reflect: " + day[2]));
+        if (day[3]) card.append(element("p", "zrp-prayer", "Pray: " + day[3]));
         const actions = element("div", "zrp-actions");
         actions.append(
           button("Read this passage", () => openPassage(day[0], report), "zrp-primary"),
@@ -360,6 +362,8 @@
           element("strong", isDone ? "zrp-complete" : "", "Day " + (index + 1) + (isDone ? " · Completed" : "")),
           element("p", "", day[0] + " — " + day[1])
         );
+        if (day[2]) line.appendChild(element("p", "zrp-reflection", "Reflect: " + day[2]));
+        if (day[3]) line.appendChild(element("p", "zrp-prayer", "Pray: " + day[3]));
         line.appendChild(button("Open passage", () => openPassage(day[0], report), "zrp-secondary"));
         card.appendChild(line);
       });
@@ -408,7 +412,7 @@
 
   window.ZurielReadingPlans = {
     render: render,
-    list: function () { return PLANS.map(plan => ({ id: plan.id, title: plan.title, duration: plan.duration, passages: plan.days.map(day => day[0]) })); },
+    list: function () { return PLANS.map(plan => ({ id: plan.id, title: plan.title, duration: plan.duration, passages: plan.days.map(day => day[0]), days: plan.days.map(day => ({ reference: day[0], focus: day[1], reflection: day[2] || "", prayer: day[3] || "" })) })); },
     validateProgress: validateProgress,
     readState: readState,
     writeState: writeState,
