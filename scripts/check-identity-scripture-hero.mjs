@@ -20,7 +20,7 @@ requireText('title: "The Glorious King", reference: "Psalm 24:10"', "The gloriou
 requireText('window.getBibleVerseText(item.reference)', "Exact offline KJV text retrieval");
 requireText('dashboard.style.setProperty("--zuriel-home-wallpaper"', "Synchronized verse and wallpaper changes");
 requireText('homeWallpaperSet[item.wallpaper]', "A distinct wallpaper assignment for each identity");
-if (home.includes("setInterval(") || home.includes("}, 15000)")) failures.push("Identity revelations must not change automatically on a timer.");
+if (!home.includes("window.setInterval(function ()") || !home.includes("}, 22000);")) failures.push("Identity revelations must rotate automatically at a calm, readable interval.");
 requireText('identityNext.addEventListener("click"', "Manual identity revelation selection");
 requireText('@media(prefers-reduced-motion:reduce)', "Reduced-motion accessibility support");
 requireText('identityNext.addEventListener("click"', "Manual rotation control");
@@ -38,5 +38,5 @@ if (failures.length) {
   failures.forEach(item => console.error(" - " + item));
   process.exitCode = 1;
 } else {
-  console.log("Identity Scripture hero checks passed: more than 50 curated identity/reference pairings, rotating wallpaper assignments, exact KJV retrieval, synchronized rotation, navigation, and accessibility safeguards.");
+  console.log("Identity Scripture hero checks passed: more than 50 curated identity/reference pairings, automatic and manual rotation, rotating wallpaper assignments, exact KJV retrieval, navigation, and accessibility safeguards.");
 }
