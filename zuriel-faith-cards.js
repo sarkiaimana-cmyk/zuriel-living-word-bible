@@ -96,7 +96,7 @@
       panel.innerHTML = '<p class="zfc-empty">Faith cards for this exact reference are being prepared. Please try a passage from the curated Scripture collection.</p>';
       return;
     }
-    const application = "Today, I will let this passage guide one decision, one conversation and one practical action.";
+    const application = source.application || ("Today, I will put this passage into practice: " + String(source.inspiration || "I will follow the truth of this passage in my choices today."));
     const items = TYPES.map(([type, icon, field]) => ({
       type, icon, reference: source.reference,
       text: field === "application" ? application : String(source[field] || "").trim()
