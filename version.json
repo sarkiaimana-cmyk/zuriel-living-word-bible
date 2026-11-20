@@ -1,4 +1,4 @@
 {
-  "version": "1.4.104",
-  "releaseNotes": "Adds an offline-cached Hebrew and Greek lexicon study index with guarded lookup by verified Strong's identifier; the index explicitly does not infer original-language lemmas from English words."
+  "version": "1.4.105",
+  "releaseNotes": "Adds an About section with Bible translation copyright-holder acknowledgements and licence cautions."
 }
