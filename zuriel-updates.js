@@ -1,7 +1,7 @@
 /* Zuriel in-app update centre — safe web refresh checks and transparent Android status. */
 (function () {
   "use strict";
-  const APP_VERSION = "1.4.112";
+  const APP_VERSION = "1.4.113";
   const VERSION_URL = "https://raw.githubusercontent.com/sarkiaimana-cmyk/zuriel-living-word-bible/main/version.json";
   function mount() {
     const panel = document.getElementById("zurielSettingsPanel");
@@ -58,8 +58,43 @@
           } else {
             status.textContent += " Offline update service is not registered on this visit.";
           }
-        } else if (isNativeApp() && newer) {
-          status.textContent += " Android update detected. The release signing identity is configured for our verified build, but in-app APK download and installation are not implemented yet. Your current installation is unchanged; only install an official Zuriel APK after its package, version and signing checks pass, and approve installation through Android.";
+        } else if (isNativeApp()) {
+          if (newer) {
+            const releaseResponse = await fetch("https://api.github.com/repos/sarkiaimana-cmyk/zuriel-living-word-bible/releases/latest", {
+              cache: "no-store",
+              headers: { "Accept": "application/vnd.github+json" }
+            });
+            if (!releaseResponse.ok) throw new Error("The official Android release could not be checked right now.");
+            const release = await releaseResponse.json();
+            const apk = Array.isArray(release.assets)
+              ? release.assets.find(asset => /Zuriel-Living-Word-Bible-release\\.apk$/i.test(asset.name))
+              : null;
+            if (apk && apk.browser_download_url) {
+              status.textContent = "Official signed Android update " + info.version + " is available. Your current app and saved records are unchanged.";
+              const install = document.createElement("a");
+              install.href = apk.browser_download_url;
+              install.textContent = "Download official Zuriel Android update";
+              install.target = "_blank";
+              install.rel = "noopener noreferrer";
+              install.style.display = "block";
+              install.style.textAlign = "center";
+              install.style.padding = "13px";
+              install.style.marginTop = "10px";
+              install.style.borderRadius = "9px";
+              install.style.background = "#19324f";
+              install.style.color = "#fff";
+              install.style.fontWeight = "700";
+              notes.appendChild(document.createElement("br"));
+              notes.appendChild(install);
+              const reminder = document.createElement("p");
+              reminder.textContent = "Android will ask you to approve the installation. Choose Update/Install; do not uninstall Zuriel. If Android reports a signature or package conflict, cancel and keep the existing app.";
+              notes.appendChild(reminder);
+            } else {
+              status.textContent = "A newer website version is listed, but no official signed Android APK has been published for it yet. Your current app and data are unchanged.";
+            }
+          } else {
+            status.textContent += " Android release check completed. Your installed app and personal records are unchanged.";
+          }
         }
       } catch (error) {
         status.textContent = error.message || "Could not check for updates. Please try again when connected.";
