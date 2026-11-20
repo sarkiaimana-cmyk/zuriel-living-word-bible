@@ -67,7 +67,7 @@
             if (!releaseResponse.ok) throw new Error("The official Android release could not be checked right now.");
             const release = await releaseResponse.json();
             const apk = Array.isArray(release.assets)
-              ? release.assets.find(asset => /Zuriel-Living-Word-Bible-release\\.apk$/i.test(asset.name))
+              ? release.assets.find(asset => /Zuriel-Living-Word-Bible-release\.apk$/i.test(asset.name))
               : null;
             if (apk && apk.browser_download_url) {
               status.textContent = "Official signed Android update " + info.version + " is available. Your current app and saved records are unchanged.";
