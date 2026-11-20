@@ -80,7 +80,7 @@ const updateVersionMatch = updates.match(/const APP_VERSION = "([^"]+)";/);
 if (!appVersion || !updateVersionMatch || appVersion !== updateVersionMatch[1]) failures.push("App version metadata is inconsistent between version.json and the in-app update centre.");
 requireText(updates, "Do not uninstall it", "Accurate Android in-place update and personal-data preservation guidance");
 forbidText(updates, "a stable signing identity must be configured first", "The obsolete Android signing warning");
-requireText(updates, "Download official Zuriel Android update", "Official signed Android update discovery in the app");
+requireText(updates, "Download & Install Zuriel Update", "Official signed Android update discovery in the app");
 
 if (failures.length) {
   console.error("Home dashboard checks failed:");
