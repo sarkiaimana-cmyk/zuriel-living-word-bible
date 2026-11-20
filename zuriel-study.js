@@ -236,6 +236,24 @@
     ["Witness","A person who testifies to what is known or experienced. In Acts, believers are commissioned to bear witness to Jesus; the word can also refer to legal testimony and the witness of Scripture. See Deuteronomy 19:15; Acts 1:8; 4:20; Hebrews 12:1."]
   ];
 
+  // Read the shared saved-library record without treating damaged data as empty.
+  // Verse bookmarks must never overwrite prayers, notes or bookmarks that cannot
+  // be parsed safely.
+  function readPersonalLibraryBookmarks(raw) {
+    if (raw === null) return { bookmarks: [] };
+    let data;
+    try {
+      data = JSON.parse(raw);
+    } catch (error) {
+      throw new Error("Your saved library could not be read. Existing records have not been changed.");
+    }
+    if (!data || typeof data !== "object" || Array.isArray(data) ||
+        (data.bookmarks !== undefined && !Array.isArray(data.bookmarks))) {
+      throw new Error("Your saved library has an unsupported format. Existing records have not been changed.");
+    }
+    return data;
+  }
+
   function readNotes() {
     try {
       return JSON.parse(localStorage.getItem(NOTES_KEY)) || {};
@@ -2903,7 +2921,7 @@
 
         try {
           const key = "zuriel_personal_library_v1";
-          const data = JSON.parse(localStorage.getItem(key) || "{}");
+          const data = readPersonalLibraryBookmarks(localStorage.getItem(key));
           const bookmarks = Array.isArray(data.bookmarks) ? data.bookmarks : [];
           const reference = selectedReference.book + " " +
             selectedReference.chapter + ":" + selectedReference.verse;

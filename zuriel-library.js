@@ -219,23 +219,60 @@
     ]
   };
 
-  function loadSaved() {
-    try {
-      const data = JSON.parse(
-        localStorage.getItem(STORAGE_KEY)
-      );
+  function emptySavedLibrary() {
+    return { prayers: [], notes: [], bookmarks: [] };
+  }
 
-      return {
-        prayers: Array.isArray(data?.prayers) ? data.prayers : [],
-        notes: Array.isArray(data?.notes) ? data.notes : [],
-        bookmarks: Array.isArray(data?.bookmarks) ? data.bookmarks : []
-      };
+  function loadSaved() {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw === null) return emptySavedLibrary();
+
+    let data;
+    try {
+      data = JSON.parse(raw);
     } catch (error) {
-      return { prayers: [], notes: [], bookmarks: [] };
+      throw new Error("The saved personal library contains unreadable data.");
+    }
+
+    if (!data || typeof data !== "object" || Array.isArray(data)) {
+      throw new Error("The saved personal library has an unsupported data format.");
+    }
+
+    for (const key of ["prayers", "notes", "bookmarks"]) {
+      if (data[key] !== undefined && !Array.isArray(data[key])) {
+        throw new Error("The saved personal library contains an invalid " + key + " list.");
+      }
+    }
+
+    // Older app versions may not have written every list yet. Missing lists
+    // are safe to initialize; malformed existing lists must never be replaced.
+    return {
+      prayers: Array.isArray(data.prayers) ? data.prayers : [],
+      notes: Array.isArray(data.notes) ? data.notes : [],
+      bookmarks: Array.isArray(data.bookmarks) ? data.bookmarks : []
+    };
+  }
+
+  let saved = emptySavedLibrary();
+  let savedLoadError = null;
+
+  function refreshSaved() {
+    try {
+      saved = loadSaved();
+      savedLoadError = null;
+      return true;
+    } catch (error) {
+      saved = emptySavedLibrary();
+      savedLoadError = error;
+      return false;
     }
   }
 
-  let saved = loadSaved();
+  function savedReadFailureMessage() {
+    return "Zuriel could not read your saved personal library. Your existing records have not been changed. Do not clear app storage; restore from a trusted encrypted backup or seek support.";
+  }
+
+  refreshSaved();
 
   function readLocalRecords(key) {
     try {
@@ -247,6 +284,10 @@
   }
 
   function persist() {
+    if (savedLoadError) {
+      alert(savedReadFailureMessage());
+      return false;
+    }
     try {
       localStorage.setItem(
         STORAGE_KEY,
@@ -1334,8 +1375,7 @@
           box.appendChild(element("p", item));
           box.appendChild(button("Save declaration", function () {
             saved.bookmarks.push({title:"Glory Verse Affirmation",text:item});
-            persist();
-            alert("Saved to your personal library.");
+            if (persist()) alert("Saved to your personal library.");
           }));
           const createCard = button("Create Open Book Share Card", async function () {
             const reference = affirmationReferences[index];
@@ -1915,7 +1955,10 @@
             });
             details.appendChild(refs);
             details.appendChild(button("Save teaching to My Library", function () {
-              saved = loadSaved();
+              if (!refreshSaved()) {
+                alert(savedReadFailureMessage());
+                return;
+              }
               const title = "Words of Jesus — " + item.title;
               const exists = saved.bookmarks.some(entry => entry && entry.title === title);
               if (!exists) {
@@ -1941,11 +1984,16 @@
       if (page === "saved") {
         // Refresh shared records whenever this page opens so verse-study
         // notes and bookmarks saved by the Study Centre appear immediately.
-        saved = loadSaved();
+        refreshSaved();
         content.appendChild(card(
           "My Saved Library",
           "Your bookmarked Scriptures, verse notes, highlights and saved declarations."
         ));
+        if (savedLoadError) {
+          const warning = element("p", savedReadFailureMessage(), "library-storage-warning");
+          warning.setAttribute("role", "alert");
+          content.appendChild(warning);
+        }
 
         const verseNotes = readLocalRecords("zuriel-verse-study-notes-v1");
         const verseHighlights = readLocalRecords("zuriel-word-highlights-v1");
@@ -2093,7 +2141,10 @@
       savePrayer: function (text, reference, title) {
         const prayerText = String(text || "").trim();
         if (!prayerText) return false;
-        saved = loadSaved();
+        if (!refreshSaved()) {
+          alert(savedReadFailureMessage());
+          return false;
+        }
         saved.prayers.push({
           title: String(title || "The Light — Scripture response").trim(),
           text: prayerText,

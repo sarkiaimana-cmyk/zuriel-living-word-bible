@@ -1,8 +1,11 @@
 import { readFile } from "node:fs/promises";
+import { execFileSync } from "node:child_process";
 
-const [backup, personal, index, serviceWorker, packaging, version, updates] = await Promise.all([
+const [backup, personal, library, study, index, serviceWorker, packaging, version, updates] = await Promise.all([
   readFile(new URL("../zuriel-backup.js", import.meta.url), "utf8"),
   readFile(new URL("../zuriel-personal-space.js", import.meta.url), "utf8"),
+  readFile(new URL("../zuriel-library.js", import.meta.url), "utf8"),
+  readFile(new URL("../zuriel-study.js", import.meta.url), "utf8"),
   readFile(new URL("../index.html", import.meta.url), "utf8"),
   readFile(new URL("../sw.js", import.meta.url), "utf8"),
   readFile(new URL("./prepare-web.mjs", import.meta.url), "utf8"),
@@ -10,6 +13,33 @@ const [backup, personal, index, serviceWorker, packaging, version, updates] = aw
   readFile(new URL("../zuriel-updates.js", import.meta.url), "utf8")
 ]);
 const failures = [];
+if (!library.includes("function emptySavedLibrary()") ||
+    !library.includes("function refreshSaved()") ||
+    !library.includes("if (savedLoadError)") ||
+    !library.includes("savedReadFailureMessage()") ||
+    !library.includes("if (!refreshSaved())")) {
+  failures.push("Personal library must fail closed when existing saved records cannot be read.");
+}
+if (library.includes('persist();\n            alert("Saved to your personal library.");')) {
+  failures.push("Personal library must not report a declaration as saved when persistence fails.");
+}
+if (!library.includes("Your existing records have not been changed.")) {
+  failures.push("Personal library corruption warning must explicitly protect existing records.");
+}
+try {
+  execFileSync(process.execPath, ["scripts/test-library-storage-integrity.mjs"], { stdio: "inherit" });
+} catch (error) {
+  failures.push("Personal library storage runtime regression tests failed.");
+}
+if (!study.includes("function readPersonalLibraryBookmarks(raw)") ||
+    !study.includes("const data = readPersonalLibraryBookmarks(localStorage.getItem(key))")) {
+  failures.push("Verse bookmarks must use the fail-closed shared-library reader.");
+}
+try {
+  execFileSync(process.execPath, ["scripts/test-verse-bookmark-storage.mjs"], { stdio: "inherit" });
+} catch (error) {
+  failures.push("Verse-bookmark storage runtime regression tests failed.");
+}
 for (const key of [
   "zuriel_personal_notes_v1",
   "zuriel_prayer_journal_v1",
