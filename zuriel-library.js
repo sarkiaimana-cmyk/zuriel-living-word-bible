@@ -239,15 +239,17 @@
     }
 
     for (const key of ["prayers", "notes", "bookmarks"]) {
-      if (!Array.isArray(data[key])) {
-        throw new Error("The saved personal library is missing a valid " + key + " list.");
+      if (data[key] !== undefined && !Array.isArray(data[key])) {
+        throw new Error("The saved personal library contains an invalid " + key + " list.");
       }
     }
 
+    // Older app versions may not have written every list yet. Missing lists
+    // are safe to initialize; malformed existing lists must never be replaced.
     return {
-      prayers: data.prayers,
-      notes: data.notes,
-      bookmarks: data.bookmarks
+      prayers: Array.isArray(data.prayers) ? data.prayers : [],
+      notes: Array.isArray(data.notes) ? data.notes : [],
+      bookmarks: Array.isArray(data.bookmarks) ? data.bookmarks : []
     };
   }
 
