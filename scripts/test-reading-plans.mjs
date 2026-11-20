@@ -143,10 +143,16 @@ for (const day of walkPlan.days) {
 
 for (const plan of plans) {
   assert.equal(plan.days.length, plan.duration, plan.id + " must expose every day.");
+  const reflections = new Set();
+  const prayers = new Set();
   for (const [index, day] of plan.days.entries()) {
     assert.ok(day.reference && day.focus, plan.id + " day " + (index + 1) + " must retain its passage and focus.");
     assert.ok(day.reflection.length >= 30, plan.id + " day " + (index + 1) + " needs a meaningful reflection.");
     assert.ok(day.prayer.length >= 40, plan.id + " day " + (index + 1) + " needs an original prayer.");
+    assert.ok(!reflections.has(day.reflection), plan.id + " must not repeat a daily reflection.");
+    assert.ok(!prayers.has(day.prayer), plan.id + " must not repeat a daily prayer.");
+    reflections.add(day.reflection);
+    prayers.add(day.prayer);
   }
 }
 
