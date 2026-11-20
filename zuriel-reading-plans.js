@@ -40,13 +40,13 @@
       duration: 7,
       description: "Spend a week with passages about prayer, peace, guidance and confidence in God.",
       days: [
-        ["Matthew 6:5-15", "Read Jesus' teaching on prayer."],
-        ["Philippians 4:4-9", "Bring requests to God and consider His peace."],
-        ["Psalm 23", "Reflect on the Lord as Shepherd."],
-        ["Proverbs 3:1-12", "Consider trusting the Lord in every path."],
-        ["Psalm 27:1-8", "Reflect on courage and seeking God's presence."],
-        ["1 Thessalonians 5:12-24", "Notice the instructions about prayer and thanksgiving."],
-        ["Jeremiah 29:11-14", "Read the promise in its chapter context and seek the Lord."]
+        ["Matthew 6:5-15", "Read Jesus' teaching on prayer.", "What does Jesus contrast with sincere prayer? Notice the pattern of the Lord's Prayer and what it teaches about God's name, provision, forgiveness and deliverance.", "Father, teach me to pray with sincerity rather than performance. Help me seek Your will, depend on You for daily needs and extend forgiveness as I receive Your mercy."],
+        ["Philippians 4:4-9", "Bring requests to God and consider His peace.", "How does Paul connect prayer, thanksgiving and peace? What kinds of things does he encourage believers to dwell on and practise?", "God of peace, I bring my concerns honestly before You. Guide my thoughts toward what is true and worthy, and help me practise the good I have learned."],
+        ["Psalm 23", "Reflect on the Lord as Shepherd.", "How does the shepherd image describe God's care in both restful and threatening places? What does the psalm say about God's presence in the valley?", "Lord, shepherd me through changing circumstances. Give me courage in difficult places, gratitude for Your provision and confidence in Your faithful presence."],
+        ["Proverbs 3:1-12", "Consider trusting the Lord in every path.", "What does it mean to trust the Lord rather than rely only on one's own understanding? How do humility, wisdom and correction fit the passage?", "Father, guide my decisions and correct me when I need it. Help me seek wise counsel, act responsibly and acknowledge You in all my ways."],
+        ["Psalm 27:1-8", "Reflect on courage and seeking God's presence.", "What grounds the psalmist's courage, and what does he desire above all else? How do confidence and honest seeking appear together?", "God, when fear rises, remind me of Your presence. Give me courage to seek You honestly and to take the next faithful step."],
+        ["1 Thessalonians 5:12-24", "Notice the instructions about prayer and thanksgiving.", "How do the instructions about community life, prayer, gratitude and discernment belong together? What does Paul ask God to do for the believers?", "Lord, shape my life with gratitude, patience and prayer. Help me test what I hear carefully, hold to what is good and live in peace with others."],
+        ["Jeremiah 29:11-14", "Read the promise in its chapter context and seek the Lord.", "Who first received this message, and what does the wider chapter say about the exiles' long season in Babylon? How does the promise of seeking God fit that setting?", "Faithful God, teach me to seek You wholeheartedly through long seasons of waiting. Help me read Your promises in context and trust Your faithfulness without demanding an easy or immediate outcome."]
       ]
     },
     {
