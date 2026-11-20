@@ -363,7 +363,18 @@
       #zurielLibrary .zrl-detail { margin:16px 0; padding:18px; border:1px solid #d8cbb6; border-left:4px solid #b39355; border-radius:14px; background:#fbf7ee; }
       #zurielLibrary .zrl-detail h3 { color:#302445; }
       #zurielLibrary .zrl-detail h4 { color:#5b4777; }
-      #zurielLibrary .zrl-eyebrow { color:#8b7547; font:700 11px Arial,sans-serif; letter-spacing:.1em; }
+      #zurielLibrary .zrl-eyebrow { color:#8b7547; font:700 11px Arial,sans-serif; letter-spacing:.1em; } 
+      #zurielLibrary .zlw-lesson{margin:10px 0;border:1px solid #d9dfe5;border-radius:12px;background:#fff;overflow:hidden}
+      #zurielLibrary .zlw-lesson>summary{padding:15px 42px 15px 14px;position:relative;cursor:pointer;list-style:none;color:#173b58;font-weight:700;line-height:1.45}
+      #zurielLibrary .zlw-lesson>summary::-webkit-details-marker{display:none}
+      #zurielLibrary .zlw-lesson>summary:after{content:"＋";position:absolute;right:14px;top:13px;font-size:19px;color:#92764b}
+      #zurielLibrary .zlw-lesson[open]>summary:after{content:"−"}
+      #zurielLibrary .zlw-lesson-body{padding:0 15px 15px;border-top:1px solid #edf0f1}
+      #zurielLibrary .zlw-lesson-body h4{margin:14px 0 5px;color:#31566c}
+      #zurielLibrary .zlw-lesson-body p,#zurielLibrary .zlw-lesson-body li{font-size:14px;line-height:1.7;color:#344455}
+      #zurielLibrary .zlw-lesson-references{display:flex;gap:7px;flex-wrap:wrap}
+      #zurielLibrary .zlw-lesson-references button{background:#edf3f5;color:#173b58;border:1px solid #d0dce2;border-radius:8px;padding:8px 10px}
+
       @media(max-width:520px) { #zurielLibrary .zrl-grid { grid-template-columns:1fr; } }
 
       #zurielLibrary input {
@@ -1479,12 +1490,162 @@
       if (page === "warfare") {
         content.appendChild(card(
           "Spiritual Warfare Study Centre",
-          "Grow in biblical understanding of faith, prayer and the believer's identity in Christ."
+          "Grow in biblical understanding of faith, prayer and the believer's identity in Christ. Choose one subject to open its guided study, Scriptures, reflection and prayer."
         ));
-
-        originalLibrary.spiritualWarfare.forEach(item => {
-          content.appendChild(element("p", "• " + item, "library-entry"));
+        const lessons = [
+          {
+            title:"Understanding spiritual warfare",
+            overview:"The New Testament describes spiritual opposition as real, but it keeps the believer's attention on God, truth, holiness, prayer and the finished victory of Jesus Christ. Spiritual warfare is not a search for hidden enemies in every difficulty; it is faithful resistance to evil while remaining grounded in the gospel.",
+            context:"Ephesians 6:10–18 places the armour of God after Paul's teaching about life in Christ and relationships in the household. The command is to be strong in the Lord and in the power of His might. The struggle is not against flesh and blood, so people must not be treated as the enemy.",
+            practice:"Begin with worship and Scripture. Identify the actual temptation, lie, fear or pressure you are facing. Answer it with the truth of God's Word, seek wise Christian support where needed, and choose a concrete act of obedience, love or reconciliation.",
+            caution:"Do not use spiritual-warfare language to accuse people, excuse harmful behaviour, avoid medical or professional help, or claim certainty about the cause of every hardship. Test teaching by Scripture and keep Christ central.",
+            questions:["What does Ephesians 6 say about the source of the believer's strength?","Which part of my thinking or conduct needs to be brought under the truth of Christ?","How can I resist evil without treating another person as my enemy?"],
+            prayer:"Father, strengthen me in the Lord. Give me discernment to recognise temptation, humility to receive correction and courage to obey Your Word. Keep my attention on Jesus Christ and teach me to walk in truth, love and holiness. Amen.",
+            refs:["Ephesians 6:10-18","2 Corinthians 10:3-5","James 4:7-8","1 Peter 5:8-10"]
+          },
+          {
+            title:"The believer's authority in Christ",
+            overview:"Believers belong to Jesus Christ and share in the life, grace and calling He gives. Their confidence rests in Christ's authority, resurrection and lordship—not in personal power, special formulas or control over other people.",
+            context:"Matthew 28:18–20 declares the authority of the risen Jesus and connects it with the mission to make disciples. Colossians 2:13–15 celebrates Christ's triumph over hostile powers through the cross. Ephesians 2:4–10 describes salvation by grace and the new life God creates.",
+            practice:"Approach prayer with confidence in Jesus, submit your choices to His teaching, resist sin, serve others and speak the gospel with gentleness. Use authority to stand in Christ's truth and to serve—not to dominate or intimidate.",
+            caution:"A believer's authority must never be used to promise that Christians can control events, guarantee a particular outcome, or command other people. The New Testament joins confidence with dependence, humility and obedience.",
+            questions:["What authority does Matthew 28:18 say belongs to Jesus?","How does the cross shape the believer's confidence?","Where should Christ's authority change my choices today?"],
+            prayer:"Lord Jesus, You are Lord. Thank You for Your saving work and the life You give. Teach me to live under Your word, pray with confidence and serve others with humility. Amen.",
+            refs:["Matthew 28:18-20","Colossians 2:13-15","Ephesians 1:19-23","Ephesians 2:4-10"]
+          },
+          {
+            title:"The whole armour of God",
+            overview:"God equips His people to stand firm through truth, righteousness, readiness from the gospel of peace, faith, salvation, the Word of God and prayer. The picture is a call to steady faithfulness rather than fear or aggression.",
+            context:"Ephesians 6:10–18 uses the image of a soldier's equipment to explain spiritual readiness. Each piece is connected with a gospel-shaped reality: truth, righteous living, peace, faith, salvation and God's Word. The passage ends by emphasising prayer for all the saints.",
+            practice:"Name one practical way to put on each piece: speak truth, pursue integrity, make peace where possible, trust God's promises, remember salvation, read and apply Scripture, and pray for others.",
+            caution:"The armour is a teaching image, not a ritual object or a guarantee that believers will never suffer. Read it in the wider letter, which repeatedly calls Christians to unity, love, forgiveness and faithful conduct.",
+            questions:["Which piece of the armour do I most need to practise today?","How does the gospel of peace affect the way I respond to conflict?","Who can I remember in prayer this week?"],
+            prayer:"Father, help me stand in Your strength. Form truth and righteousness in me, make me ready to live the gospel of peace, strengthen my faith, remind me of salvation and teach me to use Your Word wisely. Keep me prayerful and watchful. Amen.",
+            refs:["Ephesians 6:10-18","Isaiah 59:16-17","1 Thessalonians 5:8","Romans 13:12-14"]
+          },
+          {
+            title:"Prayer and intercession",
+            overview:"Prayer is communion with God through Jesus Christ. Intercession brings other people, communities and needs before God with love, humility and perseverance. It is not a technique for forcing God to act.",
+            context:"Jesus teaches His disciples to pray to the Father with reverence, dependence, forgiveness and trust (Matthew 6:5–13). The early church prays together in Acts 4:23–31, asking for boldness to speak God's word amid opposition.",
+            practice:"Pray through a short list: praise, confession, thanksgiving, personal needs and intercession. Include leaders, families, those who suffer, the church and people with whom you disagree. Listen, reflect on Scripture and take wise action when a need is within your reach.",
+            caution:"Avoid manipulative claims that a particular phrase, length of prayer or public display guarantees an answer. Scripture encourages persistence while also teaching submission to God's wisdom and will.",
+            questions:["What does the Lord's Prayer teach about priorities?","Who needs patient, practical intercession from me?","How can prayer lead me toward a loving action?"],
+            prayer:"Our Father, hallowed be Your name. Let Your kingdom and will shape my desires. Give what is needed today, teach us forgiveness, guard us from temptation and help us care faithfully for those we bring before You. Amen.",
+            refs:["Matthew 6:5-13","Acts 4:23-31","1 Timothy 2:1-4","Philippians 4:6-7"]
+          },
+          {
+            title:"Standing firm in faith",
+            overview:"Standing firm means continuing to trust and obey God when circumstances are difficult. Biblical faith is not denial of pain; it is confidence in God's character while taking faithful next steps.",
+            context:"Ephesians 6:13–14 repeats the call to stand. 1 Corinthians 16:13–14 joins courage and steadfastness with love. Hebrews 10:35–39 encourages endurance and trust without pretending that perseverance is effortless.",
+            practice:"Remember a specific promise in its context, stay connected to trustworthy believers, keep doing what is good, and ask for help when you are weary. Measure faithfulness by obedience and love, not by the absence of struggle.",
+            caution:"Do not shame people who are grieving, anxious, ill or facing hardship by telling them they simply lack faith. The Bible gives room for lament, weakness, mutual care and patient endurance.",
+            questions:["What helps me remain faithful when I cannot see an immediate answer?","Which community or trusted person can support me?","What does it mean to let all I do be done in love?"],
+            prayer:"Faithful God, steady my heart when I feel weak. Help me trust You honestly, receive support without shame and continue in love, courage and obedience. Amen.",
+            refs:["Ephesians 6:13-14","1 Corinthians 16:13-14","Hebrews 10:35-39","Psalm 46:1-3"]
+          },
+          {
+            title:"Recognising temptation and choosing the way of escape",
+            overview:"Temptation invites people toward desires or actions that pull them away from God's good way. Scripture calls believers to watchfulness, honest self-knowledge and practical choices that avoid feeding temptation.",
+            context:"James 1:13–15 distinguishes God's goodness from the inward process by which desire can lead to sin. 1 Corinthians 10:13 assures believers that temptation is not unique and that God provides a way to endure it.",
+            practice:"Notice triggers and patterns without self-deception. Leave situations that predictably lead to wrongdoing, establish healthy boundaries, seek accountability, and replace harmful habits with constructive actions. Ask for help early rather than waiting until a crisis.",
+            caution:"The promise in 1 Corinthians 10:13 is not a claim that every hardship is easy or that a person should remain in an unsafe situation. Seek immediate help and protection where abuse, coercion or danger is present.",
+            questions:["What pattern or situation makes obedience harder for me?","What practical boundary can I put in place today?","Who is a safe, wise person I can ask for support?"],
+            prayer:"Father, give me honesty to recognise temptation and strength to choose what is good. Show me the wise way out, help me seek support and form in me desires that honour You. Amen.",
+            refs:["James 1:13-15","1 Corinthians 10:12-13","Matthew 26:41","2 Timothy 2:22"]
+          },
+          {
+            title:"Resisting accusation through the truth of Scripture",
+            overview:"The gospel answers condemnation with the saving work of Christ. Scripture also calls believers to receive correction, confess sin and grow in holiness. Freedom from condemnation is not freedom from responsibility.",
+            context:"Romans 8:1–4 announces that there is no condemnation for those in Christ Jesus and explains the work of God through His Son. Revelation 12:10–11 portrays the accuser's defeat in relation to the Lamb and faithful witness.",
+            practice:"When accused, distinguish truthful correction from shame-filled falsehood. Confess what is genuinely wrong, make amends where possible, receive forgiveness in Christ and reject claims that your past makes repentance or growth impossible.",
+            caution:"Do not label every criticism as spiritual attack. Some correction is necessary and loving. Test accusations honestly, seek wise counsel and never use this teaching to silence people reporting harm.",
+            questions:["What is the difference between conviction that leads to repentance and destructive shame?","What does Romans 8:1 say about those who are in Christ?","Is there a wrong I need to confess or repair?"],
+            prayer:"Merciful Father, help me receive Your truth. Give me courage to confess what is wrong, grace to accept forgiveness in Christ and wisdom to reject lies that keep me from faithful growth. Amen.",
+            refs:["Romans 8:1-4","1 John 1:8-9","Revelation 12:10-11","Psalm 32:1-5"]
+          },
+          {
+            title:"Forgiveness, reconciliation and freedom from bitterness",
+            overview:"Forgiveness releases vengeance to God and refuses to let hatred rule the heart. Reconciliation, where safe and possible, involves truth, repentance and changed conduct; it does not require denying harm or restoring unsafe access.",
+            context:"Ephesians 4:31–32 calls believers to put away bitterness and forgive as God forgave them in Christ. Romans 12:17–21 rejects revenge and calls Christians to overcome evil with good.",
+            practice:"Name the hurt truthfully, pray for strength, set wise boundaries, seek pastoral or professional support when needed, and consider what repair or safe reconciliation could look like. Forgiveness can be a process rather than an instant feeling.",
+            caution:"Forgiveness does not excuse abuse, remove legal accountability, or require a person to return to danger. Reconciliation requires safety and truth; boundaries can be appropriate and necessary.",
+            questions:["What does forgiveness ask of me, and what does it not require?","What boundary would protect safety and dignity?","Is there a step toward truth, repair or support that I can take?"],
+            prayer:"God of mercy, heal what has been wounded in me. Keep bitterness from ruling my heart, give me wisdom for healthy boundaries and lead me toward truth, justice and peace. Amen.",
+            refs:["Ephesians 4:31-32","Colossians 3:12-15","Romans 12:17-21","Matthew 5:23-24"]
+          },
+          {
+            title:"Persevering in prayer with humility and discernment",
+            overview:"Persevering prayer is persistent dependence on God joined with humility, discernment and willingness to obey. It does not treat prayer as a way to control outcomes or judge another person's spirituality.",
+            context:"Luke 18:1–8 teaches persistence through the parable of the persistent widow. Colossians 4:2 calls believers to continue in prayer with watchfulness and thanksgiving. Jesus' prayer in Gethsemane models honest desire joined with submission to the Father's will.",
+            practice:"Keep a simple prayer record, revisit requests with gratitude, test impressions against Scripture and seek counsel from mature believers. Notice where prayer invites you to act, apologise, serve or wait.",
+            caution:"Do not make promises about dates or guaranteed outcomes that Scripture does not make. Discernment is tested by Scripture, character, wise counsel and the fruit of love.",
+            questions:["How does Jesus model honest yet humble prayer in Gethsemane?","What helps me remain thankful while waiting?","How can I test an impression rather than assume it is God's voice?"],
+            prayer:"Father, teach me to pray faithfully without presumption. Give me patience, gratitude and discernment, and make me ready to obey what Your Word clearly teaches. Amen.",
+            refs:["Luke 18:1-8","Colossians 4:2-4","Luke 22:39-46","1 John 4:1"]
+          },
+          {
+            title:"The victory of Christ and the believer's hope",
+            overview:"Christian hope rests on the death and resurrection of Jesus. The New Testament proclaims His victory over sin and death and calls believers to steadfast faith, compassionate living and hope in God's promised future.",
+            context:"1 Corinthians 15:20–28 grounds resurrection hope in Christ as the firstfruits. Colossians 2:13–15 describes the triumph of the cross. Romans 8:31–39 assures believers that no created power can separate them from God's love in Christ.",
+            practice:"Let resurrection hope shape courage, grief, service and perseverance. Encourage someone who is weary, continue in good work and remember that Christian victory is centred on Jesus rather than personal triumph over other people.",
+            caution:"Do not promise that believers will avoid suffering or that every earthly circumstance will turn out as they wish. The New Testament hope is strong precisely because it looks beyond present suffering to God's faithfulness.",
+            questions:["How does Christ's resurrection shape the meaning of victory?","What does Romans 8:31–39 say can separate believers from God's love?","How can hope change the way I serve someone today?"],
+            prayer:"Risen Lord Jesus, anchor my hope in Your victory over sin and death. Keep me faithful in hardship, generous in love and confident in the future You have promised. Amen.",
+            refs:["1 Corinthians 15:20-28","Colossians 2:13-15","Romans 8:31-39","1 Peter 1:3-9"]
+          }
+        ];
+        const intro = element("p", "Choose one of the ten guided studies. Each topic opens a focused lesson with biblical context, practical application, reflection questions, a prayer and passages to read.");
+        content.appendChild(intro);
+        const lessonList = element("div", undefined, "zlw-lesson-list");
+        lessons.forEach(lesson => {
+          const details = element("details", undefined, "zlw-lesson");
+          const summary = element("summary", lesson.title);
+          details.appendChild(summary);
+          const body = element("div", undefined, "zlw-lesson-body");
+          [
+            ["Study overview",lesson.overview],
+            ["Biblical context",lesson.context],
+            ["Put the Word into practice",lesson.practice],
+            ["Read with discernment",lesson.caution]
+          ].forEach(([heading,text]) => {
+            body.appendChild(element("h4",heading));
+            body.appendChild(element("p",text));
+          });
+          body.appendChild(element("h4","Reflect and respond"));
+          const questions = element("ol");
+          lesson.questions.forEach(question => questions.appendChild(element("li",question)));
+          body.appendChild(questions);
+          body.appendChild(element("h4","A prayerful response"));
+          body.appendChild(element("p",lesson.prayer));
+          body.appendChild(element("h4","Study the Scriptures"));
+          const refs = element("div",undefined,"zlw-lesson-references");
+          lesson.refs.forEach(reference => {
+            const action = button("📖 " + reference, async () => {
+              const match = reference.match(/^(.+?)\s+(\d+)(?::(\d+))?/);
+              if (!match || typeof window.openChapter !== "function") return;
+              const bookName = match[1] === "Psalm" ? "Psalms" : match[1];
+              const chapter = Number(match[2]);
+              const verse = Number(match[3] || 1);
+              action.disabled = true;
+              try {
+                if (window.ZurielHomeNavigate) window.ZurielHomeNavigate("read");
+                await window.openChapter(bookName,chapter);
+                if (typeof window.selectBibleVerse === "function") window.selectBibleVerse(verse);
+              } catch (error) {
+                const status = content.querySelector(".zlw-status");
+                if (status) status.textContent = "Could not open " + reference + ". Please find it in the Bible reader.";
+              } finally { action.disabled = false; }
+            });
+            refs.appendChild(action);
+          });
+          body.appendChild(refs);
+          details.appendChild(body);
+          lessonList.appendChild(details);
         });
+        content.appendChild(lessonList);
+        const status = element("p","", "Every study is a guide for reading Scripture in context. Progress and personal notes remain separate from the Bible text.");
+        status.className = "library-status zlw-status";
+        content.appendChild(status);
       }
 
       if (page === "jesus") {
