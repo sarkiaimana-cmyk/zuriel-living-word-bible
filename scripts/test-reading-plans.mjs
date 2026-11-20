@@ -120,6 +120,18 @@ assert.equal(api.parseReference("John 3:0"), null, "Verse zero must be rejected.
 assert.equal(api.parseReference("John 0"), null, "Chapter zero must be rejected.");
 assert.equal(api.parseReference("not a Scripture reference"), null);
 
+
+for (const [id, count] of [["spiritual-warfare-7", 7], ["wisdom-for-daily-life-7", 7]]) {
+ const plan = plans.find(item => item.id === id);
+ assert.ok(plan, id + " must be available.");
+ assert.equal(plan.days.length, count);
+ for (const day of plan.days) {
+  assert.ok(day.reference && day.focus);
+  assert.ok(day.reflection.length >= 30, id + " requires a daily contextual reflection.");
+  assert.ok(day.prayer.length >= 40, id + " requires an original daily prayer.");
+ }
+}
+
 const allReferences = plans.flatMap(plan => plan.passages);
 assert.equal(allReferences.length, 93);
 assert.match(source, /zrp-reflection/);
