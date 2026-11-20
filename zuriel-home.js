@@ -546,17 +546,19 @@
       #zurielHomeDashboard .zob-landscape {
         overflow:hidden;position:relative;padding:18px 12px 13px;border:2px solid #c9a958;
         border-radius:16px;background:
-          radial-gradient(ellipse at 88% 19%,#fff6bd 0,transparent 22%),
-          linear-gradient(180deg,#78c5e9 0%,#d5edee 29%,#8bb6a0 47%,#315c4a 70%,#172f36 100%);
+          linear-gradient(180deg,rgba(7,25,52,.04),rgba(7,25,52,.18)),
+          url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&fm=jpg&q=88&w=1600") center 42%/cover no-repeat;
         box-shadow:inset 0 0 0 2px #fff5d055,0 10px 24px #08172b55;
       }
       #zurielHomeDashboard .zob-brandline {
+        display:flex;flex-direction:column;align-items:center;gap:0;
         max-width:440px;margin:0 auto 18px;padding:9px 8px;text-align:center;
         border:2px solid #d9b95f;border-radius:12px;background:linear-gradient(120deg,#071a3d,#12386a,#071a3d);
         color:#fff8e9;font:700 clamp(20px,5vw,29px)/1.12 Georgia,serif;
         text-shadow:0 2px 2px #0008;box-shadow:0 5px 12px #07172d55;
       }
-      #zurielHomeDashboard .zob-brandline em {color:#ffda58;font-style:italic;}
+      #zurielHomeDashboard .zob-brandline em {color:#ffda58;font-style:italic;font-size:1.08em;}
+      #zurielHomeDashboard .zob-declaration-ribbon {background:#8c173e;color:#fff0d2;}
       #zurielHomeDashboard .zob-book {
         display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;
         position:relative;overflow:hidden;border:1px solid #8b6427;border-radius:48% 48% 12px 12px / 8% 8% 12px 12px;
@@ -600,10 +602,15 @@
         margin:0;color:#17294a;font:italic 600 12px/1.4 Georgia,serif;overflow-wrap:anywhere;
       }
       #zurielHomeDashboard .zob-footer {
-        margin:14px auto 0;padding:9px 6px;max-width:420px;text-align:center;
-        border:2px solid #d9b95f;border-radius:9px;background:#0c2045;color:#f5d77e;
+        display:flex;flex-direction:column;align-items:center;gap:4px;
+        margin:14px auto 0;padding:10px 7px;max-width:420px;text-align:center;
+        border:2px solid #d9b95f;border-radius:9px;background:#061a3d;color:#f5d77e;
         font:700 14px/1.3 Georgia,serif;letter-spacing:.25px;
+        box-shadow:0 5px 13px #07172d55;
       }
+      #zurielHomeDashboard .zob-footer-flame {font-size:25px;line-height:1;color:#ffcf43;}
+      #zurielHomeDashboard .zob-footer strong {font-size:clamp(17px,4.4vw,24px);}
+      #zurielHomeDashboard .zob-footer-tagline {font:700 10px/1.5 Arial,sans-serif;letter-spacing:2px;color:#f9e6a3;}
       #zurielHomeDashboard .zob-faith-actions {display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
       #zurielHomeDashboard .zob-faith-actions .home-button {font-size:12px;padding:10px 6px;}
       @media(max-width:360px){
@@ -906,20 +913,20 @@
 
       <section class="home-card home-growth-highlight" id="zurielOpenBookFaithCard">
         <div class="zob-landscape">
-          <p class="zob-brandline">His Words.. My life.. My Victory</p>
+          <p class="zob-brandline"><span>His Word...</span><em>My Life... My Victory!</em></p>
           <div class="zob-book">
             <div class="zob-page zob-scripture-page">
               <span class="zob-ribbon" id="zurielOpenBookReference">SCRIPTURE</span>
               <p class="zob-scripture-copy" id="zurielOpenBookScripture">Your Scripture for today.</p>
             </div>
             <div class="zob-page zob-response-page">
-              <span class="zob-ribbon">MY FAITH RESPONSE</span>
+              <span class="zob-ribbon zob-declaration-ribbon">MY DECLARATION</span>
               <p class="zob-declaration-copy" id="zurielOpenBookDeclaration">Let God's Word shape your response.</p>
               <span class="zob-affirmation-label">Glory Verse Affirmation</span>
               <p class="zob-affirmation-copy" id="zurielOpenBookAffirmation"></p>
             </div>
           </div>
-          <p class="zob-footer">✦ Zuriel Living Word Bible ✦</p>
+          <div class="zob-footer"><span class="zob-footer-flame" aria-hidden="true">♨</span><strong>Zuriel Living Word Bible</strong><span class="zob-footer-tagline">THE WORD • THE TRUTH • THE LIFE</span></div>
         </div>
         <div class="zob-faith-actions">
           <button type="button" class="home-button" id="zurielOpenBookRead">📖 Read This Passage</button>
