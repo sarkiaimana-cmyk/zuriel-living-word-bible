@@ -25,10 +25,10 @@ const validHighlight = value => {
   if (!sandbox.studyStorage.isPlainRecord(value)) return false;
   if (value.verseColor !== undefined && !sandbox.studyStorage.isHighlightColor(value.verseColor)) return false;
   if (value.words !== undefined && (!sandbox.studyStorage.isPlainRecord(value.words) ||
-      !Object.keys(value.words).every(key => /^\\d+$/.test(key) &&
+      !Object.keys(value.words).every(key => /^\d+$/.test(key) &&
         sandbox.studyStorage.isHighlightColor(value.words[key])))) return false;
   if (value.wordTokens !== undefined && (!sandbox.studyStorage.isPlainRecord(value.wordTokens) ||
-      !Object.keys(value.wordTokens).every(key => /^\\d+$/.test(key) &&
+      !Object.keys(value.wordTokens).every(key => /^\d+$/.test(key) &&
         typeof value.wordTokens[key] === "string"))) return false;
   return true;
 };
