@@ -747,12 +747,18 @@
             #zurielGloryStudio textarea { min-height:65px;resize:vertical; }
             #zurielGloryStudio .zgs-actions { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px; }
             #zurielGloryStudio button { min-height:43px;border-radius:9px;padding:9px;font-weight:700; }
+            /* A single continuous, realistic open Bible: restrained paper, curved gutter, visible cover and page edges. */
             #zurielGloryPreview {
-              --zgs-paper:#f8f0dc;--zgs-ink:#28354a;--zgs-accent:#b68a38;
-              position:relative;overflow:hidden;padding:23px 19px;margin:8px 0;
-              border-radius:15px;color:var(--zgs-ink);
-              background:linear-gradient(90deg,#e8dcc2 0%,var(--zgs-paper) 8%,#fffaf0 48%,#e8dcc2 50%,#fffaf0 54%,var(--zgs-paper) 92%,#e8dcc2 100%);
-              border:1px solid #c5b48d;box-shadow:0 8px 22px #101d3025;
+              --zgs-paper:#fffdf6;--zgs-ink:#263342;--zgs-accent:#526d60;
+              position:relative;isolation:isolate;overflow:hidden;padding:23px 19px 20px;margin:8px 0;
+              border-radius:12px;color:var(--zgs-ink);
+              background:linear-gradient(145deg,#253b34 0%,#172a25 100%);
+              border:1px solid #263b32;box-shadow:0 10px 25px #101d3030;
+            }
+            #zurielGloryPreview:before {
+              content:"";position:absolute;z-index:-1;left:3.5%;right:3.5%;top:42%;bottom:7%;
+              border-radius:8px 8px 18px 18px;background:#e8dfc9;
+              box-shadow:0 5px 0 #c9bda2,0 9px 0 #a99c82,0 14px 18px #0008;
             }
             #zurielGloryStudio[data-finish="navy"] #zurielGloryPreview {--zgs-paper:#172b49;--zgs-ink:#f6f0df;--zgs-accent:#e7c77d;--zgs-page-bg:linear-gradient(145deg,#203a60,#122541);--zgs-page-border:#d7b96d88;background:linear-gradient(90deg,#0c1a30,#1b3151 48%,#0d1d35 50%,#1b3151);}
             #zurielGloryStudio[data-finish="ivory"] #zurielGloryPreview {--zgs-page-bg:linear-gradient(145deg,#fffdf5,#eee3ca);--zgs-page-border:#b79a5b99;}
@@ -760,26 +766,44 @@
             #zurielGloryStudio[data-finish="parchment"] #zurielGloryPreview {--zgs-paper:#f0dfbd;--zgs-ink:#4a3520;--zgs-accent:#9a682b;--zgs-page-bg:repeating-linear-gradient(0deg,#f7e9cb,#f7e9cb 3px,#eddfc2 4px);--zgs-page-border:#b28a4e;background:repeating-linear-gradient(0deg,#f2e5ca,#f2e5ca 3px,#eddfc2 4px);}
             #zurielGloryPreview {background-image:linear-gradient(180deg,#10243a35,#10243a55),var(--zgs-wallpaper-image,none);background-size:cover;background-position:center;background-repeat:no-repeat;}
             #zurielGloryPreview:after {content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:#9a835333;box-shadow:0 0 15px #5b472333;pointer-events:none;}
-            #zurielGloryPreview .zgs-brand {font-size:15px;letter-spacing:1px;text-align:center;color:var(--zgs-accent);font-weight:800;font-family:Georgia,serif;position:relative;z-index:1;}
-            #zurielGloryPreview h3 {text-align:center;color:var(--zgs-ink);font-family:Georgia,serif;font-size:20px;margin:9px 0 15px;position:relative;z-index:1;}
-            #zurielGloryPreview .zgs-book-spread {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;position:relative;z-index:1;}
-            #zurielGloryPreview .zgs-page {position:relative;min-width:0;min-height:260px;padding:18px 15px;background:var(--zgs-page-bg,linear-gradient(145deg,#fffdf5,#eee3ca));border:1px solid var(--zgs-page-border,#b79a5b99);border-radius:7px 15px 15px 7px;box-shadow:0 12px 26px #08142655,inset 0 0 18px #ffffff24;overflow:hidden;}
-            #zurielGloryPreview .zgs-left-page {border-radius:15px 7px 7px 15px;box-shadow:0 12px 26px #08142655,inset -8px 0 14px #0a183018;}
-            #zurielGloryPreview .zgs-right-page {box-shadow:0 12px 26px #08142655,inset 8px 0 14px #0a183018;}
+            #zurielGloryPreview .zgs-brand {font-size:13px;letter-spacing:.4px;text-align:center;color:#e9e3d5;font-weight:700;font-family:Georgia,serif;position:relative;z-index:1;}
+            #zurielGloryPreview h3 {text-align:center;color:#fffdf5;font-family:Georgia,serif;font-size:20px;margin:9px 0 12px;position:relative;z-index:1;}
+            #zurielGloryPreview .zgs-book-spread {
+              display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;
+              position:relative;z-index:1;margin:20px 2px 0;padding:18px 12px 20px;
+              border-radius:7px 7px 13px 13px;
+              background:linear-gradient(90deg,#e7ddc7 0%,#fffdf5 3%,#fffdf7 47%,#d6cbb5 49.5%,#b7aa91 50%,#fffdf7 52%,#fffdf5 97%,#e7ddc7 100%);
+              box-shadow:0 4px 0 #c5b99f,0 8px 0 #a99c82,0 13px 18px #0006;
+            }
+            #zurielGloryPreview .zgs-page {
+              position:relative;min-width:0;min-height:260px;padding:18px 15px;
+              background:transparent;border:0;border-radius:0;box-shadow:none;overflow:hidden;
+            }
+            #zurielGloryPreview .zgs-left-page {
+              border-right:1px solid #d7ceb9;
+              box-shadow:inset -13px 0 16px -17px #594d39;
+              transform:perspective(900px) rotateY(2deg);transform-origin:right center;
+            }
+            #zurielGloryPreview .zgs-right-page {
+              box-shadow:inset 13px 0 16px -17px #594d39;
+              transform:perspective(900px) rotateY(-2deg);transform-origin:left center;
+            }
             #zurielGloryPreview .zgs-page-title {font:700 10px/1.4 Arial,sans-serif;letter-spacing:1px;text-align:center;color:var(--zgs-accent);margin:3px 0 12px;}
             #zurielGloryPreview .zgs-ref {text-align:center;font-weight:800;color:var(--zgs-accent);font-size:13px;}
             #zurielGloryPreview .zgs-copy {white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.48;margin:9px 0;font-family:Georgia,serif;font-size:14px;}
             #zurielGloryPreview .zgs-active-copy {min-height:105px;font-weight:700;}
-            #zurielGloryPreview .zgs-footer {text-align:center;font-size:10px;letter-spacing:1px;margin-top:17px;color:var(--zgs-accent);font-weight:800;position:relative;z-index:1;}
+            #zurielGloryPreview .zgs-footer {text-align:center;font-size:10px;letter-spacing:.5px;margin-top:18px;color:#e9e3d5;font-weight:700;position:relative;z-index:1;}
             #zurielGloryStudio .zgs-tabs {display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;}
             #zurielGloryStudio .zgs-tabs button {font-size:11px;line-height:1.25;padding:7px 3px;background:#19324f;color:#fff;}
             #zurielGloryStudio .zgs-tabs button[aria-pressed="true"] {background:#b28b45;color:#172b49;outline:2px solid #e5d2a6;}
             #zurielGloryStudio .zgs-typography-controls {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:10px;border:1px solid #d7c79f;border-radius:10px;background:#f5f1e7;}
             #zurielGloryStudio .zgs-typography-controls label {display:grid;gap:5px;color:#19324f;font-size:11px;}
             #zurielGloryStudio .zgs-typography-controls select {width:100%;min-width:0;padding:8px;border:1px solid #c8b98e;border-radius:7px;background:#fff;color:#203047;font:inherit;}
-            #zurielGloryStudio[data-layout="stacked"] #zurielGloryPreview .zgs-book-spread {grid-template-columns:minmax(0,1fr);gap:8px;}
+            #zurielGloryStudio[data-layout="stacked"] #zurielGloryPreview .zgs-book-spread {grid-template-columns:minmax(0,1fr);gap:0;}
+            #zurielGloryStudio[data-layout="stacked"] #zurielGloryPreview .zgs-left-page {border-right:0;border-bottom:1px solid #d7ceb9;transform:none;}
+            #zurielGloryStudio[data-layout="stacked"] #zurielGloryPreview .zgs-right-page {transform:none;}
             #zurielGloryStudio[data-layout="stacked"] #zurielGloryPreview:after {display:none;}
-            #zurielGloryStudio[data-layout="stacked"] #zurielGloryPreview .zgs-page {padding:8px 4px;border-bottom:1px solid color-mix(in srgb,var(--zgs-accent) 35%,transparent);}
+            #zurielGloryStudio[data-layout="stacked"] #zurielGloryPreview .zgs-page {padding:12px 10px;}
             #zurielGloryStudio[data-layout="stacked"] #zurielGloryPreview .zgs-copy {font-size:15px;line-height:1.65;}
             #zurielGloryStudio #zgsSaveImage {background:#19324f;color:#fff7e6;border:1px solid #b99b58;}
             #zurielGloryStudio .zgs-actions button {min-height:48px;padding:10px 12px;font-size:13px;touch-action:manipulation;}
@@ -792,7 +816,7 @@
             #zurielGloryStudio .zgs-saved-actions {display:flex;gap:8px;flex-wrap:wrap;}
             #zurielGloryStudio .zgs-saved-actions button {min-height:38px;padding:7px 12px;border:1px solid #b99b58;border-radius:8px;background:#19324f;color:#fff7e6;font:inherit;}
             @media(max-width:520px){#zurielGloryStudio .zgs-typography-controls{grid-template-columns:1fr 1fr}#zurielGloryStudio .zgs-typography-controls label:last-child{grid-column:1/-1}}
-            @media(max-width:420px){#zurielGloryPreview{padding:16px 10px}#zurielGloryPreview h3{font-size:16px}#zurielGloryPreview .zgs-book-spread{gap:12px}#zurielGloryPreview .zgs-page{padding:6px 2px}#zurielGloryPreview .zgs-copy{font-size:12px}#zurielGloryPreview .zgs-page-title{font-size:9px}#zurielGloryStudio .zgs-tabs button{font-size:10px;min-height:42px}}
+            @media(max-width:420px){#zurielGloryPreview{padding:16px 10px}#zurielGloryPreview h3{font-size:16px}#zurielGloryPreview .zgs-book-spread{padding:12px 7px 14px}#zurielGloryPreview .zgs-page{padding:9px 7px}#zurielGloryPreview .zgs-copy{font-size:12px}#zurielGloryPreview .zgs-page-title{font-size:9px}#zurielGloryStudio .zgs-tabs button{font-size:10px;min-height:42px}}
           `;
           root.appendChild(studioStyle);
         }
@@ -1170,11 +1194,18 @@
               const firstHeight = referenceHeadingHeight + leftLines.length * lineHeight(scriptureSize) + 44;
               const secondY = top + firstHeight + sectionGap - 55;
               const secondHeight = faithHeadingHeight + rightLines.length * lineHeight(faithSize) + 44;
-              roundedPanel(exportMargin - 28, top - 55, exportColumnWidth + 56, firstHeight, 22);
-              roundedPanel(exportMargin - 28, secondY, exportColumnWidth + 56, secondHeight, 22);
+              roundedPanel(exportMargin - 28, top - 55, exportColumnWidth + 56, firstHeight, 18);
+              roundedPanel(exportMargin - 28, secondY, exportColumnWidth + 56, secondHeight, 18);
             } else {
-              roundedPanel(margin - 28, top - 55, columnWidth + 56, contentHeight + 88, 22);
-              roundedPanel(margin + columnWidth + gap - 28, top - 55, columnWidth + 56, contentHeight + 88, 22);
+              const spreadX = margin - 28, spreadY = top - 55;
+              const spreadWidth = width - margin * 2 + 56;
+              roundedPanel(spreadX, spreadY, spreadWidth, contentHeight + 88, 20);
+              ctx.save();
+              ctx.shadowColor = "rgba(35,28,18,.25)";
+              ctx.shadowBlur = 12;
+              ctx.beginPath(); ctx.moveTo(width/2,spreadY+12); ctx.lineTo(width/2,spreadY+contentHeight+20);
+              ctx.strokeStyle = "rgba(105,91,66,.45)"; ctx.lineWidth = 5; ctx.stroke();
+              ctx.restore();
             }
             ctx.restore();
             ctx.strokeStyle = colors[2]; ctx.lineWidth = 5;
