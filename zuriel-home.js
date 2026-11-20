@@ -939,19 +939,19 @@
           <button type="button" class="home-button" id="zurielOpenBookCreateCard">🖼️ Create & Share Card</button>
         </div>
         <p id="zurielOpenBookCardStatus" class="home-subtitle" aria-live="polite"></p>
-        <details open>
+        <details>
           <summary>🙏 Prayer</summary>
           <p id="zurielOpenBookPrayer"></p>
         </details>
-        <details open>
+        <details>
           <summary>🕊️ Faith Confession</summary>
           <p id="zurielOpenBookConfession"></p>
         </details>
-        <details open>
+        <details>
           <summary>🌿 Inspiration</summary>
           <p id="zurielOpenBookInspiration"></p>
         </details>
-        <details open>
+        <details>
           <summary>🕯️ Light</summary>
           <p id="zurielOpenBookLight">Thy word is a lamp unto my feet, and a light unto my path. — Psalm 119:105</p>
         </details>
