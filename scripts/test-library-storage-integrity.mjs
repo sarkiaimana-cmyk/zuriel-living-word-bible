@@ -4,7 +4,7 @@ import { runInNewContext } from "node:vm";
 
 const source = await readFile(new URL("../zuriel-library.js", import.meta.url), "utf8");
 const start = source.indexOf("  function emptySavedLibrary() {");
-const end = source.indexOf("  function readLocalRecords(key) {", start);
+const end = source.indexOf("  function element(tag, text, className) {", start);
 assert.ok(start >= 0 && end > start, "Personal library storage block has changed; review this test before updating it.");
 const block = source.slice(start, end) + "\nwindow.__test = { loadSaved, refreshSaved, persist, getSaved: () => saved, hasError: () => !!savedLoadError };";
 const store = new Map();
