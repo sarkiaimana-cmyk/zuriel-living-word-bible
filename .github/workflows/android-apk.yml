@@ -170,6 +170,8 @@ jobs:
 
       - name: Prepare native in-app update installer
         run: node scripts/prepare-android-updater.mjs
+      - name: Test native updater Android project generation
+        run: node scripts/test-android-updater-generator.mjs
 
       - name: Set Android version from app metadata
         run: node scripts/set-android-version.mjs
@@ -264,6 +266,7 @@ jobs:
         if: steps.signing_check.outputs.available == 'true' && steps.signed_release.outcome == 'success'
         uses: ReactiveCircus/android-emulator-runner@v2
         env:
+          ANDROID_I_WANT_MY_TCG: "yes"
           GH_TOKEN: ${{ github.token }}
           # KVM is unavailable on this hosted runner; explicitly allow Emulator 37's software CPU fallback.
           ANDROID_I_WANT_MY_TCG: "yes"
