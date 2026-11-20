@@ -547,7 +547,8 @@
         overflow:hidden;position:relative;padding:18px 12px 13px;border:2px solid #c9a958;
         border-radius:16px;background:
           linear-gradient(180deg,rgba(7,25,52,.04),rgba(7,25,52,.18)),
-          url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&fm=jpg&q=88&w=1600") center 42%/cover no-repeat;
+          url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&fm=jpg&q=88&w=1600") center 42%/cover no-repeat,
+          url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%20700%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22sky%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23168bd6%22%2F%3E%3Cstop%20offset%3D%22.55%22%20stop-color%3D%22%23b9e8ff%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23ffd99b%22%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient%20id%3D%22lake%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%2335b8d0%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23075b85%22%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient%20id%3D%22sun%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23fff9c6%22%20stop-opacity%3D%22.95%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23ffb24a%22%20stop-opacity%3D%220%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%221200%22%20height%3D%22700%22%20fill%3D%22url(%23sky)%22%2F%3E%3Ccircle%20cx%3D%22930%22%20cy%3D%22185%22%20r%3D%22175%22%20fill%3D%22url(%23sun)%22%2F%3E%3Ccircle%20cx%3D%22930%22%20cy%3D%22185%22%20r%3D%2254%22%20fill%3D%22%23fff3b5%22%2F%3E%3Cpath%20d%3D%22M0%20365%20145%20210%20245%20300%20390%20115%20520%20285%20660%20165%20820%20330%20960%20195%201200%20350V700H0Z%22%20fill%3D%22%23527b91%22%2F%3E%3Cpath%20d%3D%22m180%20285%20210-170%20130%20170-88-43-48%2032-45-52-52%2046-45-14Z%22%20fill%3D%22%23e9f4f5%22%2F%3E%3Cpath%20d%3D%22m550%20290%20110-125%20160%20165-90-42-45%2034-60-46-34%2027Z%22%20fill%3D%22%23d9e9ed%22%2F%3E%3Cpath%20d%3D%22M0%20375Q180%20300%20360%20390T720%20375%201200%20350V700H0Z%22%20fill%3D%22%23245e50%22%2F%3E%3Cpath%20d%3D%22M0%20420Q180%20370%20370%20430T740%20415%201200%20390V700H0Z%22%20fill%3D%22url(%23lake)%22%2F%3E%3Cpath%20d%3D%22M0%20470Q200%20445%20410%20475T820%20465%201200%20450%22%20fill%3D%22none%22%20stroke%3D%22%23a4edf0%22%20stroke-width%3D%228%22%20opacity%3D%22.65%22%2F%3E%3Cpath%20d%3D%22M820%20300%20885%20420%20910%20540%20935%20420%20980%20300%22%20fill%3D%22%23e9f7fa%22%20opacity%3D%22.9%22%2F%3E%3Cpath%20d%3D%22M835%20325%20885%20455%20910%20555%20940%20455%20970%20325%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%2215%22%20opacity%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M0%20365Q110%20320%20230%20370L330%20700H0ZM1200%20350Q1080%20310%20990%20370L900%20700H1200Z%22%20fill%3D%22%23173f35%22%2F%3E%3Cg%20fill%3D%22%231c5a42%22%3E%3Cpath%20d%3D%22m40%20300%2045-120%2045%20120h-25l38%2065H27l38-65Z%22%2F%3E%3Cpath%20d%3D%22m140%20345%2038-105%2040%20105h-23l31%2050h-95l31-50Z%22%2F%3E%3Cpath%20d%3D%22m1080%20310%2046-125%2047%20125h-27l36%2063h-112l36-63Z%22%2F%3E%3Cpath%20d%3D%22m990%20365%2038-105%2040%20105h-23l31%2050h-95l31-50Z%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23b8f2f4%22%20stroke-width%3D%225%22%20opacity%3D%22.65%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M440%20520q110-18%20220%200t220%200%22%2F%3E%3Cpath%20d%3D%22M520%20570q100-14%20200%200t200%200%22%2F%3E%3Cpath%20d%3D%22M370%20615q130-12%20260%200t260%200%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E") center 42%/cover no-repeat;
         box-shadow:inset 0 0 0 2px #fff5d055,0 10px 24px #08172b55;
       }
       #zurielHomeDashboard .zob-brandline {
@@ -568,9 +569,12 @@
         transform:perspective(700px) rotateX(1deg);
       }
       #zurielHomeDashboard .zob-book:after {
-        content:"";position:absolute;top:0;bottom:0;left:50%;width:3px;
-        background:linear-gradient(90deg,#8e6b3b66,#fff9e6,#8e6b3b66);pointer-events:none;
+        content:"";position:absolute;top:0;bottom:0;left:50%;width:5px;
+        background:linear-gradient(90deg,#8e6b3b88,#fff9e6,#8e6b3b88);pointer-events:none;
+        box-shadow:0 0 7px #6d471c55;
       }
+      #zurielHomeDashboard .zob-scripture-page {border-radius:48% 0 0 8% / 8% 0 0 4%;}
+      #zurielHomeDashboard .zob-response-page {border-radius:0 48% 8% 0 / 0 8% 4% 0;}
       #zurielHomeDashboard .zob-page {
         position:relative;z-index:1;min-width:0;min-height:280px;
         padding:22px 13px 24px;text-align:center;color:#142b52;
@@ -618,11 +622,25 @@
       #zurielHomeDashboard .zob-footer-tagline {font:700 10px/1.5 Arial,sans-serif;letter-spacing:2px;color:#f9e6a3;}
       #zurielHomeDashboard .zob-faith-actions {display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
       #zurielHomeDashboard .zob-faith-actions .home-button {font-size:12px;padding:10px 6px;}
-      @media(max-width:360px){
-        #zurielHomeDashboard .zob-page{padding:11px 6px 14px}
-        #zurielHomeDashboard .zob-ribbon{font-size:9px}
-        #zurielHomeDashboard .zob-affirmation-label{font-size:11px}
-        #zurielHomeDashboard .zob-affirmation-copy{font-size:11px}
+      @media(max-width:420px){
+        #zurielHomeDashboard .zob-landscape{padding:13px 7px 10px;border-radius:12px;}
+        #zurielHomeDashboard .zob-brandline{margin-bottom:13px;padding:8px 5px;font-size:clamp(18px,5.2vw,24px);}
+        #zurielHomeDashboard .zob-book{min-height:320px;border-radius:43% 43% 12px 12px / 7% 7% 12px 12px;}
+        #zurielHomeDashboard .zob-page{min-height:320px;padding:19px 8px 20px;}
+        #zurielHomeDashboard .zob-ribbon{font-size:9px;letter-spacing:.2px;padding:5px 2px;margin-bottom:11px;}
+        #zurielHomeDashboard .zob-scripture-copy{font-size:clamp(15px,4.3vw,18px);line-height:1.42;}
+        #zurielHomeDashboard .zob-declaration-copy{font-size:clamp(13px,3.7vw,16px);line-height:1.4;margin-bottom:10px;}
+        #zurielHomeDashboard .zob-affirmation-label{font-size:12px;padding:7px 3px;margin-top:10px;}
+        #zurielHomeDashboard .zob-affirmation-copy{font-size:12px;line-height:1.4;}
+        #zurielHomeDashboard .zob-footer{margin-top:11px;padding:9px 5px;}
+        #zurielHomeDashboard .zob-footer-tagline{font-size:9px;letter-spacing:1.4px;}
+      }
+      @media(max-width:340px){
+        #zurielHomeDashboard .zob-page{padding-left:6px;padding-right:6px;}
+        #zurielHomeDashboard .zob-ribbon{font-size:8px;}
+        #zurielHomeDashboard .zob-scripture-copy{font-size:14px;}
+        #zurielHomeDashboard .zob-declaration-copy{font-size:12px;}
+        #zurielHomeDashboard .zob-affirmation-copy{font-size:11px;}
       }
       
       /* VIBRANT, PHOTOGRAPHIC HOME DASHBOARD REFINEMENT */
