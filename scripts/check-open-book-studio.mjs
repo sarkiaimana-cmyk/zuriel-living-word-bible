@@ -104,6 +104,10 @@ if (!home.includes('const revelationResponse = Object.assign({}, response || {})
 if (!home.includes('"HE IS " + identityTitle.toUpperCase()')) failures.push("WHO HE IS title is not carried into the shareable declaration.");
 if (!home.includes('window.ZurielLibrary.openGloryVerse(\n          item.reference, exactText, "KJV", revelationResponse')) failures.push("WHO HE IS card does not pass its exact KJV passage and title to the card studio.");
 if (!home.includes('id="zurielOpenBookFaithCard"')) failures.push("The daily open-book faith card was removed.");
+if (!readerToolbar.includes("zurielReaderTopControls")) failures.push("Reader controls must be grouped into one top toolbar.");
+if (!readerToolbar.includes("zurielReaderViewTabs")) failures.push("Reader must show Scripture, Meaning and Original Words tabs.");
+if (!readerToolbar.includes("data-view=\"scripture\"") || !readerToolbar.includes("data-view=\"meaning\"") || !readerToolbar.includes("data-view=\"original\"")) failures.push("All three reader view tabs must be present.");
+if (!readerToolbar.includes("zurielReaderTranslations")) failures.push("Translation shortcuts must remain directly below the top controls.");
 if (!home.includes('<span>His Word...</span><em>My Life... My Victory!</em>')) failures.push("The open-book card must retain the approved two-line headline.");
 if (!home.includes('class="zob-ribbon zob-declaration-ribbon">MY DECLARATION</span>')) failures.push("The right page must be labelled MY DECLARATION.");
 if (!home.includes("THE WORD • THE TRUTH • THE LIFE")) failures.push("The approved three-part Zuriel footer tagline is missing.");
