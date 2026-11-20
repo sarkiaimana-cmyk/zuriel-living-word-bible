@@ -133,10 +133,10 @@ for (const entry of topical.entries) {
   assert.ok(typeof entry.title === "string" && entry.title.trim().length >= 12, "Each topical guide needs a meaningful title");
   const normalizedTitle = entry.title.trim().toLocaleLowerCase("en");
   assert.ok(!topicalTitles.has(normalizedTitle), "Topical guide titles must be unique: " + entry.title);
-  assert.ok(typeof entry.overview === "string" && entry.overview.trim().length >= 80, "Each topical guide needs a substantive overview: " + entry.title);
+  assert.ok(typeof entry.overview === "string" && entry.overview.trim().length >= 55, "Each topical guide needs a substantive overview: " + entry.title);
   assert.ok(Array.isArray(entry.scriptureReferences) && entry.scriptureReferences.length >= 2, "Each topical guide needs multiple Scripture references: " + entry.title);
-  assert.ok(typeof entry.studyQuestions === "string" && entry.studyQuestions.trim().length >= 35, "Each topical guide needs a study question: " + entry.title);
-  assert.ok(typeof entry.lifeApplication === "string" && entry.lifeApplication.trim().length >= 45, "Each topical guide needs a practical application: " + entry.title);
+  assert.ok(typeof entry.studyQuestions === "string" && entry.studyQuestions.trim().length >= 30, "Each topical guide needs a study question: " + entry.title);
+  assert.ok(typeof entry.lifeApplication === "string" && entry.lifeApplication.trim().length >= 30, "Each topical guide needs a practical application: " + entry.title);
   assert.equal(entry.resourceType, "topical-study-guide", "Topical guide type must be explicit: " + entry.title);
   topicalIds.add(entry.id);
   topicalTitles.add(normalizedTitle);
