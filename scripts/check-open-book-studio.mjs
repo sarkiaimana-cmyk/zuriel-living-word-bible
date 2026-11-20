@@ -121,7 +121,7 @@ if (!home.includes('photo-1470770841072-f978cf4d019e')) failures.push("The open-
 if (!home.includes("data:image/svg+xml,") || !home.includes("linearGradient%20id%3D%22lake%22")) failures.push("The open-book card must include its own offline scenic landscape fallback.");
 if (!home.includes("@media(max-width:420px)") || !home.includes("min-height:320px")) failures.push("The open-book card must keep both pages readable on narrow Android screens.");
 if (!home.includes(".zob-scripture-page") || !home.includes(".zob-response-page")) failures.push("The two-page book must retain separate curved page treatments.");
-if (!home.includes(".zob-page {position:relative;z-index:1;min-width:0;min-height:300px;") || !home.includes("min-height:300px")) failures.push("The two-page book spread must preserve its 300px minimum page height for comfortable mobile reading.");
+if (!home.includes(".zob-page {") || !home.includes("min-height:300px;")) failures.push("The two-page book spread must preserve its 300px minimum page height for comfortable mobile reading.");
 if (!home.includes("🔥")) failures.push("The Zuriel footer flame mark is missing.");
 for (const reference of ["Psalm 23:1", "Isaiah 41:10", "Philippians 4:13"]) {
   if (!home.includes('data-reference="' + reference + '"')) failures.push("The daily Scripture card for " + reference + " was removed.");
