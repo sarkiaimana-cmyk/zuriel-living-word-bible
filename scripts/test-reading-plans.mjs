@@ -141,6 +141,15 @@ for (const day of walkPlan.days) {
  assert.ok(day.prayer.length >= 40, "Every Walk with Jesus day needs its own prayer.");
 }
 
+for (const plan of plans) {
+  assert.equal(plan.days.length, plan.duration, plan.id + " must expose every day.");
+  for (const [index, day] of plan.days.entries()) {
+    assert.ok(day.reference && day.focus, plan.id + " day " + (index + 1) + " must retain its passage and focus.");
+    assert.ok(day.reflection.length >= 30, plan.id + " day " + (index + 1) + " needs a meaningful reflection.");
+    assert.ok(day.prayer.length >= 40, plan.id + " day " + (index + 1) + " needs an original prayer.");
+  }
+}
+
 const allReferences = plans.flatMap(plan => plan.passages);
 assert.equal(allReferences.length, 93);
 assert.match(source, /zrp-reflection/);
