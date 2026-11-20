@@ -23,6 +23,16 @@ const monthPlan = plans.find(plan => plan.id === "walk-with-jesus-30");
 assert.ok(monthPlan, "The 30-day Walk with Jesus plan must be available.");
 assert.equal(monthPlan.duration, 30);
 assert.equal(monthPlan.passages.length, 30);
+
+const meetJesusPlan = plans.find(plan => plan.id === "meet-jesus-7");
+assert.ok(meetJesusPlan, "The seven-day Meet Jesus plan must be available.");
+assert.equal(meetJesusPlan.days.length, 7);
+for (const day of meetJesusPlan.days) {
+  assert.ok(day.reference && day.focus, "Each Meet Jesus day must retain its passage and focus.");
+  assert.ok(day.reflection.length >= 30, "Each Meet Jesus day must include a meaningful passage-specific reflection question.");
+  assert.ok(day.prayer.length >= 40, "Each Meet Jesus day must include its own prayer.");
+}
+
 assert.deepEqual(JSON.parse(JSON.stringify(api.readState())), {
   schemaVersion: 1, activePlanId: null, plans: {}
 });
@@ -66,5 +76,9 @@ assert.equal(api.parseReference("not a Scripture reference"), null);
 
 const allReferences = plans.flatMap(plan => plan.passages);
 assert.equal(allReferences.length, 93);
+assert.match(source, /zrp-reflection/);
+assert.match(source, /zrp-prayer/);
+assert.match(source, /if \(day\[2\]\).*Reflect:/);
+assert.match(source, /if \(day\[3\]\).*Pray:/);
 for (const reference of allReferences) assert.ok(api.parseReference(reference), "Every curated passage must parse: " + reference);
 console.log("Reading plan runtime checks passed: ten plans including a 30-day Jesus journey, 93 passages, private progress persistence, duplicate-day cleanup, invalid-state rejection and Scripture-reference parsing.");
