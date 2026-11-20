@@ -264,6 +264,7 @@ jobs:
         if: steps.signing_check.outputs.available == 'true' && steps.signed_release.outcome == 'success'
         uses: ReactiveCircus/android-emulator-runner@v2
         env:
+          ANDROID_I_WANT_MY_TCG: "yes"
           GH_TOKEN: ${{ github.token }}
         with:
           api-level: 30
