@@ -1,5 +1,6 @@
 name: Deploy Zuriel Bible translations proxy
 
+# Deployment is intentionally manual; execution requires inputs.confirm_deployment == true.
 on:
   workflow_dispatch:
     inputs:
