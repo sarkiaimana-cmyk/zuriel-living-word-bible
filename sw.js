@@ -2,7 +2,7 @@
 
 "use strict";
 
-const CACHE_NAME = "zuriel-bible-offline-v208";
+const CACHE_NAME = "zuriel-bible-offline-v209";
 
 const CORE_FILES = [
   "./",
