@@ -13,7 +13,7 @@ const bibleBooks = [{ name: "Genesis" }, { name: "John" }];
 const bookCodes = { Genesis: "GEN", John: "JHN" };
 const corpus = {
   GEN: [["In the beginning God created the heavens and the earth.", "The word of the Lord is true."]],
-  JHN: [["For God so loved the world.", "Love one another as I have loved you.", "A lovely day is not the same as love.", "Café fellowship is warm."]]
+  JHN: [["For God so loved the world.", "Love one another as I have loved you.", "A lovely day is not the same as loving.", "Café fellowship is warm."]]
 };
 const sandbox = {
   window: {},
