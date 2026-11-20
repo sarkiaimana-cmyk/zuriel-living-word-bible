@@ -1,13 +1,12 @@
-name: Deploy Zuriel Bible translations proxy (manual)
+name: Deploy Zuriel Bible translations proxy
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - "ai-worker/**"
+      - ".github/workflows/deploy-translations-worker.yml"
   workflow_dispatch:
-    inputs:
-      confirm_deployment:
-        description: Confirm Cloudflare Workers plan and all configured Bible-provider licences have been checked
-        required: true
-        type: boolean
-        default: false
 
 permissions:
   contents: write
@@ -18,7 +17,6 @@ concurrency:
 
 jobs:
   deploy:
-    if: ${{ inputs.confirm_deployment == true }}
     runs-on: ubuntu-latest
     defaults:
       run:
