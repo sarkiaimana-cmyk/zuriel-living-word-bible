@@ -70,6 +70,27 @@
     const contentTop = 390;
     const footerSpace = 260;
     canvas.height = Math.max(1350, contentTop + lines.length * lineHeight + footerSpace);
+    // Resizing a canvas resets its drawing context, so paint the full card
+    // background and header after the final height has been established.
+    const finalGradient = ctx.createLinearGradient(0, 0, 1080, canvas.height);
+    finalGradient.addColorStop(0, "#0b1830");
+    finalGradient.addColorStop(0.58, "#173454");
+    finalGradient.addColorStop(1, "#10213d");
+    ctx.fillStyle = finalGradient;
+    ctx.fillRect(0, 0, 1080, canvas.height);
+    ctx.strokeStyle = "#c8ad70";
+    ctx.lineWidth = 4;
+    ctx.strokeRect(34, 34, 1012, canvas.height - 68);
+    ctx.strokeStyle = "rgba(200,173,112,.45)";
+    ctx.lineWidth = 2;
+    ctx.strokeRect(54, 54, 972, canvas.height - 108);
+    ctx.textAlign = "center";
+    ctx.fillStyle = "#e8cf91";
+    ctx.font = "bold 30px Georgia";
+    ctx.fillText("ZURIEL LIVING WORD BIBLE", 540, 145);
+    ctx.font = "bold 24px Arial";
+    ctx.fillStyle = "#f0d99f";
+    ctx.fillText(card.type.toUpperCase(), 540, 250);
     const startY = Math.max(contentTop, (canvas.height - footerSpace - lines.length * lineHeight) / 2);
     ctx.fillStyle = "#fff9e9";
     ctx.font = "46px Georgia";
