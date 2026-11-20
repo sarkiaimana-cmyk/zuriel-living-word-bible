@@ -12,6 +12,8 @@ const failures = [];
 if (!updates.includes('const APP_VERSION = "' + info.version + '";')) failures.push("In-app updater version must match version.json.");
 if (!updates.includes("nativeUpdater.installUpdate") || !updates.includes("sha256")) failures.push("Native app update must use the checksum-verifying Android installer.");
 if (!updates.includes("releases/latest")) failures.push("Native app update checker must query the official latest GitHub release.");
+if (!updates.includes('release.tag_name !== "v" + info.version')) failures.push("Native app update must match the official release tag to version metadata.");
+if (!updates.includes('Number(asset.size) > 0') || !updates.includes('asset.digest || ""')) failures.push("Native app update must require a non-empty APK asset and its published SHA-256 digest.");
 if (!updates.includes("Download & Install Zuriel Update")) failures.push("Native update centre must offer the official signed APK.");
 if (!updates.includes("Do not uninstall it")) failures.push("Update centre must warn users not to uninstall before an in-place update.");
 if (!updates.includes("If Android reports a signature or package conflict, cancel")) failures.push("Update centre must tell users to cancel on package/signature mismatch.");
