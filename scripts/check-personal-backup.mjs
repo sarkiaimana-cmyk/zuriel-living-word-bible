@@ -19,6 +19,9 @@ if (!library.includes("function emptySavedLibrary()") ||
     !library.includes("if (!refreshSaved())")) {
   failures.push("Personal library must fail closed when existing saved records cannot be read.");
 }
+if (library.includes('persist();\n            alert("Saved to your personal library.");')) {
+  failures.push("Personal library must not report a declaration as saved when persistence fails.");
+}
 if (!library.includes("Your existing records have not been changed.")) {
   failures.push("Personal library corruption warning must explicitly protect existing records.");
 }
