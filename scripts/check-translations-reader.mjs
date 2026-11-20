@@ -77,8 +77,8 @@ requireText(client, "zuriel-bible-translations.", "Expected dedicated translatio
 requireText(client, "window.ZurielTranslations", "Translation reader public readiness API");
 requireText(client, 'const providers = ["youversion", "api-bible"]', "Home translation shortcuts search both authorised providers");
 requireText(client, "providerFailures.join", "Clear provider-specific explanation when a requested version is unavailable");
-requireText(client, '"NEW LIVING TRANSLATION"', "Requested-version catalogue aliases");
-requireText(client, '"CHRISTIAN STANDARD BIBLE"', "CSB catalogue title matching");
+requireText(client, "NEW LIVING TRANSLATION", "Requested-version catalogue aliases");
+requireText(client, "CHRISTIAN STANDARD BIBLE", "CSB catalogue title matching");
 
 requireText(client, "activeController.abort()", "Cancellation of stale or closed-panel passage requests");
 forbidText(client, /localStorage|sessionStorage|caches\./i, "Uncontrolled persistent storage of online Bible text");
