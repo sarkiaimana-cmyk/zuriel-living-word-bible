@@ -2276,13 +2276,13 @@
         if (record.words !== undefined) {
           if (!isPlainRecord(record.words)) return false;
           if (!Object.keys(record.words).every(function (key) {
-            return /^\\d+$/.test(key) && isHighlightColor(record.words[key]);
+            return /^\d+$/.test(key) && isHighlightColor(record.words[key]);
           })) return false;
         }
         if (record.wordTokens !== undefined) {
           if (!isPlainRecord(record.wordTokens)) return false;
           if (!Object.keys(record.wordTokens).every(function (key) {
-            return /^\\d+$/.test(key) && typeof record.wordTokens[key] === "string";
+            return /^\d+$/.test(key) && typeof record.wordTokens[key] === "string";
           })) return false;
         }
         return true;
