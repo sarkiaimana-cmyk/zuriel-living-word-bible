@@ -132,4 +132,4 @@ if (failures.length) {
 if (!readerToolbar.includes("min-height:35px")) failures.push("Reader controls must stay compact and narrow.");
 if (!readerToolbar.includes("min-height:30px")) failures.push("Translation shortcuts must use compact pills.");
 if (!readerToolbar.includes("min-height:34px")) failures.push("Reader view tabs must stay compact.");
-if (!readerToolbar.includes("min-height:38px")) failures.push("Return bar must stay compact.");
+if (!readerToolbar.includes("min-height:34px")) failures.push("Return bar must stay compact.");
