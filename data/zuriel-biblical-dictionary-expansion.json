@@ -1324,6 +1324,140 @@
       ],
       "editorialCaution": "Translations and traditions differ in how they relate expiation and propitiation. Do not reduce the full biblical teaching on atonement to one metaphor or assume every text uses the same mechanism.",
       "entryType": "theological-term"
+    },
+    {
+      "id": "glossary-111",
+      "term": "Circumcision of the Heart",
+      "definition": "A prophetic and apostolic image for inward covenant faithfulness rather than reliance on an outward mark alone. Scripture connects it with love for God, transformed allegiance and the work of the Spirit.",
+      "scriptureReferences": [
+        "Deuteronomy 10:16",
+        "Deuteronomy 30:6",
+        "Jeremiah 4:4",
+        "Romans 2:28-29",
+        "Colossians 2:11-13"
+      ],
+      "editorialCaution": "Do not erase the historical covenant sign or collapse different biblical uses into one. Follow the argument of each passage and distinguish physical sign, inward response and participation in Christ.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-112",
+      "term": "Propitiation",
+      "definition": "A theological term used in some translations and traditions for the aspect of atonement in which God's righteous opposition to sin is addressed through Christ's sacrificial work. The New Testament also speaks of cleansing, forgiveness and reconciliation.",
+      "scriptureReferences": [
+        "Romans 3:23-26",
+        "Hebrews 2:17",
+        "1 John 2:1-2",
+        "1 John 4:10"
+      ],
+      "editorialCaution": "Christian traditions and translations differ over how to express this language. Read the relevant Greek terms and surrounding argument; do not portray the Father and Son as divided in purpose.",
+      "entryType": "theological-term"
+    },
+    {
+      "id": "glossary-113",
+      "term": "Conscience",
+      "definition": "A person's inward moral awareness that can accuse, excuse or bear witness. The New Testament teaches that conscience matters, yet it can be weak, misinformed or shaped by knowledge and conduct.",
+      "scriptureReferences": [
+        "Romans 2:14-16",
+        "Romans 14:1-23",
+        "1 Corinthians 8:7-13",
+        "1 Timothy 1:5"
+      ],
+      "editorialCaution": "Conscience is not an infallible voice or a replacement for Scripture, wisdom and accountable community. Consider the passage's teaching about knowledge, love and responsibility.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-114",
+      "term": "Covenant Faithfulness",
+      "definition": "Steadfast loyalty expressed within a committed relationship. Biblical descriptions of God's faithfulness include keeping promises, showing mercy and acting consistently with his character.",
+      "scriptureReferences": [
+        "Deuteronomy 7:9",
+        "Psalm 89:1-4",
+        "Lamentations 3:21-24",
+        "1 Corinthians 1:9"
+      ],
+      "editorialCaution": "Do not turn covenant faithfulness into a claim that every individual desire will be granted on a preferred timetable. Observe the specific covenant and promise in context.",
+      "entryType": "biblical-theme"
+    },
+    {
+      "id": "glossary-115",
+      "term": "Impartiality",
+      "definition": "The refusal to show unjust favour based on status, wealth, ethnicity or social position. Scripture presents God's judgment as impartial and calls his people to treat others without partiality.",
+      "scriptureReferences": [
+        "Deuteronomy 10:17-19",
+        "Leviticus 19:15",
+        "Acts 10:34-35",
+        "Romans 2:6-11",
+        "James 2:1-9"
+      ],
+      "editorialCaution": "Impartiality does not mean ignoring relevant evidence, vulnerability or unequal circumstances. Apply the principle with justice rather than pretending every situation is identical.",
+      "entryType": "biblical-ethic"
+    },
+    {
+      "id": "glossary-116",
+      "term": "Priesthood of Believers",
+      "definition": "A New Testament description of the people of God as a holy and royal priesthood, called to worship, proclaim God's works and offer spiritual sacrifices through Jesus Christ.",
+      "scriptureReferences": [
+        "Exodus 19:5-6",
+        "1 Peter 2:4-10",
+        "Revelation 1:5-6",
+        "Revelation 5:9-10"
+      ],
+      "editorialCaution": "Do not use this teaching to erase the distinct ministries and leadership patterns described elsewhere in the New Testament. Interpret the image within its corporate and Christ-centred setting.",
+      "entryType": "theological-concept"
+    },
+    {
+      "id": "glossary-117",
+      "term": "Generosity",
+      "definition": "Open-handed giving and practical care that flow from love for God and neighbour. Biblical teaching commends willing generosity while warning against exploitation, public display and giving under compulsion.",
+      "scriptureReferences": [
+        "Deuteronomy 15:7-11",
+        "Proverbs 11:24-25",
+        "Luke 6:32-38",
+        "2 Corinthians 8:1-15",
+        "2 Corinthians 9:6-11"
+      ],
+      "editorialCaution": "Do not turn generosity into a guaranteed financial return or pressure people to give beyond their means. Paul emphasises willingness, proportion and care for others.",
+      "entryType": "biblical-practice"
+    },
+    {
+      "id": "glossary-118",
+      "term": "Covenant Renewal",
+      "definition": "A reaffirmation of covenant commitment in which God's people remember his acts and respond with renewed allegiance and obedience. Biblical examples often include public reading, confession and communal commitment.",
+      "scriptureReferences": [
+        "Exodus 24:3-8",
+        "Joshua 24:1-28",
+        "2 Kings 23:1-3",
+        "Nehemiah 8:1-10",
+        "Nehemiah 9:1-3"
+      ],
+      "editorialCaution": "Distinguish specific covenant-renewal events in Israel's history from modern church ceremonies. Do not imply that repeating a pledge creates a new covenant identical to those in Scripture.",
+      "entryType": "biblical-theme"
+    },
+    {
+      "id": "glossary-119",
+      "term": "Resurrection Body",
+      "definition": "The transformed bodily life associated with the resurrection of the dead. Paul contrasts present mortality and weakness with the imperishable life God will raise, grounding Christian hope in Christ's resurrection.",
+      "scriptureReferences": [
+        "Daniel 12:1-3",
+        "Luke 24:36-43",
+        "1 Corinthians 15:35-58",
+        "Philippians 3:20-21"
+      ],
+      "editorialCaution": "Do not speculate beyond the text about physical mechanics or timelines. Preserve Paul's emphasis on bodily resurrection and transformation rather than reducing hope to disembodied survival.",
+      "entryType": "theological-concept"
+    },
+    {
+      "id": "glossary-120",
+      "term": "Hope of New Creation",
+      "definition": "The biblical hope that God renews life and the created order through his saving work. Paul applies new-creation language to life in Christ, while other passages point toward the renewal of heaven and earth.",
+      "scriptureReferences": [
+        "Isaiah 65:17-25",
+        "2 Corinthians 5:16-21",
+        "Galatians 6:14-16",
+        "Revelation 21:1-5"
+      ],
+      "editorialCaution": "Distinguish present transformation in Christ from the future renewal of creation. The phrase should not be reduced either to private self-improvement or to a timetable unsupported by the text.",
+      "entryType": "biblical-theme"
     }
   ]
 }
