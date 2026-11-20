@@ -72,6 +72,7 @@ if (!personal.includes("window.ZurielBackup.mount(root)")) failures.push("My Stu
 if (!index.includes('src="zuriel-backup.js"')) failures.push("Web entry point does not load backup module.");
 if (!serviceWorker.includes('"./zuriel-backup.js"')) failures.push("Offline cache does not include backup module.");
 if (!packaging.includes('"zuriel-backup.js"')) failures.push("Android package preparation does not include backup module.");
+if (!packaging.includes('"zuriel-faith-cards.js"')) failures.push("Android package preparation does not include saved faith cards.");
 const info = JSON.parse(version);
 const appVersionMatch = updates.match(/const APP_VERSION = "([^"]+)";/);
 if (!info.version || !appVersionMatch || info.version !== appVersionMatch[1]) failures.push("App version metadata is inconsistent between version.json and the in-app update centre.");
