@@ -126,11 +126,11 @@ let updatedActivity = activity;
 if (!updatedActivity.includes("ZurielUpdaterPlugin")) {
   updatedActivity = updatedActivity.replace(/^(package\s+[A-Za-z0-9_.]+)$/m, "$1\n\nimport " + packageName + ".ZurielUpdaterPlugin");
   if (activityPath.endsWith(".kt")) {
-    const registration = "class MainActivity : BridgeActivity() {\\n    override fun onCreate(savedInstanceState: android.os.Bundle?) {\\n        registerPlugin(ZurielUpdaterPlugin::class.java)\\n        super.onCreate(savedInstanceState)\\n    }\\n}";
-    if (/class MainActivity\\s*:\\s*BridgeActivity\\(\\)\\s*\\{/.test(updatedActivity)) {
-      updatedActivity = updatedActivity.replace(/class MainActivity\\s*:\\s*BridgeActivity\\(\\)\\s*\\{/, registration);
-    } else if (/class MainActivity\\s*:\\s*BridgeActivity\\(\\)\\s*$/.test(updatedActivity)) {
-      updatedActivity = updatedActivity.replace(/class MainActivity\\s*:\\s*BridgeActivity\\(\\)\\s*$/, registration);
+    const registration = "class MainActivity : BridgeActivity() {\n    override fun onCreate(savedInstanceState: android.os.Bundle?) {\n        registerPlugin(ZurielUpdaterPlugin::class.java)\n        super.onCreate(savedInstanceState)\n    }\n}";
+    if (/class MainActivity\s*:\s*BridgeActivity\(\)\s*\{/.test(updatedActivity)) {
+      updatedActivity = updatedActivity.replace(/class MainActivity\s*:\s*BridgeActivity\(\)\s*\{/, registration);
+    } else if (/class MainActivity\s*:\s*BridgeActivity\(\)\s*$/.test(updatedActivity)) {
+      updatedActivity = updatedActivity.replace(/class MainActivity\s*:\s*BridgeActivity\(\)\s*$/, registration);
     } else {
       throw new Error("Could not locate the standard Capacitor MainActivity Kotlin class.");
     }
