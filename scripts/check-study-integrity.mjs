@@ -208,8 +208,8 @@ if (!study.includes("let activeWordContextCleanup = null;") ||
 if (home.includes('document.getElementById("zurielHomeOpenBible")')) {
   failures.push(["retired Home control binding", "the removed zurielHomeOpenBible element must not be bound"]);
 }
-if (home.includes("setInterval(")) {
-  failures.push(["stable Home Scripture display", "Home revelations and daily Scripture must not rotate automatically"]);
+if (!home.includes("}, 20000);") || !home.includes("}, 22000);")) {
+  failures.push(["Home Scripture rotation", "daily Scripture and Who He Is revelations must rotate automatically"]);
 }
 for (const id of ["zurielIdentityTitle","zurielIdentityVerse","zurielNextVerse","zurielHomeVerse","zurielOpenBookScripture","zurielOpenBookPrayer","zurielOpenBookConfession","zurielOpenBookInspiration"]) {
   if (!home.includes('id="' + id + '"')) failures.push(["Home dashboard control: " + id, "missing from Home dashboard markup"]);
