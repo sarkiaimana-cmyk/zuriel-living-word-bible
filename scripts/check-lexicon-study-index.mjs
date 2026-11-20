@@ -24,7 +24,7 @@ assert.ok(loader.includes("window.ZurielLexiconStudyIndex"));
 assert.match(loader, /findById/);
 assert.match(loader, /Duplicate lexicon index ID/);
 assert.ok(html.includes("zuriel-lexicon-index.js"));
-assert.match(worker, /zuriel-bible-offline-v206/);
+assert.match(worker, /zuriel-bible-offline-v208/);
 assert.ok(worker.includes("zuriel-lexicon-index.js"));
 assert.ok(worker.includes("data/zuriel-lexicon-study-index.json"));
 assert.equal(pkg.version, "1.4.104");
