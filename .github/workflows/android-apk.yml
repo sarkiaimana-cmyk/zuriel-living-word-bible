@@ -245,6 +245,24 @@ jobs:
             echo '### Signed APK identity'
             echo "$BADGING" | grep -E '^(package:|sdkVersion:|targetSdkVersion:)'
           } >> "$GITHUB_STEP_SUMMARY"
+      - name: Publish signed release for in-app Android updates
+        if: steps.signing_check.outputs.available == 'true' && steps.signed_release.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION="$(node -p "JSON.parse(require('fs').readFileSync('version.json','utf8')).version")"
+          APK="android/app/build/outputs/apk/release/Zuriel-Living-Word-Bible-release.apk"
+          if gh release view "v$VERSION" >/dev/null 2>&1; then
+            gh release upload "v$VERSION" "$APK" --clobber
+          else
+            gh release create "v$VERSION" "$APK" \
+              --title "Zuriel Living Word Bible $VERSION" \
+              --notes "Official signed Android update for Zuriel Living Word Bible. Install over the existing Zuriel release app; do not uninstall the previous app. Android will ask you to approve installation. Your saved studies remain in the app when package identity and signing certificate match."
+          fi
+          echo "- Official signed Android update published: https://github.com/$GITHUB_REPOSITORY/releases/tag/v$VERSION" >> "$GITHUB_STEP_SUMMARY"
+
       - name: Upload Zuriel debug APK
         if: always()
         uses: actions/upload-artifact@v4
