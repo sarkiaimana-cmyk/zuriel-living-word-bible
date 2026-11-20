@@ -168,13 +168,13 @@
       duration:7,
       description:"Study forgiveness, reconciliation, boundaries, truthful speech and the peace that grows from Christ.",
       days:[
-        ["Matthew 18:15-35","Read Jesus' teaching about addressing wrong and the seriousness of forgiveness."],
-        ["Ephesians 4:25-32","Practise truthfulness, constructive speech and kindness."],
-        ["Romans 12:9-21","Consider sincere love and refusing revenge."],
-        ["Colossians 3:12-17","Study compassion, patience, forgiveness and love."],
-        ["Matthew 5:21-26","Reflect on anger, reconciliation and making peace."],
-        ["Proverbs 15:1-4","Notice the effect of gentle speech and truthful words."],
-        ["Romans 14:13-19","Pursue what makes for peace and mutual strengthening."]
+        ["Matthew 18:15-35","Read Jesus' teaching about addressing wrong and the seriousness of forgiveness.","How does Jesus describe a process for addressing wrongdoing, and what does the parable teach about receiving and extending mercy?","Lord, make me willing to seek truth and practise mercy. Give me wisdom to address harm honestly, forgive without pretending wrong did not happen, and seek safe, just paths toward peace."],,
+        ["Ephesians 4:25-32","Practise truthfulness, constructive speech and kindness.","Which old patterns of speech and behaviour are to be put away? What does Paul say should replace them in the community?","God, help my words be truthful and constructive. Remove bitterness and malice from my responses, and teach me kindness that does not excuse injustice."],,
+        ["Romans 12:9-21","Consider sincere love and refusing revenge.","How does Paul describe sincere love? What does it mean to refuse personal revenge while leaving room for what is right?","Father, guide me in sincere love. Keep me from retaliation, give me courage to establish wise boundaries, and help me pursue what is good."],,
+        ["Colossians 3:12-17","Study compassion, patience, forgiveness and love.","What qualities are believers called to put on? How does love hold these qualities together, and what role does gratitude play?","Lord Jesus, clothe my actions with compassion, patience and humility. Help me forgive as You teach, and let Your peace shape my choices."],,
+        ["Matthew 5:21-26","Reflect on anger, reconciliation and making peace.","How does Jesus address anger alongside outward actions? What urgency does He place on seeking reconciliation, and what practical wisdom does that require?","Jesus, show me where anger needs honest attention. Help me take responsible steps toward peace while respecting safety, truth and appropriate boundaries."],,
+        ["Proverbs 15:1-4","Notice the effect of gentle speech and truthful words.","How do gentle answers and harmful words affect others? What does the proverb teach about speech that brings healing?","God, set a guard over my words. Help me speak with gentleness and honesty, listen before reacting, and use my speech to encourage rather than wound."],,
+        ["Romans 14:13-19","Pursue what makes for peace and mutual strengthening.","How does Paul ask believers to handle differences of conscience? What matters more than winning an argument, and how can I strengthen rather than trip up another person?","Lord, give me humility when believers differ. Help me seek peace, respect conscience and choose actions that build others up without compromising truth."]
       ]
     }
 
