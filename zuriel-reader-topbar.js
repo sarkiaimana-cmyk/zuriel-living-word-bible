@@ -19,80 +19,30 @@
     style.textContent = `
       #bibleReader > h2,
       #bibleReader > h2 + p { display:none !important; }
-      #bibleReader { padding-top:4px !important; margin-top:0 !important; }
-      #zurielTopReturnBar {
-        position:sticky;top:0;z-index:10000;
-        min-height:54px;padding:6px 12px;margin:0 0 2px;
-        background:#8b2d1d;color:#fff;border:0;
-        box-shadow:0 2px 9px #00000018;
-      }
-      #zurielTopBack {
-        min-height:43px;padding:9px 15px;border:0;border-radius:24px;
-        background:#a30d48;color:#fff;font-size:14px;font-weight:700;
-      }
-      #zurielTopSection { color:#fff;font-size:14px; }
-      #zurielReaderTopControls {
-        display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr) 48px 48px;
-        gap:7px;align-items:center;margin:0 0 3px;padding:3px 0 4px;
-        background:#fff;
-      }
+      #bibleReader { padding:2px 0 0 !important; margin-top:0 !important; }
+      #zurielTopReturnBar { position:sticky;top:0;z-index:10000;min-height:38px;padding:3px 8px;margin:0 0 2px;background:#8b2d1d;color:#fff;border:0;box-shadow:0 1px 5px #00000014; }
+      #zurielTopBack { min-height:32px;padding:5px 10px;border:0;border-radius:18px;background:#a30d48;color:#fff;font-size:12px;font-weight:700; }
+      #zurielTopSection { color:#fff;font-size:12px; }
+      #zurielReaderTopControls { display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.85fr) 34px 34px;gap:4px;align-items:center;margin:0 0 2px;padding:4px 5px;background:#fff;border:1px solid #eee8e6;border-radius:12px;box-shadow:0 1px 4px #24100d0c; }
       #zurielReaderTopControls button,
-      #zurielReaderTopControls select {
-        box-sizing:border-box;min-width:0;width:100%;min-height:48px;
-        margin:0;padding:9px 10px;border:1px solid #ded9d7;border-radius:14px;
-        background:#fff;color:#40202b;font:700 14px Arial,sans-serif;
-        box-shadow:0 3px 9px #24100d18;
-      }
-      #zurielReaderTopControls #zurielGridLaunch {
-        overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
-        background:#fff;color:#32131f;font-size:15px;text-align:left;
-      }
-      #zurielCurrentTranslation { color:#9c1247;font-size:14px; }
-      #zurielReaderTopControls .zuriel-reader-icon {
-        display:flex;align-items:center;justify-content:center;
-        padding:0;font-size:22px;line-height:1;
-      }
-      #zurielReaderTranslations {
-        display:flex;gap:7px;overflow-x:auto;overflow-y:hidden;
-        overscroll-behavior-x:contain;white-space:nowrap;
-        -webkit-overflow-scrolling:touch;scrollbar-width:thin;
-        margin:0 -2px 3px;padding:5px 2px 6px;
-        border-bottom:1px solid #e8e3e1;
-      }
-      #zurielReaderTranslations .zrt-tab {
-        flex:0 0 auto;min-width:58px;min-height:40px;margin:0;padding:7px 12px;
-        border:1px solid #ddd6d4;border-radius:22px;
-        background:#fff;color:#59494b;font:700 13px Arial,sans-serif;
-      }
-      #zurielReaderTranslations .zrt-tab.is-active {
-        background:#a30d48;color:#fff;border-color:#a30d48;
-        box-shadow:0 2px 7px #a30d4825;
-      }
-      #zurielReaderViewTabs {
-        display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;
-        margin:0 -2px 8px;padding:0 0 7px;border-bottom:1px solid #e8e3e1;
-        background:#fff;
-      }
-      #zurielReaderViewTabs button {
-        min-width:0;min-height:43px;padding:8px 4px;margin:0;
-        border:1px solid #e2dcda;border-radius:22px;background:#fff;
-        color:#59494b;font:700 13px Arial,sans-serif;
-      }
-      #zurielReaderViewTabs button[aria-pressed="true"] {
-        background:#a30d48;border-color:#a30d48;color:#fff;
-      }
-      #bibleReader #readerStatus { margin:3px 0 7px !important; }
+      #zurielReaderTopControls select { box-sizing:border-box;min-width:0;width:100%;min-height:35px;margin:0;padding:5px 7px;border:1px solid #e5dedb;border-radius:10px;background:#fff;color:#40202b;font:600 12px Arial,sans-serif;box-shadow:none; }
+      #zurielReaderTopControls #zurielGridLaunch { overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:#fff;color:#32131f;font-size:12px;text-align:left; }
+      #zurielCurrentTranslation { color:#9c1247;font-size:12px; }
+      #zurielReaderTopControls .zuriel-reader-icon { display:flex;align-items:center;justify-content:center;padding:0;font-size:17px;line-height:1; }
+      #zurielReaderTranslations { display:flex;gap:5px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;white-space:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:thin;margin:0 0 2px;padding:3px 2px 4px;border-bottom:1px solid #eee8e6; }
+      #zurielReaderTranslations .zrt-tab { flex:0 0 auto;min-width:43px;min-height:30px;margin:0;padding:4px 9px;border:1px solid #e5dedb;border-radius:16px;background:#fff;color:#59494b;font:600 11px Arial,sans-serif; }
+      #zurielReaderTranslations .zrt-tab.is-active { background:#a30d48;color:#fff;border-color:#a30d48;box-shadow:0 1px 3px #a30d481a; }
+      #zurielReaderViewTabs { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin:0 -1px 5px;padding:0 0 4px;border-bottom:1px solid #eee8e6;background:#fff; }
+      #zurielReaderViewTabs button { min-width:0;min-height:34px;padding:5px 3px;margin:0;border:1px solid #e5dedb;border-radius:17px;background:#fff;color:#59494b;font:600 11px Arial,sans-serif; }
+      #zurielReaderViewTabs button[aria-pressed="true"] { background:#a30d48;border-color:#a30d48;color:#fff; }
+      #bibleReader #readerStatus { margin:2px 0 5px !important; }
       @media(max-width:360px) {
-        #zurielReaderViewTabs button {font-size:11px;padding:7px 2px;min-height:40px;}
-        #zurielReaderTopControls {
-          grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr) 43px 43px;
-          gap:5px;
-        }
-        #zurielReaderTopControls button,
-        #zurielReaderTopControls select { min-height:45px;padding:7px 6px;font-size:12px; }
-        #zurielReaderTopControls .zuriel-reader-icon { font-size:20px; }
+        #zurielReaderTopControls { grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr) 32px 32px;gap:3px;padding:3px; }
+        #zurielReaderTopControls button, #zurielReaderTopControls select { min-height:33px;padding:4px 5px;font-size:11px; }
+        #zurielReaderTopControls .zuriel-reader-icon { font-size:16px; }
+        #zurielReaderViewTabs button {font-size:10px;padding:4px 2px;min-height:32px;}
       }
-    `;
+
     document.head.appendChild(style);
 
     const controls = document.createElement("div");
