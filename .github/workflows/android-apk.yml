@@ -276,14 +276,7 @@ jobs:
           emulator-options: -no-window -no-audio -no-boot-anim -no-snapshot -wipe-data -gpu swiftshader_indirect
           disable-animations: true
           script: |
-            set -euo pipefail
-            APK="android/app/build/outputs/apk/release/Zuriel-Living-Word-Bible-release.apk"
-            adb install -r "$APK"
-            adb shell pm path com.zuriel.livingwordbible.release
-            adb shell monkey -p com.zuriel.livingwordbible.release -c android.intent.category.LAUNCHER 1
-            sleep 10
-            adb shell dumpsys activity activities | grep -F "com.zuriel.livingwordbible.release"
-            echo "Signed APK installation and launch smoke test passed."
+            bash -euo pipefail -c 'APK="android/app/build/outputs/apk/release/Zuriel-Living-Word-Bible-release.apk"; test -s "$APK"; adb install -r "$APK"; adb shell pm path com.zuriel.livingwordbible.release; adb shell monkey -p com.zuriel.livingwordbible.release -c android.intent.category.LAUNCHER 1; sleep 10; adb shell dumpsys activity activities | grep -F "com.zuriel.livingwordbible.release"; echo "Signed APK installation and launch smoke test passed."'
 
       - name: Publish signed release for in-app Android updates
         if: steps.signing_check.outputs.available == 'true' && steps.signed_release.outcome == 'success'
