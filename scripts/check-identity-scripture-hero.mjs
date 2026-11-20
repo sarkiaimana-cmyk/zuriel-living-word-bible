@@ -25,6 +25,10 @@ requireText('identityNext.addEventListener("click"', "Manual identity revelation
 requireText('@media(prefers-reduced-motion:reduce)', "Reduced-motion accessibility support");
 requireText('identityNext.addEventListener("click"', "Manual rotation control");
 requireText('identityRead.addEventListener("click"', "Direct passage navigation");
+requireText("}, 20000);", "Automatic Scripture for Today rotation");
+requireText("displayVerse(verseIndex + 1);", "Advancing daily Scripture sequence");
+requireText("renderOpenBookFaithCard();", "Synchronized open-book Scripture and faith response");
+
 
 const titles = [...home.matchAll(/title: "([^"]+)", reference: "([^"]+)", wallpaper: (\d+) % homeWallpaperSet\.length/g)];
 if (titles.length < 50) failures.push("The identity sequence must contain at least 50 curated entries.");
