@@ -161,11 +161,13 @@
       }
       #zurielHomeDashboard .home-translations-card h2 { margin-bottom:7px; }
       #zurielHomeDashboard .translation-shortcuts {
-        display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:7px; margin:12px 0;
+        display:flex;flex-wrap:nowrap;gap:8px;margin:12px -2px;padding:2px 2px 10px;
+        overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;
+        scrollbar-width:thin;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;
       }
       #zurielHomeDashboard .translation-shortcuts button {
-        display:flex; align-items:center; justify-content:center; min-height:42px;
-        width:100%; padding:8px 3px; border:1px solid #c8ad70; border-radius:9px;
+        display:flex;flex:0 0 auto;align-items:center;justify-content:center;min-width:58px;min-height:42px;
+        width:auto;padding:8px 13px;border:1px solid #c8ad70;border-radius:22px;scroll-snap-align:start;
         background:#f7f3e8; color:#19324f; font:700 12px Arial,sans-serif;
         cursor:pointer; touch-action:manipulation;
       }
@@ -183,8 +185,11 @@
       }
       #zurielHomeTranslations #zurielTranslationCompare summary { color:#19324f; }
       #zurielHomeTranslations #zurielTranslationCompare .ztc-note { color:#526174; }
+      #zurielHomeDashboard .home-greeting-card{margin:0 0 12px;padding:14px 16px;background:linear-gradient(135deg,#10213d,#25476d);border:1px solid #c8ad70;border-radius:15px}
+      #zurielHomeDashboard .home-greeting-card h2{margin:0 0 5px;color:#f3d99e;font:700 20px/1.3 Georgia,serif}
+      #zurielHomeDashboard .home-greeting-card p{margin:0;color:#e6edf5;font:13px/1.5 Arial,sans-serif}
       @media(max-width:360px) {
-        #zurielHomeDashboard .translation-shortcuts { grid-template-columns:repeat(3,minmax(0,1fr)); }
+        #zurielHomeDashboard .translation-shortcuts button{min-width:55px;padding-left:11px;padding-right:11px}
       }
 
       #zurielHomeDashboard .home-card {
@@ -830,6 +835,10 @@
     dashboard.id = "zurielHomeDashboard";
 
     dashboard.innerHTML = `
+      <section class="home-greeting-card" aria-label="Welcome">
+        <h2 id="zurielTimeGreeting">Good day, Zuriel</h2>
+        <p id="zurielTimeGreetingSub">Welcome to your time in the Word.</p>
+      </section>
       <section class="home-card home-translations-card" id="zurielHomeTranslationsSection" aria-label="Bible translations">
         <h2>🌐 Bible Translations</h2>
         <p class="home-section-note">Choose a Bible version for reading, comparison and offline study.</p>
@@ -988,6 +997,25 @@
 
     main.prepend(dashboard);
     main.prepend(topBar);
+
+    function updateZurielTimeGreeting() {
+      const greeting = document.getElementById("zurielTimeGreeting");
+      const subline = document.getElementById("zurielTimeGreetingSub");
+      if (!greeting) return;
+      const hour = new Date().getHours();
+      const period = hour >= 5 && hour < 12 ? "morning"
+        : hour >= 12 && hour < 17 ? "afternoon"
+        : hour >= 17 && hour < 21 ? "evening" : "night";
+      greeting.textContent = "Good " + period + ", Zuriel";
+      if (subline) subline.textContent = period === "night"
+        ? "Rest in His peace and keep His Word close."
+        : "Welcome to your time in the Word.";
+    }
+    updateZurielTimeGreeting();
+    window.setInterval(updateZurielTimeGreeting, 60000);
+    document.addEventListener("visibilitychange", function () {
+      if (!document.hidden) updateZurielTimeGreeting();
+    });
 
     dashboard.querySelectorAll("[data-zuriel-translation]").forEach(function (button) {
       button.addEventListener("click", function () {
