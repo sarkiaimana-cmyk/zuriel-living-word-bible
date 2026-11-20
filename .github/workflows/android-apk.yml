@@ -260,13 +260,11 @@ jobs:
             echo '### Signed APK identity'
             echo "$BADGING" | grep -E '^(package:|sdkVersion:|targetSdkVersion:)'
           } >> "$GITHUB_STEP_SUMMARY"
-      - name: Install and launch signed APK in Android emulator
+      - name: Install previous release and verify in-place Android upgrade
         if: steps.signing_check.outputs.available == 'true' && steps.signed_release.outcome == 'success'
         uses: ReactiveCircus/android-emulator-runner@v2
         env:
-          # The hosted runner has no KVM acceleration. Android Emulator requires
-          # this explicit opt-in before it will boot with the action's -accel off.
-          ANDROID_I_WANT_MY_TCG: "yes"
+          GH_TOKEN: ${{ github.token }}
         with:
           api-level: 30
           target: default
@@ -274,9 +272,10 @@ jobs:
           profile: pixel_2
           emulator-boot-timeout: 600
           emulator-options: -no-window -no-audio -no-boot-anim -no-snapshot -wipe-data -gpu swiftshader_indirect
+          disable-linux-hw-accel: true
           disable-animations: true
           script: |
-            bash -euo pipefail -c 'APK="android/app/build/outputs/apk/release/Zuriel-Living-Word-Bible-release.apk"; test -s "$APK"; adb install -r "$APK"; adb shell pm path com.zuriel.livingwordbible.release; adb shell monkey -p com.zuriel.livingwordbible.release -c android.intent.category.LAUNCHER 1; sleep 10; adb shell dumpsys activity activities | grep -F "com.zuriel.livingwordbible.release"; echo "Signed APK installation and launch smoke test passed."'
+            bash scripts/smoke-test-android-upgrade.sh
 
       - name: Publish signed release for in-app Android updates
         if: steps.signing_check.outputs.available == 'true' && steps.signed_release.outcome == 'success'
