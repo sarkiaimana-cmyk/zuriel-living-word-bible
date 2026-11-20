@@ -15,4 +15,10 @@ assert.match(source, /complete text is not currently bundled/);
 assert.match(source, /No resources match that search/);
 assert.match(source, /aria-label",\s*"Search dictionaries and commentaries"/);
 assert.match(source, /@media\(max-width:520px\)/);
-console.log("Dictionary and Commentary library checks passed.");
+for (const fragment of ["Zuriel Offline Commentary & Dictionary","Commentary & Exegesis","Bible Dictionary","ZurielStudyLibrary.load()","ZurielStudyLibrary.renderDetail"]) {
+ assert.ok(source.includes(fragment), "Offline reference shelf integration missing: " + fragment);
+}
+const loader = await readFile(new URL("../zuriel-study-library-data.js", import.meta.url), "utf8");
+assert.match(loader, /renderDetail: renderDetail/);
+assert.match(loader, /Number\(match\[3\] \|\| 1\)/);
+console.log("Dictionary and Commentary library checks passed: historic catalogue plus searchable installed offline entries.");
