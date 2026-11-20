@@ -78,7 +78,7 @@
       if(item.reference)card.append(el("p","zps-reference",item.reference));
       if(item.text)card.append(el("p","zps-copy",item.text));
       if(item.reference)card.appendChild(btn("Open Scripture",async()=>{
-        const match=String(item.reference).match(/^(.+?)\\s+(\\d+)(?::(\\d+))?/);
+        const match=String(item.reference).match(/^(.+?)\s+(\d+)(?::(\d+))?/);
         if(!match){status("This saved item has no directly openable chapter reference.");return;}
         try{
           if(window.ZurielHomeNavigate)window.ZurielHomeNavigate("read");
