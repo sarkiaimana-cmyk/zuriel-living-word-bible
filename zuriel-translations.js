@@ -770,19 +770,88 @@
     get configured() { return Boolean(API_BASE); },
     selectVersion: async function (abbreviation) {
       const requested = String(abbreviation || "").trim().toUpperCase();
+      const aliases = {
+        "GNT": /\\b(GNT|GNB|GOOD NEWS TRANSLATION|GOOD NEWS BIBLE)\\b/,
+        "AMP": /\\b(AMP|AMPLIFIED BIBLE)\\b/,
+        "LB/LT": /\\b(LB|LT|TLB|LIVING BIBLE|LIVING TRANSLATION)\\b/,
+        "TPT": /\\b(TPT|PASSION TRANSLATION)\\b/,
+        "NLT": /\\b(NLT|NEW LIVING TRANSLATION)\\b/,
+        "NET": /\\b(NET|NEW ENGLISH TRANSLATION)\\b/,
+        "NIV": /\\b(NIV|NEW INTERNATIONAL VERSION)\\b/,
+        "ESV": /\\b(ESV|ENGLISH STANDARD VERSION)\\b/,
+        "NASB": /\\b(NASB|NEW AMERICAN STANDARD BIBLE)\\b/,
+        "CSB": /\\b(CSB|CHRISTIAN STANDARD BIBLE|HCSB)\\b/,
+        "NKJV": /\\b(NKJV|NEW KING JAMES VERSION)\\b/
+      };
       panel.hidden = false;
-      if (!await resolveApiBase()) { panel.open = true; status(requested + " selected for this reading session. Its Scripture text cannot load yet because the secure translation service is not connected. The offline KJV remains available."); return true; }
-      if (selectedProvider !== "youversion") { selectedProvider = "youversion"; providerSelect.value = "youversion"; versionsLoaded = false; loadedProvider = ""; selectedVersionId = ""; }
-      await loadVersions();
-      if (!versionsLoaded || loadedProvider !== selectedProvider) return false;
       panel.open = true;
-      const options = Array.from(select.options);
-      const match = options.find(option => String(option.textContent || "").split("—")[0].trim().toUpperCase() === requested) || (requested === "LB/LT" ? options.find(option => /^(LB|LT|LIVING|LIFE)/i.test(String(option.textContent || "").trim())) : null);
-      if (!match || !match.value) { status(requested + " is not currently listed among the English versions authorised by YouVersion. The offline KJV remains available."); panel.scrollIntoView({behavior:"smooth",block:"nearest"}); return false; }
-      select.value = match.value; selectedVersionId = match.value; loadButton.disabled = !currentChapter; downloadButton.disabled = false;
-      status(requested + " selected. " + (currentChapter ? "Loading this chapter…" : "Open a Bible chapter to display this translation."));
-      if (currentChapter) await loadPassage();
-      panel.scrollIntoView({behavior:"smooth",block:"nearest"}); return true;
+      if (!await resolveApiBase()) {
+        status(requested + " cannot load yet because the secure translation service is not connected. No Scripture text has been substituted; the offline KJV remains available.");
+        panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        return false;
+      }
+
+      const providers = ["youversion", "api-bible"];
+      const providerFailures = [];
+      for (const provider of providers) {
+        selectedProvider = provider;
+        providerSelect.value = provider;
+        versionsLoaded = false;
+        loadedProvider = "";
+        selectedVersionId = "";
+        selectedVersionLabel = "";
+        select.hidden = false;
+        loadButton.hidden = false;
+        downloadButton.hidden = false;
+        select.disabled = true;
+        loadButton.disabled = true;
+        downloadButton.disabled = true;
+
+        await loadVersions();
+        // The comparison panel's open event may already be loading the same
+        // catalogue. Wait for that request instead of treating it as a miss.
+        let waitCount = 0;
+        while (versionsLoading && waitCount < 100) {
+          await new Promise(resolve => setTimeout(resolve, 50));
+          waitCount++;
+        }
+        if (!versionsLoaded || loadedProvider !== provider) {
+          providerFailures.push(statusNode.textContent || (provider + " catalogue unavailable"));
+          continue;
+        }
+
+        const options = Array.from(select.options).filter(option => option.value);
+        const exact = options.find(option =>
+          String(option.textContent || "").split("—")[0].trim().toUpperCase() === requested
+        );
+        const alias = aliases[requested];
+        const match = exact || (alias
+          ? options.find(option => alias.test(String(option.textContent || "").toUpperCase()))
+          : null);
+        if (!match) {
+          providerFailures.push(provider === "youversion"
+            ? "YouVersion did not return " + requested + "."
+            : "API.Bible did not return " + requested + ".");
+          continue;
+        }
+
+        selectedVersionId = match.value;
+        selectedVersionLabel = match.textContent;
+        select.value = match.value;
+        loadButton.disabled = !currentChapter;
+        downloadButton.disabled = false;
+        status(requested + " is available through " +
+          (provider === "youversion" ? "YouVersion" : "API.Bible") +
+          ". " + (currentChapter ? "Loading this chapter…" : "Open a Bible chapter to display it."));
+        if (currentChapter) await loadPassage();
+        panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        return true;
+      }
+
+      status(requested + " was not found in either provider's currently authorised English catalogue. " +
+        providerFailures.join(" ") + " The offline KJV remains available.");
+      panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      return false;
     },
     refreshVersions: function () { versionsLoaded = false; loadedProvider = ""; selectedVersionId = ""; apiBasePromise = null; return loadVersions(); }
   };
