@@ -124,10 +124,16 @@ await writeFile(pluginPath, java);
 
 let updatedActivity = activity;
 if (!updatedActivity.includes("ZurielUpdaterPlugin")) {
-  const importStatement = activityPath.endsWith(".java")
-    ? "$1\\n\\nimport " + packageName + ".ZurielUpdaterPlugin;"
-    : "$1\\n\\nimport " + packageName + ".ZurielUpdaterPlugin";
-  updatedActivity = updatedActivity.replace(/^(package\\s+[A-Za-z0-9_.]+;?)$/m, importStatement);
+  // Insert a real import after the package declaration. Use a callback so
+  // JavaScript replacement-string escapes cannot become literal "\\n" text.
+  const packageDeclaration = /^(package\\s+[A-Za-z0-9_.]+;?)$/m;
+  if (!packageDeclaration.test(updatedActivity)) {
+    throw new Error("Could not insert the updater import: package declaration was not found.");
+  }
+  updatedActivity = updatedActivity.replace(
+    packageDeclaration,
+    (line) => line + "\\n\\nimport " + packageName + ".ZurielUpdaterPlugin" + (activityPath.endsWith(".java") ? ";" : "")
+  );
   if (activityPath.endsWith(".kt")) {
     const registration = "class MainActivity : BridgeActivity() {\n    override fun onCreate(savedInstanceState: android.os.Bundle?) {\n        registerPlugin(ZurielUpdaterPlugin::class.java)\n        super.onCreate(savedInstanceState)\n    }\n}";
     if (/class MainActivity\s*:\s*BridgeActivity\(\)\s*\{/.test(updatedActivity)) {
@@ -161,6 +167,14 @@ if (!manifest.includes(".fileprovider")) {
     "        </provider>",
     "    </application>"
   ].join("\n"));
+}
+if (!manifest.includes('android:name="androidx.core.content.FileProvider"') ||
+    !manifest.includes('android:resource="@xml/zuriel_file_paths"') ||
+    !manifest.includes("android.permission.REQUEST_INSTALL_PACKAGES")) {
+  throw new Error("Android manifest could not be safely configured for the verified update installer.");
+}
+if (!manifest.includes("</application>")) {
+  throw new Error("Android manifest has no closing application element for the update FileProvider.");
 }
 await writeFile(manifestPath, manifest);
 const xmlPath = join(androidRoot, "app/src/main/res/xml/zuriel_file_paths.xml");
