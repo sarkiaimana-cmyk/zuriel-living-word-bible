@@ -26,9 +26,13 @@ try {
   assert.doesNotMatch(activity, /\\\\n/);
   const plugin = await readFile(join(javaDir, "ZurielUpdaterPlugin.java"), "utf8");
   assert.match(plugin, /@CapacitorPlugin\(name = "ZurielUpdater"\)/);
+  assert.match(plugin, /getPackageName\(\) \+ "\\.zuriel\\.updater\\.fileprovider"/);
   const manifest = await readFile(join(root, "android/app/src/main/AndroidManifest.xml"), "utf8");
   assert.match(manifest, /REQUEST_INSTALL_PACKAGES/);
   assert.match(manifest, /androidx\.core\.content\.FileProvider/);
+  assert.match(manifest, /android:authorities="\$\{applicationId\}\.zuriel\.updater\.fileprovider"/);
+  assert.match(manifest, /android:authorities="\$\{applicationId\}\.fileprovider"/, "The existing Capacitor provider must remain intact.");
+  assert.equal((manifest.match(/androidx\.core\.content\.FileProvider/g) || []).length, 2, "The updater must receive its own provider alongside the existing provider.");
   assert.match(manifest, /@xml\/zuriel_file_paths/);
   const paths = await readFile(join(resDir, "xml/zuriel_file_paths.xml"), "utf8");
   assert.match(paths, /cache-path/);
