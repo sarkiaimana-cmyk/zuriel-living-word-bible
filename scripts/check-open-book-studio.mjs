@@ -104,6 +104,12 @@ if (!home.includes('const revelationResponse = Object.assign({}, response || {})
 if (!home.includes('"HE IS " + identityTitle.toUpperCase()')) failures.push("WHO HE IS title is not carried into the shareable declaration.");
 if (!home.includes('window.ZurielLibrary.openGloryVerse(\n          item.reference, exactText, "KJV", revelationResponse')) failures.push("WHO HE IS card does not pass its exact KJV passage and title to the card studio.");
 if (!home.includes('id="zurielOpenBookFaithCard"')) failures.push("The daily open-book faith card was removed.");
+if (!home.includes('<span>His Word...</span><em>My Life... My Victory!</em>')) failures.push("The open-book card must retain the approved two-line headline.");
+if (!home.includes('class="zob-ribbon zob-declaration-ribbon">MY DECLARATION</span>')) failures.push("The right page must be labelled MY DECLARATION.");
+if (!home.includes("THE WORD • THE TRUTH • THE LIFE")) failures.push("The approved three-part Zuriel footer tagline is missing.");
+if (!home.includes('photo-1470770841072-f978cf4d019e')) failures.push("The open-book card must retain its scenic photographic landscape.");
+if (!home.includes("min-height:280px") || !home.includes("min-height:280px;")) failures.push("The two-page book spread must preserve comfortable mobile reading space.");
+if (!home.includes("🔥")) failures.push("The Zuriel footer flame mark is missing.");
 for (const reference of ["Psalm 23:1", "Isaiah 41:10", "Philippians 4:13"]) {
   if (!home.includes('data-reference="' + reference + '"')) failures.push("The daily Scripture card for " + reference + " was removed.");
 }
