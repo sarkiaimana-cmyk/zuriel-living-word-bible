@@ -26,3 +26,14 @@ assert.match(source, /showAllHistory\?500:20/,
   "Personal Study Space must let readers expand beyond the recent 20 chapters.");
 assert.ok(source.includes('"Show all "+filtered.length+" chapters"'),
   "Personal Study Space must provide a visible Show all history action.");
+
+assert.ok(source.includes('if(tab==="bookmarks")renderBookmarks(panel);'),
+  "Personal Study Space must expose the saved Bookmarks tab.");
+assert.ok(source.includes('if(tab==="testimonies")renderTestimonies(panel);'),
+  "Personal Study Space must expose a dedicated Testimonies tab.");
+assert.ok(source.includes('entryType:"testimony"') && source.includes('item.entryType==="testimony"'),
+  "Testimonies must be stored and filtered separately from prayer entries.");
+assert.ok(source.includes('zuriel_personal_library_v1') && source.includes('library.bookmarks'),
+  "Personal Study Space must show bookmarks created in the shared Library.");
+assert.ok(source.includes('window.selectBibleVerse(Number(match[3]))'),
+  "Saved bookmark references must open the exact verse when available.");
