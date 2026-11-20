@@ -21,4 +21,7 @@ for (const fragment of ["Zuriel Offline Commentary & Dictionary","Commentary & E
 const loader = await readFile(new URL("../zuriel-study-library-data.js", import.meta.url), "utf8");
 assert.match(loader, /renderDetail: renderDetail/);
 assert.match(loader, /Number\(match\[3\] \|\| 1\)/);
+assert.ok(source.includes("panel.insertBefore(offlineShelf,list)"), "Installed offline entries should appear before historic catalogue records.");
+assert.ok(loader.includes("editorialCaution"), "Dictionary editorial cautions must be shown in entry details.");
+assert.ok(loader.includes("contextualGloss"), "Original-language contextual glosses must be shown in entry details.");
 console.log("Dictionary and Commentary library checks passed: historic catalogue plus searchable installed offline entries.");
