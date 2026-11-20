@@ -65,21 +65,25 @@
     });
     if (line) lines.push(line);
     const lineHeight = 68;
-    const maxLines = 10;
-    const visible = lines.slice(0, maxLines);
-    const startY = Math.max(430, (1350 - visible.length * lineHeight) / 2);
+    // Expand the export canvas for longer prayers and declarations instead of
+    // silently cutting off text after ten lines.
+    const contentTop = 390;
+    const footerSpace = 260;
+    canvas.height = Math.max(1350, contentTop + lines.length * lineHeight + footerSpace);
+    const startY = Math.max(contentTop, (canvas.height - footerSpace - lines.length * lineHeight) / 2);
     ctx.fillStyle = "#fff9e9";
     ctx.font = "46px Georgia";
-    visible.forEach((item, index) => ctx.fillText(item, 540, startY + index * lineHeight, maxWidth));
+    lines.forEach((item, index) => ctx.fillText(item, 540, startY + index * lineHeight, maxWidth));
+    const referenceY = canvas.height - 220;
     ctx.fillStyle = "#e8cf91";
     ctx.font = "bold 30px Arial";
-    ctx.fillText(card.reference, 540, 1115);
+    ctx.fillText(card.reference, 540, referenceY);
     ctx.fillStyle = "#e7edf5";
     ctx.font = "24px Arial";
-    ctx.fillText("His Words.. My life.. My Victory", 540, 1200);
+    ctx.fillText("His Words.. My life.. My Victory", 540, canvas.height - 135);
     ctx.fillStyle = "#d7c18b";
     ctx.font = "20px Arial";
-    ctx.fillText("A personal faith card • Zuriel", 540, 1250);
+    ctx.fillText("Zuriel Living Word Bible", 540, canvas.height - 85);
 
     const link = document.createElement("a");
     link.download = "Zuriel-" + card.type.toLowerCase().replace(/[^a-z0-9]+/g, "-") +
