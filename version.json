@@ -1,4 +1,4 @@
 {
-  "version": "1.4.112",
-  "releaseNotes": "Improved translation shortcuts to search both configured YouVersion and API.Bible authorised catalogues, with common title aliases and clearer unavailable-version reporting. The complete offline KJV remains unchanged; online versions appear only when returned by a live authorised provider."
+  "version": "1.4.113",
+  "releaseNotes": "Improved in-app update centre and official signed Android release publishing. Android updates are delivered as signed releases for in-place installation, preserving personal app data when package identity and signing certificate match. The app explicitly warns against uninstalling before an update."
 }
