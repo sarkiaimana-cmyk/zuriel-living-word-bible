@@ -1,4 +1,4 @@
 {
-  "version": "1.4.111",
-  "releaseNotes": "Expanded My Study Space with dedicated saved-bookmarks and testimony views, retained the shared prayer journal and encrypted backup, and preserved the offline KJV. Translation selection remains distinct from verified online passage retrieval; additional Bible versions still require a working authorised provider connection."
+  "version": "1.4.112",
+  "releaseNotes": "Improved translation shortcuts to search both configured YouVersion and API.Bible authorised catalogues, with common title aliases and clearer unavailable-version reporting. The complete offline KJV remains unchanged; online versions appear only when returned by a live authorised provider."
 }
