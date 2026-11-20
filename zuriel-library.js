@@ -809,9 +809,9 @@
           <div class="zgs-field"><label for="zgsAffirmation">AFFIRMATION</label><textarea id="zgsAffirmation" placeholder="A personal response grounded in the verse"></textarea></div>
           <div class="zgs-field"><label for="zgsConfession">FAITH CONFESSION</label><textarea id="zgsConfession" placeholder="A first-person confession consistent with Scripture"></textarea></div>
           <div class="zgs-field"><label for="zgsInspiration">INSPIRATION / FAITH WORD</label><textarea id="zgsInspiration" placeholder="A short encouragement drawn from this passage"></textarea></div>
-          <div class="zgs-field"><label>REALISTIC WALLPAPERS</label><div class="zgs-actions" id="zgsWallpapers" aria-label="Choose a photographic card wallpaper"><button type="button" data-wallpaper="forest">Forest river</button><button type="button" data-wallpaper="falls">Waterfall light</button><button type="button" data-wallpaper="stream">Forest stream</button><button type="button" data-wallpaper="valley">Mountain valley</button></div><small>Choose a background for your card. Selected wallpapers are cached on this device after loading for later offline use.</small></div>
+          <div class="zgs-field"><label>REALISTIC WALLPAPERS</label><div class="zgs-actions" id="zgsWallpapers" aria-label="Choose a photographic card wallpaper"><button type="button" data-wallpaper="forest">Forest river</button><button type="button" data-wallpaper="falls">Waterfall light</button></div><small>Choose a background for your card. Selected wallpapers are cached on this device after loading for later offline use.</small></div>
           <div class="zgs-field"><label>OPEN-BOOK FINISH</label><div class="zgs-actions" id="zgsFinishes">
-            <button type="button" data-finish="ivory">Warm ivory</button><button type="button" data-finish="navy">Kingdom navy</button><button type="button" data-finish="forest">Living forest</button><button type="button" data-finish="parchment">Parchment</button>
+            <button type="button" data-finish="ivory">Warm ivory</button><button type="button" data-finish="navy">Kingdom navy</button>
           </div></div>
           <div class="zgs-tabs" id="zgsContentTabs" role="group" aria-label="Choose the right-page faith content">
             <button type="button" data-zgs-view="Prayer" aria-pressed="false">Prayer</button>
