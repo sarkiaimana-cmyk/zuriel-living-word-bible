@@ -117,7 +117,7 @@ if (!readerToolbar.includes("zurielReaderTranslations")) failures.push("Translat
 if (!home.includes('<span>His Word...</span><em>My Life... My Victory!</em>')) failures.push("The open-book card must retain the approved two-line headline.");
 if (!home.includes('class="zob-ribbon zob-declaration-ribbon">MY DECLARATION</span>')) failures.push("The right page must be labelled MY DECLARATION.");
 if (!home.includes("THE WORD • THE TRUTH • THE LIFE")) failures.push("The approved three-part Zuriel footer tagline is missing.");
-if (!home.includes('photo-1470770841072-f978cf4d019e')) failures.push("The open-book card must retain its scenic photographic landscape.");
+if (!home.includes('./images/books/0fc10dde-c515-45e8-916b-5a27f61b0841.jpg')) failures.push("The open-book card must use its bundled offline scenic artwork.");
 if (!home.includes("data:image/svg+xml,") || !home.includes("linearGradient id=\"lake\"")) failures.push("The open-book card must include its own offline scenic landscape fallback.");
 if (!home.includes("@media(max-width:420px)") || !home.includes("min-height:320px")) failures.push("The open-book card must keep both pages readable on narrow Android screens.");
 if (!home.includes(".zob-scripture-page") || !home.includes(".zob-response-page")) failures.push("The two-page book must retain separate curved page treatments.");
