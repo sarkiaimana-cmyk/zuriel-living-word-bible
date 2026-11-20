@@ -269,7 +269,13 @@
           divider.textContent = "NEW TESTAMENT";
           grid.appendChild(divider);
         }
-        grid.appendChild(buttonFor(book.name, book.name, selectedBook === book.name, () => chooseBook(book.name), "zgn-book"));
+        const shortName = typeof window.ZurielBibleBookShortName === "function"
+          ? window.ZurielBibleBookShortName(book.name)
+          : book.name;
+        const bookButton = buttonFor(book.name, shortName, selectedBook === book.name, () => chooseBook(book.name), "zgn-book");
+        bookButton.setAttribute("aria-label", book.name);
+        bookButton.title = book.name;
+        grid.appendChild(bookButton);
       });
       if (!filtered.length) {
         const empty = document.createElement("div");
