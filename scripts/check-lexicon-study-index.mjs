@@ -27,6 +27,6 @@ assert.ok(html.includes("zuriel-lexicon-index.js"));
 assert.match(worker, /zuriel-bible-offline-v214/);
 assert.ok(worker.includes("zuriel-lexicon-index.js"));
 assert.ok(worker.includes("data/zuriel-lexicon-study-index.json"));
-assert.equal(pkg.version, "1.4.114");
+assert.equal(pkg.version, release.version, "Package and app release versions must match.");
 assert.equal(release.version, pkg.version);
 console.log("Lexicon index checks passed: 32 unique Hebrew/Greek IDs, contextual safeguards, loader, offline precache and matching release metadata.");
