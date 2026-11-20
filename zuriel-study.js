@@ -264,7 +264,7 @@
       throw new Error("Zuriel cannot access your saved " + label +
         ". Existing records have not been changed. Check device storage before trying again.");
     }
-    if (raw === null || raw === "") return {};
+    if (raw === null) return {};
     let saved;
     try {
       saved = JSON.parse(raw);
@@ -3035,7 +3035,7 @@
             "Your study has been saved on this device.";
         } catch (error) {
           document.getElementById("zurielStudySaveStatus").textContent =
-            "Unable to save. Please check device storage.";
+            error.message || "Unable to save. Please check device storage.";
         }
       });
 
