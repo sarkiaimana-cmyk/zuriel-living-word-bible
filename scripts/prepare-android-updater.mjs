@@ -103,7 +103,7 @@ const java = [
   "      StringBuilder actual = new StringBuilder();",
   "      for (byte value : digest.digest()) actual.append(String.format(\"%02x\", value));",
   "      if (!expectedHash.equals(actual.toString())) { apk.delete(); throw new IllegalStateException(\"The downloaded APK failed its SHA-256 check. Nothing was installed.\"); }",
-  "      Uri uri = FileProvider.getUriForFile(getContext(), getContext().getPackageName() + \".fileprovider\", apk);",
+  "      Uri uri = FileProvider.getUriForFile(getContext(), getContext().getPackageName() + \".zuriel.updater.fileprovider\", apk);",
   "      Intent install = new Intent(Intent.ACTION_VIEW);",
   "      install.setDataAndType(uri, \"application/vnd.android.package-archive\");",
   "      install.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_ACTIVITY_NEW_TASK);",
@@ -154,11 +154,11 @@ let manifest = await readFile(manifestPath, "utf8");
 if (!manifest.includes("android.permission.REQUEST_INSTALL_PACKAGES")) {
   manifest = manifest.replace("<application", '<uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />\n    <application');
 }
-if (!manifest.includes(".fileprovider")) {
+if (!manifest.includes(".zuriel.updater.fileprovider")) {
   manifest = manifest.replace("</application>", [
     "        <provider",
     '            android:name="androidx.core.content.FileProvider"',
-    '            android:authorities="${applicationId}.fileprovider"',
+    '            android:authorities="${applicationId}.zuriel.updater.fileprovider"',
     '            android:exported="false"',
     '            android:grantUriPermissions="true">',
     "            <meta-data",
@@ -169,6 +169,7 @@ if (!manifest.includes(".fileprovider")) {
   ].join("\n"));
 }
 if (!manifest.includes('android:name="androidx.core.content.FileProvider"') ||
+    !manifest.includes('android:authorities="${applicationId}.zuriel.updater.fileprovider"') ||
     !manifest.includes('android:resource="@xml/zuriel_file_paths"') ||
     !manifest.includes("android.permission.REQUEST_INSTALL_PACKAGES")) {
   throw new Error("Android manifest could not be safely configured for the verified update installer.");
