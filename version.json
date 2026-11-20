@@ -1,4 +1,4 @@
 {
-  "version": "1.4.106",
-  "releaseNotes": "Switches to a clean white Bible-reader home and updates offline cache."
+  "version": "1.4.107",
+  "releaseNotes": "Android test build: preserves the offline KJV, keeps the Bible reader separate from the main dashboard, and retains the existing online-translation connection controls. Online provider access is not yet verified."
 }
