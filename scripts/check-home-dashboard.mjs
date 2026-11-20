@@ -22,6 +22,25 @@ forbidText(home, "setupHomePassageSelector", "The duplicate home passage selecto
 requireText(home, "zurielHomeContinueReading", "The continue-reading shortcut");
 requireText(home, "zurielOpenBookFaithCard", "The Scripture-linked open-book faith card");
 requireText(home, "--zuriel-home-wallpaper", "Rotating photographic home hero backgrounds");
+requireText(home, 'id="zurielHomePillars"', "The four-pillar premium home experience");
+requireText(home, "Beautiful Bible reading", "Premium Bible reading pillar");
+requireText(home, "Deeper Bible study", "Deep study pillar");
+requireText(home, "Scripture, even offline", "Offline Scripture pillar");
+requireText(home, "Your protected study space", "Protected personal study pillar");
+requireText(home, 'data-section="read"', "Working Bible reader pillar navigation");
+requireText(home, 'data-section="study"', "Working Study Centre pillar navigation");
+requireText(home, 'data-section="personal"', "Working personal study pillar navigation");
+for (const asset of [
+  "./images/books/0fc10dde-c515-45e8-916b-5a27f61b0841.jpg",
+  "./images/books/738dfb2c-b2e8-49d6-bc1c-d6766be38adf.jpg",
+  "./images/books/d14a5cec-132e-4432-9604-9cb82cd8cf71.jpg",
+  "./images/books/d9f06adf-07c3-45b7-bb53-385c15032679.jpg"
+]) {
+  requireText(home, asset, "Bundled offline premium visual " + asset);
+  requireText(worker, asset.replace("./", '"./'), "Service-worker precache entry " + asset);
+}
+forbidText(home, "images.unsplash.com", "Network-dependent home background imagery");
+
 requireText(home, "home-scripture-card", "The photographic Scripture card");
 requireText(home, "background-image: linear-gradient(180deg,rgba(6,20,35,.20)", "The realistic photographic Open Book landscape");
 requireText(home, "grid-template-columns: repeat(6,minmax(0,1fr))", "The six-destination compact mobile navigation");

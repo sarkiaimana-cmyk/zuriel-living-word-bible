@@ -536,6 +536,50 @@
       #zurielHomeDashboard .home-daily-scripture .home-button {
         width:auto;min-width:150px;min-height:44px;margin-top:9px;padding:9px 13px;
       }
+      #zurielHomeDashboard .home-pillars-card {
+        padding:18px;border:1px solid #c8ad70;
+        background:linear-gradient(145deg,#fffdf8 0%,#f0f4f7 100%);
+        box-shadow:0 12px 30px rgba(16,33,61,.10);
+      }
+      #zurielHomeDashboard .home-pillar-heading {max-width:720px;margin:0 auto 15px;text-align:center;}
+      #zurielHomeDashboard .home-pillar-eyebrow {
+        display:inline-block;padding:6px 10px;border:1px solid #d8c18b;border-radius:30px;
+        color:#8b6a2d;background:#fbf5e7;font:700 10px/1.2 Arial,sans-serif;letter-spacing:1.25px;
+      }
+      #zurielHomeDashboard .home-pillar-heading h2 {
+        margin:10px 0 7px;color:#142b46;font:700 clamp(21px,4.8vw,28px)/1.2 Georgia,serif;
+      }
+      #zurielHomeDashboard .home-pillar-heading p {margin:0;color:#526174;font:14px/1.6 Arial,sans-serif;}
+      #zurielHomeDashboard .home-pillar-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+      #zurielHomeDashboard .home-pillar {
+        display:flex;flex-direction:column;align-items:stretch;gap:0;
+        width:100%;min-width:0;margin:0;padding:0;overflow:hidden;text-align:left;
+        border:1px solid #d7dce1;border-radius:15px;background:#fff;color:#142b46;
+        box-shadow:0 5px 16px rgba(16,33,61,.09);white-space:normal;
+        transition:transform .18s ease,box-shadow .18s ease;
+      }
+      #zurielHomeDashboard .home-pillar:active {transform:scale(.985);}
+      #zurielHomeDashboard .home-pillar:focus-visible {outline:3px solid #c5a35c;outline-offset:3px;}
+      #zurielHomeDashboard .home-pillar-image {display:block;width:100%;aspect-ratio:16/9;overflow:hidden;background:#142b46;}
+      #zurielHomeDashboard .home-pillar-image img {
+        display:block;width:100%;height:100%;object-fit:cover;object-position:center;
+        transition:transform .35s ease;
+      }
+      #zurielHomeDashboard .home-pillar-copy {
+        display:flex;flex:1;flex-direction:column;align-items:flex-start;gap:6px;
+        min-width:0;padding:12px;
+      }
+      #zurielHomeDashboard .home-pillar-copy strong {color:#142b46;font:700 14px/1.3 Georgia,serif;}
+      #zurielHomeDashboard .home-pillar-copy small {color:#596879;font:12px/1.5 Arial,sans-serif;}
+      #zurielHomeDashboard .home-pillar-copy em {margin-top:3px;color:#85652b;font:700 11px/1.35 Arial,sans-serif;font-style:normal;}
+      @media(hover:hover) {
+        #zurielHomeDashboard .home-pillar:hover {transform:translateY(-2px);box-shadow:0 10px 22px rgba(16,33,61,.15);}
+        #zurielHomeDashboard .home-pillar:hover img {transform:scale(1.035);}
+      }
+      @media(max-width:350px) {
+        #zurielHomeDashboard .home-pillar-grid {grid-template-columns:1fr;}
+        #zurielHomeDashboard .home-pillar-image {aspect-ratio:16/8;}
+      }
       @media(min-width:620px) {
         #zurielHomeDashboard .home-daily-scripture-list {grid-template-columns:repeat(3,minmax(0,1fr));}
         #zurielHomeDashboard .home-daily-scripture {display:flex;flex-direction:column;align-items:flex-start;}
@@ -548,7 +592,7 @@
         overflow:hidden;position:relative;isolation:isolate;padding:18px 12px 13px;min-height:520px;border:2px solid #d8bd7c;
         border-radius:15px;background:
           linear-gradient(180deg,rgba(7,25,52,.04),rgba(7,25,52,.18)),
-          url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&fm=jpg&q=88&w=1600") center 42%/cover no-repeat,
+          url("./images/books/0fc10dde-c515-45e8-916b-5a27f61b0841.jpg") center 42%/cover no-repeat,
           url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%20700%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22sky%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23168bd6%22%2F%3E%3Cstop%20offset%3D%22.55%22%20stop-color%3D%22%23b9e8ff%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23ffd99b%22%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient%20id%3D%22lake%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%2335b8d0%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23075b85%22%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient%20id%3D%22sun%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23fff9c6%22%20stop-opacity%3D%22.95%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23ffb24a%22%20stop-opacity%3D%220%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%221200%22%20height%3D%22700%22%20fill%3D%22url(%23sky)%22%2F%3E%3Ccircle%20cx%3D%22930%22%20cy%3D%22185%22%20r%3D%22175%22%20fill%3D%22url(%23sun)%22%2F%3E%3Ccircle%20cx%3D%22930%22%20cy%3D%22185%22%20r%3D%2254%22%20fill%3D%22%23fff3b5%22%2F%3E%3Cpath%20d%3D%22M0%20365%20145%20210%20245%20300%20390%20115%20520%20285%20660%20165%20820%20330%20960%20195%201200%20350V700H0Z%22%20fill%3D%22%23527b91%22%2F%3E%3Cpath%20d%3D%22m180%20285%20210-170%20130%20170-88-43-48%2032-45-52-52%2046-45-14Z%22%20fill%3D%22%23e9f4f5%22%2F%3E%3Cpath%20d%3D%22m550%20290%20110-125%20160%20165-90-42-45%2034-60-46-34%2027Z%22%20fill%3D%22%23d9e9ed%22%2F%3E%3Cpath%20d%3D%22M0%20375Q180%20300%20360%20390T720%20375%201200%20350V700H0Z%22%20fill%3D%22%23245e50%22%2F%3E%3Cpath%20d%3D%22M0%20420Q180%20370%20370%20430T740%20415%201200%20390V700H0Z%22%20fill%3D%22url(%23lake)%22%2F%3E%3Cpath%20d%3D%22M0%20470Q200%20445%20410%20475T820%20465%201200%20450%22%20fill%3D%22none%22%20stroke%3D%22%23a4edf0%22%20stroke-width%3D%228%22%20opacity%3D%22.65%22%2F%3E%3Cpath%20d%3D%22M820%20300%20885%20420%20910%20540%20935%20420%20980%20300%22%20fill%3D%22%23e9f7fa%22%20opacity%3D%22.9%22%2F%3E%3Cpath%20d%3D%22M835%20325%20885%20455%20910%20555%20940%20455%20970%20325%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%2215%22%20opacity%3D%22.8%22%2F%3E%3Cpath%20d%3D%22M0%20365Q110%20320%20230%20370L330%20700H0ZM1200%20350Q1080%20310%20990%20370L900%20700H1200Z%22%20fill%3D%22%23173f35%22%2F%3E%3Cg%20fill%3D%22%231c5a42%22%3E%3Cpath%20d%3D%22m40%20300%2045-120%2045%20120h-25l38%2065H27l38-65Z%22%2F%3E%3Cpath%20d%3D%22m140%20345%2038-105%2040%20105h-23l31%2050h-95l31-50Z%22%2F%3E%3Cpath%20d%3D%22m1080%20310%2046-125%2047%20125h-27l36%2063h-112l36-63Z%22%2F%3E%3Cpath%20d%3D%22m990%20365%2038-105%2040%20105h-23l31%2050h-95l31-50Z%22%2F%3E%3C%2Fg%3E%3Cg%20stroke%3D%22%23b8f2f4%22%20stroke-width%3D%225%22%20opacity%3D%22.65%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M440%20520q110-18%20220%200t220%200%22%2F%3E%3Cpath%20d%3D%22M520%20570q100-14%20200%200t200%200%22%2F%3E%3Cpath%20d%3D%22M370%20615q130-12%20260%200t260%200%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E") center 43%/cover no-repeat;
         box-shadow:inset 0 0 0 2px #fff5d055,0 10px 24px #08172b55;
       }
@@ -698,7 +742,7 @@
       #zurielHomeDashboard .home-scripture-card {
         position: relative;
         overflow: hidden;
-        background-image: linear-gradient(135deg,rgba(8,24,43,.78),rgba(8,38,48,.48)),url("https://images.unsplash.com/photo-1595132169434-097c5ae1a145?auto=format&fit=crop&fm=jpg&q=82&w=1800");
+        background-image: linear-gradient(135deg,rgba(8,24,43,.78),rgba(8,38,48,.48)),url("./images/books/738dfb2c-b2e8-49d6-bc1c-d6766be38adf.jpg");
         background-size: cover;
         background-position: center;
         border-color: #bfd5e4;
@@ -749,7 +793,7 @@
         border-color: #c8dce9;
       }
       #zurielHomeDashboard .zob-landscape {
-        background-image: linear-gradient(180deg,rgba(6,20,35,.20),rgba(6,20,35,.45)),url("https://images.unsplash.com/photo-1759182391264-73c1be282907?auto=format&fit=crop&fm=jpg&q=82&w=1800");
+        background-image: linear-gradient(180deg,rgba(6,20,35,.20),rgba(6,20,35,.45)),url("./images/books/d14a5cec-132e-4432-9604-9cb82cd8cf71.jpg");
         background-size: cover;
         background-position: center;
         border-color: #d6c18a;
@@ -877,6 +921,31 @@
       <section class="home-greeting-card" aria-label="Welcome">
         <h2 id="zurielTimeGreeting">Good day, Zuriel</h2>
         <p id="zurielTimeGreetingSub">Welcome to your time in the Word.</p>
+      </section>
+      <section class="home-card home-pillars-card" id="zurielHomePillars" aria-labelledby="zurielPillarsTitle">
+        <div class="home-pillar-heading">
+          <span class="home-pillar-eyebrow">THE ZURIEL EXPERIENCE</span>
+          <h2 id="zurielPillarsTitle">A richer way to live in the Word</h2>
+          <p>Beautifully presented Scripture, deeper understanding, dependable offline reading and a protected personal study space.</p>
+        </div>
+        <div class="home-pillar-grid">
+          <button class="home-pillar" type="button" data-section="read" aria-label="Open premium Bible reading">
+            <span class="home-pillar-image"><img src="./images/books/0fc10dde-c515-45e8-916b-5a27f61b0841.jpg" alt="Premium Zuriel Bible reading artwork" loading="lazy" decoding="async"></span>
+            <span class="home-pillar-copy"><strong>Beautiful Bible reading</strong><small>A calm, elegant space that keeps Scripture at the centre.</small><em>Open Bible reader →</em></span>
+          </button>
+          <button class="home-pillar" type="button" data-section="study" aria-label="Open deeper Bible study">
+            <span class="home-pillar-image"><img src="./images/books/738dfb2c-b2e8-49d6-bc1c-d6766be38adf.jpg" alt="Zuriel deeper Bible study artwork" loading="lazy" decoding="async"></span>
+            <span class="home-pillar-copy"><strong>Deeper Bible study</strong><small>Explore context, connected Scriptures and original-language resources.</small><em>Explore Study Centre →</em></span>
+          </button>
+          <button class="home-pillar" type="button" data-section="read" aria-label="Open offline Scripture reading">
+            <span class="home-pillar-image"><img src="./images/books/d14a5cec-132e-4432-9604-9cb82cd8cf71.jpg" alt="Zuriel offline Scripture artwork" loading="lazy" decoding="async"></span>
+            <span class="home-pillar-copy"><strong>Scripture, even offline</strong><small>Keep the bundled King James Version close wherever you are.</small><em>Read offline KJV →</em></span>
+          </button>
+          <button class="home-pillar" type="button" data-section="personal" aria-label="Open protected personal study space">
+            <span class="home-pillar-image"><img src="./images/books/d9f06adf-07c3-45b7-bb53-385c15032679.jpg" alt="Zuriel personal study space artwork" loading="lazy" decoding="async"></span>
+            <span class="home-pillar-copy"><strong>Your protected study space</strong><small>Keep notes, prayer reflections and saved insights with care.</small><em>Open My Study Space →</em></span>
+          </button>
+        </div>
       </section>
       <section class="home-card home-translations-card" id="zurielHomeTranslationsSection" aria-label="Bible translations">
         <h2>🌐 Bible Translations</h2>
@@ -1024,13 +1093,13 @@
       </section>
     `;
 
+    // Bundled photography keeps the home visual experience available offline.
     const homeWallpaperSet = [
-      "https://images.unsplash.com/photo-1765758693002-120e6ab36b87?auto=format&fit=crop&fm=jpg&q=82&w=1800",
-      "https://images.unsplash.com/photo-1768365423849-6f694d85cf33?auto=format&fit=crop&fm=jpg&q=82&w=1800",
-      "https://images.unsplash.com/photo-1759182391264-73c1be282907?auto=format&fit=crop&fm=jpg&q=82&w=1800",
-      "https://images.unsplash.com/photo-1595132169434-097c5ae1a145?auto=format&fit=crop&fm=jpg&q=82&w=1800"
+      "./images/books/0fc10dde-c515-45e8-916b-5a27f61b0841.jpg",
+      "./images/books/738dfb2c-b2e8-49d6-bc1c-d6766be38adf.jpg",
+      "./images/books/d14a5cec-132e-4432-9604-9cb82cd8cf71.jpg",
+      "./images/books/d9f06adf-07c3-45b7-bb53-385c15032679.jpg"
     ];
-    homeWallpaperSet.push("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&fm=jpg&q=82&w=1800");
     const homeWallpaperIndex = Math.floor(Date.now() / 86400000) % homeWallpaperSet.length;
     dashboard.style.setProperty("--zuriel-home-wallpaper", 'url("' + homeWallpaperSet[homeWallpaperIndex] + '")');
 
