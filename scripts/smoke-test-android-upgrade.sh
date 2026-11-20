@@ -5,6 +5,7 @@ APK="android/app/build/outputs/apk/release/Zuriel-Living-Word-Bible-release.apk"
 BUILD_TOOLS="$ANDROID_HOME/build-tools/36.0.0"
 PACKAGE="com.zuriel.livingwordbible.release"
 VERSION="$(node -p "JSON.parse(require('fs').readFileSync('version.json','utf8')).version")"
+export VERSION
 EXPECTED_CERT_SHA256="$(tr -d '[:space:]:' < android-signing-fingerprint.txt | tr '[:upper:]' '[:lower:]')"
 PREVIOUS_DIR="$RUNNER_TEMP/zuriel-previous-release"
 mkdir -p "$PREVIOUS_DIR"
@@ -35,7 +36,7 @@ test -s "$OLD_APK"
 OLD_BADGING="$("$BUILD_TOOLS/aapt" dump badging "$OLD_APK")"
 printf '%s\n' "$OLD_BADGING" | grep -F "package: name='$PACKAGE'"
 OLD_VERSION="$(printf '%s\n' "$OLD_BADGING" | sed -n "s/.*versionName='\\([^']*\\)'.*/\\1/p" | head -n 1)"
-if [[ -z "$OLD_VERSION" || "$OLD_VERSION" == "$VERSION" ]]; then
+if [[ -z "$OLD_VERSION" || "$OLD_VERSION" == "$VERSION" || "$(printf '%s\n' "$OLD_VERSION" "$VERSION" | sort -V | tail -n 1)" != "$VERSION" ]]; then
   echo "Previous release package/version metadata is missing or not older than this build."
   exit 1
 fi
