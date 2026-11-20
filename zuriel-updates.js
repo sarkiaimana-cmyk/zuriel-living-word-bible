@@ -78,7 +78,7 @@
               install.style.width = "100%";
               install.style.marginTop = "10px";
               install.addEventListener("click", async function () {
-                const nativeUpdater = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.ZurielUpdater;
+                const nativeUpdater = window.Capacitor && typeof window.Capacitor.registerPlugin === "function" ? window.Capacitor.registerPlugin("ZurielUpdater") : null;
                 const digest = String(apk.digest || "").replace(/^sha256:/i, "").toLowerCase();
                 if (!nativeUpdater || typeof nativeUpdater.installUpdate !== "function") {
                   status.textContent = "The native update installer is not available in this installed build. Your current app and records are safe; use the official signed APK download only when you are ready.";
