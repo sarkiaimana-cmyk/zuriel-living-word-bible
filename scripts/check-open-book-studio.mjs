@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 
-const [library, worker, packaging, index, home, prWorkflow, androidWorkflow, faithCards] = await Promise.all([
+const [library, worker, packaging, index, home, prWorkflow, androidWorkflow, faithCards, readerToolbar] = await Promise.all([
   readFile(new URL("../zuriel-library.js", import.meta.url), "utf8"),
   readFile(new URL("../sw.js", import.meta.url), "utf8"),
   readFile(new URL("./prepare-web.mjs", import.meta.url), "utf8"),
@@ -8,7 +8,8 @@ const [library, worker, packaging, index, home, prWorkflow, androidWorkflow, fai
   readFile(new URL("../zuriel-home.js", import.meta.url), "utf8"),
   readFile(new URL("../.github/workflows/validate-pr.yml", import.meta.url), "utf8"),
   readFile(new URL("../.github/workflows/android-apk.yml", import.meta.url), "utf8"),
-  readFile(new URL("../zuriel-faith-cards.js", import.meta.url), "utf8")
+  readFile(new URL("../zuriel-faith-cards.js", import.meta.url), "utf8"),
+  readFile(new URL("../zuriel-reader-topbar.js", import.meta.url), "utf8")
 ]);
 const failures = [];
 const checks = [
