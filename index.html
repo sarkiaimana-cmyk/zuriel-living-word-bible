@@ -1551,50 +1551,73 @@ window.getChapterVerseCount = async function (book, chapter) {
 
 /* OFFLINE FULL-BIBLE SEARCH */
 
+const zurielSearchIndex = {
+  source: null,
+  records: []
+};
+
 window.ZurielBibleSearch = {
   search: async function (query, limit, mode) {
     const normalizeSearchText = value => String(value || "")
       .normalize("NFD")
-      .replace(/[\\u0300-\\u036f]/g, "")
+      .replace(/[\u0300-\u036f]/g, "")
       .replace(/[’‘]/g, "'")
-      .replace(/\\s+/g, " ")
+      .replace(/\s+/g, " ")
       .trim()
       .toLowerCase();
     const term = normalizeSearchText(query);
     if (term.length < 3) throw new Error("Please enter at least 3 characters.");
     if (mode && mode !== "word" && mode !== "phrase") {
-      throw new Error("Choose an exact word or phrase search.");    }
+      throw new Error("Choose an exact word or phrase search.");
+    }
+
     const data = await loadKJV();
+    // Build the normalized search index once per loaded KJV object. Repeated
+    // searches avoid re-normalizing all 31,102 verses on every keystroke.
+    if (zurielSearchIndex.source !== data) {
+      const records = [];
+      for (const book of bibleBooks) {
+        const code = bookCodes[book.name];
+        const chapters = data[code];
+        if (!Array.isArray(chapters)) continue;
+        for (let chapterIndex = 0; chapterIndex < chapters.length; chapterIndex++) {
+          const verses = chapters[chapterIndex];
+          if (!Array.isArray(verses)) continue;
+          for (let verseIndex = 0; verseIndex < verses.length; verseIndex++) {
+            const verseText = typeof verses[verseIndex] === "string" ? verses[verseIndex] : "";
+            if (!verseText.trim()) continue;
+            records.push({
+              book: book.name,
+              chapter: chapterIndex + 1,
+              verse: verseIndex + 1,
+              text: verseText.replace(/^¶\s*/, ""),
+              searchable: normalizeSearchText(verseText)
+            });
+          }
+        }
+      }
+      zurielSearchIndex.records = records;
+      zurielSearchIndex.source = data;
+    }
+
     const maximum = Number.isInteger(limit) && limit > 0
       ? Math.min(limit, mode ? 200 : 50) : 30;
-    const escaped = term.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
+    const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const exactWordPattern = mode === "word"
       ? new RegExp("(^|[^a-z0-9])" + escaped + "([^a-z0-9]|$)", "i")
       : null;
     const matches = [];
-    for (const book of bibleBooks) {
-      const code = bookCodes[book.name];
-      const chapters = data[code];
-      if (!Array.isArray(chapters)) continue;
-      for (let chapterIndex = 0; chapterIndex < chapters.length; chapterIndex++) {
-        const verses = chapters[chapterIndex];
-        if (!Array.isArray(verses)) continue;
-        for (let verseIndex = 0; verseIndex < verses.length; verseIndex++) {
-          const verseText = verses[verseIndex];
-          const verseOriginal = typeof verseText === "string" ? verseText : "";
-          const searchable = normalizeSearchText(verseOriginal);
-          const found = mode === "word"
-            ? exactWordPattern.test(searchable)
-            : searchable.includes(term);
-          if (found) {
-            matches.push({
-              book: book.name,
-              chapter: chapterIndex + 1,
-              verse: verseIndex + 1,
-              text: verseOriginal.replace(/^¶\s*/, "")
-            });
-          }
-        }
+    for (const item of zurielSearchIndex.records) {
+      const found = mode === "word"
+        ? exactWordPattern.test(item.searchable)
+        : item.searchable.includes(term);
+      if (found) {
+        matches.push({
+          book: item.book,
+          chapter: item.chapter,
+          verse: item.verse,
+          text: item.text
+        });
       }
     }
     const visible = matches.slice(0, maximum);

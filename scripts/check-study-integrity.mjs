@@ -106,12 +106,14 @@ const readerChecks = [
   ["concordance supports exact phrase searches", "searchable.includes(term)"],
   ["concordance normalizes Unicode and diacritics", '.normalize("NFD")'],
   ["concordance reports total occurrence count", "visible.totalMatches = matches.length"],
-  ["concordance preserves original KJV verse wording", "text: verseOriginal.replace"],
   ["concordance supports up to 200 matches", "Math.min(limit, mode ? 200 : 50)"],
   ["concordance scans all verses before applying the display limit", "const visible = matches.slice(0, maximum)"]
 ];
 if (reader.includes("selectedVerseElement.after(verseActions)")) {
   failures.push(["verse action box does not push later verses down", "legacy in-flow insertion remains in index.html"]);
+}
+if (!reader.includes("text: verseOriginal.replace") && !reader.includes("text: verseText.replace") && !reader.includes("text: item.text")) {
+  failures.push(["concordance preserves original KJV verse wording", "search results must return the original, un-normalized KJV verse text"]);
 }
 for (const [label, fragment] of readerChecks) {
   if (!reader.includes(fragment)) failures.push([label, "missing from index.html Bible search engine"]);

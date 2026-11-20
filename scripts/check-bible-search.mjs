@@ -6,12 +6,14 @@ const index = await readFile(new URL("../index.html", import.meta.url), "utf8");
 const start = index.indexOf("window.ZurielBibleSearch = {");
 const end = index.indexOf("\n};", start);
 assert.ok(start >= 0 && end > start, "The offline Bible search API must be present.");
-const source = index.slice(start, end + 3);
+const cacheStart = index.lastIndexOf("const zurielSearchIndex =", start);
+assert.ok(cacheStart >= 0, "The offline search index cache must be declared before the API.");
+const source = index.slice(cacheStart, end + 3);
 const bibleBooks = [{ name: "Genesis" }, { name: "John" }];
 const bookCodes = { Genesis: "GEN", John: "JHN" };
 const corpus = {
   GEN: [["In the beginning God created the heavens and the earth.", "The word of the Lord is true."]],
-  JHN: [["For God so loved the world.", "Love one another as I have loved you.", "A lovely day is not the same as love."]]
+  JHN: [["For God so loved the world.", "Love one another as I have loved you.", "A lovely day is not the same as loving.", "Café fellowship is warm."]]
 };
 const sandbox = {
   window: {},
@@ -36,6 +38,14 @@ assert.ok(exact.every(item => item.text.toLowerCase().includes("love")));
 
 const contains = await search.search("love", 30, "phrase");
 assert.equal(contains.length, 3, "Contains/phrase search should also find inflected and longer words.");
+
+const normalized = await search.search("cafe", 30, "phrase");
+assert.equal(normalized.length, 1, "Search should normalize accented characters.");
+assert.equal(normalized[0].verse, 4);
+assert.equal(vm.runInNewContext("zurielSearchIndex.records.length", sandbox), 6, "The index should cache each non-empty verse once.");
+const cachedRecords = vm.runInNewContext("zurielSearchIndex.records", sandbox);
+await search.search("beginning", 30, "phrase");
+assert.equal(vm.runInNewContext("zurielSearchIndex.records", sandbox), cachedRecords, "Repeated searches should reuse the normalized index.");
 
 const limited = await search.search("love", 1, "phrase");
 assert.equal(limited.length, 1);
