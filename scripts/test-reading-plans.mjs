@@ -132,6 +132,15 @@ for (const [id, count] of [["spiritual-warfare-7", 7], ["wisdom-for-daily-life-7
  }
 }
 
+
+const walkPlan = plans.find(plan => plan.id === "walk-with-jesus-30");
+assert.equal(walkPlan.days.length, 30);
+for (const day of walkPlan.days) {
+ assert.ok(day.reference && day.focus);
+ assert.ok(day.reflection.length >= 30, "Every Walk with Jesus day needs a contextual reflection.");
+ assert.ok(day.prayer.length >= 40, "Every Walk with Jesus day needs its own prayer.");
+}
+
 const allReferences = plans.flatMap(plan => plan.passages);
 assert.equal(allReferences.length, 93);
 assert.match(source, /zrp-reflection/);
