@@ -1,12 +1,13 @@
 name: Deploy Zuriel Bible translations proxy
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "ai-worker/**"
-      - ".github/workflows/deploy-translations-worker.yml"
   workflow_dispatch:
+    inputs:
+      confirm_deployment:
+        description: "I confirm deployment of the protected translation proxy."
+        required: true
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -27,6 +28,12 @@ jobs:
       ZITE_YVP_APP_KEY: ${{ secrets.ZITE_YVP_APP_KEY }}
       API_BIBLE_KEY: ${{ secrets.API_BIBLE_KEY }}
     steps:
+      - name: Require explicit deployment confirmation
+        if: ${{ inputs.confirm_deployment != true }}
+        run: |
+          echo "::error::Explicit deployment confirmation is required."
+          exit 1
+
       - name: Check out repository
         uses: actions/checkout@v4
 
