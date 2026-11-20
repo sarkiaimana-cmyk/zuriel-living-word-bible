@@ -12,6 +12,11 @@ const [library, worker, packaging, index, home, prWorkflow, androidWorkflow, fai
   readFile(new URL("../zuriel-reader-topbar.js", import.meta.url), "utf8")
 ]);
 const failures = [];
+try {
+  new Function(readerToolbar);
+} catch (error) {
+  failures.push("Reader toolbar JavaScript must parse successfully: " + error.message);
+}
 const checks = [
   ["exact Scripture reference and text inputs", "zgsScripture"],
   ["separate faith response inputs", "zgsDeclaration"],
