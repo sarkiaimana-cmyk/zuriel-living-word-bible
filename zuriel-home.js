@@ -1497,7 +1497,11 @@
       renderIdentityScripture(identityIndex + 1);
     });
     renderIdentityScripture(identityIndex);
-    // Revelation changes only when the reader taps "Next Revelation".
+    // Rotate to the next curated identity automatically while preserving the
+    // manual Next Revelation control for readers who prefer to choose.
+    window.setInterval(function () {
+      renderIdentityScripture(identityIndex + 1);
+    }, 22000);
     /* CHANGING HOME SCRIPTURE */
 
     const verseText = document.getElementById("zurielHomeVerse");
@@ -1623,6 +1627,13 @@
     }
 
     renderOpenBookFaithCard();
+
+    // Scripture for Today and its open-book faith response advance together.
+    // The reader can still move forward immediately with either Next button.
+    window.setInterval(function () {
+      displayVerse(verseIndex + 1);
+      renderOpenBookFaithCard();
+    }, 20000);
 
     const nextFaithWord = document.getElementById("zurielOpenBookNext");
     if (nextFaithWord) nextFaithWord.addEventListener("click", function () {
