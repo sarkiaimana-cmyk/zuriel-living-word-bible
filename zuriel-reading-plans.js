@@ -153,13 +153,13 @@
       duration:7,
       description:"Read honestly about suffering, comfort, endurance and the hope God gives in Christ.",
       days:[
-        ["Psalm 34:1-18","Notice God's nearness to the brokenhearted."],
-        ["Isaiah 40:27-31","Reflect on the Creator who gives strength to the weary."],
-        ["2 Corinthians 1:3-11","Study God's comfort and the call to comfort others."],
-        ["Romans 5:1-11","Consider hope, endurance and God's love poured into believers' hearts."],
-        ["John 14:1-14","Hear Jesus comfort His disciples and direct them to the Father."],
-        ["1 Peter 1:3-9","Reflect on living hope through the resurrection of Jesus."],
-        ["Revelation 21:1-7","Look toward God's promised renewal and the end of death and sorrow."]
+        ["Psalm 34:1-18","Notice God's nearness to the brokenhearted.","What does the psalm invite the worshipper to do in the opening verses, and how does it describe God's care for the brokenhearted?","God of compassion, draw near to those who are hurting. Help me seek You honestly, receive wise support and show gentleness to someone who is suffering."],
+        ["Isaiah 40:27-31","Reflect on the Creator who gives strength to the weary.","Why does the prophet remind the people of God's everlasting power? What is the difference between waiting on the Lord and giving up responsibility?","Creator God, renew my strength when I feel weary. Teach me patient trust, and guide me to take the next faithful step rather than lose heart."],
+        ["2 Corinthians 1:3-11","Study God's comfort and the call to comfort others.","How does Paul connect the comfort he receives from God with the responsibility to comfort others? What does he say about relying on God rather than ourselves?","Father of mercies, comfort those who are distressed. Let the comfort I receive from You make me more attentive and compassionate toward others."],
+        ["Romans 5:1-11","Consider hope, endurance and God's love poured into believers' hearts.","How does Paul connect peace with God through Christ to hope amid suffering? What does God's love demonstrated in Christ assure believers?","God of hope, help me understand the peace made possible through Jesus. Give me endurance in difficulty and keep my confidence rooted in Your love."],
+        ["John 14:1-14","Hear Jesus comfort His disciples and direct them to the Father.","What troubles the disciples, and how does Jesus direct their trust? Read His words about the way to the Father in the context of His coming departure.","Lord Jesus, steady my heart with Your words. Help me trust You when the future feels unclear and follow You in truth and love."],
+        ["1 Peter 1:3-9","Reflect on living hope through the resurrection of Jesus.","What makes the hope Peter describes living hope? How does he speak about faith and joy while believers face trials?","Father, thank You for the living hope given through the resurrection of Jesus. Strengthen my faith through trials and keep my hope fixed on Christ."],
+        ["Revelation 21:1-7","Look toward God's promised renewal and the end of death and sorrow.","What does John see in the vision of new creation? Which forms of sorrow are promised to end, and how does this hope shape faithful life now?","God who makes all things new, help me hold fast to Your promised future. Give me compassion for those who grieve and faithfulness as I wait for Your renewal."]
       ]
     },
     {
