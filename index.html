@@ -147,8 +147,7 @@ select {
   align-items: center;
   gap: 8px;
   margin: 13px 0;
-  padding: 11px;
-  border: 1px solid #d7c79c;
+  padding: 11px;  border: 1px solid #d7c79c;
   border-radius: 13px;
   background: linear-gradient(135deg,#f8f5ed,#eee8d8);
 }
@@ -297,8 +296,7 @@ select {
 }
 
 #bibleSearch button {
-  min-height:46px;
-  margin:0;
+  min-height:46px;  margin:0;
   white-space:nowrap;
 }
 
@@ -447,8 +445,7 @@ footer {
 #zurielVerseActions #zurielStudyPanel {
   display:block !important;
   position:static !important;
-  width:100% !important;
-  max-width:none !important;
+  width:100% !important;  max-width:none !important;
   max-height:none !important;
   overflow:visible !important;
   margin:0 !important;
@@ -597,8 +594,7 @@ const bookCodes = {
   "Colossians":"COL","1 Thessalonians":"1TH",
   "2 Thessalonians":"2TH","1 Timothy":"1TI",
   "2 Timothy":"2TI","Titus":"TIT","Philemon":"PHM",
-  "Hebrews":"HEB","James":"JAM","1 Peter":"1PE",
-  "2 Peter":"2PE","1 John":"1JO","2 John":"2JO",
+  "Hebrews":"HEB","James":"JAM","1 Peter":"1PE",  "2 Peter":"2PE","1 John":"1JO","2 John":"2JO",
   "3 John":"3JO","Jude":"JUD","Revelation":"REV"
 };
 window.ZurielBibleBookCode = function (bookName) {
@@ -747,8 +743,7 @@ function updateContinueReadingCard() {
 }
 
 function saveReadingPosition(book, chapter, verse) {
-  let savedVerse = Number.isInteger(verse) && verse > 0 ? verse : 1;
-  if (!(Number.isInteger(verse) && verse > 0)) {
+  let savedVerse = Number.isInteger(verse) && verse > 0 ? verse : 1;  if (!(Number.isInteger(verse) && verse > 0)) {
     try {
       const previous = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
       if (previous && previous.book === book && previous.chapter === chapter &&
@@ -897,8 +892,7 @@ async function openChapter(book, chapter) {
   const selectedBook = bibleBooks[bookIndex];
 
   const previousButton = document.createElement("button");
-  previousButton.type = "button";
-  previousButton.textContent = "← Previous";
+  previousButton.type = "button";  previousButton.textContent = "← Previous";
   previousButton.disabled = bookIndex === 0 && chapter === 1;
   previousButton.addEventListener("click", function () {
     moveChapter("previous");
@@ -1047,8 +1041,7 @@ async function openChapter(book, chapter) {
       if (studyPanelHome) restoreStudyPanelToReader();
       if (externalPanelCurrent) restoreExternalVersePanel();
       externalPanelCurrent = panel;
-      externalPanelHome = panel.parentNode;
-      externalPanelNextSibling = panel.nextSibling;
+      externalPanelHome = panel.parentNode;      externalPanelNextSibling = panel.nextSibling;
       verseActions.querySelectorAll(".zuriel-verse-action").forEach(function (button) { button.hidden = true; });
       verseActions.querySelectorAll(".zuriel-action-group").forEach(function (group) { group.hidden = true; });
       verseActionHint.hidden = true;
@@ -1197,8 +1190,7 @@ async function openChapter(book, chapter) {
       const closeStudy = document.getElementById("zurielCloseStudy");
       if (closeStudy) {
         closeStudy.addEventListener("click", function () {
-          window.setTimeout(restoreStudyPanelToReader, 0);
-        });
+          window.setTimeout(restoreStudyPanelToReader, 0);        });
         studyPanelCloseBound = true;
       }
     }
@@ -1347,8 +1339,7 @@ async function openChapter(book, chapter) {
 
   if ("IntersectionObserver" in window) {
     verseProgressObserver = new IntersectionObserver(function (entries) {
-      let visible = null;
-      entries.forEach(function (entry) {
+      let visible = null;      entries.forEach(function (entry) {
         if (entry.isIntersecting &&
             (!visible || entry.intersectionRatio > visible.intersectionRatio)) {
           visible = entry;
@@ -1497,8 +1488,7 @@ window.ZurielBibleSearch = {
     const term = normalizeSearchText(query);
     if (term.length < 3) throw new Error("Please enter at least 3 characters.");
     if (mode && mode !== "word" && mode !== "phrase") {
-      throw new Error("Choose an exact word or phrase search.");
-    }
+      throw new Error("Choose an exact word or phrase search.");    }
     const data = await loadKJV();
     const maximum = Number.isInteger(limit) && limit > 0
       ? Math.min(limit, mode ? 200 : 50) : 30;
@@ -1647,7 +1637,6 @@ loadBibleBooks();
 
 })();
 </script>
-
   
 <script src="zuriel-media.js"></script>
 <script src="zuriel-library.js"></script>
@@ -1660,6 +1649,7 @@ loadBibleBooks();
 <script src="zuriel-personal-space.js"></script>
 <script src="zuriel-backup.js"></script>
 <script src="zuriel-home.js"></script>
+<script src="zuriel-screenshot-home.js"></script>
 <script src="zuriel-history.js"></script>
 <script src="zuriel-word-linking.js"></script>
 <script src="zuriel-study.js"></script>
@@ -1700,4 +1690,3 @@ if ("serviceWorker" in navigator) {
 
 </body>
 </html>
-
