@@ -16,6 +16,7 @@ const files = [
   "zuriel-introductions.js",
   "zuriel-grid-navigation.js",
   "zuriel-faith-content.js",
+  "zuriel-faith-cards.js",
   "zuriel-topical-index.js",
   "zuriel-kingdom-life.js",
   "zuriel-growth-pathways.js",
