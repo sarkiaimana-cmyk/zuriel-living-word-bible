@@ -42,10 +42,10 @@ assert.equal(contains.length, 3, "Contains/phrase search should also find inflec
 const normalized = await search.search("cafe", 30, "phrase");
 assert.equal(normalized.length, 1, "Search should normalize accented characters.");
 assert.equal(normalized[0].verse, 4);
-assert.equal(sandbox.zurielSearchIndex.records.length, 6, "The index should cache each non-empty verse once.");
-const cachedRecords = sandbox.zurielSearchIndex.records;
+assert.equal(vm.runInNewContext("zurielSearchIndex.records.length", sandbox), 6, "The index should cache each non-empty verse once.");
+const cachedRecords = vm.runInNewContext("zurielSearchIndex.records", sandbox);
 await search.search("beginning", 30, "phrase");
-assert.equal(sandbox.zurielSearchIndex.records, cachedRecords, "Repeated searches should reuse the normalized index.");
+assert.equal(vm.runInNewContext("zurielSearchIndex.records", sandbox), cachedRecords, "Repeated searches should reuse the normalized index.");
 
 const limited = await search.search("love", 1, "phrase");
 assert.equal(limited.length, 1);
