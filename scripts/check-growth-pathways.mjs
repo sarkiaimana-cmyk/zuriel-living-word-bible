@@ -16,6 +16,10 @@ const pathTitles = [...pathways.matchAll(/lessons:\[([^\]]+)\]/g)].flatMap(match
 const missing = pathTitles.filter(title => !titles.has(title));
 const failures = [];
 if (pathTitles.length < 20) failures.push("Expected at least 20 guided pathway lesson steps.");
+for (const fragment of ["zg-drawer-summary","zg-pathway-summary","Choose a growth pathway","Mark complete","localStorage.setItem(DONE"]) {
+  if (!pathways.includes(fragment)) failures.push("Grow drawer interaction is missing: " + fragment);
+}
+if (pathways.includes("repeat(2,minmax(0,1fr))")) failures.push("Grow pathways should not render as a long card catalogue.");
 if (missing.length) failures.push("Pathway lessons missing from topical index: " + missing.join(", "));
 for (const key of ["zuriel_personal_notes_v1","zuriel_prayer_journal_v1","zurielReadingHistory_v1","zurielLastReadingPosition"]) {
   if (!personal.includes(key)) failures.push("Personal space is missing storage integration: " + key);
