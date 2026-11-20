@@ -109,6 +109,11 @@ jobs:
       - name: Test Android version metadata
         run: node scripts/test-android-version.mjs
 
+      - name: Validate signed Android in-place upgrade safeguards
+        run: |
+          bash -n scripts/smoke-test-android-upgrade.sh
+          node scripts/check-android-upgrade-smoke.mjs
+
       - name: Validate guided growth and personal space
         run: node scripts/check-growth-pathways.mjs
 
