@@ -93,13 +93,13 @@
       duration:7,
       description:"A balanced, Christ-centred week on truth, the armour of God, resisting temptation and the hope of Christ's victory.",
       days:[
-        ["Ephesians 6:10-18","Study the whole armour of God and the repeated call to stand in the Lord's strength."],
-        ["James 4:1-10","Notice how humility, submission to God and resistance to evil belong together."],
-        ["1 Peter 5:6-11","Read the call to sober watchfulness, humility and confidence in God's care."],
-        ["Matthew 4:1-11","Observe how Jesus answers temptation with Scripture in its proper context."],
-        ["1 Corinthians 10:1-13","Consider warning, faithfulness and the way God provides endurance in temptation."],
-        ["Romans 8:31-39","Rest in the assurance that nothing can separate believers from God's love in Christ."],
-        ["Colossians 2:8-15","Reflect on the sufficiency of Christ and the triumph of the cross."]
+        ["Ephesians 6:10-18","Study the whole armour of God and the repeated call to stand in the Lord's strength.","How do truth, righteousness, faith, salvation and prayer work together in Paul's picture of standing firm?","Lord, strengthen me in Your grace. Help me stand in truth, live rightly, trust You and pray faithfully."],
+        ["James 4:1-10","Notice how humility, submission to God and resistance to evil belong together.","How does submitting to God come before resisting evil? What does humility look like in the conflicts James describes?","God, expose desires that lead me away from You. Teach me to submit my choices to Your wisdom and resist temptation."],
+        ["1 Peter 5:6-11","Read the call to sober watchfulness, humility and confidence in God's care.","Why does Peter connect humility with watchfulness? What does he say about suffering, the believing community and God's promise to restore?","Father, help me stay alert without fear and humble without despair. Strengthen those who suffer and establish me in Your grace."],
+        ["Matthew 4:1-11","Observe how Jesus answers temptation with Scripture in its proper context.","How does Jesus answer each temptation? What do His answers teach about testing impulses against Scripture and refusing disobedient shortcuts?","Jesus, teach me to answer temptation with truth. Give me discernment and strength to choose what honours the Father."],
+        ["1 Corinthians 10:1-13","Consider warning, faithfulness and the way God provides endurance in temptation.","How does Paul balance the reality of temptation with God's faithfulness and the way of escape? What warning does Israel's history provide?","Faithful God, keep me from presumption. Help me recognise temptation early, seek the way of faithfulness and accept wise support."],
+        ["Romans 8:31-39","Rest in the assurance that nothing can separate believers from God's love in Christ.","What hardships does Paul acknowledge before declaring confidence in God's love? How does this assurance encourage perseverance without promising a trouble-free life?","Father, anchor me in Your love through hardship. Give me courage to endure and compassion toward others who suffer."],
+        ["Colossians 2:8-15","Reflect on the sufficiency of Christ and the triumph of the cross.","What does Paul say about the fullness of Christ and the triumph of the cross? How does Christ's victory shape a grounded, non-fearful response to spiritual opposition?","Lord Jesus, keep my confidence centred on Your finished work. Guard me from fear and misleading teaching, and help me grow in truth."]
       ]
     },
     {
@@ -138,13 +138,13 @@
       duration:7,
       description:"Seek biblical wisdom for speech, relationships, work, choices and a life shaped by God's Word.",
       days:[
-        ["Proverbs 3:1-12","Consider trust, humility and acknowledging God in every path."],
-        ["James 1:1-18","Study perseverance, asking for wisdom and resisting temptation."],
-        ["James 3:1-18","Reflect on the power of speech and the character of wisdom from above."],
-        ["Proverbs 15:1-17","Notice how gentle answers, listening and contentment shape daily life."],
-        ["Micah 6:6-8","Consider justice, mercy and walking humbly with God."],
-        ["Matthew 7:12-27","Read Jesus' teaching about the narrow way and putting His words into practice."],
-        ["Colossians 3:12-17","Practise compassion, forgiveness, love and gratitude."]
+        ["Proverbs 3:1-12","Consider trust, humility and acknowledging God in every path.","Which decision needs prayer, wise counsel and careful action rather than impulse? What do trust and humility mean in this passage?","Lord, guide my decisions. Help me trust You, seek sound counsel, accept correction and take responsible steps."],
+        ["James 1:1-18","Study perseverance, asking for wisdom and resisting temptation.","How does James distinguish asking God for wisdom from divided loyalty? What does the passage teach about desire, temptation and God's good gifts?","God of wisdom, steady my heart. Help me ask You sincerely, recognise temptation and choose what is good."],
+        ["James 3:1-18","Reflect on the power of speech and the character of wisdom from above.","What images does James use for the tongue? How is wisdom from above recognised by its conduct, and which conversation needs gentleness?","Father, guide my speech. Make me quick to listen, slow to react and sincere in pursuing peace."],
+        ["Proverbs 15:1-17","Notice how gentle answers, listening and contentment shape daily life.","How do gentle answers, attentive listening and contentment shape home or work life? Which proverb challenges your usual response under pressure?","Lord, make my words gentle and truthful. Help me listen carefully, avoid needless conflict and value faithfulness over comparison."],
+        ["Micah 6:6-8","Consider justice, mercy and walking humbly with God.","What does Micah reject about empty religious display, and what does he call God's people to practise? How can justice, mercy and humility become concrete this week?","God, teach me to act justly, love mercy and walk humbly with You. Show me a practical way to treat someone fairly."],
+        ["Matthew 7:12-27","Read Jesus' teaching about the narrow way and putting His words into practice.","Why does Jesus compare hearing His words with building on rock? What would putting His teaching into practice look like in a current decision?","Jesus, help me do more than hear Your words. Give me courage to obey them wisely and build my choices on Your teaching."],
+        ["Colossians 3:12-17","Practise compassion, forgiveness, love and gratitude.","Which qualities are believers told to put on? How do forgiveness, love and gratitude guide a difficult relationship while respecting healthy boundaries?","Lord, clothe me with compassion and patience. Help me forgive, speak truth with love and pursue peace with wisdom."]
       ]
     },
     {
