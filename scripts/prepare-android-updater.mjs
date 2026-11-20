@@ -125,14 +125,14 @@ await writeFile(pluginPath, java);
 let updatedActivity = activity;
 if (!updatedActivity.includes("ZurielUpdaterPlugin")) {
   // Insert a real import after the package declaration. Use a callback so
-  // JavaScript replacement-string escapes cannot become literal "\\n" text.
-  const packageDeclaration = /^(package\\s+[A-Za-z0-9_.]+;?)$/m;
+  // JavaScript replacement-string escapes cannot become literal "\n" text.
+  const packageDeclaration = /^(package\s+[A-Za-z0-9_.]+;?)$/m;
   if (!packageDeclaration.test(updatedActivity)) {
     throw new Error("Could not insert the updater import: package declaration was not found.");
   }
   updatedActivity = updatedActivity.replace(
     packageDeclaration,
-    (line) => line + "\\n\\nimport " + packageName + ".ZurielUpdaterPlugin" + (activityPath.endsWith(".java") ? ";" : "")
+    (line) => line + "\n\nimport " + packageName + ".ZurielUpdaterPlugin" + (activityPath.endsWith(".java") ? ";" : "")
   );
   if (activityPath.endsWith(".kt")) {
     const registration = "class MainActivity : BridgeActivity() {\n    override fun onCreate(savedInstanceState: android.os.Bundle?) {\n        registerPlugin(ZurielUpdaterPlugin::class.java)\n        super.onCreate(savedInstanceState)\n    }\n}";
