@@ -41,7 +41,10 @@ requireText(home, 'window.getBibleVerseText(reference)', "Exact offline KJV text
 requireText(home, 'data-home-read-reference', "Direct navigation from each Home Scripture card");
 
 requireText(home, "faithCardRenderToken", "Protection against out-of-order Scripture loads");
-forbidText(home, "setInterval(", "Automatic Home Scripture rotation");
+requireText(home, "}, 20000);", "Automatic daily Scripture and Open Book rotation");
+requireText(home, "}, 22000);", "Automatic Who He Is revelation rotation");
+requireText(home, "displayVerse(verseIndex + 1);", "Advancing Scripture for Today sequence");
+requireText(home, "renderIdentityScripture(identityIndex + 1);", "Advancing Who He Is revelation sequence");
 requireText(home, 'identityNext.addEventListener("click"', "Manual identity revelation selection");
 requireText(home, 'zurielNextVerse', "Manual daily Scripture selection");
 requireText(home, 'id="zurielOpenBookCreateCard"', "Visible Open Book share-card action");
