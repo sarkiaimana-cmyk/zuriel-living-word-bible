@@ -170,6 +170,8 @@ jobs:
 
       - name: Prepare native in-app update installer
         run: node scripts/prepare-android-updater.mjs
+      - name: Test native updater Android project generation
+        run: node scripts/test-android-updater-generator.mjs
 
       - name: Set Android version from app metadata
         run: node scripts/set-android-version.mjs
