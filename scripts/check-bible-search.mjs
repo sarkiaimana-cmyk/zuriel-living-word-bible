@@ -6,7 +6,9 @@ const index = await readFile(new URL("../index.html", import.meta.url), "utf8");
 const start = index.indexOf("window.ZurielBibleSearch = {");
 const end = index.indexOf("\n};", start);
 assert.ok(start >= 0 && end > start, "The offline Bible search API must be present.");
-const source = index.slice(start, end + 3);
+const cacheStart = index.lastIndexOf("const zurielSearchIndex =", start);
+assert.ok(cacheStart >= 0, "The offline search index cache must be declared before the API.");
+const source = index.slice(cacheStart, end + 3);
 const bibleBooks = [{ name: "Genesis" }, { name: "John" }];
 const bookCodes = { Genesis: "GEN", John: "JHN" };
 const corpus = {
