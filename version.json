@@ -1,4 +1,4 @@
 {
-  "version": "1.4.110",
-  "releaseNotes": "Expanded the Spiritual Warfare Study Centre into ten Scripture-led expandable lessons; reorganised Grow into a compact pathway drawer; expanded offline reading plans to ten journeys; added automatic rotation for Scripture for Today and Who He Is; and connected the offline commentary, Bible dictionary, original-language and theology datasets to the Library reference shelf. Preserves the offline KJV and personal study progress. Online translation provider retrieval remains unverified. The Library now puts its installed offline commentary and dictionary entries first, with editorial cautions and expanded word-study metadata visible in each detail."
+  "version": "1.4.111",
+  "releaseNotes": "Expanded My Study Space with dedicated saved-bookmarks and testimony views, retained the shared prayer journal and encrypted backup, and preserved the offline KJV. Translation selection remains distinct from verified online passage retrieval; additional Bible versions still require a working authorised provider connection."
 }
