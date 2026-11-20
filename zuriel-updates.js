@@ -14,7 +14,7 @@
       '<p id="zurielUpdateStatus" role="status" aria-live="polite">Check for the latest Zuriel improvements.</p>' +
       '<button type="button" id="zurielCheckUpdates" style="width:100%">Check for Updates</button>' +
       '<div id="zurielUpdateNotes" class="settings-footnote"></div>' +
-      '<p class="settings-footnote">Website updates are refreshed through the app cache. Android APK replacement requires a matching, securely managed signing key and Android installation approval. Zuriel will never silently replace your app.</p>';
+      '<p class="settings-footnote">Website updates are refreshed through the app cache. Important: install official Android updates over your existing Zuriel app. Do not uninstall it. When the app ID and signing certificate match, Android updates in place and keeps the app data. Export an encrypted backup before changing phones or removing the app.</p>';
     panel.appendChild(section);
     const status = section.querySelector("#zurielUpdateStatus");
     const notes = section.querySelector("#zurielUpdateNotes");
