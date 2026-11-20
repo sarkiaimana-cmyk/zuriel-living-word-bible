@@ -25,13 +25,13 @@
       duration: 7,
       description: "Build a steady foundation in faith, grace, wisdom and Christian living.",
       days: [
-        ["Hebrews 11:1-6", "Explore the meaning and response of faith."],
-        ["Romans 10:8-17", "Reflect on hearing and responding to God's Word."],
-        ["Ephesians 2:1-10", "Remember salvation by grace through faith."],
-        ["James 1:2-8", "Consider perseverance and asking God for wisdom."],
-        ["2 Corinthians 5:14-21", "Reflect on new life and reconciliation in Christ."],
-        ["Galatians 5:16-26", "Consider walking by the Spirit and His fruit."],
-        ["Colossians 3:1-17", "Reflect on the character and conduct of the new life."]
+        ["Hebrews 11:1-6", "Explore the meaning and response of faith.", "How does Hebrews describe faith, and what do the examples teach about trusting God without controlling every outcome?", "Faithful God, deepen my trust in You. Help me seek You sincerely, obey what I understand from Your Word and remain patient where I cannot yet see the outcome."],,
+        ["Romans 10:8-17", "Reflect on hearing and responding to God's Word.", "How does Paul connect hearing the message, believing and calling on the Lord? What responsibility does this give the Christian community in sharing the good news?", "Lord, make me attentive to Your Word and sincere in my response. Give me opportunities to share the good news clearly, respectfully and with love."],,
+        ["Ephesians 2:1-10", "Remember salvation by grace through faith.", "What does Paul say God has done for people who were spiritually dead? How do grace, faith and good works relate in this passage?", "Father, thank You for the gift of salvation through Christ. Keep me humble and grateful, and guide me into the good works You have prepared for me."],,
+        ["James 1:2-8", "Consider perseverance and asking God for wisdom.", "Why does James connect trials with perseverance? What does he encourage believers to ask God for, and what does he say about divided loyalty?", "God of wisdom, help me face trials with endurance. Give me clarity for the decisions before me and a steady heart that seeks You rather than being pulled in every direction."],,
+        ["2 Corinthians 5:14-21", "Reflect on new life and reconciliation in Christ.", "How does Christ's love shape Paul's understanding of life and ministry? What does being a new creation mean in the context of reconciliation?", "Lord Jesus, let Your love shape my motives and relationships. Help me live as one reconciled to God and become a faithful messenger of reconciliation."],,
+        ["Galatians 5:16-26", "Consider walking by the Spirit and His fruit.", "Compare the works of the flesh with the fruit of the Spirit. Which attitudes or habits need to give way to love, patience, self-control and the Spirit's leading?", "Holy Spirit, form Your fruit in my daily life. Help me respond to others with love, patience and self-control, and make choices that reflect Christ."],,
+        ["Colossians 3:1-17", "Reflect on the character and conduct of the new life.", "What does Paul tell believers to put off and put on? How should the peace of Christ, the Word and gratitude shape ordinary relationships?", "Father, renew my thoughts and conduct. Help me put away harmful patterns, practise forgiveness and let the message of Christ dwell richly in my words and actions."]
       ]
     },
     {
