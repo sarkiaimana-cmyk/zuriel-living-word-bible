@@ -265,6 +265,9 @@ jobs:
         uses: ReactiveCircus/android-emulator-runner@v2
         env:
           GH_TOKEN: ${{ github.token }}
+          # The hosted runner disables KVM; Android Emulator 37 requires
+          # explicit opt-in to its slower software CPU (TCG) fallback.
+          ANDROID_I_WANT_MY_TCG: "yes"
         with:
           api-level: 30
           target: default
