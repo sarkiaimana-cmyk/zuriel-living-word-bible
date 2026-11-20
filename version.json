@@ -1,4 +1,4 @@
 {
-  "version": "1.4.113",
-  "releaseNotes": "Improved in-app update centre and official signed Android release publishing. Android updates are delivered as signed releases for in-place installation, preserving personal app data when package identity and signing certificate match. The app explicitly warns against uninstalling before an update."
+  "version": "1.4.114",
+  "releaseNotes": "Strengthened in-app Android updates with a native checksum-verified installer and official signed release discovery. Android updates are installed over the existing app with Android approval, not by uninstalling. Encrypted personal backups now also include saved verse-specific faith cards, alongside notes, highlights, bookmarks, prayer journal and reading progress."
 }
