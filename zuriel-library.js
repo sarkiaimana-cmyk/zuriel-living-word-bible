@@ -630,6 +630,84 @@
 
         search.addEventListener("input", renderResources);
         renderResources();
+
+        // Integrate the installed offline study datasets into this same shelf.
+        const offlineShelf = element("section", undefined, "zrl-offline-shelf");
+        offlineShelf.appendChild(element("h3", "Zuriel Offline Commentary & Dictionary", "zrl-offline-heading"));
+        offlineShelf.appendChild(element("p", "Search and open the installed passage commentary, biblical dictionary, Hebrew and Greek word studies, and theological comparisons. These are curated study aids with context notes and Scripture links where supplied.", "zrl-offline-intro"));
+        const offlineSearch = element("input");
+        offlineSearch.type = "search";
+        offlineSearch.placeholder = "Search commentary, biblical terms or passage references…";
+        offlineSearch.setAttribute("aria-label", "Search installed commentary and dictionary entries");
+        const offlineCategory = element("select");
+        offlineCategory.setAttribute("aria-label", "Filter installed study resources");
+        [["all","All offline studies"],["Commentary & Exegesis","Passage commentary"],["Bible Dictionary","Bible dictionary"],["Hebrew & Greek Word Studies","Hebrew & Greek word studies"],["Theological Comparisons","Theological comparisons"]].forEach(([value,label]) => {
+          const option = element("option", label);
+          option.value = value;
+          offlineCategory.appendChild(option);
+        });
+        const offlineCount = element("p", "Loading installed study entries…", "zrl-count");
+        const offlineResults = element("div", undefined, "zrl-offline-results");
+        const offlineDetail = element("section", undefined, "zrl-detail");
+        offlineDetail.hidden = true;
+        const offlineStatus = element("p", "", "zrl-count");
+        offlineStatus.setAttribute("role","status");
+        offlineShelf.append(offlineSearch,offlineCategory,offlineCount,offlineResults,offlineDetail,offlineStatus);
+        panel.appendChild(offlineShelf);
+        offlineShelf.style.cssText = "margin-top:22px;padding-top:16px;border-top:2px solid #e5dccd";
+        offlineShelf.querySelector(".zrl-offline-heading").style.cssText = "color:#302445;font:700 20px Georgia,serif;margin:0 0 7px";
+        offlineShelf.querySelector(".zrl-offline-intro").style.cssText = "font:14px/1.65 Arial,sans-serif;color:#625c62";
+        offlineSearch.style.cssText = "width:100%;min-height:46px;padding:11px;border:1px solid #d8cdb9;border-radius:9px;background:#fff";
+        offlineCategory.style.cssText = "width:100%;min-height:44px;margin:8px 0;padding:9px;border:1px solid #d8cdb9;border-radius:9px;background:#fff";
+        offlineResults.style.cssText = "display:grid;gap:7px;margin:10px 0";
+        let offlineItems = [];
+        let selectedOfflineItem = null;
+        function renderOfflineEntries() {
+          const term = offlineSearch.value.trim().toLowerCase();
+          const category = offlineCategory.value;
+          const filtered = offlineItems.filter(item =>
+            (category === "all" || item.category === category) &&
+            (!term || (item.title+" "+item.summary+" "+item.references.join(" ")).toLowerCase().includes(term) ||
+              JSON.stringify(item.source).toLowerCase().includes(term))
+          );
+          offlineResults.replaceChildren();
+          offlineCount.textContent = filtered.length + " installed study entries";
+          filtered.slice(0,35).forEach(item => {
+            const action = button(item.title + "  ·  " + item.category, () => {
+              selectedOfflineItem = item;
+              if (window.ZurielStudyLibrary && typeof window.ZurielStudyLibrary.renderDetail === "function") {
+                window.ZurielStudyLibrary.renderDetail(item,offlineDetail,offlineStatus);
+                offlineDetail.hidden = false;
+                offlineDetail.scrollIntoView({behavior:"smooth",block:"nearest"});
+              }
+            });
+            action.className = "zrl-open";
+            action.style.cssText = "width:100%;min-height:46px;padding:10px 12px;text-align:left;background:#fff;color:#302445;border:1px solid #e1d9cb;border-radius:9px";
+            offlineResults.appendChild(action);
+          });
+          if (filtered.length > 35) offlineCount.textContent += " · showing first 35; refine your search";
+          if (!filtered.length) offlineResults.appendChild(element("p", "No installed entries match this search."));
+          if (selectedOfflineItem && filtered.includes(selectedOfflineItem) &&
+              window.ZurielStudyLibrary && typeof window.ZurielStudyLibrary.renderDetail === "function") {
+            window.ZurielStudyLibrary.renderDetail(selectedOfflineItem,offlineDetail,offlineStatus);
+          } else if (!filtered.includes(selectedOfflineItem)) {
+            selectedOfflineItem = null; offlineDetail.hidden = true; offlineDetail.replaceChildren();
+          }
+        }
+        offlineSearch.addEventListener("input",renderOfflineEntries);
+        offlineCategory.addEventListener("change",renderOfflineEntries);
+        if (window.ZurielStudyLibrary && typeof window.ZurielStudyLibrary.load === "function") {
+          window.ZurielStudyLibrary.load().then(items => {
+            offlineItems = items.filter(item => ["Commentary & Exegesis","Bible Dictionary","Hebrew & Greek Word Studies","Theological Comparisons"].includes(item.category));
+            renderOfflineEntries();
+            offlineStatus.textContent = offlineItems.length + " offline commentary, dictionary and related study entries are ready.";
+          }).catch(error => {
+            offlineCount.textContent = "Installed study entries could not be loaded.";
+            offlineStatus.textContent = error.message || "Check the offline study package and try again.";
+          });
+        } else {
+          offlineCount.textContent = "The offline study library is not available in this app build.";
+        }
       }
 
       if (page === "devotional") {
