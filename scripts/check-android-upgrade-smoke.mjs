@@ -25,6 +25,7 @@ assert.doesNotMatch(script, /adb uninstall|pm clear/, "The upgrade smoke test mu
 assert.match(workflow, /name: Install previous release and verify in-place Android upgrade/);
 assert.match(workflow, /GH_TOKEN: \$\{\{ github\.token \}\}/, "The emulator step needs a scoped token to fetch the prior public release.");
 assert.match(workflow, /disable-linux-hw-accel: true/, "The hosted emulator must explicitly use software acceleration.");
+assert.match(workflow, /ANDROID_I_WANT_MY_TCG:\s*["']yes["']/, "Android Emulator 37 requires explicit opt-in to software CPU emulation when KVM is disabled.");
 assert.match(workflow, /bash scripts\/smoke-test-android-upgrade\.sh/, "The emulator must execute the maintained upgrade test script.");
 
 console.log("Android in-place upgrade safeguards passed: previous signed baseline, package and certificate continuity, install-over-existing behaviour, installed version verification, launch checks, and no uninstall/data-clear commands.");
