@@ -66,8 +66,16 @@
             });
             if (!releaseResponse.ok) throw new Error("The official Android release could not be checked right now.");
             const release = await releaseResponse.json();
+            // Never pair version metadata with an unrelated "latest" APK.
+            if (!release || release.tag_name !== "v" + info.version) {
+              throw new Error("The official Android release tag does not match the advertised Zuriel version. No update was started.");
+            }
             const apk = Array.isArray(release.assets)
-              ? release.assets.find(asset => /Zuriel-Living-Word-Bible-release\.apk$/i.test(asset.name))
+              ? release.assets.find(asset =>
+                  /Zuriel-Living-Word-Bible-release\\.apk$/i.test(asset.name) &&
+                  Number(asset.size) > 0 &&
+                  /^[a-f0-9]{64}$/i.test(String(asset.digest || "").replace(/^sha256:/i, ""))
+                )
               : null;
             if (apk && apk.browser_download_url) {
               status.textContent = "Official signed Android update " + info.version + " is available. Your current app and saved records are unchanged.";
