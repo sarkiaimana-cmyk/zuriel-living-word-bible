@@ -2010,8 +2010,32 @@
       });
     }
 
-    pages.forEach(([page, label]) => {
-      nav.appendChild(button(label, () => openPage(page)));
+    const libraryGroups = [
+      { title: "📖 Bible Study & Reference", pages: ["study","references","plans"] },
+      { title: "🕊️ Devotion & Worship", pages: ["devotional","worship","prayer"] },
+      { title: "✨ Faith & Spiritual Growth", pages: ["affirmation","declarations","warfare","jesus","names"] },
+      { title: "🗂️ My Personal Library", pages: ["saved","notes"] }
+    ];
+    libraryGroups.forEach(function(group) {
+      const drawer = element("details", undefined, "zuriel-library-drawer");
+      const summary = element("summary", group.title);
+      summary.setAttribute("aria-label", "Open " + group.title);
+      drawer.appendChild(summary);
+      const items = element("div", undefined, "zuriel-library-drawer-items");
+      group.pages.forEach(function(page) {
+        const pageInfo = pages.find(item => item[0] === page);
+        if (!pageInfo) return;
+        const open = button(pageInfo[1], function() {
+          openPage(page);
+          nav.querySelectorAll(".zuriel-library-drawer").forEach(function(other) {
+            if (other !== drawer) other.open = false;
+          });
+        });
+        open.className = "zuriel-library-drawer-link";
+        items.appendChild(open);
+      });
+      drawer.appendChild(items);
+      nav.appendChild(drawer);
     });
 
     heading.appendChild(nav);
