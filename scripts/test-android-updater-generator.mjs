@@ -26,7 +26,7 @@ try {
   assert.doesNotMatch(activity, /\\\\n/);
   const plugin = await readFile(join(javaDir, "ZurielUpdaterPlugin.java"), "utf8");
   assert.match(plugin, /@CapacitorPlugin\(name = "ZurielUpdater"\)/);
-  assert.match(plugin, /getPackageName\(\) \+ "\\.zuriel\\.updater\\.fileprovider"/);
+  assert.match(plugin, /getPackageName\(\) \+ "\.zuriel\.updater\.fileprovider"/);
   const manifest = await readFile(join(root, "android/app/src/main/AndroidManifest.xml"), "utf8");
   assert.match(manifest, /REQUEST_INSTALL_PACKAGES/);
   assert.match(manifest, /androidx\.core\.content\.FileProvider/);
