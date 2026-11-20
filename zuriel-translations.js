@@ -771,7 +771,7 @@
     selectVersion: async function (abbreviation) {
       const requested = String(abbreviation || "").trim().toUpperCase();
       panel.hidden = false;
-      if (!await resolveApiBase()) { panel.open = true; status("Secure online translation access has not been connected yet. Your offline KJV is unchanged."); return false; }
+      if (!await resolveApiBase()) { panel.open = true; try { window.localStorage.setItem("zurielPreferredTranslation", requested); } catch (_) {} status(requested + " saved as your preferred translation. Its Scripture text cannot load yet because the secure translation service is not connected. The offline KJV remains available."); return true; }
       if (selectedProvider !== "youversion") { selectedProvider = "youversion"; providerSelect.value = "youversion"; versionsLoaded = false; loadedProvider = ""; selectedVersionId = ""; }
       await loadVersions();
       if (!versionsLoaded || loadedProvider !== selectedProvider) return false;
