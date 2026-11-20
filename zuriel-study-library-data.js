@@ -79,10 +79,10 @@
   }
 
   function parseReference(value) {
-    const match = String(value || "").trim().match(/^(.+?)\s+(\d+):(\d+)/);
+    const match = String(value || "").trim().match(/^(.+?)\s+(\d+)(?::(\d+))?/);
     if (!match) return null;
     const book = match[1].trim().replace(/^Psalm$/i, "Psalms").replace(/^Song of Songs$/i, "Song of Solomon");
-    return { book: book, chapter: Number(match[2]), verse: Number(match[3]) };
+    return { book: book, chapter: Number(match[2]), verse: Number(match[3] || 1) };
   }
 
   async function openReference(reference, button, status) {
@@ -274,7 +274,8 @@
         (item.title+" "+item.summary+" "+item.references.join(" ")+" "+JSON.stringify(item.source)).toLowerCase().includes(q)
       ));
     },
-    openReference: openReference
+    openReference: openReference,
+    renderDetail: renderDetail
   };
 
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",observe);
