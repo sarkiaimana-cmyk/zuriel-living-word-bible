@@ -561,9 +561,10 @@
       #zurielHomeDashboard .zob-declaration-ribbon {background:#8c173e;color:#fff0d2;}
       #zurielHomeDashboard .zob-book {
         display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;
-        position:relative;overflow:hidden;border:1px solid #8b6427;border-radius:48% 48% 12px 12px / 8% 8% 12px 12px;
-        background:linear-gradient(90deg,#c8a66b,#fff7df 9%,#fffdf4 47%,#c8a66b 50%,#fffdf4 54%,#fff7e6 91%,#b48a4b);
-        box-shadow:0 12px 18px #07172d77,inset 0 -8px 12px #98652d55;
+        position:relative;overflow:hidden;min-height:280px;
+        border:2px solid #9c6a25;border-radius:48% 48% 15px 15px / 8% 8% 15px 15px;
+        background:linear-gradient(90deg,#9c6a25 0%,#e5c17c 2%,#fff7df 8%,#fffdf4 46%,#b58a48 49.5%,#fff9e9 51%,#fff7e6 92%,#d1a65e 98%,#80501e 100%);
+        box-shadow:0 15px 22px #07172d88,inset 0 -10px 15px #98652d66;
         transform:perspective(700px) rotateX(1deg);
       }
       #zurielHomeDashboard .zob-book:after {
@@ -571,9 +572,13 @@
         background:linear-gradient(90deg,#8e6b3b66,#fff9e6,#8e6b3b66);pointer-events:none;
       }
       #zurielHomeDashboard .zob-page {
-        position:relative;z-index:1;min-width:0;min-height:150px;
-        padding:15px 10px 18px;text-align:center;color:#142b52;
-        background:#fffdf4;isolation:isolate;
+        position:relative;z-index:1;min-width:0;min-height:280px;
+        padding:22px 13px 24px;text-align:center;color:#142b52;
+        background:
+          radial-gradient(ellipse at 50% 8%,#ffffff 0%,transparent 65%),
+          repeating-linear-gradient(0deg,rgba(119,91,45,.025) 0,rgba(119,91,45,.025) 1px,transparent 1px,transparent 5px),
+          linear-gradient(180deg,#fffefa 0%,#fff9e9 100%);
+        isolation:isolate;
       }
       #zurielHomeDashboard .zob-page p {
         position:relative;z-index:1;color:#142b52!important;
@@ -586,20 +591,20 @@
         font:700 10px/1.3 Georgia,serif;letter-spacing:.5px;
       }
       #zurielHomeDashboard .zob-scripture-copy {
-        margin:0;color:#102b59;font:italic 700 clamp(16px,4vw,22px)/1.35 Georgia,serif;
+        margin:0;color:#102b59;font:italic 700 clamp(17px,4.5vw,25px)/1.42 Georgia,serif;
         overflow-wrap:anywhere;
       }
       #zurielHomeDashboard .zob-declaration-copy {
-        margin:0 0 12px;color:#17294a;font:700 clamp(13px,3.2vw,17px)/1.4 Georgia,serif;
+        margin:0 0 15px;color:#17294a;font:700 clamp(14px,3.6vw,20px)/1.42 Georgia,serif;
         overflow-wrap:anywhere;
       }
       #zurielHomeDashboard .zob-affirmation-label {
-        display:block;margin:9px auto 5px;padding:6px 4px;max-width:190px;
+        display:block;margin:13px auto 7px;padding:8px 5px;max-width:205px;
         border-radius:5px;background:#791d35;color:#ffe17c;
-        font:italic 700 13px/1.15 Georgia,serif;
+        font:italic 700 14px/1.2 Georgia,serif;
       }
       #zurielHomeDashboard .zob-affirmation-copy {
-        margin:0;color:#17294a;font:italic 600 12px/1.4 Georgia,serif;overflow-wrap:anywhere;
+        margin:0;color:#17294a;font:italic 600 13px/1.45 Georgia,serif;overflow-wrap:anywhere;
       }
       #zurielHomeDashboard .zob-footer {
         display:flex;flex-direction:column;align-items:center;gap:4px;
@@ -926,7 +931,7 @@
               <p class="zob-affirmation-copy" id="zurielOpenBookAffirmation"></p>
             </div>
           </div>
-          <div class="zob-footer"><span class="zob-footer-flame" aria-hidden="true">♨</span><strong>Zuriel Living Word Bible</strong><span class="zob-footer-tagline">THE WORD • THE TRUTH • THE LIFE</span></div>
+          <div class="zob-footer"><span class="zob-footer-flame" aria-hidden="true">🔥</span><strong>Zuriel Living Word Bible</strong><span class="zob-footer-tagline">THE WORD • THE TRUTH • THE LIFE</span></div>
         </div>
         <div class="zob-faith-actions">
           <button type="button" class="home-button" id="zurielOpenBookRead">📖 Read This Passage</button>
