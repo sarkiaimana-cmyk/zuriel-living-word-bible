@@ -8,11 +8,11 @@ const [updates, workflow, backup, version] = await Promise.all([
 const info = JSON.parse(version);
 const failures = [];
 if (!updates.includes('const APP_VERSION = "' + info.version + '";')) failures.push("In-app updater version must match version.json.");
-if (!updates.includes("releases/latest")) failures.push("Native app update checker must query the official latest GitHub release.");
-if (!updates.includes("Download official Zuriel Android update")) failures.push("Native update centre must offer the official signed APK.");
+if (!updates.includes("nativeUpdater.installUpdate") || !updates.includes("sha256")) failures.push("Native app update must use the checksum-verifying Android installer.");\nif (!updates.includes("releases/latest")) failures.push("Native app update checker must query the official latest GitHub release.");
+if (!updates.includes("Download & Install Zuriel Update")) failures.push("Native update centre must offer the official signed APK.");
 if (!updates.includes("Do not uninstall it")) failures.push("Update centre must warn users not to uninstall before an in-place update.");
 if (!updates.includes("If Android reports a signature or package conflict, cancel")) failures.push("Update centre must tell users to cancel on package/signature mismatch.");
-if (!workflow.includes("contents: write")) failures.push("Android workflow cannot publish official signed update releases.");
+if (!workflow.includes("scripts/prepare-android-updater.mjs")) failures.push("Android build must register the native update installer.");\nif (!workflow.includes("contents: write")) failures.push("Android workflow cannot publish official signed update releases.");
 if (!workflow.includes("steps.signing_check.outputs.available == 'true' && steps.signed_release.outcome == 'success'")) failures.push("Only a successfully signed release may be published as an update.");
 if (!workflow.includes("com.zuriel.livingwordbible.release")) failures.push("The stable release package identity is not enforced.");
 if (!workflow.includes("Verify signed APK package and version metadata")) failures.push("Signed APK identity/version verification is missing.");
