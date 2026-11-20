@@ -653,7 +653,8 @@
         const offlineStatus = element("p", "", "zrl-count");
         offlineStatus.setAttribute("role","status");
         offlineShelf.append(offlineSearch,offlineCategory,offlineCount,offlineResults,offlineDetail,offlineStatus);
-        panel.appendChild(offlineShelf);
+        // Show installed Zuriel study entries before the historic catalogue notes.
+        panel.insertBefore(offlineShelf,list);
         offlineShelf.style.cssText = "margin-top:22px;padding-top:16px;border-top:2px solid #e5dccd";
         offlineShelf.querySelector(".zrl-offline-heading").style.cssText = "color:#302445;font:700 20px Georgia,serif;margin:0 0 7px";
         offlineShelf.querySelector(".zrl-offline-intro").style.cssText = "font:14px/1.65 Arial,sans-serif;color:#625c62";
