@@ -18,6 +18,8 @@ const coreFiles = [...coreMatch[1].matchAll(/["']([^"']+)["']/g)]
   .map(path => path.replace(/^\.\//, ""));
 
 assert.ok(coreFiles.length > 0, "The offline core asset list must not be empty.");
+assert.ok(coreFiles.includes("kjv.72bec70fcd.json"), "The complete bundled KJV corpus must be part of the mandatory offline precache.");
+assert.ok(worker.includes("return cache.addAll(CORE_FILES);"), "Offline installation must cache the complete core asset set as one required install operation.");
 assert.equal(new Set(coreFiles).size, coreFiles.length, "The offline core asset list must not contain duplicates.");
 
 for (const path of coreFiles) {
