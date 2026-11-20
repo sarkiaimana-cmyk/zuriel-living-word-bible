@@ -14,7 +14,7 @@ const localStorage = {
   setItem: (key, value) => { writes++; store.set(key, String(value)); }
 };
 const alerts = [];
-const sandbox = { localStorage, window: {}, alert: message => alerts.push(message), JSON, Array, Object, Error, String };
+const sandbox = { STORAGE_KEY: "zuriel_personal_library_v1", localStorage, window: {}, alert: message => alerts.push(message), JSON, Array, Object, Error, String };
 runInNewContext(block, sandbox);
 const api = sandbox.window.__test;
 const key = "zuriel_personal_library_v1";
