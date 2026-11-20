@@ -1248,6 +1248,7 @@ async function openChapter(book, chapter) {
   closeActions.textContent = "✕ Close";
   closeActions.addEventListener("click", function () {
     verseActions.hidden = true;
+    document.dispatchEvent(new CustomEvent("zuriel:verse-actions-closed"));
     document.querySelectorAll("#message .verse.zuriel-selected-verse")
       .forEach(function (node) { node.classList.remove("zuriel-selected-verse"); });
   });
@@ -1266,6 +1267,13 @@ async function openChapter(book, chapter) {
       reference: book + " " + chapter + ":" + verseNumber,
       text: String(verseText || "").trim()
     };
+    document.dispatchEvent(new CustomEvent("zuriel:verse-selected", {
+      detail: {
+        verse: verseNumber,
+        reference: selectedVerseInfo.reference,
+        text: selectedVerseInfo.text
+      }
+    }));
     verseActionHint.textContent = "Selected " + selectedVerseInfo.reference +
       " • Choose an action below.";
     const selectedVerseElement = message.querySelector(
@@ -1669,6 +1677,7 @@ loadBibleBooks();
 <script src="zuriel-library.js"></script>
 <script src="zuriel-study-library-data.js"></script>
 <script src="zuriel-faith-content.js"></script>
+<script src="zuriel-faith-cards.js"></script>
 <script src="zuriel-topical-index.js"></script>
 <script src="zuriel-kingdom-life.js"></script>
 <script src="zuriel-growth-pathways.js"></script>
