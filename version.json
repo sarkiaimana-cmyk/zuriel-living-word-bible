@@ -1,4 +1,4 @@
 {
   "version": "1.4.109",
-  "releaseNotes": "Android test build: preserves the offline KJV, keeps the Bible reader separate from the main dashboard, and retains the existing online-translation connection controls. Online provider access is not yet verified."
+  "releaseNotes": "Expanded the Spiritual Warfare Study Centre into ten Scripture-led expandable lessons; reorganised Grow into a compact pathway drawer; expanded offline reading plans to ten journeys; added automatic rotation for Scripture for Today and Who He Is; and connected the offline commentary, Bible dictionary, original-language and theology datasets to the Library reference shelf. Preserves the offline KJV and personal study progress. Online translation provider retrieval remains unverified."
 }
