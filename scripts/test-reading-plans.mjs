@@ -33,6 +33,15 @@ for (const day of meetJesusPlan.days) {
   assert.ok(day.prayer.length >= 40, "Each Meet Jesus day must include its own prayer.");
 }
 
+const hopePlan = plans.find(plan => plan.id === "hope-in-hard-seasons-7");
+assert.ok(hopePlan, "The Hope in Difficult Seasons plan must be available.");
+assert.equal(hopePlan.days.length, 7);
+for (const day of hopePlan.days) {
+  assert.ok(day.reference && day.focus, "Each hope-plan day must retain its passage and focus.");
+  assert.ok(day.reflection.length >= 30, "Each hope-plan day must include a contextual reflection question.");
+  assert.ok(day.prayer.length >= 40, "Each hope-plan day must include its own prayer.");
+}
+
 assert.deepEqual(JSON.parse(JSON.stringify(api.readState())), {
   schemaVersion: 1, activePlanId: null, plans: {}
 });
