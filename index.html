@@ -471,6 +471,46 @@ footer {
   #zurielVerseActions .zuriel-verse-action { font-size:12px; min-height:42px; }
 }
 
+
+/* Zuriel refinement: calm, full-width white Scripture reader */
+#bibleReader {
+  background:#fff !important;
+  color:#171717 !important;
+  width:calc(100% + 2 * clamp(10px, 2vw, 22px)) !important;
+  max-width:none !important;
+  min-height:calc(100vh - 56px);
+  margin:0 calc(-1 * clamp(10px, 2vw, 22px)) 18px !important;
+  padding:14px clamp(12px, 3vw, 24px) 28px !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+}
+#bibleReader h2 { color:#171717 !important; font:600 20px/1.35 Arial,sans-serif; }
+#bibleReader > p { color:#555 !important; }
+#bibleReader #message {
+  background:#fff !important; color:#171717 !important;
+  border:0 !important; box-shadow:none !important;
+  margin-top:10px !important; padding:0 !important;
+}
+#bibleReader #message .verse {
+  background:transparent !important; color:#171717 !important;
+  border:0 !important; border-bottom:1px solid #f0f0f0 !important;
+  border-radius:0 !important; padding:12px 2px !important;
+  font-family:Georgia,serif !important; line-height:1.8 !important;
+}
+#bibleReader #message .verse strong { color:#777 !important; font:600 12px Arial,sans-serif; }
+#bibleReader #readerStatus { color:#555 !important; font:13px/1.5 Arial,sans-serif; }
+#bibleReader #bibleSearch { background:#fff !important; border:0 !important; border-top:1px solid #eee !important; border-bottom:1px solid #eee !important; border-radius:0 !important; padding:12px 0 !important; }
+#bibleReader #bibleSearch label { color:#333 !important; }
+#bibleReader #zurielReadingTools { background:#fff !important; border:0 !important; padding:8px 0 !important; }
+#bibleReader #zurielReadingTools button { color:#222 !important; border:1px solid #ddd !important; background:#fff !important; }
+#bibleReader #zurielReadingProgress { background:#fff !important; padding:8px 0 !important; }
+#bibleReader .study-hint { color:#666 !important; }
+#bibleReader select { border:1px solid #ddd !important; border-radius:6px !important; }
+@media(max-width:480px) {
+  #bibleReader { min-height:calc(100dvh - 52px); }
+}
+
 </style>
 </head>
 
