@@ -28,6 +28,13 @@ store.set(key, JSON.stringify(valid));
 assert.equal(api.refreshSaved(), true);
 assert.deepEqual(JSON.parse(JSON.stringify(api.getSaved())), valid);
 
+const legacy = { prayers: [{ text: "Legacy prayer" }] };
+store.set(key, JSON.stringify(legacy));
+assert.equal(api.refreshSaved(), true, "A legacy partial record should remain readable.");
+assert.deepEqual(JSON.parse(JSON.stringify(api.getSaved())), {
+  prayers: legacy.prayers, notes: [], bookmarks: []
+}, "Legacy entries must be retained while absent lists are initialized.");
+
 store.set(key, "{broken JSON");
 const beforeCorruptWrite = writes;
 assert.equal(api.refreshSaved(), false, "Corrupt JSON must fail closed.");
@@ -39,7 +46,7 @@ assert.equal(store.get(key), "{broken JSON", "The original damaged bytes must re
 assert.ok(alerts.some(message => /existing records have not been changed/i.test(message)));
 
 for (const malformed of [
-  JSON.stringify({ prayers: [], notes: [] }),
+  JSON.stringify({ prayers: [], notes: "not-an-array", bookmarks: [] }),
   JSON.stringify({ prayers: {}, notes: [], bookmarks: [] }),
   JSON.stringify([])
 ]) {
