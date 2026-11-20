@@ -25,6 +25,8 @@
     if(tab==="prayer")renderPrayer(panel);
     if(tab==="progress")renderProgress(panel);
     if(tab==="plans"&&window.ZurielReadingPlans)window.ZurielReadingPlans.render(panel,status);
+    if(tab==="bookmarks")renderBookmarks(panel);
+    if(tab==="testimonies")renderTestimonies(panel);
   }
   function entryCard(item,key){
     const card=el("article","zps-entry");
@@ -57,7 +59,55 @@
     panel.appendChild(form);
     let items;try{items=read(PRAYERS);}catch(error){panel.append(el("p","zps-empty",error.message));status(error.message);return;}panel.append(el("h3","zps-subheading","Journal entries ("+items.length+")"));
     if(!items.length)panel.append(el("p","zps-empty","Your journal is ready whenever you want to write."));
-    items.forEach(item=>panel.appendChild(entryCard(item,PRAYERS)));
+    items.filter(item=>!item.entryType||item.entryType==="prayer").forEach(item=>panel.appendChild(entryCard(item,PRAYERS)));
+  }
+  function renderBookmarks(panel){
+    panel.append(el("h2","zps-heading","Bookmarked Scriptures & saved declarations"),el("p","zps-copy","Your saved verses, declarations, teachings and study resources from the Zuriel Library."));
+    let library;
+    try{
+      const raw=localStorage.getItem("zuriel_personal_library_v1");
+      library=raw===null?{bookmarks:[]}:JSON.parse(raw);
+      if(!library||typeof library!=="object"||Array.isArray(library)||!Array.isArray(library.bookmarks))throw new Error("Saved bookmark data has an unexpected format. Your records have not been changed.");
+    }catch(error){panel.append(el("p","zps-empty",error.message||"Zuriel could not read your saved bookmarks."));status(error.message||"Could not read saved bookmarks.");return;}
+    const items=library.bookmarks;
+    panel.append(el("h3","zps-subheading","Saved items ("+items.length+")"));
+    if(!items.length){panel.append(el("p","zps-empty","No bookmarks yet. Save a Scripture, declaration or teaching from the Bible and Study Library."));return;}
+    items.slice().reverse().forEach(item=>{
+      const card=el("article","zps-entry");
+      card.append(el("h3","",item.title||"Saved item"));
+      if(item.reference)card.append(el("p","zps-reference",item.reference));
+      if(item.text)card.append(el("p","zps-copy",item.text));
+      if(item.reference)card.appendChild(btn("Open Scripture",async()=>{
+        const match=String(item.reference).match(/^(.+?)\\s+(\\d+)(?::(\\d+))?/);
+        if(!match){status("This saved item has no directly openable chapter reference.");return;}
+        try{
+          if(window.ZurielHomeNavigate)window.ZurielHomeNavigate("read");
+          await window.openChapter(match[1].trim(),Number(match[2]));
+          if(match[3]&&window.selectBibleVerse)window.selectBibleVerse(Number(match[3]));
+          status("Opened "+item.reference+".");
+        }catch(error){status("Could not open "+item.reference+".");}
+      },"zps-small"));
+      panel.appendChild(card);
+    });
+  }
+  function renderTestimonies(panel){
+    panel.append(el("h2","zps-heading","My Testimonies"),el("p","zps-copy","Record answered prayer, God's faithfulness and moments you want to remember. These entries are kept on this device and included in your encrypted personal backup."));
+    const form=el("form","zps-form"),title=el("input","");
+    title.placeholder="Testimony title";title.maxLength=100;title.required=true;
+    const reference=el("input","");reference.placeholder="Related Scripture (optional)";reference.maxLength=100;
+    const text=el("textarea","");text.placeholder="Write what happened, how you prayed, and what you are thankful for…";text.rows=6;text.maxLength=6000;text.required=true;
+    const save=btn("Save testimony",()=>{},"zps-save");save.type="submit";form.append(title,reference,text,save);
+    form.addEventListener("submit",e=>{
+      e.preventDefault();if(!title.value.trim()||!text.value.trim())return;
+      const ok=addEntry(PRAYERS,{id:String(Date.now())+"-"+Math.random().toString(36).slice(2),entryType:"testimony",title:title.value.trim(),reference:reference.value.trim(),text:text.value.trim(),createdAt:new Date().toISOString()});
+      if(ok){status("Testimony saved on this device and included in encrypted backup.");render();}
+    });
+    panel.appendChild(form);
+    let items;try{items=read(PRAYERS);}catch(error){panel.append(el("p","zps-empty",error.message));status(error.message);return;}
+    const testimonies=items.filter(item=>item.entryType==="testimony");
+    panel.append(el("h3","zps-subheading","Saved testimonies ("+testimonies.length+")"));
+    if(!testimonies.length)panel.append(el("p","zps-empty","Your testimony journal is ready. Save your first testimony above."));
+    testimonies.forEach(item=>panel.appendChild(entryCard(item,PRAYERS)));
   }
   function mergeChapterHistory(legacyItems){
     const currentItems=window.ZurielRecentlyOpened&&typeof window.ZurielRecentlyOpened.list==="function"
@@ -131,7 +181,7 @@
     style.textContent="#zurielPersonalSpace{max-width:900px;margin:0 auto;padding:12px 0 28px;color:#20364b;font-family:Arial,sans-serif}#zurielPersonalSpace *{box-sizing:border-box}#zurielPersonalSpace .zps-hero{padding:23px 18px;border-radius:18px;background:linear-gradient(140deg,#10213d,#254c68);color:#fff;margin-bottom:14px}#zurielPersonalSpace .zps-hero h1{font:700 27px/1.2 Georgia,serif;margin:0 0 8px;color:#f2dfb3}#zurielPersonalSpace .zps-hero p{font-size:14px;line-height:1.6;color:#e4eaf0;margin:0}#zurielPersonalSpace .zps-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:12px 0}#zurielPersonalSpace button{min-height:42px;padding:9px 11px;border-radius:9px;font:700 13px Arial,sans-serif;cursor:pointer}#zurielPersonalSpace .zps-tab{background:#f1eee6;color:#233e55;border:1px solid #d8d1c2}#zurielPersonalSpace .zps-tab[aria-pressed=true],#zurielPersonalSpace .zps-save{background:#183e5a;color:#fff;border:1px solid #183e5a}#zurielPersonalSpace .zps-panel{padding:16px;background:#fff;border:1px solid #e2dfd7;border-radius:15px}#zurielPersonalSpace .zps-heading{font:700 22px/1.25 Georgia,serif;color:#193c56;margin:0 0 7px}#zurielPersonalSpace .zps-subheading{font:700 17px Georgia,serif;color:#244b60;margin:20px 0 10px}#zurielPersonalSpace .zps-copy{font-size:14px;line-height:1.65;color:#586779}#zurielPersonalSpace .zps-form{display:grid;gap:9px;margin:14px 0 18px}#zurielPersonalSpace input,#zurielPersonalSpace textarea{width:100%;min-width:0;border:1px solid #cfd4d7;border-radius:9px;padding:12px;font:15px Arial,sans-serif;color:#24394c;background:#fff}#zurielPersonalSpace textarea{resize:vertical;line-height:1.6}#zurielPersonalSpace .zps-entry{padding:13px 0;border-top:1px solid #ece9e1}#zurielPersonalSpace .zps-entry h3{font:700 16px Georgia,serif;color:#23475f;margin:4px 0}#zurielPersonalSpace .zps-date,#zurielPersonalSpace .zps-reference{font-size:11px;color:#78818a;margin:4px 0}#zurielPersonalSpace .zps-delete{background:#f5f1ed;border:1px solid #ded6ce;color:#754d42;min-height:36px}#zurielPersonalSpace .zps-empty,#zurielPersonalSpace .zps-footnote{font-size:13px;line-height:1.6;color:#667383}#zurielPersonalSpace .zps-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:14px 0}#zurielPersonalSpace .zps-stat{padding:12px;border-radius:11px;background:#f3f4f2;border:1px solid #e1e5e1;display:flex;flex-direction:column;gap:4px}#zurielPersonalSpace .zps-stat strong{font:700 24px Georgia,serif;color:#1d4963}#zurielPersonalSpace .zps-stat span{font-size:12px;color:#5d6874}#zurielPersonalSpace .zps-current{padding:12px;background:#f6f3ea;border-radius:10px;font-weight:700;color:#334b60}#zurielPersonalSpace .zps-history{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0;border-top:1px solid #ece9e1;font-size:14px;color:#344c60}#zurielPersonalSpace .zps-small{min-height:34px;background:#edf2f4;color:#1d4963;border:1px solid #d7e0e4}@media(max-width:460px){#zurielPersonalSpace .zps-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}";
     const hero=el("header","zps-hero");hero.append(el("h1","","My Study Space"),el("p","","A quiet place for your discoveries, prayers, notes and growing walk through Scripture."));
     const tabs=el("div","zps-tabs");
-    [["insights","✍️ Insights & Notes"],["prayer","🙏 Prayer Journal"],["progress","📖 Progress"],["plans","🗓️ Reading Plans"]].forEach(([key,label])=>{const b=btn(label,()=>{tab=key;render();},"zps-tab");b.dataset.zpsTab=key;b.setAttribute("aria-pressed",String(tab===key));tabs.appendChild(b);});
+    [["insights","✍️ Notes"],["bookmarks","🔖 Bookmarks"],["prayer","🙏 Prayer"],["testimonies","🌿 Testimonies"],["progress","📖 Progress"],["plans","🗓️ Plans"]].forEach(([key,label])=>{const b=btn(label,()=>{tab=key;render();},"zps-tab");b.dataset.zpsTab=key;b.setAttribute("aria-pressed",String(tab===key));tabs.appendChild(b);});
     const panel=el("div","zps-panel");panel.id="zpsPanel";
     const live=el("p","");live.id="zpsStatus";live.setAttribute("role","status");live.setAttribute("aria-live","polite");
     root.append(style,hero,tabs,panel,live);main.appendChild(root);if(window.ZurielBackup&&typeof window.ZurielBackup.mount==="function")window.ZurielBackup.mount(root);render();
