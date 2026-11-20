@@ -115,6 +115,9 @@ jobs:
       - name: Validate personal backup and restore
         run: node scripts/check-personal-backup.mjs
 
+      - name: Validate Personal Study Space bookmarks and testimony journal
+        run: node scripts/check-personal-space-history.mjs
+
       - name: Validate offline Bible Geography Centre
         run: node scripts/check-bible-geography.mjs
       - name: Validate expanded offline study library integration
