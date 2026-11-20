@@ -13,8 +13,10 @@ try {
   await mkdir(join(resDir, "xml"), { recursive: true });
   await writeFile(join(javaDir, "MainActivity.kt"),
     "package com.zuriel.livingwordbible.release\n\nimport com.getcapacitor.BridgeActivity\n\nclass MainActivity : BridgeActivity() {\n}\n");
+  // Capacitor plugins may already declare a generic FileProvider. The updater
+  // must add a distinct authority instead of treating that provider as its own.
   await writeFile(join(root, "android/app/src/main/AndroidManifest.xml"),
-    '<?xml version="1.0" encoding="utf-8"?>\n<manifest xmlns:android="http://schemas.android.com/apk/res/android"><application android:label="Zuriel"></application></manifest>');
+    '<?xml version="1.0" encoding="utf-8"?>\n<manifest xmlns:android="http://schemas.android.com/apk/res/android"><application android:label="Zuriel"><provider android:name="androidx.core.content.FileProvider" android:authorities="${applicationId}.fileprovider" android:exported="false"><meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths" /></provider></application></manifest>');
   const generator = resolve(process.cwd(), "scripts/prepare-android-updater.mjs");
   const run = spawnSync(process.execPath, [generator], { cwd: root, encoding: "utf8" });
   assert.equal(run.status, 0, run.stderr || run.stdout);
