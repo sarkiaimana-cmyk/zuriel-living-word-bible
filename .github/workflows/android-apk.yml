@@ -114,7 +114,7 @@ jobs:
 
       - name: Validate personal backup and restore
         run: node scripts/check-personal-backup.mjs
-
+\n      - name: Validate in-app updates and personal-data preservation\n        run: node scripts/check-in-app-update-safety.mjs\n
       - name: Validate Personal Study Space bookmarks and testimony journal
         run: node scripts/check-personal-space-history.mjs
 
