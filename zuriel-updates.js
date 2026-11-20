@@ -71,19 +71,46 @@
               : null;
             if (apk && apk.browser_download_url) {
               status.textContent = "Official signed Android update " + info.version + " is available. Your current app and saved records are unchanged.";
-              const install = document.createElement("a");
-              install.href = apk.browser_download_url;
-              install.textContent = "Download official Zuriel Android update";
-              install.target = "_blank";
-              install.rel = "noopener noreferrer";
+              const install = document.createElement("button");
+              install.type = "button";
+              install.textContent = "Download & Install Zuriel Update";
               install.style.display = "block";
-              install.style.textAlign = "center";
-              install.style.padding = "13px";
+              install.style.width = "100%";
               install.style.marginTop = "10px";
-              install.style.borderRadius = "9px";
-              install.style.background = "#19324f";
-              install.style.color = "#fff";
-              install.style.fontWeight = "700";
+              install.addEventListener("click", async function () {
+                const nativeUpdater = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.ZurielUpdater;
+                const digest = String(apk.digest || "").replace(/^sha256:/i, "").toLowerCase();
+                if (!nativeUpdater || typeof nativeUpdater.installUpdate !== "function") {
+                  status.textContent = "The native update installer is not available in this installed build. Your current app and records are safe; use the official signed APK download only when you are ready.";
+                  const fallback = document.createElement("a");
+                  fallback.href = apk.browser_download_url;
+                  fallback.textContent = "Open official APK download";
+                  fallback.target = "_blank";
+                  fallback.rel = "noopener noreferrer";
+                  notes.appendChild(fallback);
+                  return;
+                }
+                if (!/^[a-f0-9]{64}$/.test(digest)) {
+                  status.textContent = "The official release did not provide a verifiable SHA-256 checksum. Zuriel has stopped the update to protect your installation.";
+                  return;
+                }
+                install.disabled = true;
+                status.textContent = "Downloading and verifying the official signed update…";
+                try {
+                  const result = await nativeUpdater.installUpdate({ url: apk.browser_download_url, sha256: digest });
+                  if (result && result.needsPermission) {
+                    status.textContent = "Android has opened the permission page. Allow Zuriel to install updates from this source, return here, and tap Download & Install Zuriel Update again.";
+                  } else if (result && result.installerOpened) {
+                    status.textContent = "The verified update is ready. In the Android installer, choose Update/Install. Do not uninstall Zuriel; Android should update the existing app and retain its saved studies.";
+                  } else {
+                    status.textContent = "Android did not confirm that the installer opened. Your existing app and saved data are unchanged.";
+                  }
+                } catch (error) {
+                  status.textContent = error && error.message ? error.message : "The update could not be installed. Your existing app and saved data are unchanged.";
+                } finally {
+                  install.disabled = false;
+                }
+              });
               notes.appendChild(document.createElement("br"));
               notes.appendChild(install);
               const reminder = document.createElement("p");
