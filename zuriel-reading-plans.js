@@ -123,13 +123,13 @@
       duration:7,
       description:"A practical journey through the Lord's Prayer, thanksgiving, intercession, lament and perseverance.",
       days:[
-        ["Matthew 6:5-15","Follow the pattern Jesus gives for prayer."],
-        ["Psalm 23:1-6","Turn the Shepherd's care into honest prayer and trust."],
-        ["Philippians 4:4-9","Bring requests to God with thanksgiving and practise what is true."],
-        ["Colossians 4:2-6","Consider watchful prayer, gratitude and gracious speech."],
-        ["1 Timothy 2:1-8","Study prayer for all people and those in authority."],
-        ["Psalm 13:1-6","Learn how lament can express pain and still turn toward trust."],
-        ["Luke 18:1-8","Reflect on persistence in prayer and confidence in God's justice."]
+        ["Matthew 6:5-15","Follow the pattern Jesus gives for prayer.","What does Jesus warn against in public performance, and what pattern does He give for prayer? How do the requests shape your priorities?","Father, teach me to pray sincerely. Help me honour Your name, seek Your will, depend on You daily and extend forgiveness."],
+        ["Psalm 23:1-6","Turn the Shepherd's care into honest prayer and trust.","How does the shepherd image describe God's care in both restful and threatening places? What does the psalm say about His presence in the valley?","Lord, shepherd me through changing circumstances. Give me courage in difficult places, gratitude for provision and trust in Your presence."],
+        ["Philippians 4:4-9","Bring requests to God with thanksgiving and practise what is true.","How does Paul connect prayer, thanksgiving and peace? What does he encourage believers to think about and practise?","God of peace, I bring my concerns honestly before You. Guide my thoughts toward what is true and help me practise what is good."],
+        ["Colossians 4:2-6","Consider watchful prayer, gratitude and gracious speech.","What does Paul ask believers to devote themselves to? How do watchfulness, gratitude and gracious speech belong together?","Lord, make me faithful in prayer and grateful in every season. Give my words grace and help me speak with wisdom to each person."],
+        ["1 Timothy 2:1-8","Study prayer for all people and those in authority.","Who does Paul urge believers to pray for, and why? What does the passage reveal about God's desire and the place of peaceable conduct?","Father, widen my prayers beyond my own needs. Help me pray for all people and those in authority, seeking peace and godliness."],
+        ["Psalm 13:1-6","Learn how lament can express pain and still turn toward trust.","What honest questions does the psalmist bring to God? Where does the prayer turn, and what does this teach about lament and trust?","God, receive my honest sorrow and questions. Help me remember Your steadfast love without pretending pain is not real."],
+        ["Luke 18:1-8","Reflect on persistence in prayer and confidence in God's justice.","What contrast does Jesus draw between the unjust judge and God? What does persistence mean here, and what question does Jesus leave His hearers?","Righteous Father, keep me faithful in prayer. Give me patience, courage and enduring faith while I wait for Your justice."]
       ]
     },
     {
