@@ -13,7 +13,7 @@ const bibleBooks = [{ name: "Genesis" }, { name: "John" }];
 const bookCodes = { Genesis: "GEN", John: "JHN" };
 const corpus = {
   GEN: [["In the beginning God created the heavens and the earth.", "The word of the Lord is true."]],
-  JHN: [["For God so loved the world.", "Love one another as I have loved you.", "A lovely day is not the same as love."]]
+  JHN: [["For God so loved the world.", "Love one another as I have loved you.", "A lovely day is not the same as love.", "Café fellowship is warm."]]
 };
 const sandbox = {
   window: {},
@@ -38,6 +38,14 @@ assert.ok(exact.every(item => item.text.toLowerCase().includes("love")));
 
 const contains = await search.search("love", 30, "phrase");
 assert.equal(contains.length, 3, "Contains/phrase search should also find inflected and longer words.");
+
+const normalized = await search.search("cafe", 30, "phrase");
+assert.equal(normalized.length, 1, "Search should normalize accented characters.");
+assert.equal(normalized[0].verse, 4);
+assert.equal(sandbox.zurielSearchIndex.records.length, 6, "The index should cache each non-empty verse once.");
+const cachedRecords = sandbox.zurielSearchIndex.records;
+await search.search("beginning", 30, "phrase");
+assert.equal(sandbox.zurielSearchIndex.records, cachedRecords, "Repeated searches should reuse the normalized index.");
 
 const limited = await search.search("love", 1, "phrase");
 assert.equal(limited.length, 1);
