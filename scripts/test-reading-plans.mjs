@@ -51,6 +51,15 @@ for (const day of forgivenessPlan.days) {
   assert.ok(day.prayer.length >= 40, "Each forgiveness-plan day must include its own prayer.");
 }
 
+const growthPlan = plans.find(plan => plan.id === "growing-in-faith-7");
+assert.ok(growthPlan, "The Growing in Faith plan must be available.");
+assert.equal(growthPlan.days.length, 7);
+for (const day of growthPlan.days) {
+  assert.ok(day.reference && day.focus, "Each growth-plan day must retain its passage and focus.");
+  assert.ok(day.reflection.length >= 30, "Each growth-plan day must include a contextual reflection question.");
+  assert.ok(day.prayer.length >= 40, "Each growth-plan day must include its own prayer.");
+}
+
 
 assert.deepEqual(JSON.parse(JSON.stringify(api.readState())), {
   schemaVersion: 1, activePlanId: null, plans: {}
