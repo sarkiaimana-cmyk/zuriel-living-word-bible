@@ -142,3 +142,11 @@ if (!readerToolbar.includes("    `;")) failures.push("Reader toolbar style templ
 if (!readerToolbar.includes("controls.append(launch, translationSelect, audioButton, settingsButton)")) failures.push("Passage, translation, audio and settings must share the compact top row.");
 if (!readerToolbar.includes("zurielReaderViewTabs")) failures.push("Reader must include Scripture, Meaning and Original Words tabs.");
 if (!worker.includes("./zuriel-reader-topbar.js")) failures.push("Reader toolbar must be included in the offline app cache.");
+if (!home.includes("#zurielOpenBookFaithCard {padding:10px")) failures.push("Open-book card must retain its premium navy-and-gold outer frame.");
+if (!home.includes(".zob-brandline:after")) failures.push("Open-book card must retain the decorative gold title divider.");
+if (!home.includes(".zob-book:before")) failures.push("Open-book illustration must retain the dimensional gold page edge.");
+if (!home.includes("width:min(100%,460px)")) failures.push("Open-book footer must remain responsive on narrow screens.");
+if (!home.includes(".zob-page {box-shadow:inset 0 0 18px")) failures.push("Open-book pages must retain subtle paper depth.");
+if (!home.includes("Glory Verse Affirmation")) failures.push("Open-book card must retain its Glory Verse Affirmation label.");
+if (!home.includes("His Word...")) failures.push("Open-book card must retain the approved top-line wording.");
+if (!home.includes("THE WORD • THE TRUTH • THE LIFE")) failures.push("Open-book card must retain the Zuriel footer tagline.");
