@@ -108,13 +108,13 @@
       duration:7,
       description:"Explore grace, adoption, identity, renewal and the daily practice of following Jesus.",
       days:[
-        ["2 Corinthians 5:14-21","Read about new creation and reconciliation through Christ."],
-        ["Romans 8:1-17","Study life in the Spirit, adoption and belonging to God."],
-        ["Ephesians 1:3-14","Trace the blessings and hope believers receive in Christ."],
-        ["Ephesians 2:1-10","Remember salvation by grace and the good works God prepares."],
-        ["Colossians 3:1-17","Consider the character and conduct of the new life."],
-        ["Galatians 2:15-21","Reflect on living by faith in the Son of God."],
-        ["1 Peter 2:1-10","Explore the identity and calling of God's people."]
+        ["2 Corinthians 5:14-21","Read about new creation and reconciliation through Christ.","How does Christ's love reshape Paul's view of life? What does the passage say God has done to reconcile the world through Christ?","Lord Jesus, thank You for reconciling me to God. Let Your love reshape my priorities and help me become a truthful, humble ambassador of reconciliation."],
+        ["Romans 8:1-17","Study life in the Spirit, adoption and belonging to God.","What does Paul mean by no condemnation for those in Christ? How does the Spirit's work relate to adoption and belonging to God's family?","Father, thank You that life in Christ is not defined by condemnation. Help me follow the Spirit, grow in holiness and live in the assurance of being Your child."],
+        ["Ephesians 1:3-14","Trace the blessings and hope believers receive in Christ.","List the blessings Paul attributes to God in Christ. How do adoption, redemption and the promised Spirit shape the believer's hope and identity?","God of grace, help me understand the blessings You give in Christ. Keep my identity grounded in Your love and teach me to live with gratitude and hope."],
+        ["Ephesians 2:1-10","Remember salvation by grace and the good works God prepares.","How does Paul describe the change from death to life? Why does he say salvation is God's gift, and what place do good works have afterward?","Father, keep me rooted in grace rather than pride or fear. Show me the good work before me today and help me serve from gratitude for what You have done."],
+        ["Colossians 3:1-17","Consider the character and conduct of the new life.","What does Paul tell believers to put away and put on? How should Christ's peace and word shape relationships, speech and gratitude?","Lord, renew my habits and attitudes. Help me put away what harms others and practise compassion, forgiveness, love and thankfulness."],
+        ["Galatians 2:15-21","Reflect on living by faith in the Son of God.","What point is Paul making about justification and the law? What does it mean in context to say Christ lives in me and that I live by faith?","Jesus, help me rely on Your grace rather than trying to earn acceptance. Let my faith shape my choices and keep my life centred on Your love."],
+        ["1 Peter 2:1-10","Explore the identity and calling of God's people.","What images does Peter use for believers and for Christ? How does this identity lead to a public calling to declare God's goodness?","Father, build my life on Christ, the living cornerstone. Help me turn from harmful patterns and reflect Your goodness through my words and actions."]
       ]
     },
     {
