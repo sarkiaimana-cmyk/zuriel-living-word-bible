@@ -20,9 +20,9 @@
       #bibleReader > h2,
       #bibleReader > h2 + p { display:none !important; }
       #bibleReader { padding:2px 0 0 !important; margin-top:0 !important; }
-      #zurielTopReturnBar { position:sticky;top:0;z-index:10000;min-height:34px;padding:3px 7px;margin:0;background:#fff;border:1px solid #eee8e6;border-bottom:0;border-radius:11px 11px 0 0;box-shadow:0 1px 4px #24100d0c; }
-      #zurielTopBack { min-height:29px;padding:4px 9px;border:0;border-radius:16px;background:#a30d48;color:#fff;font-size:11px;font-weight:700; }
-      #zurielTopSection { color:#59494b;font-size:11px; }
+      body:has(#bibleReader:not([hidden])) #zurielTopReturnBar { display:flex;justify-content:flex-end;position:sticky;top:0;z-index:10000;min-height:32px;padding:2px 6px;margin:0;background:#fff;border:1px solid #eee8e6;border-bottom:0;border-radius:11px 11px 0 0;box-shadow:0 1px 4px #24100d0c; }
+      body:has(#bibleReader:not([hidden])) #zurielTopBack { min-height:27px;padding:3px 9px;border:0;border-radius:15px;background:#a30d48;color:#fff;font-size:10px;font-weight:700; }
+      body:has(#bibleReader:not([hidden])) #zurielTopSection { display:none !important; }
       #zurielReaderTopControls { display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.85fr) 34px 34px;gap:4px;align-items:center;margin:0 0 2px;padding:4px 5px;background:#fff;border:1px solid #eee8e6;border-top:0;border-radius:0 0 11px 11px;box-shadow:0 1px 4px #24100d0c; }
       #zurielReaderTopControls button,
       #zurielReaderTopControls select { box-sizing:border-box;min-width:0;width:100%;min-height:35px;margin:0;padding:5px 7px;border:1px solid #e5dedb;border-radius:10px;background:#fff;color:#40202b;font:600 12px Arial,sans-serif;box-shadow:none; }
