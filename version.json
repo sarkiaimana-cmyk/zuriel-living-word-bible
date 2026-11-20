@@ -1,4 +1,4 @@
 {
-  "version": "1.4.114",
-  "releaseNotes": "Strengthened in-app Android updates with a native checksum-verified installer and official signed release discovery. Android updates are installed over the existing app with Android approval, not by uninstalling. Encrypted personal backups now also include saved verse-specific faith cards, alongside notes, highlights, bookmarks, prayer journal and reading progress."
+  "version": "1.4.115",
+  "releaseNotes": "Improved secure in-app Android update matching, complete faith-card image exports for long prayers and declarations, and refinements to the Scripture reader, Library drawers and Open Book Card Studio. Existing offline KJV and personal records remain protected."
 }
