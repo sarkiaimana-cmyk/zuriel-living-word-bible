@@ -621,6 +621,10 @@ const bookCodes = {
 window.ZurielBibleBookCode = function (bookName) {
   return bookCodes[bookName] || null;
 };
+window.ZurielBibleBookShortName = function (bookName) {
+  const code = bookCodes[bookName];
+  return code ? code.charAt(0) + code.slice(1).toLowerCase() : bookName;
+};
 
 const STORAGE_KEY = "zurielLastReadingPosition";
 const selector = document.getElementById("book");
@@ -817,7 +821,9 @@ function loadBibleBooks() {
   bibleBooks.forEach(function (item) {
     const option = document.createElement("option");
     option.value = item.name;
-    option.textContent = item.name;
+    option.textContent = window.ZurielBibleBookShortName(item.name);
+    option.setAttribute("aria-label", item.name);
+    option.title = item.name;
     selector.appendChild(option);
   });
 
