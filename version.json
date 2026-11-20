@@ -1,4 +1,4 @@
 {
-  "version": "1.4.105",
-  "releaseNotes": "Adds an About section with Bible translation copyright-holder acknowledgements and licence cautions."
+  "version": "1.4.106",
+  "releaseNotes": "Switches to a clean white Bible-reader home and updates offline cache."
 }
