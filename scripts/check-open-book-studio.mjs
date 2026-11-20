@@ -133,3 +133,7 @@ if (!readerToolbar.includes("min-height:35px")) failures.push("Reader controls m
 if (!readerToolbar.includes("min-height:30px")) failures.push("Translation shortcuts must use compact pills.");
 if (!readerToolbar.includes("min-height:34px")) failures.push("Reader view tabs must stay compact.");
 if (!readerToolbar.includes("min-height:34px")) failures.push("Return bar must stay compact.");
+if (!readerToolbar.includes("    `;")) failures.push("Reader toolbar style template must close correctly.");
+if (!readerToolbar.includes("controls.append(launch, translationSelect, audioButton, settingsButton)")) failures.push("Passage, translation, audio and settings must share the compact top row.");
+if (!readerToolbar.includes("zurielReaderViewTabs")) failures.push("Reader must include Scripture, Meaning and Original Words tabs.");
+if (!worker.includes("./zuriel-reader-topbar.js")) failures.push("Reader toolbar must be included in the offline app cache.");
