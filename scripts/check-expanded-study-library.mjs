@@ -193,7 +193,7 @@ for (const path of [
   "zuriel-deep-study-guides.json","zuriel-bible-geography-atlas.json","zuriel-worship-study-pathways.json","zuriel-theological-comparisons.json"
 ]) assert.ok(loader.includes(path),"Study loader must include "+path);
 assert.ok(index.includes('src="zuriel-study-library-data.js"'),"Study library integration script must load");
-assert.ok(worker.includes('zuriel-bible-offline-v213'),"Offline cache must be version 211");
+assert.ok(worker.includes('zuriel-bible-offline-v214'),"Offline cache must be version 211");
 assert.ok(worker.includes("./zuriel-study-library-data.js"),"Study loader must be precached");
 for (const path of [
   "zuriel-passage-commentary-expansion.json","zuriel-topical-bible-study-library-batch-2.json",
