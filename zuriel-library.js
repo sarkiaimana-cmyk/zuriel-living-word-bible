@@ -1373,8 +1373,7 @@
           box.appendChild(element("p", item));
           box.appendChild(button("Save declaration", function () {
             saved.bookmarks.push({title:"Glory Verse Affirmation",text:item});
-            persist();
-            alert("Saved to your personal library.");
+            if (persist()) alert("Saved to your personal library.");
           }));
           const createCard = button("Create Open Book Share Card", async function () {
             const reference = affirmationReferences[index];
