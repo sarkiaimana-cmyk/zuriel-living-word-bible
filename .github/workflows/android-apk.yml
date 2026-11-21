@@ -3,7 +3,7 @@ name: Build Zuriel Android APK
 on:
   workflow_dispatch:
   pull_request:
-    branches: [main, study/contextual-names-of-god-notes, study/monthly-light-devotional-expansion, study/prayer-journal-entries, study/scripture-linked-personal-notes, study/editable-personal-study-notes, study/open-scripture-from-saved-prayers]
+    branches: [main, study/contextual-names-of-god-notes, study/monthly-light-devotional-expansion, study/prayer-journal-entries, study/scripture-linked-personal-notes, study/editable-personal-study-notes, study/open-scripture-from-saved-prayers, study/editable-prayer-journal-records]
     paths:
       - "index.html"
       - "bible-data.js"
