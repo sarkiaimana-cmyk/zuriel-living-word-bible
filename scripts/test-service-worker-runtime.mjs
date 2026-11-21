@@ -79,9 +79,14 @@ assert.equal(install.calls.addAll.length, 1, "Install must precache the declared
 assert.ok(install.records.has("./index.html"), "The reader shell must be precached.");
 assert.equal(install.calls.skipped, 1, "A successful install should activate the updated worker.");
 
-const failedInstall = createHarness({ precacheFails: true });
+const failedInstall = createHarness({ precacheFails: true, cacheNames: ["zuriel-bible-offline-v221"] });
+failedInstall.records.set("./index.html", makeResponse("previous-reader"));
 await assert.rejects(() => dispatch(failedInstall.handlers.install), /Precache asset unavailable/,
   "A failed core precache must fail installation instead of claiming offline readiness.");
+assert.equal(failedInstall.calls.deleted.length, 0,
+  "A failed update must not delete the previously installed offline cache.");
+assert.equal(failedInstall.records.get("./index.html").label, "previous-reader",
+  "The previous reader shell must remain available when a new offline install fails.");
 
 const activate = createHarness({ cacheNames: ["zuriel-bible-offline-v1", "zuriel-bible-offline-v2", "unrelated-cache"] });
 await dispatch(activate.handlers.activate);
