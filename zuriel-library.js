@@ -2159,15 +2159,16 @@
         content.appendChild(summary);
 
         function openReference(reference) {
-          const match = String(reference || "").match(/^(.+?)\s+(\d+):(\d+)$/);
+          const match = String(reference || "").trim().match(/^(.+?)\s+(\d+)(?::(\d+))?(?:[-–]\d+)?$/);
           if (!match || typeof window.openChapter !== "function") return;
-          window.openChapter(match[1], Number(match[2])).then(function () {
-            if (typeof window.selectBibleVerse !== "function" ||
-                !window.selectBibleVerse(Number(match[3]))) {
-              throw new Error("The bookmarked verse could not be activated in the Bible reader.");
+          const bookName = match[1] === "Psalm" ? "Psalms" : match[1];
+          window.openChapter(bookName, Number(match[2])).then(function () {
+            if (match[3] && (typeof window.selectBibleVerse !== "function" ||
+                !window.selectBibleVerse(Number(match[3])))) {
+              throw new Error("The referenced verse could not be activated in the Bible reader.");
             }
           }).catch(function (error) {
-            console.error("Zuriel bookmarked Scripture:", error);
+            console.error("Zuriel saved Scripture:", error);
           });
         }
 
