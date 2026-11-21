@@ -3,7 +3,7 @@ name: Build Zuriel Android APK
 on:
   workflow_dispatch:
   pull_request:
-    branches: [main, fix/open-book-studio-svg-uri-regex]
+    branches: [main, fix/open-book-studio-svg-uri-regex, qa/offline-service-worker-runtime-integrated]
     paths:
       - "index.html"
       - "bible-data.js"
@@ -139,6 +139,8 @@ jobs:
 
       - name: Validate offline Scripture read-aloud
         run: node scripts/check-audio-reader.mjs
+      - name: Validate compact reader controls drawer
+        run: node scripts/check-reader-controls-drawer.mjs
       - name: Validate offline Bible search
         run: node scripts/check-bible-search.mjs
       - name: Validate offline Hebrew and Greek lexicon index

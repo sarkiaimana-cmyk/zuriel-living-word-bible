@@ -259,7 +259,12 @@ import { TextToSpeech } from "@capacitor-community/text-to-speech";
     });
     controls.append(playButton, pauseButton, stopButton, voiceSelect, rateSelect, setupButton);
     panel.append(heading, description, statusNode, controls);
-    readingTools.insertAdjacentElement("afterend", panel);
+    const drawerContent = document.querySelector("#zurielReaderControlDrawer .zuriel-reader-control-content");
+    if (drawerContent) {
+      drawerContent.appendChild(panel);
+    } else {
+      readingTools.insertAdjacentElement("afterend", panel);
+    }
 
     try {
       await loadOfflineVoices();
