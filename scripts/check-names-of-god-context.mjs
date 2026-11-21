@@ -19,6 +19,7 @@ const yhwh = entries.find(entry => entry.name === "YHWH — The LORD");
 assert.match(yhwh.study, /Exodus 3:13–15/);
 assert.match(yhwh.study, /Israel's suffering/);
 assert.doesNotMatch(yhwh.study, /Numbers 6:24/);
+assert.ok(entries.every(entry => !/Numbers 6:24/.test(entry.study)), "No entry should inherit the unrelated priestly-blessing note.");
 const christ = entries.find(entry => entry.name === "King of Kings and Lord of Lords");
 assert.match(christ.study, /Jesus' supreme kingship/);
 console.log("Names of God study checks passed: fifteen unique entries with contextual notes, correct YHWH passage context and Christ-centred royal-title explanation.");
