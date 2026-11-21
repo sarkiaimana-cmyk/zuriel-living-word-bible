@@ -1682,7 +1682,8 @@
         const status = element("p", "Add a Scripture reference when you want to return directly to its passage.", "library-status");
         content.append(title, reference, area, status);
 
-        content.appendChild(button("Save Study Note", function () {
+        let editingNote = null;
+        const saveNoteButton = button("Save Study Note", function () {
           const noteText = area.value.trim();
           if (!noteText) {
             status.textContent = "Write your study note before saving.";
@@ -1691,22 +1692,40 @@
           }
 
           saved.notes = Array.isArray(saved.notes) ? saved.notes : [];
-          saved.notes.push({
+          const updated = {
             title: title.value.trim() || "Bible Study Note",
             reference: reference.value.trim(),
             text: noteText,
             date: new Date().toLocaleDateString()
-          });
+          };
+          if (editingNote) {
+            Object.assign(editingNote, updated);
+          } else {
+            saved.notes.push(updated);
+          }
 
           if (persist()) {
+            editingNote = null;
             title.value = "";
             reference.value = "";
             area.value = "";
+            saveNoteButton.textContent = "Save Study Note";
             status.textContent = "Your study note has been saved on this device.";
             renderPersonalNotes();
           } else {
             status.textContent = "The note could not be saved. Please try again.";
           }
+        });
+        content.appendChild(saveNoteButton);
+
+        content.appendChild(button("Cancel Editing", function () {
+          if (!editingNote) return;
+          editingNote = null;
+          title.value = "";
+          reference.value = "";
+          area.value = "";
+          saveNoteButton.textContent = "Save Study Note";
+          status.textContent = "Editing cancelled. Your saved note remains unchanged.";
         }));
 
         const noteList = element("div");
@@ -1754,6 +1773,15 @@
             }
             box.appendChild(element("small", item.date || "Saved note"));
             box.appendChild(element("p", item.text || ""));
+            box.appendChild(button("Edit Note", function () {
+              editingNote = item;
+              title.value = item.title || "";
+              reference.value = item.reference || "";
+              area.value = item.text || "";
+              saveNoteButton.textContent = "Update Study Note";
+              status.textContent = "Editing this saved note. Saving will update it rather than create a duplicate.";
+              title.focus();
+            }));
             noteList.appendChild(box);
           });
         }
