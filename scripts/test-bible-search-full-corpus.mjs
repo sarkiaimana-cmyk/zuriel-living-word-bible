@@ -14,14 +14,14 @@ vm.runInNewContext(bookSource, bookContext, { timeout: 1000 });
 const bibleBooks = bookContext.bibleBooks;
 assert.equal(bibleBooks.length, 66, "Search must use the complete 66-book index.");
 
-const codeMatch = index.match(/const bookCodes = (\\{[\\s\\S]*?\\n\\};)/);
+const codeMatch = index.match(/const bookCodes = (\{[\s\S]*?\n\};)/);
 assert.ok(codeMatch, "Reader book-code map must be present.");
-const bookCodes = JSON.parse(codeMatch[1].replace(/;\\s*$/, ""));
+const bookCodes = JSON.parse(codeMatch[1].replace(/;\s*$/, ""));
 const kjv = JSON.parse(kjvSource);
 assert.equal(Object.keys(kjv).length, 66, "The bundled KJV must contain all 66 books.");
 
 const start = index.indexOf("window.ZurielBibleSearch = {");
-const end = index.indexOf("\\n};", start);
+const end = index.indexOf("\n};", start);
 assert.ok(start >= 0 && end > start, "The production offline search API must be present.");
 const apiSource = index.slice(start, end + 3);
 const sandbox = {
