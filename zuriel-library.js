@@ -1825,6 +1825,16 @@
           {category:"The Kingdom of God",title:"The pearl of great price",summary:"Jesus teaches that the Kingdom is worth more than every lesser treasure and calls for wholehearted response.",refs:["Matthew 13:45","Matthew 13:46"]},
           {category:"Faith and Courage",title:"The wise and foolish virgins",summary:"Jesus calls His disciples to watchfulness and readiness because the timing of His return is not known.",refs:["Matthew 25:1","Matthew 25:10","Matthew 25:13"]},
           {category:"Mission and Witness",title:"The talents entrusted",summary:"Jesus teaches accountability and faithful stewardship through a parable about servants entrusted with their master's resources.",refs:["Matthew 25:14","Matthew 25:21","Matthew 25:29"]}
+          {category:"Prayer and Trust",title:"Jesus withdraws to pray",summary:"The Gospels show Jesus making space for prayer amid ministry and crowds, modelling dependence on the Father.",refs:["Luke 5:16","Mark 1:35","Matthew 14:23"]},
+          {category:"Prayer and Trust",title:"Prayer and fasting",summary:"Jesus teaches that devotion is directed toward God, not public recognition, and speaks of fasting with sincerity.",refs:["Matthew 6:16","Matthew 6:17","Matthew 6:18"]},
+          {category:"Discipleship",title:"The harvest and the workers",summary:"Jesus sees the need for workers in the harvest and directs His disciples to pray for them.",refs:["Matthew 9:37","Matthew 9:38","Luke 10:2"]},
+          {category:"Faith and Courage",title:"Faith amid the storm",summary:"Jesus rebukes fear during the storm and calls His disciples to trust, while the story displays His authority.",refs:["Mark 4:39","Mark 4:40","Matthew 8:26"]},
+          {category:"Forgiveness and Mercy",title:"The tax collector and the Pharisee",summary:"Jesus contrasts self-righteousness with humble confession in prayer and teaches that the humble are justified.",refs:["Luke 18:13","Luke 18:14"]},
+          {category:"The Kingdom of God",title:"The wedding feast invitation",summary:"Jesus portrays a Kingdom invitation and the response it calls for through a parable of a wedding feast.",refs:["Matthew 22:2","Matthew 22:9","Matthew 22:14"]},
+          {category:"Humility and Service",title:"Choose the lowest place",summary:"Jesus teaches humility at a feast and warns against seeking honour for oneself.",refs:["Luke 14:10","Luke 14:11"]},
+          {category:"Love and Relationships",title:"Bless those who curse you",summary:"Jesus calls His hearers to respond to hostility with blessing, prayer and non-retaliatory love.",refs:["Luke 6:28","Matthew 5:44"]},
+          {category:"Mission and Witness",title:"Peace to this house",summary:"Jesus instructs His messengers to offer peace and carry out their mission with dependence and integrity.",refs:["Luke 10:5","Luke 10:6","Matthew 10:12"]},
+          {category:"Discipleship",title:"The servant's faithful readiness",summary:"Jesus teaches readiness and faithful stewardship rather than complacency while awaiting the master's return.",refs:["Luke 12:35","Luke 12:36","Luke 12:40"]}
         ];
 
         const search = element("input");
