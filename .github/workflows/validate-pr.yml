@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [main, study/contextual-names-of-god-notes, study/monthly-light-devotional-expansion, study/prayer-journal-entries, study/scripture-linked-personal-notes, study/editable-personal-study-notes, study/open-scripture-from-saved-prayers, study/editable-prayer-journal-records, study/delete-personal-library-records]
+    branches: [main, study/contextual-names-of-god-notes, study/monthly-light-devotional-expansion, study/prayer-journal-entries, study/scripture-linked-personal-notes, study/editable-personal-study-notes, study/open-scripture-from-saved-prayers, study/editable-prayer-journal-records, study/delete-personal-library-records, study/personal-library-backup-export]
   workflow_dispatch:
 
 permissions:
@@ -117,6 +117,7 @@ jobs:
 
       - name: Validate personal Bible study notes and Scripture links
         run: node scripts/check-personal-study-notes.mjs
+      - run: node scripts/check-personal-library-backup.mjs
       - name: Test Android version metadata
         run: node scripts/test-android-version.mjs
 
