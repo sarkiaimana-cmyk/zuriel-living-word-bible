@@ -1574,7 +1574,8 @@
 
         const status = element("p", "Entries are saved locally in this app on this device.", "library-status");
         content.append(titleField, categoryField, referenceField, area, status);
-        content.appendChild(button("Save Journal Entry", function () {
+        let editingPrayer = null;
+        const saveJournalButton = button("Save Journal Entry", function () {
           const text = area.value.trim();
           if (!text) {
             status.textContent = "Write something before saving your journal entry.";
@@ -1589,24 +1590,42 @@
             "answered-prayer": "Answered Prayer",
             testimony: "Testimony"
           };
-          saved.prayers.push({
+          const updated = {
             title: titleField.value.trim() || labels[category] + " entry",
             category: category,
             reference: referenceField.value.trim(),
             text: text,
             date: new Date().toLocaleDateString()
-          });
+          };
+          if (editingPrayer) {
+            Object.assign(editingPrayer, updated);
+          } else {
+            saved.prayers.push(updated);
+          }
 
           if (persist()) {
+            editingPrayer = null;
             titleField.value = "";
             categoryField.value = "prayer";
             referenceField.value = "";
             area.value = "";
+            saveJournalButton.textContent = "Save Journal Entry";
             status.textContent = "Your journal entry has been saved on this device.";
             renderPrayerRecords();
           } else {
             status.textContent = "The entry could not be saved. Please try again.";
           }
+        });
+        content.appendChild(saveJournalButton);
+        content.appendChild(button("Cancel Editing", function () {
+          if (!editingPrayer) return;
+          editingPrayer = null;
+          titleField.value = "";
+          categoryField.value = "prayer";
+          referenceField.value = "";
+          area.value = "";
+          saveJournalButton.textContent = "Save Journal Entry";
+          status.textContent = "Editing cancelled. Your saved journal entry remains unchanged.";
         }));
 
         content.appendChild(element("h3", "My Prayer & Testimony Records"));
@@ -1653,6 +1672,16 @@
             }
             box.appendChild(element("small", item.date || "Saved entry"));
             box.appendChild(element("p", item.text || ""));
+            box.appendChild(button("Edit Entry", function () {
+              editingPrayer = item;
+              titleField.value = item.title || "";
+              categoryField.value = item.category || "prayer";
+              referenceField.value = item.reference || "";
+              area.value = item.text || "";
+              saveJournalButton.textContent = "Update Journal Entry";
+              status.textContent = "Editing this saved entry. Saving will update it rather than create a duplicate.";
+              titleField.focus();
+            }));
             records.appendChild(box);
           });
         }
