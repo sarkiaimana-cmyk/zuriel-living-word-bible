@@ -1537,40 +1537,99 @@
       }
 
       if (page === "prayer") {
+        // Refresh the journal when opened so responses saved from verse popups
+        // and the Glory Verse studio appear alongside manually written entries.
+        saved = loadSaved();
         content.appendChild(card(
           "My Prayer Journal",
-          "Write your prayers, thanksgiving and testimonies."
+          "Keep prayers, thanksgiving, answered prayers and personal testimonies together on this device."
         ));
 
+        const titleField = element("input");
+        titleField.type = "text";
+        titleField.placeholder = "Entry title (optional)";
+        titleField.setAttribute("aria-label", "Prayer journal entry title");
+
+        const categoryField = element("select");
+        categoryField.setAttribute("aria-label", "Prayer journal entry type");
+        [
+          ["prayer", "Prayer"],
+          ["thanksgiving", "Thanksgiving"],
+          ["answered-prayer", "Answered Prayer"],
+          ["testimony", "Testimony"]
+        ].forEach(([value, label]) => {
+          const option = element("option", label);
+          option.value = value;
+          categoryField.appendChild(option);
+        });
+
+        const referenceField = element("input");
+        referenceField.type = "text";
+        referenceField.placeholder = "Scripture reference (optional, e.g. Psalm 23:1)";
+        referenceField.setAttribute("aria-label", "Related Scripture reference");
+
         const area = element("textarea");
-        area.placeholder = "Write your prayer here...";
+        area.placeholder = "Write your prayer, gratitude or testimony here...";
+        area.setAttribute("aria-label", "Prayer journal entry");
 
-        content.appendChild(area);
+        const status = element("p", "Your entries are stored privately on this device.", "library-status");
+        content.append(titleField, categoryField, referenceField, area, status);
+        content.appendChild(button("Save Journal Entry", function () {
+          const text = area.value.trim();
+          if (!text) {
+            status.textContent = "Write something before saving your journal entry.";
+            area.focus();
+            return;
+          }
 
-        content.appendChild(button("Save Prayer", function () {
-          if (!area.value.trim()) return;
-
+          const category = categoryField.value;
+          const labels = {
+            prayer: "Prayer",
+            thanksgiving: "Thanksgiving",
+            "answered-prayer": "Answered Prayer",
+            testimony: "Testimony"
+          };
           saved.prayers.push({
-            text: area.value.trim(),
+            title: titleField.value.trim() || labels[category] + " entry",
+            category: category,
+            reference: referenceField.value.trim(),
+            text: text,
             date: new Date().toLocaleDateString()
           });
 
           if (persist()) {
+            titleField.value = "";
+            categoryField.value = "prayer";
+            referenceField.value = "";
             area.value = "";
-            openPage("prayer");
+            status.textContent = "Your journal entry has been saved on this device.";
+            renderPrayerRecords();
+          } else {
+            status.textContent = "The entry could not be saved. Please try again.";
           }
         }));
 
-        content.appendChild(element("h3", "My Prayer Records"));
+        content.appendChild(element("h3", "My Prayer & Testimony Records"));
+        const records = element("div");
+        content.appendChild(records);
 
-        saved.prayers.forEach(item => {
-          const box = element("div", undefined, "library-entry");
-          if (item.title) box.appendChild(element("h4", item.title));
-          if (item.reference) box.appendChild(element("strong", item.reference));
-          box.appendChild(element("small", item.date));
-          box.appendChild(element("p", item.text));
-          content.appendChild(box);
-        });
+        function renderPrayerRecords() {
+          records.replaceChildren();
+          if (!saved.prayers.length) {
+            records.appendChild(element("p", "Your saved prayers and testimonies will appear here."));
+            return;
+          }
+          saved.prayers.slice().reverse().forEach(item => {
+            const box = element("div", undefined, "library-entry");
+            if (item.title) box.appendChild(element("h4", item.title));
+            if (item.category) box.appendChild(element("small", item.category.replace(/-/g, " ")));
+            if (item.reference) box.appendChild(element("strong", item.reference));
+            box.appendChild(element("small", item.date || "Saved entry"));
+            box.appendChild(element("p", item.text || ""));
+            records.appendChild(box);
+          });
+        }
+        renderPrayerRecords();
       }
 
       if (page === "notes") {
@@ -2137,6 +2196,7 @@
         saved = loadSaved();
         saved.prayers.push({
           title: String(title || "The Light — Scripture response").trim(),
+          category: "prayer",
           text: prayerText,
           reference: String(reference || "").trim(),
           date: new Date().toLocaleDateString()
