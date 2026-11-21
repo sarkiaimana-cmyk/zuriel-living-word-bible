@@ -3,7 +3,7 @@ name: Build Zuriel Android APK
 on:
   workflow_dispatch:
   pull_request:
-    branches: [main]
+    branches: [main, study/contextual-names-of-god-notes]
     paths:
       - "index.html"
       - "bible-data.js"
