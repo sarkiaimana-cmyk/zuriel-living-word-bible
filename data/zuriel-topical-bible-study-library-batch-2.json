@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "title": "Zuriel Topical Bible Study Library — Batch 2",
-  "description": "Topical guides with Scripture trails, study questions and practical application, written to preserve context and pastoral care.",
+  "title": "Zuriel Topical Bible Study Library — 200 Guides",
+  "description": "Two hundred distinct topical guides with Scripture references, context-first study questions and practical applications.",
   "editorialPolicy": [
     "Read full passages in context; references are study starting points.",
     "Topical summaries do not replace Scripture or settle every denominational disagreement.",
@@ -1317,6 +1317,1304 @@
       ],
       "studyQuestions": "Observe the imagery and the limits it places on human pride.",
       "lifeApplication": "Let wonder lead to gratitude and responsible care, not unsupported claims about nature.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-101",
+      "title": "Adoption and belonging in Christ",
+      "overview": "This guide studies adoption and belonging in christ through carefully selected passages that directly address the theme. Read each passage in its wider context and note the relationship between God's action, human response and the life of the believing community.",
+      "scriptureReferences": [
+        "Romans 8:14-17",
+        "Galatians 4:4-7",
+        "Ephesians 1:3-6"
+      ],
+      "studyQuestions": "Read Romans 8:14-17 and 2 Corinthians 5:17 and Ephesians 1:3-14 in full. What does each passage say about adoption and belonging in christ? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on adoption and belonging in christ shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-102",
+      "title": "Assurance and the faithfulness of God",
+      "overview": "This guide studies assurance and the faithfulness of god through carefully selected passages that directly address the theme. Read each passage in its wider context and note the relationship between God's action, human response and the life of the believing community.",
+      "scriptureReferences": [
+        "John 10:27-30",
+        "Romans 8:31-39",
+        "1 John 5:11-13"
+      ],
+      "studyQuestions": "Read Joshua 1:1-9 and Daniel 3 and Acts 4:18-31 in full. What does each passage say about assurance and the faithfulness of god? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on assurance and the faithfulness of god shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-103",
+      "title": "Repentance and changed direction",
+      "overview": "This guide studies repentance and changed direction through carefully selected passages that directly address the theme. Read each passage in its wider context and note the relationship between God's action, human response and the life of the believing community.",
+      "scriptureReferences": [
+        "Psalm 51:1-12",
+        "Luke 19:1-10",
+        "Acts 3:19-21"
+      ],
+      "studyQuestions": "Read Matthew 18:15-35 and Luke 17:3-4 and Ephesians 4:31-32 in full. What does each passage say about repentance and changed direction? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on repentance and changed direction shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-104",
+      "title": "Confession and walking in the light",
+      "overview": "This guide studies confession and walking in the light through carefully selected passages that directly address the theme. Read each passage in its wider context and note the relationship between God's action, human response and the life of the believing community.",
+      "scriptureReferences": [
+        "Proverbs 28:13",
+        "1 John 1:5-10",
+        "James 5:16"
+      ],
+      "studyQuestions": "Read Matthew 6:5-15 and Philippians 4:6-7 and 1 Thessalonians 5:16-18 in full. What does each passage say about confession and walking in the light? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on confession and walking in the light shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-105",
+      "title": "Grace and the gift of salvation",
+      "overview": "This guide studies grace and the gift of salvation through carefully selected passages that directly address the theme. Read each passage in its wider context and note the relationship between God's action, human response and the life of the believing community.",
+      "scriptureReferences": [
+        "Ephesians 2:1-10",
+        "Titus 3:3-7",
+        "Romans 3:21-26"
+      ],
+      "studyQuestions": "Read Ephesians 6:10-20 and 2 Corinthians 10:3-5 and 1 Peter 5:8-10 in full. What does each passage say about grace and the gift of salvation? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on grace and the gift of salvation shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-106",
+      "title": "Justification by faith",
+      "overview": "This guide studies justification by faith through carefully selected passages that directly address the theme. Read each passage in its wider context and note the relationship between God's action, human response and the life of the believing community.",
+      "scriptureReferences": [
+        "Romans 4:1-8",
+        "Romans 5:1-11",
+        "Galatians 2:15-21"
+      ],
+      "studyQuestions": "Read Ephesians 6:10-20 and 2 Corinthians 10:3-5 and 1 Peter 5:8-10 in full. What does each passage say about justification by faith? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on justification by faith shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-107",
+      "title": "Sanctification and holy living",
+      "overview": "This guide studies sanctification and holy living through carefully selected passages that directly address the theme. Read each passage in its wider context and note the relationship between God's action, human response and the life of the believing community.",
+      "scriptureReferences": [
+        "Romans 6:1-14",
+        "1 Thessalonians 4:1-8",
+        "Hebrews 12:14"
+      ],
+      "studyQuestions": "Read John 14:15-27 and Romans 8:1-27 and Galatians 5:16-26 in full. What does each passage say about sanctification and holy living? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on sanctification and holy living shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-108",
+      "title": "Freedom from condemnation",
+      "overview": "This guide studies freedom from condemnation through carefully selected passages that directly address the theme. Read each passage in its wider context and note the relationship between God's action, human response and the life of the believing community.",
+      "scriptureReferences": [
+        "Romans 8:1-4",
+        "John 8:1-11",
+        "Colossians 2:13-15"
+      ],
+      "studyQuestions": "Read Deuteronomy 6:4-9 and James 1:19-25 and Luke 11:28 in full. What does each passage say about freedom from condemnation? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on freedom from condemnation shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-109",
+      "title": "New life and resurrection hope",
+      "overview": "This guide studies new life and resurrection hope through carefully selected passages that directly address the theme. Read each passage in its wider context and note the relationship between God's action, human response and the life of the believing community.",
+      "scriptureReferences": [
+        "Romans 6:4-11",
+        "2 Corinthians 5:14-17",
+        "Colossians 3:1-4"
+      ],
+      "studyQuestions": "Read Luke 24 and John 20 and 1 Corinthians 15 in full. What does each passage say about new life and resurrection hope? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on new life and resurrection hope shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-110",
+      "title": "Union with Christ",
+      "overview": "This guide studies union with christ through carefully selected passages that directly address the theme. Read each passage in its wider context and note the relationship between God's action, human response and the life of the believing community.",
+      "scriptureReferences": [
+        "John 15:1-11",
+        "Galatians 2:19-20",
+        "Ephesians 2:4-7"
+      ],
+      "studyQuestions": "Read Matthew 28:18-20 and Acts 2:38-41 and Romans 6:1-4 in full. What does each passage say about union with christ? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on union with christ shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-111",
+      "title": "The indwelling Holy Spirit",
+      "overview": "This guide studies the indwelling holy spirit through carefully selected passages that directly address the theme. Read each passage in its wider context and note the relationship between God's action, human response and the life of the believing community.",
+      "scriptureReferences": [
+        "John 14:16-17",
+        "Romans 8:9-11",
+        "1 Corinthians 3:16-17"
+      ],
+      "studyQuestions": "Read John 14:15-27 and Romans 8:1-27 and Galatians 5:16-26 in full. What does each passage say about the indwelling holy spirit? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on the indwelling holy spirit shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-112",
+      "title": "The Spirit's guidance and discernment",
+      "overview": "This guide studies the spirit's guidance and discernment through carefully selected passages that directly address the theme. Read each passage in its wider context and note the relationship between God's action, human response and the life of the believing community.",
+      "scriptureReferences": [
+        "John 16:12-15",
+        "Romans 8:12-16",
+        "Galatians 5:16-18"
+      ],
+      "studyQuestions": "Read Galatians 5:16-26 and Colossians 3:12-17 in full. What does each passage say about the spirit's guidance and discernment? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on the spirit's guidance and discernment shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-113",
+      "title": "The fruit of patience",
+      "overview": "This guide studies the fruit of patience through carefully selected passages that directly address the theme. Read each passage in its wider context and note the relationship between God's action, human response and the life of the believing community.",
+      "scriptureReferences": [
+        "Proverbs 14:29",
+        "Ecclesiastes 7:8-9",
+        "Galatians 5:22-23"
+      ],
+      "studyQuestions": "Read Galatians 5:16-26 and Colossians 3:12-17 in full. What does each passage say about the fruit of patience? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on the fruit of patience shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-114",
+      "title": "The fruit of gentleness",
+      "overview": "This guide studies the fruit of gentleness through carefully selected passages that directly address the theme. Read each passage in its wider context and note the relationship between God's action, human response and the life of the believing community.",
+      "scriptureReferences": [
+        "Matthew 11:28-30",
+        "2 Timothy 2:24-25",
+        "Galatians 6:1"
+      ],
+      "studyQuestions": "Read Galatians 5:16-26 and Colossians 3:12-17 in full. What does each passage say about the fruit of gentleness? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on the fruit of gentleness shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-115",
+      "title": "The fruit of self-control",
+      "overview": "This guide studies the fruit of self-control through carefully selected passages that directly address the theme. Read each passage in its wider context and note the relationship between God's action, human response and the life of the believing community.",
+      "scriptureReferences": [
+        "Proverbs 25:28",
+        "1 Corinthians 9:24-27",
+        "2 Peter 1:5-8"
+      ],
+      "studyQuestions": "Read Psalm 4:4 and Ephesians 4:26-32 and James 1:19-20 in full. What does each passage say about the fruit of self-control? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on the fruit of self-control shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-116",
+      "title": "Love of neighbour",
+      "overview": "This guide studies love of neighbour through carefully selected passages that directly address the theme. Read each passage in its wider context and note the relationship between God's action, human response and the life of the believing community.",
+      "scriptureReferences": [
+        "Leviticus 19:9-18",
+        "Luke 10:25-37",
+        "Romans 13:8-10"
+      ],
+      "studyQuestions": "Read Deuteronomy 7:9 and Psalm 89:1-4 and Micah 6:8 in full. What does each passage say about love of neighbour? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on love of neighbour shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-117",
+      "title": "Love of enemies",
+      "overview": "This guide studies love of enemies through carefully selected passages that directly address the theme. Read each passage in its wider context and note the relationship between God's action, human response and the life of the believing community.",
+      "scriptureReferences": [
+        "Matthew 5:43-48",
+        "Luke 6:27-36",
+        "Romans 12:17-21"
+      ],
+      "studyQuestions": "Read Matthew 5:38-48 and Romans 12:14-21 in full. What does each passage say about love of enemies? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on love of enemies shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-118",
+      "title": "Unity in the body of Christ",
+      "overview": "This guide studies unity in the body of christ through carefully selected passages that directly address the theme. Read each passage in its wider context and note the relationship between God's action, human response and the life of the believing community.",
+      "scriptureReferences": [
+        "John 17:20-23",
+        "1 Corinthians 12:12-27",
+        "Ephesians 4:1-6"
+      ],
+      "studyQuestions": "Read 1 Corinthians 12:12-27 and Ephesians 4:1-16 and Romans 12:4-8 in full. What does each passage say about unity in the body of christ? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on unity in the body of christ shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-119",
+      "title": "Reconciliation between believers",
+      "overview": "This guide studies reconciliation between believers through carefully selected passages that directly address the theme. Read each passage in its wider context and note the relationship between God's action, human response and the life of the believing community.",
+      "scriptureReferences": [
+        "Matthew 5:21-24",
+        "Matthew 18:15-20",
+        "2 Corinthians 5:18-20"
+      ],
+      "studyQuestions": "Read Acts 10:34-48 and Galatians 2:11-14 and Ephesians 2:13-22 in full. What does each passage say about reconciliation between believers? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on reconciliation between believers shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-120",
+      "title": "Bearing one another's burdens",
+      "overview": "This guide studies bearing one another's burdens through carefully selected passages that directly address the theme. Read each passage in its wider context and note the relationship between God's action, human response and the life of the believing community.",
+      "scriptureReferences": [
+        "Galatians 6:1-5",
+        "Romans 15:1-3",
+        "1 Thessalonians 5:14"
+      ],
+      "studyQuestions": "Read Genesis 2:18 and Ecclesiastes 4:9-12 and Hebrews 10:23-25 in full. What does each passage say about bearing one another's burdens? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on bearing one another's burdens shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-121",
+      "title": "Welcoming guests and outsiders",
+      "overview": "This guide studies welcoming guests and outsiders in the light of hospitality across social boundaries. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Luke 5:27-32",
+        "Luke 19:1-10",
+        "Acts 10:23-35"
+      ],
+      "studyQuestions": "Read Luke 5:27-32 and Luke 19:1-10 and Acts 10:23-35 in full. What does each passage say about welcoming guests and outsiders? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on welcoming guests and outsiders shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-122",
+      "title": "Care for widows and orphans",
+      "overview": "This guide studies care for widows and orphans in the light of care for widows, orphans and vulnerable people. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Deuteronomy 10:17-19",
+        "Isaiah 1:17",
+        "James 1:27"
+      ],
+      "studyQuestions": "Read Deuteronomy 10:17-19 and Isaiah 1:17 and James 1:27 in full. What does each passage say about care for widows and orphans? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on care for widows and orphans shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-123",
+      "title": "Justice for the oppressed",
+      "overview": "This guide studies justice for the oppressed in the light of forgiveness and accountability. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Matthew 18:15-35",
+        "Luke 17:3-4",
+        "Ephesians 4:31-32"
+      ],
+      "studyQuestions": "Read Matthew 18:15-35 and Luke 17:3-4 and Ephesians 4:31-32 in full. What does each passage say about justice for the oppressed? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on justice for the oppressed shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-124",
+      "title": "Truthfulness and honest speech",
+      "overview": "This guide studies truthfulness and honest speech in the light of truthfulness and promises. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Leviticus 19:11-12",
+        "Matthew 5:33-37",
+        "Ephesians 4:25"
+      ],
+      "studyQuestions": "Read Leviticus 19:11-12 and Matthew 5:33-37 and Ephesians 4:25 in full. What does each passage say about truthfulness and honest speech? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on truthfulness and honest speech shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-125",
+      "title": "Listening before answering",
+      "overview": "This guide studies listening before answering in the light of hearing and obeying god's word. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Deuteronomy 6:4-9",
+        "James 1:19-25",
+        "Luke 11:28"
+      ],
+      "studyQuestions": "Read Deuteronomy 6:4-9 and James 1:19-25 and Luke 11:28 in full. What does each passage say about listening before answering? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on listening before answering shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-126",
+      "title": "Wisdom in conflict",
+      "overview": "This guide studies wisdom in conflict in the light of wisdom in speech. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Proverbs 12:18",
+        "15:1",
+        "James 3:1-12"
+      ],
+      "studyQuestions": "Read Proverbs 12:18 and 15:1 and James 3:1-12 in full. What does each passage say about wisdom in conflict? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on wisdom in conflict shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-127",
+      "title": "Work as service to God",
+      "overview": "This guide studies work as service to god in the light of work and vocation. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Genesis 2:15",
+        "Colossians 3:22-24",
+        "2 Thessalonians 3:6-13"
+      ],
+      "studyQuestions": "Read Genesis 2:15 and Colossians 3:22-24 and 2 Thessalonians 3:6-13 in full. What does each passage say about work as service to god? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on work as service to god shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-128",
+      "title": "Rest and Sabbath rhythm",
+      "overview": "This guide studies rest and sabbath rhythm in the light of rest and sabbath. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Genesis 2:1-3",
+        "Exodus 20:8-11",
+        "Mark 2:23-28"
+      ],
+      "studyQuestions": "Read Genesis 2:1-3 and Exodus 20:8-11 and Mark 2:23-28 in full. What does each passage say about rest and sabbath rhythm? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on rest and sabbath rhythm shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-129",
+      "title": "Stewardship of resources",
+      "overview": "This guide studies stewardship of resources in the light of stewardship of time and gifts. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Psalm 90:12",
+        "Matthew 25:14-30",
+        "Ephesians 5:15-17"
+      ],
+      "studyQuestions": "Read Psalm 90:12 and Matthew 25:14-30 and Ephesians 5:15-17 in full. What does each passage say about stewardship of resources? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on stewardship of resources shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-130",
+      "title": "Contentment in every season",
+      "overview": "This guide studies contentment in every season in the light of contentment and possessions. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Matthew 6:19-34",
+        "Luke 12:13-21",
+        "1 Timothy 6:6-19"
+      ],
+      "studyQuestions": "Read Matthew 6:19-34 and Luke 12:13-21 and 1 Timothy 6:6-19 in full. What does each passage say about contentment in every season? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on contentment in every season shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-131",
+      "title": "Generosity without display",
+      "overview": "This guide studies generosity without display in the light of contentment and possessions. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Matthew 6:19-34",
+        "Luke 12:13-21",
+        "1 Timothy 6:6-19"
+      ],
+      "studyQuestions": "Read Matthew 6:19-34 and Luke 12:13-21 and 1 Timothy 6:6-19 in full. What does each passage say about generosity without display? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on generosity without display shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-132",
+      "title": "Wisdom in financial decisions",
+      "overview": "This guide studies wisdom in financial decisions in the light of wisdom for decisions. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Proverbs 15:22",
+        "James 1:5",
+        "Acts 15:6-22"
+      ],
+      "studyQuestions": "Read Proverbs 15:22 and James 1:5 and Acts 15:6-22 in full. What does each passage say about wisdom in financial decisions? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on wisdom in financial decisions shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-133",
+      "title": "Caring for creation",
+      "overview": "This guide studies caring for creation in the light of identity in christ. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Romans 8:14-17",
+        "2 Corinthians 5:17",
+        "Ephesians 1:3-14"
+      ],
+      "studyQuestions": "Read Romans 8:14-17 and 2 Corinthians 5:17 and Ephesians 1:3-14 in full. What does each passage say about caring for creation? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on caring for creation shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-134",
+      "title": "Faithfulness in small things",
+      "overview": "This guide studies faithfulness in small things in the light of courage under pressure. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Joshua 1:1-9",
+        "Daniel 3",
+        "Acts 4:18-31"
+      ],
+      "studyQuestions": "Read Joshua 1:1-9 and Daniel 3 and Acts 4:18-31 in full. What does each passage say about faithfulness in small things? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on faithfulness in small things shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-135",
+      "title": "Perseverance in doing good",
+      "overview": "This guide studies perseverance in doing good in the light of spiritual gifts and service. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Romans 12:3-8",
+        "1 Corinthians 12–14",
+        "1 Peter 4:10-11"
+      ],
+      "studyQuestions": "Read Romans 12:3-8 and 1 Corinthians 12–14 and 1 Peter 4:10-11 in full. What does each passage say about perseverance in doing good? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on perseverance in doing good shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-136",
+      "title": "Waiting on the Lord",
+      "overview": "This guide studies waiting on the lord in the light of patience in waiting. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Psalm 27:13-14",
+        "Isaiah 40:28-31",
+        "Romans 8:23-25"
+      ],
+      "studyQuestions": "Read Psalm 27:13-14 and Isaiah 40:28-31 and Romans 8:23-25 in full. What does each passage say about waiting on the lord? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on waiting on the lord shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-137",
+      "title": "Christian hope amid suffering",
+      "overview": "This guide studies christian hope amid suffering in the light of hope in suffering. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Romans 8:18-39",
+        "2 Corinthians 4:7-18",
+        "1 Peter 1:3-9"
+      ],
+      "studyQuestions": "Read Romans 8:18-39 and 2 Corinthians 4:7-18 and 1 Peter 1:3-9 in full. What does each passage say about christian hope amid suffering? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on christian hope amid suffering shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-138",
+      "title": "Lament and unanswered questions",
+      "overview": "This guide studies lament and unanswered questions in the light of prayer and communion with god. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Matthew 6:5-15",
+        "Philippians 4:6-7",
+        "1 Thessalonians 5:16-18"
+      ],
+      "studyQuestions": "Read Matthew 6:5-15 and Philippians 4:6-7 and 1 Thessalonians 5:16-18 in full. What does each passage say about lament and unanswered questions? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on lament and unanswered questions shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-139",
+      "title": "Peace in anxious times",
+      "overview": "This guide studies peace in anxious times in the light of peace in conflict. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Matthew 5:9",
+        "Romans 12:17-21",
+        "James 3:17-18"
+      ],
+      "studyQuestions": "Read Matthew 5:9 and Romans 12:17-21 and James 3:17-18 in full. What does each passage say about peace in anxious times? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on peace in anxious times shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-140",
+      "title": "Courage to speak truth",
+      "overview": "This guide studies courage to speak truth in the light of courage under pressure. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Joshua 1:1-9",
+        "Daniel 3",
+        "Acts 4:18-31"
+      ],
+      "studyQuestions": "Read Joshua 1:1-9 and Daniel 3 and Acts 4:18-31 in full. What does each passage say about courage to speak truth? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on courage to speak truth shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-141",
+      "title": "Fear of the Lord",
+      "overview": "This guide studies fear of the lord in the light of the fear of the lord. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Proverbs 1:7",
+        "9:10",
+        "Ecclesiastes 12:13"
+      ],
+      "studyQuestions": "Read Proverbs 1:7 and 9:10 and Ecclesiastes 12:13 in full. What does each passage say about fear of the lord? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on fear of the lord shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-142",
+      "title": "Discernment of spiritual claims",
+      "overview": "This guide studies discernment of spiritual claims in the light of discernment and testing teaching. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Acts 17:10-12",
+        "1 Thessalonians 5:19-22",
+        "1 John 4:1-6"
+      ],
+      "studyQuestions": "Read Acts 17:10-12 and 1 Thessalonians 5:19-22 and 1 John 4:1-6 in full. What does each passage say about discernment of spiritual claims? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on discernment of spiritual claims shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-143",
+      "title": "Testing every teaching",
+      "overview": "This guide studies testing every teaching in the light of discernment and testing teaching. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Acts 17:10-12",
+        "1 Thessalonians 5:19-22",
+        "1 John 4:1-6"
+      ],
+      "studyQuestions": "Read Acts 17:10-12 and 1 Thessalonians 5:19-22 and 1 John 4:1-6 in full. What does each passage say about testing every teaching? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on testing every teaching shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-144",
+      "title": "False humility and genuine humility",
+      "overview": "This guide studies false humility and genuine humility in the light of humility and teachability. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Philippians 2:1-11",
+        "Romans 12:3",
+        "James 4:6-10"
+      ],
+      "studyQuestions": "Read Philippians 2:1-11 and Romans 12:3 and James 4:6-10 in full. What does each passage say about false humility and genuine humility? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on false humility and genuine humility shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-145",
+      "title": "Pride and teachability",
+      "overview": "This guide studies pride and teachability in the light of humility and teachability. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Philippians 2:1-11",
+        "Romans 12:3",
+        "James 4:6-10"
+      ],
+      "studyQuestions": "Read Philippians 2:1-11 and Romans 12:3 and James 4:6-10 in full. What does each passage say about pride and teachability? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on pride and teachability shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-146",
+      "title": "The fear of people and faithful witness",
+      "overview": "This guide studies the fear of people and faithful witness in the light of prophets and faithful warning. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Isaiah 1:10-20",
+        "Jeremiah 7:1-15",
+        "Amos 5:18-24"
+      ],
+      "studyQuestions": "Read Isaiah 1:10-20 and Jeremiah 7:1-15 and Amos 5:18-24 in full. What does each passage say about the fear of people and faithful witness? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on the fear of people and faithful witness shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-147",
+      "title": "Temptation and the way of escape",
+      "overview": "This guide studies temptation and the way of escape in the light of overcoming temptation. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Matthew 4:1-11",
+        "1 Corinthians 10:12-13",
+        "James 1:12-15"
+      ],
+      "studyQuestions": "Read Matthew 4:1-11 and 1 Corinthians 10:12-13 and James 1:12-15 in full. What does each passage say about temptation and the way of escape? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on temptation and the way of escape shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-148",
+      "title": "Guarding the heart",
+      "overview": "This guide studies guarding the heart in the light of prayer and communion with god. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Matthew 6:5-15",
+        "Philippians 4:6-7",
+        "1 Thessalonians 5:16-18"
+      ],
+      "studyQuestions": "Read Matthew 6:5-15 and Philippians 4:6-7 and 1 Thessalonians 5:16-18 in full. What does each passage say about guarding the heart? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on guarding the heart shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-149",
+      "title": "Renewing the mind",
+      "overview": "This guide studies renewing the mind in the light of growing in christlike character. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Romans 12:1-2",
+        "Ephesians 4:11-16",
+        "Colossians 1:9-12"
+      ],
+      "studyQuestions": "Read Romans 12:1-2 and Ephesians 4:11-16 and Colossians 1:9-12 in full. What does each passage say about renewing the mind? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on renewing the mind shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-150",
+      "title": "The discipline of prayer",
+      "overview": "This guide studies the discipline of prayer in the light of prayer and communion with god. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Matthew 6:5-15",
+        "Philippians 4:6-7",
+        "1 Thessalonians 5:16-18"
+      ],
+      "studyQuestions": "Read Matthew 6:5-15 and Philippians 4:6-7 and 1 Thessalonians 5:16-18 in full. What does each passage say about the discipline of prayer? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on the discipline of prayer shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-151",
+      "title": "Standing in prayer for others",
+      "overview": "This guide studies standing in prayer for others in the light of intercession for others. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Exodus 32:11-14",
+        "Daniel 9:1-19",
+        "1 Timothy 2:1-4"
+      ],
+      "studyQuestions": "Read Exodus 32:11-14 and Daniel 9:1-19 and 1 Timothy 2:1-4 in full. What does each passage say about standing in prayer for others? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on standing in prayer for others shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-152",
+      "title": "Thanksgiving in all circumstances",
+      "overview": "This guide studies thanksgiving in all circumstances in the light of psalms as prayer and worship. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Psalms 13",
+        "23",
+        "51"
+      ],
+      "studyQuestions": "Read Psalms 13 and 23 and 51 in full. What does each passage say about thanksgiving in all circumstances? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on thanksgiving in all circumstances shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-153",
+      "title": "Praise when circumstances are hard",
+      "overview": "This guide studies praise when circumstances are hard in the light of psalms as prayer and worship. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Psalms 13",
+        "23",
+        "51"
+      ],
+      "studyQuestions": "Read Psalms 13 and 23 and 51 in full. What does each passage say about praise when circumstances are hard? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on praise when circumstances are hard shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-154",
+      "title": "Worship as whole-life devotion",
+      "overview": "This guide studies worship as whole-life devotion in the light of gratitude and thanksgiving. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Psalm 100",
+        "Colossians 3:15-17",
+        "1 Thessalonians 5:18"
+      ],
+      "studyQuestions": "Read Psalm 100 and Colossians 3:15-17 and 1 Thessalonians 5:18 in full. What does each passage say about worship as whole-life devotion? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on worship as whole-life devotion shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-155",
+      "title": "Singing and mutual encouragement",
+      "overview": "This guide studies singing and mutual encouragement in the light of marriage and mutual faithfulness. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Genesis 2:18-25",
+        "Ephesians 5:21-33",
+        "1 Peter 3:1-7"
+      ],
+      "studyQuestions": "Read Genesis 2:18-25 and Ephesians 5:21-33 and 1 Peter 3:1-7 in full. What does each passage say about singing and mutual encouragement? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on singing and mutual encouragement shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-156",
+      "title": "The Lord's Supper and remembrance",
+      "overview": "This guide studies the lord's supper and remembrance in the light of the lord's supper. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Luke 22:14-20",
+        "1 Corinthians 10:16-17",
+        "11:17-34"
+      ],
+      "studyQuestions": "Read Luke 22:14-20 and 1 Corinthians 10:16-17 and 11:17-34 in full. What does each passage say about the lord's supper and remembrance? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on the lord's supper and remembrance shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-157",
+      "title": "Baptism and identification with Christ",
+      "overview": "This guide studies baptism and identification with christ in the light of baptism and new life. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Matthew 28:18-20",
+        "Acts 2:38-41",
+        "Romans 6:1-4"
+      ],
+      "studyQuestions": "Read Matthew 28:18-20 and Acts 2:38-41 and Romans 6:1-4 in full. What does each passage say about baptism and identification with christ? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on baptism and identification with christ shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-158",
+      "title": "The church as a worshipping community",
+      "overview": "This guide studies the church as a worshipping community in the light of the church as one body. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "1 Corinthians 12:12-27",
+        "Ephesians 4:1-16",
+        "Romans 12:4-8"
+      ],
+      "studyQuestions": "Read 1 Corinthians 12:12-27 and Ephesians 4:1-16 and Romans 12:4-8 in full. What does each passage say about the church as a worshipping community? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on the church as a worshipping community shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-159",
+      "title": "Discipleship and counting the cost",
+      "overview": "This guide studies discipleship and counting the cost in the light of discipleship and the cost of following jesus. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Luke 9:23-26",
+        "Luke 14:25-33",
+        "John 8:31-32"
+      ],
+      "studyQuestions": "Read Luke 9:23-26 and Luke 14:25-33 and John 8:31-32 in full. What does each passage say about discipleship and counting the cost? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on discipleship and counting the cost shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-160",
+      "title": "Following Jesus in everyday life",
+      "overview": "This guide studies following jesus in everyday life in the light of the resurrection of jesus. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Luke 24",
+        "John 20",
+        "1 Corinthians 15"
+      ],
+      "studyQuestions": "Read Luke 24 and John 20 and 1 Corinthians 15 in full. What does each passage say about following jesus in everyday life? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on following jesus in everyday life shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-161",
+      "title": "The Great Commission and making disciples",
+      "overview": "This guide studies the great commission and making disciples in the light of teaching and making disciples. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Matthew 28:18-20",
+        "Acts 2:42-47",
+        "2 Timothy 2:1-2"
+      ],
+      "studyQuestions": "Read Matthew 28:18-20 and Acts 2:42-47 and 2 Timothy 2:1-2 in full. What does each passage say about the great commission and making disciples? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on the great commission and making disciples shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-162",
+      "title": "Witness through daily conduct",
+      "overview": "This guide studies witness through daily conduct in the light of fruit of the spirit in daily life. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Galatians 5:16-26",
+        "Colossians 3:12-17"
+      ],
+      "studyQuestions": "Read Galatians 5:16-26 and Colossians 3:12-17 in full. What does each passage say about witness through daily conduct? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on witness through daily conduct shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-163",
+      "title": "The kingdom of God and its priorities",
+      "overview": "This guide studies the kingdom of god and its priorities in the light of the kingdom of god. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Mark 1:14-15",
+        "Matthew 6:9-10",
+        "Luke 4:16-21"
+      ],
+      "studyQuestions": "Read Mark 1:14-15 and Matthew 6:9-10 and Luke 4:16-21 in full. What does each passage say about the kingdom of god and its priorities? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on the kingdom of god and its priorities shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-164",
+      "title": "The Beatitudes and kingdom character",
+      "overview": "This guide studies the beatitudes and kingdom character in the light of trust during uncertainty. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Proverbs 3:5-6",
+        "Psalm 37:3-7",
+        "Mark 4:35-41"
+      ],
+      "studyQuestions": "Read Proverbs 3:5-6 and Psalm 37:3-7 and Mark 4:35-41 in full. What does each passage say about the beatitudes and kingdom character? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on the beatitudes and kingdom character shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-165",
+      "title": "Mercy and compassionate action",
+      "overview": "This guide studies mercy and compassionate action in the light of justice and mercy. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Micah 6:8",
+        "Isaiah 1:16-17",
+        "Zechariah 7:9-10"
+      ],
+      "studyQuestions": "Read Micah 6:8 and Isaiah 1:16-17 and Zechariah 7:9-10 in full. What does each passage say about mercy and compassionate action? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on mercy and compassionate action shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-166",
+      "title": "Peacemaking and reconciliation",
+      "overview": "This guide studies peacemaking and reconciliation in the light of peace in conflict. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Matthew 5:9",
+        "Romans 12:17-21",
+        "James 3:17-18"
+      ],
+      "studyQuestions": "Read Matthew 5:9 and Romans 12:17-21 and James 3:17-18 in full. What does each passage say about peacemaking and reconciliation? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on peacemaking and reconciliation shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-167",
+      "title": "Persecution and faithful endurance",
+      "overview": "This guide studies persecution and faithful endurance in the light of faithfulness under persecution. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Matthew 5:10-12",
+        "Acts 5:27-32",
+        "1 Peter 4:12-19"
+      ],
+      "studyQuestions": "Read Matthew 5:10-12 and Acts 5:27-32 and 1 Peter 4:12-19 in full. What does each passage say about persecution and faithful endurance? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on persecution and faithful endurance shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-168",
+      "title": "Angels and their role in Scripture",
+      "overview": "This guide studies angels and their role in scripture in the light of the role of angels in scripture. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Genesis 19",
+        "Luke 1:26-38",
+        "Hebrews 1:14"
+      ],
+      "studyQuestions": "Read Genesis 19 and Luke 1:26-38 and Hebrews 1:14 in full. What does each passage say about angels and their role in scripture? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on angels and their role in scripture shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-169",
+      "title": "The resurrection as the centre of faith",
+      "overview": "This guide studies the resurrection as the centre of faith in the light of spiritual warfare and steadfastness. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Ephesians 6:10-20",
+        "2 Corinthians 10:3-5",
+        "1 Peter 5:8-10"
+      ],
+      "studyQuestions": "Read Ephesians 6:10-20 and 2 Corinthians 10:3-5 and 1 Peter 5:8-10 in full. What does each passage say about the resurrection as the centre of faith? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on the resurrection as the centre of faith shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-170",
+      "title": "The return of Christ and watchfulness",
+      "overview": "This guide studies the return of christ and watchfulness in the light of the return of christ. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Matthew 24:36-44",
+        "1 Thessalonians 4:13-18",
+        "Revelation 22:12-20"
+      ],
+      "studyQuestions": "Read Matthew 24:36-44 and 1 Thessalonians 4:13-18 and Revelation 22:12-20 in full. What does each passage say about the return of christ and watchfulness? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on the return of christ and watchfulness shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-171",
+      "title": "The final judgement and accountability",
+      "overview": "This guide studies the final judgement and accountability in the light of forgiveness and accountability. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Matthew 18:15-35",
+        "Luke 17:3-4",
+        "Ephesians 4:31-32"
+      ],
+      "studyQuestions": "Read Matthew 18:15-35 and Luke 17:3-4 and Ephesians 4:31-32 in full. What does each passage say about the final judgement and accountability? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on the final judgement and accountability shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-172",
+      "title": "New creation and the renewal of all things",
+      "overview": "This guide studies new creation and the renewal of all things in the light of hope in suffering. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Romans 8:18-39",
+        "2 Corinthians 4:7-18",
+        "1 Peter 1:3-9"
+      ],
+      "studyQuestions": "Read Romans 8:18-39 and 2 Corinthians 4:7-18 and 1 Peter 1:3-9 in full. What does each passage say about new creation and the renewal of all things? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on new creation and the renewal of all things shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-173",
+      "title": "The wisdom of Proverbs for daily choices",
+      "overview": "This guide studies the wisdom of proverbs for daily choices in the light of wisdom in proverbs. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Proverbs 1:1-7",
+        "10:1-12",
+        "31:10-31"
+      ],
+      "studyQuestions": "Read Proverbs 1:1-7 and 10:1-12 and 31:10-31 in full. What does each passage say about the wisdom of proverbs for daily choices? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on the wisdom of proverbs for daily choices shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-174",
+      "title": "The Psalms as prayer and worship",
+      "overview": "This guide studies the psalms as prayer and worship in the light of psalms as prayer and worship. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Psalms 13",
+        "23",
+        "51"
+      ],
+      "studyQuestions": "Read Psalms 13 and 23 and 51 in full. What does each passage say about the psalms as prayer and worship? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on the psalms as prayer and worship shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-175",
+      "title": "The prophets and covenant faithfulness",
+      "overview": "This guide studies the prophets and covenant faithfulness in the light of prophets and faithful warning. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Isaiah 1:10-20",
+        "Jeremiah 7:1-15",
+        "Amos 5:18-24"
+      ],
+      "studyQuestions": "Read Isaiah 1:10-20 and Jeremiah 7:1-15 and Amos 5:18-24 in full. What does each passage say about the prophets and covenant faithfulness? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on the prophets and covenant faithfulness shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-176",
+      "title": "The wisdom of Job about suffering",
+      "overview": "This guide studies the wisdom of job about suffering in the light of wisdom in proverbs. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Proverbs 1:1-7",
+        "10:1-12",
+        "31:10-31"
+      ],
+      "studyQuestions": "Read Proverbs 1:1-7 and 10:1-12 and 31:10-31 in full. What does each passage say about the wisdom of job about suffering? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on the wisdom of job about suffering shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-177",
+      "title": "Ruth and loyal love in ordinary life",
+      "overview": "This guide studies ruth and loyal love in ordinary life in the light of covenant faithfulness in everyday life. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Deuteronomy 7:9",
+        "Psalm 89:1-4",
+        "Micah 6:8"
+      ],
+      "studyQuestions": "Read Deuteronomy 7:9 and Psalm 89:1-4 and Micah 6:8 in full. What does each passage say about ruth and loyal love in ordinary life? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on ruth and loyal love in ordinary life shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-178",
+      "title": "Esther and courage for others",
+      "overview": "This guide studies esther and courage for others in the light of wisdom in speech. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Proverbs 12:18",
+        "15:1",
+        "James 3:1-12"
+      ],
+      "studyQuestions": "Read Proverbs 12:18 and 15:1 and James 3:1-12 in full. What does each passage say about esther and courage for others? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on esther and courage for others shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-179",
+      "title": "Joseph and integrity under pressure",
+      "overview": "This guide studies joseph and integrity under pressure in the light of courage under pressure. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Joshua 1:1-9",
+        "Daniel 3",
+        "Acts 4:18-31"
+      ],
+      "studyQuestions": "Read Joshua 1:1-9 and Daniel 3 and Acts 4:18-31 in full. What does each passage say about joseph and integrity under pressure? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on joseph and integrity under pressure shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-180",
+      "title": "Moses and reluctant leadership",
+      "overview": "This guide studies moses and reluctant leadership in the light of leadership and servant-heartedness. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Mark 10:42-45",
+        "John 13:1-17",
+        "1 Peter 5:1-4"
+      ],
+      "studyQuestions": "Read Mark 10:42-45 and John 13:1-17 and 1 Peter 5:1-4 in full. What does each passage say about moses and reluctant leadership? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on moses and reluctant leadership shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-181",
+      "title": "David and repentance after failure",
+      "overview": "This guide studies david and repentance after failure in the light of reconciliation after conflict. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Genesis 33:1-11",
+        "Matthew 5:23-24",
+        "2 Corinthians 5:17-20"
+      ],
+      "studyQuestions": "Read Genesis 33:1-11 and Matthew 5:23-24 and 2 Corinthians 5:17-20 in full. What does each passage say about david and repentance after failure? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on david and repentance after failure shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-182",
+      "title": "Elijah and discouragement",
+      "overview": "This guide studies elijah and discouragement in the light of prayer and communion with god. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Matthew 6:5-15",
+        "Philippians 4:6-7",
+        "1 Thessalonians 5:16-18"
+      ],
+      "studyQuestions": "Read Matthew 6:5-15 and Philippians 4:6-7 and 1 Thessalonians 5:16-18 in full. What does each passage say about elijah and discouragement? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on elijah and discouragement shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-183",
+      "title": "Daniel and faithful public service",
+      "overview": "This guide studies daniel and faithful public service in the light of the body and christian discipleship. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Romans 12:1",
+        "1 Corinthians 6:12-20",
+        "15:42-49"
+      ],
+      "studyQuestions": "Read Romans 12:1 and 1 Corinthians 6:12-20 and 15:42-49 in full. What does each passage say about daniel and faithful public service? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on daniel and faithful public service shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-184",
+      "title": "Mary's response to God's call",
+      "overview": "This guide studies mary's response to god's call in the light of god's faithfulness across generations. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Genesis 17:1-8",
+        "Psalm 100:5",
+        "Lamentations 3:21-24"
+      ],
+      "studyQuestions": "Read Genesis 17:1-8 and Psalm 100:5 and Lamentations 3:21-24 in full. What does each passage say about mary's response to god's call? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on mary's response to god's call shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-185",
+      "title": "Peter's restoration and renewed service",
+      "overview": "This guide studies peter's restoration and renewed service in the light of leadership and servant-heartedness. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Mark 10:42-45",
+        "John 13:1-17",
+        "1 Peter 5:1-4"
+      ],
+      "studyQuestions": "Read Mark 10:42-45 and John 13:1-17 and 1 Peter 5:1-4 in full. What does each passage say about peter's restoration and renewed service? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on peter's restoration and renewed service shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-186",
+      "title": "Paul's conversion and calling",
+      "overview": "This guide studies paul's conversion and calling in the light of prayer and communion with god. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Matthew 6:5-15",
+        "Philippians 4:6-7",
+        "1 Thessalonians 5:16-18"
+      ],
+      "studyQuestions": "Read Matthew 6:5-15 and Philippians 4:6-7 and 1 Thessalonians 5:16-18 in full. What does each passage say about paul's conversion and calling? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on paul's conversion and calling shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-187",
+      "title": "Barnabas and encouragement",
+      "overview": "This guide studies barnabas and encouragement in the light of friendship and loyalty. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "1 Samuel 18:1-4",
+        "Proverbs 17:17",
+        "27:5-6"
+      ],
+      "studyQuestions": "Read 1 Samuel 18:1-4 and Proverbs 17:17 and 27:5-6 in full. What does each passage say about barnabas and encouragement? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on barnabas and encouragement shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-188",
+      "title": "Timothy and trustworthy leadership",
+      "overview": "This guide studies timothy and trustworthy leadership in the light of accountability in spiritual leadership. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Ezekiel 34:1-16",
+        "Luke 12:41-48",
+        "1 Timothy 3:1-13"
+      ],
+      "studyQuestions": "Read Ezekiel 34:1-16 and Luke 12:41-48 and 1 Timothy 3:1-13 in full. What does each passage say about timothy and trustworthy leadership? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on timothy and trustworthy leadership shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-189",
+      "title": "The family of God across generations",
+      "overview": "This guide studies the family of god across generations in the light of god's faithfulness across generations. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Genesis 17:1-8",
+        "Psalm 100:5",
+        "Lamentations 3:21-24"
+      ],
+      "studyQuestions": "Read Genesis 17:1-8 and Psalm 100:5 and Lamentations 3:21-24 in full. What does each passage say about the family of god across generations? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on the family of god across generations shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-190",
+      "title": "Teaching children the way of the Lord",
+      "overview": "This guide studies teaching children the way of the lord in the light of parenting and nurturing children. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Deuteronomy 6:4-9",
+        "Psalm 78:1-8",
+        "Ephesians 6:1-4"
+      ],
+      "studyQuestions": "Read Deuteronomy 6:4-9 and Psalm 78:1-8 and Ephesians 6:1-4 in full. What does each passage say about teaching children the way of the lord? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on teaching children the way of the lord shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-191",
+      "title": "Honouring parents and healthy boundaries",
+      "overview": "This guide studies honouring parents and healthy boundaries in the light of mission and witness. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Matthew 28:18-20",
+        "Luke 24:44-49",
+        "Acts 1:8"
+      ],
+      "studyQuestions": "Read Matthew 28:18-20 and Luke 24:44-49 and Acts 1:8 in full. What does each passage say about honouring parents and healthy boundaries? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on honouring parents and healthy boundaries shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-192",
+      "title": "Friendship that sharpens character",
+      "overview": "This guide studies friendship that sharpens character in the light of fruit of the spirit in daily life. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Galatians 5:16-26",
+        "Colossians 3:12-17"
+      ],
+      "studyQuestions": "Read Galatians 5:16-26 and Colossians 3:12-17 in full. What does each passage say about friendship that sharpens character? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on friendship that sharpens character shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-193",
+      "title": "Marriage as covenant partnership",
+      "overview": "This guide studies marriage as covenant partnership in the light of marriage and mutual faithfulness. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Genesis 2:18-25",
+        "Ephesians 5:21-33",
+        "1 Peter 3:1-7"
+      ],
+      "studyQuestions": "Read Genesis 2:18-25 and Ephesians 5:21-33 and 1 Peter 3:1-7 in full. What does each passage say about marriage as covenant partnership? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on marriage as covenant partnership shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-194",
+      "title": "Singleness and wholehearted devotion",
+      "overview": "This guide studies singleness and wholehearted devotion in the light of fasting and wholehearted devotion. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Isaiah 58:1-12",
+        "Matthew 6:16-18",
+        "Acts 13:1-3"
+      ],
+      "studyQuestions": "Read Isaiah 58:1-12 and Matthew 6:16-18 and Acts 13:1-3 in full. What does each passage say about singleness and wholehearted devotion? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on singleness and wholehearted devotion shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-195",
+      "title": "Grief, comfort and the presence of God",
+      "overview": "This guide studies grief, comfort and the presence of god in the light of grief and lament. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Psalm 13",
+        "Psalm 88",
+        "John 11:17-36"
+      ],
+      "studyQuestions": "Read Psalm 13 and Psalm 88 and John 11:17-36 in full. What does each passage say about grief, comfort and the presence of god? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on grief, comfort and the presence of god shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-196",
+      "title": "Forgiveness and the limits of trust",
+      "overview": "This guide studies forgiveness and the limits of trust in the light of forgiveness and accountability. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Matthew 18:15-35",
+        "Luke 17:3-4",
+        "Ephesians 4:31-32"
+      ],
+      "studyQuestions": "Read Matthew 18:15-35 and Luke 17:3-4 and Ephesians 4:31-32 in full. What does each passage say about forgiveness and the limits of trust? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on forgiveness and the limits of trust shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-197",
+      "title": "Anger and righteous restraint",
+      "overview": "This guide studies anger and righteous restraint in the light of anger, patience and self-control. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Psalm 4:4",
+        "Ephesians 4:26-32",
+        "James 1:19-20"
+      ],
+      "studyQuestions": "Read Psalm 4:4 and Ephesians 4:26-32 and James 1:19-20 in full. What does each passage say about anger and righteous restraint? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on anger and righteous restraint shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-198",
+      "title": "The tongue and the power of words",
+      "overview": "This guide studies the tongue and the power of words in the light of wisdom in speech. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Proverbs 12:18",
+        "15:1",
+        "James 3:1-12"
+      ],
+      "studyQuestions": "Read Proverbs 12:18 and 15:1 and James 3:1-12 in full. What does each passage say about the tongue and the power of words? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on the tongue and the power of words shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-199",
+      "title": "Encouragement for weary believers",
+      "overview": "This guide studies encouragement for weary believers in the light of friendship and loyalty. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "1 Samuel 18:1-4",
+        "Proverbs 17:17",
+        "27:5-6"
+      ],
+      "studyQuestions": "Read 1 Samuel 18:1-4 and Proverbs 17:17 and 27:5-6 in full. What does each passage say about encouragement for weary believers? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on encouragement for weary believers shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-200",
+      "title": "Hope when plans change",
+      "overview": "This guide studies hope when plans change in the light of grief and lament. Its selected passages provide a starting point for observing biblical context, tracing the main teaching and considering how the theme belongs within the wider story of Scripture.",
+      "scriptureReferences": [
+        "Psalm 13",
+        "Psalm 88",
+        "John 11:17-36"
+      ],
+      "studyQuestions": "Read Psalm 13 and Psalm 88 and John 11:17-36 in full. What does each passage say about hope when plans change? Identify its audience, literary setting, central claim and the response expected of the reader. How does the second passage confirm, deepen or qualify the first?",
+      "lifeApplication": "Let the teaching on hope when plans change shape one specific choice, relationship or habit. Apply the passages with humility, respect their original context and avoid making promises or rules the texts themselves do not make.",
       "resourceType": "topical-study-guide"
     }
   ]
