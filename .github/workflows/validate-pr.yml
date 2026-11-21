@@ -31,6 +31,9 @@ jobs:
       - name: Verify offline core assets and local script precache
         run: node scripts/check-offline-core-assets.mjs
 
+      - name: Exercise offline service-worker runtime and recovery
+        run: node scripts/test-service-worker-runtime.mjs
+
       - name: Verify complete offline KJV corpus counts
         run: node scripts/check-kjv-corpus-counts.mjs
 
