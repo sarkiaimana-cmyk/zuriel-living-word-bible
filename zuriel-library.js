@@ -1682,6 +1682,26 @@
               status.textContent = "Editing this saved entry. Saving will update it rather than create a duplicate.";
               titleField.focus();
             }));
+            box.appendChild(button("Delete Entry", function () {
+              if (!window.confirm("Delete this saved journal entry? This cannot be undone.")) return;
+              const index = saved.prayers.indexOf(item);
+              if (index < 0) return;
+              saved.prayers.splice(index, 1);
+              if (editingPrayer === item) {
+                editingPrayer = null;
+                titleField.value = "";
+                categoryField.value = "prayer";
+                referenceField.value = "";
+                area.value = "";
+                saveJournalButton.textContent = "Save Journal Entry";
+              }
+              if (persist()) {
+                status.textContent = "The journal entry was deleted from this device.";
+                renderPrayerRecords();
+              } else {
+                status.textContent = "The entry could not be deleted. Please try again.";
+              }
+            }));
             records.appendChild(box);
           });
         }
@@ -1810,6 +1830,25 @@
               saveNoteButton.textContent = "Update Study Note";
               status.textContent = "Editing this saved note. Saving will update it rather than create a duplicate.";
               title.focus();
+            }));
+            box.appendChild(button("Delete Note", function () {
+              if (!window.confirm("Delete this saved study note? This cannot be undone.")) return;
+              const index = entries.indexOf(item);
+              if (index < 0) return;
+              entries.splice(index, 1);
+              if (editingNote === item) {
+                editingNote = null;
+                title.value = "";
+                reference.value = "";
+                area.value = "";
+                saveNoteButton.textContent = "Save Study Note";
+              }
+              if (persist()) {
+                status.textContent = "The study note was deleted from this device.";
+                renderPersonalNotes();
+              } else {
+                status.textContent = "The note could not be deleted. Please try again.";
+              }
             }));
             noteList.appendChild(box);
           });
@@ -2241,6 +2280,18 @@
             box.appendChild(button("Open Scripture", () => openReference(item.reference)));
           }
           box.appendChild(element("p", item.text || ""));
+          box.appendChild(button("Remove Saved Item", function () {
+            if (!window.confirm("Remove this saved item from My Saved Library? This cannot be undone.")) return;
+            const index = saved.bookmarks.indexOf(item);
+            if (index < 0) return;
+            saved.bookmarks.splice(index, 1);
+            if (persist()) {
+              box.remove();
+              summary.textContent = saved.bookmarks.length + " saved items • " + noteEntries.length +
+                " verse studies • " + highlightEntries.length + " highlighted verses • " +
+                prayerCount + " prayer records • " + personalNotes.length + " personal notes";
+            }
+          }));
           content.appendChild(box);
         });
 
