@@ -742,9 +742,19 @@
           "A collection of 30 Scripture-led reflections, each with a short message and prayer."
         ));
 
+        const devotionalCount = originalLibrary.devotionals.length;
+        content.appendChild(element(
+          "p",
+          devotionalCount + " Scripture-led reflections. Open one at a time for a quieter reading experience.",
+          "library-status"
+        ));
+
         originalLibrary.devotionals.forEach(item => {
-          const box = element("div", undefined, "library-entry");
-          box.appendChild(element("h4", item.title));
+          // Keep the monthly collection compact; each reflection opens on demand.
+          const box = element("details", undefined, "library-entry zuriel-devotional-entry");
+          const summary = element("summary", item.title);
+          summary.setAttribute("aria-label", "Open devotional: " + item.title);
+          box.appendChild(summary);
           box.appendChild(element("strong", item.verse));
           box.appendChild(element("p", item.message));
           box.appendChild(element("p", "Prayer: " + item.prayer));
