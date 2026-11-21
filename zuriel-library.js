@@ -2256,6 +2256,35 @@
           "library-status");
         content.appendChild(summary);
 
+        const backupStatus = element("p", "Backups contain personal notes, bookmarks, journal records, verse-study notes and highlights. Keep exported files private.", "library-status");
+        content.appendChild(button("Export My Zuriel Personal Library", function () {
+          try {
+            const backup = {
+              format: "zuriel-personal-library-backup",
+              schemaVersion: 1,
+              exportedAt: new Date().toISOString(),
+              personalLibrary: saved,
+              verseStudyNotes: verseNotes,
+              wordHighlights: verseHighlights
+            };
+            const blob = new Blob([JSON.stringify(backup, null, 2)], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+            const link = element("a");
+            link.href = url;
+            link.download = "zuriel-personal-library-backup.json";
+            link.style.display = "none";
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            URL.revokeObjectURL(url);
+            backupStatus.textContent = "Your personal-library backup export was requested. Check your Downloads.";
+          } catch (error) {
+            backupStatus.textContent = "Backup export failed. Your personal records remain stored in this app.";
+            console.error("Zuriel personal-library backup:", error);
+          }
+        }));
+        content.appendChild(backupStatus);
+
         function openReference(reference) {
           const match = String(reference || "").trim().match(/^(.+?)\s+(\d+)(?::(\d+))?(?:[-–]\d+)?$/);
           if (!match || typeof window.openChapter !== "function") return;
