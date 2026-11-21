@@ -2267,7 +2267,10 @@
           const box = element("div", undefined, "library-entry");
           if (item.title) box.appendChild(element("h4", item.title));
           if (item.category) box.appendChild(element("small", item.category.replace(/-/g, " ")));
-          if (item.reference) box.appendChild(element("strong", item.reference));
+          if (item.reference) {
+            box.appendChild(element("strong", item.reference));
+            box.appendChild(button("Open Scripture", () => openReference(item.reference)));
+          }
           box.appendChild(element("small", item.date || "Saved entry"));
           box.appendChild(element("p", item.text || ""));
           content.appendChild(box);
