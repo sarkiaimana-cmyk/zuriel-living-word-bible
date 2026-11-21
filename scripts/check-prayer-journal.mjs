@@ -22,6 +22,9 @@ assert.ok(page.includes('button("Edit Entry"'), "Saved journal records must offe
 assert.ok(page.includes("Object.assign(editingPrayer, updated)"), "Editing must update the existing record instead of duplicating it.");
 assert.ok(page.includes('saveJournalButton.textContent = "Update Journal Entry"'), "The save action must clearly indicate update mode.");
 assert.ok(page.includes('button("Cancel Editing"'), "Readers must be able to cancel an edit without changing the saved record.");
+assert.ok(page.includes('button("Delete Entry"'), "Saved journal entries must offer a delete action.");
+assert.match(page, /window\.confirm\("Delete this saved journal entry\?/);
+assert.match(page, /saved\.prayers\.splice\(index, 1\)/);
 
 assert.match(page, /Entries are saved locally in this app on this device/);
 assert.match(source, /category: "prayer"/, "Reader-generated prayer responses must remain compatible with the journal.");
