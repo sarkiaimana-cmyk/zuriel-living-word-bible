@@ -106,7 +106,7 @@ const expected = [
   [dictionary.entries,110,"dictionary entries"],
   [books.bookIntroductions,66,"book introductions"], [books.bookStudyPathways,66,"book study pathways"],
   [trail1.trails,41,"connected Scripture trails batch 1"], [trail2.trails,33,"connected Scripture trails batch 2"],
-  [deep.guides,20,"deep study guides"], [names.entries,52,"Names and Titles of God"],
+  [deep.guides,120,"deep study guides"], [names.entries,52,"Names and Titles of God"],
   [words.entries,110,"original-language word studies"], [commentary.entries,173,"passage commentary"],
   [topical.entries,100,"topical study guides"], [worship.pathways,30,"worship study pathways"], [theology.entries,35,"theological comparisons"]
 ];
