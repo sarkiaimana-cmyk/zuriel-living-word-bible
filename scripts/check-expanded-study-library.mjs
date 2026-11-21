@@ -103,7 +103,7 @@ for(const [label,data] of [
 
 const expected = [
   [geography.places,25,"biblical places"], [geography.journeys,8,"biblical journeys"],
-  [dictionary.entries,110,"dictionary entries"],
+  [dictionary.entries,210,"dictionary entries"],
   [books.bookIntroductions,66,"book introductions"], [books.bookStudyPathways,66,"book study pathways"],
   [trail1.trails,41,"connected Scripture trails batch 1"], [trail2.trails,33,"connected Scripture trails batch 2"],
   [deep.guides,20,"deep study guides"], [names.entries,52,"Names and Titles of God"],
