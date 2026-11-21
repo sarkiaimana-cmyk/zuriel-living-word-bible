@@ -31,7 +31,7 @@ assert.match(savedPage, /personalNotes\.slice\(\)\.reverse\(\)/);
 assert.match(savedPage, /openReference\(item\.reference\)/);
 assert.match(savedPage, /personalNotes\.length \+ " personal notes"/);
 assert.ok(savedPage.includes('button("Remove Saved Item"'), "Saved bookmarks must offer a remove action.");
-assert.match(savedPage, /window\.confirm\("Remove this saved item from My Saved Library\?/);
+assert.ok(savedPage.includes('window.confirm("Remove this saved item from My Saved Library? This cannot be undone.")'), "Bookmark removal must require confirmation.");
 assert.match(savedPage, /saved\.bookmarks\.splice\(index, 1\)/);
 assert.match(savedPage, /function openReference\(reference\)/);
 assert.match(savedPage, /\(\?::\(\\d\+\)\)\?/);
