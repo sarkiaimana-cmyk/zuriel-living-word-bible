@@ -20,6 +20,9 @@ assert.ok(notesPage.includes('button("Edit Note"'), "Each saved personal note mu
 assert.ok(notesPage.includes("Object.assign(editingNote, updated)"), "Editing must update the existing note instead of duplicating it.");
 assert.ok(notesPage.includes('saveNoteButton.textContent = "Update Study Note"'), "The save action must clearly indicate update mode.");
 assert.ok(notesPage.includes('button("Cancel Editing"'), "Readers must be able to cancel an edit without changing the saved note.");
+assert.ok(notesPage.includes('button("Delete Note"'), "Saved study notes must offer a delete action.");
+assert.match(notesPage, /window\.confirm\("Delete this saved study note\?/);
+assert.match(notesPage, /entries\.splice\(index, 1\)/);
 
 const savedPage = source.slice(savedStart, source.indexOf('content.scrollIntoView', savedStart));
 assert.match(savedPage, /const personalNotes = Array\.isArray\(saved\.notes\)/);
