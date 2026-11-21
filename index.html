@@ -986,6 +986,20 @@ async function openChapter(book, chapter) {
   readingTools.id = "zurielReadingTools";
   readingTools.setAttribute("aria-label", "Reading display settings");
 
+  const readerControlDrawer = document.createElement("details");
+  readerControlDrawer.id = "zurielReaderControlDrawer";
+  readerControlDrawer.className = "zuriel-reader-control-drawer";
+  const readerControlSummary = document.createElement("summary");
+  readerControlSummary.textContent = "⚙️ Reading comfort & audio";
+  readerControlSummary.setAttribute("aria-label", "Expand reading comfort and audio controls");
+  readerControlDrawer.appendChild(readerControlSummary);
+  const readerControlContent = document.createElement("div");
+  readerControlContent.className = "zuriel-reader-control-content";
+  readerControlDrawer.appendChild(readerControlContent);
+  const readerControlStyle = document.createElement("style");
+  readerControlStyle.textContent = "#zurielReaderControlDrawer{margin:8px 0;border:1px solid #e1e6e2;border-radius:12px;background:#f8faf8;color:#24372e}#zurielReaderControlDrawer>summary{cursor:pointer;min-height:44px;padding:12px;display:flex;align-items:center;font:600 14px Arial,sans-serif}#zurielReaderControlDrawer[open]>summary{border-bottom:1px solid #e1e6e2}#zurielReaderControlDrawer .zuriel-reader-control-content{padding:10px}#zurielReaderControlDrawer button{min-height:44px}";
+  message.appendChild(readerControlStyle);
+
   const toolsLabel = document.createElement("p");
   toolsLabel.className = "reading-tools-label";
   toolsLabel.textContent = "Reading comfort";
@@ -1037,7 +1051,8 @@ async function openChapter(book, chapter) {
   readingTools.appendChild(fontSizeValue);
   readingTools.appendChild(largerText);
   readingTools.appendChild(resetText);
-  message.appendChild(readingTools);
+  readerControlContent.appendChild(readingTools);
+  message.appendChild(readerControlDrawer);
   applyReaderFontSize();
 
   const count = document.createElement("p");
