@@ -3,7 +3,7 @@ name: Build Zuriel Android APK
 on:
   workflow_dispatch:
   pull_request:
-    branches: [main, fix/open-book-studio-svg-uri-regex]
+    branches: [main, fix/open-book-studio-svg-uri-regex, qa/offline-service-worker-runtime-integrated]
     paths:
       - "index.html"
       - "bible-data.js"
