@@ -118,7 +118,7 @@ if (!home.includes('<span>His Word...</span><em>My Life... My Victory!</em>')) f
 if (!home.includes('class="zob-ribbon zob-declaration-ribbon">MY DECLARATION</span>')) failures.push("The right page must be labelled MY DECLARATION.");
 if (!home.includes("THE WORD • THE TRUTH • THE LIFE")) failures.push("The approved three-part Zuriel footer tagline is missing.");
 if (!home.includes('photo-1470770841072-f978cf4d019e')) failures.push("The open-book card must retain its scenic photographic landscape.");
-const offlineLandscape = home.match(/url\("(data:image\/svg\\+xml,[^"]+)"\)/);
+const offlineLandscape = home.match(/url\("(data:image\/svg\+xml,[^"]+)"\)/);
 let decodedLandscape = "";
 if (offlineLandscape) {
   try {
