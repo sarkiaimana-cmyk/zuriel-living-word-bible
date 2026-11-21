@@ -130,6 +130,9 @@ jobs:
       - name: Validate contextual Names of God studies
         run: node scripts/check-names-of-god-context.mjs
 
+      - name: Validate monthly Light Glory devotional collection
+        run: node scripts/check-monthly-devotional.mjs
+
       - name: Validate Words of Jesus study centre
         run: node scripts/check-words-of-jesus.mjs
 
