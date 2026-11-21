@@ -1613,6 +1613,27 @@
         const records = element("div");
         content.appendChild(records);
 
+        function openPrayerReference(reference, action) {
+          const match = String(reference || "").match(/^(.+?)\s+(\d+):(\d+)(?:[-–]\d+)?$/);
+          if (!match || typeof window.openChapter !== "function") {
+            status.textContent = "Enter a Scripture reference such as John 3:16 to open it in the Bible reader.";
+            return;
+          }
+          action.disabled = true;
+          window.openChapter(match[1], Number(match[2])).then(function () {
+            if (typeof window.selectBibleVerse !== "function" ||
+                !window.selectBibleVerse(Number(match[3]))) {
+              throw new Error("The referenced verse could not be selected.");
+            }
+            action.disabled = false;
+            status.textContent = "Opened " + reference + " in the Bible reader.";
+          }).catch(function (error) {
+            action.disabled = false;
+            status.textContent = error && error.message
+              ? error.message : "Could not open this Scripture reference. Please try again.";
+          });
+        }
+
         function renderPrayerRecords() {
           records.replaceChildren();
           if (!saved.prayers.length) {
@@ -1623,7 +1644,13 @@
             const box = element("div", undefined, "library-entry");
             if (item.title) box.appendChild(element("h4", item.title));
             if (item.category) box.appendChild(element("small", item.category.replace(/-/g, " ")));
-            if (item.reference) box.appendChild(element("strong", item.reference));
+            if (item.reference) {
+              box.appendChild(element("strong", item.reference));
+              const open = button("Open Scripture", function () {
+                openPrayerReference(item.reference, open);
+              });
+              box.appendChild(open);
+            }
             box.appendChild(element("small", item.date || "Saved entry"));
             box.appendChild(element("p", item.text || ""));
             records.appendChild(box);
