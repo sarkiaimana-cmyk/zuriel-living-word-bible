@@ -108,7 +108,7 @@ const expected = [
   [trail1.trails,41,"connected Scripture trails batch 1"], [trail2.trails,33,"connected Scripture trails batch 2"],
   [deep.guides,20,"deep study guides"], [names.entries,52,"Names and Titles of God"],
   [words.entries,110,"original-language word studies"], [commentary.entries,173,"passage commentary"],
-  [topical.entries,100,"topical study guides"], [worship.pathways,30,"worship study pathways"], [theology.entries,35,"theological comparisons"]
+  [topical.entries,200,"topical study guides"], [worship.pathways,30,"worship study pathways"], [theology.entries,35,"theological comparisons"]
 ];
 for (const [items,count,label] of expected) {
   assert.ok(Array.isArray(items), label + " must be an array");
