@@ -2303,8 +2303,8 @@
                   !Array.isArray(backup.personalLibrary.bookmarks) ||
                   !Array.isArray(backup.personalLibrary.notes) ||
                   !Array.isArray(backup.personalLibrary.prayers) ||
-                  typeof backup.verseStudyNotes !== "object" ||
-                  typeof backup.wordHighlights !== "object") {
+                  backup.verseStudyNotes === null || typeof backup.verseStudyNotes !== "object" || Array.isArray(backup.verseStudyNotes) ||
+                  backup.wordHighlights === null || typeof backup.wordHighlights !== "object" || Array.isArray(backup.wordHighlights)) {
                 throw new Error("This file is not a supported Zuriel backup.");
               }
               if (!window.confirm("Restore by adding the backup records to your existing library? Existing records will be preserved. Duplicate entries may be skipped.")) return;
@@ -2335,9 +2335,14 @@
                 localStorage.setItem("zuriel-word-highlights-v1",
                   JSON.stringify(mergeObject(readLocalRecords("zuriel-word-highlights-v1"), backup.wordHighlights)));
               } catch (writeError) {
-                if (oldSaved === null) localStorage.removeItem(STORAGE_KEY); else localStorage.setItem(STORAGE_KEY, oldSaved);
-                if (oldVerseNotes === null) localStorage.removeItem("zuriel-verse-study-notes-v1"); else localStorage.setItem("zuriel-verse-study-notes-v1", oldVerseNotes);
-                if (oldHighlights === null) localStorage.removeItem("zuriel-word-highlights-v1"); else localStorage.setItem("zuriel-word-highlights-v1", oldHighlights);
+                try {
+                  if (oldSaved === null) localStorage.removeItem(STORAGE_KEY); else localStorage.setItem(STORAGE_KEY, oldSaved);
+                  if (oldVerseNotes === null) localStorage.removeItem("zuriel-verse-study-notes-v1"); else localStorage.setItem("zuriel-verse-study-notes-v1", oldVerseNotes);
+                  if (oldHighlights === null) localStorage.removeItem("zuriel-word-highlights-v1"); else localStorage.setItem("zuriel-word-highlights-v1", oldHighlights);
+                } catch (rollbackError) {
+                  console.error("Zuriel restore rollback also failed:", rollbackError);
+                  throw new Error("Restore write failed and storage rollback could not complete. Export or copy any accessible records immediately.");
+                }
                 throw writeError;
               }
               backupStatus.textContent = "Backup records were restored and combined with your existing library. Reopen My Saved Library to refresh its lists.";
