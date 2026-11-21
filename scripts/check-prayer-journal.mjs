@@ -14,7 +14,14 @@ assert.match(page, /category: category/);
 assert.match(page, /reference: referenceField\.value\.trim\(\)/);
 assert.match(page, /renderPrayerRecords\(\)/);
 assert.match(page, /saved\.prayers\.slice\(\)\.reverse\(\)/);
-assert.match(page, /Your entries are stored privately on this device/);
+assert.match(page, /Entries are saved locally in this app on this device/);
 assert.match(source, /category: "prayer"/, "Reader-generated prayer responses must remain compatible with the journal.");
 assert.match(source, /item\.category\) box\.appendChild/, "Saved journal categories should be displayed when present.");
 console.log("Prayer journal checks passed: prayer, thanksgiving, answered prayer and testimony entries retain optional Scripture references and display newest first.");
+
+const savedStart = source.indexOf('saved.prayers.slice().reverse().forEach(function (item) {', source.indexOf('if (page === "saved")'));
+assert.ok(savedStart >= 0, "Saved Library must display journal records.");
+const savedBlock = source.slice(savedStart, source.indexOf('});', savedStart) + 3);
+assert.match(savedBlock, /item\.title/);
+assert.match(savedBlock, /item\.category/);
+assert.match(savedBlock, /item\.reference/);
