@@ -30,6 +30,10 @@ assert.equal(phrase[0].book, "John");
 assert.equal(phrase[0].chapter, 1);
 assert.equal(phrase[0].verse, 1);
 
+const mixedCase = await search.search("gOd So LoVeD", 30, "phrase");
+assert.equal(mixedCase.length, 1, "Phrase search must normalize mixed-case input.");
+assert.equal(mixedCase[0].book, "John");
+
 const exact = await search.search("love", 30, "word");
 assert.equal(exact.length, 1, "Exact-word search must exclude inflected and longer words.");
 assert.ok(exact.every(item => item.text.toLowerCase().includes("love")));
