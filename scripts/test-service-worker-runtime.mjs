@@ -30,6 +30,7 @@ function createHarness(options = {}) {
     async put(key, value) {
       const normalized = typeof key === "string" ? key : key.url;
       calls.put.push(normalized);
+      if (options.putFails) throw new Error("Storage quota exceeded");
       records.set(normalized, value);
     }
   };
@@ -119,6 +120,20 @@ assert.match(onlineAssetResponse.label, /^network:/);
 assert.ok(onlineAsset.records.has("https://zuriel.example/new-module.js"),
   "A successful same-origin asset fetch should be cached for later offline use.");
 
+const storagePressure = createHarness({ putFails: true });
+const pressureResponse = await dispatch(storagePressure.handlers.fetch, {
+  request: { method: "GET", mode: "cors", url: "https://zuriel.example/large-study-data.json" }
+});
+assert.match(pressureResponse.label, /^network:/,
+  "A storage quota failure must not prevent the reader from receiving a successful network response.");
+
+const storagePressureImage = createHarness({ putFails: true });
+const pressureImageResponse = await dispatch(storagePressureImage.handlers.fetch, {
+  request: { method: "GET", mode: "cors", url: "https://images.unsplash.com/photo/new-image" }
+});
+assert.match(pressureImageResponse.label, /^network:/,
+  "A storage quota failure must not prevent a new Open Book image from loading.");
+
 const offlineStudy = createHarness({ fetchFails: true });
 const studyUrl = "https://bible.helloao.org/api/d/bsb-interlinear/JHN/3.json";
 offlineStudy.records.set(studyUrl, makeResponse("saved-interlinear"));
@@ -151,4 +166,4 @@ const externalResponse = await dispatch(unrelatedExternal.handlers.fetch, {
 assert.equal(externalResponse, undefined, "Unrelated external origins must remain outside service-worker interception.");
 assert.equal(unrelatedExternal.calls.fetched.length, 0);
 
-console.log("Offline service-worker runtime checks passed: core precache, failed-install safety, old-cache cleanup, offline reader navigation, cached application modules, cache fill, cached study resources, cached imagery and non-GET isolation.");
+console.log("Offline service-worker runtime checks passed: core precache, failed-install safety, old-cache cleanup, offline reader navigation, cached application modules, cache fill, cached study resources, cached imagery, storage-pressure tolerance and non-GET isolation.");
