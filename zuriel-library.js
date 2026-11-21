@@ -2280,6 +2280,18 @@
             box.appendChild(button("Open Scripture", () => openReference(item.reference)));
           }
           box.appendChild(element("p", item.text || ""));
+          box.appendChild(button("Remove Saved Item", function () {
+            if (!window.confirm("Remove this saved item from My Saved Library? This cannot be undone.")) return;
+            const index = saved.bookmarks.indexOf(item);
+            if (index < 0) return;
+            saved.bookmarks.splice(index, 1);
+            if (persist()) {
+              box.remove();
+              summary.textContent = saved.bookmarks.length + " saved items • " + noteEntries.length +
+                " verse studies • " + highlightEntries.length + " highlighted verses • " +
+                prayerCount + " prayer records • " + personalNotes.length + " personal notes";
+            }
+          }));
           content.appendChild(box);
         });
 
