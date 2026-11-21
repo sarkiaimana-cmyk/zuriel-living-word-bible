@@ -55,4 +55,4 @@ const limited = await search.search("love", 5, "phrase");
 assert.equal(limited.length, 5, "Result limits must apply to the full KJV corpus.");
 assert.ok(limited.totalMatches > limited.length, "Limited results must preserve the total full-corpus match count.");
 
-console.log("Full KJV search checks passed: 66-book corpus traversal, known Genesis and Gospel references, case-insensitive phrase search, exact-word boundaries and result limits.");
+console.log("Full KJV search checks passed: 66-book corpus traversal, known Genesis and Gospel references, phrase matching, exact-word boundaries and result limits.");
