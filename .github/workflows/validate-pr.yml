@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [main, study/contextual-names-of-god-notes, study/monthly-light-devotional-expansion, study/prayer-journal-entries]
+    branches: [main, study/contextual-names-of-god-notes, study/monthly-light-devotional-expansion, study/prayer-journal-entries, study/scripture-linked-personal-notes]
   workflow_dispatch:
 
 permissions:
