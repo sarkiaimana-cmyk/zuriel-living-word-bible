@@ -10,8 +10,8 @@ const [index, bookSource, kjvSource] = await Promise.all([
   readFile(new URL("../kjv.72bec70fcd.json", import.meta.url), "utf8")
 ]);
 const bookContext = {};
-vm.runInNewContext(bookSource, bookContext, { timeout: 1000 });
-const bibleBooks = bookContext.bibleBooks;
+vm.runInNewContext(bookSource + "\\nglobalThis.__bibleBooks = bibleBooks;", bookContext, { timeout: 1000 });
+const bibleBooks = bookContext.__bibleBooks;
 assert.equal(bibleBooks.length, 66, "Search must use the complete 66-book index.");
 
 const codeMatch = index.match(/const bookCodes = (\{[\s\S]*?\n\};)/);
