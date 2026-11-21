@@ -20,6 +20,7 @@ for (const fragment of [
   "Meet Jesus",
   "Growing in Faith",
   "Prayer & Trust",
+  "Power of the Holy Spirit",
   "Walk with Jesus",
   "duration: 30",
   "duration: 7",
@@ -105,8 +106,8 @@ try {
       verifiedPassages += 1;
     }
   }
-  if (curatedPlans.length !== 10) throw new Error("Expected ten curated offline reading plans.");
-  if (verifiedPassages < 90) throw new Error("Expected at least 90 verified reading-plan passages, including the 30-day plan.");
+  if (curatedPlans.length !== 11) throw new Error("Expected eleven curated offline reading plans.");
+  if (verifiedPassages < 97) throw new Error("Expected at least 97 verified reading-plan passages, including the 30-day plan and Holy Spirit journey.");
 } catch (error) {
   failures.push("Bundled KJV reading-plan reference verification failed: " + error.message);
 }
@@ -115,5 +116,5 @@ if (failures.length) {
   failures.forEach(item => console.error(" - " + item));
   process.exitCode = 1;
 } else {
-  console.log("Reading plan integration checks passed: ten offline plans (including a 30-day journey), at least 90 exact bundled-KJV passage validations, private progress, Bible navigation, encrypted backup, web cache and Android packaging.");
+  console.log("Reading plan integration checks passed: eleven offline plans (including a 30-day journey and a seven-day Power of the Holy Spirit journey), at least 97 exact bundled-KJV passage validations, private progress, Bible navigation, encrypted backup, web cache and Android packaging.");
 }
