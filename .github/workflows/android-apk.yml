@@ -3,7 +3,7 @@ name: Build Zuriel Android APK
 on:
   workflow_dispatch:
   pull_request:
-    branches: [main, study/contextual-names-of-god-notes]
+    branches: [main, study/contextual-names-of-god-notes, study/monthly-light-devotional-expansion]
     paths:
       - "index.html"
       - "bible-data.js"
@@ -132,6 +132,9 @@ jobs:
 
       - name: Validate monthly Light Glory devotional collection
         run: node scripts/check-monthly-devotional.mjs
+
+      - name: Validate Prayer Journal entries and categories
+        run: node scripts/check-prayer-journal.mjs
 
       - name: Validate Words of Jesus study centre
         run: node scripts/check-words-of-jesus.mjs

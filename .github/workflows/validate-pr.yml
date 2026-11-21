@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [main, study/contextual-names-of-god-notes]
+    branches: [main, study/contextual-names-of-god-notes, study/monthly-light-devotional-expansion]
   workflow_dispatch:
 
 permissions:
@@ -111,6 +111,9 @@ jobs:
 
       - name: Validate monthly Light Glory devotional collection
         run: node scripts/check-monthly-devotional.mjs
+
+      - name: Validate Prayer Journal entries and categories
+        run: node scripts/check-prayer-journal.mjs
       - name: Test Android version metadata
         run: node scripts/test-android-version.mjs
 
