@@ -282,7 +282,7 @@ jobs:
             bash scripts/smoke-test-android-upgrade.sh
 
       - name: Publish signed release for in-app Android updates
-        if: steps.signing_check.outputs.available == 'true' && steps.signed_release.outcome == 'success'
+        if: github.event_name != 'pull_request' && steps.signing_check.outputs.available == 'true' && steps.signed_release.outcome == 'success'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
