@@ -28,4 +28,6 @@ const savedBlock = source.slice(savedStart, source.indexOf('});', savedStart) + 
 assert.match(savedBlock, /item\.title/);
 assert.match(savedBlock, /item\.category/);
 assert.match(savedBlock, /item\.reference/);
+assert.match(savedBlock, /Open Scripture/);
+assert.match(savedBlock, /openReference\(item\.reference\)/);
 console.log("Prayer journal checks passed: prayer, thanksgiving, answered prayer and testimony entries retain optional Scripture references and display newest first.");
