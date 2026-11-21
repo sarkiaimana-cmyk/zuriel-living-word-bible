@@ -1572,7 +1572,7 @@
         area.placeholder = "Write your prayer, gratitude or testimony here...";
         area.setAttribute("aria-label", "Prayer journal entry");
 
-        const status = element("p", "Your entries are stored privately on this device.", "library-status");
+        const status = element("p", "Entries are saved locally in this app on this device.", "library-status");
         content.append(titleField, categoryField, referenceField, area, status);
         content.appendChild(button("Save Journal Entry", function () {
           const text = area.value.trim();
@@ -2129,7 +2129,10 @@
         }
         saved.prayers.slice().reverse().forEach(function (item) {
           const box = element("div", undefined, "library-entry");
-          box.appendChild(element("small", item.date || "Saved prayer"));
+          if (item.title) box.appendChild(element("h4", item.title));
+          if (item.category) box.appendChild(element("small", item.category.replace(/-/g, " ")));
+          if (item.reference) box.appendChild(element("strong", item.reference));
+          box.appendChild(element("small", item.date || "Saved entry"));
           box.appendChild(element("p", item.text || ""));
           content.appendChild(box);
         });
