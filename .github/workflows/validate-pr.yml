@@ -75,6 +75,8 @@ jobs:
 
       - name: Validate offline Scripture read-aloud and selected-verse resume
         run: node scripts/check-audio-reader.mjs
+      - name: Validate compact reader controls drawer
+        run: node scripts/check-reader-controls-drawer.mjs
       - name: Validate offline Bible search
         run: node scripts/check-bible-search.mjs
       - name: Validate offline Hebrew and Greek lexicon index
