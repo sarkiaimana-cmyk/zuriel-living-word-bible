@@ -85,8 +85,8 @@ await assert.rejects(() => dispatch(failedInstall.handlers.install), /Precache a
 
 const activate = createHarness({ cacheNames: ["zuriel-bible-offline-v1", "zuriel-bible-offline-v2", "unrelated-cache"] });
 await dispatch(activate.handlers.activate);
-assert.deepEqual(activate.calls.deleted, ["zuriel-bible-offline-v1"],
-  "Activation must remove only older Zuriel offline caches.");
+assert.deepEqual(activate.calls.deleted, ["zuriel-bible-offline-v1", "zuriel-bible-offline-v2"],
+  "Activation must remove all older Zuriel offline caches and preserve unrelated caches.");
 assert.equal(activate.calls.claimed, 1);
 
 const navigation = createHarness({ fetchFails: true });
