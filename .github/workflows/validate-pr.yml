@@ -2,9 +2,9 @@ name: Validate Zuriel changes
 
 on:
   push:
-    branches: [main, fix/open-book-studio-svg-uri-regex]
+    branches: [main, fix/open-book-studio-svg-uri-regex, qa/offline-service-worker-runtime-integrated]
   pull_request:
-    branches: [main]
+    branches: [main, fix/open-book-studio-svg-uri-regex]
   workflow_dispatch:
 
 permissions:
@@ -30,6 +30,9 @@ jobs:
 
       - name: Verify offline core assets and local script precache
         run: node scripts/check-offline-core-assets.mjs
+
+      - name: Exercise offline service-worker runtime and recovery
+        run: node scripts/test-service-worker-runtime.mjs
 
       - name: Verify complete offline KJV corpus counts
         run: node scripts/check-kjv-corpus-counts.mjs

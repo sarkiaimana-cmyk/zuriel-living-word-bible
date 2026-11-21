@@ -58,6 +58,13 @@ const CORE_FILES = [
   "./images/books/d9f06adf-07c3-45b7-bb53-385c15032679.jpg"
 ];
 
+function storeResponse(cache, request, response) {
+  return cache.put(request, response).catch(function () {
+    // Storage pressure must not turn a successful online read into a failed request.
+    return undefined;
+  });
+}
+
 self.addEventListener("install", function (event) {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -106,7 +113,7 @@ self.addEventListener("fetch", function (event) {
           if (cached) return cached;
           const response = await fetch(request);
           if (response && response.ok && response.type !== "opaque") {
-            await cache.put(request, response.clone());
+            await storeResponse(cache, request, response.clone());
           }
           return response;
         })
@@ -122,7 +129,7 @@ self.addEventListener("fetch", function (event) {
           try {
             const response = await fetch(request);
             if (response && response.ok && response.type !== "opaque") {
-              cache.put(request, response.clone());
+              storeResponse(cache, request, response.clone());
             }
             return response;
           } catch (error) {
@@ -143,9 +150,13 @@ self.addEventListener("fetch", function (event) {
           if (response && response.ok) {
             const copy = response.clone();
 
-            caches.open(CACHE_NAME).then(function (cache) {
-              cache.put("./index.html", copy);
-            });
+            caches.open(CACHE_NAME)
+              .then(function (cache) {
+                return storeResponse(cache, "./index.html", copy);
+              })
+              .catch(function () {
+                return undefined;
+              });
           }
 
           return response;
@@ -166,9 +177,13 @@ self.addEventListener("fetch", function (event) {
         if (response && response.ok) {
           const copy = response.clone();
 
-          caches.open(CACHE_NAME).then(function (cache) {
-            cache.put(request, copy);
-          });
+          caches.open(CACHE_NAME)
+            .then(function (cache) {
+              return storeResponse(cache, request, copy);
+            })
+            .catch(function () {
+              return undefined;
+            });
         }
 
         return response;
