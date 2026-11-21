@@ -14,7 +14,7 @@ const api = sandbox.window.ZurielReadingPlans;
 
 assert.ok(api, "Reading plan module must expose its public API.");
 const plans = api.list();
-assert.equal(plans.length, 10, "Ten curated offline reading plans should be available.");
+assert.equal(plans.length, 12, "Twelve curated offline reading plans should be available.");
 for (const plan of plans) {
   assert.equal(plan.passages.length, plan.duration);
   assert.ok(plan.title && plan.id);
@@ -23,6 +23,12 @@ const monthPlan = plans.find(plan => plan.id === "walk-with-jesus-30");
 assert.ok(monthPlan, "The 30-day Walk with Jesus plan must be available.");
 assert.equal(monthPlan.duration, 30);
 assert.equal(monthPlan.passages.length, 30);
+const warfarePlan = plans.find(plan => plan.id === "standing-firm-14");
+assert.ok(warfarePlan, "The deeper Christ-centred spiritual warfare journey must be available.");
+assert.equal(warfarePlan.duration, 14);
+const wisdomPlan = plans.find(plan => plan.id === "wisdom-decisions-14");
+assert.ok(wisdomPlan, "The deeper everyday wisdom journey must be available.");
+assert.equal(wisdomPlan.duration, 14);
 assert.deepEqual(JSON.parse(JSON.stringify(api.readState())), {
   schemaVersion: 1, activePlanId: null, plans: {}
 });
@@ -65,6 +71,6 @@ assert.equal(api.parseReference("John 0"), null, "Chapter zero must be rejected.
 assert.equal(api.parseReference("not a Scripture reference"), null);
 
 const allReferences = plans.flatMap(plan => plan.passages);
-assert.equal(allReferences.length, 93);
+assert.equal(allReferences.length, 121);
 for (const reference of allReferences) assert.ok(api.parseReference(reference), "Every curated passage must parse: " + reference);
-console.log("Reading plan runtime checks passed: ten plans including a 30-day Jesus journey, 93 passages, private progress persistence, duplicate-day cleanup, invalid-state rejection and Scripture-reference parsing.");
+console.log("Reading plan runtime checks passed: twelve plans including a 30-day Jesus journey and two 14-day deepening journeys, 121 passages, private progress persistence, duplicate-day cleanup, invalid-state rejection and Scripture-reference parsing.");
