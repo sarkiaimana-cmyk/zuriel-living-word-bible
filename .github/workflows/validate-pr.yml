@@ -2,7 +2,7 @@ name: Validate Zuriel changes
 
 on:
   push:
-    branches: [main, fix/open-book-studio-svg-uri-regex, qa/offline-service-worker-runtime-integrated]
+    branches: [main, fix/open-book-studio-svg-uri-regex, qa/offline-service-worker-runtime-integrated, fix/reader-controls-collapsible-drawer]
   pull_request:
     branches: [main, fix/open-book-studio-svg-uri-regex]
   workflow_dispatch:
