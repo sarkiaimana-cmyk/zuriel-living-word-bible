@@ -10,16 +10,18 @@ assert.ok(focus, "All keyboard-operable controls must expose a visible focus ind
 assert.match(focus[1], /outline:\s*3px solid/);
 assert.match(focus[1], /outline-offset:\s*3px/);
 
-const coarse = html.match(/@media\s*\(pointer:\s*coarse\)\s*\{([\s\S]*?)\n\}/);
-assert.ok(coarse, "Touch devices must receive a dedicated target-size rule.");
-assert.match(coarse[1], /min-width:\s*44px/);
-assert.match(coarse[1], /min-height:\s*44px/);
-assert.match(coarse[1], /:where\(input, select, textarea\)[\s\S]*?min-height:\s*44px/);
+const coarseStart = html.indexOf("@media (pointer: coarse)");
+const reducedStart = html.indexOf("@media (prefers-reduced-motion: reduce)");
+assert.ok(coarseStart >= 0 && reducedStart > coarseStart, "Touch and reduced-motion media queries must be present.");
+const coarse = html.slice(coarseStart, reducedStart);
+assert.match(coarse, /min-width:\s*44px/);
+assert.match(coarse, /min-height:\s*44px/);
+assert.match(coarse, /:where\(input, select, textarea\)[\s\S]*?min-height:\s*44px/);
 
-const reduced = html.match(/@media\s*\(prefers-reduced-motion:\s*reduce\)\s*\{([\s\S]*?)\n\}/);
-assert.ok(reduced, "The interface must respect the operating-system reduced-motion preference.");
-assert.match(reduced[1], /animation-duration:\s*0\.01ms\s*!important/);
-assert.match(reduced[1], /transition-duration:\s*0\.01ms\s*!important/);
-assert.match(reduced[1], /scroll-behavior:\s*auto\s*!important/);
+const reduced = html.slice(reducedStart, html.indexOf("</style>", reducedStart));
+assert.ok(reduced.length > 0, "The interface must respect the operating-system reduced-motion preference.");
+assert.match(reduced, /animation-duration:\s*0\.01ms\s*!important/);
+assert.match(reduced, /transition-duration:\s*0\.01ms\s*!important/);
+assert.match(reduced, /scroll-behavior:\s*auto\s*!important/);
 
 console.log("Reader accessibility checks passed: viewport-fit, visible keyboard focus, 44px touch targets and reduced-motion support.");
