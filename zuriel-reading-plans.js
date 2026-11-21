@@ -177,6 +177,51 @@
         ["Romans 14:13-19","Pursue what makes for peace and mutual strengthening."]
       ]
     }
+    ,
+    {
+      id:"standing-firm-14",
+      title:"Standing Firm in Christ: A Deeper Journey",
+      duration:14,
+      description:"A Scripture-led journey through Christ's victory, truth, temptation, prayer, forgiveness and the whole armour of God. It keeps spiritual warfare centred on Jesus rather than fear or speculation.",
+      days:[
+        ["Colossians 2:8-15","Begin with Christ's sufficiency and the victory of the cross. Notice what the passage says Jesus accomplished."],
+        ["Ephesians 1:15-23","Reflect on Christ's exaltation and authority. Keep the focus on the risen Lord, not on fear of spiritual powers."],
+        ["Ephesians 6:10-18","Study each part of God's armour and the repeated call to stand in the Lord's strength."],
+        ["Matthew 4:1-11","Observe how Jesus answers temptation with Scripture understood in context."],
+        ["James 1:12-18","Distinguish temptation from God's goodness and consider the path from desire to sin."],
+        ["James 4:1-10","Read how humility, repentance, submission to God and resistance to evil belong together."],
+        ["1 Peter 5:6-11","Practise sober watchfulness, humility and confidence in God's care and restoration."],
+        ["2 Corinthians 10:3-5","Consider Paul's teaching about spiritual weapons and bringing thoughts under Christ's obedience."],
+        ["Romans 8:1-17","Rest in freedom from condemnation and learn how life in the Spirit shapes the believer."],
+        ["John 8:31-36","Explore the freedom Jesus connects with continuing in His word and knowing the truth."],
+        ["Ephesians 4:25-32","Notice how truthfulness, forgiveness, kindness and guarded speech protect Christian unity."],
+        ["Matthew 6:9-13","Pray through Jesus' pattern, including dependence on the Father and deliverance from evil."],
+        ["1 John 4:1-6","Read the call to discern teaching and test it in light of the apostolic witness to Jesus."],
+        ["Romans 8:31-39","Finish with the assurance of God's love in Christ, which no created power can separate believers from."]
+      ]
+    },
+    {
+      id:"wisdom-decisions-14",
+      title:"Wisdom for Everyday Decisions: A Deeper Journey",
+      duration:14,
+      description:"Practise biblical wisdom in choices, relationships, words, work, money, planning and responding to pressure.",
+      days:[
+        ["Proverbs 1:1-7","Begin with the fear of the Lord as the foundation of knowledge and wise living."],
+        ["Proverbs 3:1-12","Consider trust, humility, correction and acknowledging God in every path."],
+        ["James 1:1-8","Learn how perseverance matures faith and how to ask God for wisdom."],
+        ["James 1:19-27","Practise listening, measured speech and doing the word rather than merely hearing it."],
+        ["Proverbs 15:1-17","Reflect on gentle answers, teachable hearts, honest speech and contentment."],
+        ["James 3:1-18","Examine the influence of words and the peaceful character of wisdom from above."],
+        ["Matthew 5:33-48","Study truthfulness, non-retaliation and love for enemies in Jesus' teaching."],
+        ["Luke 14:25-35","Consider the seriousness of discipleship and counting the cost before acting."],
+        ["Proverbs 11:1-14","Reflect on honesty, integrity, counsel and responsibility toward others."],
+        ["Luke 12:13-34","Read Jesus' warning about greed and His call to trust the Father's care."],
+        ["Colossians 3:12-17","Let compassion, patience, forgiveness, love and gratitude shape daily conduct."],
+        ["Ephesians 5:8-17","Consider wise use of time and learning what pleases the Lord."],
+        ["Micah 6:6-8","Bring decisions back to justice, mercy and humble walking with God."],
+        ["Romans 12:1-21","Finish by considering renewed thinking, sincere love, discernment and overcoming evil with good."]
+      ]
+    }
 
   ];
 
