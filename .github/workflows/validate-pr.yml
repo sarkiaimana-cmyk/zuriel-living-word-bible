@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [main]
+    branches: [main, study/contextual-names-of-god-notes]
   workflow_dispatch:
 
 permissions:
