@@ -2,7 +2,7 @@ name: Validate Zuriel changes
 
 on:
   push:
-    branches: [main, fix/open-book-studio-svg-uri-regex]
+    branches: [main, fix/open-book-studio-svg-uri-regex, qa/reader-accessibility-mobile]
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -88,6 +88,9 @@ jobs:
 
       - name: Exercise original-language resource cache
         run: node scripts/test-study-resource-cache.mjs
+      - name: Validate reader accessibility and mobile touch targets
+        run: node scripts/check-reader-accessibility.mjs
+
       - name: Validate reader navigation and selected verses
         run: node scripts/check-reader-navigation.mjs
       - name: Validate Recently Opened reading history
