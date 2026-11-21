@@ -163,6 +163,21 @@
       ]
     },
     {
+      id:"power-of-the-holy-spirit-7",
+      title:"Power of the Holy Spirit",
+      duration:7,
+      description:"A Scripture-centred journey through the Spirit's presence, promise, gifts and fruit in the life of believers.",
+      days:[
+        ["John 14:15-27","Hear Jesus promise the Comforter and speak of the Spirit who teaches and reminds His disciples."],
+        ["John 16:5-15","Reflect on Jesus' teaching about the Spirit of truth and His work of guidance."],
+        ["Acts 1:4-8","Read the promise of power to witness when the Holy Spirit comes upon the disciples."],
+        ["Acts 2:1-4","Witness the coming of the Holy Spirit at Pentecost and the disciples' response."],
+        ["Romans 8:1-17","Study life in the Spirit, belonging to God and the Spirit's witness within believers."],
+        ["Galatians 5:16-26","Consider walking by the Spirit and the fruit that grows from His work."],
+        ["1 Corinthians 12:1-11","Explore spiritual gifts and the Spirit's work for the common good."]
+      ]
+    },
+    {
       id:"forgiveness-and-peace-7",
       title:"Forgiveness, Peace and Healthy Relationships",
       duration:7,
