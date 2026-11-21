@@ -31,6 +31,8 @@
   function entryCard(item,key){
     const card=el("article","zps-entry");
     card.append(el("p","zps-date",dateLabel(item.createdAt)),el("h3","",item.title||"Personal note"));
+    const categoryLabels={prayer:"Prayer",thanksgiving:"Thanksgiving","answered-prayer":"Answered prayer",reflection:"Faith reflection",testimony:"Testimony"};
+    if(item.entryType&&categoryLabels[item.entryType])card.append(el("p","zps-reference","Category: "+categoryLabels[item.entryType]));
     if(item.reference)card.append(el("p","zps-reference",item.reference));
     card.append(el("p","zps-copy",item.text||""));
     card.appendChild(btn("Delete",()=>{if(!confirm("Delete this saved entry from this device?"))return;let all;try{all=read(key);}catch(error){status(error.message);return;}const next=all.filter(x=>x.id!==item.id);if(!write(key,next)){status("Device storage is unavailable. Your entry was not deleted.");return;}render();status("Entry deleted from this device.");},"zps-delete"));
