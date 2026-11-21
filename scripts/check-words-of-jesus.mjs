@@ -76,6 +76,10 @@ const topicCount = (section.match(/category:/g) || []).length;
 const referenceCount = (section.match(/refs:\[/g) || []).length;
 if (topicCount < 60) failures.push("Expected at least 60 curated Jesus teaching themes; found " + topicCount + ".");
 if (referenceCount < 20) failures.push("Expected Scripture reference collections for the teaching themes.");
+if (!section.includes('if (item.study)') || !section.includes('if (item.reflect)')) failures.push("Expanded contextual study and reflection are not rendered in each teaching.");
+const deepStudyCount = (section.match(/study:"/g) || []).length;
+const reflectionCount = (section.match(/reflect:"/g) || []).length;
+if (deepStudyCount < 20 || reflectionCount < 20) failures.push("Expected at least 20 teaching themes with contextual study and reflection prompts; found " + deepStudyCount + " study notes and " + reflectionCount + " reflection prompts.");
 
 // Resolve every curated Words of Jesus reference against the actual bundled KJV.
 // This catches dead links caused by invalid books, chapters or verse numbers.
