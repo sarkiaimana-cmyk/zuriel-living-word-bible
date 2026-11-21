@@ -33,6 +33,10 @@ const sandbox = {
 vm.runInNewContext(apiSource, sandbox, { timeout: 1000 });
 const search = sandbox.window.ZurielBibleSearch;
 
+const uppercase = await search.search("JESUS WEPT", 200, "phrase");
+assert.ok(uppercase.some(item => item.book === "John" && item.chapter === 11 && item.verse === 35),
+  "Search must normalize uppercase queries against the full KJV corpus.");
+
 for (const sample of [
   { query: "In the beginning", book: "Genesis", chapter: 1, verse: 1 },
   { query: "God so loved the world", book: "John", chapter: 3, verse: 16 },
