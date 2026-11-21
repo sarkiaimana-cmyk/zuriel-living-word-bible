@@ -1660,41 +1660,104 @@
       }
 
       if (page === "notes") {
+        saved = loadSaved();
         content.appendChild(card(
           "Personal Bible Study Notes",
-          "Record your understanding, discoveries and reflections."
+          "Keep discoveries connected to the Scripture that inspired them. Notes are stored locally on this device."
         ));
 
         const title = element("input");
-        title.placeholder = "Note title";
+        title.placeholder = "Note title (optional)";
+        title.setAttribute("aria-label", "Study note title");
+
+        const reference = element("input");
+        reference.type = "text";
+        reference.placeholder = "Scripture reference (optional, e.g. John 3:16)";
+        reference.setAttribute("aria-label", "Related Scripture reference");
 
         const area = element("textarea");
-        area.placeholder = "Write your study notes...";
+        area.placeholder = "Write your understanding, discoveries and reflections...";
+        area.setAttribute("aria-label", "Personal Bible study note");
 
-        content.appendChild(title);
-        content.appendChild(area);
+        const status = element("p", "Add a Scripture reference when you want to return directly to its passage.", "library-status");
+        content.append(title, reference, area, status);
 
         content.appendChild(button("Save Study Note", function () {
-          if (!area.value.trim()) return;
+          const noteText = area.value.trim();
+          if (!noteText) {
+            status.textContent = "Write your study note before saving.";
+            area.focus();
+            return;
+          }
 
+          saved.notes = Array.isArray(saved.notes) ? saved.notes : [];
           saved.notes.push({
             title: title.value.trim() || "Bible Study Note",
-            text: area.value.trim(),
+            reference: reference.value.trim(),
+            text: noteText,
             date: new Date().toLocaleDateString()
           });
 
           if (persist()) {
-            openPage("notes");
+            title.value = "";
+            reference.value = "";
+            area.value = "";
+            status.textContent = "Your study note has been saved on this device.";
+            renderPersonalNotes();
+          } else {
+            status.textContent = "The note could not be saved. Please try again.";
           }
         }));
 
-        saved.notes.forEach(item => {
-          const box = element("div", undefined, "library-entry");
-          box.appendChild(element("h4", item.title));
-          box.appendChild(element("small", item.date));
-          box.appendChild(element("p", item.text));
-          content.appendChild(box);
-        });
+        const noteList = element("div");
+        content.appendChild(element("h3", "My Study Notes"));
+        content.appendChild(noteList);
+
+        function openNoteReference(referenceText, action) {
+          const match = String(referenceText || "").trim().match(/^(.+?)\s+(\d+)(?::(\d+))?$/);
+          if (!match || typeof window.openChapter !== "function") {
+            status.textContent = "Use a reference such as John 3:16 to open a passage from your note.";
+            return;
+          }
+          action.disabled = true;
+          const bookName = match[1] === "Psalm" ? "Psalms" : match[1];
+          window.openChapter(bookName, Number(match[2])).then(function () {
+            if (match[3] && (typeof window.selectBibleVerse !== "function" ||
+                !window.selectBibleVerse(Number(match[3])))) {
+              throw new Error("The referenced verse could not be selected.");
+            }
+            action.disabled = false;
+            status.textContent = "Opened " + referenceText + " in the Bible reader.";
+          }).catch(function (error) {
+            action.disabled = false;
+            status.textContent = error && error.message
+              ? error.message : "Could not open this Scripture reference. Please try again.";
+          });
+        }
+
+        function renderPersonalNotes() {
+          noteList.replaceChildren();
+          const entries = Array.isArray(saved.notes) ? saved.notes : [];
+          if (!entries.length) {
+            noteList.appendChild(element("p", "Your saved study notes will appear here."));
+            return;
+          }
+          entries.slice().reverse().forEach(function (item) {
+            const box = element("div", undefined, "library-entry");
+            box.appendChild(element("h4", item.title || "Bible Study Note"));
+            if (item.reference) {
+              box.appendChild(element("strong", item.reference));
+              const open = button("Open Scripture", function () {
+                openNoteReference(item.reference, open);
+              });
+              box.appendChild(open);
+            }
+            box.appendChild(element("small", item.date || "Saved note"));
+            box.appendChild(element("p", item.text || ""));
+            noteList.appendChild(box);
+          });
+        }
+        renderPersonalNotes();
       }
 
       if (page === "declarations") {
@@ -2078,6 +2141,7 @@
         const verseHighlights = readLocalRecords("zuriel-word-highlights-v1");
         const bookmarkCount = saved.bookmarks.length;
         const prayerCount = saved.prayers.length;
+        const personalNotes = Array.isArray(saved.notes) ? saved.notes : [];
         const noteEntries = Object.entries(verseNotes).filter(function (entry) {
           const value = entry[1] || {};
           return value.title || value.note || value.application;
@@ -2090,7 +2154,7 @@
         const summary = element("p",
           bookmarkCount + " saved items • " + noteEntries.length +
           " verse studies • " + highlightEntries.length + " highlighted verses • " +
-          prayerCount + " prayer records",
+          prayerCount + " prayer records • " + personalNotes.length + " personal notes",
           "library-status");
         content.appendChild(summary);
 
@@ -2134,6 +2198,22 @@
           if (record.note) box.appendChild(element("p", record.note));
           if (record.application) box.appendChild(element("p", "Application: " + record.application));
           box.appendChild(button("Open This Verse", () => openReference(reference)));
+          content.appendChild(box);
+        });
+
+        content.appendChild(element("h3", "🗒️ Personal Bible Study Notes"));
+        if (!personalNotes.length) {
+          content.appendChild(element("p", "Your saved personal study notes will appear here."));
+        }
+        personalNotes.slice().reverse().forEach(function (item) {
+          const box = element("div", undefined, "library-entry");
+          box.appendChild(element("h4", item.title || "Bible Study Note"));
+          if (item.reference) {
+            box.appendChild(element("strong", item.reference));
+            box.appendChild(button("Open Scripture", () => openReference(item.reference)));
+          }
+          box.appendChild(element("small", item.date || "Saved note"));
+          box.appendChild(element("p", item.text || ""));
           content.appendChild(box);
         });
 
