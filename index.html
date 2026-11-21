@@ -511,6 +511,31 @@ footer {
   #bibleReader { min-height:calc(100dvh - 52px); }
 }
 
+
+/* Accessible keyboard focus, comfortable touch targets and motion preferences. */
+:where(button, a, input, select, textarea, [role="button"], [tabindex]):focus-visible {
+  outline: 3px solid #24634a;
+  outline-offset: 3px;
+}
+@media (pointer: coarse) {
+  :where(button, [role="button"]) {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  :where(input, select, textarea) {
+    min-height: 44px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 </style>
 </head>
 
