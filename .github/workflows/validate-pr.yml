@@ -108,6 +108,9 @@ jobs:
         run: node scripts/check-expanded-study-library.mjs
       - name: Validate contextual Names of God studies
         run: node scripts/check-names-of-god-context.mjs
+
+      - name: Validate monthly Light Glory devotional collection
+        run: node scripts/check-monthly-devotional.mjs
       - name: Test Android version metadata
         run: node scripts/test-android-version.mjs
 
