@@ -119,21 +119,26 @@
     ],
 
     namesOfGod: [
-      { name: "YHWH — The LORD", meaning: "God's covenant name, commonly represented as LORD in many English Bible translations.", reference: "Exodus 3:15", study: "Numbers 6:24–26 records a priestly blessing asking for God's protection, gracious presence and peace. Consider whom you can encourage with a Scripture-shaped blessing." },
-      { name: "I AM WHO I AM", meaning: "God reveals Himself as the self-existent One who sends Moses.", reference: "Exodus 3:14" },
-      { name: "El Shaddai", meaning: "God Almighty; the title is used when God confirms His covenant promise to Abram.", reference: "Genesis 17:1" },
-      { name: "El Elyon", meaning: "God Most High; the title declares God's supreme authority.", reference: "Genesis 14:18–20" },
-      { name: "El Roi", meaning: "The God who sees me; Hagar uses this title after God meets her in the wilderness.", reference: "Genesis 16:13" },
-      { name: "Jehovah Jireh", meaning: "The LORD will provide; the name is connected with God's provision on the mountain.", reference: "Genesis 22:14" },
-      { name: "Jehovah Rapha", meaning: "The LORD who heals; revealed in the covenant setting at Marah.", reference: "Exodus 15:26" },
-      { name: "Jehovah Nissi", meaning: "The LORD is my banner; Moses names the altar after God's help in battle.", reference: "Exodus 17:15" },
-      { name: "Jehovah Shalom", meaning: "The LORD is peace; Gideon builds an altar with this name after receiving God's reassurance.", reference: "Judges 6:24" },
-      { name: "The LORD Our Righteousness", meaning: "A prophetic title pointing to the righteous King God promises to raise up.", reference: "Jeremiah 23:6" },
-      { name: "The LORD Is There", meaning: "The closing name in Ezekiel's vision of the restored city.", reference: "Ezekiel 48:35" },
-      { name: "The LORD My Shepherd", meaning: "David describes the LORD's care, guidance and protection through the picture of a shepherd.", reference: "Psalm 23:1" },
-      { name: "Abba, Father", meaning: "A relational title used in the New Testament to express the believer's adopted relationship with God.", reference: "Romans 8:15" },
-      { name: "Ancient of Days", meaning: "Daniel's vision uses this title to portray God's eternal rule and righteous judgement.", reference: "Daniel 7:9–10" },
-      { name: "King of Kings and Lord of Lords", meaning: "A royal title declaring the supreme authority of Christ.", reference: "Revelation 19:16" }
+      { name: "YHWH — The LORD", meaning: "God's covenant name, commonly represented as LORD in many English Bible translations.", reference: "Exodus 3:15", study: "Read Exodus 3:13–15. God identifies Himself to Moses and connects His name with the promise to be with His people. Notice that the name is given in the setting of God's response to Israel's suffering and His call to deliver them." },
+      { name: "I AM WHO I AM", meaning: "God reveals Himself as the self-existent One who sends Moses.", reference: "Exodus 3:14", study: "Read Exodus 3:1–15. Moses asks how to answer Israel when they ask who sent him. The answer points to God's own identity and presence; do not reduce this profound statement to a slogan detached from the deliverance story." },
+      { name: "El Shaddai", meaning: "God Almighty; the title is used when God confirms His covenant promise to Abram.", reference: "Genesis 17:1", study: "Read Genesis 17:1–8. God speaks to Abram about walking before Him and confirms the covenant, including the promise of descendants and nations. The passage highlights God's power and faithfulness to His promise." },
+      { name: "El Elyon", meaning: "God Most High; the title declares God's supreme authority.", reference: "Genesis 14:18–20", study: "Read Genesis 14:17–24. Melchizedek blesses Abram in the name of God Most High, possessor of heaven and earth. Notice Abram's response and his refusal to make the king of Sodom the source of his prosperity." },
+      { name: "El Roi", meaning: "The God who sees me; Hagar uses this title after God meets her in the wilderness.", reference: "Genesis 16:13", study: "Read Genesis 16:1–16. Hagar is vulnerable and mistreated, and God meets her in the wilderness. Keep her circumstances central: this account shows that God sees her distress and speaks to her, without excusing the human mistreatment in the story." },
+      { name: "Jehovah Jireh", meaning: "The LORD will provide; the name is connected with God's provision on the mountain.", reference: "Genesis 22:14", study: "Read Genesis 22:1–19. Abraham names the place after God provides a ram. The narrative concerns Abraham's test and God's provision; it should not be turned into a guarantee that God will grant every desired outcome." },
+      { name: "Jehovah Rapha", meaning: "The LORD who heals; revealed in the covenant setting at Marah.", reference: "Exodus 15:26", study: "Read Exodus 15:22–27. Israel encounters bitter water, and God provides for the people while teaching them to heed His voice. Read the healing statement within this covenant setting and alongside the Bible's wider teaching about suffering and healing." },
+      { name: "Jehovah Nissi", meaning: "The LORD is my banner; Moses names the altar after God's help in battle.", reference: "Exodus 17:15", study: "Read Exodus 17:8–16. Israel faces Amalek, Moses' hands are supported by Aaron and Hur, and Joshua leads the people. The altar name remembers the LORD's help; notice the shared responsibility and dependence on God." },
+      { name: "Jehovah Shalom", meaning: "The LORD is peace; Gideon builds an altar with this name after receiving God's reassurance.", reference: "Judges 6:24", study: "Read Judges 6:11–24. Gideon is afraid amid oppression, and God calls him while assuring him of peace. The name belongs to this encounter and calling, not to a promise that believers will never face conflict or distress." },
+      { name: "The LORD Our Righteousness", meaning: "A prophetic title pointing to the righteous King God promises to raise up.", reference: "Jeremiah 23:6", study: "Read Jeremiah 23:1–8. The prophet condemns shepherds who scatter the flock and promises a righteous Branch from David's line. The title is tied to just rule, salvation and the restoration God promises." },
+      { name: "The LORD Is There", meaning: "The closing name in Ezekiel's vision of the restored city.", reference: "Ezekiel 48:35", study: "Read Ezekiel 40–48, especially 48:30–35. The name closes a vision of a reordered land and city after judgment and exile. Its hope is God's presence among His restored people." },
+      { name: "The LORD My Shepherd", meaning: "David describes the LORD's care, guidance and protection through the picture of a shepherd.", reference: "Psalm 23:1", study: "Read all of Psalm 23. The shepherd image includes provision, guidance, protection through danger and the confidence of God's presence. Notice that the psalm does not deny the valley; it describes the Shepherd's care within it." },
+      { name: "Abba, Father", meaning: "A relational title used in the New Testament to express the believer's adopted relationship with God.", reference: "Romans 8:15", study: "Read Romans 8:12–17 and Galatians 4:4–7. Paul connects calling God Father with adoption through the Spirit and belonging to God's family. The intimate address is joined to the assurance and responsibility of life as God's children." },
+      { name: "Ancient of Days", meaning: "Daniel's vision uses this title to portray God's eternal rule and righteous judgement.", reference: "Daniel 7:9–10", study: "Read Daniel 7:1–14. The Ancient of Days sits in judgment over arrogant kingdoms, and the vision presents God's enduring authority. Read the imagery as apocalyptic vision rather than as a literal description of God's physical appearance." },
+      { name: "King of Kings and Lord of Lords", meaning: "A royal title declaring the supreme authority of Christ.", reference: "Revelation 19:16", study: "Read Revelation 19:11–16 in the context of Revelation's vision of Christ's victory and just judgment. The title identifies Jesus' supreme kingship; interpret the symbolic imagery with the book's wider witness and do not use it to justify human domination." },
+      { name: "El Olam", meaning: "The everlasting God; Abraham uses this title while calling on the LORD at Beersheba.", reference: "Genesis 21:33", study: "Read Genesis 21:22–34. Abraham makes an agreement with Abimelech, addresses a dispute over a well, and plants a tamarisk tree at Beersheba. The title appears in a narrative of God's enduring faithfulness through changing circumstances." },
+      { name: "The Lamb of God", meaning: "John the Baptist identifies Jesus as the Lamb of God who takes away the sin of the world.", reference: "John 1:29", study: "Read John 1:19–34. John identifies Jesus publicly and bears witness to the Spirit descending on Him. Read this title alongside the Gospel's wider testimony to Jesus and the biblical themes of sacrifice and redemption." },
+      { name: "The Good Shepherd", meaning: "Jesus describes Himself as the Good Shepherd who lays down His life for the sheep.", reference: "John 10:11", study: "Read John 10:1–18. Jesus contrasts the Good Shepherd with the hired hand and speaks of knowing His sheep and laying down His life for them. The passage joins loving care with His willing self-giving." },
+      { name: "The Light of the World", meaning: "Jesus declares that whoever follows Him will not walk in darkness but have the light of life.", reference: "John 8:12", study: "Read John 8:12–20 in its setting during Jesus' teaching in the temple. His claim concerns His identity and the life-giving light He brings. Keep the surrounding dialogue and witness about His relationship with the Father in view." },
+      { name: "The Bread of Life", meaning: "Jesus presents Himself as the bread of life and the source of enduring life.", reference: "John 6:35", study: "Read John 6:25–40. After the feeding of the multitude, Jesus redirects the crowd from temporary food to the life God gives through Him. The image points to trusting and coming to Jesus, not merely receiving material provision." }
     ],
 
     studyTopics: [
@@ -333,6 +338,26 @@
       #zurielLibrary .library-entry h4 {
         margin-bottom: 5px;
         color: #24634a;
+      }
+
+      #zurielLibrary .zlib-name-study {
+        margin-top: 9px;
+        padding: 10px 12px;
+        border: 1px solid #d9e2e9;
+        border-radius: 10px;
+        background: #fbfcfa;
+      }
+
+      #zurielLibrary .zlib-name-study summary {
+        cursor: pointer;
+        color: #24634a;
+        font-weight: 700;
+        min-height: 32px;
+      }
+
+      #zurielLibrary .zlib-name-study p {
+        margin: 9px 0 2px;
+        line-height: 1.7;
       }
       #zurielLibrary .zlib-study-topic {border:1px solid #d9e2e9;border-radius:13px;background:#fff;padding:13px;margin:12px 0;}
       #zurielLibrary .zlib-study-art {display:block;width:100%;height:auto;max-height:145px;object-fit:cover;border-radius:9px;margin:0 0 10px;background:#172b49;}
@@ -1379,6 +1404,12 @@
           box.appendChild(element("h4", item.name));
           box.appendChild(element("p", item.meaning));
           box.appendChild(element("strong", item.reference));
+          if (item.study) {
+            const study = element("details", undefined, "zlib-name-study");
+            study.appendChild(element("summary", "Explore the passage in context"));
+            study.appendChild(element("p", item.study));
+            box.appendChild(study);
+          }
           content.appendChild(box);
         });
       }
