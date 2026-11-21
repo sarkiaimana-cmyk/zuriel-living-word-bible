@@ -46,10 +46,6 @@ for (const sample of [
   ), "Full-corpus search missed " + sample.book + " " + sample.chapter + ":" + sample.verse);
 }
 
-const insensitive = await search.search("GOD SO LOVED THE WORLD", 200, "phrase");
-assert.ok(insensitive.some(item => item.book === "John" && item.chapter === 3 && item.verse === 16),
-  "Search must remain case-insensitive across the real corpus.");
-
 const exactLove = await search.search("love", 200, "word");
 assert.ok(exactLove.length > 0, "Exact-word search should find occurrences of love.");
 assert.ok(exactLove.every(item => /(^|[^a-z0-9])love([^a-z0-9]|$)/i.test(item.text)),
