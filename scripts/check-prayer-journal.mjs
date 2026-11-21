@@ -12,7 +12,7 @@ for (const label of ["Prayer", "Thanksgiving", "Answered Prayer", "Testimony"]) 
 assert.match(page, /Scripture reference \(optional/);
 assert.match(page, /category: category/);
 assert.match(page, /reference: referenceField\.value\.trim\(\)/);
-assert.match(page, /renderPrayerRecords\(\)/);
+assert.match(page, /renderPrayerRecords\(\)/);\nassert.match(page, /function openPrayerReference\(reference, action\)/);\nassert.match(page, /Open Scripture/);\nassert.match(page, /window\.selectBibleVerse/);
 assert.match(page, /saved\.prayers\.slice\(\)\.reverse\(\)/);
 assert.match(page, /Entries are saved locally in this app on this device/);
 assert.match(source, /category: "prayer"/, "Reader-generated prayer responses must remain compatible with the journal.");
