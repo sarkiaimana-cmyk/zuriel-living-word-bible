@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "title": "Zuriel Deep Study Guides — Context, Meaning and Life Application",
-  "description": "Original guided study frameworks for careful reading. Each guide connects observation, interpretation, response and related Scripture while recording cautions against common misreadings.",
+  "title": "Zuriel Deep Study Guides — 120 Contextual Studies",
+  "description": "One hundred additional guided studies join the original collection, each with a primary passage, context summary, observation, interpretation, application and cross-reference trail.",
   "method": [
     "Read the full passage in its book context before using the guide.",
     "Observation asks what the text says; interpretation asks what it meant in context; application asks how its truth should shape faithful life.",
@@ -318,6 +318,1406 @@
         "2 Peter 3:13"
       ],
       "interpretiveCaution": "Do not use symbolic imagery to build unsupported date predictions or detailed speculative timetables."
+    },
+    {
+      "id": "deep-study-21",
+      "title": "The goodness of creation",
+      "primaryPassage": "Genesis 1:1-2:3",
+      "contextSummary": "Genesis presents God as Creator, orders creation as good and gives humanity a vocation within it.",
+      "observationPrompt": "Read Genesis 1:1-2:3 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate creation and human responsibility?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about creation and human responsibility. Compare with Psalm 8:1-9 and John 1:1-5 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about creation and human responsibility. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Psalm 8:1-9",
+        "John 1:1-5"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-22",
+      "title": "Humanity made in God's image",
+      "primaryPassage": "Genesis 1:1-2:3",
+      "contextSummary": "Genesis presents God as Creator, orders creation as good and gives humanity a vocation within it.",
+      "observationPrompt": "Read Genesis 1:1-2:3 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate creation and human responsibility?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about creation and human responsibility. Compare with Psalm 8:1-9 and John 1:1-5 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about creation and human responsibility. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Psalm 8:1-9",
+        "John 1:1-5"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-23",
+      "title": "Rest and the seventh day",
+      "primaryPassage": "Genesis 1:1-2:3",
+      "contextSummary": "Genesis presents God as Creator, orders creation as good and gives humanity a vocation within it.",
+      "observationPrompt": "Read Genesis 1:1-2:3 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate creation and human responsibility?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about creation and human responsibility. Compare with Psalm 8:1-9 and John 1:1-5 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about creation and human responsibility. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Psalm 8:1-9",
+        "John 1:1-5"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-24",
+      "title": "Human vocation and stewardship",
+      "primaryPassage": "Genesis 1:1-2:3",
+      "contextSummary": "Genesis presents God as Creator, orders creation as good and gives humanity a vocation within it.",
+      "observationPrompt": "Read Genesis 1:1-2:3 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate creation and human responsibility?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about creation and human responsibility. Compare with Psalm 8:1-9 and John 1:1-5 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about creation and human responsibility. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Psalm 8:1-9",
+        "John 1:1-5"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-25",
+      "title": "Creation's praise of the Creator",
+      "primaryPassage": "Genesis 1:1-2:3",
+      "contextSummary": "Genesis presents God as Creator, orders creation as good and gives humanity a vocation within it.",
+      "observationPrompt": "Read Genesis 1:1-2:3 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate creation and human responsibility?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about creation and human responsibility. Compare with Psalm 8:1-9 and John 1:1-5 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about creation and human responsibility. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Psalm 8:1-9",
+        "John 1:1-5"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-26",
+      "title": "The call to leave and trust",
+      "primaryPassage": "Genesis 12:1-9",
+      "contextSummary": "God calls Abram and promises land, descendants and blessing that will extend to all families of the earth.",
+      "observationPrompt": "Read Genesis 12:1-9 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate promise, faith and blessing for the nations?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about promise, faith and blessing for the nations. Compare with Genesis 15:1-6 and Galatians 3:6-14 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about promise, faith and blessing for the nations. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Genesis 15:1-6",
+        "Galatians 3:6-14"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-27",
+      "title": "Faith counted as righteousness",
+      "primaryPassage": "Genesis 12:1-9",
+      "contextSummary": "God calls Abram and promises land, descendants and blessing that will extend to all families of the earth.",
+      "observationPrompt": "Read Genesis 12:1-9 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate promise, faith and blessing for the nations?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about promise, faith and blessing for the nations. Compare with Genesis 15:1-6 and Galatians 3:6-14 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about promise, faith and blessing for the nations. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Genesis 15:1-6",
+        "Galatians 3:6-14"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-28",
+      "title": "The promise to bless the nations",
+      "primaryPassage": "Genesis 12:1-9",
+      "contextSummary": "God calls Abram and promises land, descendants and blessing that will extend to all families of the earth.",
+      "observationPrompt": "Read Genesis 12:1-9 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate promise, faith and blessing for the nations?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about promise, faith and blessing for the nations. Compare with Genesis 15:1-6 and Galatians 3:6-14 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about promise, faith and blessing for the nations. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Genesis 15:1-6",
+        "Galatians 3:6-14"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-29",
+      "title": "Abraham's hospitality",
+      "primaryPassage": "Genesis 12:1-9",
+      "contextSummary": "God calls Abram and promises land, descendants and blessing that will extend to all families of the earth.",
+      "observationPrompt": "Read Genesis 12:1-9 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate promise, faith and blessing for the nations?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about promise, faith and blessing for the nations. Compare with Genesis 15:1-6 and Galatians 3:6-14 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about promise, faith and blessing for the nations. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Genesis 15:1-6",
+        "Galatians 3:6-14"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-30",
+      "title": "Faith tested and God's provision",
+      "primaryPassage": "Genesis 12:1-9",
+      "contextSummary": "God calls Abram and promises land, descendants and blessing that will extend to all families of the earth.",
+      "observationPrompt": "Read Genesis 12:1-9 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate promise, faith and blessing for the nations?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about promise, faith and blessing for the nations. Compare with Genesis 15:1-6 and Galatians 3:6-14 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about promise, faith and blessing for the nations. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Genesis 15:1-6",
+        "Galatians 3:6-14"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-31",
+      "title": "The burning bush and holy ground",
+      "primaryPassage": "Exodus 3:1-15",
+      "contextSummary": "God reveals his name to Moses, hears the cries of an oppressed people and commissions Moses.",
+      "observationPrompt": "Read Exodus 3:1-15 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate God's presence, deliverance and calling?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about God's presence, deliverance and calling. Compare with Exodus 6:1-8 and Exodus 14:10-31 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about God's presence, deliverance and calling. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Exodus 6:1-8",
+        "Exodus 14:10-31"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-32",
+      "title": "God hears the cry of the oppressed",
+      "primaryPassage": "Exodus 3:1-15",
+      "contextSummary": "God reveals his name to Moses, hears the cries of an oppressed people and commissions Moses.",
+      "observationPrompt": "Read Exodus 3:1-15 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate God's presence, deliverance and calling?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about God's presence, deliverance and calling. Compare with Exodus 6:1-8 and Exodus 14:10-31 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about God's presence, deliverance and calling. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Exodus 6:1-8",
+        "Exodus 14:10-31"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-33",
+      "title": "Moses' reluctance and God's help",
+      "primaryPassage": "Exodus 3:1-15",
+      "contextSummary": "God reveals his name to Moses, hears the cries of an oppressed people and commissions Moses.",
+      "observationPrompt": "Read Exodus 3:1-15 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate God's presence, deliverance and calling?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about God's presence, deliverance and calling. Compare with Exodus 6:1-8 and Exodus 14:10-31 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about God's presence, deliverance and calling. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Exodus 6:1-8",
+        "Exodus 14:10-31"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-34",
+      "title": "The name of the LORD",
+      "primaryPassage": "Exodus 3:1-15",
+      "contextSummary": "God reveals his name to Moses, hears the cries of an oppressed people and commissions Moses.",
+      "observationPrompt": "Read Exodus 3:1-15 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate God's presence, deliverance and calling?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about God's presence, deliverance and calling. Compare with Exodus 6:1-8 and Exodus 14:10-31 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about God's presence, deliverance and calling. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Exodus 6:1-8",
+        "Exodus 14:10-31"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-35",
+      "title": "Deliverance and the song of Moses",
+      "primaryPassage": "Exodus 3:1-15",
+      "contextSummary": "God reveals his name to Moses, hears the cries of an oppressed people and commissions Moses.",
+      "observationPrompt": "Read Exodus 3:1-15 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate God's presence, deliverance and calling?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about God's presence, deliverance and calling. Compare with Exodus 6:1-8 and Exodus 14:10-31 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about God's presence, deliverance and calling. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Exodus 6:1-8",
+        "Exodus 14:10-31"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-36",
+      "title": "Israel as God's treasured possession",
+      "primaryPassage": "Exodus 19:1-8",
+      "contextSummary": "Israel is addressed as God's treasured possession and called to covenant faithfulness after deliverance.",
+      "observationPrompt": "Read Exodus 19:1-8 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate covenant identity and faithful response?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about covenant identity and faithful response. Compare with Exodus 20:1-17 and Deuteronomy 7:6-11 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about covenant identity and faithful response. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Exodus 20:1-17",
+        "Deuteronomy 7:6-11"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-37",
+      "title": "The Ten Words and covenant life",
+      "primaryPassage": "Exodus 19:1-8",
+      "contextSummary": "Israel is addressed as God's treasured possession and called to covenant faithfulness after deliverance.",
+      "observationPrompt": "Read Exodus 19:1-8 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate covenant identity and faithful response?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about covenant identity and faithful response. Compare with Exodus 20:1-17 and Deuteronomy 7:6-11 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about covenant identity and faithful response. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Exodus 20:1-17",
+        "Deuteronomy 7:6-11"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-38",
+      "title": "The golden calf and covenant renewal",
+      "primaryPassage": "Exodus 19:1-8",
+      "contextSummary": "Israel is addressed as God's treasured possession and called to covenant faithfulness after deliverance.",
+      "observationPrompt": "Read Exodus 19:1-8 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate covenant identity and faithful response?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about covenant identity and faithful response. Compare with Exodus 20:1-17 and Deuteronomy 7:6-11 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about covenant identity and faithful response. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Exodus 20:1-17",
+        "Deuteronomy 7:6-11"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-39",
+      "title": "Remembering deliverance in obedience",
+      "primaryPassage": "Exodus 19:1-8",
+      "contextSummary": "Israel is addressed as God's treasured possession and called to covenant faithfulness after deliverance.",
+      "observationPrompt": "Read Exodus 19:1-8 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate covenant identity and faithful response?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about covenant identity and faithful response. Compare with Exodus 20:1-17 and Deuteronomy 7:6-11 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about covenant identity and faithful response. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Exodus 20:1-17",
+        "Deuteronomy 7:6-11"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-40",
+      "title": "The holiness of God among his people",
+      "primaryPassage": "Exodus 19:1-8",
+      "contextSummary": "Israel is addressed as God's treasured possession and called to covenant faithfulness after deliverance.",
+      "observationPrompt": "Read Exodus 19:1-8 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate covenant identity and faithful response?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about covenant identity and faithful response. Compare with Exodus 20:1-17 and Deuteronomy 7:6-11 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about covenant identity and faithful response. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Exodus 20:1-17",
+        "Deuteronomy 7:6-11"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-41",
+      "title": "The shepherd heart of David",
+      "primaryPassage": "1 Samuel 16:1-13",
+      "contextSummary": "David is chosen and anointed in a narrative that contrasts outward appearance with God's regard for the heart.",
+      "observationPrompt": "Read 1 Samuel 16:1-13 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate leadership, God's choice and the Davidic hope?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about leadership, God's choice and the Davidic hope. Compare with 2 Samuel 7:8-16 and Psalm 89:19-29 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about leadership, God's choice and the Davidic hope. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "2 Samuel 7:8-16",
+        "Psalm 89:19-29"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-42",
+      "title": "The covenant promise to David",
+      "primaryPassage": "1 Samuel 16:1-13",
+      "contextSummary": "David is chosen and anointed in a narrative that contrasts outward appearance with God's regard for the heart.",
+      "observationPrompt": "Read 1 Samuel 16:1-13 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate leadership, God's choice and the Davidic hope?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about leadership, God's choice and the Davidic hope. Compare with 2 Samuel 7:8-16 and Psalm 89:19-29 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about leadership, God's choice and the Davidic hope. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "2 Samuel 7:8-16",
+        "Psalm 89:19-29"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-43",
+      "title": "The contrast between appearance and heart",
+      "primaryPassage": "1 Samuel 16:1-13",
+      "contextSummary": "David is chosen and anointed in a narrative that contrasts outward appearance with God's regard for the heart.",
+      "observationPrompt": "Read 1 Samuel 16:1-13 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate leadership, God's choice and the Davidic hope?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about leadership, God's choice and the Davidic hope. Compare with 2 Samuel 7:8-16 and Psalm 89:19-29 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about leadership, God's choice and the Davidic hope. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "2 Samuel 7:8-16",
+        "Psalm 89:19-29"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-44",
+      "title": "Leadership under God's authority",
+      "primaryPassage": "1 Samuel 16:1-13",
+      "contextSummary": "David is chosen and anointed in a narrative that contrasts outward appearance with God's regard for the heart.",
+      "observationPrompt": "Read 1 Samuel 16:1-13 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate leadership, God's choice and the Davidic hope?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about leadership, God's choice and the Davidic hope. Compare with 2 Samuel 7:8-16 and Psalm 89:19-29 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about leadership, God's choice and the Davidic hope. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "2 Samuel 7:8-16",
+        "Psalm 89:19-29"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-45",
+      "title": "The king who serves God's people",
+      "primaryPassage": "1 Samuel 16:1-13",
+      "contextSummary": "David is chosen and anointed in a narrative that contrasts outward appearance with God's regard for the heart.",
+      "observationPrompt": "Read 1 Samuel 16:1-13 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate leadership, God's choice and the Davidic hope?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about leadership, God's choice and the Davidic hope. Compare with 2 Samuel 7:8-16 and Psalm 89:19-29 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about leadership, God's choice and the Davidic hope. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "2 Samuel 7:8-16",
+        "Psalm 89:19-29"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-46",
+      "title": "The LORD as shepherd",
+      "primaryPassage": "Psalm 23:1-6",
+      "contextSummary": "The psalm portrays the LORD as shepherd and host through danger, provision and fellowship.",
+      "observationPrompt": "Read Psalm 23:1-6 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate God's shepherd care and trust?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about God's shepherd care and trust. Compare with Ezekiel 34:11-16 and John 10:1-18 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about God's shepherd care and trust. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Ezekiel 34:11-16",
+        "John 10:1-18"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-47",
+      "title": "Walking through the valley",
+      "primaryPassage": "Psalm 23:1-6",
+      "contextSummary": "The psalm portrays the LORD as shepherd and host through danger, provision and fellowship.",
+      "observationPrompt": "Read Psalm 23:1-6 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate God's shepherd care and trust?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about God's shepherd care and trust. Compare with Ezekiel 34:11-16 and John 10:1-18 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about God's shepherd care and trust. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Ezekiel 34:11-16",
+        "John 10:1-18"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-48",
+      "title": "The table prepared in God's presence",
+      "primaryPassage": "Psalm 23:1-6",
+      "contextSummary": "The psalm portrays the LORD as shepherd and host through danger, provision and fellowship.",
+      "observationPrompt": "Read Psalm 23:1-6 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate God's shepherd care and trust?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about God's shepherd care and trust. Compare with Ezekiel 34:11-16 and John 10:1-18 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about God's shepherd care and trust. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Ezekiel 34:11-16",
+        "John 10:1-18"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-49",
+      "title": "Confession after failure",
+      "primaryPassage": "Psalm 23:1-6",
+      "contextSummary": "The psalm portrays the LORD as shepherd and host through danger, provision and fellowship.",
+      "observationPrompt": "Read Psalm 23:1-6 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate God's shepherd care and trust?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about God's shepherd care and trust. Compare with Ezekiel 34:11-16 and John 10:1-18 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about God's shepherd care and trust. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Ezekiel 34:11-16",
+        "John 10:1-18"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-50",
+      "title": "A clean heart and renewed spirit",
+      "primaryPassage": "Psalm 23:1-6",
+      "contextSummary": "The psalm portrays the LORD as shepherd and host through danger, provision and fellowship.",
+      "observationPrompt": "Read Psalm 23:1-6 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate God's shepherd care and trust?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about God's shepherd care and trust. Compare with Ezekiel 34:11-16 and John 10:1-18 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about God's shepherd care and trust. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Ezekiel 34:11-16",
+        "John 10:1-18"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-51",
+      "title": "The beginning of wisdom",
+      "primaryPassage": "Psalm 51:1-12",
+      "contextSummary": "David's prayer asks for mercy, cleansing and a renewed heart after his sin is exposed.",
+      "observationPrompt": "Read Psalm 51:1-12 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate repentance, confession and restoration?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about repentance, confession and restoration. Compare with 2 Samuel 12:1-13 and 1 John 1:5-10 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about repentance, confession and restoration. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "2 Samuel 12:1-13",
+        "1 John 1:5-10"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-52",
+      "title": "Trusting the LORD rather than self",
+      "primaryPassage": "Psalm 51:1-12",
+      "contextSummary": "David's prayer asks for mercy, cleansing and a renewed heart after his sin is exposed.",
+      "observationPrompt": "Read Psalm 51:1-12 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate repentance, confession and restoration?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about repentance, confession and restoration. Compare with 2 Samuel 12:1-13 and 1 John 1:5-10 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about repentance, confession and restoration. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "2 Samuel 12:1-13",
+        "1 John 1:5-10"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-53",
+      "title": "Wisdom in speech and relationships",
+      "primaryPassage": "Psalm 51:1-12",
+      "contextSummary": "David's prayer asks for mercy, cleansing and a renewed heart after his sin is exposed.",
+      "observationPrompt": "Read Psalm 51:1-12 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate repentance, confession and restoration?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about repentance, confession and restoration. Compare with 2 Samuel 12:1-13 and 1 John 1:5-10 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about repentance, confession and restoration. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "2 Samuel 12:1-13",
+        "1 John 1:5-10"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-54",
+      "title": "The discipline of correction",
+      "primaryPassage": "Psalm 51:1-12",
+      "contextSummary": "David's prayer asks for mercy, cleansing and a renewed heart after his sin is exposed.",
+      "observationPrompt": "Read Psalm 51:1-12 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate repentance, confession and restoration?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about repentance, confession and restoration. Compare with 2 Samuel 12:1-13 and 1 John 1:5-10 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about repentance, confession and restoration. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "2 Samuel 12:1-13",
+        "1 John 1:5-10"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-55",
+      "title": "The fear of the LORD in daily decisions",
+      "primaryPassage": "Psalm 51:1-12",
+      "contextSummary": "David's prayer asks for mercy, cleansing and a renewed heart after his sin is exposed.",
+      "observationPrompt": "Read Psalm 51:1-12 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate repentance, confession and restoration?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about repentance, confession and restoration. Compare with 2 Samuel 12:1-13 and 1 John 1:5-10 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about repentance, confession and restoration. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "2 Samuel 12:1-13",
+        "1 John 1:5-10"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-56",
+      "title": "The vision of God's holiness",
+      "primaryPassage": "Proverbs 1:1-7",
+      "contextSummary": "The wisdom collection locates true knowledge in reverence for the LORD and teachability.",
+      "observationPrompt": "Read Proverbs 1:1-7 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate wisdom, reverence and formation?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about wisdom, reverence and formation. Compare with Proverbs 3:1-12 and James 1:5-8 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about wisdom, reverence and formation. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Proverbs 3:1-12",
+        "James 1:5-8"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-57",
+      "title": "Cleansing before commission",
+      "primaryPassage": "Proverbs 1:1-7",
+      "contextSummary": "The wisdom collection locates true knowledge in reverence for the LORD and teachability.",
+      "observationPrompt": "Read Proverbs 1:1-7 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate wisdom, reverence and formation?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about wisdom, reverence and formation. Compare with Proverbs 3:1-12 and James 1:5-8 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about wisdom, reverence and formation. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Proverbs 3:1-12",
+        "James 1:5-8"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-58",
+      "title": "The question 'Whom shall I send?'",
+      "primaryPassage": "Proverbs 1:1-7",
+      "contextSummary": "The wisdom collection locates true knowledge in reverence for the LORD and teachability.",
+      "observationPrompt": "Read Proverbs 1:1-7 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate wisdom, reverence and formation?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about wisdom, reverence and formation. Compare with Proverbs 3:1-12 and James 1:5-8 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about wisdom, reverence and formation. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Proverbs 3:1-12",
+        "James 1:5-8"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-59",
+      "title": "The holiness of God and human response",
+      "primaryPassage": "Proverbs 1:1-7",
+      "contextSummary": "The wisdom collection locates true knowledge in reverence for the LORD and teachability.",
+      "observationPrompt": "Read Proverbs 1:1-7 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate wisdom, reverence and formation?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about wisdom, reverence and formation. Compare with Proverbs 3:1-12 and James 1:5-8 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about wisdom, reverence and formation. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Proverbs 3:1-12",
+        "James 1:5-8"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-60",
+      "title": "Calling and faithful service",
+      "primaryPassage": "Proverbs 1:1-7",
+      "contextSummary": "The wisdom collection locates true knowledge in reverence for the LORD and teachability.",
+      "observationPrompt": "Read Proverbs 1:1-7 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate wisdom, reverence and formation?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about wisdom, reverence and formation. Compare with Proverbs 3:1-12 and James 1:5-8 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about wisdom, reverence and formation. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Proverbs 3:1-12",
+        "James 1:5-8"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-61",
+      "title": "Strength for the weary",
+      "primaryPassage": "Isaiah 6:1-8",
+      "contextSummary": "Isaiah's vision of God's holiness leads to confession, cleansing and response to the divine call.",
+      "observationPrompt": "Read Isaiah 6:1-8 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate holiness, cleansing and vocation?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about holiness, cleansing and vocation. Compare with Exodus 3:1-12 and Jeremiah 1:4-10 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about holiness, cleansing and vocation. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Exodus 3:1-12",
+        "Jeremiah 1:4-10"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-62",
+      "title": "Waiting without losing hope",
+      "primaryPassage": "Isaiah 6:1-8",
+      "contextSummary": "Isaiah's vision of God's holiness leads to confession, cleansing and response to the divine call.",
+      "observationPrompt": "Read Isaiah 6:1-8 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate holiness, cleansing and vocation?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about holiness, cleansing and vocation. Compare with Exodus 3:1-12 and Jeremiah 1:4-10 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about holiness, cleansing and vocation. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Exodus 3:1-12",
+        "Jeremiah 1:4-10"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-63",
+      "title": "The everlasting God and human weakness",
+      "primaryPassage": "Isaiah 6:1-8",
+      "contextSummary": "Isaiah's vision of God's holiness leads to confession, cleansing and response to the divine call.",
+      "observationPrompt": "Read Isaiah 6:1-8 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate holiness, cleansing and vocation?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about holiness, cleansing and vocation. Compare with Exodus 3:1-12 and Jeremiah 1:4-10 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about holiness, cleansing and vocation. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Exodus 3:1-12",
+        "Jeremiah 1:4-10"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-64",
+      "title": "Comfort for God's people",
+      "primaryPassage": "Isaiah 6:1-8",
+      "contextSummary": "Isaiah's vision of God's holiness leads to confession, cleansing and response to the divine call.",
+      "observationPrompt": "Read Isaiah 6:1-8 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate holiness, cleansing and vocation?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about holiness, cleansing and vocation. Compare with Exodus 3:1-12 and Jeremiah 1:4-10 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about holiness, cleansing and vocation. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Exodus 3:1-12",
+        "Jeremiah 1:4-10"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-65",
+      "title": "Hope beyond present weakness",
+      "primaryPassage": "Isaiah 6:1-8",
+      "contextSummary": "Isaiah's vision of God's holiness leads to confession, cleansing and response to the divine call.",
+      "observationPrompt": "Read Isaiah 6:1-8 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate holiness, cleansing and vocation?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about holiness, cleansing and vocation. Compare with Exodus 3:1-12 and Jeremiah 1:4-10 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about holiness, cleansing and vocation. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Exodus 3:1-12",
+        "Jeremiah 1:4-10"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-66",
+      "title": "Justice in public life",
+      "primaryPassage": "Isaiah 40:27-31",
+      "contextSummary": "The prophet answers weary exiles by declaring God's incomparable power and sustaining care.",
+      "observationPrompt": "Read Isaiah 40:27-31 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate weariness, hope and renewed strength?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about weariness, hope and renewed strength. Compare with Psalm 27:13-14 and 2 Corinthians 4:7-18 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about weariness, hope and renewed strength. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Psalm 27:13-14",
+        "2 Corinthians 4:7-18"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-67",
+      "title": "Mercy and humble obedience",
+      "primaryPassage": "Isaiah 40:27-31",
+      "contextSummary": "The prophet answers weary exiles by declaring God's incomparable power and sustaining care.",
+      "observationPrompt": "Read Isaiah 40:27-31 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate weariness, hope and renewed strength?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about weariness, hope and renewed strength. Compare with Psalm 27:13-14 and 2 Corinthians 4:7-18 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about weariness, hope and renewed strength. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Psalm 27:13-14",
+        "2 Corinthians 4:7-18"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-68",
+      "title": "Worship beyond outward performance",
+      "primaryPassage": "Isaiah 40:27-31",
+      "contextSummary": "The prophet answers weary exiles by declaring God's incomparable power and sustaining care.",
+      "observationPrompt": "Read Isaiah 40:27-31 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate weariness, hope and renewed strength?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about weariness, hope and renewed strength. Compare with Psalm 27:13-14 and 2 Corinthians 4:7-18 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about weariness, hope and renewed strength. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Psalm 27:13-14",
+        "2 Corinthians 4:7-18"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-69",
+      "title": "The danger of religious hypocrisy",
+      "primaryPassage": "Isaiah 40:27-31",
+      "contextSummary": "The prophet answers weary exiles by declaring God's incomparable power and sustaining care.",
+      "observationPrompt": "Read Isaiah 40:27-31 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate weariness, hope and renewed strength?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about weariness, hope and renewed strength. Compare with Psalm 27:13-14 and 2 Corinthians 4:7-18 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about weariness, hope and renewed strength. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Psalm 27:13-14",
+        "2 Corinthians 4:7-18"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-70",
+      "title": "The blessings of the kingdom",
+      "primaryPassage": "Isaiah 40:27-31",
+      "contextSummary": "The prophet answers weary exiles by declaring God's incomparable power and sustaining care.",
+      "observationPrompt": "Read Isaiah 40:27-31 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate weariness, hope and renewed strength?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about weariness, hope and renewed strength. Compare with Psalm 27:13-14 and 2 Corinthians 4:7-18 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about weariness, hope and renewed strength. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Psalm 27:13-14",
+        "2 Corinthians 4:7-18"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-71",
+      "title": "The poor in spirit and God's reign",
+      "primaryPassage": "Micah 6:6-8",
+      "contextSummary": "The prophet rejects empty religious performance and summarises the covenant response God requires.",
+      "observationPrompt": "Read Micah 6:6-8 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate justice, mercy and genuine worship?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about justice, mercy and genuine worship. Compare with Isaiah 1:16-17 and Matthew 23:23 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about justice, mercy and genuine worship. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Isaiah 1:16-17",
+        "Matthew 23:23"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-72",
+      "title": "Mercy as kingdom character",
+      "primaryPassage": "Micah 6:6-8",
+      "contextSummary": "The prophet rejects empty religious performance and summarises the covenant response God requires.",
+      "observationPrompt": "Read Micah 6:6-8 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate justice, mercy and genuine worship?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about justice, mercy and genuine worship. Compare with Isaiah 1:16-17 and Matthew 23:23 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about justice, mercy and genuine worship. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Isaiah 1:16-17",
+        "Matthew 23:23"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-73",
+      "title": "Peacemakers as children of God",
+      "primaryPassage": "Micah 6:6-8",
+      "contextSummary": "The prophet rejects empty religious performance and summarises the covenant response God requires.",
+      "observationPrompt": "Read Micah 6:6-8 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate justice, mercy and genuine worship?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about justice, mercy and genuine worship. Compare with Isaiah 1:16-17 and Matthew 23:23 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about justice, mercy and genuine worship. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Isaiah 1:16-17",
+        "Matthew 23:23"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-74",
+      "title": "Persecution and faithful witness",
+      "primaryPassage": "Micah 6:6-8",
+      "contextSummary": "The prophet rejects empty religious performance and summarises the covenant response God requires.",
+      "observationPrompt": "Read Micah 6:6-8 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate justice, mercy and genuine worship?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about justice, mercy and genuine worship. Compare with Isaiah 1:16-17 and Matthew 23:23 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about justice, mercy and genuine worship. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Isaiah 1:16-17",
+        "Matthew 23:23"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-75",
+      "title": "The kingdom's surprising values",
+      "primaryPassage": "Micah 6:6-8",
+      "contextSummary": "The prophet rejects empty religious performance and summarises the covenant response God requires.",
+      "observationPrompt": "Read Micah 6:6-8 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate justice, mercy and genuine worship?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about justice, mercy and genuine worship. Compare with Isaiah 1:16-17 and Matthew 23:23 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about justice, mercy and genuine worship. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Isaiah 1:16-17",
+        "Matthew 23:23"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-76",
+      "title": "Prayer without performance",
+      "primaryPassage": "Matthew 5:1-12",
+      "contextSummary": "Jesus announces the character and hope of the kingdom through blessings that overturn ordinary measures of status.",
+      "observationPrompt": "Read Matthew 5:1-12 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate kingdom character and hope?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about kingdom character and hope. Compare with Luke 6:20-26 and Isaiah 61:1-3 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about kingdom character and hope. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Luke 6:20-26",
+        "Isaiah 61:1-3"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-77",
+      "title": "Honouring the Father's name",
+      "primaryPassage": "Matthew 5:1-12",
+      "contextSummary": "Jesus announces the character and hope of the kingdom through blessings that overturn ordinary measures of status.",
+      "observationPrompt": "Read Matthew 5:1-12 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate kingdom character and hope?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about kingdom character and hope. Compare with Luke 6:20-26 and Isaiah 61:1-3 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about kingdom character and hope. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Luke 6:20-26",
+        "Isaiah 61:1-3"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-78",
+      "title": "Seeking God's kingdom first",
+      "primaryPassage": "Matthew 5:1-12",
+      "contextSummary": "Jesus announces the character and hope of the kingdom through blessings that overturn ordinary measures of status.",
+      "observationPrompt": "Read Matthew 5:1-12 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate kingdom character and hope?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about kingdom character and hope. Compare with Luke 6:20-26 and Isaiah 61:1-3 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about kingdom character and hope. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Luke 6:20-26",
+        "Isaiah 61:1-3"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-79",
+      "title": "Daily bread and dependence",
+      "primaryPassage": "Matthew 5:1-12",
+      "contextSummary": "Jesus announces the character and hope of the kingdom through blessings that overturn ordinary measures of status.",
+      "observationPrompt": "Read Matthew 5:1-12 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate kingdom character and hope?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about kingdom character and hope. Compare with Luke 6:20-26 and Isaiah 61:1-3 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about kingdom character and hope. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Luke 6:20-26",
+        "Isaiah 61:1-3"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-80",
+      "title": "Forgiveness received and extended",
+      "primaryPassage": "Matthew 5:1-12",
+      "contextSummary": "Jesus announces the character and hope of the kingdom through blessings that overturn ordinary measures of status.",
+      "observationPrompt": "Read Matthew 5:1-12 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate kingdom character and hope?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about kingdom character and hope. Compare with Luke 6:20-26 and Isaiah 61:1-3 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about kingdom character and hope. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Luke 6:20-26",
+        "Isaiah 61:1-3"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-81",
+      "title": "The Spirit's help in prayer",
+      "primaryPassage": "Matthew 6:5-15",
+      "contextSummary": "Jesus teaches sincere prayer with attention to God's name, kingdom and provision.",
+      "observationPrompt": "Read Matthew 6:5-15 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate prayer, trust and God's fatherly care?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about prayer, trust and God's fatherly care. Compare with Luke 11:1-13 and Romans 8:14-17 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about prayer, trust and God's fatherly care. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Luke 11:1-13",
+        "Romans 8:14-17"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-82",
+      "title": "The soils and the hearing heart",
+      "primaryPassage": "Matthew 6:5-15",
+      "contextSummary": "Jesus teaches sincere prayer with attention to God's name, kingdom and provision.",
+      "observationPrompt": "Read Matthew 6:5-15 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate prayer, trust and God's fatherly care?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about prayer, trust and God's fatherly care. Compare with Luke 11:1-13 and Romans 8:14-17 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about prayer, trust and God's fatherly care. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Luke 11:1-13",
+        "Romans 8:14-17"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-83",
+      "title": "The word choked by competing loves",
+      "primaryPassage": "Matthew 6:5-15",
+      "contextSummary": "Jesus teaches sincere prayer with attention to God's name, kingdom and provision.",
+      "observationPrompt": "Read Matthew 6:5-15 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate prayer, trust and God's fatherly care?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about prayer, trust and God's fatherly care. Compare with Luke 11:1-13 and Romans 8:14-17 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about prayer, trust and God's fatherly care. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Luke 11:1-13",
+        "Romans 8:14-17"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-84",
+      "title": "Fruitfulness and persevering faith",
+      "primaryPassage": "Matthew 6:5-15",
+      "contextSummary": "Jesus teaches sincere prayer with attention to God's name, kingdom and provision.",
+      "observationPrompt": "Read Matthew 6:5-15 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate prayer, trust and God's fatherly care?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about prayer, trust and God's fatherly care. Compare with Luke 11:1-13 and Romans 8:14-17 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about prayer, trust and God's fatherly care. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Luke 11:1-13",
+        "Romans 8:14-17"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-85",
+      "title": "Parables and the kingdom's hidden growth",
+      "primaryPassage": "Matthew 6:5-15",
+      "contextSummary": "Jesus teaches sincere prayer with attention to God's name, kingdom and provision.",
+      "observationPrompt": "Read Matthew 6:5-15 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate prayer, trust and God's fatherly care?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about prayer, trust and God's fatherly care. Compare with Luke 11:1-13 and Romans 8:14-17 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about prayer, trust and God's fatherly care. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Luke 11:1-13",
+        "Romans 8:14-17"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-86",
+      "title": "The lost sheep and God's joy",
+      "primaryPassage": "Matthew 13:1-23",
+      "contextSummary": "The parable of the sower explains differing responses to the word and calls hearers to attentive reception.",
+      "observationPrompt": "Read Matthew 13:1-23 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate hearing, response and spiritual fruit?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about hearing, response and spiritual fruit. Compare with Mark 4:1-20 and Luke 8:4-15 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about hearing, response and spiritual fruit. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Mark 4:1-20",
+        "Luke 8:4-15"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-87",
+      "title": "The lost coin and careful seeking",
+      "primaryPassage": "Matthew 13:1-23",
+      "contextSummary": "The parable of the sower explains differing responses to the word and calls hearers to attentive reception.",
+      "observationPrompt": "Read Matthew 13:1-23 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate hearing, response and spiritual fruit?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about hearing, response and spiritual fruit. Compare with Mark 4:1-20 and Luke 8:4-15 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about hearing, response and spiritual fruit. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Mark 4:1-20",
+        "Luke 8:4-15"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-88",
+      "title": "The younger son's return",
+      "primaryPassage": "Matthew 13:1-23",
+      "contextSummary": "The parable of the sower explains differing responses to the word and calls hearers to attentive reception.",
+      "observationPrompt": "Read Matthew 13:1-23 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate hearing, response and spiritual fruit?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about hearing, response and spiritual fruit. Compare with Mark 4:1-20 and Luke 8:4-15 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about hearing, response and spiritual fruit. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Mark 4:1-20",
+        "Luke 8:4-15"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-89",
+      "title": "The elder son's resentment",
+      "primaryPassage": "Matthew 13:1-23",
+      "contextSummary": "The parable of the sower explains differing responses to the word and calls hearers to attentive reception.",
+      "observationPrompt": "Read Matthew 13:1-23 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate hearing, response and spiritual fruit?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about hearing, response and spiritual fruit. Compare with Mark 4:1-20 and Luke 8:4-15 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about hearing, response and spiritual fruit. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Mark 4:1-20",
+        "Luke 8:4-15"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-90",
+      "title": "The Father's generous welcome",
+      "primaryPassage": "Matthew 13:1-23",
+      "contextSummary": "The parable of the sower explains differing responses to the word and calls hearers to attentive reception.",
+      "observationPrompt": "Read Matthew 13:1-23 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate hearing, response and spiritual fruit?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about hearing, response and spiritual fruit. Compare with Mark 4:1-20 and Luke 8:4-15 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about hearing, response and spiritual fruit. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Mark 4:1-20",
+        "Luke 8:4-15"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-91",
+      "title": "The Word before creation",
+      "primaryPassage": "Luke 15:11-32",
+      "contextSummary": "Jesus tells of a father's welcome and an elder son's resentment to reveal God's joy over the lost.",
+      "observationPrompt": "Read Luke 15:11-32 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate grace, repentance and restoration?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about grace, repentance and restoration. Compare with Luke 15:1-10 and Ephesians 2:1-10 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about grace, repentance and restoration. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Luke 15:1-10",
+        "Ephesians 2:1-10"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-92",
+      "title": "The Word made flesh",
+      "primaryPassage": "Luke 15:11-32",
+      "contextSummary": "Jesus tells of a father's welcome and an elder son's resentment to reveal God's joy over the lost.",
+      "observationPrompt": "Read Luke 15:11-32 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate grace, repentance and restoration?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about grace, repentance and restoration. Compare with Luke 15:1-10 and Ephesians 2:1-10 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about grace, repentance and restoration. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Luke 15:1-10",
+        "Ephesians 2:1-10"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-93",
+      "title": "Light shining in darkness",
+      "primaryPassage": "Luke 15:11-32",
+      "contextSummary": "Jesus tells of a father's welcome and an elder son's resentment to reveal God's joy over the lost.",
+      "observationPrompt": "Read Luke 15:11-32 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate grace, repentance and restoration?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about grace, repentance and restoration. Compare with Luke 15:1-10 and Ephesians 2:1-10 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about grace, repentance and restoration. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Luke 15:1-10",
+        "Ephesians 2:1-10"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-94",
+      "title": "Grace and truth in Jesus",
+      "primaryPassage": "Luke 15:11-32",
+      "contextSummary": "Jesus tells of a father's welcome and an elder son's resentment to reveal God's joy over the lost.",
+      "observationPrompt": "Read Luke 15:11-32 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate grace, repentance and restoration?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about grace, repentance and restoration. Compare with Luke 15:1-10 and Ephesians 2:1-10 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about grace, repentance and restoration. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Luke 15:1-10",
+        "Ephesians 2:1-10"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-95",
+      "title": "The glory of the only Son",
+      "primaryPassage": "Luke 15:11-32",
+      "contextSummary": "Jesus tells of a father's welcome and an elder son's resentment to reveal God's joy over the lost.",
+      "observationPrompt": "Read Luke 15:11-32 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate grace, repentance and restoration?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about grace, repentance and restoration. Compare with Luke 15:1-10 and Ephesians 2:1-10 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about grace, repentance and restoration. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Luke 15:1-10",
+        "Ephesians 2:1-10"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-96",
+      "title": "Abiding in the true vine",
+      "primaryPassage": "John 1:1-18",
+      "contextSummary": "John identifies Jesus as the eternal Word through whom all things came to be and who became flesh.",
+      "observationPrompt": "Read John 1:1-18 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate the identity of Jesus and God's self-revelation?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about the identity of Jesus and God's self-revelation. Compare with Colossians 1:15-20 and Hebrews 1:1-4 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about the identity of Jesus and God's self-revelation. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Colossians 1:15-20",
+        "Hebrews 1:1-4"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-97",
+      "title": "Pruning and fruitful growth",
+      "primaryPassage": "John 1:1-18",
+      "contextSummary": "John identifies Jesus as the eternal Word through whom all things came to be and who became flesh.",
+      "observationPrompt": "Read John 1:1-18 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate the identity of Jesus and God's self-revelation?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about the identity of Jesus and God's self-revelation. Compare with Colossians 1:15-20 and Hebrews 1:1-4 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about the identity of Jesus and God's self-revelation. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Colossians 1:15-20",
+        "Hebrews 1:1-4"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-98",
+      "title": "Love expressed through obedience",
+      "primaryPassage": "John 1:1-18",
+      "contextSummary": "John identifies Jesus as the eternal Word through whom all things came to be and who became flesh.",
+      "observationPrompt": "Read John 1:1-18 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate the identity of Jesus and God's self-revelation?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about the identity of Jesus and God's self-revelation. Compare with Colossians 1:15-20 and Hebrews 1:1-4 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about the identity of Jesus and God's self-revelation. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Colossians 1:15-20",
+        "Hebrews 1:1-4"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-99",
+      "title": "The command to love one another",
+      "primaryPassage": "John 1:1-18",
+      "contextSummary": "John identifies Jesus as the eternal Word through whom all things came to be and who became flesh.",
+      "observationPrompt": "Read John 1:1-18 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate the identity of Jesus and God's self-revelation?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about the identity of Jesus and God's self-revelation. Compare with Colossians 1:15-20 and Hebrews 1:1-4 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about the identity of Jesus and God's self-revelation. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Colossians 1:15-20",
+        "Hebrews 1:1-4"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-100",
+      "title": "Joy made complete in Christ",
+      "primaryPassage": "John 1:1-18",
+      "contextSummary": "John identifies Jesus as the eternal Word through whom all things came to be and who became flesh.",
+      "observationPrompt": "Read John 1:1-18 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate the identity of Jesus and God's self-revelation?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about the identity of Jesus and God's self-revelation. Compare with Colossians 1:15-20 and Hebrews 1:1-4 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about the identity of Jesus and God's self-revelation. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Colossians 1:15-20",
+        "Hebrews 1:1-4"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-101",
+      "title": "The promise of the Holy Spirit",
+      "primaryPassage": "John 15:1-11",
+      "contextSummary": "Jesus uses the vine and branches to teach dependence, fruitfulness, obedience and abiding love.",
+      "observationPrompt": "Read John 15:1-11 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate union with Christ and fruitful discipleship?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about union with Christ and fruitful discipleship. Compare with Galatians 5:16-26 and 1 John 2:3-6 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about union with Christ and fruitful discipleship. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Galatians 5:16-26",
+        "1 John 2:3-6"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-102",
+      "title": "The Spirit and bold witness",
+      "primaryPassage": "John 15:1-11",
+      "contextSummary": "Jesus uses the vine and branches to teach dependence, fruitfulness, obedience and abiding love.",
+      "observationPrompt": "Read John 15:1-11 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate union with Christ and fruitful discipleship?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about union with Christ and fruitful discipleship. Compare with Galatians 5:16-26 and 1 John 2:3-6 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about union with Christ and fruitful discipleship. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Galatians 5:16-26",
+        "1 John 2:3-6"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-103",
+      "title": "Many languages, one gospel proclamation",
+      "primaryPassage": "John 15:1-11",
+      "contextSummary": "Jesus uses the vine and branches to teach dependence, fruitfulness, obedience and abiding love.",
+      "observationPrompt": "Read John 15:1-11 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate union with Christ and fruitful discipleship?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about union with Christ and fruitful discipleship. Compare with Galatians 5:16-26 and 1 John 2:3-6 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about union with Christ and fruitful discipleship. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Galatians 5:16-26",
+        "1 John 2:3-6"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-104",
+      "title": "Peter's interpretation of Pentecost",
+      "primaryPassage": "John 15:1-11",
+      "contextSummary": "Jesus uses the vine and branches to teach dependence, fruitfulness, obedience and abiding love.",
+      "observationPrompt": "Read John 15:1-11 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate union with Christ and fruitful discipleship?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about union with Christ and fruitful discipleship. Compare with Galatians 5:16-26 and 1 John 2:3-6 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about union with Christ and fruitful discipleship. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Galatians 5:16-26",
+        "1 John 2:3-6"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-105",
+      "title": "The gathered people and shared life",
+      "primaryPassage": "John 15:1-11",
+      "contextSummary": "Jesus uses the vine and branches to teach dependence, fruitfulness, obedience and abiding love.",
+      "observationPrompt": "Read John 15:1-11 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate union with Christ and fruitful discipleship?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about union with Christ and fruitful discipleship. Compare with Galatians 5:16-26 and 1 John 2:3-6 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about union with Christ and fruitful discipleship. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Galatians 5:16-26",
+        "1 John 2:3-6"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-106",
+      "title": "No condemnation in Christ",
+      "primaryPassage": "Acts 2:1-21",
+      "contextSummary": "At Pentecost the Spirit empowers the disciples and Peter interprets the event through Joel.",
+      "observationPrompt": "Read Acts 2:1-21 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate the Spirit, witness and the people of God?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about the Spirit, witness and the people of God. Compare with Joel 2:28-32 and Acts 1:4-8 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about the Spirit, witness and the people of God. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Joel 2:28-32",
+        "Acts 1:4-8"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-107",
+      "title": "The Spirit of life",
+      "primaryPassage": "Acts 2:1-21",
+      "contextSummary": "At Pentecost the Spirit empowers the disciples and Peter interprets the event through Joel.",
+      "observationPrompt": "Read Acts 2:1-21 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate the Spirit, witness and the people of God?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about the Spirit, witness and the people of God. Compare with Joel 2:28-32 and Acts 1:4-8 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about the Spirit, witness and the people of God. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Joel 2:28-32",
+        "Acts 1:4-8"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-108",
+      "title": "Adoption and the cry Abba Father",
+      "primaryPassage": "Acts 2:1-21",
+      "contextSummary": "At Pentecost the Spirit empowers the disciples and Peter interprets the event through Joel.",
+      "observationPrompt": "Read Acts 2:1-21 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate the Spirit, witness and the people of God?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about the Spirit, witness and the people of God. Compare with Joel 2:28-32 and Acts 1:4-8 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about the Spirit, witness and the people of God. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Joel 2:28-32",
+        "Acts 1:4-8"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-109",
+      "title": "Suffering and the hope of glory",
+      "primaryPassage": "Acts 2:1-21",
+      "contextSummary": "At Pentecost the Spirit empowers the disciples and Peter interprets the event through Joel.",
+      "observationPrompt": "Read Acts 2:1-21 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate the Spirit, witness and the people of God?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about the Spirit, witness and the people of God. Compare with Joel 2:28-32 and Acts 1:4-8 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about the Spirit, witness and the people of God. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Joel 2:28-32",
+        "Acts 1:4-8"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-110",
+      "title": "The Spirit's help in weakness",
+      "primaryPassage": "Acts 2:1-21",
+      "contextSummary": "At Pentecost the Spirit empowers the disciples and Peter interprets the event through Joel.",
+      "observationPrompt": "Read Acts 2:1-21 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate the Spirit, witness and the people of God?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about the Spirit, witness and the people of God. Compare with Joel 2:28-32 and Acts 1:4-8 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about the Spirit, witness and the people of God. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Joel 2:28-32",
+        "Acts 1:4-8"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-111",
+      "title": "The body and its many members",
+      "primaryPassage": "Romans 8:1-17",
+      "contextSummary": "Paul describes life in the Spirit, freedom from condemnation and assurance of adoption.",
+      "observationPrompt": "Read Romans 8:1-17 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate life in the Spirit and belonging?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about life in the Spirit and belonging. Compare with Galatians 4:4-7 and John 14:15-27 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about life in the Spirit and belonging. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Galatians 4:4-7",
+        "John 14:15-27"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-112",
+      "title": "Different gifts, one Spirit",
+      "primaryPassage": "Romans 8:1-17",
+      "contextSummary": "Paul describes life in the Spirit, freedom from condemnation and assurance of adoption.",
+      "observationPrompt": "Read Romans 8:1-17 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate life in the Spirit and belonging?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about life in the Spirit and belonging. Compare with Galatians 4:4-7 and John 14:15-27 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about life in the Spirit and belonging. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Galatians 4:4-7",
+        "John 14:15-27"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-113",
+      "title": "Honouring weaker members",
+      "primaryPassage": "Romans 8:1-17",
+      "contextSummary": "Paul describes life in the Spirit, freedom from condemnation and assurance of adoption.",
+      "observationPrompt": "Read Romans 8:1-17 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate life in the Spirit and belonging?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about life in the Spirit and belonging. Compare with Galatians 4:4-7 and John 14:15-27 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about life in the Spirit and belonging. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Galatians 4:4-7",
+        "John 14:15-27"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-114",
+      "title": "Love as the more excellent way",
+      "primaryPassage": "Romans 8:1-17",
+      "contextSummary": "Paul describes life in the Spirit, freedom from condemnation and assurance of adoption.",
+      "observationPrompt": "Read Romans 8:1-17 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate life in the Spirit and belonging?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about life in the Spirit and belonging. Compare with Galatians 4:4-7 and John 14:15-27 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about life in the Spirit and belonging. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Galatians 4:4-7",
+        "John 14:15-27"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-115",
+      "title": "Order and edification in gathered worship",
+      "primaryPassage": "Romans 8:1-17",
+      "contextSummary": "Paul describes life in the Spirit, freedom from condemnation and assurance of adoption.",
+      "observationPrompt": "Read Romans 8:1-17 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate life in the Spirit and belonging?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about life in the Spirit and belonging. Compare with Galatians 4:4-7 and John 14:15-27 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about life in the Spirit and belonging. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Galatians 4:4-7",
+        "John 14:15-27"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-116",
+      "title": "The common good as the aim of gifts",
+      "primaryPassage": "1 Corinthians 12:1-27",
+      "contextSummary": "Paul teaches that gifts are given for the common good and the church is one body with many members.",
+      "observationPrompt": "Read 1 Corinthians 12:1-27 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate gifts, unity and mutual service?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about gifts, unity and mutual service. Compare with Romans 12:3-8 and Ephesians 4:1-16 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about gifts, unity and mutual service. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Romans 12:3-8",
+        "Ephesians 4:1-16"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-117",
+      "title": "Unity without uniformity",
+      "primaryPassage": "1 Corinthians 12:1-27",
+      "contextSummary": "Paul teaches that gifts are given for the common good and the church is one body with many members.",
+      "observationPrompt": "Read 1 Corinthians 12:1-27 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate gifts, unity and mutual service?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about gifts, unity and mutual service. Compare with Romans 12:3-8 and Ephesians 4:1-16 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about gifts, unity and mutual service. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Romans 12:3-8",
+        "Ephesians 4:1-16"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-118",
+      "title": "Bearing one another's burdens",
+      "primaryPassage": "1 Corinthians 12:1-27",
+      "contextSummary": "Paul teaches that gifts are given for the common good and the church is one body with many members.",
+      "observationPrompt": "Read 1 Corinthians 12:1-27 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate gifts, unity and mutual service?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about gifts, unity and mutual service. Compare with Romans 12:3-8 and Ephesians 4:1-16 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about gifts, unity and mutual service. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Romans 12:3-8",
+        "Ephesians 4:1-16"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-119",
+      "title": "Maturity in the body of Christ",
+      "primaryPassage": "1 Corinthians 12:1-27",
+      "contextSummary": "Paul teaches that gifts are given for the common good and the church is one body with many members.",
+      "observationPrompt": "Read 1 Corinthians 12:1-27 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate gifts, unity and mutual service?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about gifts, unity and mutual service. Compare with Romans 12:3-8 and Ephesians 4:1-16 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about gifts, unity and mutual service. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Romans 12:3-8",
+        "Ephesians 4:1-16"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
+    },
+    {
+      "id": "deep-study-120",
+      "title": "Faithfulness in ordinary service",
+      "primaryPassage": "1 Corinthians 12:1-27",
+      "contextSummary": "Paul teaches that gifts are given for the common good and the church is one body with many members.",
+      "observationPrompt": "Read 1 Corinthians 12:1-27 slowly. Observe repeated words, commands, promises, contrasts and the movement of the passage. What details illuminate gifts, unity and mutual service?",
+      "interpretationPrompt": "Explain how the original audience and setting shape the message about gifts, unity and mutual service. Compare with Romans 12:3-8 and Ephesians 4:1-16 without allowing a cross-reference to override the primary passage.",
+      "lifeApplicationPrompt": "Identify one concrete response in belief, character or action that follows from the passage's teaching about gifts, unity and mutual service. Keep the application consistent with the text's original meaning.",
+      "crossReferences": [
+        "Romans 12:3-8",
+        "Ephesians 4:1-16"
+      ],
+      "interpretiveCaution": "Read the whole passage in its book context. Do not turn a narrative detail, poetic image or promise to a particular audience into a universal guarantee without textual support."
     }
   ]
 }
