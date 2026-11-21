@@ -334,6 +334,26 @@
         margin-bottom: 5px;
         color: #24634a;
       }
+
+      #zurielLibrary .zlib-name-study {
+        margin-top: 9px;
+        padding: 10px 12px;
+        border: 1px solid #d9e2e9;
+        border-radius: 10px;
+        background: #fbfcfa;
+      }
+
+      #zurielLibrary .zlib-name-study summary {
+        cursor: pointer;
+        color: #24634a;
+        font-weight: 700;
+        min-height: 32px;
+      }
+
+      #zurielLibrary .zlib-name-study p {
+        margin: 9px 0 2px;
+        line-height: 1.7;
+      }
       #zurielLibrary .zlib-study-topic {border:1px solid #d9e2e9;border-radius:13px;background:#fff;padding:13px;margin:12px 0;}
       #zurielLibrary .zlib-study-art {display:block;width:100%;height:auto;max-height:145px;object-fit:cover;border-radius:9px;margin:0 0 10px;background:#172b49;}
       #zurielLibrary .zlib-study-topic .zrl-open {width:100%;margin-top:8px;}
@@ -1379,6 +1399,12 @@
           box.appendChild(element("h4", item.name));
           box.appendChild(element("p", item.meaning));
           box.appendChild(element("strong", item.reference));
+          if (item.study) {
+            const study = element("details", undefined, "zlib-name-study");
+            study.appendChild(element("summary", "Explore the passage in context"));
+            study.appendChild(element("p", item.study));
+            box.appendChild(study);
+          }
           content.appendChild(box);
         });
       }
