@@ -1825,6 +1825,17 @@
           {category:"The Kingdom of God",title:"The pearl of great price",summary:"Jesus teaches that the Kingdom is worth more than every lesser treasure and calls for wholehearted response.",refs:["Matthew 13:45","Matthew 13:46"]},
           {category:"Faith and Courage",title:"The wise and foolish virgins",summary:"Jesus calls His disciples to watchfulness and readiness because the timing of His return is not known.",refs:["Matthew 25:1","Matthew 25:10","Matthew 25:13"]},
           {category:"Mission and Witness",title:"The talents entrusted",summary:"Jesus teaches accountability and faithful stewardship through a parable about servants entrusted with their master's resources.",refs:["Matthew 25:14","Matthew 25:21","Matthew 25:29"]}
+
+          {category:"The Kingdom of God",title:"The bread of life",summary:"Jesus presents Himself as the bread of life and calls people to come to Him and believe.",refs:["John 6:35","John 6:37","John 6:40"]},
+          {category:"The Kingdom of God",title:"The kingdom is like growing seed",summary:"Jesus describes the quiet, gradual growth of God's Kingdom through the parable of the growing seed.",refs:["Mark 4:26","Mark 4:27","Mark 4:28"]},
+          {category:"Discipleship",title:"Take up your cross daily",summary:"Jesus calls His followers to deny themselves, take up the cross daily and follow Him.",refs:["Luke 9:23","Luke 9:24","Luke 9:25"]},
+          {category:"Discipleship",title:"The first must be last",summary:"Jesus teaches that greatness in His Kingdom is expressed through humility and service.",refs:["Mark 9:35","Matthew 20:26","Matthew 20:27"]},
+          {category:"Prayer and Trust",title:"Watch and pray",summary:"Jesus tells His disciples to watch and pray so that they may not enter into temptation.",refs:["Matthew 26:41","Mark 14:38","Luke 22:40"]},
+          {category:"Love and Relationships",title:"Be peacemakers",summary:"Jesus blesses peacemakers and calls His followers to pursue reconciliation and peace.",refs:["Matthew 5:9","Matthew 5:23","Matthew 5:24"]},
+          {category:"Mission and Witness",title:"The harvest is plentiful",summary:"Jesus teaches His disciples to recognise the need for workers and to pray to the Lord of the harvest.",refs:["Matthew 9:37","Matthew 9:38","Luke 10:2"]},
+          {category:"The Cross and Resurrection",title:"The grain of wheat",summary:"Jesus uses the image of a grain of wheat to explain the life that comes through His approaching death.",refs:["John 12:24","John 12:25","John 12:26"]},
+          {category:"Faith and Courage",title:"Nothing is impossible with God",summary:"Jesus directs His disciples away from human self-reliance and toward the power of God.",refs:["Matthew 19:26","Mark 10:27","Luke 18:27"]},
+          {category:"Humility and Service",title:"The servant is not greater than his master",summary:"Jesus calls His disciples to follow His example of humble service rather than seek status.",refs:["John 13:16","John 13:17","Luke 22:26"]}
         ];
 
         const search = element("input");
