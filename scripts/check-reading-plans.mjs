@@ -105,8 +105,8 @@ try {
       verifiedPassages += 1;
     }
   }
-  if (curatedPlans.length !== 10) throw new Error("Expected ten curated offline reading plans.");
-  if (verifiedPassages < 90) throw new Error("Expected at least 90 verified reading-plan passages, including the 30-day plan.");
+  if (curatedPlans.length !== 12) throw new Error("Expected twelve curated offline reading plans.");
+  if (verifiedPassages !== 121) throw new Error("Expected 121 verified reading-plan passages, including the 30-day and two 14-day journeys.");
 } catch (error) {
   failures.push("Bundled KJV reading-plan reference verification failed: " + error.message);
 }
@@ -115,5 +115,5 @@ if (failures.length) {
   failures.forEach(item => console.error(" - " + item));
   process.exitCode = 1;
 } else {
-  console.log("Reading plan integration checks passed: ten offline plans (including a 30-day journey), at least 90 exact bundled-KJV passage validations, private progress, Bible navigation, encrypted backup, web cache and Android packaging.");
+  console.log("Reading plan integration checks passed: twelve offline plans (including a 30-day journey and two 14-day deepening journeys), 121 exact bundled-KJV passage validations, private progress, Bible navigation, encrypted backup, web cache and Android packaging.");
 }
