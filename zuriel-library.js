@@ -2285,6 +2285,69 @@
         }));
         content.appendChild(backupStatus);
 
+        content.appendChild(button("Restore Personal Library Backup", function () {
+          const picker = element("input");
+          picker.type = "file";
+          picker.accept = "application/json,.json";
+          picker.style.display = "none";
+          content.appendChild(picker);
+          picker.addEventListener("change", async function () {
+            const file = picker.files && picker.files[0];
+            picker.remove();
+            if (!file) return;
+            try {
+              const backup = JSON.parse(await file.text());
+              if (backup.format !== "zuriel-personal-library-backup" ||
+                  backup.schemaVersion !== 1 ||
+                  !backup.personalLibrary ||
+                  !Array.isArray(backup.personalLibrary.bookmarks) ||
+                  !Array.isArray(backup.personalLibrary.notes) ||
+                  !Array.isArray(backup.personalLibrary.prayers) ||
+                  typeof backup.verseStudyNotes !== "object" ||
+                  typeof backup.wordHighlights !== "object") {
+                throw new Error("This file is not a supported Zuriel backup.");
+              }
+              if (!window.confirm("Restore by adding the backup records to your existing library? Existing records will be preserved. Duplicate entries may be skipped.")) return;
+              const oldSaved = localStorage.getItem(STORAGE_KEY);
+              const oldVerseNotes = localStorage.getItem("zuriel-verse-study-notes-v1");
+              const oldHighlights = localStorage.getItem("zuriel-word-highlights-v1");
+              const mergeArray = function (current, incoming) {
+                const result = Array.isArray(current) ? current.slice() : [];
+                (incoming || []).forEach(function (item) {
+                  const key = JSON.stringify(item);
+                  if (!result.some(existing => JSON.stringify(existing) === key)) result.push(item);
+                });
+                return result;
+              };
+              const mergeObject = function (current, incoming) {
+                return Object.assign({}, incoming || {}, current || {});
+              };
+              const existing = loadSaved();
+              const restored = {
+                bookmarks: mergeArray(existing.bookmarks, backup.personalLibrary.bookmarks),
+                notes: mergeArray(existing.notes, backup.personalLibrary.notes),
+                prayers: mergeArray(existing.prayers, backup.personalLibrary.prayers)
+              };
+              try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(restored));
+                localStorage.setItem("zuriel-verse-study-notes-v1",
+                  JSON.stringify(mergeObject(readLocalRecords("zuriel-verse-study-notes-v1"), backup.verseStudyNotes)));
+                localStorage.setItem("zuriel-word-highlights-v1",
+                  JSON.stringify(mergeObject(readLocalRecords("zuriel-word-highlights-v1"), backup.wordHighlights)));
+              } catch (writeError) {
+                if (oldSaved === null) localStorage.removeItem(STORAGE_KEY); else localStorage.setItem(STORAGE_KEY, oldSaved);
+                if (oldVerseNotes === null) localStorage.removeItem("zuriel-verse-study-notes-v1"); else localStorage.setItem("zuriel-verse-study-notes-v1", oldVerseNotes);
+                if (oldHighlights === null) localStorage.removeItem("zuriel-word-highlights-v1"); else localStorage.setItem("zuriel-word-highlights-v1", oldHighlights);
+                throw writeError;
+              }
+              backupStatus.textContent = "Backup records were restored and combined with your existing library. Reopen My Saved Library to refresh its lists.";
+            } catch (error) {
+              backupStatus.textContent = "Restore failed. Your existing personal records were preserved.";
+              console.error("Zuriel backup restore:", error);
+            }
+          });
+          picker.click();
+        }));
         function openReference(reference) {
           const match = String(reference || "").trim().match(/^(.+?)\s+(\d+)(?::(\d+))?(?:[-–]\d+)?$/);
           if (!match || typeof window.openChapter !== "function") return;
