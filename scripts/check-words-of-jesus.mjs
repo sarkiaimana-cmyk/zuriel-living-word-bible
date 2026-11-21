@@ -60,7 +60,17 @@ const required = [
   ["Kingdom treasure parable", "The pearl of great price"],
   ["watchfulness parable", "The wise and foolish virgins"],
   ["faithful stewardship parable", "The talents entrusted"],
-  ["unavailable reader feedback", "The Bible reader is not ready yet. Please try again."]
+  ["unavailable reader feedback", "The Bible reader is not ready yet. Please try again."],
+  ["bread of life teaching", "The bread of life"],
+  ["growing seed parable", "The kingdom is like growing seed"],
+  ["daily cross-bearing", "Take up your cross daily"],
+  ["servant-hearted greatness", "The first must be last"],
+  ["watchfulness in prayer", "Watch and pray"],
+  ["peacemaking", "Be peacemakers"],
+  ["harvest and mission", "The harvest is plentiful"],
+  ["grain of wheat teaching", "The grain of wheat"],
+  ["God's power beyond human limits", "Nothing is impossible with God"],
+  ["servant and master teaching", "The servant is not greater than his master"]
 ];
 for (const [label, fragment] of required) {
   if (!library.includes(fragment)) failures.push(label + " is missing.");
@@ -74,7 +84,7 @@ const sectionEnd = library.indexOf('if (page === "saved")', sectionStart);
 const section = sectionStart >= 0 && sectionEnd > sectionStart ? library.slice(sectionStart, sectionEnd) : "";
 const topicCount = (section.match(/category:/g) || []).length;
 const referenceCount = (section.match(/refs:\[/g) || []).length;
-if (topicCount < 60) failures.push("Expected at least 60 curated Jesus teaching themes; found " + topicCount + ".");
+if (topicCount < 70) failures.push("Expected at least 70 curated Jesus teaching themes; found " + topicCount + ".");
 if (referenceCount < 20) failures.push("Expected Scripture reference collections for the teaching themes.");
 
 // Resolve every curated Words of Jesus reference against the actual bundled KJV.
