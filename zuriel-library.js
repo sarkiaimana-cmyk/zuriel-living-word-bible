@@ -1917,6 +1917,13 @@
             summary.setAttribute("aria-label", "Expand teaching: " + item.title);
             details.appendChild(summary);
             details.appendChild(element("p", item.summary));
+            const guided = element("section", undefined, "jesus-guided-study");
+            guided.appendChild(element("h4", "Guided study"));
+            guided.appendChild(element("p", "Observe: What does Jesus actually say or do in this passage? Read each linked passage in its surrounding context."));
+            guided.appendChild(element("p", "Understand: What does this teaching reveal about Jesus, God’s Kingdom, or the life of a disciple? Consider the audience and situation."));
+            guided.appendChild(element("p", "Respond: In light of “" + item.title + "”, what attitude, choice or action could you bring before God today?"));
+            guided.appendChild(element("p", "Prayer prompt: Father, help me understand and live out what Jesus teaches here. Show me one faithful next step, and give me grace to take it."));
+            details.appendChild(guided);
             const refs = element("div", undefined, "library-nav");
             item.refs.forEach(function (reference) {
               const open = button("Open " + reference, function () { openJesusReference(reference, open); });
@@ -1931,7 +1938,7 @@
               if (!exists) {
                 saved.bookmarks.push({
                   title: title,
-                  text: item.summary + "\n\nGospel references: " + item.refs.join("; "),
+                  text: item.summary + "\n\nGuided study: Observe Jesus’ words and actions; understand the context and what this reveals; choose a practical response. Prayer prompt: Father, help me live out this teaching.\n\nGospel references: " + item.refs.join("; "),
                   reference: item.refs[0]
                 });
               }
