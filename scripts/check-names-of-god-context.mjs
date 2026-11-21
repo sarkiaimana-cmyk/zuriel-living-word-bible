@@ -7,6 +7,9 @@ const match = source.match(/namesOfGod:\s*(\[[\s\S]*?\n\s*\]),\s*studyTopics:/);
 assert.ok(match, "Names of God collection must be present in the study library.");
 const entries = vm.runInNewContext("(" + match[1] + ")", {}, { timeout: 1000 });
 assert.equal(entries.length, 15, "The curated Names of God collection should retain all fifteen entries.");
+assert.match(source, /zlib-name-study/, "Context notes must have a dedicated expandable presentation.");
+assert.match(source, /Explore the passage in context/, "The reader-facing disclosure label must be present.");
+assert.match(source, /study\.trim\(\)/, "Every contextual note must be non-empty.");
 const names = new Set();
 for (const entry of entries) {
   assert.ok(entry.name && entry.meaning && entry.reference, "Every name needs a title, meaning and Scripture reference.");
