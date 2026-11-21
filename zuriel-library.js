@@ -1682,6 +1682,26 @@
               status.textContent = "Editing this saved entry. Saving will update it rather than create a duplicate.";
               titleField.focus();
             }));
+            box.appendChild(button("Delete Entry", function () {
+              if (!window.confirm("Delete this saved journal entry? This cannot be undone.")) return;
+              const index = saved.prayers.indexOf(item);
+              if (index < 0) return;
+              saved.prayers.splice(index, 1);
+              if (editingPrayer === item) {
+                editingPrayer = null;
+                titleField.value = "";
+                categoryField.value = "prayer";
+                referenceField.value = "";
+                area.value = "";
+                saveJournalButton.textContent = "Save Journal Entry";
+              }
+              if (persist()) {
+                status.textContent = "The journal entry was deleted from this device.";
+                renderPrayerRecords();
+              } else {
+                status.textContent = "The entry could not be deleted. Please try again.";
+              }
+            }));
             records.appendChild(box);
           });
         }
@@ -1810,6 +1830,25 @@
               saveNoteButton.textContent = "Update Study Note";
               status.textContent = "Editing this saved note. Saving will update it rather than create a duplicate.";
               title.focus();
+            }));
+            box.appendChild(button("Delete Note", function () {
+              if (!window.confirm("Delete this saved study note? This cannot be undone.")) return;
+              const index = entries.indexOf(item);
+              if (index < 0) return;
+              entries.splice(index, 1);
+              if (editingNote === item) {
+                editingNote = null;
+                title.value = "";
+                reference.value = "";
+                area.value = "";
+                saveNoteButton.textContent = "Save Study Note";
+              }
+              if (persist()) {
+                status.textContent = "The study note was deleted from this device.";
+                renderPersonalNotes();
+              } else {
+                status.textContent = "The note could not be deleted. Please try again.";
+              }
             }));
             noteList.appendChild(box);
           });
