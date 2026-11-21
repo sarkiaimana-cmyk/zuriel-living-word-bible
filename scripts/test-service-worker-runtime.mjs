@@ -139,4 +139,11 @@ const postResponse = await dispatch(post.handlers.fetch, {
 assert.equal(postResponse, undefined, "Non-GET requests must be left untouched by the service worker.");
 assert.equal(post.calls.fetched.length, 0);
 
+const unrelatedExternal = createHarness();
+const externalResponse = await dispatch(unrelatedExternal.handlers.fetch, {
+  request: { method: "GET", mode: "cors", url: "https://unapproved.example/resource.json" }
+});
+assert.equal(externalResponse, undefined, "Unrelated external origins must remain outside service-worker interception.");
+assert.equal(unrelatedExternal.calls.fetched.length, 0);
+
 console.log("Offline service-worker runtime checks passed: core precache, failed-install safety, old-cache cleanup, offline reader navigation, cached application modules, cache fill, cached study resources, cached imagery and non-GET isolation.");
