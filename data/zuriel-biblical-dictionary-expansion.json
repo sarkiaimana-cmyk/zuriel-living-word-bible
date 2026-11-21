@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "title": "Zuriel Biblical Dictionary and Language Glossary — Expansion",
-  "description": "Concise contextual definitions for biblical concepts, ministry terms and selected Hebrew, Aramaic and Greek expressions. Each entry includes Scripture trails and a caution against common oversimplification.",
+  "title": "Zuriel Biblical Dictionary and Language Glossary — 210 Entries",
+  "description": "A context-sensitive offline dictionary of biblical concepts, historical practices, ministry terms and carefully labelled theological vocabulary.",
   "editorialPolicy": [
     "Definitions are contextual study aids, not substitutes for lexicons or full passage reading.",
     "Original-language glosses are approximate and context-dependent; no Strong's number or morphology is invented.",
@@ -1324,6 +1324,1106 @@
       ],
       "editorialCaution": "Translations and traditions differ in how they relate expiation and propitiation. Do not reduce the full biblical teaching on atonement to one metaphor or assume every text uses the same mechanism.",
       "entryType": "theological-term"
+    },
+    {
+      "id": "glossary-111",
+      "term": "Image-bearing",
+      "definition": "A biblical expression connected with Humanity's created dignity and responsibility before God. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Genesis 1:26-28",
+        "Psalm 8:3-8"
+      ],
+      "editorialCaution": "Read the complete context before applying image-bearing. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-112",
+      "term": "Human dignity",
+      "definition": "A biblical expression connected with Humanity's created dignity and responsibility before God. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Genesis 1:26-28",
+        "Psalm 8:3-8"
+      ],
+      "editorialCaution": "Read the complete context before applying human dignity. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-113",
+      "term": "Creation mandate",
+      "definition": "A biblical expression connected with Humanity's created dignity and responsibility before God. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Genesis 1:26-28",
+        "Psalm 8:3-8"
+      ],
+      "editorialCaution": "Read the complete context before applying creation mandate. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-114",
+      "term": "Human vocation",
+      "definition": "A biblical expression connected with Humanity's created dignity and responsibility before God. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Genesis 1:26-28",
+        "Psalm 8:3-8"
+      ],
+      "editorialCaution": "Read the complete context before applying human vocation. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-115",
+      "term": "Chosen people",
+      "definition": "A biblical expression connected with Israel's identity and vocation within God's covenant purposes. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Exodus 19:3-8",
+        "Deuteronomy 7:6-9"
+      ],
+      "editorialCaution": "Read the complete context before applying chosen people. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-116",
+      "term": "Holy nation",
+      "definition": "A biblical expression connected with Israel's identity and vocation within God's covenant purposes. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Exodus 19:3-8",
+        "Deuteronomy 7:6-9"
+      ],
+      "editorialCaution": "Read the complete context before applying holy nation. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-117",
+      "term": "Covenant people",
+      "definition": "A biblical expression connected with Israel's identity and vocation within God's covenant purposes. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Exodus 19:3-8",
+        "Deuteronomy 7:6-9"
+      ],
+      "editorialCaution": "Read the complete context before applying covenant people. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-118",
+      "term": "Priesthood of believers",
+      "definition": "A biblical expression connected with Israel's identity and vocation within God's covenant purposes. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Exodus 19:3-8",
+        "Deuteronomy 7:6-9"
+      ],
+      "editorialCaution": "Read the complete context before applying priesthood of believers. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-119",
+      "term": "Covenant sign",
+      "definition": "A biblical expression connected with Israel's identity and vocation within God's covenant purposes. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Exodus 19:3-8",
+        "Deuteronomy 7:6-9"
+      ],
+      "editorialCaution": "Read the complete context before applying covenant sign. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-120",
+      "term": "Good Shepherd",
+      "definition": "A biblical expression connected with The biblical picture of God's care and responsible spiritual leadership. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Psalm 23:1-6",
+        "Ezekiel 34:11-16"
+      ],
+      "editorialCaution": "Read the complete context before applying good shepherd. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-121",
+      "term": "Shepherd imagery",
+      "definition": "A biblical expression connected with The biblical picture of God's care and responsible spiritual leadership. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Psalm 23:1-6",
+        "Ezekiel 34:11-16"
+      ],
+      "editorialCaution": "Read the complete context before applying shepherd imagery. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-122",
+      "term": "Pastoral care",
+      "definition": "A biblical expression connected with The biblical picture of God's care and responsible spiritual leadership. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Psalm 23:1-6",
+        "Ezekiel 34:11-16"
+      ],
+      "editorialCaution": "Read the complete context before applying pastoral care. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-123",
+      "term": "Green pastures",
+      "definition": "A biblical expression connected with The biblical picture of God's care and responsible spiritual leadership. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Psalm 23:1-6",
+        "Ezekiel 34:11-16"
+      ],
+      "editorialCaution": "Read the complete context before applying green pastures. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-124",
+      "term": "Still waters",
+      "definition": "A biblical expression connected with The biblical picture of God's care and responsible spiritual leadership. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Psalm 23:1-6",
+        "Ezekiel 34:11-16"
+      ],
+      "editorialCaution": "Read the complete context before applying still waters. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-125",
+      "term": "Waiting on God",
+      "definition": "A biblical expression connected with Trustful endurance while waiting for God's help and timing. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Isaiah 40:28-31",
+        "Psalm 27:13-14"
+      ],
+      "editorialCaution": "Read the complete context before applying waiting on god. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-126",
+      "term": "Renewed strength",
+      "definition": "A biblical expression connected with Trustful endurance while waiting for God's help and timing. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Isaiah 40:28-31",
+        "Psalm 27:13-14"
+      ],
+      "editorialCaution": "Read the complete context before applying renewed strength. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-127",
+      "term": "Hopeful endurance",
+      "definition": "A biblical expression connected with Trustful endurance while waiting for God's help and timing. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Isaiah 40:28-31",
+        "Psalm 27:13-14"
+      ],
+      "editorialCaution": "Read the complete context before applying hopeful endurance. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-128",
+      "term": "Divine comfort",
+      "definition": "A biblical expression connected with Trustful endurance while waiting for God's help and timing. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Isaiah 40:28-31",
+        "Psalm 27:13-14"
+      ],
+      "editorialCaution": "Read the complete context before applying divine comfort. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-129",
+      "term": "Steadfastness",
+      "definition": "A biblical expression connected with Trustful endurance while waiting for God's help and timing. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Isaiah 40:28-31",
+        "Psalm 27:13-14"
+      ],
+      "editorialCaution": "Read the complete context before applying steadfastness. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-130",
+      "term": "Poor in spirit",
+      "definition": "A biblical expression connected with The qualities and promised hope of people who belong to God's kingdom. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Matthew 5:1-12",
+        "Luke 6:20-26"
+      ],
+      "editorialCaution": "Read the complete context before applying poor in spirit. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-131",
+      "term": "Meekness",
+      "definition": "A biblical expression connected with The qualities and promised hope of people who belong to God's kingdom. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Matthew 5:1-12",
+        "Luke 6:20-26"
+      ],
+      "editorialCaution": "Read the complete context before applying meekness. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-132",
+      "term": "Purity of heart",
+      "definition": "A biblical expression connected with The qualities and promised hope of people who belong to God's kingdom. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Matthew 5:1-12",
+        "Luke 6:20-26"
+      ],
+      "editorialCaution": "Read the complete context before applying purity of heart. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-133",
+      "term": "Peacemaking",
+      "definition": "A biblical expression connected with The qualities and promised hope of people who belong to God's kingdom. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Matthew 5:1-12",
+        "Luke 6:20-26"
+      ],
+      "editorialCaution": "Read the complete context before applying peacemaking. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-134",
+      "term": "Our Father",
+      "definition": "A biblical expression connected with The pattern and priorities of prayer taught by Jesus. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Matthew 6:9-13",
+        "Luke 11:1-13"
+      ],
+      "editorialCaution": "Read the complete context before applying our father. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-135",
+      "term": "Daily bread",
+      "definition": "A biblical expression connected with The pattern and priorities of prayer taught by Jesus. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Matthew 6:9-13",
+        "Luke 11:1-13"
+      ],
+      "editorialCaution": "Read the complete context before applying daily bread. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-136",
+      "term": "Kingdom petition",
+      "definition": "A biblical expression connected with The pattern and priorities of prayer taught by Jesus. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Matthew 6:9-13",
+        "Luke 11:1-13"
+      ],
+      "editorialCaution": "Read the complete context before applying kingdom petition. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-137",
+      "term": "Deliverance from evil",
+      "definition": "A biblical expression connected with The pattern and priorities of prayer taught by Jesus. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Matthew 6:9-13",
+        "Luke 11:1-13"
+      ],
+      "editorialCaution": "Read the complete context before applying deliverance from evil. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-138",
+      "term": "Persistence in prayer",
+      "definition": "A biblical expression connected with The pattern and priorities of prayer taught by Jesus. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Matthew 6:9-13",
+        "Luke 11:1-13"
+      ],
+      "editorialCaution": "Read the complete context before applying persistence in prayer. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-139",
+      "term": "Abiding in Christ",
+      "definition": "A biblical expression connected with The life that grows from abiding in Christ and walking by the Spirit. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "John 15:1-11",
+        "Galatians 5:16-26"
+      ],
+      "editorialCaution": "Read the complete context before applying abiding in christ. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-140",
+      "term": "Fruitfulness",
+      "definition": "A biblical expression connected with The life that grows from abiding in Christ and walking by the Spirit. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "John 15:1-11",
+        "Galatians 5:16-26"
+      ],
+      "editorialCaution": "Read the complete context before applying fruitfulness. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-141",
+      "term": "Walking by the Spirit",
+      "definition": "A biblical expression connected with The life that grows from abiding in Christ and walking by the Spirit. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "John 15:1-11",
+        "Galatians 5:16-26"
+      ],
+      "editorialCaution": "Read the complete context before applying walking by the spirit. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-142",
+      "term": "Spiritual growth",
+      "definition": "A biblical expression connected with The life that grows from abiding in Christ and walking by the Spirit. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "John 15:1-11",
+        "Galatians 5:16-26"
+      ],
+      "editorialCaution": "Read the complete context before applying spiritual growth. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-143",
+      "term": "Love as fruit",
+      "definition": "A biblical expression connected with The life that grows from abiding in Christ and walking by the Spirit. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "John 15:1-11",
+        "Galatians 5:16-26"
+      ],
+      "editorialCaution": "Read the complete context before applying love as fruit. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-144",
+      "term": "Living sacrifice",
+      "definition": "A biblical expression connected with Offering one's life to God and serving through grace-given gifts. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Romans 12:1-8",
+        "1 Corinthians 12:4-11"
+      ],
+      "editorialCaution": "Read the complete context before applying living sacrifice. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-145",
+      "term": "Renewed mind",
+      "definition": "A biblical expression connected with Offering one's life to God and serving through grace-given gifts. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Romans 12:1-8",
+        "1 Corinthians 12:4-11"
+      ],
+      "editorialCaution": "Read the complete context before applying renewed mind. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-146",
+      "term": "Service",
+      "definition": "A biblical expression connected with Offering one's life to God and serving through grace-given gifts. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Romans 12:1-8",
+        "1 Corinthians 12:4-11"
+      ],
+      "editorialCaution": "Read the complete context before applying service. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-147",
+      "term": "Discernment of gifts",
+      "definition": "A biblical expression connected with Offering one's life to God and serving through grace-given gifts. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Romans 12:1-8",
+        "1 Corinthians 12:4-11"
+      ],
+      "editorialCaution": "Read the complete context before applying discernment of gifts. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-148",
+      "term": "Unity of the Spirit",
+      "definition": "A biblical expression connected with The shared life, maturity and mutual care of Christ's people. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Ephesians 4:1-16",
+        "Colossians 3:12-17"
+      ],
+      "editorialCaution": "Read the complete context before applying unity of the spirit. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-149",
+      "term": "Body unity",
+      "definition": "A biblical expression connected with The shared life, maturity and mutual care of Christ's people. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Ephesians 4:1-16",
+        "Colossians 3:12-17"
+      ],
+      "editorialCaution": "Read the complete context before applying body unity. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-150",
+      "term": "Christian maturity",
+      "definition": "A biblical expression connected with The shared life, maturity and mutual care of Christ's people. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Ephesians 4:1-16",
+        "Colossians 3:12-17"
+      ],
+      "editorialCaution": "Read the complete context before applying christian maturity. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-151",
+      "term": "Forbearance",
+      "definition": "A biblical expression connected with The shared life, maturity and mutual care of Christ's people. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Ephesians 4:1-16",
+        "Colossians 3:12-17"
+      ],
+      "editorialCaution": "Read the complete context before applying forbearance. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-152",
+      "term": "Edifying speech",
+      "definition": "A biblical expression connected with The shared life, maturity and mutual care of Christ's people. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Ephesians 4:1-16",
+        "Colossians 3:12-17"
+      ],
+      "editorialCaution": "Read the complete context before applying edifying speech. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-153",
+      "term": "Trust in the Lord",
+      "definition": "A biblical expression connected with Wisdom expressed through listening, speech and conduct. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "James 1:19-27",
+        "Proverbs 15:1-4"
+      ],
+      "editorialCaution": "Read the complete context before applying trust in the lord. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-154",
+      "term": "Godly wisdom",
+      "definition": "A biblical expression connected with Wisdom expressed through listening, speech and conduct. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "James 1:19-27",
+        "Proverbs 15:1-4"
+      ],
+      "editorialCaution": "Read the complete context before applying godly wisdom. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-155",
+      "term": "Double-mindedness",
+      "definition": "A biblical expression connected with Wisdom expressed through listening, speech and conduct. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "James 1:19-27",
+        "Proverbs 15:1-4"
+      ],
+      "editorialCaution": "Read the complete context before applying double-mindedness. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-156",
+      "term": "Teachability",
+      "definition": "A biblical expression connected with Wisdom expressed through listening, speech and conduct. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "James 1:19-27",
+        "Proverbs 15:1-4"
+      ],
+      "editorialCaution": "Read the complete context before applying teachability. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-157",
+      "term": "Prudent choice",
+      "definition": "A biblical expression connected with Wisdom expressed through listening, speech and conduct. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "James 1:19-27",
+        "Proverbs 15:1-4"
+      ],
+      "editorialCaution": "Read the complete context before applying prudent choice. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-158",
+      "term": "Biblical justice",
+      "definition": "A biblical expression connected with Reliance on God's wisdom rather than self-sufficiency. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Proverbs 3:5-8",
+        "James 1:5-8"
+      ],
+      "editorialCaution": "Read the complete context before applying biblical justice. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-159",
+      "term": "Righteous judgement",
+      "definition": "A biblical expression connected with Reliance on God's wisdom rather than self-sufficiency. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Proverbs 3:5-8",
+        "James 1:5-8"
+      ],
+      "editorialCaution": "Read the complete context before applying righteous judgement. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-160",
+      "term": "Defending the vulnerable",
+      "definition": "A biblical expression connected with Reliance on God's wisdom rather than self-sufficiency. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Proverbs 3:5-8",
+        "James 1:5-8"
+      ],
+      "editorialCaution": "Read the complete context before applying defending the vulnerable. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-161",
+      "term": "Merciful action",
+      "definition": "A biblical expression connected with Reliance on God's wisdom rather than self-sufficiency. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Proverbs 3:5-8",
+        "James 1:5-8"
+      ],
+      "editorialCaution": "Read the complete context before applying merciful action. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-162",
+      "term": "Walking humbly",
+      "definition": "A biblical expression connected with Reliance on God's wisdom rather than self-sufficiency. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Proverbs 3:5-8",
+        "James 1:5-8"
+      ],
+      "editorialCaution": "Read the complete context before applying walking humbly. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-163",
+      "term": "Works of mercy",
+      "definition": "A biblical expression connected with The pursuit of justice, mercy and humble obedience. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Micah 6:6-8",
+        "Isaiah 1:16-17"
+      ],
+      "editorialCaution": "Read the complete context before applying works of mercy. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-164",
+      "term": "Care for the needy",
+      "definition": "A biblical expression connected with The pursuit of justice, mercy and humble obedience. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Micah 6:6-8",
+        "Isaiah 1:16-17"
+      ],
+      "editorialCaution": "Read the complete context before applying care for the needy. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-165",
+      "term": "Living faith",
+      "definition": "A biblical expression connected with The pursuit of justice, mercy and humble obedience. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Micah 6:6-8",
+        "Isaiah 1:16-17"
+      ],
+      "editorialCaution": "Read the complete context before applying living faith. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-166",
+      "term": "Compassionate service",
+      "definition": "A biblical expression connected with The pursuit of justice, mercy and humble obedience. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Micah 6:6-8",
+        "Isaiah 1:16-17"
+      ],
+      "editorialCaution": "Read the complete context before applying compassionate service. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-167",
+      "term": "Neighbour love",
+      "definition": "A biblical expression connected with The pursuit of justice, mercy and humble obedience. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Micah 6:6-8",
+        "Isaiah 1:16-17"
+      ],
+      "editorialCaution": "Read the complete context before applying neighbour love. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-168",
+      "term": "Compassionate forgiveness",
+      "definition": "A biblical expression connected with Faith made visible through practical compassion. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Matthew 25:31-46",
+        "James 2:14-17"
+      ],
+      "editorialCaution": "Read the complete context before applying compassionate forgiveness. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-169",
+      "term": "Repentant return",
+      "definition": "A biblical expression connected with Faith made visible through practical compassion. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Matthew 25:31-46",
+        "James 2:14-17"
+      ],
+      "editorialCaution": "Read the complete context before applying repentant return. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-170",
+      "term": "Kindness",
+      "definition": "A biblical expression connected with Faith made visible through practical compassion. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Matthew 25:31-46",
+        "James 2:14-17"
+      ],
+      "editorialCaution": "Read the complete context before applying kindness. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-171",
+      "term": "Tenderheartedness",
+      "definition": "A biblical expression connected with Faith made visible through practical compassion. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Matthew 25:31-46",
+        "James 2:14-17"
+      ],
+      "editorialCaution": "Read the complete context before applying tenderheartedness. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-172",
+      "term": "Present suffering",
+      "definition": "A biblical expression connected with The restoration of relationships through mercy and forgiveness. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Luke 15:11-32",
+        "Ephesians 4:31-32"
+      ],
+      "editorialCaution": "Read the complete context before applying present suffering. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-173",
+      "term": "Future glory",
+      "definition": "A biblical expression connected with The restoration of relationships through mercy and forgiveness. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Luke 15:11-32",
+        "Ephesians 4:31-32"
+      ],
+      "editorialCaution": "Read the complete context before applying future glory. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-174",
+      "term": "Groaning creation",
+      "definition": "A biblical expression connected with The restoration of relationships through mercy and forgiveness. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Luke 15:11-32",
+        "Ephesians 4:31-32"
+      ],
+      "editorialCaution": "Read the complete context before applying groaning creation. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-175",
+      "term": "Inner renewal",
+      "definition": "A biblical expression connected with The restoration of relationships through mercy and forgiveness. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Luke 15:11-32",
+        "Ephesians 4:31-32"
+      ],
+      "editorialCaution": "Read the complete context before applying inner renewal. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-176",
+      "term": "Eternal perspective",
+      "definition": "A biblical expression connected with The restoration of relationships through mercy and forgiveness. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Luke 15:11-32",
+        "Ephesians 4:31-32"
+      ],
+      "editorialCaution": "Read the complete context before applying eternal perspective. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-177",
+      "term": "Living hope",
+      "definition": "A biblical expression connected with The believer's hope and endurance amid present suffering. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Romans 8:18-27",
+        "2 Corinthians 4:7-18"
+      ],
+      "editorialCaution": "Read the complete context before applying living hope. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-178",
+      "term": "Inheritance kept in heaven",
+      "definition": "A biblical expression connected with The believer's hope and endurance amid present suffering. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Romans 8:18-27",
+        "2 Corinthians 4:7-18"
+      ],
+      "editorialCaution": "Read the complete context before applying inheritance kept in heaven. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-179",
+      "term": "Refined faith",
+      "definition": "A biblical expression connected with The believer's hope and endurance amid present suffering. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Romans 8:18-27",
+        "2 Corinthians 4:7-18"
+      ],
+      "editorialCaution": "Read the complete context before applying refined faith. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-180",
+      "term": "Anchor of the soul",
+      "definition": "A biblical expression connected with The believer's hope and endurance amid present suffering. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Romans 8:18-27",
+        "2 Corinthians 4:7-18"
+      ],
+      "editorialCaution": "Read the complete context before applying anchor of the soul. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-181",
+      "term": "Promise and oath",
+      "definition": "A biblical expression connected with The believer's hope and endurance amid present suffering. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Romans 8:18-27",
+        "2 Corinthians 4:7-18"
+      ],
+      "editorialCaution": "Read the complete context before applying promise and oath. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-182",
+      "term": "Outpouring of the Spirit",
+      "definition": "A biblical expression connected with Confidence grounded in God's promise and future resurrection. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "1 Peter 1:3-9",
+        "Hebrews 6:13-20"
+      ],
+      "editorialCaution": "Read the complete context before applying outpouring of the spirit. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-183",
+      "term": "Bold witness",
+      "definition": "A biblical expression connected with Confidence grounded in God's promise and future resurrection. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "1 Peter 1:3-9",
+        "Hebrews 6:13-20"
+      ],
+      "editorialCaution": "Read the complete context before applying bold witness. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-184",
+      "term": "Spirit-filled speech",
+      "definition": "A biblical expression connected with Confidence grounded in God's promise and future resurrection. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "1 Peter 1:3-9",
+        "Hebrews 6:13-20"
+      ],
+      "editorialCaution": "Read the complete context before applying spirit-filled speech. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-185",
+      "term": "Pentecost",
+      "definition": "A biblical expression connected with Confidence grounded in God's promise and future resurrection. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "1 Peter 1:3-9",
+        "Hebrews 6:13-20"
+      ],
+      "editorialCaution": "Read the complete context before applying pentecost. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-186",
+      "term": "Prayer for boldness",
+      "definition": "A biblical expression connected with Confidence grounded in God's promise and future resurrection. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "1 Peter 1:3-9",
+        "Hebrews 6:13-20"
+      ],
+      "editorialCaution": "Read the complete context before applying prayer for boldness. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-187",
+      "term": "Disciple-making",
+      "definition": "A biblical expression connected with The Spirit's empowering presence for worship and witness. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Acts 2:1-21",
+        "Acts 4:23-31"
+      ],
+      "editorialCaution": "Read the complete context before applying disciple-making. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-188",
+      "term": "Great Commission",
+      "definition": "A biblical expression connected with The Spirit's empowering presence for worship and witness. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Acts 2:1-21",
+        "Acts 4:23-31"
+      ],
+      "editorialCaution": "Read the complete context before applying great commission. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-189",
+      "term": "Witness to Christ",
+      "definition": "A biblical expression connected with The Spirit's empowering presence for worship and witness. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Acts 2:1-21",
+        "Acts 4:23-31"
+      ],
+      "editorialCaution": "Read the complete context before applying witness to christ. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-190",
+      "term": "Nations",
+      "definition": "A biblical expression connected with The Spirit's empowering presence for worship and witness. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Acts 2:1-21",
+        "Acts 4:23-31"
+      ],
+      "editorialCaution": "Read the complete context before applying nations. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-191",
+      "term": "Sent community",
+      "definition": "A biblical expression connected with The Spirit's empowering presence for worship and witness. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Acts 2:1-21",
+        "Acts 4:23-31"
+      ],
+      "editorialCaution": "Read the complete context before applying sent community. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-192",
+      "term": "Resurrection hope",
+      "definition": "A biblical expression connected with The church's calling to make disciples and testify to Christ. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Matthew 28:18-20",
+        "Acts 1:6-8"
+      ],
+      "editorialCaution": "Read the complete context before applying resurrection hope. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-193",
+      "term": "First resurrection fruits",
+      "definition": "A biblical expression connected with The church's calling to make disciples and testify to Christ. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Matthew 28:18-20",
+        "Acts 1:6-8"
+      ],
+      "editorialCaution": "Read the complete context before applying first resurrection fruits. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-194",
+      "term": "The coming of the Lord",
+      "definition": "A biblical expression connected with The church's calling to make disciples and testify to Christ. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Matthew 28:18-20",
+        "Acts 1:6-8"
+      ],
+      "editorialCaution": "Read the complete context before applying the coming of the lord. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-195",
+      "term": "Victory over death",
+      "definition": "A biblical expression connected with The church's calling to make disciples and testify to Christ. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Matthew 28:18-20",
+        "Acts 1:6-8"
+      ],
+      "editorialCaution": "Read the complete context before applying victory over death. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-196",
+      "term": "New creation expectation",
+      "definition": "A biblical expression connected with The church's calling to make disciples and testify to Christ. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Matthew 28:18-20",
+        "Acts 1:6-8"
+      ],
+      "editorialCaution": "Read the complete context before applying new creation expectation. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-197",
+      "term": "New heavens and earth",
+      "definition": "A biblical expression connected with The promised raising of the dead and victory over death. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "1 Thessalonians 4:13-18",
+        "1 Corinthians 15:20-28"
+      ],
+      "editorialCaution": "Read the complete context before applying new heavens and earth. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-198",
+      "term": "God dwelling with humanity",
+      "definition": "A biblical expression connected with The promised raising of the dead and victory over death. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "1 Thessalonians 4:13-18",
+        "1 Corinthians 15:20-28"
+      ],
+      "editorialCaution": "Read the complete context before applying god dwelling with humanity. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-199",
+      "term": "No more death",
+      "definition": "A biblical expression connected with The promised raising of the dead and victory over death. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "1 Thessalonians 4:13-18",
+        "1 Corinthians 15:20-28"
+      ],
+      "editorialCaution": "Read the complete context before applying no more death. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-200",
+      "term": "Renewal of creation",
+      "definition": "A biblical expression connected with The promised raising of the dead and victory over death. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "1 Thessalonians 4:13-18",
+        "1 Corinthians 15:20-28"
+      ],
+      "editorialCaution": "Read the complete context before applying renewal of creation. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-201",
+      "term": "Eternal hope",
+      "definition": "A biblical expression connected with The promised raising of the dead and victory over death. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "1 Thessalonians 4:13-18",
+        "1 Corinthians 15:20-28"
+      ],
+      "editorialCaution": "Read the complete context before applying eternal hope. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-202",
+      "term": "Patient endurance",
+      "definition": "A biblical expression connected with The biblical hope of God's renewal of creation and dwelling with his people. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Revelation 21:1-5",
+        "Isaiah 65:17-25"
+      ],
+      "editorialCaution": "Read the complete context before applying patient endurance. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-203",
+      "term": "Kingdom righteousness",
+      "definition": "A biblical expression connected with The biblical hope of God's renewal of creation and dwelling with his people. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Revelation 21:1-5",
+        "Isaiah 65:17-25"
+      ],
+      "editorialCaution": "Read the complete context before applying kingdom righteousness. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-204",
+      "term": "Covenant remembrance",
+      "definition": "A biblical expression connected with The biblical hope of God's renewal of creation and dwelling with his people. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Revelation 21:1-5",
+        "Isaiah 65:17-25"
+      ],
+      "editorialCaution": "Read the complete context before applying covenant remembrance. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-205",
+      "term": "Spiritual discernment",
+      "definition": "A biblical expression connected with The biblical hope of God's renewal of creation and dwelling with his people. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Revelation 21:1-5",
+        "Isaiah 65:17-25"
+      ],
+      "editorialCaution": "Read the complete context before applying spiritual discernment. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-206",
+      "term": "Reconciled community",
+      "definition": "A biblical expression connected with The biblical hope of God's renewal of creation and dwelling with his people. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Revelation 21:1-5",
+        "Isaiah 65:17-25"
+      ],
+      "editorialCaution": "Read the complete context before applying reconciled community. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-207",
+      "term": "Faithful stewardship",
+      "definition": "A biblical expression connected with The biblical hope of God's renewal of creation and dwelling with his people. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Revelation 21:1-5",
+        "Isaiah 65:17-25"
+      ],
+      "editorialCaution": "Read the complete context before applying faithful stewardship. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-208",
+      "term": "Joy in the Lord",
+      "definition": "A biblical expression connected with The biblical hope of God's renewal of creation and dwelling with his people. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Revelation 21:1-5",
+        "Isaiah 65:17-25"
+      ],
+      "editorialCaution": "Read the complete context before applying joy in the lord. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-209",
+      "term": "God's abiding presence",
+      "definition": "A biblical expression connected with The biblical hope of God's renewal of creation and dwelling with his people. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Revelation 21:1-5",
+        "Isaiah 65:17-25"
+      ],
+      "editorialCaution": "Read the complete context before applying god's abiding presence. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-210",
+      "term": "Hope of glory",
+      "definition": "A biblical expression connected with The biblical hope of God's renewal of creation and dwelling with his people. The cited passages offer a starting point for tracing its meaning in context and seeing how it contributes to the wider biblical message.",
+      "scriptureReferences": [
+        "Revelation 21:1-5",
+        "Isaiah 65:17-25"
+      ],
+      "editorialCaution": "Read the complete context before applying hope of glory. These passages provide a study trail, not a standalone formula; distinguish the text's direct teaching from later inference.",
+      "entryType": "biblical-concept"
     }
   ]
 }
