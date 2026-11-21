@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [main, study/contextual-names-of-god-notes, study/monthly-light-devotional-expansion]
+    branches: [main, study/contextual-names-of-god-notes, study/monthly-light-devotional-expansion, study/prayer-journal-entries]
   workflow_dispatch:
 
 permissions:
@@ -114,6 +114,9 @@ jobs:
 
       - name: Validate Prayer Journal entries and categories
         run: node scripts/check-prayer-journal.mjs
+
+      - name: Validate personal Bible study notes and Scripture links
+        run: node scripts/check-personal-study-notes.mjs
       - name: Test Android version metadata
         run: node scripts/test-android-version.mjs
 
