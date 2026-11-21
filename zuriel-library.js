@@ -1687,6 +1687,11 @@
               const index = saved.prayers.indexOf(item);
               if (index < 0) return;
               saved.prayers.splice(index, 1);
+              if (!persist()) {
+                saved.prayers.splice(index, 0, item);
+                status.textContent = "The entry could not be deleted. Your saved record has been kept. Please try again.";
+                return;
+              }
               if (editingPrayer === item) {
                 editingPrayer = null;
                 titleField.value = "";
@@ -1695,12 +1700,8 @@
                 area.value = "";
                 saveJournalButton.textContent = "Save Journal Entry";
               }
-              if (persist()) {
-                status.textContent = "The journal entry was deleted from this device.";
-                renderPrayerRecords();
-              } else {
-                status.textContent = "The entry could not be deleted. Please try again.";
-              }
+              status.textContent = "The journal entry was deleted from this device.";
+              renderPrayerRecords();
             }));
             records.appendChild(box);
           });
@@ -1836,6 +1837,11 @@
               const index = entries.indexOf(item);
               if (index < 0) return;
               entries.splice(index, 1);
+              if (!persist()) {
+                entries.splice(index, 0, item);
+                status.textContent = "The note could not be deleted. Your saved note has been kept. Please try again.";
+                return;
+              }
               if (editingNote === item) {
                 editingNote = null;
                 title.value = "";
@@ -1843,12 +1849,8 @@
                 area.value = "";
                 saveNoteButton.textContent = "Save Study Note";
               }
-              if (persist()) {
-                status.textContent = "The study note was deleted from this device.";
-                renderPersonalNotes();
-              } else {
-                status.textContent = "The note could not be deleted. Please try again.";
-              }
+              status.textContent = "The study note was deleted from this device.";
+              renderPersonalNotes();
             }));
             noteList.appendChild(box);
           });
@@ -2285,12 +2287,14 @@
             const index = saved.bookmarks.indexOf(item);
             if (index < 0) return;
             saved.bookmarks.splice(index, 1);
-            if (persist()) {
-              box.remove();
-              summary.textContent = saved.bookmarks.length + " saved items • " + noteEntries.length +
-                " verse studies • " + highlightEntries.length + " highlighted verses • " +
-                prayerCount + " prayer records • " + personalNotes.length + " personal notes";
+            if (!persist()) {
+              saved.bookmarks.splice(index, 0, item);
+              return;
             }
+            box.remove();
+            summary.textContent = saved.bookmarks.length + " saved items • " + noteEntries.length +
+              " verse studies • " + highlightEntries.length + " highlighted verses • " +
+              prayerCount + " prayer records • " + personalNotes.length + " personal notes";
           }));
           content.appendChild(box);
         });

@@ -23,6 +23,7 @@ assert.ok(notesPage.includes('button("Cancel Editing"'), "Readers must be able t
 assert.ok(notesPage.includes('button("Delete Note"'), "Saved study notes must offer a delete action.");
 assert.match(notesPage, /window\.confirm\("Delete this saved study note\?/);
 assert.match(notesPage, /entries\.splice\(index, 1\)/);
+assert.match(notesPage, /entries\.splice\(index, 0, item\)/, "A failed storage write must restore the deleted note in memory.");
 
 const savedPage = source.slice(savedStart, source.indexOf('content.scrollIntoView', savedStart));
 assert.match(savedPage, /const personalNotes = Array\.isArray\(saved\.notes\)/);
@@ -33,6 +34,7 @@ assert.match(savedPage, /personalNotes\.length \+ " personal notes"/);
 assert.ok(savedPage.includes('button("Remove Saved Item"'), "Saved bookmarks must offer a remove action.");
 assert.ok(savedPage.includes('window.confirm("Remove this saved item from My Saved Library? This cannot be undone.")'), "Bookmark removal must require confirmation.");
 assert.match(savedPage, /saved\.bookmarks\.splice\(index, 1\)/);
+assert.match(savedPage, /saved\.bookmarks\.splice\(index, 0, item\)/, "A failed storage write must restore the removed bookmark.");
 assert.match(savedPage, /function openReference\(reference\)/);
 assert.match(savedPage, /\(\?::\(\\d\+\)\)\?/);
 assert.match(source, /saved\.notes\.push\(/, "Saved study notes must continue using the shared local record store.");
