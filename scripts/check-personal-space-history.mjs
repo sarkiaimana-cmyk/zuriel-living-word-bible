@@ -41,6 +41,8 @@ for (const category of ["prayer", "thanksgiving", "answered-prayer", "reflection
 }
 assert.ok(source.includes("entryType:category.value"),
   "New journal entries must retain their selected category.");
+assert.ok(source.includes('"Category: "+categoryLabels[item.entryType]'),
+  "Saved journal entries must visibly identify their category.");
 assert.ok(source.includes('["prayer","thanksgiving","answered-prayer","reflection"].includes(item.entryType)'),
   "The Prayer Journal must display all supported categories while keeping testimonies separate.");
 assert.ok(source.includes("Journal entries (\"+journalItems.length+\")"),
