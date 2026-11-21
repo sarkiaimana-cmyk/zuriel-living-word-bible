@@ -1824,8 +1824,7 @@
           {category:"The Kingdom of God",title:"The mustard seed",summary:"Jesus compares the Kingdom to a small seed that grows into something unexpectedly large, illustrating its surprising growth.",refs:["Matthew 13:31","Matthew 13:32","Luke 13:18"]},
           {category:"The Kingdom of God",title:"The pearl of great price",summary:"Jesus teaches that the Kingdom is worth more than every lesser treasure and calls for wholehearted response.",refs:["Matthew 13:45","Matthew 13:46"]},
           {category:"Faith and Courage",title:"The wise and foolish virgins",summary:"Jesus calls His disciples to watchfulness and readiness because the timing of His return is not known.",refs:["Matthew 25:1","Matthew 25:10","Matthew 25:13"]},
-          {category:"Mission and Witness",title:"The talents entrusted",summary:"Jesus teaches accountability and faithful stewardship through a parable about servants entrusted with their master's resources.",refs:["Matthew 25:14","Matthew 25:21","Matthew 25:29"]}
-
+          {category:"Mission and Witness",title:"The talents entrusted",summary:"Jesus teaches accountability and faithful stewardship through a parable about servants entrusted with their master's resources.",refs:["Matthew 25:14","Matthew 25:21","Matthew 25:29"]},
           {category:"The Kingdom of God",title:"The bread of life",summary:"Jesus presents Himself as the bread of life and calls people to come to Him and believe.",refs:["John 6:35","John 6:37","John 6:40"]},
           {category:"The Kingdom of God",title:"The kingdom is like growing seed",summary:"Jesus describes the quiet, gradual growth of God's Kingdom through the parable of the growing seed.",refs:["Mark 4:26","Mark 4:27","Mark 4:28"]},
           {category:"Discipleship",title:"Take up your cross daily",summary:"Jesus calls His followers to deny themselves, take up the cross daily and follow Him.",refs:["Luke 9:23","Luke 9:24","Luke 9:25"]},
