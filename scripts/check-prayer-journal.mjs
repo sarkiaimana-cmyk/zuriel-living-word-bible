@@ -17,6 +17,12 @@ assert.match(page, /function openPrayerReference\(reference, action\)/);
 assert.match(page, /Open Scripture/);
 assert.match(page, /window\.selectBibleVerse/);
 assert.match(page, /saved\.prayers\.slice\(\)\.reverse\(\)/);
+assert.ok(page.includes("let editingPrayer = null"), "The journal must support an explicit edit state.");
+assert.ok(page.includes('button("Edit Entry"'), "Saved journal records must offer an edit action.");
+assert.ok(page.includes("Object.assign(editingPrayer, updated)"), "Editing must update the existing record instead of duplicating it.");
+assert.ok(page.includes('saveJournalButton.textContent = "Update Journal Entry"'), "The save action must clearly indicate update mode.");
+assert.ok(page.includes('button("Cancel Editing"'), "Readers must be able to cancel an edit without changing the saved record.");
+
 assert.match(page, /Entries are saved locally in this app on this device/);
 assert.match(source, /category: "prayer"/, "Reader-generated prayer responses must remain compatible with the journal.");
 assert.match(source, /item\.category\) box\.appendChild/, "Saved journal categories should be displayed when present.");
