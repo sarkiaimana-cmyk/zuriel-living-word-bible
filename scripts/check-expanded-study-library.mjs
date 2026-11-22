@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import assert from "node:assert/strict";
+import { runInNewContext } from "node:vm";
 
 const root = new URL("../", import.meta.url);
 async function json(path) {
@@ -239,4 +240,72 @@ for (const path of [
 assert.ok(loader.includes("window.ZurielStudyLibrary"),"Study library API must be exposed");
 assert.ok(loader.includes("openReference"),"Study references must open through the Bible reader");
 assert.ok(loader.includes("Original-language form") && loader.includes("Morphology note") && loader.includes("Contextual word use"),"Word-study detail must expose original script, language, morphology status and contextual usage.");
+
+const [lexiconIndex, packagedLexiconIndex, wordLinkerSource, lexiconLoaderSource] = await Promise.all([
+  json("data/zuriel-lexicon-study-index.json"),
+  json("www/data/zuriel-lexicon-study-index.json"),
+  readFile(new URL("../zuriel-word-linking.js", import.meta.url), "utf8"),
+  readFile(new URL("../zuriel-lexicon-index.js", import.meta.url), "utf8")
+]);
+assert.deepEqual(packagedLexiconIndex, lexiconIndex, "Android package must include the exact Hebrew and Greek lexicon index");
+assert.ok(index.includes('<script src="zuriel-word-linking.js"></script>'), "Exact KJV word linker must load in the reader");
+assert.ok(index.includes('<script src="zuriel-lexicon-index.js"></script>'), "Hebrew and Greek lexicon loader must load in the reader");
+assert.ok(worker.includes("./zuriel-word-linking.js"), "Offline cache must include the exact KJV word linker");
+assert.ok(worker.includes("./zuriel-lexicon-index.js"), "Offline cache must include the lexicon loader");
+assert.ok(worker.includes("./data/zuriel-lexicon-study-index.json"), "Offline cache must include the Hebrew and Greek lexicon index");
+assert.ok(lexiconLoaderSource.includes("./data/zuriel-lexicon-study-index.json"), "Lexicon loader must request the bundled lexicon index");
+assert.ok(lexiconLoaderSource.includes("Never infer a Strong's lemma from an English word alone"), "Lexicon loader must retain its no-guessing safeguard");
+assert.ok(wordLinkerSource.includes("readerTokens.length !== sourceSpans.length") &&
+  wordLinkerSource.includes("tokenKey(readerTokens[index].text) !== tokenKey(sourceSpans[index].text)") &&
+  wordLinkerSource.includes("start >= selected.start && end <= selected.end"),
+  "Word linker must verify full verse token alignment and keep source annotations within the selected word");
+
+assert.equal(lexiconIndex.schemaVersion, 1, "Lexicon index schema must be versioned");
+assert.ok(Array.isArray(lexiconIndex.entries) && lexiconIndex.entries.length > 0, "Lexicon index must contain entries");
+const lexiconIds = new Set();
+for (const entry of lexiconIndex.entries) {
+  assert.ok(typeof entry.id === "string" && /^[HG]\\d+$/.test(entry.id), "Lexicon entry needs a valid Strong's index: " + (entry && entry.id));
+  assert.ok(!lexiconIds.has(entry.id), "Lexicon IDs must be unique: " + entry.id);
+  assert.ok((entry.id.startsWith("H") && entry.language === "Hebrew") ||
+    (entry.id.startsWith("G") && entry.language === "Greek"),
+    "Lexicon language must agree with its Hebrew/Greek ID: " + entry.id);
+  assert.ok(typeof entry.lemma === "string" && entry.lemma.trim(), "Lexicon entry needs an original-language lemma: " + entry.id);
+  assert.ok(typeof entry.transliteration === "string" && entry.transliteration.trim(), "Lexicon entry needs transliteration: " + entry.id);
+  assert.ok(typeof entry.studyLabel === "string" && entry.studyLabel.trim(), "Lexicon entry needs a contextual study label: " + entry.id);
+  assert.ok(Array.isArray(entry.keyReferences) && entry.keyReferences.length >= 1, "Lexicon entry needs connected Scripture references: " + entry.id);
+  if (entry.language === "Hebrew") assert.match(entry.lemma, /\\p{Script=Hebrew}/u, "Hebrew lexicon lemma must use Hebrew script: " + entry.id);
+  if (entry.language === "Greek") assert.match(entry.lemma, /\\p{Script=Greek}/u, "Greek lexicon lemma must use Greek script: " + entry.id);
+  for (const reference of entry.keyReferences) {
+    const match = String(reference).trim().match(/^(.+?)\\s+(\\d+)(?::(\\d+))?/);
+    assert.ok(match, "Lexicon reference must identify a Bible book and chapter: " + entry.id + " — " + reference);
+    const book = bookLookup.get(match[1].toLowerCase().replace(/\\s+/g, " ").trim());
+    assert.ok(book, "Lexicon reference uses an unknown Bible book: " + entry.id + " — " + reference);
+    const chapter = Number(match[2]);
+    assert.ok(chapter >= 1 && chapter <= book.chapters, "Lexicon reference uses an invalid chapter: " + entry.id + " — " + reference);
+    if (match[3]) checkReference(reference, "Lexicon " + entry.id);
+    else {
+      const code = readerMap[book.name], chapters = code && kjv[code];
+      assert.ok(Array.isArray(chapters) && Array.isArray(chapters[chapter - 1]),
+        "Lexicon chapter reference is missing from the bundled KJV: " + entry.id + " — " + reference);
+    }
+  }
+  lexiconIds.add(entry.id);
+}
+
+const linkerSandbox = {};
+runInNewContext(wordLinkerSource, linkerSandbox);
+const linkWord = linkerSandbox.ZurielWordLinking.matchSelectedKJVWord;
+const sampleVerse = "In the beginning God created the heaven and the earth.";
+const godStart = sampleVerse.indexOf("God");
+const validWordLink = linkWord(sampleVerse, sampleVerse, [{ start: godStart, end: godStart + 3, strongs: ["H430"] }], 2);
+assert.equal(validWordLink.ok, true, "An exactly aligned selected KJV word should link");
+assert.deepEqual(Array.from(validWordLink.strongs), ["H430"], "The selected word should retain its exact Strong's annotation");
+assert.equal(linkWord(sampleVerse, sampleVerse.replace("God", "LORD"),
+  [{ start: godStart, end: godStart + 3, strongs: ["H430"] }], 2).ok, false,
+  "A changed reader word must not inherit another word's original-language link");
+assert.equal(linkWord(sampleVerse, sampleVerse,
+  [{ start: godStart, end: sampleVerse.indexOf("created"), strongs: ["H430"] }], 2).strongs.length, 0,
+  "A source annotation spanning beyond the selected word must not be attached");
+assert.equal(linkWord(sampleVerse, sampleVerse, [], 99).ok, false,
+  "An out-of-range word selection must not produce a lexical link");
 console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 14 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
