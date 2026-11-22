@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "title": "Zuriel Chapter Introductions — Exodus 1–10",
+  "description": "Ten distinct, chapter-specific study guides for Exodus 1–10, with historical and literary context, observations, connected passages, questions, application and interpretive safeguards. Study aids accompany rather than replace the Bible text.",
+  "editorialPolicy": [
+    "Read each narrative within its literary and covenant setting.",
+    "Distinguish explicit statements from debated historical reconstructions or theological inferences.",
+    "Cross-references are study trails and must be read in context.",
+    "Do not use the account to justify oppression, ethnic prejudice or violence against modern groups.",
+    "Verify every cited verse against the bundled KJV before publication."
+  ],
+  "chapters": [
+    {
+      "id": "exo-ch01",
+      "book": "Exodus",
+      "chapter": 1,
+      "title": "Exodus 1 — Israel's growth and Pharaoh's oppression",
+      "historicalContext": "Exodus begins by connecting Israel's family story to the generations that followed Joseph. The setting is Egypt, where a new Pharaoh views the growing Israelite population as a political threat. The text does not identify this ruler by name, so proposed historical identifications should be treated cautiously.",
+      "overview": "The chapter contrasts Israel's fruitfulness with Pharaoh's fear and coercive policies. Forced labour fails to suppress the people; the midwives fear God and refuse the order to kill Hebrew boys. Their courageous resistance, followed by Pharaoh's wider command, prepares the crisis that leads to Moses' birth.",
+      "studyObservation": "Trace the repeated growth language and the escalation from suspicion to forced labour and attempted infanticide. Notice that the midwives are named while Pharaoh is not, and that their reverence for God shapes their actions.",
+      "connectionNotes": "Genesis 46:8–27 connects the family migration to Egypt; Acts 7:17–19 recalls Israel's growth and oppression; Hebrews 11:23 commends the faith surrounding Moses' infancy.",
+      "keyPassages": [
+        "Exodus 1:1–7",
+        "Exodus 1:8–14",
+        "Exodus 1:15–22",
+        "Acts 7:17–19"
+      ],
+      "studyQuestions": "Hebrews 11:23",
+      "lifeApplication": [
+        "How does the new Pharaoh reinterpret Israel's growth?",
+        "What risks do the midwives take, and what motivates them?",
+        "How does oppression intensify when earlier measures fail?"
+      ],
+      "interpretiveCaution": "Resist treating people as threats because of their identity or growth. Consider how reverence for God can require protecting vulnerable life and refusing unjust commands.",
+      "readingNote": "The text praises the midwives' fear of God but does not provide a simplistic rule for every modern political dilemma. Apply the narrative with careful moral reasoning and attention to the protection of life."
+    },
+    {
+      "id": "exo-ch02",
+      "book": "Exodus",
+      "chapter": 2,
+      "title": "Exodus 2 — Moses' preservation, flight and the cry of Israel",
+      "historicalContext": "The chapter moves from the threat against Hebrew boys to the birth and preservation of Moses. Its scenes span the Nile, Pharaoh's household, Midian and the Israelite community in Egypt. The narrative introduces Moses before his public calling and ends by naming God's attention to the covenant promises.",
+      "overview": "Moses is hidden, placed in a basket and drawn from the water by Pharaoh's daughter; his own mother nurses him. As an adult he intervenes violently against an Egyptian, flees to Midian, helps the daughters of Reuel and begins a new household. Israel groans under slavery, and God hears, remembers, sees and knows.",
+      "studyObservation": "Observe the repeated water imagery and the chain of women whose actions preserve Moses. Distinguish Moses' concern for justice from the uncontrolled violence of his killing of the Egyptian. The final verses shift attention from Moses to God's covenant response.",
+      "connectionNotes": "Genesis 15:13–14 anticipates oppression and deliverance; Acts 7:20–29 recounts Moses' early life; Hebrews 11:24–27 reflects on his later choice to identify with his people.",
+      "keyPassages": [
+        "Exodus 2:1–10",
+        "Exodus 2:11–15",
+        "Exodus 2:16–22",
+        "Exodus 2:23–25"
+      ],
+      "studyQuestions": "Acts 7:20–29",
+      "lifeApplication": [
+        "Which people contribute to Moses' preservation, and how?",
+        "What does Moses' flight reveal about the limits of acting in his own strength?",
+        "What do the verbs 'heard', 'remembered', 'saw' and 'knew' communicate about God?"
+      ],
+      "interpretiveCaution": "Notice and honour the often-unseen acts that protect life. Bring suffering honestly before God, while seeking just responses that do not reproduce violence.",
+      "readingNote": "Do not portray Moses' killing of the Egyptian as an uncomplicated model for righteous action. The narrative records the event and its consequences; later calling and formation are still ahead."
+    },
+    {
+      "id": "exo-ch03",
+      "book": "Exodus",
+      "chapter": 3,
+      "title": "Exodus 3 — The burning bush and God's covenant name",
+      "historicalContext": "Exodus 3 begins Moses' encounter at Horeb, called the mountain of God. The divine appearance in the burning bush draws Moses from ordinary shepherding into a commissioning encounter. The chapter uses the ancestral promises to explain why God is acting for Israel.",
+      "overview": "God calls Moses by name, identifies Himself as the God of Abraham, Isaac and Jacob, and declares that He has seen Israel's affliction. Moses is commissioned to confront Pharaoh and lead the people out. God's name and promise of presence answer Moses' questions about authority and mission.",
+      "studyObservation": "Follow the movement from holy ground to God's self-identification, the description of suffering, the commission and Moses' objections. Note that the name rendered 'I AM THAT I AM' has a rich interpretive history and is linked in the text with God's presence and faithfulness.",
+      "connectionNotes": "Genesis 12:1–3 and 15:13–16 frame the ancestral promise; Exodus 6:2–8 develops the covenant name and deliverance; John 8:58 uses 'I am' language in a distinct New Testament context.",
+      "keyPassages": [
+        "Exodus 3:1–6",
+        "Exodus 3:7–12",
+        "Exodus 3:13–15",
+        "Exodus 3:16–22"
+      ],
+      "studyQuestions": "Exodus 6:2–8",
+      "lifeApplication": [
+        "What does God reveal about His character before giving Moses the task?",
+        "How does God's awareness of Israel's suffering shape the commission?",
+        "What questions does Moses ask, and how does God answer them?"
+      ],
+      "interpretiveCaution": "Let God's character and presence shape the way you approach responsibilities that feel larger than your ability. Pay attention to suffering rather than becoming indifferent to it.",
+      "readingNote": "Do not reduce the divine name to a single English gloss or claim that all linguistic and theological questions are settled by one translation. Read Exodus 3:14–15 with its surrounding statements about God's presence and covenant faithfulness."
+    },
+    {
+      "id": "exo-ch04",
+      "book": "Exodus",
+      "chapter": 4,
+      "title": "Exodus 4 — Moses' signs, objections and return to Egypt",
+      "historicalContext": "Exodus 4 continues the call scene and addresses Moses' concerns about credibility and speech. The narrative then moves toward Egypt, including a difficult and brief episode on the journey, before introducing Aaron's role and the people's response.",
+      "overview": "God gives Moses signs involving his staff, hand and water, and promises help with speech while appointing Aaron to speak. Moses returns toward Egypt. The episode involving the lodging place and circumcision is textually compressed and interpreted in different ways; the chapter then records the reunion with Aaron and the elders' belief.",
+      "studyObservation": "Separate the three signs from the later public response. Notice the balance between God's patience with Moses and the seriousness of the commission. Read verses 24–26 slowly; identify the persons and actions stated without pretending the brief account answers every question.",
+      "connectionNotes": "Exodus 3:1–22 supplies the preceding commission; Exodus 7:8–13 develops the sign motif before Pharaoh; Acts 7:30–36 summarizes Moses' commissioning and signs.",
+      "keyPassages": [
+        "Exodus 4:1–9",
+        "Exodus 4:10–17",
+        "Exodus 4:18–23",
+        "Exodus 4:24–26"
+      ],
+      "studyQuestions": "Exodus 4:27–31",
+      "lifeApplication": [
+        "What do the signs demonstrate to the people?",
+        "How does God respond to Moses' concern about speaking?",
+        "What changes when Aaron and Moses speak to the elders?"
+      ],
+      "interpretiveCaution": "When you feel inadequate, distinguish honest limitation from repeatedly resisting a responsibility. Seek trustworthy help and take the next faithful step.",
+      "readingNote": "Exodus 4:24–26 is one of the chapter's most difficult passages. Interpretations differ about the identity of the threatened person and the precise force of the actions. Avoid presenting a disputed reconstruction as explicit fact."
+    },
+    {
+      "id": "exo-ch05",
+      "book": "Exodus",
+      "chapter": 5,
+      "title": "Exodus 5 — Pharaoh refuses and the burden increases",
+      "historicalContext": "The first confrontation with Pharaoh follows the commissioning of Moses and Aaron. Pharaoh's response exposes the conflict between imperial power and the Lord's claim over Israel. The production quota episode gives concrete detail to the oppression described in chapter 1.",
+      "overview": "Moses and Aaron request a journey for worship, but Pharaoh denies knowing the Lord and increases the labour demands by withholding straw while keeping the brick quota. Israelite supervisors are beaten and blame Moses and Aaron, who bring their distress to God.",
+      "studyObservation": "Notice the contrast between Pharaoh's question about the Lord and the chapter's growing evidence of his harsh rule. Track how the policy shifts responsibility onto the workers and how Moses honestly reports the crisis to God.",
+      "connectionNotes": "Exodus 1:11–14 describes earlier forced labour; Exodus 6:1 promises God's answer; Acts 7:35–36 recalls Moses as deliverer despite rejection.",
+      "keyPassages": [
+        "Exodus 5:1–5",
+        "Exodus 5:6–14",
+        "Exodus 5:15–21",
+        "Exodus 5:22–23"
+      ],
+      "studyQuestions": "Exodus 6:1",
+      "lifeApplication": [
+        "What does Pharaoh's response reveal about his view of authority?",
+        "How does the new quota policy deepen the people's suffering?",
+        "What does Moses' complaint teach about bringing disappointment to God?"
+      ],
+      "interpretiveCaution": "Do not dismiss the voices of people carrying unjust burdens. When a good effort appears to make conditions worse, bring the frustration honestly before God and reassess the next step.",
+      "readingNote": "The chapter does not promise that obedience will immediately improve circumstances. Avoid using it to blame suffering people for the hardship that follows their appeal for justice."
+    },
+    {
+      "id": "exo-ch06",
+      "book": "Exodus",
+      "chapter": 6,
+      "title": "Exodus 6 — God's covenant promise renewed",
+      "historicalContext": "After Moses' complaint, Exodus 6 returns to God's promise and identity. The genealogy in the middle of the chapter locates Moses and Aaron within Israel's family structure and establishes their credentials for the mission. The narrative then returns to Moses' concern about speaking to Pharaoh.",
+      "overview": "God promises decisive deliverance, adoption of Israel as His people and knowledge of Him as the Lord. The people are too discouraged to listen. A genealogy identifies the family lines of Reuben, Simeon and Levi, then the narrative restates the command to confront Pharaoh and Moses' objection about his speech.",
+      "studyObservation": "Observe the repeated covenant verbs: bring out, deliver, redeem, take and bring in. Notice the gap between the promise and the people's ability to hear it under crushing labour. The genealogy is not an interruption without purpose; it anchors the leaders in Israel's lineage.",
+      "connectionNotes": "Genesis 17:1–8 contains covenant promises to Abraham; Exodus 3:6–15 introduces the divine name; Exodus 12:40–42 later recalls the deliverance; Ezekiel 20:5–9 reflects on God's covenant action in Egypt.",
+      "keyPassages": [
+        "Exodus 6:1–8",
+        "Exodus 6:9–13",
+        "Exodus 6:14–27",
+        "Exodus 6:28–30"
+      ],
+      "studyQuestions": "Genesis 17:1–8",
+      "lifeApplication": [
+        "Which promises define God's coming action?",
+        "Why might the people be unable to hear Moses at this moment?",
+        "What does the genealogy contribute to the account of Moses and Aaron?"
+      ],
+      "interpretiveCaution": "Hold to God's character when discouragement makes hope difficult to hear. Remember that leadership and service occur within a wider community and history.",
+      "readingNote": "The covenant language should be read in its historical setting with Israel. Later Christian readings may draw theological connections, but should not erase the passage's first audience and promises."
+    },
+    {
+      "id": "exo-ch07",
+      "book": "Exodus",
+      "chapter": 7,
+      "title": "Exodus 7 — The confrontation begins and the Nile is struck",
+      "historicalContext": "Exodus 7 begins the sequence of signs and plagues. Moses and Aaron stand before Pharaoh, and the staff sign is repeated in the royal court. The first plague strikes the Nile, a central source of water and life in Egypt; the narrative presents the event as a confrontation over who has authority.",
+      "overview": "God commissions Moses and Aaron, predicts Pharaoh's resistance and gives the staff sign. Pharaoh's magicians imitate the sign, but Aaron's staff swallows theirs. The Nile turns to blood, fish die and the water becomes unusable, yet Pharaoh's heart remains hardened.",
+      "studyObservation": "Track the repeated purpose statement that Egypt will know the Lord. Compare the magicians' imitation with the swallowing of their staffs. Notice the human cost of the Nile plague and Pharaoh's response after relief is not yet in view.",
+      "connectionNotes": "Exodus 4:1–9 anticipates signs before Israel; Exodus 8–12 continues the plague sequence; Psalm 78:43–51 and Psalm 105:26–36 later recount the plagues as acts of judgement and deliverance.",
+      "keyPassages": [
+        "Exodus 7:1–7",
+        "Exodus 7:8–13",
+        "Exodus 7:14–18",
+        "Exodus 7:19–25"
+      ],
+      "studyQuestions": "Psalm 105:26–36",
+      "lifeApplication": [
+        "What purpose does God state for the signs in Egypt?",
+        "What is the difference between imitation of a sign and the outcome of Aaron's staff?",
+        "How does Pharaoh respond to the first plague?"
+      ],
+      "interpretiveCaution": "Recognise that power displays are not the same as truth or faithful obedience. Consider how stubbornness can persist even when evidence challenges our assumptions.",
+      "readingNote": "The text describes the Nile becoming blood; avoid adding unsupported scientific mechanisms or claiming that every later detail of the plague sequence has only one modern explanation."
+    },
+    {
+      "id": "exo-ch08",
+      "book": "Exodus",
+      "chapter": 8,
+      "title": "Exodus 8 — Frogs, gnats and flies: repeated resistance",
+      "historicalContext": "The second through fourth plagues continue the confrontation between the Lord and Pharaoh. The narrative begins to distinguish the land of Goshen in the plague of flies, while Pharaoh alternates between requests for relief and renewed refusal. The sequence highlights both judgement and the limits of Pharaoh's control.",
+      "overview": "Frogs overwhelm Egypt; after Pharaoh asks Moses to plead for relief, he hardens his heart when the pressure lifts. Gnats follow, and the magicians acknowledge the finger of God. Swarms of flies then bring devastation, while Goshen is distinguished. Pharaoh offers partial concessions but does not keep his word.",
+      "studyObservation": "Notice the repeated pattern of plague, appeal, intercession, relief and renewed hardening. Compare the magicians' earlier imitation with their inability to reproduce the gnats. Observe the gradual distinction between Egypt and Goshen without assuming details not stated.",
+      "connectionNotes": "Exodus 7:14–25 begins the plague cycle; Exodus 9:4 continues the distinction concerning Israel's livestock; Psalm 105:30–31 recalls frogs and flies.",
+      "keyPassages": [
+        "Exodus 8:1–15",
+        "Exodus 8:16–19",
+        "Exodus 8:20–24",
+        "Exodus 8:25–32"
+      ],
+      "studyQuestions": "Psalm 105:30–31",
+      "lifeApplication": [
+        "What repeated pattern appears in Pharaoh's responses?",
+        "Why is the magicians' statement in verse 19 significant?",
+        "What do Pharaoh's partial offers reveal about his unwillingness to release Israel?"
+      ],
+      "interpretiveCaution": "Do not confuse temporary relief with genuine change. When you make a commitment under pressure, follow through when the immediate difficulty has passed.",
+      "readingNote": "The narrative's distinction between Goshen and Egypt should not be expanded into a claim that every Israelite individual experienced no hardship of any kind beyond what the text states."
+    },
+    {
+      "id": "exo-ch09",
+      "book": "Exodus",
+      "chapter": 9,
+      "title": "Exodus 9 — Livestock, boils and hail: the Lord's power declared",
+      "historicalContext": "Exodus 9 records the fifth, sixth and seventh plagues. The warnings become more explicit about the purpose of the signs, and the hail account includes a warning that allows those who heed God's word to protect servants and livestock. Pharaoh's confession is brief and does not lead to lasting repentance.",
+      "overview": "A severe disease strikes Egyptian livestock while Israel's livestock are distinguished; boils afflict people and animals; then hail destroys crops, trees and exposed life. Some Egyptians heed the warning and bring servants and livestock indoors. Pharaoh admits wrongdoing during the hail but hardens his heart when the storm ceases.",
+      "studyObservation": "Notice the increasing detail in the warnings and the statement that the signs proclaim God's name. The response of Egyptians who fear the word shows that the narrative includes individual responses within Egypt. Track Pharaoh's confession and what follows it.",
+      "connectionNotes": "Exodus 8:22–23 introduces a distinction between Egypt and Goshen; Exodus 10:1–2 explains the signs as a testimony for future generations; Psalm 78:47–48 recalls the hail and livestock disease.",
+      "keyPassages": [
+        "Exodus 9:1–7",
+        "Exodus 9:8–12",
+        "Exodus 9:13–21",
+        "Exodus 9:22–35"
+      ],
+      "studyQuestions": "Psalm 78:47–48",
+      "lifeApplication": [
+        "How do the warnings and stated purpose develop in this chapter?",
+        "What does the response of those who heed the warning teach about listening?",
+        "Why is Pharaoh's confession not the same as a changed heart?"
+      ],
+      "interpretiveCaution": "Take warnings seriously before consequences become unavoidable. Let confession lead to changed action rather than a temporary response to pressure.",
+      "readingNote": "The text's descriptions of Egyptian livestock and the distinction from Israel should be interpreted according to the narrative. Do not turn the plague account into a claim about modern ethnic or national groups."
+    },
+    {
+      "id": "exo-ch10",
+      "book": "Exodus",
+      "chapter": 10,
+      "title": "Exodus 10 — Locusts, darkness and the approach of release",
+      "historicalContext": "Exodus 10 brings the eighth and ninth plagues and intensifies the negotiations over who may leave Egypt. The chapter explicitly links the signs to the memory and teaching of future generations. Pharaoh's offers become increasingly qualified, while the darkness prepares for the final plague in chapter 11.",
+      "overview": "Locusts consume what remains after the hail, and Pharaoh's officials urge him to yield. Pharaoh attempts to restrict who may go, but Moses insists that the people and their worship belong together. A darkness covers Egypt for three days, while the Israelites have light. Pharaoh's final threat ends the meeting.",
+      "studyObservation": "Notice the purpose of telling the signs to children and grandchildren. Trace the changing offers: men only, then families without livestock. Moses' insistence that not a hoof remain expresses the completeness of the worship journey. The chapter ends with a decisive rupture in Pharaoh's dealings with Moses.",
+      "connectionNotes": "Exodus 9:13–35 prepares for the locusts; Exodus 11 announces the final plague; Psalm 105:34–36 recalls locusts and darkness; Deuteronomy 6:20–25 develops the practice of telling future generations what God has done.",
+      "keyPassages": [
+        "Exodus 10:1–6",
+        "Exodus 10:7–11",
+        "Exodus 10:12–20",
+        "Exodus 10:21–29"
+      ],
+      "studyQuestions": "Deuteronomy 6:20–25",
+      "lifeApplication": [
+        "Why does God say the signs must be told to later generations?",
+        "How do Pharaoh's changing offers attempt to control Israel's worship?",
+        "What does the contrast between Egypt's darkness and Israel's light contribute to the story?"
+      ],
+      "interpretiveCaution": "Tell the next generation truthful accounts of God's work, and do not accept compromises that separate worship from the whole of life.",
+      "readingNote": "The darkness is narrated as a plague and sign in this account. Avoid speculative claims about its precise physical mechanism or treating it as a universal prediction about future events."
+    }
+  ]
+}
