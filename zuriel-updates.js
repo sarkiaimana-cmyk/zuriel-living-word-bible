@@ -1,7 +1,8 @@
 /* Zuriel in-app update centre — safe web refresh checks and transparent Android status. */
 (function () {
   "use strict";
-  const APP_VERSION = "1.4.130";
+  const APP_VERSION = "2.3.0";
+  const DISPLAY_VERSION = "2.3";
   const VERSION_URL = "https://raw.githubusercontent.com/sarkiaimana-cmyk/zuriel-living-word-bible/main/version.json";
   function mount() {
     const panel = document.getElementById("zurielSettingsPanel");
@@ -30,10 +31,10 @@
         if (!info || !info.version) throw new Error("The update information could not be verified.");
         const newer = compareVersions(info.version, APP_VERSION) > 0;
         if (newer) {
-          status.textContent = "A newer Zuriel version is available: " + info.version + ".";
+          status.textContent = "A newer Zuriel version is available: " + (info.displayVersion || info.version) + ".";
           notes.textContent = info.releaseNotes || "Open the latest published version when ready.";
         } else {
-          status.textContent = "You are using the latest listed Zuriel version (" + APP_VERSION + ").";
+          status.textContent = "You are using the latest listed Zuriel version (" + DISPLAY_VERSION + ").";
           notes.textContent = info.releaseNotes || "No newer version is listed.";
         }
         if (!isNativeApp() && "serviceWorker" in navigator) {
