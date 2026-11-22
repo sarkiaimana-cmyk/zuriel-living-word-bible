@@ -14,10 +14,18 @@ const api = sandbox.window.ZurielReadingPlans;
 
 assert.ok(api, "Reading plan module must expose its public API.");
 const plans = api.list();
-assert.equal(plans.length, 10, "Ten curated offline reading plans should be available.");
+assert.equal(plans.length, 15, "Fifteen curated offline reading plans should be available.");
+for (const id of ["promises-of-god-7", "fruit-of-spirit-7", "healing-and-comfort-7", "family-and-home-7", "purposeful-work-7"]) {
+  const plan = plans.find(item => item.id === id);
+  assert.ok(plan, "New guided journey must be present: " + id);
+  assert.equal(plan.duration, 7, "Each new guided journey must contain seven days.");
+}
+const planIds = plans.map(plan => plan.id);
+assert.equal(new Set(planIds).size, planIds.length, "Every reading plan must have a unique stable ID.");
 for (const plan of plans) {
   assert.equal(plan.passages.length, plan.duration);
-  assert.ok(plan.title && plan.id);
+  assert.ok(plan.title && plan.id && plan.description, "Every plan needs a title, stable ID and description.");
+  assert.ok(plan.passages.every(reference => typeof reference === "string" && reference.trim()), "Every daily passage must contain a non-empty Scripture reference.");
 }
 const monthPlan = plans.find(plan => plan.id === "walk-with-jesus-30");
 assert.ok(monthPlan, "The 30-day Walk with Jesus plan must be available.");
@@ -65,6 +73,6 @@ assert.equal(api.parseReference("John 0"), null, "Chapter zero must be rejected.
 assert.equal(api.parseReference("not a Scripture reference"), null);
 
 const allReferences = plans.flatMap(plan => plan.passages);
-assert.equal(allReferences.length, 93);
+assert.equal(allReferences.length, 128);
 for (const reference of allReferences) assert.ok(api.parseReference(reference), "Every curated passage must parse: " + reference);
-console.log("Reading plan runtime checks passed: ten plans including a 30-day Jesus journey, 93 passages, private progress persistence, duplicate-day cleanup, invalid-state rejection and Scripture-reference parsing.");
+console.log("Reading plan runtime checks passed: fifteen plans including a 30-day Jesus journey and five new themed journeys, 128 passages, private progress persistence, duplicate-day cleanup, invalid-state rejection and Scripture-reference parsing.");

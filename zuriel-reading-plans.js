@@ -176,8 +176,12 @@
         ["Proverbs 15:1-4","Notice the effect of gentle speech and truthful words."],
         ["Romans 14:13-19","Pursue what makes for peace and mutual strengthening."]
       ]
-    }
-
+    },
+    {id:"promises-of-god-7",title:"Promises and Faithfulness of God",duration:7,description:"Explore covenant promises, God's faithfulness and hope anchored in His Word.",days:[["Genesis 12:1-9","Read God's call to Abram and the promise of blessing."],["Exodus 14:10-31","Watch Israel discover God's power and deliverance."],["Joshua 1:1-9","Consider courage and meditation on God's Word."],["Psalm 89:1-18","Praise God's steadfast love and faithfulness."],["Isaiah 55:1-13","Reflect on God's invitation and the reliability of His Word."],["2 Corinthians 1:18-22","Study the certainty of God's promises in Christ."],["Hebrews 10:19-25","Respond to God's faithfulness with hope and encouragement."]]},
+    {id:"fruit-of-spirit-7",title:"The Fruit of the Spirit",duration:7,description:"Reflect on the character the Holy Spirit forms and how it shapes daily life.",days:[["Galatians 5:16-26","Consider life led by the Spirit."],["John 15:1-17","Learn from Jesus about abiding and fruitfulness."],["1 Corinthians 13:1-13","Examine love as the enduring way of maturity."],["Philippians 4:4-9","Practise joy, gentleness, prayer and attention to what is good."],["Colossians 3:12-17","Consider compassion, patience, forgiveness and peace."],["Ephesians 4:1-16","Reflect on unity, maturity and truth in love."],["Romans 12:9-21","Explore sincere love and overcoming evil with good."]]},
+    {id:"healing-and-comfort-7",title:"God's Comfort and Healing",duration:7,description:"Read about comfort, compassion, prayer and hope in their biblical context.",days:[["Psalm 42:1-11","Bring longing and discouragement honestly before God."],["Psalm 147:1-11","Reflect on the Lord who heals the brokenhearted."],["Isaiah 43:1-7","Read God's words of presence and care."],["Matthew 11:25-30","Hear Jesus invite the weary to come to Him."],["Mark 5:21-43","Read accounts of Jesus' compassion and restoration."],["2 Corinthians 1:3-11","Consider God's comfort and comforting others."],["Revelation 21:1-7","Look toward promised renewal and the end of sorrow."]]},
+    {id:"family-and-home-7",title:"Faith in the Family and Home",duration:7,description:"Study love, service, instruction, patience and faithfulness in the home.",days:[["Deuteronomy 6:1-9","Explore the call to love God and pass His words on."],["Psalm 127:1-5","Reflect on God's place in building a household."],["Proverbs 15:1-17","Consider gentle speech, listening and the heart's priorities."],["Ephesians 5:21-33","Read about mutual responsibility and Christlike love in marriage."],["Ephesians 6:1-4","Study instruction concerning children and parental care."],["Colossians 3:12-21","Consider compassion, forgiveness and household relationships."],["Joshua 24:14-24","Reflect on serving the Lord faithfully."]]},
+    {id:"purposeful-work-7",title:"Work, Purpose and Stewardship",duration:7,description:"Connect work, calling, integrity, generosity and stewardship with biblical wisdom.",days:[["Genesis 2:4-17","Read work and responsibility within creation."],["Proverbs 16:1-9","Reflect on diligence and entrusting the path to the Lord."],["Colossians 3:22-24","Consider integrity in everyday responsibilities."],["Matthew 25:14-30","Study faithful stewardship and responsibility."],["Luke 12:13-34","Reflect on generosity and seeking God's Kingdom."],["2 Thessalonians 3:6-13","Read about responsible work and perseverance."],["1 Peter 4:7-11","Consider serving others with the gifts God provides."]]}
   ];
 
   function emptyState() {
@@ -408,7 +412,7 @@
 
   window.ZurielReadingPlans = {
     render: render,
-    list: function () { return PLANS.map(plan => ({ id: plan.id, title: plan.title, duration: plan.duration, passages: plan.days.map(day => day[0]) })); },
+    list: function () { return PLANS.map(plan => ({ id: plan.id, title: plan.title, duration: plan.duration, description: plan.description, passages: plan.days.map(day => day[0]) })); },
     validateProgress: validateProgress,
     readState: readState,
     writeState: writeState,
