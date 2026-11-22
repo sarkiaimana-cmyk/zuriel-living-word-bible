@@ -123,6 +123,17 @@ for (const collection of [books.bookIntroductions,books.bookStudyPathways]) {
   const unique = new Set(collection.map(item => item.book));
   assert.equal(unique.size,66,"Every canonical book appears once in book guides");
 }
+const introductionBooks = new Set(books.bookIntroductions.map(item => item.book));
+assert.equal(introductionBooks.size,66,"Every canonical book needs one book introduction");
+const readingNotes = books.bookIntroductions.map(item => item.readingNote.trim());
+assert.ok(readingNotes.every(note => note.length >= 120), "Every book introduction needs a substantive contextual reading note");
+assert.equal(new Set(readingNotes).size,66,"Book-specific reading notes must not be repeated across books");
+for (const introduction of books.bookIntroductions) {
+  assert.ok(typeof introduction.overview === "string" && introduction.overview.trim().length >= 90,
+    "Every book introduction needs a meaningful overview: " + introduction.book);
+  assert.ok(Array.isArray(introduction.studyQuestions) && introduction.studyQuestions.length >= 3,
+    "Every book introduction needs at least three study questions: " + introduction.book);
+}
 const trails=[...trail1.trails,...trail2.trails];
 assert.equal(new Set(trails.map(item=>item.id)).size,74,"Connected Scripture trail IDs must be unique");
 for (const trail of trails) {
