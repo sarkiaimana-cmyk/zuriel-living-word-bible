@@ -8,7 +8,7 @@ async function json(path) {
 }
 const [
   geography, dictionary, books, trail1, trail2, deep, names, words, words2,
-  commentary, topical, topical3, worship, theology, loader, index, worker, bookDataSource, kjv, chapterGuides, exodusChapterGuides, exodusChapterGuides2, exodusChapterGuides3, exodusChapterGuides4, leviticusChapterGuides, leviticusChapterGuides2, numbersChapterGuides, numbersChapterGuides2, numbersChapterGuides3, deuteronomyChapterGuides, deuteronomyChapterGuides2, joshuaChapterGuides, joshuaChapterGuides2, judgesChapterGuides, judgesChapterGuides2, ruthChapterGuides, samuelChapterGuides, samuelChapterGuides2, samuelChapterGuides3, samuelChapterGuides4, kingsChapterGuides, kingsChapterGuides2, kings2ChapterGuides, kings2ChapterGuides2, chroniclesChapterGuides, chroniclesChapterGuides2, chronicles2ChapterGuides, chronicles2ChapterGuides2, ezraChapterGuides, nehemiahChapterGuides, estherChapterGuides, jobChapterGuides, jobChapterGuides2, psalmsChapterGuides, psalmsChapterGuides2, psalmsChapterGuides3, psalmsChapterGuides4, psalmsChapterGuides5, proverbsChapterGuides, ecclesiastesChapterGuides, songChapterGuides, isaiahChapterGuides, isaiahChapterGuides2, isaiahChapterGuides3
+  commentary, topical, topical3, worship, theology, loader, index, worker, bookDataSource, kjv, chapterGuides, exodusChapterGuides, exodusChapterGuides2, exodusChapterGuides3, exodusChapterGuides4, leviticusChapterGuides, leviticusChapterGuides2, numbersChapterGuides, numbersChapterGuides2, numbersChapterGuides3, deuteronomyChapterGuides, deuteronomyChapterGuides2, joshuaChapterGuides, joshuaChapterGuides2, judgesChapterGuides, judgesChapterGuides2, ruthChapterGuides, samuelChapterGuides, samuelChapterGuides2, samuelChapterGuides3, samuelChapterGuides4, kingsChapterGuides, kingsChapterGuides2, kings2ChapterGuides, kings2ChapterGuides2, chroniclesChapterGuides, chroniclesChapterGuides2, chronicles2ChapterGuides, chronicles2ChapterGuides2, ezraChapterGuides, nehemiahChapterGuides, estherChapterGuides, jobChapterGuides, jobChapterGuides2, psalmsChapterGuides, psalmsChapterGuides2, psalmsChapterGuides3, psalmsChapterGuides4, psalmsChapterGuides5, proverbsChapterGuides, ecclesiastesChapterGuides, songChapterGuides, isaiahChapterGuides, isaiahChapterGuides2, isaiahChapterGuides3, jeremiahChapterGuides, jeremiahChapterGuides2
 ] = await Promise.all([
   json("data/zuriel-bible-geography-atlas.json"),
   json("data/zuriel-biblical-dictionary-expansion.json"),
@@ -73,7 +73,9 @@ const [
   json("data/zuriel-chapter-introductions-song-of-solomon-01-08.json"),
   json("data/zuriel-chapter-introductions-isaiah-01-22.json"),
   json("data/zuriel-chapter-introductions-isaiah-23-44.json"),
-  json("data/zuriel-chapter-introductions-isaiah-45-66.json")
+  json("data/zuriel-chapter-introductions-isaiah-45-66.json"),
+  json("data/zuriel-chapter-introductions-jeremiah-01-26.json"),
+  json("data/zuriel-chapter-introductions-jeremiah-27-52.json")
 ]);
 
 const studyDatasetPaths = [
@@ -808,6 +810,21 @@ for(const guide of isaiahChapterGuides3.chapters){
  assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length>=3,"Isaiah batch 3 guide needs study questions");
  for(const reference of guide.keyPassages) checkReference(reference,"Isaiah chapter "+guide.chapter);
 }
+for (const [batch, expectedStart, expectedEnd] of [[jeremiahChapterGuides,1,26],[jeremiahChapterGuides2,27,52]]) {
+ assert.equal(batch.chapters.length,26,"Jeremiah batch must contain 26 chapter guides");
+ const ids=new Set();
+ for(const guide of batch.chapters){
+  assert.equal(guide.book,"Jeremiah","Jeremiah guide must remain scoped to Jeremiah");
+  assert.ok(Number.isInteger(guide.chapter)&&guide.chapter>=expectedStart&&guide.chapter<=expectedEnd,"Jeremiah chapter number must be valid");
+  assert.ok(guide.title.startsWith("Jeremiah "+guide.chapter+" —"),"Jeremiah title must identify its chapter");
+  assert.ok(guide.id==="jer-ch"+String(guide.chapter).padStart(2,"0"),"Jeremiah guide needs a stable ID");
+  assert.ok(!ids.has(guide.id),"Jeremiah guide IDs must be unique");ids.add(guide.id);
+  for(const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field]==="string"&&guide[field].trim().length>=50,"Jeremiah guide needs substantive "+field+": "+guide.chapter);
+  assert.ok(Array.isArray(guide.keyPassages)&&guide.keyPassages.length>=2,"Jeremiah guide needs key passages");
+  assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length>=3,"Jeremiah guide needs study questions");
+  for(const reference of guide.keyPassages) checkReference(reference,"Jeremiah chapter "+guide.chapter);
+ }
+}
 const psalmGuides=[...psalmsChapterGuides.chapters,...psalmsChapterGuides2.chapters,...psalmsChapterGuides3.chapters,...psalmsChapterGuides4.chapters,...psalmsChapterGuides5.chapters];
 const psalmIds=new Set();
 assert.equal(proverbsChapterGuides.chapters.length,31,"Proverbs must contain all 31 chapter guides");
@@ -846,4 +863,4 @@ for(const guide of secondSamuelGuides){
  assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length>=3,"2 Samuel guide needs study questions");
  for(const reference of guide.keyPassages) checkReference(reference,"2 Samuel chapter "+guide.chapter);
 }
-console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges, 4 Ruth and 31 1 Samuel, 24 2 Samuel 22 1 Kings, 25 2 Kings 29 1 Chronicles and 36 2 Chronicles 10 Ezra and 13 Nehemiah and 10 Esther and 42 Job and 150 Psalms and 31 Proverbs and 66 Isaiah chapter introductions; 40 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
+console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges, 4 Ruth and 31 1 Samuel, 24 2 Samuel 22 1 Kings, 25 2 Kings 29 1 Chronicles and 36 2 Chronicles 10 Ezra and 13 Nehemiah and 10 Esther and 42 Job and 150 Psalms and 31 Proverbs, 66 Isaiah and 52 Jeremiah chapter introductions; 42 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
