@@ -264,7 +264,7 @@ assert.equal(lexiconIndex.schemaVersion, 1, "Lexicon index schema must be versio
 assert.ok(Array.isArray(lexiconIndex.entries) && lexiconIndex.entries.length > 0, "Lexicon index must contain entries");
 const lexiconIds = new Set();
 for (const entry of lexiconIndex.entries) {
-  assert.ok(typeof entry.id === "string" && /^[HG]\\d+$/.test(entry.id), "Lexicon entry needs a valid Strong's index: " + (entry && entry.id));
+  assert.ok(typeof entry.id === "string" && /^[HG]\d+$/.test(entry.id), "Lexicon entry needs a valid Strong's index: " + (entry && entry.id));
   assert.ok(!lexiconIds.has(entry.id), "Lexicon IDs must be unique: " + entry.id);
   assert.ok((entry.id.startsWith("H") && entry.language === "Hebrew") ||
     (entry.id.startsWith("G") && entry.language === "Greek"),
@@ -273,12 +273,12 @@ for (const entry of lexiconIndex.entries) {
   assert.ok(typeof entry.transliteration === "string" && entry.transliteration.trim(), "Lexicon entry needs transliteration: " + entry.id);
   assert.ok(typeof entry.studyLabel === "string" && entry.studyLabel.trim(), "Lexicon entry needs a contextual study label: " + entry.id);
   assert.ok(Array.isArray(entry.keyReferences) && entry.keyReferences.length >= 1, "Lexicon entry needs connected Scripture references: " + entry.id);
-  if (entry.language === "Hebrew") assert.match(entry.lemma, /\\p{Script=Hebrew}/u, "Hebrew lexicon lemma must use Hebrew script: " + entry.id);
-  if (entry.language === "Greek") assert.match(entry.lemma, /\\p{Script=Greek}/u, "Greek lexicon lemma must use Greek script: " + entry.id);
+  if (entry.language === "Hebrew") assert.match(entry.lemma, /\p{Script=Hebrew}/u, "Hebrew lexicon lemma must use Hebrew script: " + entry.id);
+  if (entry.language === "Greek") assert.match(entry.lemma, /\p{Script=Greek}/u, "Greek lexicon lemma must use Greek script: " + entry.id);
   for (const reference of entry.keyReferences) {
-    const match = String(reference).trim().match(/^(.+?)\\s+(\\d+)(?::(\\d+))?/);
+    const match = String(reference).trim().match(/^(.+?)\s+(\d+)(?::(\d+))?/);
     assert.ok(match, "Lexicon reference must identify a Bible book and chapter: " + entry.id + " — " + reference);
-    const book = bookLookup.get(match[1].toLowerCase().replace(/\\s+/g, " ").trim());
+    const book = bookLookup.get(match[1].toLowerCase().replace(/\s+/g, " ").trim());
     assert.ok(book, "Lexicon reference uses an unknown Bible book: " + entry.id + " — " + reference);
     const chapter = Number(match[2]);
     assert.ok(chapter >= 1 && chapter <= book.chapters, "Lexicon reference uses an invalid chapter: " + entry.id + " — " + reference);
@@ -294,17 +294,17 @@ for (const entry of lexiconIndex.entries) {
 
 
 const homeSource = await readFile(new URL("../zuriel-home.js", import.meta.url), "utf8");
-const homeVerseEntries = [...homeSource.matchAll(/\\{\\s*reference:\\s*"([^"]+)",\\s*text:\\s*"([^"]+)"\\s*\\}/g)]
+const homeVerseEntries = [...homeSource.matchAll(/\{\s*reference:\s*"([^"]+)",\s*text:\s*"([^"]+)"\s*\}/g)]
   .map(match => ({ reference: match[1], text: match[2] }));
 assert.ok(homeVerseEntries.length >= 20, "Home dashboard must retain a meaningful set of featured Scripture verses");
 function normalizeBibleWords(value) {
   return String(value || "").normalize("NFC").toLocaleLowerCase("en")
-    .replace(/[^\\p{L}\\p{N}]+/gu, "");
+    .replace(/[^\p{L}\p{N}]+/gu, "");
 }
 for (const item of homeVerseEntries) {
-  const match = item.reference.match(/^(.+?)\\s+(\\d+):(\\d+)$/);
+  const match = item.reference.match(/^(.+?)\s+(\d+):(\d+)$/);
   assert.ok(match, "Featured home Scripture must use a complete reference: " + item.reference);
-  const book = bookLookup.get(match[1].toLowerCase().replace(/\\s+/g, " ").trim());
+  const book = bookLookup.get(match[1].toLowerCase().replace(/\s+/g, " ").trim());
   assert.ok(book, "Featured home Scripture uses an unknown Bible book: " + item.reference);
   const chapters = kjv[readerMap[book.name]];
   const verseText = chapters && chapters[Number(match[2]) - 1] && chapters[Number(match[2]) - 1][Number(match[3]) - 1];
