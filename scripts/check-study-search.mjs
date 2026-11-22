@@ -144,6 +144,15 @@ const datasets = {
     {id:"eze-ch18",book:"Ezekiel",chapter:18,title:"Ezekiel 18 — The soul that sins and the way of life",overview:"Ezekiel challenges a proverb that treats children as inevitably bearing their parents' guilt. The chapter insists that each person is accountable for their own conduct and that the wicked can turn and live.",keyPassages:["Ezekiel 18:1–16","Ezekiel 18:17–32"]},
     {id:"eze-ch24",book:"Ezekiel",chapter:24,title:"Ezekiel 24 — The cooking pot and the death of Ezekiel's wife",overview:"As the siege begins, Ezekiel describes Jerusalem as a rusted cooking pot and is told that his wife's death will become a sign: he must not perform customary public mourning. The chapter closes with the promise that his speech will return when news arrives.",keyPassages:["Ezekiel 24:1–14","Ezekiel 24:15–27"]}
   ]},
+  "zuriel-chapter-introductions-ezekiel-25-48.json": { chapters: [
+    {id:"eze-ch26",book:"Ezekiel",chapter:26,title:"Ezekiel 26 — Tyre's pride and the fall of its trading power",overview:"Ezekiel announces judgement against Tyre for rejoicing over Jerusalem's fall and hoping to profit from its destruction. The chapter describes the coming siege and the collapse of the island city's security.",keyPassages:["Ezekiel 26:1–14","Ezekiel 26:15–21"]},
+    {id:"eze-ch28",book:"Ezekiel",chapter:28,title:"Ezekiel 28 — The ruler of Tyre and the king of Sidon",overview:"Ezekiel addresses the ruler of Tyre, whose wisdom and wealth have become grounds for pride, and then announces judgement against Sidon. The chapter uses Eden and cherub imagery to portray the ruler's exalted status and fall.",keyPassages:["Ezekiel 28:1–19","Ezekiel 28:20–26"]},
+    {id:"eze-ch33",book:"Ezekiel",chapter:33,title:"Ezekiel 33 — The watchman renewed and the call to turn",overview:"After news arrives of Jerusalem's fall, Ezekiel's speech is restored. He is again appointed as a watchman, and the people are challenged for claiming to be God's people while practising injustice.",keyPassages:["Ezekiel 33:1–20","Ezekiel 33:21–33"]},
+    {id:"eze-ch34",book:"Ezekiel",chapter:34,title:"Ezekiel 34 — The false shepherds and the promised shepherd",overview:"Ezekiel condemns Israel's shepherds for feeding themselves rather than the flock. God promises to seek the scattered sheep and appoint one shepherd from David's line to care for them.",keyPassages:["Ezekiel 34:1–16","Ezekiel 34:17–31"]},
+    {id:"eze-ch37",book:"Ezekiel",chapter:37,title:"Ezekiel 37 — The valley of dry bones and the breath of life",overview:"Ezekiel sees a valley filled with dry bones. At the prophetic word and the breath of God, the bones come together, receive sinews and flesh, and live; the vision is explained as the hope of Israel's restoration from exile.",keyPassages:["Ezekiel 37:1–14","Ezekiel 37:15–28"]},
+    {id:"eze-ch40",book:"Ezekiel",chapter:40,title:"Ezekiel 40 — The visionary temple and the return of glory",overview:"In a vision dated to the exile, Ezekiel is brought to a high mountain and shown a measured temple complex. A heavenly guide measures its gates, courts, and structures with careful detail.",keyPassages:["Ezekiel 40:1–27","Ezekiel 40:28–49"]},
+    {id:"eze-ch47",book:"Ezekiel",chapter:47,title:"Ezekiel 47 — The river from the temple and the healing land",overview:"Ezekiel sees water flowing from beneath the temple threshold, growing into a deep river that brings life to the Arabah and the Dead Sea. Trees along its banks provide food and healing leaves.",keyPassages:["Ezekiel 47:1–12","Ezekiel 47:13–23"]}
+  ]},
   "zuriel-deep-study-guides.json": { guides: [] },
   "zuriel-bible-geography-atlas.json": { places: [], journeys: [] },
   "zuriel-worship-study-pathways.json": { pathways: [] }
@@ -380,6 +389,21 @@ const ezekielEighteen = await library.search("soul sins individual responsibilit
 assert.equal(ezekielEighteen.length,1,"Ezekiel chapter 18 guide should be searchable"); assert.equal(ezekielEighteen[0].source.chapter,18);
 const ezekielTwentyFour = await library.search("cooking pot siege Ezekiel wife mourning", { category: "Chapter Introductions" });
 assert.equal(ezekielTwentyFour.length,1,"Ezekiel chapter 24 guide should be searchable"); assert.equal(ezekielTwentyFour[0].source.chapter,24);
+
+const ezekielTwentySix = await library.search("Tyre pride trading power fall", { category: "Chapter Introductions" });
+assert.equal(ezekielTwentySix.length,1,"Ezekiel chapter 26 guide should be searchable"); assert.equal(ezekielTwentySix[0].source.chapter,26);
+const ezekielTwentyEight = await library.search("ruler Tyre Sidon Eden cherub pride", { category: "Chapter Introductions" });
+assert.equal(ezekielTwentyEight.length,1,"Ezekiel chapter 28 guide should be searchable"); assert.equal(ezekielTwentyEight[0].source.chapter,28);
+const ezekielThirtyThree = await library.search("watchman renewed Jerusalem fall turn", { category: "Chapter Introductions" });
+assert.equal(ezekielThirtyThree.length,1,"Ezekiel chapter 33 guide should be searchable"); assert.equal(ezekielThirtyThree[0].source.chapter,33);
+const ezekielThirtyFour = await library.search("false shepherds promised shepherd flock", { category: "Chapter Introductions" });
+assert.equal(ezekielThirtyFour.length,1,"Ezekiel chapter 34 guide should be searchable"); assert.equal(ezekielThirtyFour[0].source.chapter,34);
+const ezekielThirtySeven = await library.search("valley dry bones breath life restoration", { category: "Chapter Introductions" });
+assert.equal(ezekielThirtySeven.length,1,"Ezekiel chapter 37 guide should be searchable"); assert.equal(ezekielThirtySeven[0].source.chapter,37);
+const ezekielForty = await library.search("visionary temple measurements gates courts", { category: "Chapter Introductions" });
+assert.equal(ezekielForty.length,1,"Ezekiel chapter 40 guide should be searchable"); assert.equal(ezekielForty[0].source.chapter,40);
+const ezekielFortySeven = await library.search("river temple healing land Arabah", { category: "Chapter Introductions" });
+assert.equal(ezekielFortySeven.length,1,"Ezekiel chapter 47 guide should be searchable"); assert.equal(ezekielFortySeven[0].source.chapter,47);
 
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
 assert.equal(greek.length, 1, "Unicode Greek search should find the original-language entry.");
