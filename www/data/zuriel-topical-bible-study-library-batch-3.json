@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 1,
+  "title": "Zuriel Topical Bible Study Library — Batch 3",
+  "description": "Twenty additional contextual topical guides for discipleship, spiritual formation, church life and faithful witness.",
+  "editorialPolicy": [
+    "Read full passages in context; references are study starting points.",
+    "Topical summaries do not replace Scripture or settle every denominational disagreement.",
+    "Applications must not excuse abuse, coercion, discrimination or neglect of appropriate care.",
+    "Wisdom texts, promises and narratives must be interpreted according to their literary and covenant settings."
+  ],
+  "entries": [
+    {
+      "id": "topic-guide-101",
+      "title": "The person and work of the Holy Spirit",
+      "overview": "The Spirit is presented as God's active presence, empowering witness, forming holy character and guiding the church in truth.",
+      "scriptureReferences": [
+        "John 14:16-17,26",
+        "16:7-15",
+        "Acts 1:8",
+        "Romans 8:1-17"
+      ],
+      "studyQuestions": "Distinguish the Spirit's identity, gifts, fruit and work in the passages rather than reducing the Spirit to a feeling.",
+      "lifeApplication": "Seek the Spirit's help for faithful witness, discernment and Christlike character; test claims against Scripture.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-102",
+      "title": "The fruit of the Spirit",
+      "overview": "Galatians contrasts the Spirit's fruit with destructive works of the flesh and describes character shaped by life in the Spirit.",
+      "scriptureReferences": [
+        "Galatians 5:16-26",
+        "John 15:1-8",
+        "Colossians 3:12-17"
+      ],
+      "studyQuestions": "Observe the singular image of fruit and the community context of the virtues listed.",
+      "lifeApplication": "Choose one relationship or habit where love, patience or self-control needs practical expression.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-103",
+      "title": "Spiritual gifts and service",
+      "overview": "New Testament gifts are given for service and the building up of the church, not status or self-promotion.",
+      "scriptureReferences": [
+        "Romans 12:3-8",
+        "1 Corinthians 12:4-27",
+        "1 Peter 4:10-11"
+      ],
+      "studyQuestions": "Read gift lists in their distinct contexts; no single list is presented as exhaustive.",
+      "lifeApplication": "Use abilities humbly, welcome others' contributions and measure service by love and edification.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-104",
+      "title": "The Lord's Prayer and kingdom priorities",
+      "overview": "Jesus teaches prayer shaped by God's name, kingdom and will, alongside daily dependence, forgiveness and deliverance.",
+      "scriptureReferences": [
+        "Matthew 6:5-15",
+        "Luke 11:1-4"
+      ],
+      "studyQuestions": "Notice the prayer's communal language and the link between receiving and extending forgiveness.",
+      "lifeApplication": "Pray with God's priorities first, then bring daily needs honestly and forgive without denying the need for wise boundaries.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-105",
+      "title": "The new life in Christ",
+      "overview": "Paul describes Christian identity as participation in Christ's death and resurrection, expressed through a renewed way of living.",
+      "scriptureReferences": [
+        "Romans 6:1-14",
+        "2 Corinthians 5:14-21",
+        "Colossians 3:1-17"
+      ],
+      "studyQuestions": "Do not detach identity language from the ethical transformation that follows in each passage.",
+      "lifeApplication": "Name one old pattern to put away and one Christlike practice to put on.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-106",
+      "title": "Faith and works",
+      "overview": "The New Testament rejects boasting while insisting that living faith becomes visible through faithful action.",
+      "scriptureReferences": [
+        "Ephesians 2:8-10",
+        "James 2:14-26",
+        "Galatians 5:6"
+      ],
+      "studyQuestions": "Read Paul and James in their arguments; they address different distortions, not a simple contradiction.",
+      "lifeApplication": "Let gratitude for grace produce concrete mercy, integrity and service.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-107",
+      "title": "The armour of God",
+      "overview": "Ephesians uses a Roman military image to call believers to stand firm through truth, righteousness, faith, salvation, God's word and prayer.",
+      "scriptureReferences": [
+        "Ephesians 6:10-20",
+        "Isaiah 11:4-5",
+        "59:17"
+      ],
+      "studyQuestions": "The passage describes spiritual resistance, not permission to target people as enemies.",
+      "lifeApplication": "Practise truthfulness, prayer and peace; identify pressures without treating people as the enemy.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-108",
+      "title": "Resisting temptation",
+      "overview": "Scripture describes temptation honestly and calls believers to vigilance, dependence on God and practical escape from destructive choices.",
+      "scriptureReferences": [
+        "Matthew 4:1-11",
+        "1 Corinthians 10:12-13",
+        "James 1:12-18"
+      ],
+      "studyQuestions": "Do not turn 1 Corinthians 10:13 into a promise that every hardship is easily removed.",
+      "lifeApplication": "Recognise a recurring trigger and plan a wise response that includes support and accountability.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-109",
+      "title": "The wisdom of waiting",
+      "overview": "Biblical waiting is active trust, patient hope and continued faithfulness rather than passive denial of difficulty.",
+      "scriptureReferences": [
+        "Psalm 27:13-14",
+        "40:1-3",
+        "Isaiah 40:27-31",
+        "James 5:7-11"
+      ],
+      "studyQuestions": "Poetic images of renewed strength should be read as hope in God, not a timetable for every desired outcome.",
+      "lifeApplication": "Choose a faithful next step while entrusting what remains beyond your control to God.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-110",
+      "title": "The goodness of work",
+      "overview": "Scripture presents work as service and stewardship while warning against exploitation, idleness and making work an idol.",
+      "scriptureReferences": [
+        "Genesis 2:15",
+        "Proverbs 6:6-11",
+        "Colossians 3:22-24",
+        "2 Thessalonians 3:6-13"
+      ],
+      "studyQuestions": "Household and labour texts must be read in their historical setting and never used to excuse exploitation.",
+      "lifeApplication": "Work honestly, rest appropriately and treat colleagues and workers with dignity.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-111",
+      "title": "Peace in conflict",
+      "overview": "Biblical peacemaking joins truth, humility, justice and reconciliation; peace is not simply silence or avoidance.",
+      "scriptureReferences": [
+        "Matthew 5:9,21-26",
+        "Romans 12:17-21",
+        "Ephesians 4:25-32"
+      ],
+      "studyQuestions": "Reconciliation does not require a harmed person to return to unsafe conditions or bypass accountability.",
+      "lifeApplication": "Take one safe step toward truthful communication, repair or appropriate mediation.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-112",
+      "title": "The church as one body",
+      "overview": "The church is pictured as a body whose members have different gifts and equal need for mutual care.",
+      "scriptureReferences": [
+        "1 Corinthians 12:12-27",
+        "Ephesians 4:1-16",
+        "Romans 12:3-8"
+      ],
+      "studyQuestions": "Unity does not mean uniformity or that leaders are beyond correction.",
+      "lifeApplication": "Value a contribution that differs from yours and make room for members who are often overlooked.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-113",
+      "title": "Hospitality and welcome",
+      "overview": "Biblical hospitality makes room for strangers and neighbours as an expression of love and shared life.",
+      "scriptureReferences": [
+        "Genesis 18:1-8",
+        "Luke 14:12-24",
+        "Romans 12:9-13",
+        "Hebrews 13:1-2"
+      ],
+      "studyQuestions": "Do not make hospitality a burden that ignores safety, resources or personal limits.",
+      "lifeApplication": "Offer a realistic act of welcome, listening or practical help without seeking recognition.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-114",
+      "title": "The hope of resurrection",
+      "overview": "Christian hope rests on God's raising of Jesus and the promised resurrection, giving meaning to endurance and faithful living.",
+      "scriptureReferences": [
+        "1 Corinthians 15:12-28,50-58",
+        "1 Thessalonians 4:13-18",
+        "1 Peter 1:3-9"
+      ],
+      "studyQuestions": "Keep the passage's claims about Christ's resurrection distinct from speculation about timelines.",
+      "lifeApplication": "Let resurrection hope encourage steadfast love and meaningful service today.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-115",
+      "title": "The return of Christ and faithful readiness",
+      "overview": "New Testament teaching about Christ's return calls for watchfulness, hope, holiness and faithful responsibility.",
+      "scriptureReferences": [
+        "Matthew 24:36-44",
+        "1 Thessalonians 5:1-11",
+        "2 Peter 3:8-14"
+      ],
+      "studyQuestions": "Jesus warns against date-setting; avoid speculative timetables and fear-driven predictions.",
+      "lifeApplication": "Practise alert faithfulness through love, integrity and encouragement rather than date calculations.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-116",
+      "title": "The Bible's call to justice",
+      "overview": "The prophets and apostles connect worship with fair treatment, protection of vulnerable people and truthful public life.",
+      "scriptureReferences": [
+        "Isaiah 1:10-17",
+        "Amos 5:21-24",
+        "Micah 6:6-8",
+        "James 2:1-9"
+      ],
+      "studyQuestions": "Do not reduce justice passages to slogans; identify the concrete wrongs addressed in context.",
+      "lifeApplication": "Consider whose needs are overlooked and take a fair, practical step to protect dignity.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-117",
+      "title": "Courage and faithful witness",
+      "overview": "Biblical courage grows from trust in God and may include speaking truth under pressure without seeking conflict.",
+      "scriptureReferences": [
+        "Joshua 1:1-9",
+        "Daniel 3:13-28",
+        "Acts 4:13-31"
+      ],
+      "studyQuestions": "Courage is not recklessness or a guarantee of freedom from suffering.",
+      "lifeApplication": "Prepare a truthful, gracious response to one situation where conviction may be tested.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-118",
+      "title": "Contentment and gratitude",
+      "overview": "Scripture teaches gratitude and contentment while allowing honest lament and warning against greed.",
+      "scriptureReferences": [
+        "Psalm 103:1-5",
+        "Philippians 4:10-13",
+        "1 Timothy 6:6-10,17-19"
+      ],
+      "studyQuestions": "Philippians 4 does not teach that believers must deny material needs or remain in harmful circumstances.",
+      "lifeApplication": "Practise specific gratitude while taking wise action on genuine needs.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-119",
+      "title": "Guidance and discernment",
+      "overview": "Biblical discernment involves wisdom, prayer, tested counsel, transformed thinking and attention to the fruit of choices.",
+      "scriptureReferences": [
+        "Proverbs 3:5-7",
+        "Romans 12:1-2",
+        "Philippians 1:9-11",
+        "James 1:5-8"
+      ],
+      "studyQuestions": "Avoid treating a single impression or coincidence as unquestionable divine instruction.",
+      "lifeApplication": "Test a decision against Scripture, wise counsel, character and its likely effects on others.",
+      "resourceType": "topical-study-guide"
+    },
+    {
+      "id": "topic-guide-120",
+      "title": "Remembering God's faithfulness",
+      "overview": "Biblical remembrance recalls God's acts to strengthen trust, teach the next generation and shape present obedience.",
+      "scriptureReferences": [
+        "Deuteronomy 8:1-18",
+        "Psalm 77:10-20",
+        "Luke 22:14-20"
+      ],
+      "studyQuestions": "Remembering past provision should not be used to shame people facing present grief or unanswered questions.",
+      "lifeApplication": "Record one concrete reason for gratitude and share a truthful testimony that encourages others.",
+      "resourceType": "topical-study-guide"
+    }
+  ]
+}
