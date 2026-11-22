@@ -111,6 +111,11 @@ const datasets = {
   "zuriel-chapter-introductions-2-samuel-13-24.json": { chapters: [{ id:"2sam-ch22",book:"2 Samuel",chapter:22,title:"2 Samuel 22 — David's song of deliverance",overview:"David sings of God as rock and refuge and reflects on deliverance.",keyPassages:["2 Samuel 22:1–7"] }] },
   "zuriel-chapter-introductions-ruth-01-04.json": { chapters: [{ id: "ruth-ch02", book: "Ruth", chapter: 2, title: "Ruth 2 — Ruth gleans in Boaz’s field", overview: "Boaz protects Ruth and provides grain through generous gleaning.", keyPassages: ["Ruth 2:8–13"] }] },
   "zuriel-chapter-introductions-genesis-01-10.json": { chapters: [{ id: "gen-ch02", book: "Genesis", chapter: 2, title: "The garden, human vocation and covenant companionship", overview: "Genesis 2 describes the garden and the human vocation.", keyPassages: ["Genesis 2:15–17"] }] },
+  "zuriel-chapter-introductions-isaiah-23-44.json": { chapters: [
+    { id:"isa-ch35",book:"Isaiah",chapter:35,title:"Isaiah 35 — The wilderness blooms and the redeemed return",overview:"The wilderness and dry land rejoice as God comes to save. Weak hands are strengthened, the fearful are encouraged, healing is pictured, and a holy way leads the redeemed home.",keyPassages:["Isaiah 35:1–5","Isaiah 35:6–10"] },
+    { id:"isa-ch37",book:"Isaiah",chapter:37,title:"Isaiah 37 — Hezekiah prays and Jerusalem is delivered",overview:"Hezekiah brings the Assyrian threat before the Lord, and Isaiah answers with a word of hope. The chapter recounts Sennacherib's renewed message, Hezekiah's prayer, and the sudden end of the siege threat.",keyPassages:["Isaiah 37:1–20","Isaiah 37:21–38"] },
+    { id:"isa-ch40",book:"Isaiah",chapter:40,title:"Isaiah 40 — Comfort for God's people and the incomparable Creator",overview:"A new movement opens with comfort for Jerusalem. The prophet announces a prepared way, the enduring word of God, and the Lord's incomparable power, while comparing human life to grass that fades. The shepherd image gathers strength and tenderness.",keyPassages:["Isaiah 40:1–11","Isaiah 40:12–31"] }
+  ] },
   "zuriel-deep-study-guides.json": { guides: [] },
   "zuriel-bible-geography-atlas.json": { places: [], journeys: [] },
   "zuriel-worship-study-pathways.json": { pathways: [] }
