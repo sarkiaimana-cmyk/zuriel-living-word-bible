@@ -51,6 +51,8 @@ const datasets = {
   "zuriel-chapter-introductions-deuteronomy-18-34.json": { chapters: [{ id: "deut-ch30", book: "Deuteronomy", chapter: 30, title: "Deuteronomy 30 — Return, mercy, and the choice of life", overview: "Moses offers hope of restoration, return and choosing life after exile.", keyPassages: ["Deuteronomy 30:15–20"] }] },
   "zuriel-chapter-introductions-joshua-01-12.json": { chapters: [{ id: "josh-ch04", book: "Joshua", chapter: 4, title: "Joshua 4 — Memorial stones and remembered faithfulness", overview: "Twelve stones preserve the Jordan crossing story for future generations.", keyPassages: ["Joshua 4:1–9"] }] },
   "zuriel-chapter-introductions-joshua-13-24.json": { chapters: [{ id: "josh-ch22", book: "Joshua", chapter: 22, title: "Joshua 22 — The eastern tribes return and build an altar", overview: "Inquiry and explanation prevent a misunderstanding from dividing Israel.", keyPassages: ["Joshua 22:21–29"] }] },
+  "zuriel-chapter-introductions-judges-01-10.json": { chapters: [{ id: "judg-ch06", book: "Judges", chapter: 6, title: "Judges 6 — Gideon called from fear to service", overview: "Gideon is called to deliver Israel from Midian despite his uncertainty.", keyPassages: ["Judges 6:11–24"] }] },
+  "zuriel-chapter-introductions-judges-11-21.json": { chapters: [{ id: "judg-ch21", book: "Judges", chapter: 21, title: "Judges 21 — The aftermath and the final refrain", overview: "The book closes by exposing the harm caused by disorder and self-rule.", keyPassages: ["Judges 21:24–25"] }] },
   "zuriel-chapter-introductions-genesis-01-10.json": { chapters: [{ id: "gen-ch02", book: "Genesis", chapter: 2, title: "The garden, human vocation and covenant companionship", overview: "Genesis 2 describes the garden and the human vocation.", keyPassages: ["Genesis 2:15–17"] }] },
   "zuriel-deep-study-guides.json": { guides: [] },
   "zuriel-bible-geography-atlas.json": { places: [], journeys: [] },
@@ -138,6 +140,16 @@ const joshua22 = await library.search("eastern tribes altar inquiry explanation 
 assert.equal(joshua22.length, 1, "Joshua part 2 chapter introductions must be searchable offline.");
 assert.equal(joshua22[0].source.book, "Joshua");
 assert.equal(joshua22[0].source.chapter, 22);
+
+const judges6 = await library.search("Gideon fear Midian called Judges 6", { category: "Chapter Introductions" });
+assert.equal(judges6.length, 1, "Judges part 1 chapter introductions must be searchable offline.");
+assert.equal(judges6[0].source.book, "Judges");
+assert.equal(judges6[0].source.chapter, 6);
+
+const judges21 = await library.search("aftermath disorder self-rule Judges 21", { category: "Chapter Introductions" });
+assert.equal(judges21.length, 1, "Judges part 2 chapter introductions must be searchable offline.");
+assert.equal(judges21[0].source.book, "Judges");
+assert.equal(judges21[0].source.chapter, 21);
 
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
 assert.equal(greek.length, 1, "Unicode Greek search should find the original-language entry.");
