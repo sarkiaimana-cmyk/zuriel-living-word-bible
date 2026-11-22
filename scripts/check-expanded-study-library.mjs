@@ -292,6 +292,27 @@ for (const entry of lexiconIndex.entries) {
   lexiconIds.add(entry.id);
 }
 
+
+const homeSource = await readFile(new URL("../zuriel-home.js", import.meta.url), "utf8");
+const homeVerseEntries = [...homeSource.matchAll(/\\{\\s*reference:\\s*"([^"]+)",\\s*text:\\s*"([^"]+)"\\s*\\}/g)]
+  .map(match => ({ reference: match[1], text: match[2] }));
+assert.ok(homeVerseEntries.length >= 20, "Home dashboard must retain a meaningful set of featured Scripture verses");
+function normalizeBibleWords(value) {
+  return String(value || "").normalize("NFC").toLocaleLowerCase("en")
+    .replace(/[^\\p{L}\\p{N}]+/gu, "");
+}
+for (const item of homeVerseEntries) {
+  const match = item.reference.match(/^(.+?)\\s+(\\d+):(\\d+)$/);
+  assert.ok(match, "Featured home Scripture must use a complete reference: " + item.reference);
+  const book = bookLookup.get(match[1].toLowerCase().replace(/\\s+/g, " ").trim());
+  assert.ok(book, "Featured home Scripture uses an unknown Bible book: " + item.reference);
+  const chapters = kjv[readerMap[book.name]];
+  const verseText = chapters && chapters[Number(match[2]) - 1] && chapters[Number(match[2]) - 1][Number(match[3]) - 1];
+  assert.ok(typeof verseText === "string", "Featured home Scripture is missing from the bundled KJV: " + item.reference);
+  assert.equal(normalizeBibleWords(item.text), normalizeBibleWords(verseText),
+    "Featured home Scripture wording must match the bundled KJV: " + item.reference);
+}
+
 const linkerSandbox = {};
 runInNewContext(wordLinkerSource, linkerSandbox);
 const linkWord = linkerSandbox.ZurielWordLinking.matchSelectedKJVWord;
