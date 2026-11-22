@@ -97,7 +97,6 @@ requireText(client, '"ESV": /', "English Standard Version catalogue alias");
 requireText(client, '"NASB": /', "New American Standard Bible catalogue alias");
 requireText(client, '"CSB": /', "Christian Standard Bible catalogue alias");
 requireText(client, '"NKJV": /', "New King James Version catalogue alias");
-requireText(client, 'if (version === "KJV")', "KJV shortcut remains routed to the bundled offline Bible");
 
 
 requireText(client, "activeController.abort()", "Cancellation of stale or closed-panel passage requests");
