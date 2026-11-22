@@ -1,4 +1,4 @@
 {
-  "version": "1.4.117",
-  "releaseNotes": "Refined premium visual consistency, expanded offline reading journeys, and improved translation-provider copyright and offline-storage safeguards. Existing offline KJV and personal study data remain protected."
+  "version": "1.4.118",
+  "releaseNotes": "Expanded Hebrew and Greek word studies with 20 additional contextual entries, strengthened offline study-library search, and refined visual consistency. Existing offline KJV and personal study data remain protected."
 }
