@@ -1,5 +1,5 @@
 {
-  "version": "2.6.0",
-  "displayVersion": "2.6",
-  "releaseNotes": "Zuriel version 2.6: Completed all 34 Deuteronomy chapter introductions in two study sections (1–17 and 18–34). Both sections are connected to the searchable offline Study Library with chapter-specific context, study questions, interpretive safeguards, KJV-checked references and Android offline-cache integration. Genesis, Exodus, Leviticus and Numbers chapter introductions remain complete."
+  "version": "2.7.0",
+  "displayVersion": "2.7",
+  "releaseNotes": "Zuriel version 2.7: Added Joshua chapters 1–12 as the first half of the Joshua chapter-study series. Guides are connected to the searchable offline Study Library and Android offline cache, with historical context, chapter observations, cross-references, study questions, practical applications and interpretive safeguards. Genesis through Deuteronomy chapter introductions remain complete."
 }
