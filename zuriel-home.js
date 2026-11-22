@@ -878,27 +878,6 @@
         <h2 id="zurielTimeGreeting">Good day, Zuriel</h2>
         <p id="zurielTimeGreetingSub">Welcome to your time in the Word.</p>
       </section>
-      <section class="home-card home-translations-card" id="zurielHomeTranslationsSection" aria-label="Bible translations">
-        <h2>🌐 Bible Translations</h2>
-        <p class="home-section-note">Choose a Bible version for reading, comparison and offline study.</p>
-        <div class="translation-shortcuts" aria-label="Supported translation catalogue">
-          <button type="button" data-zuriel-translation="KJV" aria-label="Open King James Version">KJV</button>
-          <button type="button" data-zuriel-translation="GNT" aria-label="Select Good News Translation">GNT</button>
-          <button type="button" data-zuriel-translation="AMP" aria-label="Select Amplified Bible">AMP</button>
-          <button type="button" data-zuriel-translation="LB/LT" aria-label="Select Living Bible or Living Translation">LB/LT</button>
-          <button type="button" data-zuriel-translation="TPT" aria-label="Select The Passion Translation">TPT</button>
-          <button type="button" data-zuriel-translation="NLT" aria-label="Select New Living Translation">NLT</button>
-          <button type="button" data-zuriel-translation="NET" aria-label="Select New English Translation">NET</button>
-          <button type="button" data-zuriel-translation="NIV" aria-label="Select New International Version">NIV</button>
-          <button type="button" data-zuriel-translation="ESV" aria-label="Select English Standard Version">ESV</button>
-          <button type="button" data-zuriel-translation="NASB" aria-label="Select New American Standard Bible">NASB</button>
-          <button type="button" data-zuriel-translation="CSB" aria-label="Select Christian Standard Bible">CSB</button>
-          <button type="button" data-zuriel-translation="NKJV" aria-label="Select New King James Version">NKJV</button>
-        </div>
-        <p class="translation-access-note">Select a translation below. Downloaded translations can be read offline; online access and downloads depend on each provider’s available catalogue and permissions.</p>
-        <div id="zurielHomeTranslations"></div>
-      </section>
-
       <section class="home-hero home-identity-hero" id="zurielIdentityHero" aria-label="Who God is — rotating Scripture">
         <p class="home-eyebrow">✦ WHO HE IS • THE LIVING WORD</p>
         <p class="identity-kicker">HE IS...</p>
@@ -1054,23 +1033,6 @@
     window.setInterval(updateZurielTimeGreeting, 60000);
     document.addEventListener("visibilitychange", function () {
       if (!document.hidden) updateZurielTimeGreeting();
-    });
-
-    dashboard.querySelectorAll("[data-zuriel-translation]").forEach(function (button) {
-      button.addEventListener("click", function () {
-        const version = button.dataset.zurielTranslation;
-        if (version === "KJV") {
-          navigate("read");
-          return;
-        }
-        if (window.ZurielTranslations &&
-            typeof window.ZurielTranslations.selectVersion === "function") {
-          window.ZurielTranslations.selectVersion(version);
-        } else {
-          const slot = document.getElementById("zurielHomeTranslations");
-          if (slot) slot.textContent = "Translation controls are still loading. Please try again.";
-        }
-      });
     });
 
     if (window.ZurielKingdomLife && typeof window.ZurielKingdomLife.mount === "function") {

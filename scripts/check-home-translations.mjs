@@ -1,46 +1,42 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
-const [home, translations, index] = await Promise.all([
+const [home, settings, translations, index] = await Promise.all([
   readFile("zuriel-home.js", "utf8"),
+  readFile("zuriel-settings.js", "utf8"),
   readFile("zuriel-translations.js", "utf8"),
   readFile("index.html", "utf8")
 ]);
 
-const dashboardStart = home.indexOf('dashboard.innerHTML = `');
-assert.notEqual(dashboardStart, -1, "home dashboard template must exist");
-const dashboardEnd = home.indexOf("`;", dashboardStart);
-assert.notEqual(dashboardEnd, -1, "home dashboard template must close");
-const dashboard = home.slice(dashboardStart, dashboardEnd);
-
-const translationsPosition = dashboard.indexOf('id="zurielHomeTranslationsSection"');
-const identityPosition = dashboard.indexOf('id="zurielIdentityHero"');
-assert.ok(translationsPosition >= 0, "Bible translations section must be in the home dashboard");
-assert.ok(identityPosition > translationsPosition, "Bible translations must appear before the former top identity hero");
-
 const expected = ["KJV", "GNT", "AMP", "LB/LT", "TPT", "NLT", "NET", "NIV", "ESV", "NASB", "CSB", "NKJV"];
+assert.ok(settings.includes('id="zurielSettingsTranslationChoices"'), "Bible translations must live in Settings");
+assert.ok(settings.includes('id="zurielSettingsTranslations"'), "Provider and offline download controls must mount in Settings");
+assert.ok(settings.includes('<h3>🌐 Bible Translations</h3>'), "Settings must clearly label the Bible Translations section");
 for (const abbreviation of expected) {
   assert.ok(
-    dashboard.includes('data-zuriel-translation="' + abbreviation + '"'),
-    "top translation shortcut must exist and be interactive: " + abbreviation
+    settings.includes('data-zuriel-translation="' + abbreviation + '"'),
+    "Settings must show the requested translation shortcut: " + abbreviation
   );
 }
 assert.equal(
-  (dashboard.match(/data-zuriel-translation=/g) || []).length,
+  (settings.match(/data-zuriel-translation=/g) || []).length,
   expected.length,
-  "the top section must contain exactly the twelve requested translation shortcuts"
+  "Settings must contain exactly the twelve requested translation shortcuts"
 );
-assert.ok(home.includes('dashboard.querySelectorAll("[data-zuriel-translation]")'), "top translation shortcuts must receive click handlers");
-assert.ok(home.includes('window.ZurielTranslations.selectVersion(version)'), "non-KJV shortcuts must request their selected version");
-assert.ok(home.includes('if (version === "KJV")'), "KJV shortcut must open the bundled offline Bible reader");
+assert.ok(settings.includes('window.ZurielTranslations.selectVersion(version)'), "Non-KJV choices must use the authorised provider catalogue");
+assert.ok(settings.includes('if (version === "KJV")'), "KJV choice must open the bundled offline Bible reader");
+assert.ok(settings.includes('id="zurielSettingsAbout"'), "About Zuriel must be a dedicated Settings section");
+assert.ok(settings.includes('translationCredits = document.getElementById("zurielBibleCopyrightCredits")'), "Existing translation copyright information must be moved into Settings");
+assert.ok(settings.includes('aboutSlot.appendChild(translationCredits)'), "About and copyright credits must be mounted in Settings");
 
-assert.ok(translations.includes('panel.id = "zurielTranslationCompare"'), "translation comparison and download panel must exist");
-assert.ok(translations.includes('homeTranslationSlot.appendChild(panel)'), "translation controls must mount inside the top home section");
-assert.ok(translations.includes('document.addEventListener("DOMContentLoaded"'), "translation controls must mount after the home dashboard is created");
-assert.ok(translations.includes('selectVersion: async function (abbreviation)'), "translation shortcuts must resolve against the authorised live catalogue");
+assert.ok(translations.includes('panel.id = "zurielTranslationCompare"'), "Translation comparison and download panel must exist");
+assert.ok(translations.includes('settingsSlot.appendChild(panel)'), "Provider controls must mount inside Settings");
+assert.ok(translations.includes('id="zurielSettingsTranslations"'), "Translation panel must target the Settings mount point");
+assert.ok(translations.includes('selectVersion: async function (abbreviation)'), "Translation choices must resolve against the authorised live catalogue");
 
-const homeScript = index.indexOf('src="zuriel-home.js"');
-const translationsScript = index.indexOf('src="zuriel-translations.js"');
-assert.ok(homeScript >= 0 && translationsScript > homeScript, "home dashboard and translation scripts must load in the expected order");
+assert.ok(!home.includes('id="zurielHomeTranslationsSection"'), "The translation selector must not occupy the Home dashboard");
+assert.ok(!home.includes('dashboard.querySelectorAll("[data-zuriel-translation]")'), "Home must not own duplicate translation click handlers");
+assert.ok(!home.includes('id="zurielHomeTranslations"'), "The former Home translation mount point must be removed");
+assert.ok(!index.includes('id="zurielReaderTranslations"'), "Reader must not show a duplicate translation shortcut strip");
 
-console.log("Top Bible translations checks passed: first home section, all 12 tappable shortcuts, KJV offline route and provider controls mounted in the top section.");
+console.log("Bible translation placement checks passed: all 12 requested versions, live provider/offline controls, About and copyright credits in Settings, no duplicate Home/Reader translation sections.");

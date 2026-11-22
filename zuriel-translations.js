@@ -131,22 +131,16 @@
   controls.append(providerSelect, offlineSelect, select, loadButton, downloadButton, downloadProgress, statusNode);
   output.append(passageHeading, passage, attribution);
   panel.append(summary, note, controls, output);
-  const homeTranslationSlot = document.getElementById("zurielHomeTranslations");
-  if (homeTranslationSlot) {
+  function mountTranslationPanel() {
+    const settingsSlot = document.getElementById("zurielSettingsTranslations");
+    if (!settingsSlot) return false;
     summary.textContent = "Choose a translation, compare versions or manage offline downloads";
     panel.open = true;
-    homeTranslationSlot.appendChild(panel);
-  } else {
-    reader.appendChild(panel);
-    /* The home dashboard is mounted on DOMContentLoaded by zuriel-home.js. */
-    document.addEventListener("DOMContentLoaded", function () {
-      const readyHomeSlot = document.getElementById("zurielHomeTranslations");
-      if (readyHomeSlot && panel.parentNode !== readyHomeSlot) {
-        summary.textContent = "Choose a translation, compare versions or manage offline downloads";
-        panel.open = true;
-        readyHomeSlot.appendChild(panel);
-      }
-    }, { once: true });
+    settingsSlot.appendChild(panel);
+    return true;
+  }
+  if (!mountTranslationPanel()) {
+    document.addEventListener("DOMContentLoaded", mountTranslationPanel, { once: true });
   }
 
   function apiUrl(path) {

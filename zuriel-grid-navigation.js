@@ -120,49 +120,14 @@
   `;
   document.head.appendChild(style);
 
-  const translationBar = document.createElement("nav");
-  translationBar.id = "zurielReaderTranslations";
-  translationBar.setAttribute("aria-label", "Choose Bible translation");
-  translationBar.innerHTML = '<button type="button" class="zrt-tab is-active" data-version="KJV" aria-pressed="true">KJV</button><button type="button" class="zrt-tab" data-version="NIV" aria-pressed="false">NIV</button><button type="button" class="zrt-tab" data-version="ESV" aria-pressed="false">ESV</button><button type="button" class="zrt-tab" data-version="NKJV" aria-pressed="false">NKJV</button><button type="button" class="zrt-tab" data-version="NLT" aria-pressed="false">NLT</button><button type="button" class="zrt-tab" data-version="AMP" aria-pressed="false">AMP</button><button type="button" class="zrt-tab" data-version="TPT" aria-pressed="false">TPT</button><button type="button" class="zrt-tab" data-version="GNT" aria-pressed="false">GNT</button><button type="button" class="zrt-tab" data-version="NET" aria-pressed="false">NET</button><button type="button" class="zrt-tab" data-version="CSB" aria-pressed="false">CSB</button><button type="button" class="zrt-tab" data-version="NASB" aria-pressed="false">NASB</button><button type="button" class="zrt-tab" data-version="LB/LT" aria-pressed="false">LB/LT</button>';
-  const translationStyle = document.createElement("style");
-  translationStyle.textContent = "#zurielReaderTranslations{display:flex;gap:7px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;padding:9px 2px 12px;margin:5px 0 8px;white-space:nowrap;-webkit-overflow-scrolling:touch}#zurielReaderTranslations .zrt-tab{flex:0 0 auto;min-width:55px;min-height:42px;margin:0;padding:8px 12px;border:1px solid #b99b58;border-radius:22px;background:linear-gradient(145deg,#14294b,#203e68);color:#fff8e8;font:700 13px Arial,sans-serif}#zurielReaderTranslations .zrt-tab.is-active{background:linear-gradient(145deg,#f8d96b,#d9a92f);color:#10213d;border:2px solid #fff0b3;box-shadow:0 2px 8px #b99b5855}";
-  document.head.appendChild(translationStyle);
-  const readerHeading = root.querySelector("h2");
-  if (readerHeading) readerHeading.insertAdjacentElement("afterend", translationBar);
-  else root.insertBefore(translationBar, root.firstChild);
-  translationBar.addEventListener("click", async function(event) {
-    const button = event.target.closest(".zrt-tab");
-    if (!button) return;
-    const version = button.dataset.version;
-    translationBar.querySelectorAll(".zrt-tab").forEach(item => { const active = item === button; item.classList.toggle("is-active", active); item.setAttribute("aria-pressed", String(active)); });
-    if (version === "KJV") { const onlinePanel = document.getElementById("zurielTranslationCompare"); if (onlinePanel) onlinePanel.hidden = true; const message = document.getElementById("readerStatus"); if (message) message.textContent = "King James Version selected. Your offline Bible is ready."; return; }
-    if (window.ZurielTranslations && typeof window.ZurielTranslations.selectVersion === "function") {
-      const selected = await window.ZurielTranslations.selectVersion(version);
-      if (!selected) {
-        translationBar.querySelectorAll(".zrt-tab").forEach(item => {
-          const active = item.dataset.version === "KJV";
-          item.classList.toggle("is-active", active);
-          item.setAttribute("aria-pressed", String(active));
-        });
-      }
-    } else {
-      const message = document.getElementById("readerStatus");
-      if (message) message.textContent = "Online translation selection is loading. The offline KJV remains available.";
-    }
-  });
-
   const launch = document.createElement("button");
   launch.type = "button";
   launch.id = "zurielGridLaunch";
   launch.textContent = "📖  Choose Passage  ·  KJV";
   launch.setAttribute("aria-label", "Choose a Bible book, chapter and verse. Current translation: King James Version.");
-  if (translationBar && translationBar.parentNode === root) {
-    translationBar.insertAdjacentElement("afterend", launch);
-  } else {
-    const readerHeading = root.querySelector("h2");
-    if (readerHeading) readerHeading.insertAdjacentElement("afterend", launch);
-    else root.insertBefore(launch, root.firstChild);
-  }
+  const passageHeading = root.querySelector("h2");
+  if (passageHeading) passageHeading.insertAdjacentElement("afterend", launch);
+  else root.insertBefore(launch, root.firstChild);
 
   const modal = document.createElement("section");
   modal.id = "zurielGridNavigator";
