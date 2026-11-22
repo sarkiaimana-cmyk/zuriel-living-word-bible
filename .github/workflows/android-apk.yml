@@ -127,6 +127,8 @@ jobs:
         run: node scripts/check-bible-geography.mjs
       - name: Validate expanded offline study library integration
         run: node scripts/check-expanded-study-library.mjs
+      - name: Validate ranked offline study-library search
+        run: node scripts/check-study-search.mjs
 
       - name: Validate Words of Jesus study centre
         run: node scripts/check-words-of-jesus.mjs
