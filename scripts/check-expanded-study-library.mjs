@@ -143,6 +143,8 @@ for (const guide of chapterGuides.chapters) {
   assert.equal(guide.book, "Genesis", "This chapter-guide batch must remain scoped to Genesis");
   assert.ok(Number.isInteger(guide.chapter) && guide.chapter >= 1 && guide.chapter <= 10,
     "Genesis chapter guide must have a valid chapter number");
+  assert.ok(guide.title.startsWith("Genesis " + guide.chapter + " —"),
+    "Chapter guide title must visibly identify its exact Bible chapter: " + guide.title);
   assert.ok(!chapterGuideIds.has(guide.id), "Chapter guide IDs must be unique: " + guide.id);
   assert.ok(typeof guide.historicalContext === "string" && guide.historicalContext.length >= 100,
     "Each chapter guide needs historical and literary context: " + guide.title);
@@ -285,6 +287,7 @@ for (const path of [
 ]) assert.ok(worker.includes("./data/"+path),"Offline cache must include "+path);
 assert.ok(loader.includes("window.ZurielStudyLibrary"),"Study library API must be exposed");
 assert.ok(loader.includes("openReference"),"Study references must open through the Bible reader");
+assert.ok(loader.includes('["Chapter number", ["chapter"]]'), "Study details must display the chapter number");
 assert.ok(loader.includes("Original-language form") && loader.includes("Morphology note") && loader.includes("Contextual word use"),"Word-study detail must expose original script, language, morphology status and contextual usage.");
 
 const [lexiconIndex, packagedLexiconIndex, wordLinkerSource, lexiconLoaderSource] = await Promise.all([
