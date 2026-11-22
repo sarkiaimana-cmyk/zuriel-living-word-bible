@@ -303,6 +303,13 @@ assert.equal(isaiahNine.length,1,"Isaiah chapter 9 guide should be searchable");
 const isaiahEleven = await library.search("shoot Jesse Spirit ruler righteousness peaceable creation", { category: "Chapter Introductions" });
 assert.equal(isaiahEleven.length,1,"Isaiah chapter 11 guide should be searchable"); assert.equal(isaiahEleven[0].source.book,"Isaiah"); assert.equal(isaiahEleven[0].source.chapter,11);
 
+const isaiahThirtyFive = await library.search("wilderness blooms redeemed return", { category: "Chapter Introductions" });
+assert.equal(isaiahThirtyFive.length,1,"Isaiah chapter 35 guide should be searchable"); assert.equal(isaiahThirtyFive[0].source.chapter,35);
+const isaiahThirtySeven = await library.search("Hezekiah prayer Assyrian threat", { category: "Chapter Introductions" });
+assert.equal(isaiahThirtySeven.length,1,"Isaiah chapter 37 guide should be searchable"); assert.equal(isaiahThirtySeven[0].source.chapter,37);
+const isaiahForty = await library.search("comfort Jerusalem shepherd grass", { category: "Chapter Introductions" });
+assert.equal(isaiahForty.length,1,"Isaiah chapter 40 guide should be searchable"); assert.equal(isaiahForty[0].source.chapter,40);
+
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
 assert.equal(greek.length, 1, "Unicode Greek search should find the original-language entry.");
 assert.equal(greek[0].source.language, "Greek");
