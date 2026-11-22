@@ -122,6 +122,16 @@ const datasets = {
     { id:"isa-ch58",book:"Isaiah",chapter:58,title:"Isaiah 58 — True fasting, justice, and the repair of community",overview:"The people ask why their fasting is unnoticed, and the prophet answers by exposing exploitation and quarrelling. True fasting is connected with loosening oppressive bonds, sharing food, sheltering the vulnerable, and honouring Sabbath.",keyPassages:["Isaiah 58:1–7","Isaiah 58:8–14"] },
     { id:"isa-ch65",book:"Isaiah",chapter:65,title:"Isaiah 65 — New heavens, new earth, and the servants who rejoice",overview:"The Lord answers a people who have not sought him, exposing idolatry and injustice while promising a renewed creation. The chapter contrasts the fate of rebellion with joy, long life, peace, and the new heavens and earth.",keyPassages:["Isaiah 65:1–16","Isaiah 65:17–25"] }
   ] },
+  "zuriel-chapter-introductions-jeremiah-01-26.json": { chapters: [
+    {id:"jer-ch01",book:"Jeremiah",chapter:1,title:"Jeremiah 1 — The prophet called before birth",overview:"Jeremiah is appointed as a prophet to nations before his birth. His youth and fear are met by God's promise of presence, a touched mouth, and visions of an almond branch and a boiling pot.",keyPassages:["Jeremiah 1:1–10","Jeremiah 1:11–19"]},
+    {id:"jer-ch07",book:"Jeremiah",chapter:7,title:"Jeremiah 7 — The temple sermon and justice at the gate",overview:"Jeremiah stands at the temple gate and warns that trust in the building cannot protect people who steal, oppress, and practise injustice. Shiloh becomes a warning about false confidence in sacred places.",keyPassages:["Jeremiah 7:1–15","Jeremiah 7:16–34"]},
+    {id:"jer-ch18",book:"Jeremiah",chapter:18,title:"Jeremiah 18 — The potter's house and the possibility of turning",overview:"Jeremiah watches a potter reshape a spoiled vessel and receives a message about God's freedom to relent or announce judgement in response to a nation's conduct.",keyPassages:["Jeremiah 18:1–12","Jeremiah 18:13–23"]}
+  ]},
+  "zuriel-chapter-introductions-jeremiah-27-52.json": { chapters: [
+    {id:"jer-ch29",book:"Jeremiah",chapter:29,title:"Jeremiah 29 — A letter to the exiles: seek the city's peace",overview:"Jeremiah sends a letter to those deported to Babylon, telling them to build homes, plant gardens, form families, and seek the welfare of the city. He warns against false prophets and promises eventual return.",keyPassages:["Jeremiah 29:1–14","Jeremiah 29:15–32"]},
+    {id:"jer-ch31",book:"Jeremiah",chapter:31,title:"Jeremiah 31 — Rachel weeps and the new covenant is promised",overview:"Jeremiah portrays Rachel weeping for her children, then announces comfort and a return from exile. The chapter promises a new covenant written on the heart and declares God's enduring love for Israel.",keyPassages:["Jeremiah 31:1–22","Jeremiah 31:23–40"]},
+    {id:"jer-ch52",book:"Jeremiah",chapter:52,title:"Jeremiah 52 — Jerusalem's fall retold and the book's closing record",overview:"Jeremiah 52 recounts Jerusalem's final siege, the capture of Zedekiah, the destruction of the temple and city, deportations, and the later release of Jehoiachin in Babylon.",keyPassages:["Jeremiah 52:1–16","Jeremiah 52:17–34"]}
+  ]},
   "zuriel-deep-study-guides.json": { guides: [] },
   "zuriel-bible-geography-atlas.json": { places: [], journeys: [] },
   "zuriel-worship-study-pathways.json": { pathways: [] }
@@ -329,6 +339,17 @@ const isaiahFiftyEight = await library.search("true fasting justice repair commu
 assert.equal(isaiahFiftyEight.length,1,"Isaiah chapter 58 guide should be searchable"); assert.equal(isaiahFiftyEight[0].source.chapter,58);
 const isaiahSixtyFive = await library.search("new heavens earth servants rejoice", { category: "Chapter Introductions" });
 assert.equal(isaiahSixtyFive.length,1,"Isaiah chapter 65 guide should be searchable"); assert.equal(isaiahSixtyFive[0].source.chapter,65);
+
+const jeremiahOne = await library.search("prophet called almond branch boiling pot", { category: "Chapter Introductions" });
+assert.equal(jeremiahOne.length,1,"Jeremiah chapter 1 guide should be searchable"); assert.equal(jeremiahOne[0].source.chapter,1);
+const jeremiahSeven = await library.search("temple sermon justice gate Shiloh", { category: "Chapter Introductions" });
+assert.equal(jeremiahSeven.length,1,"Jeremiah chapter 7 guide should be searchable"); assert.equal(jeremiahSeven[0].source.chapter,7);
+const jeremiahTwentyNine = await library.search("letter exiles seek city's peace", { category: "Chapter Introductions" });
+assert.equal(jeremiahTwentyNine.length,1,"Jeremiah chapter 29 guide should be searchable"); assert.equal(jeremiahTwentyNine[0].source.chapter,29);
+const jeremiahThirtyOne = await library.search("Rachel weeps new covenant heart", { category: "Chapter Introductions" });
+assert.equal(jeremiahThirtyOne.length,1,"Jeremiah chapter 31 guide should be searchable"); assert.equal(jeremiahThirtyOne[0].source.chapter,31);
+const jeremiahFiftyTwo = await library.search("Jerusalem fall siege Jehoiachin", { category: "Chapter Introductions" });
+assert.equal(jeremiahFiftyTwo.length,1,"Jeremiah chapter 52 guide should be searchable"); assert.equal(jeremiahFiftyTwo[0].source.chapter,52);
 
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
 assert.equal(greek.length, 1, "Unicode Greek search should find the original-language entry.");
