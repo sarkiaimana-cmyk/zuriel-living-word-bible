@@ -2,7 +2,7 @@
 
 "use strict";
 
-const CACHE_NAME = "zuriel-bible-offline-v225";
+const CACHE_NAME = "zuriel-bible-offline-v226";
 
 const CORE_FILES = [
   "./",
@@ -53,6 +53,7 @@ const CORE_FILES = [
   "./data/zuriel-theological-comparisons.json",
   "./data/zuriel-passage-commentary-expansion.json",
   "./data/zuriel-topical-bible-study-library-batch-2.json",
+  "./data/zuriel-topical-bible-study-library-batch-3.json",
   "./data/zuriel-worship-study-pathways.json",
   "./images/books/0fc10dde-c515-45e8-916b-5a27f61b0841.jpg",
   "./images/books/738dfb2c-b2e8-49d6-bc1c-d6766be38adf.jpg",
