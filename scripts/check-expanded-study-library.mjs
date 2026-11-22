@@ -196,7 +196,7 @@ for (const guide of deuteronomyChapterGuides.chapters) {
   assert.equal(guide.book, "Deuteronomy", "Deuteronomy guide batch must remain scoped to Deuteronomy");
   assert.ok(Number.isInteger(guide.chapter) && guide.chapter >= 1 && guide.chapter <= 17, "Deuteronomy part 1 chapter number must be valid");
   assert.ok(guide.title.startsWith("Deuteronomy " + guide.chapter + " —"), "Deuteronomy title must identify its chapter");
-  assert.ok(typeof guide.id === "string" && /^deut-ch\\d{2}$/.test(guide.id), "Deuteronomy guide needs a stable chapter ID");
+  assert.ok(typeof guide.id === "string" && /^deut-ch\d{2}$/.test(guide.id), "Deuteronomy guide needs a stable chapter ID");
   assert.ok(!deuteronomyGuideIds.has(guide.id), "Deuteronomy guide IDs must be unique: " + guide.id); deuteronomyGuideIds.add(guide.id);
   for (const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field] === "string" && guide[field].trim().length >= 100, "Deuteronomy guide needs substantive " + field + ": " + guide.chapter);
   assert.ok(Array.isArray(guide.keyPassages) && guide.keyPassages.length >= 4, "Deuteronomy guide needs Scripture references");
