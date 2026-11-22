@@ -743,7 +743,7 @@ for(const guide of ecclesiastesChapterGuides.chapters){
  assert.equal(guide.book,"Ecclesiastes","Ecclesiastes guide must remain scoped to Ecclesiastes");
  assert.ok(Number.isInteger(guide.chapter)&&guide.chapter>=1&&guide.chapter<=12,"Ecclesiastes chapter number must be valid");
  assert.ok(guide.title.startsWith("Ecclesiastes "+guide.chapter+" —"),"Ecclesiastes title must identify its chapter");
- assert.ok(typeof guide.id==="string"&&/^eccl-ch\\d{2}$/.test(guide.id),"Ecclesiastes guide needs a stable ID");
+ assert.ok(typeof guide.id==="string"&&/^eccl-ch\d{2}$/.test(guide.id),"Ecclesiastes guide needs a stable ID");
  assert.ok(!ecclesiastesIds.has(guide.id),"Ecclesiastes guide IDs must be unique");ecclesiastesIds.add(guide.id);
  for(const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field]==="string"&&guide[field].trim().length>=50,"Ecclesiastes guide needs substantive "+field+": "+guide.chapter);
  assert.ok(Array.isArray(guide.keyPassages)&&guide.keyPassages.length>=2,"Ecclesiastes guide needs key passages");
