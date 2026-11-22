@@ -300,7 +300,7 @@ const isaiahSix = await library.search("Isaiah vision commission seraphim holine
 assert.equal(isaiahSix.length,1,"Isaiah chapter 6 guide should be searchable"); assert.equal(isaiahSix[0].source.book,"Isaiah"); assert.equal(isaiahSix[0].source.chapter,6);
 const isaiahNine = await library.search("light Galilee promised child righteous reign", { category: "Chapter Introductions" });
 assert.equal(isaiahNine.length,1,"Isaiah chapter 9 guide should be searchable"); assert.equal(isaiahNine[0].source.book,"Isaiah"); assert.equal(isaiahNine[0].source.chapter,9);
-const isaiahEleven = await library.search("shoot Jesse Spirit ruler justice peaceable creation", { category: "Chapter Introductions" });
+const isaiahEleven = await library.search("shoot Jesse Spirit ruler righteousness peaceable creation", { category: "Chapter Introductions" });
 assert.equal(isaiahEleven.length,1,"Isaiah chapter 11 guide should be searchable"); assert.equal(isaiahEleven[0].source.book,"Isaiah"); assert.equal(isaiahEleven[0].source.chapter,11);
 
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
