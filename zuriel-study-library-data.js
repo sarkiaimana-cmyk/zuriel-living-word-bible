@@ -15,6 +15,7 @@
     ["Connected Scripture Trails", "./data/zuriel-connected-scripture-trails-batch-2.json", "trails", "trail"],
     ["Book Introductions", "./data/zuriel-book-introductions-and-study-pathways.json", "bookIntroductions", "introduction"],
     ["Book Study Pathways", "./data/zuriel-book-introductions-and-study-pathways.json", "bookStudyPathways", "book-pathway"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-genesis-01-10.json", "chapters", "chapter-introduction"],
     ["Deep Study Guides", "./data/zuriel-deep-study-guides.json", "guides", "guide"],
     ["Bible Geography", "./data/zuriel-bible-geography-atlas.json", "places", "place"],
     ["Bible Geography", "./data/zuriel-bible-geography-atlas.json", "journeys", "journey"],
@@ -255,7 +256,7 @@
     root.id = "zurielExpandedStudyLibrary";
     root.innerHTML = "";
     root.appendChild(make("h3", "", "Explore the Expanded Study Library"));
-    root.appendChild(make("p", "zsl-intro", "Search passage commentary, topical studies, Bible dictionary entries, Hebrew and Greek word studies, Names of God, connected Scripture trails, book introductions, geography and worship studies. These are study aids, not replacement Scripture."));
+    root.appendChild(make("p", "zsl-intro", "Search passage commentary, topical studies, Bible dictionary entries, Hebrew and Greek word studies, Names of God, connected Scripture trails, book and chapter introductions, geography and worship studies. These are study aids, not replacement Scripture."));
 
     const controls = make("div", "zsl-controls");
     const search = make("input");
