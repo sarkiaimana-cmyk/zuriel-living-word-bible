@@ -86,6 +86,19 @@ requireText(client, 'const providers = ["youversion", "api-bible"]', "Home trans
 requireText(client, "providerFailures.join", "Clear provider-specific explanation when a requested version is unavailable");
 requireText(client, "NEW LIVING TRANSLATION", "Requested-version catalogue aliases");
 requireText(client, "CHRISTIAN STANDARD BIBLE", "CSB catalogue title matching");
+requireText(client, '"GNT": /', "Good News Translation catalogue alias");
+requireText(client, '"AMP": /', "Amplified Bible catalogue alias");
+requireText(client, '"LB/LT": /', "Living Bible and Living Translation catalogue aliases");
+requireText(client, '"TPT": /', "Passion Translation catalogue alias");
+requireText(client, '"NLT": /', "New Living Translation catalogue alias");
+requireText(client, '"NET": /', "New English Translation catalogue alias");
+requireText(client, '"NIV": /', "New International Version catalogue alias");
+requireText(client, '"ESV": /', "English Standard Version catalogue alias");
+requireText(client, '"NASB": /', "New American Standard Bible catalogue alias");
+requireText(client, '"CSB": /', "Christian Standard Bible catalogue alias");
+requireText(client, '"NKJV": /', "New King James Version catalogue alias");
+requireText(client, 'if (version === "KJV")', "KJV shortcut remains routed to the bundled offline Bible");
+
 
 requireText(client, "activeController.abort()", "Cancellation of stale or closed-panel passage requests");
 forbidText(client, /localStorage|sessionStorage|caches\./i, "Uncontrolled persistent storage of online Bible text");
