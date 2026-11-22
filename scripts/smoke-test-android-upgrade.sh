@@ -41,7 +41,7 @@ adb_recover() {
   adb start-server
   adb wait-for-device
   for attempt in 1 2 3 4 5 6; do
-    if adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\\r' | grep -qx '1'; then
+    if adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r' | grep -qx '1'; then
       return 0
     fi
     sleep 5
