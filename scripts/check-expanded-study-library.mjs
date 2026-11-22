@@ -8,7 +8,7 @@ async function json(path) {
 }
 const [
   geography, dictionary, books, trail1, trail2, deep, names, words, words2,
-  commentary, topical, topical3, worship, theology, loader, index, worker, bookDataSource, kjv, chapterGuides, exodusChapterGuides, exodusChapterGuides2, exodusChapterGuides3, exodusChapterGuides4, leviticusChapterGuides, leviticusChapterGuides2, numbersChapterGuides, numbersChapterGuides2, numbersChapterGuides3, deuteronomyChapterGuides, deuteronomyChapterGuides2, joshuaChapterGuides, joshuaChapterGuides2, judgesChapterGuides, judgesChapterGuides2, ruthChapterGuides, samuelChapterGuides, samuelChapterGuides2, samuelChapterGuides3, samuelChapterGuides4
+  commentary, topical, topical3, worship, theology, loader, index, worker, bookDataSource, kjv, chapterGuides, exodusChapterGuides, exodusChapterGuides2, exodusChapterGuides3, exodusChapterGuides4, leviticusChapterGuides, leviticusChapterGuides2, numbersChapterGuides, numbersChapterGuides2, numbersChapterGuides3, deuteronomyChapterGuides, deuteronomyChapterGuides2, joshuaChapterGuides, joshuaChapterGuides2, judgesChapterGuides, judgesChapterGuides2, ruthChapterGuides, samuelChapterGuides, samuelChapterGuides2, samuelChapterGuides3, samuelChapterGuides4, kingsChapterGuides, kingsChapterGuides2
 ] = await Promise.all([
   json("data/zuriel-bible-geography-atlas.json"),
   json("data/zuriel-biblical-dictionary-expansion.json"),
@@ -49,7 +49,9 @@ const [
   json("data/zuriel-chapter-introductions-1-samuel-01-16.json"),
   json("data/zuriel-chapter-introductions-1-samuel-17-31.json"),
   json("data/zuriel-chapter-introductions-2-samuel-01-12.json"),
-  json("data/zuriel-chapter-introductions-2-samuel-13-24.json")
+  json("data/zuriel-chapter-introductions-2-samuel-13-24.json"),
+  json("data/zuriel-chapter-introductions-1-kings-01-11.json"),
+  json("data/zuriel-chapter-introductions-1-kings-12-22.json")
 ]);
 
 const studyDatasetPaths = [
@@ -573,6 +575,22 @@ const secondSamuelGuides=[...samuelChapterGuides3.chapters,...samuelChapterGuide
 assert.equal(samuelChapterGuides3.chapters.length,12,"2 Samuel part 1 must contain chapters 1–12");
 assert.equal(samuelChapterGuides4.chapters.length,12,"2 Samuel part 2 must contain chapters 13–24");
 assert.equal(secondSamuelGuides.length,24,"2 Samuel must cover all 24 chapters");
+const kingsGuides=[...kingsChapterGuides.chapters,...kingsChapterGuides2.chapters];
+assert.equal(kingsChapterGuides.chapters.length,11,"1 Kings part 1 must contain chapters 1–11");
+assert.equal(kingsChapterGuides2.chapters.length,11,"1 Kings part 2 must contain chapters 12–22");
+assert.equal(kingsGuides.length,22,"1 Kings must cover all 22 chapters");
+const kingsIds=new Set();
+for(const guide of kingsGuides){
+ assert.equal(guide.book,"1 Kings","1 Kings guide must remain scoped to 1 Kings");
+ assert.ok(Number.isInteger(guide.chapter)&&guide.chapter>=1&&guide.chapter<=22,"1 Kings chapter number must be valid");
+ assert.ok(guide.title.startsWith("1 Kings "+guide.chapter+" —"),"1 Kings title must identify its chapter");
+ assert.ok(typeof guide.id==="string"&&/^1kgs-ch\d{2}$/.test(guide.id),"1 Kings guide needs a stable ID");
+ assert.ok(!kingsIds.has(guide.id),"1 Kings IDs must be unique");kingsIds.add(guide.id);
+ for(const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field]==="string"&&guide[field].trim().length>=50,"1 Kings guide needs substantive "+field+": "+guide.chapter);
+ assert.ok(Array.isArray(guide.keyPassages)&&guide.keyPassages.length>=2,"1 Kings guide needs key passages");
+ assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length>=3,"1 Kings guide needs study questions");
+ for(const reference of guide.keyPassages) checkReference(reference,"1 Kings chapter "+guide.chapter);
+}
 const secondSamuelIds=new Set();
 for(const guide of secondSamuelGuides){
  assert.equal(guide.book,"2 Samuel","2 Samuel guide must remain scoped to 2 Samuel");
@@ -585,4 +603,4 @@ for(const guide of secondSamuelGuides){
  assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length>=3,"2 Samuel guide needs study questions");
  for(const reference of guide.keyPassages) checkReference(reference,"2 Samuel chapter "+guide.chapter);
 }
-console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges, 4 Ruth and 31 1 Samuel plus 24 2 Samuel chapter introductions; 19 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
+console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges, 4 Ruth and 31 1 Samuel, 24 2 Samuel and 22 1 Kings chapter introductions; 19 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
