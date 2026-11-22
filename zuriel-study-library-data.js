@@ -162,6 +162,8 @@
     target.appendChild(make("h3", "zsl-detail-title", item.title));
     target.appendChild(make("p", "zsl-detail-summary", item.summary || "Open the linked passages and study the source notes."));
     const fields = [
+      ["Bible book", ["book"]],
+      ["Chapter number", ["chapter"]],
       ["Question being compared", ["question"]],
       ["Shared Christian ground", ["sharedGround"]],
       ["Historical and literary context", ["historicalSetting", "historicalContext", "background", "literaryContext", "context"]],
