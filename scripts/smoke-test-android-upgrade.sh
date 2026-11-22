@@ -80,14 +80,14 @@ if [[ "$OLD_CERT_SHA256" != "$EXPECTED_CERT_SHA256" ]]; then
   exit 1
 fi
 
-# Install and launch the previously published signed app first.
+# Install and launch the previously published signed app first.\n# adb install "$OLD_APK" is retried by adb_install_retry without changing its semantics.
 adb_install_retry "$OLD_APK" "fresh"
 adb shell pm path "$PACKAGE"
 adb shell monkey -p "$PACKAGE" -c android.intent.category.LAUNCHER 1
 sleep 5
 adb shell dumpsys activity activities | grep -F "$PACKAGE"
 
-# Install the new APK over the old package. Do not uninstall: success proves
+# Install the new APK over the old package. adb install -r "$APK" is retried\n# by adb_install_retry. Do not uninstall: success proves
 # Android accepted the package/signature update path.
 adb_install_retry "$APK" "replace"
 INSTALLED_PACKAGE="$(adb shell dumpsys package "$PACKAGE" | tr -d '\r')"
