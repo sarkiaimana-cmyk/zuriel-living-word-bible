@@ -1,4 +1,4 @@
 {
-  "version": "1.4.127",
-  "releaseNotes": "Completed chapter-specific Exodus study introductions 1–40 and connected all forty to the searchable offline Study Library, with KJV reference validation, offline caching and preservation of personal study data."
+  "version": "1.4.128",
+  "releaseNotes": "Added Leviticus chapter introductions 1–10 to the searchable offline Study Library, with contextual study notes, cross-references checked against the bundled KJV, and offline Android cache integration."
 }
