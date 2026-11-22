@@ -75,6 +75,9 @@ assert.equal(greek[0].source.language, "Greek");
 const limited = await library.search("love", { limit: 1 });
 assert.ok(limited.length <= 1, "Study search must respect a bounded result limit.");
 const filtered = await library.search("John 3:16", { category: "Bible Dictionary" });
-assert.equal(filtered.length, 0, "Category filters must exclude unrelated study resources.");
+assert.ok(filtered.length > 0 && filtered.every(item => item.category === "Bible Dictionary"),
+  "Category filters must retain matching entries only from the selected resource category.");
+assert.ok(!filtered.some(item => item.category === "Commentary & Exegesis"),
+  "Category filters must exclude matching entries from other categories.");
 
 console.log("Study-library search checks passed: relevance ranking, all-token matching, Scripture references, Unicode Greek, category filters and bounded results.");
