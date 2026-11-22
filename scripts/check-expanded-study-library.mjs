@@ -180,7 +180,7 @@ for (const entry of names.entries) {
     "Every divine name needs a display label: " + entry.id);
   const normalizedName = entry.name.trim().toLocaleLowerCase("en");
   assert.ok(!divineNameLabels.has(normalizedName), "Divine name labels must be unique: " + entry.name);
-  assert.ok(["Hebrew","Greek","Aramaic","English"].includes(entry.language),
+  assert.ok(["Hebrew","Greek","Aramaic","Hebrew and Greek"].includes(entry.language),
     "Divine name needs an explicit source-language label: " + entry.name);
   assert.ok(typeof entry.originalForm === "string" && entry.originalForm.trim(),
     "Divine name needs its original or attested form: " + entry.name);
