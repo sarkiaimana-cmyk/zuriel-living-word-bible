@@ -178,7 +178,7 @@ for (const guide of numbersChapterGuides.chapters) {
   assert.equal(guide.book, "Numbers", "Numbers guide batch must remain scoped to Numbers");
   assert.ok(Number.isInteger(guide.chapter) && guide.chapter >= 1 && guide.chapter <= 10, "Numbers chapter number must be valid");
   assert.ok(guide.title.startsWith("Numbers " + guide.chapter + " —"), "Numbers title must identify its chapter");
-  assert.ok(typeof guide.id === "string" && /^num-ch\\d{2}$/.test(guide.id), "Numbers guide needs a stable chapter ID");
+  assert.ok(typeof guide.id === "string" && /^num-ch\d{2}$/.test(guide.id), "Numbers guide needs a stable chapter ID");
   for (const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field] === "string" && guide[field].trim().length >= 100, "Numbers guide needs substantive " + field + ": " + guide.chapter);
   assert.ok(Array.isArray(guide.keyPassages) && guide.keyPassages.length >= 4, "Numbers guide needs Scripture references");
   assert.ok(Array.isArray(guide.studyQuestions) && guide.studyQuestions.length >= 3, "Numbers guide needs three study questions");
