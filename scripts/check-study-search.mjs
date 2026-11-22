@@ -448,7 +448,7 @@ const hoseaFour = await library.search("knowledge God priests leadership violenc
 assert.equal(hoseaFour.length,1,"Hosea chapter 4 guide should be searchable"); assert.equal(hoseaFour[0].source.chapter,4);
 const hoseaSix = await library.search("steadfast love sacrifice ritual return", { category: "Chapter Introductions" });
 assert.equal(hoseaSix.length,1,"Hosea chapter 6 guide should be searchable"); assert.equal(hoseaSix[0].source.chapter,6);
-const hoseaEleven = await library.search("compassion childhood called out Egypt", { category: "Chapter Introductions" });
+const hoseaEleven = await library.search("compassion Israel child Egypt", { category: "Chapter Introductions" });
 assert.equal(hoseaEleven.length,1,"Hosea chapter 11 guide should be searchable"); assert.equal(hoseaEleven[0].source.chapter,11);
 const hoseaFourteen = await library.search("return Lord healing freely given love", { category: "Chapter Introductions" });
 assert.equal(hoseaFourteen.length,1,"Hosea chapter 14 guide should be searchable"); assert.equal(hoseaFourteen[0].source.chapter,14);
