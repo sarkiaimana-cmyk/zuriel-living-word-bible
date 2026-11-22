@@ -758,7 +758,7 @@ for(const guide of songChapterGuides.chapters){
  assert.equal(guide.book,"Song of Solomon","Song guide must remain scoped to Song of Solomon");
  assert.ok(Number.isInteger(guide.chapter)&&guide.chapter>=1&&guide.chapter<=8,"Song chapter number must be valid");
  assert.ok(guide.title.startsWith("Song of Solomon "+guide.chapter+" —"),"Song title must identify its chapter");
- assert.ok(typeof guide.id==="string"&&/^song-ch\\d{2}$/.test(guide.id),"Song guide needs a stable ID");
+ assert.ok(guide.id==="song-ch"+String(guide.chapter).padStart(2,"0"),"Song guide needs a stable ID");
  assert.ok(!songGuideIds.has(guide.id),"Song guide IDs must be unique");songGuideIds.add(guide.id);
  for(const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field]==="string"&&guide[field].trim().length>=50,"Song guide needs substantive "+field+": "+guide.chapter);
  assert.ok(Array.isArray(guide.keyPassages)&&guide.keyPassages.length>=2,"Song guide needs key passages");
