@@ -222,6 +222,15 @@
         #zurielSettingsPanel .color-options { grid-template-columns:repeat(2,minmax(0,1fr)); }
       }
     `;
+    style.textContent += `
+      #zurielSettingsPanel .translation-shortcuts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0}
+      #zurielSettingsPanel .translation-shortcuts button{min-height:44px;border:1px solid #b99b58;border-radius:10px;background:linear-gradient(145deg,#14294b,#203e68);color:#fff8e8;font-weight:700}
+      #zurielSettingsPanel .translation-shortcuts button:first-child{background:linear-gradient(145deg,#f8d96b,#d9a92f);color:#10213d}
+      #zurielSettingsAbout details{margin:10px 0;padding:12px;border:1px solid #b99b58;border-radius:12px;background:#101c2d;color:#eee}
+      #zurielSettingsAbout details summary{cursor:pointer;color:#e6c77b;font-weight:700;padding:8px}
+      #zurielSettingsTranslations #zurielTranslationCompare{margin:10px 0;padding:12px}
+      @media(max-width:360px){#zurielSettingsPanel .translation-shortcuts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    `;
     document.head.appendChild(style);
   }
 
@@ -233,6 +242,27 @@
     panel.innerHTML = `
       <h2 id="zurielSettingsTitle">⚙️ Zuriel Settings</h2>
       <p class="settings-intro">Make your Scripture reading comfortable. Your choices are saved on this device and work without an internet connection.</p>
+
+      <div class="settings-group settings-translation-group">
+        <h3>🌐 Bible Translations</h3>
+        <p>Choose a Bible version for reading, comparison and offline study.</p>
+        <p class="settings-footnote">The King James Version remains available offline. Select an authorised translation to compare or download it. Online access and downloads depend on each provider's catalogue and permissions.</p>
+        <div class="translation-shortcuts" id="zurielSettingsTranslationChoices" aria-label="Bible translation choices">
+          <button type="button" data-zuriel-translation="KJV">KJV</button>
+          <button type="button" data-zuriel-translation="GNT">GNT</button>
+          <button type="button" data-zuriel-translation="AMP">AMP</button>
+          <button type="button" data-zuriel-translation="LB/LT">LB/LT</button>
+          <button type="button" data-zuriel-translation="TPT">TPT</button>
+          <button type="button" data-zuriel-translation="NLT">NLT</button>
+          <button type="button" data-zuriel-translation="NET">NET</button>
+          <button type="button" data-zuriel-translation="NIV">NIV</button>
+          <button type="button" data-zuriel-translation="ESV">ESV</button>
+          <button type="button" data-zuriel-translation="NASB">NASB</button>
+          <button type="button" data-zuriel-translation="CSB">CSB</button>
+          <button type="button" data-zuriel-translation="NKJV">NKJV</button>
+        </div>
+        <div id="zurielSettingsTranslations"></div>
+      </div>
 
       <div class="settings-group">
         <h3>Display atmosphere</h3>
@@ -289,6 +319,11 @@
       <div class="settings-group">
         <h3>Motion and comfort</h3>
         <label><input id="zurielReduceMotion" type="checkbox"> Reduce movement and transitions</label>
+      </div>
+      <div class="settings-group settings-about-group">
+        <h3>ℹ️ About Zuriel Living Word Bible</h3>
+        <p class="settings-footnote">Project information, Bible translation acknowledgements and publisher copyright notices.</p>
+        <div id="zurielSettingsAbout"></div>
       </div>
       <button type="button" class="settings-reset" id="zurielResetSettings">Restore recommended settings</button>
     `;
@@ -354,6 +389,29 @@
 
     addStyles();
     const panel = createPanel(main);
+    const translationCredits = document.getElementById("zurielBibleCopyrightCredits");
+    const aboutSlot = panel.querySelector("#zurielSettingsAbout");
+    if (translationCredits && aboutSlot) {
+      const summary = translationCredits.querySelector("summary");
+      if (summary) summary.textContent = "About Zuriel Living Word Bible & Bible Translation Copyright Credits";
+      aboutSlot.appendChild(translationCredits);
+    }
+    panel.querySelectorAll("[data-zuriel-translation]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        const version = button.dataset.zurielTranslation;
+        if (version === "KJV") {
+          const readerButton = nav.querySelector('[data-section="read"]');
+          if (readerButton) readerButton.click();
+          return;
+        }
+        if (window.ZurielTranslations && typeof window.ZurielTranslations.selectVersion === "function") {
+          window.ZurielTranslations.selectVersion(version);
+        } else {
+          const slot = panel.querySelector("#zurielSettingsTranslations");
+          if (slot) slot.textContent = "Translation controls are still loading. Please try again.";
+        }
+      });
+    });
     const settingsButton = document.createElement("button");
     settingsButton.type = "button";
     settingsButton.dataset.section = "settings";
