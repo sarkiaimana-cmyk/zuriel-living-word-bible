@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "title": "Zuriel Chapter Introductions — Genesis 1–20",
-  "description": "Original chapter-by-chapter study introductions for Genesis 1–20. Each guide explains its literary setting, movement, theological contribution, interpretive cautions and response. Read the complete chapter in Scripture; these notes are study aids, not replacement Bible text.",
+  "title": "Zuriel Chapter Introductions — Genesis 1–30",
+  "description": "Original chapter-by-chapter study introductions for Genesis 1–30. Each guide explains its literary setting, movement, theological contribution, interpretive cautions and response. Read the complete chapter in Scripture; these notes are study aids, not replacement Bible text.",
   "editorialPolicy": [
     "Every chapter guide must be specific to that chapter's text, structure and place in the book.",
     "Interpret narrative within its literary and historical setting; description is not automatically a command or universal promise.",
@@ -508,6 +508,260 @@
       "lifeApplication": "Tell the truth even when fear makes concealment seem safer. Consider how your decisions affect people outside your immediate circle, and take responsibility when your actions place others at risk.",
       "interpretiveCaution": "The narrative's description of Abraham's explanation does not endorse deception as a wise general strategy. Nor does God's intervention excuse the danger Sarah faced. Read the episode with attention to the power imbalance and the protection of the vulnerable.",
       "readingNote": "Compare Genesis 20 with the earlier Egypt episode in Genesis 12. The repeated failure makes the pattern visible, while God's intervention keeps the promise moving toward Isaac's birth."
+    },
+    {
+      "id": "gen-ch21",
+      "book": "Genesis",
+      "chapter": 21,
+      "title": "Genesis 21 — Isaac is born and God provides for Hagar",
+      "historicalContext": "Genesis 21 brings the long-awaited birth promise to fulfilment. The chapter moves from Isaac's birth and the household celebration to the difficult separation of Hagar and Ishmael, then to a treaty between Abraham and Abimelech. Promise, family tension, divine provision and life among neighbouring peoples are held together.",
+      "overview": "Sarah gives birth to Isaac at the time God promised, and Abraham circumcises him as commanded. When Isaac is weaned, conflict over the household's inheritance leads Sarah to demand that Hagar and Ishmael leave. God hears the boy, provides water in the wilderness and promises to make him a nation. The chapter closes with Abraham and Abimelech making an agreement at Beersheba.",
+      "studyObservation": "Notice the repeated emphasis that God does what He said and that Isaac's name is tied to laughter. Read the separation of Hagar and Ishmael alongside God's care for them; the text acknowledges their distress and God's provision. In the treaty episode, note the dispute over a well and the importance of a sworn agreement.",
+      "connectionNotes": "Genesis 16 introduced Hagar's first wilderness encounter, and Genesis 21 shows God's continued care for her and Ishmael. Galatians 4:21–31 later uses Sarah and Hagar in an allegorical argument about covenants; that use should not erase the concrete story of Hagar's vulnerability. Romans 9:6–9 discusses the promise line through Isaac.",
+      "keyPassages": [
+        "Genesis 21:1–7",
+        "Genesis 21:8–21",
+        "Genesis 21:22–34",
+        "Genesis 16:7–14",
+        "Romans 9:6–9"
+      ],
+      "studyQuestions": [
+        "How does Isaac's birth demonstrate the fulfilment of God's stated promise?",
+        "How does God respond to Hagar and Ishmael after their departure?",
+        "What does the well dispute and agreement with Abimelech show about life in the land?"
+      ],
+      "lifeApplication": "Celebrate fulfilled promises with gratitude, and do not overlook people who experience pain within family or community conflict. The chapter invites readers to notice God's care beyond the household through whom the covenant line is traced.",
+      "interpretiveCaution": "The sending away of Hagar and Ishmael is a specific event in the patriarchal narrative, not a general instruction to expel vulnerable family members. Never use this text to justify abandonment, discrimination or neglect.",
+      "readingNote": "Read all three movements: Isaac's birth, Hagar's wilderness provision and the treaty at Beersheba. The chapter develops the promised line while showing that God's care is not limited to one household."
+    },
+    {
+      "id": "gen-ch22",
+      "book": "Genesis",
+      "chapter": 22,
+      "title": "Genesis 22 — Abraham and Isaac: testing, provision and the Lord's mountain",
+      "historicalContext": "Genesis 22 follows the birth of Isaac and the covenant developments of chapter 21. The narrative presents a severe test involving the son through whom the promise is to continue. It is carefully shaped around God's command, Abraham's journey, Isaac's question, the provision of a substitute and the reaffirmation of the promise.",
+      "overview": "God tests Abraham and commands him to offer Isaac. Abraham travels to the appointed place with his son, who asks where the lamb for the offering is. At the decisive moment, the angel of the Lord stops Abraham, and a ram is provided as a substitute. Abraham names the place in relation to the Lord's provision, and the promise concerning descendants and blessing to the nations is reaffirmed.",
+      "studyObservation": "Follow the repeated language of going to the place God would show and the three-day journey. Notice Isaac's question and Abraham's answer, then observe the interruption before Isaac is harmed. The ram is not a minor detail: the narrative's resolution centres on provision rather than the completion of the sacrifice.",
+      "connectionNotes": "Hebrews 11:17–19 reflects on Abraham's faith and his reasoning about God's power to raise the dead. James 2:21–23 discusses Abraham's actions as an expression of faith. John 1:29 and Romans 8:32 are read by Christians in relation to sacrificial imagery, but these later connections should not replace the specific story and its provision of the ram.",
+      "keyPassages": [
+        "Genesis 22:1–8",
+        "Genesis 22:9–14",
+        "Genesis 22:15–19",
+        "Hebrews 11:17–19",
+        "James 2:21–23"
+      ],
+      "studyQuestions": [
+        "What makes this test especially severe in light of the promise about Isaac?",
+        "How does the provision of the ram shape the meaning of the story?",
+        "How do Hebrews and James interpret Abraham's response, and what does each emphasise?"
+      ],
+      "lifeApplication": "Reflect on the difference between trusting God and presuming to control outcomes. The chapter's resolution is God's provision; it must never be used to encourage harm, abuse or dangerous tests of loyalty.",
+      "interpretiveCaution": "This is a unique and exceptional narrative test, not a command for believers to harm children or imitate Abraham's circumstances. The text explicitly records the intervention that stops the act and the provision of a substitute.",
+      "readingNote": "Keep the entire movement in view, especially the divine interruption and the ram. The chapter's central resolution is not a completed human sacrifice but the Lord's provision."
+    },
+    {
+      "id": "gen-ch23",
+      "book": "Genesis",
+      "chapter": 23,
+      "title": "Genesis 23 — Sarah's death and Abraham secures a burial place",
+      "historicalContext": "Genesis 23 records Sarah's death and Abraham's negotiations with the Hittites for a permanent burial site. The chapter gives unusually detailed attention to the public transaction for the cave of Machpelah. This purchase is an important early foothold in the promised land and a tangible act of honouring the dead.",
+      "overview": "Sarah dies at Hebron, and Abraham mourns for her. He asks the Hittites for a burial possession and is offered a choice of tombs. Abraham insists on purchasing the field and cave of Machpelah from Ephron at the publicly stated price. The transaction is witnessed and confirmed, and Abraham buries Sarah there.",
+      "studyObservation": "Notice Abraham's grief and the respect shown in the public negotiation. Track the repeated references to witnesses, the field, the cave and the price. The detail establishes that Abraham does not simply occupy the land by force; he secures a burial place through a recognised transaction.",
+      "connectionNotes": "Genesis 25:9–10 records Abraham's burial in the same cave, and Genesis 49:29–32 recalls the family burial place in Jacob's final instructions. Acts 7:15–16 refers to the patriarchal burial traditions. These later references show how the site becomes part of Israel's remembered family history.",
+      "keyPassages": [
+        "Genesis 23:1–6",
+        "Genesis 23:7–16",
+        "Genesis 23:17–20",
+        "Genesis 25:9–10",
+        "Genesis 49:29–32"
+      ],
+      "studyQuestions": [
+        "How does Abraham express grief while continuing to act responsibly?",
+        "Why is the public and detailed nature of the land transaction important?",
+        "How does the purchased burial place relate to the promise of land?"
+      ],
+      "lifeApplication": "Make room for grief and treat the dead with dignity. When important responsibilities arise during loss, seek honest agreements and act with respect toward others.",
+      "interpretiveCaution": "The chapter's ancient land transaction should not be used to make simplistic claims about modern property disputes or present-day political boundaries. Keep the narrative's own setting and purpose clear.",
+      "readingNote": "The long account of the purchase is deliberate. It establishes the first clearly recorded property Abraham secures in the land and links family memory to the covenant promise."
+    },
+    {
+      "id": "gen-ch24",
+      "book": "Genesis",
+      "chapter": 24,
+      "title": "Genesis 24 — A wife for Isaac: guidance, prayer and covenant continuity",
+      "historicalContext": "Genesis 24 is the longest single narrative chapter in Genesis and focuses on securing a wife for Isaac. Abraham's servant is sent to his wider family, and the account repeatedly recounts the journey, prayer, meeting at the well and decision to return with Rebekah. The chapter connects family marriage arrangements with the continuation of the promised line.",
+      "overview": "Abraham commissions his servant to find a wife for Isaac from his kindred rather than from the Canaanites. The servant prays for guidance at a well and meets Rebekah, whose generosity fulfils the requested sign. Her family is consulted, and Rebekah agrees to go. Isaac receives her, and the narrative closes by describing his love and comfort after Sarah's death.",
+      "studyObservation": "Notice the servant's prayer before the meeting and his thanksgiving afterward. The repeated retelling of events is important: the servant explains the mission and the signs to Rebekah's family. Pay attention to Rebekah's initiative and willingness, not only to the servant's planning.",
+      "connectionNotes": "Genesis 22:20–24 introduces Rebekah's family line, preparing for this chapter. Genesis 25:20 records Isaac's marriage to Rebekah and the later birth of their sons. Proverbs 3:5–6 is often connected devotionally with seeking God's direction, but its wisdom teaching should not be treated as a mechanical guarantee that every decision will unfold through a sign.",
+      "keyPassages": [
+        "Genesis 24:1–9",
+        "Genesis 24:10–27",
+        "Genesis 24:28–49",
+        "Genesis 24:50–67",
+        "Genesis 25:20"
+      ],
+      "studyQuestions": [
+        "What priorities does Abraham give the servant in carrying out the mission?",
+        "How does the servant pray and recognise the response?",
+        "What role does Rebekah's own decision play in the conclusion of the chapter?"
+      ],
+      "lifeApplication": "Seek wisdom through prayer, careful observation and honest conversation. Treat people making major life decisions as responsible participants, not as objects to be moved around by someone else's plan.",
+      "interpretiveCaution": "The servant's requested sign belongs to this particular narrative and should not be turned into a universal formula for choosing a spouse or making every decision. The chapter's ancient marriage customs are not identical to modern Christian marriage practice.",
+      "readingNote": "Because the servant recounts the journey at length, do not skip the repeated details. They show how the family recognises the connection between prayer, hospitality and the continuation of the promise."
+    },
+    {
+      "id": "gen-ch25",
+      "book": "Genesis",
+      "chapter": 25,
+      "title": "Genesis 25 — Abraham's death and the birth of Jacob and Esau",
+      "historicalContext": "Genesis 25 closes Abraham's life and transitions to Isaac's family. It records Abraham's later descendants, his death and burial, Ishmael's genealogy, Rebekah's pregnancy and the birth of Esau and Jacob. The chapter ends with the sale of Esau's birthright, introducing the tension that will shape the next narrative.",
+      "overview": "Abraham's death is followed by the burial of Isaac and Ishmael at Machpelah. The text lists Ishmael's descendants and then turns to Isaac and Rebekah, who struggle with infertility until Isaac prays. Rebekah receives an oracle about two nations and the older serving the younger. Esau is born first, followed by Jacob holding his heel; later Esau sells his birthright to Jacob for food.",
+      "studyObservation": "Notice the chapter's transition from one generation to the next. The oracle about the two sons precedes their birth and frames the later conflict. In the birthright episode, compare Esau's immediate hunger with Jacob's calculated request, and observe the narrator's judgement that Esau despised his birthright.",
+      "connectionNotes": "Genesis 17:19–21 distinguished the covenant line through Isaac while promising blessing to Ishmael. Genesis 23:19–20 identifies Machpelah as Sarah's burial place. Romans 9:10–13 reflects on Jacob and Esau in a discussion of God's purpose, while Hebrews 12:16–17 warns against treating the birthright as insignificant.",
+      "keyPassages": [
+        "Genesis 25:1–11",
+        "Genesis 25:12–18",
+        "Genesis 25:19–26",
+        "Genesis 25:27–34",
+        "Romans 9:10–13",
+        "Hebrews 12:16–17"
+      ],
+      "studyQuestions": [
+        "How does the chapter honour Abraham while moving the story toward Isaac's sons?",
+        "What does Rebekah's oracle reveal about the future of the two brothers?",
+        "What does the birthright exchange show about Esau's priorities and Jacob's conduct?"
+      ],
+      "lifeApplication": "Consider how immediate appetite can lead to decisions with lasting consequences. Value responsibilities and gifts that cannot be measured only by what satisfies a present need.",
+      "interpretiveCaution": "The statement that the older will serve the younger concerns God's purpose in this family story; it should not be used to justify favouritism, manipulation or contempt between siblings. The text portrays serious flaws in both brothers.",
+      "readingNote": "The chapter is a hinge between Abraham and Jacob. Read the genealogy, birth oracle and birthright sale together to see how the next generation's conflict is introduced."
+    },
+    {
+      "id": "gen-ch26",
+      "book": "Genesis",
+      "chapter": 26,
+      "title": "Genesis 26 — Isaac in Gerar: promise, wells and peaceful boundaries",
+      "historicalContext": "Genesis 26 is the chapter that focuses most directly on Isaac's own experiences rather than on Abraham or Jacob. A famine leads Isaac to Gerar, where God renews the promise made to Abraham. The narrative echoes earlier patriarchal episodes involving fear about a wife, conflict over wells and agreements with Abimelech.",
+      "overview": "God tells Isaac not to go down to Egypt and renews the promise of land and descendants. Isaac stays in Gerar but repeats his father's deception by calling Rebekah his sister. After the truth is exposed, Isaac prospers and faces disputes over wells dug by Abraham's servants. He moves rather than escalating conflict, eventually finds room at Rehoboth and makes a covenant with Abimelech.",
+      "studyObservation": "Compare Isaac's instruction to remain in the land with his fear-driven deception about Rebekah. Track the names of the wells and the repeated disputes; the naming records the conflict and the eventual space found. Notice that Isaac's worship at Beersheba follows God's reassurance and the covenant with Abimelech.",
+      "connectionNotes": "Genesis 12:10–20 and 20:1–18 contain similar wife-sister episodes in Abraham's life. Genesis 21:22–34 records an earlier agreement at Beersheba. Hebrews 11:20 later mentions Isaac's faith concerning the future blessing of Jacob and Esau.",
+      "keyPassages": [
+        "Genesis 26:1–6",
+        "Genesis 26:7–11",
+        "Genesis 26:12–22",
+        "Genesis 26:23–33",
+        "Hebrews 11:20"
+      ],
+      "studyQuestions": [
+        "How does God renew the Abrahamic promise to Isaac?",
+        "What does Isaac's deception reveal about repeated family patterns?",
+        "How do the well disputes and later treaty illustrate conflict, restraint and negotiated peace?"
+      ],
+      "lifeApplication": "Notice harmful patterns that can pass through families and choose a more truthful response. Where possible, pursue peace without surrendering integrity or escalating every disagreement into a fight.",
+      "interpretiveCaution": "The chapter's material prosperity is part of Isaac's particular covenant story and should not be used as a formula that faithful people will always become wealthy. The narrative itself includes famine, fear and conflict.",
+      "readingNote": "The wells are more than background details: they show the struggle for space and the eventual recognition that God has made room for Isaac. Follow the movement from famine to settled agreement."
+    },
+    {
+      "id": "gen-ch27",
+      "book": "Genesis",
+      "chapter": 27,
+      "title": "Genesis 27 — Jacob receives Isaac's blessing through deception",
+      "historicalContext": "Genesis 27 develops the tension introduced by the oracle in Genesis 25. Isaac plans to bless Esau, Rebekah overhears and arranges for Jacob to impersonate his brother. The blessing is obtained through deception, and the family is fractured by anger, fear and the threat of violence.",
+      "overview": "Isaac, old and unable to see well, asks Esau to prepare a meal before receiving his blessing. Rebekah instructs Jacob to impersonate Esau, and Jacob disguises himself with animal skins. Isaac is deceived and blesses Jacob. When Esau returns, the deception is exposed; he grieves and plans to kill Jacob, while Rebekah arranges for Jacob to flee.",
+      "studyObservation": "Notice how each family member acts from a different desire: Isaac's preference for Esau, Rebekah's plan, Jacob's fear and participation, and Esau's anger. The blessing's words concern family leadership and provision, but the means by which it is obtained bring painful consequences. Do not confuse the fulfilment of the oracle with approval of deception.",
+      "connectionNotes": "Genesis 25:23 foretold the older serving the younger, while Genesis 28:1–5 records Isaac's later direction to Jacob. Hebrews 11:20 mentions Isaac's blessing of his sons by faith. The New Testament reference does not erase the deceit and family conflict described in Genesis 27.",
+      "keyPassages": [
+        "Genesis 27:1–17",
+        "Genesis 27:18–29",
+        "Genesis 27:30–40",
+        "Genesis 27:41–46",
+        "Genesis 25:23",
+        "Hebrews 11:20"
+      ],
+      "studyQuestions": [
+        "How do parental preference and secrecy shape the events?",
+        "Why does Jacob hesitate, and how does he nevertheless participate?",
+        "What are the immediate consequences of the deception for Esau and Jacob?"
+      ],
+      "lifeApplication": "Refuse manipulation even when you believe an outcome is desirable. Honest means matter; family favouritism and deception can wound relationships for years.",
+      "interpretiveCaution": "This narrative describes deception; it does not command or commend it. Do not teach that God requires people to lie in order to fulfil a promise. The chapter shows consequences rather than offering a model of family conduct.",
+      "readingNote": "Read the chapter as a family tragedy, not as a simple victory story. Keep the earlier oracle in Genesis 25 in view while recognising that the characters' choices are morally complex."
+    },
+    {
+      "id": "gen-ch28",
+      "book": "Genesis",
+      "chapter": 28,
+      "title": "Genesis 28 — Jacob's journey and the dream at Bethel",
+      "historicalContext": "Genesis 28 follows Jacob's flight after the conflict with Esau. Isaac sends him toward Paddan-aram to find a wife from Rebekah's family and gives him the covenant blessing. On the journey, Jacob dreams of a stairway or ladder reaching between earth and heaven, receives God's promise and names the place Bethel.",
+      "overview": "Isaac blesses Jacob and sends him away. Esau responds by taking another wife from Ishmael's family. During his journey Jacob sleeps with a stone for a pillow and dreams of a stairway with angels ascending and descending. God identifies Himself as the God of Abraham and Isaac, promises land, descendants and presence, and Jacob responds with awe, a pillar and a vow.",
+      "studyObservation": "Notice that God's promise is spoken to Jacob while he is away from home and under the consequences of family conflict. Follow the repeated assurances of land, descendants, blessing and divine presence. Jacob's response includes both worship and a vow that reflects his developing understanding of God.",
+      "connectionNotes": "John 1:51 uses the image of angels ascending and descending in a statement about the Son of Man. Genesis 12:1–3 and 26:3–5 contain earlier forms of the promise renewed to Jacob. Hebrews 11:9–10 reflects on the patriarchs' life as strangers in the promised land.",
+      "keyPassages": [
+        "Genesis 28:1–9",
+        "Genesis 28:10–15",
+        "Genesis 28:16–22",
+        "John 1:51",
+        "Genesis 12:1–3"
+      ],
+      "studyQuestions": [
+        "How does Isaac's blessing connect Jacob with the promise given to Abraham?",
+        "What does God's speech promise Jacob during his journey?",
+        "How does Jacob respond to the place and the encounter?"
+      ],
+      "lifeApplication": "Remember that God's presence is not limited to familiar or comfortable settings. Let an encounter with Scripture move you toward reverence, trust and a more thoughtful response to God's promises.",
+      "interpretiveCaution": "Jacob's vow should be read within the narrative and his developing character, not treated as a universal bargaining formula with God. The chapter does not promise that every dream is a direct revelation.",
+      "readingNote": "Bethel is a turning point in Jacob's journey. Notice that the promise comes before Jacob has repaired the family conflict or demonstrated mature character."
+    },
+    {
+      "id": "gen-ch29",
+      "book": "Genesis",
+      "chapter": 29,
+      "title": "Genesis 29 — Jacob meets Rachel and experiences Laban's deception",
+      "historicalContext": "Genesis 29 begins Jacob's life with his mother's family in Paddan-aram. At the well he meets Rachel, then agrees to work seven years for her marriage. Laban deceives Jacob by giving Leah instead, and Jacob later marries Rachel after agreeing to another period of service. The chapter begins the complex household story of the twelve tribes.",
+      "overview": "Jacob arrives at a well and meets Rachel, the daughter of Laban. He agrees to serve seven years for her, but Laban gives him Leah at the wedding. Jacob confronts Laban and then marries Rachel after another agreement to serve. The chapter closes by describing Leah's experience of being unloved and the births of Reuben, Simeon, Levi and Judah.",
+      "studyObservation": "Compare Jacob's earlier deception of Isaac with Laban's deception of Jacob. The reversal is narratively significant, but it does not make Laban's actions just. Notice how the text attends to Leah's lack of affection and says that the Lord sees her. The names of her sons express her longing, pain and hope.",
+      "connectionNotes": "Genesis 27 describes Jacob's deception in obtaining the blessing, creating an important narrative echo. Genesis 30 continues the family births and rivalry. Ruth 4:11 recalls Rachel and Leah as builders of the house of Israel, while Matthew 1:2 traces the line through Judah.",
+      "keyPassages": [
+        "Genesis 29:1–14",
+        "Genesis 29:15–30",
+        "Genesis 29:31–35",
+        "Genesis 27:18–29",
+        "Ruth 4:11",
+        "Matthew 1:2"
+      ],
+      "studyQuestions": [
+        "How does the meeting at the well begin Jacob's new stage of life?",
+        "What similarities and differences exist between Jacob's deception and Laban's?",
+        "How does God respond to Leah's situation, and what do the names of her sons express?"
+      ],
+      "lifeApplication": "Do not excuse manipulation because someone has previously been wronged. Notice people who feel unseen in family relationships and offer them respect, kindness and truthful care.",
+      "interpretiveCaution": "The polygamous household is described within the ancient narrative; it is not presented as a simple ideal for family life. The text records jealousy, unequal affection and pain rather than hiding the consequences.",
+      "readingNote": "Watch how the deceiver experiences deception, but do not treat the reversal as moral permission. Leah's story deserves attention alongside Jacob and Rachel's romance."
+    },
+    {
+      "id": "gen-ch30",
+      "book": "Genesis",
+      "chapter": 30,
+      "title": "Genesis 30 — The growing family and Jacob's contested prosperity",
+      "historicalContext": "Genesis 30 continues the family story begun with Jacob's marriages. Rivalry between Rachel and Leah, the use of their servants, and the naming of children shape the first part of the chapter. The second part turns to Jacob's agreement with Laban about wages and the growth of his flocks, setting up the departure in chapter 31.",
+      "overview": "Rachel's distress over childlessness leads to the involvement of Bilhah, while Leah responds through Zilpah and later bears more children. The narrative records Reuben's mandrakes and the sisters' negotiations, then Rachel gives birth to Joseph. Jacob asks to leave, but agrees to a wage arrangement involving speckled and spotted animals; the flocks increase and Jacob becomes prosperous.",
+      "studyObservation": "Read the children's names and the statements surrounding their births as expressions of rivalry, longing and changing family relationships. The mandrake episode shows how even fertility becomes part of household bargaining. In the flock account, distinguish the narrative's report of Jacob's methods from any assumption that it teaches a general breeding technique.",
+      "connectionNotes": "Genesis 29:31–35 introduced Leah's first sons, and Genesis 35:16–18 later records Rachel's death after Benjamin's birth. Genesis 31 recounts the departure from Laban and revisits the disputed wages. Psalm 127:3 describes children as a heritage from the Lord in a wisdom context, not as a judgement on those who experience infertility.",
+      "keyPassages": [
+        "Genesis 30:1–8",
+        "Genesis 30:9–24",
+        "Genesis 30:25–36",
+        "Genesis 30:37–43",
+        "Genesis 31:1–13",
+        "Psalm 127:3"
+      ],
+      "studyQuestions": [
+        "How do Rachel and Leah's rivalry and longing shape the family story?",
+        "What do the children's names reveal about the sisters' experiences?",
+        "How does the wage agreement with Laban prepare for the conflict in chapter 31?"
+      ],
+      "lifeApplication": "Treat infertility and family pain with compassion rather than blame or simplistic spiritual explanations. Resist turning children, relationships or material success into measures of a person's worth.",
+      "interpretiveCaution": "The chapter's family arrangements and animal-breeding account belong to an ancient household narrative. Do not use it to shame people without children or to claim that a particular technique guarantees wealth.",
+      "readingNote": "The chapter contains two linked developments: the expansion of Jacob's family and the growth of his household wealth under Laban. Both intensify the tensions that lead into chapter 31."
     }
   ]
 }
