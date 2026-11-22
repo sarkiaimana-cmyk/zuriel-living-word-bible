@@ -8,7 +8,7 @@ async function json(path) {
 }
 const [
   geography, dictionary, books, trail1, trail2, deep, names, words, words2,
-  commentary, topical, topical3, worship, theology, loader, index, worker, bookDataSource, kjv, chapterGuides, exodusChapterGuides, exodusChapterGuides2, exodusChapterGuides3, exodusChapterGuides4, leviticusChapterGuides, leviticusChapterGuides2, numbersChapterGuides, numbersChapterGuides2, numbersChapterGuides3, deuteronomyChapterGuides, deuteronomyChapterGuides2, joshuaChapterGuides, joshuaChapterGuides2, judgesChapterGuides, judgesChapterGuides2, ruthChapterGuides, samuelChapterGuides, samuelChapterGuides2, samuelChapterGuides3, samuelChapterGuides4, kingsChapterGuides, kingsChapterGuides2, kings2ChapterGuides, kings2ChapterGuides2, chroniclesChapterGuides, chroniclesChapterGuides2, chronicles2ChapterGuides, chronicles2ChapterGuides2, ezraChapterGuides, nehemiahChapterGuides, estherChapterGuides, jobChapterGuides, jobChapterGuides2, psalmsChapterGuides, psalmsChapterGuides2, psalmsChapterGuides3, psalmsChapterGuides4, psalmsChapterGuides5, proverbsChapterGuides
+  commentary, topical, topical3, worship, theology, loader, index, worker, bookDataSource, kjv, chapterGuides, exodusChapterGuides, exodusChapterGuides2, exodusChapterGuides3, exodusChapterGuides4, leviticusChapterGuides, leviticusChapterGuides2, numbersChapterGuides, numbersChapterGuides2, numbersChapterGuides3, deuteronomyChapterGuides, deuteronomyChapterGuides2, joshuaChapterGuides, joshuaChapterGuides2, judgesChapterGuides, judgesChapterGuides2, ruthChapterGuides, samuelChapterGuides, samuelChapterGuides2, samuelChapterGuides3, samuelChapterGuides4, kingsChapterGuides, kingsChapterGuides2, kings2ChapterGuides, kings2ChapterGuides2, chroniclesChapterGuides, chroniclesChapterGuides2, chronicles2ChapterGuides, chronicles2ChapterGuides2, ezraChapterGuides, nehemiahChapterGuides, estherChapterGuides, jobChapterGuides, jobChapterGuides2, psalmsChapterGuides, psalmsChapterGuides2, psalmsChapterGuides3, psalmsChapterGuides4, psalmsChapterGuides5, proverbsChapterGuides, ecclesiastesChapterGuides
 ] = await Promise.all([
   json("data/zuriel-bible-geography-atlas.json"),
   json("data/zuriel-biblical-dictionary-expansion.json"),
@@ -68,7 +68,8 @@ const [
   json("data/zuriel-chapter-introductions-psalms-61-90.json"),
   json("data/zuriel-chapter-introductions-psalms-91-120.json"),
   json("data/zuriel-chapter-introductions-psalms-121-150.json"),
-  json("data/zuriel-chapter-introductions-proverbs-01-31.json")
+  json("data/zuriel-chapter-introductions-proverbs-01-31.json"),
+  json("data/zuriel-chapter-introductions-ecclesiastes-01-12.json")
 ]);
 
 const studyDatasetPaths = [
@@ -113,7 +114,8 @@ const studyDatasetPaths = [
   "zuriel-chapter-introductions-psalms-61-90.json",
   "zuriel-chapter-introductions-psalms-91-120.json",
   "zuriel-chapter-introductions-psalms-121-150.json",
-  "zuriel-chapter-introductions-proverbs-01-31.json"
+  "zuriel-chapter-introductions-proverbs-01-31.json",
+  "zuriel-chapter-introductions-ecclesiastes-01-12.json"
 ];
 const [packagingScript, packagedLoader] = await Promise.all([
   readFile(new URL("../scripts/prepare-web.mjs", import.meta.url), "utf8"),
@@ -735,6 +737,19 @@ assert.equal(psalmsChapterGuides2.chapters.length,30,"Psalms part 2 must contain
 assert.equal(psalmsChapterGuides3.chapters.length,30,"Psalms part 3 must contain chapters 61–90");
 assert.equal(psalmsChapterGuides4.chapters.length,30,"Psalms part 4 must contain chapters 91–120");
 assert.equal(psalmsChapterGuides5.chapters.length,30,"Psalms part 5 must contain chapters 121–150");
+assert.equal(ecclesiastesChapterGuides.chapters.length,12,"Ecclesiastes must contain all 12 chapter guides");
+const ecclesiastesIds=new Set();
+for(const guide of ecclesiastesChapterGuides.chapters){
+ assert.equal(guide.book,"Ecclesiastes","Ecclesiastes guide must remain scoped to Ecclesiastes");
+ assert.ok(Number.isInteger(guide.chapter)&&guide.chapter>=1&&guide.chapter<=12,"Ecclesiastes chapter number must be valid");
+ assert.ok(guide.title.startsWith("Ecclesiastes "+guide.chapter+" —"),"Ecclesiastes title must identify its chapter");
+ assert.ok(typeof guide.id==="string"&&/^eccl-ch\\d{2}$/.test(guide.id),"Ecclesiastes guide needs a stable ID");
+ assert.ok(!ecclesiastesIds.has(guide.id),"Ecclesiastes guide IDs must be unique");ecclesiastesIds.add(guide.id);
+ for(const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field]==="string"&&guide[field].trim().length>=50,"Ecclesiastes guide needs substantive "+field+": "+guide.chapter);
+ assert.ok(Array.isArray(guide.keyPassages)&&guide.keyPassages.length>=2,"Ecclesiastes guide needs key passages");
+ assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length>=3,"Ecclesiastes guide needs study questions");
+ for(const reference of guide.keyPassages) checkReference(reference,"Ecclesiastes chapter "+guide.chapter);
+}
 const psalmGuides=[...psalmsChapterGuides.chapters,...psalmsChapterGuides2.chapters,...psalmsChapterGuides3.chapters,...psalmsChapterGuides4.chapters,...psalmsChapterGuides5.chapters];
 const psalmIds=new Set();
 assert.equal(proverbsChapterGuides.chapters.length,31,"Proverbs must contain all 31 chapter guides");
