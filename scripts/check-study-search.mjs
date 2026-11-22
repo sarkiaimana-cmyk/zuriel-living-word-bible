@@ -132,6 +132,11 @@ const datasets = {
     {id:"jer-ch31",book:"Jeremiah",chapter:31,title:"Jeremiah 31 — Rachel weeps and the new covenant is promised",overview:"Jeremiah portrays Rachel weeping for her children, then announces comfort and a return from exile. The chapter promises a new covenant written on the heart and declares God's enduring love for Israel.",keyPassages:["Jeremiah 31:1–22","Jeremiah 31:23–40"]},
     {id:"jer-ch52",book:"Jeremiah",chapter:52,title:"Jeremiah 52 — Jerusalem's fall retold and the book's closing record",overview:"Jeremiah 52 recounts Jerusalem's final siege, the capture of Zedekiah, the destruction of the temple and city, deportations, and the later release of Jehoiachin in Babylon.",keyPassages:["Jeremiah 52:1–16","Jeremiah 52:17–34"]}
   ]},
+  "zuriel-chapter-introductions-lamentations-01-05.json": { chapters: [
+    {id:"lam-ch01",book:"Lamentations",chapter:1,title:"Lamentations 1 — The lonely city and the first lament",overview:"The first poem portrays Jerusalem as a lonely widow after devastation. It names betrayal, hunger, exile, and the loss of worship, while the city acknowledges that the Lord's judgement is connected to its rebellion.",keyPassages:["Lamentations 1:1–11","Lamentations 1:12–22"]},
+    {id:"lam-ch03",book:"Lamentations",chapter:3,title:"Lamentations 3 — The afflicted speaker, steadfast mercy, and waiting hope",overview:"At the centre of the book, a speaker describes affliction in vivid bodily and emotional terms. The poem turns toward the Lord's mercies, calls for patient waiting, and insists that suffering should not be dismissed or treated lightly.",keyPassages:["Lamentations 3:1–33","Lamentations 3:34–66"]},
+    {id:"lam-ch05",book:"Lamentations",chapter:5,title:"Lamentations 5 — A communal prayer asking God to remember",overview:"The final poem gathers the community's losses into a collective prayer: dispossession, forced labour, hunger, humiliation, and the collapse of ordinary life. It asks God to remember and restore the people.",keyPassages:["Lamentations 5:1–11","Lamentations 5:12–22"]}
+  ]},
   "zuriel-deep-study-guides.json": { guides: [] },
   "zuriel-bible-geography-atlas.json": { places: [], journeys: [] },
   "zuriel-worship-study-pathways.json": { pathways: [] }
@@ -350,6 +355,13 @@ const jeremiahThirtyOne = await library.search("Rachel weeps new covenant heart"
 assert.equal(jeremiahThirtyOne.length,1,"Jeremiah chapter 31 guide should be searchable"); assert.equal(jeremiahThirtyOne[0].source.chapter,31);
 const jeremiahFiftyTwo = await library.search("Jerusalem fall siege Jehoiachin", { category: "Chapter Introductions" });
 assert.equal(jeremiahFiftyTwo.length,1,"Jeremiah chapter 52 guide should be searchable"); assert.equal(jeremiahFiftyTwo[0].source.chapter,52);
+
+const lamentationsOne = await library.search("lonely city widow lament exile", { category: "Chapter Introductions" });
+assert.equal(lamentationsOne.length,1,"Lamentations chapter 1 guide should be searchable"); assert.equal(lamentationsOne[0].source.chapter,1);
+const lamentationsThree = await library.search("afflicted speaker mercy waiting hope", { category: "Chapter Introductions" });
+assert.equal(lamentationsThree.length,1,"Lamentations chapter 3 guide should be searchable"); assert.equal(lamentationsThree[0].source.chapter,3);
+const lamentationsFive = await library.search("communal prayer remember restore dispossession", { category: "Chapter Introductions" });
+assert.equal(lamentationsFive.length,1,"Lamentations chapter 5 guide should be searchable"); assert.equal(lamentationsFive[0].source.chapter,5);
 
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
 assert.equal(greek.length, 1, "Unicode Greek search should find the original-language entry.");
