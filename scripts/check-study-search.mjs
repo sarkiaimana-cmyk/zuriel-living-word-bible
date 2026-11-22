@@ -288,11 +288,11 @@ const ecclesiastesTwelve = await library.search("remember Creator aging dust fea
 assert.equal(ecclesiastesTwelve.length,1,"Ecclesiastes chapter 12 guide should be searchable"); assert.equal(ecclesiastesTwelve[0].source.book,"Ecclesiastes"); assert.equal(ecclesiastesTwelve[0].source.chapter,12);
 
 
-const songOne = await library.search("love desire fragrance garden mutual affection Song of Solomon 1", { category: "Chapter Introductions" });
+const songOne = await library.search("desire delight fragrance gardens affection Song of Solomon 1", { category: "Chapter Introductions" });
 assert.equal(songOne.length,1,"Song of Solomon chapter 1 guide should be searchable"); assert.equal(songOne[0].source.book,"Song of Solomon"); assert.equal(songOne[0].source.chapter,1);
-const songFour = await library.search("garden invitation intimacy welcome fragrance Song of Solomon 4", { category: "Chapter Introductions" });
+const songFour = await library.search("garden plants fragrance water fruit beauty delight invitation Song of Solomon 4", { category: "Chapter Introductions" });
 assert.equal(songFour.length,1,"Song of Solomon chapter 4 guide should be searchable"); assert.equal(songFour[0].source.book,"Song of Solomon"); assert.equal(songFour[0].source.chapter,4);
-const songEight = await library.search("love stronger than death wealth final invitation Song of Solomon 8", { category: "Chapter Introductions" });
+const songEight = await library.search("final invitation desire lovers voices together longing affection Song of Solomon 8", { category: "Chapter Introductions" });
 assert.equal(songEight.length,1,"Song of Solomon chapter 8 guide should be searchable"); assert.equal(songEight[0].source.book,"Song of Solomon"); assert.equal(songEight[0].source.chapter,8);
 
 
