@@ -38,6 +38,7 @@ const datasets = {
   "zuriel-connected-scripture-trails-batch-1.json": { trails: [] },
   "zuriel-connected-scripture-trails-batch-2.json": { trails: [] },
   "zuriel-book-introductions-and-study-pathways.json": { bookIntroductions: [], bookStudyPathways: [] },
+  "zuriel-chapter-introductions-exodus-01-10.json": { chapters: [{ id: "exo-ch01", book: "Exodus", chapter: 1, title: "Exodus 1 — Israel oppression", overview: "Exodus 1 describes Israel growth and Pharaoh oppression.", keyPassages: ["Exodus 1:8–14"] }] },
   "zuriel-chapter-introductions-genesis-01-10.json": { chapters: [{ id: "gen-ch02", book: "Genesis", chapter: 2, title: "The garden, human vocation and covenant companionship", overview: "Genesis 2 describes the garden and the human vocation.", keyPassages: ["Genesis 2:15–17"] }] },
   "zuriel-deep-study-guides.json": { guides: [] },
   "zuriel-bible-geography-atlas.json": { places: [], journeys: [] },
@@ -72,6 +73,10 @@ assert.ok((await library.search("love gift Son")).some(item => item.title === "J
 const chapterGuide = await library.search("garden vocation Genesis 2", { category: "Chapter Introductions" });
 assert.equal(chapterGuide.length, 1, "Chapter introductions must be included in the searchable offline library.");
 assert.equal(chapterGuide[0].source.chapter, 2, "Chapter guide search must preserve the correct chapter identity.");
+
+const exodusGuide = await library.search("Pharaoh oppression Exodus 1", { category: "Chapter Introductions" });
+assert.equal(exodusGuide.length, 1, "Exodus chapter introductions must be searchable offline.");
+assert.equal(exodusGuide[0].source.book, "Exodus");
 
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
 assert.equal(greek.length, 1, "Unicode Greek search should find the original-language entry.");
