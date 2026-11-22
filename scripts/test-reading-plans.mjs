@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import { runInNewContext } from "node:vm";
 
 const source = await readFile(new URL("../zuriel-reading-plans.js", import.meta.url), "utf8");
+const backupSource = await readFile(new URL("../zuriel-backup.js", import.meta.url), "utf8");
 const store = new Map();
 const localStorage = {
   getItem: key => store.has(key) ? store.get(key) : null,
@@ -20,6 +21,16 @@ for (const id of ["promises-of-god-7", "fruit-of-spirit-7", "healing-and-comfort
   assert.ok(plan, "New guided journey must be present: " + id);
   assert.equal(plan.duration, 7, "Each new guided journey must contain seven days.");
 }
+const backupDurationsMatch = backupSource.match(/const READING_PLAN_DURATIONS = (\\{[^}]+\\});/);
+assert.ok(backupDurationsMatch, "Encrypted backup restore must define supported reading-plan durations.");
+const backupDurations = runInNewContext("(" + backupDurationsMatch[1] + ")");
+for (const plan of plans) {
+  assert.equal(backupDurations[plan.id], plan.duration,
+    "Encrypted backup and restore must preserve progress for " + plan.title + ".");
+}
+assert.equal(Object.keys(backupDurations).length, plans.length,
+  "Backup plan allow-list must stay aligned with the complete curated plan library.");
+
 const planIds = plans.map(plan => plan.id);
 assert.equal(new Set(planIds).size, planIds.length, "Every reading plan must have a unique stable ID.");
 for (const plan of plans) {
