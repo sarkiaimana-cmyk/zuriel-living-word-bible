@@ -32,11 +32,13 @@ The Cloudflare token must belong to the same account as the account ID. Cloudfla
 4. Confirm that the Cloudflare Workers Free plan and YouVersion publisher access/licensing have been checked.
 5. Run the workflow.
 
-The workflow installs the YouVersion key as a Cloudflare Worker secret, deploys the protected Worker, discovers the account's `workers.dev` subdomain, verifies that the Worker route is enabled, and makes a live request to `/api/youversion/bibles` with the GitHub Pages CORS origin.
+The workflow installs the YouVersion key as a Cloudflare Worker secret, deploys the protected Worker, discovers the account's `workers.dev` subdomain, and verifies that the Worker route is enabled. It then checks the authorised English Bible catalogue and makes a second live request for **John 3:16** using an actually authorised YouVersion Bible ID. The chapter response must contain non-empty passage text and the expected GitHub Pages CORS origin. A catalogue-only success is not enough to connect the provider. If an API.Bible key is also configured, the workflow independently requests **John 3** and requires chapter text, reference, publisher attribution and CORS before reporting that provider as verified.
 
 A successful run prints:
 - the exact Worker URL to configure in the app;
-- the number of English Bible versions the YouVersion app key is authorised to access.
+- the number of English Bible versions the YouVersion app key is authorised to access;
+- confirmation that a real John 3:16 passage was retrieved and returned usable text;
+- if configured, confirmation that API.Bible returned a real John 3 chapter with publisher attribution.
 
 If Cloudflare has no `workers.dev` subdomain, enable one in **Workers & Pages** and rerun the workflow. The workflow must pass the live request and CORS checks before the endpoint is connected to the app.
 
