@@ -307,8 +307,13 @@ for (const item of homeVerseEntries) {
   const book = bookLookup.get(match[1].toLowerCase().replace(/\s+/g, " ").trim());
   assert.ok(book, "Featured home Scripture uses an unknown Bible book: " + item.reference);
   const chapters = kjv[readerMap[book.name]];
-  const verseText = chapters && chapters[Number(match[2]) - 1] && chapters[Number(match[2]) - 1][Number(match[3]) - 1];
+  let verseText = chapters && chapters[Number(match[2]) - 1] && chapters[Number(match[2]) - 1][Number(match[3]) - 1];
   assert.ok(typeof verseText === "string", "Featured home Scripture is missing from the bundled KJV: " + item.reference);
+  // Some KJV Psalm datasets place the Psalm superscription at the start of
+  // verse 1. It is a heading, not part of the quoted verse wording on the card.
+  if (book.name === "Psalms") {
+    verseText = verseText.replace(/^(?:(?:A Psalm|A Song|To the chief Musician|Maschil|Michtam|Shiggaion|A Prayer|Praise|Higgaion)\\b[^.]*\\.\\s*)+/i, "");
+  }
   assert.equal(normalizeBibleWords(item.text), normalizeBibleWords(verseText),
     "Featured home Scripture wording must match the bundled KJV: " + item.reference);
 }
