@@ -14,8 +14,8 @@ const api = sandbox.window.ZurielReadingPlans;
 
 assert.ok(api, "Reading plan module must expose its public API.");
 const plans = api.list();
-assert.equal(plans.length, 15, "Fifteen curated offline reading plans should be available.");
-for (const id of ["promises-of-god-7", "fruit-of-spirit-7", "healing-and-comfort-7", "family-and-home-7", "purposeful-work-7"]) {
+assert.equal(plans.length, 20, "Twenty curated offline reading plans should be available.");
+for (const id of ["promises-of-god-7", "fruit-of-spirit-7", "healing-and-comfort-7", "family-and-home-7", "purposeful-work-7", "psalms-for-every-season-7", "parables-of-jesus-7", "the-early-church-7", "courage-and-calling-7", "knowing-gods-character-7"]) {
   const plan = plans.find(item => item.id === id);
   assert.ok(plan, "New guided journey must be present: " + id);
   assert.equal(plan.duration, 7, "Each new guided journey must contain seven days.");
@@ -73,6 +73,6 @@ assert.equal(api.parseReference("John 0"), null, "Chapter zero must be rejected.
 assert.equal(api.parseReference("not a Scripture reference"), null);
 
 const allReferences = plans.flatMap(plan => plan.passages);
-assert.equal(allReferences.length, 128);
+assert.equal(allReferences.length, 163);
 for (const reference of allReferences) assert.ok(api.parseReference(reference), "Every curated passage must parse: " + reference);
-console.log("Reading plan runtime checks passed: fifteen plans including a 30-day Jesus journey and five new themed journeys, 128 passages, private progress persistence, duplicate-day cleanup, invalid-state rejection and Scripture-reference parsing.");
+console.log("Reading plan runtime checks passed: twenty plans including a 30-day Jesus journey and ten new themed journeys, 163 passages, private progress persistence, duplicate-day cleanup, invalid-state rejection and Scripture-reference parsing.");
