@@ -8,7 +8,7 @@ async function json(path) {
 }
 const [
   geography, dictionary, books, trail1, trail2, deep, names, words, words2,
-  commentary, topical, topical3, worship, theology, loader, index, worker, bookDataSource, kjv
+  commentary, topical, topical3, worship, theology, loader, index, worker, bookDataSource, kjv, chapterGuides
 ] = await Promise.all([
   json("data/zuriel-bible-geography-atlas.json"),
   json("data/zuriel-biblical-dictionary-expansion.json"),
@@ -28,7 +28,8 @@ const [
   readFile(new URL("../index.html", import.meta.url), "utf8"),
   readFile(new URL("../sw.js", import.meta.url), "utf8"),
   readFile(new URL("../bible-data.js", import.meta.url), "utf8"),
-  json("kjv.72bec70fcd.json")
+  json("kjv.72bec70fcd.json"),
+  json("data/zuriel-chapter-introductions-genesis-01-10.json")
 ]);
 
 const studyDatasetPaths = [
@@ -39,7 +40,8 @@ const studyDatasetPaths = [
   "zuriel-names-and-titles-of-god-library.json", "zuriel-connected-scripture-trails-batch-1.json",
   "zuriel-connected-scripture-trails-batch-2.json", "zuriel-book-introductions-and-study-pathways.json",
   "zuriel-deep-study-guides.json", "zuriel-bible-geography-atlas.json",
-  "zuriel-worship-study-pathways.json", "zuriel-theological-comparisons.json"
+  "zuriel-worship-study-pathways.json", "zuriel-theological-comparisons.json",
+  "zuriel-chapter-introductions-genesis-01-10.json"
 ];
 const [packagingScript, packagedLoader] = await Promise.all([
   readFile(new URL("../scripts/prepare-web.mjs", import.meta.url), "utf8"),
@@ -113,7 +115,8 @@ const expected = [
   [trail1.trails,41,"connected Scripture trails batch 1"], [trail2.trails,33,"connected Scripture trails batch 2"],
   [deep.guides,20,"deep study guides"], [names.entries,52,"Names and Titles of God"],
   [words.entries,110,"original-language word studies batch 1"], [words2.entries,20,"original-language word studies batch 2"], [commentary.entries,173,"passage commentary"],
-  [topical.entries,100,"topical study guides batch 2"], [topical3.entries,20,"topical study guides batch 3"], [worship.pathways,30,"worship study pathways"], [theology.entries,35,"theological comparisons"]
+  [topical.entries,100,"topical study guides batch 2"], [topical3.entries,20,"topical study guides batch 3"], [worship.pathways,30,"worship study pathways"], [theology.entries,35,"theological comparisons"],
+  [chapterGuides.chapters,10,"Genesis chapter introductions"]
 ];
 for (const [items,count,label] of expected) {
   assert.ok(Array.isArray(items), label + " must be an array");
@@ -134,6 +137,36 @@ for (const introduction of books.bookIntroductions) {
   assert.ok(Array.isArray(introduction.studyQuestions) && introduction.studyQuestions.length >= 3,
     "Every book introduction needs at least three study questions: " + introduction.book);
 }
+
+const chapterGuideIds = new Set();
+for (const guide of chapterGuides.chapters) {
+  assert.equal(guide.book, "Genesis", "This chapter-guide batch must remain scoped to Genesis");
+  assert.ok(Number.isInteger(guide.chapter) && guide.chapter >= 1 && guide.chapter <= 10,
+    "Genesis chapter guide must have a valid chapter number");
+  assert.ok(!chapterGuideIds.has(guide.id), "Chapter guide IDs must be unique: " + guide.id);
+  assert.ok(typeof guide.historicalContext === "string" && guide.historicalContext.length >= 100,
+    "Each chapter guide needs historical and literary context: " + guide.title);
+  assert.ok(typeof guide.overview === "string" && guide.overview.length >= 120,
+    "Each chapter guide needs a substantive overview: " + guide.title);
+  assert.ok(typeof guide.studyObservation === "string" && guide.studyObservation.length >= 100,
+    "Each chapter guide needs text-specific observation: " + guide.title);
+  assert.ok(typeof guide.connectionNotes === "string" && guide.connectionNotes.length >= 100,
+    "Each chapter guide needs explained cross-canonical connections: " + guide.title);
+  assert.ok(Array.isArray(guide.keyPassages) && guide.keyPassages.length >= 3,
+    "Each chapter guide needs multiple Scripture references: " + guide.title);
+  assert.ok(Array.isArray(guide.studyQuestions) && guide.studyQuestions.length >= 3,
+    "Each chapter guide needs distinct study questions: " + guide.title);
+  assert.ok(typeof guide.lifeApplication === "string" && guide.lifeApplication.length >= 100,
+    "Each chapter guide needs contextual life application: " + guide.title);
+  assert.ok(typeof guide.interpretiveCaution === "string" && guide.interpretiveCaution.length >= 100,
+    "Each chapter guide needs an interpretive caution: " + guide.title);
+  assert.ok(typeof guide.readingNote === "string" && guide.readingNote.length >= 100,
+    "Each chapter guide needs a chapter-specific reading note: " + guide.title);
+  for (const reference of guide.keyPassages) checkReference(reference, "Genesis chapter guide " + guide.title);
+  chapterGuideIds.add(guide.id);
+}
+assert.equal(chapterGuideIds.size, 10, "Genesis chapters 1–10 must each have exactly one guide");
+
 const trails=[...trail1.trails,...trail2.trails];
 assert.equal(new Set(trails.map(item=>item.id)).size,74,"Connected Scripture trail IDs must be unique");
 for (const trail of trails) {
@@ -235,7 +268,8 @@ for (const path of [
   "zuriel-biblical-dictionary-expansion.json","zuriel-original-language-word-studies-batch-1.json",
   "zuriel-original-language-word-studies-batch-2.json","zuriel-names-and-titles-of-god-library.json","zuriel-connected-scripture-trails-batch-1.json",
   "zuriel-connected-scripture-trails-batch-2.json","zuriel-book-introductions-and-study-pathways.json",
-  "zuriel-deep-study-guides.json","zuriel-bible-geography-atlas.json","zuriel-worship-study-pathways.json","zuriel-theological-comparisons.json"
+  "zuriel-deep-study-guides.json","zuriel-bible-geography-atlas.json","zuriel-worship-study-pathways.json","zuriel-theological-comparisons.json",
+  "zuriel-chapter-introductions-genesis-01-10.json"
 ]) assert.ok(loader.includes(path),"Study loader must include "+path);
 assert.ok(index.includes('src="zuriel-study-library-data.js"'),"Study library integration script must load");
 assert.match(worker, /zuriel-bible-offline-v\d+/, "Offline cache must use a versioned cache name");
@@ -246,7 +280,8 @@ for (const path of [
   "zuriel-biblical-dictionary-expansion.json","zuriel-original-language-word-studies-batch-1.json",
   "zuriel-original-language-word-studies-batch-2.json","zuriel-names-and-titles-of-god-library.json","zuriel-connected-scripture-trails-batch-1.json",
   "zuriel-connected-scripture-trails-batch-2.json","zuriel-book-introductions-and-study-pathways.json",
-  "zuriel-deep-study-guides.json","zuriel-bible-geography-atlas.json","zuriel-worship-study-pathways.json","zuriel-theological-comparisons.json"
+  "zuriel-deep-study-guides.json","zuriel-bible-geography-atlas.json","zuriel-worship-study-pathways.json","zuriel-theological-comparisons.json",
+  "zuriel-chapter-introductions-genesis-01-10.json"
 ]) assert.ok(worker.includes("./data/"+path),"Offline cache must include "+path);
 assert.ok(loader.includes("window.ZurielStudyLibrary"),"Study library API must be exposed");
 assert.ok(loader.includes("openReference"),"Study references must open through the Bible reader");
@@ -345,4 +380,4 @@ assert.equal(linkWord(sampleVerse, sampleVerse,
   "A source annotation spanning beyond the selected word must not be attached");
 assert.equal(linkWord(sampleVerse, sampleVerse, [], 99).ok, false,
   "An out-of-range word selection must not produce a lexical link");
-console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 14 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
+console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 10 Genesis chapter introductions; 15 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
