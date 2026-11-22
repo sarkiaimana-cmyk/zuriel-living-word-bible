@@ -7,7 +7,7 @@ async function json(path) {
 }
 const [
   geography, dictionary, books, trail1, trail2, deep, names, words, words2,
-  commentary, topical, worship, theology, loader, index, worker, bookDataSource, kjv
+  commentary, topical, topical3, worship, theology, loader, index, worker, bookDataSource, kjv
 ] = await Promise.all([
   json("data/zuriel-bible-geography-atlas.json"),
   json("data/zuriel-biblical-dictionary-expansion.json"),
@@ -20,6 +20,7 @@ const [
   json("data/zuriel-original-language-word-studies-batch-2.json"),
   json("data/zuriel-passage-commentary-expansion.json"),
   json("data/zuriel-topical-bible-study-library-batch-2.json"),
+  json("data/zuriel-topical-bible-study-library-batch-3.json"),
   json("data/zuriel-worship-study-pathways.json"),
   json("data/zuriel-theological-comparisons.json"),
   readFile(new URL("../zuriel-study-library-data.js", import.meta.url), "utf8"),
@@ -31,6 +32,7 @@ const [
 
 const studyDatasetPaths = [
   "zuriel-passage-commentary-expansion.json", "zuriel-topical-bible-study-library-batch-2.json",
+  "zuriel-topical-bible-study-library-batch-3.json",
   "zuriel-biblical-dictionary-expansion.json", "zuriel-original-language-word-studies-batch-1.json",
   "zuriel-original-language-word-studies-batch-2.json",
   "zuriel-names-and-titles-of-god-library.json", "zuriel-connected-scripture-trails-batch-1.json",
@@ -100,7 +102,7 @@ function walkReferences(value,label) {
 for(const [label,data] of [
   ["geography",geography],["dictionary",dictionary],["book guides",books],["connected trails batch 1",trail1],
   ["connected trails batch 2",trail2],["deep guides",deep],["Names of God",names],["word studies batch 1",words],["word studies batch 2",words2],
-  ["commentary",commentary],["topical studies",topical],["worship",worship],["theology",theology]
+  ["commentary",commentary],["topical studies",topical],["topical studies batch 3",topical3],["worship",worship],["theology",theology]
 ]) walkReferences(data,label);
 
 const expected = [
@@ -110,7 +112,7 @@ const expected = [
   [trail1.trails,41,"connected Scripture trails batch 1"], [trail2.trails,33,"connected Scripture trails batch 2"],
   [deep.guides,20,"deep study guides"], [names.entries,52,"Names and Titles of God"],
   [words.entries,110,"original-language word studies batch 1"], [words2.entries,20,"original-language word studies batch 2"], [commentary.entries,173,"passage commentary"],
-  [topical.entries,100,"topical study guides"], [worship.pathways,30,"worship study pathways"], [theology.entries,35,"theological comparisons"]
+  [topical.entries,100,"topical study guides batch 2"], [topical3.entries,20,"topical study guides batch 3"], [worship.pathways,30,"worship study pathways"], [theology.entries,35,"theological comparisons"]
 ];
 for (const [items,count,label] of expected) {
   assert.ok(Array.isArray(items), label + " must be an array");
@@ -162,7 +164,7 @@ for (const entry of theology.entries) {
   theologyTitles.add(entry.title.trim().toLocaleLowerCase("en"));
 }
 for (const [label,items] of [
-  ["commentary",commentary.entries],["topical",topical.entries],["dictionary",dictionary.entries],
+  ["commentary",commentary.entries],["topical",topical.entries],["topical batch 3",topical3.entries],["dictionary",dictionary.entries],
   ["word study",words.entries],["names",names.entries],["worship",worship.pathways]
 ]) {
   for (const item of items) assert.ok(item.id,label+" entries need stable IDs");
@@ -189,6 +191,8 @@ for (const entry of words.entries) {
 }
 for (const path of [
   "zuriel-passage-commentary-expansion.json","zuriel-topical-bible-study-library-batch-2.json",
+  "zuriel-topical-bible-study-library-batch-3.json",
+  "zuriel-topical-bible-study-library-batch-3.json",
   "zuriel-biblical-dictionary-expansion.json","zuriel-original-language-word-studies-batch-1.json",
   "zuriel-names-and-titles-of-god-library.json","zuriel-connected-scripture-trails-batch-1.json",
   "zuriel-connected-scripture-trails-batch-2.json","zuriel-book-introductions-and-study-pathways.json",
@@ -207,4 +211,4 @@ for (const path of [
 assert.ok(loader.includes("window.ZurielStudyLibrary"),"Study library API must be exposed");
 assert.ok(loader.includes("openReference"),"Study references must open through the Bible reader");
 assert.ok(loader.includes("Original-language form") && loader.includes("Morphology note") && loader.includes("Contextual word use"),"Word-study detail must expose original script, language, morphology status and contextual usage.");
-console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 12 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
+console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 13 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
