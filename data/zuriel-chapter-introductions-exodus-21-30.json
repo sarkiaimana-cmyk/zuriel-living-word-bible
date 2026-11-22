@@ -1,0 +1,247 @@
+{
+  "schemaVersion": 1,
+  "title": "Zuriel Chapter Introductions — Exodus 21–30",
+  "description": "Ten chapter-specific guides covering covenant law, justice, sanctuary design and priestly service in Exodus 21–30.",
+  "chapters": [
+    {
+      "id": "exo-ch21",
+      "book": "Exodus",
+      "chapter": 21,
+      "title": "Exodus 21 — Covenant laws concerning servants and injury",
+      "historicalContext": "After the Ten Commandments, the covenant collection gives case laws for Israel's communal life. These laws address social vulnerability, bodily harm, responsibility and fair process in an ancient agrarian society.",
+      "overview": "The chapter sets rules concerning Hebrew servants, violence, injury, negligence and restitution. It distinguishes intentional acts from accidents and describes consequences for harm to people and property.",
+      "studyObservation": "Read each case with attention to the parties, the injury, intent and remedy. Notice where the text limits retaliation and where it protects people who could otherwise be exploited.",
+      "connectionNotes": "Read these connections in their own contexts; they illuminate the chapter without replacing its original covenant setting.",
+      "keyPassages": [
+        "Exodus 20:12–17",
+        "Leviticus 24:17–22",
+        "Deuteronomy 15:12–18",
+        "Matthew 5:38–42"
+      ],
+      "studyQuestions": [
+        "How do the laws distinguish intentional harm from accident?",
+        "What protections or limits appear in the servant laws?",
+        "How does restitution relate to responsibility?"
+      ],
+      "lifeApplication": "Take harm seriously, protect vulnerable people and seek fair remedies rather than revenge.",
+      "interpretiveCaution": "These laws belong to an ancient covenant legal system and should not be transplanted uncritically into modern law. In particular, do not use the servant regulations to excuse slavery or abuse today.",
+      "readingNote": "Read this chapter as part of the wider covenant code and compare parallel laws in Deuteronomy and Leviticus."
+    },
+    {
+      "id": "exo-ch22",
+      "book": "Exodus",
+      "chapter": 22,
+      "title": "Exodus 22 — Property, restitution and social responsibility",
+      "historicalContext": "The covenant code continues with cases involving theft, property damage, borrowing, sexual misconduct and duties toward vulnerable neighbours. The laws presume a community in which households, animals and fields are central to livelihood.",
+      "overview": "The chapter assigns restitution for theft and damage, addresses disputed property cases, and prohibits exploitation of foreigners, widows, orphans and the poor. It also includes laws concerning worship and communal obligations.",
+      "studyObservation": "Observe how the legal cases connect wrongdoing with repair. The repeated concern for the vulnerable shows that covenant faithfulness includes economic and social conduct, not worship alone.",
+      "connectionNotes": "Read these connections in their own contexts; they illuminate the chapter without replacing its original covenant setting.",
+      "keyPassages": [
+        "Exodus 21:33–36",
+        "Leviticus 19:9–18",
+        "Deuteronomy 24:10–22",
+        "James 1:27"
+      ],
+      "studyQuestions": [
+        "What forms of restitution are required for different harms?",
+        "How does the chapter protect those with limited social power?",
+        "What connection does it make between worship and public conduct?"
+      ],
+      "lifeApplication": "Repair harm where possible and treat people with limited power fairly. Let worship shape economic honesty and compassion.",
+      "interpretiveCaution": "Some penalties reflect the legal world of ancient Israel. Explain the historical setting and ethical principles without claiming every case is a direct modern statute.",
+      "readingNote": "The chapter's social protections should be read alongside the commands to love one's neighbour and pursue justice."
+    },
+    {
+      "id": "exo-ch23",
+      "book": "Exodus",
+      "chapter": 23,
+      "title": "Exodus 23 — Justice, Sabbath and covenant festivals",
+      "historicalContext": "The covenant code addresses truthful testimony, impartial justice, care for enemies, Sabbath rest and annual festivals. It then promises guidance toward the land while warning against adopting the worship practices of its inhabitants.",
+      "overview": "Israel is commanded not to spread false reports, follow a crowd into wrongdoing or pervert justice. The chapter instructs rest for people and land, names three annual feasts and promises an angelic guide, while warning against covenant compromise.",
+      "studyObservation": "Notice the combination of courtroom integrity, practical compassion, rhythms of rest and communal worship. The instruction to help an enemy's animal shows that neighbourly duty is not limited to friends.",
+      "connectionNotes": "Read these connections in their own contexts; they illuminate the chapter without replacing its original covenant setting.",
+      "keyPassages": [
+        "Exodus 20:8–11",
+        "Exodus 22:21–27",
+        "Deuteronomy 16:1–17",
+        "Luke 6:27–36"
+      ],
+      "studyQuestions": [
+        "How does the chapter guard against crowd pressure and false testimony?",
+        "Why is help for an enemy included in the law?",
+        "How do Sabbath and festivals shape communal life?"
+      ],
+      "lifeApplication": "Practise truth even when group pressure points elsewhere. Offer practical help across personal divisions and protect time for rest and worship.",
+      "interpretiveCaution": "The promise of an angel and conquest guidance belongs to Israel's covenant journey. Avoid turning it into a blanket guarantee of success in every modern undertaking.",
+      "readingNote": "The chapter closes the main sequence of covenant laws and prepares for the formal covenant ceremony in chapter 24."
+    },
+    {
+      "id": "exo-ch24",
+      "book": "Exodus",
+      "chapter": 24,
+      "title": "Exodus 24 — The covenant confirmed",
+      "historicalContext": "After the covenant words and case laws, Israel's leaders approach the mountain and the covenant is formally confirmed. The ceremony combines public reading, sacrifice, a written record and a meal before God.",
+      "overview": "Moses reports the words and ordinances, the people affirm their willingness, and covenant blood is applied. Moses reads the book of the covenant, then ascends with Aaron, Nadab, Abihu and elders who behold a vision of God's presence. Moses enters the cloud.",
+      "studyObservation": "Follow the ceremony's order and note the people's repeated commitment. The blood, written words and shared meal each contribute to the covenant scene. Distinguish the narrative's description of divine presence from later artistic depictions.",
+      "connectionNotes": "Read these connections in their own contexts; they illuminate the chapter without replacing its original covenant setting.",
+      "keyPassages": [
+        "Exodus 19:3–8",
+        "Exodus 20:1–17",
+        "Exodus 24:3–8",
+        "Hebrews 9:18–22"
+      ],
+      "studyQuestions": [
+        "What steps make the covenant confirmation public and binding?",
+        "Why does Moses read the covenant book aloud?",
+        "What is significant about the meal before God?"
+      ],
+      "lifeApplication": "Treat commitments with seriousness, clarity and shared understanding. Let words of faith be matched by faithful conduct.",
+      "interpretiveCaution": "The imagery of seeing God is described briefly and reverently. Avoid claiming more visual detail than the text provides.",
+      "readingNote": "Chapter 24 concludes the covenant confirmation before the instructions for the sanctuary begin."
+    },
+    {
+      "id": "exo-ch25",
+      "book": "Exodus",
+      "chapter": 25,
+      "title": "Exodus 25 — The offering and design of the sanctuary",
+      "historicalContext": "The narrative turns from covenant ceremony to instructions for a sanctuary where God will dwell among Israel. The materials are gathered through willing offerings, and the design centres on the ark, table and lampstand.",
+      "overview": "God invites contributions from willing hearts and gives instructions for the ark of the covenant, the bread table and the lampstand. The sanctuary is to be made according to the pattern shown to Moses.",
+      "studyObservation": "Notice the repeated emphasis on willing contributions and the care given to the sanctuary's furnishings. The ark and its mercy seat are central, while the table and lampstand serve the worship space.",
+      "connectionNotes": "Read these connections in their own contexts; they illuminate the chapter without replacing its original covenant setting.",
+      "keyPassages": [
+        "Exodus 24:15–18",
+        "Exodus 26:31–35",
+        "Exodus 37:1–24",
+        "Hebrews 9:1–5"
+      ],
+      "studyQuestions": [
+        "Why are contributions described as willing rather than coerced?",
+        "What role does the ark have in the sanctuary design?",
+        "How do the table and lampstand contribute to the worship space?"
+      ],
+      "lifeApplication": "Give and serve willingly, and handle sacred responsibilities with care and integrity.",
+      "interpretiveCaution": "Do not assign a fixed symbolic meaning to every measurement or material unless the biblical text itself supports it. Interpret later symbolism in its own context.",
+      "readingNote": "These instructions begin a sustained description of the tabernacle; read the next chapters as parts of one coherent design."
+    },
+    {
+      "id": "exo-ch26",
+      "book": "Exodus",
+      "chapter": 26,
+      "title": "Exodus 26 — The tabernacle structure and inner veil",
+      "historicalContext": "The sanctuary instructions continue with the curtains, coverings, frames, bars and veil. The design creates ordered spaces, distinguishing the Holy Place from the Most Holy Place.",
+      "overview": "The chapter specifies the tabernacle's woven curtains, protective coverings, wooden frames, sockets, veil and entrance screen. The ark is placed behind the veil, while the table and lampstand are positioned outside it.",
+      "studyObservation": "Observe the layered construction and the distinction between spaces. The materials and craftsmanship serve both the practical structure and the ordered approach to the sanctuary.",
+      "connectionNotes": "Read these connections in their own contexts; they illuminate the chapter without replacing its original covenant setting.",
+      "keyPassages": [
+        "Exodus 25:1–9",
+        "Exodus 25:10–22",
+        "Exodus 27:9–19",
+        "Hebrews 9:2–8"
+      ],
+      "studyQuestions": [
+        "How do the curtains and frames create the sanctuary's structure?",
+        "What distinction does the veil establish?",
+        "How does the arrangement guide movement and access?"
+      ],
+      "lifeApplication": "Respect boundaries and prepare carefully for responsibilities that require reverence and attention.",
+      "interpretiveCaution": "The chapter does not explain every colour or measurement symbolically. Avoid speculative claims that go beyond the text.",
+      "readingNote": "Read chapters 25–27 together to understand the sanctuary as a unified space and its furnishings."
+    },
+    {
+      "id": "exo-ch27",
+      "book": "Exodus",
+      "chapter": 27,
+      "title": "Exodus 27 — The altar, courtyard and lamp oil",
+      "historicalContext": "The sanctuary instructions move from the inner furnishings to the bronze altar and outer courtyard, then describe the oil for the continually tended lamp. The chapter completes much of the sanctuary's basic spatial plan.",
+      "overview": "The bronze altar is described with its utensils and carrying poles. The courtyard boundaries and entrance are specified, and Israel is instructed to provide pure olive oil for the lamp to burn continually.",
+      "studyObservation": "Notice the movement from the inner sanctuary outward and the practical requirements for sacrifice and maintenance. The lamp instruction introduces the regular service later assigned to the priests.",
+      "connectionNotes": "Read these connections in their own contexts; they illuminate the chapter without replacing its original covenant setting.",
+      "keyPassages": [
+        "Exodus 25:31–40",
+        "Exodus 26:1–37",
+        "Exodus 30:1–10",
+        "Leviticus 24:1–4"
+      ],
+      "studyQuestions": [
+        "What role does the bronze altar have in the courtyard?",
+        "How do the courtyard boundaries shape the sanctuary space?",
+        "What does the continual lamp require from the community?"
+      ],
+      "lifeApplication": "Support shared worship through reliable, often unseen service and responsible provision.",
+      "interpretiveCaution": "The sacrificial system belongs to Israel's covenant worship and should not be treated as a direct instruction to reproduce ancient sacrifices today.",
+      "readingNote": "The chapter's altar, courtyard and lamp instructions lead into the priestly garments and consecration."
+    },
+    {
+      "id": "exo-ch28",
+      "book": "Exodus",
+      "chapter": 28,
+      "title": "Exodus 28 — The garments of the priests",
+      "historicalContext": "The sanctuary service requires appointed priests, and this chapter describes garments for Aaron and his sons. The clothing is associated with dignity, beauty and the responsibility of representing Israel before God.",
+      "overview": "The chapter details the ephod, breastplate, robe, tunic, turban and other garments. The names of Israel's tribes are carried on the priestly clothing, and the breastplate includes stones and the Urim and Thummim.",
+      "studyObservation": "Notice how the garments connect priestly service with the whole people. The names carried on the shoulders and heart communicate representation and remembrance. Read the descriptions without assuming every detail has a stated symbolic interpretation.",
+      "connectionNotes": "Read these connections in their own contexts; they illuminate the chapter without replacing its original covenant setting.",
+      "keyPassages": [
+        "Exodus 29:1–9",
+        "Exodus 39:1–31",
+        "Leviticus 8:1–13",
+        "Hebrews 5:1–4"
+      ],
+      "studyQuestions": [
+        "How do the garments connect the priest with Israel's tribes?",
+        "What does the chapter say about dignity and beauty in service?",
+        "Which details are explicitly explained, and which remain descriptive?"
+      ],
+      "lifeApplication": "Carry responsibility for others with care, remembering that service is about people rather than status.",
+      "interpretiveCaution": "Do not present speculative meanings for each stone, colour or garment as certain biblical teaching. Later Christian comparisons should be identified as interpretation.",
+      "readingNote": "The priestly garments are part of the larger sanctuary system and prepare for the consecration in chapter 29."
+    },
+    {
+      "id": "exo-ch29",
+      "book": "Exodus",
+      "chapter": 29,
+      "title": "Exodus 29 — The consecration of Aaron and his sons",
+      "historicalContext": "The instructions move from priestly clothing to the ceremony that sets Aaron and his sons apart for service. Washing, garments, anointing, sacrifices and a seven-day period form the consecration process.",
+      "overview": "Moses is instructed to wash and clothe the priests, anoint Aaron, and offer a bull and two rams according to the prescribed rites. The chapter also describes daily offerings and God's promise to meet Israel at the tent of meeting.",
+      "studyObservation": "Follow the consecration sequence and note how the sacrifices address purification, dedication and fellowship within Israel's worship system. The closing verses emphasise God's presence among the people.",
+      "connectionNotes": "Read these connections in their own contexts; they illuminate the chapter without replacing its original covenant setting.",
+      "keyPassages": [
+        "Exodus 28:1–43",
+        "Leviticus 8:14–36",
+        "Numbers 7:1",
+        "Exodus 40:34–38"
+      ],
+      "studyQuestions": [
+        "What stages make up the priests' consecration?",
+        "What different offerings are included and what do their descriptions emphasise?",
+        "How does the chapter connect priestly service with God's presence among Israel?"
+      ],
+      "lifeApplication": "Approach service with preparation, accountability and a clear sense of responsibility before God.",
+      "interpretiveCaution": "The sacrificial meanings should be explained from the text and wider Torah rather than reduced to a single formula. This is an ancient Israelite priestly rite, not a modern ordination script.",
+      "readingNote": "Chapter 29 completes the priestly commissioning instructions before further sanctuary furnishings are described."
+    },
+    {
+      "id": "exo-ch30",
+      "book": "Exodus",
+      "chapter": 30,
+      "title": "Exodus 30 — Incense altar, atonement money and sacred oil",
+      "historicalContext": "The sanctuary instructions continue with the incense altar, census contribution, bronze laver, anointing oil and incense. These items support the daily rhythm and consecrated character of the sanctuary service.",
+      "overview": "The chapter describes the altar of incense, a half-shekel contribution associated with the census, the bronze laver for washing, and formulas for holy anointing oil and incense. It restricts ordinary use of materials set apart for worship.",
+      "studyObservation": "Notice the repeated themes of atonement, washing, holiness and limits on misuse. The instructions distinguish common use from what is consecrated for the sanctuary.",
+      "connectionNotes": "Read these connections in their own contexts; they illuminate the chapter without replacing its original covenant setting.",
+      "keyPassages": [
+        "Exodus 27:20–21",
+        "Exodus 29:36–46",
+        "Exodus 38:8",
+        "Psalm 141:1–2"
+      ],
+      "studyQuestions": [
+        "What is the incense altar's place in the daily worship pattern?",
+        "What does the census contribution signify in this chapter?",
+        "Why are the oil and incense formulas protected from ordinary use?"
+      ],
+      "lifeApplication": "Treat shared resources and sacred responsibilities with integrity; do not exploit what is entrusted for worship or service.",
+      "interpretiveCaution": "Avoid turning the half-shekel or oil formula into a universal modern financial or anointing rule. The instructions are specific to Israel's sanctuary system.",
+      "readingNote": "The chapter adds important details to the sanctuary and prepares for the skilled workers and Sabbath emphasis in chapter 31."
+    }
+  ]
+}
