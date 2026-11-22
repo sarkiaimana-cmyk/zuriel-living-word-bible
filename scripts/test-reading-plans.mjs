@@ -72,4 +72,4 @@ assert.equal(api.parseReference("not a Scripture reference"), null);
 const allReferences = plans.flatMap(plan => plan.passages);
 assert.equal(allReferences.length, 128);
 for (const reference of allReferences) assert.ok(api.parseReference(reference), "Every curated passage must parse: " + reference);
-console.log("Reading plan runtime checks passed: fifteen plans including a 30-day Jesus journey, 128 passages, private progress persistence, duplicate-day cleanup, invalid-state rejection and Scripture-reference parsing.");
+console.log("Reading plan runtime checks passed: fifteen plans including a 30-day Jesus journey and five new themed journeys, 128 passages, private progress persistence, duplicate-day cleanup, invalid-state rejection and Scripture-reference parsing.");
