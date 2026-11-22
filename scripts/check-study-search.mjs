@@ -60,6 +60,11 @@ const datasets = {
   "zuriel-chapter-introductions-job-22-42.json": { chapters: [{ id:"job-ch42",book:"Job",chapter:42,title:"Job 42 — Job is vindicated and the friends corrected",overview:"God rebukes the friends for speaking wrongly, receives Job's prayer for them, and restores Job while the book leaves the mystery of suffering intact.",keyPassages:["Job 42:7–17"] }] },
   "zuriel-chapter-introductions-psalms-01-30.json": { chapters: [{ id:"ps-ch023",book:"Psalms",chapter:23,title:"Psalm 23 — The Lord as shepherd",overview:"The speaker describes God's guidance, provision, protection and welcome through life's dangers. The shepherd image offers comfort, not a guarantee that believers never experience grief or danger.",keyPassages:["Psalm 23:1–3","Psalm 23:4–6"] }] },
   "zuriel-chapter-introductions-psalms-31-60.json": { chapters: [{ id:"ps-ch051",book:"Psalms",chapter:51,title:"Psalm 51 — A confession asking for cleansing",overview:"The speaker confesses wrongdoing and asks for mercy, renewal and a truthful heart. This penitential prayer should invite repentance without weaponizing guilt against victims.",keyPassages:["Psalm 51:1–7","Psalm 51:10–19"] }] },
+  "zuriel-chapter-introductions-isaiah-01-22.json": { chapters: [
+    { id:"isa-ch06",book:"Isaiah",chapter:6,title:"Isaiah 6 — Isaiah's vision and his commission",overview:"In the year King Uzziah died, Isaiah sees the Lord enthroned, hears the seraphim proclaim holiness, and becomes deeply aware of his uncleanness. A coal from the altar signifies cleansing, after which Isaiah answers the call to be sent.",keyPassages:["Isaiah 6:1–7","Isaiah 6:8–13"] },
+    { id:"isa-ch09",book:"Isaiah",chapter:9,title:"Isaiah 9 — Light in Galilee and the promised child",overview:"Isaiah announces that people walking in darkness will see a great light. The promise of a child and a righteous Davidic reign is set against oppression, warfare, and the burdens of imperial domination.",keyPassages:["Isaiah 9:1–7","Isaiah 9:8–21"] },
+    { id:"isa-ch11",book:"Isaiah",chapter:11,title:"Isaiah 11 — A shoot from Jesse and a peaceful creation",overview:"Isaiah pictures a shoot emerging from Jesse's cut-down line, with the Spirit resting on a ruler who judges with righteousness and protects the poor. The vision expands to a peaceable creation and the gathering of God's scattered people.",keyPassages:["Isaiah 11:1–9","Isaiah 11:10–16"] }
+  ] },
   "zuriel-chapter-introductions-song-of-solomon-01-08.json": { chapters: [
     { id:"song-ch01",book:"Song of Solomon",chapter:1,title:"Song of Solomon 1 — The song's opening voices",overview:"The Song of Solomon opens with the desire and delight of two lovers, while the daughters of Jerusalem form a listening chorus. Fragrance, gardens, vineyards, and royal imagery establish a poetic world in which affection is expressed with vivid sensory language.",keyPassages:["Song of Solomon 1:1–8","Song of Solomon 1:9–17"] },
     { id:"song-ch04",book:"Song of Solomon",chapter:4,title:"Song of Solomon 4 — The garden and the invitation",overview:"The beloved is praised through an extended garden image, with plants, fragrance, water, and fruit portraying beauty and delight. The chapter ends with an invitation and response that express mutual desire through the garden metaphor.",keyPassages:["Song of Solomon 4:1–7","Song of Solomon 4:8–16"] },
@@ -289,6 +294,14 @@ const songFour = await library.search("garden invitation intimacy welcome fragra
 assert.equal(songFour.length,1,"Song of Solomon chapter 4 guide should be searchable"); assert.equal(songFour[0].source.book,"Song of Solomon"); assert.equal(songFour[0].source.chapter,4);
 const songEight = await library.search("love stronger than death wealth final invitation Song of Solomon 8", { category: "Chapter Introductions" });
 assert.equal(songEight.length,1,"Song of Solomon chapter 8 guide should be searchable"); assert.equal(songEight[0].source.book,"Song of Solomon"); assert.equal(songEight[0].source.chapter,8);
+
+
+const isaiahSix = await library.search("seraphim holy throne cleansing coal commission Isaiah 6", { category: "Chapter Introductions" });
+assert.equal(isaiahSix.length,1,"Isaiah chapter 6 guide should be searchable"); assert.equal(isaiahSix[0].source.book,"Isaiah"); assert.equal(isaiahSix[0].source.chapter,6);
+const isaiahNine = await library.search("great light Galilee promised child righteous reign Isaiah 9", { category: "Chapter Introductions" });
+assert.equal(isaiahNine.length,1,"Isaiah chapter 9 guide should be searchable"); assert.equal(isaiahNine[0].source.book,"Isaiah"); assert.equal(isaiahNine[0].source.chapter,9);
+const isaiahEleven = await library.search("shoot Jesse Spirit righteousness poor peaceable creation Isaiah 11", { category: "Chapter Introductions" });
+assert.equal(isaiahEleven.length,1,"Isaiah chapter 11 guide should be searchable"); assert.equal(isaiahEleven[0].source.book,"Isaiah"); assert.equal(isaiahEleven[0].source.chapter,11);
 
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
 assert.equal(greek.length, 1, "Unicode Greek search should find the original-language entry.");
