@@ -56,6 +56,8 @@ const datasets = {
   "zuriel-chapter-introductions-1-samuel-01-16.json": { chapters: [{ id:"1sam-ch03",book:"1 Samuel",chapter:3,title:"1 Samuel 3 — Samuel hears God's call",overview:"Samuel learns to listen and faithfully deliver a difficult message.",keyPassages:["1 Samuel 3:11–18"] }] },
   "zuriel-chapter-introductions-1-samuel-17-31.json": { chapters: [{ id:"1sam-ch30",book:"1 Samuel",chapter:30,title:"1 Samuel 30 — Recovery at Ziklag",overview:"David seeks guidance and recovers the captives and goods.",keyPassages:["1 Samuel 30:18–25"] }] },
   "zuriel-chapter-introductions-2-samuel-01-12.json": { chapters: [{ id:"2sam-ch07",book:"2 Samuel",chapter:7,title:"2 Samuel 7 — God's covenant with David",overview:"God promises to establish David's house and kingdom.",keyPassages:["2 Samuel 7:8–17"] }] },
+  "zuriel-chapter-introductions-2-kings-01-13.json": { chapters: [{ id:"2kgs-ch05",book:"2 Kings",chapter:5,title:"2 Kings 5 — Naaman is healed",overview:"Naaman is healed after humbling himself; Gehazi's greed warns against exploiting spiritual authority.",keyPassages:["2 Kings 5:1–14"] }] },
+  "zuriel-chapter-introductions-2-kings-14-25.json": { chapters: [{ id:"2kgs-ch25",book:"2 Kings",chapter:25,title:"2 Kings 25 — Jerusalem falls",overview:"The siege, exile, and destruction of Jerusalem end Judah's monarchy, while the closing notice leaves a small opening toward hope.",keyPassages:["2 Kings 25:1–7"] }] },
   "zuriel-chapter-introductions-1-kings-01-11.json": { chapters: [{ id:"1kgs-ch03",book:"1 Kings",chapter:3,title:"1 Kings 3 — Solomon asks for wisdom",overview:"Solomon asks God for discernment to govern the people wisely.",keyPassages:["1 Kings 3:5–14"] }] },
   "zuriel-chapter-introductions-1-kings-12-22.json": { chapters: [{ id:"1kgs-ch18",book:"1 Kings",chapter:18,title:"1 Kings 18 — Elijah confronts the prophets of Baal",overview:"Elijah challenges Baal worship and calls Israel to renewed allegiance.",keyPassages:["1 Kings 18:20–40"] }] },
   "zuriel-chapter-introductions-2-samuel-13-24.json": { chapters: [{ id:"2sam-ch22",book:"2 Samuel",chapter:22,title:"2 Samuel 22 — David's song of deliverance",overview:"David sings of God as rock and refuge and reflects on deliverance.",keyPassages:["2 Samuel 22:1–7"] }] },
@@ -177,6 +179,11 @@ const kings3 = await library.search("Solomon asks for wisdom discernment 1 Kings
 assert.equal(kings3.length,1,"1 Kings chapter 3 wisdom guide should be searchable"); assert.equal(kings3[0].source.book,"1 Kings"); assert.equal(kings3[0].source.chapter,3);
 const kings18 = await library.search("Ahab Jezebel Elijah drought Baal 1 Kings 18", { category: "Chapter Introductions" });
 assert.equal(kings18.length,1,"1 Kings chapter 18 prophetic conflict guide should be searchable"); assert.equal(kings18[0].source.book,"1 Kings"); assert.equal(kings18[0].source.chapter,18);
+
+const kings2Naaman = await library.search("Naaman healed Gehazi greed 2 Kings 5", { category: "Chapter Introductions" });
+assert.equal(kings2Naaman.length,1,"2 Kings chapter 5 guide should be searchable"); assert.equal(kings2Naaman[0].source.book,"2 Kings"); assert.equal(kings2Naaman[0].source.chapter,5);
+const kings2Fall = await library.search("Jerusalem falls exile Jehoiachin 2 Kings 25", { category: "Chapter Introductions" });
+assert.equal(kings2Fall.length,1,"2 Kings chapter 25 guide should be searchable"); assert.equal(kings2Fall[0].source.book,"2 Kings"); assert.equal(kings2Fall[0].source.chapter,25);
 
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
 assert.equal(greek.length, 1, "Unicode Greek search should find the original-language entry.");
