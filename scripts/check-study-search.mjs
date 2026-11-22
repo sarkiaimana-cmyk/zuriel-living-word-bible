@@ -122,7 +122,7 @@ assert.equal(deuteronomy6.length, 1, "Deuteronomy part 1 chapter introductions m
 assert.equal(deuteronomy6[0].source.book, "Deuteronomy");
 assert.equal(deuteronomy6[0].source.chapter, 6);
 
-const deuteronomy30 = await library.search("restoration mercy choose life Deuteronomy 30", { category: "Chapter Introductions" });
+const deuteronomy30 = await library.search("restoration mercy choosing life Deuteronomy 30", { category: "Chapter Introductions" });
 assert.equal(deuteronomy30.length, 1, "Deuteronomy part 2 chapter introductions must be searchable offline.");
 assert.equal(deuteronomy30[0].source.book, "Deuteronomy");
 assert.equal(deuteronomy30[0].source.chapter, 30);
