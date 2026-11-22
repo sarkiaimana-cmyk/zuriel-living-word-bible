@@ -312,7 +312,7 @@ for (const item of homeVerseEntries) {
   // Some KJV Psalm datasets place the Psalm superscription at the start of
   // verse 1. It is a heading, not part of the quoted verse wording on the card.
   if (book.name === "Psalms") {
-    verseText = verseText.replace(/^(?:(?:A Psalm|A Song|To the chief Musician|Maschil|Michtam|Shiggaion|A Prayer|Praise|Higgaion)\\b[^.]*\\.\\s*)+/i, "");
+    verseText = verseText.replace(/^(?:(?:A Psalm|A Song|To the chief Musician|Maschil|Michtam|Shiggaion|A Prayer|Praise|Higgaion)\b[^.]*\.\s*)+/i, "");
   }
   assert.equal(normalizeBibleWords(item.text), normalizeBibleWords(verseText),
     "Featured home Scripture wording must match the bundled KJV: " + item.reference);
