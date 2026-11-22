@@ -321,6 +321,15 @@ assert.equal(isaiahThirtySeven.length,1,"Isaiah chapter 37 guide should be searc
 const isaiahForty = await library.search("comfort Jerusalem shepherd grass", { category: "Chapter Introductions" });
 assert.equal(isaiahForty.length,1,"Isaiah chapter 40 guide should be searchable"); assert.equal(isaiahForty[0].source.chapter,40);
 
+const isaiahFiftyTwo = await library.search("good news servant exalted suffering", { category: "Chapter Introductions" });
+assert.equal(isaiahFiftyTwo.length,1,"Isaiah chapter 52 guide should be searchable"); assert.equal(isaiahFiftyTwo[0].source.chapter,52);
+const isaiahFiftyThree = await library.search("suffering servant grief rejected", { category: "Chapter Introductions" });
+assert.equal(isaiahFiftyThree.length,1,"Isaiah chapter 53 guide should be searchable"); assert.equal(isaiahFiftyThree[0].source.chapter,53);
+const isaiahFiftyEight = await library.search("true fasting justice repair community", { category: "Chapter Introductions" });
+assert.equal(isaiahFiftyEight.length,1,"Isaiah chapter 58 guide should be searchable"); assert.equal(isaiahFiftyEight[0].source.chapter,58);
+const isaiahSixtyFive = await library.search("new heavens earth servants rejoice", { category: "Chapter Introductions" });
+assert.equal(isaiahSixtyFive.length,1,"Isaiah chapter 65 guide should be searchable"); assert.equal(isaiahSixtyFive[0].source.chapter,65);
+
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
 assert.equal(greek.length, 1, "Unicode Greek search should find the original-language entry.");
 assert.equal(greek[0].source.language, "Greek");
