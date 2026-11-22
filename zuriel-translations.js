@@ -88,7 +88,7 @@
   panel.id = "zurielTranslationCompare";
   const summary = node("summary", "", "🌐 Compare another Bible translation (online)");
   const note = node("p", "ztc-note",
-    "The King James Version remains available offline. Select an authorised translation and download all 66 books to this device. Downloads resume from saved chapters; API.Bible copies are refreshed within 29 days.");
+    "The King James Version remains available offline. Load authorised translations online when connected. API.Bible chapters may be saved on this device and must be refreshed within 29 days. YouVersion passages are shown online only unless the publisher explicitly permits offline storage.");
   const controls = node("div");
   const providerSelect = node("select");
   providerSelect.setAttribute("aria-label", "Choose online Bible translation provider");
@@ -198,7 +198,7 @@
     }
     select.hidden = false;
     loadButton.hidden = false;
-    downloadButton.hidden = false;
+    downloadButton.hidden = !canStoreOffline(providerAtRequest);
     select.disabled = true;
     loadButton.disabled = true;
     status("Checking the English Bible versions authorised for " +
@@ -368,6 +368,12 @@
     return pending;
   }
 
+  function canStoreOffline(provider) {
+    // YouVersion publisher permissions are version-specific and are not
+    // verified by this client. Keep its passages online-only by default.
+    return provider === "api-bible";
+  }
+
   function translationCacheKey(provider, versionId, reference) {
     return [provider, String(versionId), String(reference)].join("|");
   }
@@ -407,7 +413,7 @@
     placeholder.value = "";
     offlineSelect.appendChild(placeholder);
     const valid = records.filter(record => record &&
-      (record.provider === "youversion" || record.provider === "api-bible") &&
+      record.provider === "api-bible" &&
       typeof record.versionId === "string" && record.versionId &&
       typeof record.label === "string" && record.label);
     valid.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
@@ -426,6 +432,7 @@
   }
 
   async function readCachedChapter(provider, versionId, reference) {
+    if (!canStoreOffline(provider)) return null;
     const db = await openTranslationCache();
     if (!db) return null;
     return new Promise(resolve => {
@@ -450,6 +457,7 @@
   }
 
   async function saveCachedChapter(provider, versionId, reference, payload) {
+    if (!canStoreOffline(provider)) return false;
     if (!payload || !payload.passage || typeof payload.passage.content !== "string" ||
         !payload.passage.content.trim() || (typeof payload.passage.copyright !== "string" || !payload.passage.copyright.trim()) &&
         (typeof payload.passage.promotional_content !== "string" || !payload.passage.promotional_content.trim())) return false;
@@ -484,6 +492,10 @@
   let downloadPaused = false;
   let downloadRunning = false;
   async function downloadSelectedTranslation() {
+    if (!canStoreOffline(selectedProvider)) {
+      downloadProgress.textContent = "This YouVersion passage is online-only unless its publisher explicitly permits offline storage. No local copy was created.";
+      return;
+    }
     if (downloadRunning) { downloadPaused = true; downloadProgress.textContent = "Pausing after the current chapter…"; return; }
     if (!selectedVersionId || !await resolveApiBase()) {
       status("Connect to the secure translation service and select an authorised version first."); return;
@@ -595,12 +607,14 @@
         ? "Offline copy saved on this device. API.Bible content must be refreshed online within 29 days."
         : (selectedProvider === "api-bible"
           ? "This chapter is saved on this device for offline reading; it must be refreshed online within 29 days."
-          : "This chapter is saved on this device for offline reading under the approved translation access.")
+          : "YouVersion publisher text is displayed online only; no offline copy has been saved.")
     ].filter(Boolean).join(" ");
     attribution.hidden = false;
     status(offline
       ? "Showing a saved " + providerName + " chapter offline."
-      : "Online passage loaded successfully. This chapter has been saved for offline reading.");
+      : (canStoreOffline(selectedProvider)
+        ? "Online passage loaded successfully and saved under the API.Bible refresh limit."
+        : "Online passage loaded successfully. YouVersion text has not been stored offline."));
   }
 
   async function loadPassage() {
@@ -649,7 +663,9 @@
       const payload = await requestJson(path, activeController);
       if (requestId !== requestSequence) return;
       renderPassage(payload, false);
-      await saveCachedChapter(selectedProvider, selectedVersionId, reference, payload);
+      if (canStoreOffline(selectedProvider)) {
+        await saveCachedChapter(selectedProvider, selectedVersionId, reference, payload);
+      }
     } catch (error) {
       if (error && error.name === "AbortError") return;
       if (requestId === requestSequence) {
@@ -664,7 +680,8 @@
     } finally {
       if (requestId === requestSequence) {
         loadButton.disabled = !selectedVersionId || !currentChapter;
-        downloadButton.disabled = !selectedVersionId;
+        downloadButton.hidden = !canStoreOffline(selectedProvider);
+        downloadButton.disabled = !selectedVersionId || !canStoreOffline(selectedProvider);
         activeController = null;
       }
     }
@@ -685,6 +702,7 @@
     select.disabled = true;
     loadButton.disabled = true;
     downloadButton.disabled = true;
+    downloadButton.hidden = !canStoreOffline(selectedProvider);
     passage.hidden = true;
     attribution.hidden = true;
     passage.textContent = "";
@@ -699,7 +717,8 @@
     activeController = null;
     selectedVersionId = select.value;
     loadButton.disabled = !selectedVersionId || !currentChapter;
-    downloadButton.disabled = !selectedVersionId || !API_BASE;
+    downloadButton.hidden = !canStoreOffline(selectedProvider);
+    downloadButton.disabled = !selectedVersionId || !API_BASE || !canStoreOffline(selectedProvider);
     passage.hidden = true;
     attribution.hidden = true;
     passage.textContent = "";
@@ -739,7 +758,8 @@
       loadVersions();
       if (currentChapter && versionsLoaded && loadedProvider === selectedProvider) {
         loadButton.disabled = !selectedVersionId;
-        downloadButton.disabled = !selectedVersionId;
+        downloadButton.hidden = !canStoreOffline(selectedProvider);
+        downloadButton.disabled = !selectedVersionId || !canStoreOffline(selectedProvider);
         status("Ready to compare " + currentChapter.book + " " + currentChapter.chapter + ".");
       }
     }
