@@ -385,7 +385,7 @@ const ezekielEleven = await library.search("leaders false security new heart spi
 assert.equal(ezekielEleven.length,1,"Ezekiel chapter 11 guide should be searchable"); assert.equal(ezekielEleven[0].source.chapter,11);
 const ezekielSixteen = await library.search("Jerusalem unfaithful wife covenant everlasting", { category: "Chapter Introductions" });
 assert.equal(ezekielSixteen.length,1,"Ezekiel chapter 16 guide should be searchable"); assert.equal(ezekielSixteen[0].source.chapter,16);
-const ezekielEighteen = await library.search("soul sins individual responsibility way life", { category: "Chapter Introductions" });
+const ezekielEighteen = await library.search("parents guilt wicked turn live conduct", { category: "Chapter Introductions" });
 assert.equal(ezekielEighteen.length,1,"Ezekiel chapter 18 guide should be searchable"); assert.equal(ezekielEighteen[0].source.chapter,18);
 const ezekielTwentyFour = await library.search("cooking pot siege Ezekiel wife mourning", { category: "Chapter Introductions" });
 assert.equal(ezekielTwentyFour.length,1,"Ezekiel chapter 24 guide should be searchable"); assert.equal(ezekielTwentyFour[0].source.chapter,24);
