@@ -182,7 +182,7 @@ assert.equal(secondSamuel22.length,1,"2 Samuel part 2 song guide should be searc
 
 const kings3 = await library.search("Solomon asks for wisdom discernment 1 Kings 3", { category: "Chapter Introductions" });
 assert.equal(kings3.length,1,"1 Kings chapter 3 wisdom guide should be searchable"); assert.equal(kings3[0].source.book,"1 Kings"); assert.equal(kings3[0].source.chapter,3);
-const kings18 = await library.search("Ahab Jezebel Elijah drought Baal 1 Kings 18", { category: "Chapter Introductions" });
+const kings18 = await library.search("Elijah challenges Baal worship Israel renewed allegiance", { category: "Chapter Introductions" });
 assert.equal(kings18.length,1,"1 Kings chapter 18 prophetic conflict guide should be searchable"); assert.equal(kings18[0].source.book,"1 Kings"); assert.equal(kings18[0].source.chapter,18);
 
 const kings2Naaman = await library.search("Naaman healed Gehazi greed 2 Kings 5", { category: "Chapter Introductions" });
