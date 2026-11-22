@@ -163,6 +163,14 @@ const datasets = {
     {id:"dan-ch09",book:"Daniel",chapter:9,title:"Daniel 9 — Daniel's prayer, the seventy weeks, and restoration",overview:"Daniel reads Jeremiah's prophecy about Jerusalem's desolation and responds with confession and appeal for mercy. Gabriel brings a vision of seventy weeks concerning transgression, restoration, and the holy city.",keyPassages:["Daniel 9:1–19","Daniel 9:20–27"]},
     {id:"dan-ch12",book:"Daniel",chapter:12,title:"Daniel 12 — The time of distress, resurrection, and final hope",overview:"Daniel hears of a time of unprecedented distress, the deliverance of those written in the book, and the awakening of many who sleep in the dust. The book closes with sealing, waiting, and Daniel's own promised rest and future portion.",keyPassages:["Daniel 12:1–7","Daniel 12:8–13"]}
   ]},
+  "zuriel-chapter-introductions-hosea-01-14.json": { chapters: [
+    {id:"hos-ch01",book:"Hosea",chapter:1,title:"Hosea 1 — Hosea's marriage as a sign to Israel",overview:"Hosea receives a difficult prophetic command involving marriage and children whose names become signs concerning Israel's unfaithfulness and coming judgement. The chapter ends with a promise of future gathering and renewed identity.",keyPassages:["Hosea 1:1–5","Hosea 1:6–11"]},
+    {id:"hos-ch02",book:"Hosea",chapter:2,title:"Hosea 2 — The unfaithful wife and the promise of restoration",overview:"Hosea portrays Israel as an unfaithful spouse who pursues other lovers, while God exposes the emptiness of those alliances and promises to speak tenderly and restore the relationship.",keyPassages:["Hosea 2:1–13","Hosea 2:14–23"]},
+    {id:"hos-ch04",book:"Hosea",chapter:4,title:"Hosea 4 — No knowledge of God and the corruption of leadership",overview:"Hosea indicts the land for violence, falsehood, adultery, and the failure of priests and people to know God. The priests are especially accountable for abandoning instruction and exploiting the people's sin.",keyPassages:["Hosea 4:1–10","Hosea 4:11–19"]},
+    {id:"hos-ch06",book:"Hosea",chapter:6,title:"Hosea 6 — A call to return and the difference between love and ritual",overview:"The people are urged to return to the Lord, but their loyalty is described as fleeting like morning cloud. God desires steadfast love and knowledge rather than sacrifice without faithful conduct; the chapter recalls covenant-breaking.",keyPassages:["Hosea 6:1–6","Hosea 6:7–11"]},
+    {id:"hos-ch11",book:"Hosea",chapter:11,title:"Hosea 11 — God's compassion and the memory of childhood",overview:"God recalls loving Israel as a child and calling the people out of Egypt, yet Israel turns to other powers. The chapter portrays divine compassion overcoming the impulse to abandon the people, while judgement and exile remain part of the warning.",keyPassages:["Hosea 11:1–7","Hosea 11:8–11"]},
+    {id:"hos-ch14",book:"Hosea",chapter:14,title:"Hosea 14 — Return to the Lord and receive healing",overview:"Hosea closes with an invitation for Israel to return, confessing that political alliances and manufactured gods cannot save. God promises healing, freely given love, and renewed growth like a fruitful tree.",keyPassages:["Hosea 14:1–5","Hosea 14:6–9"]}
+  ]},
   "zuriel-deep-study-guides.json": { guides: [] },
   "zuriel-bible-geography-atlas.json": { places: [], journeys: [] },
   "zuriel-worship-study-pathways.json": { pathways: [] }
@@ -431,6 +439,19 @@ const danielNine = await library.search("Daniel prayer seventy weeks Jeremiah", 
 assert.equal(danielNine.length,1,"Daniel chapter 9 guide should be searchable"); assert.equal(danielNine[0].source.chapter,9);
 const danielTwelve = await library.search("time distress resurrection final hope", { category: "Chapter Introductions" });
 assert.equal(danielTwelve.length,1,"Daniel chapter 12 guide should be searchable"); assert.equal(danielTwelve[0].source.chapter,12);
+
+const hoseaOne = await library.search("Hosea marriage sign children Israel", { category: "Chapter Introductions" });
+assert.equal(hoseaOne.length,1,"Hosea chapter 1 guide should be searchable"); assert.equal(hoseaOne[0].source.chapter,1);
+const hoseaTwo = await library.search("unfaithful wife tenderly restoration", { category: "Chapter Introductions" });
+assert.equal(hoseaTwo.length,1,"Hosea chapter 2 guide should be searchable"); assert.equal(hoseaTwo[0].source.chapter,2);
+const hoseaFour = await library.search("knowledge God priests leadership violence", { category: "Chapter Introductions" });
+assert.equal(hoseaFour.length,1,"Hosea chapter 4 guide should be searchable"); assert.equal(hoseaFour[0].source.chapter,4);
+const hoseaSix = await library.search("steadfast love sacrifice ritual return", { category: "Chapter Introductions" });
+assert.equal(hoseaSix.length,1,"Hosea chapter 6 guide should be searchable"); assert.equal(hoseaSix[0].source.chapter,6);
+const hoseaEleven = await library.search("compassion childhood called out Egypt", { category: "Chapter Introductions" });
+assert.equal(hoseaEleven.length,1,"Hosea chapter 11 guide should be searchable"); assert.equal(hoseaEleven[0].source.chapter,11);
+const hoseaFourteen = await library.search("return Lord healing freely given love", { category: "Chapter Introductions" });
+assert.equal(hoseaFourteen.length,1,"Hosea chapter 14 guide should be searchable"); assert.equal(hoseaFourteen[0].source.chapter,14);
 
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
 assert.equal(greek.length, 1, "Unicode Greek search should find the original-language entry.");
