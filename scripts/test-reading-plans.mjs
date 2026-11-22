@@ -20,9 +20,12 @@ for (const id of ["promises-of-god-7", "fruit-of-spirit-7", "healing-and-comfort
   assert.ok(plan, "New guided journey must be present: " + id);
   assert.equal(plan.duration, 7, "Each new guided journey must contain seven days.");
 }
+const planIds = plans.map(plan => plan.id);
+assert.equal(new Set(planIds).size, planIds.length, "Every reading plan must have a unique stable ID.");
 for (const plan of plans) {
   assert.equal(plan.passages.length, plan.duration);
-  assert.ok(plan.title && plan.id);
+  assert.ok(plan.title && plan.id && plan.description, "Every plan needs a title, stable ID and description.");
+  assert.ok(plan.passages.every(reference => typeof reference === "string" && reference.trim()), "Every daily passage must contain a non-empty Scripture reference.");
 }
 const monthPlan = plans.find(plan => plan.id === "walk-with-jesus-30");
 assert.ok(monthPlan, "The 30-day Walk with Jesus plan must be available.");
