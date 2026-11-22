@@ -105,8 +105,8 @@ try {
       verifiedPassages += 1;
     }
   }
-  if (curatedPlans.length !== 15) throw new Error("Expected ten curated offline reading plans.");
-  if (verifiedPassages < 125) throw new Error("Expected at least 90 verified reading-plan passages, including the 30-day plan.");
+  if (curatedPlans.length !== 15) throw new Error("Expected fifteen curated offline reading plans.");
+  if (verifiedPassages < 125) throw new Error("Expected at least 125 verified reading-plan passages, including the 30-day plan.");
 } catch (error) {
   failures.push("Bundled KJV reading-plan reference verification failed: " + error.message);
 }
