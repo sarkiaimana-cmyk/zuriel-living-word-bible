@@ -1,4 +1,4 @@
 {
-  "version": "1.4.126",
-  "releaseNotes": "Added Exodus chapters 1–10 to the offline Study Library with chapter-specific context, observations, cross-references, study questions, applications and interpretive safeguards; preserved the Genesis chapter guides and personal study data."
+  "version": "1.4.127",
+  "releaseNotes": "Completed chapter-specific Exodus study introductions 1–40 and connected all forty to the searchable offline Study Library, with KJV reference validation, offline caching and preservation of personal study data."
 }
