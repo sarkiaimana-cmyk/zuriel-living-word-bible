@@ -810,10 +810,83 @@
       if (requestId !== lexiconRequest) return;
       box.replaceChildren();
 
+      // A small curated index is available offline. Use it as a clearly
+      // labelled study aid when the full source lexicon record is not cached;
+      // never present its study label as a complete dictionary definition.
+      const offlineIndex = window.ZurielLexiconStudyIndex;
+      const offlineEntry = offlineIndex &&
+        typeof offlineIndex.findById === "function"
+        ? offlineIndex.findById(id) : null;
+
+      if (offlineEntry) {
+        const heading = document.createElement("h3");
+        heading.textContent = "Offline lexicon index — " + offlineEntry.language;
+        box.appendChild(heading);
+
+        const limitation = document.createElement("p");
+        limitation.className = "study-small";
+        limitation.textContent = "The full lexicon senses and detailed morphology are not available offline for this entry. This curated index provides the original-language form, a contextual study label and connected Scripture references only; it is not a complete word definition.";
+        box.appendChild(limitation);
+
+        const lemma = document.createElement("p");
+        lemma.textContent = "Original form: " + offlineEntry.lemma;
+        box.appendChild(lemma);
+
+        const transliteration = document.createElement("p");
+        transliteration.textContent = "Transliteration: " + offlineEntry.transliteration;
+        box.appendChild(transliteration);
+
+        const label = document.createElement("p");
+        label.textContent = "Study label: " + offlineEntry.studyLabel;
+        box.appendChild(label);
+
+        if (offlineEntry.contextPrompt) {
+          const context = document.createElement("p");
+          context.className = "study-small";
+          context.textContent = "Context prompt: " + offlineEntry.contextPrompt;
+          box.appendChild(context);
+        }
+
+        if (Array.isArray(offlineEntry.keyReferences) && offlineEntry.keyReferences.length) {
+          const referencesHeading = document.createElement("h4");
+          referencesHeading.textContent = "Connected Scripture references";
+          box.appendChild(referencesHeading);
+
+          offlineEntry.keyReferences.forEach(function (reference) {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "study-link";
+            button.textContent = reference;
+            button.addEventListener("click", async function () {
+              const match = String(reference).trim().match(/^(.+?)\\s+(\\d+)(?::(\\d+))?/);
+              if (!match || typeof window.openChapter !== "function") return;
+              const book = match[1].replace(/^Psalm$/i, "Psalms")
+                .replace(/^Song of Songs$/i, "Song of Solomon");
+              button.disabled = true;
+              try {
+                await window.openChapter(book, Number(match[2]));
+                if (match[3] && (typeof window.selectBibleVerse !== "function" ||
+                    !window.selectBibleVerse(Number(match[3])))) {
+                  throw new Error("The referenced verse could not be selected.");
+                }
+              } catch (openError) {
+                button.disabled = false;
+                const status = document.createElement("p");
+                status.className = "study-small";
+                status.textContent = openError.message || "This Scripture reference could not be opened.";
+                box.appendChild(status);
+              }
+            });
+            box.appendChild(button);
+          });
+        }
+        return;
+      }
+
       const message = document.createElement("p");
       message.className = "study-small";
       message.textContent = !navigator.onLine
-        ? "You are offline and this lexicon entry has not been saved on this device yet. Connect once to load it for later offline study."
+        ? "You are offline and this full lexicon entry is not saved on this device. A limited offline index is available only for selected entries; connect once to load this full source record for later offline study."
         : "The lexicon entry could not be loaded right now. Your selected Scripture and original word remain available.";
       box.appendChild(message);
 
