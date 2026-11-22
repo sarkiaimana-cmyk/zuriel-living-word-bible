@@ -1,4 +1,4 @@
 {
-  "version": "1.4.123",
-  "releaseNotes": "Expanded the contextual Genesis chapter introductions to chapters 1–30, including chapter-specific context, observations, cross-references, study questions, practical applications and interpretive cautions. Refreshed offline study caching; personal study data remains protected."
+  "version": "1.4.124",
+  "releaseNotes": "Completed chapter-specific study introductions for all 50 chapters of Genesis, with contextual observations, Scripture connections, study questions, practical applications and interpretive cautions. Added the full dataset to Android offline packaging and refreshed the offline cache while preserving personal study data."
 }
