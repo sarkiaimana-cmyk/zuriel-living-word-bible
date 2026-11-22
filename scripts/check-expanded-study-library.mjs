@@ -173,7 +173,7 @@ for (const [label,items] of [
 const divineNameIds = new Set();
 const divineNameLabels = new Set();
 for (const entry of names.entries) {
-  assert.ok(typeof entry.id === "string" && /^divine-title-\\d{3}$/.test(entry.id),
+  assert.ok(typeof entry.id === "string" && /^divine-title-\d{3}$/.test(entry.id),
     "Every divine name or title needs a stable ID");
   assert.ok(!divineNameIds.has(entry.id), "Divine name IDs must be unique: " + entry.id);
   assert.ok(typeof entry.name === "string" && entry.name.trim().length >= 1,
@@ -184,9 +184,9 @@ for (const entry of names.entries) {
     "Divine name needs an explicit source-language label: " + entry.name);
   assert.ok(typeof entry.originalForm === "string" && entry.originalForm.trim(),
     "Divine name needs its original or attested form: " + entry.name);
-  if (entry.language === "Hebrew") assert.match(entry.originalForm, /[\\u0590-\\u05FF]/,
+  if (entry.language === "Hebrew") assert.match(entry.originalForm, /\p{Script=Hebrew}/u,
     "Hebrew name must use Hebrew script: " + entry.name);
-  if (entry.language === "Greek") assert.match(entry.originalForm, /[\\u0370-\\u03FF\\u1F00-\\u1FFF]/,
+  if (entry.language === "Greek") assert.match(entry.originalForm, /\p{Script=Greek}/u,
     "Greek name must use Greek script: " + entry.name);
   assert.ok(typeof entry.senseAndContext === "string" && entry.senseAndContext.trim().length >= 25,
     "Divine name needs a contextual explanation: " + entry.name);
