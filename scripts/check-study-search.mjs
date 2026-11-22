@@ -60,6 +60,10 @@ const datasets = {
   "zuriel-chapter-introductions-job-22-42.json": { chapters: [{ id:"job-ch42",book:"Job",chapter:42,title:"Job 42 — Job is vindicated and the friends corrected",overview:"God rebukes the friends for speaking wrongly, receives Job's prayer for them, and restores Job while the book leaves the mystery of suffering intact.",keyPassages:["Job 42:7–17"] }] },
   "zuriel-chapter-introductions-psalms-01-30.json": { chapters: [{ id:"ps-ch023",book:"Psalms",chapter:23,title:"Psalm 23 — The Lord as shepherd",overview:"The speaker describes God's guidance, provision, protection and welcome through life's dangers. The shepherd image offers comfort, not a guarantee that believers never experience grief or danger.",keyPassages:["Psalm 23:1–3","Psalm 23:4–6"] }] },
   "zuriel-chapter-introductions-psalms-31-60.json": { chapters: [{ id:"ps-ch051",book:"Psalms",chapter:51,title:"Psalm 51 — A confession asking for cleansing",overview:"The speaker confesses wrongdoing and asks for mercy, renewal and a truthful heart. This penitential prayer should invite repentance without weaponizing guilt against victims.",keyPassages:["Psalm 51:1–7","Psalm 51:10–19"] }] },
+  "zuriel-chapter-introductions-psalms-61-90.json": { chapters: [
+    { id:"ps-ch073",book:"Psalms",chapter:73,title:"Psalm 73 — When the wicked seem to prosper",overview:"The worshipper struggles with envy and injustice until entering the sanctuary and reconsidering the apparent success of the arrogant. The turning point reframes prosperity and suffering without denying the real pain of comparison.",keyPassages:["Psalm 73:1–2","Psalm 73:3–4"] },
+    { id:"ps-ch088",book:"Psalms",chapter:88,title:"Psalm 88 — A lament without an easy resolution",overview:"The speaker cries from deep darkness and isolation; unlike many laments, the poem closes without a clear turn to relief. Its unresolved ending gives Scripture honest language for prolonged suffering and should never be dismissed or shamed.",keyPassages:["Psalm 88:1–2","Psalm 88:3–4"] }
+  ] },
   "zuriel-chapter-introductions-esther-01-10.json": { chapters: [{ id:"esth-ch04",book:"Esther",chapter:4,title:"Esther 4 — Mordecai calls Esther to act",overview:"Mordecai challenges Esther to consider her responsibility, and Esther asks the Jewish community to fast before she approaches the king.",keyPassages:["Esther 4:10–17"] }] },
   "zuriel-chapter-introductions-nehemiah-01-13.json": { chapters: [{ id:"neh-ch05",book:"Nehemiah",chapter:5,title:"Nehemiah 5 — Injustice among the returned community",overview:"Nehemiah confronts exploitation, debt, and the burden placed on poorer families, calling leaders to restore justice.",keyPassages:["Nehemiah 5:1–13"] }] },
   "zuriel-chapter-introductions-ezra-01-10.json": { chapters: [{ id:"ezra-ch07",book:"Ezra",chapter:7,title:"Ezra 7 — Ezra arrives in Jerusalem",overview:"Ezra, skilled in the law, travels to Jerusalem with royal support and a commitment to teach God's instruction.",keyPassages:["Ezra 7:6–10"] }] },
@@ -225,6 +229,10 @@ assert.equal(psalmTwentyThree.length,1,"Psalm 23 guide should be searchable"); a
 
 const psalmFiftyOne = await library.search("confesses wrongdoing mercy renewal truthful heart", { category: "Chapter Introductions" });
 assert.equal(psalmFiftyOne.length,1,"Psalm 51 guide should be searchable"); assert.equal(psalmFiftyOne[0].source.book,"Psalms"); assert.equal(psalmFiftyOne[0].source.chapter,51);
+const psalmSeventyThree = await library.search("envy injustice sanctuary wicked prosper", { category: "Chapter Introductions" });
+assert.equal(psalmSeventyThree.length,1,"Psalm 73 guide should be searchable"); assert.equal(psalmSeventyThree[0].source.book,"Psalms"); assert.equal(psalmSeventyThree[0].source.chapter,73);
+const psalmEightyEight = await library.search("darkness isolation lament suffering unresolved", { category: "Chapter Introductions" });
+assert.equal(psalmEightyEight.length,1,"Psalm 88 guide should be searchable"); assert.equal(psalmEightyEight[0].source.book,"Psalms"); assert.equal(psalmEightyEight[0].source.chapter,88);
 
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
 assert.equal(greek.length, 1, "Unicode Greek search should find the original-language entry.");
