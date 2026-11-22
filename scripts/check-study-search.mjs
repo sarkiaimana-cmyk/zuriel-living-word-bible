@@ -410,7 +410,7 @@ const ezekielThirtyFour = await library.search("false shepherds promised shepher
 assert.equal(ezekielThirtyFour.length,1,"Ezekiel chapter 34 guide should be searchable"); assert.equal(ezekielThirtyFour[0].source.chapter,34);
 const ezekielThirtySeven = await library.search("valley dry bones breath life restoration", { category: "Chapter Introductions" });
 assert.equal(ezekielThirtySeven.length,1,"Ezekiel chapter 37 guide should be searchable"); assert.equal(ezekielThirtySeven[0].source.chapter,37);
-const ezekielForty = await library.search("visionary temple measurements gates courts", { category: "Chapter Introductions" });
+const ezekielForty = await library.search("measured temple complex heavenly guide gates courts", { category: "Chapter Introductions" });
 assert.equal(ezekielForty.length,1,"Ezekiel chapter 40 guide should be searchable"); assert.equal(ezekielForty[0].source.chapter,40);
 const ezekielFortySeven = await library.search("river temple healing land Arabah", { category: "Chapter Introductions" });
 assert.equal(ezekielFortySeven.length,1,"Ezekiel chapter 47 guide should be searchable"); assert.equal(ezekielFortySeven[0].source.chapter,47);
