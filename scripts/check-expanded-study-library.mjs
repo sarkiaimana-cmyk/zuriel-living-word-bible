@@ -578,7 +578,7 @@ for(const guide of secondSamuelGuides){
  assert.equal(guide.book,"2 Samuel","2 Samuel guide must remain scoped to 2 Samuel");
  assert.ok(Number.isInteger(guide.chapter)&&guide.chapter>=1&&guide.chapter<=24,"2 Samuel chapter number must be valid");
  assert.ok(guide.title.startsWith("2 Samuel "+guide.chapter+" —"),"2 Samuel title must identify its chapter");
- assert.ok(typeof guide.id==="string"&&/^2sam-ch\\d{2}$/.test(guide.id),"2 Samuel guide needs a stable ID");
+ assert.ok(typeof guide.id==="string"&&/^2sam-ch\d{2}$/.test(guide.id),"2 Samuel guide needs a stable ID");
  assert.ok(!secondSamuelIds.has(guide.id),"2 Samuel IDs must be unique");secondSamuelIds.add(guide.id);
  for(const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field]==="string"&&guide[field].trim().length>=50,"2 Samuel guide needs substantive "+field+": "+guide.chapter);
  assert.ok(Array.isArray(guide.keyPassages)&&guide.keyPassages.length>=2,"2 Samuel guide needs key passages");
