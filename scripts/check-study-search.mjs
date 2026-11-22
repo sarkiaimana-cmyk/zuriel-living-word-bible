@@ -171,6 +171,11 @@ const datasets = {
     {id:"hos-ch11",book:"Hosea",chapter:11,title:"Hosea 11 — God's compassion and the memory of childhood",overview:"God recalls loving Israel as a child and calling the people out of Egypt, yet Israel turns to other powers. The chapter portrays divine compassion overcoming the impulse to abandon the people, while judgement and exile remain part of the warning.",keyPassages:["Hosea 11:1–7","Hosea 11:8–11"]},
     {id:"hos-ch14",book:"Hosea",chapter:14,title:"Hosea 14 — Return to the Lord and receive healing",overview:"Hosea closes with an invitation for Israel to return, confessing that political alliances and manufactured gods cannot save. God promises healing, freely given love, and renewed growth like a fruitful tree.",keyPassages:["Hosea 14:1–5","Hosea 14:6–9"]}
   ]},
+  "zuriel-chapter-introductions-joel-01-03.json": { chapters: [
+    {id:"joe-ch01",book:"Joel",chapter:1,title:"Joel 1 — The locust devastation and the call to lament",overview:"Joel describes a devastating locust invasion that strips the land and disrupts grain and drink offerings. The people are summoned to lament, priests are told to gather the community, and the day of the Lord is announced as a serious warning.",keyPassages:["Joel 1:1–12","Joel 1:13–20"]},
+    {id:"joe-ch02",book:"Joel",chapter:2,title:"Joel 2 — Return with the heart and the promise of the Spirit",overview:"Joel calls the people to return with all their heart, with fasting, weeping, and mourning. The chapter promises compassion, restored harvest, and the outpouring of God's Spirit on sons and daughters, old and young, servants and free people.",keyPassages:["Joel 2:1–17","Joel 2:18–32"]},
+    {id:"joe-ch03",book:"Joel",chapter:3,title:"Joel 3 — The nations judged and the Lord dwelling with his people",overview:"Joel describes the gathering of nations for judgement in the valley of Jehoshaphat, condemns violence and exploitation against Judah, and closes with a vision of refuge, abundance, and the Lord dwelling in Zion.",keyPassages:["Joel 3:1–10","Joel 3:11–21"]}
+  ]},
   "zuriel-deep-study-guides.json": { guides: [] },
   "zuriel-bible-geography-atlas.json": { places: [], journeys: [] },
   "zuriel-worship-study-pathways.json": { pathways: [] }
@@ -452,6 +457,13 @@ const hoseaEleven = await library.search("compassion Israel child Egypt", { cate
 assert.equal(hoseaEleven.length,1,"Hosea chapter 11 guide should be searchable"); assert.equal(hoseaEleven[0].source.chapter,11);
 const hoseaFourteen = await library.search("return Lord healing freely given love", { category: "Chapter Introductions" });
 assert.equal(hoseaFourteen.length,1,"Hosea chapter 14 guide should be searchable"); assert.equal(hoseaFourteen[0].source.chapter,14);
+
+const joelOne = await library.search("locust devastation lament grain offerings", { category: "Chapter Introductions" });
+assert.equal(joelOne.length,1,"Joel chapter 1 guide should be searchable"); assert.equal(joelOne[0].source.chapter,1);
+const joelTwo = await library.search("return heart fasting outpouring Spirit sons daughters", { category: "Chapter Introductions" });
+assert.equal(joelTwo.length,1,"Joel chapter 2 guide should be searchable"); assert.equal(joelTwo[0].source.chapter,2);
+const joelThree = await library.search("nations judged valley Jehoshaphat Lord dwelling", { category: "Chapter Introductions" });
+assert.equal(joelThree.length,1,"Joel chapter 3 guide should be searchable"); assert.equal(joelThree[0].source.chapter,3);
 
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
 assert.equal(greek.length, 1, "Unicode Greek search should find the original-language entry.");
