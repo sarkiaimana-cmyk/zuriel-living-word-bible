@@ -116,7 +116,7 @@ const expected = [
   [deep.guides,20,"deep study guides"], [names.entries,52,"Names and Titles of God"],
   [words.entries,110,"original-language word studies batch 1"], [words2.entries,20,"original-language word studies batch 2"], [commentary.entries,173,"passage commentary"],
   [topical.entries,100,"topical study guides batch 2"], [topical3.entries,20,"topical study guides batch 3"], [worship.pathways,30,"worship study pathways"], [theology.entries,35,"theological comparisons"],
-  [chapterGuides.chapters,10,"Genesis chapter introductions"]
+  [chapterGuides.chapters,20,"Genesis chapter introductions"]
 ];
 for (const [items,count,label] of expected) {
   assert.ok(Array.isArray(items), label + " must be an array");
