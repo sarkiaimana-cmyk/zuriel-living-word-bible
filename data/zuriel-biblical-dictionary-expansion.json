@@ -1324,6 +1324,247 @@
       ],
       "editorialCaution": "Translations and traditions differ in how they relate expiation and propitiation. Do not reduce the full biblical teaching on atonement to one metaphor or assume every text uses the same mechanism.",
       "entryType": "theological-term"
+    },
+    {
+      "id": "glossary-111",
+      "term": "Omniscience",
+      "definition": "The theological term for God's complete knowledge. Scripture portrays God as knowing hearts, actions and all things without being limited by human discovery or time.",
+      "scriptureReferences": [
+        "Psalm 139:1-6",
+        "Hebrews 4:13",
+        "1 John 3:20"
+      ],
+      "editorialCaution": "Do not use this term to settle every philosophical question about divine knowledge and human freedom without examining the relevant biblical passages.",
+      "entryType": "theological-term"
+    },
+    {
+      "id": "glossary-112",
+      "term": "Omnipresence",
+      "definition": "The teaching that God is present everywhere and is not confined to a location, while Scripture also speaks of particular manifestations of His presence.",
+      "scriptureReferences": [
+        "Psalm 139:7-12",
+        "Jeremiah 23:23-24",
+        "Acts 17:27-28"
+      ],
+      "editorialCaution": "Distinguish God's universal presence from the special presence described in worship, covenant and temple passages.",
+      "entryType": "theological-term"
+    },
+    {
+      "id": "glossary-113",
+      "term": "Immutability",
+      "definition": "The teaching that God's character, faithfulness and purposes do not change as human circumstances do.",
+      "scriptureReferences": [
+        "Numbers 23:19",
+        "Malachi 3:6",
+        "James 1:17"
+      ],
+      "editorialCaution": "Read each passage in context; statements about God's unchanging character should not erase biblical descriptions of His responsive dealings with people.",
+      "entryType": "theological-term"
+    },
+    {
+      "id": "glossary-114",
+      "term": "Aseity",
+      "definition": "The theological term for God's life and existence in Himself; God is not created or sustained by anything outside Himself.",
+      "scriptureReferences": [
+        "Exodus 3:14",
+        "John 5:26",
+        "Acts 17:24-25"
+      ],
+      "editorialCaution": "This is a later theological label summarising biblical teaching, not a word used as a title for God in the cited passages.",
+      "entryType": "theological-term"
+    },
+    {
+      "id": "glossary-115",
+      "term": "Providence",
+      "definition": "God's sustaining and governing care over creation and history, including ordinary means and events beyond human control.",
+      "scriptureReferences": [
+        "Genesis 50:20",
+        "Matthew 6:25-34",
+        "Romans 8:28"
+      ],
+      "editorialCaution": "Do not use providence to claim certainty about why a particular tragedy happened or to excuse human wrongdoing.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-116",
+      "term": "Propitiation",
+      "definition": "A term in Christian theology for the dealing with sin and divine wrath through Christ's sacrificial work; translations render the relevant texts in different ways.",
+      "scriptureReferences": [
+        "Romans 3:25",
+        "Hebrews 2:17",
+        "1 John 2:2",
+        "4:10"
+      ],
+      "editorialCaution": "Explain the translation and interpretive debate alongside other biblical atonement images; do not reduce the cross to a single technical model.",
+      "entryType": "theological-term"
+    },
+    {
+      "id": "glossary-117",
+      "term": "Regeneration",
+      "definition": "New birth or spiritual renewal by God's Spirit; the New Testament describes this as God's saving work, not merely self-improvement.",
+      "scriptureReferences": [
+        "John 3:3-8",
+        "Titus 3:4-7",
+        "1 Peter 1:3"
+      ],
+      "editorialCaution": "Christian traditions differ on the relation between regeneration, faith, baptism and conversion; state the passage's emphasis carefully.",
+      "entryType": "theological-term"
+    },
+    {
+      "id": "glossary-118",
+      "term": "Imputation",
+      "definition": "A theological term for crediting or reckoning something to another's account, especially in discussions of righteousness and sin.",
+      "scriptureReferences": [
+        "Genesis 15:6",
+        "Romans 4:3-8",
+        "2 Corinthians 5:19"
+      ],
+      "editorialCaution": "The precise theological model varies across traditions; distinguish the biblical accounting language from later explanatory systems.",
+      "entryType": "theological-term"
+    },
+    {
+      "id": "glossary-119",
+      "term": "Union with Christ",
+      "definition": "A New Testament theme describing believers' participation in Christ through faith and the Spirit, expressed through being in Christ, dying and rising with Him.",
+      "scriptureReferences": [
+        "Romans 6:3-11",
+        "Galatians 2:20",
+        "Ephesians 2:4-7"
+      ],
+      "editorialCaution": "Do not confuse union with Christ with absorption into God or the loss of personal identity; read the relational and ethical context.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-120",
+      "term": "Hermeneutics",
+      "definition": "The principles and practice of interpreting texts. Biblical hermeneutics attends to grammar, genre, historical setting, literary context and the wider canon.",
+      "scriptureReferences": [
+        "Nehemiah 8:8",
+        "Luke 24:27",
+        "2 Timothy 2:15"
+      ],
+      "editorialCaution": "No method removes the need for humility, careful reading and awareness of one's assumptions.",
+      "entryType": "study-method"
+    },
+    {
+      "id": "glossary-121",
+      "term": "Exegesis",
+      "definition": "Careful explanation of what a passage communicates in its original literary and historical context, based on close reading of the text.",
+      "scriptureReferences": [
+        "Nehemiah 8:8",
+        "Luke 24:27",
+        "Acts 17:2-3"
+      ],
+      "editorialCaution": "Exegesis should not be confused with inserting a preferred idea into the text; distinguish observation, interpretation and application.",
+      "entryType": "study-method"
+    },
+    {
+      "id": "glossary-122",
+      "term": "Inspiration of Scripture",
+      "definition": "The Christian teaching that Scripture is given through God's Spirit and is authoritative for teaching, correction and training in righteousness.",
+      "scriptureReferences": [
+        "2 Timothy 3:16-17",
+        "2 Peter 1:20-21",
+        "1 Thessalonians 2:13"
+      ],
+      "editorialCaution": "Christian traditions explain the mode and scope of inspiration in different ways; do not claim a specific theory is stated verbatim by every passage.",
+      "entryType": "theological-term"
+    },
+    {
+      "id": "glossary-123",
+      "term": "Illumination",
+      "definition": "The work of God's Spirit in helping readers understand and respond faithfully to Scripture; it does not replace the text or careful study.",
+      "scriptureReferences": [
+        "Luke 24:45",
+        "1 Corinthians 2:12-14",
+        "Ephesians 1:17-18"
+      ],
+      "editorialCaution": "Do not use a claimed impression of illumination to override the wording, context or meaning of Scripture.",
+      "entryType": "theological-term"
+    },
+    {
+      "id": "glossary-124",
+      "term": "Theophany",
+      "definition": "A visible or otherwise perceptible manifestation of God in a particular biblical scene, often within a larger story of divine revelation.",
+      "scriptureReferences": [
+        "Genesis 18:1-8",
+        "Exodus 3:1-6",
+        "Exodus 33:18-23"
+      ],
+      "editorialCaution": "Interpret each scene on its own terms; not every angelic appearance or unusual event should automatically be labelled a theophany.",
+      "entryType": "biblical-concept"
+    },
+    {
+      "id": "glossary-125",
+      "term": "Christophany",
+      "definition": "A term used by some Christian interpreters for an appearance of Christ before the incarnation, often proposed for selected Old Testament passages.",
+      "scriptureReferences": [
+        "Genesis 16:7-13",
+        "Genesis 22:11-18",
+        "Daniel 3:24-25"
+      ],
+      "editorialCaution": "These identifications are debated. Present them as interpretations rather than settled facts where the passage does not explicitly identify the figure as Christ.",
+      "entryType": "theological-term"
+    },
+    {
+      "id": "glossary-126",
+      "term": "Parable",
+      "definition": "A short story or comparison that communicates a teaching through familiar images, actions or situations; Jesus frequently teaches with parables.",
+      "scriptureReferences": [
+        "Matthew 13:1-23",
+        "Luke 10:25-37",
+        "Luke 15:1-32"
+      ],
+      "editorialCaution": "Do not force a hidden symbolic meaning onto every detail; begin with the main point, audience and narrative context.",
+      "entryType": "biblical-literary-form"
+    },
+    {
+      "id": "glossary-127",
+      "term": "Doxology",
+      "definition": "A short expression of praise or glory directed to God, often concluding a prayer, letter or section of worship.",
+      "scriptureReferences": [
+        "Romans 11:33-36",
+        "Ephesians 3:20-21",
+        "Jude 24-25"
+      ],
+      "editorialCaution": "Notice the reason for praise and the wording of each passage rather than treating every doxology as interchangeable.",
+      "entryType": "biblical-literary-form"
+    },
+    {
+      "id": "glossary-128",
+      "term": "Benediction",
+      "definition": "A spoken blessing or prayer for God's favour, peace or sustaining presence upon a person or community.",
+      "scriptureReferences": [
+        "Numbers 6:24-26",
+        "2 Corinthians 13:14",
+        "Hebrews 13:20-21"
+      ],
+      "editorialCaution": "A benediction is not a magical formula; read its covenant, worship and pastoral setting.",
+      "entryType": "biblical-practice"
+    },
+    {
+      "id": "glossary-129",
+      "term": "Liturgy",
+      "definition": "An ordered pattern of public worship, prayer and shared practices; Scripture contains structured forms of praise, confession, reading and blessing.",
+      "scriptureReferences": [
+        "Deuteronomy 31:9-13",
+        "Nehemiah 8:1-8",
+        "Acts 2:42"
+      ],
+      "editorialCaution": "The word describes a broad practice across Christian traditions; avoid assuming one modern worship order is prescribed by every cited text.",
+      "entryType": "biblical-practice"
+    },
+    {
+      "id": "glossary-130",
+      "term": "Textual Criticism",
+      "definition": "The scholarly discipline of comparing ancient manuscript witnesses to assess the earliest recoverable wording of a biblical text.",
+      "scriptureReferences": [
+        "Luke 1:1-4",
+        "John 7:53-8:11",
+        "1 John 5:7-8"
+      ],
+      "editorialCaution": "Textual criticism is not a claim that Scripture is unreliable; explain manuscript evidence, variant readings and translation footnotes transparently.",
+      "entryType": "study-method"
     }
   ]
 }
