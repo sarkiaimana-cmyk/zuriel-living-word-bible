@@ -55,4 +55,4 @@ await build({
   sourcemap: false
 });
 
-console.log("Zuriel web app, offline Scripture, study-library loader, 12 study datasets and audio controls prepared for Android packaging.");
+console.log("Zuriel web app, offline Scripture, study-library loader, 13 study datasets and audio controls prepared for Android packaging.");
