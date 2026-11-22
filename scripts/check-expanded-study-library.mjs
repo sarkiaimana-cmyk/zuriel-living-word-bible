@@ -8,7 +8,7 @@ async function json(path) {
 }
 const [
   geography, dictionary, books, trail1, trail2, deep, names, words, words2,
-  commentary, topical, topical3, worship, theology, loader, index, worker, bookDataSource, kjv, chapterGuides, exodusChapterGuides, exodusChapterGuides2, exodusChapterGuides3, exodusChapterGuides4
+  commentary, topical, topical3, worship, theology, loader, index, worker, bookDataSource, kjv, chapterGuides, exodusChapterGuides, exodusChapterGuides2, exodusChapterGuides3, exodusChapterGuides4, leviticusChapterGuides
 ] = await Promise.all([
   json("data/zuriel-bible-geography-atlas.json"),
   json("data/zuriel-biblical-dictionary-expansion.json"),
@@ -33,7 +33,8 @@ const [
   json("data/zuriel-chapter-introductions-exodus-01-10.json"),
   json("data/zuriel-chapter-introductions-exodus-11-20.json"),
   json("data/zuriel-chapter-introductions-exodus-21-30.json"),
-  json("data/zuriel-chapter-introductions-exodus-31-40.json")
+  json("data/zuriel-chapter-introductions-exodus-31-40.json"),
+  json("data/zuriel-chapter-introductions-leviticus-01-10.json")
 ]);
 
 const studyDatasetPaths = [
@@ -49,7 +50,8 @@ const studyDatasetPaths = [
   "zuriel-chapter-introductions-exodus-01-10.json",
   "zuriel-chapter-introductions-exodus-11-20.json",
   "zuriel-chapter-introductions-exodus-21-30.json",
-  "zuriel-chapter-introductions-exodus-31-40.json"
+  "zuriel-chapter-introductions-exodus-31-40.json",
+  "zuriel-chapter-introductions-leviticus-01-10.json"
 ];
 const [packagingScript, packagedLoader] = await Promise.all([
   readFile(new URL("../scripts/prepare-web.mjs", import.meta.url), "utf8"),
@@ -128,7 +130,8 @@ const expected = [
   [exodusChapterGuides.chapters,10,"Exodus chapter introductions 1–10"],
   [exodusChapterGuides2.chapters,10,"Exodus chapter introductions 11–20"],
   [exodusChapterGuides3.chapters,10,"Exodus chapter introductions 21–30"],
-  [exodusChapterGuides4.chapters,10,"Exodus chapter introductions 31–40"]
+  [exodusChapterGuides4.chapters,10,"Exodus chapter introductions 31–40"],
+  [leviticusChapterGuides.chapters,10,"Leviticus chapter introductions 1–10"]
 ];
 for (const [items,count,label] of expected) {
   assert.ok(Array.isArray(items), label + " must be an array");
@@ -162,6 +165,19 @@ for (const guide of allExodusGuides) {
   assert.ok(Array.isArray(guide.keyPassages) && guide.keyPassages.length >= 4, "Exodus guide needs Scripture references");
   assert.ok(Array.isArray(guide.studyQuestions) && guide.studyQuestions.length >= 3, "Exodus guide needs three study questions");
   for (const reference of guide.keyPassages) checkReference(reference, "Exodus chapter " + guide.chapter);
+}
+
+const leviticusGuideIds = new Set();
+assert.equal(leviticusChapterGuides.chapters.length, 10, "Leviticus chapters 1–10 must each have a guide");
+for (const guide of leviticusChapterGuides.chapters) {
+  assert.equal(guide.book, "Leviticus", "Leviticus guide batch must remain scoped to Leviticus");
+  assert.ok(Number.isInteger(guide.chapter) && guide.chapter >= 1 && guide.chapter <= 10, "Leviticus chapter number must be valid");
+  assert.ok(guide.title.startsWith("Leviticus " + guide.chapter + " —"), "Leviticus title must identify its chapter");
+  assert.ok(!leviticusGuideIds.has(guide.id), "Leviticus guide IDs must be unique: " + guide.id); leviticusGuideIds.add(guide.id);
+  for (const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field] === "string" && guide[field].trim().length >= 100, "Leviticus guide needs substantive " + field + ": " + guide.chapter);
+  assert.ok(Array.isArray(guide.keyPassages) && guide.keyPassages.length >= 4, "Leviticus guide needs Scripture references");
+  assert.ok(Array.isArray(guide.studyQuestions) && guide.studyQuestions.length >= 3, "Leviticus guide needs three study questions");
+  for (const reference of guide.keyPassages) checkReference(reference, "Leviticus chapter " + guide.chapter);
 }
 
 const chapterGuideIds = new Set();
@@ -409,4 +425,4 @@ assert.equal(linkWord(sampleVerse, sampleVerse,
   "A source annotation spanning beyond the selected word must not be attached");
 assert.equal(linkWord(sampleVerse, sampleVerse, [], 99).ok, false,
   "An out-of-range word selection must not produce a lexical link");
-console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis and 40 Exodus chapter introductions; 18 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
+console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus and 10 Leviticus chapter introductions; 19 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
