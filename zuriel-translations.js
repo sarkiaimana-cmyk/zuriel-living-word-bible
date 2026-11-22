@@ -198,7 +198,7 @@
     }
     select.hidden = false;
     loadButton.hidden = false;
-    downloadButton.hidden = false;
+    downloadButton.hidden = !canStoreOffline(providerAtRequest);
     select.disabled = true;
     loadButton.disabled = true;
     status("Checking the English Bible versions authorised for " +
