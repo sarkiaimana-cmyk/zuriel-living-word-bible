@@ -1,4 +1,4 @@
 {
-  "version": "1.4.115",
-  "releaseNotes": "Improved secure in-app Android update matching, complete faith-card image exports for long prayers and declarations, and refinements to the Scripture reader, Library drawers and Open Book Card Studio. Existing offline KJV and personal records remain protected."
+  "version": "1.4.117",
+  "releaseNotes": "Refined premium visual consistency, expanded offline reading journeys, and improved translation-provider copyright and offline-storage safeguards. Existing offline KJV and personal study data remain protected."
 }
