@@ -6,6 +6,7 @@
     ["Theological Comparisons", "./data/zuriel-theological-comparisons.json", "entries", "theology"],
     ["Commentary & Exegesis", "./data/zuriel-passage-commentary-expansion.json", "entries", "commentary"],
     ["Topical Studies", "./data/zuriel-topical-bible-study-library-batch-2.json", "entries", "topic"],
+    ["Topical Studies", "./data/zuriel-topical-bible-study-library-batch-3.json", "entries", "topic"],
     ["Bible Dictionary", "./data/zuriel-biblical-dictionary-expansion.json", "entries", "dictionary"],
     ["Hebrew & Greek Word Studies", "./data/zuriel-original-language-word-studies-batch-1.json", "entries", "word"],
     ["Hebrew & Greek Word Studies", "./data/zuriel-original-language-word-studies-batch-2.json", "entries", "word"],
