@@ -21,7 +21,7 @@ for (const id of ["promises-of-god-7", "fruit-of-spirit-7", "healing-and-comfort
   assert.ok(plan, "New guided journey must be present: " + id);
   assert.equal(plan.duration, 7, "Each new guided journey must contain seven days.");
 }
-const backupDurationsMatch = backupSource.match(/const READING_PLAN_DURATIONS = (\\{[^}]+\\});/);
+const backupDurationsMatch = backupSource.match(/const READING_PLAN_DURATIONS = (\{[^}]+\});/);
 assert.ok(backupDurationsMatch, "Encrypted backup restore must define supported reading-plan durations.");
 const backupDurations = runInNewContext("(" + backupDurationsMatch[1] + ")");
 for (const plan of plans) {
