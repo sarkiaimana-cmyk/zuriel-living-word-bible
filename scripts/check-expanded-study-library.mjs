@@ -165,14 +165,14 @@ for (const entry of theology.entries) {
 }
 for (const [label,items] of [
   ["commentary",commentary.entries],["topical",topical.entries],["topical batch 3",topical3.entries],["dictionary",dictionary.entries],
-  ["word study",words.entries],["names",names.entries],["worship",worship.pathways]
+  ["word study batch 1",words.entries],["word study batch 2",words2.entries],["names",names.entries],["worship",worship.pathways]
 ]) {
   for (const item of items) assert.ok(item.id,label+" entries need stable IDs");
 }
 
 const wordStudyIds = new Set();
 const wordStudyTerms = new Set();
-for (const entry of words.entries) {
+for (const entry of [...words.entries, ...words2.entries]) {
   assert.ok(typeof entry.id === "string" && entry.id.trim(), "Every original-language study needs a stable ID");
   assert.ok(!wordStudyIds.has(entry.id), "Original-language study IDs must be unique: " + entry.id);
   assert.ok(typeof entry.term === "string" && entry.term.trim(), "Every original-language study needs a display term: " + entry.id);
