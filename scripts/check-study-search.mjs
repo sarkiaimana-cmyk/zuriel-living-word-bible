@@ -56,6 +56,8 @@ const datasets = {
   "zuriel-chapter-introductions-1-samuel-01-16.json": { chapters: [{ id:"1sam-ch03",book:"1 Samuel",chapter:3,title:"1 Samuel 3 — Samuel hears God's call",overview:"Samuel learns to listen and faithfully deliver a difficult message.",keyPassages:["1 Samuel 3:11–18"] }] },
   "zuriel-chapter-introductions-1-samuel-17-31.json": { chapters: [{ id:"1sam-ch30",book:"1 Samuel",chapter:30,title:"1 Samuel 30 — Recovery at Ziklag",overview:"David seeks guidance and recovers the captives and goods.",keyPassages:["1 Samuel 30:18–25"] }] },
   "zuriel-chapter-introductions-2-samuel-01-12.json": { chapters: [{ id:"2sam-ch07",book:"2 Samuel",chapter:7,title:"2 Samuel 7 — God's covenant with David",overview:"God promises to establish David's house and kingdom.",keyPassages:["2 Samuel 7:8–17"] }] },
+  "zuriel-chapter-introductions-2-chronicles-01-18.json": { chapters: [{ id:"2chr-ch07",book:"2 Chronicles",chapter:7,title:"2 Chronicles 7 — God answers Solomon",overview:"God responds to Solomon, affirming the temple prayer while warning that covenant unfaithfulness has consequences.",keyPassages:["2 Chronicles 7:11–22"] }] },
+  "zuriel-chapter-introductions-2-chronicles-19-36.json": { chapters: [{ id:"2chr-ch36",book:"2 Chronicles",chapter:36,title:"2 Chronicles 36 — Jerusalem falls",overview:"The siege, exile, and destruction of Jerusalem close Judah's monarchy, while Cyrus's decree opens a way toward return.",keyPassages:["2 Chronicles 36:15–23"] }] },
   "zuriel-chapter-introductions-1-chronicles-01-15.json": { chapters: [{ id:"1chr-ch11",book:"1 Chronicles",chapter:11,title:"1 Chronicles 11 — David is made king",overview:"All Israel recognizes David as king and he takes Jerusalem as the royal centre.",keyPassages:["1 Chronicles 11:1–9"] }] },
   "zuriel-chapter-introductions-1-chronicles-16-29.json": { chapters: [{ id:"1chr-ch29",book:"1 Chronicles",chapter:29,title:"1 Chronicles 29 — Offerings and Solomon's succession",overview:"The people give willingly for the temple, David prays with humility, and Solomon is established as king.",keyPassages:["1 Chronicles 29:10–20"] }] },
   "zuriel-chapter-introductions-2-kings-01-13.json": { chapters: [{ id:"2kgs-ch05",book:"2 Kings",chapter:5,title:"2 Kings 5 — Naaman is healed",overview:"Naaman is healed after humbling himself; Gehazi's greed warns against exploiting spiritual authority.",keyPassages:["2 Kings 5:1–14"] }] },
@@ -191,6 +193,11 @@ const chronicles11 = await library.search("David king Jerusalem 1 Chronicles 11"
 assert.equal(chronicles11.length,1,"1 Chronicles chapter 11 guide should be searchable"); assert.equal(chronicles11[0].source.book,"1 Chronicles"); assert.equal(chronicles11[0].source.chapter,11);
 const chronicles29 = await library.search("offerings Solomon succession David prayer 1 Chronicles 29", { category: "Chapter Introductions" });
 assert.equal(chronicles29.length,1,"1 Chronicles chapter 29 guide should be searchable"); assert.equal(chronicles29[0].source.book,"1 Chronicles"); assert.equal(chronicles29[0].source.chapter,29);
+
+const chronicles2Seven = await library.search("God answers Solomon temple prayer covenant 2 Chronicles 7", { category: "Chapter Introductions" });
+assert.equal(chronicles2Seven.length,1,"2 Chronicles chapter 7 guide should be searchable"); assert.equal(chronicles2Seven[0].source.book,"2 Chronicles"); assert.equal(chronicles2Seven[0].source.chapter,7);
+const chronicles2ThirtySix = await library.search("Jerusalem falls exile Cyrus return 2 Chronicles 36", { category: "Chapter Introductions" });
+assert.equal(chronicles2ThirtySix.length,1,"2 Chronicles chapter 36 guide should be searchable"); assert.equal(chronicles2ThirtySix[0].source.book,"2 Chronicles"); assert.equal(chronicles2ThirtySix[0].source.chapter,36);
 
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
 assert.equal(greek.length, 1, "Unicode Greek search should find the original-language entry.");
