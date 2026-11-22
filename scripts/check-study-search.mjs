@@ -198,7 +198,7 @@ assert.equal(kings2Fall.length,1,"2 Kings chapter 25 guide should be searchable"
 
 const chronicles11 = await library.search("David king Jerusalem 1 Chronicles 11", { category: "Chapter Introductions" });
 assert.equal(chronicles11.length,1,"1 Chronicles chapter 11 guide should be searchable"); assert.equal(chronicles11[0].source.book,"1 Chronicles"); assert.equal(chronicles11[0].source.chapter,11);
-const chronicles29 = await library.search("offerings Solomon succession David prayer 1 Chronicles 29", { category: "Chapter Introductions" });
+const chronicles29 = await library.search("willingly temple David prayer Solomon established king 1 Chronicles 29", { category: "Chapter Introductions" });
 assert.equal(chronicles29.length,1,"1 Chronicles chapter 29 guide should be searchable"); assert.equal(chronicles29[0].source.book,"1 Chronicles"); assert.equal(chronicles29[0].source.chapter,29);
 
 const jobThree = await library.search("Job voices anguish wishes never born suffering", { category: "Chapter Introductions" });
