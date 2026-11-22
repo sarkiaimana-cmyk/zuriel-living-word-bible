@@ -8,7 +8,7 @@ async function json(path) {
 }
 const [
   geography, dictionary, books, trail1, trail2, deep, names, words, words2,
-  commentary, topical, topical3, worship, theology, loader, index, worker, bookDataSource, kjv, chapterGuides, exodusChapterGuides, exodusChapterGuides2, exodusChapterGuides3, exodusChapterGuides4, leviticusChapterGuides, leviticusChapterGuides2, numbersChapterGuides, numbersChapterGuides2, numbersChapterGuides3, deuteronomyChapterGuides, deuteronomyChapterGuides2, joshuaChapterGuides, joshuaChapterGuides2, judgesChapterGuides, judgesChapterGuides2, ruthChapterGuides, samuelChapterGuides, samuelChapterGuides2, samuelChapterGuides3, samuelChapterGuides4, kingsChapterGuides, kingsChapterGuides2, kings2ChapterGuides, kings2ChapterGuides2, chroniclesChapterGuides, chroniclesChapterGuides2, chronicles2ChapterGuides, chronicles2ChapterGuides2, ezraChapterGuides, nehemiahChapterGuides, estherChapterGuides
+  commentary, topical, topical3, worship, theology, loader, index, worker, bookDataSource, kjv, chapterGuides, exodusChapterGuides, exodusChapterGuides2, exodusChapterGuides3, exodusChapterGuides4, leviticusChapterGuides, leviticusChapterGuides2, numbersChapterGuides, numbersChapterGuides2, numbersChapterGuides3, deuteronomyChapterGuides, deuteronomyChapterGuides2, joshuaChapterGuides, joshuaChapterGuides2, judgesChapterGuides, judgesChapterGuides2, ruthChapterGuides, samuelChapterGuides, samuelChapterGuides2, samuelChapterGuides3, samuelChapterGuides4, kingsChapterGuides, kingsChapterGuides2, kings2ChapterGuides, kings2ChapterGuides2, chroniclesChapterGuides, chroniclesChapterGuides2, chronicles2ChapterGuides, chronicles2ChapterGuides2, ezraChapterGuides, nehemiahChapterGuides, estherChapterGuides, jobChapterGuides, jobChapterGuides2
 ] = await Promise.all([
   json("data/zuriel-bible-geography-atlas.json"),
   json("data/zuriel-biblical-dictionary-expansion.json"),
@@ -60,7 +60,9 @@ const [
   json("data/zuriel-chapter-introductions-2-chronicles-19-36.json"),
   json("data/zuriel-chapter-introductions-ezra-01-10.json"),
   json("data/zuriel-chapter-introductions-nehemiah-01-13.json"),
-  json("data/zuriel-chapter-introductions-esther-01-10.json")
+  json("data/zuriel-chapter-introductions-esther-01-10.json"),
+  json("data/zuriel-chapter-introductions-job-01-21.json"),
+  json("data/zuriel-chapter-introductions-job-22-42.json")
 ]);
 
 const studyDatasetPaths = [
@@ -97,7 +99,9 @@ const studyDatasetPaths = [
   "zuriel-chapter-introductions-2-chronicles-19-36.json",
   "zuriel-chapter-introductions-ezra-01-10.json",
   "zuriel-chapter-introductions-nehemiah-01-13.json",
-  "zuriel-chapter-introductions-esther-01-10.json"
+  "zuriel-chapter-introductions-esther-01-10.json",
+  "zuriel-chapter-introductions-job-01-21.json",
+  "zuriel-chapter-introductions-job-22-42.json"
 ];
 const [packagingScript, packagedLoader] = await Promise.all([
   readFile(new URL("../scripts/prepare-web.mjs", import.meta.url), "utf8"),
@@ -698,6 +702,22 @@ for(const guide of estherChapterGuides.chapters){
  assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length>=3,"Esther guide needs study questions");
  for(const reference of guide.keyPassages) checkReference(reference,"Esther chapter "+guide.chapter);
 }
+const jobGuides=[...jobChapterGuides.chapters,...jobChapterGuides2.chapters];
+assert.equal(jobChapterGuides.chapters.length,21,"Job part 1 must contain chapters 1–21");
+assert.equal(jobChapterGuides2.chapters.length,21,"Job part 2 must contain chapters 22–42");
+assert.equal(jobGuides.length,42,"Job must cover all 42 chapters");
+const jobIds=new Set();
+for(const guide of jobGuides){
+ assert.equal(guide.book,"Job","Job guide must remain scoped to Job");
+ assert.ok(Number.isInteger(guide.chapter)&&guide.chapter>=1&&guide.chapter<=42,"Job chapter number must be valid");
+ assert.ok(guide.title.startsWith("Job "+guide.chapter+" —"),"Job title must identify its chapter");
+ assert.ok(typeof guide.id==="string"&&/^job-ch\d{2}$/.test(guide.id),"Job guide needs a stable ID");
+ assert.ok(!jobIds.has(guide.id),"Job IDs must be unique");jobIds.add(guide.id);
+ for(const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field]==="string"&&guide[field].trim().length>=50,"Job guide needs substantive "+field+": "+guide.chapter);
+ assert.ok(Array.isArray(guide.keyPassages)&&guide.keyPassages.length>=2,"Job guide needs key passages");
+ assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length>=3,"Job guide needs study questions");
+ for(const reference of guide.keyPassages) checkReference(reference,"Job chapter "+guide.chapter);
+}
 const secondSamuelIds=new Set();
 for(const guide of secondSamuelGuides){
  assert.equal(guide.book,"2 Samuel","2 Samuel guide must remain scoped to 2 Samuel");
@@ -710,4 +730,4 @@ for(const guide of secondSamuelGuides){
  assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length>=3,"2 Samuel guide needs study questions");
  for(const reference of guide.keyPassages) checkReference(reference,"2 Samuel chapter "+guide.chapter);
 }
-console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges, 4 Ruth and 31 1 Samuel, 24 2 Samuel 22 1 Kings, 25 2 Kings 29 1 Chronicles and 36 2 Chronicles 10 Ezra and 13 Nehemiah and 10 Esther chapter introductions; 30 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
+console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges, 4 Ruth and 31 1 Samuel, 24 2 Samuel 22 1 Kings, 25 2 Kings 29 1 Chronicles and 36 2 Chronicles 10 Ezra and 13 Nehemiah and 10 Esther and 42 Job chapter introductions; 32 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
