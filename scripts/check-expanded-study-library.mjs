@@ -8,7 +8,7 @@ async function json(path) {
 }
 const [
   geography, dictionary, books, trail1, trail2, deep, names, words, words2,
-  commentary, topical, topical3, worship, theology, loader, index, worker, bookDataSource, kjv, chapterGuides, exodusChapterGuides, exodusChapterGuides2, exodusChapterGuides3, exodusChapterGuides4, leviticusChapterGuides, leviticusChapterGuides2, numbersChapterGuides, numbersChapterGuides2, numbersChapterGuides3, deuteronomyChapterGuides, deuteronomyChapterGuides2, joshuaChapterGuides, joshuaChapterGuides2, judgesChapterGuides, judgesChapterGuides2, ruthChapterGuides, samuelChapterGuides, samuelChapterGuides2, samuelChapterGuides3
+  commentary, topical, topical3, worship, theology, loader, index, worker, bookDataSource, kjv, chapterGuides, exodusChapterGuides, exodusChapterGuides2, exodusChapterGuides3, exodusChapterGuides4, leviticusChapterGuides, leviticusChapterGuides2, numbersChapterGuides, numbersChapterGuides2, numbersChapterGuides3, deuteronomyChapterGuides, deuteronomyChapterGuides2, joshuaChapterGuides, joshuaChapterGuides2, judgesChapterGuides, judgesChapterGuides2, ruthChapterGuides, samuelChapterGuides, samuelChapterGuides2, samuelChapterGuides3, samuelChapterGuides4
 ] = await Promise.all([
   json("data/zuriel-bible-geography-atlas.json"),
   json("data/zuriel-biblical-dictionary-expansion.json"),
@@ -47,7 +47,9 @@ const [
   json("data/zuriel-chapter-introductions-judges-11-21.json"),
   json("data/zuriel-chapter-introductions-ruth-01-04.json"),
   json("data/zuriel-chapter-introductions-1-samuel-01-16.json"),
-  json("data/zuriel-chapter-introductions-1-samuel-17-31.json")
+  json("data/zuriel-chapter-introductions-1-samuel-17-31.json"),
+  json("data/zuriel-chapter-introductions-2-samuel-01-12.json"),
+  json("data/zuriel-chapter-introductions-2-samuel-13-24.json")
 ]);
 
 const studyDatasetPaths = [
@@ -566,5 +568,21 @@ for(const guide of samuelGuides){
  assert.ok(Array.isArray(guide.keyPassages)&&guide.keyPassages.length>=2,"1 Samuel guide needs key passages");
  assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length>=3,"1 Samuel guide needs study questions");
  for(const reference of guide.keyPassages) checkReference(reference,"1 Samuel chapter "+guide.chapter);
+}
+const secondSamuelGuides=[...samuelChapterGuides3.chapters,...samuelChapterGuides4.chapters];
+assert.equal(samuelChapterGuides3.chapters.length,12,"2 Samuel part 1 must contain chapters 1–12");
+assert.equal(samuelChapterGuides4.chapters.length,12,"2 Samuel part 2 must contain chapters 13–24");
+assert.equal(secondSamuelGuides.length,24,"2 Samuel must cover all 24 chapters");
+const secondSamuelIds=new Set();
+for(const guide of secondSamuelGuides){
+ assert.equal(guide.book,"2 Samuel","2 Samuel guide must remain scoped to 2 Samuel");
+ assert.ok(Number.isInteger(guide.chapter)&&guide.chapter>=1&&guide.chapter<=24,"2 Samuel chapter number must be valid");
+ assert.ok(guide.title.startsWith("2 Samuel "+guide.chapter+" —"),"2 Samuel title must identify its chapter");
+ assert.ok(typeof guide.id==="string"&&/^2sam-ch\\d{2}$/.test(guide.id),"2 Samuel guide needs a stable ID");
+ assert.ok(!secondSamuelIds.has(guide.id),"2 Samuel IDs must be unique");secondSamuelIds.add(guide.id);
+ for(const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field]==="string"&&guide[field].trim().length>=50,"2 Samuel guide needs substantive "+field+": "+guide.chapter);
+ assert.ok(Array.isArray(guide.keyPassages)&&guide.keyPassages.length>=2,"2 Samuel guide needs key passages");
+ assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length>=3,"2 Samuel guide needs study questions");
+ for(const reference of guide.keyPassages) checkReference(reference,"2 Samuel chapter "+guide.chapter);
 }
 console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges, 4 Ruth and 31 1 Samuel chapter introductions; 19 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
