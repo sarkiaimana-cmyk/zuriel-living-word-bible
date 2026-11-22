@@ -49,6 +49,43 @@
     return Array.from(new Set(output));
   }
 
+  function normalizeSearchText(value) {
+    return String(value || "").normalize("NFKC").toLocaleLowerCase()
+      .normalize("NFD").replace(/\p{M}/gu, "")
+      .replace(/[^\p{L}\p{N}\s:.-]/gu, " ")
+      .replace(/\s+/g, " ").trim();
+  }
+
+  function rankSearchResults(items, query, category) {
+    const normalized = normalizeSearchText(query);
+    if (!normalized) return items.filter(item => !category || category === "all" || item.category === category);
+    const tokens = normalized.split(" ").filter(Boolean);
+    return items.map((item, index) => {
+      if (category && category !== "all" && item.category !== category) return null;
+      const searchable = item.searchText || normalizeSearchText(
+        item.title + " " + item.summary + " " + (item.references || []).join(" ") + " " + JSON.stringify(item.source || {})
+      );
+      if (!tokens.every(token => searchable.includes(token))) return null;
+      const title = normalizeSearchText(item.title);
+      const summary = normalizeSearchText(item.summary);
+      const refs = normalizeSearchText((item.references || []).join(" "));
+      let score = 0;
+      if (title === normalized) score += 1200;
+      else if (title.startsWith(normalized)) score += 700;
+      else if (title.includes(normalized)) score += 450;
+      if (summary.includes(normalized)) score += 220;
+      if (refs.includes(normalized)) score += 180;
+      if (searchable.includes(normalized)) score += 100;
+      tokens.forEach(token => {
+        if (title.includes(token)) score += 45;
+        if (summary.includes(token)) score += 20;
+        if (refs.includes(token)) score += 25;
+      });
+      return { item, index, score };
+    }).filter(Boolean).sort((a, b) => b.score - a.score || a.index - b.index)
+      .map(result => result.item);
+  }
+
   async function loadAll() {
     if (state.loading) return state.loading;
     state.loading = Promise.all(SOURCES.map(async source => {
@@ -58,10 +95,18 @@
       if (!data || data.schemaVersion !== 1 || !Array.isArray(data[source[2]])) {
         throw new Error("Study resource format is invalid: " + source[1]);
       }
-      return data[source[2]].map(item => ({
-        category: source[0], kind: source[3], title: titleFor(item, source[3]),
-        summary: summaryFor(item), references: refsFor(item), source: item
-      }));
+      return data[source[2]].map(item => {
+        const title = titleFor(item, source[3]);
+        const summary = summaryFor(item);
+        const references = refsFor(item);
+        const searchText = normalizeSearchText(
+          title + " " + summary + " " + references.join(" ") + " " + JSON.stringify(item)
+        );
+        return {
+          category: source[0], kind: source[3], title,
+          summary, references, source: item, searchText
+        };
+      });
     })).then(groups => {
       state.items = groups.flat();
       state.ready = true;
@@ -231,12 +276,9 @@
     content.appendChild(root);
 
     function showResults() {
-      const query=search.value.trim().toLowerCase();
+      const query=search.value.trim();
       const selected=category.value;
-      const filtered=state.items.filter(item=>
-        (selected==="all"||item.category===selected) &&
-        (!query || (item.title+" "+item.summary+" "+item.references.join(" ")+" "+JSON.stringify(item.source)).toLowerCase().includes(query))
-      );
+      const filtered=rankSearchResults(state.items, query, selected);
       results.replaceChildren();
       filtered.slice(0,30).forEach(item=>{
         const action=make("button","zsl-result");
@@ -271,11 +313,11 @@
 
   window.ZurielStudyLibrary = {
     load: loadAll,
-    search: function(query) {
-      const q=String(query||"").toLowerCase();
-      return loadAll().then(items=>items.filter(item=>
-        (item.title+" "+item.summary+" "+item.references.join(" ")+" "+JSON.stringify(item.source)).toLowerCase().includes(q)
-      ));
+    search: function(query, options) {
+      const settings = options && typeof options === "object" ? options : {};
+      const category = typeof settings.category === "string" ? settings.category : "all";
+      const limit = Number.isInteger(settings.limit) ? Math.max(1, Math.min(settings.limit, 200)) : 200;
+      return loadAll().then(items => rankSearchResults(items, query, category).slice(0, limit));
     },
     openReference: openReference,
     renderDetail: renderDetail
