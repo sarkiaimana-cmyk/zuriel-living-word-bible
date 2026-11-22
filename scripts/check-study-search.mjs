@@ -153,6 +153,16 @@ const datasets = {
     {id:"eze-ch40",book:"Ezekiel",chapter:40,title:"Ezekiel 40 — The visionary temple and the return of glory",overview:"In a vision dated to the exile, Ezekiel is brought to a high mountain and shown a measured temple complex. A heavenly guide measures its gates, courts, and structures with careful detail.",keyPassages:["Ezekiel 40:1–27","Ezekiel 40:28–49"]},
     {id:"eze-ch47",book:"Ezekiel",chapter:47,title:"Ezekiel 47 — The river from the temple and the healing land",overview:"Ezekiel sees water flowing from beneath the temple threshold, growing into a deep river that brings life to the Arabah and the Dead Sea. Trees along its banks provide food and healing leaves.",keyPassages:["Ezekiel 47:1–12","Ezekiel 47:13–23"]}
   ]},
+  "zuriel-chapter-introductions-daniel-01-12.json": { chapters: [
+    {id:"dan-ch01",book:"Daniel",chapter:1,title:"Daniel 1 — Daniel and his companions in Babylon",overview:"Daniel and other Judean youths are taken into Babylon's royal training programme. They resolve not to defile themselves with the royal food, receive favour, and are found to be wise and capable.",keyPassages:["Daniel 1:1–10","Daniel 1:11–21"]},
+    {id:"dan-ch02",book:"Daniel",chapter:2,title:"Daniel 2 — Nebuchadnezzar's dream and the kingdom of God",overview:"The king demands that his wise men reveal and interpret his dream. Daniel seeks mercy from God, receives the mystery, and explains the great statue whose kingdoms are ultimately displaced by God's enduring kingdom.",keyPassages:["Daniel 2:1–23","Daniel 2:24–49"]},
+    {id:"dan-ch03",book:"Daniel",chapter:3,title:"Daniel 3 — The fiery furnace and the refusal to worship the image",overview:"Shadrach, Meshach, and Abednego refuse to worship the golden image and are thrown into a furnace. They express trust in God's power while acknowledging that faithfulness does not depend on guaranteed rescue.",keyPassages:["Daniel 3:1–18","Daniel 3:19–30"]},
+    {id:"dan-ch05",book:"Daniel",chapter:5,title:"Daniel 5 — The writing on the wall and Babylon's fall",overview:"Belshazzar's feast desecrates sacred vessels, and a mysterious hand writes a judgement on the wall. Daniel interprets the words, and Babylon falls that night.",keyPassages:["Daniel 5:1–16","Daniel 5:17–31"]},
+    {id:"dan-ch06",book:"Daniel",chapter:6,title:"Daniel 6 — Daniel in the lions' den",overview:"Officials manipulate the king into issuing a decree that makes prayer to anyone but the king illegal. Daniel continues his regular prayer, is thrown into the lions' den, and is preserved.",keyPassages:["Daniel 6:1–15","Daniel 6:16–28"]},
+    {id:"dan-ch07",book:"Daniel",chapter:7,title:"Daniel 7 — The four beasts and the Ancient of Days",overview:"Daniel dreams of four beasts rising from the sea, followed by the Ancient of Days and one like a son of man receiving dominion. The vision interprets successive oppressive kingdoms and the vindication of the holy ones.",keyPassages:["Daniel 7:1–14","Daniel 7:15–28"]},
+    {id:"dan-ch09",book:"Daniel",chapter:9,title:"Daniel 9 — Daniel's prayer, the seventy weeks, and restoration",overview:"Daniel reads Jeremiah's prophecy about Jerusalem's desolation and responds with confession and appeal for mercy. Gabriel brings a vision of seventy weeks concerning transgression, restoration, and the holy city.",keyPassages:["Daniel 9:1–19","Daniel 9:20–27"]},
+    {id:"dan-ch12",book:"Daniel",chapter:12,title:"Daniel 12 — The time of distress, resurrection, and final hope",overview:"Daniel hears of a time of unprecedented distress, the deliverance of those written in the book, and the awakening of many who sleep in the dust. The book closes with sealing, waiting, and Daniel's own promised rest and future portion.",keyPassages:["Daniel 12:1–7","Daniel 12:8–13"]}
+  ]},
   "zuriel-deep-study-guides.json": { guides: [] },
   "zuriel-bible-geography-atlas.json": { places: [], journeys: [] },
   "zuriel-worship-study-pathways.json": { pathways: [] }
@@ -404,6 +414,23 @@ const ezekielForty = await library.search("visionary temple measurements gates c
 assert.equal(ezekielForty.length,1,"Ezekiel chapter 40 guide should be searchable"); assert.equal(ezekielForty[0].source.chapter,40);
 const ezekielFortySeven = await library.search("river temple healing land Arabah", { category: "Chapter Introductions" });
 assert.equal(ezekielFortySeven.length,1,"Ezekiel chapter 47 guide should be searchable"); assert.equal(ezekielFortySeven[0].source.chapter,47);
+
+const danielOne = await library.search("Daniel companions Babylon royal food", { category: "Chapter Introductions" });
+assert.equal(danielOne.length,1,"Daniel chapter 1 guide should be searchable"); assert.equal(danielOne[0].source.chapter,1);
+const danielTwo = await library.search("Nebuchadnezzar dream statue enduring kingdom", { category: "Chapter Introductions" });
+assert.equal(danielTwo.length,1,"Daniel chapter 2 guide should be searchable"); assert.equal(danielTwo[0].source.chapter,2);
+const danielThree = await library.search("fiery furnace refuse worship golden image", { category: "Chapter Introductions" });
+assert.equal(danielThree.length,1,"Daniel chapter 3 guide should be searchable"); assert.equal(danielThree[0].source.chapter,3);
+const danielFive = await library.search("writing wall Belshazzar Babylon fall", { category: "Chapter Introductions" });
+assert.equal(danielFive.length,1,"Daniel chapter 5 guide should be searchable"); assert.equal(danielFive[0].source.chapter,5);
+const danielSix = await library.search("Daniel lions den regular prayer", { category: "Chapter Introductions" });
+assert.equal(danielSix.length,1,"Daniel chapter 6 guide should be searchable"); assert.equal(danielSix[0].source.chapter,6);
+const danielSeven = await library.search("four beasts Ancient of Days son man", { category: "Chapter Introductions" });
+assert.equal(danielSeven.length,1,"Daniel chapter 7 guide should be searchable"); assert.equal(danielSeven[0].source.chapter,7);
+const danielNine = await library.search("Daniel prayer seventy weeks Jeremiah", { category: "Chapter Introductions" });
+assert.equal(danielNine.length,1,"Daniel chapter 9 guide should be searchable"); assert.equal(danielNine[0].source.chapter,9);
+const danielTwelve = await library.search("time distress resurrection final hope", { category: "Chapter Introductions" });
+assert.equal(danielTwelve.length,1,"Daniel chapter 12 guide should be searchable"); assert.equal(danielTwelve[0].source.chapter,12);
 
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
 assert.equal(greek.length, 1, "Unicode Greek search should find the original-language entry.");
