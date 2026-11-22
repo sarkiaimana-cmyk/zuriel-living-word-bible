@@ -1,4 +1,4 @@
 {
-  "version": "1.4.120",
-  "releaseNotes": "Added five curated offline reading journeys, bringing the library to 20 plans and 163 Scripture passages. Every passage is checked against the bundled KJV; existing reading progress and personal study data remain protected."
+  "version": "1.4.121",
+  "releaseNotes": "Added ten contextual Genesis chapter introductions (chapters 1–10), connected them to the searchable offline study library, and expanded offline cache coverage. Existing reading progress and personal study data remain protected."
 }
