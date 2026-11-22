@@ -16,6 +16,8 @@ if (!updates.includes('release.tag_name !== "v" + info.version')) failures.push(
 if (!updates.includes('Number(asset.size) > 0') || !updates.includes('asset.digest || ""')) failures.push("Native app update must require a non-empty APK asset and its published SHA-256 digest.");
 if (!updates.includes('/Zuriel-Living-Word-Bible-release\\.apk$/i.test(asset.name)')) failures.push("Native app update must match the exact official APK filename with a literal dot.");
 if (!updates.includes("Download & Install Zuriel Update")) failures.push("Native update centre must offer the official signed APK.");
+if (!updates.includes("zuriel_update_last_auto_check") || !updates.includes("24 * 60 * 60 * 1000")) failures.push("The update centre must check quietly at most once per 24 hours.");
+if (!updates.includes("automaticCheck = true") || !updates.includes("button.click()")) failures.push("The update centre must trigger its scheduled check through the same verified manual-check flow.");
 if (!updates.includes("Do not uninstall it")) failures.push("Update centre must warn users not to uninstall before an in-place update.");
 if (!updates.includes("If Android reports a signature or package conflict, cancel")) failures.push("Update centre must tell users to cancel on package/signature mismatch.");
 if (!workflow.includes("scripts/prepare-android-updater.mjs")) failures.push("Android build must register the native update installer.");
