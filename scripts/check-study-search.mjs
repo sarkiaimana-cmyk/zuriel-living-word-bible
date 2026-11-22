@@ -264,6 +264,14 @@ assert.equal(psalmOneHundredThirtyNine.length,1,"Psalm 139 guide should be searc
 const psalmOneHundredFifty = await library.search("Psalter closes instruments breath praise worship", { category: "Chapter Introductions" });
 assert.equal(psalmOneHundredFifty.length,1,"Psalm 150 guide should be searchable"); assert.equal(psalmOneHundredFifty[0].source.chapter,150);
 
+
+const ecclesiastesThree = await library.search("appointed times eternity injustice seasons Ecclesiastes 3", { category: "Chapter Introductions" });
+assert.equal(ecclesiastesThree.length,1,"Ecclesiastes chapter 3 guide should be searchable"); assert.equal(ecclesiastesThree[0].source.book,"Ecclesiastes"); assert.equal(ecclesiastesThree[0].source.chapter,3);
+const ecclesiastesSeven = await library.search("patience anger wisdom self-righteousness Ecclesiastes 7", { category: "Chapter Introductions" });
+assert.equal(ecclesiastesSeven.length,1,"Ecclesiastes chapter 7 guide should be searchable"); assert.equal(ecclesiastesSeven[0].source.book,"Ecclesiastes"); assert.equal(ecclesiastesSeven[0].source.chapter,7);
+const ecclesiastesTwelve = await library.search("remember Creator aging dust fear God commandments Ecclesiastes 12", { category: "Chapter Introductions" });
+assert.equal(ecclesiastesTwelve.length,1,"Ecclesiastes chapter 12 guide should be searchable"); assert.equal(ecclesiastesTwelve[0].source.book,"Ecclesiastes"); assert.equal(ecclesiastesTwelve[0].source.chapter,12);
+
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
 assert.equal(greek.length, 1, "Unicode Greek search should find the original-language entry.");
 assert.equal(greek[0].source.language, "Greek");
