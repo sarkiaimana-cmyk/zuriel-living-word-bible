@@ -8,7 +8,7 @@ async function json(path) {
 }
 const [
   geography, dictionary, books, trail1, trail2, deep, names, words, words2,
-  commentary, topical, topical3, worship, theology, loader, index, worker, bookDataSource, kjv, chapterGuides, exodusChapterGuides, exodusChapterGuides2, exodusChapterGuides3, exodusChapterGuides4, leviticusChapterGuides, leviticusChapterGuides2, numbersChapterGuides, numbersChapterGuides2, numbersChapterGuides3, deuteronomyChapterGuides, deuteronomyChapterGuides2, joshuaChapterGuides, joshuaChapterGuides2
+  commentary, topical, topical3, worship, theology, loader, index, worker, bookDataSource, kjv, chapterGuides, exodusChapterGuides, exodusChapterGuides2, exodusChapterGuides3, exodusChapterGuides4, leviticusChapterGuides, leviticusChapterGuides2, numbersChapterGuides, numbersChapterGuides2, numbersChapterGuides3, deuteronomyChapterGuides, deuteronomyChapterGuides2, joshuaChapterGuides, joshuaChapterGuides2, judgesChapterGuides, judgesChapterGuides2
 ] = await Promise.all([
   json("data/zuriel-bible-geography-atlas.json"),
   json("data/zuriel-biblical-dictionary-expansion.json"),
@@ -42,7 +42,9 @@ const [
   json("data/zuriel-chapter-introductions-deuteronomy-01-17.json"),
   json("data/zuriel-chapter-introductions-deuteronomy-18-34.json"),
   json("data/zuriel-chapter-introductions-joshua-01-12.json"),
-  json("data/zuriel-chapter-introductions-joshua-13-24.json")
+  json("data/zuriel-chapter-introductions-joshua-13-24.json"),
+  json("data/zuriel-chapter-introductions-judges-01-10.json"),
+  json("data/zuriel-chapter-introductions-judges-11-21.json")
 ]);
 
 const studyDatasetPaths = [
@@ -63,7 +65,9 @@ const studyDatasetPaths = [
   "zuriel-chapter-introductions-deuteronomy-01-17.json",
   "zuriel-chapter-introductions-deuteronomy-18-34.json",
   "zuriel-chapter-introductions-joshua-01-12.json",
-  "zuriel-chapter-introductions-joshua-13-24.json"
+  "zuriel-chapter-introductions-joshua-13-24.json",
+  "zuriel-chapter-introductions-judges-01-10.json",
+  "zuriel-chapter-introductions-judges-11-21.json"
 ];
 const [packagingScript, packagedLoader] = await Promise.all([
   readFile(new URL("../scripts/prepare-web.mjs", import.meta.url), "utf8"),
@@ -245,6 +249,32 @@ for (const guide of joshuaChapterGuides2.chapters) {
   assert.ok(Array.isArray(guide.keyPassages) && guide.keyPassages.length >= 4, "Joshua guide needs Scripture references");
   assert.ok(Array.isArray(guide.studyQuestions) && guide.studyQuestions.length >= 3, "Joshua guide needs three study questions");
   for (const reference of guide.keyPassages) checkReference(reference, "Joshua chapter " + guide.chapter);
+}
+const judgesGuideIds = new Set();
+assert.equal(judgesChapterGuides.chapters.length, 10, "Judges part 1 must contain chapters 1–10");
+for (const guide of judgesChapterGuides.chapters) {
+  assert.equal(guide.book, "Judges", "Judges guide batch must remain scoped to Judges");
+  assert.ok(Number.isInteger(guide.chapter) && guide.chapter >= 1 && guide.chapter <= 10, "Judges part 1 chapter number must be valid");
+  assert.ok(guide.title.startsWith("Judges " + guide.chapter + " —"), "Judges title must identify its chapter");
+  assert.ok(typeof guide.id === "string" && /^judg-ch\d{2}$/.test(guide.id), "Judges guide needs a stable chapter ID");
+  assert.ok(!judgesGuideIds.has(guide.id), "Judges guide IDs must be unique: " + guide.id); judgesGuideIds.add(guide.id);
+  for (const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field] === "string" && guide[field].trim().length >= 100, "Judges guide needs substantive " + field + ": " + guide.chapter);
+  assert.ok(Array.isArray(guide.keyPassages) && guide.keyPassages.length >= 4, "Judges guide needs Scripture references");
+  assert.ok(Array.isArray(guide.studyQuestions) && guide.studyQuestions.length >= 3, "Judges guide needs three study questions");
+  for (const reference of guide.keyPassages) checkReference(reference, "Judges chapter " + guide.chapter);
+}
+const judgesGuideIds2 = new Set(judgesGuideIds);
+assert.equal(judgesChapterGuides2.chapters.length, 11, "Judges part 2 must contain chapters 11–21");
+for (const guide of judgesChapterGuides2.chapters) {
+  assert.equal(guide.book, "Judges", "Judges guide batch must remain scoped to Judges");
+  assert.ok(Number.isInteger(guide.chapter) && guide.chapter >= 11 && guide.chapter <= 21, "Judges part 2 chapter number must be valid");
+  assert.ok(guide.title.startsWith("Judges " + guide.chapter + " —"), "Judges title must identify its chapter");
+  assert.ok(typeof guide.id === "string" && /^judg-ch\d{2}$/.test(guide.id), "Judges guide needs a stable chapter ID");
+  assert.ok(!judgesGuideIds2.has(guide.id), "Judges guide IDs must be unique across both sections: " + guide.id); judgesGuideIds2.add(guide.id);
+  for (const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field] === "string" && guide[field].trim().length >= 100, "Judges guide needs substantive " + field + ": " + guide.chapter);
+  assert.ok(Array.isArray(guide.keyPassages) && guide.keyPassages.length >= 4, "Judges guide needs Scripture references");
+  assert.ok(Array.isArray(guide.studyQuestions) && guide.studyQuestions.length >= 3, "Judges guide needs three study questions");
+  for (const reference of guide.keyPassages) checkReference(reference, "Judges chapter " + guide.chapter);
 }
 for (const guide of allLeviticusGuides) {
   assert.equal(guide.book, "Leviticus", "Leviticus guide batch must remain scoped to Leviticus");
@@ -502,4 +532,4 @@ assert.equal(linkWord(sampleVerse, sampleVerse,
   "A source annotation spanning beyond the selected word must not be attached");
 assert.equal(linkWord(sampleVerse, sampleVerse, [], 99).ok, false,
   "An out-of-range word selection must not produce a lexical link");
-console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy and 24 Joshua chapter introductions; 19 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
+console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua and 21 Judges chapter introductions; 19 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
