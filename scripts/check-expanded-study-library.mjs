@@ -141,7 +141,7 @@ for (const introduction of books.bookIntroductions) {
 const chapterGuideIds = new Set();
 for (const guide of chapterGuides.chapters) {
   assert.equal(guide.book, "Genesis", "This chapter-guide batch must remain scoped to Genesis");
-  assert.ok(Number.isInteger(guide.chapter) && guide.chapter >= 1 && guide.chapter <= 10,
+  assert.ok(Number.isInteger(guide.chapter) && guide.chapter >= 1 && guide.chapter <= 20,
     "Genesis chapter guide must have a valid chapter number");
   assert.ok(guide.title.startsWith("Genesis " + guide.chapter + " —"),
     "Chapter guide title must visibly identify its exact Bible chapter: " + guide.title);
@@ -167,7 +167,7 @@ for (const guide of chapterGuides.chapters) {
   for (const reference of guide.keyPassages) checkReference(reference, "Genesis chapter guide " + guide.title);
   chapterGuideIds.add(guide.id);
 }
-assert.equal(chapterGuideIds.size, 10, "Genesis chapters 1–10 must each have exactly one guide");
+assert.equal(chapterGuideIds.size, 20, "Genesis chapters 1–20 must each have exactly one guide");
 
 const trails=[...trail1.trails,...trail2.trails];
 assert.equal(new Set(trails.map(item=>item.id)).size,74,"Connected Scripture trail IDs must be unique");
@@ -383,4 +383,4 @@ assert.equal(linkWord(sampleVerse, sampleVerse,
   "A source annotation spanning beyond the selected word must not be attached");
 assert.equal(linkWord(sampleVerse, sampleVerse, [], 99).ok, false,
   "An out-of-range word selection must not produce a lexical link");
-console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 10 Genesis chapter introductions; 15 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
+console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 20 Genesis chapter introductions; 15 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
