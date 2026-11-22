@@ -55,6 +55,9 @@ jobs:
       - name: Verify all KJV source assets for AI pilot
         run: node ai-worker/scripts/prepare-scripture-assets.mjs --check
 
+      - name: Validate shared end-to-end visual design system
+        run: node scripts/check-design-system.mjs
+
       - name: Validate streamlined home dashboard and distinct sections
         run: node scripts/check-home-dashboard.mjs
 
