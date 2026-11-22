@@ -192,7 +192,6 @@ for (const entry of words.entries) {
 for (const path of [
   "zuriel-passage-commentary-expansion.json","zuriel-topical-bible-study-library-batch-2.json",
   "zuriel-topical-bible-study-library-batch-3.json",
-  "zuriel-topical-bible-study-library-batch-3.json",
   "zuriel-biblical-dictionary-expansion.json","zuriel-original-language-word-studies-batch-1.json",
   "zuriel-names-and-titles-of-god-library.json","zuriel-connected-scripture-trails-batch-1.json",
   "zuriel-connected-scripture-trails-batch-2.json","zuriel-book-introductions-and-study-pathways.json",
@@ -203,6 +202,7 @@ assert.match(worker, /zuriel-bible-offline-v\d+/, "Offline cache must use a vers
 assert.ok(worker.includes("./zuriel-study-library-data.js"),"Study loader must be precached");
 for (const path of [
   "zuriel-passage-commentary-expansion.json","zuriel-topical-bible-study-library-batch-2.json",
+  "zuriel-topical-bible-study-library-batch-3.json",
   "zuriel-biblical-dictionary-expansion.json","zuriel-original-language-word-studies-batch-1.json",
   "zuriel-names-and-titles-of-god-library.json","zuriel-connected-scripture-trails-batch-1.json",
   "zuriel-connected-scripture-trails-batch-2.json","zuriel-book-introductions-and-study-pathways.json",
@@ -211,4 +211,4 @@ for (const path of [
 assert.ok(loader.includes("window.ZurielStudyLibrary"),"Study library API must be exposed");
 assert.ok(loader.includes("openReference"),"Study references must open through the Bible reader");
 assert.ok(loader.includes("Original-language form") && loader.includes("Morphology note") && loader.includes("Contextual word use"),"Word-study detail must expose original script, language, morphology status and contextual usage.");
-console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 13 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
+console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 14 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
