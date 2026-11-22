@@ -193,7 +193,7 @@ for (const path of [
   "zuriel-passage-commentary-expansion.json","zuriel-topical-bible-study-library-batch-2.json",
   "zuriel-topical-bible-study-library-batch-3.json",
   "zuriel-biblical-dictionary-expansion.json","zuriel-original-language-word-studies-batch-1.json",
-  "zuriel-names-and-titles-of-god-library.json","zuriel-connected-scripture-trails-batch-1.json",
+  "zuriel-original-language-word-studies-batch-2.json","zuriel-names-and-titles-of-god-library.json","zuriel-connected-scripture-trails-batch-1.json",
   "zuriel-connected-scripture-trails-batch-2.json","zuriel-book-introductions-and-study-pathways.json",
   "zuriel-deep-study-guides.json","zuriel-bible-geography-atlas.json","zuriel-worship-study-pathways.json","zuriel-theological-comparisons.json"
 ]) assert.ok(loader.includes(path),"Study loader must include "+path);
@@ -204,7 +204,7 @@ for (const path of [
   "zuriel-passage-commentary-expansion.json","zuriel-topical-bible-study-library-batch-2.json",
   "zuriel-topical-bible-study-library-batch-3.json",
   "zuriel-biblical-dictionary-expansion.json","zuriel-original-language-word-studies-batch-1.json",
-  "zuriel-names-and-titles-of-god-library.json","zuriel-connected-scripture-trails-batch-1.json",
+  "zuriel-original-language-word-studies-batch-2.json","zuriel-names-and-titles-of-god-library.json","zuriel-connected-scripture-trails-batch-1.json",
   "zuriel-connected-scripture-trails-batch-2.json","zuriel-book-introductions-and-study-pathways.json",
   "zuriel-deep-study-guides.json","zuriel-bible-geography-atlas.json","zuriel-worship-study-pathways.json","zuriel-theological-comparisons.json"
 ]) assert.ok(worker.includes("./data/"+path),"Offline cache must include "+path);
