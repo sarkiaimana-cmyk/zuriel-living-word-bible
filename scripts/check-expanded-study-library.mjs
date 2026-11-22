@@ -323,14 +323,14 @@ runInNewContext(wordLinkerSource, linkerSandbox);
 const linkWord = linkerSandbox.ZurielWordLinking.matchSelectedKJVWord;
 const sampleVerse = "In the beginning God created the heaven and the earth.";
 const godStart = sampleVerse.indexOf("God");
-const validWordLink = linkWord(sampleVerse, sampleVerse, [{ start: godStart, end: godStart + 3, strongs: ["H430"] }], 2);
+const validWordLink = linkWord(sampleVerse, sampleVerse, [{ start: godStart, end: godStart + 3, strongs: ["H430"] }], 3);
 assert.equal(validWordLink.ok, true, "An exactly aligned selected KJV word should link");
 assert.deepEqual(Array.from(validWordLink.strongs), ["H430"], "The selected word should retain its exact Strong's annotation");
 assert.equal(linkWord(sampleVerse, sampleVerse.replace("God", "LORD"),
-  [{ start: godStart, end: godStart + 3, strongs: ["H430"] }], 2).ok, false,
+  [{ start: godStart, end: godStart + 3, strongs: ["H430"] }], 3).ok, false,
   "A changed reader word must not inherit another word's original-language link");
 assert.equal(linkWord(sampleVerse, sampleVerse,
-  [{ start: godStart, end: sampleVerse.indexOf("created"), strongs: ["H430"] }], 2).strongs.length, 0,
+  [{ start: godStart, end: sampleVerse.indexOf("created"), strongs: ["H430"] }], 3).strongs.length, 0,
   "A source annotation spanning beyond the selected word must not be attached");
 assert.equal(linkWord(sampleVerse, sampleVerse, [], 99).ok, false,
   "An out-of-range word selection must not produce a lexical link");
