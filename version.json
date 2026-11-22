@@ -1,4 +1,5 @@
 {
-  "version": "1.4.130",
-  "releaseNotes": "Added Numbers chapter introductions 1–10 to the searchable offline Study Library, with chapter-specific context, study questions, interpretation safeguards, KJV-checked cross-references and offline Android cache integration. Leviticus 1–27 remains complete."
+  "version": "2.3.0",
+  "displayVersion": "2.3",
+  "releaseNotes": "Zuriel version 2.3: Leviticus chapter introductions 1–27 complete in two batches. Numbers chapter introductions 1–18 are integrated into the searchable offline Study Library, with KJV-checked cross-references, study questions, interpretive safeguards and Android offline-cache support."
 }
