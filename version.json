@@ -1,4 +1,4 @@
 {
-  "version": "1.4.129",
-  "releaseNotes": "Completed all 27 Leviticus chapter introductions in the searchable offline Study Library. Added contextual study notes, cross-references checked against the bundled KJV, and Android offline-cache integration."
+  "version": "1.4.130",
+  "releaseNotes": "Added Numbers chapter introductions 1–10 to the searchable offline Study Library, with chapter-specific context, study questions, interpretation safeguards, KJV-checked cross-references and offline Android cache integration. Leviticus 1–27 remains complete."
 }
