@@ -8,6 +8,7 @@
     ["Topical Studies", "./data/zuriel-topical-bible-study-library-batch-2.json", "entries", "topic"],
     ["Bible Dictionary", "./data/zuriel-biblical-dictionary-expansion.json", "entries", "dictionary"],
     ["Hebrew & Greek Word Studies", "./data/zuriel-original-language-word-studies-batch-1.json", "entries", "word"],
+    ["Hebrew & Greek Word Studies", "./data/zuriel-original-language-word-studies-batch-2.json", "entries", "word"],
     ["Names & Titles of God", "./data/zuriel-names-and-titles-of-god-library.json", "entries", "name"],
     ["Connected Scripture Trails", "./data/zuriel-connected-scripture-trails-batch-1.json", "trails", "trail"],
     ["Connected Scripture Trails", "./data/zuriel-connected-scripture-trails-batch-2.json", "trails", "trail"],
@@ -31,7 +32,7 @@
   function summaryFor(item) {
     return text(item.contextAndMeaning || item.overview || item.definition ||
       item.significance || item.focus || item.summary || item.description ||
-      item.meaning || item.context || item.theme || item.subtitle || item.question || item.sharedGround);
+      item.meaning || item.contextualGloss || item.context || item.theme || item.subtitle || item.question || item.sharedGround);
   }
   function refsFor(item) {
     const values = item.references || item.scriptureReferences || item.keyPassages ||
