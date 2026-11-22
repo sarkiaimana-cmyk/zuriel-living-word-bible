@@ -137,6 +137,13 @@ const datasets = {
     {id:"lam-ch03",book:"Lamentations",chapter:3,title:"Lamentations 3 — The afflicted speaker, steadfast mercy, and waiting hope",overview:"At the centre of the book, a speaker describes affliction in vivid bodily and emotional terms. The poem turns toward the Lord's mercies, calls for patient waiting, and insists that suffering should not be dismissed or treated lightly.",keyPassages:["Lamentations 3:1–33","Lamentations 3:34–66"]},
     {id:"lam-ch05",book:"Lamentations",chapter:5,title:"Lamentations 5 — A communal prayer asking God to remember",overview:"The final poem gathers the community's losses into a collective prayer: dispossession, forced labour, hunger, humiliation, and the collapse of ordinary life. It asks God to remember and restore the people.",keyPassages:["Lamentations 5:1–11","Lamentations 5:12–22"]}
   ]},
+  "zuriel-chapter-introductions-ezekiel-01-24.json": { chapters: [
+    {id:"eze-ch01",book:"Ezekiel",chapter:1,title:"Ezekiel 1 — The throne vision by the river",overview:"Among the exiles by the Chebar canal, Ezekiel sees a storm cloud, living creatures, wheels within wheels, and a radiant throne. The vision establishes God's overwhelming glory beyond Jerusalem and the temple.",keyPassages:["Ezekiel 1:1–14","Ezekiel 1:15–28"]},
+    {id:"eze-ch11",book:"Ezekiel",chapter:11,title:"Ezekiel 11 — The leaders' false security and the promise of a new heart",overview:"Ezekiel sees leaders giving dangerous counsel in Jerusalem. The Lord promises to gather the scattered people and give them one heart and a new spirit, while the glory departs from the city.",keyPassages:["Ezekiel 11:1–13","Ezekiel 11:14–25"]},
+    {id:"eze-ch16",book:"Ezekiel",chapter:16,title:"Ezekiel 16 — Jerusalem portrayed as an unfaithful wife",overview:"In an extended allegory, Jerusalem is portrayed as a child rescued and raised, then as a bride who betrays the covenant through idolatry and injustice. The chapter also recalls the city's origins and promises eventual remembrance of an everlasting covenant.",keyPassages:["Ezekiel 16:1–34","Ezekiel 16:35–63"]},
+    {id:"eze-ch18",book:"Ezekiel",chapter:18,title:"Ezekiel 18 — The soul that sins and the way of life",overview:"Ezekiel challenges a proverb that treats children as inevitably bearing their parents' guilt. The chapter insists that each person is accountable for their own conduct and that the wicked can turn and live.",keyPassages:["Ezekiel 18:1–16","Ezekiel 18:17–32"]},
+    {id:"eze-ch24",book:"Ezekiel",chapter:24,title:"Ezekiel 24 — The cooking pot and the death of Ezekiel's wife",overview:"As the siege begins, Ezekiel describes Jerusalem as a rusted cooking pot and is told that his wife's death will become a sign: he must not perform customary public mourning. The chapter closes with the promise that his speech will return when news arrives.",keyPassages:["Ezekiel 24:1–14","Ezekiel 24:15–27"]}
+  ]},
   "zuriel-deep-study-guides.json": { guides: [] },
   "zuriel-bible-geography-atlas.json": { places: [], journeys: [] },
   "zuriel-worship-study-pathways.json": { pathways: [] }
@@ -362,6 +369,17 @@ const lamentationsThree = await library.search("afflicted speaker mercy waiting 
 assert.equal(lamentationsThree.length,1,"Lamentations chapter 3 guide should be searchable"); assert.equal(lamentationsThree[0].source.chapter,3);
 const lamentationsFive = await library.search("communal prayer remember restore dispossession", { category: "Chapter Introductions" });
 assert.equal(lamentationsFive.length,1,"Lamentations chapter 5 guide should be searchable"); assert.equal(lamentationsFive[0].source.chapter,5);
+
+const ezekielOne = await library.search("throne vision river living creatures wheels", { category: "Chapter Introductions" });
+assert.equal(ezekielOne.length,1,"Ezekiel chapter 1 guide should be searchable"); assert.equal(ezekielOne[0].source.chapter,1);
+const ezekielEleven = await library.search("leaders false security new heart spirit", { category: "Chapter Introductions" });
+assert.equal(ezekielEleven.length,1,"Ezekiel chapter 11 guide should be searchable"); assert.equal(ezekielEleven[0].source.chapter,11);
+const ezekielSixteen = await library.search("Jerusalem unfaithful wife covenant everlasting", { category: "Chapter Introductions" });
+assert.equal(ezekielSixteen.length,1,"Ezekiel chapter 16 guide should be searchable"); assert.equal(ezekielSixteen[0].source.chapter,16);
+const ezekielEighteen = await library.search("soul sins individual responsibility way life", { category: "Chapter Introductions" });
+assert.equal(ezekielEighteen.length,1,"Ezekiel chapter 18 guide should be searchable"); assert.equal(ezekielEighteen[0].source.chapter,18);
+const ezekielTwentyFour = await library.search("cooking pot siege Ezekiel wife mourning", { category: "Chapter Introductions" });
+assert.equal(ezekielTwentyFour.length,1,"Ezekiel chapter 24 guide should be searchable"); assert.equal(ezekielTwentyFour[0].source.chapter,24);
 
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
 assert.equal(greek.length, 1, "Unicode Greek search should find the original-language entry.");
