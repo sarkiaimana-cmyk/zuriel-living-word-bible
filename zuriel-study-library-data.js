@@ -16,6 +16,7 @@
     ["Book Introductions", "./data/zuriel-book-introductions-and-study-pathways.json", "bookIntroductions", "introduction"],
     ["Book Study Pathways", "./data/zuriel-book-introductions-and-study-pathways.json", "bookStudyPathways", "book-pathway"],
     ["Chapter Introductions", "./data/zuriel-chapter-introductions-genesis-01-10.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-exodus-01-10.json", "chapters", "chapter-introduction"],
     ["Deep Study Guides", "./data/zuriel-deep-study-guides.json", "guides", "guide"],
     ["Bible Geography", "./data/zuriel-bible-geography-atlas.json", "places", "place"],
     ["Bible Geography", "./data/zuriel-bible-geography-atlas.json", "journeys", "journey"],
