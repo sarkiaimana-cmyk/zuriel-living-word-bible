@@ -46,7 +46,14 @@ requireText(client, "item.promotional_content", "Publisher promotional attributi
 requireText(client, "/chapters/", "API.Bible chapter retrieval path");
 requireText(client, "loadedProvider === selectedProvider", "Provider-specific catalogue state");
 requireText(client, "Publisher attribution was not supplied", "Fail-closed attribution requirement");
-requireText(client, "Select an authorised translation and download all 66 books to this device", "Full Bible offline download guidance");
+requireText(client, "API.Bible chapters may be saved on this device", "Accurate publisher-specific offline storage guidance");
+requireText(client, "YouVersion passages are shown online only", "YouVersion online-only rights notice");
+requireText(client, "function canStoreOffline(provider)", "Provider-specific offline permission gate");
+requireText(client, 'return provider === "api-bible"', "Only the explicitly supported API.Bible offline cache is enabled");
+requireText(client, "if (!canStoreOffline(provider)) return null", "Block unverified provider cache reads");
+requireText(client, "if (!canStoreOffline(provider)) return false", "Block unverified provider cache writes");
+requireText(client, "if (canStoreOffline(selectedProvider))", "Only permitted provider text is cached after online retrieval");
+requireText(client, "This YouVersion passage is online-only", "Prevent bulk offline downloads of unverified YouVersion licences");
 requireText(client, '"./version.json"', "Offline-capable local release metadata discovery");
 requireText(client, "indexedDB.open(TRANSLATION_CACHE_DB, 2)", "IndexedDB translation cache");
 requireText(client, "let translationDbPromise = null", "Shared IndexedDB connection promise");
@@ -66,7 +73,7 @@ requireText(client, 'offlineSelect.addEventListener("change"', "Selection of an 
 requireText(client, "selectedVersionLabel", "Readable translation label restored from offline manifest");
 requireText(client, "Internet translation access is unavailable. Choose a translation already saved on this device", "Offline translation guidance when service is unreachable");
 requireText(client, "Paused:", "Pause and resume support");
-requireText(client, "saveCachedChapter(selectedProvider", "Both approved providers use the offline chapter cache");
+requireText(client, "saveCachedChapter(selectedProvider", "Selected provider cache write is guarded by publisher storage permission");
 requireText(client, '"api-bible"', "Provider-scoped offline cache");
 
 requireText(client, "window.ZURIEL_TRANSLATION_API_BASE", "Explicit deployment endpoint configuration");
@@ -83,6 +90,7 @@ requireText(client, "CHRISTIAN STANDARD BIBLE", "CSB catalogue title matching");
 requireText(client, "activeController.abort()", "Cancellation of stale or closed-panel passage requests");
 forbidText(client, /localStorage|sessionStorage|caches\./i, "Uncontrolled persistent storage of online Bible text");
 forbidText(client, /saveYouVersionChapter|saveTranslationChapter/i, "Offline caching of YouVersion content without licence confirmation");
+forbidText(client, /record\.provider === "youversion"/, "YouVersion content listed as an offline saved translation");
 forbidText(client, /innerHTML|outerHTML/i, "Unsafe HTML insertion for publisher passage text");
 forbidText(client, /ZITE_YVP_APP_KEY|X-YVP-App-Key|API_BIBLE_KEY|api-key|api\.youversion\.com|rest\.api\.bible/i, "Provider credentials or direct upstream API access in client code");
 
