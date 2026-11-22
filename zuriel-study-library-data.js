@@ -38,6 +38,8 @@
     ["Chapter Introductions", "./data/zuriel-chapter-introductions-2-samuel-13-24.json", "chapters", "chapter-introduction"],
     ["Chapter Introductions", "./data/zuriel-chapter-introductions-1-kings-01-11.json", "chapters", "chapter-introduction"],
     ["Chapter Introductions", "./data/zuriel-chapter-introductions-1-kings-12-22.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-2-kings-01-13.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-2-kings-14-25.json", "chapters", "chapter-introduction"],
     ["Deep Study Guides", "./data/zuriel-deep-study-guides.json", "guides", "guide"],
     ["Bible Geography", "./data/zuriel-bible-geography-atlas.json", "places", "place"],
     ["Bible Geography", "./data/zuriel-bible-geography-atlas.json", "journeys", "journey"],
