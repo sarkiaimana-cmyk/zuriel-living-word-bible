@@ -207,7 +207,7 @@ assert.equal(chronicles29.length,1,"1 Chronicles chapter 29 guide should be sear
 
 const jobThree = await library.search("Job voices anguish wishes never born suffering", { category: "Chapter Introductions" });
 assert.equal(jobThree.length,1,"Job chapter 3 guide should be searchable"); assert.equal(jobThree[0].source.book,"Job"); assert.equal(jobThree[0].source.chapter,3);
-const jobFortyTwo = await library.search("God rebukes friends Job prayer restoration mystery suffering", { category: "Chapter Introductions" });
+const jobFortyTwo = await library.search("God rebukes friends receives Job prayer restores mystery suffering", { category: "Chapter Introductions" });
 assert.equal(jobFortyTwo.length,1,"Job chapter 42 guide should be searchable"); assert.equal(jobFortyTwo[0].source.book,"Job"); assert.equal(jobFortyTwo[0].source.chapter,42);
 
 const estherFour = await library.search("Mordecai challenges Esther responsibility Jewish community fast approach king", { category: "Chapter Introductions" });
