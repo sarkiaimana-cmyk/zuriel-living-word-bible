@@ -90,7 +90,7 @@ requireText(client, "CHRISTIAN STANDARD BIBLE", "CSB catalogue title matching");
 requireText(client, "activeController.abort()", "Cancellation of stale or closed-panel passage requests");
 forbidText(client, /localStorage|sessionStorage|caches\./i, "Uncontrolled persistent storage of online Bible text");
 forbidText(client, /saveYouVersionChapter|saveTranslationChapter/i, "Offline caching of YouVersion content without licence confirmation");
-forbidText(client, /record\.provider === "youversion"/, "YouVersion content listed as an offline saved translation");
+requireText(client, 'const valid = records.filter(record => record &&\n      record.provider === "api-bible" &&', "Only API.Bible manifests can be restored as offline translations");
 forbidText(client, /innerHTML|outerHTML/i, "Unsafe HTML insertion for publisher passage text");
 forbidText(client, /ZITE_YVP_APP_KEY|X-YVP-App-Key|API_BIBLE_KEY|api-key|api\.youversion\.com|rest\.api\.bible/i, "Provider credentials or direct upstream API access in client code");
 
