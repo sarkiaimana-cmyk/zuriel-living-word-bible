@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "title": "Zuriel Original-Language Word Study Collection — Batch 2",
+  "description": "Twenty additional context-sensitive Hebrew and Greek word-study cards. These are lexical study aids, not verse-specific parsing or exhaustive lexicon definitions.",
+  "editorialPolicy": [
+    "Original-language glosses are concise aids; inspect syntax and context in each passage.",
+    "No Strong's identifiers, morphology or pronunciation are asserted without source verification.",
+    "Do not derive theology from etymology alone; context governs meaning.",
+    "Where a term has a broad semantic range, the entry names that range rather than imposing one English equivalent."
+  ],
+  "entries": [
+    {
+      "id": "word-study-b2-001",
+      "term": "Aionios",
+      "language": "Greek",
+      "originalForm": "αἰώνιος",
+      "contextualGloss": "Eternal or belonging to the age; in New Testament contexts it can describe life, judgement and realities associated with God's enduring purpose.",
+      "scriptureReferences": [
+        "John 3:16",
+        "Romans 6:23",
+        "Hebrews 9:12"
+      ],
+      "interpretiveCaution": "Do not reduce the word to a bare duration formula; examine the noun it modifies and the argument of the passage.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-b2-002",
+      "term": "Anastasis",
+      "language": "Greek",
+      "originalForm": "ἀνάστασις",
+      "contextualGloss": "Resurrection or a rising; the New Testament uses it for the raising of the dead and, centrally, Jesus' resurrection.",
+      "scriptureReferences": [
+        "John 11:25",
+        "Acts 24:15",
+        "1 Corinthians 15:12-22"
+      ],
+      "interpretiveCaution": "Distinguish the resurrection event from metaphorical uses of rising language and read the surrounding argument.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-b2-003",
+      "term": "Aphesis",
+      "language": "Greek",
+      "originalForm": "ἄφεσις",
+      "contextualGloss": "Release, remission or forgiveness; the word can carry the image of release from debt or captivity.",
+      "scriptureReferences": [
+        "Luke 4:18",
+        "Ephesians 1:7",
+        "Colossians 1:14"
+      ],
+      "interpretiveCaution": "Its sense is shaped by context; do not assume every occurrence describes precisely the same aspect of forgiveness.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-b2-004",
+      "term": "Kardia",
+      "language": "Greek",
+      "originalForm": "καρδία",
+      "contextualGloss": "Heart; the inner person, including thought, desire, intention and moral orientation, not merely emotion.",
+      "scriptureReferences": [
+        "Deuteronomy 6:5",
+        "Proverbs 4:23",
+        "Mark 7:21",
+        "Romans 10:10"
+      ],
+      "interpretiveCaution": "Ancient heart-language often includes thinking and willing; avoid importing a modern emotion-only meaning.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-b2-005",
+      "term": "Kaleo",
+      "language": "Greek",
+      "originalForm": "καλέω",
+      "contextualGloss": "To call, summon or name; context may describe an invitation, vocation, summons or naming.",
+      "scriptureReferences": [
+        "Mark 1:20",
+        "Romans 8:30",
+        "Galatians 1:6"
+      ],
+      "interpretiveCaution": "Do not treat every use as a technical term for one doctrine of calling; observe the subject, object and setting.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-b2-006",
+      "term": "Krino",
+      "language": "Greek",
+      "originalForm": "κρίνω",
+      "contextualGloss": "To judge, decide or evaluate; the word can describe judicial judgement, discernment or a decision.",
+      "scriptureReferences": [
+        "John 5:22",
+        "Romans 2:1",
+        "James 4:11-12"
+      ],
+      "interpretiveCaution": "The verb does not always mean condemn; read whether the passage concerns evaluation, verdict or condemnation.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-b2-007",
+      "term": "Laleo",
+      "language": "Greek",
+      "originalForm": "λαλέω",
+      "contextualGloss": "To speak or utter; a common verb whose significance depends on speaker, audience and content.",
+      "scriptureReferences": [
+        "Acts 2:4",
+        "Hebrews 1:1-2",
+        "1 Corinthians 14:2"
+      ],
+      "interpretiveCaution": "Do not assign a special spiritual meaning to the verb in every occurrence; ordinary speech is also described with it.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-b2-008",
+      "term": "Martyria",
+      "language": "Greek",
+      "originalForm": "μαρτυρία",
+      "contextualGloss": "Testimony or witness; a report or attestation that supports what is being claimed.",
+      "scriptureReferences": [
+        "John 1:7",
+        "John 5:31-36",
+        "1 John 5:11"
+      ],
+      "interpretiveCaution": "Distinguish the testimony itself from the person who bears witness and from later technical uses of martyrdom.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-b2-009",
+      "term": "Meno",
+      "language": "Greek",
+      "originalForm": "μένω",
+      "contextualGloss": "To remain, abide or continue; John's writings often use it for enduring relationship and continuity.",
+      "scriptureReferences": [
+        "John 15:4-10",
+        "1 John 2:6",
+        "1 John 4:16"
+      ],
+      "interpretiveCaution": "The metaphor of abiding must be read in its immediate context; do not reduce it to a single devotional technique.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-b2-010",
+      "term": "Oida",
+      "language": "Greek",
+      "originalForm": "οἶδα",
+      "contextualGloss": "To know or understand; in the New Testament it commonly expresses knowledge or awareness.",
+      "scriptureReferences": [
+        "John 8:55",
+        "1 John 2:3",
+        "1 John 5:13"
+      ],
+      "interpretiveCaution": "Do not infer a fixed hierarchy between this verb and other Greek verbs for knowing; usage overlaps and context governs.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-b2-011",
+      "term": "Pleroo",
+      "language": "Greek",
+      "originalForm": "πληρόω",
+      "contextualGloss": "To fill, make full or fulfil; the New Testament uses it for fullness, completion and fulfilment of Scripture.",
+      "scriptureReferences": [
+        "Matthew 5:17",
+        "Ephesians 3:19",
+        "Colossians 2:10"
+      ],
+      "interpretiveCaution": "The English word fulfil can hide different senses; examine whether the context concerns completion, filling or fulfilment.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-b2-012",
+      "term": "Proseuche",
+      "language": "Greek",
+      "originalForm": "προσευχή",
+      "contextualGloss": "Prayer; a common New Testament noun for prayer or the act/place of prayer.",
+      "scriptureReferences": [
+        "Matthew 6:6",
+        "Acts 2:42",
+        "Philippians 4:6"
+      ],
+      "interpretiveCaution": "The noun itself does not specify every feature of prayer; the passage supplies its content and posture.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-b2-013",
+      "term": "Teknon",
+      "language": "Greek",
+      "originalForm": "τέκνον",
+      "contextualGloss": "Child or offspring; it can describe a physical child and, figuratively, a person in a relationship of belonging.",
+      "scriptureReferences": [
+        "John 1:12",
+        "Romans 8:16-17",
+        "1 John 3:1"
+      ],
+      "interpretiveCaution": "Distinguish literal family references from metaphorical uses, and read the relationship being described.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-b2-014",
+      "term": "Thelema",
+      "language": "Greek",
+      "originalForm": "θέλημα",
+      "contextualGloss": "Will, desire or purpose; often used of God's will, but it can also describe human intention.",
+      "scriptureReferences": [
+        "Matthew 6:10",
+        "Romans 12:2",
+        "Ephesians 1:5"
+      ],
+      "interpretiveCaution": "Identify whose will is in view and whether the passage concerns desire, purpose or an intended action.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-b2-015",
+      "term": "Therapeuo",
+      "language": "Greek",
+      "originalForm": "θεραπεύω",
+      "contextualGloss": "To serve or care for; in many Gospel contexts it means to heal or treat the sick.",
+      "scriptureReferences": [
+        "Matthew 4:23",
+        "Luke 9:11",
+        "Acts 5:16"
+      ],
+      "interpretiveCaution": "Do not assume every occurrence has the same nuance; the object and narrative context clarify whether healing or service is meant.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-b2-016",
+      "term": "Thlipsis",
+      "language": "Greek",
+      "originalForm": "θλῖψις",
+      "contextualGloss": "Affliction, distress or tribulation; imagery of pressure describes hardship experienced by people.",
+      "scriptureReferences": [
+        "John 16:33",
+        "Romans 5:3",
+        "2 Corinthians 4:17"
+      ],
+      "interpretiveCaution": "The word does not by itself identify the cause or duration of suffering; keep the passage's pastoral and historical context.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-b2-017",
+      "term": "Hypakoe",
+      "language": "Greek",
+      "originalForm": "ὑπακοή",
+      "contextualGloss": "Obedience or attentive response; the word is used for responsive submission to a command or message.",
+      "scriptureReferences": [
+        "Romans 1:5",
+        "Romans 6:16",
+        "1 Peter 1:2"
+      ],
+      "interpretiveCaution": "Read the object and context of obedience; avoid turning the word into unqualified submission to human authority.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-b2-018",
+      "term": "Huiothesia",
+      "language": "Greek",
+      "originalForm": "υἱοθεσία",
+      "contextualGloss": "Adoption or placement as a son; Paul uses it for the status and inheritance believers receive in Christ.",
+      "scriptureReferences": [
+        "Romans 8:15",
+        "Galatians 4:5",
+        "Ephesians 1:5"
+      ],
+      "interpretiveCaution": "The ancient legal and family imagery is important; do not imply that the metaphor limits God's welcome to male believers.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-b2-019",
+      "term": "Panim",
+      "language": "Hebrew",
+      "originalForm": "פָּנִים",
+      "contextualGloss": "Face or presence; a common Hebrew noun used for a person's face and, in many contexts, presence or being before someone.",
+      "scriptureReferences": [
+        "Genesis 32:30",
+        "Exodus 33:14-15",
+        "Psalm 27:8"
+      ],
+      "interpretiveCaution": "The word has a wide range and often appears in idioms; do not assign 'presence' mechanically to every occurrence.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    },
+    {
+      "id": "word-study-b2-020",
+      "term": "Tefillah",
+      "language": "Hebrew",
+      "originalForm": "תְּפִלָּה",
+      "contextualGloss": "Prayer or supplication; a noun used in biblical headings and prayers addressed to God.",
+      "scriptureReferences": [
+        "1 Kings 8:28",
+        "Psalm 4:1",
+        "Daniel 9:3"
+      ],
+      "interpretiveCaution": "Read the literary form and speaker; prayers include praise, confession, lament, petition and thanksgiving.",
+      "morphologyStatus": "Lexeme-level study only; no verse-specific inflection or parsing is asserted."
+    }
+  ]
+}
