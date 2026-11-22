@@ -45,7 +45,9 @@ const [
   json("data/zuriel-chapter-introductions-joshua-13-24.json"),
   json("data/zuriel-chapter-introductions-judges-01-10.json"),
   json("data/zuriel-chapter-introductions-judges-11-21.json"),
-  json("data/zuriel-chapter-introductions-ruth-01-04.json"),\n  json("data/zuriel-chapter-introductions-1-samuel-01-16.json"),\n  json("data/zuriel-chapter-introductions-1-samuel-17-31.json")
+  json("data/zuriel-chapter-introductions-ruth-01-04.json"),
+  json("data/zuriel-chapter-introductions-1-samuel-01-16.json"),
+  json("data/zuriel-chapter-introductions-1-samuel-17-31.json")
 ]);
 
 const studyDatasetPaths = [
@@ -69,7 +71,9 @@ const studyDatasetPaths = [
   "zuriel-chapter-introductions-joshua-13-24.json",
   "zuriel-chapter-introductions-judges-01-10.json",
   "zuriel-chapter-introductions-judges-11-21.json",
-  "zuriel-chapter-introductions-ruth-01-04.json"
+  "zuriel-chapter-introductions-ruth-01-04.json",
+  "zuriel-chapter-introductions-1-samuel-01-16.json",
+  "zuriel-chapter-introductions-1-samuel-17-31.json"
 ];
 const [packagingScript, packagedLoader] = await Promise.all([
   readFile(new URL("../scripts/prepare-web.mjs", import.meta.url), "utf8"),
