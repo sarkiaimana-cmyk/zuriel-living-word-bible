@@ -8,7 +8,7 @@ async function json(path) {
 }
 const [
   geography, dictionary, books, trail1, trail2, deep, names, words, words2,
-  commentary, topical, topical3, worship, theology, loader, index, worker, bookDataSource, kjv, chapterGuides, exodusChapterGuides, exodusChapterGuides2, exodusChapterGuides3, exodusChapterGuides4, leviticusChapterGuides, leviticusChapterGuides2, numbersChapterGuides, numbersChapterGuides2, numbersChapterGuides3, deuteronomyChapterGuides, deuteronomyChapterGuides2, joshuaChapterGuides, joshuaChapterGuides2, judgesChapterGuides, judgesChapterGuides2, ruthChapterGuides
+  commentary, topical, topical3, worship, theology, loader, index, worker, bookDataSource, kjv, chapterGuides, exodusChapterGuides, exodusChapterGuides2, exodusChapterGuides3, exodusChapterGuides4, leviticusChapterGuides, leviticusChapterGuides2, numbersChapterGuides, numbersChapterGuides2, numbersChapterGuides3, deuteronomyChapterGuides, deuteronomyChapterGuides2, joshuaChapterGuides, joshuaChapterGuides2, judgesChapterGuides, judgesChapterGuides2, ruthChapterGuides, samuelChapterGuides, samuelChapterGuides2
 ] = await Promise.all([
   json("data/zuriel-bible-geography-atlas.json"),
   json("data/zuriel-biblical-dictionary-expansion.json"),
@@ -45,7 +45,7 @@ const [
   json("data/zuriel-chapter-introductions-joshua-13-24.json"),
   json("data/zuriel-chapter-introductions-judges-01-10.json"),
   json("data/zuriel-chapter-introductions-judges-11-21.json"),
-  json("data/zuriel-chapter-introductions-ruth-01-04.json")
+  json("data/zuriel-chapter-introductions-ruth-01-04.json"),\n  json("data/zuriel-chapter-introductions-1-samuel-01-16.json"),\n  json("data/zuriel-chapter-introductions-1-samuel-17-31.json")
 ]);
 
 const studyDatasetPaths = [
@@ -547,4 +547,20 @@ assert.equal(linkWord(sampleVerse, sampleVerse,
   "A source annotation spanning beyond the selected word must not be attached");
 assert.equal(linkWord(sampleVerse, sampleVerse, [], 99).ok, false,
   "An out-of-range word selection must not produce a lexical link");
-console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges and 4 Ruth chapter introductions; 19 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
+const samuelGuides = [...samuelChapterGuides.chapters, ...samuelChapterGuides2.chapters];
+assert.equal(samuelChapterGuides.chapters.length,16,"1 Samuel part 1 must contain chapters 1–16");
+assert.equal(samuelChapterGuides2.chapters.length,15,"1 Samuel part 2 must contain chapters 17–31");
+assert.equal(samuelGuides.length,31,"1 Samuel must cover all 31 chapters");
+const samuelIds=new Set();
+for(const guide of samuelGuides){
+ assert.equal(guide.book,"1 Samuel","1 Samuel guide must remain scoped to 1 Samuel");
+ assert.ok(Number.isInteger(guide.chapter)&&guide.chapter>=1&&guide.chapter<=31,"1 Samuel chapter number must be valid");
+ assert.ok(guide.title.startsWith("1 Samuel "+guide.chapter+" —"),"1 Samuel title must identify its chapter");
+ assert.ok(typeof guide.id==="string"&&/^1sam-ch\\d{2}$/.test(guide.id),"1 Samuel guide needs a stable ID");
+ assert.ok(!samuelIds.has(guide.id),"1 Samuel IDs must be unique"); samuelIds.add(guide.id);
+ for(const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field]==="string"&&guide[field].trim().length>=100,"1 Samuel guide needs substantive "+field+": "+guide.chapter);
+ assert.ok(Array.isArray(guide.keyPassages)&&guide.keyPassages.length>=4,"1 Samuel guide needs key passages");
+ assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length>=3,"1 Samuel guide needs study questions");
+ for(const reference of guide.keyPassages) checkReference(reference,"1 Samuel chapter "+guide.chapter);
+}
+console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges, 4 Ruth and 31 1 Samuel chapter introductions; 19 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
