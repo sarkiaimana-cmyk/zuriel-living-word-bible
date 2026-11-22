@@ -191,7 +191,7 @@ assert.equal(kings18.length,1,"1 Kings chapter 18 prophetic conflict guide shoul
 
 const kings2Naaman = await library.search("Naaman healed Gehazi greed 2 Kings 5", { category: "Chapter Introductions" });
 assert.equal(kings2Naaman.length,1,"2 Kings chapter 5 guide should be searchable"); assert.equal(kings2Naaman[0].source.book,"2 Kings"); assert.equal(kings2Naaman[0].source.chapter,5);
-const kings2Fall = await library.search("Jerusalem falls exile Jehoiachin 2 Kings 25", { category: "Chapter Introductions" });
+const kings2Fall = await library.search("Jerusalem falls siege exile destruction Judah monarchy", { category: "Chapter Introductions" });
 assert.equal(kings2Fall.length,1,"2 Kings chapter 25 guide should be searchable"); assert.equal(kings2Fall[0].source.book,"2 Kings"); assert.equal(kings2Fall[0].source.chapter,25);
 
 const chronicles11 = await library.search("David king Jerusalem 1 Chronicles 11", { category: "Chapter Introductions" });
