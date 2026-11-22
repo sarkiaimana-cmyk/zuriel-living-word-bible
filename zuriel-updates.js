@@ -19,6 +19,7 @@
     const status = section.querySelector("#zurielUpdateStatus");
     const notes = section.querySelector("#zurielUpdateNotes");
     const button = section.querySelector("#zurielCheckUpdates");
+    let automaticCheck = false;
     button.addEventListener("click", async function () {
       button.disabled = true;
       status.textContent = "Checking the latest published version…";
@@ -135,8 +136,24 @@
         status.textContent = error.message || "Could not check for updates. Please try again when connected.";
       } finally {
         button.disabled = false;
+        if (automaticCheck) {
+          automaticCheck = false;
+          try { localStorage.setItem("zuriel_update_last_auto_check", String(Date.now())); } catch (_) {}
+        }
       }
     });
+    // Check quietly once every 24 hours. Never download or install without the user's tap.
+    try {
+      const lastAutomaticCheck = Number(localStorage.getItem("zuriel_update_last_auto_check") || 0);
+      if (!lastAutomaticCheck || Date.now() - lastAutomaticCheck >= 24 * 60 * 60 * 1000) {
+        window.setTimeout(function () {
+          if (navigator.onLine && !button.disabled) {
+            automaticCheck = true;
+            button.click();
+          }
+        }, 1800);
+      }
+    } catch (_) {}
   }
   function isNativeApp() {
     return !!(window.Capacitor && typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform());
