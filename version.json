@@ -1,4 +1,4 @@
 {
-  "version": "1.4.121",
-  "releaseNotes": "Added ten contextual Genesis chapter introductions (chapters 1–10), connected them to the searchable offline study library, and expanded offline cache coverage. Existing reading progress and personal study data remain protected."
+  "version": "1.4.122",
+  "releaseNotes": "Expanded the contextual Genesis chapter introductions to chapters 1–20, with chapter-specific context, observations, cross-references, questions, applications and interpretive cautions. Refreshed offline study caching; personal data remains protected."
 }
