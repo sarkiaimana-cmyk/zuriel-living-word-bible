@@ -170,6 +170,34 @@ for (const [label,items] of [
   for (const item of items) assert.ok(item.id,label+" entries need stable IDs");
 }
 
+const divineNameIds = new Set();
+const divineNameLabels = new Set();
+for (const entry of names.entries) {
+  assert.ok(typeof entry.id === "string" && /^divine-title-\\d{3}$/.test(entry.id),
+    "Every divine name or title needs a stable ID");
+  assert.ok(!divineNameIds.has(entry.id), "Divine name IDs must be unique: " + entry.id);
+  assert.ok(typeof entry.name === "string" && entry.name.trim().length >= 1,
+    "Every divine name needs a display label: " + entry.id);
+  const normalizedName = entry.name.trim().toLocaleLowerCase("en");
+  assert.ok(!divineNameLabels.has(normalizedName), "Divine name labels must be unique: " + entry.name);
+  assert.ok(["Hebrew","Greek","Aramaic","English"].includes(entry.language),
+    "Divine name needs an explicit source-language label: " + entry.name);
+  assert.ok(typeof entry.originalForm === "string" && entry.originalForm.trim(),
+    "Divine name needs its original or attested form: " + entry.name);
+  if (entry.language === "Hebrew") assert.match(entry.originalForm, /[\\u0590-\\u05FF]/,
+    "Hebrew name must use Hebrew script: " + entry.name);
+  if (entry.language === "Greek") assert.match(entry.originalForm, /[\\u0370-\\u03FF\\u1F00-\\u1FFF]/,
+    "Greek name must use Greek script: " + entry.name);
+  assert.ok(typeof entry.senseAndContext === "string" && entry.senseAndContext.trim().length >= 25,
+    "Divine name needs a contextual explanation: " + entry.name);
+  assert.ok(Array.isArray(entry.scriptureReferences) && entry.scriptureReferences.length >= 1,
+    "Divine name needs at least one Scripture reference: " + entry.name);
+  assert.ok(typeof entry.studyNote === "string" && entry.studyNote.trim().length >= 20,
+    "Divine name needs a responsible study note: " + entry.name);
+  divineNameIds.add(entry.id);
+  divineNameLabels.add(normalizedName);
+}
+
 const wordStudyIds = new Set();
 const wordStudyTerms = new Set();
 for (const entry of [...words.entries, ...words2.entries]) {
