@@ -412,7 +412,7 @@
 
   window.ZurielReadingPlans = {
     render: render,
-    list: function () { return PLANS.map(plan => ({ id: plan.id, title: plan.title, duration: plan.duration, passages: plan.days.map(day => day[0]) })); },
+    list: function () { return PLANS.map(plan => ({ id: plan.id, title: plan.title, duration: plan.duration, description: plan.description, passages: plan.days.map(day => day[0]) })); },
     validateProgress: validateProgress,
     readState: readState,
     writeState: writeState,
