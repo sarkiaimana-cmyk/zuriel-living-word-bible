@@ -14,7 +14,12 @@ const api = sandbox.window.ZurielReadingPlans;
 
 assert.ok(api, "Reading plan module must expose its public API.");
 const plans = api.list();
-assert.equal(plans.length, 15, "Ten curated offline reading plans should be available.");
+assert.equal(plans.length, 15, "Fifteen curated offline reading plans should be available.");
+for (const id of ["promises-of-god-7", "fruit-of-spirit-7", "healing-and-comfort-7", "family-and-home-7", "purposeful-work-7"]) {
+  const plan = plans.find(item => item.id === id);
+  assert.ok(plan, "New guided journey must be present: " + id);
+  assert.equal(plan.duration, 7, "Each new guided journey must contain seven days.");
+}
 for (const plan of plans) {
   assert.equal(plan.passages.length, plan.duration);
   assert.ok(plan.title && plan.id);
