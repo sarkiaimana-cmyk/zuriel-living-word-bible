@@ -56,6 +56,7 @@ const CORE_FILES = [
   "./data/zuriel-chapter-introductions-deuteronomy-01-17.json",
   "./data/zuriel-chapter-introductions-deuteronomy-18-34.json",
   "./data/zuriel-chapter-introductions-joshua-01-12.json",
+  "./data/zuriel-chapter-introductions-joshua-13-24.json",
   "./data/zuriel-connected-scripture-trails-batch-1.json",
   "./data/zuriel-connected-scripture-trails-batch-2.json",
   "./data/zuriel-deep-study-guides.json",
