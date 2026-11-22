@@ -8,7 +8,7 @@ async function json(path) {
 }
 const [
   geography, dictionary, books, trail1, trail2, deep, names, words, words2,
-  commentary, topical, topical3, worship, theology, loader, index, worker, bookDataSource, kjv, chapterGuides, exodusChapterGuides, exodusChapterGuides2, exodusChapterGuides3, exodusChapterGuides4, leviticusChapterGuides, leviticusChapterGuides2
+  commentary, topical, topical3, worship, theology, loader, index, worker, bookDataSource, kjv, chapterGuides, exodusChapterGuides, exodusChapterGuides2, exodusChapterGuides3, exodusChapterGuides4, leviticusChapterGuides, leviticusChapterGuides2, numbersChapterGuides
 ] = await Promise.all([
   json("data/zuriel-bible-geography-atlas.json"),
   json("data/zuriel-biblical-dictionary-expansion.json"),
@@ -35,7 +35,8 @@ const [
   json("data/zuriel-chapter-introductions-exodus-21-30.json"),
   json("data/zuriel-chapter-introductions-exodus-31-40.json"),
   json("data/zuriel-chapter-introductions-leviticus-01-10.json"),
-  json("data/zuriel-chapter-introductions-leviticus-11-27.json")
+  json("data/zuriel-chapter-introductions-leviticus-11-27.json"),
+  json("data/zuriel-chapter-introductions-numbers-01-10.json")
 ]);
 
 const studyDatasetPaths = [
@@ -133,7 +134,8 @@ const expected = [
   [exodusChapterGuides3.chapters,10,"Exodus chapter introductions 21–30"],
   [exodusChapterGuides4.chapters,10,"Exodus chapter introductions 31–40"],
   [leviticusChapterGuides.chapters,10,"Leviticus chapter introductions 1–10"],
-  [leviticusChapterGuides2.chapters,17,"Leviticus chapter introductions 11–27"]
+  [leviticusChapterGuides2.chapters,17,"Leviticus chapter introductions 11–27"],
+  [numbersChapterGuides.chapters,10,"Numbers chapter introductions 1–10"]
 ];
 for (const [items,count,label] of expected) {
   assert.ok(Array.isArray(items), label + " must be an array");
@@ -172,6 +174,16 @@ for (const guide of allExodusGuides) {
 const leviticusGuideIds = new Set();
 const allLeviticusGuides = [...leviticusChapterGuides.chapters, ...leviticusChapterGuides2.chapters];
 assert.equal(allLeviticusGuides.length, 27, "All twenty-seven Leviticus chapters must each have a guide");
+for (const guide of numbersChapterGuides.chapters) {
+  assert.equal(guide.book, "Numbers", "Numbers guide batch must remain scoped to Numbers");
+  assert.ok(Number.isInteger(guide.chapter) && guide.chapter >= 1 && guide.chapter <= 10, "Numbers chapter number must be valid");
+  assert.ok(guide.title.startsWith("Numbers " + guide.chapter + " —"), "Numbers title must identify its chapter");
+  assert.ok(typeof guide.id === "string" && /^num-ch\\d{2}$/.test(guide.id), "Numbers guide needs a stable chapter ID");
+  for (const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field] === "string" && guide[field].trim().length >= 100, "Numbers guide needs substantive " + field + ": " + guide.chapter);
+  assert.ok(Array.isArray(guide.keyPassages) && guide.keyPassages.length >= 4, "Numbers guide needs Scripture references");
+  assert.ok(Array.isArray(guide.studyQuestions) && guide.studyQuestions.length >= 3, "Numbers guide needs three study questions");
+  for (const reference of guide.keyPassages) checkReference(reference, "Numbers chapter " + guide.chapter);
+}
 for (const guide of allLeviticusGuides) {
   assert.equal(guide.book, "Leviticus", "Leviticus guide batch must remain scoped to Leviticus");
   assert.ok(Number.isInteger(guide.chapter) && guide.chapter >= 1 && guide.chapter <= 27, "Leviticus chapter number must be valid");
@@ -316,7 +328,7 @@ for (const path of [
   "zuriel-original-language-word-studies-batch-2.json","zuriel-names-and-titles-of-god-library.json","zuriel-connected-scripture-trails-batch-1.json",
   "zuriel-connected-scripture-trails-batch-2.json","zuriel-book-introductions-and-study-pathways.json",
   "zuriel-deep-study-guides.json","zuriel-bible-geography-atlas.json","zuriel-worship-study-pathways.json","zuriel-theological-comparisons.json",
-  "zuriel-chapter-introductions-genesis-01-10.json", "zuriel-chapter-introductions-leviticus-11-27.json"
+  "zuriel-chapter-introductions-genesis-01-10.json", "zuriel-chapter-introductions-leviticus-11-27.json", "zuriel-chapter-introductions-numbers-01-10.json"
 ]) assert.ok(loader.includes(path),"Study loader must include "+path);
 assert.ok(index.includes('src="zuriel-study-library-data.js"'),"Study library integration script must load");
 assert.match(worker, /zuriel-bible-offline-v\d+/, "Offline cache must use a versioned cache name");
@@ -328,7 +340,7 @@ for (const path of [
   "zuriel-original-language-word-studies-batch-2.json","zuriel-names-and-titles-of-god-library.json","zuriel-connected-scripture-trails-batch-1.json",
   "zuriel-connected-scripture-trails-batch-2.json","zuriel-book-introductions-and-study-pathways.json",
   "zuriel-deep-study-guides.json","zuriel-bible-geography-atlas.json","zuriel-worship-study-pathways.json","zuriel-theological-comparisons.json",
-  "zuriel-chapter-introductions-genesis-01-10.json", "zuriel-chapter-introductions-leviticus-11-27.json"
+  "zuriel-chapter-introductions-genesis-01-10.json", "zuriel-chapter-introductions-leviticus-11-27.json", "zuriel-chapter-introductions-numbers-01-10.json"
 ]) assert.ok(worker.includes("./data/"+path),"Offline cache must include "+path);
 assert.ok(loader.includes("window.ZurielStudyLibrary"),"Study library API must be exposed");
 assert.ok(loader.includes("openReference"),"Study references must open through the Bible reader");
@@ -428,4 +440,4 @@ assert.equal(linkWord(sampleVerse, sampleVerse,
   "A source annotation spanning beyond the selected word must not be attached");
 assert.equal(linkWord(sampleVerse, sampleVerse, [], 99).ok, false,
   "An out-of-range word selection must not produce a lexical link");
-console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus and 27 Leviticus chapter introductions; 19 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
+console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus and 10 Numbers chapter introductions; 19 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
