@@ -88,7 +88,7 @@
   panel.id = "zurielTranslationCompare";
   const summary = node("summary", "", "🌐 Compare another Bible translation (online)");
   const note = node("p", "ztc-note",
-    "The King James Version remains available offline. Load authorised translations online when connected. API.Bible chapters may be saved on this device and must be refreshed within 29 days. YouVersion passages are shown online only unless the publisher explicitly permits offline storage.");
+    "The King James Version remains available offline. Load authorised translations online when connected. API.Bible chapters may be saved on this device and must be refreshed within 14 days. YouVersion passages are shown online only unless the publisher explicitly permits offline storage.");
   const controls = node("div");
   const providerSelect = node("select");
   providerSelect.setAttribute("aria-label", "Choose online Bible translation provider");
@@ -315,7 +315,7 @@
   }
 
   const TRANSLATION_CACHE_DB = "zuriel-translation-cache-v1";
-  const API_BIBLE_CACHE_MAX_AGE = 29 * 24 * 60 * 60 * 1000;
+  const API_BIBLE_CACHE_MAX_AGE = 14 * 24 * 60 * 60 * 1000;
 
   let translationDb = null;
   let translationDbPromise = null;
@@ -591,6 +591,14 @@
     if (!copyright && !promotional) {
       throw new Error("Publisher attribution was not supplied. Zuriel has withheld this passage until its attribution can be verified.");
     }
+    if (selectedProvider === "api-bible" && !offline) {
+      const fumsToken = payload && payload.meta && typeof payload.meta.fumsToken === "string"
+        ? payload.meta.fumsToken.trim() : "";
+      if (!fumsToken || typeof window.fums !== "function") {
+        throw new Error("API.Bible Fair Use reporting is not ready. Zuriel has withheld this chapter until reporting can be completed.");
+      }
+      window.fums("trackView", fumsToken);
+    }
     const providerName = selectedProvider === "youversion" ? "YouVersion" : "API.Bible";
     const selectedLabel = select.options[select.selectedIndex]
       ? String(select.options[select.selectedIndex].textContent || "").split("—").slice(1).join("—").trim()
@@ -604,9 +612,9 @@
       copyright,
       promotional,
       offline
-        ? "Offline copy saved on this device. API.Bible content must be refreshed online within 29 days."
+        ? "Offline copy saved on this device. API.Bible content must be refreshed online within 14 days."
         : (selectedProvider === "api-bible"
-          ? "This chapter is saved on this device for offline reading; it must be refreshed online within 29 days."
+          ? "This chapter is saved on this device for offline reading; it must be refreshed online within 14 days."
           : "YouVersion publisher text is displayed online only; no offline copy has been saved.")
     ].filter(Boolean).join(" ");
     attribution.hidden = false;
