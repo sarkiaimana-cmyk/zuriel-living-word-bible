@@ -232,7 +232,7 @@ async function handleYouVersionRequest(request, env, dependencies, cors) {
     upstreamUrl = new URL(YVP_BASE + "/bibles");
     upstreamUrl.searchParams.append("language_ranges[]", "en");
     upstreamUrl.searchParams.set("page_size", "99");
-    if (token) upstreamUrl.searchParams.set("next_page_token", token);
+    if (token) upstreamUrl.searchParams.set("page_token", token);
     kind = "bibles";
   } else {
     const match = url.pathname.match(/^\/api\/youversion\/bibles\/(\d+)\/passages\/([A-Z0-9]{3}\.\d{1,3}(?:\.\d{1,3}(?:-\d{1,3})?)?)$/);
