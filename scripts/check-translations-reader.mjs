@@ -53,7 +53,8 @@ requireText(client, 'return provider === "api-bible"', "Only the explicitly supp
 requireText(client, "if (!canStoreOffline(provider)) return null", "Block unverified provider cache reads");
 requireText(client, "if (!canStoreOffline(provider)) return false", "Block unverified provider cache writes");
 requireText(client, "if (canStoreOffline(selectedProvider))", "Only permitted provider text is cached after online retrieval");
-requireText(client, "downloadButton.hidden = !canStoreOffline(provider);\\n        downloadButton.disabled = !canStoreOffline(provider);", "Home translation shortcuts must keep YouVersion downloads hidden and disabled");
+requireText(client, "downloadButton.hidden = !canStoreOffline(provider);", "Home translation shortcuts must hide downloads when publisher rights do not permit offline storage");
+requireText(client, "downloadButton.disabled = !canStoreOffline(provider);", "Home translation shortcuts must disable downloads when publisher rights do not permit offline storage");
 requireText(client, "This YouVersion passage is online-only", "Prevent bulk offline downloads of unverified YouVersion licences");
 requireText(client, '"./version.json"', "Offline-capable local release metadata discovery");
 requireText(client, "indexedDB.open(TRANSLATION_CACHE_DB, 2)", "IndexedDB translation cache");
