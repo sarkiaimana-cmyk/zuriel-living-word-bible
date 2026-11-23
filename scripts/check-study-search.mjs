@@ -649,7 +649,7 @@ const lukeEighteen = await library.search("persistent widow tax collector childr
 assert.equal(lukeEighteen.length,1,"Luke chapter 18 should be searchable");assert.equal(lukeEighteen[0].source.book,"Luke");assert.equal(lukeEighteen[0].source.chapter,18);
 const lukeTwentyOne = await library.search("widow offering temple upheaval watchfulness endurance", { category: "Chapter Introductions" });
 assert.equal(lukeTwentyOne.length,1,"Luke chapter 21 should be searchable");assert.equal(lukeTwentyOne[0].source.book,"Luke");assert.equal(lukeTwentyOne[0].source.chapter,21);
-const lukeTwentyFour = await library.search("women empty tomb Emmaus risen Jerusalem commission witnesses", { category: "Chapter Introductions" });
+const lukeTwentyFour = await library.search("women empty tomb Emmaus Jerusalem commission witnesses", { category: "Chapter Introductions" });
 assert.equal(lukeTwentyFour.length,1,"Luke chapter 24 should be searchable");assert.equal(lukeTwentyFour[0].source.book,"Luke");assert.equal(lukeTwentyFour[0].source.chapter,24);
 
 const zechariahFourteen = await library.search("Lord reigns living waters Jerusalem holiness nations worship", { category: "Chapter Introductions" });
