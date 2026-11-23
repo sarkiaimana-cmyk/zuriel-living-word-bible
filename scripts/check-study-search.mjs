@@ -883,7 +883,7 @@ assert.equal(johnTen.length,1,"John chapter 10 should be searchable");assert.equ
 
 const oneCorOne = await library.search("prestige", { category: "Chapter Introductions" });
 assert.equal(oneCorOne.length,1,"1 Corinthians chapter 1 should be searchable");assert.equal(oneCorOne[0].source.book,"1 Corinthians");assert.equal(oneCorOne[0].source.chapter,1);
-const oneCorTwo = await library.search("worldly standards graciously revealed", { category: "Chapter Introductions" });
+const oneCorTwo = await library.search("discern graciously revealed", { category: "Chapter Introductions" });
 assert.equal(oneCorTwo.length,1,"1 Corinthians chapter 2 should be searchable");assert.equal(oneCorTwo[0].source.book,"1 Corinthians");assert.equal(oneCorTwo[0].source.chapter,2);
 const oneCorThree = await library.search("jealousy quarrelling", { category: "Chapter Introductions" });
 assert.equal(oneCorThree.length,1,"1 Corinthians chapter 3 should be searchable");assert.equal(oneCorThree[0].source.book,"1 Corinthians");assert.equal(oneCorThree[0].source.chapter,3);
