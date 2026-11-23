@@ -49,6 +49,18 @@ check("offline related word cards display original script, contextual gloss and 
 check("offline related word-study references can open in the reader",
   study.includes("studyLibrary.openReference(reference, referenceButton, status)"));
 
+check("full lexicon failures fall back to the curated offline index when an exact Strong's entry exists",
+  study.includes("window.ZurielLexiconStudyIndex") &&
+  study.includes("offlineIndex.findById(id)") &&
+  study.includes("Offline lexicon index — "));
+check("offline lexicon fallback clearly distinguishes study labels from full dictionary senses",
+  study.includes("not a complete word definition") &&
+  study.includes("full lexicon senses and detailed morphology are not available offline"));
+check("offline lexicon references open the matching Bible chapter and verse",
+  study.includes("offlineEntry.keyReferences.forEach") &&
+  study.includes("window.openChapter(book, Number(match[2]))") &&
+  study.includes("window.selectBibleVerse(Number(match[3]))"));
+
 if (failures.length) {
   console.error("Contextual word-study layout checks failed:");
   failures.forEach(item => console.error(" - " + item));

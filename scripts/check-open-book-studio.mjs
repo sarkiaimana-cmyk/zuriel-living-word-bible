@@ -110,6 +110,15 @@ if (!home.includes('const revelationResponse = Object.assign({}, response || {})
 if (!home.includes('"HE IS " + identityTitle.toUpperCase()')) failures.push("WHO HE IS title is not carried into the shareable declaration.");
 if (!home.includes('window.ZurielLibrary.openGloryVerse(\n          item.reference, exactText, "KJV", revelationResponse')) failures.push("WHO HE IS card does not pass its exact KJV passage and title to the card studio.");
 if (!home.includes('id="zurielOpenBookFaithCard"')) failures.push("The daily open-book faith card was removed.");
+if (!home.includes('id="zurielOpenBookSaveCard"')) failures.push("Home open-book card has a direct save action.");
+if (!home.includes('id="zurielOpenBookSavedCards"')) failures.push("Home open-book card has a direct saved-cards destination.");
+if (!home.includes('document.querySelector("#zgsSaveImage")')) failures.push("Home save action must invoke the PNG image export, not the My Library draft-save control.");
+if (!home.includes("saveImageButton.click();")) failures.push("Home save action must trigger the actual image-to-Gallery export.");
+if (!home.includes("window.ZurielMedia.isAvailable()") || !home.includes("window.ZurielMedia.saveImage")) failures.push("Home save action must require the native Android Gallery bridge.");
+if (!home.includes("Saved to your phone's Gallery")) failures.push("Home must report success only after Android confirms Gallery saving.");
+if (!home.includes("replace(/^\\d+\\.\\s*/")) failures.push("Home Gallery export must remove only the leading KJV verse number from the loaded passage.");
+if (!home.includes("if (studioOpened) navigate(\"home\")")) failures.push("Home save flow must return the reader to Home after the Gallery export attempt.");
+if (!library.includes("openSavedGloryVerseCards: function")) failures.push("Saved-card destination does not open the saved Glory Verse collection.");
 if (!readerToolbar.includes("zurielReaderTopControls")) failures.push("Reader controls must be grouped into one top toolbar.");
 if (!readerToolbar.includes("zurielReaderViewTabs")) failures.push("Reader must show Scripture, Meaning and Original Words tabs.");
 if (!readerToolbar.includes("data-view=\"scripture\"") || !readerToolbar.includes("data-view=\"meaning\"") || !readerToolbar.includes("data-view=\"original\"")) failures.push("All three reader view tabs must be present.");
@@ -118,22 +127,14 @@ if (!home.includes('<span>His Word...</span><em>My Life... My Victory!</em>')) f
 if (!home.includes('class="zob-ribbon zob-declaration-ribbon">MY DECLARATION</span>')) failures.push("The right page must be labelled MY DECLARATION.");
 if (!home.includes("THE WORD • THE TRUTH • THE LIFE")) failures.push("The approved three-part Zuriel footer tagline is missing.");
 if (!home.includes('photo-1470770841072-f978cf4d019e')) failures.push("The open-book card must retain its scenic photographic landscape.");
-if (!home.includes("data:image/svg+xml,") || !home.includes("linearGradient id=\"lake\"")) failures.push("The open-book card must include its own offline scenic landscape fallback.");
+if (!home.includes("data:image/svg+xml,") || !home.includes("linearGradient%20id%3D%22lake%22")) failures.push("The open-book card must include its own offline scenic landscape fallback.");
 if (!home.includes("@media(max-width:420px)") || !home.includes("min-height:320px")) failures.push("The open-book card must keep both pages readable on narrow Android screens.");
 if (!home.includes(".zob-scripture-page") || !home.includes(".zob-response-page")) failures.push("The two-page book must retain separate curved page treatments.");
-if (!home.includes("min-height:280px") || !home.includes("min-height:280px;")) failures.push("The two-page book spread must preserve comfortable mobile reading space.");
+if (!home.includes("min-height:300px") || !home.includes("min-height:300px;")) failures.push("The two-page book spread must preserve comfortable mobile reading space.");
 if (!home.includes("🔥")) failures.push("The Zuriel footer flame mark is missing.");
 for (const reference of ["Psalm 23:1", "Isaiah 41:10", "Philippians 4:13"]) {
   if (!home.includes('data-reference="' + reference + '"')) failures.push("The daily Scripture card for " + reference + " was removed.");
 }
-if (failures.length) {
-  console.error("Open Book Card Studio checks failed:");
-  failures.forEach(item => console.error(" - " + item));
-  process.exitCode = 1;
-} else {
-  console.log("Open Book Card Studio checks passed: live preview, typography controls, adaptive long-content layout, PNG export, native share/download fallback, offline and Android validation.");
-}
-
 if (!readerToolbar.includes("min-height:35px")) failures.push("Reader controls must stay compact and narrow.");
 if (!readerToolbar.includes("min-height:30px")) failures.push("Translation shortcuts must use compact pills.");
 if (!readerToolbar.includes("min-height:34px")) failures.push("Reader view tabs must stay compact.");
@@ -150,3 +151,17 @@ if (!home.includes(".zob-page {box-shadow:inset 0 0 18px")) failures.push("Open-
 if (!home.includes("Glory Verse Affirmation")) failures.push("Open-book card must retain its Glory Verse Affirmation label.");
 if (!home.includes("His Word...")) failures.push("Open-book card must retain the approved top-line wording.");
 if (!home.includes("THE WORD • THE TRUTH • THE LIFE")) failures.push("Open-book card must retain the Zuriel footer tagline.");
+
+if (!home.includes('id="zurielOpenBookSavedCards"')) failures.push("Home must expose the My Saved Cards shortcut.");
+if (!library.includes('id="zgsSavedHeading"') || !library.includes('id="zgsSavedCards"')) failures.push("The Glory Verse Studio must render a visible saved-card destination.");
+if (!library.includes('localStorage.getItem(savedCardsKey)') || !library.includes('localStorage.setItem(savedCardsKey')) failures.push("Saved Glory Verse cards must persist in on-device storage.");
+if (!library.includes('openSavedGloryVerseCards: function') || !library.includes('openPage("affirmation")')) failures.push("My Saved Cards must return to the saved-card section of the Studio.");
+
+if (failures.length) {
+  console.error("Open Book Card Studio checks failed:");
+  failures.forEach(item => console.error(" - " + item));
+  process.exitCode = 1;
+} else {
+  console.log("Open Book Card Studio checks passed: live preview, typography controls, adaptive long-content layout, PNG export, native share/download fallback, offline and Android validation.");
+}
+

@@ -1,7 +1,8 @@
 /* Zuriel in-app update centre — safe web refresh checks and transparent Android status. */
 (function () {
   "use strict";
-  const APP_VERSION = "1.4.115";
+  const APP_VERSION = "2.10.2";
+  const DISPLAY_VERSION = "2.10";
   const VERSION_URL = "https://raw.githubusercontent.com/sarkiaimana-cmyk/zuriel-living-word-bible/main/version.json";
   function mount() {
     const panel = document.getElementById("zurielSettingsPanel");
@@ -30,10 +31,10 @@
         if (!info || !info.version) throw new Error("The update information could not be verified.");
         const newer = compareVersions(info.version, APP_VERSION) > 0;
         if (newer) {
-          status.textContent = "A newer Zuriel version is available: " + info.version + ".";
+          status.textContent = "A newer Zuriel version is available: " + (info.displayVersion || info.version) + ".";
           notes.textContent = info.releaseNotes || "Open the latest published version when ready.";
         } else {
-          status.textContent = "You are using the latest listed Zuriel version (" + APP_VERSION + ").";
+          status.textContent = "You are using the latest listed Zuriel version (" + DISPLAY_VERSION + ").";
           notes.textContent = info.releaseNotes || "No newer version is listed.";
         }
         if (!isNativeApp() && "serviceWorker" in navigator) {
@@ -131,12 +132,32 @@
             status.textContent += " Android release check completed. Your installed app and personal records are unchanged.";
           }
         }
+        // Record only a fully completed check; failed release or service-worker checks can retry.
+        saveLastSuccessfulCheck();
       } catch (error) {
         status.textContent = error.message || "Could not check for updates. Please try again when connected.";
       } finally {
         button.disabled = false;
       }
     });
+    // Quietly check published updates after startup and when connectivity returns.
+    // The six-hour success window avoids repeated network requests; failed checks remain retryable.
+    function automaticUpdateCheck() {
+      if (!navigator.onLine || button.disabled) return;
+      const lastSuccessfulCheck = readLastSuccessfulCheck();
+      if (Date.now() - lastSuccessfulCheck < 6 * 60 * 60 * 1000) return;
+      button.click();
+    }
+    window.setTimeout(automaticUpdateCheck, 3500);
+    window.addEventListener("online", automaticUpdateCheck);
+  }
+  function readLastSuccessfulCheck() {
+    try { return Number(localStorage.getItem("zuriel_update_last_successful_check_v1")) || 0; }
+    catch (_) { return 0; }
+  }
+  function saveLastSuccessfulCheck() {
+    try { localStorage.setItem("zuriel_update_last_successful_check_v1", String(Date.now())); }
+    catch (_) { /* Update checks must still work if browser storage is unavailable. */ }
   }
   function isNativeApp() {
     return !!(window.Capacitor && typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform());

@@ -6,20 +6,121 @@
     ["Theological Comparisons", "./data/zuriel-theological-comparisons.json", "entries", "theology"],
     ["Commentary & Exegesis", "./data/zuriel-passage-commentary-expansion.json", "entries", "commentary"],
     ["Topical Studies", "./data/zuriel-topical-bible-study-library-batch-2.json", "entries", "topic"],
+    ["Topical Studies", "./data/zuriel-topical-bible-study-library-batch-3.json", "entries", "topic"],
     ["Bible Dictionary", "./data/zuriel-biblical-dictionary-expansion.json", "entries", "dictionary"],
     ["Hebrew & Greek Word Studies", "./data/zuriel-original-language-word-studies-batch-1.json", "entries", "word"],
+    ["Hebrew & Greek Word Studies", "./data/zuriel-original-language-word-studies-batch-2.json", "entries", "word"],
     ["Names & Titles of God", "./data/zuriel-names-and-titles-of-god-library.json", "entries", "name"],
     ["Connected Scripture Trails", "./data/zuriel-connected-scripture-trails-batch-1.json", "trails", "trail"],
     ["Connected Scripture Trails", "./data/zuriel-connected-scripture-trails-batch-2.json", "trails", "trail"],
     ["Book Introductions", "./data/zuriel-book-introductions-and-study-pathways.json", "bookIntroductions", "introduction"],
     ["Book Study Pathways", "./data/zuriel-book-introductions-and-study-pathways.json", "bookStudyPathways", "book-pathway"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-genesis-01-10.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-exodus-01-10.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-exodus-11-20.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-exodus-21-30.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-exodus-31-40.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-leviticus-01-10.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-leviticus-11-27.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-numbers-01-10.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-numbers-11-18.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-numbers-19-36.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-deuteronomy-01-17.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-deuteronomy-18-34.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-joshua-01-12.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-joshua-13-24.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-judges-01-10.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-judges-11-21.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-ruth-01-04.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-1-samuel-01-16.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-1-samuel-17-31.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-2-samuel-01-12.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-2-samuel-13-24.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-1-kings-01-11.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-1-kings-12-22.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-2-kings-01-13.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-2-kings-14-25.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-1-chronicles-01-15.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-1-chronicles-16-29.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-2-chronicles-01-18.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-2-chronicles-19-36.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-ezra-01-10.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-nehemiah-01-13.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-esther-01-10.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-job-01-21.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-job-22-42.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-psalms-01-30.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-psalms-31-60.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-psalms-61-90.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-psalms-91-120.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-psalms-121-150.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-proverbs-01-31.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-ecclesiastes-01-12.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-song-of-solomon-01-08.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-isaiah-01-22.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-isaiah-23-44.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-isaiah-45-66.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-jeremiah-01-26.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-jeremiah-27-52.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-lamentations-01-05.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-ezekiel-01-24.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-ezekiel-25-48.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-daniel-01-12.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-hosea-01-14.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-joel-01-03.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-amos-01-09.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-obadiah-01.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-jonah-01-04.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-micah-01-07.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-nahum-01-03.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-habakkuk-01-03.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-zephaniah-01-03.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-haggai-01-02.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-zechariah-01-14.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-matthew-01-14.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-matthew-15-28.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-mark-01-08.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-mark-09-16.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-malachi-01-04.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-john-01-10.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-luke-01-12.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-luke-13-24.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-john-11-12.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-john-13-21.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-acts-01-14.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-acts-15-28.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-romans-01-08.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-romans-09-16.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-1-corinthians-01-16.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-2-corinthians-01-13.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-galatians-01-06.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-ephesians-01-06.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-philippians-01-04.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-colossians-01-04.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-1-thessalonians-01-05.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-1-timothy-01-06.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-2-timothy-01-04.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-titus-01-03.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-philemon-01.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-hebrews-01-13.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-james-01-05.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-1-peter-01-05.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-2-peter-01-03.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-1-john-01-05.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-2-john-01.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-3-john-01.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-jude-01.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-revelation-01-22.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-2-thessalonians-01-03.json", "chapters", "chapter-introduction"],
+
     ["Deep Study Guides", "./data/zuriel-deep-study-guides.json", "guides", "guide"],
     ["Bible Geography", "./data/zuriel-bible-geography-atlas.json", "places", "place"],
     ["Bible Geography", "./data/zuriel-bible-geography-atlas.json", "journeys", "journey"],
+    ["Biblical Peoples, Kingdoms & Empires", "./data/zuriel-biblical-peoples-and-empires.json", "entries", "people-empire"],
     ["Songs, Hymns & Worship Studies", "./data/zuriel-worship-study-pathways.json", "pathways", "worship"]
   ];
 
-  const state = { items: [], ready: false, error: null, loading: null };
+  const state = { items: [], ready: false, error: null, loading: null, loaded: new Map(), failures: [] };
   const text = value => Array.isArray(value) ? value.map(text).filter(Boolean).join(" • ")
     : value && typeof value === "object" ? Object.values(value).map(text).filter(Boolean).join(" • ")
     : value === undefined || value === null ? "" : String(value);
@@ -31,7 +132,7 @@
   function summaryFor(item) {
     return text(item.contextAndMeaning || item.overview || item.definition ||
       item.significance || item.focus || item.summary || item.description ||
-      item.meaning || item.context || item.theme || item.subtitle || item.question || item.sharedGround);
+      item.meaning || item.contextualGloss || item.context || item.theme || item.subtitle || item.question || item.sharedGround);
   }
   function refsFor(item) {
     const values = item.references || item.scriptureReferences || item.keyPassages ||
@@ -47,28 +148,108 @@
     return Array.from(new Set(output));
   }
 
+  function normalizeSearchText(value) {
+    return String(value || "").normalize("NFKC").toLocaleLowerCase()
+      .normalize("NFD").replace(/\p{M}/gu, "")
+      .replace(/[^\p{L}\p{N}\s:.-]/gu, " ")
+      .replace(/\s+/g, " ").trim();
+  }
+
+  function rankSearchResults(items, query, category) {
+    const normalized = normalizeSearchText(query);
+    if (!normalized) return items.filter(item => !category || category === "all" || item.category === category);
+    const tokens = normalized.split(" ").filter(Boolean);
+    return items.map((item, index) => {
+      if (category && category !== "all" && item.category !== category) return null;
+      const searchable = item.searchText || normalizeSearchText(
+        item.title + " " + item.summary + " " + (item.references || []).join(" ") + " " + JSON.stringify(item.source || {})
+      );
+      if (!tokens.every(token => searchable.includes(token))) return null;
+      const title = normalizeSearchText(item.title);
+      const summary = normalizeSearchText(item.summary);
+      const refs = normalizeSearchText((item.references || []).join(" "));
+      let score = 0;
+      if (title === normalized) score += 1200;
+      else if (title.startsWith(normalized)) score += 700;
+      else if (title.includes(normalized)) score += 450;
+      if (summary.includes(normalized)) score += 220;
+      if (refs.includes(normalized)) score += 180;
+      if (searchable.includes(normalized)) score += 100;
+      tokens.forEach(token => {
+        if (title.includes(token)) score += 45;
+        if (summary.includes(token)) score += 20;
+        if (refs.includes(token)) score += 25;
+      });
+      return { item, index, score };
+    }).filter(Boolean).sort((a, b) => b.score - a.score || a.index - b.index)
+      .map(result => result.item);
+  }
+
+  function sourceKey(source) {
+    return JSON.stringify(source);
+  }
+
   async function loadAll() {
     if (state.loading) return state.loading;
-    state.loading = Promise.all(SOURCES.map(async source => {
+    const pending = SOURCES.filter(source => !state.loaded.has(sourceKey(source)));
+    if (!pending.length) {
+      state.ready = state.failures.length === 0;
+      return state.items;
+    }
+
+    state.loading = Promise.allSettled(pending.map(async source => {
       const response = await fetch(source[1]);
       if (!response.ok) throw new Error("Could not load " + source[1] + " (" + response.status + ").");
       const data = await response.json();
       if (!data || data.schemaVersion !== 1 || !Array.isArray(data[source[2]])) {
         throw new Error("Study resource format is invalid: " + source[1]);
       }
-      return data[source[2]].map(item => ({
-        category: source[0], kind: source[3], title: titleFor(item, source[3]),
-        summary: summaryFor(item), references: refsFor(item), source: item
-      }));
-    })).then(groups => {
-      state.items = groups.flat();
-      state.ready = true;
+      const items = data[source[2]].map(item => {
+        const title = titleFor(item, source[3]);
+        const summary = summaryFor(item);
+        const references = refsFor(item);
+        const searchText = normalizeSearchText(
+          title + " " + summary + " " + references.join(" ") + " " + JSON.stringify(item)
+        );
+        return {
+          category: source[0], kind: source[3], title,
+          summary, references, source: item, searchText
+        };
+      });
+      return { source, items };
+    })).then(results => {
+      const failures = [];
+      results.forEach((result, index) => {
+        const source = pending[index];
+        if (result.status === "fulfilled") {
+          state.loaded.set(sourceKey(source), result.value.items);
+        } else {
+          failures.push({
+            source,
+            message: result.reason && result.reason.message
+              ? result.reason.message : "This study resource could not be loaded."
+          });
+        }
+      });
+      state.failures = failures;
+      state.items = SOURCES.flatMap(source => state.loaded.get(sourceKey(source)) || []);
+      state.ready = failures.length === 0;
+      state.error = failures.length
+        ? new Error(failures.length + " study resource dataset(s) could not be loaded.")
+        : null;
       return state.items;
-    }).catch(error => {
-      state.error = error;
-      throw error;
+    }).finally(() => {
+      state.loading = null;
     });
     return state.loading;
+  }
+
+  function unavailableSummary() {
+    if (!state.failures.length) return "";
+    const categories = Array.from(new Set(state.failures.map(entry => entry.source[0])));
+    const visible = categories.slice(0, 3).join(", ");
+    const additional = categories.length > 3 ? " and " + (categories.length - 3) + " more categories" : "";
+    return visible + additional + " (" + state.failures.length + " datasets)";
   }
 
   function make(tag, className, value) {
@@ -114,6 +295,8 @@
     target.appendChild(make("h3", "zsl-detail-title", item.title));
     target.appendChild(make("p", "zsl-detail-summary", item.summary || "Open the linked passages and study the source notes."));
     const fields = [
+      ["Bible book", ["book"]],
+      ["Chapter number", ["chapter"]],
       ["Question being compared", ["question"]],
       ["Shared Christian ground", ["sharedGround"]],
       ["Historical and literary context", ["historicalSetting", "historicalContext", "background", "literaryContext", "context"]],
@@ -192,6 +375,7 @@
       #zurielExpandedStudyLibrary .zsl-detail-section p{margin:0;line-height:1.6;font-size:13px;white-space:pre-wrap}
       #zurielExpandedStudyLibrary .zsl-position{padding:8px 0;border-top:1px solid #eee7d9}\n      #zurielExpandedStudyLibrary .zsl-reference{display:inline-block;margin:6px 6px 0 0;padding:8px 10px;min-height:38px;border:1px solid #b9c8d0;border-radius:8px;background:#f4f7f8;color:#183653;font-weight:700}
       #zurielExpandedStudyLibrary .zsl-status{min-height:22px;margin:8px 0;color:#42634f;font-size:12px}
+      #zurielExpandedStudyLibrary .zsl-retry{display:none;min-height:42px;padding:9px 13px;border:1px solid #9b8750;border-radius:9px;background:#f4efdf;color:#28445a;font-weight:700}
       @media(min-width:620px){#zurielExpandedStudyLibrary .zsl-controls{grid-template-columns:1fr 220px}}
     `;
     document.head.appendChild(style);
@@ -208,7 +392,7 @@
     root.id = "zurielExpandedStudyLibrary";
     root.innerHTML = "";
     root.appendChild(make("h3", "", "Explore the Expanded Study Library"));
-    root.appendChild(make("p", "zsl-intro", "Search passage commentary, topical studies, Bible dictionary entries, Hebrew and Greek word studies, Names of God, connected Scripture trails, book introductions, geography and worship studies. These are study aids, not replacement Scripture."));
+    root.appendChild(make("p", "zsl-intro", "Search passage commentary, topical studies, Bible dictionary entries, Hebrew and Greek word studies, Names of God, connected Scripture trails, book and chapter introductions, biblical places and journeys, historical peoples, kingdoms and empires, and worship studies. These are study aids, not replacement Scripture."));
 
     const controls = make("div", "zsl-controls");
     const search = make("input");
@@ -225,16 +409,33 @@
     const results=make("div","zsl-results");
     const detail=make("article","zsl-detail");
     const status=make("p","zsl-status","Loading offline study resources…");
-    root.append(results,detail,status);
+    const retry = make("button", "zsl-retry", "Retry unavailable resources");
+    retry.type = "button";
+    retry.addEventListener("click", async () => {
+      if (retry.disabled) return;
+      retry.disabled = true;
+      retry.textContent = "Retrying…";
+      try {
+        await loadAll();
+        showResults();
+        status.textContent = state.failures.length
+          ? state.items.length + " study resources available. Still unavailable: " + unavailableSummary() + ". You can retry again."
+          : state.items.length + " study resources loaded successfully. All available study datasets are ready.";
+        retry.style.display = state.failures.length ? "inline-block" : "none";
+      } catch (error) {
+        status.textContent = "Study resources could not be refreshed. Your Bible and saved records are unchanged.";
+      } finally {
+        retry.disabled = false;
+        retry.textContent = "Retry unavailable resources";
+      }
+    });
+    root.append(results,detail,status,retry);
     content.appendChild(root);
 
     function showResults() {
-      const query=search.value.trim().toLowerCase();
+      const query=search.value.trim();
       const selected=category.value;
-      const filtered=state.items.filter(item=>
-        (selected==="all"||item.category===selected) &&
-        (!query || (item.title+" "+item.summary+" "+item.references.join(" ")+" "+JSON.stringify(item.source)).toLowerCase().includes(query))
-      );
+      const filtered=rankSearchResults(state.items, query, selected);
       results.replaceChildren();
       filtered.slice(0,30).forEach(item=>{
         const action=make("button","zsl-result");
@@ -244,7 +445,7 @@
         action.addEventListener("click",()=>renderDetail(item,detail,status));
         results.appendChild(action);
       });
-      status.textContent=filtered.length+" matching study resources"+(filtered.length>30?"; showing the first 30. Refine your search to see more.":".");
+      status.textContent=filtered.length+" matching study resources"+(filtered.length>30?"; showing the first 30. Refine your search to see more.":".")+(state.failures.length?" Unavailable: "+unavailableSummary()+"; use Retry to try again.":"");
       if(!filtered.length) results.appendChild(make("p","","No matching entry. Try another word or category."));
     }
     search.addEventListener("input",showResults);
@@ -252,9 +453,13 @@
     loadAll().then(()=>{
       showResults();
       if(state.items.length) renderDetail(state.items[0],detail,status);
-      status.textContent=state.items.length+" study resources loaded. Search or choose a category to explore.";
+      status.textContent=state.failures.length
+        ? state.items.length+" study resources loaded. Temporarily unavailable: "+unavailableSummary()+". Available resources remain searchable."
+        : state.items.length+" study resources loaded. Search or choose a category to explore.";
+      retry.style.display=state.failures.length?"inline-block":"none";
     }).catch(error=>{
-      status.textContent="Some study resources could not load. Connect once to refresh this section; your Bible and saved records are unchanged.";
+      status.textContent="The study library could not start. Your Bible and saved records are unchanged. Please retry.";
+      retry.style.display="inline-block";
       console.error("Zuriel study library:",error);
     });
   }
@@ -269,11 +474,14 @@
 
   window.ZurielStudyLibrary = {
     load: loadAll,
-    search: function(query) {
-      const q=String(query||"").toLowerCase();
-      return loadAll().then(items=>items.filter(item=>
-        (item.title+" "+item.summary+" "+item.references.join(" ")+" "+JSON.stringify(item.source)).toLowerCase().includes(q)
-      ));
+    getStatus: function() {
+      return { ready: state.ready, loadedDatasets: state.loaded.size, failedDatasets: state.failures.map(entry => ({ category: entry.source[0], path: entry.source[1], message: entry.message })), itemCount: state.items.length };
+    },
+    search: function(query, options) {
+      const settings = options && typeof options === "object" ? options : {};
+      const category = typeof settings.category === "string" ? settings.category : "all";
+      const limit = Number.isInteger(settings.limit) ? Math.max(1, Math.min(settings.limit, 200)) : 200;
+      return loadAll().then(items => rankSearchResults(items, query, category).slice(0, limit));
     },
     openReference: openReference,
     renderDetail: renderDetail

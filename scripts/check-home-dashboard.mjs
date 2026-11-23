@@ -1,13 +1,18 @@
 import { readFile } from "node:fs/promises";
 
-const [home, library, index, worker, version, updates] = await Promise.all([
+const [home, library, index, worker, version, updates, settings] = await Promise.all([
   readFile(new URL("../zuriel-home.js", import.meta.url), "utf8"),
   readFile(new URL("../zuriel-library.js", import.meta.url), "utf8"),
   readFile(new URL("../index.html", import.meta.url), "utf8"),
   readFile(new URL("../sw.js", import.meta.url), "utf8"),
   readFile(new URL("../version.json", import.meta.url), "utf8"),
-  readFile(new URL("../zuriel-updates.js", import.meta.url), "utf8")
+  readFile(new URL("../zuriel-updates.js", import.meta.url), "utf8"),
+  readFile(new URL("../zuriel-settings.js", import.meta.url), "utf8")
 ]);
+
+requireText(settings, 'id="zurielAboutSection"', "About Zuriel inside Settings");
+requireText(settings, 'id="zurielBibleCopyrightCredits"', "Translation copyright acknowledgements inside Settings");
+forbidText(index, 'id="zurielBibleCopyrightCredits"', "About Zuriel copyright panel in the footer");
 const failures = [];
 function requireText(source, fragment, label) {
   if (!source.includes(fragment)) failures.push(label + " is missing.");

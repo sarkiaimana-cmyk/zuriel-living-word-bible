@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import { runInNewContext } from "node:vm";
 
 const source = await readFile(new URL("../zuriel-reading-plans.js", import.meta.url), "utf8");
+const backupSource = await readFile(new URL("../zuriel-backup.js", import.meta.url), "utf8");
 const store = new Map();
 const localStorage = {
   getItem: key => store.has(key) ? store.get(key) : null,
@@ -14,10 +15,28 @@ const api = sandbox.window.ZurielReadingPlans;
 
 assert.ok(api, "Reading plan module must expose its public API.");
 const plans = api.list();
-assert.equal(plans.length, 10, "Ten curated offline reading plans should be available.");
+assert.equal(plans.length, 20, "Twenty curated offline reading plans should be available.");
+for (const id of ["promises-of-god-7", "fruit-of-spirit-7", "healing-and-comfort-7", "family-and-home-7", "purposeful-work-7", "psalms-for-every-season-7", "parables-of-jesus-7", "the-early-church-7", "courage-and-calling-7", "knowing-gods-character-7"]) {
+  const plan = plans.find(item => item.id === id);
+  assert.ok(plan, "New guided journey must be present: " + id);
+  assert.equal(plan.duration, 7, "Each new guided journey must contain seven days.");
+}
+const backupDurationsMatch = backupSource.match(/const READING_PLAN_DURATIONS = (\{[\s\S]*?\n  \});/);
+assert.ok(backupDurationsMatch, "Encrypted backup restore must define supported reading-plan durations.");
+const backupDurations = runInNewContext("(" + backupDurationsMatch[1] + ")");
+for (const plan of plans) {
+  assert.equal(backupDurations[plan.id], plan.duration,
+    "Encrypted backup and restore must preserve progress for " + plan.title + ".");
+}
+assert.equal(Object.keys(backupDurations).length, plans.length,
+  "Backup plan allow-list must stay aligned with the complete curated plan library.");
+
+const planIds = plans.map(plan => plan.id);
+assert.equal(new Set(planIds).size, planIds.length, "Every reading plan must have a unique stable ID.");
 for (const plan of plans) {
   assert.equal(plan.passages.length, plan.duration);
-  assert.ok(plan.title && plan.id);
+  assert.ok(plan.title && plan.id && plan.description, "Every plan needs a title, stable ID and description.");
+  assert.ok(plan.passages.every(reference => typeof reference === "string" && reference.trim()), "Every daily passage must contain a non-empty Scripture reference.");
 }
 const monthPlan = plans.find(plan => plan.id === "walk-with-jesus-30");
 assert.ok(monthPlan, "The 30-day Walk with Jesus plan must be available.");
@@ -65,6 +84,6 @@ assert.equal(api.parseReference("John 0"), null, "Chapter zero must be rejected.
 assert.equal(api.parseReference("not a Scripture reference"), null);
 
 const allReferences = plans.flatMap(plan => plan.passages);
-assert.equal(allReferences.length, 93);
+assert.equal(allReferences.length, 163);
 for (const reference of allReferences) assert.ok(api.parseReference(reference), "Every curated passage must parse: " + reference);
-console.log("Reading plan runtime checks passed: ten plans including a 30-day Jesus journey, 93 passages, private progress persistence, duplicate-day cleanup, invalid-state rejection and Scripture-reference parsing.");
+console.log("Reading plan runtime checks passed: twenty plans including a 30-day Jesus journey and ten new themed journeys, 163 passages, private progress persistence, duplicate-day cleanup, invalid-state rejection and Scripture-reference parsing.");

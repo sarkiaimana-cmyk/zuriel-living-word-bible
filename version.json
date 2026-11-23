@@ -1,4 +1,5 @@
 {
-  "version": "1.4.115",
-  "releaseNotes": "Improved secure in-app Android update matching, complete faith-card image exports for long prayers and declarations, and refinements to the Scripture reader, Library drawers and Open Book Card Studio. Existing offline KJV and personal records remain protected."
+  "version": "2.10.2",
+  "displayVersion": "2.10",
+  "releaseNotes": "Zuriel version 2.10.2: strengthens Android release publication and update integrity, while continuing the expanded offline Bible study library, complete book and chapter introductions, and safeguards for saved personal study records."
 }

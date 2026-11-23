@@ -17,7 +17,28 @@
     faithCards: "zuriel-saved-faith-cards-v1"
   };
   const MAX_FILE = 8 * 1024 * 1024;
-  const READING_PLAN_DURATIONS = { "meet-jesus-7": 7, "growing-in-faith-7": 7, "prayer-and-trust-7": 7, "walk-with-jesus-30": 30 };
+  const READING_PLAN_DURATIONS = {
+    "meet-jesus-7": 7,
+    "growing-in-faith-7": 7,
+    "prayer-and-trust-7": 7,
+    "walk-with-jesus-30": 30,
+    "spiritual-warfare-7": 7,
+    "new-life-in-christ-7": 7,
+    "praying-through-scripture-7": 7,
+    "wisdom-for-daily-life-7": 7,
+    "hope-in-hard-seasons-7": 7,
+    "forgiveness-and-peace-7": 7,
+    "promises-of-god-7": 7,
+    "fruit-of-spirit-7": 7,
+    "healing-and-comfort-7": 7,
+    "family-and-home-7": 7,
+    "purposeful-work-7": 7,
+    "psalms-for-every-season-7": 7,
+    "parables-of-jesus-7": 7,
+    "the-early-church-7": 7,
+    "courage-and-calling-7": 7,
+    "knowing-gods-character-7": 7
+  };
   let root, selectedBackup = null;
 
   function node(tag, cls, text) {

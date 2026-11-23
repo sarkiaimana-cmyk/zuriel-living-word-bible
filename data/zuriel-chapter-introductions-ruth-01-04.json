@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "title": "Zuriel Chapter Introductions — Ruth 1–4 (Complete single part)",
+  "description": "Four chapter-specific study guides covering Naomi and Ruth's return, gleaning and provision, the threshing-floor request, public redemption, family restoration and the line of David.",
+  "chapters": [
+    {
+      "id": "ruth-ch01",
+      "book": "Ruth",
+      "chapter": 1,
+      "title": "Ruth 1 — Loss, loyalty, and the return to Bethlehem",
+      "historicalContext": "Ruth opens during the period of the judges, a time of instability and hardship. Famine leads Elimelech's family from Bethlehem to Moab, where death leaves Naomi, Ruth, and Orpah facing uncertain futures.",
+      "overview": "Naomi loses her husband and two sons. She urges her daughters-in-law to return to their families, but Ruth pledges loyalty to Naomi and to Naomi's people and God. The two women return to Bethlehem at the beginning of the barley harvest.",
+      "studyObservation": "The chapter portrays grief without minimizing it and highlights Ruth's costly loyalty. Naomi's bitterness is voiced honestly, while the arrival at harvest quietly introduces the possibility of provision and renewal.",
+      "connectionNotes": "Judges 21:25 describes the wider period. Ruth 2 develops the harvest setting, and Ruth 4 reveals the family connection that will shape the story. Naomi's return also recalls the theme of homecoming found in the Torah.",
+      "keyPassages": [
+        "Ruth 1:1–5",
+        "Ruth 1:6–14",
+        "Ruth 1:15–18",
+        "Ruth 1:19–22"
+      ],
+      "studyQuestions": [
+        "What losses shape Naomi's return to Bethlehem?",
+        "What does Ruth's pledge reveal about her loyalty and commitment?",
+        "How does the barley harvest change the final scene?"
+      ],
+      "lifeApplication": "Remain compassionate with people who are grieving, and offer loyalty through practical presence rather than easy explanations. Allow honest lament while staying open to the possibility of new beginnings.",
+      "interpretiveCaution": "The story's account of migration and widowhood belongs to its ancient social setting. Ruth's pledge should not be used to pressure people to remain in unsafe relationships or to deny the legitimacy of grief.",
+      "readingNote": "Read Ruth 1 slowly, especially Naomi's honest words in verses 20–21. Notice how the chapter ends with a small sign of provision rather than an instant resolution."
+    },
+    {
+      "id": "ruth-ch02",
+      "book": "Ruth",
+      "chapter": 2,
+      "title": "Ruth 2 — Ruth gleans in Boaz's field",
+      "historicalContext": "Naomi and Ruth need food and security. The law's provision for gleaning gives Ruth a way to gather grain, and the narrative introduces Boaz as a relative of Elimelech.",
+      "overview": "Ruth goes to glean behind harvesters and arrives in Boaz's field. Boaz asks about her, learns of her loyalty to Naomi, and instructs his workers to protect her and leave extra grain. Ruth returns with an abundant amount and tells Naomi what happened.",
+      "studyObservation": "The chapter presents kindness through concrete actions: safe working conditions, access to food, protection from harassment, and generosity that preserves Ruth's dignity. Boaz recognizes Ruth's character without treating her as an object of charity.",
+      "connectionNotes": "Leviticus 19:9–10 and Deuteronomy 24:19–22 provide the gleaning laws behind the setting. Ruth 3 continues the relationship with Boaz, and Proverbs 31:10–31 offers a later portrait of diligent household care with a different literary purpose.",
+      "keyPassages": [
+        "Ruth 2:1–7",
+        "Ruth 2:8–13",
+        "Ruth 2:14–18",
+        "Ruth 2:19–23"
+      ],
+      "studyQuestions": [
+        "What protections and instructions does Boaz give Ruth?",
+        "How does Ruth's gleaning connect with Israel's law for the poor and foreigner?",
+        "What does Naomi recognize about Boaz's relationship to their family?"
+      ],
+      "lifeApplication": "Make generosity practical: protect workers, share resources, and create safe ways for people in need to support themselves with dignity.",
+      "interpretiveCaution": "The gleaning law belongs to ancient Israel's agricultural system. It should inspire justice and provision but should not be presented as a substitute for fair wages, social protection, or modern labour rights.",
+      "readingNote": "Read Ruth 2 with Leviticus 19:9–10 and Deuteronomy 24:19–22. Observe how the law's provision is embodied through Boaz's specific actions."
+    },
+    {
+      "id": "ruth-ch03",
+      "book": "Ruth",
+      "chapter": 3,
+      "title": "Ruth 3 — Ruth seeks security and Boaz responds with integrity",
+      "historicalContext": "Naomi considers Ruth's future and proposes a plan connected with the family redeemer. The chapter takes place at the threshing floor, a setting that requires careful reading of its cultural customs and narrative restraint.",
+      "overview": "Naomi instructs Ruth to approach Boaz after the harvest celebration. Ruth asks him to spread his garment over her as a sign of family responsibility. Boaz praises her loyalty but explains that a nearer redeemer has prior rights, and he promises to resolve the matter properly.",
+      "studyObservation": "The chapter's tension is resolved through Boaz's restraint and commitment to public procedure. Ruth acts courageously, while Boaz refuses to bypass the nearer relative or exploit the vulnerable situation.",
+      "connectionNotes": "Ruth 2 introduces Boaz's generosity, and Ruth 4 records the public resolution of the redemption matter. Deuteronomy 25:5–10 describes levirate marriage, a related but distinct family obligation; the customs in Ruth should not be treated as identical in every detail.",
+      "keyPassages": [
+        "Ruth 3:1–5",
+        "Ruth 3:6–9",
+        "Ruth 3:10–13",
+        "Ruth 3:14–18"
+      ],
+      "studyQuestions": [
+        "Why does Naomi seek a secure future for Ruth?",
+        "What does Ruth ask Boaz to do, and what does the request signify?",
+        "Why does Boaz insist on addressing the nearer redeemer first?"
+      ],
+      "lifeApplication": "Seek security and support through transparent, respectful processes. Honour boundaries and ensure that vulnerability is never used as an opportunity for pressure or exploitation.",
+      "interpretiveCaution": "The threshing-floor scene is culturally specific and is interpreted in different ways. The text does not authorize sexual coercion or secret arrangements; Boaz's response emphasizes integrity, consent, and proper procedure.",
+      "readingNote": "Compare Ruth 3 with chapter 4. Notice how the private request is followed by a public and accountable resolution."
+    },
+    {
+      "id": "ruth-ch04",
+      "book": "Ruth",
+      "chapter": 4,
+      "title": "Ruth 4 — Redemption, family restoration, and the line of David",
+      "historicalContext": "The final chapter resolves the question of family redemption and inheritance. The story moves from the threshing floor to the town gate, where legal matters are handled before witnesses.",
+      "overview": "Boaz meets the nearer redeemer at the gate and explains the land and family responsibilities. When the man declines, Boaz publicly accepts the role, marries Ruth, and the community blesses them. Ruth bears Obed, who becomes the grandfather of David, and Naomi's family story is renewed.",
+      "studyObservation": "The conclusion links ordinary acts of loyalty and care with a much wider biblical story. The genealogy shows that Ruth, a Moabite woman, becomes part of the line leading to David, and later Matthew includes her in Jesus' genealogy.",
+      "connectionNotes": "Ruth 1–3 leads directly to the public redemption in this chapter. The genealogy connects with 1 Samuel 16 and 2 Samuel 7, while Matthew 1:5–6 places Ruth in the genealogy of Jesus.",
+      "keyPassages": [
+        "Ruth 4:1–6",
+        "Ruth 4:7–12",
+        "Ruth 4:13–17",
+        "Ruth 4:18–22"
+      ],
+      "studyQuestions": [
+        "How does Boaz resolve the matter with the nearer redeemer?",
+        "What role do the witnesses and community blessing play?",
+        "How does the genealogy connect Ruth's story with David and the wider biblical narrative?"
+      ],
+      "lifeApplication": "Let integrity, loyalty, and care shape decisions that affect families and communities. Recognize how seemingly small acts of faithfulness can become part of a larger story beyond what a person can see.",
+      "interpretiveCaution": "The redemption customs are ancient family and land practices, not a template for modern marriage or property law. The genealogy's theological significance should not erase Ruth's own agency and the concrete kindness shown throughout the story.",
+      "readingNote": "Read the final genealogy with Matthew 1:5–6. Notice how the biblical story honours Ruth as part of the ancestry of David and Jesus."
+    }
+  ]
+}

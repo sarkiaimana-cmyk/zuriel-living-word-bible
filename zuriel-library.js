@@ -2143,6 +2143,15 @@
 
       openSaved: function () {
         openPage("saved");
+      },
+
+      openSavedGloryVerseCards: function () {
+        openPage("affirmation");
+        const list = document.getElementById("zgsSavedCards");
+        if (list) {
+          const heading = document.getElementById("zgsSavedHeading");
+          if (heading) heading.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
       }
     };
 

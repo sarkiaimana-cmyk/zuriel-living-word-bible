@@ -1,0 +1,392 @@
+{
+  "schemaVersion": 1,
+  "title": "Zuriel Biblical Peoples, Kingdoms & Empires Study Library",
+  "description": "An offline study collection introducing peoples, kingdoms and empires named in Scripture. Entries distinguish biblical portrayal from historical reconstruction and mark disputed chronology or identity.",
+  "editorialPolicy": [
+    "Read each cited passage in its literary and canonical context.",
+    "Historical dates and identifications are approximate where the evidence is debated; uncertainty is stated rather than concealed.",
+    "Ancient names may refer to a people, region, dynasty or state in different passages; entries avoid treating these labels as interchangeable.",
+    "This is a study aid, not a substitute for Scripture or specialist historical research."
+  ],
+  "entries": [
+    {
+      "id": "people-egyptians",
+      "title": "Egyptians and Ancient Egypt",
+      "overview": "Egypt is a major setting in the ancestral stories of Joseph and the Exodus, and later appears in prophetic and Gospel-era contexts. The Bible presents Egypt both as a place of refuge and provision and as a power associated with oppression and political reliance.",
+      "historicalSetting": "Ancient Egypt was a long-lived kingdom along the Nile. Its political eras changed substantially over the centuries represented in the biblical narrative; the biblical text does not provide enough information to assign every event to one universally agreed Egyptian dynasty or pharaoh.",
+      "context": "Egypt's Nile-based agriculture, royal administration, monumental building traditions and regional diplomacy shaped its influence in the eastern Mediterranean and northeast Africa.",
+      "studyObservation": "Read the Joseph narratives and Exodus as distinct literary movements: migration and preservation in Genesis, then forced labour, deliverance and covenant in Exodus.",
+      "interpretiveCaution": "The date and pharaoh associated with the Exodus are debated. Avoid presenting one proposed chronology as settled fact or treating all Egyptian periods as identical.",
+      "lifeApplication": "Notice how Scripture distinguishes temporary refuge from ultimate trust, and how deliverance leads to covenant responsibility.",
+      "references": [
+        "Genesis 12:10-20",
+        "Genesis 37:25-36",
+        "Genesis 41:37-57",
+        "Exodus 1:8-14",
+        "Exodus 12:31-42",
+        "1 Kings 3:1",
+        "Matthew 2:13-15"
+      ],
+      "sourceNote": "Editorial study summary based on the biblical passages listed; chronology and historical correlations remain debated."
+    },
+    {
+      "id": "peoples-canaanites",
+      "title": "Canaanites",
+      "overview": "Canaanite is a broad biblical designation for peoples and communities living in the land of Canaan before and during Israel's settlement narratives. The term can refer to a wider population or, in some passages, a more specific group.",
+      "historicalSetting": "The southern Levant contained many city-states and local populations during the Late Bronze and Iron Ages. Political control and cultural identity varied by region and period.",
+      "context": "Canaanite communities were associated with fortified towns, agriculture, trade networks and diverse local religious practices. The biblical texts name multiple peoples rather than describing one uniform society.",
+      "studyObservation": "Compare the land promise, settlement narratives, prophetic critiques and later references to Canaanite identity rather than flattening them into one account.",
+      "interpretiveCaution": "Do not assume every named Canaanite group shared one language, government, custom or fate. Archaeological and textual reconstructions are complex; avoid simplistic claims about total population replacement.",
+      "lifeApplication": "The narratives invite careful reflection on covenant faithfulness, justice and the danger of adopting practices condemned by the text.",
+      "references": [
+        "Genesis 10:15-19",
+        "Genesis 12:5-7",
+        "Exodus 3:7-10",
+        "Deuteronomy 7:1-6",
+        "Joshua 3:10",
+        "Judges 1:27-36"
+      ],
+      "sourceNote": "The entry summarizes biblical terminology and broad regional context; ethnic boundaries and settlement history are not always certain."
+    },
+    {
+      "id": "peoples-philistines",
+      "title": "Philistines",
+      "overview": "The Philistines are recurring neighbours and opponents of Israel in Judges and Samuel, especially in the stories of Samson, Saul and David.",
+      "historicalSetting": "Philistine city-states were concentrated along the southern coastal plain. Their material culture and origins are studied through both biblical texts and archaeology, with details changing over time.",
+      "context": "The Bible names five principal Philistine cities in several passages: Gaza, Ashkelon, Ashdod, Ekron and Gath. Their coastal location connected them to trade and regional power struggles.",
+      "studyObservation": "Follow the changing balance of power from the judges period through Saul's reign and David's consolidation of kingship.",
+      "interpretiveCaution": "Avoid treating every conflict as a continuous war or assuming the Philistines were a single centralized empire throughout the biblical period.",
+      "lifeApplication": "Read the narratives for their themes of courage, dependence on God, leadership and the consequences of fear-driven decisions.",
+      "references": [
+        "Judges 13:1",
+        "Judges 16:23-31",
+        "1 Samuel 4:1-11",
+        "1 Samuel 17:1-11",
+        "2 Samuel 5:17-25",
+        "Amos 1:6-8"
+      ],
+      "sourceNote": "Historical details are summarized cautiously; proposed origins and cultural transitions remain subjects of scholarly discussion."
+    },
+    {
+      "id": "kingdom-israel-united",
+      "title": "United Monarchy of Israel",
+      "overview": "The books of Samuel and Kings narrate the rise of Israel's monarchy under Saul, David and Solomon, followed by the division of the kingdom after Solomon's reign.",
+      "historicalSetting": "The biblical narrative places the united monarchy in the early Iron Age. Exact chronology, territorial extent and the scale of the royal administration are discussed differently by historians.",
+      "context": "Kingship brought new institutions, military organization, taxation, court life and a central sanctuary in Jerusalem. The biblical account also evaluates kingship through covenant faithfulness and prophetic critique.",
+      "studyObservation": "Read 1 Samuel 8 alongside the narratives of Saul, David and Solomon to trace both the political rationale for monarchy and its spiritual risks.",
+      "interpretiveCaution": "Do not present disputed reconstructions of the size or administrative reach of the united kingdom as settled archaeological facts.",
+      "lifeApplication": "Leadership in Scripture is accountable to God; public success does not remove the need for humility, justice and obedience.",
+      "references": [
+        "1 Samuel 8:4-22",
+        "1 Samuel 10:17-25",
+        "2 Samuel 5:1-5",
+        "2 Samuel 7:8-17",
+        "1 Kings 3:5-14",
+        "1 Kings 8:1-21"
+      ],
+      "sourceNote": "The biblical narrative is the primary frame here; historical reconstructions of the early monarchy remain debated."
+    },
+    {
+      "id": "kingdom-israel-north",
+      "title": "Northern Kingdom of Israel",
+      "overview": "After Solomon, the northern tribes formed a separate kingdom commonly called Israel, with its royal centre eventually established at Samaria. It fell to Assyria in the late eighth century BCE.",
+      "historicalSetting": "The kingdom existed from the division narrated in 1 Kings 12 until the Assyrian conquest of Samaria, commonly dated to 722/721 BCE.",
+      "context": "Its rulers, shifting capitals, regional alliances and prophetic ministries are central to 1–2 Kings and the books of several prophets. Bethel and Dan are especially important in the biblical account of royal worship.",
+      "studyObservation": "Track the northern kings in 1–2 Kings and read Hosea and Amos against the social and religious concerns they address.",
+      "interpretiveCaution": "The biblical phrase 'ten tribes' is a literary and political shorthand; population movement and identity after the Assyrian conquest were more complex than a simple disappearance.",
+      "lifeApplication": "The prophetic witness challenges religious performance detached from justice, mercy and covenant loyalty.",
+      "references": [
+        "1 Kings 12:16-33",
+        "1 Kings 16:23-28",
+        "2 Kings 17:1-23",
+        "Hosea 1:1-2",
+        "Amos 5:21-24"
+      ],
+      "sourceNote": "The conventional fall date is widely used, though details of the Assyrian campaigns and deportations require careful historical framing."
+    },
+    {
+      "id": "kingdom-judah",
+      "title": "Kingdom of Judah",
+      "overview": "Judah was the southern kingdom centred on Jerusalem and the Davidic dynasty after the division of the monarchy. It survived longer than the northern kingdom and was conquered by Babylon in the early sixth century BCE.",
+      "historicalSetting": "Judah's history spans the divided monarchy, Assyrian pressure, Babylonian conquest, exile and later Persian-period restoration.",
+      "context": "Jerusalem, the temple and the Davidic royal line shape Judah's biblical story. Prophets address idolatry, injustice, misplaced confidence and hope beyond national catastrophe.",
+      "studyObservation": "Compare Hezekiah and Josiah's reforms with the warnings of Isaiah, Jeremiah and other prophets.",
+      "interpretiveCaution": "Judah's history was not politically or religiously uniform; reforms, alliances and local practices changed across successive reigns.",
+      "lifeApplication": "The narratives call readers to examine whether worship and public life reflect covenant faithfulness.",
+      "references": [
+        "1 Kings 12:20-24",
+        "2 Kings 18:1-8",
+        "2 Kings 22:1-20",
+        "2 Kings 25:1-21",
+        "Jeremiah 7:1-15",
+        "2 Chronicles 36:15-23"
+      ],
+      "sourceNote": "Dates for individual reigns can vary slightly across chronological systems; the broad sequence is more secure than every synchronism."
+    },
+    {
+      "id": "empire-assyria",
+      "title": "Assyrian Empire",
+      "overview": "Assyria became a dominant Near Eastern imperial power and conquered the northern kingdom of Israel. Its expansion also threatened Judah and forms a major setting for several prophetic books.",
+      "historicalSetting": "The Neo-Assyrian Empire reached its height in the first millennium BCE. Samaria fell during the reign of Shalmaneser V/Sargon II, with the precise sequence discussed by historians.",
+      "context": "Assyrian imperial policy included military campaigns, tribute, provincial administration and population deportations. Royal inscriptions are important external evidence but serve royal ideological purposes.",
+      "studyObservation": "Read 2 Kings 17 and Isaiah 7–10 alongside the accounts of Assyrian pressure on Judah in 2 Kings 18–19.",
+      "interpretiveCaution": "Assyrian royal records and biblical narratives have different aims. Compare them carefully and distinguish a king's propaganda from independently established facts.",
+      "lifeApplication": "The prophetic texts contrast imperial power with divine sovereignty and warn against fear-driven political trust.",
+      "references": [
+        "2 Kings 15:19-20",
+        "2 Kings 17:1-23",
+        "2 Kings 18:13-37",
+        "2 Kings 19:1-37",
+        "Isaiah 10:5-19",
+        "Nahum 1:1-8"
+      ],
+      "sourceNote": "Historical framing draws on biblical references and widely documented Neo-Assyrian history; individual campaign details can be disputed."
+    },
+    {
+      "id": "empire-babylon",
+      "title": "Babylonian Empire",
+      "overview": "Babylon rose to regional dominance after Assyria's decline. Under Nebuchadnezzar II it conquered Jerusalem, destroyed the First Temple and deported portions of Judah's population.",
+      "historicalSetting": "The Neo-Babylonian Empire dominated the region in the late seventh and sixth centuries BCE. Jerusalem was captured in 597 BCE and destroyed in 586 BCE in commonly used chronologies.",
+      "context": "Babylonian rule is central to the exile narratives, the book of Daniel's court setting and prophetic reflections on judgment, lament and hope.",
+      "studyObservation": "Read 2 Kings 24–25 with Jeremiah 25 and 29, then compare the exilic setting of Daniel 1.",
+      "interpretiveCaution": "The book of Daniel's literary composition and historical setting are discussed differently across scholarly traditions. Distinguish the narrative's own setting from debates about authorship and date.",
+      "lifeApplication": "The exile texts hold together grief, accountability, hope and faithfulness while living under foreign rule.",
+      "references": [
+        "2 Kings 24:10-17",
+        "2 Kings 25:1-21",
+        "Jeremiah 29:1-14",
+        "Ezekiel 1:1-3",
+        "Daniel 1:1-7",
+        "Psalm 137:1-6"
+      ],
+      "sourceNote": "Dates are conventional historical approximations; deportations occurred in more than one wave."
+    },
+    {
+      "id": "empire-persia",
+      "title": "Persian Empire (Achaemenid)",
+      "overview": "Persian rule followed Babylonian rule and enabled Judean return and the rebuilding of the temple. Ezra, Nehemiah and Esther are set within the Persian imperial world.",
+      "historicalSetting": "The Achaemenid Empire began under Cyrus II in the sixth century BCE and ruled a vast territory until Alexander's conquests in the fourth century BCE.",
+      "context": "Persian administration used provinces, royal officials, roads and multilingual imperial communication. The biblical books portray local restoration efforts within this larger political system.",
+      "studyObservation": "Compare the return and rebuilding accounts in Ezra and Nehemiah with the diaspora court setting in Esther.",
+      "interpretiveCaution": "The biblical books do not describe every Persian policy or administrative detail. The chronology and identification of some royal names in Esther are debated.",
+      "lifeApplication": "The restoration narratives highlight perseverance, communal responsibility and faithful work within circumstances believers do not control.",
+      "references": [
+        "2 Chronicles 36:22-23",
+        "Ezra 1:1-11",
+        "Ezra 6:1-15",
+        "Nehemiah 2:1-8",
+        "Esther 1:1-4",
+        "Daniel 6:1-3"
+      ],
+      "sourceNote": "The Persian imperial background is well attested; specific biblical synchronisms and some narrative details remain debated."
+    },
+    {
+      "id": "empire-greek",
+      "title": "Greek and Hellenistic Kingdoms",
+      "overview": "Greek influence expanded after Alexander the Great. Following his death, successor kingdoms competed for control of the eastern Mediterranean, including Judea.",
+      "historicalSetting": "The Hellenistic period began with Alexander's campaigns in the late fourth century BCE. Judea came under changing successor powers, especially the Ptolemies and Seleucids.",
+      "context": "Greek language, education, urban institutions and political culture spread widely, while local communities negotiated adaptation and resistance.",
+      "studyObservation": "Use Daniel's later visions as one interpretive lens, while recognizing that their historical identifications are debated; read the New Testament in its wider Greek-speaking world.",
+      "interpretiveCaution": "Do not treat 'Greek' as a single political authority across the whole period. The New Testament's Greek language does not mean every Jewish community adopted the same customs.",
+      "lifeApplication": "These settings invite reflection on cultural engagement, identity, conscience and faithfulness under pressure.",
+      "references": [
+        "Daniel 8:1-27",
+        "Daniel 11:1-35",
+        "John 12:20-23",
+        "Acts 6:1-6",
+        "Acts 17:16-34"
+      ],
+      "sourceNote": "This entry gives broad historical orientation; the precise interpretation of Daniel's visions varies among traditions."
+    },
+    {
+      "id": "empire-rome",
+      "title": "Roman Empire",
+      "overview": "Rome ruled Judea during the ministry of Jesus and the early spread of Christianity. Roman officials, soldiers, roads and provincial administration appear throughout the New Testament.",
+      "historicalSetting": "Roman control over Judea developed through the first century BCE and continued through the New Testament period, with changing provincial arrangements and client rulers.",
+      "context": "The empire connected cities around the Mediterranean through roads, sea routes, taxation, military power and legal structures. Local Jewish institutions and Roman authority interacted in complex ways.",
+      "studyObservation": "Read the Gospel passion narratives and Acts with attention to the distinct roles of local authorities, Herodian rulers and Roman officials.",
+      "interpretiveCaution": "Avoid assuming the Roman Empire operated identically in every province or that all Roman officials acted in the same way. Gospel accounts have distinct narrative emphases.",
+      "lifeApplication": "The New Testament shows the gospel crossing social and political boundaries while calling believers to discernment, courage and integrity.",
+      "references": [
+        "Luke 2:1-5",
+        "Luke 3:1-2",
+        "John 18:28-40",
+        "Acts 16:35-39",
+        "Acts 22:22-29",
+        "Acts 25:1-12",
+        "Romans 13:1-7"
+      ],
+      "sourceNote": "The Roman administrative setting is well established; local jurisdiction and legal procedure varied by time and place."
+    },
+    {
+      "id": "peoples-moabites",
+      "title": "Moabites",
+      "overview": "Moab was a people and kingdom east of the Dead Sea. Moab appears in Israel's ancestral narratives, the story of Ruth, wilderness traditions and prophetic oracles.",
+      "historicalSetting": "Moab occupied territory east of the Dead Sea. Its political fortunes and borders shifted across the Iron Age.",
+      "context": "The book of Ruth presents Ruth as a Moabite woman who becomes part of Bethlehem's community and David's family line. Other texts recall conflict and kinship between Moab and Israel.",
+      "studyObservation": "Read Ruth as a personal family narrative while noticing its Moabite setting and the book's careful treatment of loyalty and belonging.",
+      "interpretiveCaution": "Do not reduce all Moabite-Israelite relations to hostility; biblical texts preserve varied memories and genres.",
+      "lifeApplication": "Ruth's story highlights steadfast love, welcome and the surprising ways God works through people from outside expected boundaries.",
+      "references": [
+        "Genesis 19:30-38",
+        "Numbers 22:1-6",
+        "Deuteronomy 2:8-9",
+        "Ruth 1:1-22",
+        "Ruth 4:13-22",
+        "2 Kings 3:4-27"
+      ],
+      "sourceNote": "The entry distinguishes the biblical literary portrayal from the changing political history of Moab."
+    },
+    {
+      "id": "peoples-ammonites",
+      "title": "Ammonites",
+      "overview": "The Ammonites were a people east of the Jordan, appearing in narratives of Israel's neighbours, conflicts and royal diplomacy.",
+      "historicalSetting": "Ammon's territory lay generally east of the Jordan and north of Moab, with Rabbah (later associated with Amman) as a major centre.",
+      "context": "The Bible records both conflict and political interaction, including the story of Nahash, David's wars and prophetic oracles.",
+      "studyObservation": "Compare the narratives in Judges and Samuel with prophetic texts that address Ammon.",
+      "interpretiveCaution": "The biblical genealogical origin story in Genesis should be read as part of the text's literary world; it is not a complete modern ethnographic account.",
+      "lifeApplication": "The narratives encourage readers to examine pride, hostility, diplomacy and the treatment of neighbours.",
+      "references": [
+        "Genesis 19:30-38",
+        "Judges 10:6-18",
+        "1 Samuel 11:1-11",
+        "2 Samuel 10:1-19",
+        "Jeremiah 49:1-6",
+        "Ezekiel 25:1-7"
+      ],
+      "sourceNote": "Geographic descriptions are approximate; borders and political control changed over time."
+    },
+    {
+      "id": "peoples-edomites",
+      "title": "Edomites",
+      "overview": "Edom was a people and kingdom south of the Dead Sea, linked in Genesis to Esau and repeatedly involved in Israel and Judah's regional history.",
+      "historicalSetting": "Edom occupied parts of the southern Transjordan and Arabah region. Its political and economic influence changed over the Iron Age and later periods.",
+      "context": "The Bible remembers kinship through Esau, conflict with Israel, trade routes and Edom's response to Jerusalem's fall.",
+      "studyObservation": "Read Genesis 25 and 36 alongside Numbers 20, Obadiah and the later historical narratives.",
+      "interpretiveCaution": "The relationship between biblical Edom, later Idumea and specific archaeological sites requires careful chronological distinction.",
+      "lifeApplication": "Prophetic criticism of Edom challenges vindictiveness and indifference toward a neighbour's suffering.",
+      "references": [
+        "Genesis 25:19-34",
+        "Genesis 36:1-43",
+        "Numbers 20:14-21",
+        "2 Kings 8:20-22",
+        "Obadiah 1:10-15",
+        "Psalm 137:7"
+      ],
+      "sourceNote": "This entry offers broad orientation; territorial and identity changes across periods should not be collapsed."
+    },
+    {
+      "id": "peoples-arameans",
+      "title": "Arameans",
+      "overview": "Aramean peoples and kingdoms lived across parts of Syria and upper Mesopotamia. Aram-Damascus was a recurring political rival and neighbour of Israel.",
+      "historicalSetting": "Aramean-speaking communities and kingdoms were prominent across the region during the Iron Age; Damascus became an important centre.",
+      "context": "The Bible records alliances, wars, diplomacy and shared regional life between Aram and Israel. Aramaic later became a major language of administration and everyday communication in parts of the Near East.",
+      "studyObservation": "Trace the conflicts between Israel and Aram in Kings and compare them with the prophetic references to Damascus.",
+      "interpretiveCaution": "Aram can refer to a region, people or kingdom depending on context. Do not treat every occurrence as the same political entity.",
+      "lifeApplication": "These accounts show how neighbouring peoples can be connected by conflict, exchange and shared history.",
+      "references": [
+        "Genesis 24:10",
+        "2 Samuel 8:5-6",
+        "1 Kings 20:1-34",
+        "2 Kings 5:1-19",
+        "2 Kings 16:5-9",
+        "Isaiah 7:1-9",
+        "Amos 1:3-5"
+      ],
+      "sourceNote": "The terms Aram and Aramean have varied uses in biblical and historical sources."
+    },
+    {
+      "id": "peoples-phoenicians",
+      "title": "Phoenicians",
+      "overview": "Phoenician coastal city-states, especially Tyre and Sidon, were known for maritime trade and craft production and interacted with Israel's monarchy and prophetic traditions.",
+      "historicalSetting": "Phoenician city-states occupied the Levantine Mediterranean coast. Their influence depended on maritime networks and changing regional alliances.",
+      "context": "The Bible describes cooperation between Hiram of Tyre and David and Solomon, while prophetic texts critique the wealth and political conduct of coastal cities.",
+      "studyObservation": "Read the temple-building accounts with the prophetic oracles against Tyre to see both cooperation and criticism in the biblical record.",
+      "interpretiveCaution": "Phoenicia was not one unified empire in every period; Tyre and Sidon had distinct political histories.",
+      "lifeApplication": "The texts invite reflection on commerce, craftsmanship, generosity and the moral responsibilities that accompany wealth.",
+      "references": [
+        "2 Samuel 5:11",
+        "1 Kings 5:1-12",
+        "1 Kings 7:13-14",
+        "Isaiah 23:1-18",
+        "Ezekiel 27:1-36",
+        "Mark 7:24-30"
+      ],
+      "sourceNote": "The broad coastal and trading context is well established; local political details varied by city and era."
+    },
+    {
+      "id": "peoples-hittites",
+      "title": "Hittites",
+      "overview": "The Bible uses the term Hittite in several settings, including ancestral narratives and accounts of people living in or near Canaan. The term's historical referents may differ by period and context.",
+      "historicalSetting": "The Hittite Empire was centred in Anatolia during the second millennium BCE. Later biblical references to Hittites in the southern Levant are not always straightforwardly identical with the earlier imperial state.",
+      "context": "Biblical passages include Hittite individuals and communities, such as Uriah the Hittite, as well as broader lists of peoples in Canaan.",
+      "studyObservation": "Compare the different contexts in which the word Hittite appears rather than assuming one continuous political group.",
+      "interpretiveCaution": "The relationship between biblical Hittite labels and the Anatolian Hittite Empire is complex and debated; avoid collapsing all uses into a single identity.",
+      "lifeApplication": "Careful reading respects historical complexity and prevents confident claims that the text itself does not make.",
+      "references": [
+        "Genesis 23:1-20",
+        "Genesis 26:34-35",
+        "Joshua 1:4",
+        "2 Samuel 11:3",
+        "1 Kings 10:29"
+      ],
+      "sourceNote": "This entry deliberately flags terminology and chronology as complex rather than asserting a single identification."
+    },
+    {
+      "id": "peoples-medes",
+      "title": "Medes and Media",
+      "overview": "The Medes were an ancient Iranian people and political power appearing in Assyrian, Babylonian and Persian-era settings. Biblical references connect Media with the fall of Babylon and later imperial rule.",
+      "historicalSetting": "Media lay across parts of the Iranian plateau. Median political structures and the relationship between Media and early Persia are reconstructed from limited and sometimes conflicting sources.",
+      "context": "The Bible mentions Medes in prophetic and narrative settings; the book of Daniel also uses a literary sequence of Babylonian, Median and Persian rule.",
+      "studyObservation": "Read each reference in its own historical and literary setting, distinguishing the Medes from the later Persian imperial system.",
+      "interpretiveCaution": "The precise shape of a unified Median empire and some biblical chronological details remain debated. Do not overstate what the sources establish.",
+      "lifeApplication": "The texts place changing empires within a larger account of divine sovereignty and human accountability.",
+      "references": [
+        "2 Kings 17:6",
+        "Isaiah 13:17",
+        "Jeremiah 51:11",
+        "Daniel 5:28",
+        "Daniel 6:1",
+        "Esther 1:3"
+      ],
+      "sourceNote": "Historical reconstruction of Media is less secure than that of later Achaemenid Persia; uncertainty is stated intentionally."
+    },
+    {
+      "id": "peoples-samaritans",
+      "title": "Samaritans",
+      "overview": "Samaritans were a distinct community associated with the region of Samaria and a tradition of worship centred on Mount Gerizim. They appear prominently in the New Testament, especially in Jesus' teaching and ministry.",
+      "historicalSetting": "Samaritan identity developed over a long period in the context of the former northern kingdom, Persian and Hellenistic periods, and later relations with Judean communities.",
+      "context": "The New Testament reflects social and religious tensions between Jews and Samaritans while also portraying encounters that cross those boundaries.",
+      "studyObservation": "Read John 4 and Luke 10:25-37 closely; note how Jesus' interactions challenge inherited assumptions about neighbourliness and worship.",
+      "interpretiveCaution": "Avoid reducing Samaritan origins to one simplistic explanation or treating ancient and modern Samaritan communities as interchangeable without historical qualification.",
+      "lifeApplication": "Jesus' encounters call readers to neighbour-love that crosses inherited hostility and social boundaries.",
+      "references": [
+        "2 Kings 17:24-41",
+        "Ezra 4:1-5",
+        "John 4:1-42",
+        "Luke 9:51-56",
+        "Luke 10:25-37",
+        "Acts 8:4-25"
+      ],
+      "sourceNote": "Samaritan history and identity are complex; the entry distinguishes biblical narratives from later community history."
+    },
+    {
+      "id": "peoples-amalekites",
+      "title": "Amalekites",
+      "overview": "The Amalekites are portrayed in the Hebrew Bible as a people in conflict with Israel, especially in wilderness and early monarchy narratives.",
+      "historicalSetting": "Biblical references place Amalekites in the southern regions and wilderness areas, but their precise territorial boundaries and political organization are difficult to reconstruct.",
+      "context": "The Amalek traditions function in narratives about Israel's vulnerability, memory, kingship and warfare. Later biblical texts revisit the conflict in theological and literary ways.",
+      "studyObservation": "Read Exodus 17, Deuteronomy 25 and 1 Samuel 15 together, attending to how memory and command are framed in each passage.",
+      "interpretiveCaution": "These are ancient war texts with serious ethical and interpretive questions. Do not turn them into modern authorization for violence against any people.",
+      "lifeApplication": "Approach difficult passages with humility, attention to genre and the wider biblical witness concerning justice and the protection of life.",
+      "references": [
+        "Exodus 17:8-16",
+        "Numbers 24:20",
+        "Deuteronomy 25:17-19",
+        "1 Samuel 15:1-35",
+        "1 Chronicles 4:42-43"
+      ],
+      "sourceNote": "The entry is a reading guide, not a claim to reconstruct Amalekite society in detail; ethical interpretation requires care."
+    }
+  ]
+}

@@ -176,8 +176,87 @@
         ["Proverbs 15:1-4","Notice the effect of gentle speech and truthful words."],
         ["Romans 14:13-19","Pursue what makes for peace and mutual strengthening."]
       ]
-    }
-
+    },
+    {id:"promises-of-god-7",title:"Promises and Faithfulness of God",duration:7,description:"Explore covenant promises, God's faithfulness and hope anchored in His Word.",days:[["Genesis 12:1-9","Read God's call to Abram and the promise of blessing."],["Exodus 14:10-31","Watch Israel discover God's power and deliverance."],["Joshua 1:1-9","Consider courage and meditation on God's Word."],["Psalm 89:1-18","Praise God's steadfast love and faithfulness."],["Isaiah 55:1-13","Reflect on God's invitation and the reliability of His Word."],["2 Corinthians 1:18-22","Study the certainty of God's promises in Christ."],["Hebrews 10:19-25","Respond to God's faithfulness with hope and encouragement."]]},
+    {id:"fruit-of-spirit-7",title:"The Fruit of the Spirit",duration:7,description:"Reflect on the character the Holy Spirit forms and how it shapes daily life.",days:[["Galatians 5:16-26","Consider life led by the Spirit."],["John 15:1-17","Learn from Jesus about abiding and fruitfulness."],["1 Corinthians 13:1-13","Examine love as the enduring way of maturity."],["Philippians 4:4-9","Practise joy, gentleness, prayer and attention to what is good."],["Colossians 3:12-17","Consider compassion, patience, forgiveness and peace."],["Ephesians 4:1-16","Reflect on unity, maturity and truth in love."],["Romans 12:9-21","Explore sincere love and overcoming evil with good."]]},
+    {id:"healing-and-comfort-7",title:"God's Comfort and Healing",duration:7,description:"Read about comfort, compassion, prayer and hope in their biblical context.",days:[["Psalm 42:1-11","Bring longing and discouragement honestly before God."],["Psalm 147:1-11","Reflect on the Lord who heals the brokenhearted."],["Isaiah 43:1-7","Read God's words of presence and care."],["Matthew 11:25-30","Hear Jesus invite the weary to come to Him."],["Mark 5:21-43","Read accounts of Jesus' compassion and restoration."],["2 Corinthians 1:3-11","Consider God's comfort and comforting others."],["Revelation 21:1-7","Look toward promised renewal and the end of sorrow."]]},
+    {id:"family-and-home-7",title:"Faith in the Family and Home",duration:7,description:"Study love, service, instruction, patience and faithfulness in the home.",days:[["Deuteronomy 6:1-9","Explore the call to love God and pass His words on."],["Psalm 127:1-5","Reflect on God's place in building a household."],["Proverbs 15:1-17","Consider gentle speech, listening and the heart's priorities."],["Ephesians 5:21-33","Read about mutual responsibility and Christlike love in marriage."],["Ephesians 6:1-4","Study instruction concerning children and parental care."],["Colossians 3:12-21","Consider compassion, forgiveness and household relationships."],["Joshua 24:14-24","Reflect on serving the Lord faithfully."]]},
+    {id:"purposeful-work-7",title:"Work, Purpose and Stewardship",duration:7,description:"Connect work, calling, integrity, generosity and stewardship with biblical wisdom.",days:[["Genesis 2:4-17","Read work and responsibility within creation."],["Proverbs 16:1-9","Reflect on diligence and entrusting the path to the Lord."],["Colossians 3:22-24","Consider integrity in everyday responsibilities."],["Matthew 25:14-30","Study faithful stewardship and responsibility."],["Luke 12:13-34","Reflect on generosity and seeking God's Kingdom."],["2 Thessalonians 3:6-13","Read about responsible work and perseverance."],["1 Peter 4:7-11","Consider serving others with the gifts God provides."]]},
+    {
+      id: "psalms-for-every-season-7",
+      title: "Psalms for Every Season",
+      duration: 7,
+      description: "Pray and reflect through psalms of wisdom, worship, courage, repentance, protection and thanksgiving.",
+      days: [
+        ["Psalm 1", "Consider the two paths and the nourishment that comes from delighting in God's instruction."],
+        ["Psalm 19:7-14", "Reflect on the goodness of God's Word and ask for a heart shaped by it."],
+        ["Psalm 27:1-6", "Read about confidence in God when fear and opposition arise."],
+        ["Psalm 46:1-11", "Be still and consider God's presence and strength amid turmoil."],
+        ["Psalm 51:1-17", "Read David's prayer of confession and his desire for a renewed heart."],
+        ["Psalm 91:1-16", "Reflect on trust in God's protection while reading the psalm in its full biblical context."],
+        ["Psalm 103:1-22", "Remember God's compassion, steadfast love and faithful care."]
+      ]
+    },
+    {
+      id: "parables-of-jesus-7",
+      title: "The Parables of Jesus",
+      duration: 7,
+      description: "Explore the stories Jesus used to reveal the Kingdom, mercy, discipleship and watchfulness.",
+      days: [
+        ["Luke 10:25-37", "Consider neighbour-love through the parable of the Good Samaritan."],
+        ["Luke 15:1-7", "Reflect on the shepherd who seeks the one that is lost."],
+        ["Luke 15:8-10", "Notice the joy described when what was lost is found."],
+        ["Luke 15:11-32", "Study the father's welcome and the responses of both sons."],
+        ["Matthew 13:1-23", "Consider the soils in Jesus' explanation of the sower."],
+        ["Matthew 13:44-52", "Reflect on the value of God's Kingdom through Jesus' short parables."],
+        ["Matthew 25:1-13", "Read Jesus' call to readiness and watchfulness."]
+      ]
+    },
+    {
+      id: "the-early-church-7",
+      title: "The Birth and Growth of the Early Church",
+      duration: 7,
+      description: "Follow the Spirit's work, the first Christian community, bold witness and the spread of the gospel.",
+      days: [
+        ["Acts 1:1-11", "Read Jesus' final instructions and the promise of the Holy Spirit."],
+        ["Acts 2:1-21", "Witness the coming of the Spirit at Pentecost."],
+        ["Acts 2:22-47", "Observe the first believers' response, fellowship, teaching and shared life."],
+        ["Acts 4:23-35", "Reflect on the believers' prayer for boldness and their care for one another."],
+        ["Acts 8:26-40", "Follow Philip's conversation with the Ethiopian official and the good news about Jesus."],
+        ["Acts 10:1-23", "Read the beginning of Peter's encounter with Cornelius and the widening mission."],
+        ["Acts 15:1-21", "Consider how the early church addressed a major question about Gentile believers."]
+      ]
+    },
+    {
+      id: "courage-and-calling-7",
+      title: "Courage, Calling and Faithfulness",
+      duration: 7,
+      description: "Study people who responded to God's call with courage, humility and faithfulness under pressure.",
+      days: [
+        ["Joshua 1:1-9", "Reflect on courage rooted in God's presence and careful attention to His Word."],
+        ["Judges 6:11-24", "Read Gideon's call and God's patience with his questions."],
+        ["1 Samuel 17:32-50", "Consider David's confidence in the Lord rather than outward strength."],
+        ["Esther 4:10-17", "Reflect on responsibility, courage and the moment to act."],
+        ["Daniel 3:13-28", "Read the three friends' faithful response under threat."],
+        ["Acts 4:13-22", "Observe the apostles' courage and their commitment to speak what they had seen and heard."],
+        ["2 Timothy 1:3-14", "Consider sincere faith, the gift of God and strength through the Holy Spirit."]
+      ]
+    },
+    {
+      id: "knowing-gods-character-7",
+      title: "Knowing the Character of God",
+      duration: 7,
+      description: "Explore Scripture's witness to God's holiness, mercy, faithfulness, love and self-revelation.",
+      days: [
+        ["Exodus 34:1-9", "Read how God reveals His name and character to Moses."],
+        ["Deuteronomy 7:6-11", "Reflect on God's covenant love and faithfulness."],
+        ["Psalm 103:1-14", "Consider God's compassion, forgiveness and fatherly care."],
+        ["Isaiah 6:1-8", "Witness Isaiah's vision of God's holiness and his response to the call."],
+        ["Hosea 11:1-9", "Reflect on God's deep compassion and faithful love."],
+        ["John 1:14-18", "Consider how God's grace and truth are made known in Jesus Christ."],
+        ["1 John 4:7-21", "Study the source, nature and practical expression of God's love."]
+      ]
+    },
   ];
 
   function emptyState() {
@@ -408,7 +487,7 @@
 
   window.ZurielReadingPlans = {
     render: render,
-    list: function () { return PLANS.map(plan => ({ id: plan.id, title: plan.title, duration: plan.duration, passages: plan.days.map(day => day[0]) })); },
+    list: function () { return PLANS.map(plan => ({ id: plan.id, title: plan.title, duration: plan.duration, description: plan.description, passages: plan.days.map(day => day[0]) })); },
     validateProgress: validateProgress,
     readState: readState,
     writeState: writeState,

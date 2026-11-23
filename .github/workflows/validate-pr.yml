@@ -55,6 +55,9 @@ jobs:
       - name: Verify all KJV source assets for AI pilot
         run: node ai-worker/scripts/prepare-scripture-assets.mjs --check
 
+      - name: Validate shared end-to-end visual design system
+        run: node scripts/check-design-system.mjs
+
       - name: Validate streamlined home dashboard and distinct sections
         run: node scripts/check-home-dashboard.mjs
 
@@ -106,8 +109,17 @@ jobs:
         run: node scripts/check-topical-study-index.mjs
       - name: Validate expanded offline study library integration
         run: node scripts/check-expanded-study-library.mjs
+
+      - name: Test study-library partial loading and recovery
+        run: node scripts/test-study-library-resilience.mjs
+
+      - name: Validate ranked offline study-library search
+        run: node scripts/check-study-search.mjs
       - name: Test Android version metadata
         run: node scripts/test-android-version.mjs
+
+      - name: Validate Android release publication provenance
+        run: node scripts/check-android-release-publication.mjs
 
       - name: Validate signed Android in-place upgrade safeguards
         run: |

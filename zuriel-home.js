@@ -17,10 +17,10 @@
     const verses = [
       { reference: "Psalm 119:105", text: "Thy word is a lamp unto my feet, and a light unto my path." },
       { reference: "Proverbs 3:5", text: "Trust in the LORD with all thine heart; and lean not unto thine own understanding." },
-      { reference: "Isaiah 40:31", text: "But they that wait upon the LORD shall renew their strength; they shall mount up with wings as eagles." },
+      { reference: "Isaiah 40:31", text: "But they that wait upon the LORD shall renew their strength; they shall mount up with wings as eagles; they shall run, and not be weary; and they shall walk, and not faint." },
       { reference: "Romans 8:28", text: "And we know that all things work together for good to them that love God, to them who are the called according to his purpose." },
       { reference: "Philippians 4:13", text: "I can do all things through Christ which strengtheneth me." },
-      { reference: "John 15:5", text: "I am the vine, ye are the branches: He that abideth in me, and I in him, the same bringeth forth much fruit." },
+      { reference: "John 15:5", text: "I am the vine, ye are the branches: He that abideth in me, and I in him, the same bringeth forth much fruit: for without me ye can do nothing." },
       { reference: "2 Corinthians 5:17", text: "Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new." },
       { reference: "Genesis 1:1", text: "In the beginning God created the heaven and the earth." },
       { reference: "Deuteronomy 31:8", text: "And the LORD, he it is that doth go before thee; he will be with thee, he will not fail thee, neither forsake thee: fear not, neither be dismayed." },
@@ -895,8 +895,7 @@
           <button type="button" data-zuriel-translation="CSB" aria-label="Select Christian Standard Bible">CSB</button>
           <button type="button" data-zuriel-translation="NKJV" aria-label="Select New King James Version">NKJV</button>
         </div>
-        <p class="translation-access-note">Select a translation below. Downloaded translations can be read offline; online access and downloads depend on each provider’s available catalogue and permissions.</p>
-        <div id="zurielHomeTranslations"></div>
+        
       </section>
 
       <section class="home-hero home-identity-hero" id="zurielIdentityHero" aria-label="Who God is — rotating Scripture">
@@ -964,6 +963,8 @@
           <button type="button" class="home-button" id="zurielOpenBookRead">📖 Read This Passage</button>
           <button type="button" class="home-button home-secondary" id="zurielOpenBookNext">✦ Another Word for Today</button>
           <button type="button" class="home-button" id="zurielOpenBookCreateCard">🖼️ Create & Share Card</button>
+          <button type="button" class="home-button home-secondary" id="zurielOpenBookSaveCard">💾 Save Open Book Card</button>
+          <button type="button" class="home-button home-secondary" id="zurielOpenBookSavedCards">📚 My Saved Cards</button>
         </div>
         <p id="zurielOpenBookCardStatus" class="home-subtitle" aria-live="polite"></p>
         <details>
@@ -1535,7 +1536,7 @@
           throw new Error("The Scripture share-card studio is not ready yet.");
         }
         const passage = await window.getBibleVerseText(item.reference);
-        const exactText = String(passage && passage.text || "").replace(/^\\d+\\.\\s*/, "").trim();
+        const exactText = String(passage && passage.text || "").replace(/^\d+\.\s*/, "").trim();
         if (!exactText) throw new Error("The exact KJV Scripture could not be loaded.");
         const response = window.ZurielFaithContent &&
           typeof window.ZurielFaithContent.find === "function"
@@ -1740,7 +1741,7 @@
         try {
           const passage = await window.getBibleVerseText(verse.reference);
           const scriptureText = String(passage && passage.text || "")
-            .replace(/^\\d+\\.\\s*/, "").trim();
+            .replace(/^\d+\.\s*/, "").trim();
           if (!scriptureText) throw new Error("The exact KJV verse text could not be loaded.");
           if (!window.ZurielLibrary ||
               typeof window.ZurielLibrary.openGloryVerse !== "function") {
@@ -1760,6 +1761,89 @@
         } finally {
           createShareCardButton.disabled = false;
         }
+      });
+    }
+
+    /* Save the Home open-book card as a PNG directly to the Android Gallery.
+       The Studio is used only as the existing renderer; readers return to Home
+       after the native Gallery operation completes. */
+    const saveOpenBookCardButton = document.getElementById("zurielOpenBookSaveCard");
+    if (saveOpenBookCardButton) {
+      saveOpenBookCardButton.addEventListener("click", async function () {
+        const status = document.getElementById("zurielOpenBookCardStatus");
+        const verse = verses[verseIndex];
+        if (!verse || typeof window.getBibleVerseText !== "function") {
+          if (status) status.textContent = "The offline Scripture service is not ready. Please try again.";
+          return;
+        }
+        saveOpenBookCardButton.disabled = true;
+        if (status) status.textContent = "Preparing your open-book image for the phone Gallery…";
+        let studioOpened = false;
+        try {
+          if (!window.ZurielMedia || typeof window.ZurielMedia.saveImage !== "function" ||
+              typeof window.ZurielMedia.isAvailable !== "function" || !window.ZurielMedia.isAvailable()) {
+            throw new Error("Gallery saving is available in the installed Android app. Please use Create & Share Card in a browser.");
+          }
+          const passage = await window.getBibleVerseText(verse.reference);
+          const scriptureText = String(passage && passage.text || "").replace(/^\\d+\\.\\s*/, "").trim();
+          if (!scriptureText) throw new Error("The exact KJV verse text could not be loaded.");
+          const faithResponse = window.ZurielFaithContent &&
+            typeof window.ZurielFaithContent.find === "function"
+            ? window.ZurielFaithContent.find(verse.reference) : null;
+          if (!faithResponse || !faithResponse.declaration || !faithResponse.affirmation) {
+            throw new Error("The Scripture-specific declaration and affirmation are not ready for this card yet.");
+          }
+          if (!window.ZurielLibrary ||
+              typeof window.ZurielLibrary.openGloryVerse !== "function") {
+            throw new Error("The Glory Verse Affirmation Studio is not available yet.");
+          }
+          navigate("library");
+          const opened = window.ZurielLibrary.openGloryVerse(verse.reference, scriptureText, "KJV", faithResponse);
+          if (!opened) throw new Error("The open-book image renderer could not be prepared.");
+          studioOpened = true;
+          const saveImageButton = document.querySelector("#zgsSaveImage");
+          const studioStatus = document.querySelector("#zgsStatus");
+          if (!saveImageButton || !studioStatus) throw new Error("The open-book image export is not available.");
+          const previousStatus = studioStatus.textContent;
+          saveImageButton.click();
+          const resultMessage = await new Promise((resolve, reject) => {
+            let settled = false;
+            let timeout;
+            const observer = new MutationObserver(() => {
+              const message = String(studioStatus.textContent || "").trim();
+              if (message && message !== previousStatus && !/wallpaper/i.test(message)) finish(resolve, message);
+            });
+            const finish = (callback, value) => {
+              if (settled) return;
+              settled = true;
+              observer.disconnect();
+              clearTimeout(timeout);
+              callback(value);
+            };
+            observer.observe(studioStatus, { childList: true, subtree: true, characterData: true });
+            timeout = setTimeout(() => finish(reject, new Error("Gallery saving took too long. Please try again.")), 30000);
+            const immediateMessage = String(studioStatus.textContent || "").trim();
+            if (immediateMessage && immediateMessage !== previousStatus) finish(resolve, immediateMessage);
+          });
+          if (!/^Saved to your phone's Gallery in the /.test(resultMessage)) {
+            throw new Error(resultMessage || "Android did not confirm that the card was saved to your Gallery.");
+          }
+          if (status) status.textContent = "Your open-book card has been saved to the Zuriel Living Word Bible album in your phone Gallery.";
+        } catch (error) {
+          if (status) status.textContent = error.message || "The open-book card could not be saved to your Gallery.";
+        } finally {
+          if (studioOpened) navigate("home");
+          saveOpenBookCardButton.disabled = false;
+        }
+      });
+    }
+    const openSavedOpenBookCardsButton = document.getElementById("zurielOpenBookSavedCards");
+    if (openSavedOpenBookCardsButton) {
+      openSavedOpenBookCardsButton.addEventListener("click", function () {
+        if (!window.ZurielLibrary ||
+            typeof window.ZurielLibrary.openSavedGloryVerseCards !== "function") return;
+        navigate("library");
+        window.ZurielLibrary.openSavedGloryVerseCards();
       });
     }
 

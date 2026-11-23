@@ -27,6 +27,7 @@ const files = [
   "zuriel-updates.js",
   "zuriel-notifications.js",
   "zuriel-translations.js",
+  "zuriel-design-system.js",
   "version.json",
   "sw.js",
   "kjv.72bec70fcd.json"
@@ -54,4 +55,4 @@ await build({
   sourcemap: false
 });
 
-console.log("Zuriel web app, offline Scripture, study-library loader, 12 study datasets and audio controls prepared for Android packaging.");
+console.log("Zuriel web app, offline Scripture, study-library loader, 13 study datasets and audio controls prepared for Android packaging.");
