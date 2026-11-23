@@ -105,6 +105,7 @@
     ["Chapter Introductions", "./data/zuriel-chapter-introductions-hebrews-01-13.json", "chapters", "chapter-introduction"],
     ["Chapter Introductions", "./data/zuriel-chapter-introductions-1-peter-01-05.json", "chapters", "chapter-introduction"],
     ["Chapter Introductions", "./data/zuriel-chapter-introductions-2-peter-01-03.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-1-john-01-05.json", "chapters", "chapter-introduction"],
     ["Chapter Introductions", "./data/zuriel-chapter-introductions-2-thessalonians-01-03.json", "chapters", "chapter-introduction"],
 
     ["Deep Study Guides", "./data/zuriel-deep-study-guides.json", "guides", "guide"],
