@@ -791,17 +791,17 @@
     selectVersion: async function (abbreviation) {
       const requested = String(abbreviation || "").trim().toUpperCase();
       const aliases = {
-        "GNT": /\\b(GNT|GNB|GOOD NEWS TRANSLATION|GOOD NEWS BIBLE)\\b/,
-        "AMP": /\\b(AMP|AMPLIFIED BIBLE)\\b/,
-        "LB/LT": /\\b(LB|LT|TLB|LIVING BIBLE|LIVING TRANSLATION)\\b/,
-        "TPT": /\\b(TPT|PASSION TRANSLATION)\\b/,
-        "NLT": /\\b(NLT|NEW LIVING TRANSLATION)\\b/,
-        "NET": /\\b(NET|NEW ENGLISH TRANSLATION)\\b/,
-        "NIV": /\\b(NIV|NEW INTERNATIONAL VERSION)\\b/,
-        "ESV": /\\b(ESV|ENGLISH STANDARD VERSION)\\b/,
-        "NASB": /\\b(NASB|NEW AMERICAN STANDARD BIBLE)\\b/,
-        "CSB": /\\b(CSB|CHRISTIAN STANDARD BIBLE|HCSB)\\b/,
-        "NKJV": /\\b(NKJV|NEW KING JAMES VERSION)\\b/
+        "GNT": /\b(GNT|GNB|GOOD NEWS TRANSLATION|GOOD NEWS BIBLE)\b/,
+        "AMP": /\b(AMP|AMPLIFIED BIBLE)\b/,
+        "LB/LT": /\b(LB|LT|TLB|LIVING BIBLE|LIVING TRANSLATION)\b/,
+        "TPT": /\b(TPT|PASSION TRANSLATION)\b/,
+        "NLT": /\b(NLT|NEW LIVING TRANSLATION)\b/,
+        "NET": /\b(NET|NEW ENGLISH TRANSLATION)\b/,
+        "NIV": /\b(NIV|NEW INTERNATIONAL VERSION)\b/,
+        "ESV": /\b(ESV|ENGLISH STANDARD VERSION)\b/,
+        "NASB": /\b(NASB|NEW AMERICAN STANDARD BIBLE)\b/,
+        "CSB": /\b(CSB|CHRISTIAN STANDARD BIBLE|HCSB)\b/,
+        "NKJV": /\b(NKJV|NEW KING JAMES VERSION)\b/
       };
       panel.hidden = false;
       panel.open = true;
