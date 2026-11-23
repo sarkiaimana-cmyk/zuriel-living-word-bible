@@ -22,6 +22,22 @@ const datasets = {
  "zuriel-chapter-introductions-obadiah-01.json": { chapters: [
  {id:"oba-ch01",book:"Obadiah",chapter:1,title:"Obadiah — Edom's pride and the day of the Lord",overview:"Obadiah condemns Edom's pride, violence, and betrayal of Judah during a crisis, and announces the day of the Lord and the restoration of God's people.",keyPassages:["Obadiah 1–9","Obadiah 10–21"]}
  ] },
+  "zuriel-chapter-introductions-zechariah-01-14.json": { chapters: [
+    {id:"zec01",book:"Zechariah",chapter:1,title:"Zechariah 1 — Return to the Lord and the night visions",overview:"Zechariah’s vision calls the returned community to faithfulness, hope, cleansing, and trust in the Lord."},
+    {id:"zec02",book:"Zechariah",chapter:2,title:"Zechariah 2 — Four horns and four craftsmen",overview:"Zechariah’s vision calls the returned community to faithfulness, hope, cleansing, and trust in the Lord."},
+    {id:"zec03",book:"Zechariah",chapter:3,title:"Zechariah 3 — Joshua cleansed and the Branch promised",overview:"Zechariah’s vision calls the returned community to faithfulness, hope, cleansing, and trust in the Lord."},
+    {id:"zec04",book:"Zechariah",chapter:4,title:"Zechariah 4 — The lampstand and the Spirit",overview:"Zechariah’s vision calls the returned community to faithfulness, hope, cleansing, and trust in the Lord."},
+    {id:"zec05",book:"Zechariah",chapter:5,title:"Zechariah 5 — The flying scroll and wickedness removed",overview:"Zechariah’s vision calls the returned community to faithfulness, hope, cleansing, and trust in the Lord."},
+    {id:"zec06",book:"Zechariah",chapter:6,title:"Zechariah 6 — The four chariots and the Branch crowned",overview:"Zechariah’s vision calls the returned community to faithfulness, hope, cleansing, and trust in the Lord."},
+    {id:"zec07",book:"Zechariah",chapter:7,title:"Zechariah 7 — Justice, mercy, and fasting",overview:"Zechariah’s vision calls the returned community to faithfulness, hope, cleansing, and trust in the Lord."},
+    {id:"zec08",book:"Zechariah",chapter:8,title:"Zechariah 8 — Fasts turned to joy and the nations seek the Lord",overview:"Zechariah’s vision calls the returned community to faithfulness, hope, cleansing, and trust in the Lord."},
+    {id:"zec09",book:"Zechariah",chapter:9,title:"Zechariah 9 — The coming King and the rejected shepherd",overview:"Zechariah’s vision calls the returned community to faithfulness, hope, cleansing, and trust in the Lord."},
+    {id:"zec10",book:"Zechariah",chapter:10,title:"Zechariah 10 — The Lord strengthens Judah",overview:"Zechariah’s vision calls the returned community to faithfulness, hope, cleansing, and trust in the Lord."},
+    {id:"zec11",book:"Zechariah",chapter:11,title:"Zechariah 11 — A fountain opened and the shepherd struck",overview:"Zechariah’s vision calls the returned community to faithfulness, hope, cleansing, and trust in the Lord."},
+    {id:"zec12",book:"Zechariah",chapter:12,title:"Zechariah 12 — The Lord reigns and living waters flow",overview:"Zechariah’s vision calls the returned community to faithfulness, hope, cleansing, and trust in the Lord."},
+    {id:"zec13",book:"Zechariah",chapter:13,title:"Zechariah 13 — Cleansing, truth, and the refined remnant",overview:"Zechariah’s vision calls the returned community to faithfulness, hope, cleansing, and trust in the Lord."},
+    {id:"zec14",book:"Zechariah",chapter:14,title:"Zechariah 14 — The Lord reigns and living waters flow",overview:"Zechariah’s vision calls the returned community to faithfulness, hope, cleansing, and trust in the Lord."}
+  ] },
   "zuriel-chapter-introductions-haggai-01-02.json": { chapters: [
     {id:"hag01",book:"Haggai",chapter:1,title:"Haggai 1 — Rebuild the house and reorder priorities",overview:"The prophet calls the returned community to consider its ways, rebuild the temple, and trust the Lord’s presence."},
     {id:"hag02",book:"Haggai",chapter:2,title:"Haggai 2 — Courage, holiness, and the promised glory",overview:"Haggai encourages the builders, teaches about holiness, and announces future hope."}
@@ -513,6 +529,9 @@ const habakkukTwo = await library.search("vision patience righteous faith", { ca
 assert.equal(habakkukTwo.length,1,"Habakkuk chapter 2 should be searchable");assert.equal(habakkukTwo[0].source.chapter,2);
 const zephaniahThree = await library.search("purification restoration joy", { category: "Chapter Introductions" });
 assert.equal(zephaniahThree.length,1,"Zephaniah chapter 3 should be searchable");assert.equal(zephaniahThree[0].source.chapter,3);
+
+const zechariahFourteen = await library.search("Lord reigns living waters Jerusalem holiness nations worship", { category: "Chapter Introductions" });
+assert.equal(zechariahFourteen.length,1,"Zechariah chapter 14 should be searchable");assert.equal(zechariahFourteen[0].source.book,"Zechariah");assert.equal(zechariahFourteen[0].source.chapter,14);
 
 const haggaiOne = await library.search("rebuild temple consider ways priorities returned community", { category: "Chapter Introductions" });
 assert.equal(haggaiOne.length,1,"Haggai chapter 1 should be searchable");assert.equal(haggaiOne[0].source.book,"Haggai");assert.equal(haggaiOne[0].source.chapter,1);
