@@ -413,6 +413,14 @@
     const placeholder = node("option", "", "Choose a translation saved on this device");
     placeholder.value = "";
     offlineSelect.appendChild(placeholder);
+    const legacyYouVersionRecords = records.filter(record => record && record.provider === "youversion");
+    if (legacyYouVersionRecords.length) {
+      try {
+        const tx = db.transaction("downloads", "readwrite");
+        const store = tx.objectStore("downloads");
+        legacyYouVersionRecords.forEach(record => store.delete(record.key || ("youversion|" + record.versionId)));
+      } catch (_) { /* Legacy YouVersion manifests are ignored if cleanup is unavailable. */ }
+    }
     const valid = records.filter(record => record &&
       record.provider === "api-bible" &&
       typeof record.versionId === "string" && record.versionId &&
@@ -512,7 +520,14 @@
         const tx = db.transaction("chapters", "readwrite");
         const store = tx.objectStore("chapters");
         records.forEach(record => {
-          if (!record || typeof record.key !== "string" || !record.key.startsWith("api-bible|")) return;
+          if (!record || typeof record.key !== "string") return;
+          if (record.key.startsWith("youversion|")) {
+            // Remove legacy YouVersion text cached before publisher permissions
+            // were verified; the current reader never stores these passages.
+            store.delete(record.key);
+            return;
+          }
+          if (!record.key.startsWith("api-bible|")) return;
           const versionId = record.key.split("|")[1] || "";
           if (!versionId || newestByVersion.get(versionId) !== record) store.delete(record.key);
         });
