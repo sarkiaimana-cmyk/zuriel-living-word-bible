@@ -36,7 +36,7 @@ const datasets = {
     {id:"mat25",book:"Matthew",chapter:25,title:"Matthew 25 — Readiness, stewardship, and the final judgment",overview:"Matthew records Jesus teaching about the kingdom, showing mercy, preparing for the cross, and fulfilling his mission."},
     {id:"mat26",book:"Matthew",chapter:26,title:"Matthew 26 — The final meal, Gethsemane, and Jesus' arrest",overview:"Matthew records Jesus teaching about the kingdom, showing mercy, preparing for the cross, and fulfilling his mission."},
     {id:"mat27",book:"Matthew",chapter:27,title:"Matthew 27 — Jesus condemned, crucified, and buried",overview:"Matthew records Jesus teaching about the kingdom, showing mercy, preparing for the cross, and fulfilling his mission."},
-    {id:"mat28",book:"Matthew",chapter:28,title:"Matthew 28 — The risen Jesus and the great commission",overview:"Matthew records Jesus teaching about the kingdom, showing mercy, preparing for the cross, and fulfilling his mission."}
+    {id:"mat28",book:"Matthew",chapter:28,title:"Matthew 28 — The risen Jesus and the great commission",overview:"The risen Jesus claims all authority and sends disciples to make disciples of all nations through baptism and teaching, promising his presence."}
   ] },
   "zuriel-chapter-introductions-matthew-01-14.json": { chapters: [
     {id:"mat01",book:"Matthew",chapter:1,title:"Matthew 1 — Jesus the Messiah: genealogy and birth",overview:"Jesus the Messiah is traced through David and Abraham; the birth narrative names him Immanuel and announces his saving mission."},
