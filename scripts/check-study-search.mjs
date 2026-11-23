@@ -903,7 +903,7 @@ assert.equal(oneCorSixteen.length,1,"1 Corinthians chapter 16 should be searchab
 
 const twoCorQueries = [
   ["consolation affliction",1],["fragrance forgiveness",2],["new covenant Spirit",3],
-  ["treasure fragile vessels",4],["ambassadors reconciliation",5],["endurance hardships",6],
+  ["treasure fragile vessels",4],["heavenly dwelling reconciliation",5],["endurance hardships",6],
   ["godly sorrow repentance",7],["generosity grace",8],["cheerful giving thanksgiving",9],
   ["weapons arguments authority",10],["false apostles boasting",11],["thorn grace weakness",12],
   ["restoration peace",13]
