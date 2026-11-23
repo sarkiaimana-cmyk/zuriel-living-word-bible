@@ -31,4 +31,13 @@ assert.ok(appVersion, "The in-app update centre must declare its installed versi
 assert.equal(appVersion[1], version.version,
   "The installed app version and release metadata must match.");
 
+assert.match(updates, /function automaticUpdateCheck\(\)/,
+  "The app must automatically check for updates after startup.");
+assert.match(updates, /window\.setTimeout\(automaticUpdateCheck, 3500\)/,
+  "Automatic update detection must run after the app has started.");
+assert.match(updates, /window\.addEventListener\("online", automaticUpdateCheck\)/,
+  "Update detection must retry when internet connectivity returns.");
+assert.match(updates, /zuriel_update_last_successful_check_v1/,
+  "Successful update checks must be throttled to avoid repeated network use.");
+
 console.log("Android release publication checks passed: PR isolation, exact-commit tag provenance, guarded asset replacement, version-triggered builds and in-app version alignment.");
