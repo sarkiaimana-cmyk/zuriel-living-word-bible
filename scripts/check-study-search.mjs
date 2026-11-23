@@ -22,6 +22,10 @@ const datasets = {
  "zuriel-chapter-introductions-obadiah-01.json": { chapters: [
  {id:"oba-ch01",book:"Obadiah",chapter:1,title:"Obadiah — Edom's pride and the day of the Lord",overview:"Obadiah condemns Edom's pride, violence, and betrayal of Judah during a crisis, and announces the day of the Lord and the restoration of God's people.",keyPassages:["Obadiah 1–9","Obadiah 10–21"]}
  ] },
+  "zuriel-chapter-introductions-haggai-01-02.json": { chapters: [
+    {id:"hag01",book:"Haggai",chapter:1,title:"Haggai 1 — Rebuild the house and reorder priorities",overview:"The prophet calls the returned community to consider its ways, rebuild the temple, and trust the Lord’s presence."},
+    {id:"hag02",book:"Haggai",chapter:2,title:"Haggai 2 — Courage, holiness, and the promised glory",overview:"Haggai encourages the builders, teaches about holiness, and announces future hope."}
+  ] },
   "zuriel-chapter-introductions-malachi-01-04.json": { chapters: [
     {id:"mal01",book:"Malachi",chapter:1,title:"Malachi 1 — The Lord’s love and the priests’ dishonour",overview:"Malachi recalls the Lord’s covenant love and confronts careless offerings and dishonouring worship."},
     {id:"mal02",book:"Malachi",chapter:2,title:"Malachi 2 — Covenant faithfulness and corrupt worship",overview:"The prophet rebukes unfaithful priests and betrayal within covenant relationships."},
@@ -509,6 +513,9 @@ const habakkukTwo = await library.search("vision patience righteous faith", { ca
 assert.equal(habakkukTwo.length,1,"Habakkuk chapter 2 should be searchable");assert.equal(habakkukTwo[0].source.chapter,2);
 const zephaniahThree = await library.search("purification restoration joy", { category: "Chapter Introductions" });
 assert.equal(zephaniahThree.length,1,"Zephaniah chapter 3 should be searchable");assert.equal(zephaniahThree[0].source.chapter,3);
+
+const haggaiOne = await library.search("rebuild temple consider ways priorities returned community", { category: "Chapter Introductions" });
+assert.equal(haggaiOne.length,1,"Haggai chapter 1 should be searchable");assert.equal(haggaiOne[0].source.book,"Haggai");assert.equal(haggaiOne[0].source.chapter,1);
 
 const malachiFour = await library.search("day Lord Elijah promise warning hope", { category: "Chapter Introductions" });
 assert.equal(malachiFour.length,1,"Malachi chapter 4 should be searchable");assert.equal(malachiFour[0].source.book,"Malachi");assert.equal(malachiFour[0].source.chapter,4);
