@@ -1536,7 +1536,7 @@
           throw new Error("The Scripture share-card studio is not ready yet.");
         }
         const passage = await window.getBibleVerseText(item.reference);
-        const exactText = String(passage && passage.text || "").replace(/^\\d+\\.\\s*/, "").trim();
+        const exactText = String(passage && passage.text || "").replace(/^\d+\.\s*/, "").trim();
         if (!exactText) throw new Error("The exact KJV Scripture could not be loaded.");
         const response = window.ZurielFaithContent &&
           typeof window.ZurielFaithContent.find === "function"
