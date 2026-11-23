@@ -153,9 +153,9 @@ jobs:
           # A catalogue response is not proof that Scripture retrieval works.
           # Select an actually authorised version and require real John 3:16 text.
           YVP_BIBLE_ID="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".translation-smoke.json","utf8"));const id=Number(j.data[0]?.id);if(!Number.isInteger(id)||id<1)process.exit(1);process.stdout.write(String(id));')"
-          YVP_CHAPTER_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \\
-            -o .translation-chapter-smoke.json -D .translation-chapter-smoke.headers -w '%{http_code}' \\
-            -H "Origin: https://sarkiaimana-cmyk.github.io" \\
+          YVP_CHAPTER_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
+            -o .translation-chapter-smoke.json -D .translation-chapter-smoke.headers -w '%{http_code}' \
+            -H "Origin: https://sarkiaimana-cmyk.github.io" \
             "$WORKER_URL/api/youversion/bibles/$YVP_BIBLE_ID/passages/JHN.3.16?format=text")"
           if [ "$YVP_CHAPTER_STATUS" != "200" ]; then
             echo "::error::YouVersion catalogue worked, but live John 3:16 retrieval failed (HTTP $YVP_CHAPTER_STATUS). Do not connect this provider yet."
@@ -185,9 +185,9 @@ jobs:
               echo "::warning::API.Bible key is valid but currently returns no English Bible versions. YouVersion remains available."
             else
               API_BIBLE_ID="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-smoke.json","utf8"));const id=String(j.data[0]?.id||"");if(!/^[a-f0-9]{16}-\\d{2}$/i.test(id))process.exit(1);process.stdout.write(id);')"
-              API_BIBLE_CHAPTER_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \\
-                -o .api-bible-chapter-smoke.json -D .api-bible-chapter-smoke.headers -w '%{http_code}' \\
-                -H "Origin: https://sarkiaimana-cmyk.github.io" \\
+              API_BIBLE_CHAPTER_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
+                -o .api-bible-chapter-smoke.json -D .api-bible-chapter-smoke.headers -w '%{http_code}' \
+                -H "Origin: https://sarkiaimana-cmyk.github.io" \
                 "$WORKER_URL/api/api-bible/bibles/$API_BIBLE_ID/chapters/JHN.3")"
               if [ "$API_BIBLE_CHAPTER_STATUS" != "200" ]; then
                 echo "::error::API.Bible catalogue worked, but live John 3 retrieval failed (HTTP $API_BIBLE_CHAPTER_STATUS). Do not connect this provider yet."
