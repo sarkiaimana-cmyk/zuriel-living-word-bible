@@ -268,7 +268,7 @@ function walkReferences(value,label) {
 // Audit every chapter-introduction dataset, not just selected books. This keeps
 // the entire 66-book chapter guide complete and byte-for-byte available offline.
 const chapterIntroNames = (await readdir(new URL("../data/", import.meta.url)))
-  .filter(name => /^zuriel-chapter-introductions-.*\\.json$/.test(name))
+  .filter(name => /^zuriel-chapter-introductions-.*\.json$/.test(name))
   .sort();
 assert.ok(chapterIntroNames.length > 0, "Chapter introduction datasets must be present.");
 const chapterCoverage = new Map(bookEntries.map(book => [book.name, new Set()]));
