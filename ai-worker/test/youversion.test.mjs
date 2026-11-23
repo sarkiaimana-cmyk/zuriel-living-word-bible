@@ -131,16 +131,30 @@ test("fetches an authorised Bible passage through the server-side app key", asyn
   assert.doesNotMatch(JSON.stringify(data), new RegExp(secret));
 });
 
-test("supports plain-text passage responses without accepting arbitrary query parameters", async () => {
+test("supports plain-text passages and retrieves required publisher attribution from Bible metadata", async () => {
+  let metadataRequested = false;
   const response = await send(request("/api/youversion/bibles/3034/passages/JHN.3?format=text"),
-    makeEnv(), async url => {
-      assert.equal(new URL(url).searchParams.get("format"), "text");
-      return Response.json({ id: "JHN.3", reference: "John 3", content: "For God so loved the world." });
+    makeEnv(), async (url, options) => {
+      const parsed = new URL(url);
+      assert.equal(options.headers["X-YVP-App-Key"], secret);
+      if (parsed.pathname === "/v1/bibles/3034/passages/JHN.3") {
+        assert.equal(parsed.searchParams.get("format"), "text");
+        return Response.json({ id: "JHN.3", reference: "John 3", content: "For God so loved the world." });
+      }
+      assert.equal(parsed.pathname, "/v1/bibles/3034");
+      metadataRequested = true;
+      return Response.json({
+        id: 3034, title: "Berean Standard Bible", abbreviation: "BSB",
+        copyright: "Publisher copyright"
+      });
     });
   assert.equal(response.status, 200);
   const data = await response.json();
+  assert.equal(metadataRequested, true);
   assert.equal(data.format, "text");
   assert.equal(data.passage.content, "For God so loved the world.");
+  assert.equal(data.passage.copyright, "Publisher copyright");
+  assert.equal(data.version.title, "Berean Standard Bible");
   const bad = await send(request("/api/youversion/bibles/3034/passages/JHN.3?format=text&all_available=true"));
   assert.equal(bad.status, 400);
 });
