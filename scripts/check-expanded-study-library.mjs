@@ -1076,4 +1076,21 @@ for(const guide of markChapterGuides.chapters){
  for(const reference of guide.keyPassages) checkReference(reference,"Mark chapter "+guide.chapter);
 }
 
-console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges, 4 Ruth and 31 1 Samuel, 24 2 Samuel 22 1 Kings, 25 2 Kings 29 1 Chronicles and 36 2 Chronicles 10 Ezra and 13 Nehemiah and 10 Esther and 42 Job and 150 Psalms and 31 Proverbs, 66 Isaiah, 52 Jeremiah, 5 Lamentations and 48 Ezekiel, 12 Daniel, 14 Hosea and 3 Joel, 9 Amos and 1 Obadiah, 4 Jonah, 7 Micah, 3 Nahum, 3 Habakkuk, 3 Zephaniah, 2 Haggai, 14 Zechariah, 28 Matthew, 8 Mark and 4 Malachi chapter introductions; 48 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
+
+const markChapterGuides2 = await json("data/zuriel-chapter-introductions-mark-09-16.json");
+assert.equal(markChapterGuides2.book,"Mark","Mark 9–16 batch must identify its book");
+assert.equal(markChapterGuides2.chapters.length,8,"Mark 9–16 batch must contain exactly eight chapter guides");
+const markIds2 = new Set();
+for(const guide of markChapterGuides2.chapters){
+ assert.equal(guide.book,"Mark","Mark guide must remain scoped to Mark");
+ assert.ok(Number.isInteger(guide.chapter)&&guide.chapter>=9&&guide.chapter<=16,"Mark chapter must be within 9–16");
+ assert.ok(guide.title.startsWith("Mark "+guide.chapter+" —"),"Mark title must identify its chapter");
+ assert.equal(guide.id,"mark"+guide.chapter,"Mark guide needs a stable chapter ID");
+ assert.ok(!markIds2.has(guide.id),"Mark guide IDs must be unique");markIds2.add(guide.id);
+ for(const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field]==="string"&&guide[field].trim().length>=50,"Mark guide needs substantive "+field+": "+guide.chapter);
+ assert.ok(Array.isArray(guide.keyPassages)&&guide.keyPassages.length===2,"Mark guide needs two key passages");
+ assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length===3,"Mark guide needs three study questions");
+ for(const reference of guide.keyPassages) checkReference(reference,"Mark chapter "+guide.chapter);
+}
+
+console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges, 4 Ruth and 31 1 Samuel, 24 2 Samuel 22 1 Kings, 25 2 Kings 29 1 Chronicles and 36 2 Chronicles 10 Ezra and 13 Nehemiah and 10 Esther and 42 Job and 150 Psalms and 31 Proverbs, 66 Isaiah, 52 Jeremiah, 5 Lamentations and 48 Ezekiel, 12 Daniel, 14 Hosea and 3 Joel, 9 Amos and 1 Obadiah, 4 Jonah, 7 Micah, 3 Nahum, 3 Habakkuk, 3 Zephaniah, 2 Haggai, 14 Zechariah, 28 Matthew, 16 Mark and 4 Malachi chapter introductions; 48 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
