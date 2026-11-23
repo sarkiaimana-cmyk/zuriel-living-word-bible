@@ -744,25 +744,25 @@ assert.equal(actsFourteen.length,1,"Acts chapter 14 should be searchable");asser
 
 
 
-const actsFifteen = await library.search("Jerusalem council Gentiles circumcision James letter", { category: "Chapter Introductions" });
+const actsFifteen = await library.search("Jerusalem council Gentiles Spirit community", { category: "Chapter Introductions" });
 assert.equal(actsFifteen.length,1,"Acts chapter 15 should be searchable");assert.equal(actsFifteen[0].source.book,"Acts");assert.equal(actsFifteen[0].source.chapter,15);
 const actsSixteen = await library.search("Macedonia Lydia jailer hospitality exploitation", { category: "Chapter Introductions" });
 assert.equal(actsSixteen.length,1,"Acts chapter 16 should be searchable");assert.equal(actsSixteen[0].source.book,"Acts");assert.equal(actsSixteen[0].source.chapter,16);
-const actsSeventeen = await library.search("Thessalonica Berea Athens Areopagus resurrection", { category: "Chapter Introductions" });
+const actsSeventeen = await library.search("Thessalonica Berea Athens scriptural reasoning philosophical audience", { category: "Chapter Introductions" });
 assert.equal(actsSeventeen.length,1,"Acts chapter 17 should be searchable");assert.equal(actsSeventeen[0].source.book,"Acts");assert.equal(actsSeventeen[0].source.chapter,17);
-const actsEighteen = await library.search("Corinth Priscilla Aquila Apollos tentmakers", { category: "Chapter Introductions" });
+const actsEighteen = await library.search("Corinth Priscilla Aquila collaborative teaching relationships", { category: "Chapter Introductions" });
 assert.equal(actsEighteen.length,1,"Acts chapter 18 should be searchable");assert.equal(actsEighteen[0].source.book,"Acts");assert.equal(actsEighteen[0].source.chapter,18);
-const actsNineteen = await library.search("Ephesus Artemis silversmith silver shrines", { category: "Chapter Introductions" });
+const actsNineteen = await library.search("Ephesus idols economic interests spiritual exploitation", { category: "Chapter Introductions" });
 assert.equal(actsNineteen.length,1,"Acts chapter 19 should be searchable");assert.equal(actsNineteen[0].source.book,"Acts");assert.equal(actsNineteen[0].source.chapter,19);
-const actsTwenty = await library.search("Eutychus Ephesian elders farewell Miletus", { category: "Chapter Introductions" });
+const actsTwenty = await library.search("Ephesian elders farewell pastoral memory warning", { category: "Chapter Introductions" });
 assert.equal(actsTwenty.length,1,"Acts chapter 20 should be searchable");assert.equal(actsTwenty[0].source.book,"Acts");assert.equal(actsTwenty[0].source.chapter,20);
-const actsTwentyOne = await library.search("Paul Jerusalem purification temple accusation Roman soldiers", { category: "Chapter Introductions" });
+const actsTwentyOne = await library.search("Paul Jerusalem Jewish Gentile suspicion arrest", { category: "Chapter Introductions" });
 assert.equal(actsTwentyOne.length,1,"Acts chapter 21 should be searchable");assert.equal(actsTwentyOne[0].source.book,"Acts");assert.equal(actsTwentyOne[0].source.chapter,21);
-const actsTwentyTwo = await library.search("Paul testimony Damascus Ananias Roman citizenship flogging", { category: "Chapter Introductions" });
+const actsTwentyTwo = await library.search("Paul testimony Jerusalem crowd calling legal status", { category: "Chapter Introductions" });
 assert.equal(actsTwentyTwo.length,1,"Acts chapter 22 should be searchable");assert.equal(actsTwentyTwo[0].source.book,"Acts");assert.equal(actsTwentyTwo[0].source.chapter,22);
-const actsTwentyThree = await library.search("Paul council Pharisees Sadducees nephew plot", { category: "Chapter Introductions" });
+const actsTwentyThree = await library.search("Paul council plot Roman threat family", { category: "Chapter Introductions" });
 assert.equal(actsTwentyThree.length,1,"Acts chapter 23 should be searchable");assert.equal(actsTwentyThree[0].source.book,"Acts");assert.equal(actsTwentyThree[0].source.chapter,23);
-const actsTwentyFour = await library.search("Felix governor resurrection bribe delayed justice", { category: "Chapter Introductions" });
+const actsTwentyFour = await library.search("Felix justice conscience resurrection delay", { category: "Chapter Introductions" });
 assert.equal(actsTwentyFour.length,1,"Acts chapter 24 should be searchable");assert.equal(actsTwentyFour[0].source.book,"Acts");assert.equal(actsTwentyFour[0].source.chapter,24);
 const actsTwentyFive = await library.search("Festus Agrippa Caesar appeal legal procedure", { category: "Chapter Introductions" });
 assert.equal(actsTwentyFive.length,1,"Acts chapter 25 should be searchable");assert.equal(actsTwentyFive[0].source.book,"Acts");assert.equal(actsTwentyFive[0].source.chapter,25);
