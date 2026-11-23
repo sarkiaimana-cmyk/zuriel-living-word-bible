@@ -453,6 +453,7 @@ async function handleApiBibleRequest(request, env, dependencies, cors) {
     upstreamUrl.searchParams.set("include-titles", "false");
     upstreamUrl.searchParams.set("include-chapter-numbers", "false");
     upstreamUrl.searchParams.set("include-verse-numbers", "true");
+    upstreamUrl.searchParams.set("fums-version", "3");
     kind = "chapter";
   }
 
@@ -529,6 +530,11 @@ async function handleApiBibleRequest(request, env, dependencies, cors) {
   if (!copyright) {
     return json({ error: "Publisher attribution was not supplied. Zuriel has withheld this chapter until its attribution can be verified." }, 502, cors);
   }
+  const fumsToken = payload.meta && typeof payload.meta.fumsToken === "string"
+    ? payload.meta.fumsToken.trim() : "";
+  if (!fumsToken) {
+    return json({ error: "API.Bible did not return the required Fair Use Management reporting token. Zuriel has withheld this chapter." }, 502, cors);
+  }
   return json({
     source: "API.Bible",
     version: { id: selectedBibleId, title: "", abbreviation: "" },
@@ -538,8 +544,9 @@ async function handleApiBibleRequest(request, env, dependencies, cors) {
       content: item.content,
       copyright
     },
+    meta: { fumsToken },
     format: "text",
-    notice: "Display the publisher's copyright with this Scripture. Online API text is not stored for offline use."
+    notice: "Display the publisher's copyright with this Scripture. API.Bible content may be cached for offline reading and should be refreshed within 14 days."
   }, 200, cors);
 }
 
