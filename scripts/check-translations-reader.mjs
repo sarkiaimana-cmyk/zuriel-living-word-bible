@@ -76,7 +76,7 @@ requireText(client, "Keep only the most recently viewed chapter per version", "K
 requireText(client, "pruneCachedTranslationChapters", "Migrate legacy caches to the current publisher limit");
 requireText(client, 'record.key.startsWith("youversion|")', "Remove legacy YouVersion offline text");
 requireText(client, "last viewed chapter saved", "Clearly identify the current offline chapter");
-const offlineSaveBlock = client.match(/async function downloadSelectedTranslation\\(\\) \\{([\\s\\S]*?)\\n  \\}\\n\\n  function renderPassage/);
+const offlineSaveBlock = client.match(/async function downloadSelectedTranslation\(\) \{([\s\S]*?)\n  \}\n\n  function renderPassage/);
 assert.ok(offlineSaveBlock, "The current-chapter offline save action must be present.");
 assert.ok(offlineSaveBlock[1].includes("currentChapter.chapter"), "Offline save must target the currently open chapter.");
 assert.ok(!offlineSaveBlock[1].includes("bibleBooks.forEach"), "Offline save must not bulk-download the full Bible.");
