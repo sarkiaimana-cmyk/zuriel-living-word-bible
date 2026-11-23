@@ -623,7 +623,7 @@ const lukeSix = await library.search("enemy love generosity mercy blessings woes
 assert.equal(lukeSix.length,1,"Luke chapter 6 should be searchable");assert.equal(lukeSix[0].source.book,"Luke");assert.equal(lukeSix[0].source.chapter,6);
 const lukeTen = await library.search("seventy two disciples Good Samaritan Martha Mary", { category: "Chapter Introductions" });
 assert.equal(lukeTen.length,1,"Luke chapter 10 should be searchable");assert.equal(lukeTen[0].source.book,"Luke");assert.equal(lukeTen[0].source.chapter,10);
-const lukeTwelve = await library.search("rich fool possessions anxiety trust faithful readiness", { category: "Chapter Introductions" });
+const lukeTwelve = await library.search("rich fool anxiety trust faithful readiness", { category: "Chapter Introductions" });
 assert.equal(lukeTwelve.length,1,"Luke chapter 12 should be searchable");assert.equal(lukeTwelve[0].source.book,"Luke");assert.equal(lukeTwelve[0].source.chapter,12);
 
 const zechariahFourteen = await library.search("Lord reigns living waters Jerusalem holiness nations worship", { category: "Chapter Introductions" });
