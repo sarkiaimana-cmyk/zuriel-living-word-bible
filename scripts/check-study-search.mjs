@@ -276,6 +276,20 @@ const datasets = {
     {id:"luke11",book:"Luke",chapter:11,title:"Luke 11 — Prayer and integrity",overview:"Jesus teaches the Lord's Prayer, asking and seeking, and confronts hypocrisy and neglected justice among leaders."},
     {id:"luke12",book:"Luke",chapter:12,title:"Luke 12 — Trust, treasure, and readiness",overview:"Jesus warns against greed, tells of the rich fool, teaches trust instead of anxiety, and calls disciples to faithful readiness."}
   ] },
+  "zuriel-chapter-introductions-luke-13-24.json": { chapters: [
+    {id:"luke13",book:"Luke",chapter:13,title:"Luke 13 — Repentance, healing, and the narrow door",overview:"Jesus calls for repentance, heals a woman on the Sabbath, teaches kingdom growth, and laments over Jerusalem."},
+    {id:"luke14",book:"Luke",chapter:14,title:"Luke 14 — Humility, hospitality, and discipleship",overview:"Jesus teaches humble places, generous hospitality, the great banquet, and counting the cost of discipleship."},
+    {id:"luke15",book:"Luke",chapter:15,title:"Luke 15 — The lost sheep, coin, and two sons",overview:"Jesus tells stories of a lost sheep, a lost coin, and a father welcoming his returning son."},
+    {id:"luke16",book:"Luke",chapter:16,title:"Luke 16 — Stewardship, wealth, and Lazarus",overview:"Jesus teaches faithfulness with possessions, warns against serving wealth, and tells of the rich man and Lazarus."},
+    {id:"luke17",book:"Luke",chapter:17,title:"Luke 17 — Forgiveness, gratitude, and the kingdom",overview:"Jesus teaches forgiveness and faith, heals ten people, and warns against chasing claims about the kingdom."},
+    {id:"luke18",book:"Luke",chapter:18,title:"Luke 18 — Persistent prayer and humble faith",overview:"Jesus tells parables about a persistent widow and a tax collector, welcomes children, speaks with a rich ruler, and heals a blind beggar."},
+    {id:"luke19",book:"Luke",chapter:19,title:"Luke 19 — Zacchaeus and the King’s arrival",overview:"Zacchaeus responds with restitution, Jesus teaches stewardship through minas, enters Jerusalem, and weeps over the city."},
+    {id:"luke20",book:"Luke",chapter:20,title:"Luke 20 — Jesus’ authority and the leaders",overview:"Jesus answers challenges about authority, taxes, and resurrection, and warns against leaders who exploit widows."},
+    {id:"luke21",book:"Luke",chapter:21,title:"Luke 21 — The widow’s offering and endurance",overview:"Jesus observes a poor widow’s offering and teaches about temple destruction, upheaval, watchfulness, and endurance."},
+    {id:"luke22",book:"Luke",chapter:22,title:"Luke 22 — The final meal and arrest",overview:"Jesus shares the Passover meal, teaches service, prays on the Mount of Olives, and is arrested."},
+    {id:"luke23",book:"Luke",chapter:23,title:"Luke 23 — Jesus crucified and buried",overview:"Jesus faces Pilate and Herod, is crucified between criminals, dies, and is buried by Joseph."},
+    {id:"luke24",book:"Luke",chapter:24,title:"Luke 24 — The resurrection and commission",overview:"Women find the empty tomb, Jesus meets disciples on the Emmaus road, appears in Jerusalem, and commissions witnesses."}
+  ] },
   "zuriel-chapter-introductions-mark-09-16.json": { chapters: [
     {id:"mark9",book:"Mark",chapter:9,title:"Mark 9 — The cost of discipleship",overview:"Jesus teaches about protecting vulnerable people, costly faithfulness, reconciliation, and forgiveness."},
     {id:"mark10",book:"Mark",chapter:10,title:"Mark 10 — Marriage, children, wealth, and following",overview:"Jesus addresses marriage, welcomes children, challenges attachment to wealth, and teaches about following him."},
@@ -625,6 +639,18 @@ const lukeTen = await library.search("seventy two disciples Good Samaritan Marth
 assert.equal(lukeTen.length,1,"Luke chapter 10 should be searchable");assert.equal(lukeTen[0].source.book,"Luke");assert.equal(lukeTen[0].source.chapter,10);
 const lukeTwelve = await library.search("rich fool anxiety trust faithful readiness", { category: "Chapter Introductions" });
 assert.equal(lukeTwelve.length,1,"Luke chapter 12 should be searchable");assert.equal(lukeTwelve[0].source.book,"Luke");assert.equal(lukeTwelve[0].source.chapter,12);
+
+
+const lukeThirteen = await library.search("repentance Sabbath healing narrow door Jerusalem", { category: "Chapter Introductions" });
+assert.equal(lukeThirteen.length,1,"Luke chapter 13 should be searchable");assert.equal(lukeThirteen[0].source.book,"Luke");assert.equal(lukeThirteen[0].source.chapter,13);
+const lukeFifteen = await library.search("lost sheep coin father returning son", { category: "Chapter Introductions" });
+assert.equal(lukeFifteen.length,1,"Luke chapter 15 should be searchable");assert.equal(lukeFifteen[0].source.book,"Luke");assert.equal(lukeFifteen[0].source.chapter,15);
+const lukeEighteen = await library.search("persistent widow tax collector children rich ruler blind beggar", { category: "Chapter Introductions" });
+assert.equal(lukeEighteen.length,1,"Luke chapter 18 should be searchable");assert.equal(lukeEighteen[0].source.book,"Luke");assert.equal(lukeEighteen[0].source.chapter,18);
+const lukeTwentyOne = await library.search("widow offering temple upheaval watchfulness endurance", { category: "Chapter Introductions" });
+assert.equal(lukeTwentyOne.length,1,"Luke chapter 21 should be searchable");assert.equal(lukeTwentyOne[0].source.book,"Luke");assert.equal(lukeTwentyOne[0].source.chapter,21);
+const lukeTwentyFour = await library.search("women empty tomb Emmaus risen Jerusalem commission witnesses", { category: "Chapter Introductions" });
+assert.equal(lukeTwentyFour.length,1,"Luke chapter 24 should be searchable");assert.equal(lukeTwentyFour[0].source.book,"Luke");assert.equal(lukeTwentyFour[0].source.chapter,24);
 
 const zechariahFourteen = await library.search("Lord reigns living waters Jerusalem holiness nations worship", { category: "Chapter Introductions" });
 assert.equal(zechariahFourteen.length,1,"Zechariah chapter 14 should be searchable");assert.equal(zechariahFourteen[0].source.book,"Zechariah");assert.equal(zechariahFourteen[0].source.chapter,14);
