@@ -4,6 +4,12 @@ import vm from "node:vm";
 
 const source = await readFile(new URL("../zuriel-study-library-data.js", import.meta.url), "utf8");
 const datasets = {
+  "zuriel-chapter-introductions-jonah-01-04.json": { chapters: [
+ {id:"jon01",book:"Jonah",chapter:1,title:"Jonah 1 — Jonah's commission and flight",overview:"Jonah flees the commission and a storm endangers the ship."},{id:"jon02",book:"Jonah",chapter:2,title:"Jonah 2 — Prayer from the deep",overview:"Jonah prays from the deep and recalls deliverance."},{id:"jon03",book:"Jonah",chapter:3,title:"Jonah 3 — Nineveh repents",overview:"Nineveh repents and God relents from disaster."},{id:"jon04",book:"Jonah",chapter:4,title:"Jonah 4 — God's compassion",overview:"Jonah resents mercy and God's compassion is revealed."}] },
+  "zuriel-chapter-introductions-micah-01-07.json": { chapters: [
+ {id:"mic01",book:"Micah",chapter:1,title:"Micah 1 — Samaria and Jerusalem",overview:"Micah announces judgement against Samaria and Jerusalem."},{id:"mic02",book:"Micah",chapter:2,title:"Micah 2 — Woe to oppressors",overview:"Micah condemns those who seize fields and exploit people."},{id:"mic03",book:"Micah",chapter:3,title:"Micah 3 — Leaders and justice",overview:"Micah confronts leaders who distort justice."},{id:"mic04",book:"Micah",chapter:4,title:"Micah 4 — Mountain and peace",overview:"Nations learn peace and God's instruction."},{id:"mic05",book:"Micah",chapter:5,title:"Micah 5 — Bethlehem ruler",overview:"Micah speaks of a ruler from Bethlehem and restoration."},{id:"mic06",book:"Micah",chapter:6,title:"Micah 6 — Justice and kindness",overview:"Micah calls for justice, kindness and humble walking."},{id:"mic07",book:"Micah",chapter:7,title:"Micah 7 — Hope and mercy",overview:"Micah laments and waits for God and forgiveness."}] },
+  "zuriel-chapter-introductions-nahum-01-03.json": { chapters: [
+ {id:"nah01",book:"Nahum",chapter:1,title:"Nahum 1 — Nineveh's downfall",overview:"Nahum announces judgement and refuge from oppressive Nineveh."},{id:"nah02",book:"Nahum",chapter:2,title:"Nahum 2 — Siege and collapse",overview:"Nahum describes siege and the city's collapse."},{id:"nah03",book:"Nahum",chapter:3,title:"Nahum 3 — Violent city",overview:"Nahum condemns violence and exploitation."}] },
   "zuriel-chapter-introductions-amos-01-09.json": { chapters: [
  {id:"amo-ch01",book:"Amos",chapter:1,title:"Amos 1 — Judgement on Damascus and neighbouring nations",overview:"The oracle condemns violence and cruelty against peoples surrounding Israel, beginning a series of accountability speeches.",keyPassages:["Amos 1:3–5"]},
  {id:"amo-ch05",book:"Amos",chapter:5,title:"Amos 5 — Seek the Lord and live; justice like a river",overview:"Amos contrasts empty worship with justice, calling Israel to seek the Lord and live.",keyPassages:["Amos 5:4–15"]},
@@ -481,6 +487,13 @@ const amosNine = await library.search("restoration rebuilding abundance", { cate
 assert.equal(amosNine.length,1,"Amos chapter 9 guide should be searchable"); assert.equal(amosNine[0].source.chapter,9);
 const obadiahOne = await library.search("Edom pride violence betrayal Judah", { category: "Chapter Introductions" });
 assert.equal(obadiahOne.length,1,"Obadiah guide should be searchable"); assert.equal(obadiahOne[0].source.chapter,1);
+
+const jonahThree = await library.search("Nineveh repents God relents", { category: "Chapter Introductions" });
+assert.equal(jonahThree.length,1,"Jonah chapter 3 should be searchable");assert.equal(jonahThree[0].source.chapter,3);
+const micahSix = await library.search("justice kindness humble walking", { category: "Chapter Introductions" });
+assert.equal(micahSix.length,1,"Micah chapter 6 should be searchable");assert.equal(micahSix[0].source.chapter,6);
+const nahumThree = await library.search("violent city exploitation", { category: "Chapter Introductions" });
+assert.equal(nahumThree.length,1,"Nahum chapter 3 should be searchable");assert.equal(nahumThree[0].source.chapter,3);
 
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
 assert.equal(greek.length, 1, "Unicode Greek search should find the original-language entry.");
