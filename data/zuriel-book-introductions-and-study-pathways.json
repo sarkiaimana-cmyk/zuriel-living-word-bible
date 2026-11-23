@@ -1683,9 +1683,10 @@
       "focus": "The day of the Lord, repentance and the outpouring of the Spirit",
       "startingPassage": "Joel 2:12-32",
       "observationPrompt": "Read Joel 2:12-32 slowly. Note repeated words, speakers, setting, actions and any change in the passage.",
-      "interpretationPrompt": "How does this passage contribute to the book's central message about the day of the lord, repentance and the outpouring of the spirit? What would the first audience have understood?",
+      "interpretationPrompt": "How does this passage contribute to the book's central message about the day of the Lord, repentance and the outpouring of the Spirit? What would the first audience have understood?",
       "crossReferenceTrail": [
-        "Psalm 105:1-11"
+        "Acts 2:16-21",
+        "Romans 10:13"
       ],
       "lifeApplicationPrompt": "Identify one response consistent with the passage's meaning: a belief to embrace, a practice to change, a promise to trust or a person to serve.",
       "prayerPrompt": "Pray from the passage itself. Thank God for what it reveals, ask for help to respond faithfully, and name one concrete next step.",
@@ -1714,7 +1715,9 @@
       "observationPrompt": "Read Obadiah 1:1-21 slowly. Note repeated words, speakers, setting, actions and any change in the passage.",
       "interpretationPrompt": "How does this passage contribute to the book's central message about pride, violence against kin and the lord's justice? What would the first audience have understood?",
       "crossReferenceTrail": [
-        "Psalm 105:1-11"
+        "Jeremiah 49:7-22",
+        "Amos 1:11-12",
+        "Obadiah 1:15-17"
       ],
       "lifeApplicationPrompt": "Identify one response consistent with the passage's meaning: a belief to embrace, a practice to change, a promise to trust or a person to serve.",
       "prayerPrompt": "Pray from the passage itself. Thank God for what it reveals, ask for help to respond faithfully, and name one concrete next step.",
@@ -1726,9 +1729,10 @@
       "focus": "Mercy, repentance, prejudice and God's concern for nations",
       "startingPassage": "Jonah 1–4",
       "observationPrompt": "Read Jonah 1–4 slowly. Note repeated words, speakers, setting, actions and any change in the passage.",
-      "interpretationPrompt": "How does this passage contribute to the book's central message about mercy, repentance, prejudice and god's concern for nations? What would the first audience have understood?",
+      "interpretationPrompt": "How does this passage contribute to the book's central message about mercy, repentance, prejudice and God's concern for nations? What would the first audience have understood?",
       "crossReferenceTrail": [
-        "Psalm 105:1-11"
+        "Matthew 12:39-41",
+        "Luke 11:29-32"
       ],
       "lifeApplicationPrompt": "Identify one response consistent with the passage's meaning: a belief to embrace, a practice to change, a promise to trust or a person to serve.",
       "prayerPrompt": "Pray from the passage itself. Thank God for what it reveals, ask for help to respond faithfully, and name one concrete next step.",
@@ -1787,9 +1791,11 @@
       "focus": "The day of the Lord, purification and humble restoration",
       "startingPassage": "Zephaniah 3:9-20",
       "observationPrompt": "Read Zephaniah 3:9-20 slowly. Note repeated words, speakers, setting, actions and any change in the passage.",
-      "interpretationPrompt": "How does this passage contribute to the book's central message about the day of the lord, purification and humble restoration? What would the first audience have understood?",
+      "interpretationPrompt": "How does this passage contribute to the book's central message about the day of the Lord, purification and humble restoration? What would the first audience have understood?",
       "crossReferenceTrail": [
-        "Psalm 105:1-11"
+        "Isaiah 2:2-4",
+        "Micah 4:1-5",
+        "Zechariah 14:9"
       ],
       "lifeApplicationPrompt": "Identify one response consistent with the passage's meaning: a belief to embrace, a practice to change, a promise to trust or a person to serve.",
       "prayerPrompt": "Pray from the passage itself. Thank God for what it reveals, ask for help to respond faithfully, and name one concrete next step.",
@@ -2126,7 +2132,8 @@
       "observationPrompt": "Read Philemon 8-21 slowly. Note repeated words, speakers, setting, actions and any change in the passage.",
       "interpretationPrompt": "How does this passage contribute to the book's central message about forgiveness, reconciliation and transformed relationships? What would the first audience have understood?",
       "crossReferenceTrail": [
-        "Luke 24:25-27"
+        "Colossians 4:7-9",
+        "Ephesians 2:13-18"
       ],
       "lifeApplicationPrompt": "Identify one response consistent with the passage's meaning: a belief to embrace, a practice to change, a promise to trust or a person to serve.",
       "prayerPrompt": "Pray from the passage itself. Thank God for what it reveals, ask for help to respond faithfully, and name one concrete next step.",
@@ -2220,7 +2227,9 @@
       "observationPrompt": "Read 2 John 1:4-11 slowly. Note repeated words, speakers, setting, actions and any change in the passage.",
       "interpretationPrompt": "How does this passage contribute to the book's central message about truth, love and discernment about teaching? What would the first audience have understood?",
       "crossReferenceTrail": [
-        "Luke 24:25-27"
+        "John 13:34-35",
+        "1 John 4:1-6",
+        "Jude 3-4"
       ],
       "lifeApplicationPrompt": "Identify one response consistent with the passage's meaning: a belief to embrace, a practice to change, a promise to trust or a person to serve.",
       "prayerPrompt": "Pray from the passage itself. Thank God for what it reveals, ask for help to respond faithfully, and name one concrete next step.",
@@ -2234,7 +2243,9 @@
       "observationPrompt": "Read 3 John 1:5-12 slowly. Note repeated words, speakers, setting, actions and any change in the passage.",
       "interpretationPrompt": "How does this passage contribute to the book's central message about hospitality, faithful partnership and humble leadership? What would the first audience have understood?",
       "crossReferenceTrail": [
-        "Luke 24:25-27"
+        "Romans 12:13",
+        "Hebrews 13:2",
+        "1 Peter 4:9"
       ],
       "lifeApplicationPrompt": "Identify one response consistent with the passage's meaning: a belief to embrace, a practice to change, a promise to trust or a person to serve.",
       "prayerPrompt": "Pray from the passage itself. Thank God for what it reveals, ask for help to respond faithfully, and name one concrete next step.",
