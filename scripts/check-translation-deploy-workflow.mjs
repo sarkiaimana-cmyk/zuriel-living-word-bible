@@ -7,6 +7,8 @@ const config = JSON.parse(fs.readFileSync("ai-worker/wrangler.translations.jsonc
 
 assert.match(workflow, /workflow_dispatch:/, "translation deployment remains manual");
 assert.match(workflow, /confirm_deployment == true/, "deployment requires explicit confirmation");
+assert.ok(workflow.includes("github.ref != 'refs/heads/main'"), "deployment rejects non-main branches");
+assert.ok(workflow.indexOf("Require main branch before any Cloudflare changes") < workflow.indexOf("Bootstrap the fail-closed Worker"), "branch guard runs before Cloudflare changes");
 for (const secret of ["CLOUDFLARE_API_TOKEN", "CLOUDFLARE_ACCOUNT_ID", "ZITE_YVP_APP_KEY"]) {
   assert.ok(workflow.includes("secrets." + secret), "deployment requires the " + secret + " repository secret");
 }
