@@ -986,7 +986,7 @@ assert.equal(galatiansSix.length,1,"Galatians chapter 6 should be searchable");a
 const ephesiansQueries = [
   ["adoption redemption forgiveness",1],["alive grace peace",2],
   ["Gentiles share promise",3],["gifts unity maturity",4],
-  ["love light wisdom",5],["armour prayer stand firm",6]
+  ["love light wisdom",5],["armour request prayer",6]
 ];
 for (const [query, chapter] of ephesiansQueries) {
   const found = await library.search(query, { category: "Chapter Introductions" });
