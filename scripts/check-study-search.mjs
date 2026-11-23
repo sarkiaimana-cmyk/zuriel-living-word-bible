@@ -931,9 +931,9 @@ const twoCorNine = await library.search("cheerful giving thanksgiving provision"
 assert.equal(twoCorNine.length,1,"2 Corinthians chapter 9 should be searchable");assert.equal(twoCorNine[0].source.book,"2 Corinthians");assert.equal(twoCorNine[0].source.chapter,9);
 const twoCorTen = await library.search("spiritual authority weapons build up", { category: "Chapter Introductions" });
 assert.equal(twoCorTen.length,1,"2 Corinthians chapter 10 should be searchable");assert.equal(twoCorTen[0].source.book,"2 Corinthians");assert.equal(twoCorTen[0].source.chapter,10);
-const twoCorEleven = await library.search("weakness visions thorn grace sufficient sincere devotion", { category: "Chapter Introductions" });
+const twoCorEleven = await library.search("false apostles costly service sincere devotion", { category: "Chapter Introductions" });
 assert.equal(twoCorEleven.length,1,"2 Corinthians chapter 11 should be searchable");assert.equal(twoCorEleven[0].source.book,"2 Corinthians");assert.equal(twoCorEleven[0].source.chapter,11);
-const twoCorTwelve = await library.search("false apostles costly service", { category: "Chapter Introductions" });
+const twoCorTwelve = await library.search("weakness visions thorn grace sufficient", { category: "Chapter Introductions" });
 assert.equal(twoCorTwelve.length,1,"2 Corinthians chapter 12 should be searchable");assert.equal(twoCorTwelve[0].source.book,"2 Corinthians");assert.equal(twoCorTwelve[0].source.chapter,12);
 const twoCorThirteen = await library.search("self examination restoration peace", { category: "Chapter Introductions" });
 assert.equal(twoCorThirteen.length,1,"2 Corinthians chapter 13 should be searchable");assert.equal(twoCorThirteen[0].source.book,"2 Corinthians");assert.equal(twoCorThirteen[0].source.chapter,13);
