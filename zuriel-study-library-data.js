@@ -116,6 +116,7 @@
     ["Deep Study Guides", "./data/zuriel-deep-study-guides.json", "guides", "guide"],
     ["Bible Geography", "./data/zuriel-bible-geography-atlas.json", "places", "place"],
     ["Bible Geography", "./data/zuriel-bible-geography-atlas.json", "journeys", "journey"],
+    ["Biblical Peoples, Kingdoms & Empires", "./data/zuriel-biblical-peoples-and-empires.json", "entries", "people-empire"],
     ["Songs, Hymns & Worship Studies", "./data/zuriel-worship-study-pathways.json", "pathways", "worship"]
   ];
 
