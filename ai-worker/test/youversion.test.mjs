@@ -82,7 +82,7 @@ test("passes a validated pagination token to the licensed English Bible list", a
   const response = await send(request("/api/youversion/bibles?next_page_token=next%2Bpage%3D%3D"), makeEnv(),
     async url => {
       const parsed = new URL(url);
-      assert.equal(parsed.searchParams.get("next_page_token"), "next+page==");
+      assert.equal(parsed.searchParams.get("page_token"), "next+page==");
       return Response.json({ data: [], next_page_token: null });
     });
   assert.equal(response.status, 200);
