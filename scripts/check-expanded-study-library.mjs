@@ -1321,4 +1321,21 @@ for (const guide of ephesiansChapterGuides.chapters) {
   for (const reference of guide.keyPassages) checkReference(reference,"Ephesians chapter "+guide.chapter);
 }
 
-console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges, 4 Ruth and 31 1 Samuel, 24 2 Samuel 22 1 Kings, 25 2 Kings 29 1 Chronicles and 36 2 Chronicles 10 Ezra and 13 Nehemiah and 10 Esther and 42 Job and 150 Psalms and 31 Proverbs, 66 Isaiah, 52 Jeremiah, 5 Lamentations and 48 Ezekiel, 12 Daniel, 14 Hosea and 3 Joel, 9 Amos and 1 Obadiah, 4 Jonah, 7 Micah, 3 Nahum, 3 Habakkuk, 3 Zephaniah, 2 Haggai, 14 Zechariah, 28 Matthew, 16 Mark, 4 Malachi, 24 Luke and 21 John, 28 Acts, 16 Romans, 16 1 Corinthians, 13 2 Corinthians, 6 Galatians and 6 Ephesians chapter introductions; 61 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
+
+const philippiansGuides = await json("data/zuriel-chapter-introductions-philippians-01-04.json");
+assert.equal(philippiansGuides.book,"Philippians","Philippians batch must identify its book");
+assert.equal(philippiansGuides.chapters.length,4,"Philippians batch must contain all four chapters");
+const philippiansIds = new Set();
+for (const guide of philippiansGuides.chapters) {
+  assert.equal(guide.book,"Philippians","Philippians guide must remain scoped to its book");
+  assert.ok(Number.isInteger(guide.chapter)&&guide.chapter>=1&&guide.chapter<=4,"Philippians chapter must be within 1–4");
+  assert.ok(guide.title.startsWith("Philippians "+guide.chapter+" —"),"Philippians title must identify its chapter");
+  assert.equal(guide.id,"phil"+guide.chapter,"Philippians guide needs a stable chapter ID");
+  assert.ok(!philippiansIds.has(guide.id),"Philippians guide IDs must be unique"); philippiansIds.add(guide.id);
+  for (const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field]==="string"&&guide[field].trim().length>=50,"Philippians guide needs substantive "+field+": "+guide.chapter);
+  assert.ok(Array.isArray(guide.keyPassages)&&guide.keyPassages.length===2,"Philippians guide needs two key passages");
+  assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length===3,"Philippians guide needs three study questions");
+  for (const reference of guide.keyPassages) checkReference(reference,"Philippians chapter "+guide.chapter);
+}
+
+console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges, 4 Ruth and 31 1 Samuel, 24 2 Samuel 22 1 Kings, 25 2 Kings 29 1 Chronicles and 36 2 Chronicles 10 Ezra and 13 Nehemiah and 10 Esther and 42 Job and 150 Psalms and 31 Proverbs, 66 Isaiah, 52 Jeremiah, 5 Lamentations and 48 Ezekiel, 12 Daniel, 14 Hosea and 3 Joel, 9 Amos and 1 Obadiah, 4 Jonah, 7 Micah, 3 Nahum, 3 Habakkuk, 3 Zephaniah, 2 Haggai, 14 Zechariah, 28 Matthew, 16 Mark, 4 Malachi, 24 Luke and 21 John, 28 Acts, 16 Romans, 16 1 Corinthians, 13 2 Corinthians, 6 Galatians, 6 Ephesians and 4 Philippians chapter introductions; 62 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
