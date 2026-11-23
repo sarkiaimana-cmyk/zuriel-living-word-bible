@@ -22,6 +22,22 @@ const datasets = {
  "zuriel-chapter-introductions-obadiah-01.json": { chapters: [
  {id:"oba-ch01",book:"Obadiah",chapter:1,title:"Obadiah — Edom's pride and the day of the Lord",overview:"Obadiah condemns Edom's pride, violence, and betrayal of Judah during a crisis, and announces the day of the Lord and the restoration of God's people.",keyPassages:["Obadiah 1–9","Obadiah 10–21"]}
  ] },
+  "zuriel-chapter-introductions-matthew-15-28.json": { chapters: [
+    {id:"mat15",book:"Matthew",chapter:15,title:"Matthew 15 — Tradition, faith, and the bread of life",overview:"Matthew records Jesus teaching about the kingdom, showing mercy, preparing for the cross, and fulfilling his mission."},
+    {id:"mat16",book:"Matthew",chapter:16,title:"Matthew 16 — Peter's confession and the way of the cross",overview:"Matthew records Jesus teaching about the kingdom, showing mercy, preparing for the cross, and fulfilling his mission."},
+    {id:"mat17",book:"Matthew",chapter:17,title:"Matthew 17 — The transfiguration, healing, and trust",overview:"Matthew records Jesus teaching about the kingdom, showing mercy, preparing for the cross, and fulfilling his mission."},
+    {id:"mat18",book:"Matthew",chapter:18,title:"Matthew 18 — Greatness, humility, and restoring relationships",overview:"Matthew records Jesus teaching about the kingdom, showing mercy, preparing for the cross, and fulfilling his mission."},
+    {id:"mat19",book:"Matthew",chapter:19,title:"Matthew 19 — Marriage, children, possessions, and the kingdom",overview:"Matthew records Jesus teaching about the kingdom, showing mercy, preparing for the cross, and fulfilling his mission."},
+    {id:"mat20",book:"Matthew",chapter:20,title:"Matthew 20 — The generous vineyard owner and the servant King",overview:"Matthew records Jesus teaching about the kingdom, showing mercy, preparing for the cross, and fulfilling his mission."},
+    {id:"mat21",book:"Matthew",chapter:21,title:"Matthew 21 — The King enters Jerusalem and confronts empty worship",overview:"Matthew records Jesus teaching about the kingdom, showing mercy, preparing for the cross, and fulfilling his mission."},
+    {id:"mat22",book:"Matthew",chapter:22,title:"Matthew 22 — The wedding feast, greatest command, and Messiah",overview:"Matthew records Jesus teaching about the kingdom, showing mercy, preparing for the cross, and fulfilling his mission."},
+    {id:"mat23",book:"Matthew",chapter:23,title:"Matthew 23 — Warnings against hypocrisy and lament over Jerusalem",overview:"Matthew records Jesus teaching about the kingdom, showing mercy, preparing for the cross, and fulfilling his mission."},
+    {id:"mat24",book:"Matthew",chapter:24,title:"Matthew 24 — The temple's fall and the call to watchfulness",overview:"Matthew records Jesus teaching about the kingdom, showing mercy, preparing for the cross, and fulfilling his mission."},
+    {id:"mat25",book:"Matthew",chapter:25,title:"Matthew 25 — Readiness, stewardship, and the final judgment",overview:"Matthew records Jesus teaching about the kingdom, showing mercy, preparing for the cross, and fulfilling his mission."},
+    {id:"mat26",book:"Matthew",chapter:26,title:"Matthew 26 — The final meal, Gethsemane, and Jesus' arrest",overview:"Matthew records Jesus teaching about the kingdom, showing mercy, preparing for the cross, and fulfilling his mission."},
+    {id:"mat27",book:"Matthew",chapter:27,title:"Matthew 27 — Jesus condemned, crucified, and buried",overview:"Matthew records Jesus teaching about the kingdom, showing mercy, preparing for the cross, and fulfilling his mission."},
+    {id:"mat28",book:"Matthew",chapter:28,title:"Matthew 28 — The risen Jesus and the great commission",overview:"Matthew records Jesus teaching about the kingdom, showing mercy, preparing for the cross, and fulfilling his mission."}
+  ] },
   "zuriel-chapter-introductions-matthew-01-14.json": { chapters: [
     {id:"mat01",book:"Matthew",chapter:1,title:"Matthew 1 — Jesus the Messiah: genealogy and birth",overview:"Jesus the Messiah is traced through David and Abraham; the birth narrative names him Immanuel and announces his saving mission."},
     {id:"mat02",book:"Matthew",chapter:2,title:"Matthew 2 — The Magi, the flight to Egypt, and the return",overview:"Matthew presents Jesus as Messiah and King, revealing the kingdom through teaching, compassion, and mighty works."},
@@ -545,6 +561,9 @@ const habakkukTwo = await library.search("vision patience righteous faith", { ca
 assert.equal(habakkukTwo.length,1,"Habakkuk chapter 2 should be searchable");assert.equal(habakkukTwo[0].source.chapter,2);
 const zephaniahThree = await library.search("purification restoration joy", { category: "Chapter Introductions" });
 assert.equal(zephaniahThree.length,1,"Zephaniah chapter 3 should be searchable");assert.equal(zephaniahThree[0].source.chapter,3);
+
+const matthewTwentyEight = await library.search("risen Jesus all authority make disciples nations baptism presence", { category: "Chapter Introductions" });
+assert.equal(matthewTwentyEight.length,1,"Matthew chapter 28 should be searchable");assert.equal(matthewTwentyEight[0].source.book,"Matthew");assert.equal(matthewTwentyEight[0].source.chapter,28);
 
 const matthewOne = await library.search("Jesus Messiah genealogy David Abraham birth Immanuel", { category: "Chapter Introductions" });
 assert.equal(matthewOne.length,1,"Matthew chapter 1 should be searchable");assert.equal(matthewOne[0].source.book,"Matthew");assert.equal(matthewOne[0].source.chapter,1);
