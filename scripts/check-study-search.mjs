@@ -1063,7 +1063,7 @@ assert.equal(twoThessThree.length,1,"2 Thessalonians chapter 3 should be searcha
 
 
 const twoThessQueries = [
-  ["persecution faith love",1],["day Lord steadfast truth",2],
+  ["faith love righteous judgement",1],["day Lord steadfast truth",2],
   ["prayer responsible work peace",3]
 ];
 for (const [query, chapter] of twoThessQueries) {
@@ -1101,7 +1101,7 @@ assert.equal(oneTimSix.length,1,"1 Timothy chapter 6 should be searchable");asse
 
 
 const secondTimothyQueries = [
-  ["guarding gospel courage",1],["endurance faithful teaching",2],
+  ["guarding gospel gift",1],["endurance faithful teaching",2],
   ["difficult times Scripture",3],["preach word finish race",4]
 ];
 for (const [query, chapter] of secondTimothyQueries) {
