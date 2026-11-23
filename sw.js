@@ -2,7 +2,7 @@
 
 "use strict";
 
-const CACHE_NAME = "zuriel-bible-offline-v313";
+const CACHE_NAME = "zuriel-bible-offline-v314";
 
 const CORE_FILES = [
   "./",
@@ -41,6 +41,7 @@ const CORE_FILES = [
   "./version.json",
   "./kjv.72bec70fcd.json",
   "./data/zuriel-bible-geography-atlas.json",
+  "./data/zuriel-biblical-peoples-and-empires.json",
   "./data/zuriel-biblical-dictionary-expansion.json",
   "./data/zuriel-book-introductions-and-study-pathways.json",
   "./data/zuriel-chapter-introductions-genesis-01-10.json",
