@@ -95,7 +95,7 @@ fi
 # Install and launch the previously published signed app first.\n# adb install "$OLD_APK" is retried by adb_install_retry without changing its semantics.
 adb_install_retry "$OLD_APK" "fresh"
 adb shell pm path "$PACKAGE"
-adb shell monkey -p "$PACKAGE" -c android.intent.category.LAUNCHER 1
+adb shell am start -W -n "$PACKAGE/.MainActivity"
 sleep 5
 adb shell dumpsys activity activities | grep -F "$PACKAGE"
 
@@ -105,7 +105,7 @@ adb_install_retry "$APK" "replace"
 INSTALLED_PACKAGE="$(adb shell dumpsys package "$PACKAGE" | tr -d '\r')"
 printf '%s\n' "$INSTALLED_PACKAGE" | grep -F "versionName=$VERSION"
 adb shell pm path "$PACKAGE"
-adb shell monkey -p "$PACKAGE" -c android.intent.category.LAUNCHER 1
+adb shell am start -W -n "$PACKAGE/.MainActivity"
 sleep 10
 adb shell dumpsys activity activities | grep -F "$PACKAGE"
 
