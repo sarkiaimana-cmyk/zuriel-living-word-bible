@@ -130,14 +130,6 @@ if (!home.includes("🔥")) failures.push("The Zuriel footer flame mark is missi
 for (const reference of ["Psalm 23:1", "Isaiah 41:10", "Philippians 4:13"]) {
   if (!home.includes('data-reference="' + reference + '"')) failures.push("The daily Scripture card for " + reference + " was removed.");
 }
-if (failures.length) {
-  console.error("Open Book Card Studio checks failed:");
-  failures.forEach(item => console.error(" - " + item));
-  process.exitCode = 1;
-} else {
-  console.log("Open Book Card Studio checks passed: live preview, typography controls, adaptive long-content layout, PNG export, native share/download fallback, offline and Android validation.");
-}
-
 if (!readerToolbar.includes("min-height:35px")) failures.push("Reader controls must stay compact and narrow.");
 if (!readerToolbar.includes("min-height:30px")) failures.push("Translation shortcuts must use compact pills.");
 if (!readerToolbar.includes("min-height:34px")) failures.push("Reader view tabs must stay compact.");
@@ -154,3 +146,17 @@ if (!home.includes(".zob-page {box-shadow:inset 0 0 18px")) failures.push("Open-
 if (!home.includes("Glory Verse Affirmation")) failures.push("Open-book card must retain its Glory Verse Affirmation label.");
 if (!home.includes("His Word...")) failures.push("Open-book card must retain the approved top-line wording.");
 if (!home.includes("THE WORD • THE TRUTH • THE LIFE")) failures.push("Open-book card must retain the Zuriel footer tagline.");
+
+if (!content.includes('id="zurielOpenBookSavedCards"')) failures.push("Home must expose the My Saved Cards shortcut.");
+if (!library.includes('id="zgsSavedHeading"') || !library.includes('id="zgsSavedCards"')) failures.push("The Glory Verse Studio must render a visible saved-card destination.");
+if (!library.includes('localStorage.getItem(savedCardsKey)') || !library.includes('localStorage.setItem(savedCardsKey')) failures.push("Saved Glory Verse cards must persist in on-device storage.");
+if (!library.includes('openSavedGloryVerseCards: function') || !library.includes('openPage("affirmation")')) failures.push("My Saved Cards must return to the saved-card section of the Studio.");
+
+if (failures.length) {
+  console.error("Open Book Card Studio checks failed:");
+  failures.forEach(item => console.error(" - " + item));
+  process.exitCode = 1;
+} else {
+  console.log("Open Book Card Studio checks passed: live preview, typography controls, adaptive long-content layout, PNG export, native share/download fallback, offline and Android validation.");
+}
+
