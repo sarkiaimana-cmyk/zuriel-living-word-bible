@@ -1062,7 +1062,7 @@ for(const guide of secondSamuelGuides){
 
 const markChapterGuides = await json("data/zuriel-chapter-introductions-mark-01-08.json");
 assert.equal(markChapterGuides.book,"Mark","Mark batch must identify its book");
-assert.equal(markChapterGuides.chapters.length,8,"Mark 1–8 batch must contain eight chapters");
+assert.equal(markChapterGuides.chapters.length,8,"Mark 1–8 batch must contain exactly eight chapter guides");
 const markIds = new Set();
 for(const guide of markChapterGuides.chapters){
  assert.equal(guide.book,"Mark","Mark guide must remain scoped to Mark");
