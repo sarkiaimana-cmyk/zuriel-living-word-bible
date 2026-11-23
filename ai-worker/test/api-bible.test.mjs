@@ -90,6 +90,18 @@ test("fetches a chapter with the API.Bible key kept server-side and publisher at
   assert.doesNotMatch(JSON.stringify(data), new RegExp(apiKey));
 });
 
+test("withholds API.Bible chapter text when the required FUMS token is missing", async () => {
+  const response = await handleTranslationRequest(
+    request("/api/api-bible/bibles/" + bibleId + "/chapters/JHN.3"),
+    env(),
+    { fetch: async () => Response.json({ data: {
+      id: "JHN.3", reference: "John 3", content: "Chapter text", copyright: "Publisher copyright"
+    }, meta: {} }) }
+  );
+  assert.equal(response.status, 502);
+  assert.match((await response.json()).error, /required Fair Use Management reporting token/);
+});
+
 test("fails closed when API.Bible key is not configured", async () => {
   const response = await handleTranslationRequest(
     request("/api/api-bible/bibles"),
