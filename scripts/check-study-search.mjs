@@ -776,7 +776,7 @@ const actsTwentyEight = await library.search("Malta Rome word proclaimed restric
 assert.equal(actsTwentyEight.length,1,"Acts chapter 28 should be searchable");assert.equal(actsTwentyEight[0].source.book,"Acts");assert.equal(actsTwentyEight[0].source.chapter,28);
 
 
-const romansOne = await library.search("gospel power", { category: "Chapter Introductions" });
+const romansOne = await library.search("gospel righteousness", { category: "Chapter Introductions" });
 assert.equal(romansOne.length,1,"Romans chapter 1 should be searchable");assert.equal(romansOne[0].source.book,"Romans");assert.equal(romansOne[0].source.chapter,1);
 const romansTwo = await library.search("impartial judgement hypocrisy law heart", { category: "Chapter Introductions" });
 assert.equal(romansTwo.length,1,"Romans chapter 2 should be searchable");assert.equal(romansTwo[0].source.book,"Romans");assert.equal(romansTwo[0].source.chapter,2);
