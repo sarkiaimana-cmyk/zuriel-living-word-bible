@@ -306,6 +306,22 @@ const datasets = {
     {id:"john20",book:"John",chapter:20,title:"John 20 — The empty tomb and Thomas’ confession",overview:"Mary Magdalene finds the empty tomb, Jesus appears, gives peace and the Spirit, and meets Thomas."},
     {id:"john21",book:"John",chapter:21,title:"John 21 — Jesus restores Peter and calls disciples",overview:"Jesus shares breakfast after a great catch of fish, restores Peter, and calls disciples to follow."}
   ] },
+  "zuriel-chapter-introductions-acts-01-14.json": { chapters: [
+    {id:"acts1",book:"Acts",chapter:1,title:"Acts 1 — The risen Jesus ascends and the disciples await the Spirit",overview:"Jesus ascends and promises the Spirit, sending the disciples as witnesses from Jerusalem outward; the community prays and chooses Matthias."},
+    {id:"acts2",book:"Acts",chapter:2,title:"Acts 2 — Pentecost and the first community",overview:"The Spirit comes at Pentecost, people hear in their own languages, Peter explains Scripture, and a community forms in fellowship and care."},
+    {id:"acts3",book:"Acts",chapter:3,title:"Acts 3 — A man is healed at the temple gate",overview:"Peter and John meet and heal a man at the temple gate, then Peter directs attention to Jesus and the promise of restoration."},
+    {id:"acts4",book:"Acts",chapter:4,title:"Acts 4 — Opposition, prayer, and generous sharing",overview:"Peter and John face opposition, the believers pray for courage, and the community shares resources to support people in need."},
+    {id:"acts5",book:"Acts",chapter:5,title:"Acts 5 — Ananias and Sapphira and the apostles’ witness",overview:"Ananias and Sapphira deceive the community, the apostles face the council, and Gamaliel urges restraint."},
+    {id:"acts6",book:"Acts",chapter:6,title:"Acts 6 — Widows, shared service, and Stephen",overview:"The community corrects inequity in the widows' distribution, appoints trusted servants, and Stephen becomes a public witness."},
+    {id:"acts7",book:"Acts",chapter:7,title:"Acts 7 — Stephen’s speech and death",overview:"Stephen retells Israel's history and prophetic witness, then is killed by stoning as Saul looks on."},
+    {id:"acts8",book:"Acts",chapter:8,title:"Acts 8 — Samaria and the Ethiopian official",overview:"Philip proclaims the message in Samaria, meets Simon, and explains Isaiah to an Ethiopian official who responds in faith."},
+    {id:"acts9",book:"Acts",chapter:9,title:"Acts 9 — Saul encounters Jesus",overview:"Saul meets Jesus on the Damascus road, Ananias helps him regain sight, and Saul begins to preach."},
+    {id:"acts10",book:"Acts",chapter:10,title:"Acts 10 — Peter and Cornelius",overview:"Peter visits Cornelius, the Spirit comes upon Gentiles, and Peter learns that God shows no partiality."},
+    {id:"acts11",book:"Acts",chapter:11,title:"Acts 11 — Gentile inclusion and Antioch",overview:"Peter explains the Spirit's work among Gentiles, and a diverse Antioch community grows with Barnabas and Saul."},
+    {id:"acts12",book:"Acts",chapter:12,title:"Acts 12 — Peter is freed and the word spreads",overview:"James is executed, Peter escapes prison with angelic help, and Herod's power falls as the word continues to grow."},
+    {id:"acts13",book:"Acts",chapter:13,title:"Acts 13 — The first missionary journey",overview:"The Antioch church sends Barnabas and Saul, who preach in Cyprus and Pisidian Antioch and proclaim Jesus' resurrection."},
+    {id:"acts14",book:"Acts",chapter:14,title:"Acts 14 — Mission through opposition and encouragement",overview:"Paul and Barnabas preach in Iconium, Lystra, and Derbe, face opposition, appoint elders, and strengthen new communities."}
+  ] },
   "zuriel-chapter-introductions-mark-09-16.json": { chapters: [
     {id:"mark9",book:"Mark",chapter:9,title:"Mark 9 — The cost of discipleship",overview:"Jesus teaches about protecting vulnerable people, costly faithfulness, reconciliation, and forgiveness."},
     {id:"mark10",book:"Mark",chapter:10,title:"Mark 10 — Marriage, children, wealth, and following",overview:"Jesus addresses marriage, welcomes children, challenges attachment to wealth, and teaches about following him."},
@@ -693,6 +709,36 @@ const johnTwenty = await library.search("Mary Magdalene empty tomb peace Spirit 
 assert.equal(johnTwenty.length,1,"John chapter 20 should be searchable");assert.equal(johnTwenty[0].source.book,"John");assert.equal(johnTwenty[0].source.chapter,20);
 const johnTwentyOne = await library.search("breakfast fish Peter restores follow", { category: "Chapter Introductions" });
 assert.equal(johnTwentyOne.length,1,"John chapter 21 should be searchable");assert.equal(johnTwentyOne[0].source.book,"John");assert.equal(johnTwentyOne[0].source.chapter,21);
+
+
+const actsOne = await library.search("ascends Spirit witnesses Jerusalem Matthias prayer", { category: "Chapter Introductions" });
+assert.equal(actsOne.length,1,"Acts chapter 1 should be searchable");assert.equal(actsOne[0].source.book,"Acts");assert.equal(actsOne[0].source.chapter,1);
+const actsTwo = await library.search("Pentecost languages Peter Scripture community fellowship", { category: "Chapter Introductions" });
+assert.equal(actsTwo.length,1,"Acts chapter 2 should be searchable");assert.equal(actsTwo[0].source.book,"Acts");assert.equal(actsTwo[0].source.chapter,2);
+const actsThree = await library.search("healed man temple gate Peter Jesus disability", { category: "Chapter Introductions" });
+assert.equal(actsThree.length,1,"Acts chapter 3 should be searchable");assert.equal(actsThree[0].source.book,"Acts");assert.equal(actsThree[0].source.chapter,3);
+const actsFour = await library.search("Peter John opposition prayer courage generosity", { category: "Chapter Introductions" });
+assert.equal(actsFour.length,1,"Acts chapter 4 should be searchable");assert.equal(actsFour[0].source.book,"Acts");assert.equal(actsFour[0].source.chapter,4);
+const actsFive = await library.search("Ananias Sapphira deception apostles council Gamaliel", { category: "Chapter Introductions" });
+assert.equal(actsFive.length,1,"Acts chapter 5 should be searchable");assert.equal(actsFive[0].source.book,"Acts");assert.equal(actsFive[0].source.chapter,5);
+const actsSix = await library.search("widows distribution Stephen service inequity", { category: "Chapter Introductions" });
+assert.equal(actsSix.length,1,"Acts chapter 6 should be searchable");assert.equal(actsSix[0].source.book,"Acts");assert.equal(actsSix[0].source.chapter,6);
+const actsSeven = await library.search("Stephen Israel history prophets stoning Saul", { category: "Chapter Introductions" });
+assert.equal(actsSeven.length,1,"Acts chapter 7 should be searchable");assert.equal(actsSeven[0].source.book,"Acts");assert.equal(actsSeven[0].source.chapter,7);
+const actsEight = await library.search("Samaria Simon Ethiopian official Isaiah Philip", { category: "Chapter Introductions" });
+assert.equal(actsEight.length,1,"Acts chapter 8 should be searchable");assert.equal(actsEight[0].source.book,"Acts");assert.equal(actsEight[0].source.chapter,8);
+const actsNine = await library.search("Saul Damascus Ananias sight baptised Jesus", { category: "Chapter Introductions" });
+assert.equal(actsNine.length,1,"Acts chapter 9 should be searchable");assert.equal(actsNine[0].source.book,"Acts");assert.equal(actsNine[0].source.chapter,9);
+const actsTen = await library.search("Cornelius Peter Gentiles Spirit partiality", { category: "Chapter Introductions" });
+assert.equal(actsTen.length,1,"Acts chapter 10 should be searchable");assert.equal(actsTen[0].source.book,"Acts");assert.equal(actsTen[0].source.chapter,10);
+const actsEleven = await library.search("Peter Jerusalem Antioch Gentiles Barnabas Saul famine", { category: "Chapter Introductions" });
+assert.equal(actsEleven.length,1,"Acts chapter 11 should be searchable");assert.equal(actsEleven[0].source.book,"Acts");assert.equal(actsEleven[0].source.chapter,11);
+const actsTwelve = await library.search("James Peter prison angel Herod", { category: "Chapter Introductions" });
+assert.equal(actsTwelve.length,1,"Acts chapter 12 should be searchable");assert.equal(actsTwelve[0].source.book,"Acts");assert.equal(actsTwelve[0].source.chapter,12);
+const actsThirteen = await library.search("Barnabas Saul Cyprus Pisidian Antioch resurrection", { category: "Chapter Introductions" });
+assert.equal(actsThirteen.length,1,"Acts chapter 13 should be searchable");assert.equal(actsThirteen[0].source.book,"Acts");assert.equal(actsThirteen[0].source.chapter,13);
+const actsFourteen = await library.search("Iconium Lystra Derbe elders opposition mission", { category: "Chapter Introductions" });
+assert.equal(actsFourteen.length,1,"Acts chapter 14 should be searchable");assert.equal(actsFourteen[0].source.book,"Acts");assert.equal(actsFourteen[0].source.chapter,14);
 
 const zechariahFourteen = await library.search("Lord reigns living waters Jerusalem holiness nations worship", { category: "Chapter Introductions" });
 assert.equal(zechariahFourteen.length,1,"Zechariah chapter 14 should be searchable");assert.equal(zechariahFourteen[0].source.book,"Zechariah");assert.equal(zechariahFourteen[0].source.chapter,14);
