@@ -947,7 +947,7 @@ assert.equal(twoCorThirteen.length,1,"2 Corinthians chapter 13 should be searcha
 
 
 const galatianQueries = [
-  ["no other gospel calling",1],["justified faith fellowship",2],
+  ["no other gospel calling",1],["justified faith works law",2],
   ["Abraham promise Spirit",3],["adoption Abba Father",4],
   ["fruit Spirit freedom",5],["burden bearing sowing",6]
 ];
