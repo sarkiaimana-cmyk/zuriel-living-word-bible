@@ -719,7 +719,7 @@ const actsThree = await library.search("healed man temple gate Peter Jesus resto
 assert.equal(actsThree.length,1,"Acts chapter 3 should be searchable");assert.equal(actsThree[0].source.book,"Acts");assert.equal(actsThree[0].source.chapter,3);
 const actsFour = await library.search("Peter John opposition prayer courage shares resources", { category: "Chapter Introductions" });
 assert.equal(actsFour.length,1,"Acts chapter 4 should be searchable");assert.equal(actsFour[0].source.book,"Acts");assert.equal(actsFour[0].source.chapter,4);
-const actsFive = await library.search("Ananias Sapphira deception apostles council Gamaliel", { category: "Chapter Introductions" });
+const actsFive = await library.search("Ananias Sapphira deceive apostles council Gamaliel", { category: "Chapter Introductions" });
 assert.equal(actsFive.length,1,"Acts chapter 5 should be searchable");assert.equal(actsFive[0].source.book,"Acts");assert.equal(actsFive[0].source.chapter,5);
 const actsSix = await library.search("widows distribution Stephen service inequity", { category: "Chapter Introductions" });
 assert.equal(actsSix.length,1,"Acts chapter 6 should be searchable");assert.equal(actsSix[0].source.book,"Acts");assert.equal(actsSix[0].source.chapter,6);
