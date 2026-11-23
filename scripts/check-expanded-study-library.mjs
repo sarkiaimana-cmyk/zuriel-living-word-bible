@@ -236,6 +236,8 @@ const commentaryBookCoverage = new Set(commentary.entries.map(entry => {
   return book && book.name;
 }).filter(Boolean));
 assert.equal(commentaryBookCoverage.size,66,"Passage commentary must cover every canonical Bible book");
+const normalizedCommentaryPassages = commentary.entries.map(entry => String(entry.passage || "").toLowerCase().replace(/[–—]/g,"-").replace(/\s+/g," ").trim());
+assert.equal(new Set(normalizedCommentaryPassages).size,commentary.entries.length,"Passage commentary must not contain duplicate normalized passages");
 let checkedPassages=0;
 function checkReference(reference,label) {
   const match=String(reference||"").trim().match(/^(.+?)\s+(\d+):(\d+)/);
@@ -345,7 +347,7 @@ const expected = [
   [books.bookIntroductions,66,"book introductions"], [books.bookStudyPathways,66,"book study pathways"],
   [trail1.trails,41,"connected Scripture trails batch 1"], [trail2.trails,33,"connected Scripture trails batch 2"],
   [deep.guides,20,"deep study guides"], [names.entries,52,"Names and Titles of God"],
-  [words.entries,110,"original-language word studies batch 1"], [words2.entries,20,"original-language word studies batch 2"], [commentary.entries,173,"passage commentary"],
+  [words.entries,110,"original-language word studies batch 1"], [words2.entries,20,"original-language word studies batch 2"], [commentary.entries,170,"unique-passage commentary"],
   [topical.entries,100,"topical study guides batch 2"], [topical3.entries,20,"topical study guides batch 3"], [worship.pathways,30,"worship study pathways"], [theology.entries,35,"theological comparisons"],
   [chapterGuides.chapters,50,"Genesis chapter introductions"],
   [exodusChapterGuides.chapters,10,"Exodus chapter introductions 1–10"],
