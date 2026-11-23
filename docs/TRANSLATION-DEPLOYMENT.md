@@ -12,15 +12,16 @@ Open the GitHub repository:
 
 1. Go to **Settings**.
 2. Open **Secrets and variables → Actions**.
-3. Under **Repository secrets**, add these three secrets:
+3. Under **Repository secrets**, add the three required secrets and, if API.Bible should also be enabled, its optional key:
 
 | Secret name | What belongs there |
 |---|---|
 | `CLOUDFLARE_API_TOKEN` | An account-owned token for the same account as the account ID. For first creation, grant Workers Admin at the Workers product scope; after the Worker exists, Workers Editor scoped to `zuriel-bible-translations` is sufficient. |
 | `CLOUDFLARE_ACCOUNT_ID` | The Cloudflare account ID |
 | `ZITE_YVP_APP_KEY` | The YouVersion Platform app key |
+| `API_BIBLE_KEY` (optional) | The API.Bible API key for the translations you are licensed to access. Store it only as a GitHub Actions secret; the Worker installs it as a Cloudflare secret. |
 
-Never paste these values into a chat, issue, source file or commit. Do not put the YouVersion key in `index.html` or the mobile app.
+Never paste these values into a chat, issue, source file or commit. Do not put either provider key in `index.html` or the mobile app. `API_BIBLE_KEY` is optional: without it, YouVersion can still be verified and used, but API.Bible remains unavailable.
 
 The Cloudflare token must belong to the same account as the account ID. Cloudflare requires Workers Admin at product scope to create a new Worker; after creation, Workers Editor scoped to this Worker is sufficient for deployments and secret updates. The workflow checks the account with `wrangler whoami` and reports permission errors without printing any key.
 
