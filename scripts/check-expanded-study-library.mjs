@@ -1508,4 +1508,21 @@ for (const guide of hebrewsGuides.chapters) {
   for (const reference of guide.keyPassages) checkReference(reference,"Hebrews chapter "+guide.chapter);
 }
 
+
+const firstJohnGuides = await json("data/zuriel-chapter-introductions-1-john-01-05.json");
+assert.equal(firstJohnGuides.book,"1 John","1 John batch must identify its book");
+assert.equal(firstJohnGuides.chapters.length,5,"1 John batch must contain all five chapters");
+const firstJohnIds = new Set();
+for (const guide of firstJohnGuides.chapters) {
+  assert.equal(guide.book,"1 John","1 John guide must remain scoped to its book");
+  assert.ok(Number.isInteger(guide.chapter)&&guide.chapter>=1&&guide.chapter<=5,"1 John chapter must be within 1–5");
+  assert.ok(guide.title.startsWith("1 John "+guide.chapter+" —"),"1 John title must identify its chapter");
+  assert.equal(guide.id,"1john"+guide.chapter,"1 John guide needs a stable chapter ID");
+  assert.ok(!firstJohnIds.has(guide.id),"1 John guide IDs must be unique"); firstJohnIds.add(guide.id);
+  for (const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field]==="string"&&guide[field].trim().length>=50,"1 John guide needs substantive "+field+": "+guide.chapter);
+  assert.ok(Array.isArray(guide.keyPassages)&&guide.keyPassages.length===2,"1 John guide needs two key passages");
+  assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length===3,"1 John guide needs three study questions");
+  for (const reference of guide.keyPassages) checkReference(reference,"1 John chapter "+guide.chapter);
+}
+
 console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges, 4 Ruth and 31 1 Samuel, 24 2 Samuel 22 1 Kings, 25 2 Kings 29 1 Chronicles and 36 2 Chronicles 10 Ezra and 13 Nehemiah and 10 Esther and 42 Job and 150 Psalms and 31 Proverbs, 66 Isaiah, 52 Jeremiah, 5 Lamentations and 48 Ezekiel, 12 Daniel, 14 Hosea and 3 Joel, 9 Amos and 1 Obadiah, 4 Jonah, 7 Micah, 3 Nahum, 3 Habakkuk, 3 Zephaniah, 2 Haggai, 14 Zechariah, 28 Matthew, 16 Mark, 4 Malachi, 24 Luke and 21 John, 28 Acts, 16 Romans, 16 1 Corinthians, 13 2 Corinthians, 6 Galatians, 6 Ephesians, 4 Philippians, 4 Colossians, 5 1 Thessalonians, 3 2 Thessalonians, 6 1 Timothy, 4 2 Timothy, 3 Titus, 1 Philemon and 13 Hebrews chapter introductions; 70 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
