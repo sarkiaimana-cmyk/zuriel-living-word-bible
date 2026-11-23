@@ -35,6 +35,13 @@ jobs:
           echo "::error::Explicit deployment confirmation is required."
           exit 1
 
+      - name: Require main branch before any Cloudflare changes
+        if: ${{ github.ref != 'refs/heads/main' }}
+        run: |
+          echo "::error::Translation proxy deployment is permitted only from main after the reviewed app changes are merged."
+          exit 1
+
+
       - name: Check out repository
         uses: actions/checkout@v4
 
