@@ -673,17 +673,17 @@ const malachiFour = await library.search("day Lord Elijah promise warning hope",
 assert.equal(malachiFour.length,1,"Malachi chapter 4 should be searchable");assert.equal(malachiFour[0].source.book,"Malachi");assert.equal(malachiFour[0].source.chapter,4);
 
 
-const johnOne = await library.search("eternal Word creation light life grace witness disciples", { category: "Chapter Introductions" });
+const johnOne = await library.search("Word creation light life grace witness disciples", { category: "Chapter Introductions" });
 assert.equal(johnOne.length,1,"John chapter 1 should be searchable");assert.equal(johnOne[0].source.book,"John");assert.equal(johnOne[0].source.chapter,1);
-const johnThree = await library.search("Nicodemus new birth Spirit God's love world", { category: "Chapter Introductions" });
+const johnThree = await library.search("new birth Spirit God's love trust Son life", { category: "Chapter Introductions" });
 assert.equal(johnThree.length,1,"John chapter 3 should be searchable");assert.equal(johnThree[0].source.book,"John");assert.equal(johnThree[0].source.chapter,3);
-const johnFour = await library.search("Samaritan woman living water worship Spirit truth", { category: "Chapter Introductions" });
+const johnFour = await library.search("living water worship boundaries woman witness", { category: "Chapter Introductions" });
 assert.equal(johnFour.length,1,"John chapter 4 should be searchable");assert.equal(johnFour[0].source.book,"John");assert.equal(johnFour[0].source.chapter,4);
-const johnSix = await library.search("loaves fish crowd bread of life Passover", { category: "Chapter Introductions" });
+const johnSix = await library.search("physical hunger life God wilderness provision", { category: "Chapter Introductions" });
 assert.equal(johnSix.length,1,"John chapter 6 should be searchable");assert.equal(johnSix[0].source.book,"John");assert.equal(johnSix[0].source.chapter,6);
-const johnNine = await library.search("blind from birth disability sin restored sight", { category: "Chapter Introductions" });
+const johnNine = await library.search("man born blind restored sight spiritual perception personal sin testimony", { category: "Chapter Introductions" });
 assert.equal(johnNine.length,1,"John chapter 9 should be searchable");assert.equal(johnNine[0].source.book,"John");assert.equal(johnNine[0].source.chapter,9);
-const johnTen = await library.search("good shepherd gate sheep abundant life self giving", { category: "Chapter Introductions" });
+const johnTen = await library.search("good shepherd abundant life secure care leadership protection self giving", { category: "Chapter Introductions" });
 assert.equal(johnTen.length,1,"John chapter 10 should be searchable");assert.equal(johnTen[0].source.book,"John");assert.equal(johnTen[0].source.chapter,10);
 
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
