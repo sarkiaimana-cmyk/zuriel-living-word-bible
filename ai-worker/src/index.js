@@ -231,7 +231,7 @@ async function handleYouVersionRequest(request, env, dependencies, cors) {
     }
     upstreamUrl = new URL(YVP_BASE + "/bibles");
     upstreamUrl.searchParams.append("language_ranges[]", "en");
-    upstreamUrl.searchParams.set("page_size", "100");
+    upstreamUrl.searchParams.set("page_size", "99");
     if (token) upstreamUrl.searchParams.set("next_page_token", token);
     kind = "bibles";
   } else {
