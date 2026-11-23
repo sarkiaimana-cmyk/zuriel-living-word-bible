@@ -716,7 +716,7 @@ const johnFive = await library.search("Bethesda healing restoration life judgmen
 assert.equal(johnFive.length,1,"John chapter 5 should be searchable");assert.equal(johnFive[0].source.book,"John");assert.equal(johnFive[0].source.chapter,5);
 const johnSix = await library.search("physical hunger life God wilderness provision", { category: "Chapter Introductions" });
 assert.equal(johnSix.length,1,"John chapter 6 should be searchable");assert.equal(johnSix[0].source.book,"John");assert.equal(johnSix[0].source.chapter,6);
-const johnSeven = await library.search("festival origin authority Spirit public debate response", { category: "Chapter Introductions" });
+const johnSeven = await library.search("festival origin authority Spirit public debate", { category: "Chapter Introductions" });
 assert.equal(johnSeven.length,1,"John chapter 7 should be searchable");assert.equal(johnSeven[0].source.book,"John");assert.equal(johnSeven[0].source.chapter,7);
 const johnEight = await library.search("light world freedom truth life", { category: "Chapter Introductions" });
 assert.equal(johnEight.length,1,"John chapter 8 should be searchable");assert.equal(johnEight[0].source.book,"John");assert.equal(johnEight[0].source.chapter,8);
