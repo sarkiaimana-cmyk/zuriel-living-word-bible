@@ -37,7 +37,7 @@ assert.match(updates, /window\.setTimeout\(automaticUpdateCheck, 3500\)/,
   "Automatic update detection must run after the app has started.");
 assert.match(updates, /window\.addEventListener\("online", automaticUpdateCheck\)/,
   "Update detection must retry when internet connectivity returns.");
-assert.match(updates, /zuriel_update_last_successful_check_v1/,
+assert.match(updates, /function readLastSuccessfulCheck\(\)/,\n  "Update detection must tolerate unavailable local storage.");\nassert.match(updates, /function saveLastSuccessfulCheck\(\)/,\n  "Successful checks must record their timestamp without blocking update detection.");\nassert.match(updates, /zuriel_update_last_successful_check_v1/,
   "Successful update checks must be throttled to avoid repeated network use.");
 
 console.log("Android release publication checks passed: PR isolation, exact-commit tag provenance, guarded asset replacement, version-triggered builds and in-app version alignment.");
