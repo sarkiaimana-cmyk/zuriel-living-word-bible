@@ -275,7 +275,8 @@ const peopleIds = new Set();
 for (const entry of peoplesAndEmpires.entries) {
   assert.ok(entry.id && !peopleIds.has(entry.id),"People and empires entry IDs must be present and unique");
   peopleIds.add(entry.id);
-  for (const field of ["title","overview","historicalSetting","context","studyObservation","interpretiveCaution","lifeApplication","sourceNote"]) {
+  assert.ok(typeof entry.title === "string" && entry.title.trim().length >= 5,"People and empires entry needs a title: " + entry.id);
+  for (const field of ["overview","historicalSetting","context","studyObservation","interpretiveCaution","lifeApplication","sourceNote"]) {
     assert.ok(typeof entry[field] === "string" && entry[field].trim().length >= 45,"People and empires entry needs substantive " + field + ": " + entry.id);
   }
   assert.ok(Array.isArray(entry.references) && entry.references.length >= 4,"People and empires entry needs at least four Scripture references: " + entry.id);
