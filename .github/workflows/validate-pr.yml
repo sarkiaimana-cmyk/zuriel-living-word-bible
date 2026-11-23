@@ -110,6 +110,9 @@ jobs:
       - name: Validate expanded offline study library integration
         run: node scripts/check-expanded-study-library.mjs
 
+      - name: Test study-library partial loading and recovery
+        run: node scripts/test-study-library-resilience.mjs
+
       - name: Validate ranked offline study-library search
         run: node scripts/check-study-search.mjs
       - name: Test Android version metadata
