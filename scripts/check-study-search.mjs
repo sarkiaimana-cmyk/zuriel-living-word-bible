@@ -790,7 +790,7 @@ const romansSix = await library.search("united Christ sin master life", { catego
 assert.equal(romansSix.length,1,"Romans chapter 6 should be searchable");assert.equal(romansSix[0].source.book,"Romans");assert.equal(romansSix[0].source.chapter,6);
 const romansSeven = await library.search("law struggle sin deliverance", { category: "Chapter Introductions" });
 assert.equal(romansSeven.length,1,"Romans chapter 7 should be searchable");assert.equal(romansSeven[0].source.book,"Romans");assert.equal(romansSeven[0].source.chapter,7);
-const romansEight = await library.search("Spirit adoption creation groaning hope love", { category: "Chapter Introductions" });
+const romansEight = await library.search("Spirit adoption creation hope love", { category: "Chapter Introductions" });
 assert.equal(romansEight.length,1,"Romans chapter 8 should be searchable");assert.equal(romansEight[0].source.book,"Romans");assert.equal(romansEight[0].source.chapter,8);
 
 
