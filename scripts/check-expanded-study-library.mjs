@@ -96,6 +96,23 @@ const [
   json("data/zuriel-chapter-introductions-matthew-15-28.json")
 ]);
 
+const peoplesAndEmpires = await json("data/zuriel-biblical-peoples-and-empires.json");
+const packagedPeoplesAndEmpires = await json("www/data/zuriel-biblical-peoples-and-empires.json");
+assert.equal(peoplesAndEmpires.entries.length,20,"Biblical peoples and empires library must contain 20 entries");
+assert.deepEqual(packagedPeoplesAndEmpires,peoplesAndEmpires,"Android package must include an exact copy of peoples and empires study data");
+assert.ok(loader.includes("zuriel-biblical-peoples-and-empires.json"),"Study library loader must register peoples and empires");
+assert.ok(worker.includes("./data/zuriel-biblical-peoples-and-empires.json"),"Service worker must precache peoples and empires data");
+walkReferences(peoplesAndEmpires,"biblical peoples and empires");
+const peopleIds = new Set();
+for (const entry of peoplesAndEmpires.entries) {
+  assert.ok(entry.id && !peopleIds.has(entry.id),"People and empires entry IDs must be present and unique");
+  peopleIds.add(entry.id);
+  for (const field of ["title","overview","historicalSetting","context","studyObservation","interpretiveCaution","lifeApplication","sourceNote"]) {
+    assert.ok(typeof entry[field] === "string" && entry[field].trim().length >= 45,"People and empires entry needs substantive " + field + ": " + entry.id);
+  }
+  assert.ok(Array.isArray(entry.references) && entry.references.length >= 4,"People and empires entry needs at least four Scripture references: " + entry.id);
+}
+
 const firstCorinthiansChapterGuides = await json("data/zuriel-chapter-introductions-1-corinthians-01-16.json");
 const secondCorinthiansChapterGuides = await json("data/zuriel-chapter-introductions-2-corinthians-01-13.json");
 
