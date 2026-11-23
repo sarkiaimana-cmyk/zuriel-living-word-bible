@@ -711,7 +711,7 @@ const johnTwentyOne = await library.search("breakfast fish Peter restores follow
 assert.equal(johnTwentyOne.length,1,"John chapter 21 should be searchable");assert.equal(johnTwentyOne[0].source.book,"John");assert.equal(johnTwentyOne[0].source.chapter,21);
 
 
-const actsOne = await library.search("ascends Spirit witnesses Jerusalem Matthias prayer", { category: "Chapter Introductions" });
+const actsOne = await library.search("ascends Spirit witnesses Jerusalem Matthias prays", { category: "Chapter Introductions" });
 assert.equal(actsOne.length,1,"Acts chapter 1 should be searchable");assert.equal(actsOne[0].source.book,"Acts");assert.equal(actsOne[0].source.chapter,1);
 const actsTwo = await library.search("Pentecost languages Peter Scripture community fellowship", { category: "Chapter Introductions" });
 assert.equal(actsTwo.length,1,"Acts chapter 2 should be searchable");assert.equal(actsTwo[0].source.book,"Acts");assert.equal(actsTwo[0].source.chapter,2);
