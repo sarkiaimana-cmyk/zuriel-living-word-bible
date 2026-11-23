@@ -1122,6 +1122,13 @@ for (const [query, chapter] of titusQueries) {
   assert.equal(found[0].source.chapter,chapter);
 }
 
+const titusOne = await library.search("elders sound doctrine faithful", { category: "Chapter Introductions" });
+assert.equal(titusOne.length,1,"Titus chapter 1 should be searchable");assert.equal(titusOne[0].source.book,"Titus");assert.equal(titusOne[0].source.chapter,1);
+const titusTwo = await library.search("grace shaped living teaching", { category: "Chapter Introductions" });
+assert.equal(titusTwo.length,1,"Titus chapter 2 should be searchable");assert.equal(titusTwo[0].source.book,"Titus");assert.equal(titusTwo[0].source.chapter,2);
+const titusThree = await library.search("renewal Spirit good works", { category: "Chapter Introductions" });
+assert.equal(titusThree.length,1,"Titus chapter 3 should be searchable");assert.equal(titusThree[0].source.book,"Titus");assert.equal(titusThree[0].source.chapter,3);
+
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
 assert.equal(greek.length, 1, "Unicode Greek search should find the original-language entry.");
 assert.equal(greek[0].source.language, "Greek");
