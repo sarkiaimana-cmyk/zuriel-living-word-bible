@@ -262,6 +262,16 @@ const datasets = {
     {id:"mark07",book:"Mark",chapter:7,title:"Mark 7 — Peter's confession and the cross",overview:"Peter confesses Jesus as Messiah, but Jesus teaches the necessity of suffering and the cost of discipleship."},
     {id:"mark08",book:"Mark",chapter:8,title:"Mark 8 — Glory, suffering, and service",overview:"Jesus is transfigured, heals a distressed child, and teaches that greatness is found in humble service."}
   ] },
+  "zuriel-chapter-introductions-mark-09-16.json": { chapters: [
+    {id:"mark9",book:"Mark",chapter:9,title:"Mark 9 — The cost of discipleship",overview:"Jesus teaches about protecting vulnerable people, costly faithfulness, reconciliation, and forgiveness."},
+    {id:"mark10",book:"Mark",chapter:10,title:"Mark 10 — Marriage, children, wealth, and following",overview:"Jesus addresses marriage, welcomes children, challenges attachment to wealth, and teaches about following him."},
+    {id:"mark11",book:"Mark",chapter:11,title:"Mark 11 — The servant King enters Jerusalem",overview:"Jesus predicts his suffering, corrects the desire for status, and heals Bartimaeus as he approaches Jerusalem."},
+    {id:"mark12",book:"Mark",chapter:12,title:"Mark 12 — Authority and fruitful faith",overview:"Jesus enters Jerusalem, challenges unfruitful worship, and teaches about faith, prayer, and authority."},
+    {id:"mark13",book:"Mark",chapter:13,title:"Mark 13 — The vineyard and greatest commandment",overview:"Jesus tells the vineyard parable and answers questions about Caesar, resurrection, and the greatest commandment."},
+    {id:"mark14",book:"Mark",chapter:14,title:"Mark 14 — The widow and coming crisis",overview:"Jesus warns against exploitative religious status, honours a poor widow's gift, and teaches watchfulness amid crisis."},
+    {id:"mark15",book:"Mark",chapter:15,title:"Mark 15 — Anointing, betrayal, and Passover",overview:"A woman anoints Jesus; Judas betrays him; Jesus shares the Passover meal and prepares the disciples for his death."},
+    {id:"mark16",book:"Mark",chapter:16,title:"Mark 16 — The empty tomb",overview:"Jesus is arrested, crucified, and buried; women discover the empty tomb and hear the resurrection announcement."}
+  ] },
   "zuriel-deep-study-guides.json": { guides: [] },
   "zuriel-bible-geography-atlas.json": { places: [], journeys: [] },
   "zuriel-worship-study-pathways.json": { pathways: [] }
@@ -583,6 +593,12 @@ const markOne = await library.search("John prepares way Jesus baptised tested di
 assert.equal(markOne.length,1,"Mark chapter 1 should be searchable");assert.equal(markOne[0].source.book,"Mark");assert.equal(markOne[0].source.chapter,1);
 const markEight = await library.search("Jesus transfigured distressed child humble service greatness", { category: "Chapter Introductions" });
 assert.equal(markEight.length,1,"Mark chapter 8 should be searchable");assert.equal(markEight[0].source.book,"Mark");assert.equal(markEight[0].source.chapter,8);
+
+
+const markNine = await library.search("protect vulnerable people reconciliation forgiveness", { category: "Chapter Introductions" });
+assert.equal(markNine.length,1,"Mark chapter 9 should be searchable");assert.equal(markNine[0].source.book,"Mark");assert.equal(markNine[0].source.chapter,9);
+const markSixteen = await library.search("crucified buried women empty tomb resurrection announcement", { category: "Chapter Introductions" });
+assert.equal(markSixteen.length,1,"Mark chapter 16 should be searchable");assert.equal(markSixteen[0].source.book,"Mark");assert.equal(markSixteen[0].source.chapter,16);
 
 const zechariahFourteen = await library.search("Lord reigns living waters Jerusalem holiness nations worship", { category: "Chapter Introductions" });
 assert.equal(zechariahFourteen.length,1,"Zechariah chapter 14 should be searchable");assert.equal(zechariahFourteen[0].source.book,"Zechariah");assert.equal(zechariahFourteen[0].source.chapter,14);
