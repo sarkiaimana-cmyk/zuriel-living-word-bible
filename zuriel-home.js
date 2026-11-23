@@ -1741,7 +1741,7 @@
         try {
           const passage = await window.getBibleVerseText(verse.reference);
           const scriptureText = String(passage && passage.text || "")
-            .replace(/^\\d+\\.\\s*/, "").trim();
+          const scriptureText = String(passage && passage.text || "").replace(/^\d+\.\s*/, "").trim();
           if (!scriptureText) throw new Error("The exact KJV verse text could not be loaded.");
           if (!window.ZurielLibrary ||
               typeof window.ZurielLibrary.openGloryVerse !== "function") {
