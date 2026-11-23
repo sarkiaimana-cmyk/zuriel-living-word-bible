@@ -895,8 +895,7 @@
           <button type="button" data-zuriel-translation="CSB" aria-label="Select Christian Standard Bible">CSB</button>
           <button type="button" data-zuriel-translation="NKJV" aria-label="Select New King James Version">NKJV</button>
         </div>
-        <p class="translation-access-note">Select a translation below. Downloaded translations can be read offline; online access and downloads depend on each provider’s available catalogue and permissions.</p>
-        <div id="zurielHomeTranslations"></div>
+        
       </section>
 
       <section class="home-hero home-identity-hero" id="zurielIdentityHero" aria-label="Who God is — rotating Scripture">
