@@ -399,6 +399,7 @@
   }
 
   async function refreshOfflineDownloadOptions() {
+    await pruneCachedTranslationChapters();
     const db = await openTranslationCache();
     if (!db) return [];
     const records = await new Promise(resolve => {
@@ -484,6 +485,41 @@
         tx.onerror = function () { resolve(false); };
         tx.onabort = function () { resolve(false); };
       } catch (_) { resolve(false); }
+    });
+  }
+
+  async function pruneCachedTranslationChapters() {
+    const db = await openTranslationCache();
+    if (!db) return;
+    const records = await new Promise(resolve => {
+      try {
+        const request = db.transaction("chapters", "readonly").objectStore("chapters").getAll();
+        request.onsuccess = function () { resolve(Array.isArray(request.result) ? request.result : []); };
+        request.onerror = function () { resolve([]); };
+      } catch (_) { resolve([]); }
+    });
+    const newestByVersion = new Map();
+    records.forEach(record => {
+      if (!record || typeof record.key !== "string" || !record.key.startsWith("api-bible|") ||
+          !Number.isFinite(record.savedAt) || Date.now() - record.savedAt > API_BIBLE_CACHE_MAX_AGE) return;
+      const versionId = record.key.split("|")[1] || "";
+      if (!versionId) return;
+      const previous = newestByVersion.get(versionId);
+      if (!previous || record.savedAt > previous.savedAt) newestByVersion.set(versionId, record);
+    });
+    await new Promise(resolve => {
+      try {
+        const tx = db.transaction("chapters", "readwrite");
+        const store = tx.objectStore("chapters");
+        records.forEach(record => {
+          if (!record || typeof record.key !== "string" || !record.key.startsWith("api-bible|")) return;
+          const versionId = record.key.split("|")[1] || "";
+          if (!versionId || newestByVersion.get(versionId) !== record) store.delete(record.key);
+        });
+        tx.oncomplete = function () { resolve(); };
+        tx.onerror = function () { resolve(); };
+        tx.onabort = function () { resolve(); };
+      } catch (_) { resolve(); }
     });
   }
 
@@ -861,7 +897,8 @@
     select.hidden = true;
     loadButton.hidden = true;
     downloadButton.hidden = true;
-    refreshOfflineDownloadOptions();
     status("Secure online translation access has not been connected yet. Your offline KJV is unchanged.");
   }
+  // Migrate older caches to the current publisher limit even before another chapter is opened.
+  refreshOfflineDownloadOptions();
 })();
