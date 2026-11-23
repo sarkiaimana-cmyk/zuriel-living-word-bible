@@ -117,6 +117,7 @@ const CORE_FILES = [
   "./data/zuriel-chapter-introductions-john-13-21.json",
   "./data/zuriel-chapter-introductions-acts-01-14.json",
   "./data/zuriel-chapter-introductions-acts-15-28.json",
+  "./data/zuriel-chapter-introductions-romans-01-08.json",
   "./data/zuriel-connected-scripture-trails-batch-1.json",
   "./data/zuriel-connected-scripture-trails-batch-2.json",
   "./data/zuriel-deep-study-guides.json",
