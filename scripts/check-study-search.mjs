@@ -262,6 +262,20 @@ const datasets = {
     {id:"mark07",book:"Mark",chapter:7,title:"Mark 7 — Peter's confession and the cross",overview:"Peter confesses Jesus as Messiah, but Jesus teaches the necessity of suffering and the cost of discipleship."},
     {id:"mark08",book:"Mark",chapter:8,title:"Mark 8 — Glory, suffering, and service",overview:"Jesus is transfigured, heals a distressed child, and teaches that greatness is found in humble service."}
   ] },
+  "zuriel-chapter-introductions-luke-01-12.json": { chapters: [
+    {id:"luke1",book:"Luke",chapter:1,title:"Luke 1 — Promised births and songs of hope",overview:"Gabriel announces the births of John and Jesus; Mary visits Elizabeth and sings of mercy, justice, and the lifting of the lowly."},
+    {id:"luke2",book:"Luke",chapter:2,title:"Luke 2 — Jesus is born and revealed to Israel",overview:"Shepherds hear the angelic announcement, while Simeon and Anna recognise salvation and consolation in the temple."},
+    {id:"luke3",book:"Luke",chapter:3,title:"Luke 3 — John calls for repentance and Jesus is baptised",overview:"John calls for ethical repentance and justice; Jesus is baptised and the genealogy reaches Adam."},
+    {id:"luke4",book:"Luke",chapter:4,title:"Luke 4 — Jesus announces good news in Galilee",overview:"Jesus resists temptation and reads Isaiah in Nazareth, announcing good news to the poor and freedom for the oppressed."},
+    {id:"luke5",book:"Luke",chapter:5,title:"Luke 5 — Disciples called and lives restored",overview:"Fishermen follow Jesus, a paralysed man is forgiven and healed, and Levi welcomes Jesus to a meal with tax collectors."},
+    {id:"luke6",book:"Luke",chapter:6,title:"Luke 6 — Sabbath mercy and kingdom life",overview:"Jesus teaches blessings and woes, enemy-love, generosity, mercy, and foundations built by hearing and doing his words."},
+    {id:"luke7",book:"Luke",chapter:7,title:"Luke 7 — Faith, compassion, and forgiveness",overview:"Jesus responds to a centurion, raises a widow's son at Nain, answers John, and welcomes a forgiven woman."},
+    {id:"luke8",book:"Luke",chapter:8,title:"Luke 8 — The word, the storm, and restored lives",overview:"Women support the ministry; the sower teaches receptive hearing; Jesus calms a storm and restores a woman and Jairus' daughter."},
+    {id:"luke9",book:"Luke",chapter:9,title:"Luke 9 — Jesus revealed and the way of the cross",overview:"The Twelve are sent, a crowd is fed, Peter confesses Jesus, the transfiguration occurs, and humility is taught."},
+    {id:"luke10",book:"Luke",chapter:10,title:"Luke 10 — The seventy-two and the Good Samaritan",overview:"Jesus sends seventy-two disciples, tells the Good Samaritan parable, and visits Martha and Mary."},
+    {id:"luke11",book:"Luke",chapter:11,title:"Luke 11 — Prayer and integrity",overview:"Jesus teaches the Lord's Prayer, asking and seeking, and confronts hypocrisy and neglected justice among leaders."},
+    {id:"luke12",book:"Luke",chapter:12,title:"Luke 12 — Trust, treasure, and readiness",overview:"Jesus warns against greed, tells of the rich fool, teaches trust instead of anxiety, and calls disciples to faithful readiness."}
+  ] },
   "zuriel-chapter-introductions-mark-09-16.json": { chapters: [
     {id:"mark9",book:"Mark",chapter:9,title:"Mark 9 — The cost of discipleship",overview:"Jesus teaches about protecting vulnerable people, costly faithfulness, reconciliation, and forgiveness."},
     {id:"mark10",book:"Mark",chapter:10,title:"Mark 10 — Marriage, children, wealth, and following",overview:"Jesus addresses marriage, welcomes children, challenges attachment to wealth, and teaches about following him."},
@@ -599,6 +613,18 @@ const markNine = await library.search("protect vulnerable people reconciliation 
 assert.equal(markNine.length,1,"Mark chapter 9 should be searchable");assert.equal(markNine[0].source.book,"Mark");assert.equal(markNine[0].source.chapter,9);
 const markSixteen = await library.search("crucified buried women empty tomb resurrection announcement", { category: "Chapter Introductions" });
 assert.equal(markSixteen.length,1,"Mark chapter 16 should be searchable");assert.equal(markSixteen[0].source.book,"Mark");assert.equal(markSixteen[0].source.chapter,16);
+
+
+const lukeOne = await library.search("Gabriel Mary Elizabeth Magnificat mercy lowly", { category: "Chapter Introductions" });
+assert.equal(lukeOne.length,1,"Luke chapter 1 should be searchable");assert.equal(lukeOne[0].source.book,"Luke");assert.equal(lukeOne[0].source.chapter,1);
+const lukeFour = await library.search("Isaiah Nazareth good news poor oppressed freedom", { category: "Chapter Introductions" });
+assert.equal(lukeFour.length,1,"Luke chapter 4 should be searchable");assert.equal(lukeFour[0].source.book,"Luke");assert.equal(lukeFour[0].source.chapter,4);
+const lukeSix = await library.search("enemy love generosity mercy blessings woes", { category: "Chapter Introductions" });
+assert.equal(lukeSix.length,1,"Luke chapter 6 should be searchable");assert.equal(lukeSix[0].source.book,"Luke");assert.equal(lukeSix[0].source.chapter,6);
+const lukeTen = await library.search("seventy two disciples Good Samaritan Martha Mary", { category: "Chapter Introductions" });
+assert.equal(lukeTen.length,1,"Luke chapter 10 should be searchable");assert.equal(lukeTen[0].source.book,"Luke");assert.equal(lukeTen[0].source.chapter,10);
+const lukeTwelve = await library.search("rich fool possessions anxiety trust faithful readiness", { category: "Chapter Introductions" });
+assert.equal(lukeTwelve.length,1,"Luke chapter 12 should be searchable");assert.equal(lukeTwelve[0].source.book,"Luke");assert.equal(lukeTwelve[0].source.chapter,12);
 
 const zechariahFourteen = await library.search("Lord reigns living waters Jerusalem holiness nations worship", { category: "Chapter Introductions" });
 assert.equal(zechariahFourteen.length,1,"Zechariah chapter 14 should be searchable");assert.equal(zechariahFourteen[0].source.book,"Zechariah");assert.equal(zechariahFourteen[0].source.chapter,14);
