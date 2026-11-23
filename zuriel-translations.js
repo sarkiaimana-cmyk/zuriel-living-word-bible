@@ -859,7 +859,10 @@
         selectedVersionLabel = match.textContent;
         select.value = match.value;
         loadButton.disabled = !currentChapter;
-        downloadButton.disabled = false;
+        // Keep publisher-restricted YouVersion passages online-only in every
+        // selection path, including the home-screen translation shortcuts.
+        downloadButton.hidden = !canStoreOffline(provider);
+        downloadButton.disabled = !canStoreOffline(provider);
         status(requested + " is available through " +
           (provider === "youversion" ? "YouVersion" : "API.Bible") +
           ". " + (currentChapter ? "Loading this chapter…" : "Open a Bible chapter to display it."));
