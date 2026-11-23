@@ -819,7 +819,7 @@ const corinthiansTwo = await library.search("Spirit wisdom revelation cross", { 
 assert.equal(corinthiansTwo.length,1,"1 Corinthians chapter 2 should be searchable");assert.equal(corinthiansTwo[0].source.book,"1 Corinthians");assert.equal(corinthiansTwo[0].source.chapter,2);
 const corinthiansThree = await library.search("field building growth church", { category: "Chapter Introductions" });
 assert.equal(corinthiansThree.length,1,"1 Corinthians chapter 3 should be searchable");assert.equal(corinthiansThree[0].source.book,"1 Corinthians");assert.equal(corinthiansThree[0].source.chapter,3);
-const corinthiansFour = await library.search("stewards humility leadership accountability", { category: "Chapter Introductions" });
+const corinthiansFour = await library.search("stewards humility leaders status", { category: "Chapter Introductions" });
 assert.equal(corinthiansFour.length,1,"1 Corinthians chapter 4 should be searchable");assert.equal(corinthiansFour[0].source.book,"1 Corinthians");assert.equal(corinthiansFour[0].source.chapter,4);
 const corinthiansFive = await library.search("wrongdoing community integrity accountability", { category: "Chapter Introductions" });
 assert.equal(corinthiansFive.length,1,"1 Corinthians chapter 5 should be searchable");assert.equal(corinthiansFive[0].source.book,"1 Corinthians");assert.equal(corinthiansFive[0].source.chapter,5);
