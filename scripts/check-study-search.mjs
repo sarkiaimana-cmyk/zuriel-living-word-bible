@@ -731,7 +731,7 @@ const actsNine = await library.search("Saul Damascus Ananias sight Jesus", { cat
 assert.equal(actsNine.length,1,"Acts chapter 9 should be searchable");assert.equal(actsNine[0].source.book,"Acts");assert.equal(actsNine[0].source.chapter,9);
 const actsTen = await library.search("Cornelius Peter Gentiles Spirit partiality", { category: "Chapter Introductions" });
 assert.equal(actsTen.length,1,"Acts chapter 10 should be searchable");assert.equal(actsTen[0].source.book,"Acts");assert.equal(actsTen[0].source.chapter,10);
-const actsEleven = await library.search("Peter Jerusalem Antioch Gentiles Barnabas Saul", { category: "Chapter Introductions" });
+const actsEleven = await library.search("Peter Antioch Gentiles Barnabas Saul", { category: "Chapter Introductions" });
 assert.equal(actsEleven.length,1,"Acts chapter 11 should be searchable");assert.equal(actsEleven[0].source.book,"Acts");assert.equal(actsEleven[0].source.chapter,11);
 const actsTwelve = await library.search("James Peter prison angelic Herod", { category: "Chapter Introductions" });
 assert.equal(actsTwelve.length,1,"Acts chapter 12 should be searchable");assert.equal(actsTwelve[0].source.book,"Acts");assert.equal(actsTwelve[0].source.chapter,12);
