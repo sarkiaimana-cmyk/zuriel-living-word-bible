@@ -244,6 +244,14 @@
     return state.loading;
   }
 
+  function unavailableSummary() {
+    if (!state.failures.length) return "";
+    const categories = Array.from(new Set(state.failures.map(entry => entry.source[0])));
+    const visible = categories.slice(0, 3).join(", ");
+    const additional = categories.length > 3 ? " and " + (categories.length - 3) + " more categories" : "";
+    return visible + additional + " (" + state.failures.length + " datasets)";
+  }
+
   function make(tag, className, value) {
     const node = document.createElement(tag);
     if (className) node.className = className;
@@ -411,7 +419,7 @@
         await loadAll();
         showResults();
         status.textContent = state.failures.length
-          ? state.items.length + " study resources available; " + state.failures.length + " dataset(s) still unavailable. You can retry again."
+          ? state.items.length + " study resources available. Still unavailable: " + unavailableSummary() + ". You can retry again."
           : state.items.length + " study resources loaded successfully. All available study datasets are ready.";
         retry.style.display = state.failures.length ? "inline-block" : "none";
       } catch (error) {
@@ -437,7 +445,7 @@
         action.addEventListener("click",()=>renderDetail(item,detail,status));
         results.appendChild(action);
       });
-      status.textContent=filtered.length+" matching study resources"+(filtered.length>30?"; showing the first 30. Refine your search to see more.":".")+(state.failures.length?" "+state.failures.length+" dataset(s) unavailable; retry when ready.":"");
+      status.textContent=filtered.length+" matching study resources"+(filtered.length>30?"; showing the first 30. Refine your search to see more.":".")+(state.failures.length?" Unavailable: "+unavailableSummary()+"; use Retry to try again.":"");
       if(!filtered.length) results.appendChild(make("p","","No matching entry. Try another word or category."));
     }
     search.addEventListener("input",showResults);
@@ -446,7 +454,7 @@
       showResults();
       if(state.items.length) renderDetail(state.items[0],detail,status);
       status.textContent=state.failures.length
-        ? state.items.length+" study resources loaded; "+state.failures.length+" dataset(s) are temporarily unavailable. The available resources remain searchable."
+        ? state.items.length+" study resources loaded. Temporarily unavailable: "+unavailableSummary()+". Available resources remain searchable."
         : state.items.length+" study resources loaded. Search or choose a category to explore.";
       retry.style.display=state.failures.length?"inline-block":"none";
     }).catch(error=>{
