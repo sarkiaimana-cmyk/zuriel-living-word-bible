@@ -723,7 +723,7 @@ const actsFive = await library.search("Ananias Sapphira deceive apostles council
 assert.equal(actsFive.length,1,"Acts chapter 5 should be searchable");assert.equal(actsFive[0].source.book,"Acts");assert.equal(actsFive[0].source.chapter,5);
 const actsSix = await library.search("widows distribution Stephen service inequity", { category: "Chapter Introductions" });
 assert.equal(actsSix.length,1,"Acts chapter 6 should be searchable");assert.equal(actsSix[0].source.book,"Acts");assert.equal(actsSix[0].source.chapter,6);
-const actsSeven = await library.search("Stephen Israel history prophetic stoning Saul", { category: "Chapter Introductions" });
+const actsSeven = await library.search("Stephen speech ancestors Moses prophets present Jesus", { category: "Chapter Introductions" });
 assert.equal(actsSeven.length,1,"Acts chapter 7 should be searchable");assert.equal(actsSeven[0].source.book,"Acts");assert.equal(actsSeven[0].source.chapter,7);
 const actsEight = await library.search("Samaria Simon Ethiopian official Isaiah Philip", { category: "Chapter Introductions" });
 assert.equal(actsEight.length,1,"Acts chapter 8 should be searchable");assert.equal(actsEight[0].source.book,"Acts");assert.equal(actsEight[0].source.chapter,8);
@@ -739,6 +739,22 @@ const actsThirteen = await library.search("Barnabas Saul Cyprus Pisidian Antioch
 assert.equal(actsThirteen.length,1,"Acts chapter 13 should be searchable");assert.equal(actsThirteen[0].source.book,"Acts");assert.equal(actsThirteen[0].source.chapter,13);
 const actsFourteen = await library.search("Iconium Lystra Derbe elders opposition mission", { category: "Chapter Introductions" });
 assert.equal(actsFourteen.length,1,"Acts chapter 14 should be searchable");assert.equal(actsFourteen[0].source.book,"Acts");assert.equal(actsFourteen[0].source.chapter,14);
+
+
+const actsFifteen = await library.search("Jerusalem council Gentiles circumcision James letter", { category: "Chapter Introductions" });
+assert.equal(actsFifteen.length,1,"Acts chapter 15 should be searchable");assert.equal(actsFifteen[0].source.book,"Acts");assert.equal(actsFifteen[0].source.chapter,15);
+const actsSeventeen = await library.search("Thessalonica Berea Athens Areopagus resurrection", { category: "Chapter Introductions" });
+assert.equal(actsSeventeen.length,1,"Acts chapter 17 should be searchable");assert.equal(actsSeventeen[0].source.book,"Acts");assert.equal(actsSeventeen[0].source.chapter,17);
+const actsNineteen = await library.search("Ephesus Artemis silversmith idols economic interests", { category: "Chapter Introductions" });
+assert.equal(actsNineteen.length,1,"Acts chapter 19 should be searchable");assert.equal(actsNineteen[0].source.book,"Acts");assert.equal(actsNineteen[0].source.chapter,19);
+const actsTwentyOne = await library.search("Paul Jerusalem purification temple accusation Roman soldiers", { category: "Chapter Introductions" });
+assert.equal(actsTwentyOne.length,1,"Acts chapter 21 should be searchable");assert.equal(actsTwentyOne[0].source.book,"Acts");assert.equal(actsTwentyOne[0].source.chapter,21);
+const actsTwentyFour = await library.search("Felix governor resurrection bribe delayed justice", { category: "Chapter Introductions" });
+assert.equal(actsTwentyFour.length,1,"Acts chapter 24 should be searchable");assert.equal(actsTwentyFour[0].source.book,"Acts");assert.equal(actsTwentyFour[0].source.chapter,24);
+const actsTwentySix = await library.search("Agrippa testimony repentance light resurrection", { category: "Chapter Introductions" });
+assert.equal(actsTwentySix.length,1,"Acts chapter 26 should be searchable");assert.equal(actsTwentySix[0].source.book,"Acts");assert.equal(actsTwentySix[0].source.chapter,26);
+const actsTwentyEight = await library.search("Malta Rome snakebite Paul open ending witness", { category: "Chapter Introductions" });
+assert.equal(actsTwentyEight.length,1,"Acts chapter 28 should be searchable");assert.equal(actsTwentyEight[0].source.book,"Acts");assert.equal(actsTwentyEight[0].source.chapter,28);
 
 const zechariahFourteen = await library.search("Lord reigns living waters Jerusalem holiness nations worship", { category: "Chapter Introductions" });
 assert.equal(zechariahFourteen.length,1,"Zechariah chapter 14 should be searchable");assert.equal(zechariahFourteen[0].source.book,"Zechariah");assert.equal(zechariahFourteen[0].source.chapter,14);
