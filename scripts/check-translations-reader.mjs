@@ -46,6 +46,12 @@ requireText(client, "item.promotional_content", "Publisher promotional attributi
 requireText(client, "/chapters/", "API.Bible chapter retrieval path");
 requireText(client, "loadedProvider === selectedProvider", "Provider-specific catalogue state");
 requireText(client, "Publisher attribution was not supplied", "Fail-closed attribution requirement");
+requireText(client, 'window.fums("trackView", fumsToken)', "Report API.Bible passage views through FUMS v3");
+requireText(index, 'src="https://pkg.api.bible/fumsV3.min.js"', "Load the official API.Bible FUMS v3 tracker");
+requireText(index, "window.fumsData = window.fumsData || [];", "Queue FUMS reports until the tracker is ready");
+requireText(worker, 'searchParams.set("fums-version", "3")', "Request API.Bible FUMS v3 tokens with chapter text");
+requireText(worker, "meta: { fumsToken }", "Forward only the API.Bible FUMS token to the client");
+requireText(worker, "required Fair Use Management reporting token", "Withhold API.Bible text when FUMS token is missing");
 requireText(client, "API.Bible chapters may be saved on this device", "Accurate publisher-specific offline storage guidance");
 requireText(client, "YouVersion passages are shown online only", "YouVersion online-only rights notice");
 requireText(client, "function canStoreOffline(provider)", "Provider-specific offline permission gate");
@@ -61,7 +67,7 @@ requireText(client, "indexedDB.open(TRANSLATION_CACHE_DB, 2)", "IndexedDB transl
 requireText(client, "let translationDbPromise = null", "Shared IndexedDB connection promise");
 requireText(client, "if (translationDb) return Promise.resolve(translationDb)", "Reuse one open offline database connection");
 requireText(client, "db.onversionchange", "Close and reopen offline database safely during schema upgrades");
-requireText(client, "API_BIBLE_CACHE_MAX_AGE = 29 * 24 * 60 * 60 * 1000", "API.Bible 29-day refresh limit");
+requireText(client, "API_BIBLE_CACHE_MAX_AGE = 14 * 24 * 60 * 60 * 1000", "API.Bible 14-day recommended cache refresh limit");
 requireText(client, "saveApiBibleChapter", "API.Bible chapter cache write");
 requireText(client, "readCachedApiBibleChapter", "API.Bible offline chapter fallback");
 requireText(client, "downloadSelectedTranslation", "Full translation offline download manager");
@@ -184,5 +190,5 @@ if (failures.length) {
   failures.forEach(item => console.error(" - " + item));
   process.exitCode = 1;
 } else {
-  console.log("Online translation reader checks passed: YouVersion and API.Bible provider selection, separate translation-only Worker, server-only credentials, manual deployment, origin/rate-limit enforcement, 29-day API.Bible offline cache, publisher attribution, and Android/offline packaging.");
+  console.log("Online translation reader checks passed: YouVersion and API.Bible provider selection, separate translation-only Worker, server-only credentials, manual deployment, origin/rate-limit enforcement, 14-day API.Bible offline cache, publisher attribution, and Android/offline packaging.");
 }
