@@ -1778,7 +1778,7 @@
         }
         saveOpenBookCardButton.disabled = true;
         if (status) status.textContent = "Preparing your open-book image for the phone Gallery…";
-        let returnHome = false;
+        let studioOpened = false;
         try {
           if (!window.ZurielMedia || typeof window.ZurielMedia.saveImage !== "function" ||
               typeof window.ZurielMedia.isAvailable !== "function" || !window.ZurielMedia.isAvailable()) {
@@ -1800,6 +1800,7 @@
           navigate("library");
           const opened = window.ZurielLibrary.openGloryVerse(verse.reference, scriptureText, "KJV", faithResponse);
           if (!opened) throw new Error("The open-book image renderer could not be prepared.");
+          studioOpened = true;
           const saveImageButton = document.querySelector("#zgsSaveImage");
           const studioStatus = document.querySelector("#zgsStatus");
           if (!saveImageButton || !studioStatus) throw new Error("The open-book image export is not available.");
@@ -1827,12 +1828,11 @@
           if (!/^Saved to your phone's Gallery in the /.test(resultMessage)) {
             throw new Error(resultMessage || "Android did not confirm that the card was saved to your Gallery.");
           }
-          returnHome = true;
           if (status) status.textContent = "Your open-book card has been saved to the Zuriel Living Word Bible album in your phone Gallery.";
         } catch (error) {
           if (status) status.textContent = error.message || "The open-book card could not be saved to your Gallery.";
         } finally {
-          if (returnHome) navigate("home");
+          if (studioOpened) navigate("home");
           saveOpenBookCardButton.disabled = false;
         }
       });
