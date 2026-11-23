@@ -1764,7 +1764,9 @@
       });
     }
 
-    /* Save the current Home open-book card directly to the on-device card library. */
+    /* Save the Home open-book card as a PNG directly to the Android Gallery.
+       The Studio is used only as the existing renderer; readers return to Home
+       after the native Gallery operation completes. */
     const saveOpenBookCardButton = document.getElementById("zurielOpenBookSaveCard");
     if (saveOpenBookCardButton) {
       saveOpenBookCardButton.addEventListener("click", async function () {
@@ -1775,10 +1777,15 @@
           return;
         }
         saveOpenBookCardButton.disabled = true;
-        if (status) status.textContent = "Saving this open-book card to My Saved Glory Verse Cards…";
+        if (status) status.textContent = "Preparing your open-book image for the phone Gallery…";
+        let returnHome = false;
         try {
+          if (!window.ZurielMedia || typeof window.ZurielMedia.saveImage !== "function" ||
+              typeof window.ZurielMedia.isAvailable !== "function" || !window.ZurielMedia.isAvailable()) {
+            throw new Error("Gallery saving is available in the installed Android app. Please use Create & Share Card in a browser.");
+          }
           const passage = await window.getBibleVerseText(verse.reference);
-          const scriptureText = String(passage && passage.text || "").replace(/^\d+\.\s*/, "").trim();
+          const scriptureText = String(passage && passage.text || "").replace(/^\\d+\\.\\s*/, "").trim();
           if (!scriptureText) throw new Error("The exact KJV verse text could not be loaded.");
           const faithResponse = window.ZurielFaithContent &&
             typeof window.ZurielFaithContent.find === "function"
@@ -1792,29 +1799,40 @@
           }
           navigate("library");
           const opened = window.ZurielLibrary.openGloryVerse(verse.reference, scriptureText, "KJV", faithResponse);
-          if (!opened) throw new Error("The share-card studio could not be opened.");
-          const saveButton = document.querySelector("#zgsSave");
-          if (!saveButton) throw new Error("The card opened, but its Save to My Library control is unavailable.");
-          let savedCountBefore = 0;
-          try {
-            const existingCards = JSON.parse(window.localStorage.getItem("zuriel_glory_verse_cards_v1") || "[]");
-            savedCountBefore = Array.isArray(existingCards) ? existingCards.length : 0;
-          } catch (_) {}
-          saveButton.click();
-          const savedCards = JSON.parse(window.localStorage.getItem("zuriel_glory_verse_cards_v1") || "[]");
-          const savedRecord = Array.isArray(savedCards) ? savedCards[savedCards.length - 1] : null;
-          if (!Array.isArray(savedCards) || savedCards.length !== savedCountBefore + 1 ||
-              !savedRecord || savedRecord.reference !== verse.reference ||
-              savedRecord.scripture !== scriptureText) {
-            const studioStatus = document.querySelector("#zgsStatus");
-            throw new Error(studioStatus && studioStatus.textContent
-              ? studioStatus.textContent
-              : "The card could not be confirmed in My Saved Glory Verse Cards. Please try again.");
+          if (!opened) throw new Error("The open-book image renderer could not be prepared.");
+          const saveImageButton = document.querySelector("#zgsSaveImage");
+          const studioStatus = document.querySelector("#zgsStatus");
+          if (!saveImageButton || !studioStatus) throw new Error("The open-book image export is not available.");
+          const previousStatus = studioStatus.textContent;
+          saveImageButton.click();
+          const resultMessage = await new Promise((resolve, reject) => {
+            let settled = false;
+            let timeout;
+            const observer = new MutationObserver(() => {
+              const message = String(studioStatus.textContent || "").trim();
+              if (message && message !== previousStatus) finish(resolve, message);
+            });
+            const finish = (callback, value) => {
+              if (settled) return;
+              settled = true;
+              observer.disconnect();
+              clearTimeout(timeout);
+              callback(value);
+            };
+            observer.observe(studioStatus, { childList: true, subtree: true, characterData: true });
+            timeout = setTimeout(() => finish(reject, new Error("Gallery saving took too long. Please try again.")), 30000);
+            const immediateMessage = String(studioStatus.textContent || "").trim();
+            if (immediateMessage && immediateMessage !== previousStatus) finish(resolve, immediateMessage);
+          });
+          if (!/^Saved to your phone's Gallery in the /.test(resultMessage)) {
+            throw new Error(resultMessage || "Android did not confirm that the card was saved to your Gallery.");
           }
-          if (status) status.textContent = "Saved on this device. Open My Saved Cards any time to reopen, download or share it.";
+          returnHome = true;
+          if (status) status.textContent = "Your open-book card has been saved to the Zuriel Living Word Bible album in your phone Gallery.";
         } catch (error) {
-          if (status) status.textContent = error.message || "The open-book card could not be saved.";
+          if (status) status.textContent = error.message || "The open-book card could not be saved to your Gallery.";
         } finally {
+          if (returnHome) navigate("home");
           saveOpenBookCardButton.disabled = false;
         }
       });
