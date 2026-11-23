@@ -147,7 +147,8 @@ const studyDatasetPaths = [
   "zuriel-chapter-introductions-john-01-10.json",
   "zuriel-chapter-introductions-john-11-12.json",
   "zuriel-chapter-introductions-john-13-21.json",
-  "zuriel-chapter-introductions-acts-01-14.json"
+  "zuriel-chapter-introductions-acts-01-14.json",
+  "zuriel-chapter-introductions-acts-15-28.json"
 ];
 const [packagingScript, packagedLoader] = await Promise.all([
   readFile(new URL("../scripts/prepare-web.mjs", import.meta.url), "utf8"),
