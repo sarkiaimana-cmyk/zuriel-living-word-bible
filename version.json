@@ -1,5 +1,5 @@
 {
-  "version": "2.10.0",
+  "version": "2.10.1",
   "displayVersion": "2.10",
-  "releaseNotes": "Zuriel version 2.10: Completed all 21 Judges chapter introductions in two sections (1–10 and 11–21) and all four Ruth chapter introductions in one complete section. Both books are connected to the searchable offline Study Library and Android offline cache, with chapter context, cross-references, study questions, practical applications and interpretive safeguards."
+  "releaseNotes": "Zuriel version 2.10.1: improved Android release integrity and update safety. Continues the expanded offline Bible study library, book and chapter introductions, and safeguards for saved personal study records."
 }
