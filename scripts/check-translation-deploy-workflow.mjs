@@ -22,6 +22,7 @@ assert.match(workflow, /workers\/scripts\/zuriel-bible-translations\/subdomain/,
 assert.match(workflow, /\/api\/youversion\/bibles/, "deployment smoke-tests the same version-list route used by the app");
 assert.match(workflow, /\/api\/youversion\/bibles\/\$YVP_BIBLE_ID\/passages\/JHN\.3\.16\?format=text/, "deployment retrieves a real authorised YouVersion passage");
 assert.match(workflow, /j\.passage\.content.*j\.passage\.reference.*j\.version\?\.id/, "deployment requires non-empty YouVersion passage text and metadata");
+assert.match(workflow, /j\.passage\.copyright.*j\.passage\.promotional_content/, "deployment requires YouVersion publisher attribution with live passage text");
 assert.match(workflow, /\/api\/api-bible\/bibles/, "deployment smoke-tests API.Bible when its optional key is configured");
 assert.match(workflow, /\/chapters\/JHN\.3/, "deployment retrieves a real API.Bible chapter");
 assert.match(workflow, /j\.passage\.copyright/, "deployment requires API.Bible publisher attribution");
