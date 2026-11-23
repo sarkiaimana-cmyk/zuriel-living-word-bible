@@ -794,19 +794,19 @@ const romansEight = await library.search("Spirit adoption creation groaning hope
 assert.equal(romansEight.length,1,"Romans chapter 8 should be searchable");assert.equal(romansEight[0].source.book,"Romans");assert.equal(romansEight[0].source.chapter,8);
 
 
-const romansNine = await library.search("Israel promises mercy election grief", { category: "Chapter Introductions" });
+const romansNine = await library.search("Israel promises mercy grief", { category: "Chapter Introductions" });
 assert.equal(romansNine.length,1,"Romans chapter 9 should be searchable");assert.equal(romansNine[0].source.book,"Romans");assert.equal(romansNine[0].source.chapter,9);
-const romansTen = await library.search("Israel salvation faith confession hearing gospel", { category: "Chapter Introductions" });
+const romansTen = await library.search("Israel salvation faith message all", { category: "Chapter Introductions" });
 assert.equal(romansTen.length,1,"Romans chapter 10 should be searchable");assert.equal(romansTen[0].source.book,"Romans");assert.equal(romansTen[0].source.chapter,10);
 const romansEleven = await library.search("remnant olive tree Gentiles boast mercy", { category: "Chapter Introductions" });
 assert.equal(romansEleven.length,1,"Romans chapter 11 should be searchable");assert.equal(romansEleven[0].source.book,"Romans");assert.equal(romansEleven[0].source.chapter,11);
-const romansTwelve = await library.search("living sacrifice gifts body sincere love hospitality peace", { category: "Chapter Introductions" });
+const romansTwelve = await library.search("living worship gifts body sincere love practical care", { category: "Chapter Introductions" });
 assert.equal(romansTwelve.length,1,"Romans chapter 12 should be searchable");assert.equal(romansTwelve[0].source.book,"Romans");assert.equal(romansTwelve[0].source.chapter,12);
-const romansThirteen = await library.search("authorities neighbour love conscience light", { category: "Chapter Introductions" });
+const romansThirteen = await library.search("public authority neighbour love responsibility light", { category: "Chapter Introductions" });
 assert.equal(romansThirteen.length,1,"Romans chapter 13 should be searchable");assert.equal(romansThirteen[0].source.book,"Romans");assert.equal(romansThirteen[0].source.chapter,13);
-const romansFourteen = await library.search("food days conscience strong weak welcome", { category: "Chapter Introductions" });
+const romansFourteen = await library.search("food days conscience strong weak judge", { category: "Chapter Introductions" });
 assert.equal(romansFourteen.length,1,"Romans chapter 14 should be searchable");assert.equal(romansFourteen[0].source.book,"Romans");assert.equal(romansFourteen[0].source.chapter,14);
-const romansFifteen = await library.search("strong weak nations hope unity mission", { category: "Chapter Introductions" });
+const romansFifteen = await library.search("unity hope mission nations service grace", { category: "Chapter Introductions" });
 assert.equal(romansFifteen.length,1,"Romans chapter 15 should be searchable");assert.equal(romansFifteen[0].source.book,"Romans");assert.equal(romansFifteen[0].source.chapter,15);
 const romansSixteen = await library.search("Phoebe Junia Prisca women co-workers house churches greetings", { category: "Chapter Introductions" });
 assert.equal(romansSixteen.length,1,"Romans chapter 16 should be searchable");assert.equal(romansSixteen[0].source.book,"Romans");assert.equal(romansSixteen[0].source.chapter,16);
