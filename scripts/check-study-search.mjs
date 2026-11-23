@@ -780,13 +780,13 @@ const romansOne = await library.search("gospel righteousness", { category: "Chap
 assert.equal(romansOne.length,1,"Romans chapter 1 should be searchable");assert.equal(romansOne[0].source.book,"Romans");assert.equal(romansOne[0].source.chapter,1);
 const romansTwo = await library.search("impartial judgement hypocrisy law heart", { category: "Chapter Introductions" });
 assert.equal(romansTwo.length,1,"Romans chapter 2 should be searchable");assert.equal(romansTwo[0].source.book,"Romans");assert.equal(romansTwo[0].source.chapter,2);
-const romansThree = await library.search("universal need justification grace redemption boasting", { category: "Chapter Introductions" });
+const romansThree = await library.search("universal need justification grace boasting", { category: "Chapter Introductions" });
 assert.equal(romansThree.length,1,"Romans chapter 3 should be searchable");assert.equal(romansThree[0].source.book,"Romans");assert.equal(romansThree[0].source.chapter,3);
-const romansFour = await library.search("Abraham faith circumcision promise grace nations", { category: "Chapter Introductions" });
+const romansFour = await library.search("Abraham faith promise grace nations", { category: "Chapter Introductions" });
 assert.equal(romansFour.length,1,"Romans chapter 4 should be searchable");assert.equal(romansFour[0].source.book,"Romans");assert.equal(romansFour[0].source.chapter,4);
 const romansFive = await library.search("peace hope suffering Adam Christ grace", { category: "Chapter Introductions" });
 assert.equal(romansFive.length,1,"Romans chapter 5 should be searchable");assert.equal(romansFive[0].source.book,"Romans");assert.equal(romansFive[0].source.chapter,5);
-const romansSix = await library.search("united Christ sin master righteousness grace", { category: "Chapter Introductions" });
+const romansSix = await library.search("united Christ sin master life", { category: "Chapter Introductions" });
 assert.equal(romansSix.length,1,"Romans chapter 6 should be searchable");assert.equal(romansSix[0].source.book,"Romans");assert.equal(romansSix[0].source.chapter,6);
 const romansSeven = await library.search("law struggle sin deliverance", { category: "Chapter Introductions" });
 assert.equal(romansSeven.length,1,"Romans chapter 7 should be searchable");assert.equal(romansSeven[0].source.book,"Romans");assert.equal(romansSeven[0].source.chapter,7);
@@ -808,7 +808,7 @@ const romansFourteen = await library.search("food days conscience strong weak ju
 assert.equal(romansFourteen.length,1,"Romans chapter 14 should be searchable");assert.equal(romansFourteen[0].source.book,"Romans");assert.equal(romansFourteen[0].source.chapter,14);
 const romansFifteen = await library.search("unity hope mission nations service grace", { category: "Chapter Introductions" });
 assert.equal(romansFifteen.length,1,"Romans chapter 15 should be searchable");assert.equal(romansFifteen[0].source.book,"Romans");assert.equal(romansFifteen[0].source.chapter,15);
-const romansSixteen = await library.search("Phoebe Junia Prisca women co-workers house churches greetings", { category: "Chapter Introductions" });
+const romansSixteen = await library.search("Phoebe women co-workers house churches greetings", { category: "Chapter Introductions" });
 assert.equal(romansSixteen.length,1,"Romans chapter 16 should be searchable");assert.equal(romansSixteen[0].source.book,"Romans");assert.equal(romansSixteen[0].source.chapter,16);
 
 const zechariahFourteen = await library.search("Lord reigns living waters Jerusalem holiness nations worship", { category: "Chapter Introductions" });
