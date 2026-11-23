@@ -29,6 +29,7 @@
         if (!response.ok) throw new Error("Update information is not available right now.");
         const info = await response.json();
         if (!info || !info.version) throw new Error("The update information could not be verified.");
+        localStorage.setItem("zuriel_update_last_successful_check_v1", String(Date.now()));
         const newer = compareVersions(info.version, APP_VERSION) > 0;
         if (newer) {
           status.textContent = "A newer Zuriel version is available: " + (info.displayVersion || info.version) + ".";
@@ -138,6 +139,16 @@
         button.disabled = false;
       }
     });
+    // Quietly check published updates after startup and when connectivity returns.
+    // The six-hour success window avoids repeated network requests; failed checks remain retryable.
+    function automaticUpdateCheck() {
+      if (!navigator.onLine || button.disabled) return;
+      const lastSuccessfulCheck = Number(localStorage.getItem("zuriel_update_last_successful_check_v1")) || 0;
+      if (Date.now() - lastSuccessfulCheck < 6 * 60 * 60 * 1000) return;
+      button.click();
+    }
+    window.setTimeout(automaticUpdateCheck, 3500);
+    window.addEventListener("online", automaticUpdateCheck);
   }
   function isNativeApp() {
     return !!(window.Capacitor && typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform());
