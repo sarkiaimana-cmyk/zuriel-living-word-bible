@@ -97,6 +97,7 @@ requireText(client, '"ESV": /', "English Standard Version catalogue alias");
 requireText(client, '"NASB": /', "New American Standard Bible catalogue alias");
 requireText(client, '"CSB": /', "Christian Standard Bible catalogue alias");
 requireText(client, '"NKJV": /', "New King James Version catalogue alias");
+if (client.includes("/\\\\b")) failures.push("Double-escaped translation alias boundaries must not be present.");
 
 
 requireText(client, "activeController.abort()", "Cancellation of stale or closed-panel passage requests");
