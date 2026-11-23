@@ -186,7 +186,7 @@
   }
 
   function sourceKey(source) {
-    return [source[0], source[1], source[2], source[3]].join("\\u0000");
+    return JSON.stringify(source);
   }
 
   async function loadAll() {
