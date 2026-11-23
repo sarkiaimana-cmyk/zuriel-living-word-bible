@@ -144,7 +144,7 @@ const studyDatasetPaths = [
   "zuriel-chapter-introductions-isaiah-01-22.json",
   "zuriel-chapter-introductions-luke-01-12.json",
   "zuriel-chapter-introductions-luke-13-24.json",
-  "zuriel-chapter-introductions-john-01-12.json"
+  "zuriel-chapter-introductions-john-11-12.json"
 ];
 const [packagingScript, packagedLoader] = await Promise.all([
   readFile(new URL("../scripts/prepare-web.mjs", import.meta.url), "utf8"),
@@ -1145,16 +1145,16 @@ for (const guide of johnChapterGuides.chapters) {
   for (const reference of guide.keyPassages) checkReference(reference,"John chapter "+guide.chapter);
 }
 
-const johnChapterGuides = await json("data/zuriel-chapter-introductions-john-01-12.json");
-assert.equal(johnChapterGuides.book,"John","John 1–12 batch must identify its book");
-assert.equal(johnChapterGuides.chapters.length,12,"John 1–12 batch must contain exactly twelve chapter guides");
-const johnIds = new Set();
-for (const guide of johnChapterGuides.chapters) {
+const johnChapterGuides2 = await json("data/zuriel-chapter-introductions-john-11-12.json");
+assert.equal(johnChapterGuides2.book,"John","John 11–12 batch must identify its book");
+assert.equal(johnChapterGuides2.chapters.length,2,"John 11–12 batch must contain exactly two chapter guides");
+const johnIds2 = new Set();
+for (const guide of johnChapterGuides2.chapters) {
   assert.equal(guide.book,"John","John guide must remain scoped to John");
-  assert.ok(Number.isInteger(guide.chapter)&&guide.chapter>=1&&guide.chapter<=12,"John chapter must be within 1–12");
+  assert.ok(Number.isInteger(guide.chapter)&&guide.chapter>=11&&guide.chapter<=12,"John chapter must be within 11–12");
   assert.ok(guide.title.startsWith("John "+guide.chapter+" —"),"John title must identify its chapter");
   assert.equal(guide.id,"john"+guide.chapter,"John guide needs a stable chapter ID");
-  assert.ok(!johnIds.has(guide.id),"John guide IDs must be unique"); johnIds.add(guide.id);
+  assert.ok(!johnIds2.has(guide.id),"John guide IDs must be unique"); johnIds2.add(guide.id);
   for (const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field]==="string"&&guide[field].trim().length>=50,"John guide needs substantive "+field+": "+guide.chapter);
   assert.ok(Array.isArray(guide.keyPassages)&&guide.keyPassages.length===2,"John guide needs two key passages");
   assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length===3,"John guide needs three study questions");
