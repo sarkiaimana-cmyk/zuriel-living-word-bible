@@ -68,12 +68,13 @@ test("fetches a chapter with the API.Bible key kept server-side and publisher at
         assert.equal(parsed.pathname, "/v1/bibles/" + bibleId + "/chapters/JHN.3");
         assert.equal(parsed.searchParams.get("content-type"), "text");
         assert.equal(parsed.searchParams.get("include-verse-numbers"), "true");
+        assert.equal(parsed.searchParams.get("fums-version"), "3");
         assert.equal(parsed.searchParams.get("include-notes"), "false");
         assert.equal(options.headers["api-key"], apiKey);
         return Response.json({ data: {
           id: "JHN.3", bibleId, reference: "John 3", content: "1 Now there was a man...",
           copyright: "Publisher copyright notice", verseCount: 36
-        } });
+        }, meta: { fumsToken: "fums-test-token" } });
       }
     }
   );
@@ -84,6 +85,7 @@ test("fetches a chapter with the API.Bible key kept server-side and publisher at
   assert.equal(data.passage.reference, "John 3");
   assert.match(data.passage.content, /Now there was a man/);
   assert.equal(data.passage.copyright, "Publisher copyright notice");
+  assert.equal(data.meta.fumsToken, "fums-test-token");
   assert.match(data.notice, /not stored for offline use/);
   assert.doesNotMatch(JSON.stringify(data), new RegExp(apiKey));
 });
