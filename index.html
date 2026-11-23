@@ -1718,6 +1718,13 @@ loadBibleBooks();
   <script src="zuriel-notifications.js"></script>
   <script src="zuriel-audio.js" defer></script>
   <script>window.ZURIEL_TRANSLATION_API_BASE = "";</script>
+  <script src="https://pkg.api.bible/fumsV3.min.js"></script>
+  <script>
+    window.fumsData = window.fumsData || [];
+    window.fums = window.fums || function () {
+      window.fumsData.push(arguments);
+    };
+  </script>
   <script src="zuriel-translations.js"></script>
   <script src="zuriel-reader-topbar.js"></script>
   <script src="zuriel-design-system.js"></script>
