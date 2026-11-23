@@ -1,3 +1,4 @@
+// Every chapter-introduction JSON dataset has a matching offline-search fixture below.
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import vm from "node:vm";
