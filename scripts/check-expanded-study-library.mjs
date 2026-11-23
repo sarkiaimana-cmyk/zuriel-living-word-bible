@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 import assert from "node:assert/strict";
 import { runInNewContext } from "node:vm";
 
@@ -264,6 +264,51 @@ function walkReferences(value,label) {
     }
   }
 }
+
+// Audit every chapter-introduction dataset, not just selected books. This keeps
+// the entire 66-book chapter guide complete and byte-for-byte available offline.
+const chapterIntroNames = (await readdir(new URL("../data/", import.meta.url)))
+  .filter(name => /^zuriel-chapter-introductions-.*\\.json$/.test(name))
+  .sort();
+assert.ok(chapterIntroNames.length > 0, "Chapter introduction datasets must be present.");
+const chapterCoverage = new Map(bookEntries.map(book => [book.name, new Set()]));
+for (const name of chapterIntroNames) {
+  const dataset = await json("data/" + name);
+  const book = bookLookup.get(String(dataset.book || "").toLowerCase());
+  assert.ok(book, "Chapter introduction dataset must identify a canonical Bible book: " + name);
+  assert.ok(Array.isArray(dataset.chapters), "Chapter introduction dataset must contain a chapters array: " + name);
+  const seenInFile = new Set();
+  for (const guide of dataset.chapters) {
+    assert.ok(Number.isInteger(guide.chapter) && guide.chapter >= 1 && guide.chapter <= book.chapters,
+      "Chapter guide number must be valid for " + book.name + ": " + name);
+    assert.ok(!seenInFile.has(guide.chapter), "A chapter must not be duplicated within " + name);
+    seenInFile.add(guide.chapter);
+    const coverage = chapterCoverage.get(book.name);
+    assert.ok(!coverage.has(guide.chapter), "A chapter must not be duplicated across datasets: " + book.name + " " + guide.chapter);
+    coverage.add(guide.chapter);
+    for (const field of ["title","historicalContext","overview","studyObservation","lifeApplication","interpretiveCaution","readingNote"]) {
+      assert.ok(typeof guide[field] === "string" && guide[field].trim().length >= 35,
+        "Chapter guide needs substantive " + field + ": " + book.name + " " + guide.chapter);
+    }
+    assert.ok(Array.isArray(guide.keyPassages) && guide.keyPassages.length >= 2,
+      "Chapter guide needs at least two key passages: " + book.name + " " + guide.chapter);
+    assert.ok(Array.isArray(guide.studyQuestions) && guide.studyQuestions.length >= 3,
+      "Chapter guide needs at least three study questions: " + book.name + " " + guide.chapter);
+  }
+  walkReferences(dataset, "chapter introductions — " + book.name);
+  const sourceText = await readFile(new URL("../data/" + name, import.meta.url), "utf8");
+  const packagedText = await readFile(new URL("../www/data/" + name, import.meta.url), "utf8");
+  assert.equal(packagedText, sourceText, "Offline Android package must contain an exact copy of " + name);
+}
+for (const book of bookEntries) {
+  const covered = chapterCoverage.get(book.name);
+  assert.equal(covered.size, book.chapters,
+    "Chapter introductions must cover every chapter of " + book.name + " (" + covered.size + "/" + book.chapters + ")");
+  for (let chapter = 1; chapter <= book.chapters; chapter++) {
+    assert.ok(covered.has(chapter), "Missing chapter introduction: " + book.name + " " + chapter);
+  }
+}
+
 const peoplesAndEmpires = await json("data/zuriel-biblical-peoples-and-empires.json");
 const packagedPeoplesAndEmpires = await json("www/data/zuriel-biblical-peoples-and-empires.json");
 assert.equal(peoplesAndEmpires.entries.length,20,"Biblical peoples and empires library must contain 20 entries");
