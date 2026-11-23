@@ -295,6 +295,17 @@ const datasets = {
     {id:"john11",book:"John",chapter:11,title:"John 11 — Lazarus and resurrection life",overview:"Jesus weeps with Mary and Martha, calls Lazarus from the tomb, and reveals himself as resurrection and life."},
     {id:"john12",book:"John",chapter:12,title:"John 12 — Mary’s anointing and the King’s entry",overview:"Mary anoints Jesus, he enters Jerusalem, Greeks seek him, and he teaches about the grain of wheat and his hour of glory."}
   ] },
+  "zuriel-chapter-introductions-john-13-21.json": { chapters: [
+    {id:"john13",book:"John",chapter:13,title:"John 13 — Jesus washes the disciples’ feet",overview:"Jesus washes the disciples' feet, predicts betrayal, and commands love for one another."},
+    {id:"john14",book:"John",chapter:14,title:"John 14 — The Father’s house and the Helper",overview:"Jesus promises the Father's house, the way, truth, life, the Helper Spirit, and peace."},
+    {id:"john15",book:"John",chapter:15,title:"John 15 — The true vine and abiding love",overview:"Jesus describes the true vine, branches, abiding, fruitfulness, love, and friendship."},
+    {id:"john16",book:"John",chapter:16,title:"John 16 — The Spirit, sorrow, and joy",overview:"Jesus promises the Spirit, speaks of sorrow becoming joy, and encourages prayer."},
+    {id:"john17",book:"John",chapter:17,title:"John 17 — Jesus prays for his disciples",overview:"Jesus prays for glory, truth, protection, sanctification, and unity for future believers."},
+    {id:"john18",book:"John",chapter:18,title:"John 18 — Jesus is arrested and questioned",overview:"Jesus is arrested, Peter denies him, and Pilate questions him about his kingdom."},
+    {id:"john19",book:"John",chapter:19,title:"John 19 — Jesus is crucified and buried",overview:"Jesus is crucified, dies, and is buried with care by Joseph and Nicodemus."},
+    {id:"john20",book:"John",chapter:20,title:"John 20 — The empty tomb and Thomas’ confession",overview:"Mary Magdalene finds the empty tomb, Jesus appears, gives peace and the Spirit, and meets Thomas."},
+    {id:"john21",book:"John",chapter:21,title:"John 21 — Jesus restores Peter and calls disciples",overview:"Jesus shares breakfast after a great catch of fish, restores Peter, and calls disciples to follow."}
+  ] },
   "zuriel-chapter-introductions-mark-09-16.json": { chapters: [
     {id:"mark9",book:"Mark",chapter:9,title:"Mark 9 — The cost of discipleship",overview:"Jesus teaches about protecting vulnerable people, costly faithfulness, reconciliation, and forgiveness."},
     {id:"mark10",book:"Mark",chapter:10,title:"Mark 10 — Marriage, children, wealth, and following",overview:"Jesus addresses marriage, welcomes children, challenges attachment to wealth, and teaches about following him."},
@@ -662,6 +673,20 @@ const johnEleven = await library.search("Lazarus Mary Martha tomb resurrection l
 assert.equal(johnEleven.length,1,"John chapter 11 should be searchable");assert.equal(johnEleven[0].source.book,"John");assert.equal(johnEleven[0].source.chapter,11);
 const johnTwelve = await library.search("Mary anoints Jesus Jerusalem Greeks grain wheat glory", { category: "Chapter Introductions" });
 assert.equal(johnTwelve.length,1,"John chapter 12 should be searchable");assert.equal(johnTwelve[0].source.book,"John");assert.equal(johnTwelve[0].source.chapter,12);
+
+
+const johnThirteen = await library.search("washes disciples feet betrayal love service", { category: "Chapter Introductions" });
+assert.equal(johnThirteen.length,1,"John chapter 13 should be searchable");assert.equal(johnThirteen[0].source.book,"John");assert.equal(johnThirteen[0].source.chapter,13);
+const johnFifteen = await library.search("true vine abiding fruitfulness love friendship", { category: "Chapter Introductions" });
+assert.equal(johnFifteen.length,1,"John chapter 15 should be searchable");assert.equal(johnFifteen[0].source.book,"John");assert.equal(johnFifteen[0].source.chapter,15);
+const johnSeventeen = await library.search("prays glory truth protection unity believers", { category: "Chapter Introductions" });
+assert.equal(johnSeventeen.length,1,"John chapter 17 should be searchable");assert.equal(johnSeventeen[0].source.book,"John");assert.equal(johnSeventeen[0].source.chapter,17);
+const johnNineteen = await library.search("crucified dies buried Joseph Nicodemus", { category: "Chapter Introductions" });
+assert.equal(johnNineteen.length,1,"John chapter 19 should be searchable");assert.equal(johnNineteen[0].source.book,"John");assert.equal(johnNineteen[0].source.chapter,19);
+const johnTwenty = await library.search("Mary Magdalene empty tomb peace Spirit Thomas", { category: "Chapter Introductions" });
+assert.equal(johnTwenty.length,1,"John chapter 20 should be searchable");assert.equal(johnTwenty[0].source.book,"John");assert.equal(johnTwenty[0].source.chapter,20);
+const johnTwentyOne = await library.search("breakfast fish Peter restores follow", { category: "Chapter Introductions" });
+assert.equal(johnTwentyOne.length,1,"John chapter 21 should be searchable");assert.equal(johnTwentyOne[0].source.book,"John");assert.equal(johnTwentyOne[0].source.chapter,21);
 
 const zechariahFourteen = await library.search("Lord reigns living waters Jerusalem holiness nations worship", { category: "Chapter Introductions" });
 assert.equal(zechariahFourteen.length,1,"Zechariah chapter 14 should be searchable");assert.equal(zechariahFourteen[0].source.book,"Zechariah");assert.equal(zechariahFourteen[0].source.chapter,14);
