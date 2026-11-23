@@ -290,6 +290,20 @@ const datasets = {
     {id:"luke23",book:"Luke",chapter:23,title:"Luke 23 — Jesus crucified and buried",overview:"Jesus faces Pilate and Herod, is crucified between criminals, dies, and is buried by Joseph."},
     {id:"luke24",book:"Luke",chapter:24,title:"Luke 24 — The resurrection and commission",overview:"Women find the empty tomb, Jesus meets disciples on the Emmaus road, appears in Jerusalem, and commissions witnesses."}
   ] },
+  "zuriel-chapter-introductions-john-01-12.json": { chapters: [
+    {id:"john1",book:"John",chapter:1,title:"John 1 — The Word becomes flesh and the first disciples follow",overview:"The Word becomes flesh, John bears witness to the light and Lamb of God, and the first disciples come and see Jesus."},
+    {id:"john2",book:"John",chapter:2,title:"John 2 — The wedding at Cana and the temple",overview:"Jesus turns water into wine at Cana and challenges the temple marketplace, speaking of the temple of his body."},
+    {id:"john3",book:"John",chapter:3,title:"John 3 — Nicodemus, new birth, and God’s love",overview:"Jesus speaks with Nicodemus about birth from above, the Spirit, the lifted-up Son, and God’s love for the world."},
+    {id:"john4",book:"John",chapter:4,title:"John 4 — The Samaritan woman and the official’s son",overview:"Jesus meets a Samaritan woman at the well, teaches living water and worship in spirit and truth, and heals an official’s son."},
+    {id:"john5",book:"John",chapter:5,title:"John 5 — Bethesda and the authority of the Son",overview:"Jesus heals a man at Bethesda on the Sabbath and teaches about the Son’s relationship with the Father and life."},
+    {id:"john6",book:"John",chapter:6,title:"John 6 — The bread of life",overview:"Jesus feeds a crowd, walks on water, and teaches in Capernaum about the bread of life and Passover manna."},
+    {id:"john7",book:"John",chapter:7,title:"John 7 — The festival and living water",overview:"Jesus teaches at the Festival of Booths and invites the thirsty to receive living water, referring to the Spirit."},
+    {id:"john8",book:"John",chapter:8,title:"John 8 — The light of the world and freedom",overview:"Jesus declares himself the light of the world and teaches that continuing in his word brings truth and freedom."},
+    {id:"john9",book:"John",chapter:9,title:"John 9 — The man born blind",overview:"Jesus heals a man blind from birth, rejects blame for disability, and reveals the difference between physical sight and spiritual recognition."},
+    {id:"john10",book:"John",chapter:10,title:"John 10 — The good shepherd",overview:"Jesus describes himself as the gate and good shepherd who knows the sheep, protects the flock, and gives abundant life."},
+    {id:"john11",book:"John",chapter:11,title:"John 11 — Lazarus and resurrection life",overview:"Jesus weeps with Mary and Martha, calls Lazarus from the tomb, and reveals himself as resurrection and life."},
+    {id:"john12",book:"John",chapter:12,title:"John 12 — Mary’s anointing and the King’s entry",overview:"Mary anoints Jesus, he enters Jerusalem, Greeks seek him, and he teaches about the grain of wheat and his hour of glory."}
+  ] },
   "zuriel-chapter-introductions-mark-09-16.json": { chapters: [
     {id:"mark9",book:"Mark",chapter:9,title:"Mark 9 — The cost of discipleship",overview:"Jesus teaches about protecting vulnerable people, costly faithfulness, reconciliation, and forgiveness."},
     {id:"mark10",book:"Mark",chapter:10,title:"Mark 10 — Marriage, children, wealth, and following",overview:"Jesus addresses marriage, welcomes children, challenges attachment to wealth, and teaches about following him."},
@@ -651,6 +665,20 @@ const lukeTwentyOne = await library.search("widow offering temple upheaval watch
 assert.equal(lukeTwentyOne.length,1,"Luke chapter 21 should be searchable");assert.equal(lukeTwentyOne[0].source.book,"Luke");assert.equal(lukeTwentyOne[0].source.chapter,21);
 const lukeTwentyFour = await library.search("women empty tomb Emmaus Jerusalem commissions witnesses", { category: "Chapter Introductions" });
 assert.equal(lukeTwentyFour.length,1,"Luke chapter 24 should be searchable");assert.equal(lukeTwentyFour[0].source.book,"Luke");assert.equal(lukeTwentyFour[0].source.chapter,24);
+
+
+const johnOne = await library.search("Word flesh light Lamb God disciples", { category: "Chapter Introductions" });
+assert.equal(johnOne.length,1,"John chapter 1 should be searchable");assert.equal(johnOne[0].source.book,"John");assert.equal(johnOne[0].source.chapter,1);
+const johnThree = await library.search("Nicodemus birth Spirit lifted Son love", { category: "Chapter Introductions" });
+assert.equal(johnThree.length,1,"John chapter 3 should be searchable");assert.equal(johnThree[0].source.book,"John");assert.equal(johnThree[0].source.chapter,3);
+const johnFour = await library.search("Samaritan woman well living water worship Spirit truth", { category: "Chapter Introductions" });
+assert.equal(johnFour.length,1,"John chapter 4 should be searchable");assert.equal(johnFour[0].source.book,"John");assert.equal(johnFour[0].source.chapter,4);
+const johnSix = await library.search("feeding crowd bread life Passover manna", { category: "Chapter Introductions" });
+assert.equal(johnSix.length,1,"John chapter 6 should be searchable");assert.equal(johnSix[0].source.book,"John");assert.equal(johnSix[0].source.chapter,6);
+const johnNine = await library.search("blind from birth disability sin light world testimony", { category: "Chapter Introductions" });
+assert.equal(johnNine.length,1,"John chapter 9 should be searchable");assert.equal(johnNine[0].source.book,"John");assert.equal(johnNine[0].source.chapter,9);
+const johnTwelve = await library.search("Mary anoints Jesus feet Jerusalem Greeks grain wheat glory", { category: "Chapter Introductions" });
+assert.equal(johnTwelve.length,1,"John chapter 12 should be searchable");assert.equal(johnTwelve[0].source.book,"John");assert.equal(johnTwelve[0].source.chapter,12);
 
 const zechariahFourteen = await library.search("Lord reigns living waters Jerusalem holiness nations worship", { category: "Chapter Introductions" });
 assert.equal(zechariahFourteen.length,1,"Zechariah chapter 14 should be searchable");assert.equal(zechariahFourteen[0].source.book,"Zechariah");assert.equal(zechariahFourteen[0].source.chapter,14);
