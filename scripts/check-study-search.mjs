@@ -22,6 +22,12 @@ const datasets = {
  "zuriel-chapter-introductions-obadiah-01.json": { chapters: [
  {id:"oba-ch01",book:"Obadiah",chapter:1,title:"Obadiah — Edom's pride and the day of the Lord",overview:"Obadiah condemns Edom's pride, violence, and betrayal of Judah during a crisis, and announces the day of the Lord and the restoration of God's people.",keyPassages:["Obadiah 1–9","Obadiah 10–21"]}
  ] },
+  "zuriel-chapter-introductions-malachi-01-04.json": { chapters: [
+    {id:"mal01",book:"Malachi",chapter:1,title:"Malachi 1 — The Lord’s love and the priests’ dishonour",overview:"Malachi recalls the Lord’s covenant love and confronts careless offerings and dishonouring worship."},
+    {id:"mal02",book:"Malachi",chapter:2,title:"Malachi 2 — Covenant faithfulness and corrupt worship",overview:"The prophet rebukes unfaithful priests and betrayal within covenant relationships."},
+    {id:"mal03",book:"Malachi",chapter:3,title:"Malachi 3 — The messenger, refining, and faithful giving",overview:"A coming messenger, refining justice, repentance, and faithful generosity shape the chapter."},
+    {id:"mal04",book:"Malachi",chapter:4,title:"Malachi 4 — The day of the Lord and the promise of Elijah",overview:"The day of the Lord brings both warning and hope, closing with a promise concerning Elijah."}
+  ] },
   "zuriel-theological-comparisons.json": { entries: [] },
   "zuriel-passage-commentary-expansion.json": {
     entries: [{
@@ -503,6 +509,9 @@ const habakkukTwo = await library.search("vision patience righteous faith", { ca
 assert.equal(habakkukTwo.length,1,"Habakkuk chapter 2 should be searchable");assert.equal(habakkukTwo[0].source.chapter,2);
 const zephaniahThree = await library.search("purification restoration joy", { category: "Chapter Introductions" });
 assert.equal(zephaniahThree.length,1,"Zephaniah chapter 3 should be searchable");assert.equal(zephaniahThree[0].source.chapter,3);
+
+const malachiFour = await library.search("day Lord Elijah promise warning hope", { category: "Chapter Introductions" });
+assert.equal(malachiFour.length,1,"Malachi chapter 4 should be searchable");assert.equal(malachiFour[0].source.book,"Malachi");assert.equal(malachiFour[0].source.chapter,4);
 
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
 assert.equal(greek.length, 1, "Unicode Greek search should find the original-language entry.");
