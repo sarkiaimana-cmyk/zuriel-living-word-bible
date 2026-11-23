@@ -8,7 +8,7 @@ async function json(path) {
 }
 const [
   geography, dictionary, books, trail1, trail2, deep, names, words, words2,
-  commentary, topical, topical3, worship, theology, loader, index, worker, bookDataSource, kjv, chapterGuides, exodusChapterGuides, exodusChapterGuides2, exodusChapterGuides3, exodusChapterGuides4, leviticusChapterGuides, leviticusChapterGuides2, numbersChapterGuides, numbersChapterGuides2, numbersChapterGuides3, deuteronomyChapterGuides, deuteronomyChapterGuides2, joshuaChapterGuides, joshuaChapterGuides2, judgesChapterGuides, judgesChapterGuides2, ruthChapterGuides, samuelChapterGuides, samuelChapterGuides2, samuelChapterGuides3, samuelChapterGuides4, kingsChapterGuides, kingsChapterGuides2, kings2ChapterGuides, kings2ChapterGuides2, chroniclesChapterGuides, chroniclesChapterGuides2, chronicles2ChapterGuides, chronicles2ChapterGuides2, ezraChapterGuides, nehemiahChapterGuides, estherChapterGuides, jobChapterGuides, jobChapterGuides2, psalmsChapterGuides, psalmsChapterGuides2, psalmsChapterGuides3, psalmsChapterGuides4, psalmsChapterGuides5, proverbsChapterGuides, ecclesiastesChapterGuides, songChapterGuides, isaiahChapterGuides, isaiahChapterGuides2, isaiahChapterGuides3, jeremiahChapterGuides, jeremiahChapterGuides2, lamentationsChapterGuides, ezekielChapterGuides, ezekielChapterGuides2, danielChapterGuides, hoseaChapterGuides, joelChapterGuides, amosChapterGuides, obadiahChapterGuides
+  commentary, topical, topical3, worship, theology, loader, index, worker, bookDataSource, kjv, chapterGuides, exodusChapterGuides, exodusChapterGuides2, exodusChapterGuides3, exodusChapterGuides4, leviticusChapterGuides, leviticusChapterGuides2, numbersChapterGuides, numbersChapterGuides2, numbersChapterGuides3, deuteronomyChapterGuides, deuteronomyChapterGuides2, joshuaChapterGuides, joshuaChapterGuides2, judgesChapterGuides, judgesChapterGuides2, ruthChapterGuides, samuelChapterGuides, samuelChapterGuides2, samuelChapterGuides3, samuelChapterGuides4, kingsChapterGuides, kingsChapterGuides2, kings2ChapterGuides, kings2ChapterGuides2, chroniclesChapterGuides, chroniclesChapterGuides2, chronicles2ChapterGuides, chronicles2ChapterGuides2, ezraChapterGuides, nehemiahChapterGuides, estherChapterGuides, jobChapterGuides, jobChapterGuides2, psalmsChapterGuides, psalmsChapterGuides2, psalmsChapterGuides3, psalmsChapterGuides4, psalmsChapterGuides5, proverbsChapterGuides, ecclesiastesChapterGuides, songChapterGuides, isaiahChapterGuides, isaiahChapterGuides2, isaiahChapterGuides3, jeremiahChapterGuides, jeremiahChapterGuides2, lamentationsChapterGuides, ezekielChapterGuides, ezekielChapterGuides2, danielChapterGuides, hoseaChapterGuides, joelChapterGuides, amosChapterGuides, obadiahChapterGuides, jonahChapterGuides, micahChapterGuides, nahumChapterGuides, habakkukChapterGuides, zephaniahChapterGuides
 ] = await Promise.all([
   json("data/zuriel-bible-geography-atlas.json"),
   json("data/zuriel-biblical-dictionary-expansion.json"),
@@ -83,7 +83,12 @@ const [
   json("data/zuriel-chapter-introductions-hosea-01-14.json"),
   json("data/zuriel-chapter-introductions-joel-01-03.json"),
   json("data/zuriel-chapter-introductions-amos-01-09.json"),
-  json("data/zuriel-chapter-introductions-obadiah-01.json")
+  json("data/zuriel-chapter-introductions-obadiah-01.json"),
+  json("data/zuriel-chapter-introductions-jonah-01-04.json"),
+  json("data/zuriel-chapter-introductions-micah-01-07.json"),
+  json("data/zuriel-chapter-introductions-nahum-01-03.json"),
+  json("data/zuriel-chapter-introductions-habakkuk-01-03.json"),
+  json("data/zuriel-chapter-introductions-zephaniah-01-03.json")
 ]);
 
 const studyDatasetPaths = [
