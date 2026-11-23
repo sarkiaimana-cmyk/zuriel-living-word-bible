@@ -827,7 +827,7 @@ const corinthiansSix = await library.search("disputes justice exploitation body 
 assert.equal(corinthiansSix.length,1,"1 Corinthians chapter 6 should be searchable");assert.equal(corinthiansSix[0].source.book,"1 Corinthians");assert.equal(corinthiansSix[0].source.chapter,6);
 const corinthiansSeven = await library.search("marriage singleness calling faithful devotion", { category: "Chapter Introductions" });
 assert.equal(corinthiansSeven.length,1,"1 Corinthians chapter 7 should be searchable");assert.equal(corinthiansSeven[0].source.book,"1 Corinthians");assert.equal(corinthiansSeven[0].source.chapter,7);
-const corinthiansEight = await library.search("knowledge love food idols conscience stumbling block", { category: "Chapter Introductions" });
+const corinthiansEight = await library.search("knowledge love food idols stumbling block", { category: "Chapter Introductions" });
 assert.equal(corinthiansEight.length,1,"1 Corinthians chapter 8 should be searchable");assert.equal(corinthiansEight[0].source.book,"1 Corinthians");assert.equal(corinthiansEight[0].source.chapter,8);
 
 const zechariahFourteen = await library.search("Lord reigns living waters Jerusalem holiness nations worship", { category: "Chapter Introductions" });
