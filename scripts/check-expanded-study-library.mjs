@@ -274,9 +274,9 @@ assert.ok(chapterIntroNames.length > 0, "Chapter introduction datasets must be p
 const chapterCoverage = new Map(bookEntries.map(book => [book.name, new Set()]));
 for (const name of chapterIntroNames) {
   const dataset = await json("data/" + name);
-  const book = bookLookup.get(String(dataset.book || "").toLowerCase());
+  const datasetBook = dataset.book || (Array.isArray(dataset.chapters) && dataset.chapters[0] && dataset.chapters[0].book) || "";\n  const book = bookLookup.get(String(datasetBook).toLowerCase());
   assert.ok(book, "Chapter introduction dataset must identify a canonical Bible book: " + name);
-  assert.ok(Array.isArray(dataset.chapters), "Chapter introduction dataset must contain a chapters array: " + name);
+  assert.ok(Array.isArray(dataset.chapters), "Chapter introduction dataset must contain a chapters array: " + name);\n  assert.ok(dataset.chapters.every(guide => guide.book === book.name), "Every chapter guide must identify its canonical book: " + name);
   const seenInFile = new Set();
   for (const guide of dataset.chapters) {
     assert.ok(Number.isInteger(guide.chapter) && guide.chapter >= 1 && guide.chapter <= book.chapters,
