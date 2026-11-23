@@ -22,6 +22,22 @@ const datasets = {
  "zuriel-chapter-introductions-obadiah-01.json": { chapters: [
  {id:"oba-ch01",book:"Obadiah",chapter:1,title:"Obadiah — Edom's pride and the day of the Lord",overview:"Obadiah condemns Edom's pride, violence, and betrayal of Judah during a crisis, and announces the day of the Lord and the restoration of God's people.",keyPassages:["Obadiah 1–9","Obadiah 10–21"]}
  ] },
+  "zuriel-chapter-introductions-matthew-01-14.json": { chapters: [
+    {id:"mat01",book:"Matthew",chapter:1,title:"Matthew 1 — Jesus the Messiah: genealogy and birth",overview:"Matthew presents Jesus as Messiah and King, revealing the kingdom through teaching, compassion, and mighty works."},
+    {id:"mat02",book:"Matthew",chapter:2,title:"Matthew 2 — The Magi, the flight to Egypt, and the return",overview:"Matthew presents Jesus as Messiah and King, revealing the kingdom through teaching, compassion, and mighty works."},
+    {id:"mat03",book:"Matthew",chapter:3,title:"Matthew 3 — John the Baptist prepares the way",overview:"Matthew presents Jesus as Messiah and King, revealing the kingdom through teaching, compassion, and mighty works."},
+    {id:"mat04",book:"Matthew",chapter:4,title:"Matthew 4 — Jesus tested and the kingdom proclaimed",overview:"Matthew presents Jesus as Messiah and King, revealing the kingdom through teaching, compassion, and mighty works."},
+    {id:"mat05",book:"Matthew",chapter:5,title:"Matthew 5 — The kingdom life: blessings, witness, and righteousness",overview:"Matthew presents Jesus as Messiah and King, revealing the kingdom through teaching, compassion, and mighty works."},
+    {id:"mat06",book:"Matthew",chapter:6,title:"Matthew 6 — Secret devotion, prayer, and trust in the Father",overview:"Matthew presents Jesus as Messiah and King, revealing the kingdom through teaching, compassion, and mighty works."},
+    {id:"mat07",book:"Matthew",chapter:7,title:"Matthew 7 — Discernment, prayer, and the two foundations",overview:"Matthew presents Jesus as Messiah and King, revealing the kingdom through teaching, compassion, and mighty works."},
+    {id:"mat08",book:"Matthew",chapter:8,title:"Matthew 8 — Jesus' authority over sickness, nature, and evil",overview:"Matthew presents Jesus as Messiah and King, revealing the kingdom through teaching, compassion, and mighty works."},
+    {id:"mat09",book:"Matthew",chapter:9,title:"Matthew 9 — Forgiveness, calling, compassion, and healing",overview:"Matthew presents Jesus as Messiah and King, revealing the kingdom through teaching, compassion, and mighty works."},
+    {id:"mat10",book:"Matthew",chapter:10,title:"Matthew 10 — The Twelve sent with the kingdom message",overview:"Matthew presents Jesus as Messiah and King, revealing the kingdom through teaching, compassion, and mighty works."},
+    {id:"mat11",book:"Matthew",chapter:11,title:"Matthew 11 — John's question, Jesus' invitation, and true wisdom",overview:"Matthew presents Jesus as Messiah and King, revealing the kingdom through teaching, compassion, and mighty works."},
+    {id:"mat12",book:"Matthew",chapter:12,title:"Matthew 12 — The Lord of the Sabbath and the servant of God",overview:"Matthew presents Jesus as Messiah and King, revealing the kingdom through teaching, compassion, and mighty works."},
+    {id:"mat13",book:"Matthew",chapter:13,title:"Matthew 13 — Kingdom parables: the sower, treasure, and the net",overview:"Matthew presents Jesus as Messiah and King, revealing the kingdom through teaching, compassion, and mighty works."},
+    {id:"mat14",book:"Matthew",chapter:14,title:"Matthew 14 — John's death, the feeding of five thousand, and Jesus walking on water",overview:"Matthew presents Jesus as Messiah and King, revealing the kingdom through teaching, compassion, and mighty works."}
+  ] },
   "zuriel-chapter-introductions-zechariah-01-14.json": { chapters: [
     {id:"zec01",book:"Zechariah",chapter:1,title:"Zechariah 1 — Return to the Lord and the night visions",overview:"Zechariah’s vision calls the returned community to faithfulness, hope, cleansing, and trust in the Lord."},
     {id:"zec02",book:"Zechariah",chapter:2,title:"Zechariah 2 — Four horns and four craftsmen",overview:"Zechariah’s vision calls the returned community to faithfulness, hope, cleansing, and trust in the Lord."},
@@ -529,6 +545,9 @@ const habakkukTwo = await library.search("vision patience righteous faith", { ca
 assert.equal(habakkukTwo.length,1,"Habakkuk chapter 2 should be searchable");assert.equal(habakkukTwo[0].source.chapter,2);
 const zephaniahThree = await library.search("purification restoration joy", { category: "Chapter Introductions" });
 assert.equal(zephaniahThree.length,1,"Zephaniah chapter 3 should be searchable");assert.equal(zephaniahThree[0].source.chapter,3);
+
+const matthewOne = await library.search("Jesus Messiah genealogy David Abraham birth Immanuel", { category: "Chapter Introductions" });
+assert.equal(matthewOne.length,1,"Matthew chapter 1 should be searchable");assert.equal(matthewOne[0].source.book,"Matthew");assert.equal(matthewOne[0].source.chapter,1);
 
 const zechariahFourteen = await library.search("Lord reigns living waters Jerusalem holiness nations worship", { category: "Chapter Introductions" });
 assert.equal(zechariahFourteen.length,1,"Zechariah chapter 14 should be searchable");assert.equal(zechariahFourteen[0].source.book,"Zechariah");assert.equal(zechariahFourteen[0].source.chapter,14);
