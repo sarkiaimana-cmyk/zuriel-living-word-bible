@@ -274,7 +274,7 @@
       const providerName = providerAtRequest === "youversion" ? "YouVersion" : "API.Bible";
       status(available.length
         ? available.length + " English version(s) are authorised for this " + providerName + " key. " +
-          (nextPageToken ? "The catalogue is large; the first 1,000 results are shown. " : "") +
+          (nextPageToken ? "The catalogue is large; the first 990 results are shown. " : "") +
           "Choose one to compare."
         : "No English Bible versions are currently authorised for " + providerName + ". The offline KJV remains available.");
     } catch (error) {
