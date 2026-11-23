@@ -97,6 +97,29 @@ requireText(client, '"ESV": /', "English Standard Version catalogue alias");
 requireText(client, '"NASB": /', "New American Standard Bible catalogue alias");
 requireText(client, '"CSB": /', "Christian Standard Bible catalogue alias");
 requireText(client, '"NKJV": /', "New King James Version catalogue alias");
+
+const aliasBlock = client.match(/const aliases = \\{([\\s\\S]*?)\\n      \\};/);
+assert.ok(aliasBlock, "Requested translation alias table must be present.");
+const aliasSmokeCases = {
+  "GNT": "Good News Translation",
+  "AMP": "Amplified Bible",
+  "LB/LT": "The Living Bible",
+  "TPT": "The Passion Translation",
+  "NLT": "New Living Translation",
+  "NET": "New English Translation",
+  "NIV": "New International Version",
+  "ESV": "English Standard Version",
+  "NASB": "New American Standard Bible",
+  "CSB": "Christian Standard Bible",
+  "NKJV": "New King James Version"
+};
+for (const [abbreviation, label] of Object.entries(aliasSmokeCases)) {
+  const line = aliasBlock[1].split("\\n").find(value => value.includes("\\"" + abbreviation + "\\":"));
+  const pattern = line && line.match(/\\": \\/(.*)\\/ ,?$/);
+  assert.ok(pattern, "Alias pattern must be readable for " + abbreviation + ".");
+  assert.ok(new RegExp(pattern[1], "i").test(label),
+    "Requested translation alias must match its catalogue title: " + abbreviation + ".");
+}
 if (client.includes("/\\\\b")) failures.push("Double-escaped translation alias boundaries must not be present.");
 
 
