@@ -927,7 +927,7 @@ for(const [book,data,max,idPrefix] of [["Amos",amosChapterGuides,9,"amo-ch"],["O
   for(const reference of guide.keyPassages) checkReference(reference,book+" chapter "+guide.chapter);
  }
 }
-\nfor(const [book,data,max,prefix] of [["Jonah",jonahChapterGuides,4,"jon"],["Micah",micahChapterGuides,7,"mic"],["Nahum",nahumChapterGuides,3,"nah"]]){
+for(const [book,data,max,prefix] of [["Jonah",jonahChapterGuides,4,"jon"],["Micah",micahChapterGuides,7,"mic"],["Nahum",nahumChapterGuides,3,"nah"]]){
  assert.equal(data.chapters.length,max,book+" must include every chapter");
  const ids=new Set();
  for(const guide of data.chapters){
@@ -940,7 +940,7 @@ for(const [book,data,max,idPrefix] of [["Amos",amosChapterGuides,9,"amo-ch"],["O
   for(const reference of guide.keyPassages) checkReference(reference,book+" "+guide.chapter);
  }
 }
-\nfor(const [book,data,prefix] of [["Habakkuk",habakkukChapterGuides,"hab"],["Zephaniah",zephaniahChapterGuides,"zep"]]){
+for(const [book,data,prefix] of [["Habakkuk",habakkukChapterGuides,"hab"],["Zephaniah",zephaniahChapterGuides,"zep"]]){
  assert.equal(data.chapters.length,3,book+" must have three chapters");
  const ids=new Set();
  for(const guide of data.chapters){
@@ -951,7 +951,7 @@ for(const [book,data,max,idPrefix] of [["Amos",amosChapterGuides,9,"amo-ch"],["O
   assert.ok(guide.keyPassages.length>=2&&guide.studyQuestions.length>=3);for(const ref of guide.keyPassages)checkReference(ref,book+" "+guide.chapter);
  }
 }
-\nconst psalmGuides=[...psalmsChapterGuides.chapters,...psalmsChapterGuides2.chapters,...psalmsChapterGuides3.chapters,...psalmsChapterGuides4.chapters,...psalmsChapterGuides5.chapters];
+const psalmGuides=[...psalmsChapterGuides.chapters,...psalmsChapterGuides2.chapters,...psalmsChapterGuides3.chapters,...psalmsChapterGuides4.chapters,...psalmsChapterGuides5.chapters];
 const psalmIds=new Set();
 assert.equal(proverbsChapterGuides.chapters.length,31,"Proverbs must contain all 31 chapter guides");
 const proverbsIds=new Set();
