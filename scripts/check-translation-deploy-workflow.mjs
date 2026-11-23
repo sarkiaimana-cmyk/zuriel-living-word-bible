@@ -24,6 +24,7 @@ assert.match(workflow, /\/api\/youversion\/bibles\/\$YVP_BIBLE_ID\/passages\/JHN
 assert.match(workflow, /j\.passage\.content.*j\.passage\.reference.*j\.version\?\.id/, "deployment requires non-empty YouVersion passage text and metadata");
 assert.match(workflow, /j\.passage\.copyright.*j\.passage\.promotional_content/, "deployment requires YouVersion publisher attribution with live passage text");
 assert.match(workflow, /\/api\/api-bible\/bibles/, "deployment smoke-tests API.Bible when its optional key is configured");
+assert.ok(workflow.includes(String.raw`/^[a-f0-9]{16}-\d{2}$/i.test(id)`), "API.Bible live smoke test must recognise the documented 16-hex-digit Bible ID format");
 assert.match(workflow, /\/chapters\/JHN\.3/, "deployment retrieves a real API.Bible chapter");
 assert.match(workflow, /j\.passage\.copyright/, "deployment requires API.Bible publisher attribution");
 assert.match(workflow, /catalogue worked, but live John/, "deployment distinguishes catalogue success from chapter retrieval failure");
