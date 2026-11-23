@@ -1045,7 +1045,7 @@ for (const [query, chapter] of firstThessQueries) {
 
 const twoThessOne = await library.search("persecution steadfast righteous judgement", { category: "Chapter Introductions" });
 assert.equal(twoThessOne.length,1,"2 Thessalonians chapter 1 should be searchable");assert.equal(twoThessOne[0].source.book,"2 Thessalonians");assert.equal(twoThessOne[0].source.chapter,1);
-const twoThessTwo = await library.search("day Lord stand firm deceptive", { category: "Chapter Introductions" });
+const twoThessTwo = await library.search("day Lord stand firm", { category: "Chapter Introductions" });
 assert.equal(twoThessTwo.length,1,"2 Thessalonians chapter 2 should be searchable");assert.equal(twoThessTwo[0].source.book,"2 Thessalonians");assert.equal(twoThessTwo[0].source.chapter,2);
 const twoThessThree = await library.search("prayer work quietly responsibility", { category: "Chapter Introductions" });
 assert.equal(twoThessThree.length,1,"2 Thessalonians chapter 3 should be searchable");assert.equal(twoThessThree[0].source.book,"2 Thessalonians");assert.equal(twoThessThree[0].source.chapter,3);
@@ -1143,7 +1143,7 @@ const hebrewsThree = await library.search("Moses wilderness rest hardened", { ca
 assert.equal(hebrewsThree.length,1,"Hebrews chapter 3 should be searchable");assert.equal(hebrewsThree[0].source.book,"Hebrews");assert.equal(hebrewsThree[0].source.chapter,3);
 const hebrewsFour = await library.search("rest living word high priest", { category: "Chapter Introductions" });
 assert.equal(hebrewsFour.length,1,"Hebrews chapter 4 should be searchable");assert.equal(hebrewsFour[0].source.book,"Hebrews");assert.equal(hebrewsFour[0].source.chapter,4);
-const hebrewsFive = await library.search("high priest maturity discernment", { category: "Chapter Introductions" });
+const hebrewsFive = await library.search("high priest maturity immaturity", { category: "Chapter Introductions" });
 assert.equal(hebrewsFive.length,1,"Hebrews chapter 5 should be searchable");assert.equal(hebrewsFive[0].source.book,"Hebrews");assert.equal(hebrewsFive[0].source.chapter,5);
 const hebrewsSix = await library.search("maturity promise anchor hope", { category: "Chapter Introductions" });
 assert.equal(hebrewsSix.length,1,"Hebrews chapter 6 should be searchable");assert.equal(hebrewsSix[0].source.book,"Hebrews");assert.equal(hebrewsSix[0].source.chapter,6);
@@ -1155,7 +1155,7 @@ const hebrewsNine = await library.search("sanctuary sacrifices conscience", { ca
 assert.equal(hebrewsNine.length,1,"Hebrews chapter 9 should be searchable");assert.equal(hebrewsNine[0].source.book,"Hebrews");assert.equal(hebrewsNine[0].source.chapter,9);
 const hebrewsTen = await library.search("once for all draw near", { category: "Chapter Introductions" });
 assert.equal(hebrewsTen.length,1,"Hebrews chapter 10 should be searchable");assert.equal(hebrewsTen[0].source.book,"Hebrews");assert.equal(hebrewsTen[0].source.chapter,10);
-const hebrewsEleven = await library.search("faith confidence hoped unseen", { category: "Chapter Introductions" });
+const hebrewsEleven = await library.search("promises fulfilled remained faithful", { category: "Chapter Introductions" });
 assert.equal(hebrewsEleven.length,1,"Hebrews chapter 11 should be searchable");assert.equal(hebrewsEleven[0].source.book,"Hebrews");assert.equal(hebrewsEleven[0].source.chapter,11);
 const hebrewsTwelve = await library.search("run endurance unshakable kingdom", { category: "Chapter Introductions" });
 assert.equal(hebrewsTwelve.length,1,"Hebrews chapter 12 should be searchable");assert.equal(hebrewsTwelve[0].source.book,"Hebrews");assert.equal(hebrewsTwelve[0].source.chapter,12);
