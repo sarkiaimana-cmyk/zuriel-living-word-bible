@@ -66,9 +66,9 @@ adb_install_retry() {
   local flags="$2"
   for attempt in 1 2 3; do
     if [[ "$flags" == "replace" ]]; then
-      adb install -r "$apk" && return 0
+      timeout 120s adb install -r "$apk" && return 0
     else
-      adb install "$apk" && return 0
+      timeout 120s adb install "$apk" && return 0
     fi
     echo "Transient ADB/package-manager install failure (attempt $attempt/3); recovering."
     adb_recover
