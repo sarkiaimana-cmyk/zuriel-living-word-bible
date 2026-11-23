@@ -141,6 +141,8 @@ requireText(worker, 'from "./index.js"', "Shared tested server-side YouVersion h
 requireText(worker, "bibles(?:", "Translation-only route allowlist");
 requireText(worker, "api-bible", "API.Bible route allowlist");
 requireText(worker, "handleRequest(request, env, dependencies)", "Shared server-side origin, rate-limit and licence handling");
+requireText(worker, 'YVP_BASE + "/bibles/" + selectedVersionId', "Fetch YouVersion Bible metadata to obtain publisher attribution");
+requireText(worker, "publisher attribution could not be verified", "Withhold YouVersion passage text if attribution metadata cannot be verified");
 requireText(config, '"name": "zuriel-bible-translations"', "Separate translation Worker name");
 requireText(config, '"TRANSLATION_RATE_LIMIT"', "Translation rate-limit binding");
 requireText(config, '"ZITE_YVP_APP_KEY"', "Server-only YouVersion secret requirement");
