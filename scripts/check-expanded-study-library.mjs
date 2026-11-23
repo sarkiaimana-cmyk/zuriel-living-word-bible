@@ -328,6 +328,14 @@ for (const introduction of books.bookIntroductions) {
   assert.ok(Array.isArray(introduction.studyQuestions) && introduction.studyQuestions.length >= 3,
     "Every book introduction needs at least three study questions: " + introduction.book);
 }
+for (const pathway of books.bookStudyPathways) {
+  assert.ok(Array.isArray(pathway.crossReferenceTrail) && pathway.crossReferenceTrail.length >= 2,
+    "Every book study pathway needs at least two book-relevant cross-references: " + pathway.book);
+  assert.equal(new Set(pathway.crossReferenceTrail).size, pathway.crossReferenceTrail.length,
+    "Book study pathway cross-references must not repeat: " + pathway.book);
+  assert.ok(!/\\bthe day of the lord\\b|\\bgod's concern\\b|\\bthe outpouring of the spirit\\b/.test(pathway.interpretationPrompt),
+    "Book study pathway must retain correct reverential capitalization: " + pathway.book);
+}
 
 const exodusGuideIds = new Set();
 const allExodusGuides = [...exodusChapterGuides.chapters, ...exodusChapterGuides2.chapters, ...exodusChapterGuides3.chapters, ...exodusChapterGuides4.chapters];
