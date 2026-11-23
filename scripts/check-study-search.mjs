@@ -347,8 +347,8 @@ const sandbox = {
   window: {},
   document: { readyState: "loading", addEventListener() {} },
   fetch: async url => {
-    const file = String(url).split("/").pop();
-    const payload = datasets[file];
+    const file = decodeURIComponent(String(url).split("?")[0].split("/").pop()).replace(/^["\']|["\']$/g, "");
+    const payload = datasets[file] || Object.entries(datasets).find(([name]) => name.replace(/^["\']|["\']$/g, "") === file)?.[1];
     if (!payload) throw new Error("Unexpected study data request: " + url);
     return { ok: true, json: async () => ({ schemaVersion: 1, ...payload }) };
   },
