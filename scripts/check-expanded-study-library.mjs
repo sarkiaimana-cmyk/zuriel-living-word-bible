@@ -1440,4 +1440,21 @@ for (const guide of titusGuides.chapters) {
   for (const reference of guide.keyPassages) checkReference(reference,"Titus chapter "+guide.chapter);
 }
 
+
+const philemonGuides = await json("data/zuriel-chapter-introductions-philemon-01.json");
+assert.equal(philemonGuides.book,"Philemon","Philemon batch must identify its book");
+assert.equal(philemonGuides.chapters.length,1,"Philemon batch must contain its one chapter");
+const philemonIds = new Set();
+for (const guide of philemonGuides.chapters) {
+  assert.equal(guide.book,"Philemon","Philemon guide must remain scoped to its book");
+  assert.equal(guide.chapter,1,"Philemon guide must identify chapter one");
+  assert.ok(guide.title.startsWith("Philemon 1 —"),"Philemon title must identify its chapter");
+  assert.equal(guide.id,"phm1","Philemon guide needs a stable chapter ID");
+  assert.ok(!philemonIds.has(guide.id),"Philemon guide IDs must be unique"); philemonIds.add(guide.id);
+  for (const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field]==="string"&&guide[field].trim().length>=50,"Philemon guide needs substantive "+field);
+  assert.ok(Array.isArray(guide.keyPassages)&&guide.keyPassages.length===2,"Philemon guide needs two key passages");
+  assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length===3,"Philemon guide needs three study questions");
+  for (const reference of guide.keyPassages) checkReference(reference,"Philemon chapter 1");
+}
+
 console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges, 4 Ruth and 31 1 Samuel, 24 2 Samuel 22 1 Kings, 25 2 Kings 29 1 Chronicles and 36 2 Chronicles 10 Ezra and 13 Nehemiah and 10 Esther and 42 Job and 150 Psalms and 31 Proverbs, 66 Isaiah, 52 Jeremiah, 5 Lamentations and 48 Ezekiel, 12 Daniel, 14 Hosea and 3 Joel, 9 Amos and 1 Obadiah, 4 Jonah, 7 Micah, 3 Nahum, 3 Habakkuk, 3 Zephaniah, 2 Haggai, 14 Zechariah, 28 Matthew, 16 Mark, 4 Malachi, 24 Luke and 21 John, 28 Acts, 16 Romans, 16 1 Corinthians, 13 2 Corinthians, 6 Galatians, 6 Ephesians, 4 Philippians, 4 Colossians, 5 1 Thessalonians, 3 2 Thessalonians, 6 1 Timothy, 4 2 Timothy and 3 Titus chapter introductions; 68 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
