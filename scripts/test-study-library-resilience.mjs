@@ -6,6 +6,8 @@ const loader = await readFile(new URL("../zuriel-study-library-data.js", import.
 const descriptors = Array.from(loader.matchAll(/^\s*\["([^"]+)",\s*"([^"]+)",\s*"([^"]+)",\s*"([^"]+)"\],?$/gm),
   match => [match[1], match[2], match[3], match[4]]);
 assert.ok(descriptors.length > 0, "Study loader must declare resource datasets");
+assert.match(loader, /function unavailableSummary\(\)/, "The UI must identify which study categories are temporarily unavailable");
+assert.match(loader, /Temporarily unavailable:/, "The retry status must show unavailable study categories");
 
 const uniquePaths = [...new Set(descriptors.map(source => source[1]))];
 const singleDatasetPath = uniquePaths.find(path => descriptors.filter(source => source[1] === path).length === 1);
