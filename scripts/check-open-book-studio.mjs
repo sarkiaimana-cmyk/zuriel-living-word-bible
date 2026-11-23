@@ -116,7 +116,7 @@ if (!home.includes('document.querySelector("#zgsSaveImage")')) failures.push("Ho
 if (!home.includes("saveImageButton.click();")) failures.push("Home save action must trigger the actual image-to-Gallery export.");
 if (!home.includes("window.ZurielMedia.isAvailable()") || !home.includes("window.ZurielMedia.saveImage")) failures.push("Home save action must require the native Android Gallery bridge.");
 if (!home.includes("Saved to your phone's Gallery")) failures.push("Home must report success only after Android confirms Gallery saving.");
-if (!home.includes("if (returnHome) navigate(\"home\")")) failures.push("Home save flow must return the reader to Home after Gallery export.");
+if (!home.includes("if (studioOpened) navigate(\"home\")")) failures.push("Home save flow must return the reader to Home after the Gallery export attempt.");
 if (!library.includes("openSavedGloryVerseCards: function")) failures.push("Saved-card destination does not open the saved Glory Verse collection.");
 if (!readerToolbar.includes("zurielReaderTopControls")) failures.push("Reader controls must be grouped into one top toolbar.");
 if (!readerToolbar.includes("zurielReaderViewTabs")) failures.push("Reader must show Scripture, Meaning and Original Words tabs.");
