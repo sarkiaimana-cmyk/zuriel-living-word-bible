@@ -4,6 +4,10 @@ import vm from "node:vm";
 
 const source = await readFile(new URL("../zuriel-study-library-data.js", import.meta.url), "utf8");
 const datasets = {
+  "zuriel-chapter-introductions-habakkuk-01-03.json": { chapters: [
+ {id:"hab01",book:"Habakkuk",chapter:1,title:"Habakkuk 1 — Questions and God's answer",overview:"Habakkuk questions injustice and the delay of justice."},{id:"hab02",book:"Habakkuk",chapter:2,title:"Habakkuk 2 — Woe and faith",overview:"The vision calls for patience and the righteous living by faith."},{id:"hab03",book:"Habakkuk",chapter:3,title:"Habakkuk 3 — Prayer and rejoicing",overview:"Habakkuk prays and rejoices in God even amid loss."}] },
+  "zuriel-chapter-introductions-zephaniah-01-03.json": { chapters: [
+ {id:"zep01",book:"Zephaniah",chapter:1,title:"Zephaniah 1 — Day of the Lord",overview:"Zephaniah announces judgement and calls attention to the day of the Lord."},{id:"zep02",book:"Zephaniah",chapter:2,title:"Zephaniah 2 — Seek the Lord",overview:"The humble are called to seek the Lord and neighbouring nations are addressed."},{id:"zep03",book:"Zephaniah",chapter:3,title:"Zephaniah 3 — Joy and restoration",overview:"Zephaniah promises purification, restoration, and joy."}] },
   "zuriel-chapter-introductions-jonah-01-04.json": { chapters: [
  {id:"jon01",book:"Jonah",chapter:1,title:"Jonah 1 — Jonah's commission and flight",overview:"Jonah flees the commission and a storm endangers the ship."},{id:"jon02",book:"Jonah",chapter:2,title:"Jonah 2 — Prayer from the deep",overview:"Jonah prays from the deep and recalls deliverance."},{id:"jon03",book:"Jonah",chapter:3,title:"Jonah 3 — Nineveh repents",overview:"Nineveh repents and God relents from disaster."},{id:"jon04",book:"Jonah",chapter:4,title:"Jonah 4 — God's compassion",overview:"Jonah resents mercy and God's compassion is revealed."}] },
   "zuriel-chapter-introductions-micah-01-07.json": { chapters: [
@@ -494,6 +498,11 @@ const micahSix = await library.search("justice kindness humble walking", { categ
 assert.equal(micahSix.length,1,"Micah chapter 6 should be searchable");assert.equal(micahSix[0].source.chapter,6);
 const nahumThree = await library.search("violent city exploitation", { category: "Chapter Introductions" });
 assert.equal(nahumThree.length,1,"Nahum chapter 3 should be searchable");assert.equal(nahumThree[0].source.chapter,3);
+
+const habakkukTwo = await library.search("vision patience righteous faith", { category: "Chapter Introductions" });
+assert.equal(habakkukTwo.length,1,"Habakkuk chapter 2 should be searchable");assert.equal(habakkukTwo[0].source.chapter,2);
+const zephaniahThree = await library.search("purification restoration joy", { category: "Chapter Introductions" });
+assert.equal(zephaniahThree.length,1,"Zephaniah chapter 3 should be searchable");assert.equal(zephaniahThree[0].source.chapter,3);
 
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
 assert.equal(greek.length, 1, "Unicode Greek search should find the original-language entry.");
