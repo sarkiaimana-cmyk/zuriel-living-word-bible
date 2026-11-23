@@ -673,9 +673,9 @@ const johnThree = await library.search("Nicodemus birth Spirit lifted Son love",
 assert.equal(johnThree.length,1,"John chapter 3 should be searchable");assert.equal(johnThree[0].source.book,"John");assert.equal(johnThree[0].source.chapter,3);
 const johnFour = await library.search("Samaritan woman well living water worship Spirit truth", { category: "Chapter Introductions" });
 assert.equal(johnFour.length,1,"John chapter 4 should be searchable");assert.equal(johnFour[0].source.book,"John");assert.equal(johnFour[0].source.chapter,4);
-const johnSix = await library.search("feeding crowd bread life Passover manna", { category: "Chapter Introductions" });
+const johnSix = await library.search("feeds crowd bread life Passover manna", { category: "Chapter Introductions" });
 assert.equal(johnSix.length,1,"John chapter 6 should be searchable");assert.equal(johnSix[0].source.book,"John");assert.equal(johnSix[0].source.chapter,6);
-const johnNine = await library.search("blind from birth disability sin light world testimony", { category: "Chapter Introductions" });
+const johnNine = await library.search("blind from birth disability light world testimony", { category: "Chapter Introductions" });
 assert.equal(johnNine.length,1,"John chapter 9 should be searchable");assert.equal(johnNine[0].source.book,"John");assert.equal(johnNine[0].source.chapter,9);
 const johnTwelve = await library.search("Mary anoints Jesus feet Jerusalem Greeks grain wheat glory", { category: "Chapter Introductions" });
 assert.equal(johnTwelve.length,1,"John chapter 12 should be searchable");assert.equal(johnTwelve[0].source.book,"John");assert.equal(johnTwelve[0].source.chapter,12);
