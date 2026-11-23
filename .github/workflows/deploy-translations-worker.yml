@@ -184,7 +184,7 @@ jobs:
             if [ "$API_BIBLE_COUNT" -lt 1 ]; then
               echo "::warning::API.Bible key is valid but currently returns no English Bible versions. YouVersion remains available."
             else
-              API_BIBLE_ID="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-smoke.json","utf8"));const id=String(j.data[0]?.id||"");if(!/^[a-f0-9]{16}-\\d{2}$/i.test(id))process.exit(1);process.stdout.write(id);')"
+              API_BIBLE_ID="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-smoke.json","utf8"));const id=String(j.data[0]?.id||"");if(!/^[a-f0-9]{16}-\d{2}$/i.test(id))process.exit(1);process.stdout.write(id);')"
               API_BIBLE_CHAPTER_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
                 -o .api-bible-chapter-smoke.json -D .api-bible-chapter-smoke.headers -w '%{http_code}' \
                 -H "Origin: https://sarkiaimana-cmyk.github.io" \
