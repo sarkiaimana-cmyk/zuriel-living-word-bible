@@ -36,12 +36,23 @@ test -s "$OLD_APK"
 # Android emulators can briefly lose the package-manager Binder connection
 # after a long cold boot. Recover ADB and retry transient install failures;
 # never uninstall the old package or weaken the signing/version assertions.
+adb_package_manager_ready() {
+  for attempt in $(seq 1 30); do
+    if adb shell service check package 2>/dev/null | tr -d '\r' | grep -q 'found'; then
+      return 0
+    fi
+    sleep 2
+  done
+  echo "Android package-manager service did not become ready."
+  return 1
+}
 adb_recover() {
   adb kill-server >/dev/null 2>&1 || true
   adb start-server
   adb wait-for-device
   for attempt in 1 2 3 4 5 6; do
     if adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r' | grep -qx '1'; then
+      adb_package_manager_ready
       return 0
     fi
     sleep 5
@@ -51,6 +62,7 @@ adb_recover() {
 }
 adb_install_retry() {
   local apk="$1"
+  adb_package_manager_ready
   local flags="$2"
   for attempt in 1 2 3; do
     if [[ "$flags" == "replace" ]]; then
