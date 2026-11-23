@@ -725,7 +725,7 @@ const actsFive = await library.search("Ananias Sapphira deceive apostles council
 assert.equal(actsFive.length,1,"Acts chapter 5 should be searchable");assert.equal(actsFive[0].source.book,"Acts");assert.equal(actsFive[0].source.chapter,5);
 const actsSix = await library.search("widows distribution Stephen service inequity", { category: "Chapter Introductions" });
 assert.equal(actsSix.length,1,"Acts chapter 6 should be searchable");assert.equal(actsSix[0].source.book,"Acts");assert.equal(actsSix[0].source.chapter,6);
-const actsSeven = await library.search("Stephen speech ancestors Moses prophets present Jesus", { category: "Chapter Introductions" });
+const actsSeven = await library.search("Stephen Israel history prophetic stoning Saul", { category: "Chapter Introductions" });
 assert.equal(actsSeven.length,1,"Acts chapter 7 should be searchable");assert.equal(actsSeven[0].source.book,"Acts");assert.equal(actsSeven[0].source.chapter,7);
 const actsEight = await library.search("Samaria Simon Ethiopian official Isaiah Philip", { category: "Chapter Introductions" });
 assert.equal(actsEight.length,1,"Acts chapter 8 should be searchable");assert.equal(actsEight[0].source.book,"Acts");assert.equal(actsEight[0].source.chapter,8);
