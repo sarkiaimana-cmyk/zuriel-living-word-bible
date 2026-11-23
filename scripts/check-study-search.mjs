@@ -1048,6 +1048,18 @@ assert.equal(twoThessTwo.length,1,"2 Thessalonians chapter 2 should be searchabl
 const twoThessThree = await library.search("prayer message quiet work", { category: "Chapter Introductions" });
 assert.equal(twoThessThree.length,1,"2 Thessalonians chapter 3 should be searchable");assert.equal(twoThessThree[0].source.book,"2 Thessalonians");assert.equal(twoThessThree[0].source.chapter,3);
 
+
+const twoThessQueries = [
+  ["persecution faith love",1],["day Lord steadfast truth",2],
+  ["prayer responsible work peace",3]
+];
+for (const [query, chapter] of twoThessQueries) {
+  const found = await library.search(query, { category: "Chapter Introductions" });
+  assert.equal(found.length,1,"2 Thessalonians chapter "+chapter+" should be uniquely searchable for: "+query);
+  assert.equal(found[0].source.book,"2 Thessalonians");
+  assert.equal(found[0].source.chapter,chapter);
+}
+
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
 assert.equal(greek.length, 1, "Unicode Greek search should find the original-language entry.");
 assert.equal(greek[0].source.language, "Greek");
