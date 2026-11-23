@@ -269,6 +269,7 @@ const packagedPeoplesAndEmpires = await json("www/data/zuriel-biblical-peoples-a
 assert.equal(peoplesAndEmpires.entries.length,20,"Biblical peoples and empires library must contain 20 entries");
 assert.deepEqual(packagedPeoplesAndEmpires,peoplesAndEmpires,"Android package must include an exact copy of peoples and empires study data");
 assert.ok(loader.includes("zuriel-biblical-peoples-and-empires.json"),"Study library loader must register peoples and empires");
+assert.ok(loader.includes("biblical places and journeys") && loader.includes("historical peoples, kingdoms and empires"),"Study library introduction must advertise the geography and historical peoples collections");
 assert.ok(worker.includes("./data/zuriel-biblical-peoples-and-empires.json"),"Service worker must precache peoples and empires data");
 walkReferences(peoplesAndEmpires,"biblical peoples and empires");
 const peopleIds = new Set();
