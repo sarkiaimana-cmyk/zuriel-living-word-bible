@@ -40,10 +40,6 @@ const checks = [
   ["clear Save image action", 'id="zgsSaveImage">Save image</button>'],
   ["clear Share image action", 'id="zgsShareImage">Share image</button>'],
   ["clear Save to My Library action", 'id="zgsSave">Save to My Library</button>'],
-  ["Home open-book card has a direct save action", 'id="zurielOpenBookSaveCard"'],
-  ["Home open-book card has a direct saved-cards destination", 'id="zurielOpenBookSavedCards"'],
-  ["Home save action stores the prepared card in My Library", 'saveButton.click();'],
-  ["saved-card destination opens the saved Glory Verse collection", "openSavedGloryVerseCards: function"],
   ["clear Share card text action", 'id="zgsShare">Share card text</button>'],
   ["large mobile touch targets for card actions", "min-height:48px;padding:10px 12px;font-size:13px;touch-action:manipulation;"],
   ["canvas PNG rendering", 'canvas.toBlob(value => value ? resolve(value)'],
@@ -114,6 +110,10 @@ if (!home.includes('const revelationResponse = Object.assign({}, response || {})
 if (!home.includes('"HE IS " + identityTitle.toUpperCase()')) failures.push("WHO HE IS title is not carried into the shareable declaration.");
 if (!home.includes('window.ZurielLibrary.openGloryVerse(\n          item.reference, exactText, "KJV", revelationResponse')) failures.push("WHO HE IS card does not pass its exact KJV passage and title to the card studio.");
 if (!home.includes('id="zurielOpenBookFaithCard"')) failures.push("The daily open-book faith card was removed.");
+if (!home.includes('id="zurielOpenBookSaveCard"')) failures.push("Home open-book card has a direct save action.");
+if (!home.includes('id="zurielOpenBookSavedCards"')) failures.push("Home open-book card has a direct saved-cards destination.");
+if (!home.includes("saveButton.click();")) failures.push("Home save action does not store the prepared card in My Library.");
+if (!library.includes("openSavedGloryVerseCards: function")) failures.push("Saved-card destination does not open the saved Glory Verse collection.");
 if (!readerToolbar.includes("zurielReaderTopControls")) failures.push("Reader controls must be grouped into one top toolbar.");
 if (!readerToolbar.includes("zurielReaderViewTabs")) failures.push("Reader must show Scripture, Meaning and Original Words tabs.");
 if (!readerToolbar.includes("data-view=\"scripture\"") || !readerToolbar.includes("data-view=\"meaning\"") || !readerToolbar.includes("data-view=\"original\"")) failures.push("All three reader view tabs must be present.");
