@@ -1067,7 +1067,7 @@ for (const [query, chapter] of twoThessQueries) {
 const firstTimothyQueries = [
   ["sound teaching grace love",1],["prayer all people",2],
   ["overseers servants household",3],["godliness example teaching",4],
-  ["widows elders care",5],["contentment greed generosity",6]
+  ["widows elders care",5],["contentment generosity wealth",6]
 ];
 for (const [query, chapter] of firstTimothyQueries) {
   const found = await library.search(query, { category: "Chapter Introductions" });
