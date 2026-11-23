@@ -299,7 +299,7 @@ for (const name of chapterIntroNames) {
     assert.ok(Array.isArray(guide.studyQuestions) && guide.studyQuestions.length >= 3,
       "Chapter guide needs at least three study questions: " + book.name + " " + guide.chapter);
   }
-  walkReferences(dataset, "chapter introductions — " + book.name);
+  walkReferences({ chapters: dataset.chapters.map(guide => ({ keyPassages: guide.keyPassages })) }, "chapter introductions — " + book.name);
   const sourceText = await readFile(new URL("../data/" + name, import.meta.url), "utf8");
   const packagedText = await readFile(new URL("../www/data/" + name, import.meta.url), "utf8");
   assert.equal(packagedText, sourceText, "Offline Android package must contain an exact copy of " + name);
