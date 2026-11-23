@@ -1074,6 +1074,19 @@ for (const [query, chapter] of firstTimothyQueries) {
   assert.equal(found[0].source.chapter,chapter);
 }
 
+const oneTimOne = await library.search("sound teaching grace law", { category: "Chapter Introductions" });
+assert.equal(oneTimOne.length,1,"1 Timothy chapter 1 should be searchable");assert.equal(oneTimOne[0].source.book,"1 Timothy");assert.equal(oneTimOne[0].source.chapter,1);
+const oneTimTwo = await library.search("prayer all people worship", { category: "Chapter Introductions" });
+assert.equal(oneTimTwo.length,1,"1 Timothy chapter 2 should be searchable");assert.equal(oneTimTwo[0].source.book,"1 Timothy");assert.equal(oneTimTwo[0].source.chapter,2);
+const oneTimThree = await library.search("qualifications overseers household", { category: "Chapter Introductions" });
+assert.equal(oneTimThree.length,1,"1 Timothy chapter 3 should be searchable");assert.equal(oneTimThree[0].source.book,"1 Timothy");assert.equal(oneTimThree[0].source.chapter,3);
+const oneTimFour = await library.search("guarding teaching example", { category: "Chapter Introductions" });
+assert.equal(oneTimFour.length,1,"1 Timothy chapter 4 should be searchable");assert.equal(oneTimFour[0].source.book,"1 Timothy");assert.equal(oneTimFour[0].source.chapter,4);
+const oneTimFive = await library.search("widows elders support", { category: "Chapter Introductions" });
+assert.equal(oneTimFive.length,1,"1 Timothy chapter 5 should be searchable");assert.equal(oneTimFive[0].source.book,"1 Timothy");assert.equal(oneTimFive[0].source.chapter,5);
+const oneTimSix = await library.search("contentment greed faith", { category: "Chapter Introductions" });
+assert.equal(oneTimSix.length,1,"1 Timothy chapter 6 should be searchable");assert.equal(oneTimSix[0].source.book,"1 Timothy");assert.equal(oneTimSix[0].source.chapter,6);
+
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
 assert.equal(greek.length, 1, "Unicode Greek search should find the original-language entry.");
 assert.equal(greek[0].source.language, "Greek");
