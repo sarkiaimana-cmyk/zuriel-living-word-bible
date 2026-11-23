@@ -1289,6 +1289,7 @@ for (const guide of secondCorinthiansChapterGuides.chapters) {
 
 
 const galatianGuides = await json("data/zuriel-chapter-introductions-galatians-01-06.json");
+const ephesiansChapterGuides = await json("data/zuriel-chapter-introductions-ephesians-01-06.json");
 assert.equal(galatianGuides.book,"Galatians","Galatians batch must identify its book");
 assert.equal(galatianGuides.chapters.length,6,"Galatians batch must contain all six chapters");
 const galatianIds = new Set();
@@ -1310,6 +1311,22 @@ assert.equal(ephesiansGuides.book,"Ephesians","Ephesians batch must identify its
 assert.equal(ephesiansGuides.chapters.length,6,"Ephesians batch must contain all six chapters");
 const ephesiansIds = new Set();
 for (const guide of ephesiansGuides.chapters) {
+  assert.equal(guide.book,"Ephesians","Ephesians guide must remain scoped to its book");
+  assert.ok(Number.isInteger(guide.chapter)&&guide.chapter>=1&&guide.chapter<=6,"Ephesians chapter must be within 1–6");
+  assert.ok(guide.title.startsWith("Ephesians "+guide.chapter+" —"),"Ephesians title must identify its chapter");
+  assert.equal(guide.id,"eph"+guide.chapter,"Ephesians guide needs a stable chapter ID");
+  assert.ok(!ephesiansIds.has(guide.id),"Ephesians guide IDs must be unique"); ephesiansIds.add(guide.id);
+  for (const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field]==="string"&&guide[field].trim().length>=50,"Ephesians guide needs substantive "+field+": "+guide.chapter);
+  assert.ok(Array.isArray(guide.keyPassages)&&guide.keyPassages.length===2,"Ephesians guide needs two key passages");
+  assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length===3,"Ephesians guide needs three study questions");
+  for (const reference of guide.keyPassages) checkReference(reference,"Ephesians chapter "+guide.chapter);
+}
+
+
+assert.equal(ephesiansChapterGuides.book,"Ephesians","Ephesians guide must identify its book");
+assert.equal(ephesiansChapterGuides.chapters.length,6,"Ephesians guide must contain all six chapters");
+const ephesiansIds = new Set();
+for (const guide of ephesiansChapterGuides.chapters) {
   assert.equal(guide.book,"Ephesians","Ephesians guide must remain scoped to its book");
   assert.ok(Number.isInteger(guide.chapter)&&guide.chapter>=1&&guide.chapter<=6,"Ephesians chapter must be within 1–6");
   assert.ok(guide.title.startsWith("Ephesians "+guide.chapter+" —"),"Ephesians title must identify its chapter");
