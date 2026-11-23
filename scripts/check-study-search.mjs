@@ -901,7 +901,7 @@ const oneCorNine = await library.search("rights voluntarily", { category: "Chapt
 assert.equal(oneCorNine.length,1,"1 Corinthians chapter 9 should be searchable");assert.equal(oneCorNine[0].source.book,"1 Corinthians");assert.equal(oneCorNine[0].source.chapter,9);
 const oneCorTen = await library.search("spiritual privilege", { category: "Chapter Introductions" });
 assert.equal(oneCorTen.length,1,"1 Corinthians chapter 10 should be searchable");assert.equal(oneCorTen[0].source.book,"1 Corinthians");assert.equal(oneCorTen[0].source.chapter,10);
-const oneCorEleven = await library.search("mutual honour", { category: "Chapter Introductions" });
+const oneCorEleven = await library.search("Lord Supper selfish conduct", { category: "Chapter Introductions" });
 assert.equal(oneCorEleven.length,1,"1 Corinthians chapter 11 should be searchable");assert.equal(oneCorEleven[0].source.book,"1 Corinthians");assert.equal(oneCorEleven[0].source.chapter,11);
 const oneCorTwelve = await library.search("diverse ministries", { category: "Chapter Introductions" });
 assert.equal(oneCorTwelve.length,1,"1 Corinthians chapter 12 should be searchable");assert.equal(oneCorTwelve[0].source.book,"1 Corinthians");assert.equal(oneCorTwelve[0].source.chapter,12);
