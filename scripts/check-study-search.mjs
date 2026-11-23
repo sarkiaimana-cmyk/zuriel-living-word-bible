@@ -615,7 +615,7 @@ const markSixteen = await library.search("crucified buried women empty tomb resu
 assert.equal(markSixteen.length,1,"Mark chapter 16 should be searchable");assert.equal(markSixteen[0].source.book,"Mark");assert.equal(markSixteen[0].source.chapter,16);
 
 
-const lukeOne = await library.search("Gabriel Mary Elizabeth Magnificat mercy lowly", { category: "Chapter Introductions" });
+const lukeOne = await library.search("Gabriel Mary Elizabeth mercy justice lowly", { category: "Chapter Introductions" });
 assert.equal(lukeOne.length,1,"Luke chapter 1 should be searchable");assert.equal(lukeOne[0].source.book,"Luke");assert.equal(lukeOne[0].source.chapter,1);
 const lukeFour = await library.search("Isaiah Nazareth good news poor oppressed freedom", { category: "Chapter Introductions" });
 assert.equal(lukeFour.length,1,"Luke chapter 4 should be searchable");assert.equal(lukeFour[0].source.book,"Luke");assert.equal(lukeFour[0].source.chapter,4);
