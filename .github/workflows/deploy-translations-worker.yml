@@ -161,7 +161,7 @@ jobs:
             echo "::error::YouVersion catalogue worked, but live John 3:16 retrieval failed (HTTP $YVP_CHAPTER_STATUS). Do not connect this provider yet."
             exit 1
           fi
-          node -e 'const j=JSON.parse(require("node:fs").readFileSync(".translation-chapter-smoke.json","utf8"));if(!j.passage||typeof j.passage.content!=="string"||!j.passage.content.trim()||!j.passage.reference||!j.version?.id)process.exit(1);console.log("YouVersion live passage verified: "+j.passage.reference+" ("+j.passage.content.trim().length+" characters).");'
+          node -e 'const j=JSON.parse(require("node:fs").readFileSync(".translation-chapter-smoke.json","utf8"));if(!j.passage||typeof j.passage.content!=="string"||!j.passage.content.trim()||!j.passage.reference||!j.version?.id||(!j.passage.copyright&&!j.passage.promotional_content))process.exit(1);console.log("YouVersion live passage and publisher attribution verified: "+j.passage.reference+" ("+j.passage.content.trim().length+" characters).");'
           if ! grep -qi 'access-control-allow-origin: https://sarkiaimana-cmyk.github.io' .translation-chapter-smoke.headers; then
             echo "::error::The live YouVersion passage did not return the expected GitHub Pages CORS origin."
             exit 1
