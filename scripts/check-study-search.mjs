@@ -782,7 +782,7 @@ const actsTwentyFive = await library.search("Festus Agrippa Caesar Rome appeal a
 assert.equal(actsTwentyFive.length,1,"Acts chapter 25 should be searchable");assert.equal(actsTwentyFive[0].source.book,"Acts");assert.equal(actsTwentyFive[0].source.chapter,25);
 const actsTwentySix = await library.search("Agrippa Paul's calling Israel hope resurrection vision", { category: "Chapter Introductions" });
 assert.equal(actsTwentySix.length,1,"Acts chapter 26 should be searchable");assert.equal(actsTwentySix[0].source.book,"Acts");assert.equal(actsTwentySix[0].source.chapter,26);
-const actsTwentySeven = await library.search("voyage Rome shipwreck courage practical leadership survival storm", { category: "Chapter Introductions" });
+const actsTwentySeven = await library.search("voyage Rome shipwreck courage practical leadership survival crisis", { category: "Chapter Introductions" });
 assert.equal(actsTwentySeven.length,1,"Acts chapter 27 should be searchable");assert.equal(actsTwentySeven[0].source.book,"Acts");assert.equal(actsTwentySeven[0].source.chapter,27);
 const actsTwentyEight = await library.search("Malta Rome word proclaimed restrictions mission", { category: "Chapter Introductions" });
 assert.equal(actsTwentyEight.length,1,"Acts chapter 28 should be searchable");assert.equal(actsTwentyEight[0].source.book,"Acts");assert.equal(actsTwentyEight[0].source.chapter,28);
