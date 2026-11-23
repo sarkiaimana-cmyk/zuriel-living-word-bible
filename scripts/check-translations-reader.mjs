@@ -1,10 +1,11 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
-const [index, client, worker, config, deployment, aiDeployment, packaging, serviceWorker, version, updates] = await Promise.all([
+const [index, client, worker, workerCore, config, deployment, aiDeployment, packaging, serviceWorker, version, updates] = await Promise.all([
   readFile("index.html", "utf8"),
   readFile("zuriel-translations.js", "utf8"),
   readFile("ai-worker/src/translation-worker.js", "utf8"),
+  readFile("ai-worker/src/index.js", "utf8"),
   readFile("ai-worker/wrangler.translations.jsonc", "utf8"),
   readFile(".github/workflows/deploy-translations-worker.yml", "utf8"),
   readFile(".github/workflows/deploy-ai-worker.yml", "utf8"),
@@ -35,7 +36,7 @@ requireText(client, '["api-bible", "API.Bible"]', "API.Bible provider selection 
 requireText(client, "next_page_token", "YouVersion catalogue pagination");
 requireText(client, "encodeURIComponent(nextPageToken)", "Safe pagination token encoding");
 requireText(client, "pageCount < 10", "Bounded catalogue pagination");
-requireText(worker, 'searchParams.set("page_size", "99")', "Respect YouVersion's documented 99-item catalogue page limit");
+requireText(workerCore, 'searchParams.set("page_size", "99")', "Respect YouVersion's documented 99-item catalogue page limit");
 requireText(client, "new Map()", "Deduplication of paginated Bible version results");
 requireText(client, "seenTokens.has(token)", "Repeated pagination token protection");
 requireText(client, "?format=text", "Plain-text passage request");
@@ -50,10 +51,10 @@ requireText(client, "Publisher attribution was not supplied", "Fail-closed attri
 requireText(client, 'window.fums("trackView", fumsToken)', "Report API.Bible passage views through FUMS v3");
 requireText(index, 'src="https://pkg.api.bible/fumsV3.min.js"', "Load the official API.Bible FUMS v3 tracker");
 requireText(index, "window.fumsData = window.fumsData || [];", "Queue FUMS reports until the tracker is ready");
-requireText(worker, 'searchParams.set("fums-version", "3")', "Request API.Bible FUMS v3 tokens with chapter text");
-requireText(worker, "meta: { fumsToken }", "Forward only the API.Bible FUMS token to the client");
-requireText(worker, "required Fair Use Management reporting token", "Withhold API.Bible text when FUMS token is missing");
-requireText(client, "API.Bible chapters may be saved on this device", "Accurate publisher-specific offline storage guidance");
+requireText(workerCore, 'searchParams.set("fums-version", "3")', "Request API.Bible FUMS v3 tokens with chapter text");
+requireText(workerCore, "meta: { fumsToken }", "Forward only the API.Bible FUMS token to the client");
+requireText(workerCore, "required Fair Use Management reporting token", "Withhold API.Bible text when FUMS token is missing");
+requireText(client, "API.Bible keeps only the most recently viewed chapter per translation", "Accurate publisher-specific offline storage guidance");
 requireText(client, "YouVersion passages are shown online only", "YouVersion online-only rights notice");
 requireText(client, "function canStoreOffline(provider)", "Provider-specific offline permission gate");
 requireText(client, 'return provider === "api-bible"', "Only the explicitly supported API.Bible offline cache is enabled");
@@ -153,8 +154,8 @@ requireText(worker, 'from "./index.js"', "Shared tested server-side YouVersion h
 requireText(worker, "bibles(?:", "Translation-only route allowlist");
 requireText(worker, "api-bible", "API.Bible route allowlist");
 requireText(worker, "handleRequest(request, env, dependencies)", "Shared server-side origin, rate-limit and licence handling");
-requireText(worker, 'YVP_BASE + "/bibles/" + selectedVersionId', "Fetch YouVersion Bible metadata to obtain publisher attribution");
-requireText(worker, "publisher attribution could not be verified", "Withhold YouVersion passage text if attribution metadata cannot be verified");
+requireText(workerCore, 'YVP_BASE + "/bibles/" + selectedVersionId', "Fetch YouVersion Bible metadata to obtain publisher attribution");
+requireText(workerCore, "publisher attribution could not be verified", "Withhold YouVersion passage text if attribution metadata cannot be verified");
 requireText(config, '"name": "zuriel-bible-translations"', "Separate translation Worker name");
 requireText(config, '"TRANSLATION_RATE_LIMIT"', "Translation rate-limit binding");
 requireText(config, '"ZITE_YVP_APP_KEY"', "Server-only YouVersion secret requirement");
