@@ -1100,6 +1100,15 @@ for (const [query, chapter] of secondTimothyQueries) {
   assert.equal(found[0].source.chapter,chapter);
 }
 
+const twoTimOne = await library.search("guarding gospel rekindle gift", { category: "Chapter Introductions" });
+assert.equal(twoTimOne.length,1,"2 Timothy chapter 1 should be searchable");assert.equal(twoTimOne[0].source.book,"2 Timothy");assert.equal(twoTimOne[0].source.chapter,1);
+const twoTimTwo = await library.search("endurance faithful teaching rightly", { category: "Chapter Introductions" });
+assert.equal(twoTimTwo.length,1,"2 Timothy chapter 2 should be searchable");assert.equal(twoTimTwo[0].source.book,"2 Timothy");assert.equal(twoTimTwo[0].source.chapter,2);
+const twoTimThree = await library.search("difficult times godly character Scripture", { category: "Chapter Introductions" });
+assert.equal(twoTimThree.length,1,"2 Timothy chapter 3 should be searchable");assert.equal(twoTimThree[0].source.book,"2 Timothy");assert.equal(twoTimThree[0].source.chapter,3);
+const twoTimFour = await library.search("preach word finish race faithful", { category: "Chapter Introductions" });
+assert.equal(twoTimFour.length,1,"2 Timothy chapter 4 should be searchable");assert.equal(twoTimFour[0].source.book,"2 Timothy");assert.equal(twoTimFour[0].source.chapter,4);
+
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
 assert.equal(greek.length, 1, "Unicode Greek search should find the original-language entry.");
 assert.equal(greek[0].source.language, "Greek");
