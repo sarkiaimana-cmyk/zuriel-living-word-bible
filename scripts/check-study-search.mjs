@@ -1017,6 +1017,15 @@ for (const [query, chapter] of colossiansQueries) {
   assert.equal(found[0].source.chapter,chapter);
 }
 
+const colossiansOne = await library.search("supremacy reconciliation maturity", { category: "Chapter Introductions" });
+assert.equal(colossiansOne.length,1,"Colossians chapter 1 should be searchable");assert.equal(colossiansOne[0].source.book,"Colossians");assert.equal(colossiansOne[0].source.chapter,1);
+const colossiansTwo = await library.search("fullness freedom deceptive teaching", { category: "Chapter Introductions" });
+assert.equal(colossiansTwo.length,1,"Colossians chapter 2 should be searchable");assert.equal(colossiansTwo[0].source.book,"Colossians");assert.equal(colossiansTwo[0].source.chapter,2);
+const colossiansThree = await library.search("raised new humanity", { category: "Chapter Introductions" });
+assert.equal(colossiansThree.length,1,"Colossians chapter 3 should be searchable");assert.equal(colossiansThree[0].source.book,"Colossians");assert.equal(colossiansThree[0].source.chapter,3);
+const colossiansFour = await library.search("prayer wise witness partnership", { category: "Chapter Introductions" });
+assert.equal(colossiansFour.length,1,"Colossians chapter 4 should be searchable");assert.equal(colossiansFour[0].source.book,"Colossians");assert.equal(colossiansFour[0].source.chapter,4);
+
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
 assert.equal(greek.length, 1, "Unicode Greek search should find the original-language entry.");
 assert.equal(greek[0].source.language, "Greek");
