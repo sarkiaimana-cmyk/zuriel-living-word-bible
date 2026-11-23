@@ -963,6 +963,8 @@
           <button type="button" class="home-button" id="zurielOpenBookRead">📖 Read This Passage</button>
           <button type="button" class="home-button home-secondary" id="zurielOpenBookNext">✦ Another Word for Today</button>
           <button type="button" class="home-button" id="zurielOpenBookCreateCard">🖼️ Create & Share Card</button>
+          <button type="button" class="home-button home-secondary" id="zurielOpenBookSaveCard">💾 Save Open Book Card</button>
+          <button type="button" class="home-button home-secondary" id="zurielOpenBookSavedCards">📚 My Saved Cards</button>
         </div>
         <p id="zurielOpenBookCardStatus" class="home-subtitle" aria-live="polite"></p>
         <details>
@@ -1759,6 +1761,56 @@
         } finally {
           createShareCardButton.disabled = false;
         }
+      });
+    }
+
+    /* Save the current Home open-book card directly to the on-device card library. */
+    const saveOpenBookCardButton = document.getElementById("zurielOpenBookSaveCard");
+    if (saveOpenBookCardButton) {
+      saveOpenBookCardButton.addEventListener("click", async function () {
+        const status = document.getElementById("zurielOpenBookCardStatus");
+        const verse = verses[verseIndex];
+        if (!verse || typeof window.getBibleVerseText !== "function") {
+          if (status) status.textContent = "The offline Scripture service is not ready. Please try again.";
+          return;
+        }
+        saveOpenBookCardButton.disabled = true;
+        if (status) status.textContent = "Saving this open-book card to My Saved Glory Verse Cards…";
+        try {
+          const passage = await window.getBibleVerseText(verse.reference);
+          const scriptureText = String(passage && passage.text || "").replace(/^\d+\.\s*/, "").trim();
+          if (!scriptureText) throw new Error("The exact KJV verse text could not be loaded.");
+          const faithResponse = window.ZurielFaithContent &&
+            typeof window.ZurielFaithContent.find === "function"
+            ? window.ZurielFaithContent.find(verse.reference) : null;
+          if (!faithResponse || !faithResponse.declaration || !faithResponse.affirmation) {
+            throw new Error("The Scripture-specific declaration and affirmation are not ready for this card yet.");
+          }
+          if (!window.ZurielLibrary ||
+              typeof window.ZurielLibrary.openGloryVerse !== "function") {
+            throw new Error("The Glory Verse Affirmation Studio is not available yet.");
+          }
+          navigate("library");
+          const opened = window.ZurielLibrary.openGloryVerse(verse.reference, scriptureText, "KJV", faithResponse);
+          if (!opened) throw new Error("The share-card studio could not be opened.");
+          const saveButton = document.querySelector("#zgsSave");
+          if (!saveButton) throw new Error("The card opened, but its Save to My Library control is unavailable.");
+          saveButton.click();
+          if (status) status.textContent = "Saved on this device. Open My Saved Cards any time to reopen, download or share it.";
+        } catch (error) {
+          if (status) status.textContent = error.message || "The open-book card could not be saved.";
+        } finally {
+          saveOpenBookCardButton.disabled = false;
+        }
+      });
+    }
+    const openSavedOpenBookCardsButton = document.getElementById("zurielOpenBookSavedCards");
+    if (openSavedOpenBookCardsButton) {
+      openSavedOpenBookCardsButton.addEventListener("click", function () {
+        if (!window.ZurielLibrary ||
+            typeof window.ZurielLibrary.openSavedGloryVerseCards !== "function") return;
+        navigate("library");
+        window.ZurielLibrary.openSavedGloryVerseCards();
       });
     }
 
