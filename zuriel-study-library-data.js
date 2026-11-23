@@ -93,6 +93,7 @@
     ["Chapter Introductions", "./data/zuriel-chapter-introductions-romans-09-16.json", "chapters", "chapter-introduction"],
     ["Chapter Introductions", "./data/zuriel-chapter-introductions-1-corinthians-01-16.json", "chapters", "chapter-introduction"],
     ["Chapter Introductions", "./data/zuriel-chapter-introductions-2-corinthians-01-13.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-galatians-01-06.json", "chapters", "chapter-introduction"],
 
     ["Deep Study Guides", "./data/zuriel-deep-study-guides.json", "guides", "guide"],
     ["Bible Geography", "./data/zuriel-bible-geography-atlas.json", "places", "place"],
