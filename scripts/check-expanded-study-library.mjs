@@ -146,7 +146,8 @@ const studyDatasetPaths = [
   "zuriel-chapter-introductions-luke-13-24.json",
   "zuriel-chapter-introductions-john-01-10.json",
   "zuriel-chapter-introductions-john-11-12.json",
-  "zuriel-chapter-introductions-john-13-21.json"
+  "zuriel-chapter-introductions-john-13-21.json",
+  "zuriel-chapter-introductions-acts-01-14.json"
 ];
 const [packagingScript, packagedLoader] = await Promise.all([
   readFile(new URL("../scripts/prepare-web.mjs", import.meta.url), "utf8"),
@@ -1179,4 +1180,20 @@ for (const guide of johnChapterGuides3.chapters) {
   for (const reference of guide.keyPassages) checkReference(reference,"John chapter "+guide.chapter);
 }
 
-console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges, 4 Ruth and 31 1 Samuel, 24 2 Samuel 22 1 Kings, 25 2 Kings 29 1 Chronicles and 36 2 Chronicles 10 Ezra and 13 Nehemiah and 10 Esther and 42 Job and 150 Psalms and 31 Proverbs, 66 Isaiah, 52 Jeremiah, 5 Lamentations and 48 Ezekiel, 12 Daniel, 14 Hosea and 3 Joel, 9 Amos and 1 Obadiah, 4 Jonah, 7 Micah, 3 Nahum, 3 Habakkuk, 3 Zephaniah, 2 Haggai, 14 Zechariah, 28 Matthew, 16 Mark, 4 Malachi, 24 Luke and 21 John chapter introductions; 53 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
+const actsChapterGuides = await json("data/zuriel-chapter-introductions-acts-01-14.json");
+assert.equal(actsChapterGuides.book,"Acts","Acts 1–14 batch must identify its book");
+assert.equal(actsChapterGuides.chapters.length,14,"Acts 1–14 batch must contain exactly fourteen chapter guides");
+const actsIds = new Set();
+for (const guide of actsChapterGuides.chapters) {
+  assert.equal(guide.book,"Acts","Acts guide must remain scoped to Acts");
+  assert.ok(Number.isInteger(guide.chapter)&&guide.chapter>=1&&guide.chapter<=14,"Acts chapter must be within 1–14");
+  assert.ok(guide.title.startsWith("Acts "+guide.chapter+" —"),"Acts title must identify its chapter");
+  assert.equal(guide.id,"acts"+guide.chapter,"Acts guide needs a stable chapter ID");
+  assert.ok(!actsIds.has(guide.id),"Acts guide IDs must be unique"); actsIds.add(guide.id);
+  for (const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field]==="string"&&guide[field].trim().length>=50,"Acts guide needs substantive "+field+": "+guide.chapter);
+  assert.ok(Array.isArray(guide.keyPassages)&&guide.keyPassages.length===2,"Acts guide needs two key passages");
+  assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length===3,"Acts guide needs three study questions");
+  for (const reference of guide.keyPassages) checkReference(reference,"Acts chapter "+guide.chapter);
+}
+
+console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges, 4 Ruth and 31 1 Samuel, 24 2 Samuel 22 1 Kings, 25 2 Kings 29 1 Chronicles and 36 2 Chronicles 10 Ezra and 13 Nehemiah and 10 Esther and 42 Job and 150 Psalms and 31 Proverbs, 66 Isaiah, 52 Jeremiah, 5 Lamentations and 48 Ezekiel, 12 Daniel, 14 Hosea and 3 Joel, 9 Amos and 1 Obadiah, 4 Jonah, 7 Micah, 3 Nahum, 3 Habakkuk, 3 Zephaniah, 2 Haggai, 14 Zechariah, 28 Matthew, 16 Mark, 4 Malachi, 24 Luke and 21 John and 14 Acts chapter introductions; 54 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
