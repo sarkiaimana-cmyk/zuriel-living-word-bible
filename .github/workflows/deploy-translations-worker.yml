@@ -193,7 +193,7 @@ jobs:
                 echo "::error::API.Bible catalogue worked, but live John 3 retrieval failed (HTTP $API_BIBLE_CHAPTER_STATUS). Do not connect this provider yet."
                 exit 1
               fi
-              node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-chapter-smoke.json","utf8"));if(!j.passage||typeof j.passage.content!=="string"||!j.passage.content.trim()||!j.passage.reference||!j.passage.copyright||!j.version?.id)process.exit(1);console.log("API.Bible live chapter verified: "+j.passage.reference+" ("+j.passage.content.trim().length+" characters, attribution present).");'
+              node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-chapter-smoke.json","utf8"));if(!j.passage||typeof j.passage.content!=="string"||!j.passage.content.trim()||!j.passage.reference||!j.passage.copyright||!j.version?.id||!j.meta?.fumsToken)process.exit(1);console.log("API.Bible live chapter, publisher attribution and FUMS token verified: "+j.passage.reference+" ("+j.passage.content.trim().length+" characters).");'
               if ! grep -qi 'access-control-allow-origin: https://sarkiaimana-cmyk.github.io' .api-bible-chapter-smoke.headers; then
                 echo "::error::The live API.Bible chapter did not return the expected GitHub Pages CORS origin."
                 exit 1
