@@ -1542,4 +1542,55 @@ for (const guide of jamesGuides.chapters) {
   for (const reference of guide.keyPassages) checkReference(reference,"James chapter "+guide.chapter);
 }
 
+
+const secondJohnGuides = await json("data/zuriel-chapter-introductions-2-john-01.json");
+assert.equal(secondJohnGuides.book,"2 John","2 John batch must identify its book");
+assert.equal(secondJohnGuides.chapters.length,1,"2 John batch must contain one chapter");
+const secondJohnGuidesIds = new Set();
+for (const guide of secondJohnGuides.chapters) {
+  assert.equal(guide.book,"2 John","2 John guide must remain scoped to its book");
+  assert.equal(guide.chapter,1,"2 John guide must identify chapter one");
+  assert.ok(guide.title.startsWith("2 John 1 —"),"2 John title must identify its chapter");
+  assert.equal(guide.id,"2john1","2 John guide needs a stable chapter ID");
+  assert.ok(!secondJohnGuidesIds.has(guide.id),"2 John guide IDs must be unique"); secondJohnGuidesIds.add(guide.id);
+  for (const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field]==="string"&&guide[field].trim().length>=50,"2 John guide needs substantive "+field);
+  assert.ok(Array.isArray(guide.keyPassages)&&guide.keyPassages.length===2,"2 John guide needs two key passages");
+  assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length===3,"2 John guide needs three study questions");
+  for (const reference of guide.keyPassages) checkReference(reference,"2 John chapter 1");
+}
+
+
+const thirdJohnGuides = await json("data/zuriel-chapter-introductions-3-john-01.json");
+assert.equal(thirdJohnGuides.book,"3 John","3 John batch must identify its book");
+assert.equal(thirdJohnGuides.chapters.length,1,"3 John batch must contain one chapter");
+const thirdJohnGuidesIds = new Set();
+for (const guide of thirdJohnGuides.chapters) {
+  assert.equal(guide.book,"3 John","3 John guide must remain scoped to its book");
+  assert.equal(guide.chapter,1,"3 John guide must identify chapter one");
+  assert.ok(guide.title.startsWith("3 John 1 —"),"3 John title must identify its chapter");
+  assert.equal(guide.id,"3john1","3 John guide needs a stable chapter ID");
+  assert.ok(!thirdJohnGuidesIds.has(guide.id),"3 John guide IDs must be unique"); thirdJohnGuidesIds.add(guide.id);
+  for (const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field]==="string"&&guide[field].trim().length>=50,"3 John guide needs substantive "+field);
+  assert.ok(Array.isArray(guide.keyPassages)&&guide.keyPassages.length===2,"3 John guide needs two key passages");
+  assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length===3,"3 John guide needs three study questions");
+  for (const reference of guide.keyPassages) checkReference(reference,"3 John chapter 1");
+}
+
+
+const judeGuides = await json("data/zuriel-chapter-introductions-jude-01.json");
+assert.equal(judeGuides.book,"Jude","Jude batch must identify its book");
+assert.equal(judeGuides.chapters.length,1,"Jude batch must contain one chapter");
+const judeGuidesIds = new Set();
+for (const guide of judeGuides.chapters) {
+  assert.equal(guide.book,"Jude","Jude guide must remain scoped to its book");
+  assert.equal(guide.chapter,1,"Jude guide must identify chapter one");
+  assert.ok(guide.title.startsWith("Jude 1 —"),"Jude title must identify its chapter");
+  assert.equal(guide.id,"jude1","Jude guide needs a stable chapter ID");
+  assert.ok(!judeGuidesIds.has(guide.id),"Jude guide IDs must be unique"); judeGuidesIds.add(guide.id);
+  for (const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field]==="string"&&guide[field].trim().length>=50,"Jude guide needs substantive "+field);
+  assert.ok(Array.isArray(guide.keyPassages)&&guide.keyPassages.length===2,"Jude guide needs two key passages");
+  assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length===3,"Jude guide needs three study questions");
+  for (const reference of guide.keyPassages) checkReference(reference,"Jude chapter 1");
+}
+
 console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges, 4 Ruth and 31 1 Samuel, 24 2 Samuel 22 1 Kings, 25 2 Kings 29 1 Chronicles and 36 2 Chronicles 10 Ezra and 13 Nehemiah and 10 Esther and 42 Job and 150 Psalms and 31 Proverbs, 66 Isaiah, 52 Jeremiah, 5 Lamentations and 48 Ezekiel, 12 Daniel, 14 Hosea and 3 Joel, 9 Amos and 1 Obadiah, 4 Jonah, 7 Micah, 3 Nahum, 3 Habakkuk, 3 Zephaniah, 2 Haggai, 14 Zechariah, 28 Matthew, 16 Mark, 4 Malachi, 24 Luke and 21 John, 28 Acts, 16 Romans, 16 1 Corinthians, 13 2 Corinthians, 6 Galatians, 6 Ephesians, 4 Philippians, 4 Colossians, 5 1 Thessalonians, 3 2 Thessalonians, 6 1 Timothy, 4 2 Timothy, 3 Titus, 1 Philemon, 13 Hebrews and 5 James chapter introductions; 71 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
