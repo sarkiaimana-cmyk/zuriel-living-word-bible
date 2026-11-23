@@ -159,6 +159,22 @@ test("supports plain-text passages and retrieves required publisher attribution 
   assert.equal(bad.status, 400);
 });
 
+test("withholds passage text when Bible-version metadata has no publisher attribution", async () => {
+  const response = await send(
+    request("/api/youversion/bibles/3034/passages/JHN.3.16?format=text"),
+    makeEnv(),
+    async url => {
+      const parsed = new URL(url);
+      if (parsed.pathname.includes("/passages/")) {
+        return Response.json({ id: "JHN.3.16", reference: "John 3:16", content: "For God so loved the world." });
+      }
+      return Response.json({ id: 3034, title: "Unattributed version", abbreviation: "UV" });
+    }
+  );
+  assert.equal(response.status, 502);
+  assert.match((await response.json()).error, /did not provide publisher attribution/);
+});
+
 test("rejects invalid passage identifiers before contacting YouVersion", async () => {
   let called = false;
   const response = await send(request("/api/youversion/bibles/3034/passages/JHN.3.16-EXO.1.1"),
