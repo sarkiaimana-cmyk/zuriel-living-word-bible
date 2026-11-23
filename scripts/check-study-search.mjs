@@ -925,13 +925,13 @@ const twoCorSix = await library.search("endurance wholehearted devotion", { cate
 assert.equal(twoCorSix.length,1,"2 Corinthians chapter 6 should be searchable");assert.equal(twoCorSix[0].source.book,"2 Corinthians");assert.equal(twoCorSix[0].source.chapter,6);
 const twoCorSeven = await library.search("godly sorrow repentance joy", { category: "Chapter Introductions" });
 assert.equal(twoCorSeven.length,1,"2 Corinthians chapter 7 should be searchable");assert.equal(twoCorSeven[0].source.book,"2 Corinthians");assert.equal(twoCorSeven[0].source.chapter,7);
-const twoCorEight = await library.search("Macedonian generosity grace", { category: "Chapter Introductions" });
+const twoCorEight = await library.search("grace generosity willingly accountability fairness", { category: "Chapter Introductions" });
 assert.equal(twoCorEight.length,1,"2 Corinthians chapter 8 should be searchable");assert.equal(twoCorEight[0].source.book,"2 Corinthians");assert.equal(twoCorEight[0].source.chapter,8);
-const twoCorNine = await library.search("accountability shared oversight resources", { category: "Chapter Introductions" });
+const twoCorNine = await library.search("cheerful giving thanksgiving provision", { category: "Chapter Introductions" });
 assert.equal(twoCorNine.length,1,"2 Corinthians chapter 9 should be searchable");assert.equal(twoCorNine[0].source.book,"2 Corinthians");assert.equal(twoCorNine[0].source.chapter,9);
-const twoCorTen = await library.search("cheerful giving harvest thanksgiving", { category: "Chapter Introductions" });
+const twoCorTen = await library.search("spiritual authority weapons build up", { category: "Chapter Introductions" });
 assert.equal(twoCorTen.length,1,"2 Corinthians chapter 10 should be searchable");assert.equal(twoCorTen[0].source.book,"2 Corinthians");assert.equal(twoCorTen[0].source.chapter,10);
-const twoCorEleven = await library.search("spiritual authority weapons ministry", { category: "Chapter Introductions" });
+const twoCorEleven = await library.search("weakness visions thorn grace sufficient sincere devotion", { category: "Chapter Introductions" });
 assert.equal(twoCorEleven.length,1,"2 Corinthians chapter 11 should be searchable");assert.equal(twoCorEleven[0].source.book,"2 Corinthians");assert.equal(twoCorEleven[0].source.chapter,11);
 const twoCorTwelve = await library.search("false apostles costly service", { category: "Chapter Introductions" });
 assert.equal(twoCorTwelve.length,1,"2 Corinthians chapter 12 should be searchable");assert.equal(twoCorTwelve[0].source.book,"2 Corinthians");assert.equal(twoCorTwelve[0].source.chapter,12);
