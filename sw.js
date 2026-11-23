@@ -110,6 +110,7 @@ const CORE_FILES = [
   "./data/zuriel-chapter-introductions-mark-01-08.json",
   "./data/zuriel-chapter-introductions-mark-09-16.json",
   "./data/zuriel-chapter-introductions-malachi-01-04.json",
+  "./data/zuriel-chapter-introductions-luke-01-12.json",
   "./data/zuriel-connected-scripture-trails-batch-1.json",
   "./data/zuriel-connected-scripture-trails-batch-2.json",
   "./data/zuriel-deep-study-guides.json",
