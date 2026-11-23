@@ -36,7 +36,7 @@ const datasets = {
     {id:"zec11",book:"Zechariah",chapter:11,title:"Zechariah 11 — A fountain opened and the shepherd struck",overview:"Zechariah’s vision calls the returned community to faithfulness, hope, cleansing, and trust in the Lord."},
     {id:"zec12",book:"Zechariah",chapter:12,title:"Zechariah 12 — The Lord reigns and living waters flow",overview:"Zechariah’s vision calls the returned community to faithfulness, hope, cleansing, and trust in the Lord."},
     {id:"zec13",book:"Zechariah",chapter:13,title:"Zechariah 13 — Cleansing, truth, and the refined remnant",overview:"Zechariah’s vision calls the returned community to faithfulness, hope, cleansing, and trust in the Lord."},
-    {id:"zec14",book:"Zechariah",chapter:14,title:"Zechariah 14 — The Lord reigns and living waters flow",overview:"Zechariah’s vision calls the returned community to faithfulness, hope, cleansing, and trust in the Lord."}
+    {id:"zec14",book:"Zechariah",chapter:14,title:"Zechariah 14 — The Lord reigns and living waters flow",overview:"The Lord reigns over all the earth, living waters flow from Jerusalem, and holiness shapes worship among the nations."}
   ] },
   "zuriel-chapter-introductions-haggai-01-02.json": { chapters: [
     {id:"hag01",book:"Haggai",chapter:1,title:"Haggai 1 — Rebuild the house and reorder priorities",overview:"The prophet calls the returned community to consider its ways, rebuild the temple, and trust the Lord’s presence."},
