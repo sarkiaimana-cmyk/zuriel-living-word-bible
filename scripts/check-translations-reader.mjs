@@ -71,9 +71,15 @@ requireText(client, "db.onversionchange", "Close and reopen offline database saf
 requireText(client, "API_BIBLE_CACHE_MAX_AGE = 14 * 24 * 60 * 60 * 1000", "API.Bible 14-day recommended cache refresh limit");
 requireText(client, "saveApiBibleChapter", "API.Bible chapter cache write");
 requireText(client, "readCachedApiBibleChapter", "API.Bible offline chapter fallback");
-requireText(client, "downloadSelectedTranslation", "Full translation offline download manager");
-requireText(client, "hasFreshCachedChapter", "Resume by skipping chapters already saved");
-requireText(client, "4000", "Rate-limited sequential chapter downloads");
+requireText(client, "downloadSelectedTranslation", "Current-chapter offline save action");
+requireText(client, "Keep only the most recently viewed chapter per version", "Keep API.Bible cached Scripture below its consecutive-verse recommendation");
+requireText(client, "pruneCachedTranslationChapters", "Migrate legacy caches to the current publisher limit");
+requireText(client, 'record.key.startsWith("youversion|")', "Remove legacy YouVersion offline text");
+requireText(client, "last viewed chapter saved", "Clearly identify the current offline chapter");
+const offlineSaveBlock = client.match(/async function downloadSelectedTranslation\\(\\) \\{([\\s\\S]*?)\\n  \\}\\n\\n  function renderPassage/);
+assert.ok(offlineSaveBlock, "The current-chapter offline save action must be present.");
+assert.ok(offlineSaveBlock[1].includes("currentChapter.chapter"), "Offline save must target the currently open chapter.");
+assert.ok(!offlineSaveBlock[1].includes("bibleBooks.forEach"), "Offline save must not bulk-download the full Bible.");
 requireText(client, "downloadProgress", "Visible offline download progress");
 requireText(client, "Choose a translation saved on this device", "Offline selector for previously downloaded translations");
 requireText(client, 'objectStore("downloads").put', "Persistent offline translation manifest");
@@ -81,7 +87,6 @@ requireText(client, 'objectStore("downloads").getAll', "Discovery of saved offli
 requireText(client, 'offlineSelect.addEventListener("change"', "Selection of an offline translation without network access");
 requireText(client, "selectedVersionLabel", "Readable translation label restored from offline manifest");
 requireText(client, "Internet translation access is unavailable. Choose a translation already saved on this device", "Offline translation guidance when service is unreachable");
-requireText(client, "Paused:", "Pause and resume support");
 requireText(client, "saveCachedChapter(selectedProvider", "Selected provider cache write is guarded by publisher storage permission");
 requireText(client, '"api-bible"', "Provider-scoped offline cache");
 
