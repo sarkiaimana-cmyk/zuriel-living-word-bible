@@ -147,7 +147,7 @@ if (!home.includes("Glory Verse Affirmation")) failures.push("Open-book card mus
 if (!home.includes("His Word...")) failures.push("Open-book card must retain the approved top-line wording.");
 if (!home.includes("THE WORD • THE TRUTH • THE LIFE")) failures.push("Open-book card must retain the Zuriel footer tagline.");
 
-if (!content.includes('id="zurielOpenBookSavedCards"')) failures.push("Home must expose the My Saved Cards shortcut.");
+if (!home.includes('id="zurielOpenBookSavedCards"')) failures.push("Home must expose the My Saved Cards shortcut.");
 if (!library.includes('id="zgsSavedHeading"') || !library.includes('id="zgsSavedCards"')) failures.push("The Glory Verse Studio must render a visible saved-card destination.");
 if (!library.includes('localStorage.getItem(savedCardsKey)') || !library.includes('localStorage.setItem(savedCardsKey')) failures.push("Saved Glory Verse cards must persist in on-device storage.");
 if (!library.includes('openSavedGloryVerseCards: function') || !library.includes('openPage("affirmation")')) failures.push("My Saved Cards must return to the saved-card section of the Studio.");
