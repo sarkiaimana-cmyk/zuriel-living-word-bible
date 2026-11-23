@@ -142,7 +142,8 @@ const studyDatasetPaths = [
   "zuriel-chapter-introductions-ecclesiastes-01-12.json",
   "zuriel-chapter-introductions-song-of-solomon-01-08.json",
   "zuriel-chapter-introductions-isaiah-01-22.json",
-  "zuriel-chapter-introductions-luke-01-12.json"
+  "zuriel-chapter-introductions-luke-01-12.json",
+  "zuriel-chapter-introductions-luke-13-24.json"
 ];
 const [packagingScript, packagedLoader] = await Promise.all([
   readFile(new URL("../scripts/prepare-web.mjs", import.meta.url), "utf8"),
@@ -1110,4 +1111,20 @@ for (const guide of lukeChapterGuides.chapters) {
   for (const reference of guide.keyPassages) checkReference(reference,"Luke chapter "+guide.chapter);
 }
 
-console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges, 4 Ruth and 31 1 Samuel, 24 2 Samuel 22 1 Kings, 25 2 Kings 29 1 Chronicles and 36 2 Chronicles 10 Ezra and 13 Nehemiah and 10 Esther and 42 Job and 150 Psalms and 31 Proverbs, 66 Isaiah, 52 Jeremiah, 5 Lamentations and 48 Ezekiel, 12 Daniel, 14 Hosea and 3 Joel, 9 Amos and 1 Obadiah, 4 Jonah, 7 Micah, 3 Nahum, 3 Habakkuk, 3 Zephaniah, 2 Haggai, 14 Zechariah, 28 Matthew, 16 Mark, 4 Malachi and 12 Luke chapter introductions; 49 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
+const lukeChapterGuides2 = await json("data/zuriel-chapter-introductions-luke-13-24.json");
+assert.equal(lukeChapterGuides2.book,"Luke","Luke 13–24 batch must identify its book");
+assert.equal(lukeChapterGuides2.chapters.length,12,"Luke 13–24 batch must contain exactly twelve chapter guides");
+const lukeIds2 = new Set();
+for (const guide of lukeChapterGuides2.chapters) {
+  assert.equal(guide.book,"Luke","Luke guide must remain scoped to Luke");
+  assert.ok(Number.isInteger(guide.chapter)&&guide.chapter>=13&&guide.chapter<=24,"Luke chapter must be within 13–24");
+  assert.ok(guide.title.startsWith("Luke "+guide.chapter+" —"),"Luke title must identify its chapter");
+  assert.equal(guide.id,"luke"+guide.chapter,"Luke guide needs a stable chapter ID");
+  assert.ok(!lukeIds2.has(guide.id),"Luke guide IDs must be unique"); lukeIds2.add(guide.id);
+  for (const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field]==="string"&&guide[field].trim().length>=50,"Luke guide needs substantive "+field+": "+guide.chapter);
+  assert.ok(Array.isArray(guide.keyPassages)&&guide.keyPassages.length===2,"Luke guide needs two key passages");
+  assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length===3,"Luke guide needs three study questions");
+  for (const reference of guide.keyPassages) checkReference(reference,"Luke chapter "+guide.chapter);
+}
+
+console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges, 4 Ruth and 31 1 Samuel, 24 2 Samuel 22 1 Kings, 25 2 Kings 29 1 Chronicles and 36 2 Chronicles 10 Ezra and 13 Nehemiah and 10 Esther and 42 Job and 150 Psalms and 31 Proverbs, 66 Isaiah, 52 Jeremiah, 5 Lamentations and 48 Ezekiel, 12 Daniel, 14 Hosea and 3 Joel, 9 Amos and 1 Obadiah, 4 Jonah, 7 Micah, 3 Nahum, 3 Habakkuk, 3 Zephaniah, 2 Haggai, 14 Zechariah, 28 Matthew, 16 Mark, 4 Malachi and 24 Luke chapter introductions; 50 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
