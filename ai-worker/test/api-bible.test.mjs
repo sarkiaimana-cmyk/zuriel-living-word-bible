@@ -86,7 +86,7 @@ test("fetches a chapter with the API.Bible key kept server-side and publisher at
   assert.match(data.passage.content, /Now there was a man/);
   assert.equal(data.passage.copyright, "Publisher copyright notice");
   assert.equal(data.meta.fumsToken, "fums-test-token");
-  assert.match(data.notice, /not stored for offline use/);
+  assert.match(data.notice, /refreshed within 14 days/);
   assert.doesNotMatch(JSON.stringify(data), new RegExp(apiKey));
 });
 
