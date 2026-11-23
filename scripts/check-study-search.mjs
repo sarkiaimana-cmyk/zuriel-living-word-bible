@@ -5,6 +5,11 @@ import vm from "node:vm";
 
 const source = await readFile(new URL("../zuriel-study-library-data.js", import.meta.url), "utf8");
 const datasets = {
+  "zuriel-biblical-peoples-and-empires.json": { entries: [
+    {id:"people-egyptians",title:"Egyptians and Ancient Egypt",overview:"Egypt is a major setting in the ancestral stories of Joseph and the Exodus.",historicalSetting:"Ancient Egypt was a long-lived kingdom along the Nile.",references:["Genesis 41:37-57","Exodus 1:8-14"]},
+    {id:"empire-assyria",title:"Assyrian Empire",overview:"Assyria became a dominant Near Eastern imperial power and conquered the northern kingdom of Israel.",historicalSetting:"The Neo-Assyrian Empire reached its height in the first millennium BCE.",references:["2 Kings 17:1-23","Isaiah 10:5-19"]},
+    {id:"peoples-philistines",title:"Philistines",overview:"The Philistines are recurring neighbours and opponents of Israel in Judges and Samuel.",historicalSetting:"Philistine city-states were concentrated along the southern coastal plain.",references:["1 Samuel 17:1-11","2 Samuel 5:17-25"]}
+  ]},
   "zuriel-chapter-introductions-habakkuk-01-03.json": { chapters: [
  {id:"hab01",book:"Habakkuk",chapter:1,title:"Habakkuk 1 — Questions and God's answer",overview:"Habakkuk questions injustice and the delay of justice."},{id:"hab02",book:"Habakkuk",chapter:2,title:"Habakkuk 2 — Woe and faith",overview:"The vision calls for patience and the righteous living by faith."},{id:"hab03",book:"Habakkuk",chapter:3,title:"Habakkuk 3 — Prayer and rejoicing",overview:"Habakkuk prays and rejoices in God even amid loss."}] },
   "zuriel-chapter-introductions-zephaniah-01-03.json": { chapters: [
@@ -376,6 +381,13 @@ const sandbox = {
 vm.runInNewContext(source, sandbox, { timeout: 1000 });
 const library = sandbox.window.ZurielStudyLibrary;
 assert.ok(library && typeof library.search === "function", "Study library must expose search().");
+
+const peoples = await library.search("Assyrian Empire", { category: "Biblical Peoples, Kingdoms & Empires" });
+assert.equal(peoples.length,1,"Biblical peoples and empires must be searchable by exact title.");
+assert.equal(peoples[0].title,"Assyrian Empire");
+assert.equal(peoples[0].kind,"people-empire");
+assert.ok((await library.search("Philistines coastal plain", { category: "Biblical Peoples, Kingdoms & Empires" })).length === 1,
+  "Biblical peoples and empires must support multi-word contextual search.");
 
 const dictionary = await library.search("Agape", { category: "Bible Dictionary" });
 assert.equal(dictionary.length, 1, "Exact dictionary-title search should return one matching entry.");
