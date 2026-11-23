@@ -23,7 +23,7 @@ const datasets = {
  {id:"oba-ch01",book:"Obadiah",chapter:1,title:"Obadiah — Edom's pride and the day of the Lord",overview:"Obadiah condemns Edom's pride, violence, and betrayal of Judah during a crisis, and announces the day of the Lord and the restoration of God's people.",keyPassages:["Obadiah 1–9","Obadiah 10–21"]}
  ] },
   "zuriel-chapter-introductions-matthew-01-14.json": { chapters: [
-    {id:"mat01",book:"Matthew",chapter:1,title:"Matthew 1 — Jesus the Messiah: genealogy and birth",overview:"Matthew presents Jesus as Messiah and King, revealing the kingdom through teaching, compassion, and mighty works."},
+    {id:"mat01",book:"Matthew",chapter:1,title:"Matthew 1 — Jesus the Messiah: genealogy and birth",overview:"Jesus the Messiah is traced through David and Abraham; the birth narrative names him Immanuel and announces his saving mission."},
     {id:"mat02",book:"Matthew",chapter:2,title:"Matthew 2 — The Magi, the flight to Egypt, and the return",overview:"Matthew presents Jesus as Messiah and King, revealing the kingdom through teaching, compassion, and mighty works."},
     {id:"mat03",book:"Matthew",chapter:3,title:"Matthew 3 — John the Baptist prepares the way",overview:"Matthew presents Jesus as Messiah and King, revealing the kingdom through teaching, compassion, and mighty works."},
     {id:"mat04",book:"Matthew",chapter:4,title:"Matthew 4 — Jesus tested and the kingdom proclaimed",overview:"Matthew presents Jesus as Messiah and King, revealing the kingdom through teaching, compassion, and mighty works."},
