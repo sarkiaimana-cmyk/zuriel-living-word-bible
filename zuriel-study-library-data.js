@@ -120,7 +120,7 @@
     ["Songs, Hymns & Worship Studies", "./data/zuriel-worship-study-pathways.json", "pathways", "worship"]
   ];
 
-  const state = { items: [], ready: false, error: null, loading: null };
+  const state = { items: [], ready: false, error: null, loading: null, loaded: new Map(), failures: [] };
   const text = value => Array.isArray(value) ? value.map(text).filter(Boolean).join(" • ")
     : value && typeof value === "object" ? Object.values(value).map(text).filter(Boolean).join(" • ")
     : value === undefined || value === null ? "" : String(value);
@@ -185,16 +185,26 @@
       .map(result => result.item);
   }
 
+  function sourceKey(source) {
+    return [source[0], source[1], source[2], source[3]].join("\\u0000");
+  }
+
   async function loadAll() {
     if (state.loading) return state.loading;
-    state.loading = Promise.all(SOURCES.map(async source => {
+    const pending = SOURCES.filter(source => !state.loaded.has(sourceKey(source)));
+    if (!pending.length) {
+      state.ready = state.failures.length === 0;
+      return state.items;
+    }
+
+    state.loading = Promise.allSettled(pending.map(async source => {
       const response = await fetch(source[1]);
       if (!response.ok) throw new Error("Could not load " + source[1] + " (" + response.status + ").");
       const data = await response.json();
       if (!data || data.schemaVersion !== 1 || !Array.isArray(data[source[2]])) {
         throw new Error("Study resource format is invalid: " + source[1]);
       }
-      return data[source[2]].map(item => {
+      const items = data[source[2]].map(item => {
         const title = titleFor(item, source[3]);
         const summary = summaryFor(item);
         const references = refsFor(item);
@@ -206,13 +216,30 @@
           summary, references, source: item, searchText
         };
       });
-    })).then(groups => {
-      state.items = groups.flat();
-      state.ready = true;
+      return { source, items };
+    })).then(results => {
+      const failures = [];
+      results.forEach((result, index) => {
+        const source = pending[index];
+        if (result.status === "fulfilled") {
+          state.loaded.set(sourceKey(source), result.value.items);
+        } else {
+          failures.push({
+            source,
+            message: result.reason && result.reason.message
+              ? result.reason.message : "This study resource could not be loaded."
+          });
+        }
+      });
+      state.failures = failures;
+      state.items = SOURCES.flatMap(source => state.loaded.get(sourceKey(source)) || []);
+      state.ready = failures.length === 0;
+      state.error = failures.length
+        ? new Error(failures.length + " study resource dataset(s) could not be loaded.")
+        : null;
       return state.items;
-    }).catch(error => {
-      state.error = error;
-      throw error;
+    }).finally(() => {
+      state.loading = null;
     });
     return state.loading;
   }
@@ -340,6 +367,7 @@
       #zurielExpandedStudyLibrary .zsl-detail-section p{margin:0;line-height:1.6;font-size:13px;white-space:pre-wrap}
       #zurielExpandedStudyLibrary .zsl-position{padding:8px 0;border-top:1px solid #eee7d9}\n      #zurielExpandedStudyLibrary .zsl-reference{display:inline-block;margin:6px 6px 0 0;padding:8px 10px;min-height:38px;border:1px solid #b9c8d0;border-radius:8px;background:#f4f7f8;color:#183653;font-weight:700}
       #zurielExpandedStudyLibrary .zsl-status{min-height:22px;margin:8px 0;color:#42634f;font-size:12px}
+      #zurielExpandedStudyLibrary .zsl-retry{display:none;min-height:42px;padding:9px 13px;border:1px solid #9b8750;border-radius:9px;background:#f4efdf;color:#28445a;font-weight:700}
       @media(min-width:620px){#zurielExpandedStudyLibrary .zsl-controls{grid-template-columns:1fr 220px}}
     `;
     document.head.appendChild(style);
@@ -373,7 +401,27 @@
     const results=make("div","zsl-results");
     const detail=make("article","zsl-detail");
     const status=make("p","zsl-status","Loading offline study resources…");
-    root.append(results,detail,status);
+    const retry = make("button", "zsl-retry", "Retry unavailable resources");
+    retry.type = "button";
+    retry.addEventListener("click", async () => {
+      if (retry.disabled) return;
+      retry.disabled = true;
+      retry.textContent = "Retrying…";
+      try {
+        await loadAll();
+        showResults();
+        status.textContent = state.failures.length
+          ? state.items.length + " study resources available; " + state.failures.length + " dataset(s) still unavailable. You can retry again."
+          : state.items.length + " study resources loaded successfully. All available study datasets are ready.";
+        retry.style.display = state.failures.length ? "inline-block" : "none";
+      } catch (error) {
+        status.textContent = "Study resources could not be refreshed. Your Bible and saved records are unchanged.";
+      } finally {
+        retry.disabled = false;
+        retry.textContent = "Retry unavailable resources";
+      }
+    });
+    root.append(results,detail,status,retry);
     content.appendChild(root);
 
     function showResults() {
@@ -389,7 +437,7 @@
         action.addEventListener("click",()=>renderDetail(item,detail,status));
         results.appendChild(action);
       });
-      status.textContent=filtered.length+" matching study resources"+(filtered.length>30?"; showing the first 30. Refine your search to see more.":".");
+      status.textContent=filtered.length+" matching study resources"+(filtered.length>30?"; showing the first 30. Refine your search to see more.":".")+(state.failures.length?" "+state.failures.length+" dataset(s) unavailable; retry when ready.":"");
       if(!filtered.length) results.appendChild(make("p","","No matching entry. Try another word or category."));
     }
     search.addEventListener("input",showResults);
@@ -397,9 +445,13 @@
     loadAll().then(()=>{
       showResults();
       if(state.items.length) renderDetail(state.items[0],detail,status);
-      status.textContent=state.items.length+" study resources loaded. Search or choose a category to explore.";
+      status.textContent=state.failures.length
+        ? state.items.length+" study resources loaded; "+state.failures.length+" dataset(s) are temporarily unavailable. The available resources remain searchable."
+        : state.items.length+" study resources loaded. Search or choose a category to explore.";
+      retry.style.display=state.failures.length?"inline-block":"none";
     }).catch(error=>{
-      status.textContent="Some study resources could not load. Connect once to refresh this section; your Bible and saved records are unchanged.";
+      status.textContent="The study library could not start. Your Bible and saved records are unchanged. Please retry.";
+      retry.style.display="inline-block";
       console.error("Zuriel study library:",error);
     });
   }
@@ -414,6 +466,9 @@
 
   window.ZurielStudyLibrary = {
     load: loadAll,
+    getStatus: function() {
+      return { ready: state.ready, loadedDatasets: state.loaded.size, failedDatasets: state.failures.map(entry => ({ category: entry.source[0], path: entry.source[1], message: entry.message })), itemCount: state.items.length };
+    },
     search: function(query, options) {
       const settings = options && typeof options === "object" ? options : {};
       const category = typeof settings.category === "string" ? settings.category : "all";
