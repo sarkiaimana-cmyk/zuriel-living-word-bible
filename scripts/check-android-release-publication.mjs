@@ -12,8 +12,10 @@ const releaseEnd = android.indexOf("- name: Upload Zuriel debug APK", releaseSta
 assert.ok(releaseStart >= 0 && releaseEnd > releaseStart, "Android release publication step must exist.");
 const releaseStep = android.slice(releaseStart, releaseEnd);
 
-assert.match(releaseStep, /if: github\.event_name == 'push' && github\.ref == 'refs\/heads\/main'/,
-  "Pull-request and manual builds must never publish or replace public Android releases.");
+assert.match(releaseStep, /if: github\.event_name == 'workflow_dispatch' && github\.ref == 'refs\/heads\/main' && inputs\.confirm_release == true/,
+  "Public Android releases must require a manually dispatched main-branch build and explicit confirmation.");
+assert.match(android, /confirm_release:[\s\S]*?required: true[\s\S]*?type: boolean[\s\S]*?default: false/,
+  "The manual release confirmation must default to false.");
 assert.match(releaseStep, /git fetch --force origin "refs\/tags\/v\$VERSION:refs\/tags\/v\$VERSION"/,
   "Existing release tags must be fetched before an APK is uploaded.");
 assert.match(releaseStep, /TAG_COMMIT="\$\(git rev-list -n 1 "v\$VERSION"\)"/,
