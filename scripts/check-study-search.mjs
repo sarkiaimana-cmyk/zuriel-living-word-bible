@@ -4,6 +4,14 @@ import vm from "node:vm";
 
 const source = await readFile(new URL("../zuriel-study-library-data.js", import.meta.url), "utf8");
 const datasets = {
+  "zuriel-chapter-introductions-amos-01-09.json": { chapters: [
+ {id:"amo-ch01",book:"Amos",chapter:1,title:"Amos 1 — Judgement on Damascus and neighbouring nations",overview:"The oracle condemns violence and cruelty against peoples surrounding Israel, beginning a series of accountability speeches.",keyPassages:["Amos 1:3–5"]},
+ {id:"amo-ch05",book:"Amos",chapter:5,title:"Amos 5 — Seek the Lord and live; justice like a river",overview:"Amos contrasts empty worship with justice, calling Israel to seek the Lord and live.",keyPassages:["Amos 5:4–15"]},
+ {id:"amo-ch09",book:"Amos",chapter:9,title:"Amos 9 — Judgement, humility, and restoration",overview:"Amos closes with judgement imagery and a promise of restoration, rebuilding, and renewed abundance.",keyPassages:["Amos 9:11–15"]}
+ ] },
+ "zuriel-chapter-introductions-obadiah-01.json": { chapters: [
+ {id:"oba-ch01",book:"Obadiah",chapter:1,title:"Obadiah — Edom's pride and the day of the Lord",overview:"Obadiah condemns Edom's pride, violence, and betrayal of Judah during a crisis, and announces the day of the Lord and the restoration of God's people.",keyPassages:["Obadiah 1–9","Obadiah 10–21"]}
+ ] },
   "zuriel-theological-comparisons.json": { entries: [] },
   "zuriel-passage-commentary-expansion.json": {
     entries: [{
@@ -464,6 +472,15 @@ const joelTwo = await library.search("return heart fasting outpouring Spirit son
 assert.equal(joelTwo.length,1,"Joel chapter 2 guide should be searchable"); assert.equal(joelTwo[0].source.chapter,2);
 const joelThree = await library.search("nations judged valley Jehoshaphat Lord dwelling", { category: "Chapter Introductions" });
 assert.equal(joelThree.length,1,"Joel chapter 3 guide should be searchable"); assert.equal(joelThree[0].source.chapter,3);
+
+const amosOne = await library.search("Damascus neighbouring nations violence", { category: "Chapter Introductions" });
+assert.equal(amosOne.length,1,"Amos chapter 1 guide should be searchable"); assert.equal(amosOne[0].source.chapter,1);
+const amosFive = await library.search("seek Lord live empty worship justice", { category: "Chapter Introductions" });
+assert.equal(amosFive.length,1,"Amos chapter 5 guide should be searchable"); assert.equal(amosFive[0].source.chapter,5);
+const amosNine = await library.search("restoration rebuilding abundance", { category: "Chapter Introductions" });
+assert.equal(amosNine.length,1,"Amos chapter 9 guide should be searchable"); assert.equal(amosNine[0].source.chapter,9);
+const obadiahOne = await library.search("Edom pride violence betrayal Judah", { category: "Chapter Introductions" });
+assert.equal(obadiahOne.length,1,"Obadiah guide should be searchable"); assert.equal(obadiahOne[0].source.chapter,1);
 
 const greek = await library.search("ἀγάπη", { category: "Hebrew & Greek Word Studies" });
 assert.equal(greek.length, 1, "Unicode Greek search should find the original-language entry.");
