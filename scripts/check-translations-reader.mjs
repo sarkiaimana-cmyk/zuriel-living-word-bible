@@ -34,6 +34,7 @@ requireText(client, '"/api/youversion/bibles"', "Licensed English version list r
 requireText(client, '"/api/api-bible/bibles"', "API.Bible English version list request");
 requireText(client, '["api-bible", "API.Bible"]', "API.Bible provider selection option");
 requireText(client, "next_page_token", "YouVersion catalogue pagination");
+requireText(workerCore, 'searchParams.set("page_token", token)', "Forward YouVersion continuation tokens using the documented page_token parameter");
 requireText(client, "encodeURIComponent(nextPageToken)", "Safe pagination token encoding");
 requireText(client, "pageCount < 10", "Bounded catalogue pagination");
 requireText(workerCore, 'searchParams.set("page_size", "99")', "Respect YouVersion's documented 99-item catalogue page limit");
