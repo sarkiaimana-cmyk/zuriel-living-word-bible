@@ -43,5 +43,7 @@ assert.match(updates, /function saveLastSuccessfulCheck\(\)/,
   "Successful checks must record their timestamp without blocking update detection.");
 assert.match(updates, /zuriel_update_last_successful_check_v1/,
   "Successful update checks must be throttled to avoid repeated network use.");
+assert.ok(updates.indexOf("saveLastSuccessfulCheck();", updates.indexOf("const newer =")) > updates.indexOf("if (!isNativeApp()"),
+  "A check must be recorded only after the native release or web service-worker check succeeds.");
 
 console.log("Android release publication checks passed: PR isolation, exact-commit tag provenance, guarded asset replacement, version-triggered builds and in-app version alignment.");
