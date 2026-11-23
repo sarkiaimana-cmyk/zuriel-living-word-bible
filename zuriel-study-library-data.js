@@ -97,6 +97,7 @@
     ["Chapter Introductions", "./data/zuriel-chapter-introductions-ephesians-01-06.json", "chapters", "chapter-introduction"],
     ["Chapter Introductions", "./data/zuriel-chapter-introductions-philippians-01-04.json", "chapters", "chapter-introduction"],
     ["Chapter Introductions", "./data/zuriel-chapter-introductions-colossians-01-04.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-1-thessalonians-01-05.json", "chapters", "chapter-introduction"],
 
     ["Deep Study Guides", "./data/zuriel-deep-study-guides.json", "guides", "guide"],
     ["Bible Geography", "./data/zuriel-bible-geography-atlas.json", "places", "place"],
