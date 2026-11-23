@@ -96,6 +96,8 @@ const [
   json("data/zuriel-chapter-introductions-matthew-15-28.json")
 ]);
 
+const firstCorinthiansChapterGuides = await json("data/zuriel-chapter-introductions-1-corinthians-01-16.json");
+
 const studyDatasetPaths = [
   "zuriel-passage-commentary-expansion.json", "zuriel-topical-bible-study-library-batch-2.json",
   "zuriel-topical-bible-study-library-batch-3.json",
@@ -1262,6 +1264,22 @@ for (const guide of corinthiansChapterGuides.chapters) {
   assert.ok(!corinthiansIds.has(guide.id),"1 Corinthians guide IDs must be unique"); corinthiansIds.add(guide.id);
   for (const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field]==="string"&&guide[field].trim().length>=50,"1 Corinthians guide needs substantive "+field+": "+guide.chapter);
   assert.ok(Array.isArray(guide.keyPassages)&&guide.keyPassages.length===2,"1 Corinthians guide needs two key passages");
+  assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length===3,"1 Corinthians guide needs three study questions");
+  for (const reference of guide.keyPassages) checkReference(reference,"1 Corinthians chapter "+guide.chapter);
+}
+
+
+assert.equal(firstCorinthiansChapterGuides.book,"1 Corinthians","1 Corinthians guide must identify its book");
+assert.equal(firstCorinthiansChapterGuides.chapters.length,16,"1 Corinthians guide must contain exactly sixteen chapters");
+const firstCorinthiansIds = new Set();
+for (const guide of firstCorinthiansChapterGuides.chapters) {
+  assert.equal(guide.book,"1 Corinthians","1 Corinthians guide must remain scoped to its book");
+  assert.ok(Number.isInteger(guide.chapter)&&guide.chapter>=1&&guide.chapter<=16,"1 Corinthians chapter must be within 1–16");
+  assert.ok(guide.title.startsWith("1 Corinthians "+guide.chapter+" —"),"1 Corinthians title must identify its chapter");
+  assert.equal(guide.id,"1cor"+guide.chapter,"1 Corinthians guide needs a stable chapter ID");
+  assert.ok(!firstCorinthiansIds.has(guide.id),"1 Corinthians guide IDs must be unique"); firstCorinthiansIds.add(guide.id);
+  for (const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field]==="string"&&guide[field].trim().length>=50,"1 Corinthians guide needs substantive "+field+": "+guide.chapter);
+  assert.ok(Array.isArray(guide.keyPassages)&&guide.keyPassages.length>=2,"1 Corinthians guide needs at least two key passages");
   assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length===3,"1 Corinthians guide needs three study questions");
   for (const reference of guide.keyPassages) checkReference(reference,"1 Corinthians chapter "+guide.chapter);
 }
