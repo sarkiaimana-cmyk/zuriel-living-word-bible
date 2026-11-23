@@ -27,6 +27,7 @@ assert.match(workflow, /\/api\/api-bible\/bibles/, "deployment smoke-tests API.B
 assert.ok(workflow.includes(String.raw`/^[a-f0-9]{16}-\d{2}$/i.test(id)`), "API.Bible live smoke test must recognise the documented 16-hex-digit Bible ID format");
 assert.match(workflow, /\/chapters\/JHN\.3/, "deployment retrieves a real API.Bible chapter");
 assert.match(workflow, /j\.passage\.copyright/, "deployment requires API.Bible publisher attribution");
+assert.match(workflow, /j\.meta\?\.fumsToken/, "deployment requires API.Bible FUMS v3 reporting token");
 assert.match(workflow, /catalogue worked, but live John/, "deployment distinguishes catalogue success from chapter retrieval failure");
 assert.match(workflow, /access-control-allow-origin: https:\/\/sarkiaimana-cmyk\.github\.io/i, "deployment checks GitHub Pages CORS");
 assert.match(workflow, /Worker URL: \$WORKER_URL/, "deployment reports the exact URL to configure in the app");
