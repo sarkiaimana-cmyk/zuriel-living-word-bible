@@ -35,8 +35,9 @@ assert.ok(home.includes('window.ZurielTranslations.selectVersion(version)'), "no
 assert.ok(home.includes('if (version === "KJV")'), "KJV shortcut must open the bundled offline Bible reader");
 
 assert.ok(translations.includes('panel.id = "zurielTranslationCompare"'), "translation comparison and download panel must exist");
-assert.ok(translations.includes('homeTranslationSlot.appendChild(panel)'), "translation controls must mount inside the top home section");
-assert.ok(translations.includes('document.addEventListener("DOMContentLoaded"'), "translation controls must mount after the home dashboard is created");
+assert.ok(!dashboard.includes('id="zurielHomeTranslations"'), "expanded translation management must not clutter the home shortcuts");
+assert.ok(translations.includes('reader.appendChild(panel)'), "translation management panel must mount in the reader");
+assert.ok(!home.includes('translation-access-note'), "home must not display provider explanation text");
 assert.ok(translations.includes('selectVersion: async function (abbreviation)'), "translation shortcuts must resolve against the authorised live catalogue");
 
 const homeScript = index.indexOf('src="zuriel-home.js"');
