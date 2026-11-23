@@ -136,51 +136,29 @@
     },
     {
       "chapter": 7,
-      "title": "1 Corinthians 7 — Marriage, singleness, and faithful devotion",
-      "historicalContext": "The Corinthian church had written to Paul with questions about marriage and sexual relationships. Paul responds to different circumstances, acknowledging his own situation while giving pastoral guidance rather than a single life pattern for everyone.",
-      "overview": "Paul discusses mutual responsibilities in marriage, separation, singleness, and the pressures of the present time. He emphasises faithfulness and recognises that believers have different gifts and circumstances.",
-      "studyObservation": "The chapter repeatedly distinguishes Paul's advice from a direct command of the Lord, showing careful pastoral reasoning. Marriage and singleness are both treated as contexts for faithful devotion.",
-      "connectionNotes": "The chapter answers questions raised by chapters 5–6 and prepares for later discussions about food offered to idols and freedom exercised for others.",
-      "lifeApplication": "Honour mutual care in marriage and respect the dignity of single people. Make decisions prayerfully and responsibly, without treating one life situation as spiritually superior.",
-      "interpretiveCaution": "Paul's counsel reflects particular circumstances and should not be used to compel someone to remain in an unsafe or abusive marriage. Mutual consent, safety, and pastoral care matter.",
-      "readingNote": "Notice where Paul identifies a command and where he offers counsel; attend to the repeated concern for faithfulness in varied circumstances.",
-      "keyPassages": [
-        "1 Corinthians 7:1–16",
-        "1 Corinthians 7:25–35"
-      ],
+      "title": "1 Corinthians 7 — Marriage, singleness, calling, and faithful devotion",
       "id": "1cor7",
       "book": "1 Corinthians",
+      "historicalContext": "The Corinthian church had written to Paul with questions about marriage and sexual relationships. Paul responds to different circumstances, acknowledging his own situation while giving pastoral guidance rather than a single life pattern for everyone. Paul continues answering questions about marriage and vocation, addressing circumcision, social status, and the call each person has received. The early Christian community included people from varied social and cultural backgrounds.",
+      "overview": "Paul discusses mutual responsibilities in marriage, separation, singleness, and the pressures of the present time. He emphasises faithfulness and recognises that believers have different gifts and circumstances. Paul urges believers not to assume that outward status must change before they can serve God. He encourages faithfulness in one's calling while recognising that circumstances such as slavery require careful reading within the ancient setting.",
+      "studyObservation": "The chapter repeatedly distinguishes Paul's advice from a direct command of the Lord, showing careful pastoral reasoning. Marriage and singleness are both treated as contexts for faithful devotion. The repeated phrase about remaining as called is not a command to accept injustice forever. Paul elsewhere recognises freedom and the dignity of all in Christ.",
+      "connectionNotes": "The chapter answers questions raised by chapters 5–6 and prepares for later discussions about food offered to idols and freedom exercised for others. This chapter develops the pastoral guidance of chapter 7 and leads toward Paul's discussion of Christian liberty in chapters 8–10.",
+      "lifeApplication": "Honour mutual care in marriage and respect the dignity of single people. Make decisions prayerfully and responsibly, without treating one life situation as spiritually superior. Serve God faithfully in your present circumstances while seeking just and life-giving change where possible. Do not measure spiritual worth by social position or outward markers.",
+      "interpretiveCaution": "Paul's counsel reflects particular circumstances and should not be used to compel someone to remain in an unsafe or abusive marriage. Mutual consent, safety, and pastoral care matter. The text must not be used to defend slavery or prevent people from pursuing freedom. Paul's comments address a specific first-century situation and must be read with the letter's insistence on belonging to Christ.",
+      "readingNote": "Notice where Paul identifies a command and where he offers counsel; attend to the repeated concern for faithfulness in varied circumstances. Compare Paul's advice about status with his recognition of freedom; then notice how the next section treats knowledge, conscience, and love.",
+      "keyPassages": [
+        "1 Corinthians 7:1–16",
+        "1 Corinthians 7:17–40"
+      ],
       "studyQuestions": [
-        "How does Paul describe mutual responsibility in marriage?",
-        "What does the chapter affirm about singleness?",
-        "Why is it important to distinguish pastoral counsel from a universal command?"
+        "How does Paul describe mutual responsibility in marriage and affirm singleness?",
+        "What does Paul mean by faithfulness in one's calling?",
+        "Why must Paul's counsel about social status never be used to defend oppression?"
       ]
     },
     {
       "chapter": 8,
-      "title": "1 Corinthians 8 — Calling, circumcision, and the present circumstances",
-      "historicalContext": "Paul continues answering questions about marriage and vocation, addressing circumcision, social status, and the call each person has received. The early Christian community included people from varied social and cultural backgrounds.",
-      "overview": "Paul urges believers not to assume that outward status must change before they can serve God. He encourages faithfulness in one's calling while recognising that circumstances such as slavery require careful reading within the ancient setting.",
-      "studyObservation": "The repeated phrase about remaining as called is not a command to accept injustice forever. Paul elsewhere recognises freedom and the dignity of all in Christ.",
-      "connectionNotes": "This chapter develops the pastoral guidance of chapter 7 and leads toward Paul's discussion of Christian liberty in chapters 8–10.",
-      "lifeApplication": "Serve God faithfully in your present circumstances while seeking just and life-giving change where possible. Do not measure spiritual worth by social position or outward markers.",
-      "interpretiveCaution": "The text must not be used to defend slavery or prevent people from pursuing freedom. Paul's comments address a specific first-century situation and must be read with the letter's insistence on belonging to Christ.",
-      "readingNote": "Compare Paul's advice about status with his recognition of freedom; then notice how the next section treats knowledge, conscience, and love.",
-      "keyPassages": [
-        "1 Corinthians 7:17–24",
-        "1 Corinthians 7:32–40"
-      ],
-      "id": "1cor8",
-      "book": "1 Corinthians",
-      "studyQuestions": [
-        "What does Paul mean by faithfulness in one's calling?",
-        "How does the gospel challenge status-based measures of worth?",
-        "Why should this chapter not be used to defend permanent oppression?"
-      ]
-    },
-    {
-      "chapter": 9,
-      "title": "1 Corinthians 9 — Knowledge, love, and food offered to idols",
+      "title": "1 Corinthians 8 — Knowledge, love, and food offered to idols",
       "historicalContext": "In Corinth, meat could be associated with temple meals and civic or social events. Some believers understood that idols are nothing, while others had tender consciences shaped by their former worship practices.",
       "overview": "Paul agrees that knowledge alone can produce pride, while love builds up. He urges believers with greater freedom to consider how their actions affect others and not to become a stumbling block.",
       "studyObservation": "The central contrast is between knowledge that puffs up and love that builds up. Christian freedom is real but is governed by concern for another person's conscience.",
@@ -192,7 +170,7 @@
         "1 Corinthians 8:1–6",
         "1 Corinthians 8:9–13"
       ],
-      "id": "1cor9",
+      "id": "1cor8",
       "book": "1 Corinthians",
       "studyQuestions": [
         "How can knowledge become a source of pride?",
@@ -201,8 +179,8 @@
       ]
     },
     {
-      "chapter": 10,
-      "title": "1 Corinthians 10 — Paul's rights and the priority of the gospel",
+      "chapter": 9,
+      "title": "1 Corinthians 9 — Paul's rights and the priority of the gospel",
       "historicalContext": "Paul defends the legitimacy of receiving material support for ministry but explains that he has sometimes declined this right. He uses the image of an athlete and speaks of adapting his approach to reach different people.",
       "overview": "The chapter shows that legitimate rights can be voluntarily limited for the sake of others and the gospel. Paul's discipline is purposeful, not an attempt to earn salvation or to control other people.",
       "studyObservation": "Paul's example connects freedom with responsibility and mission. The athletic image emphasises perseverance and self-discipline in service.",
@@ -214,7 +192,7 @@
         "1 Corinthians 9:1–18",
         "1 Corinthians 9:19–27"
       ],
-      "id": "1cor10",
+      "id": "1cor9",
       "book": "1 Corinthians",
       "studyQuestions": [
         "What right does Paul defend, and why does he sometimes set it aside?",
@@ -223,8 +201,8 @@
       ]
     },
     {
-      "chapter": 11,
-      "title": "1 Corinthians 11 — Warnings from Israel's history and the Lord's table",
+      "chapter": 10,
+      "title": "1 Corinthians 10 — Warnings from Israel's history and the Lord's table",
       "historicalContext": "Paul recalls Israel's wilderness experiences as warnings against idolatry and presumption. He then returns to food associated with idols and contrasts participation in pagan worship with sharing in the Lord's table.",
       "overview": "The chapter teaches that spiritual privilege does not remove the need for faithfulness. Paul calls believers to flee idolatry, recognise the meaning of the Lord's table, and seek God's glory in ordinary decisions.",
       "studyObservation": "The wilderness examples are written for instruction, not contempt toward Israel. The table imagery presents participation as a meaningful act of allegiance and fellowship.",
@@ -236,7 +214,7 @@
         "1 Corinthians 10:1–13",
         "1 Corinthians 10:14–22"
       ],
-      "id": "1cor11",
+      "id": "1cor10",
       "book": "1 Corinthians",
       "studyQuestions": [
         "Why does Paul use Israel's wilderness history as a warning?",
@@ -245,52 +223,30 @@
       ]
     },
     {
-      "chapter": 12,
-      "title": "1 Corinthians 12 — Worship gatherings, head coverings, and honour",
-      "historicalContext": "Paul addresses practices in gathered worship involving head coverings and honour. These customs carried social meaning in the ancient Mediterranean world, and interpreters continue to discuss the precise cultural signals involved.",
-      "overview": "Paul seeks order and mutual honour in worship while grounding his reasoning in creation, relationships, and the gathered community. The chapter should be read as pastoral instruction in its historical setting.",
-      "studyObservation": "The passage reflects ancient assumptions about gender, honour, and public appearance. Its enduring concern for reverence and mutual regard must be considered carefully alongside the equality and mutual dependence stated near the end.",
-      "connectionNotes": "The chapter leads into Paul's correction of disorder at the Lord's Supper in chapter 11 and the gifts discussion in chapters 12–14.",
-      "lifeApplication": "Approach worship with reverence and consider how personal presentation affects the community. Practise mutual honour rather than using outward customs to shame or exclude others.",
-      "interpretiveCaution": "Do not use this difficult passage to justify domination, humiliation, or claims that women are spiritually inferior. The cultural setting and Paul's statement about mutual dependence in the Lord must both be considered.",
-      "readingNote": "Identify the social customs Paul addresses, then give special attention to his balancing statement that neither woman nor man is independent in the Lord.",
+      "chapter": 11,
+      "title": "1 Corinthians 11 — Honour in worship and the Lord's Supper",
+      "id": "1cor11",
+      "book": "1 Corinthians",
+      "historicalContext": "Paul addresses practices in gathered worship involving head coverings and honour. These customs carried social meaning in the ancient Mediterranean world, and interpreters continue to discuss the precise cultural signals involved. The Lord's Supper in Corinth had become a setting where divisions and social inequality were visible. Some ate and drank while others went without, contradicting the meaning of the shared meal.",
+      "overview": "Paul seeks order and mutual honour in worship while grounding his reasoning in creation, relationships, and the gathered community. The chapter should be read as pastoral instruction in its historical setting. Paul reminds the church of the tradition concerning Jesus' last meal and calls the community to self-examination and mutual care. Their gathering has been harmed because some members humiliate others through selfish conduct.",
+      "studyObservation": "The passage reflects ancient assumptions about gender, honour, and public appearance. Its enduring concern for reverence and mutual regard must be considered carefully alongside the equality and mutual dependence stated near the end. The meal proclaims the Lord's death and should embody remembrance, unity, and concern. Self-examination includes recognising the needs and dignity of fellow believers.",
+      "connectionNotes": "The chapter leads into Paul's correction of disorder at the Lord's Supper in chapter 11 and the gifts discussion in chapters 12–14. This chapter moves from worship practices to the gifts and unity of the body in chapter 12; both sections challenge status and division.",
+      "lifeApplication": "Approach worship with reverence and consider how personal presentation affects the community. Practise mutual honour rather than using outward customs to shame or exclude others. Make shared worship reflect practical care. Ensure that no one is humiliated or excluded, and let remembrance of Christ shape generosity and fellowship.",
+      "interpretiveCaution": "Do not use this difficult passage to justify domination, humiliation, or claims that women are spiritually inferior. The cultural setting and Paul's statement about mutual dependence in the Lord must both be considered. Warnings about judgement must not be used to frighten people away from communion or to blame illness and hardship on individual sin. Paul's immediate concern includes the community's failure to discern and care for one another.",
+      "readingNote": "Identify the social customs Paul addresses, then give special attention to his balancing statement that neither woman nor man is independent in the Lord. Read the description of the divided meal before the tradition about Jesus, and notice how remembrance of Christ exposes selfishness at the table.",
       "keyPassages": [
         "1 Corinthians 11:2–16",
-        "1 Corinthians 11:11–12"
+        "1 Corinthians 11:17–34"
       ],
-      "id": "1cor12",
-      "book": "1 Corinthians",
       "studyQuestions": [
-        "What social meanings may have been attached to head coverings in Corinth?",
-        "How does Paul's statement about mutual dependence shape interpretation?",
-        "How can churches pursue reverence without shaming or excluding people?"
+        "What cultural questions shape Paul's teaching about honour in worship?",
+        "How does mutual dependence in the Lord shape interpretation of this chapter?",
+        "How did social inequality distort the Lord's Supper, and how can a church practise mutual care?"
       ]
     },
     {
-      "chapter": 13,
-      "title": "1 Corinthians 13 — The Lord's Supper and care for one another",
-      "historicalContext": "The Lord's Supper in Corinth had become a setting where divisions and social inequality were visible. Some ate and drank while others went without, contradicting the meaning of the shared meal.",
-      "overview": "Paul reminds the church of the tradition concerning Jesus' last meal and calls the community to self-examination and mutual care. Their gathering has been harmed because some members humiliate others through selfish conduct.",
-      "studyObservation": "The meal proclaims the Lord's death and should embody remembrance, unity, and concern. Self-examination includes recognising the needs and dignity of fellow believers.",
-      "connectionNotes": "This chapter moves from worship practices to the gifts and unity of the body in chapter 12; both sections challenge status and division.",
-      "lifeApplication": "Make shared worship reflect practical care. Ensure that no one is humiliated or excluded, and let remembrance of Christ shape generosity and fellowship.",
-      "interpretiveCaution": "Warnings about judgement must not be used to frighten people away from communion or to blame illness and hardship on individual sin. Paul's immediate concern includes the community's failure to discern and care for one another.",
-      "readingNote": "Read the description of the divided meal before the tradition about Jesus, and notice how remembrance of Christ exposes selfishness at the table.",
-      "keyPassages": [
-        "1 Corinthians 11:17–26",
-        "1 Corinthians 11:27–34"
-      ],
-      "id": "1cor13",
-      "book": "1 Corinthians",
-      "studyQuestions": [
-        "How did social inequality distort the Corinthian meal?",
-        "What does the Lord's Supper proclaim and remember?",
-        "What practical changes help a church make communion a sign of mutual care?"
-      ]
-    },
-    {
-      "chapter": 14,
-      "title": "1 Corinthians 14 — One Spirit, many gifts, one body",
+      "chapter": 12,
+      "title": "1 Corinthians 12 — One Spirit, many gifts, one body",
       "historicalContext": "The Corinthian believers appear to have compared spiritual gifts and status. Paul responds by teaching that gifts come from the same Spirit and are given for the common good of the body.",
       "overview": "The chapter describes diverse gifts, ministries, and activities unified by the same God. Paul uses the body metaphor to show that every member matters and that apparent weaker parts deserve special honour.",
       "studyObservation": "The list of gifts is not necessarily exhaustive. The body image rejects both self-sufficiency and the devaluing of members whose contributions are less visible.",
@@ -302,7 +258,7 @@
         "1 Corinthians 12:4–11",
         "1 Corinthians 12:12–27"
       ],
-      "id": "1cor14",
+      "id": "1cor12",
       "book": "1 Corinthians",
       "studyQuestions": [
         "Why are spiritual gifts given?",
@@ -311,8 +267,8 @@
       ]
     },
     {
-      "chapter": 15,
-      "title": "1 Corinthians 15 — Love as the indispensable way",
+      "chapter": 13,
+      "title": "1 Corinthians 13 — Love as the indispensable way",
       "historicalContext": "Paul places the gifts discussion within a larger teaching about love. The Corinthians prized public and impressive expressions, but Paul insists that gifts without love are empty and temporary.",
       "overview": "The chapter describes love through patient and self-giving actions, contrasts present partial knowledge with future fullness, and identifies faith, hope, and love as abiding realities.",
       "studyObservation": "The passage is not a sentimental definition detached from the community's problems. Its descriptions of love directly challenge envy, boasting, arrogance, and self-seeking.",
@@ -324,7 +280,7 @@
         "1 Corinthians 13:1–7",
         "1 Corinthians 13:8–13"
       ],
-      "id": "1cor15",
+      "id": "1cor13",
       "book": "1 Corinthians",
       "studyQuestions": [
         "Why are gifts without love described as empty?",
@@ -333,8 +289,8 @@
       ]
     },
     {
-      "chapter": 16,
-      "title": "1 Corinthians 16 — Orderly worship, prophecy, and intelligibility",
+      "chapter": 14,
+      "title": "1 Corinthians 14 — Orderly worship, prophecy, and intelligibility",
       "historicalContext": "Paul continues to address spiritual gifts in gathered worship, especially tongues and prophecy. His concern is that worship should build up the whole congregation rather than become a display understood by only a few.",
       "overview": "Paul values spiritual expression but prioritises intelligibility, encouragement, and order. He gives practical guidance for contributions in worship and insists that God is not the author of confusion.",
       "studyObservation": "The chapter's instructions belong to a specific gathered-worship context and should be read with chapter 11's setting and chapter 12's diversity of gifts. The aim is edification, not suppression of the Spirit.",
@@ -346,7 +302,7 @@
         "1 Corinthians 14:1–19",
         "1 Corinthians 14:26–40"
       ],
-      "id": "1cor16",
+      "id": "1cor14",
       "book": "1 Corinthians",
       "studyQuestions": [
         "Why does Paul prioritise intelligibility in gathered worship?",
@@ -355,8 +311,8 @@
       ]
     },
     {
-      "chapter": 17,
-      "title": "1 Corinthians 17 — The resurrection of Christ and the hope of believers",
+      "chapter": 15,
+      "title": "1 Corinthians 15 — The resurrection of Christ and the hope of believers",
       "historicalContext": "Some in Corinth questioned or denied the resurrection of the dead. Paul responds by restating the gospel tradition about Christ's death, burial, resurrection, and appearances, then explains why resurrection hope is central to Christian faith.",
       "overview": "Paul argues that if the dead are not raised, the gospel collapses; but Christ has been raised as the firstfruits. He describes the transformation of the body and the defeat of death through Christ.",
       "studyObservation": "The chapter holds together historical proclamation and future hope. Paul's language about a spiritual body does not mean a disembodied existence but a transformed life empowered by God's Spirit.",
@@ -369,7 +325,7 @@
         "1 Corinthians 15:20–28",
         "1 Corinthians 15:51–58"
       ],
-      "id": "1cor17",
+      "id": "1cor15",
       "book": "1 Corinthians",
       "studyQuestions": [
         "What elements of the gospel tradition does Paul emphasise?",
@@ -378,8 +334,8 @@
       ]
     },
     {
-      "chapter": 18,
-      "title": "1 Corinthians 18 — The collection, travel plans, and final encouragement",
+      "chapter": 16,
+      "title": "1 Corinthians 16 — The collection, travel plans, and final encouragement",
       "historicalContext": "Paul concludes with practical instructions for the collection for believers in Jerusalem, travel plans, and commendations of fellow workers. The chapter reveals the networks of cooperation that supported the early churches.",
       "overview": "The final chapter connects worship and doctrine with generosity, hospitality, courage, and mutual service. Paul urges the church to welcome faithful workers and remain firm in love.",
       "studyObservation": "The collection expresses solidarity across communities and responds to material need. Paul's greetings show that ministry was shared among many people, not carried by one leader alone.",
@@ -391,7 +347,7 @@
         "1 Corinthians 16:1–4",
         "1 Corinthians 16:13–24"
       ],
-      "id": "1cor18",
+      "id": "1cor16",
       "book": "1 Corinthians",
       "studyQuestions": [
         "What does the collection reveal about solidarity among churches?",
