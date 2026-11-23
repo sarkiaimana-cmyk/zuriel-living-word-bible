@@ -120,6 +120,11 @@ for (const [abbreviation, label] of Object.entries(aliasSmokeCases)) {
   assert.ok(new RegExp(pattern[1], "i").test(label),
     "Requested translation alias must match its catalogue title: " + abbreviation + ".");
 }
+const livingTranslationLine = aliasBlock[1].split("\n").find(value => value.includes('"LB/LT":'));
+const livingTranslationPattern = livingTranslationLine && livingTranslationLine.match(/": \/(.*)\/,?$/);
+assert.ok(livingTranslationPattern, "LB/LT alias pattern must be readable.");
+assert.ok(new RegExp(livingTranslationPattern[1], "i").test("Living Translation"),
+  "LB/LT must also match the Living Translation catalogue title, not only The Living Bible.");
 if (client.includes("/\\\\b")) failures.push("Double-escaped translation alias boundaries must not be present.");
 
 
