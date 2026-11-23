@@ -940,6 +940,17 @@ for(const [book,data,max,idPrefix] of [["Amos",amosChapterGuides,9,"amo-ch"],["O
   for(const reference of guide.keyPassages) checkReference(reference,book+" "+guide.chapter);
  }
 }
+\nfor(const [book,data,prefix] of [["Habakkuk",habakkukChapterGuides,"hab"],["Zephaniah",zephaniahChapterGuides,"zep"]]){
+ assert.equal(data.chapters.length,3,book+" must have three chapters");
+ const ids=new Set();
+ for(const guide of data.chapters){
+  assert.equal(guide.book,book);assert.ok(guide.chapter>=1&&guide.chapter<=3);
+  assert.ok(guide.title.startsWith(book+" "+guide.chapter+" —"));assert.equal(guide.id,prefix+String(guide.chapter).padStart(2,"0"));
+  assert.ok(!ids.has(guide.id));ids.add(guide.id);
+  for(const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field]==="string"&&guide[field].length>=50);
+  assert.ok(guide.keyPassages.length>=2&&guide.studyQuestions.length>=3);for(const ref of guide.keyPassages)checkReference(ref,book+" "+guide.chapter);
+ }
+}
 \nconst psalmGuides=[...psalmsChapterGuides.chapters,...psalmsChapterGuides2.chapters,...psalmsChapterGuides3.chapters,...psalmsChapterGuides4.chapters,...psalmsChapterGuides5.chapters];
 const psalmIds=new Set();
 assert.equal(proverbsChapterGuides.chapters.length,31,"Proverbs must contain all 31 chapter guides");
@@ -978,4 +989,4 @@ for(const guide of secondSamuelGuides){
  assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length>=3,"2 Samuel guide needs study questions");
  for(const reference of guide.keyPassages) checkReference(reference,"2 Samuel chapter "+guide.chapter);
 }
-console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges, 4 Ruth and 31 1 Samuel, 24 2 Samuel 22 1 Kings, 25 2 Kings 29 1 Chronicles and 36 2 Chronicles 10 Ezra and 13 Nehemiah and 10 Esther and 42 Job and 150 Psalms and 31 Proverbs, 66 Isaiah, 52 Jeremiah, 5 Lamentations and 48 Ezekiel, 12 Daniel, 14 Hosea and 3 Joel, 9 Amos and 1 Obadiah, 4 Jonah, 7 Micah and 3 Nahum chapter introductions; 48 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
+console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges, 4 Ruth and 31 1 Samuel, 24 2 Samuel 22 1 Kings, 25 2 Kings 29 1 Chronicles and 36 2 Chronicles 10 Ezra and 13 Nehemiah and 10 Esther and 42 Job and 150 Psalms and 31 Proverbs, 66 Isaiah, 52 Jeremiah, 5 Lamentations and 48 Ezekiel, 12 Daniel, 14 Hosea and 3 Joel, 9 Amos and 1 Obadiah, 4 Jonah, 7 Micah, 3 Nahum, 3 Habakkuk and 3 Zephaniah chapter introductions; 48 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
