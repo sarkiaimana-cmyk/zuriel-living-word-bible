@@ -98,7 +98,7 @@ requireText(client, '"NASB": /', "New American Standard Bible catalogue alias");
 requireText(client, '"CSB": /', "Christian Standard Bible catalogue alias");
 requireText(client, '"NKJV": /', "New King James Version catalogue alias");
 
-const aliasBlock = client.match(/const aliases = \\{([\\s\\S]*?)\\n      \\};/);
+const aliasBlock = client.match(/const aliases = \{([\s\S]*?)\n      \};/);
 assert.ok(aliasBlock, "Requested translation alias table must be present.");
 const aliasSmokeCases = {
   "GNT": "Good News Translation",
@@ -114,8 +114,8 @@ const aliasSmokeCases = {
   "NKJV": "New King James Version"
 };
 for (const [abbreviation, label] of Object.entries(aliasSmokeCases)) {
-  const line = aliasBlock[1].split("\\n").find(value => value.includes("\\"" + abbreviation + "\\":"));
-  const pattern = line && line.match(/\\": \\/(.*)\\/ ,?$/);
+  const line = aliasBlock[1].split("\n").find(value => value.includes('"' + abbreviation + '":'));
+  const pattern = line && line.match(/": \/(.*)\/,?$/);
   assert.ok(pattern, "Alias pattern must be readable for " + abbreviation + ".");
   assert.ok(new RegExp(pattern[1], "i").test(label),
     "Requested translation alias must match its catalogue title: " + abbreviation + ".");
