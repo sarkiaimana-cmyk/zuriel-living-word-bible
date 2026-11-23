@@ -113,6 +113,8 @@ if (!home.includes('id="zurielOpenBookFaithCard"')) failures.push("The daily ope
 if (!home.includes('id="zurielOpenBookSaveCard"')) failures.push("Home open-book card has a direct save action.");
 if (!home.includes('id="zurielOpenBookSavedCards"')) failures.push("Home open-book card has a direct saved-cards destination.");
 if (!home.includes("saveButton.click();")) failures.push("Home save action does not store the prepared card in My Library.");
+if (!home.includes('window.localStorage.getItem("zuriel_glory_verse_cards_v1")')) failures.push("Home must verify the saved-card storage result before showing success.");
+if (!home.includes("savedRecord.reference !== verse.reference") || !home.includes("savedRecord.scripture !== scriptureText")) failures.push("Home must confirm the exact Scripture card was persisted, not merely that the Save button was clicked.");
 if (!library.includes("openSavedGloryVerseCards: function")) failures.push("Saved-card destination does not open the saved Glory Verse collection.");
 if (!readerToolbar.includes("zurielReaderTopControls")) failures.push("Reader controls must be grouped into one top toolbar.");
 if (!readerToolbar.includes("zurielReaderViewTabs")) failures.push("Reader must show Scripture, Meaning and Original Words tabs.");
