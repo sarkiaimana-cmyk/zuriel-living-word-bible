@@ -29,7 +29,6 @@
         if (!response.ok) throw new Error("Update information is not available right now.");
         const info = await response.json();
         if (!info || !info.version) throw new Error("The update information could not be verified.");
-        saveLastSuccessfulCheck();
         const newer = compareVersions(info.version, APP_VERSION) > 0;
         if (newer) {
           status.textContent = "A newer Zuriel version is available: " + (info.displayVersion || info.version) + ".";
@@ -133,6 +132,8 @@
             status.textContent += " Android release check completed. Your installed app and personal records are unchanged.";
           }
         }
+        // Record only a fully completed check; failed release or service-worker checks can retry.
+        saveLastSuccessfulCheck();
       } catch (error) {
         status.textContent = error.message || "Could not check for updates. Please try again when connected.";
       } finally {
