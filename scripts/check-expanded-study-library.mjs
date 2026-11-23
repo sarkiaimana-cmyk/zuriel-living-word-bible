@@ -1127,4 +1127,21 @@ for (const guide of lukeChapterGuides2.chapters) {
   for (const reference of guide.keyPassages) checkReference(reference,"Luke chapter "+guide.chapter);
 }
 
-console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges, 4 Ruth and 31 1 Samuel, 24 2 Samuel 22 1 Kings, 25 2 Kings 29 1 Chronicles and 36 2 Chronicles 10 Ezra and 13 Nehemiah and 10 Esther and 42 Job and 150 Psalms and 31 Proverbs, 66 Isaiah, 52 Jeremiah, 5 Lamentations and 48 Ezekiel, 12 Daniel, 14 Hosea and 3 Joel, 9 Amos and 1 Obadiah, 4 Jonah, 7 Micah, 3 Nahum, 3 Habakkuk, 3 Zephaniah, 2 Haggai, 14 Zechariah, 28 Matthew, 16 Mark, 4 Malachi and 24 Luke chapter introductions; 50 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
+
+const johnChapterGuides = await json("data/zuriel-chapter-introductions-john-01-10.json");
+assert.equal(johnChapterGuides.book,"John","John 1–10 batch must identify its book");
+assert.equal(johnChapterGuides.chapters.length,10,"John 1–10 batch must contain exactly ten chapter guides");
+const johnIds = new Set();
+for (const guide of johnChapterGuides.chapters) {
+  assert.equal(guide.book,"John","John guide must remain scoped to John");
+  assert.ok(Number.isInteger(guide.chapter)&&guide.chapter>=1&&guide.chapter<=10,"John chapter must be within 1–10");
+  assert.ok(guide.title.startsWith("John "+guide.chapter+" —"),"John title must identify its chapter");
+  assert.equal(guide.id,"john"+guide.chapter,"John guide needs a stable chapter ID");
+  assert.ok(!johnIds.has(guide.id),"John guide IDs must be unique"); johnIds.add(guide.id);
+  for (const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field]==="string"&&guide[field].trim().length>=50,"John guide needs substantive "+field+": "+guide.chapter);
+  assert.ok(Array.isArray(guide.keyPassages)&&guide.keyPassages.length===2,"John guide needs two key passages");
+  assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length===3,"John guide needs three study questions");
+  for (const reference of guide.keyPassages) checkReference(reference,"John chapter "+guide.chapter);
+}
+
+console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges, 4 Ruth and 31 1 Samuel, 24 2 Samuel 22 1 Kings, 25 2 Kings 29 1 Chronicles and 36 2 Chronicles 10 Ezra and 13 Nehemiah and 10 Esther and 42 Job and 150 Psalms and 31 Proverbs, 66 Isaiah, 52 Jeremiah, 5 Lamentations and 48 Ezekiel, 12 Daniel, 14 Hosea and 3 Joel, 9 Amos and 1 Obadiah, 4 Jonah, 7 Micah, 3 Nahum, 3 Habakkuk, 3 Zephaniah, 2 Haggai, 14 Zechariah, 28 Matthew, 16 Mark, 4 Malachi, 24 Luke and 10 John chapter introductions; 51 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
