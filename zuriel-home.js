@@ -1795,7 +1795,22 @@
           if (!opened) throw new Error("The share-card studio could not be opened.");
           const saveButton = document.querySelector("#zgsSave");
           if (!saveButton) throw new Error("The card opened, but its Save to My Library control is unavailable.");
+          let savedCountBefore = 0;
+          try {
+            const existingCards = JSON.parse(window.localStorage.getItem("zuriel_glory_verse_cards_v1") || "[]");
+            savedCountBefore = Array.isArray(existingCards) ? existingCards.length : 0;
+          } catch (_) {}
           saveButton.click();
+          const savedCards = JSON.parse(window.localStorage.getItem("zuriel_glory_verse_cards_v1") || "[]");
+          const savedRecord = Array.isArray(savedCards) ? savedCards[savedCards.length - 1] : null;
+          if (!Array.isArray(savedCards) || savedCards.length !== savedCountBefore + 1 ||
+              !savedRecord || savedRecord.reference !== verse.reference ||
+              savedRecord.scripture !== scriptureText) {
+            const studioStatus = document.querySelector("#zgsStatus");
+            throw new Error(studioStatus && studioStatus.textContent
+              ? studioStatus.textContent
+              : "The card could not be confirmed in My Saved Glory Verse Cards. Please try again.");
+          }
           if (status) status.textContent = "Saved on this device. Open My Saved Cards any time to reopen, download or share it.";
         } catch (error) {
           if (status) status.textContent = error.message || "The open-book card could not be saved.";
