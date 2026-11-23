@@ -252,6 +252,16 @@ const datasets = {
     {id:"joe-ch02",book:"Joel",chapter:2,title:"Joel 2 — Return with the heart and the promise of the Spirit",overview:"Joel calls the people to return with all their heart, with fasting, weeping, and mourning. The chapter promises compassion, restored harvest, and the outpouring of God's Spirit on sons and daughters, old and young, servants and free people.",keyPassages:["Joel 2:1–17","Joel 2:18–32"]},
     {id:"joe-ch03",book:"Joel",chapter:3,title:"Joel 3 — The nations judged and the Lord dwelling with his people",overview:"Joel describes the gathering of nations for judgement in the valley of Jehoshaphat, condemns violence and exploitation against Judah, and closes with a vision of refuge, abundance, and the Lord dwelling in Zion.",keyPassages:["Joel 3:1–10","Joel 3:11–21"]}
   ]},
+  "zuriel-chapter-introductions-mark-01-08.json": { chapters: [
+    {id:"mark01",book:"Mark",chapter:1,title:"Mark 1 — The opening of the good news",overview:"John prepares the way; Jesus is baptised, tested, calls disciples, and begins proclaiming God's kingdom."},
+    {id:"mark02",book:"Mark",chapter:2,title:"Mark 2 — Authority to forgive and heal",overview:"Jesus forgives and heals a paralysed man, calls Levi, welcomes outsiders, and teaches Sabbath mercy."},
+    {id:"mark03",book:"Mark",chapter:3,title:"Mark 3 — The twelve and the kingdom",overview:"Jesus appoints the twelve, answers opposition, defines true kinship, and teaches how God's word takes root."},
+    {id:"mark04",book:"Mark",chapter:4,title:"Mark 4 — The storm and restoration",overview:"Jesus calms the storm and restores a tormented man, a suffering woman, and Jairus's daughter."},
+    {id:"mark05",book:"Mark",chapter:5,title:"Mark 5 — Rejection, mission, and provision",overview:"Jesus is rejected at Nazareth, sends the twelve, John the Baptist is killed, and a crowd is fed."},
+    {id:"mark06",book:"Mark",chapter:6,title:"Mark 6 — Tradition, compassion, and healing",overview:"Jesus teaches about the heart, welcomes a Gentile mother's appeal, heals a man, and feeds four thousand."},
+    {id:"mark07",book:"Mark",chapter:7,title:"Mark 7 — Peter's confession and the cross",overview:"Peter confesses Jesus as Messiah, but Jesus teaches the necessity of suffering and the cost of discipleship."},
+    {id:"mark08",book:"Mark",chapter:8,title:"Mark 8 — Glory, suffering, and service",overview:"Jesus is transfigured, heals a distressed child, and teaches that greatness is found in humble service."}
+  ] },
   "zuriel-deep-study-guides.json": { guides: [] },
   "zuriel-bible-geography-atlas.json": { places: [], journeys: [] },
   "zuriel-worship-study-pathways.json": { pathways: [] }
@@ -567,6 +577,12 @@ assert.equal(matthewTwentyEight.length,1,"Matthew chapter 28 should be searchabl
 
 const matthewOne = await library.search("Jesus Messiah genealogy David Abraham birth Immanuel", { category: "Chapter Introductions" });
 assert.equal(matthewOne.length,1,"Matthew chapter 1 should be searchable");assert.equal(matthewOne[0].source.book,"Matthew");assert.equal(matthewOne[0].source.chapter,1);
+
+
+const markOne = await library.search("John prepares way Jesus baptism wilderness disciples kingdom", { category: "Chapter Introductions" });
+assert.equal(markOne.length,1,"Mark chapter 1 should be searchable");assert.equal(markOne[0].source.book,"Mark");assert.equal(markOne[0].source.chapter,1);
+const markEight = await library.search("transfiguration suffering child humble service greatness", { category: "Chapter Introductions" });
+assert.equal(markEight.length,1,"Mark chapter 8 should be searchable");assert.equal(markEight[0].source.book,"Mark");assert.equal(markEight[0].source.chapter,8);
 
 const zechariahFourteen = await library.search("Lord reigns living waters Jerusalem holiness nations worship", { category: "Chapter Introductions" });
 assert.equal(zechariahFourteen.length,1,"Zechariah chapter 14 should be searchable");assert.equal(zechariahFourteen[0].source.book,"Zechariah");assert.equal(zechariahFourteen[0].source.chapter,14);
