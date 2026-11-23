@@ -288,7 +288,9 @@ for (const name of chapterIntroNames) {
     const coverage = chapterCoverage.get(book.name);
     assert.ok(!coverage.has(guide.chapter), "A chapter must not be duplicated across datasets: " + book.name + " " + guide.chapter);
     coverage.add(guide.chapter);
-    for (const field of ["title","historicalContext","overview","studyObservation","lifeApplication","interpretiveCaution","readingNote"]) {
+    assert.ok(typeof guide.title === "string" && guide.title.trim().length >= 8,
+      "Chapter guide needs a readable title: " + book.name + " " + guide.chapter);
+    for (const field of ["historicalContext","overview","studyObservation","lifeApplication","interpretiveCaution","readingNote"]) {
       assert.ok(typeof guide[field] === "string" && guide[field].trim().length >= 35,
         "Chapter guide needs substantive " + field + ": " + book.name + " " + guide.chapter);
     }
