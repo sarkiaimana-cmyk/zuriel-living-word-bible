@@ -149,7 +149,8 @@ const studyDatasetPaths = [
   "zuriel-chapter-introductions-john-13-21.json",
   "zuriel-chapter-introductions-acts-01-14.json",
   "zuriel-chapter-introductions-acts-15-28.json",
-  "zuriel-chapter-introductions-romans-01-08.json"
+  "zuriel-chapter-introductions-romans-01-08.json",
+  "zuriel-chapter-introductions-romans-09-16.json"
 ];
 const [packagingScript, packagedLoader] = await Promise.all([
   readFile(new URL("../scripts/prepare-web.mjs", import.meta.url), "utf8"),
@@ -1232,4 +1233,20 @@ for (const guide of romansChapterGuides.chapters) {
   for (const reference of guide.keyPassages) checkReference(reference,"Romans chapter "+guide.chapter);
 }
 
-console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges, 4 Ruth and 31 1 Samuel, 24 2 Samuel 22 1 Kings, 25 2 Kings 29 1 Chronicles and 36 2 Chronicles 10 Ezra and 13 Nehemiah and 10 Esther and 42 Job and 150 Psalms and 31 Proverbs, 66 Isaiah, 52 Jeremiah, 5 Lamentations and 48 Ezekiel, 12 Daniel, 14 Hosea and 3 Joel, 9 Amos and 1 Obadiah, 4 Jonah, 7 Micah, 3 Nahum, 3 Habakkuk, 3 Zephaniah, 2 Haggai, 14 Zechariah, 28 Matthew, 16 Mark, 4 Malachi, 24 Luke and 21 John, 28 Acts and 8 Romans chapter introductions; 56 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
+const romansChapterGuides2 = await json("data/zuriel-chapter-introductions-romans-09-16.json");
+assert.equal(romansChapterGuides2.book,"Romans","Romans 9–16 batch must identify its book");
+assert.equal(romansChapterGuides2.chapters.length,8,"Romans 9–16 batch must contain exactly eight chapter guides");
+const romansIds2 = new Set();
+for (const guide of romansChapterGuides2.chapters) {
+  assert.equal(guide.book,"Romans","Romans guide must remain scoped to Romans");
+  assert.ok(Number.isInteger(guide.chapter)&&guide.chapter>=9&&guide.chapter<=16,"Romans chapter must be within 9–16");
+  assert.ok(guide.title.startsWith("Romans "+guide.chapter+" —"),"Romans title must identify its chapter");
+  assert.equal(guide.id,"romans"+guide.chapter,"Romans guide needs a stable chapter ID");
+  assert.ok(!romansIds2.has(guide.id),"Romans guide IDs must be unique"); romansIds2.add(guide.id);
+  for (const field of ["historicalContext","overview","studyObservation","connectionNotes","lifeApplication","interpretiveCaution","readingNote"]) assert.ok(typeof guide[field]==="string"&&guide[field].trim().length>=50,"Romans guide needs substantive "+field+": "+guide.chapter);
+  assert.ok(Array.isArray(guide.keyPassages)&&guide.keyPassages.length===2,"Romans guide needs two key passages");
+  assert.ok(Array.isArray(guide.studyQuestions)&&guide.studyQuestions.length===3,"Romans guide needs three study questions");
+  for (const reference of guide.keyPassages) checkReference(reference,"Romans chapter "+guide.chapter);
+}
+
+console.log("Expanded study library passed: 74 Scripture trails; 66 book introductions and pathways; 50 Genesis, 40 Exodus, 27 Leviticus, 36 Numbers, 34 Deuteronomy, 24 Joshua, 21 Judges, 4 Ruth and 31 1 Samuel, 24 2 Samuel 22 1 Kings, 25 2 Kings 29 1 Chronicles and 36 2 Chronicles 10 Ezra and 13 Nehemiah and 10 Esther and 42 Job and 150 Psalms and 31 Proverbs, 66 Isaiah, 52 Jeremiah, 5 Lamentations and 48 Ezekiel, 12 Daniel, 14 Hosea and 3 Joel, 9 Amos and 1 Obadiah, 4 Jonah, 7 Micah, 3 Nahum, 3 Habakkuk, 3 Zephaniah, 2 Haggai, 14 Zechariah, 28 Matthew, 16 Mark, 4 Malachi, 24 Luke and 21 John, 28 Acts and 16 Romans chapter introductions; 57 offline datasets copied and parity-checked in the Android package; searchable reader-linked UI, offline precache and "+checkedPassages+" Scripture references checked against the bundled KJV.");
