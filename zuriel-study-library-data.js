@@ -356,7 +356,7 @@
     root.id = "zurielExpandedStudyLibrary";
     root.innerHTML = "";
     root.appendChild(make("h3", "", "Explore the Expanded Study Library"));
-    root.appendChild(make("p", "zsl-intro", "Search passage commentary, topical studies, Bible dictionary entries, Hebrew and Greek word studies, Names of God, connected Scripture trails, book and chapter introductions, geography and worship studies. These are study aids, not replacement Scripture."));
+    root.appendChild(make("p", "zsl-intro", "Search passage commentary, topical studies, Bible dictionary entries, Hebrew and Greek word studies, Names of God, connected Scripture trails, book and chapter introductions, biblical places and journeys, historical peoples, kingdoms and empires, and worship studies. These are study aids, not replacement Scripture."));
 
     const controls = make("div", "zsl-controls");
     const search = make("input");
