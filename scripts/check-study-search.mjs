@@ -1023,7 +1023,7 @@ for (const [query, chapter] of philippiansQueries) {
 
 const colossiansQueries = [
   ["supremacy reconciliation creation",1],["fullness deceptive teaching",2],
-  ["raised compassion forgiveness",3],["prayer gracious speech",4]
+  ["raised compassion forgiveness",3],["wise witness prayer",4]
 ];
 for (const [query, chapter] of colossiansQueries) {
   const found = await library.search(query, { category: "Chapter Introductions" });
