@@ -2,7 +2,7 @@
 
 "use strict";
 
-const CACHE_NAME = "zuriel-bible-offline-v298";
+const CACHE_NAME = "zuriel-bible-offline-v299";
 
 const CORE_FILES = [
   "./",
@@ -124,6 +124,7 @@ const CORE_FILES = [
   "./data/zuriel-chapter-introductions-galatians-01-06.json",
   "./data/zuriel-chapter-introductions-ephesians-01-06.json",
   "./data/zuriel-chapter-introductions-philippians-01-04.json",
+  "./data/zuriel-chapter-introductions-colossians-01-04.json",
 
   "./data/zuriel-connected-scripture-trails-batch-1.json",
   "./data/zuriel-connected-scripture-trails-batch-2.json",
