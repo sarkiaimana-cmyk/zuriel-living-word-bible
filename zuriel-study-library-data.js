@@ -88,6 +88,7 @@
     ["Chapter Introductions", "./data/zuriel-chapter-introductions-john-11-12.json", "chapters", "chapter-introduction"],
     ["Chapter Introductions", "./data/zuriel-chapter-introductions-john-13-21.json", "chapters", "chapter-introduction"],
     ["Chapter Introductions", "./data/zuriel-chapter-introductions-acts-01-14.json", "chapters", "chapter-introduction"],
+    ["Chapter Introductions", "./data/zuriel-chapter-introductions-acts-15-28.json", "chapters", "chapter-introduction"],
     ["Deep Study Guides", "./data/zuriel-deep-study-guides.json", "guides", "guide"],
     ["Bible Geography", "./data/zuriel-bible-geography-atlas.json", "places", "place"],
     ["Bible Geography", "./data/zuriel-bible-geography-atlas.json", "journeys", "journey"],
