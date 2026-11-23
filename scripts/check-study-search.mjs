@@ -579,9 +579,9 @@ const matthewOne = await library.search("Jesus Messiah genealogy David Abraham b
 assert.equal(matthewOne.length,1,"Matthew chapter 1 should be searchable");assert.equal(matthewOne[0].source.book,"Matthew");assert.equal(matthewOne[0].source.chapter,1);
 
 
-const markOne = await library.search("John prepares way Jesus baptism wilderness disciples kingdom", { category: "Chapter Introductions" });
+const markOne = await library.search("John prepares way Jesus baptised tested disciples kingdom", { category: "Chapter Introductions" });
 assert.equal(markOne.length,1,"Mark chapter 1 should be searchable");assert.equal(markOne[0].source.book,"Mark");assert.equal(markOne[0].source.chapter,1);
-const markEight = await library.search("transfiguration suffering child humble service greatness", { category: "Chapter Introductions" });
+const markEight = await library.search("Jesus transfigured distressed child humble service greatness", { category: "Chapter Introductions" });
 assert.equal(markEight.length,1,"Mark chapter 8 should be searchable");assert.equal(markEight[0].source.book,"Mark");assert.equal(markEight[0].source.chapter,8);
 
 const zechariahFourteen = await library.search("Lord reigns living waters Jerusalem holiness nations worship", { category: "Chapter Introductions" });
