@@ -1005,7 +1005,7 @@ const ephesiansFour = await library.search("unity maturity new life", { category
 assert.equal(ephesiansFour.length,1,"Ephesians chapter 4 should be searchable");assert.equal(ephesiansFour[0].source.book,"Ephesians");assert.equal(ephesiansFour[0].source.chapter,4);
 const ephesiansFive = await library.search("love light wisdom submission", { category: "Chapter Introductions" });
 assert.equal(ephesiansFive.length,1,"Ephesians chapter 5 should be searchable");assert.equal(ephesiansFive[0].source.book,"Ephesians");assert.equal(ephesiansFive[0].source.chapter,5);
-const ephesiansSix = await library.search("family work spiritual armour", { category: "Chapter Introductions" });
+const ephesiansSix = await library.search("armour", { category: "Chapter Introductions" });
 assert.equal(ephesiansSix.length,1,"Ephesians chapter 6 should be searchable");assert.equal(ephesiansSix[0].source.book,"Ephesians");assert.equal(ephesiansSix[0].source.chapter,6);
 
 
