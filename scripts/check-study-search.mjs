@@ -780,7 +780,7 @@ const romansOne = await library.search("gospel righteousness", { category: "Chap
 assert.equal(romansOne.length,1,"Romans chapter 1 should be searchable");assert.equal(romansOne[0].source.book,"Romans");assert.equal(romansOne[0].source.chapter,1);
 const romansTwo = await library.search("impartial judgement hypocrisy law heart", { category: "Chapter Introductions" });
 assert.equal(romansTwo.length,1,"Romans chapter 2 should be searchable");assert.equal(romansTwo[0].source.book,"Romans");assert.equal(romansTwo[0].source.chapter,2);
-const romansThree = await library.search("universal", { category: "Chapter Introductions" });
+const romansThree = await library.search("universal need justification grace", { category: "Chapter Introductions" });
 assert.equal(romansThree.length,1,"Romans chapter 3 should be searchable");assert.equal(romansThree[0].source.book,"Romans");assert.equal(romansThree[0].source.chapter,3);
 const romansFour = await library.search("Abraham faith promise grace nations", { category: "Chapter Introductions" });
 assert.equal(romansFour.length,1,"Romans chapter 4 should be searchable");assert.equal(romansFour[0].source.book,"Romans");assert.equal(romansFour[0].source.chapter,4);
