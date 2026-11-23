@@ -322,19 +322,72 @@ async function handleYouVersionRequest(request, env, dependencies, cors) {
   if (!item || typeof item.content !== "string" || !item.content.trim()) {
     return json({ error: "YouVersion returned no passage text for this request." }, 502, cors);
   }
+
+  // The Passages API documents text/reference, while publisher copyright and
+  // promotional attribution belong to the Bible-version resource. Retrieve
+  // that resource when the passage response does not carry attribution.
+  let versionMetadata = null;
+  let copyright = typeof item.copyright === "string" ? item.copyright.trim() : "";
+  let promotional = typeof item.promotional_content === "string" ? item.promotional_content.trim() : "";
+  if (!copyright && !promotional) {
+    let metadataResponse;
+    try {
+      const fetchImpl = dependencies.fetch || globalThis.fetch;
+      metadataResponse = await fetchImpl(YVP_BASE + "/bibles/" + selectedVersionId, {
+        method: "GET",
+        headers: {
+          "X-YVP-App-Key": env.ZITE_YVP_APP_KEY,
+          "Accept": "application/json"
+        },
+        signal: AbortSignal.timeout(10000)
+      });
+    } catch {
+      return json({ error: "YouVersion publisher attribution could not be verified. Zuriel has withheld this passage." }, 502, cors);
+    }
+    if (!metadataResponse.ok) {
+      const status = yvpErrorStatus(metadataResponse.status);
+      const message = metadataResponse.status === 403
+        ? "YouVersion did not grant publisher metadata for this Bible version."
+        : metadataResponse.status === 429
+          ? "YouVersion rate limit reached while verifying publisher attribution. Please wait and retry."
+          : "YouVersion publisher attribution could not be retrieved. Zuriel has withheld this passage.";
+      const retryAfter = metadataResponse.headers && metadataResponse.headers.get("Retry-After");
+      return json({ error: message }, status, retryAfter ? { ...cors, "retry-after": retryAfter } : cors);
+    }
+    let metadataPayload;
+    try {
+      metadataPayload = await metadataResponse.json();
+    } catch {
+      return json({ error: "YouVersion returned unreadable publisher metadata. Zuriel has withheld this passage." }, 502, cors);
+    }
+    versionMetadata = metadataPayload && metadataPayload.data &&
+      typeof metadataPayload.data === "object" ? metadataPayload.data : metadataPayload;
+    copyright = versionMetadata && typeof versionMetadata.copyright === "string"
+      ? versionMetadata.copyright.trim() : "";
+    promotional = versionMetadata && typeof versionMetadata.promotional_content === "string"
+      ? versionMetadata.promotional_content.trim() : "";
+  }
+  if (!copyright && !promotional) {
+    return json({ error: "YouVersion did not provide publisher attribution for this Bible version. Zuriel has withheld this passage." }, 502, cors);
+  }
+
   return json({
     source: "YouVersion Platform",
     version: {
       id: selectedVersionId,
-      abbreviation: typeof item.version_abbreviation === "string" ? item.version_abbreviation : "",
-      title: typeof item.version_title === "string" ? item.version_title : ""
+      abbreviation: (versionMetadata && typeof versionMetadata.abbreviation === "string"
+        ? versionMetadata.abbreviation : "") ||
+        (typeof item.version_abbreviation === "string" ? item.version_abbreviation : ""),
+      title: (versionMetadata && typeof versionMetadata.title === "string"
+        ? versionMetadata.title : "") ||
+        (typeof item.version_title === "string" ? item.version_title : "")
     },
     passage: {
       id: typeof item.id === "string" ? item.id : "",
       reference: typeof item.reference === "string" ? item.reference : "",
       content: item.content,
-      copyright: typeof item.copyright === "string" ? item.copyright : "",
-      promotional_content: typeof item.promotional_content === "string" ? item.promotional_content : ""
+      copyright,
+      promotional_content: promotional
     },
     format: url.searchParams.get("format") || "html",
     notice: "Display the publisher's copyright and attribution with this Scripture. Online API text is not stored for offline use unless the relevant licence expressly permits it."
