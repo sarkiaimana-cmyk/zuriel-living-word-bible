@@ -131,6 +131,7 @@ const CORE_FILES = [
   "./data/zuriel-chapter-introductions-titus-01-03.json",
   "./data/zuriel-chapter-introductions-philemon-01.json",
   "./data/zuriel-chapter-introductions-hebrews-01-13.json",
+  "./data/zuriel-chapter-introductions-james-01-05.json",
   "./data/zuriel-chapter-introductions-1-peter-01-05.json",
   "./data/zuriel-chapter-introductions-2-peter-01-03.json",
   "./data/zuriel-chapter-introductions-1-john-01-05.json",
