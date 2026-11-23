@@ -1811,7 +1811,7 @@
             let timeout;
             const observer = new MutationObserver(() => {
               const message = String(studioStatus.textContent || "").trim();
-              if (message && message !== previousStatus) finish(resolve, message);
+              if (message && message !== previousStatus && !/wallpaper/i.test(message)) finish(resolve, message);
             });
             const finish = (callback, value) => {
               if (settled) return;
