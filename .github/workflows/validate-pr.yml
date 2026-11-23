@@ -115,6 +115,9 @@ jobs:
       - name: Test Android version metadata
         run: node scripts/test-android-version.mjs
 
+      - name: Validate Android release publication provenance
+        run: node scripts/check-android-release-publication.mjs
+
       - name: Validate signed Android in-place upgrade safeguards
         run: |
           bash -n scripts/smoke-test-android-upgrade.sh
