@@ -70,7 +70,7 @@ test("NET Bible parser preserves brackets inside valid verse text", async () => 
   );
   assert.equal(response.status, 200);
   const payload = await response.json();
-  assert.match(payload.passage.content, /\\[bracketed wording\\]/);
+  assert.match(payload.passage.content, /\[bracketed wording\]/);
 });
 
 test("NET Bible route requires a valid complete-chapter verse range", async () => {
