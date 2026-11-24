@@ -88,14 +88,15 @@
   panel.id = "zurielTranslationCompare";
   const summary = node("summary", "", "🌐 Compare another Bible translation (online)");
   const note = node("p", "ztc-note",
-    "The King James Version remains available offline. Load authorised translations online when connected. API.Bible keeps only the most recently viewed chapter per translation for offline reading and refreshes it within 14 days. YouVersion passages are shown online only unless the publisher explicitly permits offline storage. NET Bible passages are online-only and are not stored offline.");
+    "The King James Version remains available offline. Load authorised translations online when connected. API.Bible keeps only the most recently viewed chapter per translation for offline reading and refreshes it within 14 days. YouVersion passages are shown online only unless the publisher explicitly permits offline storage. NET Bible and ESV passages are online-only and are not stored offline.");
   const controls = node("div");
   const providerSelect = node("select");
   providerSelect.setAttribute("aria-label", "Choose online Bible translation provider");
   [
     ["youversion", "YouVersion Platform"],
     ["api-bible", "API.Bible"],
-    ["net-bible", "NET Bible (Bible.org)"]
+    ["net-bible", "NET Bible (Bible.org)"],
+    ["esv", "ESV (Crossway)"]
   ].forEach(([value, label]) => {
     const option = node("option", "", label);
     option.value = value;
@@ -203,7 +204,7 @@
     select.disabled = true;
     loadButton.disabled = true;
     status("Checking the English Bible versions authorised for " +
-      (providerAtRequest === "youversion" ? "YouVersion" : providerAtRequest === "net-bible" ? "NET Bible" : "API.Bible") + "…");
+      (providerAtRequest === "youversion" ? "YouVersion" : providerAtRequest === "net-bible" ? "NET Bible" : providerAtRequest === "esv" ? "ESV" : "API.Bible") + "…");
     try {
       let available = [];
       let nextPageToken = "";
@@ -257,8 +258,11 @@
           uniqueVersions.set(item.id, item);
         });
         available = Array.from(uniqueVersions.values());
-      } else {
+      } else if (providerAtRequest === "net-bible") {
         available = [{ id: "net", title: "NET Bible", abbreviation: "NET" }];
+      } else {
+        const payload = await requestJson("/api/esv/bibles");
+        available = Array.isArray(payload && payload.data) ? payload.data.filter(item => item && item.id === "esv" && item.abbreviation === "ESV") : [];
       }
 
       if (catalogueRequestId !== catalogueSequence) return;
@@ -616,7 +620,7 @@
       }
       window.fums("trackView", fumsToken);
     }
-    const providerName = selectedProvider === "youversion" ? "YouVersion" : selectedProvider === "net-bible" ? "NET Bible" : "API.Bible";
+    const providerName = selectedProvider === "youversion" ? "YouVersion" : selectedProvider === "net-bible" ? "NET Bible" : selectedProvider === "esv" ? "ESV" : "API.Bible";
     const selectedLabel = select.options[select.selectedIndex]
       ? String(select.options[select.selectedIndex].textContent || "").split("—").slice(1).join("—").trim()
       : "";
@@ -625,12 +629,12 @@
       " (" + providerName + ")";
     passage.textContent = selectedProvider === "net-bible" ? item.content + "\n\n(NET)" : item.content;
     passage.hidden = false;
-    if (selectedProvider === "net-bible") {
+    if (selectedProvider === "net-bible" || selectedProvider === "esv") {
       attribution.replaceChildren();
       attribution.appendChild(document.createTextNode(copyright + " "));
       const link = document.createElement("a");
-      link.href = "https://netbible.org";
-      link.textContent = "NET Bible";
+      link.href = selectedProvider === "net-bible" ? "https://netbible.org" : "https://www.esv.org";
+      link.textContent = selectedProvider === "net-bible" ? "NET Bible" : "ESV Bible";
       link.rel = "noopener noreferrer";
       attribution.appendChild(link);
       attribution.appendChild(document.createTextNode(". This passage is online-only and has not been saved for offline reading."));
@@ -650,8 +654,8 @@
       ? "Showing a saved " + providerName + " chapter offline."
       : (canStoreOffline(selectedProvider)
         ? "Online passage loaded successfully and saved under the API.Bible refresh limit."
-        : selectedProvider === "net-bible"
-          ? "NET passage loaded successfully. This provider is online-only; no offline copy has been stored."
+        : (selectedProvider === "net-bible" || selectedProvider === "esv")
+          ? providerName + " passage loaded successfully. This provider is online-only; no offline copy has been stored."
           : "Online passage loaded successfully. YouVersion text has not been stored offline."));
   }
 
@@ -673,8 +677,8 @@
       status("Choose a valid authorised translation.");
       return false;
     }
-    if (selectedProvider === "net-bible" && (!Number.isInteger(currentChapter.lastVerse) || currentChapter.lastVerse < 1)) {
-      status("Open the full chapter in the Reader first so the NET provider can request its complete verse range.");
+    if ((selectedProvider === "net-bible" || selectedProvider === "esv") && (!Number.isInteger(currentChapter.lastVerse) || currentChapter.lastVerse < 1)) {
+      status("Open the full chapter in the Reader first so the selected provider can request its complete verse range.");
       return false;
     }
 
@@ -704,7 +708,9 @@
           "/passages/" + reference + "?format=text"
         : selectedProvider === "net-bible"
           ? "/api/net-bible/chapters/" + encodeURIComponent(currentChapter.book) + "/" + currentChapter.chapter + "?lastVerse=" + currentChapter.lastVerse
-          : "/api/api-bible/bibles/" + encodeURIComponent(selectedVersionId) +
+          : selectedProvider === "esv"
+            ? "/api/esv/chapters/" + encodeURIComponent(currentChapter.book) + "/" + currentChapter.chapter + "?lastVerse=" + currentChapter.lastVerse
+            : "/api/api-bible/bibles/" + encodeURIComponent(selectedVersionId) +
             "/chapters/" + encodeURIComponent(reference);
       const payload = await requestJson(path, activeController);
       if (requestId !== requestSequence) return false;
@@ -866,7 +872,7 @@
         return false;
       }
 
-      const providers = ["youversion", "api-bible", "net-bible"];
+      const providers = ["youversion", "api-bible", "net-bible", "esv"];
       const providerFailures = [];
       const passageFailures = [];
       for (const provider of providers) {
@@ -922,7 +928,7 @@
         downloadButton.hidden = !canStoreOffline(provider);
         downloadButton.disabled = !canStoreOffline(provider);
         status(requested + " is available through " +
-          (provider === "youversion" ? "YouVersion" : provider === "net-bible" ? "NET Bible" : "API.Bible") +
+          (provider === "youversion" ? "YouVersion" : provider === "net-bible" ? "NET Bible" : provider === "esv" ? "ESV" : "API.Bible") +
           ". " + (currentChapter ? "Loading this chapter…" : "Open a Bible chapter to display it."));
         if (currentChapter && !await loadPassage()) {
           passageFailures.push(provider === "youversion"
