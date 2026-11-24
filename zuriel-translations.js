@@ -303,7 +303,7 @@
   function updateChapter(detail) {
     if (!detail || typeof detail.book !== "string" ||
         !Number.isInteger(Number(detail.chapter)) || Number(detail.chapter) < 1) return;
-    currentChapter = { book: detail.book, chapter: Number(detail.chapter) };
+    currentChapter = { book: detail.book, chapter: Number(detail.chapter), lastVerse: Array.isArray(detail.verses) ? detail.verses.length : 0 };
     requestSequence++;
     if (activeController) activeController.abort();
     passage.hidden = true;
@@ -673,6 +673,10 @@
       status("Choose a valid authorised translation.");
       return false;
     }
+    if (selectedProvider === "net-bible" && (!Number.isInteger(currentChapter.lastVerse) || currentChapter.lastVerse < 1)) {
+      status("Open the full chapter in the Reader first so the NET provider can request its complete verse range.");
+      return false;
+    }
 
     const reference = bookCode + "." + currentChapter.chapter;
     if (!apiReady) {
@@ -699,7 +703,7 @@
         ? "/api/youversion/bibles/" + encodeURIComponent(selectedVersionId) +
           "/passages/" + reference + "?format=text"
         : selectedProvider === "net-bible"
-          ? "/api/net-bible/chapters/" + encodeURIComponent(currentChapter.book) + "/" + currentChapter.chapter
+          ? "/api/net-bible/chapters/" + encodeURIComponent(currentChapter.book) + "/" + currentChapter.chapter + "?lastVerse=" + currentChapter.lastVerse
           : "/api/api-bible/bibles/" + encodeURIComponent(selectedVersionId) +
             "/chapters/" + encodeURIComponent(reference);
       const payload = await requestJson(path, activeController);
