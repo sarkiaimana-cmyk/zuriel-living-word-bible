@@ -73,6 +73,7 @@ assert.match(smokeTest, /\["youversion", youVersion\]/, "live translation matrix
 assert.match(smokeTest, /\["api-bible", apiBibleVersions\]/, "live translation matrix tests API.Bible");
 assert.match(smokeTest, /\["net-bible", netBibleVersions\]/, "live translation matrix tests NET Bible");
 assert.match(smokeTest, /\/api\/net-bible\/chapters\//, "live NET Bible checks retrieve actual Scripture chapters");
+assert.match(smokeTest, /lastVerse/, "NET live checks verify complete chapter verse ranges");
 assert.ok(!/echo[^\n]*\$CLOUDFLARE_API_TOKEN/i.test(workflow), "workflow must never print the Cloudflare API token");
 assert.ok(!/echo[^\n]*\$ZITE_YVP_APP_KEY/i.test(workflow), "workflow must never print the YouVersion app key");
 assert.ok(!/echo[^\n]*\$API_BIBLE_KEY/i.test(workflow), "workflow must never print the API.Bible key");
