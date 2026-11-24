@@ -80,6 +80,41 @@ jobs:
       - name: Confirm the Cloudflare token account
         run: npx wrangler whoami
 
+      - name: Check provider credentials directly without exposing keys
+        run: |
+          set -euo pipefail
+          if [ -n "$ZITE_YVP_APP_KEY" ]; then
+            YVP_DIRECT_STATUS="$(curl -sS --retry 2 --retry-delay 2 --retry-all-errors \
+              --get --data-urlencode 'language_ranges[]=en' --data-urlencode 'page_size=1' \
+              -A "ZurielLivingWordBible/2.10.3" \
+              -H "X-YVP-App-Key: $ZITE_YVP_APP_KEY" -H "Accept: application/json" \
+              -o .yvp-direct.json -w '%{http_code}' https://api.youversion.com/v1/bibles || true)"
+            if [ "$YVP_DIRECT_STATUS" = "200" ]; then
+              YVP_DIRECT_COUNT="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".yvp-direct.json","utf8"));process.stdout.write(String(Array.isArray(j.data)?j.data.length:0));')"
+              echo "YouVersion direct credential check passed; sample catalogue entries: $YVP_DIRECT_COUNT."
+            else
+              YVP_DIRECT_ERROR="$(node -e 'try{const j=JSON.parse(require("node:fs").readFileSync(".yvp-direct.json","utf8"));process.stdout.write(String(j.message||j.fault?.faultstring||j.error||"no provider detail"));}catch{process.stdout.write("no readable provider response");}')"
+              echo "::warning::YouVersion direct API check returned HTTP $YVP_DIRECT_STATUS: $YVP_DIRECT_ERROR"
+            fi
+          else
+            echo "YouVersion key is already stored on the Worker; direct GitHub-secret check skipped."
+          fi
+
+          if [ -n "$API_BIBLE_KEY" ]; then
+            API_BIBLE_DIRECT_STATUS="$(curl -sS --retry 2 --retry-delay 2 --retry-all-errors \
+              -A "ZurielLivingWordBible/2.10.3" \
+              -H "api-key: $API_BIBLE_KEY" -H "Accept: application/json" \
+              -o .api-bible-direct.json -w '%{http_code}' https://rest.api.bible/v1/bibles || true)"
+            if [ "$API_BIBLE_DIRECT_STATUS" = "200" ]; then
+              echo "API.Bible direct credential check passed."
+            else
+              API_BIBLE_DIRECT_ERROR="$(node -e 'try{const j=JSON.parse(require("node:fs").readFileSync(".api-bible-direct.json","utf8"));process.stdout.write(String(j.message||j.error||"no provider detail"));}catch{process.stdout.write("no readable provider response");}')"
+              echo "::warning::API.Bible direct API check returned HTTP $API_BIBLE_DIRECT_STATUS: $API_BIBLE_DIRECT_ERROR"
+            fi
+          else
+            echo "API.Bible key is already stored on the Worker; direct GitHub-secret check skipped."
+          fi
+
       - name: Register or reuse the account workers.dev subdomain
         run: |
           set -euo pipefail
