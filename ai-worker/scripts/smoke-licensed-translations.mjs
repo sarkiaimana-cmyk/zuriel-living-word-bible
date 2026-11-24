@@ -6,7 +6,7 @@ import { spawnSync } from "node:child_process";
 
 const base = String(process.env.WORKER_URL || "").replace(/\/+$/, "");
 const origin = "https://sarkiaimana-cmyk.github.io";
-const userAgent = "ZurielLivingWordBible/2.10.3 (+https://sarkiaimana-cmyk.github.io/zuriel-living-word-bible)";
+const userAgent = "ZurielLivingWordBible/2.10.4 (+https://sarkiaimana-cmyk.github.io/zuriel-living-word-bible)";
 const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "zuriel-translation-smoke-"));
 let requestNumber = 0;
 process.on("exit", () => fs.rmSync(tempDir, { recursive: true, force: true }));
