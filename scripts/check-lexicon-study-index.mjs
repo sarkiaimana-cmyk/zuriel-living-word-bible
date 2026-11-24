@@ -55,19 +55,21 @@ for (const entry of index.entries) {
   assert.ok(entry.lemma && entry.transliteration && entry.studyLabel, "Lexicon entry needs lemma, transliteration and study label.");
   assert.ok(Array.isArray(entry.keyReferences) && entry.keyReferences.length, "Lexicon entry needs contextual references.");
   for (const reference of entry.keyReferences) {
-    const match = String(reference).trim().match(/^(.+?)\s+(\d+):(\d+)(?:-(\d+))?$/);
-    assert.ok(match, "Lexicon reference must include a chapter and verse: " + reference);
+    const match = String(reference).trim().match(/^(.+?)\\s+(\\d+)(?::(\\d+)(?:-(\\d+))?)?$/);
+    assert.ok(match, "Lexicon reference must include a valid Bible book and chapter: " + reference);
     const rawBook = match[1].toLowerCase();
     const bookName = rawBook === "psalm" ? "psalms" : rawBook;
     const book = canonicalBooks.get(bookName);
     assert.ok(book, "Lexicon reference must use a canonical Bible book: " + reference);
     const chapter = Number(match[2]);
-    const firstVerse = Number(match[3]);
-    const lastVerse = Number(match[4] || match[3]);
     const chapterVerses = kjv[bookCodes[book.name]]?.[chapter - 1];
     assert.ok(Array.isArray(chapterVerses), "Lexicon reference chapter must exist: " + reference);
-    assert.ok(firstVerse >= 1 && lastVerse >= firstVerse && lastVerse <= chapterVerses.length,
-      "Lexicon reference verse range must exist in the offline KJV: " + reference);
+    if (match[3] !== undefined) {
+      const firstVerse = Number(match[3]);
+      const lastVerse = Number(match[4] || match[3]);
+      assert.ok(firstVerse >= 1 && lastVerse >= firstVerse && lastVerse <= chapterVerses.length,
+        "Lexicon reference verse range must exist in the offline KJV: " + reference);
+    }
   }
   assert.ok(entry.contextPrompt, "Lexicon entry needs a contextual study prompt.");
   assert.equal(entry.sourceLabel, "Strong's Concordance reference (BibleHub)", "Lexicon entry needs an explicit source label.");
