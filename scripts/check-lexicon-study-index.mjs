@@ -55,7 +55,7 @@ for (const entry of index.entries) {
   assert.ok(entry.lemma && entry.transliteration && entry.studyLabel, "Lexicon entry needs lemma, transliteration and study label.");
   assert.ok(Array.isArray(entry.keyReferences) && entry.keyReferences.length, "Lexicon entry needs contextual references.");
   for (const reference of entry.keyReferences) {
-    const match = String(reference).trim().match(/^(.+?)\\s+(\\d+)(?::(\\d+)(?:-(\\d+))?)?$/);
+    const match = String(reference).trim().match(/^(.+?)\s+(\d+)(?::(\d+)(?:-(\d+))?)?$/);
     assert.ok(match, "Lexicon reference must include a valid Bible book and chapter: " + reference);
     const rawBook = match[1].toLowerCase();
     const bookName = rawBook === "psalm" ? "psalms" : rawBook;
