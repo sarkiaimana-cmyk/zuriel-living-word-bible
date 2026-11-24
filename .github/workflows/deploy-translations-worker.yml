@@ -166,7 +166,7 @@ jobs:
             exit 1
           fi
 
-API_BIBLE_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
+          API_BIBLE_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
             -o .api-bible-smoke.json -D .api-bible-smoke.headers -w '%{http_code}' \
             -H "Origin: https://sarkiaimana-cmyk.github.io" \
             "$WORKER_URL/api/api-bible/bibles")"
