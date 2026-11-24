@@ -67,9 +67,24 @@ for (const fragment of [
   'Search 25 places by name, region or significance',
   'atlas.places.length + " places and "',
   'atlas.journeys.length + " journeys loaded.',
-  'function parseAtlasReference(reference)',
+  'function parseAtlasReference(reference, inheritedBook)',
   'Historical note: " + place.studyCaution'
 ]) if (!moduleSource.includes(fragment)) failures.push("Expanded offline atlas UI is missing: " + fragment);
+const parserStart = moduleSource.indexOf("function parseAtlasReference(reference, inheritedBook) {");
+const parserEnd = moduleSource.indexOf("\\n  function make(", parserStart);
+if (parserStart < 0 || parserEnd <= parserStart) {
+  failures.push("Atlas Scripture reference parser could not be isolated for runtime checks.");
+} else {
+  const parserSource = moduleSource.slice(parserStart, parserEnd);
+  const parseAtlasReference = vm.runInNewContext(parserSource + "\\nparseAtlasReference;", {});
+  const inherited = parseAtlasReference("12:1-9", "Genesis");
+  const chapterRange = parseAtlasReference("Acts 13–14", "");
+  const chapterOnly = parseAtlasReference("Deuteronomy 34", "");
+  if (!inherited || inherited.book !== "Genesis" || inherited.chapter !== 12 || inherited.verse !== 1) failures.push("Atlas parser must resolve inherited-book references.");
+  if (!chapterRange || chapterRange.book !== "Acts" || chapterRange.chapter !== 13 || chapterRange.verse !== 1) failures.push("Atlas parser must open the first chapter of a chapter-range reference.");
+  if (!chapterOnly || chapterOnly.book !== "Deuteronomy" || chapterOnly.chapter !== 34 || chapterOnly.verse !== 1) failures.push("Atlas parser must open chapter-only references at verse one.");
+}
+if (!moduleSource.includes('"Open the journey passages"')) failures.push("Atlas journeys must expose tappable Scripture references.");
 const ids = new Set();
 for (const region of data?.regions || []) {
   for (const place of region.places || []) {
