@@ -49,7 +49,7 @@ test("NET Bible chapter proxy returns verse text and required attribution", asyn
   const upstream = new URL(requestedUrl);
   assert.equal(upstream.origin + upstream.pathname, "https://labs.bible.org/api/");
   assert.equal(upstream.searchParams.get("passage"), "John 3:1-2");
-  assert.equal(upstream.searchParams.get("type"), "JSON");
+  assert.equal(upstream.searchParams.get("type"), "json");
   assert.equal(upstream.searchParams.get("formatting"), "plain");
   assert.equal(payload.version.abbreviation, "NET");
   assert.equal(payload.passage.reference, "John 3");
