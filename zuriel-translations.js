@@ -923,14 +923,16 @@
         if (currentChapter && !await loadPassage()) {
           passageFailures.push(provider === "youversion"
             ? "YouVersion listed " + requested + " but could not return a usable passage."
-            : "API.Bible listed " + requested + " but could not return a usable passage with publisher attribution and FUMS.");
+            : provider === "net-bible"
+              ? "NET Bible listed " + requested + " but could not return a usable attributed passage."
+              : "API.Bible listed " + requested + " but could not return a usable passage with publisher attribution and FUMS.");
           continue;
         }
         panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
         return true;
       }
 
-      status(requested + " was not found in either provider's currently authorised English catalogue. " +
+      status(requested + " was not found in any connected provider's currently available English catalogue. " +
         providerFailures.join(" ") + " " + passageFailures.join(" ") + " The offline KJV remains available.");
       panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
       return false;
