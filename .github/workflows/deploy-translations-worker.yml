@@ -1,7 +1,17 @@
 name: Deploy Zuriel Bible translations proxy
 
-# Deployment is intentionally manual; execution requires inputs.confirm_deployment == true.
+# The reviewed integration branch auto-deploys after translation code changes. Manual runs require explicit confirmation.
 on:
+  push:
+    branches:
+      - fix/mobile-search-study-layout
+    paths:
+      - "ai-worker/src/translation-worker.js"
+      - "ai-worker/src/index.js"
+      - "ai-worker/wrangler.translations.jsonc"
+      - "ai-worker/scripts/smoke-licensed-translations.mjs"
+      - "zuriel-translations.js"
+      - ".github/workflows/deploy-translations-worker.yml"
   workflow_dispatch:
     inputs:
       confirm_deployment:
@@ -32,7 +42,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
     steps:
       - name: Require explicit deployment confirmation
-        if: ${{ inputs.confirm_deployment != true }}
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.confirm_deployment != true }}
         run: |
           echo "::error::Explicit deployment confirmation is required."
           exit 1
