@@ -75,7 +75,7 @@ jobs:
 
       - name: Test translation proxy safeguards
         run: |
-          node --test test/youversion.test.mjs test/translation-worker.test.mjs test/api-bible.test.mjs test/net-bible.test.mjs
+          node --test test/youversion.test.mjs test/translation-worker.test.mjs test/api-bible.test.mjs test/net-bible.test.mjs test/esv.test.mjs
           node --check scripts/smoke-licensed-translations.mjs
 
       - name: Confirm the Cloudflare token account
@@ -176,7 +176,7 @@ jobs:
             exit 1
           fi
 
-      - name: Install or reuse both provider keys as Worker secrets
+      - name: Install or reuse configured provider keys as Worker secrets
         run: |
           set -euo pipefail
           if ! EXISTING_SECRETS="$(npx wrangler secret list --config wrangler.translations.jsonc --format json)"; then
@@ -187,6 +187,8 @@ jobs:
           YVP_KEY_CLEAN="$(printf '%s' "$ZITE_YVP_APP_KEY" | tr -d '\r\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
           API_BIBLE_KEY_CLEAN="$(printf '%s' "$API_BIBLE_KEY" | tr -d '\r\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
           HAS_API_BIBLE_KEY="$(printf '%s' "$EXISTING_SECRETS" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);process.stdout.write(String(Array.isArray(j)&&j.some(x=>x.name==="API_BIBLE_KEY")));});')"
+          ESV_API_KEY_CLEAN="$(printf '%s' "$ESV_API_KEY" | tr -d '\r\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
+          HAS_ESV_KEY="$(printf '%s' "$EXISTING_SECRETS" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);process.stdout.write(String(Array.isArray(j)&&j.some(x=>x.name==="ESV_API_KEY")));});')"
 
           if [ -n "$YVP_KEY_CLEAN" ]; then
             if ! printf '%s' "$YVP_KEY_CLEAN" | npx wrangler secret put ZITE_YVP_APP_KEY --config wrangler.translations.jsonc; then
@@ -210,6 +212,17 @@ jobs:
           else
             echo "::error::API.Bible key is missing. Add API_BIBLE_KEY as a GitHub Actions secret or install that exact secret on the zuriel-bible-translations Worker."
             exit 1
+          fi
+
+          if [ -n "$ESV_API_KEY_CLEAN" ]; then
+            if ! printf '%s' "$ESV_API_KEY_CLEAN" | npx wrangler secret put ESV_API_KEY --config wrangler.translations.jsonc; then
+              echo "::error::Cloudflare rejected the ESV Worker secret. Check Workers Editor permissions; the key is never printed."
+              exit 1
+            fi
+          elif [ "$HAS_ESV_KEY" = "true" ]; then
+            echo "Reusing the existing Crossway ESV Worker secret without reading its value."
+          else
+            echo "::notice::ESV_API_KEY is not configured. The ESV provider will remain unavailable until a Crossway key is added."
           fi
 
       - name: Deploy the protected translation Worker
