@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
-const [index, wordBatchOne, wordBatchTwo, studyLibrary, loader, worker, html, pkg, release] = await Promise.all([
+const [index, wordBatchOne, wordBatchTwo, studyLibrary, loader, worker, html, pkg, release, studyUi] = await Promise.all([
   readFile(new URL("../data/zuriel-lexicon-study-index.json", import.meta.url), "utf8").then(JSON.parse),
   readFile(new URL("../data/zuriel-original-language-word-studies-batch-1.json", import.meta.url), "utf8").then(JSON.parse),
   readFile(new URL("../data/zuriel-original-language-word-studies-batch-2.json", import.meta.url), "utf8").then(JSON.parse),
@@ -10,7 +10,8 @@ const [index, wordBatchOne, wordBatchTwo, studyLibrary, loader, worker, html, pk
   readFile(new URL("../sw.js", import.meta.url), "utf8"),
   readFile(new URL("../index.html", import.meta.url), "utf8"),
   readFile(new URL("../package.json", import.meta.url), "utf8").then(JSON.parse),
-  readFile(new URL("../version.json", import.meta.url), "utf8").then(JSON.parse)
+  readFile(new URL("../version.json", import.meta.url), "utf8").then(JSON.parse),
+  readFile(new URL("../zuriel-study.js", import.meta.url), "utf8")
 ]);
 assert.equal(index.entries.length, 50, "Expected 50 curated Hebrew/Greek Strong's lookup entries.");
 assert.equal(wordBatchOne.entries.length, 110, "Expected 110 contextual word-study cards in batch one.");
@@ -52,6 +53,8 @@ for (const entry of index.entries) {
 }
 assert.match(index.usageNote, /do not assign a lemma to an English word/i);
 assert.ok(loader.includes("window.ZurielLexiconStudyIndex"));
+assert.ok(studyUi.includes("Open full Strong's lexicon entry online"), "Offline lexicon fallback must link to the full online source.");
+assert.ok(studyUi.includes("offlineEntry.sourceUrl"), "Online lexicon link must use the curated source URL.");
 assert.match(loader, /findById/);
 assert.match(loader, /Duplicate lexicon index ID/);
 assert.ok(html.includes("zuriel-lexicon-index.js"));
