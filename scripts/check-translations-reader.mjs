@@ -32,7 +32,17 @@ requireText(client, "zuriel:chapter-opened", "Reader chapter event integration")
 requireText(client, "window.ZurielVerseOverlay.openExternal(panel)", "YouVersion comparison opens in selected-verse overlay");
 requireText(client, '"/api/youversion/bibles"', "Licensed English version list request");
 requireText(client, '"/api/api-bible/bibles"', "API.Bible English version list request");
+requireText(client, '"/api/net-bible/chapters/"', "NET Bible online chapter request");
+requireText(client, '"/api/esv/chapters/"', "ESV online chapter request");
+requireText(client, 'https://www.esv.org', "Crossway ESV publisher link");
+requireText(client, 'lastVerse: Array.isArray(detail.verses) ? detail.verses.length : 0', "NET Bible requests use the complete verse count from the offline reader");
+requireText(client, '"?lastVerse=" + currentChapter.lastVerse', "NET Bible requests a complete chapter verse range");
+requireText(workerCore, "lastVerse > 176", "NET Bible proxy bounds the requested chapter range");
+requireText(client, 'https://netbible.org', "Required NET Bible publisher link");
 requireText(client, '["api-bible", "API.Bible"]', "API.Bible provider selection option");
+requireText(client, '["net-bible", "NET Bible (Bible.org)"]', "NET Bible provider selection option");
+requireText(client, '["esv", "ESV (Crossway)"]', "ESV provider selection option");
+requireText(client, '(?<!NEW )\\bLIVING TRANSLATION\\b', "Living Bible shortcut must not match New Living Translation");
 requireText(client, "next_page_token", "YouVersion catalogue pagination");
 requireText(workerCore, 'searchParams.set("page_token", token)', "Forward YouVersion continuation tokens using the documented page_token parameter");
 requireText(client, "encodeURIComponent(nextPageToken)", "Safe pagination token encoding");
@@ -53,6 +63,12 @@ requireText(client, 'window.fums("trackView", fumsToken)', "Report API.Bible pas
 requireText(index, 'src="https://pkg.api.bible/fumsV3.min.js"', "Load the official API.Bible FUMS v3 tracker");
 requireText(index, "window.fumsData = window.fumsData || [];", "Queue FUMS reports until the tracker is ready");
 requireText(workerCore, 'searchParams.set("fums-version", "3")', "Request API.Bible FUMS v3 tokens with chapter text");
+requireText(workerCore, 'const NET_BIBLE_BASE = "https://labs.bible.org/api/"', "Official NET Bible Web Service upstream");
+requireText(workerCore, "NET_BIBLE_COPYRIGHT", "NET Bible publisher attribution");
+requireText(workerCore, "handleNetBibleRequest", "NET Bible rate-limited server-side proxy");
+requireText(workerCore, 'const ESV_API_BASE = "https://api.esv.org/v3/passage/text/"', "Official Crossway ESV API upstream");
+requireText(workerCore, "env.ESV_API_KEY", "ESV API key is kept server-side");
+requireText(workerCore, "ESV_BIBLE_COPYRIGHT", "ESV copyright and usage notice");
 requireText(workerCore, "meta: { fumsToken }", "Forward only the API.Bible FUMS token to the client");
 requireText(workerCore, "required Fair Use Management reporting token", "Withhold API.Bible text when FUMS token is missing");
 requireText(client, "API.Bible keeps only the most recently viewed chapter per translation", "Accurate publisher-specific offline storage guidance");
@@ -98,7 +114,7 @@ requireText(client, "metadata.translationApiBase", "Automatic YouVersion endpoin
 requireText(client, "validWorkerEndpoint", "Trusted Cloudflare Worker endpoint validation");
 requireText(client, "zuriel-bible-translations.", "Expected dedicated translation Worker hostname");
 requireText(client, "window.ZurielTranslations", "Translation reader public readiness API");
-requireText(client, 'const providers = ["youversion", "api-bible"]', "Home translation shortcuts search both authorised providers");
+requireText(client, 'const providers = ["youversion", "api-bible", "net-bible", "esv"]', "Home translation shortcuts search all connected providers");
 requireText(client, "providerFailures.join", "Clear provider-specific explanation when a requested version is unavailable");
 requireText(client, "passageFailures.join", "Explain when a listed translation cannot return its passage");
 requireText(client, "if (currentChapter && !await loadPassage())", "Try the second provider when the first provider lists but cannot load a requested translation");
@@ -157,6 +173,8 @@ forbidText(client, /ZITE_YVP_APP_KEY|X-YVP-App-Key|API_BIBLE_KEY|api-key|api\.yo
 requireText(worker, 'from "./index.js"', "Shared tested server-side YouVersion handler");
 requireText(worker, "bibles(?:", "Translation-only route allowlist");
 requireText(worker, "api-bible", "API.Bible route allowlist");
+requireText(worker, "net-bible", "NET Bible route allowlist");
+requireText(worker, "esv", "ESV route allowlist");
 requireText(worker, "handleRequest(request, env, dependencies)", "Shared server-side origin, rate-limit and licence handling");
 requireText(workerCore, 'YVP_BASE + "/bibles/" + selectedVersionId', "Fetch YouVersion Bible metadata to obtain publisher attribution");
 requireText(workerCore, "publisher attribution could not be verified", "Withhold YouVersion passage text if attribution metadata cannot be verified");
@@ -174,6 +192,9 @@ requireText(deployment, "secrets.API_BIBLE_KEY", "Server-side API.Bible secret i
 requireText(deployment, "secret put API_BIBLE_KEY", "API.Bible Worker secret installation when supplied");
 requireText(deployment, "wrangler secret list", "Reuse of existing Cloudflare provider secrets without exposing their values");
 requireText(deployment, "smoke-licensed-translations.mjs", "Live passage verification for every requested translation");
+requireText(deployment, "test/net-bible.test.mjs", "NET Bible provider security tests in deployment workflow");
+requireText(deployment, "test/esv.test.mjs", "ESV provider security tests in deployment workflow");
+requireText(deployment, "ESV_API_KEY", "Optional Crossway key is installed only as a Worker secret");
 requireText(deployment, "wrangler deploy --config wrangler.translations.jsonc", "Dedicated translation Worker deployment");
 forbidText(aiDeployment, /ZITE_YVP_APP_KEY/, "YouVersion app key in the AI-only deployment workflow");
 requireText(packaging, '"zuriel-translations.js"', "Android web packaging entry");
@@ -206,5 +227,5 @@ if (failures.length) {
   failures.forEach(item => console.error(" - " + item));
   process.exitCode = 1;
 } else {
-  console.log("Online translation reader checks passed: both provider selection, live passage fallback, server-only credentials, FUMS v3, publisher attribution, rate limiting, offline cache limits, and Android/offline packaging.");
+  console.log("Online translation reader checks passed: YouVersion, API.Bible, NET and ESV provider selection, live passage fallback, server-only credentials, FUMS v3, publisher attribution, rate limiting, offline cache limits, and Android/offline packaging.");
 }

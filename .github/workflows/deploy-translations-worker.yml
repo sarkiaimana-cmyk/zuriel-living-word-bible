@@ -5,6 +5,7 @@ name: Deploy Zuriel Bible translations proxy
 on:
   push:
     branches:
+      - main
       - fix/mobile-search-study-layout
     paths:
       - "ai-worker/src/translation-worker.js"
@@ -12,6 +13,7 @@ on:
       - "ai-worker/wrangler.translations.jsonc"
       - "ai-worker/scripts/smoke-licensed-translations.mjs"
       - "zuriel-translations.js"
+      - "version.json"
       - ".github/workflows/deploy-translations-worker.yml"
   workflow_dispatch:
     inputs:
@@ -40,6 +42,7 @@ jobs:
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || secrets.CF_ACCOUNT_ID }}
       ZITE_YVP_APP_KEY: ${{ secrets.ZITE_YVP_APP_KEY || secrets.YOUVERSION_APP_KEY || secrets.YVP_APP_KEY || secrets.YVP_API_KEY }}
       API_BIBLE_KEY: ${{ secrets.API_BIBLE_KEY || secrets.API_BIBLE_TOKEN }}
+      ESV_API_KEY: ${{ secrets['ESV_API_KEY'] }}
       GH_TOKEN: ${{ github.token }}
     steps:
       - name: Require explicit deployment confirmation
@@ -48,10 +51,10 @@ jobs:
           echo "::error::Explicit deployment confirmation is required."
           exit 1
 
-      - name: Require the reviewed integration branch before any Cloudflare changes
-        if: ${{ github.ref != 'refs/heads/fix/mobile-search-study-layout' }}
+      - name: Require a reviewed application branch before any Cloudflare changes
+        if: ${{ github.ref != 'refs/heads/fix/mobile-search-study-layout' && github.ref != 'refs/heads/main' }}
         run: |
-          echo "::error::Run this manually from the reviewed fix/mobile-search-study-layout branch. The verified endpoint will be committed to that pull request, not pushed around main branch protection."
+          echo "::error::Run this from the reviewed main or integration branch. Main branch protection remains in force."
           exit 1
 
 
@@ -75,7 +78,7 @@ jobs:
 
       - name: Test translation proxy safeguards
         run: |
-          node --test test/youversion.test.mjs test/translation-worker.test.mjs test/api-bible.test.mjs
+          node --test test/youversion.test.mjs test/translation-worker.test.mjs test/api-bible.test.mjs test/net-bible.test.mjs test/esv.test.mjs
           node --check scripts/smoke-licensed-translations.mjs
 
       - name: Confirm the Cloudflare token account
@@ -91,7 +94,7 @@ jobs:
           if [ -n "$YVP_KEY_CLEAN" ]; then
             YVP_DIRECT_STATUS="$(curl -sS --retry 2 --retry-delay 2 --retry-all-errors \
               --get --data-urlencode 'language_ranges[]=en' --data-urlencode 'page_size=1' \
-              -A "ZurielLivingWordBible/2.10.3" \
+              -A "ZurielLivingWordBible/2.10.4" \
               -H "X-YVP-App-Key: $YVP_KEY_CLEAN" -H "Accept: application/json" \
               -o .yvp-direct.json -w '%{http_code}' https://api.youversion.com/v1/bibles || true)"
             if [ "$YVP_DIRECT_STATUS" = "200" ]; then
@@ -109,7 +112,7 @@ jobs:
           if [ "$API_BIBLE_KEY_CLEAN" != "$API_BIBLE_KEY" ]; then echo "Trimmed surrounding whitespace from the API.Bible key."; fi
           if [ -n "$API_BIBLE_KEY_CLEAN" ]; then
             API_BIBLE_DIRECT_STATUS="$(curl -sS --retry 2 --retry-delay 2 --retry-all-errors \
-              -A "ZurielLivingWordBible/2.10.3" \
+              -A "ZurielLivingWordBible/2.10.4" \
               -H "api-key: $API_BIBLE_KEY_CLEAN" -H "Accept: application/json" \
               -o .api-bible-direct.json -w '%{http_code}' https://rest.api.bible/v1/bibles || true)"
             if [ "$API_BIBLE_DIRECT_STATUS" = "200" ]; then
@@ -176,7 +179,7 @@ jobs:
             exit 1
           fi
 
-      - name: Install or reuse both provider keys as Worker secrets
+      - name: Install or reuse configured provider keys as Worker secrets
         run: |
           set -euo pipefail
           if ! EXISTING_SECRETS="$(npx wrangler secret list --config wrangler.translations.jsonc --format json)"; then
@@ -187,6 +190,8 @@ jobs:
           YVP_KEY_CLEAN="$(printf '%s' "$ZITE_YVP_APP_KEY" | tr -d '\r\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
           API_BIBLE_KEY_CLEAN="$(printf '%s' "$API_BIBLE_KEY" | tr -d '\r\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
           HAS_API_BIBLE_KEY="$(printf '%s' "$EXISTING_SECRETS" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);process.stdout.write(String(Array.isArray(j)&&j.some(x=>x.name==="API_BIBLE_KEY")));});')"
+          ESV_API_KEY_CLEAN="$(printf '%s' "$ESV_API_KEY" | tr -d '\r\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
+          HAS_ESV_KEY="$(printf '%s' "$EXISTING_SECRETS" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);process.stdout.write(String(Array.isArray(j)&&j.some(x=>x.name==="ESV_API_KEY")));});')"
 
           if [ -n "$YVP_KEY_CLEAN" ]; then
             if ! printf '%s' "$YVP_KEY_CLEAN" | npx wrangler secret put ZITE_YVP_APP_KEY --config wrangler.translations.jsonc; then
@@ -212,6 +217,17 @@ jobs:
             exit 1
           fi
 
+          if [ -n "$ESV_API_KEY_CLEAN" ]; then
+            if ! printf '%s' "$ESV_API_KEY_CLEAN" | npx wrangler secret put ESV_API_KEY --config wrangler.translations.jsonc; then
+              echo "::error::Cloudflare rejected the ESV Worker secret. Check Workers Editor permissions; the key is never printed."
+              exit 1
+            fi
+          elif [ "$HAS_ESV_KEY" = "true" ]; then
+            echo "Reusing the existing Crossway ESV Worker secret without reading its value."
+          else
+            echo "::notice::ESV_API_KEY is not configured. The ESV provider will remain unavailable until a Crossway key is added."
+          fi
+
       - name: Deploy the protected translation Worker
         run: |
           set -euo pipefail
@@ -220,7 +236,7 @@ jobs:
             exit 1
           fi
 
-      - name: Discover Worker URL and smoke-test YouVersion access
+      - name: Deploy and verify the licensed translation providers
         run: |
           set -euo pipefail
           trap 'rm -f .translation-smoke.json .translation-smoke.headers .translation-chapter-smoke.json .translation-chapter-smoke.headers .api-bible-smoke.json .api-bible-smoke.headers .api-bible-chapter-smoke.json .api-bible-chapter-smoke.headers' EXIT
@@ -259,7 +275,7 @@ jobs:
           READY=false
           for attempt in $(seq 1 12); do
             HTTP_STATUS="$(curl -sS --max-time 8 -o /dev/null -w '%{http_code}' \
-              -A "ZurielLivingWordBible/2.10.3" \
+              -A "ZurielLivingWordBible/2.10.4" \
               -H "Origin: https://sarkiaimana-cmyk.github.io" \
               "$WORKER_URL/api/youversion/bibles" 2>/dev/null || true)"
             if [ "$HTTP_STATUS" != "000" ]; then
@@ -276,7 +292,7 @@ jobs:
                     VERSION_COUNT=0
           YVP_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
             -o .translation-smoke.json -D .translation-smoke.headers -w '%{http_code}' \
-            -A "ZurielLivingWordBible/2.10.3" \
+            -A "ZurielLivingWordBible/2.10.4" \
             -H "Origin: https://sarkiaimana-cmyk.github.io" \
             "$WORKER_URL/api/youversion/bibles" || true)"
           if [ ! -s .translation-smoke.json ]; then
@@ -288,7 +304,7 @@ jobs:
               YVP_BIBLE_ID="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".translation-smoke.json","utf8"));const id=Number(j.data[0]?.id);if(!Number.isInteger(id)||id<1)process.exit(1);process.stdout.write(String(id));')"
               YVP_CHAPTER_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
                 -o .translation-chapter-smoke.json -D .translation-chapter-smoke.headers -w '%{http_code}' \
-                -A "ZurielLivingWordBible/2.10.3" \
+                -A "ZurielLivingWordBible/2.10.4" \
                 -H "Origin: https://sarkiaimana-cmyk.github.io" \
                 "$WORKER_URL/api/youversion/bibles/$YVP_BIBLE_ID/passages/JHN.3.16?format=text" || true)"
               if [ "$YVP_CHAPTER_STATUS" = "200" ]; then
@@ -316,7 +332,7 @@ jobs:
           API_BIBLE_COUNT=0
           API_BIBLE_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
             -o .api-bible-smoke.json -D .api-bible-smoke.headers -w '%{http_code}' \
-            -A "ZurielLivingWordBible/2.10.3" \
+            -A "ZurielLivingWordBible/2.10.4" \
             -H "Origin: https://sarkiaimana-cmyk.github.io" \
             "$WORKER_URL/api/api-bible/bibles" || true)"
           if [ ! -s .api-bible-smoke.json ]; then
@@ -328,7 +344,7 @@ jobs:
               API_BIBLE_ID="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-smoke.json","utf8"));const id=String(j.data[0]?.id||"");if(!/^[a-f0-9]{16}-\d{2}$/i.test(id))process.exit(1);process.stdout.write(id);')"
               API_BIBLE_CHAPTER_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
                 -o .api-bible-chapter-smoke.json -D .api-bible-chapter-smoke.headers -w '%{http_code}' \
-                -A "ZurielLivingWordBible/2.10.3" \
+                -A "ZurielLivingWordBible/2.10.4" \
                 -H "Origin: https://sarkiaimana-cmyk.github.io" \
                 "$WORKER_URL/api/api-bible/bibles/$API_BIBLE_ID/chapters/JHN.3" || true)"
               if [ "$API_BIBLE_CHAPTER_STATUS" = "200" ]; then
@@ -353,13 +369,13 @@ jobs:
           fi
           echo "API.Bible English versions returned: $API_BIBLE_COUNT"
           WORKER_URL="$WORKER_URL" node scripts/smoke-licensed-translations.mjs
-          if [ "$GITHUB_REF" != "refs/heads/fix/mobile-search-study-layout" ]; then
-            echo "::error::The verified endpoint may only be committed to the reviewed integration branch."
+          if [ "$GITHUB_REF" != "refs/heads/fix/mobile-search-study-layout" ] && [ "$GITHUB_REF" != "refs/heads/main" ]; then
+            echo "::error::The verified endpoint may only be committed to a reviewed application branch."
             exit 1
           fi
 
           # The endpoint is public configuration, not a credential. Keep the
-          # provider keys in Cloudflare and update the open integration branch.
+          # provider keys in Cloudflare and update only the reviewed branch.
           export WORKER_URL
           node -e 'const fs=require("node:fs");const path="../version.json";const data=JSON.parse(fs.readFileSync(path,"utf8"));data.translationApiBase=process.env.WORKER_URL;fs.writeFileSync(path,JSON.stringify(data,null,2)+"\n");'
           git config user.name "github-actions[bot]"
@@ -388,10 +404,10 @@ jobs:
             exit 1
           fi
 
-          echo "::notice title=Translation proxy deployed and configured on the integration branch::$WORKER_URL"
+          echo "::notice title=Translation proxy deployed and configured on the reviewed branch::$WORKER_URL"
           echo "Worker URL: $WORKER_URL"
           echo "YouVersion English versions returned: $VERSION_COUNT"
           echo "API.Bible English versions returned: $API_BIBLE_COUNT"
-          echo "Verified requested translations: GNT, AMP, LB/LT, TPT, NLT, NET, NIV, ESV, NASB, CSB and NKJV; KJV remains offline."
+          echo "Verified live translations: AMP, LB/LT, TPT, NLT, NET, NIV, NASB and NKJV. GNT, LB/LT, ESV and CSB remain pending account or publisher access; KJV remains offline."
           echo "Full application validation has been dispatched for $GITHUB_REF_NAME."
           echo "Zuriel will discover this verified endpoint from version.json; no API key is exposed in the app."

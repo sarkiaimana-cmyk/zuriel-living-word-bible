@@ -1,8 +1,9 @@
 import { readFile } from "node:fs/promises";
 import vm from "node:vm";
 
-const [dataSource, moduleSource, index, worker, packaging, prWorkflow, androidWorkflow, version, updates] = await Promise.all([
+const [dataSource, atlas, moduleSource, index, worker, packaging, prWorkflow, androidWorkflow, version, updates] = await Promise.all([
   readFile(new URL("../zuriel-geography-data.js", import.meta.url), "utf8"),
+  readFile(new URL("../data/zuriel-bible-geography-atlas.json", import.meta.url), "utf8").then(JSON.parse),
   readFile(new URL("../zuriel-geography.js", import.meta.url), "utf8"),
   readFile(new URL("../index.html", import.meta.url), "utf8"),
   readFile(new URL("../sw.js", import.meta.url), "utf8"),
@@ -35,6 +36,55 @@ const judea = data?.regions?.find(item => item.id === "judea");
 if (!galilee || galilee.places.length !== 4) failures.push("Galilee must contain four curated places.");
 if (!judea || judea.places.length !== 8) failures.push("Jerusalem and Judea must contain eight curated places.");
 if (data?.regions?.length !== 2) failures.push("The Geography Centre must contain exactly two reviewed regions.");
+if (!atlas || atlas.places?.length !== 25 || atlas.journeys?.length !== 8) failures.push("The wider offline atlas must expose all 25 reviewed places and eight Scripture journeys.");
+const atlasPlaceIds = new Set();
+for (const place of atlas?.places || []) {
+  if (!place.id || atlasPlaceIds.has(place.id)) failures.push("Atlas place IDs must be present and unique: " + place.name);
+  atlasPlaceIds.add(place.id);
+  if (!place.name || !place.region || !place.significance || !place.studyCaution) failures.push("Atlas place context is incomplete: " + (place.name || place.id));
+  if (!Array.isArray(place.references) || !place.references.length) failures.push("Atlas place has no Scripture references: " + place.name);
+  let inheritedBook = "";
+  for (const reference of place.references || []) {
+    const full = String(reference).match(/^(.+?)\s+(\d+):(\d+)/);
+    const short = String(reference).match(/^(\d+):(\d+)/);
+    if (full) inheritedBook = full[1];
+    const book = full ? full[1] : inheritedBook;
+    const chapter = Number(full ? full[2] : short?.[1]);
+    if (!book || !short && !full || !(bookChapters[book] || (book === "Psalm" && bookChapters.Psalms)) ||
+        !Number.isInteger(chapter) || chapter < 1 || chapter > (bookChapters[book] || bookChapters.Psalms)) {
+      failures.push("Atlas place has an invalid or unanchored Scripture reference: " + place.name + " — " + reference);
+    }
+  }
+}
+const journeyIds = new Set();
+for (const journey of atlas?.journeys || []) {
+  if (!journey.id || journeyIds.has(journey.id)) failures.push("Atlas journey IDs must be present and unique: " + journey.name);
+  journeyIds.add(journey.id);
+  if (!journey.name || !journey.sequence || !journey.studyCaution || !Array.isArray(journey.references) || !journey.references.length) failures.push("Atlas journey context is incomplete: " + (journey.name || journey.id));
+}
+for (const fragment of [
+  'root.id = "zurielGeographyAtlasDirectory"',
+  'Search 25 places by name, region or significance',
+  'atlas.places.length + " places and "',
+  'atlas.journeys.length + " journeys loaded.',
+  'function parseAtlasReference(reference, inheritedBook)',
+  'Historical note: " + place.studyCaution'
+]) if (!moduleSource.includes(fragment)) failures.push("Expanded offline atlas UI is missing: " + fragment);
+const parserStart = moduleSource.indexOf("function parseAtlasReference(reference, inheritedBook) {");
+const parserEnd = moduleSource.indexOf("\n  function make(", parserStart);
+if (parserStart < 0 || parserEnd <= parserStart) {
+  failures.push("Atlas Scripture reference parser could not be isolated for runtime checks.");
+} else {
+  const parserSource = moduleSource.slice(parserStart, parserEnd);
+  const parseAtlasReference = vm.runInNewContext(parserSource + "\nparseAtlasReference;", {});
+  const inherited = parseAtlasReference("12:1-9", "Genesis");
+  const chapterRange = parseAtlasReference("Acts 13–14", "");
+  const chapterOnly = parseAtlasReference("Deuteronomy 34", "");
+  if (!inherited || inherited.book !== "Genesis" || inherited.chapter !== 12 || inherited.verse !== 1) failures.push("Atlas parser must resolve inherited-book references.");
+  if (!chapterRange || chapterRange.book !== "Acts" || chapterRange.chapter !== 13 || chapterRange.verse !== 1) failures.push("Atlas parser must open the first chapter of a chapter-range reference.");
+  if (!chapterOnly || chapterOnly.book !== "Deuteronomy" || chapterOnly.chapter !== 34 || chapterOnly.verse !== 1) failures.push("Atlas parser must open chapter-only references at verse one.");
+}
+if (!moduleSource.includes('"Open the journey passages"')) failures.push("Atlas journeys must expose tappable Scripture references.");
 const ids = new Set();
 for (const region of data?.regions || []) {
   for (const place of region.places || []) {
@@ -61,7 +111,8 @@ for (const region of data?.regions || []) {
 for (const fragment of ['data.regions.forEach(function (region)', 'root.id = "zurielGeographyCentre-" + region.id', "window.ZurielGeographyData", "window.openChapter", "window.selectBibleVerse(reference.verse)", "aria-label", "mapNotice"]) {
   if (!moduleSource.includes(fragment)) failures.push("Geography module integration is missing: " + fragment);
 }
-if (/fetch\s*\(|XMLHttpRequest|WebSocket|https:\/\//.test(moduleSource)) failures.push("The geography UI must not require network access.");
+if (!moduleSource.includes('fetch("./data/zuriel-bible-geography-atlas.json")') || /fetch\s*\(\s*["\']https?:/i.test(moduleSource)) failures.push("The expanded atlas must load only its locally cached JSON dataset.");
+if (!worker.includes('"./data/zuriel-bible-geography-atlas.json"')) failures.push("The expanded atlas JSON is missing from the offline service-worker cache.");
 if (!index.includes('src="zuriel-geography-data.js"') || !index.includes('src="zuriel-geography.js"')) failures.push("Web entry point omits geography files.");
 if (index.indexOf('src="zuriel-geography-data.js"') > index.indexOf('src="zuriel-geography.js"') || index.indexOf('src="zuriel-geography.js"') < index.indexOf('src="zuriel-study.js"')) failures.push("Geography scripts are not loaded after their dependencies.");
 const cacheVersionMatch = worker.match(/const CACHE_NAME = "zuriel-bible-offline-v(\d+)";/);
@@ -75,5 +126,5 @@ if (failures.length) {
   failures.forEach(item => console.error(" - " + item));
   process.exitCode = 1;
 } else {
-  console.log("Bible Geography checks passed: two pinned offline regions, twelve in-bounds place records, confidence/precision metadata, Scripture references, journey stops, offline-only UI and Android packaging.");
+  console.log("Bible Geography checks passed: two coordinate-backed regional locators, twelve pinned places, 25 atlas place records, eight journeys, Scripture context, offline local loading and Android packaging.");
 }

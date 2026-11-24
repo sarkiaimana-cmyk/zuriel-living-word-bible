@@ -8,11 +8,11 @@ const smokeTest = fs.readFileSync("ai-worker/scripts/smoke-licensed-translations
 
 assert.match(workflow, /workflow_dispatch:/, "manual deployment reruns remain available");
 assert.match(workflow, /github\.event_name == 'workflow_dispatch' && inputs\.confirm_deployment != true/, "manual deployment requires explicit confirmation");
-assert.match(workflow, /push:\s+branches:\s+- fix\/mobile-search-study-layout/, "reviewed integration branch automatically deploys translation code changes");
-assert.match(workflow, /github\.ref != 'refs\/heads\/fix\/mobile-search-study-layout'/, "deployment is restricted to the reviewed integration branch");
+assert.match(workflow, /push:\s+branches:\s+- main\s+- fix\/mobile-search-study-layout/, "reviewed main and integration branches automatically deploy translation code changes");
+assert.match(workflow, /github\.ref != 'refs\/heads\/fix\/mobile-search-study-layout' && github\.ref != 'refs\/heads\/main'/, "deployment is restricted to reviewed application branches");
 assert.equal(workflow.split("\n").filter(line => /\\\\$/.test(line)).length, 0,
   "deployment shell commands must use single backslashes for line continuations");
-assert.ok(workflow.indexOf("Require the reviewed integration branch before any Cloudflare changes") < workflow.indexOf("Bootstrap the fail-closed Worker"), "branch guard runs before Cloudflare changes");
+assert.ok(workflow.indexOf("Require a reviewed application branch before any Cloudflare changes") < workflow.indexOf("Bootstrap the fail-closed Worker"), "branch guard runs before Cloudflare changes");
 assert.match(workflow, /actions: write/, "deployment can dispatch the follow-up validation workflow");
 assert.match(workflow, /GH_TOKEN: \$\{\{ github\.token \}\}/, "GitHub CLI receives the scoped workflow token");
 for (const alias of ["CF_API_TOKEN", "CF_ACCOUNT_ID", "CLOUDFLARE_TOKEN", "YOUVERSION_APP_KEY", "YVP_APP_KEY", "YVP_API_KEY", "API_BIBLE_TOKEN"]) {
@@ -30,6 +30,10 @@ for (const secret of ["ZITE_YVP_APP_KEY", "API_BIBLE_KEY"]) {
   assert.match(workflow, new RegExp("secret put " + secret), "deployment installs " + secret + " only as a Worker secret");
 }
 assert.match(workflow, /test\/api-bible\.test\.mjs/, "deployment runs API.Bible provider security tests");
+assert.match(workflow, /test\/net-bible\.test\.mjs/, "deployment runs NET Bible provider security tests");
+assert.match(workflow, /test\/esv\.test\.mjs/, "deployment runs Crossway ESV provider security tests");
+assert.match(workflow, /ESV_API_KEY/, "Crossway ESV key is optional and stored as a Worker secret");
+assert.match(workflow, /test\/esv\.test\.mjs/, "deployment runs Crossway ESV provider security tests");
 assert.match(workflow, /smoke-licensed-translations\.mjs/, "deployment live-tests every requested translation");
 assert.match(workflow, /node --check scripts\/smoke-licensed-translations\.mjs/, "deployment syntax-checks the live translation smoke test");
 assert.match(workflow, /workers\/subdomain/, "deployment discovers the account workers.dev subdomain");
@@ -55,19 +59,28 @@ assert.match(workflow, /Worker URL: \$WORKER_URL/, "deployment reports the exact
 assert.match(workflow, /contents: write/, "deployment can save the verified public endpoint");
 assert.match(workflow, /translationApiBase=process\.env\.WORKER_URL/, "deployment writes the verified Worker URL into version.json");
 assert.ok(workflow.includes('JSON.stringify(data,null,2)+"\\n"'), "deployment writes a valid JSON newline when saving version.json");
-assert.match(workflow, /git push origin "HEAD:\$GITHUB_REF_NAME"/, "deployment commits the endpoint to the reviewed integration branch");
+assert.match(workflow, /git push origin "HEAD:\$GITHUB_REF_NAME"/, "deployment commits the endpoint only to the reviewed application branch");
 assert.match(workflow, /gh workflow run validate-pr\.yml --ref "\$GITHUB_REF_NAME"/, "deployment dispatches full validation after endpoint configuration");
-assert.match(workflow, /raw\.githubusercontent\.com\/sarkiaimana-cmyk\/zuriel-living-word-bible\/\$GITHUB_REF_NAME\/version\.json/, "deployment verifies endpoint metadata on the same integration branch");
+assert.match(workflow, /raw\.githubusercontent\.com\/sarkiaimana-cmyk\/zuriel-living-word-bible\/\$GITHUB_REF_NAME\/version\.json/, "deployment verifies endpoint metadata on the same reviewed branch");
 assert.match(workflow, /REMOTE_CONFIG/, "deployment verifies the public release metadata after saving");
 assert.match(workflow, /YouVersion English versions returned:/, "deployment reports the YouVersion catalogue count");
 assert.match(workflow, /API\.Bible English versions returned:/, "deployment reports the API.Bible catalogue count");
 for (const abbreviation of ["GNT", "AMP", "LB/LT", "TPT", "NLT", "NET", "NIV", "ESV", "NASB", "CSB", "NKJV"]) {
   assert.ok(smokeTest.includes(abbreviation), "live translation matrix includes " + abbreviation);
 }
-assert.match(smokeTest, /assert\.deepEqual\(missing, \[\]/, "deployment refuses to publish until every requested translation has a real passage");
+assert.match(smokeTest, /assert\.deepEqual\(missingRequired, \[\]/, "deployment requires the core verified translation set before publishing");
+assert.match(smokeTest, /optionalPending/, "unlicensed GNT, LB/LT, ESV and CSB remain explicitly pending without blocking verified translations");
+assert.match(smokeTest, /new Set\(\["GNT", "LB\/LT", "ESV", "CSB"\]\)/, "Living Bible must remain separate from NLT until a real TLB/LB source is licensed");
 assert.match(smokeTest, /fumsToken/, "live API.Bible passage checks require FUMS v3");
 assert.match(smokeTest, /\["youversion", youVersion\]/, "live translation matrix tests YouVersion");
 assert.match(smokeTest, /\["api-bible", apiBibleVersions\]/, "live translation matrix tests API.Bible");
+assert.match(smokeTest, /\["net-bible", netBibleVersions\]/, "live translation matrix tests NET Bible");
+assert.match(smokeTest, /\["esv", esvVersions\]/, "live translation matrix tests ESV when its key is configured");
+assert.match(smokeTest, /\/api\/esv\/chapters\//, "live ESV checks retrieve actual Scripture chapters");
+assert.match(smokeTest, /\["esv", esvVersions\]/, "live translation matrix tests ESV when its key is configured");
+assert.match(smokeTest, /\/api\/esv\/chapters\//, "live ESV checks retrieve actual Scripture chapters");
+assert.match(smokeTest, /\/api\/net-bible\/chapters\//, "live NET Bible checks retrieve actual Scripture chapters");
+assert.match(smokeTest, /lastVerse/, "NET live checks verify complete chapter verse ranges");
 assert.ok(!/echo[^\n]*\$CLOUDFLARE_API_TOKEN/i.test(workflow), "workflow must never print the Cloudflare API token");
 assert.ok(!/echo[^\n]*\$ZITE_YVP_APP_KEY/i.test(workflow), "workflow must never print the YouVersion app key");
 assert.ok(!/echo[^\n]*\$API_BIBLE_KEY/i.test(workflow), "workflow must never print the API.Bible key");
@@ -75,6 +88,6 @@ assert.ok(!/echo[^\n]*\$API_BIBLE_KEY/i.test(workflow), "workflow must never pri
 assert.equal(config.name, "zuriel-bible-translations", "Worker name matches the discovered URL");
 assert.ok(config.vars.ALLOWED_ORIGINS.includes("https://sarkiaimana-cmyk.github.io"), "GitHub Pages is an allowed CORS origin");
 assert.ok(config.ratelimits.some(item => item.name === "TRANSLATION_RATE_LIMIT" && item.simple.limit === 40 && item.simple.period === 60), "Worker retains the complete-catalogue smoke-test rate limit");
-assert.ok(worker.includes("(?:youversion|api-bible)"), "Worker allows only the YouVersion and API.Bible translation routes");
+assert.ok(worker.includes("net-bible"), "Worker allows the protected NET Bible translation route");
 
-console.log("Translation deployment checks passed: automatic reviewed-branch deployment, confirmed manual reruns, provider fallback, all requested live translation checks, FUMS v3, protected-branch endpoint handoff and security safeguards.");
+console.log("Translation deployment checks passed: automatic reviewed-branch deployment, confirmed manual reruns, YouVersion/API.Bible/NET/ESV provider fallback, verified live passage checks, FUMS v3, protected-branch endpoint handoff and security safeguards.");

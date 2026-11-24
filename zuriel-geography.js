@@ -32,6 +32,11 @@
       .zuriel-geography .zg-stop{display:block;width:100%;margin:7px 0}
       .zuriel-geography .zg-status{min-height:22px;color:#355c45;font:13px/1.5 Arial,sans-serif}
       .zuriel-geography .zg-attribution{font:11px/1.5 Arial,sans-serif;color:#697584;margin-top:12px}
+      .zuriel-geography .zg-search{width:100%;min-height:44px;padding:10px;border:1px solid #cbd3d5;border-radius:9px;background:#fff;color:#20364b;font:14px Arial,sans-serif;margin:8px 0}
+      .zuriel-geography .zg-atlas-result{display:block;width:100%;min-height:44px;margin:6px 0;padding:10px;border:1px solid #d4d0c5;border-radius:9px;background:#fff;color:#20364b;text-align:left;font:600 13px/1.5 Arial,sans-serif}
+      .zuriel-geography .zg-atlas-result small{display:block;color:#66727d;font-weight:400}
+      .zuriel-geography .zg-atlas-detail{margin:10px 0;padding:12px;border:1px solid #d8d4c9;border-radius:10px;background:#fff}
+      .zuriel-geography .zg-atlas-detail p{font:13px/1.6 Arial,sans-serif;color:#566577}
       @media(max-width:420px){.zuriel-geography .zg-places{grid-template-columns:1fr}.zuriel-geography .zg-content{padding:11px}}
     `;
     document.head.appendChild(style);
@@ -136,6 +141,127 @@
     renderPlace(initial);
   });
 
+  async function loadAtlasDirectory() {
+    if (document.getElementById("zurielGeographyAtlasDirectory")) return;
+    const root = make("details", "zuriel-geography");
+    root.id = "zurielGeographyAtlasDirectory";
+    root.appendChild(make("summary", "", "📚 Explore the wider Bible Atlas — places & journeys"));
+    const content = make("div", "zg-content");
+    content.appendChild(make("h3", "zg-title", "Biblical places and journeys"));
+    content.appendChild(make("p", "zg-copy", "Explore the wider study atlas without implying that every ancient location or route has a securely known modern coordinate."));
+    const search = make("input", "zg-search");
+    search.type = "search";
+    search.placeholder = "Search 25 places by name, region or significance…";
+    search.setAttribute("aria-label", "Search biblical atlas places");
+    const results = make("div", "zg-places");
+    const detail = make("section", "zg-atlas-detail");
+    detail.setAttribute("aria-live", "polite");
+    const journeys = make("div", "zg-journey");
+    const status = make("p", "zg-status", "Loading the offline Bible atlas…");
+    const retry = make("button", "zg-reference", "Retry atlas loading");
+    retry.type = "button";
+    retry.hidden = true;
+    content.append(search, results, detail, make("h4", "zg-title", "Scripture journeys"), journeys, status, retry);
+    root.appendChild(content);
+    if (previous && previous.parentNode) previous.parentNode.insertBefore(root, previous.nextSibling);
+    else panel.appendChild(root);
+    previous = root;
+
+    let atlas = null;
+    function renderPlaces() {
+      const query = search.value.trim().toLocaleLowerCase();
+      const matches = (atlas.places || []).filter(place =>
+        [place.name, place.region, place.significance, ...(place.references || [])]
+          .some(value => String(value || "").toLocaleLowerCase().includes(query)));
+      results.replaceChildren();
+      matches.forEach(place => {
+        const button = make("button", "zg-atlas-result");
+        button.type = "button";
+        button.appendChild(make("strong", "", place.name));
+        button.appendChild(make("small", "", place.region));
+        button.addEventListener("click", () => renderAtlasPlace(place));
+        results.appendChild(button);
+      });
+      status.textContent = matches.length + " of " + atlas.places.length + " atlas places shown.";
+      if (!matches.length) results.appendChild(make("p", "zg-copy", "No matching place. Try another name or region."));
+    }
+    function renderAtlasPlace(place) {
+      detail.replaceChildren();
+      detail.appendChild(make("h4", "", place.name));
+      detail.appendChild(make("p", "zg-copy", place.region + " • " + place.modernOrientation + " (present-day orientation only)"));
+      detail.appendChild(make("p", "zg-copy", place.significance));
+      detail.appendChild(make("p", "zg-copy", "Historical note: " + place.studyCaution));
+      detail.appendChild(make("strong", "", "Read the related passages"));
+      let inheritedBook = "";
+      (place.references || []).forEach(reference => {
+        const parsed = parseAtlasReference(reference, inheritedBook);
+        if (parsed) inheritedBook = parsed.book;
+        const button = make("button", "zg-reference", reference);
+        button.type = "button";
+        if (parsed) button.addEventListener("click", () => openReference(parsed, status));
+        else button.disabled = true;
+        detail.appendChild(button);
+      });
+    }
+    function renderJourneys() {
+      journeys.replaceChildren();
+      (atlas.journeys || []).forEach(journey => {
+        const section = make("section", "zg-atlas-detail");
+        section.appendChild(make("h4", "", journey.name));
+        section.appendChild(make("p", "zg-copy", journey.sequence));
+        section.appendChild(make("strong", "", "Open the journey passages"));
+        const referenceList = make("div", "zg-refs");
+        let inheritedBook = "";
+        (journey.references || []).forEach(reference => {
+          const parsed = parseAtlasReference(reference, inheritedBook);
+          if (parsed) inheritedBook = parsed.book;
+          const button = make("button", "zg-reference", reference);
+          button.type = "button";
+          if (parsed) button.addEventListener("click", () => openReference(parsed, status));
+          else button.disabled = true;
+          referenceList.appendChild(button);
+        });
+        section.appendChild(referenceList);
+        section.appendChild(make("p", "zg-copy", "Historical note: " + journey.studyCaution));
+        journeys.appendChild(section);
+      });
+    }
+    async function load() {
+      retry.hidden = true;
+      status.textContent = "Loading the offline Bible atlas…";
+      try {
+        const response = await fetch("./data/zuriel-bible-geography-atlas.json");
+        if (!response.ok) throw new Error("Atlas data unavailable (HTTP " + response.status + ").");
+        const payload = await response.json();
+        if (!payload || !Array.isArray(payload.places) || !Array.isArray(payload.journeys)) {
+          throw new Error("Atlas data has an unsupported structure.");
+        }
+        atlas = payload;
+        renderPlaces();
+        renderJourneys();
+        if (atlas.places.length) renderAtlasPlace(atlas.places[0]);
+        status.textContent = atlas.places.length + " places and " + atlas.journeys.length + " journeys loaded. Search or select a place to explore.";
+      } catch (error) {
+        status.textContent = "The wider atlas could not be loaded. The regional maps and offline Bible remain available.";
+        retry.hidden = false;
+      }
+    }
+    search.addEventListener("input", () => { if (atlas) renderPlaces(); });
+    retry.addEventListener("click", load);
+    await load();
+  }
+
+  function parseAtlasReference(reference, inheritedBook) {
+    const value = String(reference || "").trim();
+    const full = value.match(/^(.+?)\s+(\d+)(?::(\d+))?/);
+    const short = value.match(/^(\d+)(?::(\d+))?/);
+    const book = full ? full[1] : String(inheritedBook || "");
+    const chapter = Number(full ? full[2] : short && short[1]);
+    const verse = Number(full ? full[3] || 1 : short && short[2] || 1);
+    if (!book || !chapter || !verse) return null;
+    return { book, chapter, verse };
+  }
+
   function make(tag, className, text) {
     const element = document.createElement(tag);
     if (className) element.className = className;
@@ -170,5 +296,6 @@
       statusElement.textContent = error.message || "That passage could not be opened. Please try again.";
     }
   }
+  loadAtlasDirectory();
   console.log("Zuriel Bible Geography Centre loaded: " + data.regions.length + " offline regions.");
 })();

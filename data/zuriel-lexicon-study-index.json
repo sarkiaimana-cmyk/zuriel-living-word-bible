@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "title": "Zuriel Hebrew and Greek Lexicon Study Index",
   "status": "curated-reference-index",
-  "usageNote": "This index supplies lookup keys and study prompts only. Always retrieve the full lemma, senses, transliteration and morphology from the linked lexicon/interlinear source. A Strong's number is an index, not a complete definition. Meanings vary by context; do not assign a lemma to an English word unless the verse-level source alignment verifies it.",
+  "usageNote": "This index supplies lookup keys and study prompts only. Always retrieve the full lemma, senses, transliteration and morphology from the linked lexicon/interlinear source. A Strong's number is an index, not a complete definition. Meanings vary by context; do not assign a lemma to an English word unless the verse-level source alignment verifies it. Each entry links to a full online Strong's reference; the full lexicon record and detailed morphology are not bundled offline. Read every cited passage in context.",
   "entries": [
     {
       "id": "H3068",
@@ -19,7 +19,9 @@
         "Exodus 6:2-8",
         "Psalm 83:18"
       ],
-      "contextPrompt": "Study how the name is revealed in its narrative and covenant setting. Respect the distinction between the Hebrew name and English translation conventions."
+      "contextPrompt": "Study how the name is revealed in its narrative and covenant setting. Respect the distinction between the Hebrew name and English translation conventions.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/hebrew/3068.htm"
     },
     {
       "id": "H430",
@@ -36,7 +38,9 @@
         "Deuteronomy 6:4",
         "Psalm 82:1"
       ],
-      "contextPrompt": "The form and meaning must be interpreted from syntax and context; do not assume the same English rendering in every occurrence."
+      "contextPrompt": "The form and meaning must be interpreted from syntax and context; do not assume the same English rendering in every occurrence.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/hebrew/430.htm"
     },
     {
       "id": "H2617",
@@ -54,7 +58,9 @@
         "Ruth 1:8",
         "Psalm 136"
       ],
-      "contextPrompt": "Explore the relational and covenant setting. No single English gloss captures every use."
+      "contextPrompt": "Explore the relational and covenant setting. No single English gloss captures every use.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/hebrew/2617.htm"
     },
     {
       "id": "H7965",
@@ -72,7 +78,9 @@
         "Isaiah 9:6",
         "Jeremiah 29:7"
       ],
-      "contextPrompt": "Read whether the passage concerns greeting, safety, communal well-being, reconciliation or peace."
+      "contextPrompt": "Read whether the passage concerns greeting, safety, communal well-being, reconciliation or peace.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/hebrew/7965.htm"
     },
     {
       "id": "H530",
@@ -90,7 +98,9 @@
         "Habakkuk 2:4",
         "Psalm 36:5"
       ],
-      "contextPrompt": "Compare the passage's emphasis on reliability, faithful conduct or trust; avoid forcing one English gloss."
+      "contextPrompt": "Compare the passage's emphasis on reliability, faithful conduct or trust; avoid forcing one English gloss.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/hebrew/530.htm"
     },
     {
       "id": "H571",
@@ -108,7 +118,9 @@
         "Psalm 25:5",
         "Proverbs 3:3"
       ],
-      "contextPrompt": "Observe whether the word describes truthful speech, dependable character or covenant reliability."
+      "contextPrompt": "Observe whether the word describes truthful speech, dependable character or covenant reliability.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/hebrew/571.htm"
     },
     {
       "id": "H7307",
@@ -126,7 +138,9 @@
         "Ezekiel 37:1-14",
         "Psalm 51:11"
       ],
-      "contextPrompt": "The word has a broad semantic range. Determine from grammar and context whether wind, breath or spirit is intended."
+      "contextPrompt": "The word has a broad semantic range. Determine from grammar and context whether wind, breath or spirit is intended.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/hebrew/7307.htm"
     },
     {
       "id": "H1847",
@@ -143,7 +157,9 @@
         "Hosea 4:6",
         "Isaiah 11:2"
       ],
-      "contextPrompt": "Study the relationship between knowledge, covenant faithfulness and wise action in the surrounding passage."
+      "contextPrompt": "Study the relationship between knowledge, covenant faithfulness and wise action in the surrounding passage.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/hebrew/1847.htm"
     },
     {
       "id": "G3056",
@@ -161,7 +177,9 @@
         "Luke 8:11",
         "Hebrews 4:12"
       ],
-      "contextPrompt": "Do not assume every occurrence refers to Jesus as a title; examine syntax and literary context."
+      "contextPrompt": "Do not assume every occurrence refers to Jesus as a title; examine syntax and literary context.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/3056.htm"
     },
     {
       "id": "G26",
@@ -178,7 +196,9 @@
         "1 Corinthians 13",
         "1 John 4:7-12"
       ],
-      "contextPrompt": "Study the action and object of love in context. Avoid simplistic claims that one Greek word always means a uniquely higher kind of love."
+      "contextPrompt": "Study the action and object of love in context. Avoid simplistic claims that one Greek word always means a uniquely higher kind of love.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/26.htm"
     },
     {
       "id": "G4102",
@@ -196,7 +216,9 @@
         "Galatians 2:16",
         "Hebrews 11:1"
       ],
-      "contextPrompt": "Examine whether the passage emphasises trust, belief, faithfulness or a related sense."
+      "contextPrompt": "Examine whether the passage emphasises trust, belief, faithfulness or a related sense.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/4102.htm"
     },
     {
       "id": "G5485",
@@ -214,7 +236,9 @@
         "Ephesians 2:8-10",
         "Titus 2:11"
       ],
-      "contextPrompt": "Track how grace functions in the argument; distinguish divine favour from the effects it produces."
+      "contextPrompt": "Track how grace functions in the argument; distinguish divine favour from the effects it produces.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/5485.htm"
     },
     {
       "id": "G4991",
@@ -232,7 +256,9 @@
         "Romans 1:16",
         "Ephesians 1:13"
       ],
-      "contextPrompt": "Determine whether the passage concerns rescue, present deliverance or final salvation."
+      "contextPrompt": "Determine whether the passage concerns rescue, present deliverance or final salvation.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/4991.htm"
     },
     {
       "id": "G4151",
@@ -249,7 +275,9 @@
         "Romans 8:1-16",
         "Galatians 5:16-25"
       ],
-      "contextPrompt": "Use grammar and context to identify whether the passage refers to the Holy Spirit, human spirit, or wind/breath."
+      "contextPrompt": "Use grammar and context to identify whether the passage refers to the Holy Spirit, human spirit, or wind/breath.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/4151.htm"
     },
     {
       "id": "G1343",
@@ -267,7 +295,9 @@
         "Romans 3:21-26",
         "Romans 14:17"
       ],
-      "contextPrompt": "Compare ethical, covenantal and saving dimensions in context; do not flatten the term into one English phrase."
+      "contextPrompt": "Compare ethical, covenantal and saving dimensions in context; do not flatten the term into one English phrase.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/1343.htm"
     },
     {
       "id": "G165",
@@ -284,7 +314,9 @@
         "John 17:3",
         "Romans 16:25-26"
       ],
-      "contextPrompt": "Consider the phrase and its contrast in context; avoid building a complete doctrine from an isolated gloss."
+      "contextPrompt": "Consider the phrase and its contrast in context; avoid building a complete doctrine from an isolated gloss.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/165.htm"
     },
     {
       "id": "G3341",
@@ -302,7 +334,9 @@
         "Mark 1:15",
         "Acts 2:38"
       ],
-      "contextPrompt": "Read repentance with the call to turn toward God and its observable fruit; avoid reducing it to regret alone."
+      "contextPrompt": "Read repentance with the call to turn toward God and its observable fruit; avoid reducing it to regret alone.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/3341.htm"
     },
     {
       "id": "H1285",
@@ -319,7 +353,9 @@
         "Exodus 24:7-8",
         "Jeremiah 31:31-34"
       ],
-      "contextPrompt": "Study the parties, promises, obligations and signs in the specific covenant passage."
+      "contextPrompt": "Study the parties, promises, obligations and signs in the specific covenant passage.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/hebrew/1285.htm"
     },
     {
       "id": "H6664",
@@ -336,7 +372,9 @@
         "Proverbs 21:3",
         "Isaiah 1:21"
       ],
-      "contextPrompt": "Observe whether the context concerns right conduct, just judgment or the character of a righteous ruler."
+      "contextPrompt": "Observe whether the context concerns right conduct, just judgment or the character of a righteous ruler.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/hebrew/6664.htm"
     },
     {
       "id": "H8451",
@@ -354,7 +392,9 @@
         "Psalm 1:1-2",
         "Psalm 119:1-8"
       ],
-      "contextPrompt": "The term can refer broadly to instruction or specifically to law; read the literary and covenant setting."
+      "contextPrompt": "The term can refer broadly to instruction or specifically to law; read the literary and covenant setting.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/hebrew/8451.htm"
     },
     {
       "id": "H1697",
@@ -372,7 +412,9 @@
         "Deuteronomy 8:3",
         "1 Kings 17:24"
       ],
-      "contextPrompt": "Check whether the word refers to spoken message, event, matter or thing in the passage."
+      "contextPrompt": "Check whether the word refers to spoken message, event, matter or thing in the passage.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/hebrew/1697.htm"
     },
     {
       "id": "H7225",
@@ -389,7 +431,9 @@
         "Proverbs 8:22",
         "Jeremiah 26:1"
       ],
-      "contextPrompt": "Examine its grammatical role and phrase; do not infer a complete doctrine from the gloss alone."
+      "contextPrompt": "Examine its grammatical role and phrase; do not infer a complete doctrine from the gloss alone.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/hebrew/7225.htm"
     },
     {
       "id": "G1515",
@@ -406,7 +450,9 @@
         "Romans 5:1",
         "Ephesians 2:14-17"
       ],
-      "contextPrompt": "Consider whether the context describes peace with God, communal harmony, greeting or well-being."
+      "contextPrompt": "Consider whether the context describes peace with God, communal harmony, greeting or well-being.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/1515.htm"
     },
     {
       "id": "G40",
@@ -424,7 +470,9 @@
         "Romans 1:7",
         "1 Peter 1:15-16"
       ],
-      "contextPrompt": "Observe whether the term describes God, the Spirit, a person or something consecrated."
+      "contextPrompt": "Observe whether the term describes God, the Spirit, a person or something consecrated.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/40.htm"
     },
     {
       "id": "G1656",
@@ -442,7 +490,9 @@
         "Luke 10:37",
         "Ephesians 2:4"
       ],
-      "contextPrompt": "Read the need, recipient and action of mercy in context; distinguish mercy from a merely sentimental feeling."
+      "contextPrompt": "Read the need, recipient and action of mercy in context; distinguish mercy from a merely sentimental feeling.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/1656.htm"
     },
     {
       "id": "G1391",
@@ -459,7 +509,9 @@
         "John 17:5",
         "Romans 3:23"
       ],
-      "contextPrompt": "Determine whether the passage speaks of divine splendour, honour, reputation or praise."
+      "contextPrompt": "Determine whether the passage speaks of divine splendour, honour, reputation or praise.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/1391.htm"
     },
     {
       "id": "G1577",
@@ -477,7 +529,9 @@
         "Acts 2:42-47",
         "1 Corinthians 12:27"
       ],
-      "contextPrompt": "Study the local assembly and wider people of God in context; avoid reducing the word to a modern building."
+      "contextPrompt": "Study the local assembly and wider people of God in context; avoid reducing the word to a modern building.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/1577.htm"
     },
     {
       "id": "G2098",
@@ -494,7 +548,9 @@
         "Romans 1:16",
         "1 Corinthians 15:1-5"
       ],
-      "contextPrompt": "Identify the content of the good news in the author's argument and its connection to Jesus."
+      "contextPrompt": "Identify the content of the good news in the author's argument and its connection to Jesus.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/2098.htm"
     },
     {
       "id": "G3306",
@@ -512,7 +568,9 @@
         "1 John 2:24-28",
         "1 John 4:13-16"
       ],
-      "contextPrompt": "Trace what or whom the subject remains in, and how the passage describes the result of abiding."
+      "contextPrompt": "Trace what or whom the subject remains in, and how the passage describes the result of abiding.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/3306.htm"
     },
     {
       "id": "G25",
@@ -529,7 +587,9 @@
         "John 13:34",
         "1 John 4:10-11"
       ],
-      "contextPrompt": "Study the subject, object and action of love; do not claim the verb always carries one fixed technical meaning."
+      "contextPrompt": "Study the subject, object and action of love; do not claim the verb always carries one fixed technical meaning.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/25.htm"
     },
     {
       "id": "G5207",
@@ -546,7 +606,9 @@
         "John 1:12-14",
         "Romans 8:14-17"
       ],
-      "contextPrompt": "Distinguish literal, genealogical, royal and relational uses from the surrounding passage."
+      "contextPrompt": "Distinguish literal, genealogical, royal and relational uses from the surrounding passage.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/5207.htm"
     },
     {
       "id": "G3874",
@@ -564,7 +626,351 @@
         "Romans 12:8",
         "2 Corinthians 1:3-7"
       ],
-      "contextPrompt": "Check whether the context emphasises comfort, encouragement, appeal or exhortation."
+      "contextPrompt": "Check whether the context emphasises comfort, encouragement, appeal or exhortation.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/3874.htm"
+    },
+    {
+      "id": "H3820",
+      "language": "Hebrew",
+      "lemma": "לֵב",
+      "transliteration": "leb",
+      "studyLabel": "Heart, mind and inner person",
+      "topicLinks": [
+        "Inner life",
+        "Wisdom"
+      ],
+      "keyReferences": [
+        "Genesis 6:5",
+        "Psalm 51:10",
+        "Proverbs 4:23"
+      ],
+      "contextPrompt": "Compare the inner person and thought-life in Genesis 6:5 with the prayer for a clean heart in Psalm 51:10. Notice the different contexts before applying the term.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/hebrew/3820.htm"
+    },
+    {
+      "id": "H5315",
+      "language": "Hebrew",
+      "lemma": "נֶפֶשׁ",
+      "transliteration": "nephesh",
+      "studyLabel": "Life, self and living being",
+      "topicLinks": [
+        "Life",
+        "Creation"
+      ],
+      "keyReferences": [
+        "Genesis 2:7",
+        "Psalm 23:3",
+        "Psalm 42:1"
+      ],
+      "contextPrompt": "Read Genesis 2:7 and Psalm 23:3 together. Observe how this Hebrew word can refer to a living being, life or self; avoid reducing it to only one English idea.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/hebrew/5315.htm"
+    },
+    {
+      "id": "H8085",
+      "language": "Hebrew",
+      "lemma": "שָׁמַע",
+      "transliteration": "shama",
+      "studyLabel": "Hear, listen and respond",
+      "topicLinks": [
+        "Listening",
+        "Obedience"
+      ],
+      "keyReferences": [
+        "Deuteronomy 6:4",
+        "1 Samuel 15:22",
+        "Psalm 85:8"
+      ],
+      "contextPrompt": "Compare hearing in Deuteronomy 6:4 with responsive obedience in 1 Samuel 15:22. The verb's force depends on its sentence and context.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/hebrew/8085.htm"
+    },
+    {
+      "id": "H157",
+      "language": "Hebrew",
+      "lemma": "אָהַב",
+      "transliteration": "ahab",
+      "studyLabel": "Love and covenant devotion",
+      "topicLinks": [
+        "Love",
+        "Covenant"
+      ],
+      "keyReferences": [
+        "Genesis 22:2",
+        "Deuteronomy 6:5",
+        "Hosea 11:1"
+      ],
+      "contextPrompt": "Compare human love in Genesis 22:2, the command in Deuteronomy 6:5 and God's love in Hosea 11:1. Keep the speaker and object in view.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/hebrew/157.htm"
+    },
+    {
+      "id": "H1254",
+      "language": "Hebrew",
+      "lemma": "בָּרָא",
+      "transliteration": "bara'",
+      "studyLabel": "Create and bring into being",
+      "topicLinks": [
+        "Creation",
+        "New creation"
+      ],
+      "keyReferences": [
+        "Genesis 1:1",
+        "Genesis 1:27",
+        "Psalm 51:10"
+      ],
+      "contextPrompt": "Read Genesis 1:1 and Psalm 51:10. Compare creation language in the world with the prayer for a clean heart; do not assume every occurrence has the same scope.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/hebrew/1254.htm"
+    },
+    {
+      "id": "H5769",
+      "language": "Hebrew",
+      "lemma": "עוֹלָם",
+      "transliteration": "olam",
+      "studyLabel": "Everlasting and enduring time",
+      "topicLinks": [
+        "Eternity",
+        "Covenant"
+      ],
+      "keyReferences": [
+        "Genesis 21:33",
+        "Psalm 90:2",
+        "Isaiah 40:28"
+      ],
+      "contextPrompt": "Compare Psalm 90:2 with Isaiah 40:28. Observe how this word describes duration in context; avoid assuming every occurrence makes the same philosophical claim.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/hebrew/5769.htm"
+    },
+    {
+      "id": "H539",
+      "language": "Hebrew",
+      "lemma": "אָמַן",
+      "transliteration": "aman",
+      "studyLabel": "Trust, firmness and faithfulness",
+      "topicLinks": [
+        "Faithfulness",
+        "Trust"
+      ],
+      "keyReferences": [
+        "Genesis 15:6",
+        "Exodus 14:31",
+        "Psalm 78:22"
+      ],
+      "contextPrompt": "Study the use in Genesis 15:6 alongside the surrounding narrative. Compare the response of trust in Exodus 14:31 and Psalm 78:22; distinguish belief from reliability and support.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/hebrew/539.htm"
+    },
+    {
+      "id": "H1288",
+      "language": "Hebrew",
+      "lemma": "בָּרַךְ",
+      "transliteration": "barak",
+      "studyLabel": "Blessing and praise",
+      "topicLinks": [
+        "Blessing",
+        "Worship"
+      ],
+      "keyReferences": [
+        "Genesis 12:2",
+        "Numbers 6:24-26",
+        "Psalm 67:1"
+      ],
+      "contextPrompt": "Compare the blessing promised to Abraham in Genesis 12:2 with the priestly blessing in Numbers 6:24-26. Notice who blesses whom and the purpose in each context.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/hebrew/1288.htm"
+    },
+    {
+      "id": "G4100",
+      "language": "Greek",
+      "lemma": "πιστεύω",
+      "transliteration": "pisteuo",
+      "studyLabel": "Believe, trust and entrust",
+      "topicLinks": [
+        "Faith",
+        "Trust"
+      ],
+      "keyReferences": [
+        "John 3:16",
+        "Romans 4:3",
+        "John 20:31"
+      ],
+      "contextPrompt": "Read John 3:16 and John 20:31. Notice the verb's relation to its object and the stated purpose of believing; compare Paul's use in Romans 4:3.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/4100.htm"
+    },
+    {
+      "id": "G4982",
+      "language": "Greek",
+      "lemma": "σῴζω",
+      "transliteration": "sozo",
+      "studyLabel": "Save, rescue and make whole",
+      "topicLinks": [
+        "Salvation",
+        "Healing"
+      ],
+      "keyReferences": [
+        "Matthew 1:21",
+        "Luke 19:10",
+        "Romans 10:9"
+      ],
+      "contextPrompt": "Compare Matthew 1:21 and Luke 19:10 with Romans 10:9. The verb can describe rescue or healing; context determines the sense.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/4982.htm"
+    },
+    {
+      "id": "G1411",
+      "language": "Greek",
+      "lemma": "δύναμις",
+      "transliteration": "dunamis",
+      "studyLabel": "Power, ability and mighty works",
+      "topicLinks": [
+        "Holy Spirit",
+        "Power"
+      ],
+      "keyReferences": [
+        "Luke 24:49",
+        "Acts 1:8",
+        "Ephesians 1:19"
+      ],
+      "contextPrompt": "Compare Acts 1:8 with Luke 24:49 and Ephesians 1:19. Observe the source, purpose and context of power; do not assume every occurrence describes a miracle.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/1411.htm"
+    },
+    {
+      "id": "G1849",
+      "language": "Greek",
+      "lemma": "ἐξουσία",
+      "transliteration": "exousia",
+      "studyLabel": "Authority, right and delegated power",
+      "topicLinks": [
+        "Authority",
+        "Discipleship"
+      ],
+      "keyReferences": [
+        "Matthew 28:18",
+        "Luke 10:19",
+        "John 1:12"
+      ],
+      "contextPrompt": "Read Matthew 28:18 and Luke 10:19. Observe who grants authority and its scope; compare the distinct use in John 1:12.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/1849.htm"
+    },
+    {
+      "id": "G1344",
+      "language": "Greek",
+      "lemma": "δικαιόω",
+      "transliteration": "dikaioo",
+      "studyLabel": "Justify and declare righteous",
+      "topicLinks": [
+        "Justification",
+        "Righteousness"
+      ],
+      "keyReferences": [
+        "Romans 3:24",
+        "Romans 5:1",
+        "James 2:24"
+      ],
+      "contextPrompt": "Compare Romans 3:24 and Romans 5:1 with James 2:24. Read each argument in context and avoid isolating a single English gloss.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/1344.htm"
+    },
+    {
+      "id": "G1325",
+      "language": "Greek",
+      "lemma": "δίδωμι",
+      "transliteration": "didomi",
+      "studyLabel": "Give, grant and bestow",
+      "topicLinks": [
+        "Generosity",
+        "Gift"
+      ],
+      "keyReferences": [
+        "Matthew 7:7",
+        "John 3:16",
+        "James 1:5"
+      ],
+      "contextPrompt": "Read John 3:16 and James 1:5. Notice the giver, recipient and object; this is a broad verb whose sense is shaped by context.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/1325.htm"
+    },
+    {
+      "id": "G5483",
+      "language": "Greek",
+      "lemma": "χαρίζομαι",
+      "transliteration": "charizomai",
+      "studyLabel": "Graciously give and forgive",
+      "topicLinks": [
+        "Grace",
+        "Forgiveness"
+      ],
+      "keyReferences": [
+        "Ephesians 4:32",
+        "Colossians 2:13",
+        "Colossians 3:13"
+      ],
+      "contextPrompt": "Compare Ephesians 4:32 and Colossians 2:13. Notice forgiveness as a gracious act; read the surrounding exhortation and avoid turning the word into a formula.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/5483.htm"
+    },
+    {
+      "id": "G2316",
+      "language": "Greek",
+      "lemma": "θεός",
+      "transliteration": "theos",
+      "studyLabel": "God and divine identity",
+      "topicLinks": [
+        "Theology",
+        "Worship"
+      ],
+      "keyReferences": [
+        "John 1:1",
+        "John 1:18",
+        "Romans 1:1"
+      ],
+      "contextPrompt": "Read John 1:1 and John 1:18 in their immediate literary context. Observe grammar and usage carefully; an index entry alone cannot settle disputed theological questions.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/2316.htm"
+    },
+    {
+      "id": "G2424",
+      "language": "Greek",
+      "lemma": "Ἰησοῦς",
+      "transliteration": "Iesous",
+      "studyLabel": "The name Jesus",
+      "topicLinks": [
+        "Jesus",
+        "Messiah"
+      ],
+      "keyReferences": [
+        "Matthew 1:21",
+        "Luke 2:21",
+        "Acts 4:12"
+      ],
+      "contextPrompt": "Compare Matthew 1:21, Luke 2:21 and Acts 4:12. Note the name's different grammatical forms and study the context before making claims about its etymology.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/2424.htm"
+    },
+    {
+      "id": "G1342",
+      "language": "Greek",
+      "lemma": "δίκαιος",
+      "transliteration": "dikaios",
+      "studyLabel": "Righteous and just",
+      "topicLinks": [
+        "Righteousness",
+        "Discipleship"
+      ],
+      "keyReferences": [
+        "Matthew 1:19",
+        "1 Peter 3:18",
+        "1 John 2:1"
+      ],
+      "contextPrompt": "Compare Matthew 1:19 and 1 John 2:1. Observe how the adjective describes a person in context; distinguish it from the related noun G1343.",
+      "sourceLabel": "Strong's Concordance reference (BibleHub)",
+      "sourceUrl": "https://biblehub.com/strongs/greek/1342.htm"
     }
   ]
 }

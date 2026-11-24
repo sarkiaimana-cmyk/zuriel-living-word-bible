@@ -88,13 +88,15 @@
   panel.id = "zurielTranslationCompare";
   const summary = node("summary", "", "🌐 Compare another Bible translation (online)");
   const note = node("p", "ztc-note",
-    "The King James Version remains available offline. Load authorised translations online when connected. API.Bible keeps only the most recently viewed chapter per translation for offline reading and refreshes it within 14 days. YouVersion passages are shown online only unless the publisher explicitly permits offline storage.");
+    "The King James Version remains available offline. Load authorised translations online when connected. API.Bible keeps only the most recently viewed chapter per translation for offline reading and refreshes it within 14 days. YouVersion passages are shown online only unless the publisher explicitly permits offline storage. NET Bible and ESV passages are online-only and are not stored offline.");
   const controls = node("div");
   const providerSelect = node("select");
   providerSelect.setAttribute("aria-label", "Choose online Bible translation provider");
   [
     ["youversion", "YouVersion Platform"],
-    ["api-bible", "API.Bible"]
+    ["api-bible", "API.Bible"],
+    ["net-bible", "NET Bible (Bible.org)"],
+    ["esv", "ESV (Crossway)"]
   ].forEach(([value, label]) => {
     const option = node("option", "", label);
     option.value = value;
@@ -202,7 +204,7 @@
     select.disabled = true;
     loadButton.disabled = true;
     status("Checking the English Bible versions authorised for " +
-      (providerAtRequest === "youversion" ? "YouVersion" : "API.Bible") + "…");
+      (providerAtRequest === "youversion" ? "YouVersion" : providerAtRequest === "net-bible" ? "NET Bible" : providerAtRequest === "esv" ? "ESV" : "API.Bible") + "…");
     try {
       let available = [];
       let nextPageToken = "";
@@ -242,7 +244,7 @@
           uniqueVersions.set(String(item.id), item);
         });
         available = Array.from(uniqueVersions.values());
-      } else {
+      } else if (providerAtRequest === "api-bible") {
         const payload = await requestJson("/api/api-bible/bibles");
         if (!payload || !Array.isArray(payload.data)) {
           throw new Error("The API.Bible authorised Bible version list could not be verified.");
@@ -256,6 +258,11 @@
           uniqueVersions.set(item.id, item);
         });
         available = Array.from(uniqueVersions.values());
+      } else if (providerAtRequest === "net-bible") {
+        available = [{ id: "net", title: "NET Bible", abbreviation: "NET" }];
+      } else {
+        const payload = await requestJson("/api/esv/bibles");
+        available = Array.isArray(payload && payload.data) ? payload.data.filter(item => item && item.id === "esv" && item.abbreviation === "ESV") : [];
       }
 
       if (catalogueRequestId !== catalogueSequence) return;
@@ -271,12 +278,12 @@
       loadedProvider = providerAtRequest;
       select.disabled = false;
       loadButton.disabled = true;
-      const providerName = providerAtRequest === "youversion" ? "YouVersion" : "API.Bible";
+      const providerName = providerAtRequest === "youversion" ? "YouVersion" : providerAtRequest === "net-bible" ? "NET Bible" : providerAtRequest === "esv" ? "ESV" : "API.Bible";
       status(available.length
-        ? available.length + " English version(s) are authorised for this " + providerName + " key. " +
+        ? available.length + " English version(s) are available from " + providerName + ". " +
           (nextPageToken ? "The catalogue is large; the first 990 results are shown. " : "") +
           "Choose one to compare."
-        : "No English Bible versions are currently authorised for " + providerName + ". The offline KJV remains available.");
+        : "No English Bible versions are currently available from " + providerName + ". The offline KJV remains available.");
     } catch (error) {
       if (catalogueRequestId === catalogueSequence) {
         select.disabled = true;
@@ -300,7 +307,7 @@
   function updateChapter(detail) {
     if (!detail || typeof detail.book !== "string" ||
         !Number.isInteger(Number(detail.chapter)) || Number(detail.chapter) < 1) return;
-    currentChapter = { book: detail.book, chapter: Number(detail.chapter) };
+    currentChapter = { book: detail.book, chapter: Number(detail.chapter), lastVerse: Array.isArray(detail.verses) ? detail.verses.length : 0 };
     requestSequence++;
     if (activeController) activeController.abort();
     passage.hidden = true;
@@ -613,30 +620,43 @@
       }
       window.fums("trackView", fumsToken);
     }
-    const providerName = selectedProvider === "youversion" ? "YouVersion" : "API.Bible";
+    const providerName = selectedProvider === "youversion" ? "YouVersion" : selectedProvider === "net-bible" ? "NET Bible" : selectedProvider === "esv" ? "ESV" : "API.Bible";
     const selectedLabel = select.options[select.selectedIndex]
       ? String(select.options[select.selectedIndex].textContent || "").split("—").slice(1).join("—").trim()
       : "";
     passageHeading.textContent = (item.reference || (currentChapter.book + " " + currentChapter.chapter)) +
       " — " + ((payload.version && (payload.version.abbreviation || payload.version.title)) || selectedVersionLabel || selectedLabel || "Selected translation") +
       " (" + providerName + ")";
-    passage.textContent = item.content;
+    passage.textContent = selectedProvider === "net-bible" ? item.content + "\n\n(NET)" : item.content;
     passage.hidden = false;
-    attribution.textContent = [
-      copyright,
-      promotional,
-      offline
-        ? "Offline copy saved on this device. API.Bible content must be refreshed online within 14 days."
-        : (selectedProvider === "api-bible"
-          ? "This chapter is saved on this device for offline reading; it must be refreshed online within 14 days."
-          : "YouVersion publisher text is displayed online only; no offline copy has been saved.")
-    ].filter(Boolean).join(" ");
+    if (selectedProvider === "net-bible" || selectedProvider === "esv") {
+      attribution.replaceChildren();
+      attribution.appendChild(document.createTextNode(copyright + " "));
+      const link = document.createElement("a");
+      link.href = selectedProvider === "net-bible" ? "https://netbible.org" : "https://www.esv.org";
+      link.textContent = selectedProvider === "net-bible" ? "NET Bible" : "ESV Bible";
+      link.rel = "noopener noreferrer";
+      attribution.appendChild(link);
+      attribution.appendChild(document.createTextNode(". This passage is online-only and has not been saved for offline reading."));
+    } else {
+      attribution.textContent = [
+        copyright,
+        promotional,
+        offline
+          ? "Offline copy saved on this device. API.Bible content must be refreshed online within 14 days."
+          : (selectedProvider === "api-bible"
+            ? "This chapter is saved on this device for offline reading; it must be refreshed online within 14 days."
+            : "YouVersion publisher text is displayed online only; no offline copy has been saved.")
+      ].filter(Boolean).join(" ");
+    }
     attribution.hidden = false;
     status(offline
       ? "Showing a saved " + providerName + " chapter offline."
       : (canStoreOffline(selectedProvider)
         ? "Online passage loaded successfully and saved under the API.Bible refresh limit."
-        : "Online passage loaded successfully. YouVersion text has not been stored offline."));
+        : (selectedProvider === "net-bible" || selectedProvider === "esv")
+          ? providerName + " passage loaded successfully. This provider is online-only; no offline copy has been stored."
+          : "Online passage loaded successfully. YouVersion text has not been stored offline."));
   }
 
   async function loadPassage() {
@@ -650,9 +670,17 @@
       : null;
     const validVersionId = selectedProvider === "youversion"
       ? /^\d+$/.test(selectedVersionId)
-      : /^[a-f0-9]{16}-\d{2}$/i.test(selectedVersionId);
+      : selectedProvider === "net-bible"
+        ? selectedVersionId === "net"
+        : selectedProvider === "esv"
+          ? selectedVersionId === "esv"
+          : /^[a-f0-9]{16}-\d{2}$/i.test(selectedVersionId);
     if (!bookCode || !validVersionId) {
       status("Choose a valid authorised translation.");
+      return false;
+    }
+    if ((selectedProvider === "net-bible" || selectedProvider === "esv") && (!Number.isInteger(currentChapter.lastVerse) || currentChapter.lastVerse < 1)) {
+      status("Open the full chapter in the Reader first so the selected provider can request its complete verse range.");
       return false;
     }
 
@@ -680,8 +708,12 @@
       const path = selectedProvider === "youversion"
         ? "/api/youversion/bibles/" + encodeURIComponent(selectedVersionId) +
           "/passages/" + reference + "?format=text"
-        : "/api/api-bible/bibles/" + encodeURIComponent(selectedVersionId) +
-          "/chapters/" + encodeURIComponent(reference);
+        : selectedProvider === "net-bible"
+          ? "/api/net-bible/chapters/" + encodeURIComponent(currentChapter.book) + "/" + currentChapter.chapter + "?lastVerse=" + currentChapter.lastVerse
+          : selectedProvider === "esv"
+            ? "/api/esv/chapters/" + encodeURIComponent(currentChapter.book) + "/" + currentChapter.chapter + "?lastVerse=" + currentChapter.lastVerse
+            : "/api/api-bible/bibles/" + encodeURIComponent(selectedVersionId) +
+            "/chapters/" + encodeURIComponent(reference);
       const payload = await requestJson(path, activeController);
       if (requestId !== requestSequence) return false;
       renderPassage(payload, false);
@@ -824,7 +856,7 @@
       const aliases = {
         "GNT": /\b(GNT|GNB|GOOD NEWS TRANSLATION|GOOD NEWS BIBLE)\b/,
         "AMP": /\b(AMP|AMPLIFIED BIBLE)\b/,
-        "LB/LT": /\b(LB|LT|TLB|LIVING BIBLE|LIVING TRANSLATION)\b/,
+        "LB/LT": /\b(LB|LT|TLB|LIVING BIBLE)\b|(?<!NEW )\bLIVING TRANSLATION\b/,
         "TPT": /\b(TPT|PASSION TRANSLATION)\b/,
         "NLT": /\b(NLT|NEW LIVING TRANSLATION)\b/,
         "NET": /\b(NET|NEW ENGLISH TRANSLATION)\b/,
@@ -842,7 +874,7 @@
         return false;
       }
 
-      const providers = ["youversion", "api-bible"];
+      const providers = ["youversion", "api-bible", "net-bible", "esv"];
       const providerFailures = [];
       const passageFailures = [];
       for (const provider of providers) {
@@ -883,7 +915,9 @@
         if (!match) {
           providerFailures.push(provider === "youversion"
             ? "YouVersion did not return " + requested + "."
-            : "API.Bible did not return " + requested + ".");
+            : provider === "net-bible"
+              ? "NET Bible did not return " + requested + "."
+              : "API.Bible did not return " + requested + ".");
           continue;
         }
 
@@ -896,19 +930,21 @@
         downloadButton.hidden = !canStoreOffline(provider);
         downloadButton.disabled = !canStoreOffline(provider);
         status(requested + " is available through " +
-          (provider === "youversion" ? "YouVersion" : "API.Bible") +
+          (provider === "youversion" ? "YouVersion" : provider === "net-bible" ? "NET Bible" : provider === "esv" ? "ESV" : "API.Bible") +
           ". " + (currentChapter ? "Loading this chapter…" : "Open a Bible chapter to display it."));
         if (currentChapter && !await loadPassage()) {
           passageFailures.push(provider === "youversion"
             ? "YouVersion listed " + requested + " but could not return a usable passage."
-            : "API.Bible listed " + requested + " but could not return a usable passage with publisher attribution and FUMS.");
+            : provider === "net-bible"
+              ? "NET Bible listed " + requested + " but could not return a usable attributed passage."
+              : "API.Bible listed " + requested + " but could not return a usable passage with publisher attribution and FUMS.");
           continue;
         }
         panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
         return true;
       }
 
-      status(requested + " was not found in either provider's currently authorised English catalogue. " +
+      status(requested + " was not found in any connected provider's currently available English catalogue. " +
         providerFailures.join(" ") + " " + passageFailures.join(" ") + " The offline KJV remains available.");
       panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
       return false;

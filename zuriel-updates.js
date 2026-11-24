@@ -1,7 +1,7 @@
 /* Zuriel in-app update centre — safe web refresh checks and transparent Android status. */
 (function () {
   "use strict";
-  const APP_VERSION = "2.10.3";
+  const APP_VERSION = "2.10.4";
   const DISPLAY_VERSION = "2.10";
   const VERSION_URL = "https://raw.githubusercontent.com/sarkiaimana-cmyk/zuriel-living-word-bible/main/version.json";
   function mount() {
@@ -109,8 +109,8 @@
                   const result = await nativeUpdater.installUpdate({ url: apk.browser_download_url, sha256: digest });
                   if (result && result.needsPermission) {
                     status.textContent = "Android has opened the permission page. Allow Zuriel to install updates from this source, return here, and tap Download & Install Zuriel Update again.";
-                  } else if (result && result.installerOpened) {
-                    status.textContent = "The verified update is ready. In the Android installer, choose Update/Install. Do not uninstall Zuriel; Android should update the existing app and retain its saved studies.";
+                  } else if (result && result.installed) {
+                    status.textContent = "Android confirmed that the Zuriel update was installed. Please reopen Zuriel and check the version shown in App Updates.";
                   } else {
                     status.textContent = "Android did not confirm that the installer opened. Your existing app and saved data are unchanged.";
                   }
