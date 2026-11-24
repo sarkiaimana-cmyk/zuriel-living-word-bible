@@ -88,7 +88,7 @@
   panel.id = "zurielTranslationCompare";
   const summary = node("summary", "", "🌐 Compare another Bible translation (online)");
   const note = node("p", "ztc-note",
-    "The King James Version remains available offline. Load authorised translations online when connected. API.Bible keeps only the most recently viewed chapter per translation for offline reading and refreshes it within 14 days. YouVersion passages are shown online only unless the publisher explicitly permits offline storage.");
+    "The King James Version remains available offline. Load authorised translations online when connected. API.Bible keeps only the most recently viewed chapter per translation for offline reading and refreshes it within 14 days. YouVersion passages are shown online only unless the publisher explicitly permits offline storage. NET Bible passages are online-only and are not stored offline.");
   const controls = node("div");
   const providerSelect = node("select");
   providerSelect.setAttribute("aria-label", "Choose online Bible translation provider");
@@ -274,12 +274,12 @@
       loadedProvider = providerAtRequest;
       select.disabled = false;
       loadButton.disabled = true;
-      const providerName = providerAtRequest === "youversion" ? "YouVersion" : "API.Bible";
+      const providerName = providerAtRequest === "youversion" ? "YouVersion" : providerAtRequest === "net-bible" ? "NET Bible" : "API.Bible";
       status(available.length
-        ? available.length + " English version(s) are authorised for this " + providerName + " key. " +
+        ? available.length + " English version(s) are available from " + providerName + ". " +
           (nextPageToken ? "The catalogue is large; the first 990 results are shown. " : "") +
           "Choose one to compare."
-        : "No English Bible versions are currently authorised for " + providerName + ". The offline KJV remains available.");
+        : "No English Bible versions are currently available from " + providerName + ". The offline KJV remains available.");
     } catch (error) {
       if (catalogueRequestId === catalogueSequence) {
         select.disabled = true;
