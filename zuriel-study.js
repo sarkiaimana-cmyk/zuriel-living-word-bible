@@ -828,6 +828,17 @@
         limitation.textContent = "The full lexicon senses and detailed morphology are not available offline for this entry. This curated index provides the original-language form, a contextual study label and connected Scripture references only; it is not a complete word definition.";
         box.appendChild(limitation);
 
+        if (typeof offlineEntry.sourceUrl === "string" &&
+            /^https:\/\/biblehub\.com\/strongs\/(?:hebrew|greek)\/\d+\.htm$/.test(offlineEntry.sourceUrl)) {
+          const sourceLink = document.createElement("a");
+          sourceLink.href = offlineEntry.sourceUrl;
+          sourceLink.target = "_blank";
+          sourceLink.rel = "noopener noreferrer";
+          sourceLink.className = "study-link";
+          sourceLink.textContent = "Open full Strong's lexicon entry online";
+          box.appendChild(sourceLink);
+        }
+
         const lemma = document.createElement("p");
         lemma.textContent = "Original form: " + offlineEntry.lemma;
         box.appendChild(lemma);
