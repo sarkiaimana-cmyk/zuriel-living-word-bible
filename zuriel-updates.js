@@ -109,8 +109,8 @@
                   const result = await nativeUpdater.installUpdate({ url: apk.browser_download_url, sha256: digest });
                   if (result && result.needsPermission) {
                     status.textContent = "Android has opened the permission page. Allow Zuriel to install updates from this source, return here, and tap Download & Install Zuriel Update again.";
-                  } else if (result && result.installerOpened) {
-                    status.textContent = "The verified update is ready. In the Android installer, choose Update/Install. Do not uninstall Zuriel; Android should update the existing app and retain its saved studies.";
+                  } else if (result && result.installed) {
+                    status.textContent = "Android confirmed that the Zuriel update was installed. Please reopen Zuriel and check the version shown in App Updates.";
                   } else {
                     status.textContent = "Android did not confirm that the installer opened. Your existing app and saved data are unchanged.";
                   }
