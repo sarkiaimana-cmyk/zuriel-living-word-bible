@@ -93,8 +93,8 @@ async function verifyPassage(provider, version) {
     for (const reference of references) {
       const payload = await getJson("/api/esv/chapters/" + encodeURIComponent(reference.book) + "/" + reference.chapter + "?lastVerse=" + reference.lastVerse);
       const passage = payload && payload.passage;
-      assert.ok(passage && typeof passage.content === "string" && /\\(ESV\\)\\s*$/.test(passage.content),
       assert.ok(passage && typeof passage.content === "string" && /\(ESV\)\s*$/.test(passage.content),
+        "ESV must return actual attributed Scripture text for " + reference.book + " " + reference.chapter + ".");
       assert.ok(passage.copyright && /Crossway/.test(passage.copyright), "ESV must return its publisher attribution.");
     }
     return "John 3 and Psalms 23";
@@ -161,9 +161,10 @@ for (const [abbreviation, pattern] of Object.entries(requested)) {
     try {
       const reference = await verifyPassage(provider, version);
       console.log("VERIFIED " + abbreviation + " via " +
-        (provider === "youversion" ? "YouVersion" : provider === "net-bible" ? "Bible.org NET Bible" : "API.Bible") +
+        (provider === "youversion" ? "YouVersion" : provider === "net-bible" ? "Bible.org NET Bible" : provider === "esv" ? "Crossway ESV" : "API.Bible") +
         " — " + reference + " (" + String(version.title || abbreviation) + ")");
       verified = true;
+      verifiedAbbreviations.push(abbreviation);
       break;
     } catch (error) {
       failures.push(provider + ": " + error.message);
