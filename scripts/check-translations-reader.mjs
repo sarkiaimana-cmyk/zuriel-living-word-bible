@@ -36,6 +36,7 @@ requireText(client, '"/api/net-bible/chapters/"', "NET Bible online chapter requ
 requireText(client, 'https://netbible.org', "Required NET Bible publisher link");
 requireText(client, '["api-bible", "API.Bible"]', "API.Bible provider selection option");
 requireText(client, '["net-bible", "NET Bible (Bible.org)"]', "NET Bible provider selection option");
+requireText(client, '(?<!NEW )\\bLIVING TRANSLATION\\b', "Living Bible shortcut must not match New Living Translation");
 requireText(client, "next_page_token", "YouVersion catalogue pagination");
 requireText(workerCore, 'searchParams.set("page_token", token)', "Forward YouVersion continuation tokens using the documented page_token parameter");
 requireText(client, "encodeURIComponent(nextPageToken)", "Safe pagination token encoding");
