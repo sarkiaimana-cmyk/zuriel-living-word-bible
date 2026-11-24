@@ -1247,17 +1247,16 @@
       }
 
       if (section === "study") {
-        showSections(["bibleReader", "zurielStudyPanel"]);
+        showSections(["zurielStudyPanel"]);
         setActiveNavigation("study");
 
         const panel = document.getElementById("zurielStudyPanel");
-
         if (panel) {
-          panel.dataset.mode = "verse";
+          panel.hidden = false;
+          panel.removeAttribute("data-zuriel-hidden");
           panel.style.display = "block";
+          panel.dataset.mode = "verse";
           panel.scrollIntoView({ behavior: "smooth", block: "start" });
-        } else {
-          reader.scrollIntoView({ behavior: "smooth", block: "start" });
         }
       }
 
