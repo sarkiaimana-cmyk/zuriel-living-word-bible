@@ -8,11 +8,11 @@ const smokeTest = fs.readFileSync("ai-worker/scripts/smoke-licensed-translations
 
 assert.match(workflow, /workflow_dispatch:/, "manual deployment reruns remain available");
 assert.match(workflow, /github\.event_name == 'workflow_dispatch' && inputs\.confirm_deployment != true/, "manual deployment requires explicit confirmation");
-assert.match(workflow, /push:\s+branches:\s+- fix\/mobile-search-study-layout/, "reviewed integration branch automatically deploys translation code changes");
-assert.match(workflow, /github\.ref != 'refs\/heads\/fix\/mobile-search-study-layout'/, "deployment is restricted to the reviewed integration branch");
+assert.match(workflow, /push:\s+branches:\s+- main\s+- fix\/mobile-search-study-layout/, "reviewed main and integration branches automatically deploy translation code changes");
+assert.match(workflow, /github\.ref != 'refs\/heads\/fix\/mobile-search-study-layout' && github\.ref != 'refs\/heads\/main'/, "deployment is restricted to reviewed application branches");
 assert.equal(workflow.split("\n").filter(line => /\\\\$/.test(line)).length, 0,
   "deployment shell commands must use single backslashes for line continuations");
-assert.ok(workflow.indexOf("Require the reviewed integration branch before any Cloudflare changes") < workflow.indexOf("Bootstrap the fail-closed Worker"), "branch guard runs before Cloudflare changes");
+assert.ok(workflow.indexOf("Require a reviewed application branch before any Cloudflare changes") < workflow.indexOf("Bootstrap the fail-closed Worker"), "branch guard runs before Cloudflare changes");
 assert.match(workflow, /actions: write/, "deployment can dispatch the follow-up validation workflow");
 assert.match(workflow, /GH_TOKEN: \$\{\{ github\.token \}\}/, "GitHub CLI receives the scoped workflow token");
 for (const alias of ["CF_API_TOKEN", "CF_ACCOUNT_ID", "CLOUDFLARE_TOKEN", "YOUVERSION_APP_KEY", "YVP_APP_KEY", "YVP_API_KEY", "API_BIBLE_TOKEN"]) {
@@ -59,9 +59,9 @@ assert.match(workflow, /Worker URL: \$WORKER_URL/, "deployment reports the exact
 assert.match(workflow, /contents: write/, "deployment can save the verified public endpoint");
 assert.match(workflow, /translationApiBase=process\.env\.WORKER_URL/, "deployment writes the verified Worker URL into version.json");
 assert.ok(workflow.includes('JSON.stringify(data,null,2)+"\\n"'), "deployment writes a valid JSON newline when saving version.json");
-assert.match(workflow, /git push origin "HEAD:\$GITHUB_REF_NAME"/, "deployment commits the endpoint to the reviewed integration branch");
+assert.match(workflow, /git push origin "HEAD:\$GITHUB_REF_NAME"/, "deployment commits the endpoint only to the reviewed application branch");
 assert.match(workflow, /gh workflow run validate-pr\.yml --ref "\$GITHUB_REF_NAME"/, "deployment dispatches full validation after endpoint configuration");
-assert.match(workflow, /raw\.githubusercontent\.com\/sarkiaimana-cmyk\/zuriel-living-word-bible\/\$GITHUB_REF_NAME\/version\.json/, "deployment verifies endpoint metadata on the same integration branch");
+assert.match(workflow, /raw\.githubusercontent\.com\/sarkiaimana-cmyk\/zuriel-living-word-bible\/\$GITHUB_REF_NAME\/version\.json/, "deployment verifies endpoint metadata on the same reviewed branch");
 assert.match(workflow, /REMOTE_CONFIG/, "deployment verifies the public release metadata after saving");
 assert.match(workflow, /YouVersion English versions returned:/, "deployment reports the YouVersion catalogue count");
 assert.match(workflow, /API\.Bible English versions returned:/, "deployment reports the API.Bible catalogue count");
