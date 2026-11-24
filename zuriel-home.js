@@ -963,7 +963,8 @@
           <button type="button" class="home-button" id="zurielOpenBookRead">📖 Read This Passage</button>
           <button type="button" class="home-button home-secondary" id="zurielOpenBookNext">✦ Another Word for Today</button>
           <button type="button" class="home-button" id="zurielOpenBookCreateCard">🖼️ Create & Share Card</button>
-          <button type="button" class="home-button home-secondary" id="zurielOpenBookSaveCard">💾 Save Open Book Card</button>
+          <button type="button" class="home-button home-secondary" id="zurielOpenBookSaveCard">💾 Save to Phone Gallery</button>
+          <button type="button" class="home-button home-secondary" id="zurielOpenBookDownloadCard">⬇️ Download Open Book Card</button>
           <button type="button" class="home-button home-secondary" id="zurielOpenBookSavedCards">📚 My Saved Cards</button>
         </div>
         <p id="zurielOpenBookCardStatus" class="home-subtitle" aria-live="polite"></p>
@@ -1836,6 +1837,63 @@
         }
       });
     }
+    /* Direct PNG download for the Home open-book card. */
+    const downloadOpenBookCardButton = document.getElementById("zurielOpenBookDownloadCard");
+    if (downloadOpenBookCardButton) {
+      downloadOpenBookCardButton.addEventListener("click", async function () {
+        const status = document.getElementById("zurielOpenBookCardStatus");
+        const verse = verses[verseIndex];
+        if (!verse || typeof window.getBibleVerseText !== "function") {
+          if (status) status.textContent = "The offline Scripture service is not ready. Please try again.";
+          return;
+        }
+        downloadOpenBookCardButton.disabled = true;
+        if (status) status.textContent = "Preparing your open-book PNG download…";
+        try {
+          const passage = await window.getBibleVerseText(verse.reference);
+          const scriptureText = String(passage && passage.text || "").replace(/^\\d+\\.\\s*/, "").trim();
+          if (!scriptureText) throw new Error("The exact KJV verse text could not be loaded.");
+          const faithResponse = window.ZurielFaithContent && typeof window.ZurielFaithContent.find === "function"
+            ? window.ZurielFaithContent.find(verse.reference) : {};
+          if (!window.ZurielLibrary || typeof window.ZurielLibrary.openGloryVerse !== "function") {
+            throw new Error("The Glory Verse Affirmation Studio is not available yet.");
+          }
+          navigate("library");
+          if (!window.ZurielLibrary.openGloryVerse(verse.reference, scriptureText, "KJV", faithResponse || {})) {
+            throw new Error("The open-book image renderer could not be prepared.");
+          }
+          const downloadButton = document.querySelector("#zgsDownloadImage");
+          const studioStatus = document.querySelector("#zgsStatus");
+          if (!downloadButton || !studioStatus) throw new Error("The PNG download action is not available.");
+          const previousStatus = studioStatus.textContent;
+          const pending = new Promise((resolve, reject) => {
+            let settled = false, timeout;
+            const observer = new MutationObserver(() => {
+              const message = String(studioStatus.textContent || "").trim();
+              if (message && message !== previousStatus) finish(resolve, message);
+            });
+            const finish = (fn, value) => {
+              if (settled) return;
+              settled = true;
+              observer.disconnect();
+              clearTimeout(timeout);
+              fn(value);
+            };
+            observer.observe(studioStatus, {childList:true,subtree:true,characterData:true});
+            timeout = setTimeout(() => finish(reject,new Error("Download was not confirmed. Please use Download image in the Studio.")),30000);
+          });
+          downloadButton.click();
+          const message = await pending;
+          if (!/saved to your Downloads folder/i.test(message)) throw new Error(message);
+          if (status) status.textContent = "Your open-book card PNG was sent to your device Downloads.";
+        } catch (error) {
+          if (status) status.textContent = error.message || "The open-book card could not be downloaded.";
+        } finally {
+          downloadOpenBookCardButton.disabled = false;
+        }
+      });
+    }
+
     const openSavedOpenBookCardsButton = document.getElementById("zurielOpenBookSavedCards");
     if (openSavedOpenBookCardsButton) {
       openSavedOpenBookCardsButton.addEventListener("click", function () {
