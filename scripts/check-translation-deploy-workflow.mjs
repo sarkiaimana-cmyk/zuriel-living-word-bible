@@ -30,6 +30,7 @@ for (const secret of ["ZITE_YVP_APP_KEY", "API_BIBLE_KEY"]) {
   assert.match(workflow, new RegExp("secret put " + secret), "deployment installs " + secret + " only as a Worker secret");
 }
 assert.match(workflow, /test\/api-bible\.test\.mjs/, "deployment runs API.Bible provider security tests");
+assert.match(workflow, /test\/net-bible\.test\.mjs/, "deployment runs NET Bible provider security tests");
 assert.match(workflow, /smoke-licensed-translations\.mjs/, "deployment live-tests every requested translation");
 assert.match(workflow, /node --check scripts\/smoke-licensed-translations\.mjs/, "deployment syntax-checks the live translation smoke test");
 assert.match(workflow, /workers\/subdomain/, "deployment discovers the account workers.dev subdomain");
@@ -64,10 +65,13 @@ assert.match(workflow, /API\.Bible English versions returned:/, "deployment repo
 for (const abbreviation of ["GNT", "AMP", "LB/LT", "TPT", "NLT", "NET", "NIV", "ESV", "NASB", "CSB", "NKJV"]) {
   assert.ok(smokeTest.includes(abbreviation), "live translation matrix includes " + abbreviation);
 }
-assert.match(smokeTest, /assert\.deepEqual\(missing, \[\]/, "deployment refuses to publish until every requested translation has a real passage");
+assert.match(smokeTest, /assert\.deepEqual\(missingRequired, \[\]/, "deployment requires the core verified translation set before publishing");
+assert.match(smokeTest, /optionalPending/, "unlicensed GNT, ESV and CSB remain explicitly pending without blocking verified translations");
 assert.match(smokeTest, /fumsToken/, "live API.Bible passage checks require FUMS v3");
 assert.match(smokeTest, /\["youversion", youVersion\]/, "live translation matrix tests YouVersion");
 assert.match(smokeTest, /\["api-bible", apiBibleVersions\]/, "live translation matrix tests API.Bible");
+assert.match(smokeTest, /\["net-bible", netBibleVersions\]/, "live translation matrix tests NET Bible");
+assert.match(smokeTest, /\/api\/net-bible\/chapters\//, "live NET Bible checks retrieve actual Scripture chapters");
 assert.ok(!/echo[^\n]*\$CLOUDFLARE_API_TOKEN/i.test(workflow), "workflow must never print the Cloudflare API token");
 assert.ok(!/echo[^\n]*\$ZITE_YVP_APP_KEY/i.test(workflow), "workflow must never print the YouVersion app key");
 assert.ok(!/echo[^\n]*\$API_BIBLE_KEY/i.test(workflow), "workflow must never print the API.Bible key");
@@ -75,6 +79,6 @@ assert.ok(!/echo[^\n]*\$API_BIBLE_KEY/i.test(workflow), "workflow must never pri
 assert.equal(config.name, "zuriel-bible-translations", "Worker name matches the discovered URL");
 assert.ok(config.vars.ALLOWED_ORIGINS.includes("https://sarkiaimana-cmyk.github.io"), "GitHub Pages is an allowed CORS origin");
 assert.ok(config.ratelimits.some(item => item.name === "TRANSLATION_RATE_LIMIT" && item.simple.limit === 40 && item.simple.period === 60), "Worker retains the complete-catalogue smoke-test rate limit");
-assert.ok(worker.includes("(?:youversion|api-bible)"), "Worker allows only the YouVersion and API.Bible translation routes");
+assert.ok(worker.includes("net-bible"), "Worker allows the protected NET Bible translation route");
 
-console.log("Translation deployment checks passed: automatic reviewed-branch deployment, confirmed manual reruns, provider fallback, all requested live translation checks, FUMS v3, protected-branch endpoint handoff and security safeguards.");
+console.log("Translation deployment checks passed: automatic reviewed-branch deployment, confirmed manual reruns, YouVersion/API.Bible/NET provider fallback, verified live passage checks, FUMS v3, protected-branch endpoint handoff and security safeguards.");
