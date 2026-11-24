@@ -53,7 +53,8 @@ for (const journey of atlas?.journeys || []) {
 for (const fragment of [
   'root.id = "zurielGeographyAtlasDirectory"',
   'Search 25 places by name, region or significance',
-  'atlas.places.length + " places and " + atlas.journeys.length + " journeys loaded"',
+  'atlas.places.length + " places and "',
+  'atlas.journeys.length + " journeys loaded.',
   'function parseAtlasReference(reference)',
   'Historical note: " + place.studyCaution'
 ]) if (!moduleSource.includes(fragment)) failures.push("Expanded offline atlas UI is missing: " + fragment);
