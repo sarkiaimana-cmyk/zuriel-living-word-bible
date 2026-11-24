@@ -35,6 +35,8 @@ const checks = [
   ["stacked long-content CSS", 'data-layout="stacked"'],
   ["image export action", "zgsSaveImage"],
   ["plain-language save action", 'id="zgsSaveImage">Save image</button>'],
+  ["explicit PNG download action", 'id="zgsDownloadImage">⬇ Download image</button>'],
+  ["PNG download button wired to canvas export", 'studio.querySelectorAll("#zgsSaveImage,#zgsDownloadImage,#zgsShareImage")'],
   ["comfortable Android touch target", ".zgs-actions button {min-height:48px;"],
   ["honest share fallback when image sharing is unsupported", "Direct image sharing is not supported here, so the PNG was saved to your Downloads folder."],
   ["clear Save image action", 'id="zgsSaveImage">Save image</button>'],
@@ -89,6 +91,7 @@ if (!faithCards.includes("lines.forEach((item, index) => ctx.fillText(item, 540,
 if (!faithCards.includes("const finalGradient = ctx.createLinearGradient(0, 0, 1080, canvas.height)")) failures.push("Faith-card PNG export must repaint its background after resizing the canvas.");
 if (!faithCards.includes('ctx.fillText("Zuriel Living Word Bible", 540, canvas.height - 85)')) failures.push("Faith-card PNG export must retain the complete app footer.");
 if (!index.includes("window.getBibleVerseText = async function (reference)")) failures.push("Offline KJV passage retrieval is missing.");
+if (!home.includes('.replace(/^\\d+\\.\\s*/, "").trim()')) failures.push("Direct Home card download must strip the leading verse number using a working digit pattern.");
 if (!/const CACHE_NAME = "zuriel-bible-offline-v\d+";/.test(worker)) failures.push("Offline cache version is missing for the Studio/navigation integration.");
 if (!worker.includes('url.origin === "https://images.unsplash.com"')) failures.push("Service worker does not cache selected Unsplash wallpapers.");
 if (home.includes("Your Bible Journey")) failures.push("The duplicate home shortcut-button grid is still present.");
@@ -112,6 +115,9 @@ if (!home.includes('window.ZurielLibrary.openGloryVerse(\n          item.referen
 if (!home.includes('id="zurielOpenBookFaithCard"')) failures.push("The daily open-book faith card was removed.");
 if (!home.includes('id="zurielOpenBookSaveCard"')) failures.push("Home open-book card has a direct save action.");
 if (!home.includes('id="zurielOpenBookSavedCards"')) failures.push("Home open-book card has a direct saved-cards destination.");
+if (!home.includes('id="zurielOpenBookDownloadCard"')) failures.push("The Home open-book card must expose a direct Download Open Book Card button.");
+if (!home.includes('document.querySelector("#zgsDownloadImage")') || !home.includes("downloadButton.click();")) failures.push("The Home download action must trigger the actual PNG download control.");
+if (!home.includes("Your open-book card PNG was sent to your device Downloads.")) failures.push("The Home download action must report its download result clearly.");
 if (!home.includes('document.querySelector("#zgsSaveImage")')) failures.push("Home save action must invoke the PNG image export, not the My Library draft-save control.");
 if (!home.includes("saveImageButton.click();")) failures.push("Home save action must trigger the actual image-to-Gallery export.");
 if (!home.includes("window.ZurielMedia.isAvailable()") || !home.includes("window.ZurielMedia.saveImage")) failures.push("Home save action must require the native Android Gallery bridge.");

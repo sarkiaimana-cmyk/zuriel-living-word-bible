@@ -200,7 +200,8 @@ async function handleYouVersionRequest(request, env, dependencies, cors) {
   if (request.method !== "GET") {
     return json({ error: "Use GET to request licensed Bible versions or passages." }, 405, cors);
   }
-  if (!env.ZITE_YVP_APP_KEY) {
+  const yvpAppKey = String(env.ZITE_YVP_APP_KEY || "").trim();
+  if (!yvpAppKey) {
     return json({ error: "YouVersion access is not configured. The offline KJV remains available." }, 503, cors);
   }
   if (!env.TRANSLATION_RATE_LIMIT) {
@@ -256,7 +257,7 @@ async function handleYouVersionRequest(request, env, dependencies, cors) {
     response = await fetchImpl(upstreamUrl.toString(), {
       method: "GET",
       headers: {
-        "X-YVP-App-Key": env.ZITE_YVP_APP_KEY,
+        "X-YVP-App-Key": yvpAppKey,
         "Accept": "application/json"
       },
       signal: AbortSignal.timeout(10000)
@@ -336,7 +337,7 @@ async function handleYouVersionRequest(request, env, dependencies, cors) {
       metadataResponse = await fetchImpl(YVP_BASE + "/bibles/" + selectedVersionId, {
         method: "GET",
         headers: {
-          "X-YVP-App-Key": env.ZITE_YVP_APP_KEY,
+          "X-YVP-App-Key": yvpAppKey,
           "Accept": "application/json"
         },
         signal: AbortSignal.timeout(10000)
@@ -409,7 +410,8 @@ async function handleApiBibleRequest(request, env, dependencies, cors) {
   if (request.method !== "GET") {
     return json({ error: "Use GET to request API.Bible versions or chapters." }, 405, cors);
   }
-  if (!env.API_BIBLE_KEY) {
+  const apiBibleKey = String(env.API_BIBLE_KEY || "").trim();
+  if (!apiBibleKey) {
     return json({ error: "API.Bible access is not configured. The offline KJV and other connected sources remain available." }, 503, cors);
   }
   if (!env.TRANSLATION_RATE_LIMIT) {
@@ -463,7 +465,7 @@ async function handleApiBibleRequest(request, env, dependencies, cors) {
     response = await fetchImpl(upstreamUrl.toString(), {
       method: "GET",
       headers: {
-        "api-key": env.API_BIBLE_KEY,
+        "api-key": apiBibleKey,
         "Accept": "application/json"
       },
       signal: AbortSignal.timeout(10000)

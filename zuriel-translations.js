@@ -643,7 +643,7 @@
     const apiReady = await resolveApiBase();
     if (!currentChapter) {
       status("Open a Bible chapter first, then choose an online translation.");
-      return;
+      return false;
     }
     const bookCode = typeof window.ZurielBibleBookCode === "function"
       ? window.ZurielBibleBookCode(currentChapter.book)
@@ -653,18 +653,18 @@
       : /^[a-f0-9]{16}-\d{2}$/i.test(selectedVersionId);
     if (!bookCode || !validVersionId) {
       status("Choose a valid authorised translation.");
-      return;
+      return false;
     }
 
     const reference = bookCode + "." + currentChapter.chapter;
     if (!apiReady) {
       const saved = await readCachedChapter(selectedProvider, selectedVersionId, reference);
       if (saved) {
-        try { renderPassage(saved, true); return; }
+        try { renderPassage(saved, true); return true; }
         catch (_) {}
       }
       status("Secure online translation access is not connected. No permitted saved copy is available; your offline KJV remains unchanged.");
-      return;
+      return false;
     }
 
     const requestId = ++requestSequence;
@@ -683,7 +683,7 @@
         : "/api/api-bible/bibles/" + encodeURIComponent(selectedVersionId) +
           "/chapters/" + encodeURIComponent(reference);
       const payload = await requestJson(path, activeController);
-      if (requestId !== requestSequence) return;
+      if (requestId !== requestSequence) return false;
       renderPassage(payload, false);
       if (canStoreOffline(selectedProvider)) {
         const saved = await saveCachedChapter(selectedProvider, selectedVersionId, reference, payload);
@@ -695,17 +695,19 @@
           await refreshOfflineDownloadOptions();
         }
       }
+      return true;
     } catch (error) {
-      if (error && error.name === "AbortError") return;
+      if (error && error.name === "AbortError") return false;
       if (requestId === requestSequence) {
         const saved = await readCachedChapter(selectedProvider, selectedVersionId, reference);
         if (saved) {
-          try { renderPassage(saved, true); }
+          try { renderPassage(saved, true); return true; }
           catch (_) { status(error.message || "The online passage could not be loaded."); }
         } else {
           status(error.message || "The online passage could not be loaded. Your offline KJV is unchanged.");
         }
       }
+      return false;
     } finally {
       if (requestId === requestSequence) {
         loadButton.disabled = !selectedVersionId || !currentChapter;
@@ -842,6 +844,7 @@
 
       const providers = ["youversion", "api-bible"];
       const providerFailures = [];
+      const passageFailures = [];
       for (const provider of providers) {
         selectedProvider = provider;
         providerSelect.value = provider;
@@ -895,13 +898,18 @@
         status(requested + " is available through " +
           (provider === "youversion" ? "YouVersion" : "API.Bible") +
           ". " + (currentChapter ? "Loading this chapter…" : "Open a Bible chapter to display it."));
-        if (currentChapter) await loadPassage();
+        if (currentChapter && !await loadPassage()) {
+          passageFailures.push(provider === "youversion"
+            ? "YouVersion listed " + requested + " but could not return a usable passage."
+            : "API.Bible listed " + requested + " but could not return a usable passage with publisher attribution and FUMS.");
+          continue;
+        }
         panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
         return true;
       }
 
       status(requested + " was not found in either provider's currently authorised English catalogue. " +
-        providerFailures.join(" ") + " The offline KJV remains available.");
+        providerFailures.join(" ") + " " + passageFailures.join(" ") + " The offline KJV remains available.");
       panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
       return false;
     },

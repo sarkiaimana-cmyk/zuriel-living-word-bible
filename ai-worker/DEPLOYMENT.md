@@ -55,9 +55,10 @@ Before deployment:
 3. Confirm the Cloudflare account remains on the Workers Free plan. Do not upgrade to Workers Paid for Zuriel.
 4. In GitHub repository Settings → Secrets and variables → Actions, add:
    - `CLOUDFLARE_ACCOUNT_ID`
-   - `CLOUDFLARE_API_TOKEN` (must include the exact account named by `CLOUDFLARE_ACCOUNT_ID`; grant Workers Scripts Write at account scope, or the current Workers Admin/Editor roles at the appropriate product/Worker scope)
-   - `ZITE_YVP_APP_KEY` (the YouVersion Platform app key)
-5. The deployment workflow runs `wrangler whoami` so the account attached to the token can be checked before deployment. If Cloudflare reports “No access to the specified resource” for the Worker `/secrets` endpoint, the token's account scope or Worker permission is wrong; replacing the YouVersion app key will not fix that error. Creating a new Worker requires Workers Admin at the Workers product scope; managing a secret on an existing Worker requires Workers Editor for that Worker.
+   - `CLOUDFLARE_API_TOKEN` (must include the exact account named by `CLOUDFLARE_ACCOUNT_ID`; grant Workers Admin at Workers product scope if this Worker must be created, or Workers Editor scoped to `zuriel-bible-translations` if it already exists)
+   - `ZITE_YVP_APP_KEY` (the YouVersion Platform app key, if it is not already installed on the target Worker)
+   - `API_BIBLE_KEY` (the API.Bible server-side key, if it is not already installed on the target Worker)
+5. The deployment workflow runs `wrangler whoami` so the account attached to the token can be checked before deployment. If Cloudflare reports “No access to the specified resource” for the Worker `/secrets` endpoint, the token account scope or Worker permission is wrong; replacing either Bible provider key will not fix that error. Creating a new Worker requires Workers Admin at the Workers product scope; deploying or managing secrets on an existing Worker requires Workers Editor for `zuriel-bible-translations`.
 6. Never paste any of these values into ChatGPT, app settings, source files, commits, issues or pull requests.
 
 Manual deployment:
@@ -65,7 +66,7 @@ Manual deployment:
 2. Select **Deploy Zuriel Bible translations proxy (manual)**.
 3. Select Run workflow and tick the confirmation checkbox only after the account and publisher checks above are complete.
 4. The workflow runs the translation proxy tests, uploads the app key as a Worker Secret, and deploys `wrangler.translations.jsonc`.
-5. Record the resulting Worker URL. The Android/web client endpoint remains intentionally blank until that URL and the actual publisher-authorised version list have been checked.
+5. Record the resulting Worker URL. The workflow creates or reuses the account `workers.dev` subdomain, automatically enables the dedicated Worker route when needed, checks only the names of existing Worker secrets (never their values), reuses provider keys already installed on that Worker or uploads the supplied GitHub Actions secrets, verifies all requested live passages across whichever licensed provider is responding (including API.Bible FUMS v3), then writes the verified endpoint into `version.json` on the reviewed integration branch and dispatches the full application validation workflow. The endpoint is not written to protected `main` directly.
 
 The translation-only Worker exposes only `/api/youversion/bibles` and its passage routes. It does not expose the AI assistant endpoint, does not require Turnstile, applies its own request rate limit, checks exact allowed origins, and returns `no-store` responses. The app requests a passage only after the reader explicitly chooses a version and taps Load. It displays publisher copyright/attribution and does not persist online Bible text or cache it for offline use. The bundled KJV remains the offline fallback.
 

@@ -6,10 +6,11 @@ function check(label, condition) {
   if (!condition) failures.push(label);
 }
 
-check("reader and study panel share a full-width Scripture layout",
-  study.includes('layout.id = "zurielReaderStudyLayout"') &&
+check("independent Study Centre retains full-width responsive containment",
+  study.includes('panel.id = "zurielStudyPanel"') &&
+  study.includes("#zurielStudyPanel {") &&
   study.includes("grid-template-columns:minmax(0,1fr);") &&
-  study.includes("#zurielReaderStudyLayout > #message .verse"));
+  study.includes("#zurielStudyPanel[data-mode=\"word-context\"]"));
 check("study panel follows the full-width Scripture text without constraining it",
   study.includes("position:static") &&
   study.includes("max-height:none") &&

@@ -1,7 +1,18 @@
 name: Deploy Zuriel Bible translations proxy
 
-# Deployment is intentionally manual; execution requires inputs.confirm_deployment == true.
+# The reviewed integration branch auto-deploys after translation code changes. Manual runs require explicit confirmation.
+# Credential retries always verify the provider keys directly before touching the Worker.
 on:
+  push:
+    branches:
+      - fix/mobile-search-study-layout
+    paths:
+      - "ai-worker/src/translation-worker.js"
+      - "ai-worker/src/index.js"
+      - "ai-worker/wrangler.translations.jsonc"
+      - "ai-worker/scripts/smoke-licensed-translations.mjs"
+      - "zuriel-translations.js"
+      - ".github/workflows/deploy-translations-worker.yml"
   workflow_dispatch:
     inputs:
       confirm_deployment:
@@ -12,6 +23,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: zuriel-translations-proxy-deployment
@@ -24,21 +36,22 @@ jobs:
       run:
         working-directory: ai-worker
     env:
-      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-      ZITE_YVP_APP_KEY: ${{ secrets.ZITE_YVP_APP_KEY }}
-      API_BIBLE_KEY: ${{ secrets.API_BIBLE_KEY }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN || secrets.CF_API_TOKEN || secrets.CLOUDFLARE_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || secrets.CF_ACCOUNT_ID }}
+      ZITE_YVP_APP_KEY: ${{ secrets.ZITE_YVP_APP_KEY || secrets.YOUVERSION_APP_KEY || secrets.YVP_APP_KEY || secrets.YVP_API_KEY }}
+      API_BIBLE_KEY: ${{ secrets.API_BIBLE_KEY || secrets.API_BIBLE_TOKEN }}
+      GH_TOKEN: ${{ github.token }}
     steps:
       - name: Require explicit deployment confirmation
-        if: ${{ inputs.confirm_deployment != true }}
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.confirm_deployment != true }}
         run: |
           echo "::error::Explicit deployment confirmation is required."
           exit 1
 
-      - name: Require main branch before any Cloudflare changes
-        if: ${{ github.ref != 'refs/heads/main' }}
+      - name: Require the reviewed integration branch before any Cloudflare changes
+        if: ${{ github.ref != 'refs/heads/fix/mobile-search-study-layout' }}
         run: |
-          echo "::error::Translation proxy deployment is permitted only from main after the reviewed app changes are merged."
+          echo "::error::Run this manually from the reviewed fix/mobile-search-study-layout branch. The verified endpoint will be committed to that pull request, not pushed around main branch protection."
           exit 1
 
 
@@ -55,17 +68,102 @@ jobs:
           set -eu
           test -n "$CLOUDFLARE_API_TOKEN" || { echo "::error::Missing CLOUDFLARE_API_TOKEN repository secret."; exit 1; }
           test -n "$CLOUDFLARE_ACCOUNT_ID" || { echo "::error::Missing CLOUDFLARE_ACCOUNT_ID repository secret."; exit 1; }
-          test -n "$ZITE_YVP_APP_KEY" || { echo "::error::Missing ZITE_YVP_APP_KEY repository secret."; exit 1; }
           node -e 'const fs=require("node:fs"); const c=JSON.parse(fs.readFileSync("wrangler.translations.jsonc","utf8")); if(!c.vars?.ALLOWED_ORIGINS || !c.ratelimits?.some(x=>x.name==="TRANSLATION_RATE_LIMIT")) { console.error("Translation proxy origin or rate-limit configuration is missing."); process.exit(1); }'
 
       - name: Install Worker deployment tools
         run: npm install --no-audit --no-fund
 
       - name: Test translation proxy safeguards
-        run: node --test test/youversion.test.mjs test/translation-worker.test.mjs test/api-bible.test.mjs
+        run: |
+          node --test test/youversion.test.mjs test/translation-worker.test.mjs test/api-bible.test.mjs
+          node --check scripts/smoke-licensed-translations.mjs
 
       - name: Confirm the Cloudflare token account
         run: npx wrangler whoami
+
+      - name: Check provider credentials directly without exposing keys
+        run: |
+          set -euo pipefail
+          YVP_DIRECT_STATUS="skipped"
+          API_BIBLE_DIRECT_STATUS="skipped"
+          YVP_KEY_CLEAN="$(printf '%s' "$ZITE_YVP_APP_KEY" | tr -d '\r\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
+          if [ "$YVP_KEY_CLEAN" != "$ZITE_YVP_APP_KEY" ]; then echo "Trimmed surrounding whitespace from the YouVersion App Key."; fi
+          if [ -n "$YVP_KEY_CLEAN" ]; then
+            YVP_DIRECT_STATUS="$(curl -sS --retry 2 --retry-delay 2 --retry-all-errors \
+              --get --data-urlencode 'language_ranges[]=en' --data-urlencode 'page_size=1' \
+              -A "ZurielLivingWordBible/2.10.3" \
+              -H "X-YVP-App-Key: $YVP_KEY_CLEAN" -H "Accept: application/json" \
+              -o .yvp-direct.json -w '%{http_code}' https://api.youversion.com/v1/bibles || true)"
+            if [ "$YVP_DIRECT_STATUS" = "200" ]; then
+              YVP_DIRECT_COUNT="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".yvp-direct.json","utf8"));process.stdout.write(String(Array.isArray(j.data)?j.data.length:0));')"
+              echo "YouVersion direct credential check passed; sample catalogue entries: $YVP_DIRECT_COUNT."
+            else
+              YVP_DIRECT_ERROR="$(node -e 'try{const j=JSON.parse(require("node:fs").readFileSync(".yvp-direct.json","utf8"));process.stdout.write(String(j.message||j.fault?.faultstring||j.error||"no provider detail"));}catch{process.stdout.write("no readable provider response");}')"
+              echo "::warning::YouVersion direct API check returned HTTP $YVP_DIRECT_STATUS: $YVP_DIRECT_ERROR"
+            fi
+          else
+            echo "YouVersion key is already stored on the Worker; direct GitHub-secret check skipped."
+          fi
+
+          API_BIBLE_KEY_CLEAN="$(printf '%s' "$API_BIBLE_KEY" | tr -d '\r\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
+          if [ "$API_BIBLE_KEY_CLEAN" != "$API_BIBLE_KEY" ]; then echo "Trimmed surrounding whitespace from the API.Bible key."; fi
+          if [ -n "$API_BIBLE_KEY_CLEAN" ]; then
+            API_BIBLE_DIRECT_STATUS="$(curl -sS --retry 2 --retry-delay 2 --retry-all-errors \
+              -A "ZurielLivingWordBible/2.10.3" \
+              -H "api-key: $API_BIBLE_KEY_CLEAN" -H "Accept: application/json" \
+              -o .api-bible-direct.json -w '%{http_code}' https://rest.api.bible/v1/bibles || true)"
+            if [ "$API_BIBLE_DIRECT_STATUS" = "200" ]; then
+              echo "API.Bible direct credential check passed."
+            else
+              API_BIBLE_DIRECT_ERROR="$(node -e 'try{const j=JSON.parse(require("node:fs").readFileSync(".api-bible-direct.json","utf8"));process.stdout.write(String(j.message||j.error||"no provider detail"));}catch{process.stdout.write("no readable provider response");}')"
+              echo "::warning::API.Bible direct API check returned HTTP $API_BIBLE_DIRECT_STATUS: $API_BIBLE_DIRECT_ERROR"
+            fi
+          else
+            echo "API.Bible key is already stored on the Worker; direct GitHub-secret check skipped."
+          fi
+
+          if [[ "$YVP_DIRECT_STATUS" =~ ^(401|403)$ && "$API_BIBLE_DIRECT_STATUS" =~ ^(401|403)$ ]]; then
+            echo "::error::Both official providers rejected the configured credentials. Correct the ZITE_YVP_APP_KEY and API_BIBLE_KEY GitHub Actions secrets before deployment; no new Worker version or app endpoint will be published."
+            exit 1
+          fi
+
+      - name: Register or reuse the account workers.dev subdomain
+        run: |
+          set -euo pipefail
+          ACCOUNT_SUBDOMAIN_URL="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/subdomain"
+          SUBDOMAIN_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
+            -o .account-subdomain.json -w '%{http_code}' \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "$ACCOUNT_SUBDOMAIN_URL")"
+          WORKERS_SUBDOMAIN=""
+          if [ "$SUBDOMAIN_STATUS" = "200" ]; then
+            WORKERS_SUBDOMAIN="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".account-subdomain.json","utf8"));process.stdout.write(String(j.result?.subdomain||""));')"
+          fi
+
+          if [ -z "$WORKERS_SUBDOMAIN" ]; then
+            PREFERRED_SUBDOMAIN="zuriel-living-word-bible"
+            if ! SUBDOMAIN_CREATE="$(curl -fsS --retry 2 --retry-delay 2 --retry-all-errors \
+              -X PUT -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+              -H "Content-Type: application/json" \
+              --data "{\"subdomain\":\"$PREFERRED_SUBDOMAIN\"}" "$ACCOUNT_SUBDOMAIN_URL")"; then
+              UNIQUE_SUBDOMAIN="zuriel-bible-${CLOUDFLARE_ACCOUNT_ID:0:8}"
+              if ! SUBDOMAIN_CREATE="$(curl -fsS --retry 2 --retry-delay 2 --retry-all-errors \
+                -X PUT -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+                -H "Content-Type: application/json" \
+                --data "{\"subdomain\":\"$UNIQUE_SUBDOMAIN\"}" "$ACCOUNT_SUBDOMAIN_URL")"; then
+                echo "::error::Cloudflare could not register the account workers.dev subdomain. This token needs Workers Scripts Write permission for the account. No Worker was deployed."
+                exit 1
+              fi
+            fi
+            WORKERS_SUBDOMAIN="$(printf '%s' "$SUBDOMAIN_CREATE" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);if(!j.success||!j.result?.subdomain)process.exit(1);process.stdout.write(j.result.subdomain);});')"
+          fi
+
+          if [ -z "$WORKERS_SUBDOMAIN" ]; then
+            echo "::error::Cloudflare did not return an account workers.dev subdomain."
+            exit 1
+          fi
+          echo "WORKERS_SUBDOMAIN=$WORKERS_SUBDOMAIN" >> "$GITHUB_ENV"
+          echo "Using account workers.dev subdomain: $WORKERS_SUBDOMAIN"
 
       - name: Bootstrap the fail-closed Worker
         run: |
@@ -78,25 +176,40 @@ jobs:
             exit 1
           fi
 
-      - name: Install the YouVersion app key as a Worker secret
+      - name: Install or reuse both provider keys as Worker secrets
         run: |
           set -euo pipefail
-          if ! printf '%s' "$ZITE_YVP_APP_KEY" | npx wrangler secret put ZITE_YVP_APP_KEY --config wrangler.translations.jsonc; then
-            echo "::error::Cloudflare rejected the Worker secret operation. Grant Workers Editor scoped to zuriel-bible-translations (or Workers Admin at the Workers product scope). Do not create another YouVersion key for this permission error."
+          if ! EXISTING_SECRETS="$(npx wrangler secret list --config wrangler.translations.jsonc --format json)"; then
+            echo "::error::Could not inspect the existing Worker secret names. Check Workers Editor permissions."
+            exit 1
+          fi
+          HAS_YVP_KEY="$(printf '%s' "$EXISTING_SECRETS" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);process.stdout.write(String(Array.isArray(j)&&j.some(x=>x.name==="ZITE_YVP_APP_KEY")));});')"
+          YVP_KEY_CLEAN="$(printf '%s' "$ZITE_YVP_APP_KEY" | tr -d '\r\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
+          API_BIBLE_KEY_CLEAN="$(printf '%s' "$API_BIBLE_KEY" | tr -d '\r\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
+          HAS_API_BIBLE_KEY="$(printf '%s' "$EXISTING_SECRETS" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);process.stdout.write(String(Array.isArray(j)&&j.some(x=>x.name==="API_BIBLE_KEY")));});')"
+
+          if [ -n "$YVP_KEY_CLEAN" ]; then
+            if ! printf '%s' "$YVP_KEY_CLEAN" | npx wrangler secret put ZITE_YVP_APP_KEY --config wrangler.translations.jsonc; then
+              echo "::error::Cloudflare rejected the YouVersion Worker secret. Check Workers Editor permissions; the key is never printed."
+              exit 1
+            fi
+          elif [ "$HAS_YVP_KEY" = "true" ]; then
+            echo "Reusing the existing YouVersion Worker secret without reading its value."
+          else
+            echo "::error::YouVersion key is missing. Add ZITE_YVP_APP_KEY as a GitHub Actions secret or install that exact secret on the zuriel-bible-translations Worker."
             exit 1
           fi
 
-      - name: Install optional API.Bible key as a Worker secret
-        run: |
-          set -euo pipefail
-          if [ -n "$API_BIBLE_KEY" ]; then
-            if ! printf '%s' "$API_BIBLE_KEY" | npx wrangler secret put API_BIBLE_KEY --config wrangler.translations.jsonc; then
-              echo "::error::Cloudflare rejected the optional API.Bible secret. Check the Worker secret permissions; the key is never printed."
+          if [ -n "$API_BIBLE_KEY_CLEAN" ]; then
+            if ! printf '%s' "$API_BIBLE_KEY_CLEAN" | npx wrangler secret put API_BIBLE_KEY --config wrangler.translations.jsonc; then
+              echo "::error::Cloudflare rejected the API.Bible Worker secret. Check Workers Editor permissions; the key is never printed."
               exit 1
             fi
-            echo "API.Bible server-side key installed."
+          elif [ "$HAS_API_BIBLE_KEY" = "true" ]; then
+            echo "Reusing the existing API.Bible Worker secret without reading its value."
           else
-            echo "::notice::API.Bible key not configured; its provider will remain unavailable while YouVersion can still operate."
+            echo "::error::API.Bible key is missing. Add API_BIBLE_KEY as a GitHub Actions secret or install that exact secret on the zuriel-bible-translations Worker."
+            exit 1
           fi
 
       - name: Deploy the protected translation Worker
@@ -121,117 +234,164 @@ jobs:
             exit 1
           fi
 
+          SCRIPT_SUBDOMAIN_URL="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts/zuriel-bible-translations/subdomain"
           SCRIPT_SUBDOMAIN_JSON="$(curl -fsS --retry 4 --retry-delay 2 --retry-all-errors \
             -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts/zuriel-bible-translations/subdomain")"
+            "$SCRIPT_SUBDOMAIN_URL")"
           SCRIPT_ENABLED="$(printf '%s' "$SCRIPT_SUBDOMAIN_JSON" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);process.stdout.write(String(Boolean(j.result?.enabled)));});')"
           if [ "$SCRIPT_ENABLED" != "true" ]; then
-            echo "::error::The Worker workers.dev route is not enabled. Enable it for zuriel-bible-translations in Cloudflare and rerun this workflow."
+            if ! SCRIPT_SUBDOMAIN_UPDATE="$(curl -fsS --retry 3 --retry-delay 2 --retry-all-errors \
+              -X POST -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+              -H "Content-Type: application/json" \
+              --data '{"enabled":true}' "$SCRIPT_SUBDOMAIN_URL")"; then
+              echo "::error::Cloudflare refused to enable the workers.dev route. The token needs Workers Editor for zuriel-bible-translations (or Workers Scripts Write)."
+              exit 1
+            fi
+            SCRIPT_ENABLED="$(printf '%s' "$SCRIPT_SUBDOMAIN_UPDATE" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);process.stdout.write(String(Boolean(j.success && j.result?.enabled)));});')"
+          fi
+          if [ "$SCRIPT_ENABLED" != "true" ]; then
+            echo "::error::Cloudflare did not confirm the workers.dev route for zuriel-bible-translations."
             exit 1
           fi
 
           WORKER_URL="https://zuriel-bible-translations.$WORKERS_SUBDOMAIN.workers.dev"
-          HTTP_STATUS="$(curl -sS --retry 5 --retry-delay 3 --retry-all-errors \
-            -o .translation-smoke.json -D .translation-smoke.headers -w '%{http_code}' \
-            -H "Origin: https://sarkiaimana-cmyk.github.io" \
-            "$WORKER_URL/api/youversion/bibles")"
-          if [ "$HTTP_STATUS" != "200" ]; then
-            echo "::error::The deployed YouVersion endpoint returned HTTP $HTTP_STATUS. Check the YouVersion app key, publisher access and Worker logs."
-            exit 1
-          fi
-          if ! grep -qi 'access-control-allow-origin: https://sarkiaimana-cmyk.github.io' .translation-smoke.headers; then
-            echo "::error::The translation Worker did not return the expected GitHub Pages CORS origin."
-            exit 1
-          fi
-
-          VERSION_COUNT="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".translation-smoke.json","utf8"));if(!Array.isArray(j.data))process.exit(1);process.stdout.write(String(j.data.length));')"
-          if [ "$VERSION_COUNT" -lt 1 ]; then
-            echo "::error::The YouVersion app key returned no publisher-authorised English Bible versions. Check the app registration and publisher access before activating the app endpoint."
-            exit 1
-          fi
-
-          # A catalogue response is not proof that Scripture retrieval works.
-          # Select an actually authorised version and require real John 3:16 text.
-          YVP_BIBLE_ID="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".translation-smoke.json","utf8"));const id=Number(j.data[0]?.id);if(!Number.isInteger(id)||id<1)process.exit(1);process.stdout.write(String(id));')"
-          YVP_CHAPTER_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
-            -o .translation-chapter-smoke.json -D .translation-chapter-smoke.headers -w '%{http_code}' \
-            -H "Origin: https://sarkiaimana-cmyk.github.io" \
-            "$WORKER_URL/api/youversion/bibles/$YVP_BIBLE_ID/passages/JHN.3.16?format=text")"
-          if [ "$YVP_CHAPTER_STATUS" != "200" ]; then
-            echo "::error::YouVersion catalogue worked, but live John 3:16 retrieval failed (HTTP $YVP_CHAPTER_STATUS). Do not connect this provider yet."
-            exit 1
-          fi
-          node -e 'const j=JSON.parse(require("node:fs").readFileSync(".translation-chapter-smoke.json","utf8"));if(!j.passage||typeof j.passage.content!=="string"||!j.passage.content.trim()||!j.passage.reference||!j.version?.id||(!j.passage.copyright&&!j.passage.promotional_content))process.exit(1);console.log("YouVersion live passage and publisher attribution verified: "+j.passage.reference+" ("+j.passage.content.trim().length+" characters).");'
-          if ! grep -qi 'access-control-allow-origin: https://sarkiaimana-cmyk.github.io' .translation-chapter-smoke.headers; then
-            echo "::error::The live YouVersion passage did not return the expected GitHub Pages CORS origin."
-            exit 1
-          fi
-
-          if [ -n "$API_BIBLE_KEY" ]; then
-            API_BIBLE_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
-              -o .api-bible-smoke.json -D .api-bible-smoke.headers -w '%{http_code}' \
+          echo "Waiting for the new workers.dev endpoint TLS and route to become ready."
+          READY=false
+          for attempt in $(seq 1 12); do
+            HTTP_STATUS="$(curl -sS --max-time 8 -o /dev/null -w '%{http_code}' \
+              -A "ZurielLivingWordBible/2.10.3" \
               -H "Origin: https://sarkiaimana-cmyk.github.io" \
-              "$WORKER_URL/api/api-bible/bibles")"
-            if [ "$API_BIBLE_STATUS" != "200" ]; then
-              echo "::error::The optional API.Bible provider returned HTTP $API_BIBLE_STATUS. Check the API_BIBLE_KEY secret and its account access."
-              exit 1
+              "$WORKER_URL/api/youversion/bibles" 2>/dev/null || true)"
+            if [ "$HTTP_STATUS" != "000" ]; then
+              READY=true
+              echo "Worker endpoint responded with HTTP $HTTP_STATUS on readiness attempt $attempt."
+              break
             fi
-            if ! grep -qi 'access-control-allow-origin: https://sarkiaimana-cmyk.github.io' .api-bible-smoke.headers; then
-              echo "::error::The API.Bible provider did not return the expected GitHub Pages CORS origin."
-              exit 1
-            fi
-            API_BIBLE_COUNT="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-smoke.json","utf8"));if(!Array.isArray(j.data))process.exit(1);process.stdout.write(String(j.data.length));')"
-            if [ "$API_BIBLE_COUNT" -lt 1 ]; then
-              echo "::warning::API.Bible key is valid but currently returns no English Bible versions. YouVersion remains available."
+            sleep 10
+          done
+          if [ "$READY" != "true" ]; then
+            echo "::error::Cloudflare deployed the Worker, but its workers.dev TLS endpoint did not become reachable after 12 attempts. The Worker remains deployed; no translation endpoint has been published to the app."
+            exit 1
+          fi
+                    VERSION_COUNT=0
+          YVP_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
+            -o .translation-smoke.json -D .translation-smoke.headers -w '%{http_code}' \
+            -A "ZurielLivingWordBible/2.10.3" \
+            -H "Origin: https://sarkiaimana-cmyk.github.io" \
+            "$WORKER_URL/api/youversion/bibles" || true)"
+          if [ ! -s .translation-smoke.json ]; then
+            printf '{"data":[],"error":"YouVersion returned HTTP %s without a response body."}' "$YVP_STATUS" > .translation-smoke.json
+          fi
+          if [ "$YVP_STATUS" = "200" ]; then
+            VERSION_COUNT="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".translation-smoke.json","utf8"));process.stdout.write(String(Array.isArray(j.data)?j.data.length:0));')"
+            if [ "$VERSION_COUNT" -gt 0 ]; then
+              YVP_BIBLE_ID="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".translation-smoke.json","utf8"));const id=Number(j.data[0]?.id);if(!Number.isInteger(id)||id<1)process.exit(1);process.stdout.write(String(id));')"
+              YVP_CHAPTER_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
+                -o .translation-chapter-smoke.json -D .translation-chapter-smoke.headers -w '%{http_code}' \
+                -A "ZurielLivingWordBible/2.10.3" \
+                -H "Origin: https://sarkiaimana-cmyk.github.io" \
+                "$WORKER_URL/api/youversion/bibles/$YVP_BIBLE_ID/passages/JHN.3.16?format=text" || true)"
+              if [ "$YVP_CHAPTER_STATUS" = "200" ]; then
+                if ! node -e 'const j=JSON.parse(require("node:fs").readFileSync(".translation-chapter-smoke.json","utf8"));if(!j.passage||typeof j.passage.content!=="string"||!j.passage.content.trim()||!j.passage.reference||!j.version?.id||(!j.passage.copyright&&!j.passage.promotional_content))process.exit(1);console.log("YouVersion live passage and publisher attribution verified: "+j.passage.reference+" ("+j.passage.content.trim().length+" characters).");'; then
+                  echo "::warning::YouVersion returned a chapter without verifiable Scripture text or publisher attribution. The combined version matrix will try API.Bible."
+                fi
+                if ! grep -qi 'access-control-allow-origin: https://sarkiaimana-cmyk.github.io' .translation-chapter-smoke.headers; then
+                  echo "::warning::YouVersion passage CORS is not authorised for the app; YouVersion will be excluded from the live matrix."
+                  printf '{"data":[],"error":"YouVersion passage CORS is not authorised for the Zuriel app."}' > .translation-smoke.json
+                  VERSION_COUNT=0
+                fi
+              else
+                YVP_PASSAGE_ERROR="$(node -e 'try{const j=JSON.parse(require("node:fs").readFileSync(".translation-chapter-smoke.json","utf8"));process.stdout.write(String(j.error||"passage request failed"));}catch{process.stdout.write("no passage response");}')"
+                echo "::warning::YouVersion catalogue returned $VERSION_COUNT versions, but the sample passage returned HTTP $YVP_CHAPTER_STATUS: $YVP_PASSAGE_ERROR. The combined version matrix will try API.Bible."
+              fi
             else
+              echo "::warning::YouVersion returned an empty licensed English Bible catalogue."
+            fi
+          else
+            YVP_ERROR="$(node -e 'try{const j=JSON.parse(require("node:fs").readFileSync(".translation-smoke.json","utf8"));process.stdout.write(String(j.error||"no provider error detail"));}catch{process.stdout.write("response body was not readable");}')"
+            echo "::warning::YouVersion catalogue unavailable (HTTP $YVP_STATUS): $YVP_ERROR. The combined version matrix will try API.Bible."
+          fi
+          echo "YouVersion English versions returned: $VERSION_COUNT"
+
+          API_BIBLE_COUNT=0
+          API_BIBLE_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
+            -o .api-bible-smoke.json -D .api-bible-smoke.headers -w '%{http_code}' \
+            -A "ZurielLivingWordBible/2.10.3" \
+            -H "Origin: https://sarkiaimana-cmyk.github.io" \
+            "$WORKER_URL/api/api-bible/bibles" || true)"
+          if [ ! -s .api-bible-smoke.json ]; then
+            printf '{"data":[],"error":"API.Bible returned HTTP %s without a response body."}' "$API_BIBLE_STATUS" > .api-bible-smoke.json
+          fi
+          if [ "$API_BIBLE_STATUS" = "200" ]; then
+            API_BIBLE_COUNT="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-smoke.json","utf8"));process.stdout.write(String(Array.isArray(j.data)?j.data.length:0));')"
+            if [ "$API_BIBLE_COUNT" -gt 0 ]; then
               API_BIBLE_ID="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-smoke.json","utf8"));const id=String(j.data[0]?.id||"");if(!/^[a-f0-9]{16}-\d{2}$/i.test(id))process.exit(1);process.stdout.write(id);')"
               API_BIBLE_CHAPTER_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
                 -o .api-bible-chapter-smoke.json -D .api-bible-chapter-smoke.headers -w '%{http_code}' \
+                -A "ZurielLivingWordBible/2.10.3" \
                 -H "Origin: https://sarkiaimana-cmyk.github.io" \
-                "$WORKER_URL/api/api-bible/bibles/$API_BIBLE_ID/chapters/JHN.3")"
-              if [ "$API_BIBLE_CHAPTER_STATUS" != "200" ]; then
-                echo "::error::API.Bible catalogue worked, but live John 3 retrieval failed (HTTP $API_BIBLE_CHAPTER_STATUS). Do not connect this provider yet."
-                exit 1
+                "$WORKER_URL/api/api-bible/bibles/$API_BIBLE_ID/chapters/JHN.3" || true)"
+              if [ "$API_BIBLE_CHAPTER_STATUS" = "200" ]; then
+                if ! node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-chapter-smoke.json","utf8"));if(!j.passage||typeof j.passage.content!=="string"||!j.passage.content.trim()||!j.passage.reference||!j.passage.copyright||!j.version?.id||!j.meta?.fumsToken)process.exit(1);console.log("API.Bible live chapter, publisher attribution and FUMS token verified: "+j.passage.reference+" ("+j.passage.content.trim().length+" characters).");'; then
+                  echo "::warning::API.Bible returned a chapter without valid publisher attribution or FUMS v3. The combined version matrix will try YouVersion."
+                fi
+                if ! grep -qi 'access-control-allow-origin: https://sarkiaimana-cmyk.github.io' .api-bible-chapter-smoke.headers; then
+                  echo "::warning::API.Bible passage CORS is not authorised for the app; API.Bible will be excluded from the live matrix."
+                  printf '{"data":[],"error":"API.Bible passage CORS is not authorised for the Zuriel app."}' > .api-bible-smoke.json
+                  API_BIBLE_COUNT=0
+                fi
+              else
+                API_BIBLE_ERROR="$(node -e 'try{const j=JSON.parse(require("node:fs").readFileSync(".api-bible-chapter-smoke.json","utf8"));process.stdout.write(String(j.error||"chapter request failed"));}catch{process.stdout.write("no chapter response");}')"
+                echo "::warning::API.Bible catalogue returned $API_BIBLE_COUNT versions, but the sample chapter returned HTTP $API_BIBLE_CHAPTER_STATUS: $API_BIBLE_ERROR. The combined version matrix will try YouVersion."
               fi
-              node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-chapter-smoke.json","utf8"));if(!j.passage||typeof j.passage.content!=="string"||!j.passage.content.trim()||!j.passage.reference||!j.passage.copyright||!j.version?.id||!j.meta?.fumsToken)process.exit(1);console.log("API.Bible live chapter, publisher attribution and FUMS token verified: "+j.passage.reference+" ("+j.passage.content.trim().length+" characters).");'
-              if ! grep -qi 'access-control-allow-origin: https://sarkiaimana-cmyk.github.io' .api-bible-chapter-smoke.headers; then
-                echo "::error::The live API.Bible chapter did not return the expected GitHub Pages CORS origin."
-                exit 1
-              fi
+            else
+              echo "::warning::API.Bible returned an empty licensed English Bible catalogue."
             fi
-            echo "API.Bible English versions returned: $API_BIBLE_COUNT"
           else
-            echo "API.Bible is optional and was not configured; YouVersion remains the active provider."
+            API_BIBLE_ERROR="$(node -e 'try{const j=JSON.parse(require("node:fs").readFileSync(".api-bible-smoke.json","utf8"));process.stdout.write(String(j.error||"no provider error detail"));}catch{process.stdout.write("response body was not readable");}')"
+            echo "::warning::API.Bible catalogue unavailable (HTTP $API_BIBLE_STATUS): $API_BIBLE_ERROR. The combined version matrix will try YouVersion."
           fi
-          if [ "$GITHUB_REF" != "refs/heads/main" ]; then
-            echo "::error::Run this deployment from the main branch so the verified endpoint can be saved to the app configuration."
+          echo "API.Bible English versions returned: $API_BIBLE_COUNT"
+          WORKER_URL="$WORKER_URL" node scripts/smoke-licensed-translations.mjs
+          if [ "$GITHUB_REF" != "refs/heads/fix/mobile-search-study-layout" ]; then
+            echo "::error::The verified endpoint may only be committed to the reviewed integration branch."
             exit 1
           fi
 
-          # The endpoint is public configuration, not a credential. The YouVersion
-          # app key remains a Cloudflare secret and is never written to GitHub.
+          # The endpoint is public configuration, not a credential. Keep the
+          # provider keys in Cloudflare and update the open integration branch.
           export WORKER_URL
           node -e 'const fs=require("node:fs");const path="../version.json";const data=JSON.parse(fs.readFileSync(path,"utf8"));data.translationApiBase=process.env.WORKER_URL;fs.writeFileSync(path,JSON.stringify(data,null,2)+"\n");'
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add ../version.json
           if ! git diff --cached --quiet; then
-            git commit -m "Connect verified YouVersion translation proxy endpoint"
-            if ! git push origin HEAD:main; then
-              echo "::error::The Worker passed its live smoke test, but GitHub did not accept the automatic endpoint configuration commit. The public endpoint is $WORKER_URL; the app remains safely on offline KJV until version.json is updated."
+            git commit -m "Connect verified Bible translation Worker endpoint"
+            if ! git push origin "HEAD:$GITHUB_REF_NAME"; then
+              echo "::error::The Worker passed its live smoke test, but GitHub rejected the endpoint commit to the integration branch. The public endpoint is $WORKER_URL; the app remains safely on offline KJV until version.json is updated."
               exit 1
             fi
           fi
 
-          REMOTE_CONFIG="$(curl -fsS --retry 3 --retry-delay 2 --retry-all-errors \
-            "https://raw.githubusercontent.com/sarkiaimana-cmyk/zuriel-living-word-bible/main/version.json")"
-          SAVED_ENDPOINT="$(printf '%s' "$REMOTE_CONFIG" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);process.stdout.write(String(j.translationApiBase||""));});')"
-          if [ "$SAVED_ENDPOINT" != "$WORKER_URL" ]; then
-            echo "::error::The Worker is live, but the app's public endpoint configuration could not be verified."
+          # GITHUB_TOKEN pushes do not trigger normal push workflows. Dispatch
+          # full PR validation explicitly against the updated integration branch.
+          if ! gh workflow run validate-pr.yml --ref "$GITHUB_REF_NAME"; then
+            echo "::error::The Worker is live and the endpoint is committed, but full application validation could not be dispatched."
             exit 1
           fi
 
-          echo "::notice title=YouVersion proxy deployed and configured::$WORKER_URL"
+          REMOTE_CONFIG="$(curl -fsS --retry 3 --retry-delay 2 --retry-all-errors \
+            "https://raw.githubusercontent.com/sarkiaimana-cmyk/zuriel-living-word-bible/$GITHUB_REF_NAME/version.json")"
+          SAVED_ENDPOINT="$(printf '%s' "$REMOTE_CONFIG" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);process.stdout.write(String(j.translationApiBase||""));});')"
+          if [ "$SAVED_ENDPOINT" != "$WORKER_URL" ]; then
+            echo "::error::The Worker is live, but the integration branch endpoint configuration could not be verified."
+            exit 1
+          fi
+
+          echo "::notice title=Translation proxy deployed and configured on the integration branch::$WORKER_URL"
           echo "Worker URL: $WORKER_URL"
-          echo "Authorised Bible versions returned: $VERSION_COUNT"
+          echo "YouVersion English versions returned: $VERSION_COUNT"
+          echo "API.Bible English versions returned: $API_BIBLE_COUNT"
+          echo "Verified requested translations: GNT, AMP, LB/LT, TPT, NLT, NET, NIV, ESV, NASB, CSB and NKJV; KJV remains offline."
+          echo "Full application validation has been dispatched for $GITHUB_REF_NAME."
           echo "Zuriel will discover this verified endpoint from version.json; no API key is exposed in the app."

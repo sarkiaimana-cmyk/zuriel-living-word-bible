@@ -1,5 +1,5 @@
 {
-  "version": "2.10.2",
+  "version": "2.10.3",
   "displayVersion": "2.10",
-  "releaseNotes": "Zuriel version 2.10.2: strengthens Android release publication and update integrity, while continuing the expanded offline Bible study library, complete book and chapter introductions, and safeguards for saved personal study records."
+  "releaseNotes": "Zuriel version 2.10.3: separates Read Scripture and Study Centre, improves mobile Bible search and contextual word study, and adds direct Open Book Card PNG download. Includes Android upgrade and offline-core safeguards."
 }

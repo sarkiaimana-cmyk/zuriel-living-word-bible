@@ -1336,18 +1336,21 @@
       @media (max-width:640px) {
         #zurielStudyPanel[data-mode="word-context"] {
           position:fixed;
-          inset:auto 0 0 0;
+          top:auto;
+          left:12px;
+          right:12px;
+          bottom:calc(68px + env(safe-area-inset-bottom));
           z-index:10000;
           box-sizing:border-box;
-          width:100%;
-          max-height:min(62dvh,560px);
+          width:auto;
+          max-height:min(42vh,360px);
           overflow-y:auto;
           overscroll-behavior:contain;
           -webkit-overflow-scrolling:touch;
-          border-radius:18px 18px 0 0;
-          padding:12px 14px calc(12px + env(safe-area-inset-bottom));
+          border-radius:18px;
+          padding:12px 14px;
           margin:0;
-          box-shadow:0 -12px 40px #0007;
+          box-shadow:0 12px 40px #0007;
           touch-action:pan-y;
         }
         #zurielStudyPanel[data-mode="word-context"] #zurielInlineWordStudy {
@@ -2033,18 +2036,17 @@
       body.prepend(illustration);
     });
 
-    (reader || main || document.body).appendChild(panel);
-
-    // Keep the reading controls full-width, then place the verse and study
-    // panel together. Desktop uses two columns; small screens stack naturally.
-    const message = document.getElementById("message");
-    if (reader && message && !document.getElementById("zurielReaderStudyLayout")) {
-      const layout = document.createElement("div");
-      layout.id = "zurielReaderStudyLayout";
-      reader.insertBefore(layout, message);
-      layout.appendChild(message);
-      layout.appendChild(panel);
+    // The Study Centre is a separate destination, not a panel embedded
+    // inside the Read Scripture screen. Keep its selected-verse tools intact,
+    // but mount it as a sibling of the reader so navigation can show either one.
+    const studyHost = main || reader?.parentElement || document.body;
+    if (reader && reader.parentElement === studyHost) {
+      reader.insertAdjacentElement("afterend", panel);
+    } else {
+      studyHost.appendChild(panel);
     }
+    panel.hidden = true;
+    panel.setAttribute("data-zuriel-hidden", "true");
 
     // Searchable offline biblical dictionary.
     const dictionarySearch = panel.querySelector("#zurielDictionarySearch");
@@ -3087,6 +3089,8 @@
           book === "Genesis" && chapter === 1 && verse === 1
             ? "block" : "none";
 
+        panel.hidden = false;
+        panel.removeAttribute("data-zuriel-hidden");
         panel.style.display = "block";
         highlightVerse(verse);
         renderStudyFramework(selectedReference);
@@ -3208,6 +3212,8 @@
 
         panel.prepend(contextCard);
         panel.dataset.mode = "word-context";
+        panel.hidden = false;
+        panel.removeAttribute("data-zuriel-hidden");
         panel.style.display = "block";
         highlightVerse(verse);
 

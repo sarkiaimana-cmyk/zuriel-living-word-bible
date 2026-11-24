@@ -40,8 +40,10 @@ jobs:
       - name: Test translation-only Worker route isolation
         run: node --test ai-worker/test/translation-worker.test.mjs ai-worker/test/api-bible.test.mjs
 
-      - name: Validate manual YouVersion deployment workflow
-        run: node scripts/check-translation-deploy-workflow.mjs
+      - name: Validate manual Bible translation deployment workflow
+        run: |
+          node scripts/check-translation-deploy-workflow.mjs
+          node --check ai-worker/scripts/smoke-licensed-translations.mjs
 
       - name: Syntax-check application JavaScript
         run: for file in *.js; do node --check "$file"; done

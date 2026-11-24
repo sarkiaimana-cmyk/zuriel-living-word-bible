@@ -100,6 +100,9 @@ requireText(client, "zuriel-bible-translations.", "Expected dedicated translatio
 requireText(client, "window.ZurielTranslations", "Translation reader public readiness API");
 requireText(client, 'const providers = ["youversion", "api-bible"]', "Home translation shortcuts search both authorised providers");
 requireText(client, "providerFailures.join", "Clear provider-specific explanation when a requested version is unavailable");
+requireText(client, "passageFailures.join", "Explain when a listed translation cannot return its passage");
+requireText(client, "if (currentChapter && !await loadPassage())", "Try the second provider when the first provider lists but cannot load a requested translation");
+requireText(client, "return true;", "Passage loading reports successful online or permitted cached retrieval");
 requireText(client, "NEW LIVING TRANSLATION", "Requested-version catalogue aliases");
 requireText(client, "CHRISTIAN STANDARD BIBLE", "CSB catalogue title matching");
 requireText(client, '"GNT": /', "Good News Translation catalogue alias");
@@ -160,12 +163,17 @@ requireText(workerCore, "publisher attribution could not be verified", "Withhold
 requireText(config, '"name": "zuriel-bible-translations"', "Separate translation Worker name");
 requireText(config, '"TRANSLATION_RATE_LIMIT"', "Translation rate-limit binding");
 requireText(config, '"ZITE_YVP_APP_KEY"', "Server-only YouVersion secret requirement");
+requireText(config, '"API_BIBLE_KEY"', "Server-only API.Bible secret requirement");
 forbidText(config, /"ai"\s*:|"TURNSTILE_SECRET"/, "AI binding or AI-only Turnstile requirement in the translation-only Worker");
 requireText(deployment, "workflow_dispatch:", "Manual-only translation deployment");
-requireText(deployment, "inputs.confirm_deployment == true", "Explicit deployment confirmation");
+requireText(deployment, "github.event_name == 'workflow_dispatch'", "Manual deployment confirmation is limited to manual runs");
+requireText(deployment, "inputs.confirm_deployment != true", "Manual deployment runs require explicit confirmation");
+requireText(deployment, "push:", "Reviewed integration branch automatically deploys translation code changes");
 requireText(deployment, "secrets.ZITE_YVP_APP_KEY", "Server-side YouVersion secret injection");
-requireText(deployment, "secrets.API_BIBLE_KEY", "Optional server-side API.Bible secret injection");
-requireText(deployment, "secret put API_BIBLE_KEY", "Optional API.Bible Worker secret installation");
+requireText(deployment, "secrets.API_BIBLE_KEY", "Server-side API.Bible secret injection when supplied");
+requireText(deployment, "secret put API_BIBLE_KEY", "API.Bible Worker secret installation when supplied");
+requireText(deployment, "wrangler secret list", "Reuse of existing Cloudflare provider secrets without exposing their values");
+requireText(deployment, "smoke-licensed-translations.mjs", "Live passage verification for every requested translation");
 requireText(deployment, "wrangler deploy --config wrangler.translations.jsonc", "Dedicated translation Worker deployment");
 forbidText(aiDeployment, /ZITE_YVP_APP_KEY/, "YouVersion app key in the AI-only deployment workflow");
 requireText(packaging, '"zuriel-translations.js"', "Android web packaging entry");
@@ -175,9 +183,9 @@ const translationConfig = JSON.parse(config);
 assert.equal(translationConfig.name, "zuriel-bible-translations");
 assert.equal(translationConfig.main, "src/translation-worker.js");
 assert.ok(translationConfig.ratelimits.some(binding =>
-  binding.name === "TRANSLATION_RATE_LIMIT" && binding.simple.limit === 20 && binding.simple.period === 60
+  binding.name === "TRANSLATION_RATE_LIMIT" && binding.simple.limit === 40 && binding.simple.period === 60
 ));
-assert.deepEqual(translationConfig.secrets.required, ["ZITE_YVP_APP_KEY"]);
+assert.deepEqual(translationConfig.secrets.required, ["ZITE_YVP_APP_KEY", "API_BIBLE_KEY"]);
 assert.equal(translationConfig.vars.ALLOWED_ORIGINS, "https://sarkiaimana-cmyk.github.io,https://localhost");
 assert.equal(Boolean(translationConfig.ai), false, "Translation-only Worker must not bind an AI provider.");
 assert.equal(Boolean(translationConfig.vars.TURNSTILE_SITE_KEY), false, "Translation-only Worker must not depend on AI Turnstile.");
@@ -198,5 +206,5 @@ if (failures.length) {
   failures.forEach(item => console.error(" - " + item));
   process.exitCode = 1;
 } else {
-  console.log("Online translation reader checks passed: YouVersion and API.Bible provider selection, separate translation-only Worker, server-only credentials, manual deployment, origin/rate-limit enforcement, 14-day API.Bible offline cache, publisher attribution, and Android/offline packaging.");
+  console.log("Online translation reader checks passed: both provider selection, live passage fallback, server-only credentials, FUMS v3, publisher attribution, rate limiting, offline cache limits, and Android/offline packaging.");
 }
