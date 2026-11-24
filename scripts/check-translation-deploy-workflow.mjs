@@ -16,7 +16,10 @@ assert.match(workflow, /GH_TOKEN: \$\{\{ github\.token \}\}/, "GitHub CLI receiv
 for (const secret of ["CLOUDFLARE_API_TOKEN", "CLOUDFLARE_ACCOUNT_ID", "ZITE_YVP_APP_KEY", "API_BIBLE_KEY"]) {
   assert.ok(workflow.includes("secrets." + secret), "deployment requires the " + secret + " repository secret");
 }
-assert.match(workflow, /test -n "\$API_BIBLE_KEY"/, "deployment fails before Cloudflare changes if API.Bible key is missing");
+assert.match(workflow, /wrangler secret list/, "deployment checks whether provider secrets already exist on the target Worker");
+assert.match(workflow, /HAS_YVP_KEY/, "deployment can reuse an existing YouVersion Worker secret");
+assert.match(workflow, /HAS_API_BIBLE_KEY/, "deployment can reuse an existing API.Bible Worker secret");
+assert.match(workflow, /Add API_BIBLE_KEY as a GitHub Actions secret or install that exact secret/, "deployment gives a direct fallback when the API.Bible secret is absent");
 for (const secret of ["ZITE_YVP_APP_KEY", "API_BIBLE_KEY"]) {
   assert.ok(config.secrets.required.includes(secret), "Wrangler marks " + secret + " as required");
   assert.match(workflow, new RegExp("secret put " + secret), "deployment installs " + secret + " only as a Worker secret");
