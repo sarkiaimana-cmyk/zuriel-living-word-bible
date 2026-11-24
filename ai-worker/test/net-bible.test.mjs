@@ -35,8 +35,8 @@ test("NET Bible chapter proxy returns verse text and required attribution", asyn
   const fetchImpl = async url => {
     requestedUrl = String(url);
     return new Response(JSON.stringify([
-      { bookname: "John", chapter: "3", verse: "16", text: "For God so loved the world." },
-      { bookname: "John", chapter: "3", verse: "17", text: "For God sent not his Son into the world to condemn the world." }
+      { bookname: "John", chapter: "3", verse: "1", text: "In the beginning was the Word." },
+      { bookname: "John", chapter: "3", verse: "2", text: "The same was in the beginning with God." }
     ]), { status: 200, headers: { "content-type": "application/x-javascript" } });
   };
   const response = await handleTranslationRequest(
@@ -53,8 +53,8 @@ test("NET Bible chapter proxy returns verse text and required attribution", asyn
   assert.equal(upstream.searchParams.get("formatting"), "plain");
   assert.equal(payload.version.abbreviation, "NET");
   assert.equal(payload.passage.reference, "John 3");
-  assert.match(payload.passage.content, /16 For God so loved the world/);
-  assert.match(payload.passage.content, /17 For God sent not his Son/);
+  assert.match(payload.passage.content, /1 In the beginning was the Word/);
+  assert.match(payload.passage.content, /2 The same was in the beginning with God/);
   assert.match(payload.passage.copyright, /designated \(NET\)/);
   assert.match(payload.notice, /not saved for offline reading/);
   assert.equal(payload.meta, undefined, "NET does not use API.Bible FUMS tokens.");
@@ -134,6 +134,36 @@ test("NET Bible route fails closed when rate limiting is unavailable or exceeded
   assert.equal(exceeded.status, 429);
   assert.equal(missing.status, 503);
   assert.equal(upstreamCalled, false);
+});
+
+test("NET Bible route retries transient upstream gateway failures", async () => {
+  let attempts = 0;
+  const response = await handleTranslationRequest(
+    request("/api/net-bible/chapters/John/3?lastVerse=1"),
+    env(),
+    { fetch: async () => {
+      attempts++;
+      if (attempts < 3) return new Response("upstream unavailable", { status: 502 });
+      return Response.json([{ verse: 1, text: "In the beginning was the Word." }]);
+    } }
+  );
+  assert.equal(response.status, 200);
+  assert.equal(attempts, 3);
+});
+
+test("NET Bible route rejects gaps, duplicates and truncated chapter results", async () => {
+  for (const rows of [
+    [{ verse: 1, text: "Verse one." }],
+    [{ verse: 1, text: "Verse one." }, { verse: 3, text: "Verse three." }],
+    [{ verse: 1, text: "Verse one." }, { verse: 1, text: "Duplicate." }]
+  ]) {
+    const response = await handleTranslationRequest(
+      request("/api/net-bible/chapters/John/3?lastVerse=2"),
+      env(),
+      { fetch: async () => Response.json(rows) }
+    );
+    assert.equal(response.status, 502);
+  }
 });
 
 test("NET Bible route withholds incomplete upstream chapter responses", async () => {
