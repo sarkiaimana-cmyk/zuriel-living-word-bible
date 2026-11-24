@@ -649,6 +649,95 @@ async function handleNetBibleRequest(request, env, dependencies, cors) {
   }, 200, cors);
 }
 
+const ESV_API_BASE = "https://api.esv.org/v3/passage/text/";
+const ESV_BIBLE_COPYRIGHT = "Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. The ESV text may not be quoted in any publication made available to the public under a Creative Commons license. Users may not copy or download more than 500 verses of the ESV Bible or more than one half of any book of the ESV Bible.";
+
+async function handleEsvRequest(request, env, dependencies, cors) {
+  if (request.method !== "GET") return json({ error: "Use GET to request ESV chapters." }, 405, cors);
+  if (!env.TRANSLATION_RATE_LIMIT) return json({ error: "The translation service is not safely rate-limited yet." }, 503, cors);
+  const clientKey = request.headers.get("CF-Connecting-IP") || "unknown-client";
+  try {
+    const limit = await env.TRANSLATION_RATE_LIMIT.limit({ key: clientKey });
+    if (!limit || !limit.success) return json({ error: "The translation service is receiving too many requests. Please wait and try again." }, 429, cors);
+  } catch {
+    return json({ error: "The translation service is temporarily unavailable." }, 503, cors);
+  }
+
+  const url = new URL(request.url);
+  if (url.pathname === "/api/esv/bibles") {
+    if (url.search) return json({ error: "The ESV catalogue does not accept custom query parameters." }, 400, cors);
+    return json({
+      data: env.ESV_API_KEY
+        ? [{ id: "esv", title: "English Standard Version", abbreviation: "ESV" }]
+        : [],
+      source: "Crossway ESV API",
+      notice: env.ESV_API_KEY
+        ? "ESV is available online only under Crossway's non-commercial API terms."
+        : "ESV access requires a Crossway ESV API key stored securely in the translation Worker."
+    }, 200, cors);
+  }
+
+  const match = url.pathname.match(/^\\/api\\/esv\\/chapters\\/(.+)\\/(\\d{1,3})$/i);
+  if (!match) return json({ error: "The requested ESV chapter was not recognised." }, 404, cors);
+  const queryKeys = Array.from(url.searchParams.keys());
+  const lastVerseValue = url.searchParams.get("lastVerse");
+  const lastVerse = Number(lastVerseValue);
+  if (queryKeys.length !== 1 || queryKeys[0] !== "lastVerse" || !/^\\d{1,3}$/.test(String(lastVerseValue || "")) ||
+      !Number.isInteger(lastVerse) || lastVerse < 1 || lastVerse > 176) {
+    return json({ error: "A valid final verse number from the open Bible chapter is required." }, 400, cors);
+  }
+  if (!env.ESV_API_KEY) return json({ error: "The ESV API key has not been configured in the translation Worker." }, 503, cors);
+  let book = "";
+  try { book = decodeURIComponent(match[1]).trim(); }
+  catch { return json({ error: "The requested Bible book name was not valid." }, 400, cors); }
+  if (book === "Psalms") book = "Psalm";
+  if (!NET_BIBLE_BOOKS.has(book === "Psalm" ? "Psalms" : book)) {
+    return json({ error: "Choose a valid Bible book and chapter." }, 400, cors);
+  }
+
+  const upstreamUrl = new URL(ESV_API_BASE);
+  upstreamUrl.searchParams.set("q", book + " " + chapterFrom(match[2]) + ":1-" + lastVerse);
+  upstreamUrl.searchParams.set("include-passage-references", "true");
+  upstreamUrl.searchParams.set("include-verse-numbers", "true");
+  upstreamUrl.searchParams.set("include-footnotes", "false");
+  upstreamUrl.searchParams.set("include-headings", "false");
+  upstreamUrl.searchParams.set("include-short-copyright", "true");
+  upstreamUrl.searchParams.set("include-copyright", "false");
+  upstreamUrl.searchParams.set("line-length", "0");
+
+  let response;
+  try {
+    const fetchImpl = dependencies.fetch || globalThis.fetch;
+    response = await fetchImpl(upstreamUrl.toString(), {
+      method: "GET",
+      headers: { "Authorization": "Token " + env.ESV_API_KEY, "Accept": "application/json" },
+      signal: AbortSignal.timeout(10000)
+    });
+  } catch {
+    return json({ error: "The ESV service could not be reached. Your offline KJV is unchanged." }, 502, cors);
+  }
+  if (!response.ok) return json({ error: "The ESV service is temporarily unavailable." }, response.status === 429 ? 429 : 502, cors);
+  let payload;
+  try { payload = await response.json(); }
+  catch { return json({ error: "The ESV service returned an unreadable response." }, 502, cors); }
+  const content = Array.isArray(payload && payload.passages) ? String(payload.passages[0] || "").trim() : "";
+  if (!content || !/\\(ESV\\)\\s*$/.test(content)) {
+    return json({ error: "The ESV service did not return a complete, attributed passage." }, 502, cors);
+  }
+  const chapter = Number(match[2]);
+  return json({
+    source: "Crossway ESV API",
+    version: { id: "esv", title: "English Standard Version", abbreviation: "ESV" },
+    passage: { id: book + "." + chapter, reference: String(payload.canonical || (book + " " + chapter)), content, copyright: ESV_BIBLE_COPYRIGHT },
+    format: "text",
+    notice: "ESV text is online-only in Zuriel. No ESV text is saved for offline reading."
+  }, 200, cors);
+}
+
+function chapterFrom(value) {
+  return Number(value);
+}
+
 export async function handleRequest(request, env, dependencies = {}) {
   const url = new URL(request.url);
   const assistantRoute = url.pathname === "/api/assistant" || url.pathname === "/api/assistant/config";
