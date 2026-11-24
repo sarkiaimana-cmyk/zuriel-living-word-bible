@@ -25,7 +25,8 @@ assert.match(workflow, /test\/api-bible\.test\.mjs/, "deployment runs API.Bible 
 assert.match(workflow, /smoke-licensed-translations\.mjs/, "deployment live-tests every requested translation");
 assert.match(workflow, /node --check scripts\/smoke-licensed-translations\.mjs/, "deployment syntax-checks the live translation smoke test");
 assert.match(workflow, /workers\/subdomain/, "deployment discovers the account workers.dev subdomain");
-assert.match(workflow, /workers\/scripts\/zuriel-bible-translations\/subdomain/, "deployment verifies the Worker route is enabled");
+assert.match(workflow, /workers\/scripts\/zuriel-bible-translations\/subdomain/, "deployment verifies the Worker route");
+assert.ok(workflow.includes("--data '{\"enabled\":true}'"), "deployment enables the workers.dev route automatically when needed");
 assert.match(workflow, /\/api\/youversion\/bibles/, "deployment smoke-tests the YouVersion version-list route");
 assert.match(workflow, /\/api\/youversion\/bibles\/\$YVP_BIBLE_ID\/passages\/JHN\.3\.16\?format=text/, "deployment retrieves a real authorised YouVersion passage");
 assert.match(workflow, /j\.passage\.content.*j\.passage\.reference.*j\.version\?\.id/, "deployment requires YouVersion passage text and metadata");
