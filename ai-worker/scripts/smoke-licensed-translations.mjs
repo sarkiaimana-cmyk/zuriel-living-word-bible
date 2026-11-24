@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { spawnSync } from "node:child_process";
 
 const base = String(process.env.WORKER_URL || "").replace(/\/+$/, "");
 const origin = "https://sarkiaimana-cmyk.github.io";
@@ -20,23 +21,53 @@ assert.ok(/^https:\/\/zuriel-bible-translations\.[a-z0-9-]+\.workers\.dev$/i.tes
   "WORKER_URL must be the verified Zuriel translation Worker workers.dev endpoint.");
 
 async function getJson(path) {
-  const response = await fetch(base + path, {
-    method: "GET",
-    cache: "no-store",
-    headers: { Origin: origin, Accept: "application/json" },
-    signal: AbortSignal.timeout(15000)
-  });
-  const raw = await response.text();
-  let payload;
-  try { payload = JSON.parse(raw); }
-  catch { throw new Error(path + " returned invalid JSON (HTTP " + response.status + ")."); }
-  if (!response.ok) {
-    throw new Error(path + " returned HTTP " + response.status + ": " +
-      String(payload && payload.error || "provider request failed"));
+  let lastFailure = "no response";
+  for (let attempt = 1; attempt <= 8; attempt++) {
+    const result = spawnSync("curl", [
+      "--silent", "--show-error", "--max-time", "20",
+      "--dump-header", "-",
+      "--write-out", "\\n__HTTP_STATUS__%{http_code}",
+      "--header", "Origin: " + origin,
+      "--header", "Accept: application/json",
+      base + path
+    ], { encoding: "utf8", maxBuffer: 10 * 1024 * 1024 });
+
+    if (result.error) {
+      lastFailure = result.error.message;
+    } else {
+      const marker = result.stdout.lastIndexOf("\\n__HTTP_STATUS__");
+      if (marker >= 0) {
+        const status = Number(result.stdout.slice(marker + "\\n__HTTP_STATUS__".length).trim());
+        const responseText = result.stdout.slice(0, marker);
+        const separator = responseText.indexOf("\\r\\n\\r\\n");
+        if (separator < 0) {
+          lastFailure = "HTTP " + status + " response did not include readable headers.";
+        } else {
+          const headers = responseText.slice(0, separator).toLowerCase();
+          const raw = responseText.slice(separator + 4);
+          let payload;
+          try { payload = JSON.parse(raw); }
+          catch { throw new Error(path + " returned invalid JSON (HTTP " + status + ")."); }
+
+          if (status === 200) {
+            assert.ok(headers.includes("access-control-allow-origin: " + origin.toLowerCase()),
+              path + " must return the approved GitHub Pages CORS origin.");
+            return payload;
+          }
+          const message = String(payload && payload.error || "provider request failed");
+          if (![0, 404, 429, 500, 502, 503, 520, 521, 522, 523, 524, 525, 526].includes(status)) {
+            throw new Error(path + " returned HTTP " + status + ": " + message);
+          }
+          lastFailure = "HTTP " + status + ": " + message;
+        }
+      } else {
+        lastFailure = String(result.stderr || "curl returned no HTTP response.");
+      }
+    }
+
+    if (attempt < 8) await new Promise(resolve => setTimeout(resolve, 3000));
   }
-  assert.equal(response.headers.get("access-control-allow-origin"), origin,
-    path + " must return the approved GitHub Pages CORS origin.");
-  return payload;
+  throw new Error(path + " could not be reached after eight readiness attempts: " + lastFailure);
 }
 
 async function loadYouVersionCatalogue() {
