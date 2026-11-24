@@ -22,10 +22,10 @@ for (const [batchName, batch] of [["batch one", wordBatchOne], ["batch two", wor
     ids.add(entry.id);
     assert.ok(entry.term && entry.originalForm && entry.contextualGloss && entry.interpretiveCaution,
       batchName + " entry needs its original form, contextual gloss and caution.");
-    assert.ok(["Hebrew", "Greek", "Aramaic"].includes(entry.language), batchName + " entry language must be explicit.");
+    assert.ok(["Hebrew", "Greek", "Aramaic", "Aramaic-derived"].includes(entry.language), batchName + " entry language must be explicit.");
     assert.ok(Array.isArray(entry.scriptureReferences) && entry.scriptureReferences.length,
       batchName + " entry needs Scripture references.");
-    assert.ok(entry.morphologyStatus && /not asserted|lexeme-level/i.test(entry.morphologyStatus),
+    assert.ok(entry.morphologyStatus && /not asserted|lexeme-level|root-level/i.test(entry.morphologyStatus),
       batchName + " must not imply verse-specific morphology without parsing.");
     assert.ok(!entry.strongs && !entry.morphology, batchName + " must not invent Strong's IDs or morphology.");
   }
