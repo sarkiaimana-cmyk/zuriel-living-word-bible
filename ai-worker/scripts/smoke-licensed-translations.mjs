@@ -151,7 +151,7 @@ const catalogues = [
   ["esv", esvVersions]
 ];
 const missing = [];
-const verified = [];
+const verifiedAbbreviations = [];
 for (const [abbreviation, pattern] of Object.entries(requested)) {
   let verified = false;
   const failures = [];
@@ -193,5 +193,5 @@ assert.deepEqual(missingRequired, [],
   "Every currently connected translation provider must return real, attributed passages for the core verified set. Missing: " + missingRequired.join(", ") + ". Provider notices: " + providerIssues.join(" | "));
 if (missing.length) console.warn("The Worker can be connected for verified translations; publisher access is still pending for: " + missing.join(", "));
 console.log("KJV remains covered by the separately verified offline 66-book corpus.");
-console.log("Verified live translations passed: " + verified.join(", "));
+console.log("Verified live translations passed: " + verifiedAbbreviations.join(", "));
 if (missing.length) console.warn("Still pending publisher/account access: " + missing.join(", "));
