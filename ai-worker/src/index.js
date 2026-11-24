@@ -586,10 +586,10 @@ async function handleNetBibleRequest(request, env, dependencies, cors) {
     }, 200, cors);
   }
 
-  const match = url.pathname.match(/^\\/api\\/net-bible\\/chapters\\/(.+)\\/(\\d{1,3})$/i);
+  const match = url.pathname.match(/^\/api\/net-bible\/chapters\/(.+)\/(\\d{1,3})$/i);
   if (!match || url.search) return json({ error: "The requested NET Bible chapter was not recognised." }, 404, cors);
   let book = "";
-  try { book = decodeURIComponent(match[1]).replace(/\\+/g, " ").trim(); }
+  try { book = decodeURIComponent(match[1]).trim(); }
   catch { return json({ error: "The requested Bible book name was not valid." }, 400, cors); }
   if (book === "Psalm") book = "Psalms";
   const chapter = Number(match[2]);
@@ -625,7 +625,7 @@ async function handleNetBibleRequest(request, env, dependencies, cors) {
   if (!verses.length || verses.length !== rows.length) {
     return json({ error: "The NET Bible service did not return a complete, readable chapter." }, 502, cors);
   }
-  const content = verses.map(row => row.verse + " " + row.text).join("\\n");
+  const content = verses.map(row => row.verse + " " + row.text).join("\n");
   return json({
     source: "Bible.org NET Bible Web Service",
     version: { id: "net", title: "New English Translation", abbreviation: "NET" },
