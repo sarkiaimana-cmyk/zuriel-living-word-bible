@@ -142,6 +142,15 @@ for (const [abbreviation, pattern] of Object.entries(requested)) {
   }
 }
 
+if (missing.length) {
+  const describe = (items) => items.map(item =>
+    String(item.abbreviation || "no-abbreviation") + " — " + String(item.title || "untitled") +
+    " [id " + String(item.id || "unknown") + "]"
+  ).join("; ");
+  console.warn("Translation catalogue diagnostics for unresolved requested versions:");
+  console.warn("YouVersion catalogue (" + youVersion.length + "): " + describe(youVersion));
+  console.warn("API.Bible catalogue (" + apiBibleVersions.length + "): " + describe(apiBibleVersions));
+}
 assert.deepEqual(missing, [],
   "Every requested non-KJV translation must be listed by at least one provider and return a real, attributed John 3 passage. Missing: " + missing.join(", ") + ". Provider notices: " + providerIssues.join(" | "));
 console.log("KJV remains covered by the separately verified offline 66-book corpus.");
