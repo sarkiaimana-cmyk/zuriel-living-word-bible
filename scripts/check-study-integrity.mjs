@@ -98,6 +98,22 @@ const checks = [
 for (const [label, fragment] of checks) {
   if (!study.includes(fragment)) failures.push([label, "missing from zuriel-study.js"]);
 }
+// Narrow-screen search layout must not inherit intrinsic widths from long
+// input values or unbroken result text. Keep the reader's search controls
+// constrained to the available viewport and allow result text to wrap.
+for (const [label, fragment] of [
+  ["search container uses border-box sizing", "#bibleSearch {\\n  box-sizing:border-box;"],
+  ["search container is constrained to its parent", "width:100%;\\n  min-width:0;\\n  max-width:100%;"],
+  ["search row is constrained to its parent", "#bibleSearch .search-row {\\n  display:flex;\\n  width:100%;\\n  min-width:0;"],
+  ["search input cannot force flex overflow", "flex:1 1 0%;\\n  width:100%;\\n  min-width:0;\\n  max-width:100%;"],
+  ["search results cannot exceed reader width", "#bibleSearchResults {\\n  display:grid;\\n  min-width:0;\\n  max-width:100%;"],
+  ["long search result text wraps safely", "#bibleSearchResults .search-result {\\n  box-sizing:border-box;\\n  min-width:0;\\n  overflow-wrap:anywhere;"]
+]) {
+  if (!reader.includes(fragment.replace(/\\n/g, "\n"))) {
+    failures.push([label, "missing from index.html responsive Scripture search styles"]);
+  }
+}
+
 const readerChecks = [
   ["verse action box is a fixed overlay, not an in-flow section", "position:fixed !important"],
   ["verse study content is mounted inside the selected-verse overlay", "verseActions.appendChild(panel)"],

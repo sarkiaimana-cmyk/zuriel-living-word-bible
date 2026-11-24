@@ -266,11 +266,16 @@ select {
 }
 
 #bibleSearch {
+  box-sizing:border-box;
+  width:100%;
+  min-width:0;
+  max-width:100%;
   margin:16px 0;
   padding:14px;
   border:1px solid #d7d1bf;
   border-radius:13px;
   background:#fbfaf5;
+  overflow:hidden;
 }
 
 #bibleSearch label {
@@ -282,12 +287,17 @@ select {
 
 #bibleSearch .search-row {
   display:flex;
+  width:100%;
+  min-width:0;
   gap:8px;
 }
 
 #bibleSearch input {
-  flex:1;
+  box-sizing:border-box;
+  flex:1 1 0%;
+  width:100%;
   min-width:0;
+  max-width:100%;
   min-height:46px;
   padding:10px;
   border:1px solid #a9b8aa;
@@ -302,8 +312,15 @@ select {
 
 #bibleSearchResults {
   display:grid;
+  min-width:0;
+  max-width:100%;
   gap:8px;
   margin-top:10px;
+}
+#bibleSearchResults .search-result {
+  box-sizing:border-box;
+  min-width:0;
+  overflow-wrap:anywhere;
 }
 
 #bibleSearchResults .search-result {
