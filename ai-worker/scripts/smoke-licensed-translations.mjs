@@ -14,7 +14,7 @@ process.on("exit", () => fs.rmSync(tempDir, { recursive: true, force: true }));
 const requested = {
   GNT: /\b(GNT|GNB|GOOD NEWS TRANSLATION|GOOD NEWS BIBLE)\b/i,
   AMP: /\b(AMP|AMPLIFIED BIBLE)\b/i,
-  "LB/LT": /\\b(LB|LT|TLB|LIVING BIBLE)\\b|(?<!NEW )\\bLIVING TRANSLATION\\b/i,
+  "LB/LT": /\b(LB|LT|TLB|LIVING BIBLE)\b|(?<!NEW )\bLIVING TRANSLATION\b/i,
   TPT: /\b(TPT|PASSION TRANSLATION)\b/i,
   NLT: /\b(NLT|NEW LIVING TRANSLATION)\b/i,
   NET: /\b(NET|NEW ENGLISH TRANSLATION)\b/i,
