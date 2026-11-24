@@ -168,8 +168,9 @@ forbidText(config, /"ai"\s*:|"TURNSTILE_SECRET"/, "AI binding or AI-only Turnsti
 requireText(deployment, "workflow_dispatch:", "Manual-only translation deployment");
 requireText(deployment, "inputs.confirm_deployment == true", "Explicit deployment confirmation");
 requireText(deployment, "secrets.ZITE_YVP_APP_KEY", "Server-side YouVersion secret injection");
-requireText(deployment, "secrets.API_BIBLE_KEY", "Required server-side API.Bible secret injection");
-requireText(deployment, "secret put API_BIBLE_KEY", "Required API.Bible Worker secret installation");
+requireText(deployment, "secrets.API_BIBLE_KEY", "Server-side API.Bible secret injection when supplied");
+requireText(deployment, "secret put API_BIBLE_KEY", "API.Bible Worker secret installation when supplied");
+requireText(deployment, "wrangler secret list", "Reuse of existing Cloudflare provider secrets without exposing their values");
 requireText(deployment, "smoke-licensed-translations.mjs", "Live passage verification for every requested translation");
 requireText(deployment, "wrangler deploy --config wrangler.translations.jsonc", "Dedicated translation Worker deployment");
 forbidText(aiDeployment, /ZITE_YVP_APP_KEY/, "YouVersion app key in the AI-only deployment workflow");
