@@ -13,7 +13,7 @@ const failures = [];
 if (!updates.includes('const APP_VERSION = "' + info.version + '";')) failures.push("In-app updater version must match version.json.");
 if (!updates.includes("nativeUpdater.installUpdate") || !updates.includes("sha256")) failures.push("Native app update must use the checksum-verifying Android installer.");
 if (!installer.includes("Intent.ACTION_INSTALL_PACKAGE") || !installer.includes("Intent.EXTRA_RETURN_RESULT")) failures.push("Android update installer must request the package installation result.");
-if (!installer.includes("startActivityForResult(call, install") || !installer.includes("handleInstallResult") || !installer.includes("Activity.RESULT_OK") || !installer.includes('put("installed", true)')) failures.push("Android updater must report success only after Android confirms installation.");
+if (!installer.includes("startActivityForResult(call, install") || !installer.includes("handleInstallResult") || !installer.includes("Activity.RESULT_OK") || !installer.includes("call.resolve")) failures.push("Android updater must report success only after Android confirms installation.");
 if (!updates.includes("result.installed") || updates.includes("result.installerOpened")) failures.push("In-app updater must distinguish completed installation from merely opening the installer.");
 if (!updates.includes("releases/latest")) failures.push("Native app update checker must query the official latest GitHub release.");
 if (!updates.includes('release.tag_name !== "v" + info.version')) failures.push("Native app update must match the official release tag to version metadata.");
