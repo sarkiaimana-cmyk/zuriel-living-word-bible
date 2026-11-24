@@ -278,7 +278,7 @@
       loadedProvider = providerAtRequest;
       select.disabled = false;
       loadButton.disabled = true;
-      const providerName = providerAtRequest === "youversion" ? "YouVersion" : providerAtRequest === "net-bible" ? "NET Bible" : "API.Bible";
+      const providerName = providerAtRequest === "youversion" ? "YouVersion" : providerAtRequest === "net-bible" ? "NET Bible" : providerAtRequest === "esv" ? "ESV" : "API.Bible";
       status(available.length
         ? available.length + " English version(s) are available from " + providerName + ". " +
           (nextPageToken ? "The catalogue is large; the first 990 results are shown. " : "") +
@@ -672,7 +672,9 @@
       ? /^\d+$/.test(selectedVersionId)
       : selectedProvider === "net-bible"
         ? selectedVersionId === "net"
-        : /^[a-f0-9]{16}-\d{2}$/i.test(selectedVersionId);
+        : selectedProvider === "esv"
+          ? selectedVersionId === "esv"
+          : /^[a-f0-9]{16}-\d{2}$/i.test(selectedVersionId);
     if (!bookCode || !validVersionId) {
       status("Choose a valid authorised translation.");
       return false;
