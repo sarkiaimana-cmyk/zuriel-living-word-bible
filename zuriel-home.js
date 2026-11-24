@@ -1833,7 +1833,8 @@
             } catch (error) {
               finish(reject, error);
             }
-          });sultMessage)) {
+          });
+          if (!/^Saved to your phone's Gallery in the /.test(resultMessage)) {
             throw new Error(resultMessage || "Android did not confirm that the card was saved to your Gallery.");
           }
           if (status) status.textContent = "Your open-book card has been saved to the Zuriel Living Word Bible album in your phone Gallery.";
