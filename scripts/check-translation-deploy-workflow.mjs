@@ -32,6 +32,8 @@ for (const secret of ["ZITE_YVP_APP_KEY", "API_BIBLE_KEY"]) {
 assert.match(workflow, /test\/api-bible\.test\.mjs/, "deployment runs API.Bible provider security tests");
 assert.match(workflow, /test\/net-bible\.test\.mjs/, "deployment runs NET Bible provider security tests");
 assert.match(workflow, /test\/esv\.test\.mjs/, "deployment runs Crossway ESV provider security tests");
+assert.match(workflow, /ESV_API_KEY/, "Crossway ESV key is optional and stored as a Worker secret");
+assert.match(workflow, /test\/esv\.test\.mjs/, "deployment runs Crossway ESV provider security tests");
 assert.match(workflow, /smoke-licensed-translations\.mjs/, "deployment live-tests every requested translation");
 assert.match(workflow, /node --check scripts\/smoke-licensed-translations\.mjs/, "deployment syntax-checks the live translation smoke test");
 assert.match(workflow, /workers\/subdomain/, "deployment discovers the account workers.dev subdomain");
@@ -73,6 +75,8 @@ assert.match(smokeTest, /fumsToken/, "live API.Bible passage checks require FUMS
 assert.match(smokeTest, /\["youversion", youVersion\]/, "live translation matrix tests YouVersion");
 assert.match(smokeTest, /\["api-bible", apiBibleVersions\]/, "live translation matrix tests API.Bible");
 assert.match(smokeTest, /\["net-bible", netBibleVersions\]/, "live translation matrix tests NET Bible");
+assert.match(smokeTest, /\["esv", esvVersions\]/, "live translation matrix tests ESV when its key is configured");
+assert.match(smokeTest, /\/api\/esv\/chapters\//, "live ESV checks retrieve actual Scripture chapters");
 assert.match(smokeTest, /\["esv", esvVersions\]/, "live translation matrix tests ESV when its key is configured");
 assert.match(smokeTest, /\/api\/esv\/chapters\//, "live ESV checks retrieve actual Scripture chapters");
 assert.match(smokeTest, /\/api\/net-bible\/chapters\//, "live NET Bible checks retrieve actual Scripture chapters");
