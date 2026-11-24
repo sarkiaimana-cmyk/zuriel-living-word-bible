@@ -200,7 +200,7 @@ async function handleYouVersionRequest(request, env, dependencies, cors) {
   if (request.method !== "GET") {
     return json({ error: "Use GET to request licensed Bible versions or passages." }, 405, cors);
   }
-  const yvpAppKey = String(env.ZITE_YVP_APP_KEY || "").replace(/[\\r\\n]/g, "").trim();
+  const yvpAppKey = String(env.ZITE_YVP_APP_KEY || "").trim();
   if (!yvpAppKey) {
     return json({ error: "YouVersion access is not configured. The offline KJV remains available." }, 503, cors);
   }
@@ -410,7 +410,7 @@ async function handleApiBibleRequest(request, env, dependencies, cors) {
   if (request.method !== "GET") {
     return json({ error: "Use GET to request API.Bible versions or chapters." }, 405, cors);
   }
-  const apiBibleKey = String(env.API_BIBLE_KEY || "").replace(/[\\r\\n]/g, "").trim();
+  const apiBibleKey = String(env.API_BIBLE_KEY || "").trim();
   if (!apiBibleKey) {
     return json({ error: "API.Bible access is not configured. The offline KJV and other connected sources remain available." }, 503, cors);
   }
