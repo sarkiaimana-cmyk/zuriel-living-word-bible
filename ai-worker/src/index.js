@@ -587,7 +587,14 @@ async function handleNetBibleRequest(request, env, dependencies, cors) {
   }
 
   const match = url.pathname.match(/^\/api\/net-bible\/chapters\/(.+)\/(\d{1,3})$/i);
-  if (!match || url.search) return json({ error: "The requested NET Bible chapter was not recognised." }, 404, cors);
+  if (!match) return json({ error: "The requested NET Bible chapter was not recognised." }, 404, cors);
+  const queryKeys = Array.from(url.searchParams.keys());
+  const lastVerseValue = url.searchParams.get("lastVerse");
+  const lastVerse = Number(lastVerseValue);
+  if (queryKeys.length !== 1 || queryKeys[0] !== "lastVerse" || !/^\\d{1,3}$/.test(String(lastVerseValue || "")) ||
+      !Number.isInteger(lastVerse) || lastVerse < 1 || lastVerse > 176) {
+    return json({ error: "A valid final verse number from the open Bible chapter is required." }, 400, cors);
+  }
   let book = "";
   try { book = decodeURIComponent(match[1]).trim(); }
   catch { return json({ error: "The requested Bible book name was not valid." }, 400, cors); }
@@ -598,7 +605,7 @@ async function handleNetBibleRequest(request, env, dependencies, cors) {
   }
 
   const upstreamUrl = new URL(NET_BIBLE_BASE);
-  upstreamUrl.searchParams.set("passage", book + " " + chapter);
+  upstreamUrl.searchParams.set("passage", book + " " + chapter + ":1-" + lastVerse);
   upstreamUrl.searchParams.set("type", "JSON");
   upstreamUrl.searchParams.set("formatting", "plain");
   let response;
