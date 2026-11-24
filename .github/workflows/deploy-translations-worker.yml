@@ -226,6 +226,7 @@ jobs:
           fi
           HTTP_STATUS="$(curl -sS --retry 5 --retry-delay 3 --retry-all-errors \
             -o .translation-smoke.json -D .translation-smoke.headers -w '%{http_code}' \
+            -A "ZurielLivingWordBible/2.10.3" \
             -H "Origin: https://sarkiaimana-cmyk.github.io" \
             "$WORKER_URL/api/youversion/bibles")"
           if [ "$HTTP_STATUS" != "200" ]; then
@@ -248,6 +249,7 @@ jobs:
           YVP_BIBLE_ID="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".translation-smoke.json","utf8"));const id=Number(j.data[0]?.id);if(!Number.isInteger(id)||id<1)process.exit(1);process.stdout.write(String(id));')"
           YVP_CHAPTER_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
             -o .translation-chapter-smoke.json -D .translation-chapter-smoke.headers -w '%{http_code}' \
+            -A "ZurielLivingWordBible/2.10.3" \
             -H "Origin: https://sarkiaimana-cmyk.github.io" \
             "$WORKER_URL/api/youversion/bibles/$YVP_BIBLE_ID/passages/JHN.3.16?format=text")"
           if [ "$YVP_CHAPTER_STATUS" != "200" ]; then
@@ -262,6 +264,7 @@ jobs:
 
           API_BIBLE_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
             -o .api-bible-smoke.json -D .api-bible-smoke.headers -w '%{http_code}' \
+            -A "ZurielLivingWordBible/2.10.3" \
             -H "Origin: https://sarkiaimana-cmyk.github.io" \
             "$WORKER_URL/api/api-bible/bibles")"
           if [ "$API_BIBLE_STATUS" != "200" ]; then
@@ -280,6 +283,7 @@ jobs:
           API_BIBLE_ID="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-smoke.json","utf8"));const id=String(j.data[0]?.id||"");if(!/^[a-f0-9]{16}-\d{2}$/i.test(id))process.exit(1);process.stdout.write(id);')"
           API_BIBLE_CHAPTER_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
             -o .api-bible-chapter-smoke.json -D .api-bible-chapter-smoke.headers -w '%{http_code}' \
+            -A "ZurielLivingWordBible/2.10.3" \
             -H "Origin: https://sarkiaimana-cmyk.github.io" \
             "$WORKER_URL/api/api-bible/bibles/$API_BIBLE_ID/chapters/JHN.3")"
           if [ "$API_BIBLE_CHAPTER_STATUS" != "200" ]; then
