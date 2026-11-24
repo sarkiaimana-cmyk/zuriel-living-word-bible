@@ -29,6 +29,7 @@ jobs:
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       ZITE_YVP_APP_KEY: ${{ secrets.ZITE_YVP_APP_KEY }}
       API_BIBLE_KEY: ${{ secrets.API_BIBLE_KEY }}
+      GH_TOKEN: ${{ github.token }}
     steps:
       - name: Require explicit deployment confirmation
         if: ${{ inputs.confirm_deployment != true }}
@@ -204,31 +205,38 @@ jobs:
           else
             echo "API.Bible is optional and was not configured; YouVersion remains the active provider."
           fi
-          if [ "$GITHUB_REF" != "refs/heads/main" ]; then
-            echo "::error::Run this deployment from the main branch so the verified endpoint can be saved to the app configuration."
+          if [ "$GITHUB_REF" != "refs/heads/fix/mobile-search-study-layout" ]; then
+            echo "::error::The verified endpoint may only be committed to the reviewed integration branch."
             exit 1
           fi
 
-          # The endpoint is public configuration, not a credential. The YouVersion
-          # app key remains a Cloudflare secret and is never written to GitHub.
+          # The endpoint is public configuration, not a credential. Keep the
+          # provider keys in Cloudflare and update the open integration branch.
           export WORKER_URL
-          node -e 'const fs=require("node:fs");const path="../version.json";const data=JSON.parse(fs.readFileSync(path,"utf8"));data.translationApiBase=process.env.WORKER_URL;fs.writeFileSync(path,JSON.stringify(data,null,2)+"\n");'
+          node -e 'const fs=require("node:fs");const path="../version.json";const data=JSON.parse(fs.readFileSync(path,"utf8"));data.translationApiBase=process.env.WORKER_URL;fs.writeFileSync(path,JSON.stringify(data,null,2)+"\\n");'
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add ../version.json
           if ! git diff --cached --quiet; then
-            git commit -m "Connect verified YouVersion translation proxy endpoint"
-            if ! git push origin HEAD:main; then
-              echo "::error::The Worker passed its live smoke test, but GitHub did not accept the automatic endpoint configuration commit. The public endpoint is $WORKER_URL; the app remains safely on offline KJV until version.json is updated."
+            git commit -m "Connect verified Bible translation Worker endpoint"
+            if ! git push origin "HEAD:$GITHUB_REF_NAME"; then
+              echo "::error::The Worker passed its live smoke test, but GitHub rejected the endpoint commit to the integration branch. The public endpoint is $WORKER_URL; the app remains safely on offline KJV until version.json is updated."
               exit 1
             fi
           fi
 
+          # GITHUB_TOKEN pushes do not trigger normal push workflows. Dispatch
+          # full PR validation explicitly against the updated integration branch.
+          if ! gh workflow run validate-pr.yml --ref "$GITHUB_REF_NAME"; then
+            echo "::error::The Worker is live and the endpoint is committed, but full application validation could not be dispatched."
+            exit 1
+          fi
+
           REMOTE_CONFIG="$(curl -fsS --retry 3 --retry-delay 2 --retry-all-errors \
-            "https://raw.githubusercontent.com/sarkiaimana-cmyk/zuriel-living-word-bible/main/version.json")"
+            "https://raw.githubusercontent.com/sarkiaimana-cmyk/zuriel-living-word-bible/$GITHUB_REF_NAME/version.json")"
           SAVED_ENDPOINT="$(printf '%s' "$REMOTE_CONFIG" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);process.stdout.write(String(j.translationApiBase||""));});')"
           if [ "$SAVED_ENDPOINT" != "$WORKER_URL" ]; then
-            echo "::error::The Worker is live, but the app's public endpoint configuration could not be verified."
+            echo "::error::The Worker is live, but the integration branch endpoint configuration could not be verified."
             exit 1
           fi
 
