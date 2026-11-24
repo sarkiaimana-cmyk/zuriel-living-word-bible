@@ -38,7 +38,7 @@ test -s "$OLD_APK"
 # never uninstall the old package or weaken the signing/version assertions.
 adb_package_manager_ready() {
   for attempt in $(seq 1 30); do
-    if adb shell service check package 2>/dev/null | tr -d '\r' | grep -q 'found'; then
+    if timeout 15s adb shell service check package 2>/dev/null | tr -d '\r' | grep -q 'found'; then
       return 0
     fi
     sleep 2
@@ -47,11 +47,11 @@ adb_package_manager_ready() {
   return 1
 }
 adb_recover() {
-  adb kill-server >/dev/null 2>&1 || true
-  adb start-server
-  adb wait-for-device
+  timeout 15s adb kill-server >/dev/null 2>&1 || true
+  timeout 20s adb start-server
+  timeout 60s adb wait-for-device
   for attempt in 1 2 3 4 5 6; do
-    if adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r' | grep -qx '1'; then
+    if timeout 15s adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r' | grep -qx '1'; then
       adb_package_manager_ready
       return 0
     fi
@@ -94,15 +94,15 @@ fi
 
 # Install and launch the previously published signed app first.\n# adb install "$OLD_APK" is retried by adb_install_retry without changing its semantics.
 adb_install_retry "$OLD_APK" "fresh"
-adb shell pm path "$PACKAGE"
-adb shell am start -W -n "$PACKAGE/.MainActivity"
+timeout 30s adb shell pm path "$PACKAGE"
+timeout 90s adb shell am start -W -n "$PACKAGE/.MainActivity"
 sleep 5
-adb shell dumpsys activity activities | grep -F "$PACKAGE"
+timeout 45s adb shell dumpsys activity activities | grep -F "$PACKAGE"
 
 # Install the new APK over the old package. adb install -r "$APK" is retried\n# by adb_install_retry. Do not uninstall: success proves
 # Android accepted the package/signature update path.
 adb_install_retry "$APK" "replace"
-INSTALLED_PACKAGE="$(adb shell dumpsys package "$PACKAGE" | tr -d '\r')"
+INSTALLED_PACKAGE="$(timeout 45s adb shell dumpsys package "$PACKAGE" | tr -d '\r')"
 printf '%s\n' "$INSTALLED_PACKAGE" | grep -F "versionName=$VERSION"
 adb shell pm path "$PACKAGE"
 adb shell am start -W -n "$PACKAGE/.MainActivity"
