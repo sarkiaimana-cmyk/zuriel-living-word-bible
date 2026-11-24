@@ -120,7 +120,7 @@ const homeSaveEnd = home.indexOf('/* Direct PNG download for the Home open-book 
 assert.ok(homeSaveStart >= 0 && homeSaveEnd > homeSaveStart, "Home Gallery save handler is present");
 const homeSaveHandler = home.slice(homeSaveStart, homeSaveEnd);
 assert.ok(homeSaveHandler.indexOf("new MutationObserver(checkResult)") < homeSaveHandler.indexOf("saveImageButton.click()"), "Home subscribes to the Gallery result before starting export");
-assert.match(homeSaveHandler, /Preparing your open-book image[\\s\\S]*?return/, "temporary image preparation status is ignored while waiting");
-assert.match(homeSaveHandler, /Saved to your phone's Gallery in the \\/, "Home requires explicit Gallery success before confirming the save");
+assert.ok(homeSaveHandler.includes("/^Preparing your open-book image") && homeSaveHandler.includes("return;"), "temporary image preparation status is ignored while waiting");
+assert.ok(homeSaveHandler.includes("if (!/^Saved to your phone's Gallery in the /.test(resultMessage))"), "Home requires explicit Gallery success before confirming the save");
 
 console.log("Gallery export checks passed: native Android album save, app-scoped permissions, system sharing and browser Downloads fallback.");
