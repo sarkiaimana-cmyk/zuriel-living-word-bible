@@ -31,6 +31,7 @@ for (const secret of ["ZITE_YVP_APP_KEY", "API_BIBLE_KEY"]) {
 }
 assert.match(workflow, /test\/api-bible\.test\.mjs/, "deployment runs API.Bible provider security tests");
 assert.match(workflow, /test\/net-bible\.test\.mjs/, "deployment runs NET Bible provider security tests");
+assert.match(workflow, /test\/esv\.test\.mjs/, "deployment runs Crossway ESV provider security tests");
 assert.match(workflow, /smoke-licensed-translations\.mjs/, "deployment live-tests every requested translation");
 assert.match(workflow, /node --check scripts\/smoke-licensed-translations\.mjs/, "deployment syntax-checks the live translation smoke test");
 assert.match(workflow, /workers\/subdomain/, "deployment discovers the account workers.dev subdomain");
@@ -72,6 +73,8 @@ assert.match(smokeTest, /fumsToken/, "live API.Bible passage checks require FUMS
 assert.match(smokeTest, /\["youversion", youVersion\]/, "live translation matrix tests YouVersion");
 assert.match(smokeTest, /\["api-bible", apiBibleVersions\]/, "live translation matrix tests API.Bible");
 assert.match(smokeTest, /\["net-bible", netBibleVersions\]/, "live translation matrix tests NET Bible");
+assert.match(smokeTest, /\["esv", esvVersions\]/, "live translation matrix tests ESV when its key is configured");
+assert.match(smokeTest, /\/api\/esv\/chapters\//, "live ESV checks retrieve actual Scripture chapters");
 assert.match(smokeTest, /\/api\/net-bible\/chapters\//, "live NET Bible checks retrieve actual Scripture chapters");
 assert.match(smokeTest, /lastVerse/, "NET live checks verify complete chapter verse ranges");
 assert.ok(!/echo[^\n]*\$CLOUDFLARE_API_TOKEN/i.test(workflow), "workflow must never print the Cloudflare API token");
@@ -83,4 +86,4 @@ assert.ok(config.vars.ALLOWED_ORIGINS.includes("https://sarkiaimana-cmyk.github.
 assert.ok(config.ratelimits.some(item => item.name === "TRANSLATION_RATE_LIMIT" && item.simple.limit === 40 && item.simple.period === 60), "Worker retains the complete-catalogue smoke-test rate limit");
 assert.ok(worker.includes("net-bible"), "Worker allows the protected NET Bible translation route");
 
-console.log("Translation deployment checks passed: automatic reviewed-branch deployment, confirmed manual reruns, YouVersion/API.Bible/NET provider fallback, verified live passage checks, FUMS v3, protected-branch endpoint handoff and security safeguards.");
+console.log("Translation deployment checks passed: automatic reviewed-branch deployment, confirmed manual reruns, YouVersion/API.Bible/NET/ESV provider fallback, verified live passage checks, FUMS v3, protected-branch endpoint handoff and security safeguards.");
