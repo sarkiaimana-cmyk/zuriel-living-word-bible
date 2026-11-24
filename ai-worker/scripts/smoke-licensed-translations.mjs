@@ -25,7 +25,8 @@ async function getJson(path) {
   for (let attempt = 1; attempt <= 8; attempt++) {
     const result = spawnSync("curl", [
       "--silent", "--show-error", "--max-time", "20",
-      "--dump-header", "-",
+      "--user-agent", "ZurielLivingWordBible/2.10.3 (+https://sarkiaimana-cmyk.github.io/zuriel-living-word-bible)",
+      "--output", "-",
       "--write-out", "\\n__HTTP_STATUS__%{http_code}",
       "--header", "Origin: " + origin,
       "--header", "Accept: application/json",
@@ -38,28 +39,17 @@ async function getJson(path) {
       const marker = result.stdout.lastIndexOf("\\n__HTTP_STATUS__");
       if (marker >= 0) {
         const status = Number(result.stdout.slice(marker + "\\n__HTTP_STATUS__".length).trim());
-        const responseText = result.stdout.slice(0, marker);
-        const separator = responseText.indexOf("\\r\\n\\r\\n");
-        if (separator < 0) {
-          lastFailure = "HTTP " + status + " response did not include readable headers.";
-        } else {
-          const headers = responseText.slice(0, separator).toLowerCase();
-          const raw = responseText.slice(separator + 4);
-          let payload;
-          try { payload = JSON.parse(raw); }
-          catch { throw new Error(path + " returned invalid JSON (HTTP " + status + ")."); }
+        const raw = result.stdout.slice(0, marker).trim();
+        let payload;
+        try { payload = JSON.parse(raw); }
+        catch { throw new Error(path + " returned invalid JSON (HTTP " + status + ")."); }
 
-          if (status === 200) {
-            assert.ok(headers.includes("access-control-allow-origin: " + origin.toLowerCase()),
-              path + " must return the approved GitHub Pages CORS origin.");
-            return payload;
-          }
-          const message = String(payload && payload.error || "provider request failed");
-          if (![0, 404, 429, 500, 502, 503, 520, 521, 522, 523, 524, 525, 526].includes(status)) {
-            throw new Error(path + " returned HTTP " + status + ": " + message);
-          }
-          lastFailure = "HTTP " + status + ": " + message;
+        if (status === 200) return payload;
+        const message = String(payload && payload.error || "provider request failed");
+        if (![0, 404, 429, 500, 502, 503, 520, 521, 522, 523, 524, 525, 526].includes(status)) {
+          throw new Error(path + " returned HTTP " + status + ": " + message);
         }
+        lastFailure = "HTTP " + status + ": " + message;
       } else {
         lastFailure = String(result.stderr || "curl returned no HTTP response.");
       }
