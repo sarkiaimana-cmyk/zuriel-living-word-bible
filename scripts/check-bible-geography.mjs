@@ -83,7 +83,8 @@ for (const region of data?.regions || []) {
 for (const fragment of ['data.regions.forEach(function (region)', 'root.id = "zurielGeographyCentre-" + region.id', "window.ZurielGeographyData", "window.openChapter", "window.selectBibleVerse(reference.verse)", "aria-label", "mapNotice"]) {
   if (!moduleSource.includes(fragment)) failures.push("Geography module integration is missing: " + fragment);
 }
-if (/fetch\s*\(|XMLHttpRequest|WebSocket|https:\/\//.test(moduleSource)) failures.push("The geography UI must not require network access.");
+if (!moduleSource.includes('fetch("./data/zuriel-bible-geography-atlas.json")') || /fetch\s*\(\s*["\']https?:/i.test(moduleSource)) failures.push("The expanded atlas must load only its locally cached JSON dataset.");
+if (!worker.includes('"./data/zuriel-bible-geography-atlas.json"')) failures.push("The expanded atlas JSON is missing from the offline service-worker cache.");
 if (!index.includes('src="zuriel-geography-data.js"') || !index.includes('src="zuriel-geography.js"')) failures.push("Web entry point omits geography files.");
 if (index.indexOf('src="zuriel-geography-data.js"') > index.indexOf('src="zuriel-geography.js"') || index.indexOf('src="zuriel-geography.js"') < index.indexOf('src="zuriel-study.js"')) failures.push("Geography scripts are not loaded after their dependencies.");
 const cacheVersionMatch = worker.match(/const CACHE_NAME = "zuriel-bible-offline-v(\d+)";/);
