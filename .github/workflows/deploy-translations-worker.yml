@@ -5,6 +5,7 @@ name: Deploy Zuriel Bible translations proxy
 on:
   push:
     branches:
+      - main
       - fix/mobile-search-study-layout
     paths:
       - "ai-worker/src/translation-worker.js"
@@ -12,6 +13,7 @@ on:
       - "ai-worker/wrangler.translations.jsonc"
       - "ai-worker/scripts/smoke-licensed-translations.mjs"
       - "zuriel-translations.js"
+      - "version.json"
       - ".github/workflows/deploy-translations-worker.yml"
   workflow_dispatch:
     inputs:
@@ -49,10 +51,10 @@ jobs:
           echo "::error::Explicit deployment confirmation is required."
           exit 1
 
-      - name: Require the reviewed integration branch before any Cloudflare changes
-        if: ${{ github.ref != 'refs/heads/fix/mobile-search-study-layout' }}
+      - name: Require a reviewed application branch before any Cloudflare changes
+        if: ${{ github.ref != 'refs/heads/fix/mobile-search-study-layout' && github.ref != 'refs/heads/main' }}
         run: |
-          echo "::error::Run this manually from the reviewed fix/mobile-search-study-layout branch. The verified endpoint will be committed to that pull request, not pushed around main branch protection."
+          echo "::error::Run this from the reviewed main or integration branch. Main branch protection remains in force."
           exit 1
 
 
@@ -367,13 +369,13 @@ jobs:
           fi
           echo "API.Bible English versions returned: $API_BIBLE_COUNT"
           WORKER_URL="$WORKER_URL" node scripts/smoke-licensed-translations.mjs
-          if [ "$GITHUB_REF" != "refs/heads/fix/mobile-search-study-layout" ]; then
-            echo "::error::The verified endpoint may only be committed to the reviewed integration branch."
+          if [ "$GITHUB_REF" != "refs/heads/fix/mobile-search-study-layout" ] && [ "$GITHUB_REF" != "refs/heads/main" ]; then
+            echo "::error::The verified endpoint may only be committed to a reviewed application branch."
             exit 1
           fi
 
           # The endpoint is public configuration, not a credential. Keep the
-          # provider keys in Cloudflare and update the open integration branch.
+          # provider keys in Cloudflare and update only the reviewed branch.
           export WORKER_URL
           node -e 'const fs=require("node:fs");const path="../version.json";const data=JSON.parse(fs.readFileSync(path,"utf8"));data.translationApiBase=process.env.WORKER_URL;fs.writeFileSync(path,JSON.stringify(data,null,2)+"\n");'
           git config user.name "github-actions[bot]"
@@ -402,7 +404,7 @@ jobs:
             exit 1
           fi
 
-          echo "::notice title=Translation proxy deployed and configured on the integration branch::$WORKER_URL"
+          echo "::notice title=Translation proxy deployed and configured on the reviewed branch::$WORKER_URL"
           echo "Worker URL: $WORKER_URL"
           echo "YouVersion English versions returned: $VERSION_COUNT"
           echo "API.Bible English versions returned: $API_BIBLE_COUNT"
