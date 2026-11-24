@@ -80,6 +80,44 @@ jobs:
       - name: Confirm the Cloudflare token account
         run: npx wrangler whoami
 
+      - name: Register or reuse the account workers.dev subdomain
+        run: |
+          set -euo pipefail
+          ACCOUNT_SUBDOMAIN_URL="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/subdomain"
+          SUBDOMAIN_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
+            -o .account-subdomain.json -w '%{http_code}' \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "$ACCOUNT_SUBDOMAIN_URL")"
+          WORKERS_SUBDOMAIN=""
+          if [ "$SUBDOMAIN_STATUS" = "200" ]; then
+            WORKERS_SUBDOMAIN="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".account-subdomain.json","utf8"));process.stdout.write(String(j.result?.subdomain||""));')"
+          fi
+
+          if [ -z "$WORKERS_SUBDOMAIN" ]; then
+            PREFERRED_SUBDOMAIN="zuriel-living-word-bible"
+            if ! SUBDOMAIN_CREATE="$(curl -fsS --retry 2 --retry-delay 2 --retry-all-errors \
+              -X PUT -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+              -H "Content-Type: application/json" \
+              --data "{\"subdomain\":\"$PREFERRED_SUBDOMAIN\"}" "$ACCOUNT_SUBDOMAIN_URL")"; then
+              UNIQUE_SUBDOMAIN="zuriel-bible-${CLOUDFLARE_ACCOUNT_ID:0:8}"
+              if ! SUBDOMAIN_CREATE="$(curl -fsS --retry 2 --retry-delay 2 --retry-all-errors \
+                -X PUT -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+                -H "Content-Type: application/json" \
+                --data "{\"subdomain\":\"$UNIQUE_SUBDOMAIN\"}" "$ACCOUNT_SUBDOMAIN_URL")"; then
+                echo "::error::Cloudflare could not register the account workers.dev subdomain. This token needs Workers Scripts Write permission for the account. No Worker was deployed."
+                exit 1
+              fi
+            fi
+            WORKERS_SUBDOMAIN="$(printf '%s' "$SUBDOMAIN_CREATE" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);if(!j.success||!j.result?.subdomain)process.exit(1);process.stdout.write(j.result.subdomain);});')"
+          fi
+
+          if [ -z "$WORKERS_SUBDOMAIN" ]; then
+            echo "::error::Cloudflare did not return an account workers.dev subdomain."
+            exit 1
+          fi
+          echo "WORKERS_SUBDOMAIN=$WORKERS_SUBDOMAIN" >> "$GITHUB_ENV"
+          echo "Using account workers.dev subdomain: $WORKERS_SUBDOMAIN"
+
       - name: Bootstrap the fail-closed Worker
         run: |
           set -euo pipefail
