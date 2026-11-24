@@ -166,7 +166,9 @@ requireText(config, '"ZITE_YVP_APP_KEY"', "Server-only YouVersion secret require
 requireText(config, '"API_BIBLE_KEY"', "Server-only API.Bible secret requirement");
 forbidText(config, /"ai"\s*:|"TURNSTILE_SECRET"/, "AI binding or AI-only Turnstile requirement in the translation-only Worker");
 requireText(deployment, "workflow_dispatch:", "Manual-only translation deployment");
-requireText(deployment, "inputs.confirm_deployment == true", "Explicit deployment confirmation");
+requireText(deployment, "github.event_name == 'workflow_dispatch'", "Manual deployment confirmation is limited to manual runs");
+requireText(deployment, "inputs.confirm_deployment != true", "Manual deployment runs require explicit confirmation");
+requireText(deployment, "push:", "Reviewed integration branch automatically deploys translation code changes");
 requireText(deployment, "secrets.ZITE_YVP_APP_KEY", "Server-side YouVersion secret injection");
 requireText(deployment, "secrets.API_BIBLE_KEY", "Server-side API.Bible secret injection when supplied");
 requireText(deployment, "secret put API_BIBLE_KEY", "API.Bible Worker secret installation when supplied");
