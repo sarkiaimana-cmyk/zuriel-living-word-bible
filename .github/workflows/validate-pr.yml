@@ -38,7 +38,7 @@ jobs:
         run: node scripts/check-translations-reader.mjs
 
       - name: Test translation-only Worker route isolation
-        run: node --test ai-worker/test/translation-worker.test.mjs ai-worker/test/api-bible.test.mjs ai-worker/test/net-bible.test.mjs
+        run: node --test ai-worker/test/translation-worker.test.mjs ai-worker/test/api-bible.test.mjs ai-worker/test/net-bible.test.mjs ai-worker/test/esv.test.mjs
 
       - name: Validate manual Bible translation deployment workflow
         run: |
