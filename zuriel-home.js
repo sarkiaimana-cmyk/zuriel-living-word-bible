@@ -1785,7 +1785,7 @@
             throw new Error("Gallery saving is available in the installed Android app. Please use Create & Share Card in a browser.");
           }
           const passage = await window.getBibleVerseText(verse.reference);
-          const scriptureText = String(passage && passage.text || "").replace(/^\\d+\\.\\s*/, "").trim();
+          const scriptureText = String(passage && passage.text || "").replace(/^\d+\.\s*/, "").trim();
           if (!scriptureText) throw new Error("The exact KJV verse text could not be loaded.");
           const faithResponse = window.ZurielFaithContent &&
             typeof window.ZurielFaithContent.find === "function"
