@@ -40,7 +40,7 @@ test("NET Bible chapter proxy returns verse text and required attribution", asyn
     ]), { status: 200, headers: { "content-type": "application/x-javascript" } });
   };
   const response = await handleTranslationRequest(
-    request("/api/net-bible/chapters/John/3"),
+    request("/api/net-bible/chapters/John/3?lastVerse=2"),
     env(),
     { fetch: fetchImpl }
   );
@@ -48,7 +48,7 @@ test("NET Bible chapter proxy returns verse text and required attribution", asyn
   const payload = await response.json();
   const upstream = new URL(requestedUrl);
   assert.equal(upstream.origin + upstream.pathname, "https://labs.bible.org/api/");
-  assert.equal(upstream.searchParams.get("passage"), "John 3");
+  assert.equal(upstream.searchParams.get("passage"), "John 3:1-2");
   assert.equal(upstream.searchParams.get("type"), "JSON");
   assert.equal(upstream.searchParams.get("formatting"), "plain");
   assert.equal(payload.version.abbreviation, "NET");
@@ -58,6 +58,27 @@ test("NET Bible chapter proxy returns verse text and required attribution", asyn
   assert.match(payload.passage.copyright, /designated \(NET\)/);
   assert.match(payload.notice, /not saved for offline reading/);
   assert.equal(payload.meta, undefined, "NET does not use API.Bible FUMS tokens.");
+});
+
+test("NET Bible route requires a valid complete-chapter verse range", async () => {
+  let upstreamCalled = false;
+  const fetchImpl = async () => {
+    upstreamCalled = true;
+    return Response.json([{ verse: 1, text: "A verse." }]);
+  };
+  const missingRange = await handleTranslationRequest(
+    request("/api/net-bible/chapters/John/3"),
+    env(),
+    { fetch: fetchImpl }
+  );
+  const invalidRange = await handleTranslationRequest(
+    request("/api/net-bible/chapters/John/3?lastVerse=999"),
+    env(),
+    { fetch: fetchImpl }
+  );
+  assert.equal(missingRange.status, 400);
+  assert.equal(invalidRange.status, 400);
+  assert.equal(upstreamCalled, false);
 });
 
 test("NET Bible route rejects invalid books and non-approved origins", async () => {
@@ -72,7 +93,7 @@ test("NET Bible route rejects invalid books and non-approved origins", async () 
     { fetch: fetchImpl }
   );
   const forbiddenOrigin = await handleTranslationRequest(
-    request("/api/net-bible/chapters/John/3", "https://unapproved.example"),
+    request("/api/net-bible/chapters/John/3?lastVerse=2", "https://unapproved.example"),
     env(),
     { fetch: fetchImpl }
   );
@@ -88,7 +109,7 @@ test("NET Bible route fails closed when rate limiting is unavailable or exceeded
     return Response.json([]);
   };
   const exceeded = await handleTranslationRequest(
-    request("/api/net-bible/chapters/John/3"),
+    request("/api/net-bible/chapters/John/3?lastVerse=2"),
     env({ TRANSLATION_RATE_LIMIT: { limit: async () => ({ success: false }) } }),
     { fetch: fetchImpl }
   );
