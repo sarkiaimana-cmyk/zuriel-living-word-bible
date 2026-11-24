@@ -6,7 +6,8 @@ const worker = fs.readFileSync("ai-worker/src/translation-worker.js", "utf8");
 const config = JSON.parse(fs.readFileSync("ai-worker/wrangler.translations.jsonc", "utf8"));
 
 assert.match(workflow, /workflow_dispatch:/, "translation deployment remains manual");
-assert.match(workflow, /confirm_deployment == true/, "deployment requires explicit confirmation");
+assert.match(workflow, /github\.event_name == 'workflow_dispatch' && inputs\.confirm_deployment != true/, "manual deployment requires explicit confirmation");
+assert.match(workflow, /push:\s+branches:\s+- fix\/mobile-search-study-layout/, "reviewed integration branch automatically deploys translation code changes");
 assert.match(workflow, /github\.ref != 'refs\/heads\/fix\/mobile-search-study-layout'/, "deployment is restricted to the reviewed integration branch");
 assert.equal(workflow.split("\n").filter(line => /\\\\$/.test(line)).length, 0,
   "deployment shell commands must use single backslashes for line continuations");
