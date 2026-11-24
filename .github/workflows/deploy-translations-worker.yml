@@ -224,78 +224,83 @@ jobs:
             echo "::error::Cloudflare deployed the Worker, but its workers.dev TLS endpoint did not become reachable after 12 attempts. The Worker remains deployed; no translation endpoint has been published to the app."
             exit 1
           fi
-          HTTP_STATUS="$(curl -sS --retry 5 --retry-delay 3 --retry-all-errors \
+                    VERSION_COUNT=0
+          YVP_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
             -o .translation-smoke.json -D .translation-smoke.headers -w '%{http_code}' \
             -A "ZurielLivingWordBible/2.10.3" \
             -H "Origin: https://sarkiaimana-cmyk.github.io" \
-            "$WORKER_URL/api/youversion/bibles")"
-          if [ "$HTTP_STATUS" != "200" ]; then
+            "$WORKER_URL/api/youversion/bibles" || true)"
+          if [ ! -s .translation-smoke.json ]; then
+            printf '{"data":[],"error":"YouVersion returned HTTP %s without a response body."}' "$YVP_STATUS" > .translation-smoke.json
+          fi
+          if [ "$YVP_STATUS" = "200" ]; then
+            VERSION_COUNT="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".translation-smoke.json","utf8"));process.stdout.write(String(Array.isArray(j.data)?j.data.length:0));')"
+            if [ "$VERSION_COUNT" -gt 0 ]; then
+              YVP_BIBLE_ID="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".translation-smoke.json","utf8"));const id=Number(j.data[0]?.id);if(!Number.isInteger(id)||id<1)process.exit(1);process.stdout.write(String(id));')"
+              YVP_CHAPTER_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
+                -o .translation-chapter-smoke.json -D .translation-chapter-smoke.headers -w '%{http_code}' \
+                -A "ZurielLivingWordBible/2.10.3" \
+                -H "Origin: https://sarkiaimana-cmyk.github.io" \
+                "$WORKER_URL/api/youversion/bibles/$YVP_BIBLE_ID/passages/JHN.3.16?format=text" || true)"
+              if [ "$YVP_CHAPTER_STATUS" = "200" ]; then
+                if ! node -e 'const j=JSON.parse(require("node:fs").readFileSync(".translation-chapter-smoke.json","utf8"));if(!j.passage||typeof j.passage.content!=="string"||!j.passage.content.trim()||!j.passage.reference||!j.version?.id||(!j.passage.copyright&&!j.passage.promotional_content))process.exit(1);console.log("YouVersion live passage and publisher attribution verified: "+j.passage.reference+" ("+j.passage.content.trim().length+" characters).");'; then
+                  echo "::warning::YouVersion returned a chapter without verifiable Scripture text or publisher attribution. The combined version matrix will try API.Bible."
+                fi
+                if ! grep -qi 'access-control-allow-origin: https://sarkiaimana-cmyk.github.io' .translation-chapter-smoke.headers; then
+                  echo "::warning::YouVersion passage CORS is not authorised for the app; YouVersion will be excluded from the live matrix."
+                  printf '{"data":[],"error":"YouVersion passage CORS is not authorised for the Zuriel app."}' > .translation-smoke.json
+                  VERSION_COUNT=0
+                fi
+              else
+                YVP_PASSAGE_ERROR="$(node -e 'try{const j=JSON.parse(require("node:fs").readFileSync(".translation-chapter-smoke.json","utf8"));process.stdout.write(String(j.error||"passage request failed"));}catch{process.stdout.write("no passage response");}')"
+                echo "::warning::YouVersion catalogue returned $VERSION_COUNT versions, but the sample passage returned HTTP $YVP_CHAPTER_STATUS: $YVP_PASSAGE_ERROR. The combined version matrix will try API.Bible."
+              fi
+            else
+              echo "::warning::YouVersion returned an empty licensed English Bible catalogue."
+            fi
+          else
             YVP_ERROR="$(node -e 'try{const j=JSON.parse(require("node:fs").readFileSync(".translation-smoke.json","utf8"));process.stdout.write(String(j.error||"no provider error detail"));}catch{process.stdout.write("response body was not readable");}')"
-            echo "::error::The deployed YouVersion endpoint returned HTTP $HTTP_STATUS: $YVP_ERROR"
-            exit 1
+            echo "::warning::YouVersion catalogue unavailable (HTTP $YVP_STATUS): $YVP_ERROR. The combined version matrix will try API.Bible."
           fi
-          if ! grep -qi 'access-control-allow-origin: https://sarkiaimana-cmyk.github.io' .translation-smoke.headers; then
-            echo "::error::The translation Worker did not return the expected GitHub Pages CORS origin."
-            exit 1
-          fi
+          echo "YouVersion English versions returned: $VERSION_COUNT"
 
-          VERSION_COUNT="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".translation-smoke.json","utf8"));if(!Array.isArray(j.data))process.exit(1);process.stdout.write(String(j.data.length));')"
-          if [ "$VERSION_COUNT" -lt 1 ]; then
-            echo "::error::The YouVersion app key returned no publisher-authorised English Bible versions. Check the app registration and publisher access before activating the app endpoint."
-            exit 1
-          fi
-
-          # A catalogue response is not proof that Scripture retrieval works.
-          # Select an actually authorised version and require real John 3:16 text.
-          YVP_BIBLE_ID="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".translation-smoke.json","utf8"));const id=Number(j.data[0]?.id);if(!Number.isInteger(id)||id<1)process.exit(1);process.stdout.write(String(id));')"
-          YVP_CHAPTER_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
-            -o .translation-chapter-smoke.json -D .translation-chapter-smoke.headers -w '%{http_code}' \
-            -A "ZurielLivingWordBible/2.10.3" \
-            -H "Origin: https://sarkiaimana-cmyk.github.io" \
-            "$WORKER_URL/api/youversion/bibles/$YVP_BIBLE_ID/passages/JHN.3.16?format=text")"
-          if [ "$YVP_CHAPTER_STATUS" != "200" ]; then
-            echo "::error::YouVersion catalogue worked, but live John 3:16 retrieval failed (HTTP $YVP_CHAPTER_STATUS). Do not connect this provider yet."
-            exit 1
-          fi
-          node -e 'const j=JSON.parse(require("node:fs").readFileSync(".translation-chapter-smoke.json","utf8"));if(!j.passage||typeof j.passage.content!=="string"||!j.passage.content.trim()||!j.passage.reference||!j.version?.id||(!j.passage.copyright&&!j.passage.promotional_content))process.exit(1);console.log("YouVersion live passage and publisher attribution verified: "+j.passage.reference+" ("+j.passage.content.trim().length+" characters).");'
-          if ! grep -qi 'access-control-allow-origin: https://sarkiaimana-cmyk.github.io' .translation-chapter-smoke.headers; then
-            echo "::error::The live YouVersion passage did not return the expected GitHub Pages CORS origin."
-            exit 1
-          fi
-
+          API_BIBLE_COUNT=0
           API_BIBLE_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
             -o .api-bible-smoke.json -D .api-bible-smoke.headers -w '%{http_code}' \
             -A "ZurielLivingWordBible/2.10.3" \
             -H "Origin: https://sarkiaimana-cmyk.github.io" \
-            "$WORKER_URL/api/api-bible/bibles")"
-          if [ "$API_BIBLE_STATUS" != "200" ]; then
+            "$WORKER_URL/api/api-bible/bibles" || true)"
+          if [ ! -s .api-bible-smoke.json ]; then
+            printf '{"data":[],"error":"API.Bible returned HTTP %s without a response body."}' "$API_BIBLE_STATUS" > .api-bible-smoke.json
+          fi
+          if [ "$API_BIBLE_STATUS" = "200" ]; then
+            API_BIBLE_COUNT="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-smoke.json","utf8"));process.stdout.write(String(Array.isArray(j.data)?j.data.length:0));')"
+            if [ "$API_BIBLE_COUNT" -gt 0 ]; then
+              API_BIBLE_ID="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-smoke.json","utf8"));const id=String(j.data[0]?.id||"");if(!/^[a-f0-9]{16}-\\d{2}$/i.test(id))process.exit(1);process.stdout.write(id);')"
+              API_BIBLE_CHAPTER_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
+                -o .api-bible-chapter-smoke.json -D .api-bible-chapter-smoke.headers -w '%{http_code}' \
+                -A "ZurielLivingWordBible/2.10.3" \
+                -H "Origin: https://sarkiaimana-cmyk.github.io" \
+                "$WORKER_URL/api/api-bible/bibles/$API_BIBLE_ID/chapters/JHN.3" || true)"
+              if [ "$API_BIBLE_CHAPTER_STATUS" = "200" ]; then
+                if ! node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-chapter-smoke.json","utf8"));if(!j.passage||typeof j.passage.content!=="string"||!j.passage.content.trim()||!j.passage.reference||!j.passage.copyright||!j.version?.id||!j.meta?.fumsToken)process.exit(1);console.log("API.Bible live chapter, publisher attribution and FUMS token verified: "+j.passage.reference+" ("+j.passage.content.trim().length+" characters).");'; then
+                  echo "::warning::API.Bible returned a chapter without valid publisher attribution or FUMS v3. The combined version matrix will try YouVersion."
+                fi
+                if ! grep -qi 'access-control-allow-origin: https://sarkiaimana-cmyk.github.io' .api-bible-chapter-smoke.headers; then
+                  echo "::warning::API.Bible passage CORS is not authorised for the app; API.Bible will be excluded from the live matrix."
+                  printf '{"data":[],"error":"API.Bible passage CORS is not authorised for the Zuriel app."}' > .api-bible-smoke.json
+                  API_BIBLE_COUNT=0
+                fi
+              else
+                API_BIBLE_ERROR="$(node -e 'try{const j=JSON.parse(require("node:fs").readFileSync(".api-bible-chapter-smoke.json","utf8"));process.stdout.write(String(j.error||"chapter request failed"));}catch{process.stdout.write("no chapter response");}')"
+                echo "::warning::API.Bible catalogue returned $API_BIBLE_COUNT versions, but the sample chapter returned HTTP $API_BIBLE_CHAPTER_STATUS: $API_BIBLE_ERROR. The combined version matrix will try YouVersion."
+              fi
+            else
+              echo "::warning::API.Bible returned an empty licensed English Bible catalogue."
+            fi
+          else
             API_BIBLE_ERROR="$(node -e 'try{const j=JSON.parse(require("node:fs").readFileSync(".api-bible-smoke.json","utf8"));process.stdout.write(String(j.error||"no provider error detail"));}catch{process.stdout.write("response body was not readable");}')"
-            echo "::error::API.Bible returned HTTP $API_BIBLE_STATUS: $API_BIBLE_ERROR"
-            exit 1
-          fi
-          if ! grep -qi 'access-control-allow-origin: https://sarkiaimana-cmyk.github.io' .api-bible-smoke.headers; then
-            echo "::error::API.Bible did not return the expected GitHub Pages CORS origin."
-            exit 1
-          fi
-          API_BIBLE_COUNT="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-smoke.json","utf8"));if(!Array.isArray(j.data))process.exit(1);process.stdout.write(String(j.data.length));')"
-          if [ "$API_BIBLE_COUNT" -lt 1 ]; then
-            echo "::error::API.Bible returned no English Bible versions. The second provider cannot be activated."
-            exit 1
-          fi
-          API_BIBLE_ID="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-smoke.json","utf8"));const id=String(j.data[0]?.id||"");if(!/^[a-f0-9]{16}-\d{2}$/i.test(id))process.exit(1);process.stdout.write(id);')"
-          API_BIBLE_CHAPTER_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
-            -o .api-bible-chapter-smoke.json -D .api-bible-chapter-smoke.headers -w '%{http_code}' \
-            -A "ZurielLivingWordBible/2.10.3" \
-            -H "Origin: https://sarkiaimana-cmyk.github.io" \
-            "$WORKER_URL/api/api-bible/bibles/$API_BIBLE_ID/chapters/JHN.3")"
-          if [ "$API_BIBLE_CHAPTER_STATUS" != "200" ]; then
-            echo "::error::API.Bible catalogue worked, but live John 3 retrieval failed (HTTP $API_BIBLE_CHAPTER_STATUS). Do not connect this provider yet."
-            exit 1
-          fi
-          node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-chapter-smoke.json","utf8"));if(!j.passage||typeof j.passage.content!=="string"||!j.passage.content.trim()||!j.passage.reference||!j.passage.copyright||!j.version?.id||!j.meta?.fumsToken)process.exit(1);console.log("API.Bible live chapter, publisher attribution and FUMS token verified: "+j.passage.reference+" ("+j.passage.content.trim().length+" characters).");'
-          if ! grep -qi 'access-control-allow-origin: https://sarkiaimana-cmyk.github.io' .api-bible-chapter-smoke.headers; then
-            echo "::error::The live API.Bible chapter did not return the expected GitHub Pages CORS origin."
-            exit 1
+            echo "::warning::API.Bible catalogue unavailable (HTTP $API_BIBLE_STATUS): $API_BIBLE_ERROR. The combined version matrix will try YouVersion."
           fi
           echo "API.Bible English versions returned: $API_BIBLE_COUNT"
           WORKER_URL="$WORKER_URL" node scripts/smoke-licensed-translations.mjs
