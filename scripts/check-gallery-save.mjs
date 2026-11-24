@@ -114,4 +114,13 @@ await assert.rejects(
 );
 await assert.rejects(webWindow.ZurielMedia.shareImage({ dataUrl: "data:image/png;base64,AAAA", fileName: "x.png" }), /installed Android app/);
 
+const home = fs.readFileSync("zuriel-home.js", "utf8");
+const homeSaveStart = home.indexOf('const saveOpenBookCardButton = document.getElementById("zurielOpenBookSaveCard")');
+const homeSaveEnd = home.indexOf('/* Direct PNG download for the Home open-book card. */', homeSaveStart);
+assert.ok(homeSaveStart >= 0 && homeSaveEnd > homeSaveStart, "Home Gallery save handler is present");
+const homeSaveHandler = home.slice(homeSaveStart, homeSaveEnd);
+assert.ok(homeSaveHandler.indexOf("new MutationObserver(checkResult)") < homeSaveHandler.indexOf("saveImageButton.click()"), "Home subscribes to the Gallery result before starting export");
+assert.match(homeSaveHandler, /Preparing your open-book image[\\s\\S]*?return/, "temporary image preparation status is ignored while waiting");
+assert.match(homeSaveHandler, /Saved to your phone's Gallery in the \\/, "Home requires explicit Gallery success before confirming the save");
+
 console.log("Gallery export checks passed: native Android album save, app-scoped permissions, system sharing and browser Downloads fallback.");
