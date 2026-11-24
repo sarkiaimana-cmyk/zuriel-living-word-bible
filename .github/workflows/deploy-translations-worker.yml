@@ -9,7 +9,6 @@ on:
     paths:
       - "ai-worker/src/translation-worker.js"
       - "ai-worker/src/index.js"
-      - "ai-worker/test/net-bible.test.mjs"
       - "ai-worker/wrangler.translations.jsonc"
       - "ai-worker/scripts/smoke-licensed-translations.mjs"
       - "zuriel-translations.js"
@@ -393,6 +392,6 @@ jobs:
           echo "Worker URL: $WORKER_URL"
           echo "YouVersion English versions returned: $VERSION_COUNT"
           echo "API.Bible English versions returned: $API_BIBLE_COUNT"
-          echo "Verified live translations: AMP, LB/LT, TPT, NLT, NET, NIV, NASB and NKJV. GNT, ESV and CSB remain pending account or publisher access; KJV remains offline."
+          echo "Verified live translations: AMP, LB/LT, TPT, NLT, NET, NIV, NASB and NKJV. GNT, LB/LT, ESV and CSB remain pending account or publisher access; KJV remains offline."
           echo "Full application validation has been dispatched for $GITHUB_REF_NAME."
           echo "Zuriel will discover this verified endpoint from version.json; no API key is exposed in the app."
