@@ -276,7 +276,7 @@ jobs:
           if [ "$API_BIBLE_STATUS" = "200" ]; then
             API_BIBLE_COUNT="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-smoke.json","utf8"));process.stdout.write(String(Array.isArray(j.data)?j.data.length:0));')"
             if [ "$API_BIBLE_COUNT" -gt 0 ]; then
-              API_BIBLE_ID="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-smoke.json","utf8"));const id=String(j.data[0]?.id||"");if(!/^[a-f0-9]{16}-\\d{2}$/i.test(id))process.exit(1);process.stdout.write(id);')"
+              API_BIBLE_ID="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-smoke.json","utf8"));const id=String(j.data[0]?.id||"");if(!/^[a-f0-9]{16}-\d{2}$/i.test(id))process.exit(1);process.stdout.write(id);')"
               API_BIBLE_CHAPTER_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
                 -o .api-bible-chapter-smoke.json -D .api-bible-chapter-smoke.headers -w '%{http_code}' \
                 -A "ZurielLivingWordBible/2.10.3" \
