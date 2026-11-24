@@ -104,9 +104,9 @@ timeout 45s adb shell dumpsys activity activities | grep -F "$PACKAGE"
 adb_install_retry "$APK" "replace"
 INSTALLED_PACKAGE="$(timeout 45s adb shell dumpsys package "$PACKAGE" | tr -d '\r')"
 printf '%s\n' "$INSTALLED_PACKAGE" | grep -F "versionName=$VERSION"
-adb shell pm path "$PACKAGE"
-adb shell am start -W -n "$PACKAGE/.MainActivity"
+timeout 30s adb shell pm path "$PACKAGE"
+timeout 90s adb shell am start -W -n "$PACKAGE/.MainActivity"
 sleep 10
-adb shell dumpsys activity activities | grep -F "$PACKAGE"
+timeout 45s adb shell dumpsys activity activities | grep -F "$PACKAGE"
 
 echo "Signed APK in-place upgrade smoke test passed: $PREVIOUS_TAG -> v$VERSION."
