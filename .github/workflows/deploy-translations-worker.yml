@@ -206,6 +206,23 @@ jobs:
           fi
 
           WORKER_URL="https://zuriel-bible-translations.$WORKERS_SUBDOMAIN.workers.dev"
+          echo "Waiting for the new workers.dev endpoint TLS and route to become ready."
+          READY=false
+          for attempt in $(seq 1 12); do
+            HTTP_STATUS="$(curl -sS --max-time 8 -o /dev/null -w '%{http_code}' \
+              -H "Origin: https://sarkiaimana-cmyk.github.io" \
+              "$WORKER_URL/api/youversion/bibles" 2>/dev/null || true)"
+            if [ "$HTTP_STATUS" != "000" ]; then
+              READY=true
+              echo "Worker endpoint responded with HTTP $HTTP_STATUS on readiness attempt $attempt."
+              break
+            fi
+            sleep 10
+          done
+          if [ "$READY" != "true" ]; then
+            echo "::error::Cloudflare deployed the Worker, but its workers.dev TLS endpoint did not become reachable after 12 attempts. The Worker remains deployed; no translation endpoint has been published to the app."
+            exit 1
+          fi
           WORKER_URL="$WORKER_URL" node scripts/smoke-licensed-translations.mjs
           HTTP_STATUS="$(curl -sS --retry 5 --retry-delay 3 --retry-all-errors \
             -o .translation-smoke.json -D .translation-smoke.headers -w '%{http_code}' \
