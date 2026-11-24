@@ -42,9 +42,14 @@ assert.ok(packagedFilesMatch, "The Android web preparation script must declare i
 const packagedFiles = new Set(
   [...packagedFilesMatch[1].matchAll(/["']([^"']+)["']/g)].map(match => match[1])
 );
+const bundledAudio = /entryPoints:\s*\[["']zuriel-audio\.js["']\][\s\S]*?outfile:\s*["']www\/zuriel-audio\.js["']/.test(prepareWeb);
 for (const path of localScripts) {
-  assert.ok(packagedFiles.has(path),
+  assert.ok(packagedFiles.has(path) || (path === "zuriel-audio.js" && bundledAudio),
     "Android package omits a locally loaded application script: " + path);
+}
+for (const path of coreFiles.filter(path => !path.includes("/"))) {
+  assert.ok(packagedFiles.has(path) || (path === "zuriel-audio.js" && bundledAudio),
+    "Android package omits an offline core asset: " + path);
 }
 
 const version = JSON.parse(await readFile("version.json", "utf8"));
