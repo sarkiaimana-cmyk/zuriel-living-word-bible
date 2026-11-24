@@ -623,11 +623,35 @@ async function handleNetBibleRequest(request, env, dependencies, cors) {
 
   let payload;
   try {
-    const body = await response.text();
-    const firstArray = body.indexOf("[");
-    const lastArray = body.lastIndexOf("]");
-    if (firstArray < 0 || lastArray <= firstArray) throw new Error("No JSON array was returned.");
-    payload = JSON.parse(body.slice(firstArray, lastArray + 1));
+    let body = (await response.text()).replace(/^\\uFEFF/, "").trim();
+    if (!body) throw new Error("The NET Bible service returned an empty response.");
+    try {
+      payload = JSON.parse(body);
+    } catch {
+      // Some deployments may wrap JSON in a JSONP callback or harmless prefix.
+      // Extract a balanced top-level array without mistaking brackets inside
+      // verse text for the beginning or end of the JSON document.
+      const start = body.indexOf("[");
+      if (start < 0) throw new Error("No JSON array was returned.");
+      let depth = 0;
+      let inString = false;
+      let escaped = false;
+      let end = -1;
+      for (let index = start; index < body.length; index++) {
+        const character = body[index];
+        if (inString) {
+          if (escaped) escaped = false;
+          else if (character === "\\\\") escaped = true;
+          else if (character === '"') inString = false;
+          continue;
+        }
+        if (character === '"') inString = true;
+        else if (character === "[") depth++;
+        else if (character === "]" && --depth === 0) { end = index; break; }
+      }
+      if (end < 0) throw new Error("The JSON array was incomplete.");
+      payload = JSON.parse(body.slice(start, end + 1));
+    }
   } catch {
     return json({ error: "The NET Bible service returned an unreadable response." }, 502, cors);
   }
