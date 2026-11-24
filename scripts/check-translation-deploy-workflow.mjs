@@ -22,6 +22,8 @@ for (const secret of ["ZITE_YVP_APP_KEY", "API_BIBLE_KEY"]) {
   assert.match(workflow, new RegExp("secret put " + secret), "deployment installs " + secret + " only as a Worker secret");
 }
 assert.match(workflow, /test\/api-bible\.test\.mjs/, "deployment runs API.Bible provider security tests");
+assert.match(workflow, /smoke-licensed-translations\.mjs/, "deployment live-tests every requested translation");
+assert.match(workflow, /node --check scripts\/smoke-licensed-translations\.mjs/, "deployment syntax-checks the live translation smoke test");
 assert.match(workflow, /workers\/subdomain/, "deployment discovers the account workers.dev subdomain");
 assert.match(workflow, /workers\/scripts\/zuriel-bible-translations\/subdomain/, "deployment verifies the Worker route is enabled");
 assert.match(workflow, /\/api\/youversion\/bibles/, "deployment smoke-tests the YouVersion version-list route");
@@ -52,7 +54,7 @@ assert.ok(!/echo[^\n]*\$API_BIBLE_KEY/i.test(workflow), "workflow must never pri
 
 assert.equal(config.name, "zuriel-bible-translations", "Worker name matches the discovered URL");
 assert.ok(config.vars.ALLOWED_ORIGINS.includes("https://sarkiaimana-cmyk.github.io"), "GitHub Pages is an allowed CORS origin");
-assert.ok(config.ratelimits.some(item => item.name === "TRANSLATION_RATE_LIMIT"), "Worker retains its rate-limit binding");
+assert.ok(config.ratelimits.some(item => item.name === "TRANSLATION_RATE_LIMIT" && item.simple.limit === 40 && item.simple.period === 60), "Worker retains the complete-catalogue smoke-test rate limit");
 assert.ok(worker.includes("(?:youversion|api-bible)"), "Worker allows only the YouVersion and API.Bible translation routes");
 
 console.log("Translation deployment checks passed: manual confirmation, both provider secrets, live chapter and FUMS checks, protected-branch endpoint handoff, CORS and rate-limit safeguards.");
