@@ -58,7 +58,7 @@ jobs:
           test -n "$CLOUDFLARE_API_TOKEN" || { echo "::error::Missing CLOUDFLARE_API_TOKEN repository secret."; exit 1; }
           test -n "$CLOUDFLARE_ACCOUNT_ID" || { echo "::error::Missing CLOUDFLARE_ACCOUNT_ID repository secret."; exit 1; }
           test -n "$ZITE_YVP_APP_KEY" || { echo "::error::Missing ZITE_YVP_APP_KEY repository secret."; exit 1; }
-      test -n "$API_BIBLE_KEY" || { echo "::error::Missing API_BIBLE_KEY repository secret. Both Bible providers are required for the requested translation coverage."; exit 1; }
+          test -n "$API_BIBLE_KEY" || { echo "::error::Missing API_BIBLE_KEY repository secret. Both Bible providers are required for the requested translation coverage."; exit 1; }
           node -e 'const fs=require("node:fs"); const c=JSON.parse(fs.readFileSync("wrangler.translations.jsonc","utf8")); if(!c.vars?.ALLOWED_ORIGINS || !c.ratelimits?.some(x=>x.name==="TRANSLATION_RATE_LIMIT")) { console.error("Translation proxy origin or rate-limit configuration is missing."); process.exit(1); }'
 
       - name: Install Worker deployment tools
@@ -167,37 +167,37 @@ jobs:
           fi
 
 API_BIBLE_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
-              -o .api-bible-smoke.json -D .api-bible-smoke.headers -w '%{http_code}' \
-              -H "Origin: https://sarkiaimana-cmyk.github.io" \
-              "$WORKER_URL/api/api-bible/bibles")"
-            if [ "$API_BIBLE_STATUS" != "200" ]; then
-              echo "::error::The optional API.Bible provider returned HTTP $API_BIBLE_STATUS. Check the API_BIBLE_KEY secret and its account access."
-              exit 1
-            fi
-            if ! grep -qi 'access-control-allow-origin: https://sarkiaimana-cmyk.github.io' .api-bible-smoke.headers; then
-              echo "::error::The API.Bible provider did not return the expected GitHub Pages CORS origin."
-              exit 1
-            fi
-            API_BIBLE_COUNT="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-smoke.json","utf8"));if(!Array.isArray(j.data))process.exit(1);process.stdout.write(String(j.data.length));')"
-            if [ "$API_BIBLE_COUNT" -lt 1 ]; then
-              echo "::warning::API.Bible key is valid but currently returns no English Bible versions. YouVersion remains available."
-            else
-              API_BIBLE_ID="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-smoke.json","utf8"));const id=String(j.data[0]?.id||"");if(!/^[a-f0-9]{16}-\d{2}$/i.test(id))process.exit(1);process.stdout.write(id);')"
-              API_BIBLE_CHAPTER_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
-                -o .api-bible-chapter-smoke.json -D .api-bible-chapter-smoke.headers -w '%{http_code}' \
-                -H "Origin: https://sarkiaimana-cmyk.github.io" \
-                "$WORKER_URL/api/api-bible/bibles/$API_BIBLE_ID/chapters/JHN.3")"
-              if [ "$API_BIBLE_CHAPTER_STATUS" != "200" ]; then
-                echo "::error::API.Bible catalogue worked, but live John 3 retrieval failed (HTTP $API_BIBLE_CHAPTER_STATUS). Do not connect this provider yet."
-                exit 1
-              fi
-              node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-chapter-smoke.json","utf8"));if(!j.passage||typeof j.passage.content!=="string"||!j.passage.content.trim()||!j.passage.reference||!j.passage.copyright||!j.version?.id||!j.meta?.fumsToken)process.exit(1);console.log("API.Bible live chapter, publisher attribution and FUMS token verified: "+j.passage.reference+" ("+j.passage.content.trim().length+" characters).");'
-              if ! grep -qi 'access-control-allow-origin: https://sarkiaimana-cmyk.github.io' .api-bible-chapter-smoke.headers; then
-                echo "::error::The live API.Bible chapter did not return the expected GitHub Pages CORS origin."
-                exit 1
-              fi
-            fi
-            echo "API.Bible English versions returned: $API_BIBLE_COUNT"
+            -o .api-bible-smoke.json -D .api-bible-smoke.headers -w '%{http_code}' \
+            -H "Origin: https://sarkiaimana-cmyk.github.io" \
+            "$WORKER_URL/api/api-bible/bibles")"
+          if [ "$API_BIBLE_STATUS" != "200" ]; then
+            echo "::error::API.Bible returned HTTP $API_BIBLE_STATUS. Check the API_BIBLE_KEY secret, publisher access and Worker logs."
+            exit 1
+          fi
+          if ! grep -qi 'access-control-allow-origin: https://sarkiaimana-cmyk.github.io' .api-bible-smoke.headers; then
+            echo "::error::API.Bible did not return the expected GitHub Pages CORS origin."
+            exit 1
+          fi
+          API_BIBLE_COUNT="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-smoke.json","utf8"));if(!Array.isArray(j.data))process.exit(1);process.stdout.write(String(j.data.length));')"
+          if [ "$API_BIBLE_COUNT" -lt 1 ]; then
+            echo "::error::API.Bible returned no English Bible versions. The second provider cannot be activated."
+            exit 1
+          fi
+          API_BIBLE_ID="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-smoke.json","utf8"));const id=String(j.data[0]?.id||"");if(!/^[a-f0-9]{16}-\\d{2}$/i.test(id))process.exit(1);process.stdout.write(id);')"
+          API_BIBLE_CHAPTER_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
+            -o .api-bible-chapter-smoke.json -D .api-bible-chapter-smoke.headers -w '%{http_code}' \
+            -H "Origin: https://sarkiaimana-cmyk.github.io" \
+            "$WORKER_URL/api/api-bible/bibles/$API_BIBLE_ID/chapters/JHN.3")"
+          if [ "$API_BIBLE_CHAPTER_STATUS" != "200" ]; then
+            echo "::error::API.Bible catalogue worked, but live John 3 retrieval failed (HTTP $API_BIBLE_CHAPTER_STATUS). Do not connect this provider yet."
+            exit 1
+          fi
+          node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-chapter-smoke.json","utf8"));if(!j.passage||typeof j.passage.content!=="string"||!j.passage.content.trim()||!j.passage.reference||!j.passage.copyright||!j.version?.id||!j.meta?.fumsToken)process.exit(1);console.log("API.Bible live chapter, publisher attribution and FUMS token verified: "+j.passage.reference+" ("+j.passage.content.trim().length+" characters).");'
+          if ! grep -qi 'access-control-allow-origin: https://sarkiaimana-cmyk.github.io' .api-bible-chapter-smoke.headers; then
+            echo "::error::The live API.Bible chapter did not return the expected GitHub Pages CORS origin."
+            exit 1
+          fi
+          echo "API.Bible English versions returned: $API_BIBLE_COUNT"
           if [ "$GITHUB_REF" != "refs/heads/fix/mobile-search-study-layout" ]; then
             echo "::error::The verified endpoint may only be committed to the reviewed integration branch."
             exit 1
