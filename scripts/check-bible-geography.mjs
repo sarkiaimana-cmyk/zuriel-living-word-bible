@@ -45,8 +45,8 @@ for (const place of atlas?.places || []) {
   if (!Array.isArray(place.references) || !place.references.length) failures.push("Atlas place has no Scripture references: " + place.name);
   let inheritedBook = "";
   for (const reference of place.references || []) {
-    const full = String(reference).match(/^(.+?)\\s+(\\d+):(\\d+)/);
-    const short = String(reference).match(/^(\\d+):(\\d+)/);
+    const full = String(reference).match(/^(.+?)\s+(\d+):(\d+)/);
+    const short = String(reference).match(/^(\d+):(\d+)/);
     if (full) inheritedBook = full[1];
     const book = full ? full[1] : inheritedBook;
     const chapter = Number(full ? full[2] : short?.[1]);
