@@ -9,6 +9,7 @@ on:
     paths:
       - "ai-worker/src/translation-worker.js"
       - "ai-worker/src/index.js"
+      - "ai-worker/test/net-bible.test.mjs"
       - "ai-worker/wrangler.translations.jsonc"
       - "ai-worker/scripts/smoke-licensed-translations.mjs"
       - "zuriel-translations.js"
