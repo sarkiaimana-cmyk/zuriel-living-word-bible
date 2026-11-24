@@ -67,6 +67,7 @@ for (const abbreviation of ["GNT", "AMP", "LB/LT", "TPT", "NLT", "NET", "NIV", "
 }
 assert.match(smokeTest, /assert\.deepEqual\(missingRequired, \[\]/, "deployment requires the core verified translation set before publishing");
 assert.match(smokeTest, /optionalPending/, "unlicensed GNT, ESV and CSB remain explicitly pending without blocking verified translations");
+assert.match(smokeTest, /new Set\(\["GNT", "LB\/LT", "ESV", "CSB"\]\)/, "Living Bible must remain separate from NLT until a real TLB/LB source is licensed");
 assert.match(smokeTest, /fumsToken/, "live API.Bible passage checks require FUMS v3");
 assert.match(smokeTest, /\["youversion", youVersion\]/, "live translation matrix tests YouVersion");
 assert.match(smokeTest, /\["api-bible", apiBibleVersions\]/, "live translation matrix tests API.Bible");
