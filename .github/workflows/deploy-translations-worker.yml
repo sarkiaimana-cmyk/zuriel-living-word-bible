@@ -75,7 +75,7 @@ jobs:
 
       - name: Test translation proxy safeguards
         run: |
-          node --test test/youversion.test.mjs test/translation-worker.test.mjs test/api-bible.test.mjs
+          node --test test/youversion.test.mjs test/translation-worker.test.mjs test/api-bible.test.mjs test/net-bible.test.mjs
           node --check scripts/smoke-licensed-translations.mjs
 
       - name: Confirm the Cloudflare token account
