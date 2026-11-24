@@ -258,7 +258,7 @@
         });
         available = Array.from(uniqueVersions.values());
       } else {
-        available = [{ id: "net", title: "New English Translation", abbreviation: "NET" }];
+        available = [{ id: "net", title: "NET Bible", abbreviation: "NET" }];
       }
 
       if (catalogueRequestId !== catalogueSequence) return;
