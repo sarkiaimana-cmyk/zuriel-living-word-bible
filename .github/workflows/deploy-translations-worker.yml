@@ -230,7 +230,8 @@ jobs:
             -H "Origin: https://sarkiaimana-cmyk.github.io" \
             "$WORKER_URL/api/youversion/bibles")"
           if [ "$HTTP_STATUS" != "200" ]; then
-            echo "::error::The deployed YouVersion endpoint returned HTTP $HTTP_STATUS. Check the YouVersion app key, publisher access and Worker logs."
+            YVP_ERROR="$(node -e 'try{const j=JSON.parse(require("node:fs").readFileSync(".translation-smoke.json","utf8"));process.stdout.write(String(j.error||"no provider error detail"));}catch{process.stdout.write("response body was not readable");}')"
+            echo "::error::The deployed YouVersion endpoint returned HTTP $HTTP_STATUS: $YVP_ERROR"
             exit 1
           fi
           if ! grep -qi 'access-control-allow-origin: https://sarkiaimana-cmyk.github.io' .translation-smoke.headers; then
@@ -268,7 +269,8 @@ jobs:
             -H "Origin: https://sarkiaimana-cmyk.github.io" \
             "$WORKER_URL/api/api-bible/bibles")"
           if [ "$API_BIBLE_STATUS" != "200" ]; then
-            echo "::error::API.Bible returned HTTP $API_BIBLE_STATUS. Check the API_BIBLE_KEY secret, publisher access and Worker logs."
+            API_BIBLE_ERROR="$(node -e 'try{const j=JSON.parse(require("node:fs").readFileSync(".api-bible-smoke.json","utf8"));process.stdout.write(String(j.error||"no provider error detail"));}catch{process.stdout.write("response body was not readable");}')"
+            echo "::error::API.Bible returned HTTP $API_BIBLE_STATUS: $API_BIBLE_ERROR"
             exit 1
           fi
           if ! grep -qi 'access-control-allow-origin: https://sarkiaimana-cmyk.github.io' .api-bible-smoke.headers; then
