@@ -154,7 +154,7 @@ function hasUnsupportedScriptureReferences(text, index, selected) {
   const names = index.map(item => item.name)
     .sort((a, b) => b.length - a.length)
     .map(name => name.replace(/\s+/g, "\\s+"));
-  const pattern = new RegExp("\\b(" + names.join("|") + ")\\s+(\\d+)(?::(\\d+)(?:-(\\d+))?)?\\b", "gi");
+  const pattern = new RegExp("\\b(" + names.join("|") + ")\\s+(\d+)(?::(\d+)(?:-(\d+))?)?\\b", "gi");
   let match;
   while ((match = pattern.exec(text)) !== null) {
     const mentionedName = match[1].toLowerCase().replace(/\s+/g, " ");
@@ -586,7 +586,7 @@ async function handleNetBibleRequest(request, env, dependencies, cors) {
     }, 200, cors);
   }
 
-  const match = url.pathname.match(/^\/api\/net-bible\/chapters\/(.+)\/(\\d{1,3})$/i);
+  const match = url.pathname.match(/^\/api\/net-bible\/chapters\/(.+)\/(\d{1,3})$/i);
   if (!match || url.search) return json({ error: "The requested NET Bible chapter was not recognised." }, 404, cors);
   let book = "";
   try { book = decodeURIComponent(match[1]).trim(); }
