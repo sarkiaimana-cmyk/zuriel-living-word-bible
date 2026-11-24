@@ -83,6 +83,8 @@ jobs:
       - name: Check provider credentials directly without exposing keys
         run: |
           set -euo pipefail
+          YVP_DIRECT_STATUS="skipped"
+          API_BIBLE_DIRECT_STATUS="skipped"
           YVP_KEY_CLEAN="$(printf '%s' "$ZITE_YVP_APP_KEY" | tr -d '\r\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
           if [ "$YVP_KEY_CLEAN" != "$ZITE_YVP_APP_KEY" ]; then echo "Trimmed surrounding whitespace from the YouVersion App Key."; fi
           if [ -n "$YVP_KEY_CLEAN" ]; then
@@ -117,6 +119,11 @@ jobs:
             fi
           else
             echo "API.Bible key is already stored on the Worker; direct GitHub-secret check skipped."
+          fi
+
+          if [[ "$YVP_DIRECT_STATUS" =~ ^(401|403)$ && "$API_BIBLE_DIRECT_STATUS" =~ ^(401|403)$ ]]; then
+            echo "::error::Both official providers rejected the configured credentials. Correct the ZITE_YVP_APP_KEY and API_BIBLE_KEY GitHub Actions secrets before deployment; no new Worker version or app endpoint will be published."
+            exit 1
           fi
 
       - name: Register or reuse the account workers.dev subdomain
