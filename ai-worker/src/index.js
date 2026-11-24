@@ -606,7 +606,7 @@ async function handleNetBibleRequest(request, env, dependencies, cors) {
 
   const upstreamUrl = new URL(NET_BIBLE_BASE);
   upstreamUrl.searchParams.set("passage", book + " " + chapter + ":1-" + lastVerse);
-  upstreamUrl.searchParams.set("type", "JSON");
+  upstreamUrl.searchParams.set("type", "json");
   upstreamUrl.searchParams.set("formatting", "plain");
   const fetchImpl = dependencies.fetch || globalThis.fetch;
   let response = null;
