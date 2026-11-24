@@ -13,6 +13,9 @@ assert.equal(workflow.split("\n").filter(line => /\\\\$/.test(line)).length, 0,
 assert.ok(workflow.indexOf("Require the reviewed integration branch before any Cloudflare changes") < workflow.indexOf("Bootstrap the fail-closed Worker"), "branch guard runs before Cloudflare changes");
 assert.match(workflow, /actions: write/, "deployment can dispatch the follow-up validation workflow");
 assert.match(workflow, /GH_TOKEN: \$\{\{ github\.token \}\}/, "GitHub CLI receives the scoped workflow token");
+for (const alias of ["CF_API_TOKEN", "CF_ACCOUNT_ID", "CLOUDFLARE_TOKEN", "YOUVERSION_APP_KEY", "YVP_APP_KEY", "YVP_API_KEY", "API_BIBLE_TOKEN"]) {
+  assert.ok(workflow.includes("secrets." + alias), "deployment accepts the common " + alias + " secret alias");
+}
 for (const secret of ["CLOUDFLARE_API_TOKEN", "CLOUDFLARE_ACCOUNT_ID", "ZITE_YVP_APP_KEY", "API_BIBLE_KEY"]) {
   assert.ok(workflow.includes("secrets." + secret), "deployment requires the " + secret + " repository secret");
 }
