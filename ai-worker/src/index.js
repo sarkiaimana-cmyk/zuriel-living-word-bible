@@ -608,17 +608,24 @@ async function handleNetBibleRequest(request, env, dependencies, cors) {
   upstreamUrl.searchParams.set("passage", book + " " + chapter + ":1-" + lastVerse);
   upstreamUrl.searchParams.set("type", "JSON");
   upstreamUrl.searchParams.set("formatting", "plain");
-  let response;
-  try {
-    const fetchImpl = dependencies.fetch || globalThis.fetch;
-    response = await fetchImpl(upstreamUrl.toString(), {
-      method: "GET",
-      headers: { "Accept": "application/json", "User-Agent": "ZurielLivingWordBible/2.10.4" },
-      signal: AbortSignal.timeout(10000)
-    });
-  } catch {
-    return json({ error: "The NET Bible service could not be reached. Your offline KJV is unchanged." }, 502, cors);
+  const fetchImpl = dependencies.fetch || globalThis.fetch;
+  let response = null;
+  // Bible.org occasionally returns transient gateway errors. Retry only
+  // transient network/5xx failures; never retry rate limits or client errors.
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      response = await fetchImpl(upstreamUrl.toString(), {
+        method: "GET",
+        headers: { "Accept": "application/json", "User-Agent": "ZurielLivingWordBible/2.10.4" },
+        signal: AbortSignal.timeout(10000)
+      });
+      if (response.ok || (response.status !== 502 && response.status !== 503 && response.status !== 504)) break;
+    } catch {
+      response = null;
+    }
+    if (attempt < 2) await new Promise(resolve => setTimeout(resolve, 250 * (attempt + 1)));
   }
+  if (!response) return json({ error: "The NET Bible service could not be reached. Your offline KJV is unchanged." }, 502, cors);
   if (!response.ok) return json({ error: "The NET Bible service is temporarily unavailable." }, response.status === 429 ? 429 : 502, cors);
 
   let payload;
@@ -670,7 +677,8 @@ async function handleNetBibleRequest(request, env, dependencies, cors) {
     verse: Number(row && row.verse),
     text: String(row && row.text || "").trim()
   })).filter(row => Number.isInteger(row.verse) && row.verse > 0 && row.text);
-  if (!verses.length || verses.length !== rows.length) {
+  if (verses.length !== lastVerse || verses.length !== rows.length ||
+      verses.some((row, index) => row.verse !== index + 1)) {
     return json({ error: "The NET Bible service did not return a complete, readable chapter." }, 502, cors);
   }
   const content = verses.map(row => row.verse + " " + row.text).join("\n");
