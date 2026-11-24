@@ -29,7 +29,7 @@ assert.match(source, /makeButton\("Pause", pausePlayback\)/, "A visible Pause co
 assert.match(source, /Continue from verse/, "Paused read-aloud must resume from the interrupted verse.");
 assert.match(source, /pauseButton\.disabled = !playing/, "Pause control state must follow playback state.");
 assert.match(source, /No locally installed English voice/);
-assert.match(source, /TextToSpeech\\.openInstall/, "Android must provide a direct offline voice installation handoff.");
+assert.match(source, /TextToSpeech\.openInstall/, "Android must provide a direct offline voice installation handoff.");
 assert.match(source, /Set up device voice/, "The reader must expose a visible voice setup action.");
 assert.match(source, /Online-only voices are not used by this offline player/, "The offline reader must clearly exclude cloud-only voices.");
 assert.match(source, /Playback works without internet/, "The reader must identify when local playback is available offline.");
