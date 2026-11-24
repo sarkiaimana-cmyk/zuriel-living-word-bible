@@ -35,6 +35,7 @@ async function getJson(requestPath) {
     fs.writeFileSync(bodyPath, "");
     const result = spawnSync("curl", [
       "--silent", "--show-error", "--max-time", "20",
+      "--retry", "3", "--retry-delay", "2", "--retry-all-errors",
       "--user-agent", userAgent,
       "--output", bodyPath,
       "--write-out", "%{http_code}",
