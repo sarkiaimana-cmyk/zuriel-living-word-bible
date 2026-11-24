@@ -18,11 +18,13 @@ The endpoint is an initial passage-explanation pilot. It does not yet support to
 
 ## Secure YouVersion Bible text proxy
 
-The shared server-side handler includes a YouVersion Platform proxy for the future multi-translation reader. The production translation-only entry point is `src/translation-worker.js`, deployed separately with `wrangler.translations.jsonc`.
+The shared server-side handler includes secure YouVersion Platform and API.Bible proxies for the multi-translation reader. The production translation-only entry point is `src/translation-worker.js`, deployed separately with `wrangler.translations.jsonc`.
 
 - `GET /api/youversion/bibles` lists English Bible versions returned to the registered app key. The proxy does not request `all_available=true`, so it does not deliberately expose versions outside the app's licensed list.
 - `GET /api/youversion/bibles/{versionId}/passages/{USFM}` retrieves a single passage or chapter. The `format` query may be `html` or `text`.
-- The app key is read only from the Worker secret `ZITE_YVP_APP_KEY`; it is never accepted from the client or returned in a response.
+- `GET /api/api-bible/bibles` lists English Bibles licensed to the API.Bible key; `GET /api/api-bible/bibles/{bibleId}/chapters/{USFM}` retrieves a chapter and requires its FUMS v3 token.
+- The YouVersion app key is read only from the Worker secret `ZITE_YVP_APP_KEY`; the API.Bible key is read only from `API_BIBLE_KEY`. Neither is accepted from the client or returned in a response.
+- API.Bible chapter responses must include publisher copyright and a FUMS v3 token; the reader reports each view through the official FUMS script before displaying text.
 - Requests are origin-checked, rate-limited, time-bounded and returned with `no-store` headers.
 - Publisher copyright and promotional attribution are returned with passage content. Do not save licensed passages for offline use unless the exact publisher licence expressly permits it.
 - The dedicated translation Worker exposes no AI route and does not require the AI pilot's Turnstile configuration or AI binding.
