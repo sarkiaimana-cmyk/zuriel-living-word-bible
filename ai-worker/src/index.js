@@ -741,7 +741,8 @@ export async function handleRequest(request, env, dependencies = {}) {
   const youVersionRoute = url.pathname === "/api/youversion/bibles" || url.pathname.startsWith("/api/youversion/bibles/");
   const apiBibleRoute = url.pathname === "/api/api-bible/bibles" || url.pathname.startsWith("/api/api-bible/bibles/");
   const netBibleRoute = url.pathname === "/api/net-bible/bibles" || url.pathname.startsWith("/api/net-bible/chapters/");
-  if (!assistantRoute && !youVersionRoute && !apiBibleRoute && !netBibleRoute) return json({ error: "Not found." }, 404);
+  const esvRoute = url.pathname === "/api/esv/bibles" || url.pathname.startsWith("/api/esv/chapters/");
+  if (!assistantRoute && !youVersionRoute && !apiBibleRoute && !netBibleRoute && !esvRoute) return json({ error: "Not found." }, 404);
   const cors = corsFor(request, env);
   if (!cors) return json({ error: "This app origin is not authorised for the pilot." }, 403);
   if (request.method === "OPTIONS") {
@@ -750,6 +751,7 @@ export async function handleRequest(request, env, dependencies = {}) {
   if (youVersionRoute) return handleYouVersionRequest(request, env, dependencies, cors);
   if (apiBibleRoute) return handleApiBibleRequest(request, env, dependencies, cors);
   if (netBibleRoute) return handleNetBibleRequest(request, env, dependencies, cors);
+  if (esvRoute) return handleEsvRequest(request, env, dependencies, cors);
   if (url.pathname === "/api/assistant/config" && request.method === "GET") {
     return json({
       enabled: Boolean(env.TURNSTILE_SITE_KEY),
