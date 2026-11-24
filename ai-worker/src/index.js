@@ -613,7 +613,7 @@ async function handleNetBibleRequest(request, env, dependencies, cors) {
     const fetchImpl = dependencies.fetch || globalThis.fetch;
     response = await fetchImpl(upstreamUrl.toString(), {
       method: "GET",
-      headers: { "Accept": "application/json", "User-Agent": "ZurielLivingWordBible/2.10.3" },
+      headers: { "Accept": "application/json", "User-Agent": "ZurielLivingWordBible/2.10.4" },
       signal: AbortSignal.timeout(10000)
     });
   } catch {
