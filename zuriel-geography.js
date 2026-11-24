@@ -192,10 +192,12 @@
       detail.appendChild(make("p", "zg-copy", place.significance));
       detail.appendChild(make("p", "zg-copy", "Historical note: " + place.studyCaution));
       detail.appendChild(make("strong", "", "Read the related passages"));
+      let inheritedBook = "";
       (place.references || []).forEach(reference => {
+        const parsed = parseAtlasReference(reference, inheritedBook);
+        if (parsed) inheritedBook = parsed.book;
         const button = make("button", "zg-reference", reference);
         button.type = "button";
-        const parsed = parseAtlasReference(reference);
         if (parsed) button.addEventListener("click", () => openReference(parsed, status));
         else button.disabled = true;
         detail.appendChild(button);
@@ -207,7 +209,19 @@
         const section = make("section", "zg-atlas-detail");
         section.appendChild(make("h4", "", journey.name));
         section.appendChild(make("p", "zg-copy", journey.sequence));
-        section.appendChild(make("p", "zg-copy", "Study references: " + (journey.references || []).join(" • ")));
+        section.appendChild(make("strong", "", "Open the journey passages"));
+        const referenceList = make("div", "zg-refs");
+        let inheritedBook = "";
+        (journey.references || []).forEach(reference => {
+          const parsed = parseAtlasReference(reference, inheritedBook);
+          if (parsed) inheritedBook = parsed.book;
+          const button = make("button", "zg-reference", reference);
+          button.type = "button";
+          if (parsed) button.addEventListener("click", () => openReference(parsed, status));
+          else button.disabled = true;
+          referenceList.appendChild(button);
+        });
+        section.appendChild(referenceList);
         section.appendChild(make("p", "zg-copy", "Historical note: " + journey.studyCaution));
         journeys.appendChild(section);
       });
@@ -237,13 +251,15 @@
     await load();
   }
 
-  function parseAtlasReference(reference) {
-    const match = String(reference || "").trim().match(/^(.+?)\s+(\d+):(\d+)/);
-    if (!match) return null;
-    const chapter = Number(match[2]);
-    const verse = Number(match[3]);
-    if (!chapter || !verse) return null;
-    return { book: match[1], chapter, verse };
+  function parseAtlasReference(reference, inheritedBook) {
+    const value = String(reference || "").trim();
+    const full = value.match(/^(.+?)\s+(\d+)(?::(\d+))?/);
+    const short = value.match(/^(\d+)(?::(\d+))?/);
+    const book = full ? full[1] : String(inheritedBook || "");
+    const chapter = Number(full ? full[2] : short && short[1]);
+    const verse = Number(full ? full[3] || 1 : short && short[2] || 1);
+    if (!book || !chapter || !verse) return null;
+    return { book, chapter, verse };
   }
 
   function make(tag, className, text) {
