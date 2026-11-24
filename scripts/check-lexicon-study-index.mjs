@@ -1,8 +1,11 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
-const [index, loader, worker, html, pkg, release] = await Promise.all([
+const [index, wordBatchOne, wordBatchTwo, studyLibrary, loader, worker, html, pkg, release] = await Promise.all([
   readFile(new URL("../data/zuriel-lexicon-study-index.json", import.meta.url), "utf8").then(JSON.parse),
+  readFile(new URL("../data/zuriel-original-language-word-studies-batch-1.json", import.meta.url), "utf8").then(JSON.parse),
+  readFile(new URL("../data/zuriel-original-language-word-studies-batch-2.json", import.meta.url), "utf8").then(JSON.parse),
+  readFile(new URL("../zuriel-study-library-data.js", import.meta.url), "utf8"),
   readFile(new URL("../zuriel-lexicon-index.js", import.meta.url), "utf8"),
   readFile(new URL("../sw.js", import.meta.url), "utf8"),
   readFile(new URL("../index.html", import.meta.url), "utf8"),
@@ -10,6 +13,32 @@ const [index, loader, worker, html, pkg, release] = await Promise.all([
   readFile(new URL("../version.json", import.meta.url), "utf8").then(JSON.parse)
 ]);
 assert.equal(index.entries.length, 32, "Expected the curated 32-entry Hebrew/Greek index.");
+assert.equal(wordBatchOne.entries.length, 110, "Expected 110 contextual word-study cards in batch one.");
+assert.equal(wordBatchTwo.entries.length, 20, "Expected 20 contextual word-study cards in batch two.");
+for (const [batchName, batch] of [["batch one", wordBatchOne], ["batch two", wordBatchTwo]]) {
+  const ids = new Set();
+  for (const entry of batch.entries) {
+    assert.ok(entry.id && !ids.has(entry.id), batchName + " word-study IDs must be present and unique.");
+    ids.add(entry.id);
+    assert.ok(entry.term && entry.originalForm && entry.contextualGloss && entry.interpretiveCaution,
+      batchName + " entry needs its original form, contextual gloss and caution.");
+    assert.ok(["Hebrew", "Greek", "Aramaic"].includes(entry.language), batchName + " entry language must be explicit.");
+    assert.ok(Array.isArray(entry.scriptureReferences) && entry.scriptureReferences.length,
+      batchName + " entry needs Scripture references.");
+    assert.ok(entry.morphologyStatus && /not asserted|lexeme-level/i.test(entry.morphologyStatus),
+      batchName + " must not imply verse-specific morphology without parsing.");
+    assert.ok(!entry.strongs && !entry.morphology, batchName + " must not invent Strong's IDs or morphology.");
+  }
+}
+for (const path of [
+  "./data/zuriel-original-language-word-studies-batch-1.json",
+  "./data/zuriel-original-language-word-studies-batch-2.json"
+]) {
+  assert.ok(studyLibrary.includes('["Hebrew & Greek Word Studies", "' + path + '"'),
+    "The expanded Study Library must load " + path + ".");
+  assert.ok(worker.includes('"' + path + '"'), "Offline cache must include " + path + ".");
+}
+
 const ids = new Set();
 for (const entry of index.entries) {
   assert.ok(entry.id && /^(H|G)\d+$/.test(entry.id), "Every index entry needs a Hebrew/Greek Strong's identifier.");
@@ -29,4 +58,4 @@ assert.ok(worker.includes("zuriel-lexicon-index.js"));
 assert.ok(worker.includes("data/zuriel-lexicon-study-index.json"));
 assert.equal(pkg.version, release.version, "Package and app release versions must match.");
 assert.equal(release.version, pkg.version);
-console.log("Lexicon index checks passed: 32 unique Hebrew/Greek IDs, contextual safeguards, loader, offline precache and matching release metadata.");
+console.log("Original-language checks passed: 32 cautious Strong’s lookup entries plus 130 contextual Hebrew/Greek study cards, linked in the expanded Study Library and offline cache.");
