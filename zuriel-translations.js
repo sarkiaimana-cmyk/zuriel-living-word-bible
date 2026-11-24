@@ -94,7 +94,8 @@
   providerSelect.setAttribute("aria-label", "Choose online Bible translation provider");
   [
     ["youversion", "YouVersion Platform"],
-    ["api-bible", "API.Bible"]
+    ["api-bible", "API.Bible"],
+    ["net-bible", "NET Bible (Bible.org)"]
   ].forEach(([value, label]) => {
     const option = node("option", "", label);
     option.value = value;
@@ -202,7 +203,7 @@
     select.disabled = true;
     loadButton.disabled = true;
     status("Checking the English Bible versions authorised for " +
-      (providerAtRequest === "youversion" ? "YouVersion" : "API.Bible") + "…");
+      (providerAtRequest === "youversion" ? "YouVersion" : providerAtRequest === "net-bible" ? "NET Bible" : "API.Bible") + "…");
     try {
       let available = [];
       let nextPageToken = "";
@@ -242,7 +243,7 @@
           uniqueVersions.set(String(item.id), item);
         });
         available = Array.from(uniqueVersions.values());
-      } else {
+      } else if (providerAtRequest === "api-bible") {
         const payload = await requestJson("/api/api-bible/bibles");
         if (!payload || !Array.isArray(payload.data)) {
           throw new Error("The API.Bible authorised Bible version list could not be verified.");
@@ -256,6 +257,8 @@
           uniqueVersions.set(item.id, item);
         });
         available = Array.from(uniqueVersions.values());
+      } else {
+        available = [{ id: "net", title: "New English Translation", abbreviation: "NET" }];
       }
 
       if (catalogueRequestId !== catalogueSequence) return;
@@ -613,30 +616,43 @@
       }
       window.fums("trackView", fumsToken);
     }
-    const providerName = selectedProvider === "youversion" ? "YouVersion" : "API.Bible";
+    const providerName = selectedProvider === "youversion" ? "YouVersion" : selectedProvider === "net-bible" ? "NET Bible" : "API.Bible";
     const selectedLabel = select.options[select.selectedIndex]
       ? String(select.options[select.selectedIndex].textContent || "").split("—").slice(1).join("—").trim()
       : "";
     passageHeading.textContent = (item.reference || (currentChapter.book + " " + currentChapter.chapter)) +
       " — " + ((payload.version && (payload.version.abbreviation || payload.version.title)) || selectedVersionLabel || selectedLabel || "Selected translation") +
       " (" + providerName + ")";
-    passage.textContent = item.content;
+    passage.textContent = selectedProvider === "net-bible" ? item.content + "\n\n(NET)" : item.content;
     passage.hidden = false;
-    attribution.textContent = [
-      copyright,
-      promotional,
-      offline
-        ? "Offline copy saved on this device. API.Bible content must be refreshed online within 14 days."
-        : (selectedProvider === "api-bible"
-          ? "This chapter is saved on this device for offline reading; it must be refreshed online within 14 days."
-          : "YouVersion publisher text is displayed online only; no offline copy has been saved.")
-    ].filter(Boolean).join(" ");
+    if (selectedProvider === "net-bible") {
+      attribution.replaceChildren();
+      attribution.appendChild(document.createTextNode(copyright + " "));
+      const link = document.createElement("a");
+      link.href = "https://netbible.org";
+      link.textContent = "NET Bible";
+      link.rel = "noopener noreferrer";
+      attribution.appendChild(link);
+      attribution.appendChild(document.createTextNode(". This passage is online-only and has not been saved for offline reading."));
+    } else {
+      attribution.textContent = [
+        copyright,
+        promotional,
+        offline
+          ? "Offline copy saved on this device. API.Bible content must be refreshed online within 14 days."
+          : (selectedProvider === "api-bible"
+            ? "This chapter is saved on this device for offline reading; it must be refreshed online within 14 days."
+            : "YouVersion publisher text is displayed online only; no offline copy has been saved.")
+      ].filter(Boolean).join(" ");
+    }
     attribution.hidden = false;
     status(offline
       ? "Showing a saved " + providerName + " chapter offline."
       : (canStoreOffline(selectedProvider)
         ? "Online passage loaded successfully and saved under the API.Bible refresh limit."
-        : "Online passage loaded successfully. YouVersion text has not been stored offline."));
+        : selectedProvider === "net-bible"
+          ? "NET passage loaded successfully. This provider is online-only; no offline copy has been stored."
+          : "Online passage loaded successfully. YouVersion text has not been stored offline."));
   }
 
   async function loadPassage() {
@@ -650,7 +666,9 @@
       : null;
     const validVersionId = selectedProvider === "youversion"
       ? /^\d+$/.test(selectedVersionId)
-      : /^[a-f0-9]{16}-\d{2}$/i.test(selectedVersionId);
+      : selectedProvider === "net-bible"
+        ? selectedVersionId === "net"
+        : /^[a-f0-9]{16}-\d{2}$/i.test(selectedVersionId);
     if (!bookCode || !validVersionId) {
       status("Choose a valid authorised translation.");
       return false;
@@ -680,8 +698,10 @@
       const path = selectedProvider === "youversion"
         ? "/api/youversion/bibles/" + encodeURIComponent(selectedVersionId) +
           "/passages/" + reference + "?format=text"
-        : "/api/api-bible/bibles/" + encodeURIComponent(selectedVersionId) +
-          "/chapters/" + encodeURIComponent(reference);
+        : selectedProvider === "net-bible"
+          ? "/api/net-bible/chapters/" + encodeURIComponent(currentChapter.book) + "/" + currentChapter.chapter
+          : "/api/api-bible/bibles/" + encodeURIComponent(selectedVersionId) +
+            "/chapters/" + encodeURIComponent(reference);
       const payload = await requestJson(path, activeController);
       if (requestId !== requestSequence) return false;
       renderPassage(payload, false);
