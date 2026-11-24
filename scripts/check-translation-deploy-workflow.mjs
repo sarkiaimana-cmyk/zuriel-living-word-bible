@@ -7,15 +7,17 @@ const config = JSON.parse(fs.readFileSync("ai-worker/wrangler.translations.jsonc
 
 assert.match(workflow, /workflow_dispatch:/, "translation deployment remains manual");
 assert.match(workflow, /confirm_deployment == true/, "deployment requires explicit confirmation");
-assert.ok(workflow.includes("github.ref != 'refs/heads/main'"), "deployment rejects non-main branches");
+assert.ok(workflow.includes("github.ref != 'refs/heads/fix/mobile-search-study-layout'"), "deployment is restricted to the reviewed integration branch");
 assert.equal(workflow.split("\n").filter(line => /\\\\$/.test(line)).length, 0,
   "deployment shell commands must use single backslashes for line continuations");
-assert.ok(workflow.indexOf("Require main branch before any Cloudflare changes") < workflow.indexOf("Bootstrap the fail-closed Worker"), "branch guard runs before Cloudflare changes");
+assert.ok(workflow.indexOf("Require the reviewed integration branch before any Cloudflare changes") < workflow.indexOf("Bootstrap the fail-closed Worker"), "branch guard runs before Cloudflare changes");
 for (const secret of ["CLOUDFLARE_API_TOKEN", "CLOUDFLARE_ACCOUNT_ID", "ZITE_YVP_APP_KEY"]) {
   assert.ok(workflow.includes("secrets." + secret), "deployment requires the " + secret + " repository secret");
 }
-assert.ok(workflow.includes("secrets.API_BIBLE_KEY"), "deployment accepts the optional API.Bible repository secret");
-assert.match(workflow, /secret put API_BIBLE_KEY/, "deployment installs the optional API.Bible key only as a Worker secret");
+assert.ok(workflow.includes("secrets.API_BIBLE_KEY"), "deployment requires the API.Bible repository secret");
+assert.match(workflow, /test -n "\\$API_BIBLE_KEY"/, "deployment fails before Cloudflare changes if API.Bible key is missing");
+assert.ok(config.secrets.required.includes("API_BIBLE_KEY"), "Wrangler marks the API.Bible key as required");
+assert.match(workflow, /secret put API_BIBLE_KEY/, "deployment installs the API.Bible key only as a Worker secret");
 assert.match(workflow, /test\/api-bible\.test\.mjs/, "deployment runs API.Bible provider security tests");
 assert.match(workflow, /workers\/subdomain/, "deployment discovers the account workers.dev subdomain");
 assert.match(workflow, /workers\/scripts\/zuriel-bible-translations\/subdomain/, "deployment verifies the Worker route is enabled");
@@ -34,7 +36,9 @@ assert.match(workflow, /Worker URL: \$WORKER_URL/, "deployment reports the exact
 assert.match(workflow, /contents: write/, "deployment may save the verified public endpoint to release metadata");
 assert.match(workflow, /translationApiBase=process\.env\.WORKER_URL/, "deployment writes the verified Worker URL into version.json");
 assert.ok(workflow.includes('JSON.stringify(data,null,2)+"\\n"'), "deployment writes a valid JSON newline when saving version.json");
-assert.match(workflow, /git push origin HEAD:main/, "deployment commits the endpoint configuration automatically");
+assert.match(workflow, /git push origin "HEAD:\\$GITHUB_REF_NAME"/, "deployment commits the endpoint to the reviewed integration branch");
+assert.match(workflow, /gh workflow run validate-pr\\.yml --ref "\\$GITHUB_REF_NAME"/, "deployment dispatches full validation after endpoint configuration");
+assert.match(workflow, /raw\\.githubusercontent\\.com\\/sarkiaimana-cmyk\\/zuriel-living-word-bible\\/\\$GITHUB_REF_NAME\\/version\\.json/, "deployment verifies endpoint metadata on the same integration branch");
 assert.match(workflow, /REMOTE_CONFIG/, "deployment verifies the public release metadata after saving");
 assert.match(workflow, /Authorised Bible versions returned:/, "deployment reports the number of publisher-authorised versions");
 assert.match(workflow, /VERSION_COUNT.*-lt 1/, "deployment refuses to activate when no English versions are authorised");
