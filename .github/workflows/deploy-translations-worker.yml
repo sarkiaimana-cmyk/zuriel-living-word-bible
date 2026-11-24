@@ -183,7 +183,7 @@ API_BIBLE_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
             echo "::error::API.Bible returned no English Bible versions. The second provider cannot be activated."
             exit 1
           fi
-          API_BIBLE_ID="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-smoke.json","utf8"));const id=String(j.data[0]?.id||"");if(!/^[a-f0-9]{16}-\\d{2}$/i.test(id))process.exit(1);process.stdout.write(id);')"
+          API_BIBLE_ID="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".api-bible-smoke.json","utf8"));const id=String(j.data[0]?.id||"");if(!/^[a-f0-9]{16}-\d{2}$/i.test(id))process.exit(1);process.stdout.write(id);')"
           API_BIBLE_CHAPTER_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
             -o .api-bible-chapter-smoke.json -D .api-bible-chapter-smoke.headers -w '%{http_code}' \
             -H "Origin: https://sarkiaimana-cmyk.github.io" \
@@ -206,7 +206,7 @@ API_BIBLE_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
           # The endpoint is public configuration, not a credential. Keep the
           # provider keys in Cloudflare and update the open integration branch.
           export WORKER_URL
-          node -e 'const fs=require("node:fs");const path="../version.json";const data=JSON.parse(fs.readFileSync(path,"utf8"));data.translationApiBase=process.env.WORKER_URL;fs.writeFileSync(path,JSON.stringify(data,null,2)+"\\n");'
+          node -e 'const fs=require("node:fs");const path="../version.json";const data=JSON.parse(fs.readFileSync(path,"utf8"));data.translationApiBase=process.env.WORKER_URL;fs.writeFileSync(path,JSON.stringify(data,null,2)+"\n");'
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add ../version.json
