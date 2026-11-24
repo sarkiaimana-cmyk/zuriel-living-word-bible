@@ -12,7 +12,7 @@ const [index, wordBatchOne, wordBatchTwo, studyLibrary, loader, worker, html, pk
   readFile(new URL("../package.json", import.meta.url), "utf8").then(JSON.parse),
   readFile(new URL("../version.json", import.meta.url), "utf8").then(JSON.parse)
 ]);
-assert.equal(index.entries.length, 32, "Expected the curated 32-entry Hebrew/Greek index.");
+assert.equal(index.entries.length, 50, "Expected 50 curated Hebrew/Greek Strong's lookup entries.");
 assert.equal(wordBatchOne.entries.length, 110, "Expected 110 contextual word-study cards in batch one.");
 assert.equal(wordBatchTwo.entries.length, 20, "Expected 20 contextual word-study cards in batch two.");
 for (const [batchName, batch] of [["batch one", wordBatchOne], ["batch two", wordBatchTwo]]) {
@@ -46,6 +46,8 @@ for (const entry of index.entries) {
   assert.ok(entry.lemma && entry.transliteration && entry.studyLabel, "Lexicon entry needs lemma, transliteration and study label.");
   assert.ok(Array.isArray(entry.keyReferences) && entry.keyReferences.length, "Lexicon entry needs contextual references.");
   assert.ok(entry.contextPrompt, "Lexicon entry needs a contextual study prompt.");
+  assert.equal(entry.sourceLabel, "Strong's Concordance reference (BibleHub)", "Lexicon entry needs an explicit source label.");
+  assert.match(entry.sourceUrl || "", /^https:\/\/biblehub\.com\/strongs\/(?:hebrew|greek)\/\d+\.htm$/, "Lexicon entry needs a safe source URL.");
   ids.add(entry.id);
 }
 assert.match(index.usageNote, /do not assign a lemma to an English word/i);
@@ -58,4 +60,4 @@ assert.ok(worker.includes("zuriel-lexicon-index.js"));
 assert.ok(worker.includes("data/zuriel-lexicon-study-index.json"));
 assert.equal(pkg.version, release.version, "Package and app release versions must match.");
 assert.equal(release.version, pkg.version);
-console.log("Original-language checks passed: 32 cautious Strong’s lookup entries plus 130 contextual Hebrew/Greek study cards, linked in the expanded Study Library and offline cache.");
+console.log("Original-language checks passed: 50 sourced Strong's lookup entries plus 130 contextual Hebrew/Greek study cards.");
