@@ -606,7 +606,7 @@ async function handleNetBibleRequest(request, env, dependencies, cors) {
 
   const upstreamUrl = new URL(NET_BIBLE_BASE);
   upstreamUrl.searchParams.set("passage", book + " " + chapter + ":1-" + lastVerse);
-  upstreamUrl.searchParams.set("type", "JSON");
+  upstreamUrl.searchParams.set("type", "json");
   upstreamUrl.searchParams.set("formatting", "plain");
   let response;
   try {
@@ -622,8 +622,15 @@ async function handleNetBibleRequest(request, env, dependencies, cors) {
   if (!response.ok) return json({ error: "The NET Bible service is temporarily unavailable." }, response.status === 429 ? 429 : 502, cors);
 
   let payload;
-  try { payload = JSON.parse(await response.text()); }
-  catch { return json({ error: "The NET Bible service returned an unreadable response." }, 502, cors); }
+  try {
+    const body = await response.text();
+    const firstArray = body.indexOf("[");
+    const lastArray = body.lastIndexOf("]");
+    if (firstArray < 0 || lastArray <= firstArray) throw new Error("No JSON array was returned.");
+    payload = JSON.parse(body.slice(firstArray, lastArray + 1));
+  } catch {
+    return json({ error: "The NET Bible service returned an unreadable response." }, 502, cors);
+  }
   const rows = Array.isArray(payload) ? payload : (payload && Array.isArray(payload.data) ? payload.data : []);
   const verses = rows.map(row => ({
     verse: Number(row && row.verse),
