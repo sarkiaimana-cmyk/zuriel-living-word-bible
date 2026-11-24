@@ -862,7 +862,7 @@
         return false;
       }
 
-      const providers = ["youversion", "api-bible"];
+      const providers = ["youversion", "api-bible", "net-bible"];
       const providerFailures = [];
       const passageFailures = [];
       for (const provider of providers) {
@@ -903,7 +903,9 @@
         if (!match) {
           providerFailures.push(provider === "youversion"
             ? "YouVersion did not return " + requested + "."
-            : "API.Bible did not return " + requested + ".");
+            : provider === "net-bible"
+              ? "NET Bible did not return " + requested + "."
+              : "API.Bible did not return " + requested + ".");
           continue;
         }
 
@@ -916,7 +918,7 @@
         downloadButton.hidden = !canStoreOffline(provider);
         downloadButton.disabled = !canStoreOffline(provider);
         status(requested + " is available through " +
-          (provider === "youversion" ? "YouVersion" : "API.Bible") +
+          (provider === "youversion" ? "YouVersion" : provider === "net-bible" ? "NET Bible" : "API.Bible") +
           ". " + (currentChapter ? "Loading this chapter…" : "Open a Bible chapter to display it."));
         if (currentChapter && !await loadPassage()) {
           passageFailures.push(provider === "youversion"
