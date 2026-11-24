@@ -40,6 +40,7 @@ jobs:
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || secrets.CF_ACCOUNT_ID }}
       ZITE_YVP_APP_KEY: ${{ secrets.ZITE_YVP_APP_KEY || secrets.YOUVERSION_APP_KEY || secrets.YVP_APP_KEY || secrets.YVP_API_KEY }}
       API_BIBLE_KEY: ${{ secrets.API_BIBLE_KEY || secrets.API_BIBLE_TOKEN }}
+      ESV_API_KEY: ${{ secrets['ESV_API_KEY'] }}
       GH_TOKEN: ${{ github.token }}
     steps:
       - name: Require explicit deployment confirmation
