@@ -660,7 +660,7 @@
     if (!apiReady) {
       const saved = await readCachedChapter(selectedProvider, selectedVersionId, reference);
       if (saved) {
-        try { renderPassage(saved, true); return; }
+        try { renderPassage(saved, true); return true; }
         catch (_) {}
       }
       status("Secure online translation access is not connected. No permitted saved copy is available; your offline KJV remains unchanged.");
