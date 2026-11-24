@@ -48,6 +48,7 @@ assert.match(workflow, /\/chapters\/JHN\.3/, "deployment retrieves a real API.Bi
 assert.match(workflow, /j\.passage\.copyright/, "deployment requires API.Bible publisher attribution");
 assert.match(workflow, /j\.meta\?\.fumsToken/, "deployment requires API.Bible FUMS v3 reporting token");
 assert.match(workflow, /YouVersion catalogue unavailable/, "deployment records YouVersion failure without blocking API.Bible fallback");
+assert.match(workflow, /Both official providers rejected the configured credentials/, "deployment stops before publishing when both provider credentials are rejected");
 assert.match(workflow, /API\.Bible catalogue unavailable/, "deployment records API.Bible failure without blocking YouVersion fallback");
 assert.match(workflow, /access-control-allow-origin: https:\/\/sarkiaimana-cmyk\.github\.io/i, "deployment checks GitHub Pages CORS");
 assert.match(workflow, /Worker URL: \$WORKER_URL/, "deployment reports the exact verified Worker URL");
