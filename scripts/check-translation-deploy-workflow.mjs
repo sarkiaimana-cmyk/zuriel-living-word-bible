@@ -31,6 +31,9 @@ assert.match(workflow, /test\/api-bible\.test\.mjs/, "deployment runs API.Bible 
 assert.match(workflow, /smoke-licensed-translations\.mjs/, "deployment live-tests every requested translation");
 assert.match(workflow, /node --check scripts\/smoke-licensed-translations\.mjs/, "deployment syntax-checks the live translation smoke test");
 assert.match(workflow, /workers\/subdomain/, "deployment discovers the account workers.dev subdomain");
+assert.match(workflow, /Register or reuse the account workers.dev subdomain/, "deployment creates the account subdomain when it is missing");
+assert.ok(workflow.includes('--data "{\\"subdomain\\":\\"$PREFERRED_SUBDOMAIN\\"}"'), "deployment tries the branded workers.dev subdomain first");
+assert.ok(workflow.includes('UNIQUE_SUBDOMAIN="zuriel-bible-${CLOUDFLARE_ACCOUNT_ID:0:8}"'), "deployment has a collision-safe account subdomain fallback");
 assert.match(workflow, /workers\/scripts\/zuriel-bible-translations\/subdomain/, "deployment verifies the Worker route");
 assert.ok(workflow.includes("--data '{\"enabled\":true}'"), "deployment enables the workers.dev route automatically when needed");
 assert.match(workflow, /\/api\/youversion\/bibles/, "deployment smoke-tests the YouVersion version-list route");
