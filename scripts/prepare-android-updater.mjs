@@ -37,6 +37,7 @@ const java = [
   "import com.getcapacitor.Plugin;",
   "import com.getcapacitor.PluginCall;",
   "import com.getcapacitor.PluginMethod;",
+  "import com.getcapacitor.annotation.ActivityCallback;",
   "import com.getcapacitor.annotation.CapacitorPlugin;",
   "import java.io.File;",
   "import java.io.FileOutputStream;",
