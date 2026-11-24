@@ -109,7 +109,7 @@ for (const [label, fragment] of [
   ["search results cannot exceed reader width", "#bibleSearchResults {\\n  display:grid;\\n  min-width:0;\\n  max-width:100%;"],
   ["long search result text wraps safely", "#bibleSearchResults .search-result {\\n  box-sizing:border-box;\\n  min-width:0;\\n  overflow-wrap:anywhere;"]
 ]) {
-  if (!reader.includes(fragment.replace(/\\n/g, "\\n"))) {
+  if (!reader.includes(fragment.replace(/\\n/g, "\n"))) {
     failures.push([label, "missing from index.html responsive Scripture search styles"]);
   }
 }
