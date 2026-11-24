@@ -19,10 +19,10 @@ assert.equal(index.entries.length, 50, "Expected 50 curated Hebrew/Greek Strong'
 assert.equal(wordBatchOne.entries.length, 110, "Expected 110 contextual word-study cards in batch one.");
 assert.equal(wordBatchTwo.entries.length, 20, "Expected 20 contextual word-study cards in batch two.");
 for (const [batchName, batch] of [["batch one", wordBatchOne], ["batch two", wordBatchTwo]]) {
-  const bookCodesMatch = html.match(/const bookCodes = (\\{[\\s\\S]*?\\n\\};)/);
+const bookCodesMatch = html.match(/const bookCodes = (\{[\s\S]*?\n\};)/);
 assert.ok(bookCodesMatch, "Reader book-code map must be available for lexicon reference checks.");
-const bookCodes = JSON.parse(bookCodesMatch[1].replace(/;\\s*$/, ""));
-const books = [...bookDataSource.matchAll(/\\{\\s*name:\\s*"([^"]+)",\\s*chapters:\\s*(\\d+)\\s*\\}/g)]
+const bookCodes = JSON.parse(bookCodesMatch[1].replace(/;\s*$/, ""));
+const books = [...bookDataSource.matchAll(/\{\s*name:\s*"([^"]+)",\s*chapters:\s*(\d+)\s*\}/g)]
   .map(match => ({ name: match[1], chapters: Number(match[2]) }));
 const canonicalBooks = new Map(books.map(book => [book.name.toLowerCase(), book]));
 const ids = new Set();
@@ -55,7 +55,7 @@ for (const entry of index.entries) {
   assert.ok(entry.lemma && entry.transliteration && entry.studyLabel, "Lexicon entry needs lemma, transliteration and study label.");
   assert.ok(Array.isArray(entry.keyReferences) && entry.keyReferences.length, "Lexicon entry needs contextual references.");
   for (const reference of entry.keyReferences) {
-    const match = String(reference).trim().match(/^(.+?)\\s+(\\d+):(\\d+)(?:-(\\d+))?$/);
+    const match = String(reference).trim().match(/^(.+?)\s+(\d+):(\d+)(?:-(\d+))?$/);
     assert.ok(match, "Lexicon reference must include a chapter and verse: " + reference);
     const rawBook = match[1].toLowerCase();
     const bookName = rawBook === "psalm" ? "psalms" : rawBook;
