@@ -844,7 +844,7 @@
       const aliases = {
         "GNT": /\b(GNT|GNB|GOOD NEWS TRANSLATION|GOOD NEWS BIBLE)\b/,
         "AMP": /\b(AMP|AMPLIFIED BIBLE)\b/,
-        "LB/LT": /\b(LB|LT|TLB|LIVING BIBLE|LIVING TRANSLATION)\b/,
+        "LB/LT": /\b(LB|LT|TLB|LIVING BIBLE)\b|(?<!NEW )\bLIVING TRANSLATION\b/,
         "TPT": /\b(TPT|PASSION TRANSLATION)\b/,
         "NLT": /\b(NLT|NEW LIVING TRANSLATION)\b/,
         "NET": /\b(NET|NEW ENGLISH TRANSLATION)\b/,
