@@ -57,8 +57,6 @@ jobs:
           set -eu
           test -n "$CLOUDFLARE_API_TOKEN" || { echo "::error::Missing CLOUDFLARE_API_TOKEN repository secret."; exit 1; }
           test -n "$CLOUDFLARE_ACCOUNT_ID" || { echo "::error::Missing CLOUDFLARE_ACCOUNT_ID repository secret."; exit 1; }
-          test -n "$ZITE_YVP_APP_KEY" || { echo "::error::Missing ZITE_YVP_APP_KEY repository secret."; exit 1; }
-          test -n "$API_BIBLE_KEY" || { echo "::error::Missing API_BIBLE_KEY repository secret. Both Bible providers are required for the requested translation coverage."; exit 1; }
           node -e 'const fs=require("node:fs"); const c=JSON.parse(fs.readFileSync("wrangler.translations.jsonc","utf8")); if(!c.vars?.ALLOWED_ORIGINS || !c.ratelimits?.some(x=>x.name==="TRANSLATION_RATE_LIMIT")) { console.error("Translation proxy origin or rate-limit configuration is missing."); process.exit(1); }'
 
       - name: Install Worker deployment tools
@@ -83,22 +81,39 @@ jobs:
             exit 1
           fi
 
-      - name: Install the YouVersion app key as a Worker secret
+      - name: Install or reuse both provider keys as Worker secrets
         run: |
           set -euo pipefail
-          if ! printf '%s' "$ZITE_YVP_APP_KEY" | npx wrangler secret put ZITE_YVP_APP_KEY --config wrangler.translations.jsonc; then
-            echo "::error::Cloudflare rejected the Worker secret operation. Grant Workers Editor scoped to zuriel-bible-translations (or Workers Admin at the Workers product scope). Do not create another YouVersion key for this permission error."
+          if ! EXISTING_SECRETS="$(npx wrangler secret list --config wrangler.translations.jsonc --format json)"; then
+            echo "::error::Could not inspect the existing Worker secret names. Check Workers Editor permissions."
+            exit 1
+          fi
+          HAS_YVP_KEY="$(printf '%s' "$EXISTING_SECRETS" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);process.stdout.write(String(Array.isArray(j)&&j.some(x=>x.name==="ZITE_YVP_APP_KEY")));});')"
+          HAS_API_BIBLE_KEY="$(printf '%s' "$EXISTING_SECRETS" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);process.stdout.write(String(Array.isArray(j)&&j.some(x=>x.name==="API_BIBLE_KEY")));});')"
+
+          if [ -n "$ZITE_YVP_APP_KEY" ]; then
+            if ! printf '%s' "$ZITE_YVP_APP_KEY" | npx wrangler secret put ZITE_YVP_APP_KEY --config wrangler.translations.jsonc; then
+              echo "::error::Cloudflare rejected the YouVersion Worker secret. Check Workers Editor permissions; the key is never printed."
+              exit 1
+            fi
+          elif [ "$HAS_YVP_KEY" = "true" ]; then
+            echo "Reusing the existing YouVersion Worker secret without reading its value."
+          else
+            echo "::error::YouVersion key is missing. Add ZITE_YVP_APP_KEY as a GitHub Actions secret or install that exact secret on the zuriel-bible-translations Worker."
             exit 1
           fi
 
-      - name: Install API.Bible key as a Worker secret
-        run: |
-          set -euo pipefail
-          if ! printf '%s' "$API_BIBLE_KEY" | npx wrangler secret put API_BIBLE_KEY --config wrangler.translations.jsonc; then
-            echo "::error::Cloudflare rejected the API.Bible secret. Check the Worker secret permissions; the key is never printed."
+          if [ -n "$API_BIBLE_KEY" ]; then
+            if ! printf '%s' "$API_BIBLE_KEY" | npx wrangler secret put API_BIBLE_KEY --config wrangler.translations.jsonc; then
+              echo "::error::Cloudflare rejected the API.Bible Worker secret. Check Workers Editor permissions; the key is never printed."
+              exit 1
+            fi
+          elif [ "$HAS_API_BIBLE_KEY" = "true" ]; then
+            echo "Reusing the existing API.Bible Worker secret without reading its value."
+          else
+            echo "::error::API.Bible key is missing. Add API_BIBLE_KEY as a GitHub Actions secret or install that exact secret on the zuriel-bible-translations Worker."
             exit 1
           fi
-          echo "API.Bible server-side key installed."
 
       - name: Deploy the protected translation Worker
         run: |
