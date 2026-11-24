@@ -1805,14 +1805,12 @@
           const studioStatus = document.querySelector("#zgsStatus");
           if (!saveImageButton || !studioStatus) throw new Error("The open-book image export is not available.");
           const previousStatus = studioStatus.textContent;
-          saveImageButton.click();
+          // Subscribe before clicking: the export handler immediately writes a
+          // temporary "Preparing…" status before its asynchronous canvas work.
+          // Listening afterwards can mistake that temporary message for success.
           const resultMessage = await new Promise((resolve, reject) => {
             let settled = false;
             let timeout;
-            const observer = new MutationObserver(() => {
-              const message = String(studioStatus.textContent || "").trim();
-              if (message && message !== previousStatus && !/wallpaper/i.test(message)) finish(resolve, message);
-            });
             const finish = (callback, value) => {
               if (settled) return;
               settled = true;
@@ -1820,10 +1818,21 @@
               clearTimeout(timeout);
               callback(value);
             };
+            const checkResult = () => {
+              const message = String(studioStatus.textContent || "").trim();
+              if (!message || message === previousStatus ||
+                  /^Preparing your open-book image(?:…|\.\.\.)?$/i.test(message)) return;
+              finish(resolve, message);
+            };
+            const observer = new MutationObserver(checkResult);
             observer.observe(studioStatus, { childList: true, subtree: true, characterData: true });
             timeout = setTimeout(() => finish(reject, new Error("Gallery saving took too long. Please try again.")), 30000);
-            const immediateMessage = String(studioStatus.textContent || "").trim();
-            if (immediateMessage && immediateMessage !== previousStatus) finish(resolve, immediateMessage);
+            try {
+              saveImageButton.click();
+              checkResult();
+            } catch (error) {
+              finish(reject, error);
+            }
           });
           if (!/^Saved to your phone's Gallery in the /.test(resultMessage)) {
             throw new Error(resultMessage || "Android did not confirm that the card was saved to your Gallery.");
