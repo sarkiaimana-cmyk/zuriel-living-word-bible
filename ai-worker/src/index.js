@@ -17,12 +17,14 @@ function json(data, status, cors = {}) {
     status,
     headers: { ...JSON_HEADERS, ...cors }
   });
+}
 
 function allowedOrigins(env) {
   return String(env.ALLOWED_ORIGINS || "")
     .split(",")
     .map(value => value.trim())
     .filter(Boolean);
+}
 
 function corsFor(request, env) {
   const origin = request.headers.get("Origin");
@@ -35,6 +37,7 @@ function corsFor(request, env) {
     "access-control-max-age": "600",
     "vary": "Origin"
   };
+}
 
 async function verifyTurnstile(token, env, clientIp, fetchImpl) {
   if (typeof token !== "string" || !token.trim() || token.length > 2048) return false;
@@ -61,6 +64,7 @@ async function verifyTurnstile(token, env, clientIp, fetchImpl) {
   } catch {
     return null;
   }
+}
 
 async function readLimitedBody(request) {
   const declared = Number(request.headers.get("Content-Length") || 0);
@@ -90,6 +94,7 @@ async function readLimitedBody(request) {
     offset += chunk.byteLength;
   }
   return new TextDecoder().decode(joined);
+}
 
 async function loadIndex(env, request) {
   const assetUrl = new URL("/scripture-index.json", request.url);
@@ -103,6 +108,7 @@ async function loadIndex(env, request) {
     throw new Error("Scripture index invalid");
   }
   return index;
+}
 
 function parseReference(value, index) {
   if (typeof value !== "string" || value.length > 100) return null;
@@ -119,6 +125,7 @@ function parseReference(value, index) {
   if (!Number.isInteger(firstVerse) || !Number.isInteger(lastVerse) ||
       firstVerse < 1 || lastVerse < firstVerse || lastVerse - firstVerse + 1 > MAX_VERSES) return null;
   return { book, chapter, firstVerse, lastVerse };
+}
 
 async function readChapter(env, code, chapter, request) {
   const path = "/scripture/" + encodeURIComponent(code) + "/" + chapter + ".json";
@@ -129,6 +136,7 @@ async function readChapter(env, code, chapter, request) {
   if (!Array.isArray(verses) || !verses.length ||
       verses.some(verse => typeof verse !== "string")) return null;
   return verses;
+}
 
 function buildPrompt(question, reference, verses) {
   const passage = verses.map(item => item.number + ". " + item.text).join("\n");
@@ -140,6 +148,7 @@ function buildPrompt(question, reference, verses) {
     "Selected Scripture:",
     passage
   ].join("\n\n");
+}
 
 function hasUnsupportedScriptureReferences(text, index, selected) {
   const names = index.map(item => item.name)
@@ -161,6 +170,7 @@ function hasUnsupportedScriptureReferences(text, index, selected) {
     }
   }
   return false;
+}
 
 const SYSTEM_PROMPT = [
   "You are Zuriel's Bible study assistant, a careful and respectful study aid.",
@@ -184,6 +194,7 @@ function yvpErrorStatus(status) {
   if (status === 404) return 404;
   if (status === 429) return 429;
   return 502;
+}
 
 async function handleYouVersionRequest(request, env, dependencies, cors) {
   if (request.method !== "GET") {
@@ -382,6 +393,7 @@ async function handleYouVersionRequest(request, env, dependencies, cors) {
     format: url.searchParams.get("format") || "html",
     notice: "Display the publisher's copyright and attribution with this Scripture. Online API text is not stored for offline use unless the relevant licence expressly permits it."
   }, 200, cors);
+}
 
 
 const API_BIBLE_BASE = "https://rest.api.bible/v1";
@@ -392,6 +404,7 @@ function apiBibleErrorStatus(status) {
   if (status === 404) return 404;
   if (status === 429) return 429;
   return 502;
+}
 
 async function handleApiBibleRequest(request, env, dependencies, cors) {
   if (request.method !== "GET") {
@@ -537,6 +550,7 @@ async function handleApiBibleRequest(request, env, dependencies, cors) {
     format: "text",
     notice: "Display the publisher's copyright with this Scripture. API.Bible content may be cached for offline reading and should be refreshed within 14 days."
   }, 200, cors);
+}
 
 const NET_BIBLE_BASE = "https://labs.bible.org/api/";
 const NET_BIBLE_BOOKS = new Set([
@@ -633,6 +647,7 @@ async function handleNetBibleRequest(request, env, dependencies, cors) {
     format: "text",
     notice: "NET Bible text is online-only in Zuriel. The text is not saved for offline reading."
   }, 200, cors);
+}
 
 const ESV_API_BASE = "https://api.esv.org/v3/passage/text/";
 const ESV_BIBLE_COPYRIGHT = "Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. The ESV text may not be quoted in any publication made available to the public under a Creative Commons license. Users may not copy or download more than 500 verses of the ESV Bible or more than one half of any book of the ESV Bible.";
@@ -717,6 +732,7 @@ async function handleEsvRequest(request, env, dependencies, cors) {
     format: "text",
     notice: "ESV text is online-only in Zuriel. No ESV text is saved for offline reading."
   }, 200, cors);
+}
 
 
 export async function handleRequest(request, env, dependencies = {}) {
@@ -849,6 +865,7 @@ export async function handleRequest(request, env, dependencies = {}) {
   } catch {
     return json({ error: "The study assistant is temporarily unavailable. Your Bible and personal study data have not been changed." }, 502, cors);
   }
+}
 
 export default {
   fetch(request, env) {
