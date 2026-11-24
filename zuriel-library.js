@@ -875,7 +875,7 @@
           <div class="zgs-actions">
             <button type="button" id="zgsSave">Save to My Library</button>
             <button type="button" id="zgsShare">Share card text</button>
-            <button type="button" id="zgsSaveImage">Save image</button><button type="button" id="zgsShareImage">Share image</button>
+            <button type="button" id="zgsSaveImage">Save image</button><button type="button" id="zgsDownloadImage">⬇ Download image</button><button type="button" id="zgsShareImage">Share image</button>
           </div>
           <p id="zgsStatus" class="library-status" aria-live="polite">Your draft stays on this device until you save it.</p>
           <section class="zgs-saved-library" aria-labelledby="zgsSavedHeading">
@@ -1080,7 +1080,7 @@
             studio.querySelector("#zgsStatus").textContent="Saved successfully. Your card is now listed in My Saved Glory Verse Cards.";
           }catch(error){studio.querySelector("#zgsStatus").textContent="Unable to save. Please check available device storage.";}
         });
-        studio.querySelectorAll("#zgsSaveImage,#zgsShareImage").forEach(exportButton => exportButton.addEventListener("click", async function(){
+        studio.querySelectorAll("#zgsSaveImage,#zgsDownloadImage,#zgsShareImage").forEach(exportButton => exportButton.addEventListener("click", async function(){
           const status = studio.querySelector("#zgsStatus");
           const reference = studio.querySelector("#zgsReference").value.trim();
           const scripture = studio.querySelector("#zgsScripture").value.trim();
