@@ -18,7 +18,8 @@
   },
   "secrets": {
     "required": [
-      "ZITE_YVP_APP_KEY"
+      "ZITE_YVP_APP_KEY",
+      "API_BIBLE_KEY"
     ]
   }
 }
