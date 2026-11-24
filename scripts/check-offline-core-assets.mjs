@@ -36,6 +36,17 @@ for (const path of localScripts) {
   await access(path);
 }
 
+const prepareWeb = await readFile("scripts/prepare-web.mjs", "utf8");
+const packagedFilesMatch = prepareWeb.match(/const files = \[([\\s\\S]*?)\];/);
+assert.ok(packagedFilesMatch, "The Android web preparation script must declare its copied files.");
+const packagedFiles = new Set(
+  [...packagedFilesMatch[1].matchAll(/["']([^"']+)["']/g)].map(match => match[1])
+);
+for (const path of localScripts) {
+  assert.ok(packagedFiles.has(path),
+    "Android package omits a locally loaded application script: " + path);
+}
+
 const version = JSON.parse(await readFile("version.json", "utf8"));
 assert.match(version.version, /^\d+\.\d+\.\d+$/, "App version must use numeric MAJOR.MINOR.PATCH format.");
 assert.ok(version.releaseNotes && version.releaseNotes.trim(), "Each app release must explain its changes.");
