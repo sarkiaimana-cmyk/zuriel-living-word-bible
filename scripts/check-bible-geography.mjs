@@ -1,8 +1,9 @@
 import { readFile } from "node:fs/promises";
 import vm from "node:vm";
 
-const [dataSource, moduleSource, index, worker, packaging, prWorkflow, androidWorkflow, version, updates] = await Promise.all([
+const [dataSource, atlas, moduleSource, index, worker, packaging, prWorkflow, androidWorkflow, version, updates] = await Promise.all([
   readFile(new URL("../zuriel-geography-data.js", import.meta.url), "utf8"),
+  readFile(new URL("../data/zuriel-bible-geography-atlas.json", import.meta.url), "utf8").then(JSON.parse),
   readFile(new URL("../zuriel-geography.js", import.meta.url), "utf8"),
   readFile(new URL("../index.html", import.meta.url), "utf8"),
   readFile(new URL("../sw.js", import.meta.url), "utf8"),
@@ -35,6 +36,27 @@ const judea = data?.regions?.find(item => item.id === "judea");
 if (!galilee || galilee.places.length !== 4) failures.push("Galilee must contain four curated places.");
 if (!judea || judea.places.length !== 8) failures.push("Jerusalem and Judea must contain eight curated places.");
 if (data?.regions?.length !== 2) failures.push("The Geography Centre must contain exactly two reviewed regions.");
+if (!atlas || atlas.places?.length !== 25 || atlas.journeys?.length !== 8) failures.push("The wider offline atlas must expose all 25 reviewed places and eight Scripture journeys.");
+const atlasPlaceIds = new Set();
+for (const place of atlas?.places || []) {
+  if (!place.id || atlasPlaceIds.has(place.id)) failures.push("Atlas place IDs must be present and unique: " + place.name);
+  atlasPlaceIds.add(place.id);
+  if (!place.name || !place.region || !place.significance || !place.studyCaution) failures.push("Atlas place context is incomplete: " + (place.name || place.id));
+  if (!Array.isArray(place.references) || !place.references.length) failures.push("Atlas place has no Scripture references: " + place.name);
+}
+const journeyIds = new Set();
+for (const journey of atlas?.journeys || []) {
+  if (!journey.id || journeyIds.has(journey.id)) failures.push("Atlas journey IDs must be present and unique: " + journey.name);
+  journeyIds.add(journey.id);
+  if (!journey.name || !journey.sequence || !journey.studyCaution || !Array.isArray(journey.references) || !journey.references.length) failures.push("Atlas journey context is incomplete: " + (journey.name || journey.id));
+}
+for (const fragment of [
+  'root.id = "zurielGeographyAtlasDirectory"',
+  'Search 25 places by name, region or significance',
+  'atlas.places.length + " places and " + atlas.journeys.length + " journeys loaded"',
+  'function parseAtlasReference(reference)',
+  'Historical note: " + place.studyCaution'
+]) if (!moduleSource.includes(fragment)) failures.push("Expanded offline atlas UI is missing: " + fragment);
 const ids = new Set();
 for (const region of data?.regions || []) {
   for (const place of region.places || []) {
@@ -75,5 +97,5 @@ if (failures.length) {
   failures.forEach(item => console.error(" - " + item));
   process.exitCode = 1;
 } else {
-  console.log("Bible Geography checks passed: two pinned offline regions, twelve in-bounds place records, confidence/precision metadata, Scripture references, journey stops, offline-only UI and Android packaging.");
+  console.log("Bible Geography checks passed: two coordinate-backed regional locators, twelve pinned places, 25 additional atlas places, eight journeys, Scripture context, offline local loading and Android packaging.");
 }
