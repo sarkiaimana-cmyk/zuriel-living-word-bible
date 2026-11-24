@@ -33,6 +33,9 @@ requireText(client, "window.ZurielVerseOverlay.openExternal(panel)", "YouVersion
 requireText(client, '"/api/youversion/bibles"', "Licensed English version list request");
 requireText(client, '"/api/api-bible/bibles"', "API.Bible English version list request");
 requireText(client, '"/api/net-bible/chapters/"', "NET Bible online chapter request");
+requireText(client, 'requestJson("/api/net-bible/bibles")', "NET Bible catalogue must be confirmed live before it is offered");
+requireText(client, 'typeof item.copyright === "string" && /Biblical Studies Press/.test(item.copyright)', "NET Bible catalogue must include publisher copyright metadata");
+
 requireText(client, '"/api/esv/chapters/"', "ESV online chapter request");
 requireText(client, 'https://www.esv.org', "Crossway ESV publisher link");
 requireText(client, 'lastVerse: Array.isArray(detail.verses) ? detail.verses.length : 0', "NET Bible requests use the complete verse count from the offline reader");
