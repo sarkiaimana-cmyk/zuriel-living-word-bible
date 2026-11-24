@@ -210,6 +210,7 @@ jobs:
           READY=false
           for attempt in $(seq 1 12); do
             HTTP_STATUS="$(curl -sS --max-time 8 -o /dev/null -w '%{http_code}' \
+              -A "ZurielLivingWordBible/2.10.3" \
               -H "Origin: https://sarkiaimana-cmyk.github.io" \
               "$WORKER_URL/api/youversion/bibles" 2>/dev/null || true)"
             if [ "$HTTP_STATUS" != "000" ]; then
@@ -223,7 +224,6 @@ jobs:
             echo "::error::Cloudflare deployed the Worker, but its workers.dev TLS endpoint did not become reachable after 12 attempts. The Worker remains deployed; no translation endpoint has been published to the app."
             exit 1
           fi
-          WORKER_URL="$WORKER_URL" node scripts/smoke-licensed-translations.mjs
           HTTP_STATUS="$(curl -sS --retry 5 --retry-delay 3 --retry-all-errors \
             -o .translation-smoke.json -D .translation-smoke.headers -w '%{http_code}' \
             -H "Origin: https://sarkiaimana-cmyk.github.io" \
@@ -292,6 +292,7 @@ jobs:
             exit 1
           fi
           echo "API.Bible English versions returned: $API_BIBLE_COUNT"
+          WORKER_URL="$WORKER_URL" node scripts/smoke-licensed-translations.mjs
           if [ "$GITHUB_REF" != "refs/heads/fix/mobile-search-study-layout" ]; then
             echo "::error::The verified endpoint may only be committed to the reviewed integration branch."
             exit 1
