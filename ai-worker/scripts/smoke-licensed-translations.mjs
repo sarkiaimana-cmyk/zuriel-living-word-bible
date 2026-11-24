@@ -89,16 +89,14 @@ function findVersion(catalogue, abbreviation, pattern) {
 async function verifyPassage(provider, version) {
   const id = encodeURIComponent(String(version.id));
   if (provider === "net-bible") {
-    const references = ["John/3", "Psalms/23"];
-    let lastReference = "";
+    const references = [{ book: "John", chapter: 3, lastVerse: 36 }, { book: "Psalms", chapter: 23, lastVerse: 6 }];
     for (const reference of references) {
-      const payload = await getJson("/api/net-bible/chapters/" + reference);
+      const payload = await getJson("/api/net-bible/chapters/" + encodeURIComponent(reference.book) + "/" + reference.chapter + "?lastVerse=" + reference.lastVerse);
       const passage = payload && payload.passage;
       assert.ok(passage && typeof passage.content === "string" && passage.content.trim(),
         "NET Bible must return actual Scripture text for " + reference + ".");
       assert.ok(passage.copyright && /Biblical Studies Press/.test(passage.copyright),
         "NET Bible must return its required publisher attribution.");
-      lastReference = passage.reference;
     }
     return "John 3 and Psalms 23";
   }
