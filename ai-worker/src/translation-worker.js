@@ -5,7 +5,8 @@ import { handleRequest } from "./index.js";
 export async function handleTranslationRequest(request, env, dependencies = {}) {
   const url = new URL(request.url);
   if (!/^\/api\/(?:youversion|api-bible)\/bibles(?:\/|$)/.test(url.pathname) &&
-      !/^\/api\/net-bible\/(?:bibles|chapters\/)/.test(url.pathname)) {
+      !/^\/api\/net-bible\/(?:bibles|chapters\/)/.test(url.pathname) &&
+      !/^\/api\/esv\/(?:bibles|chapters\/)/.test(url.pathname)) {
     return new Response(JSON.stringify({ error: "Not found." }), {
       status: 404,
       headers: {
