@@ -37,7 +37,7 @@ for (const path of localScripts) {
 }
 
 const prepareWeb = await readFile("scripts/prepare-web.mjs", "utf8");
-const packagedFilesMatch = prepareWeb.match(/const files = \[([\\s\\S]*?)\];/);
+const packagedFilesMatch = prepareWeb.match(/const files = \[([\s\S]*?)\];/);
 assert.ok(packagedFilesMatch, "The Android web preparation script must declare its copied files.");
 const packagedFiles = new Set(
   [...packagedFilesMatch[1].matchAll(/["']([^"']+)["']/g)].map(match => match[1])
