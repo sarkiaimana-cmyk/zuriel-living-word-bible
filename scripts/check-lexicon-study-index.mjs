@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
-const [index, wordBatchOne, wordBatchTwo, studyLibrary, loader, worker, html, pkg, release, studyUi] = await Promise.all([
+const [index, wordBatchOne, wordBatchTwo, studyLibrary, loader, worker, html, pkg, release, studyUi, bookDataSource, kjv] = await Promise.all([
   readFile(new URL("../data/zuriel-lexicon-study-index.json", import.meta.url), "utf8").then(JSON.parse),
   readFile(new URL("../data/zuriel-original-language-word-studies-batch-1.json", import.meta.url), "utf8").then(JSON.parse),
   readFile(new URL("../data/zuriel-original-language-word-studies-batch-2.json", import.meta.url), "utf8").then(JSON.parse),
@@ -11,13 +11,21 @@ const [index, wordBatchOne, wordBatchTwo, studyLibrary, loader, worker, html, pk
   readFile(new URL("../index.html", import.meta.url), "utf8"),
   readFile(new URL("../package.json", import.meta.url), "utf8").then(JSON.parse),
   readFile(new URL("../version.json", import.meta.url), "utf8").then(JSON.parse),
-  readFile(new URL("../zuriel-study.js", import.meta.url), "utf8")
+  readFile(new URL("../zuriel-study.js", import.meta.url), "utf8"),
+  readFile(new URL("../bible-data.js", import.meta.url), "utf8"),
+  readFile(new URL("../kjv.72bec70fcd.json", import.meta.url), "utf8").then(JSON.parse)
 ]);
 assert.equal(index.entries.length, 50, "Expected 50 curated Hebrew/Greek Strong's lookup entries.");
 assert.equal(wordBatchOne.entries.length, 110, "Expected 110 contextual word-study cards in batch one.");
 assert.equal(wordBatchTwo.entries.length, 20, "Expected 20 contextual word-study cards in batch two.");
 for (const [batchName, batch] of [["batch one", wordBatchOne], ["batch two", wordBatchTwo]]) {
-  const ids = new Set();
+  const bookCodesMatch = html.match(/const bookCodes = (\\{[\\s\\S]*?\\n\\};)/);
+assert.ok(bookCodesMatch, "Reader book-code map must be available for lexicon reference checks.");
+const bookCodes = JSON.parse(bookCodesMatch[1].replace(/;\\s*$/, ""));
+const books = [...bookDataSource.matchAll(/\\{\\s*name:\\s*"([^"]+)",\\s*chapters:\\s*(\\d+)\\s*\\}/g)]
+  .map(match => ({ name: match[1], chapters: Number(match[2]) }));
+const canonicalBooks = new Map(books.map(book => [book.name.toLowerCase(), book]));
+const ids = new Set();
   for (const entry of batch.entries) {
     assert.ok(entry.id && !ids.has(entry.id), batchName + " word-study IDs must be present and unique.");
     ids.add(entry.id);
@@ -46,6 +54,21 @@ for (const entry of index.entries) {
   assert.ok(!ids.has(entry.id), "Lexicon IDs must be unique: " + entry.id);
   assert.ok(entry.lemma && entry.transliteration && entry.studyLabel, "Lexicon entry needs lemma, transliteration and study label.");
   assert.ok(Array.isArray(entry.keyReferences) && entry.keyReferences.length, "Lexicon entry needs contextual references.");
+  for (const reference of entry.keyReferences) {
+    const match = String(reference).trim().match(/^(.+?)\\s+(\\d+):(\\d+)(?:-(\\d+))?$/);
+    assert.ok(match, "Lexicon reference must include a chapter and verse: " + reference);
+    const rawBook = match[1].toLowerCase();
+    const bookName = rawBook === "psalm" ? "psalms" : rawBook;
+    const book = canonicalBooks.get(bookName);
+    assert.ok(book, "Lexicon reference must use a canonical Bible book: " + reference);
+    const chapter = Number(match[2]);
+    const firstVerse = Number(match[3]);
+    const lastVerse = Number(match[4] || match[3]);
+    const chapterVerses = kjv[bookCodes[book.name]]?.[chapter - 1];
+    assert.ok(Array.isArray(chapterVerses), "Lexicon reference chapter must exist: " + reference);
+    assert.ok(firstVerse >= 1 && lastVerse >= firstVerse && lastVerse <= chapterVerses.length,
+      "Lexicon reference verse range must exist in the offline KJV: " + reference);
+  }
   assert.ok(entry.contextPrompt, "Lexicon entry needs a contextual study prompt.");
   assert.equal(entry.sourceLabel, "Strong's Concordance reference (BibleHub)", "Lexicon entry needs an explicit source label.");
   assert.match(entry.sourceUrl || "", /^https:\/\/biblehub\.com\/strongs\/(?:hebrew|greek)\/\d+\.htm$/, "Lexicon entry needs a safe source URL.");
