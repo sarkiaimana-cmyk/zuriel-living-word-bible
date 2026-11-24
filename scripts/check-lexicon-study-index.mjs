@@ -18,13 +18,13 @@ const [index, wordBatchOne, wordBatchTwo, studyLibrary, loader, worker, html, pk
 assert.equal(index.entries.length, 50, "Expected 50 curated Hebrew/Greek Strong's lookup entries.");
 assert.equal(wordBatchOne.entries.length, 110, "Expected 110 contextual word-study cards in batch one.");
 assert.equal(wordBatchTwo.entries.length, 20, "Expected 20 contextual word-study cards in batch two.");
-for (const [batchName, batch] of [["batch one", wordBatchOne], ["batch two", wordBatchTwo]]) {
 const bookCodesMatch = html.match(/const bookCodes = (\{[\s\S]*?\n\};)/);
 assert.ok(bookCodesMatch, "Reader book-code map must be available for lexicon reference checks.");
 const bookCodes = JSON.parse(bookCodesMatch[1].replace(/;\s*$/, ""));
 const books = [...bookDataSource.matchAll(/\{\s*name:\s*"([^"]+)",\s*chapters:\s*(\d+)\s*\}/g)]
   .map(match => ({ name: match[1], chapters: Number(match[2]) }));
 const canonicalBooks = new Map(books.map(book => [book.name.toLowerCase(), book]));
+for (const [batchName, batch] of [["batch one", wordBatchOne], ["batch two", wordBatchTwo]]) {
 const ids = new Set();
   for (const entry of batch.entries) {
     assert.ok(entry.id && !ids.has(entry.id), batchName + " word-study IDs must be present and unique.");
