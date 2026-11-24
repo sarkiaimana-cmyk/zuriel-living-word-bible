@@ -4,8 +4,9 @@ import fs from "node:fs";
 const workflow = fs.readFileSync(".github/workflows/deploy-translations-worker.yml", "utf8");
 const worker = fs.readFileSync("ai-worker/src/translation-worker.js", "utf8");
 const config = JSON.parse(fs.readFileSync("ai-worker/wrangler.translations.jsonc", "utf8"));
+const smokeTest = fs.readFileSync("ai-worker/scripts/smoke-licensed-translations.mjs", "utf8");
 
-assert.match(workflow, /workflow_dispatch:/, "translation deployment remains manual");
+assert.match(workflow, /workflow_dispatch:/, "manual deployment reruns remain available");
 assert.match(workflow, /github\.event_name == 'workflow_dispatch' && inputs\.confirm_deployment != true/, "manual deployment requires explicit confirmation");
 assert.match(workflow, /push:\s+branches:\s+- fix\/mobile-search-study-layout/, "reviewed integration branch automatically deploys translation code changes");
 assert.match(workflow, /github\.ref != 'refs\/heads\/fix\/mobile-search-study-layout'/, "deployment is restricted to the reviewed integration branch");
@@ -46,7 +47,8 @@ assert.ok(workflow.includes(String.raw`/^[a-f0-9]{16}-\d{2}$/i.test(id)`), "API.
 assert.match(workflow, /\/chapters\/JHN\.3/, "deployment retrieves a real API.Bible chapter");
 assert.match(workflow, /j\.passage\.copyright/, "deployment requires API.Bible publisher attribution");
 assert.match(workflow, /j\.meta\?\.fumsToken/, "deployment requires API.Bible FUMS v3 reporting token");
-assert.match(workflow, /catalogue worked, but live John/, "deployment distinguishes catalogue success from chapter retrieval failure");
+assert.match(workflow, /YouVersion catalogue unavailable/, "deployment records YouVersion failure without blocking API.Bible fallback");
+assert.match(workflow, /API\.Bible catalogue unavailable/, "deployment records API.Bible failure without blocking YouVersion fallback");
 assert.match(workflow, /access-control-allow-origin: https:\/\/sarkiaimana-cmyk\.github\.io/i, "deployment checks GitHub Pages CORS");
 assert.match(workflow, /Worker URL: \$WORKER_URL/, "deployment reports the exact verified Worker URL");
 assert.match(workflow, /contents: write/, "deployment can save the verified public endpoint");
@@ -56,9 +58,15 @@ assert.match(workflow, /git push origin "HEAD:\$GITHUB_REF_NAME"/, "deployment c
 assert.match(workflow, /gh workflow run validate-pr\.yml --ref "\$GITHUB_REF_NAME"/, "deployment dispatches full validation after endpoint configuration");
 assert.match(workflow, /raw\.githubusercontent\.com\/sarkiaimana-cmyk\/zuriel-living-word-bible\/\$GITHUB_REF_NAME\/version\.json/, "deployment verifies endpoint metadata on the same integration branch");
 assert.match(workflow, /REMOTE_CONFIG/, "deployment verifies the public release metadata after saving");
-assert.match(workflow, /Authorised Bible versions returned:/, "deployment reports the number of publisher-authorised versions");
-assert.match(workflow, /VERSION_COUNT.*-lt 1/, "deployment refuses to activate without authorised English versions");
-assert.match(workflow, /API_BIBLE_COUNT.*-lt 1/, "deployment refuses to activate without API.Bible English versions");
+assert.match(workflow, /YouVersion English versions returned:/, "deployment reports the YouVersion catalogue count");
+assert.match(workflow, /API\.Bible English versions returned:/, "deployment reports the API.Bible catalogue count");
+for (const abbreviation of ["GNT", "AMP", "LB/LT", "TPT", "NLT", "NET", "NIV", "ESV", "NASB", "CSB", "NKJV"]) {
+  assert.ok(smokeTest.includes(abbreviation), "live translation matrix includes " + abbreviation);
+}
+assert.match(smokeTest, /assert\.deepEqual\(missing, \[\]/, "deployment refuses to publish until every requested translation has a real passage");
+assert.match(smokeTest, /fumsToken/, "live API.Bible passage checks require FUMS v3");
+assert.match(smokeTest, /\["youversion", youVersion\]/, "live translation matrix tests YouVersion");
+assert.match(smokeTest, /\["api-bible", apiBibleVersions\]/, "live translation matrix tests API.Bible");
 assert.ok(!/echo[^\n]*\$CLOUDFLARE_API_TOKEN/i.test(workflow), "workflow must never print the Cloudflare API token");
 assert.ok(!/echo[^\n]*\$ZITE_YVP_APP_KEY/i.test(workflow), "workflow must never print the YouVersion app key");
 assert.ok(!/echo[^\n]*\$API_BIBLE_KEY/i.test(workflow), "workflow must never print the API.Bible key");
@@ -68,4 +76,4 @@ assert.ok(config.vars.ALLOWED_ORIGINS.includes("https://sarkiaimana-cmyk.github.
 assert.ok(config.ratelimits.some(item => item.name === "TRANSLATION_RATE_LIMIT" && item.simple.limit === 40 && item.simple.period === 60), "Worker retains the complete-catalogue smoke-test rate limit");
 assert.ok(worker.includes("(?:youversion|api-bible)"), "Worker allows only the YouVersion and API.Bible translation routes");
 
-console.log("Translation deployment checks passed: manual confirmation, both provider secrets, live chapter and FUMS checks, protected-branch endpoint handoff, CORS and rate-limit safeguards.");
+console.log("Translation deployment checks passed: automatic reviewed-branch deployment, confirmed manual reruns, provider fallback, all requested live translation checks, FUMS v3, protected-branch endpoint handoff and security safeguards.");
