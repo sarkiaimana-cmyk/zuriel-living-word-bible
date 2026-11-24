@@ -3086,6 +3086,8 @@
           book === "Genesis" && chapter === 1 && verse === 1
             ? "block" : "none";
 
+        panel.hidden = false;
+        panel.removeAttribute("data-zuriel-hidden");
         panel.style.display = "block";
         highlightVerse(verse);
         renderStudyFramework(selectedReference);
@@ -3207,6 +3209,8 @@
 
         panel.prepend(contextCard);
         panel.dataset.mode = "word-context";
+        panel.hidden = false;
+        panel.removeAttribute("data-zuriel-hidden");
         panel.style.display = "block";
         highlightVerse(verse);
 
