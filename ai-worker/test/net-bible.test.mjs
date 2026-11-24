@@ -60,6 +60,19 @@ test("NET Bible chapter proxy returns verse text and required attribution", asyn
   assert.equal(payload.meta, undefined, "NET does not use API.Bible FUMS tokens.");
 });
 
+test("NET Bible parser preserves brackets inside valid verse text", async () => {
+  const response = await handleTranslationRequest(
+    request("/api/net-bible/chapters/John/3?lastVerse=1"),
+    env(),
+    { fetch: async () => new Response(JSON.stringify([
+      { bookname: "John", chapter: "3", verse: "1", text: "A verse with [bracketed wording] intact." }
+    ]), { status: 200, headers: { "content-type": "application/json" } }) }
+  );
+  assert.equal(response.status, 200);
+  const payload = await response.json();
+  assert.match(payload.passage.content, /\\[bracketed wording\\]/);
+});
+
 test("NET Bible route requires a valid complete-chapter verse range", async () => {
   let upstreamCalled = false;
   const fetchImpl = async () => {
