@@ -88,6 +88,17 @@ function findVersion(catalogue, abbreviation, pattern) {
 
 async function verifyPassage(provider, version) {
   const id = encodeURIComponent(String(version.id));
+  if (provider === "esv") {
+    const references = [{ book: "John", chapter: 3, lastVerse: 36 }, { book: "Psalms", chapter: 23, lastVerse: 6 }];
+    for (const reference of references) {
+      const payload = await getJson("/api/esv/chapters/" + encodeURIComponent(reference.book) + "/" + reference.chapter + "?lastVerse=" + reference.lastVerse);
+      const passage = payload && payload.passage;
+      assert.ok(passage && typeof passage.content === "string" && /\\(ESV\\)\\s*$/.test(passage.content),
+        "ESV must return actual, attributed Scripture text for " + reference.book + " " + reference.chapter + ".");
+      assert.ok(passage.copyright && /Crossway/.test(passage.copyright), "ESV must return its publisher attribution.");
+    }
+    return "John 3 and Psalms 23";
+  }
   if (provider === "net-bible") {
     const references = [{ book: "John", chapter: 3, lastVerse: 36 }, { book: "Psalms", chapter: 23, lastVerse: 6 }];
     for (const reference of references) {
@@ -124,18 +135,23 @@ const youVersion = await loadYouVersionCatalogue();
 const apiBibleVersions = Array.isArray(apiBible.data) ? apiBible.data : [];
 const netBible = await getJson("/api/net-bible/bibles");
 const netBibleVersions = Array.isArray(netBible.data) ? netBible.data : [];
+const esv = await getJson("/api/esv/bibles");
+const esvVersions = Array.isArray(esv.data) ? esv.data : [];
 const providerIssues = [];
 if (!youVersion.length) providerIssues.push("YouVersion: " + String(firstYouVersion.error || "no licensed English versions returned"));
 if (!apiBibleVersions.length) providerIssues.push("API.Bible: " + String(apiBible.error || "no licensed English versions returned"));
 if (!netBibleVersions.length) providerIssues.push("NET Bible: " + String(netBible.error || "no online NET Bible entry returned"));
+if (!esvVersions.length) providerIssues.push("ESV: " + String(esv.notice || esv.error || "Crossway API key not configured"));
 if (providerIssues.length) console.warn("Provider availability notice: " + providerIssues.join(" | "));
 
 const catalogues = [
   ["youversion", youVersion],
   ["api-bible", apiBibleVersions],
-  ["net-bible", netBibleVersions]
+  ["net-bible", netBibleVersions],
+  ["esv", esvVersions]
 ];
 const missing = [];
+const verified = [];
 for (const [abbreviation, pattern] of Object.entries(requested)) {
   let verified = false;
   const failures = [];
@@ -167,6 +183,7 @@ if (missing.length) {
   console.warn("YouVersion catalogue (" + youVersion.length + "): " + describe(youVersion));
   console.warn("API.Bible catalogue (" + apiBibleVersions.length + "): " + describe(apiBibleVersions));
   console.warn("NET Bible catalogue (" + netBibleVersions.length + "): " + describe(netBibleVersions));
+  console.warn("ESV catalogue (" + esvVersions.length + "): " + describe(esvVersions));
 }
 const optionalPending = new Set(["GNT", "LB/LT", "ESV", "CSB"]);
 const missingRequired = missing.filter(item =>
@@ -176,4 +193,5 @@ assert.deepEqual(missingRequired, [],
   "Every currently connected translation provider must return real, attributed passages for the core verified set. Missing: " + missingRequired.join(", ") + ". Provider notices: " + providerIssues.join(" | "));
 if (missing.length) console.warn("The Worker can be connected for verified translations; publisher access is still pending for: " + missing.join(", "));
 console.log("KJV remains covered by the separately verified offline 66-book corpus.");
-console.log("Verified live translations passed: AMP, TPT, NLT, NET, NIV, NASB and NKJV. GNT, LB/LT, ESV and CSB remain pending publisher/account access.");
+console.log("Verified live translations passed: " + verified.join(", "));
+if (missing.length) console.warn("Still pending publisher/account access: " + missing.join(", "));
