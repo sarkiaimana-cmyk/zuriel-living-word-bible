@@ -64,9 +64,9 @@ test("NET Bible parser preserves brackets inside valid verse text", async () => 
   const response = await handleTranslationRequest(
     request("/api/net-bible/chapters/John/3?lastVerse=1"),
     env(),
-    { fetch: async () => new Response(JSON.stringify([
+    { fetch: async () => new Response("Notice [temporary upstream banner]. " + JSON.stringify([
       { bookname: "John", chapter: "3", verse: "1", text: "A verse with [bracketed wording] intact." }
-    ]), { status: 200, headers: { "content-type": "application/json" } }) }
+    ]), { status: 200, headers: { "content-type": "text/plain" } }) }
   );
   assert.equal(response.status, 200);
   const payload = await response.json();
