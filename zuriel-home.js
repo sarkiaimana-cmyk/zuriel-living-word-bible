@@ -1870,7 +1870,7 @@
             let settled = false, timeout;
             const observer = new MutationObserver(() => {
               const message = String(studioStatus.textContent || "").trim();
-              if (message && message !== previousStatus) finish(resolve, message);
+              if (/saved to your Downloads folder/i.test(message)) finish(resolve, message);
             });
             const finish = (fn, value) => {
               if (settled) return;
