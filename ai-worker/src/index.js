@@ -629,28 +629,38 @@ async function handleNetBibleRequest(request, env, dependencies, cors) {
       payload = JSON.parse(body);
     } catch {
       // Some deployments may wrap JSON in a JSONP callback or harmless prefix.
-      // Extract a balanced top-level array without mistaking brackets inside
-      // verse text for the beginning or end of the JSON document.
-      const start = body.indexOf("[");
-      if (start < 0) throw new Error("No JSON array was returned.");
-      let depth = 0;
-      let inString = false;
-      let escaped = false;
-      let end = -1;
-      for (let index = start; index < body.length; index++) {
-        const character = body[index];
-        if (inString) {
-          if (escaped) escaped = false;
-          else if (character === "\\\\") escaped = true;
-          else if (character === '"') inString = false;
-          continue;
+      // Try each array candidate so brackets in a warning or verse text do not
+      // hide the actual response payload.
+      let parsed = false;
+      for (let start = body.indexOf("["); start >= 0 && !parsed; start = body.indexOf("[", start + 1)) {
+        let depth = 0;
+        let inString = false;
+        let escaped = false;
+        for (let index = start; index < body.length; index++) {
+          const character = body[index];
+          if (inString) {
+            if (escaped) escaped = false;
+            else if (character === "\\") escaped = true;
+            else if (character === '"') inString = false;
+            continue;
+          }
+          if (character === '"') inString = true;
+          else if (character === "[") depth++;
+          else if (character === "]") {
+            depth--;
+            if (depth === 0) {
+              try {
+                payload = JSON.parse(body.slice(start, index + 1));
+                parsed = true;
+              } catch {
+                // Continue to the next array candidate in the response.
+              }
+              break;
+            }
+          }
         }
-        if (character === '"') inString = true;
-        else if (character === "[") depth++;
-        else if (character === "]" && --depth === 0) { end = index; break; }
       }
-      if (end < 0) throw new Error("The JSON array was incomplete.");
-      payload = JSON.parse(body.slice(start, end + 1));
+      if (!parsed) throw new Error("No valid JSON array was returned.");
     }
   } catch {
     return json({ error: "The NET Bible service returned an unreadable response." }, 502, cors);
