@@ -33,6 +33,9 @@ requireText(client, "window.ZurielVerseOverlay.openExternal(panel)", "YouVersion
 requireText(client, '"/api/youversion/bibles"', "Licensed English version list request");
 requireText(client, '"/api/api-bible/bibles"', "API.Bible English version list request");
 requireText(client, '"/api/net-bible/chapters/"', "NET Bible online chapter request");
+requireText(client, 'lastVerse: Array.isArray(detail.verses) ? detail.verses.length : 0', "NET Bible requests use the complete verse count from the offline reader");
+requireText(client, '"?lastVerse=" + currentChapter.lastVerse', "NET Bible requests a complete chapter verse range");
+requireText(workerCore, "lastVerse > 176", "NET Bible proxy bounds the requested chapter range");
 requireText(client, 'https://netbible.org', "Required NET Bible publisher link");
 requireText(client, '["api-bible", "API.Bible"]', "API.Bible provider selection option");
 requireText(client, '["net-bible", "NET Bible (Bible.org)"]', "NET Bible provider selection option");
