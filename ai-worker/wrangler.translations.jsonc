@@ -8,7 +8,7 @@
       "name": "TRANSLATION_RATE_LIMIT",
       "namespace_id": "84111628",
       "simple": {
-        "limit": 20,
+        "limit": 40,
         "period": 60
       }
     }
