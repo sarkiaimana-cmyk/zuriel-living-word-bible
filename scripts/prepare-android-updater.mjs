@@ -32,7 +32,7 @@ const java = [
   "import android.net.Uri;",
   "import android.os.Build;",
   "import androidx.core.content.FileProvider;",
-  "import com.getcapacitor.ActivityResult;",
+  "import androidx.activity.result.ActivityResult;",
   "import com.getcapacitor.JSObject;",
   "import com.getcapacitor.Plugin;",
   "import com.getcapacitor.PluginCall;",
