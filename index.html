@@ -511,6 +511,68 @@ footer {
   #bibleReader { min-height:calc(100dvh - 52px); }
 }
 
+
+/* Mobile containment: search results stay readable inside the reader and never
+   widen the page, while long references and unbroken text wrap safely. */
+#bibleReader,
+#bibleSearch,
+#bibleSearchResults,
+#bibleSearchResults .search-result {
+  min-width:0;
+  max-width:100%;
+}
+#bibleSearch { overflow:hidden; }
+#bibleSearch .search-row { min-width:0; }
+#bibleSearchResults {
+  width:100%;
+  max-height:min(52vh, 440px);
+  overflow-y:auto;
+  overflow-x:hidden;
+  overscroll-behavior:contain;
+  scrollbar-gutter:stable;
+  padding:1px 2px 3px 1px;
+}
+#bibleSearchResults .search-result {
+  box-sizing:border-box;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  word-break:normal;
+  hyphens:auto;
+}
+#bibleSearchResults .search-result strong {
+  max-width:100%;
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
+#bibleSearchResults .search-result:focus-visible {
+  outline:3px solid #b99b58;
+  outline-offset:2px;
+}
+#bibleSearchResults:empty { display:none; }
+#bibleReader *,
+#zurielStudyPanel *,
+#zurielStudyCentre *,
+#zurielStudyCenter * { min-width:0; }
+#zurielStudyPanel,
+#zurielStudyCentre,
+#zurielStudyCenter {
+  max-width:100%;
+  overflow-wrap:anywhere;
+}
+#zurielStudyPanel pre,
+#zurielStudyCentre pre,
+#zurielStudyCenter pre,
+#zurielStudyPanel table,
+#zurielStudyCentre table,
+#zurielStudyCenter table {
+  max-width:100%;
+  overflow-x:auto;
+}
+@media(max-width:420px) {
+  #bibleSearchResults { max-height:46vh; }
+  #bibleSearchResults .search-result { padding:10px; font-size:14px; line-height:1.5; }
+}
+
 </style>
 </head>
 
