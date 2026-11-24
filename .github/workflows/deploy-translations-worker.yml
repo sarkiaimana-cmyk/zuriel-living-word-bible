@@ -65,7 +65,9 @@ jobs:
         run: npm install --no-audit --no-fund
 
       - name: Test translation proxy safeguards
-        run: node --test test/youversion.test.mjs test/translation-worker.test.mjs test/api-bible.test.mjs
+        run: |
+          node --test test/youversion.test.mjs test/translation-worker.test.mjs test/api-bible.test.mjs
+          node --check scripts/smoke-licensed-translations.mjs
 
       - name: Confirm the Cloudflare token account
         run: npx wrangler whoami
@@ -130,6 +132,7 @@ jobs:
           fi
 
           WORKER_URL="https://zuriel-bible-translations.$WORKERS_SUBDOMAIN.workers.dev"
+          WORKER_URL="$WORKER_URL" node scripts/smoke-licensed-translations.mjs
           HTTP_STATUS="$(curl -sS --retry 5 --retry-delay 3 --retry-all-errors \
             -o .translation-smoke.json -D .translation-smoke.headers -w '%{http_code}' \
             -H "Origin: https://sarkiaimana-cmyk.github.io" \
