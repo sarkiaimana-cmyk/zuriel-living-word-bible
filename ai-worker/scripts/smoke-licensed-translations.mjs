@@ -170,7 +170,7 @@ if (missing.length) {
   console.warn("API.Bible catalogue (" + apiBibleVersions.length + "): " + describe(apiBibleVersions));
   console.warn("NET Bible catalogue (" + netBibleVersions.length + "): " + describe(netBibleVersions));
 }
-const optionalPending = new Set(["GNT", "ESV", "CSB"]);
+const optionalPending = new Set(["GNT", "LB/LT", "ESV", "CSB"]);
 const missingRequired = missing.filter(item =>
   !Array.from(optionalPending).some(abbreviation => item === abbreviation || item.startsWith(abbreviation + " ("))
 );
@@ -178,4 +178,4 @@ assert.deepEqual(missingRequired, [],
   "Every currently connected translation provider must return real, attributed passages for the core verified set. Missing: " + missingRequired.join(", ") + ". Provider notices: " + providerIssues.join(" | "));
 if (missing.length) console.warn("The Worker can be connected for verified translations; publisher access is still pending for: " + missing.join(", "));
 console.log("KJV remains covered by the separately verified offline 66-book corpus.");
-console.log("Verified live translations passed: AMP, LB/LT, TPT, NLT, NET, NIV, NASB and NKJV. GNT, ESV and CSB remain pending publisher/account access.");
+console.log("Verified live translations passed: AMP, TPT, NLT, NET, NIV, NASB and NKJV. GNT, LB/LT, ESV and CSB remain pending publisher/account access.");
