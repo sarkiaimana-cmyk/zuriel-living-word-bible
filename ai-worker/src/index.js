@@ -580,7 +580,7 @@ async function handleNetBibleRequest(request, env, dependencies, cors) {
   if (url.pathname === "/api/net-bible/bibles") {
     if (url.search) return json({ error: "The NET Bible catalogue does not accept custom query parameters." }, 400, cors);
     return json({
-      data: [{ id: "net", title: "New English Translation", abbreviation: "NET", copyright: NET_BIBLE_COPYRIGHT, language: "English" }],
+      data: [{ id: "net", title: "NET Bible", abbreviation: "NET", copyright: NET_BIBLE_COPYRIGHT, language: "English" }],
       source: "Bible.org NET Bible Web Service",
       notice: "NET Bible text is online-only in Zuriel and is displayed with the publisher's required designation and link."
     }, 200, cors);
@@ -642,7 +642,7 @@ async function handleNetBibleRequest(request, env, dependencies, cors) {
   const content = verses.map(row => row.verse + " " + row.text).join("\n");
   return json({
     source: "Bible.org NET Bible Web Service",
-    version: { id: "net", title: "New English Translation", abbreviation: "NET" },
+    version: { id: "net", title: "NET Bible", abbreviation: "NET" },
     passage: { id: book + "." + chapter, reference: book + " " + chapter, content, copyright: NET_BIBLE_COPYRIGHT },
     format: "text",
     notice: "NET Bible text is online-only in Zuriel. The text is not saved for offline reading."
