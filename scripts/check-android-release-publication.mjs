@@ -12,7 +12,7 @@ const releaseEnd = android.indexOf("- name: Upload Zuriel debug APK", releaseSta
 assert.ok(releaseStart >= 0 && releaseEnd > releaseStart, "Android release publication step must exist.");
 const releaseStep = android.slice(releaseStart, releaseEnd);
 
-assert.match(releaseStep, /if: github\\.ref == 'refs\\/heads\\/main' && \\(\\(github\\.event_name == 'workflow_dispatch' && inputs\\.confirm_release == true\\) \\|\\| github\\.event_name == 'push'\\)/,
+assert.ok(releaseStep.includes("if: github.ref == 'refs/heads/main' && ((github.event_name == 'workflow_dispatch' && inputs.confirm_release == true) || github.event_name == 'push')"),
   "Public Android releases must be limited to verified main-branch pushes or manually confirmed main-branch builds.");
 assert.match(android, /confirm_release:[\s\S]*?required: true[\s\S]*?type: boolean[\s\S]*?default: false/,
   "The manual release confirmation must default to false.");
