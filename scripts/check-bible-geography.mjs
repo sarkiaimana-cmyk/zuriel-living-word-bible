@@ -43,6 +43,18 @@ for (const place of atlas?.places || []) {
   atlasPlaceIds.add(place.id);
   if (!place.name || !place.region || !place.significance || !place.studyCaution) failures.push("Atlas place context is incomplete: " + (place.name || place.id));
   if (!Array.isArray(place.references) || !place.references.length) failures.push("Atlas place has no Scripture references: " + place.name);
+  let inheritedBook = "";
+  for (const reference of place.references || []) {
+    const full = String(reference).match(/^(.+?)\\s+(\\d+):(\\d+)/);
+    const short = String(reference).match(/^(\\d+):(\\d+)/);
+    if (full) inheritedBook = full[1];
+    const book = full ? full[1] : inheritedBook;
+    const chapter = Number(full ? full[2] : short?.[1]);
+    if (!book || !short && !full || !(bookChapters[book] || (book === "Psalm" && bookChapters.Psalms)) ||
+        !Number.isInteger(chapter) || chapter < 1 || chapter > (bookChapters[book] || bookChapters.Psalms)) {
+      failures.push("Atlas place has an invalid or unanchored Scripture reference: " + place.name + " — " + reference);
+    }
+  }
 }
 const journeyIds = new Set();
 for (const journey of atlas?.journeys || []) {
@@ -99,5 +111,5 @@ if (failures.length) {
   failures.forEach(item => console.error(" - " + item));
   process.exitCode = 1;
 } else {
-  console.log("Bible Geography checks passed: two coordinate-backed regional locators, twelve pinned places, 25 additional atlas places, eight journeys, Scripture context, offline local loading and Android packaging.");
+  console.log("Bible Geography checks passed: two coordinate-backed regional locators, twelve pinned places, 25 atlas place records, eight journeys, Scripture context, offline local loading and Android packaging.");
 }
