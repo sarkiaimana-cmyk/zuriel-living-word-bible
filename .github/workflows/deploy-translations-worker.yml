@@ -58,6 +58,7 @@ jobs:
           test -n "$CLOUDFLARE_API_TOKEN" || { echo "::error::Missing CLOUDFLARE_API_TOKEN repository secret."; exit 1; }
           test -n "$CLOUDFLARE_ACCOUNT_ID" || { echo "::error::Missing CLOUDFLARE_ACCOUNT_ID repository secret."; exit 1; }
           test -n "$ZITE_YVP_APP_KEY" || { echo "::error::Missing ZITE_YVP_APP_KEY repository secret."; exit 1; }
+      test -n "$API_BIBLE_KEY" || { echo "::error::Missing API_BIBLE_KEY repository secret. Both Bible providers are required for the requested translation coverage."; exit 1; }
           node -e 'const fs=require("node:fs"); const c=JSON.parse(fs.readFileSync("wrangler.translations.jsonc","utf8")); if(!c.vars?.ALLOWED_ORIGINS || !c.ratelimits?.some(x=>x.name==="TRANSLATION_RATE_LIMIT")) { console.error("Translation proxy origin or rate-limit configuration is missing."); process.exit(1); }'
 
       - name: Install Worker deployment tools
@@ -88,18 +89,14 @@ jobs:
             exit 1
           fi
 
-      - name: Install optional API.Bible key as a Worker secret
+      - name: Install API.Bible key as a Worker secret
         run: |
           set -euo pipefail
-          if [ -n "$API_BIBLE_KEY" ]; then
-            if ! printf '%s' "$API_BIBLE_KEY" | npx wrangler secret put API_BIBLE_KEY --config wrangler.translations.jsonc; then
-              echo "::error::Cloudflare rejected the optional API.Bible secret. Check the Worker secret permissions; the key is never printed."
-              exit 1
-            fi
-            echo "API.Bible server-side key installed."
-          else
-            echo "::notice::API.Bible key not configured; its provider will remain unavailable while YouVersion can still operate."
+          if ! printf '%s' "$API_BIBLE_KEY" | npx wrangler secret put API_BIBLE_KEY --config wrangler.translations.jsonc; then
+            echo "::error::Cloudflare rejected the API.Bible secret. Check the Worker secret permissions; the key is never printed."
+            exit 1
           fi
+          echo "API.Bible server-side key installed."
 
       - name: Deploy the protected translation Worker
         run: |
@@ -169,8 +166,7 @@ jobs:
             exit 1
           fi
 
-          if [ -n "$API_BIBLE_KEY" ]; then
-            API_BIBLE_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
+API_BIBLE_STATUS="$(curl -sS --retry 3 --retry-delay 2 --retry-all-errors \
               -o .api-bible-smoke.json -D .api-bible-smoke.headers -w '%{http_code}' \
               -H "Origin: https://sarkiaimana-cmyk.github.io" \
               "$WORKER_URL/api/api-bible/bibles")"
@@ -202,9 +198,6 @@ jobs:
               fi
             fi
             echo "API.Bible English versions returned: $API_BIBLE_COUNT"
-          else
-            echo "API.Bible is optional and was not configured; YouVersion remains the active provider."
-          fi
           if [ "$GITHUB_REF" != "refs/heads/fix/mobile-search-study-layout" ]; then
             echo "::error::The verified endpoint may only be committed to the reviewed integration branch."
             exit 1
