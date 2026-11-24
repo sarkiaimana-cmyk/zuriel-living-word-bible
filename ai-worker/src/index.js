@@ -591,7 +591,7 @@ async function handleNetBibleRequest(request, env, dependencies, cors) {
   const queryKeys = Array.from(url.searchParams.keys());
   const lastVerseValue = url.searchParams.get("lastVerse");
   const lastVerse = Number(lastVerseValue);
-  if (queryKeys.length !== 1 || queryKeys[0] !== "lastVerse" || !/^\\d{1,3}$/.test(String(lastVerseValue || "")) ||
+  if (queryKeys.length !== 1 || queryKeys[0] !== "lastVerse" || !/^\d{1,3}$/.test(String(lastVerseValue || "")) ||
       !Number.isInteger(lastVerse) || lastVerse < 1 || lastVerse > 176) {
     return json({ error: "A valid final verse number from the open Bible chapter is required." }, 400, cors);
   }
