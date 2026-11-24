@@ -7,12 +7,16 @@ const files = [
   "zuriel-library.js",
   "zuriel-media.js",
   "zuriel-home.js",
+  "zuriel-minimal-home.js",
+  "zuriel-history.js",
   "zuriel-word-linking.js",
   "zuriel-study.js",
+  "zuriel-lexicon-index.js",
   "zuriel-study-library-data.js",
   "zuriel-geography-data.js",
   "zuriel-geography.js",
   "zuriel-navigation.js",
+  "zuriel-reader-topbar.js",
   "zuriel-introductions.js",
   "zuriel-grid-navigation.js",
   "zuriel-faith-content.js",
@@ -30,6 +34,7 @@ const files = [
   "zuriel-design-system.js",
   "version.json",
   "sw.js",
+  "zuriel-screenshot-home.js",
   "kjv.72bec70fcd.json"
 ];
 
