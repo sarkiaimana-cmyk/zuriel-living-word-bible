@@ -122,12 +122,23 @@ jobs:
             exit 1
           fi
 
+          SCRIPT_SUBDOMAIN_URL="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts/zuriel-bible-translations/subdomain"
           SCRIPT_SUBDOMAIN_JSON="$(curl -fsS --retry 4 --retry-delay 2 --retry-all-errors \
             -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts/zuriel-bible-translations/subdomain")"
+            "$SCRIPT_SUBDOMAIN_URL")"
           SCRIPT_ENABLED="$(printf '%s' "$SCRIPT_SUBDOMAIN_JSON" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);process.stdout.write(String(Boolean(j.result?.enabled)));});')"
           if [ "$SCRIPT_ENABLED" != "true" ]; then
-            echo "::error::The Worker workers.dev route is not enabled. Enable it for zuriel-bible-translations in Cloudflare and rerun this workflow."
+            if ! SCRIPT_SUBDOMAIN_UPDATE="$(curl -fsS --retry 3 --retry-delay 2 --retry-all-errors \
+              -X POST -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+              -H "Content-Type: application/json" \
+              --data '{"enabled":true}' "$SCRIPT_SUBDOMAIN_URL")"; then
+              echo "::error::Cloudflare refused to enable the workers.dev route. The token needs Workers Editor for zuriel-bible-translations (or Workers Scripts Write)."
+              exit 1
+            fi
+            SCRIPT_ENABLED="$(printf '%s' "$SCRIPT_SUBDOMAIN_UPDATE" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);process.stdout.write(String(Boolean(j.success && j.result?.enabled)));});')"
+          fi
+          if [ "$SCRIPT_ENABLED" != "true" ]; then
+            echo "::error::Cloudflare did not confirm the workers.dev route for zuriel-bible-translations."
             exit 1
           fi
 
