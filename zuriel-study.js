@@ -2033,18 +2033,17 @@
       body.prepend(illustration);
     });
 
-    (reader || main || document.body).appendChild(panel);
-
-    // Keep the reading controls full-width, then place the verse and study
-    // panel together. Desktop uses two columns; small screens stack naturally.
-    const message = document.getElementById("message");
-    if (reader && message && !document.getElementById("zurielReaderStudyLayout")) {
-      const layout = document.createElement("div");
-      layout.id = "zurielReaderStudyLayout";
-      reader.insertBefore(layout, message);
-      layout.appendChild(message);
-      layout.appendChild(panel);
+    // The Study Centre is a separate destination, not a panel embedded
+    // inside the Read Scripture screen. Keep its selected-verse tools intact,
+    // but mount it as a sibling of the reader so navigation can show either one.
+    const studyHost = main || reader?.parentElement || document.body;
+    if (reader && reader.parentElement === studyHost) {
+      reader.insertAdjacentElement("afterend", panel);
+    } else {
+      studyHost.appendChild(panel);
     }
+    panel.hidden = true;
+    panel.setAttribute("data-zuriel-hidden", "true");
 
     // Searchable offline biblical dictionary.
     const dictionarySearch = panel.querySelector("#zurielDictionarySearch");
