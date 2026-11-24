@@ -1,6 +1,7 @@
 name: Deploy Zuriel Bible translations proxy
 
 # The reviewed integration branch auto-deploys after translation code changes. Manual runs require explicit confirmation.
+# Credential retries always verify the provider keys directly before touching the Worker.
 on:
   push:
     branches:
