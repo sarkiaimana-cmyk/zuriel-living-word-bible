@@ -236,12 +236,67 @@
     ["Witness","A person who testifies to what is known or experienced. In Acts, believers are commissioned to bear witness to Jesus; the word can also refer to legal testimony and the witness of Scripture. See Deuteronomy 19:15; Acts 1:8; 4:20; Hebrews 12:1."]
   ];
 
-  function readNotes() {
+  // Read the shared saved-library record without treating damaged data as empty.
+  // Verse bookmarks must never overwrite prayers, notes or bookmarks that cannot
+  // be parsed safely.
+  function readPersonalLibraryBookmarks(raw) {
+    if (raw === null) return { bookmarks: [] };
+    let data;
     try {
-      return JSON.parse(localStorage.getItem(NOTES_KEY)) || {};
+      data = JSON.parse(raw);
     } catch (error) {
-      return {};
+      throw new Error("Your saved library could not be read. Existing records have not been changed.");
     }
+    if (!data || typeof data !== "object" || Array.isArray(data) ||
+        (data.bookmarks !== undefined && !Array.isArray(data.bookmarks))) {
+      throw new Error("Your saved library has an unsupported format. Existing records have not been changed.");
+    }
+    return data;
+  }
+
+  // Saved study records are user data. Never turn unreadable storage into
+  // an empty object: a later save could otherwise overwrite the user's work.
+  function readStudyRecordMap(storageKey, label, validateRecord) {
+    let raw;
+    try {
+      raw = localStorage.getItem(storageKey);
+    } catch (error) {
+      throw new Error("Zuriel cannot access your saved " + label +
+        ". Existing records have not been changed. Check device storage before trying again.");
+    }
+    if (raw === null) return {};
+    let saved;
+    try {
+      saved = JSON.parse(raw);
+    } catch (error) {
+      throw new Error("Your saved " + label + " could not be read. Existing records have not been changed. Do not clear app storage; restore from a trusted backup.");
+    }
+    if (!saved || typeof saved !== "object" || Array.isArray(saved)) {
+      throw new Error("Your saved " + label + " has an unsupported format. Existing records have not been changed.");
+    }
+    Object.keys(saved).forEach(function (key) {
+      if (!validateRecord(saved[key])) {
+        throw new Error("A saved " + label + " record is invalid. Existing records have not been changed. Restore from a trusted backup before editing.");
+      }
+    });
+    return saved;
+  }
+
+  function isPlainRecord(value) {
+    return !!value && typeof value === "object" && !Array.isArray(value);
+  }
+
+  function isHighlightColor(value) {
+    return typeof value === "string" && /^#[0-9a-f]{6}$/i.test(value);
+  }
+
+  function readNotes() {
+    return readStudyRecordMap(NOTES_KEY, "verse study notes", function (record) {
+      if (!isPlainRecord(record)) return false;
+      return ["title", "note", "application", "updated"].every(function (field) {
+        return record[field] === undefined || typeof record[field] === "string";
+      });
+    });
   }
 
   function noteKey(ref) {
@@ -2288,13 +2343,23 @@
     }
 
     function readHighlights() {
-      try {
-        const saved = JSON.parse(localStorage.getItem(HIGHLIGHTS_KEY) || "{}");
-        return saved && typeof saved === "object" && !Array.isArray(saved)
-          ? saved : {};
-      } catch (error) {
-        return {};
-      }
+      return readStudyRecordMap(HIGHLIGHTS_KEY, "Scripture highlights", function (record) {
+        if (!isPlainRecord(record)) return false;
+        if (record.verseColor !== undefined && !isHighlightColor(record.verseColor)) return false;
+        if (record.words !== undefined) {
+          if (!isPlainRecord(record.words)) return false;
+          if (!Object.keys(record.words).every(function (key) {
+            return /^\d+$/.test(key) && isHighlightColor(record.words[key]);
+          })) return false;
+        }
+        if (record.wordTokens !== undefined) {
+          if (!isPlainRecord(record.wordTokens)) return false;
+          if (!Object.keys(record.wordTokens).every(function (key) {
+            return /^\d+$/.test(key) && typeof record.wordTokens[key] === "string";
+          })) return false;
+        }
+        return true;
+      });
     }
 
     function highlightKey(ref) {
@@ -2302,7 +2367,14 @@
     }
 
     function paintSavedHighlights(ref) {
-      const record = readHighlights()[highlightKey(ref)] || {};
+      let record;
+      try {
+        record = readHighlights()[highlightKey(ref)] || {};
+      } catch (error) {
+        const status = document.getElementById("zurielHighlightStatus");
+        if (status) status.textContent = error.message;
+        return;
+      }
       const verseElement = findVerseElement(ref.verse);
       if (!verseElement) return;
 
@@ -2323,18 +2395,18 @@
     }
 
     function saveHighlightRecord(ref, record) {
-      const all = readHighlights();
-      const key = highlightKey(ref);
-      if (record && (record.verseColor || Object.keys(record.words || {}).length)) {
-        all[key] = record;
-      } else {
-        delete all[key];
-      }
       try {
+        const all = readHighlights();
+        const key = highlightKey(ref);
+        if (record && (record.verseColor || Object.keys(record.words || {}).length)) {
+          all[key] = record;
+        } else {
+          delete all[key];
+        }
         localStorage.setItem(HIGHLIGHTS_KEY, JSON.stringify(all));
       } catch (error) {
         const status = document.getElementById("zurielHighlightStatus");
-        if (status) status.textContent =
+        if (status) status.textContent = error.message ||
           "The highlight could not be saved. Device storage may be full or unavailable.";
         return false;
       }
@@ -2343,12 +2415,19 @@
     }
 
     function getCurrentHighlightRecord() {
-      return readHighlights()[highlightKey(selectedReference)] || { words: {} };
+      try {
+        return readHighlights()[highlightKey(selectedReference)] || { words: {} };
+      } catch (error) {
+        const status = document.getElementById("zurielHighlightStatus");
+        if (status) status.textContent = error.message;
+        return null;
+      }
     }
 
     function applyWordHighlight() {
       if (!selectedReference || selectedEnglishWordIndex < 0) return;
       const record = getCurrentHighlightRecord();
+      if (!record) return;
       record.words = record.words || {};
       record.words[String(selectedEnglishWordIndex)] = activeHighlightColor;
       record.wordTokens = record.wordTokens || {};
@@ -2362,6 +2441,7 @@
     function applyVerseHighlight() {
       if (!selectedReference) return;
       const record = getCurrentHighlightRecord();
+      if (!record) return;
       record.verseColor = activeHighlightColor;
       if (saveHighlightRecord(selectedReference, record)) {
         document.getElementById("zurielHighlightStatus").textContent =
@@ -2915,16 +2995,19 @@
 
     function loadSavedNote() {
       if (!selectedReference) return;
-      const record = readNotes()[noteKey(selectedReference)];
-
-      document.getElementById("zurielStudyTitle").value =
-        record ? record.title || "" : "";
-      document.getElementById("zurielStudyNote").value =
-        record ? record.note || "" : "";
-      document.getElementById("zurielStudyApplication").value =
-        record ? record.application || "" : "";
-      document.getElementById("zurielStudySaveStatus").textContent =
-        record ? "Saved study loaded for this verse." : "";
+      try {
+        const record = readNotes()[noteKey(selectedReference)];
+        document.getElementById("zurielStudyTitle").value =
+          record ? record.title || "" : "";
+        document.getElementById("zurielStudyNote").value =
+          record ? record.note || "" : "";
+        document.getElementById("zurielStudyApplication").value =
+          record ? record.application || "" : "";
+        document.getElementById("zurielStudySaveStatus").textContent =
+          record ? "Saved study loaded for this verse." : "";
+      } catch (error) {
+        document.getElementById("zurielStudySaveStatus").textContent = error.message;
+      }
     }
 
     function openCrossReference(item) {
@@ -2976,7 +3059,7 @@
 
         try {
           const key = "zuriel_personal_library_v1";
-          const data = JSON.parse(localStorage.getItem(key) || "{}");
+          const data = readPersonalLibraryBookmarks(localStorage.getItem(key));
           const bookmarks = Array.isArray(data.bookmarks) ? data.bookmarks : [];
           const reference = selectedReference.book + " " +
             selectedReference.chapter + ":" + selectedReference.verse;
@@ -3025,7 +3108,7 @@
             "Your study has been saved on this device.";
         } catch (error) {
           document.getElementById("zurielStudySaveStatus").textContent =
-            "Unable to save. Please check device storage.";
+            error.message || "Unable to save. Please check device storage.";
         }
       });
 

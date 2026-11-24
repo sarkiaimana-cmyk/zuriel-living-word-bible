@@ -1,4 +1,5 @@
 import { readFile } from "node:fs/promises";
+import { execFileSync } from "node:child_process";
 
 const [backup, personal, index, serviceWorker, packaging, version, updates] = await Promise.all([
   readFile(new URL("../zuriel-backup.js", import.meta.url), "utf8"),
@@ -10,6 +11,11 @@ const [backup, personal, index, serviceWorker, packaging, version, updates] = aw
   readFile(new URL("../zuriel-updates.js", import.meta.url), "utf8")
 ]);
 const failures = [];
+try {
+  execFileSync(process.execPath, ["scripts/test-study-storage-integrity.mjs"], { stdio: "inherit" });
+} catch (error) {
+  failures.push("Verse study notes/highlights storage integrity tests failed.");
+}
 for (const key of [
   "zuriel_personal_notes_v1",
   "zuriel_prayer_journal_v1",
