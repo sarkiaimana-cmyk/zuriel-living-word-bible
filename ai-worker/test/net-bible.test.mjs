@@ -125,7 +125,7 @@ test("NET Bible route fails closed when rate limiting is unavailable or exceeded
 
 test("NET Bible route withholds incomplete upstream chapter responses", async () => {
   const response = await handleTranslationRequest(
-    request("/api/net-bible/chapters/John/3"),
+    request("/api/net-bible/chapters/John/3?lastVerse=1"),
     env(),
     { fetch: async () => Response.json([{ verse: 1, text: "" }]) }
   );
