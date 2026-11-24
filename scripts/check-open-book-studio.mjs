@@ -91,6 +91,7 @@ if (!faithCards.includes("lines.forEach((item, index) => ctx.fillText(item, 540,
 if (!faithCards.includes("const finalGradient = ctx.createLinearGradient(0, 0, 1080, canvas.height)")) failures.push("Faith-card PNG export must repaint its background after resizing the canvas.");
 if (!faithCards.includes('ctx.fillText("Zuriel Living Word Bible", 540, canvas.height - 85)')) failures.push("Faith-card PNG export must retain the complete app footer.");
 if (!index.includes("window.getBibleVerseText = async function (reference)")) failures.push("Offline KJV passage retrieval is missing.");
+if (!home.includes('.replace(/^\\d+\\.\\s*/, "").trim()')) failures.push("Direct Home card download must strip the leading verse number using a working digit pattern.");
 if (!/const CACHE_NAME = "zuriel-bible-offline-v\d+";/.test(worker)) failures.push("Offline cache version is missing for the Studio/navigation integration.");
 if (!worker.includes('url.origin === "https://images.unsplash.com"')) failures.push("Service worker does not cache selected Unsplash wallpapers.");
 if (home.includes("Your Bible Journey")) failures.push("The duplicate home shortcut-button grid is still present.");
