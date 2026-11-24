@@ -552,6 +552,89 @@ async function handleApiBibleRequest(request, env, dependencies, cors) {
   }, 200, cors);
 }
 
+const NET_BIBLE_BASE = "https://labs.bible.org/api/";
+const NET_BIBLE_BOOKS = new Set([
+  "Genesis","Exodus","Leviticus","Numbers","Deuteronomy","Joshua","Judges","Ruth",
+  "1 Samuel","2 Samuel","1 Kings","2 Kings","1 Chronicles","2 Chronicles","Ezra","Nehemiah",
+  "Esther","Job","Psalms","Proverbs","Ecclesiastes","Song of Solomon","Isaiah","Jeremiah",
+  "Lamentations","Ezekiel","Daniel","Hosea","Joel","Amos","Obadiah","Jonah","Micah","Nahum",
+  "Habakkuk","Zephaniah","Haggai","Zechariah","Malachi","Matthew","Mark","Luke","John","Acts",
+  "Romans","1 Corinthians","2 Corinthians","Galatians","Ephesians","Philippians","Colossians",
+  "1 Thessalonians","2 Thessalonians","1 Timothy","2 Timothy","Titus","Philemon","Hebrews",
+  "James","1 Peter","2 Peter","1 John","2 John","3 John","Jude","Revelation"
+]);
+const NET_BIBLE_COPYRIGHT = "Scripture quoted by permission. Quotations designated (NET) are from the NET Bible® copyright ©1996, 2019 by Biblical Studies Press, L.L.C. netbible.com. All rights reserved.";
+
+async function handleNetBibleRequest(request, env, dependencies, cors) {
+  if (request.method !== "GET") return json({ error: "Use GET to request NET Bible chapters." }, 405, cors);
+  if (!env.TRANSLATION_RATE_LIMIT) return json({ error: "The translation service is not safely rate-limited yet." }, 503, cors);
+  const clientKey = request.headers.get("CF-Connecting-IP") || "unknown-client";
+  try {
+    const limit = await env.TRANSLATION_RATE_LIMIT.limit({ key: clientKey });
+    if (!limit || !limit.success) return json({ error: "The translation service is receiving too many requests. Please wait and try again." }, 429, cors);
+  } catch {
+    return json({ error: "The translation service is temporarily unavailable." }, 503, cors);
+  }
+
+  const url = new URL(request.url);
+  if (url.pathname === "/api/net-bible/bibles") {
+    if (url.search) return json({ error: "The NET Bible catalogue does not accept custom query parameters." }, 400, cors);
+    return json({
+      data: [{ id: "net", title: "New English Translation", abbreviation: "NET", copyright: NET_BIBLE_COPYRIGHT, language: "English" }],
+      source: "Bible.org NET Bible Web Service",
+      notice: "NET Bible text is online-only in Zuriel and is displayed with the publisher's required designation and link."
+    }, 200, cors);
+  }
+
+  const match = url.pathname.match(/^\\/api\\/net-bible\\/chapters\\/(.+)\\/(\\d{1,3})$/i);
+  if (!match || url.search) return json({ error: "The requested NET Bible chapter was not recognised." }, 404, cors);
+  let book = "";
+  try { book = decodeURIComponent(match[1]).replace(/\\+/g, " ").trim(); }
+  catch { return json({ error: "The requested Bible book name was not valid." }, 400, cors); }
+  if (book === "Psalm") book = "Psalms";
+  const chapter = Number(match[2]);
+  if (!NET_BIBLE_BOOKS.has(book) || !Number.isInteger(chapter) || chapter < 1) {
+    return json({ error: "Choose a valid Bible book and chapter." }, 400, cors);
+  }
+
+  const upstreamUrl = new URL(NET_BIBLE_BASE);
+  upstreamUrl.searchParams.set("passage", book + " " + chapter);
+  upstreamUrl.searchParams.set("type", "JSON");
+  upstreamUrl.searchParams.set("formatting", "plain");
+  let response;
+  try {
+    const fetchImpl = dependencies.fetch || globalThis.fetch;
+    response = await fetchImpl(upstreamUrl.toString(), {
+      method: "GET",
+      headers: { "Accept": "application/json", "User-Agent": "ZurielLivingWordBible/2.10.3" },
+      signal: AbortSignal.timeout(10000)
+    });
+  } catch {
+    return json({ error: "The NET Bible service could not be reached. Your offline KJV is unchanged." }, 502, cors);
+  }
+  if (!response.ok) return json({ error: "The NET Bible service is temporarily unavailable." }, response.status === 429 ? 429 : 502, cors);
+
+  let payload;
+  try { payload = JSON.parse(await response.text()); }
+  catch { return json({ error: "The NET Bible service returned an unreadable response." }, 502, cors); }
+  const rows = Array.isArray(payload) ? payload : (payload && Array.isArray(payload.data) ? payload.data : []);
+  const verses = rows.map(row => ({
+    verse: Number(row && row.verse),
+    text: String(row && row.text || "").trim()
+  })).filter(row => Number.isInteger(row.verse) && row.verse > 0 && row.text);
+  if (!verses.length || verses.length !== rows.length) {
+    return json({ error: "The NET Bible service did not return a complete, readable chapter." }, 502, cors);
+  }
+  const content = verses.map(row => row.verse + " " + row.text).join("\\n");
+  return json({
+    source: "Bible.org NET Bible Web Service",
+    version: { id: "net", title: "New English Translation", abbreviation: "NET" },
+    passage: { id: book + "." + chapter, reference: book + " " + chapter, content, copyright: NET_BIBLE_COPYRIGHT },
+    format: "text",
+    notice: "NET Bible text is online-only in Zuriel. The text is not saved for offline reading."
+  }, 200, cors);
+}
+
 export async function handleRequest(request, env, dependencies = {}) {
   const url = new URL(request.url);
   const assistantRoute = url.pathname === "/api/assistant" || url.pathname === "/api/assistant/config";
