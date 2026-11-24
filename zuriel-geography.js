@@ -238,7 +238,7 @@
   }
 
   function parseAtlasReference(reference) {
-    const match = String(reference || "").trim().match(/^(.+?)\\s+(\\d+):(\\d+)/);
+    const match = String(reference || "").trim().match(/^(.+?)\s+(\d+):(\d+)/);
     if (!match) return null;
     const chapter = Number(match[2]);
     const verse = Number(match[3]);
