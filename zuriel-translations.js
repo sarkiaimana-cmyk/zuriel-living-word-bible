@@ -259,7 +259,12 @@
         });
         available = Array.from(uniqueVersions.values());
       } else if (providerAtRequest === "net-bible") {
-        available = [{ id: "net", title: "NET Bible", abbreviation: "NET" }];
+        const payload = await requestJson("/api/net-bible/bibles");
+        available = Array.isArray(payload && payload.data)
+          ? payload.data.filter(item => item && item.id === "net" &&
+              item.abbreviation === "NET" && typeof item.title === "string" &&
+              typeof item.copyright === "string" && /Biblical Studies Press/.test(item.copyright))
+          : [];
       } else {
         const payload = await requestJson("/api/esv/bibles");
         available = Array.isArray(payload && payload.data) ? payload.data.filter(item => item && item.id === "esv" && item.abbreviation === "ESV") : [];
