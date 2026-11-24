@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: zuriel-translations-proxy-deployment
@@ -35,10 +36,10 @@ jobs:
           echo "::error::Explicit deployment confirmation is required."
           exit 1
 
-      - name: Require main branch before any Cloudflare changes
-        if: ${{ github.ref != 'refs/heads/main' }}
+      - name: Require the reviewed integration branch before any Cloudflare changes
+        if: ${{ github.ref != 'refs/heads/fix/mobile-search-study-layout' }}
         run: |
-          echo "::error::Translation proxy deployment is permitted only from main after the reviewed app changes are merged."
+          echo "::error::Run this manually from the reviewed fix/mobile-search-study-layout branch. The verified endpoint will be committed to that pull request, not pushed around main branch protection."
           exit 1
 
 
@@ -231,7 +232,8 @@ jobs:
             exit 1
           fi
 
-          echo "::notice title=YouVersion proxy deployed and configured::$WORKER_URL"
+          echo "::notice title=Translation proxy deployed and configured on the integration branch::$WORKER_URL"
           echo "Worker URL: $WORKER_URL"
           echo "Authorised Bible versions returned: $VERSION_COUNT"
+          echo "Full application validation has been dispatched for $GITHUB_REF_NAME."
           echo "Zuriel will discover this verified endpoint from version.json; no API key is exposed in the app."
