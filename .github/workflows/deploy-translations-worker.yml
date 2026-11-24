@@ -83,11 +83,13 @@ jobs:
       - name: Check provider credentials directly without exposing keys
         run: |
           set -euo pipefail
-          if [ -n "$ZITE_YVP_APP_KEY" ]; then
+          YVP_KEY_CLEAN="$(printf '%s' "$ZITE_YVP_APP_KEY" | tr -d '\r\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
+          if [ "$YVP_KEY_CLEAN" != "$ZITE_YVP_APP_KEY" ]; then echo "Trimmed surrounding whitespace from the YouVersion App Key."; fi
+          if [ -n "$YVP_KEY_CLEAN" ]; then
             YVP_DIRECT_STATUS="$(curl -sS --retry 2 --retry-delay 2 --retry-all-errors \
               --get --data-urlencode 'language_ranges[]=en' --data-urlencode 'page_size=1' \
               -A "ZurielLivingWordBible/2.10.3" \
-              -H "X-YVP-App-Key: $ZITE_YVP_APP_KEY" -H "Accept: application/json" \
+              -H "X-YVP-App-Key: $YVP_KEY_CLEAN" -H "Accept: application/json" \
               -o .yvp-direct.json -w '%{http_code}' https://api.youversion.com/v1/bibles || true)"
             if [ "$YVP_DIRECT_STATUS" = "200" ]; then
               YVP_DIRECT_COUNT="$(node -e 'const j=JSON.parse(require("node:fs").readFileSync(".yvp-direct.json","utf8"));process.stdout.write(String(Array.isArray(j.data)?j.data.length:0));')"
@@ -100,10 +102,12 @@ jobs:
             echo "YouVersion key is already stored on the Worker; direct GitHub-secret check skipped."
           fi
 
-          if [ -n "$API_BIBLE_KEY" ]; then
+          API_BIBLE_KEY_CLEAN="$(printf '%s' "$API_BIBLE_KEY" | tr -d '\r\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
+          if [ "$API_BIBLE_KEY_CLEAN" != "$API_BIBLE_KEY" ]; then echo "Trimmed surrounding whitespace from the API.Bible key."; fi
+          if [ -n "$API_BIBLE_KEY_CLEAN" ]; then
             API_BIBLE_DIRECT_STATUS="$(curl -sS --retry 2 --retry-delay 2 --retry-all-errors \
               -A "ZurielLivingWordBible/2.10.3" \
-              -H "api-key: $API_BIBLE_KEY" -H "Accept: application/json" \
+              -H "api-key: $API_BIBLE_KEY_CLEAN" -H "Accept: application/json" \
               -o .api-bible-direct.json -w '%{http_code}' https://rest.api.bible/v1/bibles || true)"
             if [ "$API_BIBLE_DIRECT_STATUS" = "200" ]; then
               echo "API.Bible direct credential check passed."
@@ -172,10 +176,12 @@ jobs:
             exit 1
           fi
           HAS_YVP_KEY="$(printf '%s' "$EXISTING_SECRETS" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);process.stdout.write(String(Array.isArray(j)&&j.some(x=>x.name==="ZITE_YVP_APP_KEY")));});')"
+          YVP_KEY_CLEAN="$(printf '%s' "$ZITE_YVP_APP_KEY" | tr -d '\r\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
+          API_BIBLE_KEY_CLEAN="$(printf '%s' "$API_BIBLE_KEY" | tr -d '\r\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
           HAS_API_BIBLE_KEY="$(printf '%s' "$EXISTING_SECRETS" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);process.stdout.write(String(Array.isArray(j)&&j.some(x=>x.name==="API_BIBLE_KEY")));});')"
 
-          if [ -n "$ZITE_YVP_APP_KEY" ]; then
-            if ! printf '%s' "$ZITE_YVP_APP_KEY" | npx wrangler secret put ZITE_YVP_APP_KEY --config wrangler.translations.jsonc; then
+          if [ -n "$YVP_KEY_CLEAN" ]; then
+            if ! printf '%s' "$YVP_KEY_CLEAN" | npx wrangler secret put ZITE_YVP_APP_KEY --config wrangler.translations.jsonc; then
               echo "::error::Cloudflare rejected the YouVersion Worker secret. Check Workers Editor permissions; the key is never printed."
               exit 1
             fi
@@ -186,8 +192,8 @@ jobs:
             exit 1
           fi
 
-          if [ -n "$API_BIBLE_KEY" ]; then
-            if ! printf '%s' "$API_BIBLE_KEY" | npx wrangler secret put API_BIBLE_KEY --config wrangler.translations.jsonc; then
+          if [ -n "$API_BIBLE_KEY_CLEAN" ]; then
+            if ! printf '%s' "$API_BIBLE_KEY_CLEAN" | npx wrangler secret put API_BIBLE_KEY --config wrangler.translations.jsonc; then
               echo "::error::Cloudflare rejected the API.Bible Worker secret. Check Workers Editor permissions; the key is never printed."
               exit 1
             fi
