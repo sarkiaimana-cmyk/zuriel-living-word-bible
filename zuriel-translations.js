@@ -88,7 +88,7 @@
   panel.id = "zurielTranslationCompare";
   const summary = node("summary", "", "🌐 Compare another Bible translation (online)");
   const note = node("p", "ztc-note",
-    "The King James Version remains available offline. Load authorised translations online when connected. API.Bible keeps only the most recently viewed chapter per translation for offline reading and refreshes it within 14 days. YouVersion passages are shown online only unless the publisher explicitly permits offline storage. NET Bible and ESV passages are online-only and are not stored offline.");
+    "Offline availability: the complete 66-book KJV is stored on this device. Full 66-book downloads of other translations are not currently available. API.Bible can save only the currently viewed chapter for an authorised translation (refreshed within 14 days); YouVersion, NET Bible and ESV passages are online-only here unless a publisher-approved offline permission is explicitly returned. A version will not be shown as downloadable unless its provider confirms that permission.");
   const controls = node("div");
   const providerSelect = node("select");
   providerSelect.setAttribute("aria-label", "Choose online Bible translation provider");
