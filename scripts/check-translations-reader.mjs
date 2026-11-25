@@ -139,6 +139,10 @@ requireText(client, '"ESV": /', "English Standard Version catalogue alias");
 requireText(client, '"NASB": /', "New American Standard Bible catalogue alias");
 requireText(client, '"CSB": /', "Christian Standard Bible catalogue alias");
 requireText(client, '"NKJV": /', "New King James Version catalogue alias");
+requireText(client, "function providerDisplayName(provider)", "Explicit provider names for all translation catalogue statuses");
+requireText(client, 'if (provider === "api-bible") return "API.Bible";', "Correct API.Bible catalogue label");
+requireText(client, 'if (provider === "net-bible") return "NET Bible";', "Correct NET Bible catalogue label");
+requireText(client, 'if (provider === "esv") return "ESV (Crossway)";', "Correct Crossway ESV catalogue label");
 
 const aliasBlock = client.match(/const aliases = \{([\s\S]*?)\n      \};/);
 assert.ok(aliasBlock, "Requested translation alias table must be present.");
