@@ -165,7 +165,7 @@
 
     /* Translation compare and download controls belong in the Reader, visible. */
     #zurielTranslationCompare {
-      display:block !important; margin:12px 0 !important; padding:12px !important;
+      margin:12px 0 !important; padding:12px !important;
       border:1px solid #d8dee7 !important; border-radius:9px !important;
       background:#f7f8fa !important; color:#172b43 !important;
     }
@@ -200,7 +200,10 @@
     } else if (panel.parentNode !== reader) {
       reader.insertBefore(panel, reader.firstChild);
     }
-    panel.open = true;
+    if (!panel.dataset.zurielPanelInitialized) {
+      panel.open = true;
+      panel.dataset.zurielPanelInitialized = "1";
+    }
     const summary = panel.querySelector("summary");
     if (summary) summary.textContent = "Bible translations • Compare • Offline downloads";
   }
@@ -209,7 +212,10 @@
     const panel = document.getElementById("zurielIntroduction");
     if (!panel) return;
     const content = panel.querySelector("div");
-    if (content) content.hidden = true;
+    if (!panel.dataset.zurielCompactApplied) {
+      if (content) content.hidden = true;
+      panel.dataset.zurielCompactApplied = "1";
+    }
     const button = panel.querySelector("button.intro-button");
     if (button && !button.dataset.zurielCompactBound) {
       button.dataset.zurielCompactBound = "1";
