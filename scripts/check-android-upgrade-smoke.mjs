@@ -14,8 +14,8 @@ for (const [pattern, label] of [
   [/com\.zuriel\.livingwordbible\.release/, "Enforce the stable Android package ID"],
   [/apksigner.*verify|verify --print-certs/, "Verify the previous APK signature"],
   [/EXPECTED_CERT_SHA256/, "Compare the previous APK with the pinned signing identity"],
-  [/adb install "\$OLD_APK"/, "Install the previous signed release"],
-  [/adb install -r "\$APK"/, "Install the new APK over the previous package"],
+  [/adb_install_retry "\$OLD_APK" "fresh"/, "Install the previous signed release through bounded ADB retry"],
+  [/adb_install_retry "\$APK" "replace"/, "Install the new APK over the previous package through adb install -r retry"],
   [/versionName=\$VERSION/, "Verify the upgraded installed version"],
   [/dumpsys activity activities/, "Confirm the app launches after installation"],
   [/Signed APK in-place upgrade smoke test passed/, "Report successful in-place upgrade testing"]
