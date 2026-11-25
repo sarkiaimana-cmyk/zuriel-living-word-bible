@@ -87,6 +87,8 @@
       color:#172b43 !important;
     }
     #zurielStudyPanel .study-small { color:#526174 !important; }
+    #zurielStudyPanel #zurielStudyLibraryDrawer { background:#f7f8fa !important; border-color:#dce2e8 !important; box-shadow:none !important; }
+    #zurielStudyPanel #zurielStudyLibraryDrawer > summary { color:#172b43 !important; }
     #zurielStudyPanel input,
     #zurielStudyPanel textarea,
     #zurielStudyPanel select {
