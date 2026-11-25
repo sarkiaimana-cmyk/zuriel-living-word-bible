@@ -189,8 +189,9 @@ jobs:
         run: node scripts/set-android-version.mjs
 
       - name: Build standalone debug APK
+        timeout-minutes: 20
         working-directory: android
-        run: ./gradlew assembleDebug
+        run: ./gradlew --no-daemon --console=plain assembleDebug
 
       - name: Prepare signed release APK
         id: signed_release
