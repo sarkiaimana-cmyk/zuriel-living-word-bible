@@ -1750,7 +1750,6 @@
           const faithResponse = window.ZurielFaithContent &&
             typeof window.ZurielFaithContent.find === "function"
             ? window.ZurielFaithContent.find(verse.reference) : null;
-          navigate("library");
           const opened = window.ZurielLibrary.openGloryVerse(
             verse.reference, scriptureText, "KJV", faithResponse || {}
           );
@@ -1797,8 +1796,7 @@
               typeof window.ZurielLibrary.openGloryVerse !== "function") {
             throw new Error("The Glory Verse Affirmation Studio is not available yet.");
           }
-          navigate("library");
-          const opened = window.ZurielLibrary.openGloryVerse(verse.reference, scriptureText, "KJV", faithResponse);
+          const opened = window.ZurielLibrary.openGloryVerse(verse.reference, scriptureText, "KJV", faithResponse, { preserveNavigation: true });
           if (!opened) throw new Error("The open-book image renderer could not be prepared.");
           studioOpened = true;
           const saveImageButton = document.querySelector("#zgsSaveImage");
@@ -1841,7 +1839,8 @@
         } catch (error) {
           if (status) status.textContent = error.message || "The open-book card could not be saved to your Gallery.";
         } finally {
-          if (studioOpened) navigate("home");
+          // Keep the user on the screen where Save was tapped. The hidden Library renderer
+          // prepares the PNG in the background; it must not hijack navigation.
           saveOpenBookCardButton.disabled = false;
         }
       });
@@ -1867,8 +1866,7 @@
           if (!window.ZurielLibrary || typeof window.ZurielLibrary.openGloryVerse !== "function") {
             throw new Error("The Glory Verse Affirmation Studio is not available yet.");
           }
-          navigate("library");
-          if (!window.ZurielLibrary.openGloryVerse(verse.reference, scriptureText, "KJV", faithResponse || {})) {
+          if (!window.ZurielLibrary.openGloryVerse(verse.reference, scriptureText, "KJV", faithResponse || {}, { preserveNavigation: true })) {
             throw new Error("The open-book image renderer could not be prepared.");
           }
           const downloadButton = document.querySelector("#zgsDownloadImage");

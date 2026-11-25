@@ -81,14 +81,21 @@
     "#zurielTranslationCompare button:disabled{opacity:.5}" +
     "#zurielTranslationCompare .ztc-status{min-height:22px;font:600 13px/1.5 Arial,sans-serif;color:#315b48}" +
     "#zurielTranslationCompare .ztc-passage{white-space:pre-wrap;overflow-wrap:anywhere;padding:12px;margin:10px 0;background:#fff;border:1px solid #d9e1dc;border-radius:9px;font:16px/1.75 Georgia,serif;color:#203a31}" +
-    "#zurielTranslationCompare .ztc-attribution{font:12px/1.55 Arial,sans-serif;color:#58675f;border-top:1px solid #d8e1da;padding-top:9px}";
+    "#zurielTranslationCompare .ztc-attribution{font:12px/1.55 Arial,sans-serif;color:#58675f;border-top:1px solid #d8e1da;padding-top:9px}" +
+    "#zurielTranslationCompare .ztc-comparison{margin-top:14px;padding-top:12px;border-top:1px solid #d8e1dc}" +
+    "#zurielTranslationCompare .ztc-compare-button{min-height:42px;padding:9px 13px;border-radius:8px;background:#19324f;color:#fff;font-weight:700}" +
+    "#zurielTranslationCompare .ztc-compare-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}" +
+    "#zurielTranslationCompare .ztc-compare-column{min-width:0;padding:10px;border:1px solid #d8e1dc;border-radius:8px;background:#fff}" +
+    "#zurielTranslationCompare .ztc-compare-column h4{margin:0 0 8px;color:#203a31;font:700 14px Arial,sans-serif}" +
+    "#zurielTranslationCompare .ztc-compare-text{white-space:pre-wrap;overflow-wrap:anywhere;margin:0;color:#203a31;font:15px/1.65 Georgia,serif}" +
+    "@media(max-width:560px){#zurielTranslationCompare .ztc-compare-columns{grid-template-columns:1fr}}";
   document.head.appendChild(style);
 
   const panel = node("details");
   panel.id = "zurielTranslationCompare";
   const summary = node("summary", "", "🌐 Compare another Bible translation (online)");
   const note = node("p", "ztc-note",
-    "The King James Version remains available offline. Load authorised translations online when connected. API.Bible keeps only the most recently viewed chapter per translation for offline reading and refreshes it within 14 days. YouVersion passages are shown online only unless the publisher explicitly permits offline storage. NET Bible and ESV passages are online-only and are not stored offline.");
+    "Offline availability: the complete 66-book KJV is stored on this device. Full 66-book downloads of other translations are not currently available. API.Bible can save only the currently viewed chapter for an authorised translation (refreshed within 14 days); YouVersion, NET Bible and ESV passages are online-only here unless a publisher-approved offline permission is explicitly returned. A version will not be shown as downloadable unless its provider confirms that permission.");
   const controls = node("div");
   const providerSelect = node("select");
   providerSelect.setAttribute("aria-label", "Choose online Bible translation provider");
@@ -129,9 +136,30 @@
   passage.hidden = true;
   const attribution = node("p", "ztc-attribution", "");
   attribution.hidden = true;
+  const comparison = node("section", "ztc-comparison", "");
+  comparison.hidden = true;
+  const compareButton = node("button", "ztc-compare-button", "Compare side-by-side with KJV");
+  compareButton.type = "button";
+  const compareColumns = node("div", "ztc-compare-columns", "");
+  const kjvColumn = node("section", "ztc-compare-column", "");
+  const kjvHeading = node("h4", "", "King James Version (KJV)");
+  const kjvText = node("pre", "ztc-compare-text", "");
+  kjvColumn.append(kjvHeading, kjvText);
+  const selectedColumn = node("section", "ztc-compare-column", "");
+  const selectedHeading = node("h4", "", "Selected translation");
+  const selectedText = node("pre", "ztc-compare-text", "");
+  selectedColumn.append(selectedHeading, selectedText);
+  compareColumns.append(kjvColumn, selectedColumn);
+  comparison.append(compareButton, compareColumns);
+  compareButton.addEventListener("click", function () {
+    compareColumns.hidden = !compareColumns.hidden;
+    compareButton.textContent = compareColumns.hidden
+      ? "Compare side-by-side with KJV"
+      : "Hide side-by-side comparison";
+  });
 
   controls.append(providerSelect, offlineSelect, select, loadButton, downloadButton, downloadProgress, statusNode);
-  output.append(passageHeading, passage, attribution);
+  output.append(passageHeading, passage, attribution, comparison);
   panel.append(summary, note, controls, output);
   const homeTranslationSlot = document.getElementById("zurielHomeTranslations");
   if (homeTranslationSlot) {
@@ -634,6 +662,15 @@
       " (" + providerName + ")";
     passage.textContent = selectedProvider === "net-bible" ? item.content + "\n\n(NET)" : item.content;
     passage.hidden = false;
+    const kjvReader = document.getElementById("message");
+    const kjvChapterText = kjvReader ? String(kjvReader.innerText || kjvReader.textContent || "").trim() : "";
+    kjvText.textContent = kjvChapterText || "Open the same chapter in the KJV Reader to display its text here.";
+    selectedHeading.textContent = (item.reference || (currentChapter.book + " " + currentChapter.chapter)) +
+      " — " + ((payload.version && (payload.version.abbreviation || payload.version.title)) || selectedVersionLabel || "Selected translation");
+    selectedText.textContent = selectedProvider === "net-bible" ? item.content + "\n\n(NET)" : item.content;
+    comparison.hidden = false;
+    compareColumns.hidden = false;
+    compareButton.textContent = "Hide side-by-side comparison";
     if (selectedProvider === "net-bible" || selectedProvider === "esv") {
       attribution.replaceChildren();
       attribution.appendChild(document.createTextNode(copyright + " "));

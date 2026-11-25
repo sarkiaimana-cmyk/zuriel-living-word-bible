@@ -189,12 +189,14 @@ jobs:
         run: node scripts/set-android-version.mjs
 
       - name: Build standalone debug APK
+        timeout-minutes: 20
         working-directory: android
-        run: ./gradlew assembleDebug
+        run: ./gradlew --no-daemon --console=plain assembleDebug
 
       - name: Prepare signed release APK
         id: signed_release
         if: steps.signing_check.outputs.available == 'true'
+        timeout-minutes: 20
         continue-on-error: true
         working-directory: android
         env:
@@ -235,7 +237,7 @@ jobs:
             -storepass "$ZURIEL_KEYSTORE_PASSWORD" \
             -alias "$ZURIEL_KEY_ALIAS"
           echo "Step 3/3: validation passed; building signed release APK."
-          ./gradlew assembleRelease
+          ./gradlew --no-daemon --console=plain assembleRelease
           BUILD_TOOLS="$ANDROID_HOME/build-tools/36.0.0"
           UNSIGNED="app/build/outputs/apk/release/app-release-unsigned.apk"
           ALIGNED="$RUNNER_TEMP/zuriel-release-aligned.apk"
