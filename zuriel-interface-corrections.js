@@ -155,8 +155,11 @@
     const panel = document.getElementById("zurielTranslationCompare");
     if (!reader || !panel) return;
     const launch = document.getElementById("zurielGridLaunch");
-    if (launch && launch.parentNode === reader) launch.insertAdjacentElement("afterend", panel);
-    else reader.insertBefore(panel, reader.firstChild);
+    if (launch && launch.parentNode === reader) {
+      if (launch.nextElementSibling !== panel) launch.insertAdjacentElement("afterend", panel);
+    } else if (panel.parentNode !== reader) {
+      reader.insertBefore(panel, reader.firstChild);
+    }
     panel.open = true;
     const summary = panel.querySelector("summary");
     if (summary) summary.textContent = "Bible translations • Compare • Offline downloads";
