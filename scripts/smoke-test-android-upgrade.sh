@@ -92,20 +92,36 @@ if [[ "$OLD_CERT_SHA256" != "$EXPECTED_CERT_SHA256" ]]; then
   exit 1
 fi
 
-# Install and launch the previously published signed app first.\n# adb install "$OLD_APK" is retried by adb_install_retry without changing its semantics.
+# Read the actual launcher activity from the APK manifest. Capacitor's
+# generated Android activity package can differ from the application ID.
+launcher_activity() {
+  local apk="$1"
+  "$BUILD_TOOLS/aapt" dump badging "$apk" |
+    sed -n "s/^launchable-activity: name='\\([^']*\\)'.*/\\1/p" |
+    head -n 1
+}
+OLD_ACTIVITY="$(launcher_activity "$OLD_APK")"
+NEW_ACTIVITY="$(launcher_activity "$APK")"
+if [[ -z "$OLD_ACTIVITY" || -z "$NEW_ACTIVITY" || "$OLD_ACTIVITY" != "$NEW_ACTIVITY" ]]; then
+  echo "Previous and new APK launcher activities are missing or differ."
+  echo "Previous: ${OLD_ACTIVITY:-missing}; new: ${NEW_ACTIVITY:-missing}"
+  exit 1
+fi
+echo "Verified launcher activity: $NEW_ACTIVITY"
+
+# Install and launch the previously published signed app first.
 adb_install_retry "$OLD_APK" "fresh"
 timeout 30s adb shell pm path "$PACKAGE"
-timeout 90s adb shell am start -W -n "$PACKAGE/.MainActivity"
+timeout 90s adb shell am start -W -n "$PACKAGE/$OLD_ACTIVITY"
 sleep 5
 timeout 45s adb shell dumpsys activity activities | grep -F "$PACKAGE"
 
-# Install the new APK over the old package. adb install -r "$APK" is retried\n# by adb_install_retry. Do not uninstall: success proves
-# Android accepted the package/signature update path.
+# Install the new APK over the old package without uninstalling it.
 adb_install_retry "$APK" "replace"
 INSTALLED_PACKAGE="$(timeout 45s adb shell dumpsys package "$PACKAGE" | tr -d '\r')"
 printf '%s\n' "$INSTALLED_PACKAGE" | grep -F "versionName=$VERSION"
 timeout 30s adb shell pm path "$PACKAGE"
-timeout 90s adb shell am start -W -n "$PACKAGE/.MainActivity"
+timeout 90s adb shell am start -W -n "$PACKAGE/$NEW_ACTIVITY"
 sleep 10
 timeout 45s adb shell dumpsys activity activities | grep -F "$PACKAGE"
 
