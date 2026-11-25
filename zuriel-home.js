@@ -1750,7 +1750,6 @@
           const faithResponse = window.ZurielFaithContent &&
             typeof window.ZurielFaithContent.find === "function"
             ? window.ZurielFaithContent.find(verse.reference) : null;
-          navigate("library");
           const opened = window.ZurielLibrary.openGloryVerse(
             verse.reference, scriptureText, "KJV", faithResponse || {}
           );
@@ -1841,7 +1840,8 @@
         } catch (error) {
           if (status) status.textContent = error.message || "The open-book card could not be saved to your Gallery.";
         } finally {
-          if (studioOpened) navigate("home");
+          // Keep the user on the screen where Save was tapped. The hidden Library renderer
+          // prepares the PNG in the background; it must not hijack navigation.
           saveOpenBookCardButton.disabled = false;
         }
       });
