@@ -117,6 +117,22 @@
       background:#fff !important; color:#172b43 !important;
       border:1px solid #dce2e8 !important; box-shadow:none !important;
     }
+    #zurielLibrary .card,
+    #zurielLibrary article,
+    #zurielLibrary .library-card {
+      background:#fff !important; color:#172b43 !important;
+      border:1px solid #dce2e8 !important; border-radius:10px !important;
+      box-shadow:none !important;
+    }
+    #zurielLibrary .card h2,#zurielLibrary .card h3,
+    #zurielLibrary .card h4,#zurielLibrary .card p,
+    #zurielLibrary article p,#zurielLibrary article li {
+      color:#172b43 !important;
+    }
+    #zurielLibrary button {
+      color:#172b43;
+      border-color:#cbd3dc;
+    }
 
     /* Simple, bright book → chapter → verse picker. */
     #zurielGridNavigator {
