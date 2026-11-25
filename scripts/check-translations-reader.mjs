@@ -94,6 +94,9 @@ requireText(client, "API_BIBLE_CACHE_MAX_AGE = 14 * 24 * 60 * 60 * 1000", "API.B
 requireText(client, "saveApiBibleChapter", "API.Bible chapter cache write");
 requireText(client, "readCachedApiBibleChapter", "API.Bible offline chapter fallback");
 requireText(client, "downloadSelectedTranslation", "Current-chapter offline save action");
+requireText(client, "Compare side-by-side with KJV", "Visible side-by-side translation comparison control");
+requireText(client, "ztc-compare-columns", "Responsive KJV and selected-version comparison columns");
+requireText(client, "kjvChapterText", "Comparison uses the currently displayed offline KJV chapter");
 requireText(client, "Keep only the most recently viewed chapter per version", "Keep API.Bible cached Scripture below its consecutive-verse recommendation");
 requireText(client, "pruneCachedTranslationChapters", "Migrate legacy caches to the current publisher limit");
 requireText(client, 'record.key.startsWith("youversion|")', "Remove legacy YouVersion offline text");
