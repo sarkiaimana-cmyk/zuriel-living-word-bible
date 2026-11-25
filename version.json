@@ -1,6 +1,6 @@
 {
-  "version": "2.10.4",
+  "version": "2.10.5",
   "displayVersion": "2.10",
-  "releaseNotes": "Zuriel version 2.10.4: expands the offline Bible Geography Centre and contextual Hebrew/Greek study library, adds curated faith resources, and hardens online translation handling. KJV remains available offline; publisher-restricted translations require authorised online access.",
+  "releaseNotes": "Zuriel version 2.10.5: improves Open Book Gallery saving, strengthens bounded Android upgrade checks, and incorporates the latest verified translation and reader improvements. KJV remains available offline; publisher-restricted translations require authorised online access.",
   "translationApiBase": "https://zuriel-bible-translations.zuriel-living-word-bible.workers.dev"
 }
