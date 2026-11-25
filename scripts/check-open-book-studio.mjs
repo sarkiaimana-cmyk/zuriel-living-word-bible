@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 
-const [library, worker, packaging, index, home, prWorkflow, androidWorkflow, faithCards, readerToolbar] = await Promise.all([
+const [library, worker, packaging, index, home, prWorkflow, androidWorkflow, faithCards, readerToolbar, corrections] = await Promise.all([
   readFile(new URL("../zuriel-library.js", import.meta.url), "utf8"),
   readFile(new URL("../sw.js", import.meta.url), "utf8"),
   readFile(new URL("./prepare-web.mjs", import.meta.url), "utf8"),
@@ -9,7 +9,8 @@ const [library, worker, packaging, index, home, prWorkflow, androidWorkflow, fai
   readFile(new URL("../.github/workflows/validate-pr.yml", import.meta.url), "utf8"),
   readFile(new URL("../.github/workflows/android-apk.yml", import.meta.url), "utf8"),
   readFile(new URL("../zuriel-faith-cards.js", import.meta.url), "utf8"),
-  readFile(new URL("../zuriel-reader-topbar.js", import.meta.url), "utf8")
+  readFile(new URL("../zuriel-reader-topbar.js", import.meta.url), "utf8"),
+  readFile(new URL("../zuriel-interface-corrections.js", import.meta.url), "utf8")
 ]);
 const failures = [];
 try {
@@ -103,6 +104,10 @@ if (!home.includes('window.ZurielLibrary.open("saved")')) failures.push("The Lib
 if (!worker.includes('"./zuriel-library.js"')) failures.push("Service worker does not precache the studio module.");
 if (!packaging.includes('"zuriel-library.js"')) failures.push("Android web packaging omits the studio module.");
 if (!index.includes("zuriel-library.js")) failures.push("App entry point does not load the studio module.");
+if (!index.includes("zuriel-interface-corrections.js")) failures.push("App entry point does not load the interface corrections.");
+if (!worker.includes('"./zuriel-interface-corrections.js"')) failures.push("Offline shell does not precache the interface corrections.");
+if (!packaging.includes('"zuriel-interface-corrections.js"')) failures.push("Android web packaging omits the interface corrections.");
+try { new Function(corrections); } catch (error) { failures.push("Interface correction JavaScript must parse: " + error.message); }
 if (!/openGloryVerse: function[\s\S]*?ZurielHomeNavigate\("library"\)[\s\S]*?openPage\("affirmation"\)/.test(library)) failures.push("Reader-launched Glory Verse Studio must reveal the Library section before opening the studio.");
 if (!prWorkflow.includes("node scripts/check-open-book-studio.mjs")) failures.push("PR validation does not run the studio checker.");
 if (!androidWorkflow.includes("node scripts/check-open-book-studio.mjs")) failures.push("Android validation does not run the studio checker.");
@@ -123,7 +128,8 @@ if (!home.includes("saveImageButton.click();")) failures.push("Home save action 
 if (!home.includes("window.ZurielMedia.isAvailable()") || !home.includes("window.ZurielMedia.saveImage")) failures.push("Home save action must require the native Android Gallery bridge.");
 if (!home.includes("Saved to your phone's Gallery")) failures.push("Home must report success only after Android confirms Gallery saving.");
 if (!home.includes("replace(/^\\d+\\.\\s*/")) failures.push("Home Gallery export must remove only the leading KJV verse number from the loaded passage.");
-if (!home.includes("if (studioOpened) navigate(\"home\")")) failures.push("Home save flow must return the reader to Home after the Gallery export attempt.");
+if (home.includes('navigate("library");') && home.includes("if (studioOpened) navigate(\"home\")")) failures.push("Home Gallery save must not route the user through the Library and back Home.");
+if (!home.includes("Keep the user on the screen where Save was tapped")) failures.push("Home Gallery save must preserve the current screen.");
 if (!library.includes("openSavedGloryVerseCards: function")) failures.push("Saved-card destination does not open the saved Glory Verse collection.");
 if (!readerToolbar.includes("zurielReaderTopControls")) failures.push("Reader controls must be grouped into one top toolbar.");
 if (!readerToolbar.includes("zurielReaderViewTabs")) failures.push("Reader must show Scripture, Meaning and Original Words tabs.");
