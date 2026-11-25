@@ -129,6 +129,9 @@ if (!home.includes("window.ZurielMedia.isAvailable()") || !home.includes("window
 if (!home.includes("Saved to your phone's Gallery")) failures.push("Home must report success only after Android confirms Gallery saving.");
 if (!home.includes("replace(/^\\d+\\.\\s*/")) failures.push("Home Gallery export must remove only the leading KJV verse number from the loaded passage.");
 if (home.includes('navigate("library");') && home.includes("if (studioOpened) navigate(\"home\")")) failures.push("Home Gallery save must not route the user through the Library and back Home.");
+if (!home.includes('openGloryVerse(verse.reference, scriptureText, "KJV", faithResponse, { preserveNavigation: true })')) failures.push("Home Gallery save must render the card without navigating away from the current screen.");
+const saveHandler = home.slice(home.indexOf('const saveOpenBookCardButton'), home.indexOf('const downloadOpenBookCardButton'));
+if (saveHandler.includes('navigate("library")')) failures.push("Home Gallery save handler must not navigate to Library.");
 if (!home.includes("Keep the user on the screen where Save was tapped")) failures.push("Home Gallery save must preserve the current screen.");
 if (!library.includes("openSavedGloryVerseCards: function")) failures.push("Saved-card destination does not open the saved Glory Verse collection.");
 if (!readerToolbar.includes("zurielReaderTopControls")) failures.push("Reader controls must be grouped into one top toolbar.");
