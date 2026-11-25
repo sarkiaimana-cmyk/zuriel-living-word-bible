@@ -22,6 +22,10 @@ for (const [pattern, label] of [
 ]) assert.match(script, pattern, label + " is missing.");
 
 assert.doesNotMatch(script, /adb uninstall|pm clear/, "The upgrade smoke test must never uninstall the app or clear its data.");
+assert.match(script, /timeout 15s adb shell service check package/, "Package-manager probes must have a bounded timeout");
+assert.match(script, /timeout 60s adb wait-for-device/, "ADB recovery must not wait forever for an emulator");
+assert.match(script, /timeout 90s adb shell am start -W/, "Activity launch must have a bounded timeout");
+assert.doesNotMatch(script, /^\s*adb shell\b/m, "No unbounded adb shell command may remain");
 assert.match(workflow, /name: Install previous release and verify in-place Android upgrade/);
 assert.match(workflow, /GH_TOKEN: \$\{\{ github\.token \}\}/, "The emulator step needs a scoped token to fetch the prior public release.");
 assert.match(workflow, /disable-linux-hw-accel: true/, "The hosted emulator must explicitly use software acceleration.");
