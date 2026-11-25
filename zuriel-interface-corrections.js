@@ -69,6 +69,30 @@
     #zurielStudyPanel h4,#zurielStudyPanel p,#zurielStudyPanel li,
     #zurielStudyPanel label,#zurielStudyPanel summary,
     #zurielStudyPanel span { color:#172b43 !important; }
+    #zurielStudyPanel .study-verse,
+    #zurielStudyPanel .highlight-tools,
+    #zurielStudyPanel #zurielStudySections > details,
+    #zurielStudyPanel .study-body,
+    #zurielStudyPanel #zurielGenesisStudy {
+      background:#f7f8fa !important; color:#172b43 !important;
+      border:1px solid #dce2e8 !important; box-shadow:none !important;
+    }
+    #zurielStudyPanel .study-verse h3,
+    #zurielStudyPanel .study-verse p,
+    #zurielStudyPanel .highlight-tools h3,
+    #zurielStudyPanel .highlight-tools p,
+    #zurielStudyPanel .study-body p,
+    #zurielStudyPanel .study-body li,
+    #zurielStudyPanel #zurielStudySections summary {
+      color:#172b43 !important;
+    }
+    #zurielStudyPanel .study-small { color:#526174 !important; }
+    #zurielStudyPanel input,
+    #zurielStudyPanel textarea,
+    #zurielStudyPanel select {
+      background:#fff !important; color:#172b43 !important;
+      border:1px solid #cbd3dc !important;
+    }
     #zurielStudyPanel details,#zurielStudyPanel article,
     #zurielStudyPanel .study-card,#zurielStudyPanel .study-section {
       background:#f7f8fa !important; color:#172b43 !important;
