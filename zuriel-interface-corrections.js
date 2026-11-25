@@ -32,6 +32,23 @@
     #zurielIntroduction p,#zurielIntroduction li,
     #zurielIntroduction summary { color:#172b43 !important; }
     #zurielIntroduction h3 { font-size:16px !important; margin:2px 0 5px !important; }
+    #zurielIntroduction .intro-subtitle { display:none !important; }
+    #zurielIntroduction > label { display:none !important; }
+    #zurielIntroduction select {
+      width:auto !important; max-width:100% !important; min-height:36px !important;
+      margin:4px 8px 4px 0 !important; padding:6px 9px !important;
+      font-size:14px !important;
+    }
+    #zurielIntroduction > p:not(.intro-subtitle) {
+      display:inline-block !important; margin:4px 8px 4px 0 !important;
+      font-size:13px !important; line-height:1.35 !important;
+    }
+    #zurielIntroduction .intro-button {
+      display:inline-block !important; width:auto !important;
+      min-height:36px !important; margin:4px 0 !important;
+      padding:7px 10px !important; font-size:13px !important;
+    }
+    #zurielIntroduction > div { display:none !important; }
     #zurielIntroduction .intro-subtitle { color:#526174 !important; }
     #zurielIntroduction .intro-button {
       width:auto !important; max-width:100% !important; min-height:40px !important;
@@ -168,12 +185,16 @@
   function compactIntroduction() {
     const panel = document.getElementById("zurielIntroduction");
     if (!panel) return;
-    const content = panel.querySelector(".intro-content");
+    const content = panel.querySelector("div");
     if (content) content.hidden = true;
     const button = panel.querySelector("button.intro-button");
     if (button && !button.dataset.zurielCompactBound) {
       button.dataset.zurielCompactBound = "1";
       button.setAttribute("aria-expanded", "false");
+      button.addEventListener("click", function () {
+        const details = panel.querySelector("div");
+        button.setAttribute("aria-expanded", String(Boolean(details && !details.hidden)));
+      });
     }
   }
 
