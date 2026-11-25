@@ -76,7 +76,7 @@ requireText(workerCore, "meta: { fumsToken }", "Forward only the API.Bible FUMS 
 requireText(workerCore, "required Fair Use Management reporting token", "Withhold API.Bible text when FUMS token is missing");
 requireText(client, "Full 66-book downloads of other translations are not currently available", "Accurate full-Bible offline download limitations");
 requireText(client, "API.Bible can save only the currently viewed chapter", "Accurate API.Bible chapter-only offline storage guidance");
-requireText(client, "YouVersion passages are shown online only", "YouVersion online-only rights notice");
+requireText(client, "YouVersion, NET Bible and ESV passages are online-only here", "YouVersion, NET Bible and ESV online-only rights notice");
 requireText(client, "function canStoreOffline(provider)", "Provider-specific offline permission gate");
 requireText(client, 'return provider === "api-bible"', "Only the explicitly supported API.Bible offline cache is enabled");
 requireText(client, "if (!canStoreOffline(provider)) return null", "Block unverified provider cache reads");
