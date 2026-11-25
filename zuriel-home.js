@@ -1797,7 +1797,7 @@
             throw new Error("The Glory Verse Affirmation Studio is not available yet.");
           }
           navigate("library");
-          const opened = window.ZurielLibrary.openGloryVerse(verse.reference, scriptureText, "KJV", faithResponse);
+          const opened = window.ZurielLibrary.openGloryVerse(verse.reference, scriptureText, "KJV", faithResponse, { preserveNavigation: true });
           if (!opened) throw new Error("The open-book image renderer could not be prepared.");
           studioOpened = true;
           const saveImageButton = document.querySelector("#zgsSaveImage");
