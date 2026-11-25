@@ -2103,10 +2103,11 @@
         return persist();
       },
 
-      openGloryVerse: function (reference, scriptureText, translation, faithResponse) {
-        // Reader actions can launch the studio while another primary section is active.
-        // Reveal Library first, then render the requested Glory Verse page.
-        if (window.ZurielHomeNavigate) window.ZurielHomeNavigate("library");
+      openGloryVerse: function (reference, scriptureText, translation, faithResponse, options) {
+        // Reader actions can prepare the card without taking the reader away from the current screen.
+        // Other entry points retain the normal Library navigation by default.
+        const preserveNavigation = Boolean(options && options.preserveNavigation);
+        if (!preserveNavigation && window.ZurielHomeNavigate) window.ZurielHomeNavigate("library");
         openPage("affirmation");
         const studio = document.getElementById("zurielGloryStudio");
         if (!studio) return false;
