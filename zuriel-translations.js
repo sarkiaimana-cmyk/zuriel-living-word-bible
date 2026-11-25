@@ -743,6 +743,17 @@
         } else {
           status(error.message || "The online passage could not be loaded. Your offline KJV is unchanged.");
         }
+        // A catalogue entry is not proof of passage permission. Remove the
+        // selected version after a failed live passage/attribution check.
+        const failedOption = Array.from(select.options).find(option =>
+          option.value === selectedVersionId);
+        if (failedOption && failedOption.value) failedOption.remove();
+        selectedVersionId = "";
+        selectedVersionLabel = "";
+        loadButton.disabled = true;
+        downloadButton.disabled = true;
+        status((error.message || "Passage access could not be verified.") +
+          " This version has been removed from the available list. Choose another version; the offline KJV remains available.");
       }
       return false;
     } finally {
@@ -759,7 +770,9 @@
     requestSequence++;
     if (activeController) activeController.abort();
     activeController = null;
-    selectedProvider = providerSelect.value === "api-bible" ? "api-bible" : "youversion";
+    const requestedProvider = providerSelect.value;
+    selectedProvider = ["youversion", "api-bible", "net-bible", "esv"].includes(requestedProvider)
+      ? requestedProvider : "youversion";
     catalogueSequence++;
     versionsLoading = false;
     versionsLoaded = false;
