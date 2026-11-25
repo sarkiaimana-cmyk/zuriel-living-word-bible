@@ -48,7 +48,6 @@
       min-height:36px !important; margin:4px 0 !important;
       padding:7px 10px !important; font-size:13px !important;
     }
-    #zurielIntroduction > div { display:none !important; }
     #zurielIntroduction .intro-subtitle { color:#526174 !important; }
     #zurielIntroduction .intro-button {
       width:auto !important; max-width:100% !important; min-height:40px !important;
