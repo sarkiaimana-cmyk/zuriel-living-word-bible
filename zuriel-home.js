@@ -1796,7 +1796,6 @@
               typeof window.ZurielLibrary.openGloryVerse !== "function") {
             throw new Error("The Glory Verse Affirmation Studio is not available yet.");
           }
-          navigate("library");
           const opened = window.ZurielLibrary.openGloryVerse(verse.reference, scriptureText, "KJV", faithResponse, { preserveNavigation: true });
           if (!opened) throw new Error("The open-book image renderer could not be prepared.");
           studioOpened = true;
@@ -1867,8 +1866,7 @@
           if (!window.ZurielLibrary || typeof window.ZurielLibrary.openGloryVerse !== "function") {
             throw new Error("The Glory Verse Affirmation Studio is not available yet.");
           }
-          navigate("library");
-          if (!window.ZurielLibrary.openGloryVerse(verse.reference, scriptureText, "KJV", faithResponse || {})) {
+          if (!window.ZurielLibrary.openGloryVerse(verse.reference, scriptureText, "KJV", faithResponse || {}, { preserveNavigation: true })) {
             throw new Error("The open-book image renderer could not be prepared.");
           }
           const downloadButton = document.querySelector("#zgsDownloadImage");
