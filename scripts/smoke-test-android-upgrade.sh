@@ -13,7 +13,8 @@ test -s "$APK"
 
 # Select the newest published release older than this build, rather than
 # assuming a fixed previous version number.
-PREVIOUS_TAG="$(gh release list --limit 50 --json tagName,publishedAt | node -e '
+echo "Discovering the previous signed release tag."
+PREVIOUS_TAG="$(timeout 90s gh release list --limit 50 --json tagName,publishedAt | node -e '
 let raw = "";
 process.stdin.on("data", chunk => raw += chunk).on("end", () => {
   const current = "v" + process.env.VERSION;
@@ -27,7 +28,8 @@ process.stdin.on("data", chunk => raw += chunk).on("end", () => {
 });')"
 
 echo "Testing in-place upgrade from $PREVIOUS_TAG to v$VERSION."
-gh release download "$PREVIOUS_TAG" \
+echo "Downloading the previous signed APK for upgrade verification."
+timeout 180s gh release download "$PREVIOUS_TAG" \
   --pattern "Zuriel-Living-Word-Bible-release.apk" \
   --dir "$PREVIOUS_DIR"
 OLD_APK="$PREVIOUS_DIR/Zuriel-Living-Word-Bible-release.apk"
