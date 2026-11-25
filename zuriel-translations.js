@@ -232,7 +232,7 @@
     select.disabled = true;
     loadButton.disabled = true;
     status("Checking the English Bible versions authorised for " +
-      (providerAtRequest === "youversion" ? "YouVersion" : providerAtRequest === "net-bible" ? "NET Bible" : providerAtRequest === "esv" ? "ESV" : "API.Bible") + "…");
+      providerDisplayName(providerAtRequest) + "…");
     try {
       let available = [];
       let nextPageToken = "";
@@ -311,7 +311,7 @@
       loadedProvider = providerAtRequest;
       select.disabled = false;
       loadButton.disabled = true;
-      const providerName = providerAtRequest === "youversion" ? "YouVersion" : providerAtRequest === "net-bible" ? "NET Bible" : providerAtRequest === "esv" ? "ESV" : "API.Bible";
+      const providerName = providerDisplayName(providerAtRequest);
       status(available.length
         ? available.length + " English version(s) are available from " + providerName + ". " +
           (nextPageToken ? "The catalogue is large; the first 990 results are shown. " : "") +
@@ -406,6 +406,14 @@
       }
     });
     return pending;
+  }
+
+  function providerDisplayName(provider) {
+    if (provider === "youversion") return "YouVersion";
+    if (provider === "api-bible") return "API.Bible";
+    if (provider === "net-bible") return "NET Bible";
+    if (provider === "esv") return "ESV (Crossway)";
+    return "the selected Bible provider";
   }
 
   function canStoreOffline(provider) {
