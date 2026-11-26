@@ -67,14 +67,6 @@
       border:1px solid #b99b58 !important; border-radius:16px !important;
       box-shadow:0 6px 20px rgba(16,33,61,.09) !important; padding:14px !important;
     }
-    #zurielStudyPanel > h2 {
-      margin:-14px -14px 12px !important;
-      padding:15px 14px !important;
-      background:#10213d !important;
-      color:#f0d99f !important;
-      border-bottom:3px solid #b99b58 !important;
-      border-radius:14px 14px 0 0 !important;
-    }
     #zurielStudyPanel > p:first-of-type {
       margin:0 0 14px !important;
       color:#526174 !important;
@@ -84,6 +76,14 @@
     #zurielStudyPanel h4,#zurielStudyPanel p,#zurielStudyPanel li,
     #zurielStudyPanel label,#zurielStudyPanel summary,
     #zurielStudyPanel span { color:#172b43 !important; }
+    #zurielStudyPanel > h2 {
+      margin:-14px -14px 12px !important;
+      padding:15px 14px !important;
+      background:#10213d !important;
+      color:#f0d99f !important;
+      border-bottom:3px solid #b99b58 !important;
+      border-radius:14px 14px 0 0 !important;
+    }
     #zurielStudyPanel .study-verse,
     #zurielStudyPanel .highlight-tools,
     #zurielStudyPanel #zurielStudySections > details,
