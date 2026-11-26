@@ -295,6 +295,15 @@ jobs:
           script: |
             bash scripts/smoke-test-android-upgrade.sh
 
+      - name: Upload Android startup screenshots and WebView diagnostics
+        if: always() && steps.signing_check.outputs.available == 'true' && steps.signed_release.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: Zuriel-Android-Runtime-Diagnostics
+          path: ${{ runner.temp }}/zuriel-runtime-diagnostics/
+          if-no-files-found: warn
+          retention-days: 14
+
       - name: Publish signed release for in-app Android updates
         if: github.ref == 'refs/heads/main' && ((github.event_name == 'workflow_dispatch' && inputs.confirm_release == true) || github.event_name == 'push') && steps.signing_check.outputs.available == 'true' && steps.signed_release.outcome == 'success'
         env:
