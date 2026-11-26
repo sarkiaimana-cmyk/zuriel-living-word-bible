@@ -188,10 +188,26 @@ jobs:
       - name: Set Android version from app metadata
         run: node scripts/set-android-version.mjs
 
+      - name: Configure resilient Maven Central mirror
+        shell: bash
+        run: |
+          cat > "$RUNNER_TEMP/zuriel-maven-mirror.init.gradle" <<'GRADLE'
+          // Prefer Google's read-only Maven Central mirror to reduce transient
+          // Maven Central HTTP 429 failures on shared GitHub-hosted runners.
+          gradle.beforeProject { project ->
+            project.repositories {
+              maven {
+                name = "GoogleMavenCentralMirror"
+                url = uri("https://maven-central.storage-download.googleapis.com/maven2/")
+              }
+            }
+          }
+          GRADLE
+
       - name: Build standalone debug APK
         timeout-minutes: 20
         working-directory: android
-        run: ./gradlew --no-daemon --console=plain assembleDebug
+        run: ./gradlew --init-script "$RUNNER_TEMP/zuriel-maven-mirror.init.gradle" --no-daemon --console=plain assembleDebug
 
       - name: Prepare signed release APK
         id: signed_release
@@ -237,7 +253,7 @@ jobs:
             -storepass "$ZURIEL_KEYSTORE_PASSWORD" \
             -alias "$ZURIEL_KEY_ALIAS"
           echo "Step 3/3: validation passed; building signed release APK."
-          ./gradlew --no-daemon --console=plain assembleRelease
+          ./gradlew --init-script "$RUNNER_TEMP/zuriel-maven-mirror.init.gradle" --no-daemon --console=plain assembleRelease
           BUILD_TOOLS="$ANDROID_HOME/build-tools/36.0.0"
           UNSIGNED="app/build/outputs/apk/release/app-release-unsigned.apk"
           ALIGNED="$RUNNER_TEMP/zuriel-release-aligned.apk"
