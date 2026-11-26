@@ -2,6 +2,13 @@
 (function(){
  "use strict";
  function mount(){
+  var safetyStyle=document.getElementById("zurielNavigationRecoveryStyle");
+  if(!safetyStyle){
+   safetyStyle=document.createElement("style");
+   safetyStyle.id="zurielNavigationRecoveryStyle";
+   safetyStyle.textContent="#zurielBottomNavigation{display:grid!important;position:fixed!important;left:0!important;right:0!important;bottom:0!important;z-index:2147482000!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;transform:none!important}#zurielBottomNavigation[hidden]{display:grid!important}#zurielBottomNavigation button{visibility:visible!important;opacity:1!important;pointer-events:auto!important}";
+   (document.head||document.documentElement).appendChild(safetyStyle);
+  }
   var main=document.querySelector("main");
   if(!main)return;
   var nav=document.getElementById("zurielBottomNavigation");
