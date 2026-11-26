@@ -105,9 +105,9 @@ for (const [label, fragment] of [
   ["search container uses border-box sizing", "#bibleSearch {\\n  box-sizing:border-box;"],
   ["search container is constrained to its parent", "width:100%;\\n  min-width:0;\\n  max-width:100%;"],
   ["search row is constrained to its parent", "#bibleSearch .search-row {\\n  display:flex;\\n  width:100%;\\n  min-width:0;"],
-  ["search input cannot force flex overflow", "flex:1 1 0%;\\n  width:100%;\\n  min-width:0;\\n  max-width:100%;"],
-  ["search results cannot exceed reader width", "#bibleSearchResults {\\n  display:grid;\\n  min-width:0;\\n  max-width:100%;"],
-  ["long search result text wraps safely", "#bibleSearchResults .search-result {\\n  box-sizing:border-box;\\n  min-width:0;\\n  overflow-wrap:anywhere;"]
+  ["search input cannot force flex overflow", "flex:1 1 12rem;\\n  width:100%;\\n  min-width:0;\\n  max-width:100%;"],
+  ["search results cannot exceed reader width", "#bibleSearchResults {\\n  display:grid;\\n  width:100%;\\n  min-width:0;\\n  max-width:100%;"],
+  ["long search result text wraps safely", "#bibleSearchResults .search-result {\\n  display:block;\\n  box-sizing:border-box;\\n  width:100%;\\n  min-width:0;\\n  max-width:100%;\\n  margin:0;\\n  padding:11px;\\n  text-align:left;\\n  white-space:normal;\\n  overflow-wrap:anywhere;"]
 ]) {
   if (!reader.includes(fragment.replace(/\\n/g, "\n"))) {
     failures.push([label, "missing from index.html responsive Scripture search styles"]);
