@@ -16,4 +16,6 @@ assert.match(recovery,/ZurielHomeNavigate/,"Uses app navigation API when present
 assert.match(recovery,/ZurielSettings/,"Settings callback");
 assert.match(home,/window\.ZurielHomeNavigate\s*=\s*navigate/,"Existing navigation API is exposed");
 assert.match(settings,/settingsButton\.dataset\.section\s*=\s*"settings"/,"Settings module has expected navigation target");
+assert.match(settings,/new MutationObserver/,"Settings initialization retries if recovery creates navigation after DOM ready");
+assert.match(settings,/retrySettingsInit\.disconnect\(\)/,"Settings retry observer disconnects after successful initialization");
 console.log("Navigation recovery wiring and seven destinations passed.");
