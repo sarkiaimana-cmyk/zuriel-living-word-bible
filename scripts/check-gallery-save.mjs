@@ -127,7 +127,7 @@ assert.ok(homeSaveHandler.includes('window.ZurielLibrary.openGloryVerse(verse.re
 assert.ok(!homeSaveHandler.includes("openChapter(") && !homeSaveHandler.includes("ZurielHomeNavigate("),
   "Saving the Home card must not redirect to a Scripture reference or another section.");
 const openStudioStart = library.indexOf("openGloryVerse: function (reference, scriptureText, translation, faithResponse, options)");
-const openStudioEnd = library.indexOf("savePrayer: function", openStudioStart);
+const openStudioEnd = library.indexOf("openSaved: function", openStudioStart);
 assert.ok(openStudioStart >= 0 && openStudioEnd > openStudioStart, "Open Book Studio entry point is present.");
 const openStudioHandler = library.slice(openStudioStart, openStudioEnd);
 assert.ok(openStudioHandler.includes("const preserveNavigation = Boolean(options && options.preserveNavigation)") &&
