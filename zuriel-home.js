@@ -1065,12 +1065,15 @@
           navigate("read");
           return;
         }
+        // The online comparison panel lives inside the Reader. Reveal that
+        // section before selecting a provider so the user sees the result.
+        navigate("read");
         if (window.ZurielTranslations &&
             typeof window.ZurielTranslations.selectVersion === "function") {
           window.ZurielTranslations.selectVersion(version);
         } else {
-          const slot = document.getElementById("zurielHomeTranslations");
-          if (slot) slot.textContent = "Translation controls are still loading. Please try again.";
+          const status = document.getElementById("readerStatus");
+          if (status) status.textContent = "Translation controls are still loading. Please try again.";
         }
       });
     });
