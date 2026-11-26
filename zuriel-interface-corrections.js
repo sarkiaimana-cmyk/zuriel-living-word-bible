@@ -61,9 +61,24 @@
 
     /* Study is a focused study workspace; Library is a resource catalogue. */
     #zurielStudyPanel {
-      background:#fff !important; color:#172b43 !important;
-      border:1px solid #dce2e8 !important; border-radius:10px !important;
-      box-shadow:none !important; padding:14px !important;
+      /* A calm blue-ivory workspace keeps Study visibly distinct from the
+         intentionally plain white Scripture-reading page. */
+      background:#eef2f7 !important; color:#172b43 !important;
+      border:1px solid #b99b58 !important; border-radius:16px !important;
+      box-shadow:0 6px 20px rgba(16,33,61,.09) !important; padding:14px !important;
+    }
+    #zurielStudyPanel > h2 {
+      margin:-14px -14px 12px !important;
+      padding:15px 14px !important;
+      background:#10213d !important;
+      color:#f0d99f !important;
+      border-bottom:3px solid #b99b58 !important;
+      border-radius:14px 14px 0 0 !important;
+    }
+    #zurielStudyPanel > p:first-of-type {
+      margin:0 0 14px !important;
+      color:#526174 !important;
+      font-weight:600;
     }
     #zurielStudyPanel h1,#zurielStudyPanel h2,#zurielStudyPanel h3,
     #zurielStudyPanel h4,#zurielStudyPanel p,#zurielStudyPanel li,
