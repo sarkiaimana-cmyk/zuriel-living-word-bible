@@ -22,7 +22,7 @@
     button.dataset.section=item[0];button.innerHTML="<span>"+item[1]+"</span>"+item[2];nav.appendChild(button);
    }
    button.style.cssText+=";display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;width:100%;max-width:100%;min-height:54px;padding:4px 1px;color:inherit;background:transparent;border:0;font-size:clamp(8px,2.35vw,10px);line-height:1.12;text-align:center;white-space:normal";
-   if(!button.dataset.zurielRecoveryBound){
+   if(!button.dataset.zurielRecoveryBound && !button.dataset.zurielHomeBound && !button.dataset.zurielSettingsBound){
     button.dataset.zurielRecoveryBound="1";
     button.addEventListener("click",function(){if(typeof window.ZurielHomeNavigate==="function")window.ZurielHomeNavigate(item[0]);});
    }
