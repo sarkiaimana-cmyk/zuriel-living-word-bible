@@ -371,7 +371,10 @@
     else nav.querySelector('[data-section="home"]')?.click();
   }
 
+  let initialized = false;
+
   function init() {
+    if (initialized) return true;
     const main = document.querySelector("main");
     const nav = document.getElementById("zurielBottomNavigation");
     if (!main || !nav) return false;
@@ -463,6 +466,7 @@
 
     syncControls(panel);
     applySettings();
+    initialized = true;
     return true;
   }
 
