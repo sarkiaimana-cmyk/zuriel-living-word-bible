@@ -1065,12 +1065,15 @@
           navigate("read");
           return;
         }
+        // The online comparison panel lives inside the Reader. Reveal that
+        // section before selecting a provider so the user sees the result.
+        navigate("read");
         if (window.ZurielTranslations &&
             typeof window.ZurielTranslations.selectVersion === "function") {
           window.ZurielTranslations.selectVersion(version);
         } else {
-          const slot = document.getElementById("zurielHomeTranslations");
-          if (slot) slot.textContent = "Translation controls are still loading. Please try again.";
+          const status = document.getElementById("readerStatus");
+          if (status) status.textContent = "Translation controls are still loading. Please try again.";
         }
       });
     });
@@ -1118,7 +1121,7 @@
 
     /* BOTTOM NAVIGATION */
 
-    const nav = document.createElement("nav");
+    const nav = document.getElementById("zurielBottomNavigation") || document.createElement("nav");
     nav.id = "zurielBottomNavigation";
     nav.setAttribute("aria-label", "Main navigation");
 
@@ -1132,19 +1135,23 @@
     ];
 
     navItems.forEach(function (item) {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.dataset.section = item[0];
-      button.innerHTML = "<span>" + item[1] + "</span>" + item[2];
-
-      button.addEventListener("click", function () {
-        navigate(item[0]);
-      });
-
-      nav.appendChild(button);
+      let button = nav.querySelector('[data-section="' + item[0] + '"]');
+      if (!button) {
+        button = document.createElement("button");
+        button.type = "button";
+        button.dataset.section = item[0];
+        button.innerHTML = "<span>" + item[1] + "</span>" + item[2];
+        nav.appendChild(button);
+      }
+      if (button.dataset.zurielHomeBound !== "1") {
+        button.dataset.zurielHomeBound = "1";
+        button.addEventListener("click", function () {
+          navigate(item[0]);
+        });
+      }
     });
 
-    document.body.appendChild(nav);
+    if (!nav.isConnected) document.body.appendChild(nav);
 
     /* MOBILE NAVIGATION SAFEGUARDS
        Keep every destination visible above Android's system navigation area.

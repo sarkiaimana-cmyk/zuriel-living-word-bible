@@ -1,8 +1,8 @@
 /* Zuriel in-app update centre — safe web refresh checks and transparent Android status. */
 (function () {
   "use strict";
-  const APP_VERSION = "2.10.6";
-  const DISPLAY_VERSION = "2.10.6";
+  const APP_VERSION = "2.10.7";
+  const DISPLAY_VERSION = "2.10.7";
   const VERSION_URL = "https://raw.githubusercontent.com/sarkiaimana-cmyk/zuriel-living-word-bible/main/version.json";
   function mount() {
     const panel = document.getElementById("zurielSettingsPanel");

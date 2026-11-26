@@ -122,5 +122,17 @@ const homeSaveHandler = home.slice(homeSaveStart, homeSaveEnd);
 assert.ok(homeSaveHandler.indexOf("new MutationObserver(checkResult)") < homeSaveHandler.indexOf("saveImageButton.click()"), "Home subscribes to the Gallery result before starting export");
 assert.ok(homeSaveHandler.includes("/^Preparing your open-book image") && homeSaveHandler.includes("return;"), "temporary image preparation status is ignored while waiting");
 assert.ok(homeSaveHandler.includes("if (!/^Saved to your phone's Gallery in the /.test(resultMessage))"), "Home requires explicit Gallery success before confirming the save");
+assert.ok(homeSaveHandler.includes('window.ZurielLibrary.openGloryVerse(verse.reference, scriptureText, "KJV", faithResponse, { preserveNavigation: true })'),
+  "Home Gallery export prepares the card without navigating away from the current screen.");
+assert.ok(!homeSaveHandler.includes("openChapter(") && !homeSaveHandler.includes("ZurielHomeNavigate("),
+  "Saving the Home card must not redirect to a Scripture reference or another section.");
+const openStudioStart = library.indexOf("openGloryVerse: function (reference, scriptureText, translation, faithResponse, options)");
+const openStudioEnd = library.indexOf("openSaved: function", openStudioStart);
+assert.ok(openStudioStart >= 0 && openStudioEnd > openStudioStart, "Open Book Studio entry point is present.");
+const openStudioHandler = library.slice(openStudioStart, openStudioEnd);
+assert.ok(openStudioHandler.includes("const preserveNavigation = Boolean(options && options.preserveNavigation)") &&
+  openStudioHandler.includes("if (!preserveNavigation && window.ZurielHomeNavigate)"),
+  "Open Book Studio honours the preserve-navigation flag for Gallery export.");
+
 
 console.log("Gallery export checks passed: native Android album save, app-scoped permissions, system sharing and browser Downloads fallback.");

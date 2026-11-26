@@ -60,6 +60,9 @@ jobs:
       - name: Validate shared end-to-end visual design system
         run: node scripts/check-design-system.mjs
 
+      - name: Validate bottom navigation recovery safeguards
+        run: node scripts/check-navigation-recovery.mjs
+
       - name: Validate streamlined home dashboard and distinct sections
         run: node scripts/check-home-dashboard.mjs
 

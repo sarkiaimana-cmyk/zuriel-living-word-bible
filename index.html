@@ -285,16 +285,25 @@ select {
   font-weight:bold;
 }
 
+#bibleSearch,
+#bibleSearch * {
+  box-sizing:border-box;
+}
 #bibleSearch .search-row {
   display:flex;
   width:100%;
   min-width:0;
+  max-width:100%;
   gap:8px;
+  align-items:stretch;
 }
-
+#bibleSearch .search-row > * {
+  min-width:0;
+  max-width:100%;
+}
 #bibleSearch input {
   box-sizing:border-box;
-  flex:1 1 0%;
+  flex:1 1 12rem;
   width:100%;
   min-width:0;
   max-width:100%;
@@ -304,54 +313,59 @@ select {
   border-radius:8px;
   font-size:16px;
 }
-
 #bibleSearch button {
-  min-height:46px;  margin:0;
-  white-space:nowrap;
+  flex:0 1 auto;
+  min-width:0;
+  max-width:100%;
+  min-height:46px;
+  margin:0;
+  white-space:normal;
+  overflow-wrap:anywhere;
 }
-
 #bibleSearchResults {
   display:grid;
+  width:100%;
   min-width:0;
   max-width:100%;
   gap:8px;
   margin-top:10px;
 }
 #bibleSearchResults .search-result {
-  box-sizing:border-box;
-  min-width:0;
-  overflow-wrap:anywhere;
-}
-
-#bibleSearchResults .search-result {
   display:block;
+  box-sizing:border-box;
   width:100%;
+  min-width:0;
+  max-width:100%;
   margin:0;
   padding:11px;
   text-align:left;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  word-break:normal;
   background:#fff;
   color:#18352b;
   border:1px solid #d7d1bf;
   border-radius:9px;
   line-height:1.55;
 }
-
 #bibleSearchResults .search-result strong {
   display:block;
+  min-width:0;
+  max-width:100%;
   color:#24634a;
   margin-bottom:3px;
+  overflow-wrap:anywhere;
 }
-
 .verse.zuriel-search-highlight {
   background:#fff0c9 !important;
   border-left:5px solid #b99b58;
   border-radius:8px;
   padding-left:12px;
 }
-
 @media(max-width:420px) {
   #bibleSearch .search-row { flex-direction:column; }
-  #bibleSearch button { width:100%; }
+  #bibleSearch input,
+  #bibleSearch button { flex:1 1 auto; width:100%; }
 }
 
 .continue-card { border-left: 5px solid #24634a; }
@@ -590,6 +604,26 @@ footer {
   #bibleSearchResults .search-result { padding:10px; font-size:14px; line-height:1.5; }
 }
 
+
+#zurielBottomNavigation {
+  position:fixed;left:0;right:0;bottom:0;z-index:2147482000;
+  display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:2px;
+  min-height:70px;padding:6px 5px calc(7px + env(safe-area-inset-bottom,0px));
+  box-sizing:border-box;background:#10213d;color:#fff;
+  border-top:1px solid #b99b58;box-shadow:0 -4px 15px #00000020;
+  visibility:visible;opacity:1;pointer-events:auto;
+}
+#zurielBottomNavigation button {
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-width:0;width:100%;min-height:54px;margin:0;padding:4px 1px;
+  border:0;border-radius:9px;background:transparent;color:#fff;
+  font:700 clamp(8px,2.35vw,10px)/1.12 Arial,sans-serif;
+  white-space:normal;overflow-wrap:anywhere;text-align:center;
+}
+#zurielBottomNavigation button span {display:block;margin-bottom:3px;font-size:18px;line-height:1}
+#zurielBottomNavigation button.active {background:#e8cf91;color:#10213d}
+body {padding-bottom:calc(78px + env(safe-area-inset-bottom,0px))}
+@media(max-width:360px){#zurielBottomNavigation{gap:0}#zurielBottomNavigation button{font-size:8px;padding-left:0;padding-right:0}#zurielBottomNavigation button span{font-size:16px}}
 </style>
 </head>
 
@@ -686,6 +720,16 @@ footer {
   Zuriel Living Word Bible
   <p>His Words.. My Life.. My Victory</p>
 </footer>
+
+<nav id="zurielBottomNavigation" aria-label="Main navigation">
+  <button type="button" data-section="home"><span>🏠</span>Home</button>
+  <button type="button" data-section="read"><span>📖</span>Read</button>
+  <button type="button" data-section="study"><span>🔍</span>Study</button>
+  <button type="button" data-section="library"><span>📚</span>Library</button>
+  <button type="button" data-section="kingdom"><span>🌱</span>Grow</button>
+  <button type="button" data-section="personal"><span>📝</span>My Space</button>
+  <button type="button" data-section="settings"><span>⚙️</span>Settings</button>
+</nav>
 
 <script src="bible-data.js"></script>
 
@@ -1811,6 +1855,8 @@ loadBibleBooks();
   <script src="zuriel-design-system.js"></script>
   <script src="zuriel-interface-corrections.js"></script>
   
+
+<script src="zuriel-navigation-recovery.js"></script>
 
 <!-- REGISTER THE OFFLINE ENGINE -->
 

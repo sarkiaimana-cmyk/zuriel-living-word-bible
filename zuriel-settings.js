@@ -371,22 +371,31 @@
     else nav.querySelector('[data-section="home"]')?.click();
   }
 
+  let initialized = false;
+
   function init() {
+    if (initialized) return true;
     const main = document.querySelector("main");
     const nav = document.getElementById("zurielBottomNavigation");
     if (!main || !nav) return false;
 
     addStyles();
     const panel = createPanel(main);
-    const settingsButton = document.createElement("button");
-    settingsButton.type = "button";
-    settingsButton.dataset.section = "settings";
-    settingsButton.innerHTML = "<span>⚙️</span>Settings";
+    let settingsButton = nav.querySelector('[data-section="settings"]');
+    if (!settingsButton) {
+      settingsButton = document.createElement("button");
+      settingsButton.type = "button";
+      settingsButton.dataset.section = "settings";
+      settingsButton.innerHTML = "<span>⚙️</span>Settings";
+      nav.appendChild(settingsButton);
+    }
     settingsButton.setAttribute("aria-label", "Open app settings");
-    settingsButton.addEventListener("click", function () {
-      openSettings(main, panel, nav);
-    });
-    nav.appendChild(settingsButton);
+    if (settingsButton.dataset.zurielSettingsBound !== "1") {
+      settingsButton.dataset.zurielSettingsBound = "1";
+      settingsButton.addEventListener("click", function () {
+        openSettings(main, panel, nav);
+      });
+    }
     nav.style.gridTemplateColumns = "repeat(7,minmax(0,1fr))";
     nav.querySelectorAll("button").forEach(button => {
       button.style.fontSize = "9px";
@@ -463,6 +472,7 @@
 
     syncControls(panel);
     applySettings();
+    initialized = true;
     return true;
   }
 
@@ -478,6 +488,15 @@
   };
 
   if (!init()) {
-    document.addEventListener("DOMContentLoaded", init, { once: true });
+    const retrySettingsInit = new MutationObserver(function () {
+      if (init()) retrySettingsInit.disconnect();
+    });
+    retrySettingsInit.observe(document.documentElement, {
+      childList: true,
+      subtree: true
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+      if (init()) retrySettingsInit.disconnect();
+    }, { once: true });
   }
 })();

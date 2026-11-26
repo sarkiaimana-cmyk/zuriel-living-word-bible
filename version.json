@@ -1,6 +1,6 @@
 {
-  "version": "2.10.6",
-  "displayVersion": "2.10.6",
-  "releaseNotes": "Zuriel 2.10.6: improves mobile reader readability, simplifies the book/chapter/verse navigator, makes translation comparison and offline chapter controls easier to find, and keeps Open Book Gallery saving on the current screen. KJV remains the verified offline Bible; additional translation availability and device Gallery saving must still be confirmed on the installed app.",
+  "version": "2.10.7",
+  "displayVersion": "2.10.7",
+  "releaseNotes": "Zuriel 2.10.7: restores and safeguards the seven-item bottom navigation (Home, Read, Study, Library, Grow, My Space and Settings). This release is pending validation; KJV remains the verified offline Bible and additional translation availability and Gallery saving must still be confirmed.",
   "translationApiBase": "https://zuriel-bible-translations.zuriel-living-word-bible.workers.dev"
 }

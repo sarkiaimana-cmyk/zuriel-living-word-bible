@@ -7,6 +7,7 @@ const files = [
   "zuriel-library.js",
   "zuriel-media.js",
   "zuriel-home.js",
+  "zuriel-navigation-recovery.js",
   "zuriel-minimal-home.js",
   "zuriel-history.js",
   "zuriel-word-linking.js",
