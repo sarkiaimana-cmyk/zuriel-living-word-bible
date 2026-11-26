@@ -285,16 +285,25 @@ select {
   font-weight:bold;
 }
 
+#bibleSearch,
+#bibleSearch * {
+  box-sizing:border-box;
+}
 #bibleSearch .search-row {
   display:flex;
   width:100%;
   min-width:0;
+  max-width:100%;
   gap:8px;
+  align-items:stretch;
 }
-
+#bibleSearch .search-row > * {
+  min-width:0;
+  max-width:100%;
+}
 #bibleSearch input {
   box-sizing:border-box;
-  flex:1 1 0%;
+  flex:1 1 12rem;
   width:100%;
   min-width:0;
   max-width:100%;
@@ -304,54 +313,59 @@ select {
   border-radius:8px;
   font-size:16px;
 }
-
 #bibleSearch button {
-  min-height:46px;  margin:0;
-  white-space:nowrap;
+  flex:0 1 auto;
+  min-width:0;
+  max-width:100%;
+  min-height:46px;
+  margin:0;
+  white-space:normal;
+  overflow-wrap:anywhere;
 }
-
 #bibleSearchResults {
   display:grid;
+  width:100%;
   min-width:0;
   max-width:100%;
   gap:8px;
   margin-top:10px;
 }
 #bibleSearchResults .search-result {
-  box-sizing:border-box;
-  min-width:0;
-  overflow-wrap:anywhere;
-}
-
-#bibleSearchResults .search-result {
   display:block;
+  box-sizing:border-box;
   width:100%;
+  min-width:0;
+  max-width:100%;
   margin:0;
   padding:11px;
   text-align:left;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  word-break:normal;
   background:#fff;
   color:#18352b;
   border:1px solid #d7d1bf;
   border-radius:9px;
   line-height:1.55;
 }
-
 #bibleSearchResults .search-result strong {
   display:block;
+  min-width:0;
+  max-width:100%;
   color:#24634a;
   margin-bottom:3px;
+  overflow-wrap:anywhere;
 }
-
 .verse.zuriel-search-highlight {
   background:#fff0c9 !important;
   border-left:5px solid #b99b58;
   border-radius:8px;
   padding-left:12px;
 }
-
 @media(max-width:420px) {
   #bibleSearch .search-row { flex-direction:column; }
-  #bibleSearch button { width:100%; }
+  #bibleSearch input,
+  #bibleSearch button { flex:1 1 auto; width:100%; }
 }
 
 .continue-card { border-left: 5px solid #24634a; }
