@@ -1,0 +1,16 @@
+import fs from "node:fs";
+import assert from "node:assert/strict";
+const html=fs.readFileSync("index.html","utf8");
+const recovery=fs.readFileSync("zuriel-navigation-recovery.js","utf8");
+const home=fs.readFileSync("zuriel-home.js","utf8");
+const settings=fs.readFileSync("zuriel-settings.js","utf8");
+assert.match(html,/zuriel-navigation-recovery\.js/,"Recovery script is wired into HTML");
+assert.match(recovery,/zurielBottomNavigation/);
+for(const id of ["home","read","study","library","kingdom","personal","settings"])assert.ok(recovery.includes('"'+id+'"'),"Recovery must restore "+id);
+assert.match(recovery,/position:fixed/,"Nav must be fixed to viewport");
+assert.match(recovery,/visibility:visible/,"Recovery explicitly restores visibility");
+assert.match(recovery,/ZurielHomeNavigate/,"Uses app navigation API when present");
+assert.match(recovery,/ZurielSettings/,"Settings callback");
+assert.match(home,/window\.ZurielHomeNavigate\s*=\s*navigate/,"Existing navigation API is exposed");
+assert.match(settings,/settingsButton\.dataset\.section\s*=\s*"settings"/,"Settings module has expected navigation target");
+console.log("Navigation recovery wiring and seven destinations passed.");
