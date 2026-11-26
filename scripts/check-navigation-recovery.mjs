@@ -20,4 +20,7 @@ assert.match(settings,/settingsButton\.dataset\.section\s*=\s*"settings"/,"Setti
 assert.match(settings,/new MutationObserver/,"Settings initialization retries until navigation exists");
 assert.match(settings,/retrySettingsInit\.disconnect\(\)/,"Settings retry observer disconnects after initialization");
 assert.match(settings,/if \(initialized\) return true/,"Settings initialization is idempotent");
-assert.match(recovery,/new MutationObserver/,"Recovery waits for delayed nav creation");\nassert.match(recovery,/repairObserver\\.observe\\(document\\.documentElement/,"Recovery watches DOM for delayed navigation");\nassert.match(recovery,/repairObserver\\.disconnect\\(\)/,"Recovery observer stops after successful repair");\nconsole.log("Navigation ownership, delayed recovery, six primary destinations, and Settings seventh destination passed.");
+assert.match(recovery,/new MutationObserver/,"Recovery waits for delayed nav creation");
+assert.match(recovery,/repairObserver\.observe\(document\.documentElement/,"Recovery watches DOM for delayed navigation");
+assert.match(recovery,/repairObserver\.disconnect\(\)/,"Recovery observer stops after successful repair");
+console.log("Navigation ownership, delayed recovery, six primary destinations, and Settings seventh destination passed.");
