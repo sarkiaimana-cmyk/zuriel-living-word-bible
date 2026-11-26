@@ -18,4 +18,5 @@ assert.match(home,/window\.ZurielHomeNavigate\s*=\s*navigate/,"Existing navigati
 assert.match(settings,/settingsButton\.dataset\.section\s*=\s*"settings"/,"Settings module has expected navigation target");
 assert.match(settings,/new MutationObserver/,"Settings initialization retries if recovery creates navigation after DOM ready");
 assert.match(settings,/retrySettingsInit\.disconnect\(\)/,"Settings retry observer disconnects after successful initialization");
+assert.match(settings,/if \(initialized\) return true/,"Settings module initialization is idempotent");
 console.log("Navigation recovery wiring and seven destinations passed.");
