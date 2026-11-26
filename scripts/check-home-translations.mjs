@@ -33,6 +33,14 @@ assert.equal(
 assert.ok(home.includes('dashboard.querySelectorAll("[data-zuriel-translation]")'), "top translation shortcuts must receive click handlers");
 assert.ok(home.includes('window.ZurielTranslations.selectVersion(version)'), "non-KJV shortcuts must request their selected version");
 assert.ok(home.includes('if (version === "KJV")'), "KJV shortcut must open the bundled offline Bible reader");
+assert.ok(
+  home.includes('navigate("read");\n        if (window.ZurielTranslations'),
+  "non-KJV Home shortcuts must reveal the Reader before opening its translation panel"
+);
+assert.ok(
+  home.includes('const status = document.getElementById("readerStatus");'),
+  "translation-loading feedback must be shown in the visible Reader, not the hidden Home dashboard"
+);
 
 assert.ok(translations.includes('panel.id = "zurielTranslationCompare"'), "translation comparison and download panel must exist");
 assert.ok(!dashboard.includes('id="zurielHomeTranslations"'), "expanded translation management must not clutter the home shortcuts");
