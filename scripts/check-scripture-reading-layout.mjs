@@ -28,7 +28,18 @@ console.log("Full-width Scripture layout checks passed.");
 
 
 const settings = fs.readFileSync("zuriel-settings.js", "utf8");
+const interfaceCorrections = fs.readFileSync("zuriel-interface-corrections.js", "utf8");
 assert.ok(settings.includes('paper: "white"'), "White paper must be the default reader background.");
+assert.ok(
+  interfaceCorrections.includes("background:#eef2f7 !important;"),
+  "Study Centre must retain a distinct soft blue-ivory workspace instead of matching the white Reader."
+);
+assert.ok(
+  interfaceCorrections.includes("#zurielStudyPanel > h2") &&
+  interfaceCorrections.includes("background:#10213d !important;") &&
+  interfaceCorrections.includes("color:#f0d99f !important;"),
+  "Study Centre must keep its distinct navy-and-gold title treatment."
+);
 assert.ok(settings.includes('zurielReaderWhitePageDefaultV172') &&
   settings.includes('saved.paper === "ivory"'),
   "Existing installations must migrate the former default ivory page to white once.");
