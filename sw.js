@@ -12,6 +12,7 @@ const CORE_FILES = [
   "./zuriel-study-library-data.js",
   "./zuriel-media.js",
   "./zuriel-home.js",
+  "./zuriel-navigation-recovery.js",
   "./zuriel-screenshot-home.js",
   "./zuriel-minimal-home.js",
   "./zuriel-history.js",
