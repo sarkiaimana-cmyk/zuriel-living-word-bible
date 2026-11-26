@@ -40,6 +40,11 @@ assert.ok(
   interfaceCorrections.includes("color:#f0d99f !important;"),
   "Study Centre must keep its distinct navy-and-gold title treatment."
 );
+assert.ok(
+  interfaceCorrections.indexOf("#zurielStudyPanel > h2") >
+    interfaceCorrections.indexOf("#zurielStudyPanel h1,#zurielStudyPanel h2,#zurielStudyPanel h3"),
+  "The navy-and-gold Study title rule must follow generic heading colours so its contrast is preserved."
+);
 assert.ok(settings.includes('zurielReaderWhitePageDefaultV172') &&
   settings.includes('saved.paper === "ivory"'),
   "Existing installations must migrate the former default ivory page to white once.");
