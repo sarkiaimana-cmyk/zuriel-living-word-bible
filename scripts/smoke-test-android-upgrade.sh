@@ -6,6 +6,8 @@ BUILD_TOOLS="$ANDROID_HOME/build-tools/36.0.0"
 PACKAGE="com.zuriel.livingwordbible.release"
 VERSION="$(node -p "JSON.parse(require('fs').readFileSync('version.json','utf8')).version")"
 export VERSION
+DIAG_DIR="$RUNNER_TEMP/zuriel-runtime-diagnostics"
+mkdir -p "$DIAG_DIR"
 EXPECTED_CERT_SHA256="$(tr -d '[:space:]:' < android-signing-fingerprint.txt | tr '[:upper:]' '[:lower:]')"
 PREVIOUS_DIR="$RUNNER_TEMP/zuriel-previous-release"
 mkdir -p "$PREVIOUS_DIR"
@@ -117,6 +119,11 @@ timeout 30s adb shell pm path "$PACKAGE"
 timeout 90s adb shell am start -W -n "$PACKAGE/$OLD_ACTIVITY"
 sleep 5
 timeout 45s adb shell dumpsys activity activities | grep -F "$PACKAGE"
+# Capture what Android actually rendered; activity launch alone does not prove
+# that the WebView loaded the Bible page or displayed usable content.
+timeout 30s adb exec-out screencap -p > "$DIAG_DIR/previous-release.png"
+timeout 45s adb shell uiautomator dump /sdcard/zuriel-previous-window.xml >/dev/null
+timeout 30s adb pull /sdcard/zuriel-previous-window.xml "$DIAG_DIR/previous-release-window.xml" >/dev/null
 
 # Install the new APK over the old package without uninstalling it.
 adb_install_retry "$APK" "replace"
@@ -126,5 +133,12 @@ timeout 30s adb shell pm path "$PACKAGE"
 timeout 90s adb shell am start -W -n "$PACKAGE/$NEW_ACTIVITY"
 sleep 10
 timeout 45s adb shell dumpsys activity activities | grep -F "$PACKAGE"
+timeout 30s adb exec-out screencap -p > "$DIAG_DIR/new-release.png"
+timeout 45s adb shell uiautomator dump /sdcard/zuriel-new-window.xml >/dev/null
+timeout 30s adb pull /sdcard/zuriel-new-window.xml "$DIAG_DIR/new-release-window.xml" >/dev/null
+timeout 45s adb logcat -d -t 6000 > "$DIAG_DIR/android-logcat.txt"
+if grep -Eiq 'FATAL EXCEPTION|chromium.*(ERROR|Error)|Uncaught (TypeError|ReferenceError|SyntaxError)|net::ERR_' "$DIAG_DIR/android-logcat.txt"; then
+  echo "Runtime error signatures were recorded; inspect the uploaded Android diagnostics before accepting this build."
+fi
 
 echo "Signed APK in-place upgrade smoke test passed: $PREVIOUS_TAG -> v$VERSION."
