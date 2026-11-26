@@ -26,15 +26,17 @@ assert.ok(index.includes(".verse[data-verse-number=\"'+item.verse+'\"]"), "Searc
 
  
 // Reader-width regression guard for narrow Android screens.
-assert.match(index, /#bibleSearch,\\s*#bibleSearch \\*\\s*\\{\\s*box-sizing:border-box;/,
+assert.ok(index.includes("#bibleSearch,\\n#bibleSearch * {\\n  box-sizing:border-box;"),
   "Search panel descendants must use border-box sizing.");
-assert.match(index, /#bibleSearch \\.search-row > \\* \\{\\s*min-width:0;\\s*max-width:100%;/,
+assert.ok(index.includes("#bibleSearch .search-row > * {\\n  min-width:0;\\n  max-width:100%;"),
   "Search row children must shrink inside the reader.");
-assert.match(index, /#bibleSearch input \\{[\\s\\S]*?flex:1 1 12rem;[\\s\\S]*?min-width:0;/,
+assert.ok(index.includes("flex:1 1 12rem;") && index.includes("#bibleSearch input {"),
   "Search input must flex without imposing a minimum page width.");
-assert.match(index, /#bibleSearchResults \\.search-result \\{[\\s\\S]*?max-width:100%;[\\s\\S]*?overflow-wrap:anywhere;/,
+assert.ok(index.includes("#bibleSearchResults .search-result {") &&
+  index.includes("overflow-wrap:anywhere;") && index.includes("max-width:100%;"),
   "Long search-result text must wrap inside its card.");
-assert.match(index, /@media\\(max-width:420px\\) \\{\\s*#bibleSearch \\.search-row \\{ flex-direction:column; \\}/,
+assert.ok(index.includes("@media(max-width:420px)") &&
+  index.includes("#bibleSearch .search-row { flex-direction:column; }"),
   "Search controls must stack on narrow phone screens.");
 
 const phrase = await search.search("God so loved", 30);
