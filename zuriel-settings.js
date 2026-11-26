@@ -478,6 +478,15 @@
   };
 
   if (!init()) {
-    document.addEventListener("DOMContentLoaded", init, { once: true });
+    const retrySettingsInit = new MutationObserver(function () {
+      if (init()) retrySettingsInit.disconnect();
+    });
+    retrySettingsInit.observe(document.documentElement, {
+      childList: true,
+      subtree: true
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+      if (init()) retrySettingsInit.disconnect();
+    }, { once: true });
   }
 })();
