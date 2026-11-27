@@ -305,7 +305,7 @@
       panel.dataset.zurielPanelInitialized = "1";
     }
     const summary = panel.querySelector("summary");
-    if (summary) summary.textContent = "Bible translations • Compare • Offline downloads";
+    if (summary && summary.textContent !== "Bible translations • Compare • Offline downloads") summary.textContent = "Bible translations • Compare • Offline downloads";
   }
 
   function compactIntroduction() {
