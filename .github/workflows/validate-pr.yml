@@ -63,6 +63,9 @@ jobs:
       - name: Validate bottom navigation recovery safeguards
         run: node scripts/check-navigation-recovery.mjs
 
+      - name: Validate reader settings, highlight colours, and Open Book design
+        run: node scripts/check-reader-settings-and-card-design.mjs
+
       - name: Validate streamlined home dashboard and distinct sections
         run: node scripts/check-home-dashboard.mjs
 
