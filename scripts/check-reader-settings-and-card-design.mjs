@@ -27,7 +27,10 @@ assert.ok(home.includes("var(--zuriel-home-wallpaper)"), "Home identity cards mu
 assert.ok(corrections.includes(".zob-landscape"), "Open Book outer frame must retain its own design treatment");
 assert.ok(corrections.includes("background-image:linear-gradient(145deg,rgba(7,22,39,.28),rgba(7,22,39,.12)),var(--zuriel-home-wallpaper)"), "Open Book landscape must retain rotating wallpaper");
 assert.ok(corrections.includes(".zob-page:nth-child(2)"), "Open Book pages must retain differentiated page finishes");
-assert.ok(library.includes("cardFinish"), "Card studio must retain its saved finish preference");
+assert.ok(library.includes('studio.dataset.finish = "navy"'), "Card studio must initialise a selectable open-book finish");
+assert.ok(library.includes("finish:studio.dataset.finish"), "Saved card records must preserve the selected finish");
+assert.ok(library.includes("current.finish"), "Card studio must restore a previously saved finish");
+assert.ok(library.includes("wallpaper:studio.dataset.wallpaper"), "Saved card records must preserve the selected wallpaper");
 
 assert.ok(media.includes("Media.savePhoto"), "Native Gallery saving must call the Capacitor Media plugin");
 assert.ok(media.includes("Share.share"), "Native card sharing must call the Android share sheet");
