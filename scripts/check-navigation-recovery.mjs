@@ -15,6 +15,10 @@ assert.ok(recovery.includes("position:fixed!important"),"Nav must be fixed to vi
 assert.ok(recovery.includes("visibility:visible!important"),"Recovery explicitly restores visibility");
 assert.ok(recovery.includes("display:grid!important"),"Recovery overrides styles that hide navigation");
 assert.ok(recovery.includes("pointer-events:auto!important"),"Recovered navigation remains touch-interactive");
+assert.ok(recovery.includes('nav.style.background="#ffffff"'),"Recovered navigation uses the clean light interface");
+assert.ok(recovery.includes('nav.style.color="#202a35"'),"Recovered navigation labels remain readable on white");
+assert.ok(!recovery.includes('nav.style.background="#10213d"'),"Recovered navigation must not restore the removed navy theme");
+
 assert.ok(recovery.includes("nav.hidden=false"),"Recovery clears the hidden property");
 assert.ok(home.includes('getElementById("zurielBottomNavigation") || document.createElement("nav")'),"Home module reuses the one initial navigation element");
 assert.ok(home.includes('button.dataset.zurielHomeBound !== "1"'),"Primary navigation actions are bound exactly once");
