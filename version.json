@@ -1,6 +1,6 @@
 {
-  "version": "2.10.8",
-  "displayVersion": "2.10.8",
-  "releaseNotes": "Zuriel 2.10.8: restores the seven-item navigation, improves narrow-screen Bible search, separates Read and Study, and protects Open Book export navigation. Complete 66-book KJV remains available offline. Live online passage retrieval verified for AMP, TPT, NLT, NET, NIV, NASB and NKJV. GNT, Living Bible, ESV and CSB remain unavailable pending publisher/account access. Gallery saving still requires confirmation on a physical Android device.",
+  "version": "2.10.9",
+  "displayVersion": "2.10.9",
+  "releaseNotes": "Zuriel 2.10.9: clean light interface and readable Open Book card; restores light bottom navigation and expands book introductions correctly. Complete 66-book KJV remains available offline. Live online passage retrieval verified for AMP, TPT, NLT, NET, NIV, NASB and NKJV. GNT, Living Bible, ESV and CSB remain unavailable pending publisher/account access. Android signed upgrade smoke test passed in the emulator; runtime diagnostics still require review, and Gallery export and navigation taps need physical-device confirmation.",
   "translationApiBase": "https://zuriel-bible-translations.zuriel-living-word-bible.workers.dev"
 }
