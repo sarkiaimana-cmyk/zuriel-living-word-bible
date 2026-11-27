@@ -292,6 +292,92 @@
       border-color:#dce7de !important;
     }
 
+    /* The home Open Book card keeps a simple two-page reading layout,
+       but removes the photographic overlays, navy fills, metallic effects
+       and text shadows that made its Scripture hard to read. */
+    #zurielHomeDashboard #zurielOpenBookFaithCard {
+      background:#fff !important;
+      color:#202a35 !important;
+      border:1px solid #dfe4e9 !important;
+      border-radius:12px !important;
+      box-shadow:none !important;
+      padding:12px !important;
+    }
+    #zurielHomeDashboard .zob-landscape {
+      min-height:0 !important;
+      padding:0 !important;
+      border:0 !important;
+      border-radius:0 !important;
+      background:#fff !important;
+      background-image:none !important;
+      box-shadow:none !important;
+    }
+    #zurielHomeDashboard .zob-brandline {
+      background:#fff !important;
+      color:#24634a !important;
+      border:0 !important;
+      border-radius:0 !important;
+      box-shadow:none !important;
+      text-shadow:none !important;
+      padding:8px 4px !important;
+    }
+    #zurielHomeDashboard .zob-brandline:after { content:none !important; }
+    #zurielHomeDashboard .zob-brandline em { color:#24634a !important; }
+    #zurielHomeDashboard .zob-book {
+      min-height:0 !important;
+      border:1px solid #dfe4e9 !important;
+      border-radius:10px !important;
+      background:#fff !important;
+      box-shadow:none !important;
+      transform:none !important;
+    }
+    #zurielHomeDashboard .zob-book:before,
+    #zurielHomeDashboard .zob-book:after { content:none !important; display:none !important; }
+    #zurielHomeDashboard .zob-page {
+      min-height:0 !important;
+      padding:16px 12px !important;
+      background:#fff !important;
+      color:#202a35 !important;
+      box-shadow:none !important;
+    }
+    #zurielHomeDashboard .zob-page p,
+    #zurielHomeDashboard .zob-scripture-copy,
+    #zurielHomeDashboard .zob-declaration-copy,
+    #zurielHomeDashboard .zob-affirmation-copy {
+      color:#202a35 !important;
+      text-shadow:none !important;
+      opacity:1 !important;
+      line-height:1.6 !important;
+    }
+    #zurielHomeDashboard .zob-ribbon,
+    #zurielHomeDashboard .zob-affirmation-label {
+      background:#f1f6f2 !important;
+      color:#24634a !important;
+      border:1px solid #dfe9e1 !important;
+      border-radius:6px !important;
+      box-shadow:none !important;
+      text-shadow:none !important;
+    }
+    #zurielHomeDashboard .zob-declaration-ribbon {
+      background:#f1f6f2 !important;
+      color:#24634a !important;
+    }
+    #zurielHomeDashboard .zob-footer {
+      background:#fff !important;
+      color:#24634a !important;
+      border:1px solid #dfe4e9 !important;
+      border-radius:8px !important;
+      box-shadow:none !important;
+      text-shadow:none !important;
+    }
+    #zurielHomeDashboard .zob-footer-tagline,
+    #zurielHomeDashboard .zob-footer-flame,
+    #zurielHomeDashboard .zob-footer strong { color:#24634a !important; }
+    @media(max-width:420px) {
+      #zurielHomeDashboard .zob-book { min-height:0 !important; }
+      #zurielHomeDashboard .zob-page { min-height:0 !important; padding:13px 8px !important; }
+    }
+
     /* Keep the two-page open-book artwork, but make every word high-contrast. */
     #zurielGloryPreview { background:#fff !important; color:#202a35 !important; border:1px solid #dfe4e9 !important; box-shadow:none !important; }
     #zurielGloryPreview :is(.zgs-left-page,.zgs-right-page) {
