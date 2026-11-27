@@ -1418,6 +1418,7 @@
        Each title, exact KJV verse and photographic background move as one unit. */
     const identityScriptures = [
       { title: "My Healer", reference: "Psalm 103:3", wallpaper: 0 % homeWallpaperSet.length },
+      { title: "My Helper", reference: "Hebrews 13:6", wallpaper: 1 % homeWallpaperSet.length },
       { title: "My Comforter", reference: "John 14:16", wallpaper: 1 % homeWallpaperSet.length },
       { title: "My Provider", reference: "Genesis 22:14", wallpaper: 2 % homeWallpaperSet.length },
       { title: "Everlasting Father", reference: "Isaiah 9:6", wallpaper: 3 % homeWallpaperSet.length },
