@@ -16,20 +16,23 @@
   }
 
   /* Remove duplicate destinations, retaining the copy with its live handler. */
-  var byKey=new Map();
-  Array.from(nav.querySelectorAll("button[data-section]")).forEach(function(button){
-   var key=button.dataset.section;
-   if(!key)return;
-   var prior=byKey.get(key);
-   if(!prior){byKey.set(key,button);return;}
-   var score=function(node){
-    return Number(!!node.dataset.zurielSettingsBound)+
-      Number(!!node.dataset.zurielHomeBound)+
-      Number(!!node.dataset.zurielRecoveryBound);
-   };
-   if(score(button)>score(prior)){prior.remove();byKey.set(key,button);}
-   else button.remove();
-  });
+  function deduplicateDestinations(){
+   var byKey=new Map();
+   Array.from(nav.querySelectorAll("button[data-section]")).forEach(function(button){
+    var key=button.dataset.section;
+    if(!key)return;
+    var prior=byKey.get(key);
+    if(!prior){byKey.set(key,button);return;}
+    var score=function(node){
+     return Number(!!node.dataset.zurielSettingsBound)+
+       Number(!!node.dataset.zurielHomeBound)+
+       Number(!!node.dataset.zurielRecoveryBound);
+    };
+    if(score(button)>score(prior)){prior.remove();byKey.set(key,button);}
+    else button.remove();
+   });
+  }
+  deduplicateDestinations();
 
   var destinations=[
    ["home","🏠","Home"],["read","📖","Read"],["study","🔍","Study"],
@@ -61,6 +64,10 @@
   nav.style.gridTemplateColumns="repeat(7,minmax(0,1fr))";nav.style.minHeight="70px";nav.style.zIndex="2147482000";
   nav.style.bottom="0";nav.style.paddingBottom="calc(7px + env(safe-area-inset-bottom, 0px))";
   nav.style.background="#ffffff";nav.style.color="#202a35";nav.style.boxSizing="border-box";
+  if(!nav._zurielDestinationObserver){
+   nav._zurielDestinationObserver=new MutationObserver(deduplicateDestinations);
+   nav._zurielDestinationObserver.observe(nav,{childList:true,subtree:true});
+  }
   nav.querySelectorAll("button").forEach(function(button){
    button.style.visibility="visible";button.style.opacity="1";button.style.pointerEvents="auto";
    button.style.display="flex";button.style.flexDirection="column";button.style.alignItems="center";
