@@ -12,12 +12,14 @@
   if(!navs.length)return null;
   const nav=navs[0];
   navs.slice(1).forEach(node=>node.remove());
-  const seen=new Set();
+  const byKey=new Map();
   Array.from(nav.querySelectorAll("button[data-section]")).forEach(button=>{
    const key=button.dataset.section;
    if(!key)return;
-   if(seen.has(key)){button.remove();return;}
-   seen.add(key);
+   const prior=byKey.get(key);
+   if(!prior){byKey.set(key,button);return;}
+   const score=node=>Number(!!node.dataset.zurielSettingsBound)+Number(!!node.dataset.zurielHomeBound)+Number(!!node.dataset.zurielRecoveryBound);
+   if(score(button)>score(prior)){prior.remove();byKey.set(key,button);}else button.remove();
   });
   items.forEach(([key,emoji,label])=>{
    let button=nav.querySelector('button[data-section="'+key+'"]');
@@ -27,15 +29,15 @@
     button.innerHTML="<span>"+emoji+"</span>"+label;
     nav.appendChild(button);
    }
-   if(key==="settings"&&!button.dataset.zurielSettingsBound&&!button.dataset.zurielRecoveryBound){
-    button.dataset.zurielRecoveryBound="1";
+   if(key==="settings"&&!button.dataset.zurielRecoveryRoute){
+    button.dataset.zurielRecoveryRoute="1";
     button.addEventListener("click",function(){
      if(window.ZurielSettings&&typeof window.ZurielSettings.open==="function")window.ZurielSettings.open();
      else{
       const panel=document.getElementById("zurielSettingsPanel");
-      if(panel){panel.hidden=false;panel.scrollIntoView({behavior:"auto",block:"start"});}
+      if(panel){panel.hidden=false;panel.style.display="block";panel.scrollIntoView({behavior:"auto",block:"start"});}
      }
-    });
+    },true);
    }else if(key!=="settings"&&!button.dataset.zurielHomeBound&&!button.dataset.zurielRecoveryBound){
     button.dataset.zurielRecoveryBound="1";
     button.addEventListener("click",function(){
