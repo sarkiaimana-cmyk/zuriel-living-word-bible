@@ -22,6 +22,7 @@ assert.ok(corrections.includes(".verse.zuriel-search-highlight"), "Search result
 assert.ok((index.match(/id="zurielBottomNavigation"/g) || []).length === 1, "The app shell must own exactly one bottom navigation element");
 assert.ok(navigation.includes("var byKey=new Map()"), "Navigation recovery must deduplicate destinations");
 assert.ok(navigation.includes("button.remove()"), "Navigation recovery must remove repeated destination buttons");
+assert.ok(navigation.includes("new MutationObserver(deduplicateDestinations)"), "Navigation recovery must keep removing late duplicate buttons added by other scripts");
 assert.ok(home.includes('document.getElementById("zurielBottomNavigation") || document.createElement("nav")'), "Home navigation must reuse the app shell navigation instead of creating a second bar");
 assert.ok(navigation.includes('window.ZurielSettings.open()'), "Recovered Settings destination must open the real Settings panel");
 assert.ok(settings.includes('settingsButton.dataset.zurielSettingsBound !== "1"'), "Settings handler must be bound only once");
