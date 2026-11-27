@@ -32,7 +32,7 @@ assert.ok(library.includes("finish:studio.dataset.finish"), "Saved card records 
 assert.ok(library.includes("current.finish"), "Card studio must restore a previously saved finish");
 assert.ok(library.includes("wallpaper:studio.dataset.wallpaper"), "Saved card records must preserve the selected wallpaper");
 
-assert.ok(media.includes("Media.savePhoto"), "Native Gallery saving must call the Capacitor Media plugin");
+assert.ok(media.includes('registerPlugin("Media")') && media.includes("mediaPlugin.savePhoto"), "Native Gallery saving must register and call the Capacitor Media plugin");
 assert.ok(media.includes("Share.share"), "Native card sharing must call the Android share sheet");
 assert.ok(media.includes("download"), "Web fallback must retain a download route");
 
