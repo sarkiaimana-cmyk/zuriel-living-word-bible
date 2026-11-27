@@ -1,6 +1,6 @@
 {
-  "version": "2.10.11",
-  "displayVersion": "2.10.11",
-  "releaseNotes": "Zuriel 2.10.11: repairs single-instance bottom navigation and Settings routing; restores rotating photographic home identity wallpapers and coloured open-book card backgrounds; restores the selected Scripture highlight palette. Preserves offline KJV and existing local reading records. AMP, TPT, NLT, NET, NIV, NASB and NKJV online passage retrieval remains verified; GNT, Living Bible, ESV and CSB still require provider access.",
+  "version": "2.10.12",
+  "displayVersion": "2.10.12",
+  "releaseNotes": "Zuriel 2.10.12: repairs duplicate navigation and Settings routing; restores rotating home and open-book wallpapers, card backgrounds and selected highlight colours; adds the requested My Helper identity Scripture (Hebrews 13:6). Translation proxy deployed and live-smoke-tested. Existing offline KJV and personal records preserved.",
   "translationApiBase": "https://zuriel-bible-translations.zuriel-living-word-bible.workers.dev"
 }
