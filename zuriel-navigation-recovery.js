@@ -31,7 +31,7 @@
   nav.style.display="grid";nav.style.visibility="visible";nav.style.opacity="1";nav.style.pointerEvents="auto";
   nav.style.gridTemplateColumns="repeat(7,minmax(0,1fr))";nav.style.minHeight="70px";nav.style.zIndex="2147482000";
   nav.style.bottom="0";nav.style.paddingBottom="calc(7px + env(safe-area-inset-bottom, 0px))";
-  nav.style.background="#10213d";nav.style.color="#ffffff";nav.style.boxSizing="border-box";
+  nav.style.background="#ffffff";nav.style.color="#202a35";nav.style.boxSizing="border-box";
   nav.querySelectorAll("button").forEach(function(button){button.style.visibility="visible";button.style.opacity="1";button.style.pointerEvents="auto";});
   return true;
  }
