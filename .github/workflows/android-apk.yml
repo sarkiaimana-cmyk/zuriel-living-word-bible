@@ -294,6 +294,9 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
       - name: Install previous release and verify in-place Android upgrade
         if: steps.signing_check.outputs.available == 'true' && steps.signed_release.outcome == 'success'
+        # Bound emulator startup/upgrade testing so a stalled hosted emulator
+        # cannot consume the whole job and prevent diagnostics/APK artifacts.
+        timeout-minutes: 12
         uses: ReactiveCircus/android-emulator-runner@v2
         env:
           GH_TOKEN: ${{ github.token }}
