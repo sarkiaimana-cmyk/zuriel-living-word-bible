@@ -118,6 +118,7 @@ if (!home.includes('const revelationResponse = Object.assign({}, response || {})
 if (!home.includes('"HE IS " + identityTitle.toUpperCase()')) failures.push("WHO HE IS title is not carried into the shareable declaration.");
 if (!home.includes('window.ZurielLibrary.openGloryVerse(\n          item.reference, exactText, "KJV", revelationResponse')) failures.push("WHO HE IS card does not pass its exact KJV passage and title to the card studio.");
 if (!home.includes('id="zurielOpenBookFaithCard"')) failures.push("The daily open-book faith card was removed.");
+if (!home.includes('title: "My Helper", reference: "Hebrews 13:6"')) failures.push("The requested My Helper identity Scripture must remain in the rotating home banner.");
 if (!home.includes('id="zurielOpenBookSaveCard"')) failures.push("Home open-book card has a direct save action.");
 if (!home.includes('id="zurielOpenBookSavedCards"')) failures.push("Home open-book card has a direct saved-cards destination.");
 if (!home.includes('id="zurielOpenBookDownloadCard"')) failures.push("The Home open-book card must expose a direct Download Open Book Card button.");
