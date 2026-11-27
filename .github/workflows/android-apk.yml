@@ -336,8 +336,9 @@ jobs:
             git fetch --force origin "refs/tags/v$VERSION:refs/tags/v$VERSION"
             TAG_COMMIT="$(git rev-list -n 1 "v$VERSION")"
             if [[ "$TAG_COMMIT" != "$GITHUB_SHA" ]]; then
-              echo "::error::Release tag v$VERSION points to $TAG_COMMIT, not this tested commit $GITHUB_SHA. Refusing to replace a release APK."
-              exit 1
+              echo "::notice::Release v$VERSION already belongs to tested commit $TAG_COMMIT. This newer source commit will not replace an existing versioned release; increment version.json after final QA to publish a distinct update."
+              echo "- Signed APK built, but publication was safely skipped: v$VERSION is already attached to a different commit. No existing release asset was changed." >> "$GITHUB_STEP_SUMMARY"
+              exit 0
             fi
             gh release upload "v$VERSION" "$APK" --clobber
           else
