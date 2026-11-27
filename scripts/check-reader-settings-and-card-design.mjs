@@ -33,7 +33,7 @@ assert.ok(library.includes("current.finish"), "Card studio must restore a previo
 assert.ok(library.includes("wallpaper:studio.dataset.wallpaper"), "Saved card records must preserve the selected wallpaper");
 
 assert.ok(media.includes('registerPlugin("Media")') && media.includes("mediaPlugin.savePhoto"), "Native Gallery saving must register and call the Capacitor Media plugin");
-assert.ok(media.includes("Share.share"), "Native card sharing must call the Android share sheet");
+assert.ok(media.includes('registerPlugin("Share")') && media.includes("sharePlugin.share"), "Native card sharing must register and call the Android share sheet");
 assert.ok(media.includes("download"), "Web fallback must retain a download route");
 
 console.log("Reader settings, six highlight choices, single Settings routing, rotating Open Book wallpapers, page finishes, and native/web export safeguards passed.");
