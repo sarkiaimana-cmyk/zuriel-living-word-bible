@@ -12,6 +12,10 @@ const [home, library, index, worker, version, updates, settings, interfaceCorrec
 ]);
 
 requireText(interfaceCorrections, 'background:#f3f7f3 !important;', "Light sage Study workspace distinct from the white Scripture reader");
+requireText(interfaceCorrections, 'background-image:none !important;', "Remove decorative photographic background from the Open Book card");
+requireText(interfaceCorrections, 'color:#202a35 !important;', "High-contrast dark text in the Open Book card");
+requireText(interfaceCorrections, '#zurielHomeDashboard .zob-book:before', "Remove decorative book-edge overlay");
+requireText(interfaceCorrections, '#zurielHomeDashboard .zob-book:after', "Remove decorative centre-spine overlay");
 requireText(interfaceCorrections, 'details.hidden = !details.hidden', "Book introduction expand/collapse action");
 requireText(interfaceCorrections, 'button.setAttribute("aria-expanded", String(expanded))', "Accessible expanded state for the book introduction");
 requireText(settings, 'id="zurielAboutSection"', "About Zuriel inside Settings");
