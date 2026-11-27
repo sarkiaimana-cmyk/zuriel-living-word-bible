@@ -398,6 +398,65 @@
       #zurielGloryPreview .zgs-active-copy { font-size:clamp(14px,3.8vw,18px) !important; }
     }
 
+    /* Final focused workspace treatment: distinguish Study without restoring
+       the removed dark/navy visual system. */
+    #zurielStudyPanel {
+      background:#f3f7f3 !important;
+      color:#202a35 !important;
+      border:1px solid #dce8de !important;
+      border-radius:12px !important;
+      box-shadow:none !important;
+    }
+    #zurielStudyPanel > h2 {
+      background:#f3f7f3 !important;
+      color:#245b43 !important;
+      border-bottom:1px solid #dce8de !important;
+    }
+    #zurielStudyPanel :is(details,article,.study-card,.study-section,.study-verse,.study-body) {
+      background:#fff !important;
+      color:#202a35 !important;
+      border-color:#e0e7e1 !important;
+      box-shadow:none !important;
+    }
+    #zurielStudyPanel :is(h1,h2,h3,h4,p,li,label,summary,span,strong) {
+      color:#202a35 !important;
+      text-shadow:none !important;
+    }
+    #zurielStudyPanel button {
+      background:#24634a !important;
+      color:#fff !important;
+      border-color:#24634a !important;
+      box-shadow:none !important;
+    }
+    #zurielHomeDashboard #zurielOpenBookFaithCard,
+    #zurielHomeDashboard .zob-landscape,
+    #zurielHomeDashboard .zob-brandline,
+    #zurielHomeDashboard .zob-book,
+    #zurielHomeDashboard .zob-page,
+    #zurielHomeDashboard .zob-footer {
+      background:#fff !important;
+      background-image:none !important;
+      color:#202a35 !important;
+      box-shadow:none !important;
+      text-shadow:none !important;
+    }
+    #zurielHomeDashboard .zob-page :is(p,span,strong,em) {
+      color:#202a35 !important;
+      opacity:1 !important;
+      text-shadow:none !important;
+      overflow-wrap:anywhere !important;
+    }
+    #zurielHomeDashboard .zob-book {
+      display:grid !important;
+      grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;
+      border:1px solid #dfe4e9 !important;
+    }
+    #zurielHomeDashboard .zob-page {
+      min-width:0 !important;
+      border:0 !important;
+      border-radius:0 !important;
+    }
+
   `;
   document.head.appendChild(css);
 
