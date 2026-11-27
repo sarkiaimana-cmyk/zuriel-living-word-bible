@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 
-const [home, library, index, worker, version, updates, settings] = await Promise.all([
+const [home, library, index, worker, version, updates, settings, interfaceCorrections] = await Promise.all([
   readFile(new URL("../zuriel-home.js", import.meta.url), "utf8"),
   readFile(new URL("../zuriel-library.js", import.meta.url), "utf8"),
   readFile(new URL("../index.html", import.meta.url), "utf8"),
@@ -10,7 +10,6 @@ const [home, library, index, worker, version, updates, settings] = await Promise
   readFile(new URL("../zuriel-settings.js", import.meta.url), "utf8"),
   readFile(new URL("../zuriel-interface-corrections.js", import.meta.url), "utf8")
 ]);
-const interfaceCorrections = arguments[0];
 
 requireText(interfaceCorrections, 'details.hidden = !details.hidden', "Book introduction expand/collapse action");
 requireText(interfaceCorrections, 'button.setAttribute("aria-expanded", String(expanded))', "Accessible expanded state for the book introduction");
