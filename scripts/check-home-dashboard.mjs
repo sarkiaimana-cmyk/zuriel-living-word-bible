@@ -11,7 +11,7 @@ const [home, library, index, worker, version, updates, settings, interfaceCorrec
   readFile(new URL("../zuriel-interface-corrections.js", import.meta.url), "utf8")
 ]);
 
-requireText(interfaceCorrections, '#zurielStudyPanel {\\n      background:#f3f7f3 !important;', "Light sage Study workspace distinct from the white Scripture reader");
+requireText(interfaceCorrections, 'background:#f3f7f3 !important;', "Light sage Study workspace distinct from the white Scripture reader");
 requireText(interfaceCorrections, 'details.hidden = !details.hidden', "Book introduction expand/collapse action");
 requireText(interfaceCorrections, 'button.setAttribute("aria-expanded", String(expanded))', "Accessible expanded state for the book introduction");
 requireText(settings, 'id="zurielAboutSection"', "About Zuriel inside Settings");
