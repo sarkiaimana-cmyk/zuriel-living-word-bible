@@ -299,6 +299,7 @@ jobs:
         timeout-minutes: 30
         uses: ReactiveCircus/android-emulator-runner@v2
         env:
+          ANDROID_I_WANT_MY_TCG: "yes"
           GH_TOKEN: ${{ github.token }}
           # KVM is unavailable on this hosted runner; explicitly allow Emulator 37's software CPU fallback.
           ANDROID_I_WANT_MY_TCG: "yes"

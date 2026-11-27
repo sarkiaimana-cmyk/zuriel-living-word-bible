@@ -329,3 +329,9 @@ This snapshot supersedes older release-status notes above where they conflict. I
 - **Official APK asset:** `Zuriel-Living-Word-Bible-release.apk`; size 6,315,953 bytes; SHA-256 `d529788bfbd1b5f1a5a4a5386edbe26fae996f24e7ab11f25a950386e2f3aa9d`.
 - **Release contents:** full-length faith-card PNG export; secure update asset matching and integrity checks; updated offline cache v215; existing KJV and personal-data safeguards retained.
 - **Still not phone-verified:** install over the user's current 1.4.110 installation, Android's actual in-place update behaviour, preserved personal records, offline cold start, Gallery export, accessibility and real-device performance. Do not claim these are verified until the user tests the update on their phone.
+
+
+### Topical study quality gate — 2026-11-20
+
+- Strengthened the expanded-study checker to validate all 100 topical guides for stable unique IDs, unique meaningful titles, substantive overview text, multiple Scripture references, study questions, practical application and explicit resource type.
+- Existing recursive reference validation continues to check their cited passages against the bundled KJV. This is an automated content-integrity gate, not a substitute for theological/editorial review or Android device testing.
