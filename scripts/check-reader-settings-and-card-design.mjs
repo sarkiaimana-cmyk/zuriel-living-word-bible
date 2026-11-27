@@ -7,6 +7,7 @@ const navigation = fs.readFileSync("zuriel-navigation-recovery.js", "utf8");
 const media = fs.readFileSync("zuriel-media.js", "utf8");
 const home = fs.readFileSync("zuriel-home.js", "utf8");
 const library = fs.readFileSync("zuriel-library.js", "utf8");
+const index = fs.readFileSync("index.html", "utf8");
 
 const palette = ["amber", "emerald", "sapphire", "violet", "rose", "tangerine"];
 for (const colour of palette) {
@@ -18,7 +19,10 @@ assert.ok(corrections.includes("var(--zuriel-highlight,#f2c14e)"), "Reader corre
 assert.ok(corrections.includes(".verse.zuriel-selected-verse"), "Selected Scripture must receive the chosen highlight");
 assert.ok(corrections.includes(".verse.zuriel-search-highlight"), "Search result Scripture must receive the chosen highlight");
 
+assert.ok((index.match(/id="zurielBottomNavigation"/g) || []).length === 1, "The app shell must own exactly one bottom navigation element");
 assert.ok(navigation.includes("var byKey=new Map()"), "Navigation recovery must deduplicate destinations");
+assert.ok(navigation.includes("button.remove()"), "Navigation recovery must remove repeated destination buttons");
+assert.ok(home.includes('document.getElementById("zurielBottomNavigation") || document.createElement("nav")'), "Home navigation must reuse the app shell navigation instead of creating a second bar");
 assert.ok(navigation.includes('window.ZurielSettings.open()'), "Recovered Settings destination must open the real Settings panel");
 assert.ok(settings.includes('settingsButton.dataset.zurielSettingsBound !== "1"'), "Settings handler must be bound only once");
 assert.ok(settings.includes("function openSettings(main, panel, nav)"), "Settings must use the real section-switching flow");
@@ -32,7 +36,11 @@ assert.ok(library.includes("finish:studio.dataset.finish"), "Saved card records 
 assert.ok(library.includes("current.finish"), "Card studio must restore a previously saved finish");
 assert.ok(library.includes("wallpaper:studio.dataset.wallpaper"), "Saved card records must preserve the selected wallpaper");
 
-assert.ok(media.includes('registerPlugin("Media")') && media.includes("mediaPlugin.savePhoto"), "Native Gallery saving must register and call the Capacitor Media plugin");
+assert.ok(index.includes("#bibleSearch .search-row > *") && index.includes("min-width:0"), "Reader search controls must be allowed to shrink inside the mobile viewport");
+assert.ok(index.includes("@media(max-width:420px)") && index.includes("#bibleSearch .search-row { flex-direction:column; }"), "Reader search controls must stack on narrow phone screens");
+assert.ok(index.includes("#bibleSearchResults .search-result") && index.includes("overflow-wrap:anywhere"), "Long search result text must wrap instead of widening the reader");
+
+assert.ok(media.includes('registerPlugin("Media")' && media.includes("mediaPlugin.savePhoto"), "Native Gallery saving must register and call the Capacitor Media plugin");
 assert.ok(media.includes('registerPlugin("Share")') && media.includes("sharePlugin.share"), "Native card sharing must register and call the Android share sheet");
 assert.ok(media.includes("download"), "Web fallback must retain a download route");
 
