@@ -320,9 +320,16 @@
     if (button && !button.dataset.zurielCompactBound) {
       button.dataset.zurielCompactBound = "1";
       button.setAttribute("aria-expanded", "false");
+      button.dataset.zurielOriginalLabel = button.textContent.trim();
       button.addEventListener("click", function () {
         const details = panel.querySelector("div");
-        button.setAttribute("aria-expanded", String(Boolean(details && !details.hidden)));
+        if (!details) return;
+        details.hidden = !details.hidden;
+        const expanded = !details.hidden;
+        button.setAttribute("aria-expanded", String(expanded));
+        button.textContent = expanded
+          ? "Hide Book Introduction"
+          : button.dataset.zurielOriginalLabel;
       });
     }
   }
