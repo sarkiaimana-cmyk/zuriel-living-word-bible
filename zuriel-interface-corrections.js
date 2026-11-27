@@ -459,6 +459,79 @@
       border-radius:0 !important;
     }
 
+
+    /* Restore the rotating photographic home treatments without changing the
+       plain-white Scripture reader or the clean, high-contrast book text. */
+    #zurielHomeDashboard .home-identity-hero,
+    #zurielHomeDashboard .home-hero {
+      background-color:#10213d !important;
+      background-image:linear-gradient(100deg,rgba(5,17,35,.82),rgba(8,29,49,.38)),var(--zuriel-home-wallpaper) !important;
+      background-size:cover !important;
+      background-position:center !important;
+      color:#fff9eb !important;
+    }
+    #zurielHomeDashboard .home-identity-hero :is(h1,h2,h3,p,.identity-title,.identity-verse),
+    #zurielHomeDashboard .home-hero :is(h1,h2,h3,p) {
+      color:#fff9eb !important;
+      text-shadow:0 2px 10px rgba(0,0,0,.32) !important;
+    }
+    #zurielHomeDashboard .home-growth-highlight,
+    #zurielHomeDashboard .home-scripture-card {
+      background-color:#18334d !important;
+      background-image:linear-gradient(145deg,rgba(8,24,43,.74),rgba(8,38,48,.48)),var(--zuriel-home-wallpaper) !important;
+      background-size:cover !important;
+      background-position:center !important;
+      color:#fff !important;
+    }
+    #zurielHomeDashboard .home-growth-highlight :is(h2,h3,p,span,strong),
+    #zurielHomeDashboard .home-scripture-card :is(h2,h3,p,span,strong) {
+      color:#fff !important;
+      text-shadow:0 1px 5px rgba(0,0,0,.28) !important;
+    }
+    /* The open-book keeps its two-page layout, with wallpaper around it and
+       softly coloured paper rather than a flattened all-white card. */
+    #zurielHomeDashboard .zob-landscape {
+      background-color:#24384a !important;
+      background-image:linear-gradient(145deg,rgba(7,22,39,.28),rgba(7,22,39,.12)),var(--zuriel-home-wallpaper) !important;
+      background-size:cover !important;
+      background-position:center !important;
+      padding:12px !important;
+      border:1px solid rgba(255,255,255,.34) !important;
+      border-radius:12px !important;
+    }
+    #zurielHomeDashboard .zob-book {
+      background:#d9d0bc !important;
+      border:1px solid rgba(93,76,49,.36) !important;
+      border-radius:9px !important;
+      overflow:hidden !important;
+    }
+    #zurielHomeDashboard .zob-page {
+      background:linear-gradient(145deg,#fffdf5,#f3ead8) !important;
+      color:#263442 !important;
+    }
+    #zurielHomeDashboard .zob-page:nth-child(2) {
+      background:linear-gradient(145deg,#f7f4e9,#e9f0e8) !important;
+    }
+    #zurielHomeDashboard .zob-page :is(p,span,strong,em) {
+      color:#263442 !important;
+      text-shadow:none !important;
+    }
+    #zurielHomeDashboard .zob-brandline,
+    #zurielHomeDashboard .zob-footer {
+      background:rgba(255,253,245,.94) !important;
+      color:#245b43 !important;
+    }
+    /* Restore each user's selected highlight colour. The earlier white-reader
+       reset had greater selector weight and masked these preference styles. */
+    #bibleReader #message .verse.zuriel-nav-highlight,
+    #bibleReader #message .verse.zuriel-selected-verse,
+    #bibleReader #message .verse.zuriel-search-highlight,
+    #bibleReader #message .verse.zuriel-highlighted {
+      background:color-mix(in srgb,var(--zuriel-highlight,#f2c14e) 30%,#ffffff) !important;
+      border-left:4px solid var(--zuriel-highlight,#f2c14e) !important;
+      color:inherit !important;
+    }
+
   `;
   document.head.appendChild(css);
 
