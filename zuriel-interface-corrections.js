@@ -267,6 +267,31 @@
     #zurielIntroduction details { background:#fff !important; border:0 !important; border-bottom:1px solid #e5e9ed !important; border-radius:0 !important; padding:10px 0 !important; }
     #zurielIntroduction summary { color:#202a35 !important; font-weight:700 !important; }
 
+    /* Keep Study visibly distinct from the plain-white Scripture reader
+       without returning to the former dark navy panel. */
+    #zurielStudyPanel {
+      background:#f3f7f3 !important;
+      color:#202a35 !important;
+      border:1px solid #d6e3d8 !important;
+      border-radius:14px !important;
+    }
+    #zurielStudyPanel > h2 {
+      background:#e8f1e9 !important;
+      color:#214b36 !important;
+      border:0 !important;
+      border-bottom:2px solid #c5d9c9 !important;
+      border-radius:10px 10px 0 0 !important;
+      padding:12px 14px !important;
+    }
+    #zurielStudyPanel .study-verse,
+    #zurielStudyPanel .study-body,
+    #zurielStudyPanel .highlight-tools,
+    #zurielStudyPanel #zurielStudySections > details {
+      background:#fff !important;
+      color:#202a35 !important;
+      border-color:#dce7de !important;
+    }
+
     /* Keep the two-page open-book artwork, but make every word high-contrast. */
     #zurielGloryPreview { background:#fff !important; color:#202a35 !important; border:1px solid #dfe4e9 !important; box-shadow:none !important; }
     #zurielGloryPreview :is(.zgs-left-page,.zgs-right-page) {
