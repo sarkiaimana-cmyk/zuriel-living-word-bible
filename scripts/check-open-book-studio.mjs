@@ -173,6 +173,15 @@ if (!library.includes('id="zgsSavedHeading"') || !library.includes('id="zgsSaved
 if (!library.includes('localStorage.getItem(savedCardsKey)') || !library.includes('localStorage.setItem(savedCardsKey')) failures.push("Saved Glory Verse cards must persist in on-device storage.");
 if (!library.includes('openSavedGloryVerseCards: function') || !library.includes('openPage("affirmation")')) failures.push("My Saved Cards must return to the saved-card section of the Studio.");
 
+// Reader highlight regression: the clean white reader reset must not mask
+// the user's chosen colour when a verse is selected or searched.
+if (!corrections.includes("#bibleReader #message .verse.zuriel-selected-verse")) failures.push("Selected Scripture must use the active highlight preference.");
+if (!corrections.includes("var(--zuriel-highlight,#f2c14e)")) failures.push("Selected Scripture colour must come from the saved highlight preference.");
+if (!corrections.includes("#bibleReader #message .verse.zuriel-search-highlight")) failures.push("Search-result highlighting must use the same selected colour.");
+if (!index.includes('src="zuriel-interface-corrections.js"')) failures.push("Android reader must load the highlight preference correction.");
+if (!index.includes('src="zuriel-settings.js"') || index.indexOf('src="zuriel-settings.js"') > index.indexOf('src="zuriel-interface-corrections.js"')) failures.push("Reader settings must load before their visual correction is applied.");
+if (!corrections.includes("background:#fff !important") || !corrections.includes("background-image:none !important")) failures.push("Reader and study workspaces must retain their clean, readable surfaces.");
+
 if (failures.length) {
   console.error("Open Book Card Studio checks failed:");
   failures.forEach(item => console.error(" - " + item));
