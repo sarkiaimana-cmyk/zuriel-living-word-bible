@@ -37,6 +37,7 @@ assert.ok(library.includes('studio.dataset.finish = "navy"'), "Card studio must 
 for (const finish of ["ivory", "navy", "forest", "parchment"]) {
   assert.ok(library.includes('data-finish="' + finish + '"'), "Open Book studio must expose the " + finish + " page finish");
 }
+assert.ok(library.includes('choice.setAttribute("aria-pressed", String(choice.dataset.finish === studio.dataset.finish))'), "Open Book finish choices must announce the currently selected finish");
 for (const wallpaper of ["forest", "falls", "stream", "valley"]) {
   assert.ok(library.includes('data-wallpaper="' + wallpaper + '"'), "Open Book studio must expose the " + wallpaper + " wallpaper");
 }
