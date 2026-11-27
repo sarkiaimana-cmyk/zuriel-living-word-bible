@@ -991,6 +991,7 @@
         });
         curatedButton.id="zgsLoadCurated";
         studio.querySelector("#zgsFinishes").parentElement.appendChild(curatedButton);
+        studio.querySelectorAll("[data-finish]").forEach(choice => choice.setAttribute("aria-pressed", String(choice.dataset.finish === studio.dataset.finish)));
         studio.querySelectorAll("[data-finish]").forEach(choice => choice.addEventListener("click",function(){
           studio.dataset.finish=this.dataset.finish;
           studio.querySelectorAll("[data-finish]").forEach(item=>item.setAttribute("aria-pressed",String(item===this)));
