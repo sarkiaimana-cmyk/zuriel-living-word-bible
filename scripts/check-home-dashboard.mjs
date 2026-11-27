@@ -7,9 +7,13 @@ const [home, library, index, worker, version, updates, settings] = await Promise
   readFile(new URL("../sw.js", import.meta.url), "utf8"),
   readFile(new URL("../version.json", import.meta.url), "utf8"),
   readFile(new URL("../zuriel-updates.js", import.meta.url), "utf8"),
-  readFile(new URL("../zuriel-settings.js", import.meta.url), "utf8")
+  readFile(new URL("../zuriel-settings.js", import.meta.url), "utf8"),
+  readFile(new URL("../zuriel-interface-corrections.js", import.meta.url), "utf8")
 ]);
+const interfaceCorrections = arguments[0];
 
+requireText(interfaceCorrections, 'details.hidden = !details.hidden', "Book introduction expand/collapse action");
+requireText(interfaceCorrections, 'button.setAttribute("aria-expanded", String(expanded))', "Accessible expanded state for the book introduction");
 requireText(settings, 'id="zurielAboutSection"', "About Zuriel inside Settings");
 requireText(settings, 'id="zurielBibleCopyrightCredits"', "Translation copyright acknowledgements inside Settings");
 forbidText(index, 'id="zurielBibleCopyrightCredits"', "About Zuriel copyright panel in the footer");
