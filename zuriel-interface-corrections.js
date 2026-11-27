@@ -449,6 +449,8 @@
     #zurielHomeDashboard .zob-book {
       display:grid !important;
       grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;
+      column-gap:1px !important;
+      background:#e2e6eb !important;
       border:1px solid #dfe4e9 !important;
     }
     #zurielHomeDashboard .zob-page {
