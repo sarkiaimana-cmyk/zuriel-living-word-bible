@@ -220,6 +220,73 @@
       #zurielStudyPanel,#zurielLibrary { padding:10px !important; }
       #zurielGridNavigator .zgn-grid { grid-template-columns:repeat(5,minmax(0,1fr)) !important; }
     }
+
+    /* FINAL LIGHT THEME OVERRIDES: eliminate repeated dark surfaces. */
+    body, main, #zurielHomeDashboard, #zurielHomeDashboard .home-hero,
+    #zurielHomeDashboard .home-card, #zurielHomeDashboard .home-translations-card,
+    #zurielHomeDashboard .home-greeting-card, #zurielTopReturnBar,
+    #zurielBottomNavigation, #zurielBottomNav, #zurielNavigation,
+    #zurielStudyPanel, #zurielVerseActions, #zurielIntroduction,
+    #zurielLibrary, #zurielTopicalIndex, #zurielPersonalSpace,
+    #zurielSettingsPanel, #zurielReadingPlans, #zurielKingdomLife,
+    #zurielDevotional, #zurielGrowthPathways {
+      background:#fff !important; background-image:none !important;
+      color:#202a35 !important; border-color:#e2e6eb !important;
+      box-shadow:none !important;
+    }
+    #zurielHomeDashboard :is(h1,h2,h3,h4,p,span,strong,em,label,small),
+    #zurielTopReturnBar :is(h1,h2,h3,p,span),
+    #zurielIntroduction :is(h1,h2,h3,h4,p,li,summary,span),
+    #zurielStudyPanel :is(h1,h2,h3,h4,p,li,summary,label,span,strong),
+    #zurielLibrary :is(h1,h2,h3,h4,p,li,summary,label,span,strong),
+    #zurielPersonalSpace :is(h1,h2,h3,h4,p,li,summary,label,span),
+    #zurielSettingsPanel :is(h1,h2,h3,h4,p,li,summary,label,span) {
+      color:#202a35 !important; text-shadow:none !important;
+    }
+    #zurielHomeDashboard .home-brand,#zurielHomeDashboard .home-tagline,
+    #zurielHomeDashboard .home-subtitle,#zurielHomeDashboard .home-verse,
+    #zurielHomeDashboard .home-reference,#zurielHomeDashboard h2,#zurielTopSection {
+      color:#202a35 !important;
+    }
+    #zurielTopBack,#zurielHomeDashboard .home-button,
+    #zurielTranslationCompare button,#zurielStudyPanel button,
+    #zurielLibrary button,#zurielBottomNavigation button,#zurielBottomNav button {
+      background:#24634a !important; background-image:none !important;
+      color:#fff !important; border:1px solid #24634a !important; box-shadow:none !important;
+    }
+    #zurielVerseActions { background:#fff !important; border:1px solid #dfe4e9 !important; color:#202a35 !important; }
+    #zurielVerseActions :is(p,summary,.zuriel-verse-action) { color:#202a35 !important; }
+    #zurielVerseActions .zuriel-verse-action { background:#f7f9fa !important; border:1px solid #dfe4e9 !important; }
+    #zurielStudyPanel > h2 {
+      margin:0 0 12px !important; padding:0 0 10px !important;
+      background:#fff !important; color:#202a35 !important;
+      border:0 !important; border-bottom:1px solid #e2e6eb !important; border-radius:0 !important;
+    }
+    #zurielIntroduction { padding:14px !important; background:#fff !important; border:1px solid #e2e6eb !important; border-radius:10px !important; }
+    #zurielIntroduction :is(p,li) { color:#263442 !important; font-size:16px !important; line-height:1.75 !important; }
+    #zurielIntroduction details { background:#fff !important; border:0 !important; border-bottom:1px solid #e5e9ed !important; border-radius:0 !important; padding:10px 0 !important; }
+    #zurielIntroduction summary { color:#202a35 !important; font-weight:700 !important; }
+
+    /* Keep the two-page open-book artwork, but make every word high-contrast. */
+    #zurielGloryPreview { background:#fff !important; color:#202a35 !important; border:1px solid #dfe4e9 !important; box-shadow:none !important; }
+    #zurielGloryPreview :is(.zgs-left-page,.zgs-right-page) {
+      background:#fff !important; background-image:none !important; color:#202a35 !important;
+      text-shadow:none !important; opacity:1 !important; filter:none !important;
+    }
+    #zurielGloryPreview :is(.zgs-page-title,.zgs-active-copy,.zgs-left-page p,.zgs-right-page p,.zgs-reference,.zgs-ribbon) {
+      color:#202a35 !important; text-shadow:none !important; opacity:1 !important; filter:none !important;
+    }
+    #zurielGloryPreview .zgs-left-page { border-right:1px solid #e2e6eb !important; box-shadow:none !important; }
+    #zurielGloryPreview .zgs-right-page { box-shadow:none !important; }
+    #zurielGloryPreview .zgs-active-copy { font-weight:600 !important; line-height:1.55 !important; overflow-wrap:anywhere !important; word-break:normal !important; }
+    #zurielGloryPreview :is(.zgs-page-title,.zgs-ribbon) { color:#24634a !important; letter-spacing:.04em !important; }
+    #zurielGloryPreview :is(p,div,span) { max-width:100%; overflow-wrap:anywhere; }
+    #zurielGloryPreview [class*="page"] { min-width:0 !important; }
+    @media(max-width:480px) {
+      #zurielGloryPreview { font-size:14px !important; }
+      #zurielGloryPreview .zgs-active-copy { font-size:clamp(14px,3.8vw,18px) !important; }
+    }
+
   `;
   document.head.appendChild(css);
 
