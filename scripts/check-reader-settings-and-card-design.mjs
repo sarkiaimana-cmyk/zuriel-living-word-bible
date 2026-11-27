@@ -7,6 +7,7 @@ const navigation = fs.readFileSync("zuriel-navigation-recovery.js", "utf8");
 const media = fs.readFileSync("zuriel-media.js", "utf8");
 const home = fs.readFileSync("zuriel-home.js", "utf8");
 const library = fs.readFileSync("zuriel-library.js", "utf8");
+const serviceWorker = fs.readFileSync("sw.js", "utf8");
 const index = fs.readFileSync("index.html", "utf8");
 
 const palette = ["amber", "emerald", "sapphire", "violet", "rose", "tangerine"];
@@ -33,6 +34,14 @@ assert.ok(corrections.includes(".zob-landscape"), "Open Book outer frame must re
 assert.ok(corrections.includes("background-image:linear-gradient(145deg,rgba(7,22,39,.28),rgba(7,22,39,.12)),var(--zuriel-home-wallpaper)"), "Open Book landscape must retain rotating wallpaper");
 assert.ok(corrections.includes(".zob-page:nth-child(2)"), "Open Book pages must retain differentiated page finishes");
 assert.ok(library.includes('studio.dataset.finish = "navy"'), "Card studio must initialise a selectable open-book finish");
+for (const finish of ["ivory", "navy", "forest", "parchment"]) {
+  assert.ok(library.includes('data-finish="' + finish + '"'), "Open Book studio must expose the " + finish + " page finish");
+}
+for (const wallpaper of ["forest", "falls", "stream", "valley"]) {
+  assert.ok(library.includes('data-wallpaper="' + wallpaper + '"'), "Open Book studio must expose the " + wallpaper + " wallpaper");
+}
+assert.ok(serviceWorker.includes('url.origin === "https://images.unsplash.com"'), "Selected photographic wallpapers must be cached by the offline service worker");
+assert.ok(serviceWorker.includes("await cache.put(request, response.clone())"), "Successfully loaded photographic wallpapers must be persisted for offline use");
 assert.ok(library.includes("finish:studio.dataset.finish"), "Saved card records must preserve the selected finish");
 assert.ok(library.includes("current.finish"), "Card studio must restore a previously saved finish");
 assert.ok(library.includes("wallpaper:studio.dataset.wallpaper"), "Saved card records must preserve the selected wallpaper");
