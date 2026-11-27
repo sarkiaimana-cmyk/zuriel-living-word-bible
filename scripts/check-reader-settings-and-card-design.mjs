@@ -40,7 +40,7 @@ assert.ok(index.includes("#bibleSearch .search-row > *") && index.includes("min-
 assert.ok(index.includes("@media(max-width:420px)") && index.includes("#bibleSearch .search-row { flex-direction:column; }"), "Reader search controls must stack on narrow phone screens");
 assert.ok(index.includes("#bibleSearchResults .search-result") && index.includes("overflow-wrap:anywhere"), "Long search result text must wrap instead of widening the reader");
 
-assert.ok(media.includes('registerPlugin("Media")' && media.includes("mediaPlugin.savePhoto"), "Native Gallery saving must register and call the Capacitor Media plugin");
+assert.ok(media.includes('registerPlugin("Media")') && media.includes("mediaPlugin.savePhoto"), "Native Gallery saving must register and call the Capacitor Media plugin");
 assert.ok(media.includes('registerPlugin("Share")') && media.includes("sharePlugin.share"), "Native card sharing must register and call the Android share sheet");
 assert.ok(media.includes("download"), "Web fallback must retain a download route");
 
