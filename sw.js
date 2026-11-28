@@ -28,6 +28,7 @@ const CORE_FILES = [
   "./zuriel-reader-topbar.js",
   "./zuriel-design-system.js",
   "./zuriel-interface-corrections.js",
+  "./zuriel-acceptance-fixes.js",
   "./zuriel-faith-content.js",
   "./zuriel-faith-cards.js",
   "./zuriel-topical-index.js",
