@@ -4,7 +4,7 @@
   if (document.getElementById("zurielAcceptanceFixes")) return;
   const style = document.createElement("style");
   style.id = "zurielAcceptanceFixes";
-  style.textContent = String.raw\`\`
+  style.textContent = String.raw`
     /* Keep verse tools compact and anchored away from the top reading controls. */
     #zurielVerseActions:not([hidden]) {
       top:auto !important;
@@ -49,6 +49,6 @@
         max-height:58vh !important;
       }
     }
-  \`\`;
+  `;
   document.head.appendChild(style);
 })();
